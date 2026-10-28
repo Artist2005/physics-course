@@ -24,6 +24,9 @@ if [ "${DOMAIN}" != "_" ] && [ -n "${DOMAIN}" ]; then
   sudo sed -i "s|https://sheua.com|https://${DOMAIN}|g; s|https://example.com|https://${DOMAIN}|g" "${WEB_ROOT}/sitemap.xml" "${WEB_ROOT}/robots.txt"
 fi
 
+CACHE_VER="$(date +%s)"
+sudo find "${WEB_ROOT}" -name "*.html" -exec sed -i -E "s|assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?|assets/\1?v=${CACHE_VER}|g" {} +
+
 if id "www-data" >/dev/null 2>&1; then
   sudo chown -R www-data:www-data "${WEB_ROOT}"
 elif id "nginx" >/dev/null 2>&1; then

@@ -1,0 +1,50 @@
+server {
+    listen ${PORT};
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+    charset utf-8;
+
+    # Gzip compression for HTML, CSS, JS, SVG, XML, and JSON-LD
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_min_length 1024;
+    gzip_types
+        text/plain
+        text/css
+        text/html
+        text/javascript
+        text/xml
+        application/javascript
+        application/json
+        application/ld+json
+        application/xml
+        image/svg+xml;
+
+    # Security headers
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Cloud Run health check endpoint
+    location = /healthz {
+        access_log off;
+        add_header Content-Type text/plain;
+        return 200 "ok\n";
+    }
+
+    # Cache shared JS/CSS bundles and icons
+    location ~* \.(css|js|svg|ico|png|jpg|jpeg|webp)$ {
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+        try_files $uri =404;
+    }
+
+    # Serve HTML pages & clean URLs (/sim/archimedes or /sim/archimedes.html)
+    location / {
+        add_header Cache-Control "no-cache";
+        try_files $uri $uri.html $uri/ /index.html;
+    }
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#26221e"/>
+      <stop offset="100%" stop-color="#141210"/>
+    </radialGradient>
+    <radialGradient id="coreGrad" cx="38%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f5c451"/>
+      <stop offset="55%" stop-color="#c88a22"/>
+      <stop offset="100%" stop-color="#8b1e1e"/>
+    </radialGradient>
+  </defs>
+  <!-- Archival Octagonal/Rounded Seal Base -->
+  <rect x="3" y="3" width="58" height="58" rx="13" fill="url(#bgGrad)" stroke="#c8962e" stroke-width="2.5"/>
+  <rect x="6.5" y="6.5" width="51" height="51" rx="10" fill="none" stroke="#f2ece1" stroke-opacity="0.22" stroke-width="1"/>
+  <!-- Three Intersecting Atomic / Celestial Orbits -->
+  <g fill="none" stroke="#e5c168" stroke-width="2" stroke-linecap="round">
+    <ellipse cx="32" cy="32" rx="22" ry="8.5" transform="rotate(-30 32 32)" stroke-opacity="0.92"/>
+    <ellipse cx="32" cy="32" rx="22" ry="8.5" transform="rotate(30 32 32)" stroke-opacity="0.92"/>
+    <ellipse cx="32" cy="32" rx="22" ry="8.5" transform="rotate(90 32 32)" stroke-opacity="0.65" stroke-dasharray="3 2.5"/>
+  </g>
+  <!-- Orbital Electrons -->
+  <circle cx="14.5" cy="21.8" r="2.7" fill="#faf6ee" stroke="#c8962e" stroke-width="1"/>
+  <circle cx="49.5" cy="21.8" r="2.7" fill="#faf6ee" stroke="#c8962e" stroke-width="1"/>
+  <circle cx="32" cy="54" r="2.5" fill="#68a8ff" stroke="#141210" stroke-width="0.9"/>
+  <!-- Central Nucleus -->
+  <circle cx="32" cy="32" r="5.6" fill="url(#coreGrad)" stroke="#faf6ee" stroke-width="1.2"/>
+</svg>

@@ -1,7 +1,27 @@
+# Системні файли Windows / macOS / Linux
 .DS_Store
 Thumbs.db
-*.log
-node_modules/
-.env
+Desktop.ini
+
+# Налаштування редакторів та IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Секрети, змінні середовища, сертифікати та ключі
+.env
+.env.*
+*.pem
+*.key
+*.crt
+.domain
+
+# Тимчасові файли, логи та залежності
+*.log
+*.tmp
+*.bak
+node_modules/
+tmp/
+temp/

@@ -16580,13 +16580,13 @@
     document.getElementById('btn-prev-chapter').addEventListener('click', () => {
       const idx = SCENE_KEYS_ORDER.indexOf(uiState.activeScene);
       const prevIdx = (idx - 1 + SCENE_KEYS_ORDER.length) % SCENE_KEYS_ORDER.length;
-      loadScene(SCENE_KEYS_ORDER[prevIdx]);
+      loadScene(SCENE_KEYS_ORDER[prevIdx], true);
     });
 
     document.getElementById('btn-next-chapter').addEventListener('click', () => {
       const idx = SCENE_KEYS_ORDER.indexOf(uiState.activeScene);
       const nextIdx = (idx + 1) % SCENE_KEYS_ORDER.length;
-      loadScene(SCENE_KEYS_ORDER[nextIdx]);
+      loadScene(SCENE_KEYS_ORDER[nextIdx], true);
     });
 
     const closeAdBtn = document.getElementById('btn-close-ad-banner');
@@ -16690,8 +16690,8 @@
       const targetLang = (lang || uiState.lang) === 'uk' ? 'uk' : 'en';
       if (window.location.protocol.startsWith('http')) {
         return targetLang === 'uk'
-          ? `/uk/sim/${sceneKey}.html`
-          : `/sim/${sceneKey}.html`;
+          ? `/uk/sim/${sceneKey}`
+          : `/sim/${sceneKey}`;
       }
       const rootPrefix = window.__ROOT_PREFIX__ || '';
       return targetLang === 'uk'
@@ -16717,7 +16717,10 @@
         descMeta.setAttribute('content', stripHtmlAndMath(`${cfg.epigraph} ${cfg.question}`).slice(0, 260));
       }
       if (window.location.protocol.startsWith('http')) {
-        const targetUrl = getExperimentHref(uiState.activeScene, uiState.lang);
+        const isRootPath = /^\/(?:uk\/?)?(?:index\.html)?$/i.test(window.location.pathname);
+        const targetUrl = (!pushHistory && isRootPath)
+          ? (uiState.lang === 'uk' ? '/uk/' : '/')
+          : getExperimentHref(uiState.activeScene, uiState.lang);
         try {
           if (pushHistory) {
             window.history.pushState({ scene: uiState.activeScene, lang: uiState.lang }, '', targetUrl);

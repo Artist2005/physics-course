@@ -127,12 +127,12 @@
     }
 
     // ============================================================================
-    // 1. ІНІЦІАЛІЗАЦІЯ 3D-СЦЕНИ У СТИЛІ ІЛЮСТРАЦІЇ ПІДРУЧНИКА (СВІТЛА СТУДІЯ)
+    // 1. ІНІЦІАЛІЗАЦІЯ 3D-СЦЕНИ У СТИЛІ APPLE / GOOGLE СВІТЛОЇ СТУДІЇ
     // ============================================================================
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf4efe6);
-    scene.fog = new THREE.FogExp2(0xf4efe6, 0.011);
+    scene.background = new THREE.Color(0xeef2f6);
+    scene.fog = new THREE.FogExp2(0xeef2f6, 0.011);
 
     const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 200);
     camera.position.set(0, 6.2, 16.0);
@@ -154,15 +154,15 @@
     controls.maxDistance = 42;
     controls.target.set(0, 2.0, 0);
 
-    // М'яке денне освітлення креслярської студії
-    const ambientLight = new THREE.AmbientLight(0xfffbeb, 1.35);
+    // Чисте студійне освітлення
+    const ambientLight = new THREE.AmbientLight(0xf8fafc, 1.38);
     scene.add(ambientLight);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe7dfd0, 0.85);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xdbe4ef, 0.85);
     hemiLight.position.set(0, 25, 0);
     scene.add(hemiLight);
 
-    const dirLight = new THREE.DirectionalLight(0xfffdfa, 1.65);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.65);
     dirLight.position.set(11, 20, 14);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
@@ -185,10 +185,10 @@
     try {
       const pmremGen = new THREE.PMREMGenerator(renderer);
       const envScene = new THREE.Scene();
-      envScene.background = new THREE.Color(0xf4eee1);
+      envScene.background = new THREE.Color(0xeef2f6);
       const skyDome = new THREE.Mesh(
         new THREE.SphereGeometry(20, 24, 16),
-        new THREE.MeshBasicMaterial({ color: 0xfefcf6, side: THREE.BackSide })
+        new THREE.MeshBasicMaterial({ color: 0xf8fafc, side: THREE.BackSide })
       );
       envScene.add(skyDome);
       const softboxTop = new THREE.Mesh(
@@ -207,7 +207,7 @@
       envScene.add(softboxSide);
       const warmBounce = new THREE.Mesh(
         new THREE.PlaneGeometry(24, 24),
-        new THREE.MeshBasicMaterial({ color: 0xe7dfd0, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xdbe4ef, side: THREE.DoubleSide })
       );
       warmBounce.rotation.x = -Math.PI / 2;
       warmBounce.position.y = -6;
@@ -216,10 +216,10 @@
       pmremGen.dispose();
     } catch (e) {}
 
-    // Аркуш креслярського паперу як основа сцени + тонка міліметрова сітка
+    // Світла студійна основа сцени + делікатна координатна сітка
     const floorGeo = new THREE.PlaneGeometry(90, 90);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0xf1ebe0,
+      color: 0xeef2f6,
       roughness: 0.92,
       metalness: 0.02
     });
@@ -228,7 +228,7 @@
     floorMesh.receiveShadow = true;
     scene.add(floorMesh);
 
-    const gridHelper = new THREE.GridHelper(40, 40, 0xb8ad99, 0xd8d0c0);
+    const gridHelper = new THREE.GridHelper(40, 40, 0xc2cddb, 0xd8e1ec);
     gridHelper.position.y = 0.004;
     gridHelper.material.opacity = 0.65;
     gridHelper.material.transparent = true;
@@ -352,36 +352,52 @@
     };
     const activeVectorArrows = new Set();
 
+    function drawPillRect(ctx, x, y, w, h, r) {
+      const radius = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.arcTo(x + w, y, x + w, y + h, radius);
+      ctx.arcTo(x + w, y + h, x, y + h, radius);
+      ctx.arcTo(x, y + h, x, y, radius);
+      ctx.arcTo(x, y, x + w, y, radius);
+      ctx.closePath();
+    }
+
     function makeBookVectorSprite(text, borderColor = '#142e46') {
       const displayText = (typeof uiState === 'undefined' || uiState.lang === 'en')
         ? (VECTOR_LABEL_EN[text] || text)
         : text;
       const canvas = document.createElement('canvas');
-      canvas.width = 264;
-      canvas.height = 84;
+      canvas.width = 276;
+      canvas.height = 88;
       const ctx = canvas.getContext('2d');
 
-      // Жорстка тінь у стилі технічного креслення (без розмиття та округлих кутів)
-      ctx.fillStyle = 'rgba(24, 22, 20, 0.85)';
-      ctx.fillRect(16, 17, 234, 54);
+      // М'яка тінь у стилі Apple / Google
+      ctx.save();
+      ctx.shadowColor = 'rgba(15, 23, 42, 0.16)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 3;
+      drawPillRect(ctx, 12, 14, 252, 54, 14);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
+      ctx.fill();
+      ctx.restore();
 
-      // Основна прямокутна бирка креслярського виносного напису
-      ctx.fillStyle = '#faf6ee';
-      ctx.fillRect(12, 13, 234, 54);
+      // Тонкий контур капсули
+      drawPillRect(ctx, 12, 14, 252, 54, 14);
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
 
-      ctx.strokeStyle = '#181614';
-      ctx.lineWidth = 2.5;
-      ctx.strokeRect(12, 13, 234, 54);
-
-      // Кольорова маркувальна смужка зліва
+      // Кольоровий маркер зліва
       ctx.fillStyle = borderColor;
-      ctx.fillRect(13, 14, 9, 52);
+      drawPillRect(ctx, 22, 27, 7, 28, 3.5);
+      ctx.fill();
 
-      ctx.font = 'italic bold 28px "Crimson Pro", "Georgia", serif';
-      ctx.fillStyle = '#181614';
+      ctx.font = '600 24px "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.fillStyle = '#0f172a';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(displayText, 133, 41);
+      ctx.fillText(displayText, 142, 42);
 
       const texture = new THREE.CanvasTexture(canvas);
       texture.minFilter = THREE.LinearFilter;
@@ -15923,7 +15939,7 @@
         prevTitle: 'Previous chapter',
         nextTitle: 'Next chapter',
         adHdrBadge: 'AD',
-        adHdrText: 'Place for Your Banner Advertisement (728×90 / Leaderboard)',
+        adHdrText: 'Educational Resource',
         adHdrSub: 'Google AdSense · Direct Sponsor Banner · Educational & Lab Equipment Partners',
         adHdrCta: 'Place Ad →',
         adLeftLabel: 'Advertisement',
@@ -15987,8 +16003,8 @@
         spineMain: 'Фізичний практикум',
         prevTitle: 'Попередній параграф',
         nextTitle: 'Наступний параграф',
-        adHdrBadge: 'РЕКЛАМА',
-        adHdrText: 'Місце для вашого рекламного банера (728×90 / Leaderboard)',
+        adHdrBadge: 'AD',
+        adHdrText: 'Освітній ресурс та обладнання',
         adHdrSub: 'Google AdSense · Прямий партнерський банер · Освітні та наукові проєкти',
         adHdrCta: 'Розмістити →',
         adLeftLabel: 'Рекламний блок',
@@ -16240,7 +16256,7 @@
       const h = chartCanvas.height;
       chartCtx.clearRect(0, 0, w, h);
 
-      chartCtx.strokeStyle = 'rgba(120, 113, 108, 0.18)';
+      chartCtx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
       chartCtx.lineWidth = 1;
       for (let y = 18; y < h; y += 22) {
         chartCtx.beginPath();
@@ -16252,7 +16268,7 @@
       const drawSeries = (arr, color) => {
         if (arr.length < 2) return;
         chartCtx.strokeStyle = color;
-        chartCtx.lineWidth = 1.8;
+        chartCtx.lineWidth = 2.0;
         chartCtx.beginPath();
         for (let i = 0; i < arr.length; i++) {
           const x = (i / (chartHistory.maxPoints - 1)) * w;
@@ -16263,9 +16279,9 @@
         chartCtx.stroke();
       };
 
-      drawSeries(chartHistory.ek, '#166534');
-      drawSeries(chartHistory.ep, '#1d4ed8');
-      drawSeries(chartHistory.q, '#b45309');
+      drawSeries(chartHistory.ek, '#16a34a');
+      drawSeries(chartHistory.ep, '#2563eb');
+      drawSeries(chartHistory.q, '#d97706');
     }
 
     function updateLiveFormulaSubstitution() {

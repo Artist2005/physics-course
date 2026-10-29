@@ -753,4 +753,164 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_orbitals</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_orbitals" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_orbitals" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_orbitals" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_orbitals</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_orbitals" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_orbitals" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_orbitals" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_vsepr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_vsepr" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_vsepr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_vsepr" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_vsepr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_vsepr" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_vsepr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_vsepr" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_lattice</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_lattice" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_lattice" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_lattice" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_lattice</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_lattice" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_lattice" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_lattice" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_gaslaws</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_gaslaws" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_gaslaws" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_gaslaws" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_gaslaws</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_gaslaws" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_gaslaws" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_gaslaws" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_kinetics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_kinetics" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_kinetics" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_kinetics" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_kinetics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_kinetics" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_kinetics" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_kinetics" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_equilibrium</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_equilibrium" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_equilibrium" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_equilibrium" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_equilibrium</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_equilibrium" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_equilibrium" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_equilibrium" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_titration</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_titration" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_titration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_titration" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_titration</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_titration" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_titration" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_titration" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_galvanic</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_galvanic" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_galvanic" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_galvanic" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_galvanic</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_galvanic" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_galvanic" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_galvanic" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_electrolysis</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_electrolysis" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_electrolysis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_electrolysis" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_electrolysis</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_electrolysis" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_electrolysis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_electrolysis" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/sim/chem_organic</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_organic" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_organic" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_organic" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/uk/sim/chem_organic</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sheua.com/sim/chem_organic" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sheua.com/uk/sim/chem_organic" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sheua.com/sim/chem_organic" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>

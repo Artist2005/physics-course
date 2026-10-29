@@ -2356,6 +2356,11 @@
       line-height: 1.3;
     }
 
+    .disc-tab-chem .disc-count-pill {
+      background: rgba(13, 148, 136, 0.14);
+      color: #0f766e;
+    }
+
     .disc-soon-badge {
       font-family: var(--font-sans);
       font-size: 9.5px;

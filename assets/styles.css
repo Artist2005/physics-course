@@ -658,6 +658,10 @@
       font-size: 15.5px;
       line-height: 1.54;
       color: #334155;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       overflow-wrap: break-word;
     }
 
@@ -819,7 +823,12 @@
       font-size: 13.8px;
       line-height: 1.65;
       color: var(--ink-secondary);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       overflow-wrap: break-word;
+      margin: 0;
     }
 
     .textbook-thesis-list {
@@ -838,6 +847,10 @@
       font-size: 13.8px;
       line-height: 1.64;
       color: var(--ink-secondary);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       overflow-wrap: break-word;
     }
 
@@ -1010,6 +1023,10 @@
       color: var(--ink-primary);
       font-weight: 500;
       margin-bottom: 4px;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       overflow-wrap: break-word;
     }
 
@@ -1021,7 +1038,10 @@
 
     .book-option-btn {
       width: 100%;
-      text-align: left;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       padding: 12px 14px;
       border-radius: 10px;
       border: 1px solid var(--rule-dark);
@@ -1036,6 +1056,14 @@
       gap: 11px;
       box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
       transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .book-option-btn > span:last-child {
+      flex: 1;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
 
     .book-option-btn:hover {
@@ -1151,6 +1179,10 @@
       font-size: 13.8px;
       line-height: 1.64;
       color: var(--ink-secondary);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       overflow-wrap: break-word;
     }
 
@@ -1345,6 +1377,10 @@
       font-size: 12.2px;
       color: var(--ink-muted);
       line-height: 1.45;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
 
     /* Таблиця телеметрії: класичні рядки з пунктирною лінією замість шаблонних карток */
@@ -2007,6 +2043,10 @@
       font-size: 13.5px;
       line-height: 1.56;
       color: #78350f;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
       animation: fadeBook 0.16s ease;
     }
 
@@ -2041,6 +2081,10 @@
       line-height: 1.54;
       color: #166534;
       font-weight: 500;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
 
     .observe-pulse-dot {

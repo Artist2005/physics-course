@@ -17113,56 +17113,7 @@
       }
     }
 
-    function setEduLevel(level) {
-      uiState.eduLevel = level === 'uni' ? 'uni' : 'school';
-      document.body.setAttribute('data-edu-level', uiState.eduLevel);
-      try {
-        localStorage.setItem('physics_edu_level', uiState.eduLevel);
-      } catch (e) {}
-      syncEduLevelUI();
-      updateTheoryDrawerContent();
-      requestAnimationFrame(fitMathContainers);
-    }
-
     function syncEduLevelUI() {
-      const t = tUI();
-      const key = uiState.activeScene;
-      const meta = EDU_META[key] || EDU_META.collision;
-      const isSchool = uiState.eduLevel !== 'uni';
-      document.body.setAttribute('data-edu-level', isSchool ? 'school' : 'uni');
-
-      const btnSchool = document.getElementById('edu-lvl-school');
-      const btnUni = document.getElementById('edu-lvl-uni');
-      if (btnSchool) {
-        btnSchool.classList.toggle('active', isSchool);
-        btnSchool.textContent = t.eduLevelSchool;
-        btnSchool.title = t.eduLevelSchoolTip;
-      }
-      if (btnUni) {
-        btnUni.classList.toggle('active', !isSchool);
-        btnUni.textContent = t.eduLevelUni;
-        btnUni.title = t.eduLevelUniTip;
-      }
-
-      const analogyCard = document.getElementById('school-analogy-card');
-      const gradeBadge = document.getElementById('ui-edu-grade-badge');
-      const analogyTitle = document.getElementById('ui-analogy-title');
-      const analogyText = document.getElementById('ui-analogy-text');
-
-      if (gradeBadge) {
-        gradeBadge.textContent = uiState.lang === 'uk' ? meta.gradeUk : meta.gradeEn;
-      }
-      if (analogyTitle) {
-        analogyTitle.textContent = t.analogyCardTitle;
-      }
-      if (analogyText) {
-        const rawAnalogy = uiState.lang === 'uk' ? meta.analogyUk : meta.analogyEn;
-        analogyText.innerHTML = formatTextbookProse(rawAnalogy);
-      }
-      if (analogyCard) {
-        analogyCard.classList.toggle('uni-mode-compact', !isSchool);
-      }
-
       syncQuestionHintUI();
       syncEduProgressUI();
     }
@@ -17233,7 +17184,6 @@
       const t = tUI();
       const btnLeft = document.getElementById('btn-theory-book');
       const drawerLeft = document.getElementById('theory-drawer-box');
-      const btnHdr = document.getElementById('btn-header-theory');
       if (btnLeft && drawerLeft) {
         btnLeft.classList.toggle('open', theoryLeftOpen);
         btnLeft.setAttribute('aria-expanded', theoryLeftOpen ? 'true' : 'false');
@@ -17244,47 +17194,17 @@
         if (lblEl) lblEl.textContent = t.theoryBtnTitle;
         if (hintEl) hintEl.textContent = theoryLeftOpen ? t.theoryCollapseHint : t.theoryExpandHint;
       }
-      if (btnHdr) {
-        btnHdr.classList.toggle('open', theoryLeftOpen);
-        btnHdr.setAttribute('aria-expanded', theoryLeftOpen ? 'true' : 'false');
-        const hdrLbl = document.getElementById('ui-header-theory-label');
-        if (hdrLbl) hdrLbl.textContent = t.theoryBtnShort;
-      }
-
-      const btnRight = document.getElementById('ui-ref-heading-right');
-      const drawerRight = document.getElementById('theory-drawer-right');
-      if (btnRight && drawerRight) {
-        btnRight.classList.toggle('open', theoryRightOpen);
-        btnRight.setAttribute('aria-expanded', theoryRightOpen ? 'true' : 'false');
-        drawerRight.classList.toggle('open', theoryRightOpen);
-        drawerRight.setAttribute('aria-hidden', theoryRightOpen ? 'false' : 'true');
-        const rightLbl = btnRight.querySelector('.ref-book-label');
-        if (rightLbl) rightLbl.textContent = t.theoryBtnShort;
-      }
     }
 
     function buildTheoryInnerHTML(key) {
       const t = tUI();
       const langKey = uiState.lang === 'uk' ? 'uk' : 'en';
       const entry = THEORY_NOTES[key] || THEORY_NOTES.collision;
-      const meta = EDU_META[key] || EDU_META.collision;
       const paragraphs = (entry && entry[langKey]) || entry.en;
       const cfg = SCENE_CONFIGS[key];
       const titles = [t.theorySec1Title, t.theorySec2Title, t.theorySec3Title];
-      const analogyStr = langKey === 'uk' ? meta.analogyUk : meta.analogyEn;
-      const gradeStr = langKey === 'uk' ? meta.gradeUk : meta.gradeEn;
 
-      const intuitionBlock = `
-        <div class="theory-intuition-callout">
-          <div class="theory-intuition-hdr">
-            <span class="theory-intuition-title">${t.analogyCardTitle}</span>
-            <span class="theory-grade-pill">${gradeStr}</span>
-          </div>
-          <p class="theory-note-para">${formatTextbookProse(analogyStr)}</p>
-        </div>
-      `;
-
-      return intuitionBlock + paragraphs
+      return paragraphs
         .map((pText, idx) => `
           <div class="theory-note-block">
             <div class="theory-note-subtitle">${titles[idx] || ''}</div>
@@ -17301,23 +17221,8 @@
     function ensureTheoryBookUI() {
       const t = tUI();
 
-      // 0. Картка «Простими словами та в житті» (для школярів і студентів) + Кнопка книги у .chapter-header
-      const chapterHeader = document.querySelector('.chapter-header');
-      if (chapterHeader && !document.getElementById('school-analogy-card')) {
-        const analogyCard = document.createElement('div');
-        analogyCard.id = 'school-analogy-card';
-        analogyCard.className = 'school-analogy-card';
-        analogyCard.innerHTML = `
-          <div class="analogy-card-top">
-            <span id="ui-analogy-title" class="analogy-card-title">${t.analogyCardTitle}</span>
-            <span id="ui-edu-grade-badge" class="edu-grade-badge">9 клас</span>
-          </div>
-          <p id="ui-analogy-text" class="analogy-card-text"></p>
-        `;
-        chapterHeader.appendChild(analogyCard);
-      }
-
       // 1. Кнопка книги та розгортний конспект у лівій панелі (відразу під заголовком та епіграфом параграфа)
+      const chapterHeader = document.querySelector('.chapter-header');
       if (chapterHeader && !document.getElementById('btn-theory-book')) {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -17353,7 +17258,7 @@
         });
       }
 
-      // 2. Перемикач рівня «🎒 Школа / 🎓 ВНЗ», прогрес учня «✓ X/46» та кнопка-книжка у верхній панелі (.book-header)
+      // 2. Прогрес учня «✓ X/46» у верхній панелі (.book-header)
       const headerLeft = document.querySelector('.header-left');
       if (headerLeft && !document.getElementById('edu-progress-pill')) {
         const progBtn = document.createElement('button');
@@ -17374,96 +17279,6 @@
           }
         });
         headerLeft.appendChild(progBtn);
-      }
-
-      const headerRight = document.querySelector('.header-right');
-      if (headerRight && !document.getElementById('edu-level-switcher')) {
-        const lvlWrap = document.createElement('div');
-        lvlWrap.id = 'edu-level-switcher';
-        lvlWrap.className = 'edu-level-switcher';
-        lvlWrap.setAttribute('role', 'group');
-        lvlWrap.innerHTML = `
-          <button type="button" id="edu-lvl-school" class="edu-lvl-btn active" data-level="school">${t.eduLevelSchool}</button>
-          <button type="button" id="edu-lvl-uni" class="edu-lvl-btn" data-level="uni">${t.eduLevelUni}</button>
-        `;
-        headerRight.insertBefore(lvlWrap, headerRight.firstChild);
-
-        lvlWrap.querySelector('#edu-lvl-school').addEventListener('click', () => setEduLevel('school'));
-        lvlWrap.querySelector('#edu-lvl-uni').addEventListener('click', () => setEduLevel('uni'));
-      }
-
-      if (headerRight && !document.getElementById('btn-header-theory')) {
-        const hdrBtn = document.createElement('button');
-        hdrBtn.type = 'button';
-        hdrBtn.id = 'btn-header-theory';
-        hdrBtn.className = 'btn-header-theory';
-        hdrBtn.setAttribute('aria-expanded', 'false');
-        hdrBtn.title = 'Теоретичний конспект / Theoretical Notes (T)';
-        hdrBtn.innerHTML = `
-          ${BOOK_SVG_ICON}
-          <span id="ui-header-theory-label">Теорія</span>
-        `;
-        const crumbs = headerRight.querySelector('.phase-breadcrumbs');
-        if (crumbs) {
-          headerRight.insertBefore(hdrBtn, crumbs);
-        } else {
-          headerRight.insertBefore(hdrBtn, headerRight.firstChild);
-        }
-
-        hdrBtn.addEventListener('click', () => {
-          const leftSidebar = document.getElementById('left-sidebar');
-          const btnToggleLeftEl = document.getElementById('btn-toggle-left');
-          if (leftSidebar && leftSidebar.classList.contains('panel-hidden')) {
-            leftSidebar.classList.remove('panel-hidden');
-            if (btnToggleLeftEl) {
-              btnToggleLeftEl.classList.remove('collapsed');
-              btnToggleLeftEl.textContent = '‹';
-            }
-          }
-          theoryLeftOpen = !theoryLeftOpen;
-          syncTheoryDrawersUI();
-          if (theoryLeftOpen) {
-            requestAnimationFrame(() => {
-              fitMathContainers();
-              const btnLeft = document.getElementById('btn-theory-book');
-              if (btnLeft) btnLeft.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            });
-          }
-        });
-      }
-
-      // 3. Кнопка-книжка в правій колонці (#ui-ref-heading-right) + локальний розгортний блок під формулами
-      const refRight = document.getElementById('ui-ref-heading-right');
-      const refFormulaBox = document.getElementById('reference-formula-box');
-      if (refRight && refFormulaBox && !refRight.dataset.bookBound) {
-        refRight.dataset.bookBound = '1';
-        refRight.classList.add('btn-ref-book-trigger');
-        refRight.setAttribute('role', 'button');
-        refRight.setAttribute('tabindex', '0');
-        refRight.setAttribute('aria-expanded', 'false');
-        refRight.innerHTML = `${BOOK_SVG_ICON}<span class="ref-book-label">${tUI().theoryBtnShort}</span><span class="ref-book-chev" aria-hidden="true">▾</span>`;
-
-        const drawerRight = document.createElement('div');
-        drawerRight.id = 'theory-drawer-right';
-        drawerRight.className = 'theory-drawer-box theory-drawer-right';
-        drawerRight.setAttribute('aria-hidden', 'true');
-        drawerRight.innerHTML = `<div id="theory-drawer-right-content" class="theory-drawer-content"></div>`;
-        refFormulaBox.insertAdjacentElement('afterend', drawerRight);
-
-        const toggleRight = () => {
-          theoryRightOpen = !theoryRightOpen;
-          syncTheoryDrawersUI();
-          if (theoryRightOpen) {
-            requestAnimationFrame(fitMathContainers);
-          }
-        };
-        refRight.addEventListener('click', toggleRight);
-        refRight.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleRight();
-          }
-        });
       }
 
       // 4. Кнопка «💡 Підказка» у блоці гіпотези (#predict-section) + банер спостереження (#observe-stage-banner)
@@ -17582,9 +17397,7 @@
       const key = uiState.activeScene;
       const html = buildTheoryInnerHTML(key);
       const leftContent = document.getElementById('theory-drawer-content');
-      const rightContent = document.getElementById('theory-drawer-right-content');
       if (leftContent) leftContent.innerHTML = html;
-      if (rightContent) rightContent.innerHTML = html;
       syncTheoryDrawersUI();
       syncEduLevelUI();
     }
@@ -17681,6 +17494,7 @@
       setTxt('ui-eq-header-right', t.eqHeaderRight);
       setTxt('ui-energy-balance-title', t.energyBalanceTitle);
       setTxt('ui-ref-heading-left', t.refHeadingLeft);
+      setTxt('ui-ref-heading-right', t.refHeadingRight);
       setTxt('ui-params-heading', t.paramsHeading);
       setTxt('btn-preset-default', t.presetDefault);
       setTxt('ui-diagram-heading', t.diagramHeading);
@@ -18501,8 +18315,24 @@
         resetCurrentSimulation(true);
       } else if (e.code === 'KeyT') {
         e.preventDefault();
-        const hdrTheory = document.getElementById('btn-header-theory');
-        if (hdrTheory) hdrTheory.click();
+        const leftSidebar = document.getElementById('left-sidebar');
+        const btnToggleLeftEl = document.getElementById('btn-toggle-left');
+        if (leftSidebar && leftSidebar.classList.contains('panel-hidden')) {
+          leftSidebar.classList.remove('panel-hidden');
+          if (btnToggleLeftEl) {
+            btnToggleLeftEl.classList.remove('collapsed');
+            btnToggleLeftEl.textContent = '‹';
+          }
+        }
+        const btnLeft = document.getElementById('btn-theory-book');
+        if (btnLeft) {
+          btnLeft.click();
+          if (theoryLeftOpen) {
+            requestAnimationFrame(() => {
+              btnLeft.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+          }
+        }
       } else if (e.code === 'KeyH') {
         e.preventDefault();
         const hintBtn = document.getElementById('btn-question-hint');

@@ -1779,8 +1779,21 @@
       min-height: 92px;
     }
 
+    .ad-viewport-leaderboard ins.adsbygoogle,
+    .ad-card-frame ins.adsbygoogle,
+    .mobile-ad-frame ins.adsbygoogle {
+      width: 100%;
+      min-width: 160px;
+      display: block;
+    }
+
+    ins.adsbygoogle[data-ad-status="unfilled"] {
+      display: none !important;
+    }
+
     .ad-viewport-leaderboard ins.adsbygoogle[data-ad-status="filled"] ~ .ad-fallback-content,
-    .ad-card-frame ins.adsbygoogle[data-ad-status="filled"] ~ .ad-fallback-content {
+    .ad-card-frame ins.adsbygoogle[data-ad-status="filled"] ~ .ad-fallback-content,
+    .mobile-ad-frame ins.adsbygoogle[data-ad-status="filled"] ~ .ad-fallback-content {
       display: none !important;
     }
 

@@ -25202,6 +25202,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const topIns = document.querySelector('#ad-viewport-banner ins.adsbygoogle');
       if (topIns && isRealClient && ADSENSE_CONFIG.slots.topBanner && ADSENSE_CONFIG.slots.topBanner !== '1111111111') {
         topIns.style.display = 'block';
+        topIns.style.width = '100%';
         topIns.setAttribute('data-ad-client', configuredClient);
         topIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.topBanner);
         topIns.setAttribute('data-ad-format', 'auto');
@@ -25210,6 +25211,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const mobileIns = document.querySelector('#ad-mobile-bottom ins.adsbygoogle');
       if (mobileIns && isRealClient && ADSENSE_CONFIG.slots.topBanner && ADSENSE_CONFIG.slots.topBanner !== '1111111111') {
         mobileIns.style.display = 'block';
+        mobileIns.style.width = '100%';
         mobileIns.setAttribute('data-ad-client', configuredClient);
         mobileIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.topBanner);
         mobileIns.setAttribute('data-ad-format', 'auto');
@@ -25218,6 +25220,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const leftIns = document.querySelector('#ad-slot-left ins.adsbygoogle');
       if (leftIns && isRealClient && ADSENSE_CONFIG.slots.leftSidebar) {
         leftIns.style.display = 'block';
+        leftIns.style.width = '100%';
         leftIns.setAttribute('data-ad-client', configuredClient);
         leftIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.leftSidebar);
         leftIns.setAttribute('data-ad-format', 'auto');
@@ -25226,25 +25229,33 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const rightIns = document.querySelector('#ad-slot-right ins.adsbygoogle');
       if (rightIns && isRealClient && ADSENSE_CONFIG.slots.rightSidebar) {
         rightIns.style.display = 'block';
+        rightIns.style.width = '100%';
         rightIns.setAttribute('data-ad-client', configuredClient);
         rightIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.rightSidebar);
         rightIns.setAttribute('data-ad-format', 'auto');
         rightIns.setAttribute('data-full-width-responsive', 'true');
       }
 
-      document.querySelectorAll('ins.adsbygoogle').forEach(slot => {
-        if (slot.getAttribute('data-adsbygoogle-status') || slot.offsetParent === null) return;
-        const client = slot.getAttribute('data-ad-client') || '';
-        const slotId = slot.getAttribute('data-ad-slot') || '';
-        const isPlaceholderSlot = !slotId || /^(1111111111|2222222222|3333333333)$/.test(slotId);
-        if (client && client !== 'ca-pub-0000000000000000' && !client.includes('XXXX') && !isPlaceholderSlot) {
-          try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-          } catch (err) {
-            console.warn('AdSense slot init warning:', err);
+      const pushVisibleAdSlots = () => {
+        document.querySelectorAll('ins.adsbygoogle').forEach(slot => {
+          if (slot.getAttribute('data-adsbygoogle-status') || slot.offsetParent === null) return;
+          const rect = slot.getBoundingClientRect();
+          if (rect.width < 120) return;
+          const client = slot.getAttribute('data-ad-client') || '';
+          const slotId = slot.getAttribute('data-ad-slot') || '';
+          const isPlaceholderSlot = !slotId || /^(1111111111|2222222222|3333333333)$/.test(slotId);
+          if (client && client !== 'ca-pub-0000000000000000' && !client.includes('XXXX') && !isPlaceholderSlot) {
+            try {
+              (window.adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (err) {
+              console.warn('AdSense slot init warning:', err);
+            }
           }
-        }
-      });
+        });
+      };
+
+      requestAnimationFrame(pushVisibleAdSlots);
+      window.addEventListener('load', () => requestAnimationFrame(pushVisibleAdSlots), { once: true });
     }
     initGoogleAds();
 

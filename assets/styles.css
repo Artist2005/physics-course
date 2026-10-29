@@ -1348,6 +1348,15 @@
       text-overflow: ellipsis;
     }
 
+    #ek-label,
+    #ep-label,
+    #q-label {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .swatch-dot {
       display: none; /* Роль кольорового маркера виконує ліва лінія metric-box */
     }

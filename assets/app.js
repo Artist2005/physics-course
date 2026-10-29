@@ -385,6 +385,23 @@
       'p_z (делокалізовані π-хмари)': 'p_z (delocalized π)',
       'σ-каркас кільця C₆H₆': 'σ-framework C₆H₆',
       'J_кільц (діамагнітний струм)': 'J_ring (ring current)',
+      'r_max (радіус оболонки)': 'r_max (shell radius)',
+      'F_відшт (відштовхування пар)': 'F_rep (pair repulsion)',
+      'μ⃗ (дипольний момент)': 'μ⃗ (dipole moment)',
+      'F_кул (кулонівське притягання)': 'F_Coul (ionic attraction)',
+      'v_сер (тепловий рух)': 'v_avg (thermal motion)',
+      'F_тиску (тиск газу P·S)': 'F_press (gas force P·S)',
+      'v_реакц (швидкість реакції)': 'v_rxn (reaction rate)',
+      '−∇E_a (каталітичний шлях)': '−∇E_a (catalytic path)',
+      'v_пряма (димеризація 2NO₂→N₂O₄)': 'r_fwd (2NO₂ → N₂O₄)',
+      'v_зворотна (дисоціація N₂O₄→2NO₂)': 'r_rev (N₂O₄ → 2NO₂)',
+      'Зсув pH до точки еквівалентності': 'pH shift to equivalence',
+      'Потік електронів e⁻ (Zn→Cu)': 'Electron flow e⁻ (Zn→Cu)',
+      'Міграція йонів у містку (K⁺, Cl⁻)': 'Salt-bridge ion migration',
+      'Осадження металу на катоді (−)': 'Cathode metal plating (−)',
+      'Виділення газу O₂↑ на аноді (+)': 'Anode O₂↑ evolution (+)',
+      'I_π (кільцевий діамагнітний струм)': 'I_π (diamagnetic ring current)',
+      'B_інд (екранування центру кільця)': 'B_ind (ring center shielding)',
     };
     const activeVectorArrows = new Set();
 
@@ -404,36 +421,53 @@
         ? (VECTOR_LABEL_EN[text] || text)
         : text;
       const canvas = document.createElement('canvas');
-      canvas.width = 276;
-      canvas.height = 88;
       const ctx = canvas.getContext('2d');
+      const fontStr = '600 22px "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.font = fontStr;
+
+      const measuredW = Math.ceil(ctx.measureText(displayText).width);
+      const padOuterX = 12;
+      const pillY = 14;
+      const pillH = 54;
+      const innerLeftPad = 12;
+      const markerW = 7;
+      const markerGap = 11;
+      const innerRightPad = 18;
+      const contentW = Math.max(46, Math.ceil(measuredW * 1.08) + 14);
+      const pillW = innerLeftPad + markerW + markerGap + contentW + innerRightPad;
+
+      canvas.width = pillW + padOuterX * 2;
+      canvas.height = 88;
 
       // М'яка тінь у стилі Apple / Google
       ctx.save();
       ctx.shadowColor = 'rgba(15, 23, 42, 0.16)';
       ctx.shadowBlur = 10;
       ctx.shadowOffsetY = 3;
-      drawPillRect(ctx, 12, 14, 252, 54, 14);
+      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 14);
       ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
       ctx.fill();
       ctx.restore();
 
       // Тонкий контур капсули
-      drawPillRect(ctx, 12, 14, 252, 54, 14);
+      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 14);
       ctx.strokeStyle = '#cbd5e1';
       ctx.lineWidth = 1.8;
       ctx.stroke();
 
       // Кольоровий маркер зліва
+      const markerX = padOuterX + innerLeftPad;
       ctx.fillStyle = borderColor;
-      drawPillRect(ctx, 22, 27, 7, 28, 3.5);
+      drawPillRect(ctx, markerX, pillY + 13, markerW, 28, 3.5);
       ctx.fill();
 
-      ctx.font = '600 24px "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      // Підпис строго праворуч від маркера всередині капсули
+      ctx.font = fontStr;
       ctx.fillStyle = '#0f172a';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(displayText, 142, 42);
+      const textCenterX = markerX + markerW + markerGap + contentW / 2;
+      ctx.fillText(displayText, textCenterX, pillY + pillH / 2 + 1, contentW);
 
       const texture = new THREE.CanvasTexture(canvas);
       texture.minFilter = THREE.LinearFilter;
@@ -443,7 +477,9 @@
         depthTest: false
       });
       const sprite = new THREE.Sprite(spriteMat);
-      sprite.scale.set(1.26, 0.40, 1);
+      const spriteH = 0.39;
+      const spriteW = spriteH * (canvas.width / canvas.height);
+      sprite.scale.set(spriteW, spriteH, 1);
       sprite.renderOrder = 999;
       return sprite;
     }
@@ -2727,9 +2763,9 @@
         title: 'Будова електронних оболонок атома та 3D-орбіталі (s, p, d)',
         epigraph: 'Електрон в атомі не рухається класичною траєкторією, а утворює тривимірну хвильову хмару густини ймовірності |ψ(r,θ,φ)|², форма якої визначається квантовими числами n, l, m_l.',
         figCaption: 'Рис. Х-1.1 — Тривимірний розподіл електронної густини |ψ|² для s-, p- та d-орбіталей із радіальними й кутовими вузловими поверхнями',
-        ekLabel: 'Середня кінетична енергія ⟨T⟩',
-        epLabel: 'Кулонівська енергія притягання |⟨V⟩|/2',
-        qLabel: 'Енергія зв’язку |E_n| = Z_еф²·13.6/n²',
+        ekLabel: 'Кінетична ⟨T⟩',
+        epLabel: 'Притягання |⟨V⟩|/2',
+        qLabel: 'Зв’язок |E_n|',
         cameraPos: [0, 5.8, 13.2],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -2776,7 +2812,7 @@
         figCaption: 'Рис. Х-2.1 — 3D-модель гібридних молекул AX₂ (BeCl₂, 180°), AX₃ (BF₃, 120°), AX₄ (CH₄, 109.5°), AX₃E (NH₃, 107°) та AX₂E₂ (H₂O, 104.5°)',
         ekLabel: 'Енергія σ-зв’язків E_зв',
         epLabel: 'Кулонівське відштовхування пар E_відшт',
-        qLabel: 'Дипольна поляризація молекули W_μ',
+        qLabel: 'Диполь W_μ',
         cameraPos: [0, 5.6, 13.0],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -2864,8 +2900,8 @@
         title: 'Закон Авогадро, молярний об’єм газу та рівняння Менделєєва — Клапейрона',
         epigraph: 'В однакових об’ємах різних газів за однакових температури й тиску міститься однакова кількість молекул: N = ν · N_A.',
         figCaption: 'Рис. Х-4.1 — Газовий циліндр із рухомим поршнем, манометром та термостатом для газів різної молярної маси (H₂, O₂, CO₂)',
-        ekLabel: 'Внутрішня теплова енергія U = (3/2)νRT',
-        epLabel: 'Робота розширення газу P·V',
+        ekLabel: 'Теплова U = 3/2νRT',
+        epLabel: 'Робота газу P·V',
         qLabel: 'Кінетична енергія поступального руху',
         cameraPos: [0, 5.8, 13.8],
         cameraTarget: [0, 2.6, 0],
@@ -2909,9 +2945,9 @@
         title: 'Швидкість хімічної реакції, енергія активації та каталіз',
         epigraph: 'Не кожне зіткнення молекул веде до реакції: реагенти мусять подолати енергетичний перевал перехідного стану — енергію активації E_a.',
         figCaption: 'Рис. Х-5.1 — Реакційна камера з активними зіткненнями A + B → AB, поверхнею платинового каталізатора та 3D-профілем енергії активації E_a',
-        ekLabel: 'Частка активних молекул (E ≥ E_a)',
-        epLabel: 'Висота активаційного бар’єра E_a',
-        qLabel: 'Швидкість утворення продукту v_реакц',
+        ekLabel: 'Активні (E ≥ E_a)',
+        epLabel: 'Бар’єр E_a',
+        qLabel: 'Швидкість v_реакц',
         cameraPos: [0, 6.0, 14.2],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -2954,9 +2990,9 @@
         title: 'Хімічна рівновага та принцип Ле Шательє (система N₂O₄ ⇄ 2NO₂)',
         epigraph: 'Якщо на систему, що перебуває в стані хімічної рівноваги, подіяти зовнішнім чинником, рівновага зміщується в напрямку процесу, який послаблює цю дію.',
         figCaption: 'Рис. Х-6.1 — Герметична термостатована ампула з рівноважною газовою сумішшю безбарвного димеру N₂O₄ та бурого мономеру NO₂',
-        ekLabel: 'Частка мономерів бурого газу [NO₂]',
-        epLabel: 'Частка безбарвних димерів [N₂O₄]',
-        qLabel: 'Швидкість прямого й зворотного обміну v_пр = v_зв',
+        ekLabel: 'Мономери [NO₂]',
+        epLabel: 'Димери [N₂O₄]',
+        qLabel: 'Обмін v_пр = v_зв',
         cameraPos: [0, 5.8, 13.5],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -3001,7 +3037,7 @@
         figCaption: 'Рис. Х-7.1 — Титрувальна установка з бюреткою (NaOH), конічною колбою Ерленмеєра (HCl + індикатор), магнітною мішалкою та цифровим pH-метром',
         ekLabel: 'Поточний водневий показник pH (×7)',
         epLabel: 'Частка нейтралізованої кислоти (%)',
-        qLabel: 'Теплота реакції нейтралізації ΔH_нейтр',
+        qLabel: 'Теплота ΔH_нейтр',
         cameraPos: [0, 6.2, 13.8],
         cameraTarget: [0, 2.8, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -3053,9 +3089,9 @@
         title: 'Гальванічний елемент Даніеля — Якобі та електродні потенціали',
         epigraph: 'Просторово розділена окисно-відновна реакція перетворює вільну енергію Гіббса хімічного процесу ΔG безпосередньо на впорядкований потік електронів — електричний струм.',
         figCaption: 'Рис. Х-8.1 — Цинковий анод у розчині ZnSO₄, мідний катод у розчині CuSO₄, сольовий місток KCl та цифровий вольтметр ЕРС',
-        ekLabel: 'Електрична робота зовнішнього кола zFE',
-        epLabel: 'Хімічний потенціал відновлення Cu²⁺',
-        qLabel: 'Анодне розчинення цинку Zn⁰ → Zn²⁺',
+        ekLabel: 'Робота кола zFE',
+        epLabel: 'Відновл. Cu²⁺',
+        qLabel: 'Окиснення Zn⁰',
         cameraPos: [0, 6.0, 14.2],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -3096,9 +3132,9 @@
         title: 'Електроліз водного розчину електроліту та закони Фарадея',
         epigraph: 'Маса речовини, що виділяється на електроді під час електролізу, прямо пропорційна електричному заряду Q = I·t, який пройшов крізь електроліт, та хімічному еквіваленту M/z.',
         figCaption: 'Рис. Х-9.1 — Електролізер із джерелом постійного струму, графітовими електродами, шаром осадженої міді Cu⁰ на катоді та бульбашками O₂↑ на аноді',
-        ekLabel: 'Маса осадженої міді m(Cu) (×100 мг)',
-        epLabel: 'Об’єм виділеного кисню V(O₂) на аноді',
-        qLabel: 'Пройдений електричний заряд Q = I·t',
+        ekLabel: 'Осад катода m(Cu)',
+        epLabel: 'Анодний газ V(O₂)',
+        qLabel: 'Заряд Q = I·t',
         cameraPos: [0, 6.0, 13.8],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -3141,9 +3177,9 @@
         title: 'Будова молекули бензену C₆H₆, ароматичність та делокалізація π-зв’язку',
         epigraph: 'Шість негібридизованих p_z-орбіталей атомів Карбону перекриваються над і під площиною кільця, утворюючи єдину неперервну тороїдальну 6π-електронну систему.',
         figCaption: 'Рис. Х-10.1 — Просторова модель молекули бензену C₆H₆: плоский σ-каркас (d(C–C) = 1.40 Å, 120°) та делокалізовані π-хмари над і під кільцем',
-        ekLabel: 'Енергія резонансної стабілізації E_рез',
-        epLabel: 'Енергія σ-каркасу зв’язків C–C та C–H',
-        qLabel: 'Кільцевий діамагнітний π-струм I_π',
+        ekLabel: 'Резонанс E_рез',
+        epLabel: 'Енергія σ-каркасу',
+        qLabel: 'π-струм I_π',
         cameraPos: [0, 6.2, 13.0],
         cameraTarget: [0, 2.5, 0],
         referenceLatex: String.raw`\begin{aligned}
@@ -18546,9 +18582,9 @@
         title: 'Atomic Electron Shells & 3D Quantum Orbitals (s, p, d)',
         epigraph: 'An electron in an atom does not follow a classical trajectory; instead, it forms a 3D probability density cloud |ψ(r,θ,φ)|² governed by quantum numbers n, l, m_l.',
         figCaption: 'Fig. C-1.1 — 3D electron probability density |ψ|² for s, p, and d orbitals with radial and angular nodal surfaces',
-        ekLabel: 'Mean kinetic energy ⟨T⟩',
-        epLabel: 'Coulomb attraction |⟨V⟩|/2',
-        qLabel: 'Binding energy |E_n| = Z_eff²·13.6/n²',
+        ekLabel: 'Kinetic ⟨T⟩',
+        epLabel: 'Attraction |⟨V⟩|/2',
+        qLabel: 'Binding |E_n|',
         referenceLatex: String.raw`\begin{aligned}
           \hat{H}\psi_{n,l,m} &= E_n \psi_{n,l,m}, \qquad E_n = -\frac{Z_{\text{eff}}^2 \cdot 13.6\text{ eV}}{n^2} \\
           N_{\text{nodes}} &= n - 1 = (n - l - 1)_{\text{rad}} + l_{\text{ang}}
@@ -18588,7 +18624,7 @@
         figCaption: 'Fig. C-2.1 — 3D VSEPR models of AX₂ (BeCl₂, 180°), AX₃ (BF₃, 120°), AX₄ (CH₄, 109.5°), AX₃E (NH₃, 107°), and AX₂E₂ (H₂O, 104.5°)',
         ekLabel: 'Sigma-bond stabilization E_bond',
         epLabel: 'Electron-pair Coulomb repulsion E_rep',
-        qLabel: 'Molecular dipole energy W_μ',
+        qLabel: 'Dipole W_μ',
         referenceLatex: String.raw`\begin{aligned}
           \text{Steric number } SN &= N_{\sigma} + N_{\text{lone pairs}} \\
           \theta(sp) = 180^\circ, \quad \theta(sp^2) &= 120^\circ, \quad \theta(sp^3) = 109.47^\circ
@@ -18662,8 +18698,8 @@
         title: 'Avogadro’s Law, Molar Volume & the Ideal Gas Equation',
         epigraph: 'Equal volumes of all ideal gases at the same temperature and pressure contain the exact same number of molecules: N = ν · N_A.',
         figCaption: 'Fig. C-4.1 — Graduated gas cylinder with movable piston, pressure gauge, and thermostat for gases of different molar mass (H₂, O₂, CO₂)',
-        ekLabel: 'Internal thermal energy U = (3/2)νRT',
-        epLabel: 'Pressure-volume work P·V',
+        ekLabel: 'Thermal U = 3/2nRT',
+        epLabel: 'PV work P·V',
         qLabel: 'Translational kinetic energy',
         referenceLatex: String.raw`\begin{aligned}
           P V &= \nu R T = \frac{m}{M} R T, \qquad N = \nu N_A \\
@@ -18700,9 +18736,9 @@
         title: 'Chemical Reaction Rate, Activation Energy & Catalysis',
         epigraph: 'Not every molecular collision triggers a reaction: colliding reactants must surmount the transition-state energy barrier — the activation energy E_a.',
         figCaption: 'Fig. C-5.1 — Reaction chamber with reactive collisions A + B → AB, catalytic platinum surface, and 3D activation energy profile E_a',
-        ekLabel: 'Active molecules fraction (E ≥ E_a)',
-        epLabel: 'Activation energy barrier E_a',
-        qLabel: 'Product formation rate v_rxn',
+        ekLabel: 'Active (E ≥ E_a)',
+        epLabel: 'Barrier E_a',
+        qLabel: 'Rate v_rxn',
         referenceLatex: String.raw`\begin{aligned}
           v &= k(T)\cdot [A][B], \qquad k(T) = A_0 \exp\!\left(-\frac{E_a}{RT}\right) \\
           \ln\frac{k_2}{k_1} &= \frac{E_a}{R}\left(\frac{1}{T_1} - \frac{1}{T_2}\right)
@@ -18738,9 +18774,9 @@
         title: 'Chemical Equilibrium & Le Chatelier’s Principle (N₂O₄ ⇄ 2NO₂)',
         epigraph: 'When a system at chemical equilibrium is subjected to an external change in temperature or pressure, the equilibrium shifts in the direction that counteracts the imposed change.',
         figCaption: 'Fig. C-6.1 — Sealed thermostated ampoule containing an equilibrium gas mixture of colorless N₂O₄ dimers and brown NO₂ monomers',
-        ekLabel: 'Brown monomer fraction [NO₂]',
-        epLabel: 'Colorless dimer fraction [N₂O₄]',
-        qLabel: 'Dynamic exchange rate r_fwd = r_rev',
+        ekLabel: 'Monomer [NO₂]',
+        epLabel: 'Dimer [N₂O₄]',
+        qLabel: 'Exchange r₁ = r₂',
         referenceLatex: String.raw`\begin{aligned}
           \mathrm{N_2O_4\text{ (colorless)}} &\rightleftharpoons 2\,\mathrm{NO_2\text{ (brown)}}, \qquad \Delta H^\circ = +57.2\text{ kJ/mol} \\
           K_p(T) &= \frac{P_{\mathrm{NO_2}}^2}{P_{\mathrm{N_2O_4}}} = \frac{4\alpha^2}{1 - \alpha^2}\,P_{\text{tot}}
@@ -18778,7 +18814,7 @@
         figCaption: 'Fig. C-7.1 — Titration stand with graduated burette (NaOH), Erlenmeyer flask (HCl + indicator), magnetic stirrer, and digital pH probe',
         ekLabel: 'Current solution pH (×7)',
         epLabel: 'Neutralized acid fraction (%)',
-        qLabel: 'Neutralization enthalpy ΔH_neut',
+        qLabel: 'Heat ΔH_neut',
         referenceLatex: String.raw`\begin{aligned}
           \mathrm{H^+ + OH^-} &\longrightarrow \mathrm{H_2O}, \qquad K_w = [\mathrm{H^+}][\mathrm{OH^-}] = 10^{-14} \\
           \mathrm{pH} &= -\lg[\mathrm{H^+}], \qquad C_{\text{a}} V_{\text{a}} = C_{\text{b}} V_{\text{b,eq}}
@@ -18823,9 +18859,9 @@
         title: 'Daniell–Jacobi Galvanic Cell & Electrode Potentials',
         epigraph: 'A spatially separated redox reaction converts the chemical Gibbs free energy change ΔG directly into an ordered flow of electrons — electric current.',
         figCaption: 'Fig. C-8.1 — Zinc anode in ZnSO₄, copper cathode in CuSO₄, KCl U-tube salt bridge, and digital EMF voltmeter',
-        ekLabel: 'External electrical work zFE',
-        epLabel: 'Cu²⁺ reduction potential',
-        qLabel: 'Anodic zinc dissolution Zn⁰ → Zn²⁺',
+        ekLabel: 'Work zFE',
+        epLabel: 'Cu²⁺ reduction',
+        qLabel: 'Zn⁰ oxidation',
         referenceLatex: String.raw`\begin{aligned}
           \text{Anode }(-): \;\mathrm{Zn^0 \to Zn^{2+} + 2e^-}, &\qquad \text{Cathode }(+): \;\mathrm{Cu^{2+} + 2e^- \to Cu^0} \\
           E = E^\circ - \frac{RT}{2F}\ln\frac{[\mathrm{Zn^{2+}}]}{[\mathrm{Cu^{2+}}]}, &\qquad E^\circ = E^\circ_{\mathrm{Cu}} - E^\circ_{\mathrm{Zn}} = +1.10\text{ V}
@@ -18859,9 +18895,9 @@
         title: 'Electrolytic Cell & Faraday’s Laws of Electrolysis',
         epigraph: 'The mass of substance liberated at an electrode during electrolysis is directly proportional to the total electric charge Q = I·t and the molar equivalent mass M/z.',
         figCaption: 'Fig. C-9.1 — Electrolytic cell driven by a DC power source with copper plating Cu⁰ on the cathode and O₂↑ gas bubbles evolving at the inert anode',
-        ekLabel: 'Deposited copper mass m(Cu) (×100 mg)',
-        epLabel: 'Evolved oxygen volume V(O₂) at anode',
-        qLabel: 'Total passed charge Q = I·t',
+        ekLabel: 'Cathode m(Cu)',
+        epLabel: 'Anode gas V(O₂)',
+        qLabel: 'Charge Q = I·t',
         referenceLatex: String.raw`\begin{aligned}
           m &= k_{\text{e}} I t = \frac{M}{z F}\,I t, \qquad F = e N_A \approx 96\,485\text{ C/mol} \\
           \text{Cathode }(-): \;\mathrm{Cu^{2+} + 2e^- \to Cu^0}, &\qquad \text{Anode }(+): \;\mathrm{2H_2O - 4e^- \to O_2\!\uparrow + 4H^+}
@@ -18897,9 +18933,9 @@
         title: 'Benzene Structure C₆H₆, Aromaticity & Delocalized π-Bonding',
         epigraph: 'Six unhybridized 2p_z orbitals on the carbon ring overlap continuously above and below the molecular plane, forming a unified 6π aromatic electron cloud.',
         figCaption: 'Fig. C-10.1 — 3D molecular model of benzene C₆H₆: planar sp² σ-framework (d(C–C) = 1.40 Å, 120°) and delocalized π-electron clouds above and below the ring',
-        ekLabel: 'Resonance stabilization energy E_res',
-        epLabel: 'C–C and C–H σ-framework energy',
-        qLabel: 'Induced diamagnetic π-ring current I_π',
+        ekLabel: 'Resonance E_res',
+        epLabel: 'σ-framework E_σ',
+        qLabel: 'π-current I_π',
         referenceLatex: String.raw`\begin{aligned}
           N_{\pi} &= 4n + 2 = 6 \;(n = 1), \qquad d(\mathrm{C{-}C}) = 1.397\text{ \AA}, \qquad \angle\mathrm{CCC} = 120^\circ \\
           E_{\text{res}}(\mathrm{C_6H_6}) &= 3\,\Delta H_{\text{hyd}}(\mathrm{C{=}C}) - \Delta H_{\text{hyd}}(\mathrm{C_6H_6}) \approx 150\text{ kJ/mol}
@@ -19217,7 +19253,40 @@
       'Тип вуглеводневої системи': 'Hydrocarbon system',
       'Довжина зв’язку C–C': 'C–C bond length',
       'Гібридизація та кут': 'Hybridization & angle',
-      'Кільцевий π-струм I_π': 'Aromatic π-ring current'
+      'Кільцевий π-струм I_π': 'Aromatic π-ring current',
+      'Орбіталь (n, l)': 'Orbital (n, l)',
+      'Найімовірніший радіус r_max': 'Most probable radius r_max',
+      'Вузлові поверхні (радіальні / кутові)': 'Nodal surfaces (rad. / ang.)',
+      'Тип молекули (Гіллеспі)': 'VSEPR molecule type',
+      'Валентний кут ∠XAX': 'Bond angle ∠XAX',
+      'Гібридизація центрального атома': 'Central hybridization',
+      'Сумарний дипольний момент μ': 'Net dipole moment μ',
+      'Координаційне число КЧ': 'Coordination number CN',
+      'Енергія ґратки U_ґрат': 'Lattice energy U_lat',
+      'Амплітуда теплових коливань ⟨u⟩': 'Thermal vibration ⟨u⟩',
+      'Молярний об’єм V_m = V/ν': 'Molar volume V_m = V/n',
+      'Середня кв. швидкість v_кв': 'RMS speed v_rms',
+      'Кількість молекул N': 'Molecule count N',
+      'Частка активних зіткнень f': 'Active collisions f',
+      'Швидкість реакції v': 'Reaction rate v',
+      'Константа рівноваги K_p(T)': 'Equilibrium constant K_p(T)',
+      'Ступінь дисоціації α (NO₂)': 'Dissociation degree α (NO₂)',
+      'Мольна частка N₂O₄ / NO₂': 'Mole ratio N₂O₄ / NO₂',
+      'Колір газової суміші (NO₂)': 'Gas mixture color (NO₂)',
+      'Водневий показник pH': 'Solution pH',
+      'Колір індикатора в колбі': 'Flask indicator color',
+      'Співвідношення [H⁺] / [OH⁻]': 'Ratio [H⁺] / [OH⁻]',
+      'ЕРС елемента E (Нернст)': 'Cell EMF E (Nernst)',
+      'Енергія Гіббса ΔG = −zFE': 'Gibbs energy ΔG = −zFE',
+      'Макс. струм I_max = ℰ/R': 'Max current I_max = ℰ/R',
+      'Миттєва ЕРС |ℰᵢ|': 'Instantaneous EMF |ℰᵢ|',
+      'Маса металу на катоді m': 'Cathode metal mass m',
+      'Об’єм кисню на аноді V(O₂)': 'Anode oxygen volume V(O₂)',
+      'Електрохімічний еквівалент k_e': 'Electrochemical equiv. k_e',
+      'Порядок зв’язку C–C та довжина': 'C–C bond order & length',
+      'Енергія резонансу E_рез': 'Resonance energy E_res',
+      'Число π-електронів (Гюккель)': 'π-electrons (Hückel)',
+      'Хімічний зсув ЯМР ¹H δ': '¹H NMR shift δ'
     };
 
     function translateTelemetryVal(valStr) {
@@ -22283,6 +22352,11 @@
     window.addEventListener('load', () => {
       applyLanguage(uiState.lang);
       fitMathContainers();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          activeVectorArrows.forEach(arrow => arrow.refreshLanguage());
+        });
+      }
     });
 
     // ============================================================================

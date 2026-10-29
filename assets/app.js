@@ -3080,9 +3080,27 @@
         const mgPerp = mg * Math.cos(alpha);
         const fFric = Math.min(mgPar, p.mu * mgPerp);
 
-        this.mgArrow.update(centerWorld, gravityDir, mg * forceScale, uiState.showVectors, uiState.showLabels);
-        this.mgParArrow.update(centerWorld, downSlopeDir, mgPar * forceScale, uiState.showVectors, uiState.showLabels);
-        this.mgPerpArrow.update(centerWorld, normalInDir, mgPerp * forceScale, uiState.showVectors, uiState.showLabels);
+        this.mgArrow.update(
+          centerWorld.clone().add(new THREE.Vector3(-0.18, 0, 0.25)),
+          gravityDir,
+          mg * forceScale,
+          uiState.showVectors,
+          uiState.showLabels
+        );
+        this.mgParArrow.update(
+          centerWorld.clone().add(new THREE.Vector3(0, 0, -0.25)),
+          downSlopeDir,
+          mgPar * forceScale,
+          uiState.showVectors,
+          uiState.showLabels
+        );
+        this.mgPerpArrow.update(
+          centerWorld.clone().add(new THREE.Vector3(0.18, 0, 0)),
+          normalInDir,
+          mgPerp * forceScale,
+          uiState.showVectors,
+          uiState.showLabels
+        );
         this.normArrow.update(centerWorld, normalOutDir, mgPerp * forceScale, uiState.showVectors, uiState.showLabels);
         this.fricArrow.update(
           centerWorld.clone().addScaledVector(normalInDir, 0.25),
@@ -3305,13 +3323,19 @@
 
         this.tensionArrow.update(bobPos, stringDir, tensionMag * 0.08, uiState.showVectors, uiState.showLabels);
         this.mgArrow.update(
-          bobPos,
+          bobPos.clone().add(new THREE.Vector3(0, -0.22, 0)),
           new THREE.Vector3(0, -1, 0),
           p.mass * p.gravity * 0.08,
           uiState.showVectors,
           uiState.showLabels
         );
-        this.velArrow.update(bobPos, tangentDir, Math.abs(vLinear) * 0.35, uiState.showVectors, uiState.showLabels);
+        this.velArrow.update(
+          bobPos.clone().add(new THREE.Vector3(0, 0, 0.28)),
+          tangentDir,
+          Math.abs(vLinear) * 0.35,
+          uiState.showVectors,
+          uiState.showLabels
+        );
 
         const springRestoringForce = -p.stiffness * this.yDisp;
         this.springForceArrow.update(
@@ -3516,23 +3540,29 @@
         }
 
         const vScale = 0.24;
-        this.vArrow.update(this.pos, this.vel, this.vel.length() * vScale, uiState.showVectors, uiState.showLabels);
+        this.vArrow.update(
+          this.pos.clone().add(new THREE.Vector3(0, 0, 0.28)),
+          this.vel,
+          this.vel.length() * vScale,
+          uiState.showVectors,
+          uiState.showLabels
+        );
         this.vxArrow.update(
-          this.pos,
+          this.pos.clone().add(new THREE.Vector3(0, 0.22, 0)),
           new THREE.Vector3(Math.sign(this.vel.x || 1), 0, 0),
           Math.abs(this.vel.x) * vScale,
           uiState.showVectors,
           uiState.showLabels
         );
         this.vyArrow.update(
-          this.pos,
+          this.pos.clone().add(new THREE.Vector3(0.24, 0, 0)),
           new THREE.Vector3(0, Math.sign(this.vel.y || 1), 0),
           Math.abs(this.vel.y) * vScale,
           uiState.showVectors,
           uiState.showLabels
         );
         this.mgArrow.update(
-          this.pos,
+          this.pos.clone().add(new THREE.Vector3(-0.24, 0, 0)),
           new THREE.Vector3(0, -1, 0),
           p.mass * p.gravity * 0.08,
           uiState.showVectors,
@@ -3541,7 +3571,7 @@
 
         const dragMag = p.drag * this.vel.lengthSq();
         this.dragArrow.update(
-          this.pos,
+          this.pos.clone().add(new THREE.Vector3(0, 0, -0.28)),
           this.vel.clone().negate(),
           dragMag * 0.14,
           uiState.showVectors && p.drag > 0.001,
@@ -3892,7 +3922,13 @@
         const fCentripetal = p.mass * p.omega * p.omega * this.rCurrent;
         const fMaxFriction = p.mu * p.mass * g;
 
-        this.velArrow.update(puckPos, tangentDir, vLinear * 0.32, uiState.showVectors, uiState.showLabels);
+        this.velArrow.update(
+          puckPos.clone().add(new THREE.Vector3(0, 0.22, 0)),
+          tangentDir,
+          vLinear * 0.32,
+          uiState.showVectors,
+          uiState.showLabels
+        );
         this.fcArrow.update(
           puckPos,
           inwardDir,
@@ -4190,14 +4226,14 @@
         const fGrav = (p.rhoBody * g * V0) / 1000;
 
         this.faArrow.update(
-          this.cubeMesh.position,
+          this.cubeMesh.position.clone().add(new THREE.Vector3(-0.28, 0, 0)),
           new THREE.Vector3(0, 1, 0),
           fArch * 0.16,
           uiState.showVectors,
           uiState.showLabels
         );
         this.mgArrow.update(
-          this.cubeMesh.position,
+          this.cubeMesh.position.clone().add(new THREE.Vector3(0.28, 0, 0)),
           new THREE.Vector3(0, -1, 0),
           fGrav * 0.16,
           uiState.showVectors,
@@ -4734,8 +4770,20 @@
       }
 
       buildScene() {
+        // Оптичний стіл під установкою досліду Юнга
+        const opticalBench = new THREE.Mesh(
+          new THREE.BoxGeometry(11.6, 0.24, 6.8),
+          new THREE.MeshStandardMaterial({ color: 0xd6cfc2, roughness: 0.68 })
+        );
+        opticalBench.position.set(0.2, 0.12, 0);
+        opticalBench.receiveShadow = true;
+        worldGroup.add(opticalBench);
+
         // Непрозора ширма з двома когерентними щілинами S1 та S2
         const barrierMat = new THREE.MeshStandardMaterial({ color: 0x292524, roughness: 0.6, metalness: 0.2 });
+        const barrierFoot = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.14, 6.2), barrierMat);
+        barrierFoot.position.set(this.slitX, 0.26, 0);
+        worldGroup.add(barrierFoot);
         this.barrierLeft = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.6, 2.2), barrierMat);
         this.barrierCenter = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.6, 1.0), barrierMat);
         this.barrierRight = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.6, 2.2), barrierMat);
@@ -4965,12 +5013,15 @@
         this.prismMesh.renderOrder = 3;
         worldGroup.add(this.prismMesh);
 
-        // Джерело вузького білого пучка світла ліворуч
+        // Джерело вузького білого пучка світла ліворуч + телескопічний штатив
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x44403c, metalness: 0.65, roughness: 0.35 });
         this.emitterMesh = new THREE.Mesh(
           new THREE.CylinderGeometry(0.24, 0.28, 0.9, 24),
           new THREE.MeshStandardMaterial({ color: 0x292524, metalness: 0.6, roughness: 0.35 })
         );
-        worldGroup.add(this.emitterMesh);
+        this.emitterStand = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.11, 1.0, 16), standMat);
+        this.emitterFoot = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.14, 24), standMat);
+        worldGroup.add(this.emitterMesh, this.emitterStand, this.emitterFoot);
 
         // Білий промінь до призми
         this.whiteRayMesh = new THREE.Mesh(
@@ -4993,13 +5044,15 @@
           this.spectralMeshes.push({ insideMesh, outsideMesh, wfMesh, band });
         });
 
-        // Екран проєкції спектра праворуч
+        // Екран проєкції спектра праворуч + опорна лапа
         this.screenMesh = new THREE.Mesh(
           new THREE.BoxGeometry(0.18, 3.6, 2.4),
           new THREE.MeshStandardMaterial({ color: 0x1c1917, roughness: 0.7 })
         );
         this.screenMesh.position.set(4.5, 2.0, 0);
-        worldGroup.add(this.screenMesh);
+        const screenFoot = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.22, 2.55), standMat);
+        screenFoot.position.set(4.5, 0.11, 0);
+        worldGroup.add(this.screenMesh, screenFoot);
 
         this.kWhiteArrow = new SmartVectorArrow('Білий світловий фронт', 0x44403c, '#44403c');
         this.kRedArrow = new SmartVectorArrow('Червоний (680 нм)', 0xb91c1c, '#b91c1c');
@@ -5066,6 +5119,12 @@
 
         this.emitterMesh.position.copy(emitterPos);
         this.emitterMesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), incDir);
+        if (this.emitterStand && this.emitterFoot) {
+          const standH = Math.max(0.25, emitterPos.y - 0.14);
+          this.emitterStand.scale.set(1, standH, 1);
+          this.emitterStand.position.set(emitterPos.x, 0.14 + standH * 0.5, 0);
+          this.emitterFoot.position.set(emitterPos.x, 0.07, 0);
+        }
         this.positionBeam(this.whiteRayMesh, emitterPos, entryPt);
 
         const screenX = 4.4;
@@ -5156,11 +5215,25 @@
       }
 
       buildScene() {
-        // Вісь поширення світлового променя OX (вектор Пойнтінга S)
+        // Вісь поширення світлового променя OX (вектор Пойнтінга S) + опорні стійки випромінювача
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x44403c, roughness: 0.45, metalness: 0.55 });
         const axisGeo = new THREE.CylinderGeometry(0.03, 0.03, 11.2, 16);
         axisGeo.rotateZ(Math.PI / 2);
-        const axisMesh = new THREE.Mesh(axisGeo, new THREE.MeshStandardMaterial({ color: 0x44403c, roughness: 0.5 }));
+        const axisMesh = new THREE.Mesh(axisGeo, standMat);
         axisMesh.position.set(0, this.axisY, 0);
+        [-5.6, 5.6].forEach((xEnd, idx) => {
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.14, this.axisY, 16), standMat);
+          post.position.set(xEnd, this.axisY * 0.5, 0);
+          const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.52, 0.14, 24), standMat);
+          foot.position.set(xEnd, 0.07, 0);
+          worldGroup.add(post, foot);
+          if (idx === 0) {
+            const emitterHead = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.34, 0.65, 20), standMat);
+            emitterHead.rotation.z = Math.PI / 2;
+            emitterHead.position.set(xEnd + 0.2, this.axisY, 0);
+            worldGroup.add(emitterHead);
+          }
+        });
         worldGroup.add(axisMesh);
 
         // Неперервні огинаючі криві для E(x,t) та B(x,t)
@@ -5285,14 +5358,14 @@
         const centerPt = new THREE.Vector3(0, this.axisY, 0);
 
         this.mainEArrow.update(
-          centerPt,
+          new THREE.Vector3(-0.18, this.axisY, 0),
           new THREE.Vector3(0, Math.sign(ey0 || 1), 0),
           Math.max(0.35, Math.abs(ey0)),
           uiState.showVectors,
           uiState.showLabels
         );
         this.mainBArrow.update(
-          centerPt,
+          new THREE.Vector3(0.18, this.axisY, 0),
           new THREE.Vector3(0, 0, Math.sign(bz0 || 1)),
           Math.max(0.35, Math.abs(bz0)),
           uiState.showVectors,
@@ -5668,17 +5741,20 @@
         );
         this.group.add(axisLine);
 
-        // Оправа та двоопукла скляна лінза
+        // Оправа та двоопукла скляна лінза (опора тільки під нижнім краєм оправи, не пронизує скло)
+        const brassMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.72, roughness: 0.28 });
         this.lensSupport = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.14, 0.22, this.axisY - 0.2, 16),
-          new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.7, roughness: 0.3 })
+          new THREE.CylinderGeometry(0.18, 0.28, 0.28, 20),
+          brassMat
         );
-        this.lensSupport.position.set(this.lensX, (this.axisY - 0.2) / 2, 0);
-        this.group.add(this.lensSupport);
+        this.lensSupport.position.set(this.lensX, 0.34, 0);
+        const lensCradle = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.12, 0.75), brassMat);
+        lensCradle.position.set(this.lensX, 0.45, 0);
+        this.group.add(this.lensSupport, lensCradle);
 
         this.lensRim = new THREE.Mesh(
           new THREE.TorusGeometry(2.15, 0.08, 16, 48),
-          new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.75, roughness: 0.28 })
+          brassMat
         );
         this.lensRim.rotation.y = Math.PI / 2;
         this.lensRim.position.set(this.lensX, this.axisY, 0);
@@ -5867,6 +5943,21 @@
           metalness: 0.65,
           roughness: 0.3
         });
+        const frameMat = new THREE.MeshStandardMaterial({
+          color: 0x334155,
+          metalness: 0.72,
+          roughness: 0.32
+        });
+
+        // Немагнітна опорна база та 4 вертикальні колони між нижньою та верхньою котушками Гельмгольца
+        const baseRing = new THREE.Mesh(new THREE.CylinderGeometry(3.9, 4.1, 0.22, 48), frameMat);
+        baseRing.position.set(0, 0.11, 0);
+        this.group.add(baseRing);
+        [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2].forEach(ang => {
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 5.05, 16), frameMat);
+          post.position.set(Math.cos(ang) * 3.6, 2.75, Math.sin(ang) * 3.6);
+          this.group.add(post);
+        });
 
         [0.35, 5.25].forEach(yPos => {
           const coil = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.18, 20, 64), coilMat);
@@ -6016,9 +6107,9 @@
         const flDir = new THREE.Vector3(-Math.cos(phi), 0, -Math.sin(phi)).normalize();
         const forceMag = p.qOverM * vPerp * p.fieldB;
 
-        this.arrowV.update(pos, vDir, Math.min(2.2, 0.5 + p.v0 * 0.28), uiState.showVectors, uiState.showLabels);
+        this.arrowV.update(pos.clone().add(new THREE.Vector3(0, 0.14, 0)), vDir, Math.min(2.2, 0.5 + p.v0 * 0.28), uiState.showVectors, uiState.showLabels);
         this.arrowFL.update(pos, flDir, Math.min(2.4, 0.45 + forceMag * 0.14), uiState.showVectors, uiState.showLabels);
-        this.arrowB.update(pos, new THREE.Vector3(0, 1, 0), 1.35, uiState.showVectors, uiState.showLabels);
+        this.arrowB.update(new THREE.Vector3(0, 2.2, 0), new THREE.Vector3(0, 1, 0), 1.55, uiState.showVectors, uiState.showLabels);
 
         const ekPerp = 0.5 * vPerp * vPerp;
         const ekPar = 0.5 * vPar * vPar;
@@ -6058,6 +6149,18 @@
 
         this.coilGroup = new THREE.Group();
         this.group.add(this.coilGroup);
+
+        // Діелектрична напрямна штанга для руху штабового магніту та кінцеві стійки
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.65, roughness: 0.32 });
+        const guideRod = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 11.4, 16), frameMat);
+        guideRod.rotation.z = Math.PI / 2;
+        guideRod.position.set(0, this.axisY, 0);
+        [-5.7, 5.7].forEach(xEnd => {
+          const endPost = new THREE.Mesh(new THREE.BoxGeometry(0.28, this.axisY, 0.42), frameMat);
+          endPost.position.set(xEnd, this.axisY * 0.5 + 0.14, 0);
+          this.group.add(endPost);
+        });
+        this.group.add(guideRod);
 
         this.electrons = [];
         const elGeo = new THREE.SphereGeometry(0.095, 12, 12);
@@ -6177,6 +6280,21 @@
         const coilMesh = new THREE.Mesh(tubeGeo, copperMat);
         coilMesh.castShadow = true;
         this.coilGroup.add(coilMesh);
+
+        // Опорні стійки котушки та мідні виводи до гальванометра
+        const cradleMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.35 });
+        const bottomY = Math.max(0.45, this.axisY - rad);
+        const standH = Math.max(0.18, bottomY - 0.28);
+        [-1.35, 1.35].forEach(xStand => {
+          const post = new THREE.Mesh(new THREE.BoxGeometry(0.28, standH, 0.38), cradleMat);
+          post.position.set(xStand, 0.28 + standH * 0.5, 0);
+          this.coilGroup.add(post);
+        });
+        [-0.55, 0.55].forEach(xWire => {
+          const wire = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.05, 1.65), copperMat);
+          wire.position.set(xWire, 0.55, -0.85);
+          this.coilGroup.add(wire);
+        });
       }
 
       syncVisuals() {
@@ -7046,6 +7164,14 @@
         pulleyBracket.position.set(this.stringLen / 2 + 0.35, this.stringY - 0.32, 0);
         worldGroup.add(pulleyBracket);
 
+        const pulleyPost = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.08, 0.11, this.stringY - 0.42, 16),
+          new THREE.MeshStandardMaterial({ color: 0x57534e, metalness: 0.65, roughness: 0.35 })
+        );
+        pulleyPost.position.set(this.stringLen / 2 + 0.05, (this.stringY - 0.2) / 2, 0);
+        pulleyPost.castShadow = true;
+        worldGroup.add(pulleyPost);
+
         // Вертикальна ділянка струни за блоком і гиря натягу T
         const hangCord = new THREE.Line(
           new THREE.BufferGeometry().setFromPoints([
@@ -7306,6 +7432,22 @@
         );
         emitterBeacon.position.set(0.1, 0, 0);
         this.sourceGroup.add(emitterBeacon);
+
+        // Опорна стійка та каретка на рейці під рухомим джерелом
+        const sourceStrut = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.07, 0.09, this.planeY - 0.16, 14),
+          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.65, roughness: 0.35 })
+        );
+        sourceStrut.position.set(0, -(this.planeY - 0.16) / 2, 0);
+        this.sourceGroup.add(sourceStrut);
+
+        const sourceSled = new THREE.Mesh(
+          new THREE.BoxGeometry(0.76, 0.16, 0.72),
+          new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.55, roughness: 0.4 })
+        );
+        sourceSled.position.set(0, -(this.planeY - 0.14), 0);
+        this.sourceGroup.add(sourceSled);
+
         worldGroup.add(this.sourceGroup);
 
         // Нерухомі параболічні мікрофони-приймачі попереду (x = +5.5, синій) та позаду (x = -5.5, червоний)
@@ -7619,6 +7761,15 @@
         );
         stageDial.position.set(0, -1.05, 0);
         this.brewsterStageGroup.add(stageDial);
+
+        for (const zSide of [-0.64, 0.64]) {
+          const glassClip = new THREE.Mesh(
+            new THREE.BoxGeometry(0.16, 0.45, 0.12),
+            new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.7, roughness: 0.28 })
+          );
+          glassClip.position.set(0, -0.82, zSide);
+          this.brewsterStageGroup.add(glassClip);
+        }
 
         const stagePost = new THREE.Mesh(
           new THREE.CylinderGeometry(0.07, 0.09, this.axisY - 1.2, 12),
@@ -8393,6 +8544,15 @@
         this.flywheelGroup.add(crankPin);
         worldGroup.add(this.flywheelGroup);
 
+        // Горизонтальний сталевий вал маховика між двома опорними колонами (z = ±0.95)
+        const flywheelAxle = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.085, 0.085, 2.1, 16),
+          new THREE.MeshStandardMaterial({ color: 0x44403c, metalness: 0.75, roughness: 0.28 })
+        );
+        flywheelAxle.rotation.x = Math.PI / 2;
+        flywheelAxle.position.set(-0.8, 4.6, 0);
+        worldGroup.add(flywheelAxle);
+
         // 3D-шатун від поршня до пальця кривошипа маховика
         this.conRodMesh = new THREE.Mesh(
           new THREE.BoxGeometry(0.11, 1, 0.08),
@@ -8574,6 +8734,16 @@
         dropFunnel.position.set(0, 5.18, 0);
         worldGroup.add(dropFunnel);
 
+        for (const rotY of [0, Math.PI / 2]) {
+          const funnelSpoke = new THREE.Mesh(
+            new THREE.BoxGeometry(2.96, 0.055, 0.075),
+            new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.72, roughness: 0.28 })
+          );
+          funnelSpoke.position.set(0, 5.08, 0);
+          funnelSpoke.rotation.y = rotY;
+          worldGroup.add(funnelSpoke);
+        }
+
         // Вертикальна вимірювальна стійка з міліметровою шкалою праворуч від циліндра
         const scalePost = new THREE.Mesh(
           new THREE.CylinderGeometry(0.065, 0.065, 5.0, 14),
@@ -8585,10 +8755,10 @@
         for (let i = 0; i <= 16; i++) {
           const isMajor = i % 4 === 0;
           const tick = new THREE.Mesh(
-            new THREE.BoxGeometry(isMajor ? 0.26 : 0.14, 0.025, 0.03),
+            new THREE.BoxGeometry(isMajor ? 0.28 : 0.20, 0.025, 0.03),
             new THREE.MeshStandardMaterial({ color: isMajor ? 0xb91c1c : 0x292524 })
           );
-          tick.position.set(1.72, 0.6 + i * 0.25, 0);
+          tick.position.set(1.74, 0.6 + i * 0.25, 0);
           worldGroup.add(tick);
         }
 
@@ -9159,6 +9329,14 @@
         }
 
         // Праворуч (x = +3.0): Мідна котушка індуктивності L з текстолітовими каркасними щоками
+        for (const zOff of [-0.65, 0.65]) {
+          const indSupport = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.08, 0.11, 0.9, 12),
+            new THREE.MeshStandardMaterial({ color: 0x57534e, metalness: 0.6 })
+          );
+          indSupport.position.set(3.0, 0.65, zOff);
+          worldGroup.add(indSupport);
+        }
         for (const yFlange of [1.1, 3.1]) {
           const bobbinFlange = new THREE.Mesh(
             new THREE.CylinderGeometry(1.02, 1.02, 0.08, 28),
@@ -10010,7 +10188,7 @@
         this.crossheadGroup.add(botBeam, botClamp, weightHanger);
         worldGroup.add(this.crossheadGroup);
 
-        // Циферблатний індикатор мікрометра (тензометр) праворуч із кронштейном
+        // Циферблатний індикатор мікрометра (тензометр) праворуч із кронштейном до правої колони
         this.gaugeGroup = new THREE.Group();
         this.gaugeGroup.position.set(1.05, 4.2, 0.45);
         const gaugeArm = new THREE.Mesh(
@@ -10018,6 +10196,11 @@
           new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.75, roughness: 0.28 })
         );
         gaugeArm.position.set(-0.55, 0, -0.22);
+        const columnClamp = new THREE.Mesh(
+          new THREE.BoxGeometry(0.68, 0.16, 0.56),
+          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.75, roughness: 0.3 })
+        );
+        columnClamp.position.set(0.55, 0, -0.24);
         const dialBody = new THREE.Mesh(
           new THREE.CylinderGeometry(0.52, 0.52, 0.14, 32),
           new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.3 })
@@ -10032,7 +10215,7 @@
           new THREE.MeshBasicMaterial({ color: 0xdc2626 })
         );
         this.dialNeedle.position.set(0, 0, 0.09);
-        this.gaugeGroup.add(gaugeArm, dialBody, dialRim, this.dialNeedle);
+        this.gaugeGroup.add(gaugeArm, columnClamp, dialBody, dialRim, this.dialNeedle);
         worldGroup.add(this.gaugeGroup);
 
         this.arrowLoad = new SmartVectorArrow('F (навантаження)', 0xdc2626, '#dc2626');
@@ -10768,7 +10951,18 @@
         this.lensMesh.position.set(0, 1.02, 0);
         worldGroup.add(this.lensMesh);
 
-        // Напівпрозоре дзеркало-куб та монохроматичний освітлювач згори
+        // Напівпрозоре дзеркало-куб та оптичний штатив мікроскопа
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.3 });
+        const standPost = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, 4.8, 24), standMat);
+        standPost.position.set(-3.4, 2.55, 0);
+        const standArm = new THREE.Mesh(new THREE.BoxGeometry(3.5, 0.18, 0.26), standMat);
+        standArm.position.set(-1.7, 4.4, 0);
+        const topObjective = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.28, 0.65, 24), standMat);
+        topObjective.position.set(0, 5.15, 0);
+        const topArm = new THREE.Mesh(new THREE.BoxGeometry(3.5, 0.16, 0.24), standMat);
+        topArm.position.set(-1.7, 4.95, 0);
+        worldGroup.add(standPost, standArm, topObjective, topArm);
+
         const splitter = new THREE.Mesh(
           new THREE.BoxGeometry(1.8, 0.04, 1.8),
           new THREE.MeshPhysicalMaterial({
@@ -10967,7 +11161,23 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Кварцова вакуумна колба фотоелемента
+        // Кварцова вакуумна колба фотоелемента на опорних стійках
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.68, roughness: 0.32 });
+        [-1.75, 1.75].forEach(x => {
+          const cradlePost = new THREE.Mesh(new THREE.BoxGeometry(0.28, 1.05, 0.9), standMat);
+          cradlePost.position.set(x, 0.85, 0);
+          const cradleRing = new THREE.Mesh(new THREE.TorusGeometry(1.46, 0.08, 14, 36), standMat);
+          cradleRing.rotation.y = Math.PI / 2;
+          cradleRing.position.set(x, 2.7, 0);
+          worldGroup.add(cradlePost, cradleRing);
+        });
+        [-2.7, 2.7].forEach(x => {
+          const endCap = new THREE.Mesh(new THREE.CylinderGeometry(1.48, 1.48, 0.16, 36), standMat);
+          endCap.rotation.z = Math.PI / 2;
+          endCap.position.set(x, 2.7, 0);
+          worldGroup.add(endCap);
+        });
+
         const tubeGlass = new THREE.Mesh(
           new THREE.CylinderGeometry(1.45, 1.45, 5.4, 36),
           new THREE.MeshPhysicalMaterial({
@@ -11000,14 +11210,16 @@
         anodeRing.position.set(2.0, 2.7, 0);
         worldGroup.add(anodeRing);
 
-        // УФ/оптичний освітлювач зліва вгорі, спрямований на катод
+        // УФ/оптичний освітлювач зліва вгорі на вертикальному штативі
+        const lampStand = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.14, 4.7, 20), standMat);
+        lampStand.position.set(-3.75, 2.65, 0);
         const lampHousing = new THREE.Mesh(
           new THREE.CylinderGeometry(0.42, 0.55, 1.3, 24),
           new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.6, roughness: 0.35 })
         );
         lampHousing.position.set(-3.7, 5.0, 0);
         lampHousing.rotation.z = -0.82;
-        worldGroup.add(lampHousing);
+        worldGroup.add(lampStand, lampHousing);
 
         // Корпус мікроамперметра зі стрілкою фотоструму I_ф
         const meterBox = new THREE.Mesh(
@@ -11205,7 +11417,7 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Кільцевий флуоресцентний екран із сірчистого цинку (ZnS) навколо золотої фольги
+        // Кільцевий флуоресцентний екран із сірчистого цинку (ZnS) навколо золотої фольги на опорних стійках
         const znsScreen = new THREE.Mesh(
           new THREE.CylinderGeometry(4.2, 4.2, 1.5, 48, 1, true),
           new THREE.MeshStandardMaterial({
@@ -11219,15 +11431,27 @@
         znsScreen.position.set(0, 2.2, 0);
         worldGroup.add(znsScreen);
 
-        // Свинцевий коліматор джерела α-частинок ліворуч
+        const mountMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.68, roughness: 0.32 });
+        for (let a = 0; a < 4; a++) {
+          const ang = (a * Math.PI) / 2 + Math.PI / 4;
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 1.2, 14), mountMat);
+          post.position.set(Math.cos(ang) * 4.2, 0.9, Math.sin(ang) * 4.2);
+          worldGroup.add(post);
+        }
+
+        // Свинцевий коліматор джерела α-частинок ліворуч на масивній підставці
+        const leadStand = new THREE.Mesh(new THREE.BoxGeometry(0.95, 1.4, 0.85), mountMat);
+        leadStand.position.set(-4.1, 1.0, 0);
         const leadBox = new THREE.Mesh(
           new THREE.BoxGeometry(1.3, 1.1, 1.1),
           new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.65, roughness: 0.38 })
         );
         leadBox.position.set(-4.1, 2.2, 0);
-        worldGroup.add(leadBox);
+        worldGroup.add(leadStand, leadBox);
 
-        // Надтонка золота фольга та масивне додатне ядро +Ze в центрі
+        // Надтонка золота фольга у тримачі та масивне додатне ядро +Ze в центрі
+        const foilStand = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.28, 0.65, 20), mountMat);
+        foilStand.position.set(0, 0.62, 0);
         const goldFoil = new THREE.Mesh(
           new THREE.BoxGeometry(0.04, 2.6, 3.2),
           new THREE.MeshStandardMaterial({
@@ -11239,7 +11463,7 @@
           })
         );
         goldFoil.position.set(0, 2.2, 0);
-        worldGroup.add(goldFoil);
+        worldGroup.add(foilStand, goldFoil);
 
         this.nucleusMesh = new THREE.Mesh(
           new THREE.SphereGeometry(0.32, 32, 32),
@@ -11448,27 +11672,41 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Верхня портальна рама з ізоляторами для підвісу гнучких шин
+        // Верхня портальна рама з ізоляторами для підвісу гнучких шин (стійки точно під рамою z = 0)
         const topPortal = new THREE.Mesh(
-          new THREE.BoxGeometry(5.6, 0.32, 0.8),
+          new THREE.BoxGeometry(5.6, 0.34, 0.82),
           new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.55, roughness: 0.4 })
         );
         topPortal.position.set(0, 5.5, 0);
+        topPortal.castShadow = true;
         worldGroup.add(topPortal);
 
+        const postMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.72, roughness: 0.28 });
         [-2.5, 2.5].forEach(x => {
           const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.14, 0.14, 5.2, 20),
-            new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.7, roughness: 0.3 })
+            new THREE.CylinderGeometry(0.15, 0.16, 5.2, 24),
+            postMat
           );
-          post.position.set(x, 2.8, -1.2);
-          worldGroup.add(post);
+          post.position.set(x, 2.88, 0);
+          post.castShadow = true;
+          const flange = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.32, 0.36, 0.14, 24),
+            postMat
+          );
+          flange.position.set(x, 0.42, 0);
+          worldGroup.add(post, flange);
         });
 
-        // Дві вертикальні мідні шини зі струмами I₁ та I₂ (вигинаються назустріч або врізнобіч)
-        this.leftWireGeo = new THREE.BufferGeometry();
-        this.rightWireGeo = new THREE.BufferGeometry();
+        // Латунні контактні затискачі-ізолятори на верхній траверсі та нижній платформі
+        const clampMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.8, roughness: 0.25 });
+        const clampGeo = new THREE.CylinderGeometry(0.16, 0.18, 0.22, 20);
+        this.topLeftClamp = new THREE.Mesh(clampGeo, clampMat);
+        this.topRightClamp = new THREE.Mesh(clampGeo, clampMat);
+        this.botLeftClamp = new THREE.Mesh(clampGeo, clampMat);
+        this.botRightClamp = new THREE.Mesh(clampGeo, clampMat);
+        worldGroup.add(this.topLeftClamp, this.topRightClamp, this.botLeftClamp, this.botRightClamp);
 
+        // Дві вертикальні мідні шини зі струмами I₁ та I₂ (вигинаються назустріч або врізнобіч)
         const copperMat = new THREE.MeshStandardMaterial({
           color: 0xd97706,
           metalness: 0.78,
@@ -11476,9 +11714,9 @@
         });
         this.leftWireSegments = [];
         this.rightWireSegments = [];
-        for (let s = 0; s < 16; s++) {
-          const seg1 = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 0.33, 16), copperMat);
-          const seg2 = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 0.33, 16), copperMat);
+        for (let s = 0; s < 20; s++) {
+          const seg1 = new THREE.Mesh(new THREE.CylinderGeometry(0.082, 0.082, 1.0, 16), copperMat);
+          const seg2 = new THREE.Mesh(new THREE.CylinderGeometry(0.082, 0.082, 1.0, 16), copperMat);
           seg1.castShadow = true;
           seg2.castShadow = true;
           worldGroup.add(seg1, seg2);
@@ -11545,19 +11783,44 @@
         const fRatio = (p.current1 * p.current2) / (p.wireDistD * 450);
         const prog = Math.min(1, 0.35 + t * 0.45);
         const bendAmp = Math.min(0.42, fRatio * 0.45) * prog;
+        const halfD = p.wireDistD * 0.55;
+
+        if (this.topLeftClamp) {
+          this.topLeftClamp.position.set(-halfD, 5.3, 0);
+          this.topRightClamp.position.set(halfD, 5.3, 0);
+          this.botLeftClamp.position.set(-halfD, 0.44, 0);
+          this.botRightClamp.position.set(halfD, 0.44, 0);
+        }
 
         const nSeg = this.leftWireSegments.length;
+        const yBot = 0.44;
+        const ySpan = 4.86;
         for (let s = 0; s < nSeg; s++) {
-          const u = (s + 0.5) / nSeg;
-          const y = 0.45 + u * 4.9;
-          const xL = this.getWireX(-1, u, bendAmp);
-          const xR = this.getWireX(1, u, bendAmp);
-          this.leftWireSegments[s].position.set(xL, y, 0);
-          this.rightWireSegments[s].position.set(xR, y, 0);
+          const u0 = s / nSeg;
+          const u1 = (s + 1) / nSeg;
+          const y0 = yBot + u0 * ySpan;
+          const y1 = yBot + u1 * ySpan;
+          const xL0 = this.getWireX(-1, u0, bendAmp);
+          const xL1 = this.getWireX(-1, u1, bendAmp);
+          const xR0 = this.getWireX(1, u0, bendAmp);
+          const xR1 = this.getWireX(1, u1, bendAmp);
+
+          const dxL = xL1 - xL0;
+          const dy = y1 - y0;
+          const lenL = Math.hypot(dxL, dy);
+          this.leftWireSegments[s].scale.set(1, lenL + 0.03, 1);
+          this.leftWireSegments[s].position.set((xL0 + xL1) * 0.5, (y0 + y1) * 0.5, 0);
+          this.leftWireSegments[s].rotation.z = -Math.atan2(dxL, dy);
+
+          const dxR = xR1 - xR0;
+          const lenR = Math.hypot(dxR, dy);
+          this.rightWireSegments[s].scale.set(1, lenR + 0.03, 1);
+          this.rightWireSegments[s].position.set((xR0 + xR1) * 0.5, (y0 + y1) * 0.5, 0);
+          this.rightWireSegments[s].rotation.z = -Math.atan2(dxR, dy);
         }
 
         this.fieldRings.forEach(fr => {
-          const u = (fr.y - 0.45) / 4.9;
+          const u = (fr.y - yBot) / ySpan;
           fr.ring1.position.set(this.getWireX(-1, u, bendAmp), fr.y, 0);
           fr.ring2.position.set(this.getWireX(1, u, bendAmp), fr.y, 0);
           fr.ring1.visible = uiState.showTrails;
@@ -11567,7 +11830,7 @@
         this.leftCarriers.forEach(c => {
           c.mesh.visible = uiState.showParticles;
           const u = (c.phase + t * (p.current1 * 0.035)) % 1.0;
-          const y = 0.45 + u * 4.9;
+          const y = yBot + u * ySpan;
           c.mesh.position.set(this.getWireX(-1, u, bendAmp), y, 0);
         });
 
@@ -11575,7 +11838,7 @@
           c.mesh.visible = uiState.showParticles;
           const rawU = (c.phase + t * (p.current2 * 0.035)) % 1.0;
           const u = p.directionSign >= 0 ? rawU : 1.0 - rawU;
-          const y = 0.45 + u * 4.9;
+          const y = yBot + u * ySpan;
           c.mesh.position.set(this.getWireX(1, u, bendAmp), y, 0);
         });
 
@@ -11619,7 +11882,7 @@
         );
 
         this.arrowB.update(
-          new THREE.Vector3(xR, 2.9, 0),
+          new THREE.Vector3(xR, 3.85, 0),
           new THREE.Vector3(0, 0, -1),
           Math.min(2.0, b1MicroT * 0.008 + 0.6),
           uiState.showVectors,
@@ -11702,14 +11965,23 @@
         this.waferMesh.position.set(0, 2.3, 0);
         worldGroup.add(this.waferMesh);
 
-        // Поздовжні струмові контакти (лівий і правий) та поперечні холлівські зонди (передній і задній)
+        // Поздовжні струмові контакти (лівий і правий) на опорних стійках, поперечні холлівські зонди та С-подібне ярмо магніту
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.68, roughness: 0.32 });
+        const yokeBack = new THREE.Mesh(new THREE.BoxGeometry(1.1, 4.1, 0.45), standMat);
+        yokeBack.position.set(0, 2.52, -2.05);
+        const yokeTop = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.36, 2.2), standMat);
+        yokeTop.position.set(0, 4.5, -1.0);
+        worldGroup.add(yokeBack, yokeTop);
+
         [-2.7, 2.7].forEach(x => {
           const contact = new THREE.Mesh(
             new THREE.BoxGeometry(0.22, 0.3, 2.55),
             new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.8, roughness: 0.22 })
           );
           contact.position.set(x, 2.3, 0);
-          worldGroup.add(contact);
+          const supportPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.18, 1.9, 20), standMat);
+          supportPillar.position.set(x, 1.25, 0);
+          worldGroup.add(contact, supportPillar);
         });
 
         [-1.32, 1.32].forEach(z => {
@@ -11718,7 +11990,9 @@
             new THREE.MeshStandardMaterial({ color: 0xfacc15, metalness: 0.82, roughness: 0.2 })
           );
           probe.position.set(0, 2.3, z);
-          worldGroup.add(probe);
+          const probePost = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 1.9, 14), standMat);
+          probePost.position.set(0, 1.25, z + (z > 0 ? 0.18 : -0.18));
+          worldGroup.add(probe, probePost);
         });
 
         // Індикатори накопичених поверхневих зарядів на бічних гранях пластинки (створюють поле Холла E_H)
@@ -12342,6 +12616,24 @@
         windTunnelBase.receiveShadow = true;
         worldGroup.add(windTunnelBase);
 
+        // Опорні пілони підшипників та центральна вісь ротора в аеродинамічній трубі
+        const strutMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.72, roughness: 0.32 });
+        [-1.62, 1.62].forEach(zPos => {
+          const strut = new THREE.Mesh(new THREE.BoxGeometry(0.28, 2.75, 0.22), strutMat);
+          strut.position.set(0, 1.72, zPos);
+          strut.castShadow = true;
+          const housing = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.26, 20), strutMat);
+          housing.rotation.x = Math.PI / 2;
+          housing.position.set(0, 3.0, zPos);
+          const foot = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.14, 0.55), strutMat);
+          foot.position.set(0, 0.42, zPos);
+          worldGroup.add(strut, housing, foot);
+        });
+        const axleShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 3.5, 16), strutMat);
+        axleShaft.rotation.x = Math.PI / 2;
+        axleShaft.position.set(0, 3.0, 0);
+        worldGroup.add(axleShaft);
+
         // Обертовий циліндр (ротор Флеттнера) в аеродинамічній трубі
         this.rotorGroup = new THREE.Group();
         this.rotorGroup.position.set(0, 3.0, 0);
@@ -12628,6 +12920,21 @@
           worldGroup.add(tick);
         }
 
+        // Лабораторний штатив, що утримує капілярну трубку та вимірювальну рейку
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.72, roughness: 0.3 });
+        const standFoot = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.16, 1.35), standMat);
+        standFoot.position.set(3.2, 0.43, 0);
+        const standRod = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 5.1, 16), standMat);
+        standRod.position.set(3.2, 2.95, 0);
+        const clampArm = new THREE.Mesh(new THREE.BoxGeometry(3.35, 0.12, 0.16), standMat);
+        clampArm.position.set(1.6, 5.1, 0);
+        const clampBoss = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.32, 0.32), standMat);
+        clampBoss.position.set(3.2, 5.1, 0);
+        this.capillaryClampRing = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.055, 12, 24), standMat);
+        this.capillaryClampRing.rotation.x = Math.PI / 2;
+        this.capillaryClampRing.position.set(0, 5.1, 0);
+        worldGroup.add(standFoot, standRod, clampArm, clampBoss, this.capillaryClampRing);
+
         // Молекули поверхневого шару вздовж периметра меніска
         const molGeo = new THREE.SphereGeometry(0.065, 10, 10);
         const molMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
@@ -12666,6 +12973,9 @@
 
         const rVis = 0.26 + p.tubeRadiusMm * 0.22;
         this.capillaryTube.scale.set(rVis / 0.45, 1, rVis / 0.45);
+        if (this.capillaryClampRing) {
+          this.capillaryClampRing.scale.set(rVis / 0.45, rVis / 0.45, 1);
+        }
 
         const baseLevelY = 1.65;
         const hVis = Math.max(-0.85, Math.min(3.5, hMm * 0.11));
@@ -12775,6 +13085,21 @@
         rim.rotation.x = Math.PI / 2;
         rim.position.set(0, 2.2, 0);
         worldGroup.add(rim);
+
+        // Прозора скляна стінка кювети та 4 опорні стійки предметного столика мікроскопа
+        const cuvetteWall = new THREE.Mesh(
+          new THREE.CylinderGeometry(4.28, 4.28, 1.84, 48, 1, true),
+          new THREE.MeshPhysicalMaterial({ color: 0xe0f2fe, transparent: true, opacity: 0.22, roughness: 0.1, side: THREE.DoubleSide, depthWrite: false })
+        );
+        cuvetteWall.position.set(0, 1.28, 0);
+        worldGroup.add(cuvetteWall);
+
+        const pillarMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.72, roughness: 0.3 });
+        [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2].forEach(ang => {
+          const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.13, 1.84, 16), pillarMat);
+          pillar.position.set(Math.cos(ang) * 4.3, 1.28, Math.sin(ang) * 4.3);
+          worldGroup.add(pillar);
+        });
 
         // Концентричні кола середньоквадратичного зміщення √⟨r²⟩ = √(6Dt)
         this.rmsRing = new THREE.Mesh(
@@ -12964,41 +13289,58 @@
         opticalTable.receiveShadow = true;
         worldGroup.add(opticalTable);
 
-        // Лазерне джерело зліва (-4.6, 1.6, 0)
+        const mountMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.72, roughness: 0.32 });
+
+        // Лазерне джерело зліва (-4.5, 1.6, 0) + оптична стійка
         const laserBody = new THREE.Mesh(
           new THREE.BoxGeometry(1.7, 0.75, 0.85),
           new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.7, roughness: 0.3 })
         );
         laserBody.position.set(-4.5, 1.6, 0);
-        worldGroup.add(laserBody);
+        const laserMount = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.88, 0.58), mountMat);
+        laserMount.position.set(-4.5, 0.80, 0);
+        worldGroup.add(laserBody, laserMount);
 
-        // Світлоподілювач BS у центрі (0, 1.6, 0) під кутом 45°
+        // Світлоподілювач BS у центрі (0, 1.6, 0) під кутом 45° + тримач на оптичному столі
         const bsGlass = new THREE.Mesh(
           new THREE.BoxGeometry(1.6, 1.3, 0.08),
           new THREE.MeshPhysicalMaterial({ color: 0xbae6fd, transparent: true, opacity: 0.5, roughness: 0.05 })
         );
         bsGlass.position.set(0, 1.6, 0);
         bsGlass.rotation.y = Math.PI / 4;
-        worldGroup.add(bsGlass);
+        const bsPost = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.28, 0.58, 20), mountMat);
+        bsPost.position.set(0, 0.66, 0);
+        const bsCradle = new THREE.Mesh(new THREE.BoxGeometry(1.68, 0.10, 0.20), mountMat);
+        bsCradle.position.set(0, 0.93, 0);
+        bsCradle.rotation.y = Math.PI / 4;
+        worldGroup.add(bsGlass, bsPost, bsCradle);
 
-        // Нерухоме дзеркало M₂ у плечі +X (4.2, 1.6, 0)
+        // Нерухоме дзеркало M₂ у плечі +X (4.2, 1.6, 0) + опорна стійка
         const mirrorMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.95, roughness: 0.05 });
         this.mirrorM2 = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.4, 1.5), mirrorMat);
         this.mirrorM2.position.set(4.2, 1.6, 0);
-        worldGroup.add(this.mirrorM2);
+        const m2Mount = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.56, 0.95), mountMat);
+        m2Mount.position.set(4.25, 0.65, 0);
+        worldGroup.add(this.mirrorM2, m2Mount);
 
-        // Рухоме дзеркало M₁ з мікрометричним гвинтом у плечі -Z (0, 1.6, -4.2)
+        // Рухоме дзеркало M₁ з мікрометричним супортом у плечі -Z (0, 1.6, -4.2)
         this.mirrorM1 = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.4, 0.18), mirrorMat);
         this.mirrorM1.position.set(0, 1.6, -4.2);
-        worldGroup.add(this.mirrorM1);
+        this.m1Mount = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.48, 0.34), mountMat);
+        this.m1Mount.position.set(0, 0.69, -4.2);
+        const m1Rail = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.10, 1.4), mountMat);
+        m1Rail.position.set(0, 0.42, -4.35);
+        worldGroup.add(this.mirrorM1, this.m1Mount, m1Rail);
 
-        // Екран спостереження інтерференційних кілець у плечі +Z (0, 1.9, 4.3)
+        // Екран спостереження інтерференційних кілець у плечі +Z (0, 1.9, 4.35) + підставка
         const screenBoard = new THREE.Mesh(
           new THREE.BoxGeometry(3.2, 2.8, 0.16),
           new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.8 })
         );
         screenBoard.position.set(0, 1.9, 4.35);
-        worldGroup.add(screenBoard);
+        const screenStand = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.18, 0.55), mountMat);
+        screenStand.position.set(0, 0.45, 4.35);
+        worldGroup.add(screenBoard, screenStand);
 
         // Концентричні інтерференційні кільця рівного нахилу на екрані
         for (let r = 0; r < 6; r++) {
@@ -13066,6 +13408,9 @@
         const shiftVisual = (p.mirrorShiftNm / 700) * 0.45;
         const arm1Len = 4.2 + shiftVisual;
         this.mirrorM1.position.set(0, 1.6, -arm1Len);
+        if (this.m1Mount) {
+          this.m1Mount.position.set(0, 0.69, -arm1Len);
+        }
         if (this.beams && this.beams[1]) {
           this.beams[1].scale.set(1, arm1Len / 4.2, 1);
           this.beams[1].position.set(0, 1.6, -arm1Len * 0.5);
@@ -13173,20 +13518,35 @@
         worldGroup.add(gonioRing);
 
         const targetPost = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.12, 0.16, 2.1, 18),
+          new THREE.CylinderGeometry(0.12, 0.16, 2.0, 18),
           new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.7 })
         );
         targetPost.position.set(0, 1.2, 0);
-        worldGroup.add(targetPost);
+        const graphiteTarget = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.26, 0.26, 0.44, 24),
+          new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.45, metalness: 0.35 })
+        );
+        graphiteTarget.position.set(0, 2.3, 0);
+        worldGroup.add(targetPost, graphiteTarget);
 
-        // Рентгенівська трубка зліва (-5.2, 2.3, 0)
+        // Рентгенівська трубка зліва (-5.2, 2.3, 0) + опорна стійка
         const emitter = new THREE.Mesh(
           new THREE.CylinderGeometry(0.32, 0.38, 1.6, 20),
           new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.75, roughness: 0.25 })
         );
         emitter.rotation.z = Math.PI / 2;
         emitter.position.set(-5.2, 2.3, 0);
-        worldGroup.add(emitter);
+        const emitterStand = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.15, 0.24, 1.85, 18),
+          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.72, roughness: 0.32 })
+        );
+        emitterStand.position.set(-5.2, 1.22, 0);
+        const emitterFoot = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.45, 0.5, 0.14, 24),
+          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.75, roughness: 0.3 })
+        );
+        emitterFoot.position.set(-5.2, 0.41, 0);
+        worldGroup.add(emitter, emitterStand, emitterFoot);
 
         // Квант рентгенівського випромінювання та електрон віддачі
         this.photonSphere = new THREE.Mesh(
@@ -13349,13 +13709,20 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Ядро атома водню (протон +e) у центрі (0, 2.3, 0)
+        // Ядро атома водню (протон +e) у центрі (0, 2.3, 0) + діелектрична опора планетарної моделі
         const nucleus = new THREE.Mesh(
           new THREE.SphereGeometry(0.32, 24, 24),
           new THREE.MeshStandardMaterial({ color: 0xdc2626, emissive: 0x991b1b, emissiveIntensity: 0.55 })
         );
         nucleus.position.set(0, 2.3, 0);
-        worldGroup.add(nucleus);
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.65, roughness: 0.3, transparent: true, opacity: 0.55 });
+        const centerPedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.16, 1.92, 18), standMat);
+        centerPedestal.position.set(0, 1.31, 0);
+        const radialBar1 = new THREE.Mesh(new THREE.BoxGeometry(8.3, 0.035, 0.045), standMat);
+        radialBar1.position.set(0, 2.27, 0);
+        const radialBar2 = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.035, 8.3), standMat);
+        radialBar2.position.set(0, 2.27, 0);
+        worldGroup.add(nucleus, centerPedestal, radialBar1, radialBar2);
 
         // 4 дозволені стаціонарні борівські орбіти (n = 1, 2, 3, 4)
         const radii = [1.0, 1.9, 2.95, 4.1];
@@ -13471,7 +13838,7 @@
         const tanVec = new THREE.Vector3(-radVec.z, 0, radVec.x);
 
         this.arrowVel.update(
-          ePos,
+          ePos.clone().add(new THREE.Vector3(0, 0.14, 0)),
           tanVec,
           1.45,
           uiState.showVectors,
@@ -13479,7 +13846,7 @@
         );
 
         this.arrowCoulomb.update(
-          ePos,
+          ePos.clone().add(new THREE.Vector3(0, -0.14, 0)),
           radVec.clone().negate(),
           1.15,
           uiState.showVectors,
@@ -13534,7 +13901,7 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Дві співвісні мідні котушки радіуса R уздовж осі X
+        // Дві співвісні мідні котушки радіуса R уздовж осі X + рухомі опорні стійки
         const copperMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.78, roughness: 0.25 });
         this.coil1 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.16, 20, 48), copperMat);
         this.coil2 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.16, 20, 48), copperMat);
@@ -13542,7 +13909,22 @@
         this.coil2.rotation.y = Math.PI / 2;
         this.coil1.castShadow = true;
         this.coil2.castShadow = true;
-        worldGroup.add(this.coil1, this.coil2);
+
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.72, roughness: 0.32 });
+        const makeCoilStand = () => {
+          const grp = new THREE.Group();
+          const post = new THREE.Mesh(new THREE.BoxGeometry(0.38, 1.0, 0.45), standMat);
+          post.name = 'standPost';
+          const foot = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.14, 1.15), standMat);
+          foot.position.set(0, 0.43, 0);
+          grp.add(post, foot);
+          return grp;
+        };
+        this.coil1Stand = makeCoilStand();
+        this.coil2Stand = makeCoilStand();
+        const railTrack = new THREE.Mesh(new THREE.BoxGeometry(8.6, 0.08, 0.65), standMat);
+        railTrack.position.set(0, 0.38, 0);
+        worldGroup.add(this.coil1, this.coil2, this.coil1Stand, this.coil2Stand, railTrack);
 
         // Силові лінії магнітного поля B(x, y) та крива осьового профілю B_x(x)
         const yOffsets = [-0.9, -0.45, 0, 0.45, 0.9];
@@ -13605,6 +13987,21 @@
         this.coil2.scale.set(rVis / 1.8, rVis / 1.8, 1);
         this.coil1.position.set(-halfD, 2.6, 0);
         this.coil2.position.set(halfD, 2.6, 0);
+
+        const standTopY = Math.max(0.52, 2.6 - rVis);
+        const standHeight = Math.max(0.14, standTopY - 0.42);
+        [
+          { grp: this.coil1Stand, x: -halfD },
+          { grp: this.coil2Stand, x: halfD }
+        ].forEach(({ grp, x }) => {
+          if (!grp) return;
+          grp.position.set(x, 0, 0);
+          const post = grp.getObjectByName('standPost');
+          if (post) {
+            post.scale.set(1, standHeight, 1);
+            post.position.set(0, 0.42 + standHeight * 0.5, 0);
+          }
+        });
 
         const bCenter = this.calcBAtX(0);
         this.fieldLines.forEach(fl => {
@@ -13706,7 +14103,7 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Замкнене шихтоване феромагнітне осердя трансформатора
+        // Замкнене шихтоване феромагнітне осердя трансформатора + опорні лапи
         const coreMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.72, roughness: 0.32 });
         const topYoke = new THREE.Mesh(new THREE.BoxGeometry(5.6, 0.72, 1.1), coreMat);
         topYoke.position.set(0, 4.35, 0);
@@ -13716,6 +14113,11 @@
         leftLimb.position.set(-2.35, 2.6, 0);
         const rightLimb = new THREE.Mesh(new THREE.BoxGeometry(0.85, 2.8, 1.1), coreMat);
         rightLimb.position.set(2.35, 2.6, 0);
+        [-1.95, 1.95].forEach(xFoot => {
+          const coreFoot = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.24, 1.45), coreMat);
+          coreFoot.position.set(xFoot, 0.44, 0);
+          worldGroup.add(coreFoot);
+        });
         worldGroup.add(topYoke, botYoke, leftLimb, rightLimb);
 
         // Первинна обмотка N₁ (лівий стержень) та вторинна обмотка N₂ (правий стержень)
@@ -13731,13 +14133,26 @@
           this.secondaryTurns.push(t2);
         }
 
-        // Лампа навантаження у вторинному колі справа
+        // Лампа навантаження у вторинному колі справа + патрон на стійці та з'єднувальні проводи
         this.bulbMesh = new THREE.Mesh(
           new THREE.SphereGeometry(0.42, 24, 24),
           new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfacc15, emissiveIntensity: 0.5 })
         );
         this.bulbMesh.position.set(4.3, 2.6, 0);
-        worldGroup.add(this.bulbMesh);
+        const bulbSocket = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.24, 0.26, 0.36, 20),
+          new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.8, roughness: 0.25 })
+        );
+        bulbSocket.position.set(4.3, 2.1, 0);
+        const bulbStand = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.15, 1.62, 16), coreMat);
+        bulbStand.position.set(4.3, 1.15, 0);
+        const bulbFoot = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.5, 0.14, 24), coreMat);
+        bulbFoot.position.set(4.3, 0.42, 0);
+        const lead1 = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.06, 0.06), cop2Mat);
+        lead1.position.set(3.55, 2.18, 0.14);
+        const lead2 = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.06, 0.06), cop2Mat);
+        lead2.position.set(3.55, 1.98, -0.14);
+        worldGroup.add(this.bulbMesh, bulbSocket, bulbStand, bulbFoot, lead1, lead2);
 
         // Маркери спільного змінного магнітного потоку Φ(t) уздовж прямокутного осердя
         const fGeo = new THREE.SphereGeometry(0.09, 12, 12);
@@ -16035,6 +16450,35 @@
         searchNoResults: 'No experiments match your search query.',
         progressBadgeTip: 'Completed experiments (click to open catalog)',
         kbdFooterHtml: '<span class="kbd-chip">Space</span> Play/Pause · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint',
+        brandTitle: '3D Science Lab',
+        brandSub: 'Interactive Practicum',
+        discPhysics: 'Physics',
+        discPhysicsTip: 'Interactive 3D Physics Practicum (46 Experiments)',
+        discChemistry: 'Chemistry',
+        discChemistryBadge: 'Soon',
+        discChemistryTip: 'Upcoming Interactive 3D Chemistry Lab — click to preview curriculum',
+        chemModalBadge: 'UPCOMING DISCIPLINE · 3D CHEMISTRY LAB',
+        chemModalTitle: 'Interactive 3D Chemistry Practicum',
+        chemModalSub: 'We are preparing a comprehensive 3D laboratory of molecular structures, orbitals, and chemical reactions with the same 3-step inquiry flow (Hypothesis → Experiment → Proof).',
+        chemMod1Sec: '§ 1–8 · Quantum Chemistry',
+        chemMod1Title: 'Atomic Structure & Electron Orbitals',
+        chemMod1Desc: '3D probability clouds of s, p, d, f orbitals, sp/sp²/sp³ hybridization, Pauli exclusion & periodic trends.',
+        chemMod2Sec: '§ 9–16 · Structural Chemistry',
+        chemMod2Title: 'Chemical Bonding & Crystal Lattices',
+        chemMod2Desc: 'Covalent, ionic, metallic & hydrogen bonds, VSEPR molecular geometry, dipole moments & unit cells.',
+        chemMod3Sec: '§ 17–24 · Physical Chemistry',
+        chemMod3Title: 'Chemical Kinetics & Equilibrium',
+        chemMod3Desc: 'Activation energy barriers, collision theory, catalysis, Le Chatelier’s principle & rate laws.',
+        chemMod4Sec: '§ 25–32 · Analytical Chemistry',
+        chemMod4Title: 'Solutions, Dissociation & pH Titration',
+        chemMod4Desc: 'Electrolytic dissociation, hydration shells, acid-base titration curves, indicators & buffer systems.',
+        chemMod5Sec: '§ 33–40 · Electrochemistry',
+        chemMod5Title: 'Galvanic Cells, Redox & Electrolysis',
+        chemMod5Desc: 'Daniell galvanic cell, standard electrode potentials, Faraday’s laws of electrolysis & corrosion.',
+        chemMod6Sec: '§ 41–46 · Organic Chemistry',
+        chemMod6Title: 'Hydrocarbons, Functional Groups & Isomers',
+        chemMod6Desc: '3D conformations of alkanes/alkenes, aromaticity of benzene, chiral centers & optical enantiomers.',
+        chemModalBackBtn: '← Return to Physics Practicum (46 Experiments)',
         mobileUnsupportedTitle: 'This platform is not supported on this device',
         mobileUnsupportedSub: 'The interactive 3D physics laboratory is designed for desktop and laptop computers. Please open this site on a PC.'
       },
@@ -16129,6 +16573,35 @@
         searchNoResults: 'За вашим запитом дослідів не знайдено.',
         progressBadgeTip: 'Виконані досліди (натисніть, щоб відкрити каталог)',
         kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка',
+        brandTitle: '3D Лабораторія',
+        brandSub: 'Природничий практикум',
+        discPhysics: 'Фізика',
+        discPhysicsTip: 'Інтерактивний 3D-практикум з фізики (46 дослідів)',
+        discChemistry: 'Хімія',
+        discChemistryBadge: 'Скоро',
+        discChemistryTip: 'Новий розділ «3D Хімія» у розробці — натисніть для перегляду програми',
+        chemModalBadge: 'НОВИЙ РОЗДІЛ ПЛАТФОРМИ · 3D ХІМІЧНА ЛАБОРАТОРІЯ',
+        chemModalTitle: 'Інтерактивний 3D-практикум з Хімії',
+        chemModalSub: 'Ми готуємо повноцінний курс тривимірних хімічних симуляцій — від квантових орбіталей і кристалічних ґраток до титрування та електролізу за методикою «Гіпотеза → Дослід → Доведення».',
+        chemMod1Sec: '§ 1–8 · Загальна та квантова хімія',
+        chemMod1Title: 'Будова атома та електронні орбіталі',
+        chemMod1Desc: 'Тривимірні хмари s-, p-, d-, f-орбіталей, гібридизація sp, sp², sp³, спін та періодичний закон.',
+        chemMod2Sec: '§ 9–16 · Структурна хімія',
+        chemMod2Title: 'Хімічний зв’язок і кристалічні ґратки',
+        chemMod2Desc: 'Ковалентний, йонний, металічний та водневий зв’язки, просторова геометрія молекул (ГЕПВО) і диполі.',
+        chemMod3Sec: '§ 17–24 · Фізична хімія',
+        chemMod3Title: 'Хімічна кінетика, каталіз та рівновага',
+        chemMod3Desc: 'Енергетичний бар’єр активації E_a, теорія активних зіткнень, принцип Ле Шательє та закон діючих мас.',
+        chemMod4Sec: '§ 25–32 · Аналітична хімія та розчини',
+        chemMod4Title: 'Електролітична дисоціація, pH і титрування',
+        chemMod4Desc: 'Гідратація йонів, шкала pH, кислотно-основні індикатори, криві титрування та гідроліз солей.',
+        chemMod5Sec: '§ 33–40 · Електрохімія',
+        chemMod5Title: 'Гальванічні елементи, ОВР та електроліз',
+        chemMod5Desc: 'Елемент Даніеля–Якобі, електрорушійна сила, ряд стандартних потенціалів та закони Фарадея.',
+        chemMod6Sec: '§ 41–46 · Органічна хімія',
+        chemMod6Title: 'Вуглеводні, функціональні групи та ізомерія',
+        chemMod6Desc: '3D-конформації алканів і циклоалканів, π-система бензену, цис-транс та оптична стереоізомерія.',
+        chemModalBackBtn: '← Повернутися до практикуму з фізики (46 дослідів)',
         mobileUnsupportedTitle: 'Дана платформа не підтримується на даному пристрої',
         mobileUnsupportedSub: 'Інтерактивний 3D-практикум з фізики розрахований на роботу з комп’ютера або ноутбука. Будь ласка, відкрийте сайт на ПК.'
       }
@@ -17264,8 +17737,143 @@
         });
       }
 
-      // 2. Прогрес учня «✓ X/46» у верхній панелі (.book-header)
+      // 2. Брендова шапка + перемикач дисциплін (Фізика | Хімія) та прогрес учня «✓ X/46» у верхній панелі (.book-header)
       const headerLeft = document.querySelector('.header-left');
+      if (headerLeft && !document.getElementById('header-brand-discipline')) {
+        const brandGroup = document.createElement('div');
+        brandGroup.id = 'header-brand-discipline';
+        brandGroup.className = 'header-brand-discipline';
+        brandGroup.innerHTML = `
+          <div class="header-brand-badge" title="${t.brandTitle}">
+            <span class="header-brand-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </span>
+            <span id="ui-brand-title" class="header-brand-title">${t.brandTitle}</span>
+          </div>
+          <div id="discipline-switcher" class="discipline-switcher" role="tablist" aria-label="Science disciplines">
+            <button type="button" id="disc-tab-physics" class="disc-tab active" role="tab" aria-selected="true" title="${t.discPhysicsTip}">
+              <svg class="disc-tab-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="2.2"/>
+                <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/>
+                <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/>
+              </svg>
+              <span id="ui-disc-physics">${t.discPhysics}</span>
+              <span class="disc-count-pill">46</span>
+            </button>
+            <button type="button" id="disc-tab-chemistry" class="disc-tab disc-tab-chem" role="tab" aria-selected="false" aria-haspopup="dialog" title="${t.discChemistryTip}">
+              <svg class="disc-tab-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 2v7.31l-4.89 8.15A2 2 0 0 0 6.82 20.5h10.36a2 2 0 0 0 1.71-3.04L14 9.31V2"/>
+                <path d="M8.5 2h7"/>
+                <path d="M7 16h10"/>
+              </svg>
+              <span id="ui-disc-chemistry">${t.discChemistry}</span>
+              <span id="ui-disc-chem-badge" class="disc-soon-badge">${t.discChemistryBadge}</span>
+            </button>
+          </div>
+          <span class="header-v-divider" aria-hidden="true"></span>
+        `;
+        headerLeft.insertBefore(brandGroup, headerLeft.firstChild);
+
+        // Модальне вікно анонсу «3D Хімія» (#chemistry-preview-modal)
+        if (!document.getElementById('chemistry-preview-modal')) {
+          const chemModal = document.createElement('div');
+          chemModal.id = 'chemistry-preview-modal';
+          chemModal.className = 'chemistry-preview-backdrop';
+          chemModal.setAttribute('aria-hidden', 'true');
+          chemModal.innerHTML = `
+            <div class="chemistry-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="ui-chem-modal-title">
+              <div class="chem-modal-top-bar">
+                <span class="chem-modal-badge">
+                  <span class="chem-badge-dot" aria-hidden="true"></span>
+                  <span id="ui-chem-modal-badge">${t.chemModalBadge}</span>
+                </span>
+                <button type="button" id="btn-close-chem-modal" class="chem-modal-close" aria-label="Close">✕</button>
+              </div>
+              <h2 id="ui-chem-modal-title" class="chem-modal-title">${t.chemModalTitle}</h2>
+              <p id="ui-chem-modal-sub" class="chem-modal-sub">${t.chemModalSub}</p>
+              <div class="chem-modules-grid">
+                <div class="chem-module-card">
+                  <div class="chem-module-sec" id="ui-chem-mod1-sec">${t.chemMod1Sec}</div>
+                  <div class="chem-module-title" id="ui-chem-mod1-title">${t.chemMod1Title}</div>
+                  <div class="chem-module-desc" id="ui-chem-mod1-desc">${t.chemMod1Desc}</div>
+                </div>
+                <div class="chem-module-card">
+                  <div class="chem-module-sec" id="ui-chem-mod2-sec">${t.chemMod2Sec}</div>
+                  <div class="chem-module-title" id="ui-chem-mod2-title">${t.chemMod2Title}</div>
+                  <div class="chem-module-desc" id="ui-chem-mod2-desc">${t.chemMod2Desc}</div>
+                </div>
+                <div class="chem-module-card">
+                  <div class="chem-module-sec" id="ui-chem-mod3-sec">${t.chemMod3Sec}</div>
+                  <div class="chem-module-title" id="ui-chem-mod3-title">${t.chemMod3Title}</div>
+                  <div class="chem-module-desc" id="ui-chem-mod3-desc">${t.chemMod3Desc}</div>
+                </div>
+                <div class="chem-module-card">
+                  <div class="chem-module-sec" id="ui-chem-mod4-sec">${t.chemMod4Sec}</div>
+                  <div class="chem-module-title" id="ui-chem-mod4-title">${t.chemMod4Title}</div>
+                  <div class="chem-module-desc" id="ui-chem-mod4-desc">${t.chemMod4Desc}</div>
+                </div>
+                <div class="chem-module-card">
+                  <div class="chem-module-sec" id="ui-chem-mod5-sec">${t.chemMod5Sec}</div>
+                  <div class="chem-module-title" id="ui-chem-mod5-title">${t.chemMod5Title}</div>
+                  <div class="chem-module-desc" id="ui-chem-mod5-desc">${t.chemMod5Desc}</div>
+                </div>
+                <div class="chem-module-card">
+                  <div class="chem-module-sec" id="ui-chem-mod6-sec">${t.chemMod6Sec}</div>
+                  <div class="chem-module-title" id="ui-chem-mod6-title">${t.chemMod6Title}</div>
+                  <div class="chem-module-desc" id="ui-chem-mod6-desc">${t.chemMod6Desc}</div>
+                </div>
+              </div>
+              <div class="chem-modal-footer">
+                <button type="button" id="btn-chem-back-physics" class="btn-chem-back-physics">${t.chemModalBackBtn}</button>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(chemModal);
+
+          const physTab = document.getElementById('disc-tab-physics');
+          const chemTab = document.getElementById('disc-tab-chemistry');
+          const setChemModalOpen = isOpen => {
+            chemModal.classList.toggle('open', isOpen);
+            chemModal.setAttribute('aria-hidden', String(!isOpen));
+            if (physTab) {
+              physTab.classList.toggle('active', !isOpen);
+              physTab.setAttribute('aria-selected', String(!isOpen));
+            }
+            if (chemTab) {
+              chemTab.classList.toggle('active', isOpen);
+              chemTab.setAttribute('aria-selected', String(isOpen));
+            }
+          };
+
+          if (chemTab) {
+            chemTab.addEventListener('click', e => {
+              e.stopPropagation();
+              const isOpen = !chemModal.classList.contains('open');
+              setChemModalOpen(isOpen);
+            });
+          }
+          if (physTab) {
+            physTab.addEventListener('click', () => {
+              setChemModalOpen(false);
+            });
+          }
+          chemModal.querySelector('#btn-close-chem-modal').addEventListener('click', () => setChemModalOpen(false));
+          chemModal.querySelector('#btn-chem-back-physics').addEventListener('click', () => setChemModalOpen(false));
+          chemModal.addEventListener('click', e => {
+            if (e.target === chemModal) setChemModalOpen(false);
+          });
+          document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && chemModal.classList.contains('open')) {
+              setChemModalOpen(false);
+            }
+          });
+        }
+      }
+
       if (headerLeft && !document.getElementById('edu-progress-pill')) {
         const progBtn = document.createElement('button');
         progBtn.type = 'button';
@@ -17512,6 +18120,36 @@
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
+      setTxt('ui-brand-title', t.brandTitle);
+      setTxt('ui-disc-physics', t.discPhysics);
+      setTxt('ui-disc-chemistry', t.discChemistry);
+      setTxt('ui-disc-chem-badge', t.discChemistryBadge);
+      setTxt('ui-chem-modal-badge', t.chemModalBadge);
+      setTxt('ui-chem-modal-title', t.chemModalTitle);
+      setTxt('ui-chem-modal-sub', t.chemModalSub);
+      setTxt('ui-chem-mod1-sec', t.chemMod1Sec);
+      setTxt('ui-chem-mod1-title', t.chemMod1Title);
+      setTxt('ui-chem-mod1-desc', t.chemMod1Desc);
+      setTxt('ui-chem-mod2-sec', t.chemMod2Sec);
+      setTxt('ui-chem-mod2-title', t.chemMod2Title);
+      setTxt('ui-chem-mod2-desc', t.chemMod2Desc);
+      setTxt('ui-chem-mod3-sec', t.chemMod3Sec);
+      setTxt('ui-chem-mod3-title', t.chemMod3Title);
+      setTxt('ui-chem-mod3-desc', t.chemMod3Desc);
+      setTxt('ui-chem-mod4-sec', t.chemMod4Sec);
+      setTxt('ui-chem-mod4-title', t.chemMod4Title);
+      setTxt('ui-chem-mod4-desc', t.chemMod4Desc);
+      setTxt('ui-chem-mod5-sec', t.chemMod5Sec);
+      setTxt('ui-chem-mod5-title', t.chemMod5Title);
+      setTxt('ui-chem-mod5-desc', t.chemMod5Desc);
+      setTxt('ui-chem-mod6-sec', t.chemMod6Sec);
+      setTxt('ui-chem-mod6-title', t.chemMod6Title);
+      setTxt('ui-chem-mod6-desc', t.chemMod6Desc);
+      setTxt('btn-chem-back-physics', t.chemModalBackBtn);
+      const discPhysBtn = document.getElementById('disc-tab-physics');
+      const discChemBtn = document.getElementById('disc-tab-chemistry');
+      if (discPhysBtn) discPhysBtn.title = t.discPhysicsTip;
+      if (discChemBtn) discChemBtn.title = t.discChemistryTip;
       setTxt('ui-observe-banner-text', t.observeBannerText);
       setTxt('btn-reveal-proof-now', t.observeRevealBtn);
       setTxt('btn-preset-min', t.presetMin);

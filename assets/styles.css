@@ -660,6 +660,246 @@
       overflow-wrap: break-word;
     }
 
+    /* ==========================================================================
+       КНОПКА-КНИГА ТА РОЗГОРТАЄМИЙ ТЕОРЕТИЧНИЙ КОНСПЕКТ
+       ========================================================================== */
+    .btn-theory-book {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 11px 6px 9px;
+      border-radius: 7px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+      transition: all 0.14s ease;
+    }
+
+    .theory-book-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .theory-book-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .theory-book-hint {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+    }
+
+    .btn-theory-book:hover {
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
+      background: #f8faff;
+      box-shadow: 0 2px 6px rgba(29, 78, 216, 0.08);
+    }
+
+    .btn-theory-book:hover .theory-book-hint,
+    .btn-theory-book.open .theory-book-hint {
+      color: var(--accent-oxford);
+    }
+
+    .btn-theory-book.open {
+      background: var(--accent-oxford-soft);
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
+    }
+
+    .theory-book-svg,
+    .book-svg-icon {
+      flex-shrink: 0;
+      color: var(--accent-oxford);
+      transition: transform 0.16s ease;
+    }
+
+    .btn-theory-book:hover .theory-book-svg,
+    .btn-theory-book:hover .book-svg-icon,
+    .btn-header-theory:hover .theory-book-svg,
+    .btn-header-theory:hover .book-svg-icon {
+      transform: scale(1.08);
+    }
+
+    .theory-book-chev,
+    .theory-book-chevron,
+    .ref-book-chev {
+      font-size: 10px;
+      color: var(--ink-muted);
+      transition: transform 0.18s ease;
+      margin-left: 2px;
+      display: inline-block;
+    }
+
+    .btn-theory-book.open .theory-book-chev,
+    .btn-theory-book.open .theory-book-chevron,
+    .btn-ref-book-trigger.open .ref-book-chev,
+    .btn-ref-book-trigger.open .theory-book-chevron {
+      transform: rotate(180deg);
+      color: var(--accent-oxford);
+    }
+
+    /* Кнопка-книга у верхньому тулбарі */
+    .btn-header-theory {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 7px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+      transition: all 0.14s ease;
+      white-space: nowrap;
+    }
+
+    .btn-header-theory:hover {
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
+      background: #f8faff;
+    }
+
+    .btn-header-theory.active,
+    .btn-header-theory.open {
+      background: var(--accent-oxford);
+      border-color: var(--accent-oxford);
+      color: #ffffff;
+    }
+
+    .btn-header-theory.active .theory-book-svg,
+    .btn-header-theory.active .book-svg-icon,
+    .btn-header-theory.open .theory-book-svg,
+    .btn-header-theory.open .book-svg-icon {
+      color: #ffffff;
+    }
+
+    /* Кнопка-книга у заголовку правої панелі ("КОНСПЕКТ") */
+    .btn-ref-book-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 8px 2px 6px;
+      border-radius: 5px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--accent-oxford);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .btn-ref-book-trigger:hover,
+    .btn-ref-book-trigger.open {
+      background: var(--accent-oxford-soft);
+      border-color: var(--accent-oxford);
+    }
+
+    .btn-ref-book-trigger .theory-book-svg,
+    .btn-ref-book-trigger .book-svg-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Розгортаємий блок теоретичного конспекту */
+    .theory-drawer-box {
+      display: none;
+      margin-top: 10px;
+      background: #ffffff;
+      border: 1px solid var(--rule-light);
+      border-left: 3px solid var(--accent-oxford);
+      border-radius: 8px;
+      padding: 12px 13px;
+      box-shadow: var(--shadow-hard);
+      animation: fadeBook 0.18s ease;
+    }
+
+    .theory-drawer-box.open {
+      display: block;
+    }
+
+    .theory-drawer-box-right {
+      margin-top: 6px;
+    }
+
+    .theory-drawer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .theory-note-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .theory-note-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--rule-subtle);
+    }
+
+    .theory-note-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+
+    .theory-note-para {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.56;
+      color: var(--ink-secondary);
+      overflow-wrap: break-word;
+    }
+
+    .theory-note-para strong {
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .theory-note-formula {
+      margin-top: 4px;
+      padding-top: 7px;
+      border-top: 1px dashed var(--rule-light);
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--ink-primary);
+      overflow: hidden;
+    }
+
     /* Панель запуску: тактильна кнопка + компактний рядок інструментів */
     .experiment-controls {
       display: none;

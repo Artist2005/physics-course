@@ -6833,6 +6833,9 @@
         if (this.sDist < maxTravel) {
           this.vLinear += accMain * dt;
           this.sDist = Math.min(maxTravel, this.sDist + this.vLinear * dt);
+          if (this.sDist >= maxTravel) {
+            this.vLinear = Math.sqrt(2 * accMain * maxTravel);
+          }
         } else if (!this.phaseTriggered) {
           this.phaseTriggered = true;
           transitionToPhase('explain');
@@ -6841,6 +6844,9 @@
         if (this.sHoop < maxTravel) {
           this.vHoop += accHoop * dt;
           this.sHoop = Math.min(maxTravel, this.sHoop + this.vHoop * dt);
+          if (this.sHoop >= maxTravel) {
+            this.vHoop = Math.sqrt(2 * accHoop * maxTravel);
+          }
         }
 
         this.particles.update(dt);
@@ -7221,7 +7227,7 @@
         const ek = wTot * sinTerm * sinTerm;
         const ep = wTot * cosTerm * cosTerm;
 
-        updateEnergyUI(ek, ep, wTot, Math.max(10, wTot * 1.15), [
+        updateEnergyUI(ek, ep, 0, Math.max(0.5, wTot), [
           { label: 'Довжина хвилі λ_n', val: `${lambdaN.toFixed(2)} м` },
           { label: 'Власна частота f_n', val: `${freq.toFixed(1)} Гц` },
           { label: 'Швидкість хвилі v', val: `${vWave.toFixed(1)} м/с` },
@@ -7888,7 +7894,7 @@
           uiState.showLabels
         );
 
-        updateEnergyUI(iOut, p.incidentI0, iAbsorbed, p.incidentI0, [
+        updateEnergyUI(iOut, 0, iAbsorbed, Math.max(1, p.incidentI0), [
           { label: 'Інтенсивність I(θ)', val: `${iOut.toFixed(1)} Вт/м²` },
           { label: 'Коефіцієнт cos²θ', val: `${(cosTheta * cosTheta * 100).toFixed(1)} %` },
           { label: 'Кут Брюстера θ_B', val: `${brewsterDeg.toFixed(1)}°` },
@@ -14524,8 +14530,8 @@
         qLabel: 'Rotational E_rot',
         question: 'A solid disk ($\\beta = 0.5$) and a thin-walled hoop ($\\beta = 1.0$) of equal mass and radius are released simultaneously from rest at the top of an incline and roll without slipping. Which body reaches the bottom first?',
         options: [
-          'The solid disk wins because its inertia factor $\\beta = 0.5$ is smaller, so a smaller fraction of energy goes into spinning it up',
           'Both arrive simultaneously because they have identical mass $m$ and radius $R$',
+          'The solid disk wins because its inertia factor $\\beta = 0.5$ is smaller, so a smaller fraction of energy goes into spinning it up',
           'The hoop finishes first because all of its mass is concentrated at the rim'
         ],
         explanation: 'By conservation of energy $mgh = \\frac{1}{2}mv^2 + \\frac{1}{2}I\\omega^2 = \\frac{1}{2}mv^2(1 + \\beta)$, where $\\beta = I/(mR^2)$. The linear acceleration down the slope is $a = \\frac{g\\sin\\alpha}{1 + \\beta}$. Since a solid cylinder has $\\beta = 0.5$ ($a = \\frac{2}{3}g\\sin\\alpha$) while a thin hoop has $\\beta = 1.0$ ($a = \\frac{1}{2}g\\sin\\alpha$), the solid disk always beats the hoop regardless of mass or radius!',
@@ -15994,6 +16000,13 @@
         optionPrefix: 'Option',
         secUnit: 's',
         jouleUnit: 'J',
+        theoryBtnTitle: 'Theoretical Notes',
+        theoryBtnShort: 'Theory',
+        theoryExpandHint: 'Read',
+        theoryCollapseHint: 'Close',
+        theorySec1Title: '1. Physical Essence & Mechanism',
+        theorySec2Title: '2. Mathematical Model & Conservation Laws',
+        theorySec3Title: '3. Experimental Analysis & Applications',
         mobileUnsupportedTitle: 'This platform is not supported on this device',
         mobileUnsupportedSub: 'The interactive 3D physics laboratory is designed for desktop and laptop computers. Please open this site on a PC.'
       },
@@ -16059,10 +16072,757 @@
         optionPrefix: 'Варіант',
         secUnit: 'с',
         jouleUnit: 'Дж',
+        theoryBtnTitle: 'Теоретичний конспект',
+        theoryBtnShort: 'Теорія',
+        theoryExpandHint: 'Читати',
+        theoryCollapseHint: 'Згорнути',
+        theorySec1Title: '1. Фізична суть і механізм явища',
+        theorySec2Title: '2. Математична модель і закони збереження',
+        theorySec3Title: '3. Лабораторний аналіз і застосування',
         mobileUnsupportedTitle: 'Дана платформа не підтримується на даному пристрої',
         mobileUnsupportedSub: 'Інтерактивний 3D-практикум з фізики розрахований на роботу з комп’ютера або ноутбука. Будь ласка, відкрийте сайт на ПК.'
       }
     };
+
+    // ============================================================================
+    // ПОВНИЙ АКАДЕМІЧНИЙ КОНСПЕКТ ТЕОРІЇ ДЛЯ ВСІХ 46 ЕКСПЕРИМЕНТІВ (УКР / EN)
+    // ============================================================================
+    const THEORY_NOTES = {
+      collision: {
+        uk: [
+          'У замкненій механічній системі, де зовнішні сили врівноважені або відсутні ($\\sum \\vec{F}_{\\text{зовн}} = 0$), за ІІІ законом Ньютона внутрішні сили ударної взаємодії двох тіл у кожну мить рівні за модулем і протилежні за напрямком: $\\vec{F}_{12} = -\\vec{F}_{21}$. Тому сумарний імпульс системи $\\vec{p} = m_1\\vec{v}_1 + m_2\\vec{v}_2$ залишається строго інваріантним при будь-якому характері зіткнення — від абсолютно пружного до повністю пластичного.',
+          'Характер деформації тіл визначається **коефіцієнтом відновлення** $e = \\frac{|v\'_2 - v\'_1|}{|v_1 - v_2|} \\in [0, 1]$. У системі відліку центра мас зі швидкістю $v_C = \\frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}$ після удару швидкості тіл становлять $v\'_1 = v_C - e \\frac{m_2}{m_1 + m_2}(v_1 - v_2)$ та $v\'_2 = v_C + e \\frac{m_1}{m_1 + m_2}(v_1 - v_2)$. Частина початкової кінетичної енергії переходить у внутрішню теплову енергію деформації: $Q = \\frac{1}{2}\\mu (v_1 - v_2)^2 (1 - e^2)$, де $\\mu = \\frac{m_1 m_2}{m_1 + m_2}$ — **зведена маса** двочастинкової системи.',
+          'Змінюючи повзунками відношення мас $m_1/m_2$ та пружність $e$, простежте два граничні режими: при $e = 1$ і $m_1 = m_2$ кулі повністю обмінюються швидкостями ($Q = 0$), а при $e = 0$ тіла злипаються і рухаються як єдине ціле зі швидкістю центра мас $v_C$. Цей принцип лежить в основі балістичних маятників, розрахунку сповільнювачів нейтронів у ядерних реакторах та аналізу зіткнень елементарних частинок у колайдерах.'
+        ],
+        en: [
+          'In an isolated mechanical system where external forces cancel out ($\\sum \\vec{F}_{\\text{ext}} = 0$), Newton’s third law guarantees that internal impact forces between two colliding bodies are equal in magnitude and opposite in direction at every instant: $\\vec{F}_{12} = -\\vec{F}_{21}$. Consequently, the total linear momentum $\\vec{p} = m_1\\vec{v}_1 + m_2\\vec{v}_2$ remains strictly conserved across all collision regimes, from perfectly elastic to completely plastic.',
+          'The degree of elasticity is governed by the **coefficient of restitution** $e = \\frac{|v\'_2 - v\'_1|}{|v_1 - v_2|} \\in [0, 1]$. Relative to the center-of-mass velocity $v_C = \\frac{m_1 v_1 + m_2 v_2}{m_1 + m_2}$, the post-impact velocities are $v\'_1 = v_C - e \\frac{m_2}{m_1 + m_2}(v_1 - v_2)$ and $v\'_2 = v_C + e \\frac{m_1}{m_1 + m_2}(v_1 - v_2)$. The dissipated mechanical energy converted into internal heat and plastic deformation is $Q = \\frac{1}{2}\\mu (v_1 - v_2)^2 (1 - e^2)$, where $\\mu = \\frac{m_1 m_2}{m_1 + m_2}$ is the **reduced mass**.',
+          'By varying the mass ratio $m_1/m_2$ and restitution $e$, observe the two fundamental limits: for $e = 1$ and $m_1 = m_2$, the spheres completely exchange velocities ($Q = 0$), whereas for $e = 0$ they coalesce and move at the center-of-mass velocity $v_C$. This formalism underpins ballistic pendulums, neutron moderation in nuclear reactors, and particle collider kinematics.'
+        ]
+      },
+      inclined: {
+        uk: [
+          'На тіло масою $m$, що перебуває на похилій площині з кутом нахилу $\\alpha$, діють три сили: вертикальна сила тяжіння $m\\vec{g}$, сила нормальної реакції опори $\\vec{N}$ (перпендикулярна до поверхні клина) та сила тертя $\\vec{F}_{\\text{тер}}$ (спрямована вздовж схилу проти руху або тенденції до зісковзування). Розкладання вектора $m\\vec{g}$ на дотичну вісь $Ox$ та нормальну вісь $Oy$ дозволяє звести двовимірну задачу до одновимірного руху вздовж схилу.',
+          'З умови рівноваги вздовж нормалі $Oy$ маємо $N = mg\\cos\\alpha$. Максимальна сила тертя спокою за законом Амонтона — Кулона становить $F_{\\text{тер,max}} = \\mu N = \\mu mg\\cos\\alpha$. Якщо скочувальна складова перевищує цей поріг ($mg\\sin\\alpha > \\mu mg\\cos\\alpha$, тобто $\\tan\\alpha > \\mu$), тіло починає рівноприскорений рух із прискоренням $a = g(\\sin\\alpha - \\mu\\cos\\alpha)$, яке **не залежить від маси бруска** $m$.',
+          'Критичний кут $\\alpha_{\\text{кр}} = \\arctan(\\mu)$ називають **кутом тертя**: саме його вимірюють у трибологічних лабораторіях для точного визначення коефіцієнта тертя $\\mu$ без динамометра. Зверніть увагу на енергетичну діаграму: потенціальна енергія $E_p = mgh$ розподіляється між кінетичною енергією бруска $E_k = \\frac{1}{2}mv^2$ та роботою проти сили тертя $Q = \\mu mg\\cos\\alpha \\cdot s$.'
+        ],
+        en: [
+          'A block of mass $m$ resting on an inclined plane at angle $\\alpha$ is acted upon by three forces: gravity $m\\vec{g}$ pointing vertically downward, the normal reaction $\\vec{N}$ perpendicular to the ramp, and friction $\\vec{F}_{\\text{fr}}$ directed up the slope opposing motion. Resolving $m\\vec{g}$ into components parallel ($Ox$) and perpendicular ($Oy$) to the incline reduces the problem to 1D dynamics.',
+          'Force balance normal to the ramp yields $N = mg\\cos\\alpha$. By Amontons–Coulomb’s law, the maximum static friction is $F_{\\text{fr,max}} = \\mu N = \\mu mg\\cos\\alpha$. Motion begins only when the downhill gravitational component exceeds this threshold ($\\tan\\alpha > \\mu$), producing a uniform acceleration $a = g(\\sin\\alpha - \\mu\\cos\\alpha)$ that is **strictly independent of the mass** $m$.',
+          'The threshold angle $\\alpha_c = \\arctan(\\mu)$ is known as the **angle of repose**, widely used in tribology and geotechnical engineering to measure $\\mu$ directly. Watch the energy balance chart: initial potential energy $E_p = mgh$ partitions into translational kinetic energy $E_k = \\frac{1}{2}mv^2$ and frictional heat $Q = \\mu mg\\cos\\alpha \\cdot s$.'
+        ]
+      },
+      pendulum: {
+        uk: [
+          'Гармонічні коливання виникають у системах, де повертальна сила пропорційна зміщенню від положення рівноваги і спрямована до нього: $F_x = -kx$. У математичному маятнику повертальною силою є дотична складова тяжіння $F_\\tau = -mg\\sin\\theta \\approx -mg\\theta = -\\frac{mg}{L}s$ (при малих кутах $\\theta \\ll 1\\text{ рад}$), а в пружинному маятнику — пружна сила Гука $F = -ky$.',
+          'Диференціальне рівняння вільних коливань з урахуванням в’язкого опору середовища має вигляд $\\ddot{x} + 2\\beta\\dot{x} + \\omega_0^2 x = 0$. Для математичного маятника власна циклічна частота $\\omega_0 = \\sqrt{g/L}$ і період **формули Гюйгенса** $T_0 = 2\\pi\\sqrt{L/g}$ визначаються лише довжиною нитки $L$ та прискоренням вільного падіння $g$. Для пружинного маятника $\\omega_0 = \\sqrt{k/m}$ та $T_0 = 2\\pi\\sqrt{m/k}$ залежать від маси тягарця $m$ і жорсткості пружини $k$, але **не залежать від гравітації**.',
+          'Під час коливань відбувається безперервне перетворення енергії двічі за кожен період: у крайніх точках уся енергія зосереджена в потенціальній ($E_p$), а при проходженні положення рівноваги — в кінетичній ($E_k$). Наявність дисипації ($\\beta > 0$) зумовлює експоненціальне спадання амплітуди $A(t) = A_0 e^{-\\beta t}$ і поступовий перехід механічної енергії у тепло $Q$.'
+        ],
+        en: [
+          'Simple harmonic motion arises whenever a restoring force is proportional to the displacement from equilibrium: $F_x = -kx$. In a simple gravity pendulum, the restoring force is the tangential component of weight $F_\\tau = -mg\\sin\\theta \\approx -\\frac{mg}{L}s$ (for small angles $\\theta \\ll 1\\text{ rad}$), whereas in a spring-mass oscillator it is Hooke’s elastic force $F = -ky$.',
+          'The damped oscillator obeys $\\ddot{x} + 2\\beta\\dot{x} + \\omega_0^2 x = 0$. For the simple pendulum, the natural angular frequency $\\omega_0 = \\sqrt{g/L}$ and **Huygens’ period** $T_0 = 2\\pi\\sqrt{L/g}$ depend solely on string length $L$ and gravity $g$ (isochronism). Conversely, for the spring pendulum, $\\omega_0 = \\sqrt{k/m}$ and $T_0 = 2\\pi\\sqrt{m/k}$ depend on mass $m$ and stiffness $k$, remaining **independent of gravity**.',
+          'Twice during every oscillation period, energy converts completely between potential energy $E_p$ at the turning points and kinetic energy $E_k$ at equilibrium. With damping ($\\beta > 0$), the amplitude decays exponentially as $A(t) = A_0 e^{-\\beta t}$, transferring mechanical energy into thermal dissipation $Q$.'
+        ]
+      },
+      projectile: {
+        uk: [
+          'Балістичний рух тіла, кинутого під кутом $\\alpha$ до горизонту зі швидкістю $v_0$, є класичним прикладом **принципу незалежності рухів Галілея**. У вакуумі ($k = 0$) вздовж горизонтальної осі $Ox$ діють нульові сили, тому проєкція швидкості $v_x = v_0\\cos\\alpha = \\text{const}$, а вздовж вертикальної осі $Oy$ тіло здійснює рівноприскорений рух під дією сили тяжіння з прискоренням $a_y = -g$.',
+          'Виключення часу $t = \\frac{x}{v_0\\cos\\alpha}$ з кінематичних рівнянь $x(t) = v_0\\cos\\alpha \\cdot t$ та $y(t) = v_0\\sin\\alpha \\cdot t - \\frac{1}{2}gt^2$ дає **рівняння параболи безпеки**: $y(x) = x\\tan\\alpha - \\frac{gx^2}{2v_0^2\\cos^2\\alpha}$. Повний час польоту становить $t_{\\text{польоту}} = \\frac{2v_0\\sin\\alpha}{g}$, максимальна висота підйому $H = \\frac{v_0^2\\sin^2\\alpha}{2g}$, а горизонтальна дальність $L = \\frac{v_0^2\\sin(2\\alpha)}{g}$ досягає максимуму при $\\alpha = 45^\\circ$.',
+          'При врахуванні опору повітря ($\\vec{F}_{\\text{оп}} = -k\\vec{v}$) рівняння руху по осях стають зв’язаними через дисипацію: горизонтальна швидкість спадає експоненціально $v_x(t) = v_{0x}e^{-(k/m)t}$, низхідна гілка траєкторії стає крутішою за висхідну (балістична крива Тартальї), а оптимальний кут максимальної дальності зміщується в область $\\alpha < 45^\\circ$.'
+        ],
+        en: [
+          'Projectile motion launched at angle $\\alpha$ with initial speed $v_0$ exemplifies **Galileo’s principle of independence of motions**. In vacuum ($k = 0$), no horizontal force acts along $Ox$, keeping $v_x = v_0\\cos\\alpha = \\text{const}$, while along the vertical axis $Oy$ gravity produces constant downward acceleration $a_y = -g$.',
+          'Eliminating time $t = \\frac{x}{v_0\\cos\\alpha}$ from $x(t) = v_0\\cos\\alpha \\cdot t$ and $y(t) = v_0\\sin\\alpha \\cdot t - \\frac{1}{2}gt^2$ yields the **parabolic trajectory equation**: $y(x) = x\\tan\\alpha - \\frac{gx^2}{2v_0^2\\cos^2\\alpha}$. The time of flight is $t_{\\text{flight}} = \\frac{2v_0\\sin\\alpha}{g}$, the apex height is $H = \\frac{v_0^2\\sin^2\\alpha}{2g}$, and the horizontal range $L = \\frac{v_0^2\\sin(2\\alpha)}{g}$ peaks at $\\alpha = 45^\\circ$.',
+          'When linear aerodynamic drag ($\\vec{F}_d = -k\\vec{v}$) is introduced, horizontal velocity decays exponentially as $v_x(t) = v_{0x}e^{-(k/m)t}$, the descending branch becomes steeper than the ascending branch (Tartaglia’s ballistic curve), and the optimal launch angle for maximum range shifts below $45^\\circ$.'
+        ]
+      },
+      cradle: {
+        uk: [
+          'Колиска Ньютона наочно демонструє, що **одного лише закону збереження імпульсу недостатньо** для однозначного визначення результату удару — необхідне одночасне виконання і закону збереження імпульсу, і закону збереження механічної енергії. Коли $N$ куль однакової маси $m$ налітають зі швидкістю $v_0$ на ланцюжок нерухомих куль, через них поширюється пружний імпульс стиснення (хвиля Герца).',
+          'Припустимо, що після удару $N$ куль зі швидкістю $v_0$ відскочило б $k$ куль зі швидкістю $u$. Тоді із збереження імпульсу $Nmv_0 = kmu$ та збереження кінетичної енергії $N\\frac{mv_0^2}{2} = k\\frac{mu^2}{2}$ шляхом ділення другого рівняння на перше отримуємо $u = v_0$, а отже, обов’язково **$k = N$**. Тобто відлітає рівно стільки ж куль, скільки було відхилено на початку!',
+          'Якщо коефіцієнт відновлення $e < 1$ (неідеальна пружність сталі та втрати на акустичне випромінювання), під час кожного удару частина енергії розсіюється у тепло $Q$. Через це центральні кулі поступово набувають невеликої синфазної швидкості, а амплітуда коливань усієї системи згасає.'
+        ],
+        en: [
+          'Newton’s cradle vividly demonstrates that **conservation of momentum alone is insufficient** to uniquely determine the outcome of a collision—both linear momentum and kinetic energy must be conserved simultaneously. When $N$ identical spheres of mass $m$ strike a stationary row at velocity $v_0$, a rapid elastic compression pulse (Hertzian contact wave) propagates through the chain.',
+          'Suppose $k$ spheres were ejected at velocity $u$ after $N$ spheres struck at speed $v_0$. Enforcing momentum conservation $Nmv_0 = kmu$ and kinetic energy conservation $N\\frac{mv_0^2}{2} = k\\frac{mu^2}{2}$ and dividing the two equations immediately yields $u = v_0$ and therefore **$k = N$**. Exactly the same number of spheres must swing out on the far side!',
+          'When the restitution coefficient $e < 1$ (accounting for internal acoustic losses and imperfect steel elasticity), each impact dissipates a small fraction of mechanical energy into heat $Q$, gradually exciting small collective oscillations across all spheres.'
+        ]
+      },
+      centripetal: {
+        uk: [
+          'Будь-який криволінійний рух є прискореним: навіть за незмінного модуля швидкості ($v = \\text{const}$) вектор швидкості $\\vec{v}$, спрямований по дотичній до траєкторії, безперервно змінює свій напрямок у просторі. Швидкість повороту вектора $\\vec{v}$ характеризується **доцентровим (нормальним) прискоренням** $\\vec{a}_n$, яке завжди напрямлене вздовж радіуса до центра кривини траєкторії.',
+          'З геометричної подібності трикутника переміщень $\\Delta\\vec{r}$ і трикутника приросту швидкостей $\\Delta\\vec{v}$ за малий інтервал $\\Delta t \\to 0$ випливає формула Гюйгенса: $a_n = \\frac{v^2}{R} = \\omega^2 R$. За ІІ законом Ньютона це прискорення створюється рівнодійною всіх сил у радіальному напрямку $F_n = \\frac{mv^2}{R}$. На горизонтальному повороті роль утримувальної доцентрової сили виконує сила тертя спокою коліс об дорожнє полотно: $F_{\\text{тер}} \\le \\mu mg$.',
+          'Умова безпечного проходження повороту без заносу має вигляд $\\frac{mv^2}{R} \\le \\mu mg$, звідки критична швидкість **$v_{\\text{max}} = \\sqrt{\\mu g R}$**. Якщо перевищити цей поріг, поперечного зчеплення шин не вистачить для викривлення траєкторії по радіусу $R$, і автомобіль за інерцією зійде з дуги по дотичній (на більший радіус).'
+        ],
+        en: [
+          'Every curvilinear motion is accelerated: even when speed $v = \\text{const}$ is uniform, the tangent velocity vector $\\vec{v}$ continuously changes direction. The rate of rotation of $\\vec{v}$ defines the **centripetal (normal) acceleration** $\\vec{a}_n$, directed radially inward toward the center of curvature.',
+          'From the geometric similarity of the position triangle $\\Delta\\vec{r}$ and velocity-change triangle $\\Delta\\vec{v}$ as $\\Delta t \\to 0$, one derives $a_n = \\frac{v^2}{R} = \\omega^2 R$. By Newton’s second law, this acceleration requires a net inward radial force $F_n = \\frac{mv^2}{R}$. On a flat horizontal turn, static tire friction provides this centripetal force: $F_{\\text{fr}} \\le \\mu mg$.',
+          'The no-skid stability condition $\\frac{mv^2}{R} \\le \\mu mg$ sets the critical cornering speed **$v_{\\text{max}} = \\sqrt{\\mu g R}$**. Exceeding $v_{\\text{max}}$ means static friction can no longer bend the trajectory along radius $R$, causing the vehicle to skid outward toward the tangent.'
+        ]
+      },
+      archimedes: {
+        uk: [
+          'Гідростатичний тиск у нерухомій рідині густиною $\\rho_{\\text{рід}}$ зростає з глибиною за законом Паскаля — Стевіна: $p(h) = p_0 + \\rho_{\\text{рід}} g h$. Через це на нижню грань зануреного тіла діє більший тиск, ніж на верхню, а поверхневий інтеграл сил тиску по замкненій поверхні тіла дає напрямлену вертикально вгору **виштовхувальну силу Архімеда** $\\vec{F}_A$.',
+          'Модуль сили Архімеда дорівнює вазі рідини в об’ємі зануреної частини тіла $V_{\\text{зан}}$: $F_A = \\rho_{\\text{рід}} g V_{\\text{зан}}$. Динаміка вертикального руху тіла об’ємом $V$ і густиною $\\rho_{\\text{тіла}}$ визначається балансом сили тяжіння $mg = \\rho_{\\text{тіла}} g V$, сили Архімеда $F_A$ та гідродинамічного опору води.',
+          'Співвідношення густин визначає три режими плавання: 1) при **$\\rho_{\\text{тіла}} < \\rho_{\\text{рід}}$** тіло спливає і в рівновазі занурене на частку об’єму $\\frac{V_{\\text{зан}}}{V} = \\frac{\\rho_{\\text{тіла}}}{\\rho_{\\text{рід}}}$; 2) при **$\\rho_{\\text{тіла}} = \\rho_{\\text{рід}}$** тіло перебуває в байдужій рівновазі на будь-якій глибині (як підводний човен); 3) при **$\\rho_{\\text{тіла}} > \\rho_{\\text{рід}}$** тіло тоне з ефективною вагою у воді $P_{\\text{еф}} = (\\rho_{\\text{тіла}} - \\rho_{\\text{рід}})gV$.'
+        ],
+        en: [
+          'Hydrostatic pressure in a stationary fluid of density $\\rho_{\\text{fluid}}$ increases linearly with depth: $p(h) = p_0 + \\rho_{\\text{fluid}} g h$. Because the upward pressure on the bottom surface of a submerged body exceeds the downward pressure on its top, integrating pressure forces over the body’s surface yields an upward **Archimedean buoyant force** $\\vec{F}_A$.',
+          'By Archimedes’ principle, the buoyant force equals the weight of the displaced fluid: $F_A = \\rho_{\\text{fluid}} g V_{\\text{sub}}$. Vertical motion of a body of total volume $V$ and density $\\rho_{\\text{body}}$ is governed by the interplay between weight $mg = \\rho_{\\text{body}} g V$, buoyancy $F_A$, and fluid drag.',
+          'Three regimes emerge from the density ratio: 1) if **$\\rho_{\\text{body}} < \\rho_{\\text{fluid}}$**, the body floats at the surface with submerged fraction $\\frac{V_{\\text{sub}}}{V} = \\frac{\\rho_{\\text{body}}}{\\rho_{\\text{fluid}}}$; 2) if **$\\rho_{\\text{body}} = \\rho_{\\text{fluid}}$**, it achieves neutral buoyancy at any depth; 3) if **$\\rho_{\\text{body}} > \\rho_{\\text{fluid}}$**, it sinks to the bottom with apparent weight $W_{\\text{app}} = (\\rho_{\\text{body}} - \\rho_{\\text{fluid}})gV$.'
+        ]
+      },
+      gas: {
+        uk: [
+          'З погляду молекулярно-кінетичної теорії (МКТ), макроскопічний тиск газу $P$ є результатом мільярдів пружних ударів хаотично рухомих молекул об стінки циліндра та рухомий поршень. Середня кінетична енергія поступального руху однієї молекули прямо пропорційна абсолютній температурі: $\\langle \\varepsilon_k \\rangle = \\frac{3}{2}k_B T$, де $k_B = 1.38\\times 10^{-23}\\text{ Дж/К}$ — стала Больцмана.',
+          'Основне рівняння МКТ $P = n k_B T = \\frac{1}{3}n m_0 \\langle v^2 \\rangle$ при переході до кількості речовини $\\nu = N / N_A$ дає **рівняння стану ідеального газу Менделєєва — Клапейрона**: $PV = \\nu R T$, де $R = k_B N_A = 8.314\\text{ Дж/(моль}\\cdot\\text{К)}$. Внутрішня енергія одноатомного ідеального газу визначається лише його температурою: $U = \\frac{3}{2}\\nu R T = \\frac{3}{2}PV$.',
+          'У нашій 3D-установці при фіксованій кількості газу $\\nu$ ви можете дослідити **ізотермічне стиснення Бойля — Маріотта** ($T = \\text{const} \\implies P \\propto 1/V$) та **ізохорний чи ізобарний нагрів Гей-Люссака / Шарля**: підвищення температури $T$ збільшує середню квадратичну швидкість частинок $v_{\\text{кв}} = \\sqrt{3RT/M}$ і змушує газ виконувати додатну термодинамічну роботу $A = \\int P\\,dV$.'
+        ],
+        en: [
+          'In the kinetic theory of gases, macroscopic pressure $P$ originates from the collective momentum transfer of myriad molecules elastically colliding with the cylinder walls and piston. The average translational kinetic energy per molecule is directly proportional to absolute temperature: $\\langle \\varepsilon_k \\rangle = \\frac{3}{2}k_B T$, where $k_B = 1.38\\times 10^{-23}\\text{ J/K}$ is Boltzmann’s constant.',
+          'Combining $P = n k_B T = \\frac{1}{3}n m_0 \\langle v^2 \\rangle$ with molar amount $\\nu = N/N_A$ yields the **Ideal Gas Law (Clapeyron–Mendeleev equation)**: $PV = \\nu R T$, with universal gas constant $R = 8.314\\text{ J/(mol}\\cdot\\text{K)}$. For a monatomic ideal gas, internal energy depends solely on temperature: $U = \\frac{3}{2}\\nu R T = \\frac{3}{2}PV$.',
+          'Using the sliders, explore **Boyle’s isothermal compression** ($T = \\text{const} \\implies P \\propto 1/V$) and **Charles’s / Gay-Lussac’s thermal laws**: raising temperature $T$ increases the root-mean-square molecular speed $v_{\\text{rms}} = \\sqrt{3RT/M}$ and drives mechanical expansion work $W = \\int P\\,dV$.'
+        ]
+      },
+      wavefront: {
+        uk: [
+          'За **принципом Гюйгенса — Френеля**, кожна точка середовища, до якої дійшов світловий хвильовий фронт, стає джерелом вторинних сферичних (у прозорому середовищі — півсферичних) когерентних хвиль. Нове положення хвильового фронту в наступний момент часу $t + \\Delta t$ визначається як геометрична обвідна (огинаюча поверхня) усіх вторинних хвиль.',
+          'Коли плоский світловий фронт падає під кутом $\\alpha$ із середовища з показником заломлення $n_1$ на межу поділу з оптично густішим середовищем $n_2 > n_1$, його фазова швидкість зменшується від $v_1 = c/n_1$ до $v_2 = c/n_2$. Поки правий край фронту проходить у першому середовищі відстань $BC = v_1 \\Delta t = AB\\sin\\alpha$, лівий край у другому середовищі встигає утворити півсферу меншого радіуса $AD = v_2 \\Delta t = AB\\sin\\gamma$. Ділення цих відрізків дає **закон заломлення Снелліуса**: $\\frac{\\sin\\alpha}{\\sin\\gamma} = \\frac{v_1}{v_2} = \\frac{n_2}{n_1}$.',
+          'Зверніть увагу на 3D-сцену: при вході в оптично густіше скло ($n_2 > n_1$) відстань між сусідніми гребенями хвильового фронту (довжина хвилі $\\lambda_2 = \\lambda_0 / n_2$) стискається в $n_2/n_1$ разів, тоді як частота коливань $\\nu$ залишається незмінною, а нормаль до хвильового фронту повертається ближче до перпендикуляра ($\\gamma < \\alpha$).'
+        ],
+        en: [
+          'According to the **Huygens–Fresnel principle**, every point on an advancing light wavefront acts as a point source of secondary spherical wavelets. The wavefront surface at a later instant $t + \\Delta t$ is formed by the forward tangent envelope of all these secondary wavelets.',
+          'When an oblique plane wavefront strikes the interface between media of refractive indices $n_1$ and $n_2 > n_1$ at angle $\\alpha$, its phase velocity drops from $v_1 = c/n_1$ to $v_2 = c/n_2$. While the outer edge of the wavefront travels distance $BC = v_1 \\Delta t = AB\\sin\\alpha$ in medium 1, the edge that entered medium 2 expands only to radius $AD = v_2 \\Delta t = AB\\sin\\gamma$. Taking the ratio immediately proves **Snell’s Law of Refraction**: $\\frac{\\sin\\alpha}{\\sin\\gamma} = \\frac{v_1}{v_2} = \\frac{n_2}{n_1}$.',
+          'Observe in 3D how entering optically denser glass ($n_2 > n_1$) compresses the spacing between wavefront crests ($\lambda_2 = \\lambda_0 / n_2$) while keeping frequency $\\nu$ constant, rotating the wavefront normal toward the interface normal ($\\gamma < \\alpha$).'
+        ]
+      },
+      interference: {
+        uk: [
+          'Класичний дослід Томаса Юнга (1801 р.) довів хвильову природу світла. Коли плоский монохроматичний світловий фронт падає на екран із двома вузькими паралельними щілинами $S_1$ та $S_2$ на відстані $d$ одна від одної, за принципом Гюйгенса щілини стають двома **когерентними джерелами** циліндричних хвиль з однаковою частотою і сталою різницею фаз.',
+          'У довільній точці екрана на відстані $L \\gg d$ накладаються дві хвилі, що пройшли геометричні шляхи $r_1$ та $r_2$. **Оптична різниця ходу** при малих кутах становить $\\Delta = r_2 - r_1 = d\\sin\\theta \\approx d\\frac{x}{L}$, що відповідає різниці фаз $\\Delta\\varphi = \\frac{2\\pi}{\\lambda}\\Delta$. Результуюча інтенсивність розподіляється за законом $I(x) = 4I_0 \\cos^2\\!\\left(\\frac{\\pi d \\cdot x}{\\lambda L}\\right)$: у максимумах ($\Delta = m\\lambda$) інтенсивність учетверо перевищує інтенсивність однієї щілини ($4I_0$), а в мінімумах ($\Delta = (m + \\tfrac{1}{2})\\lambda$) світло + світло дає темряву ($I = 0$).',
+          'Відстань між сусідніми світлими смугами (ширина інтерференційної смуги) дорівнює **$\\Delta x = \\frac{\\lambda L}{d}$**. Тому збільшення довжини хвилі $\\lambda$ (перехід від фіолетового світла до червоного) розширює смуги на екрані, а розсування щілин $d$ робить інтерференційну гребінку густішою.'
+        ],
+        en: [
+          'Thomas Young’s double-slit experiment (1801) established the wave nature of light. When a plane monochromatic wavefront illuminates two narrow slits $S_1$ and $S_2$ separated by distance $d$, Huygens’ principle turns the slits into two **coherent cylindrical wave sources** with identical frequency and locked phase.',
+          'At position $x$ on a screen at distance $L \\gg d$, the two waves arrive with **path difference** $\\Delta = r_2 - r_1 = d\\sin\\theta \\approx d\\frac{x}{L}$ and phase difference $\\Delta\\varphi = \\frac{2\\pi}{\\lambda}\\Delta$. Superposition redistributes energy into fringes of intensity $I(x) = 4I_0 \\cos^2\\!\\left(\\frac{\\pi d \\cdot x}{\\lambda L}\\right)$: constructive maxima ($\\Delta = m\\lambda$) reach $4I_0$, while destructive minima ($\\Delta = (m + \\tfrac{1}{2})\\lambda$) cancel to zero ($I = 0$).',
+          'The fringe spacing between adjacent bright bands is **$\\Delta x = \\frac{\\lambda L}{d}$**. Increasing wavelength $\\lambda$ (shifting from violet toward red light) widens the interference fringes, whereas increasing slit separation $d$ packs the fringes closer together.'
+        ]
+      },
+      dispersion: {
+        uk: [
+          '**Нормальною дисперсією світла** називається залежність абсолютного показника заломлення речовини $n(\\lambda)$ від довжини світлової хвилі $\\lambda$ (або частоти $\\omega$). В області прозорості скла чи кварцу показник заломлення монотонно зростає при зменшенні довжини хвилі, що описується **емпіричною формулою Коші**: $n(\\lambda) = A + \\frac{B}{\\lambda^2} + \\frac{C}{\\lambda^4}$, де сталі $A, B, C$ визначаються власною частотою електронних осциляторів атома.',
+          'При проходженні променя крізь тригранну призму із заломним кутом $A$ промінь двічі заломлюється на її гранях: $\\sin\\alpha_1 = n\\sin\\gamma_1$, $\\gamma_1 + \\gamma_2 = A$, $\\sin\\alpha_2 = n\\sin\\gamma_2$. Повний кут відхилення променя від початкового напрямку становить $\\delta(\\lambda) = \\alpha_1 + \\alpha_2 - A$ (для тонкої призми $\\delta \\approx (n(\\lambda) - 1)A$).',
+          'Оскільки для коротких фіолетових хвиль ($\lambda \\approx 400\\text{ нм}$) фазова швидкість у склі найменша, а показник заломлення найбільший ($n_{\\text{фіол}} > n_{\\text{черв}}$), **фіолетові промені заломлюються сильніше за червоні** ($\delta_{\\text{фіол}} > \\delta_{\\text{черв}}$), розкладаючи вузький пучок білого світла у неперервний спектр Ньютона.'
+        ],
+        en: [
+          '**Optical dispersion** is the dependence of a medium’s refractive index $n(\\lambda)$ on wavelength $\\lambda$. In transparent dielectrics such as crown or flint glass (normal dispersion), $n(\\lambda)$ increases as wavelength decreases according to **Cauchy’s equation**: $n(\\lambda) = A + \\frac{B}{\\lambda^2} + \\frac{C}{\\lambda^4}$, driven by ultraviolet electronic resonances of the material.',
+          'Tracing a ray through a triangular prism of apex angle $A$ requires two Snell’s-law refractions: $\\sin\\alpha_1 = n\\sin\\gamma_1$, $\\gamma_1 + \\gamma_2 = A$, and $\\sin\\alpha_2 = n\\sin\\gamma_2$. The total angular deviation from the original beam direction is $\\delta(\\lambda) = \\alpha_1 + \\alpha_2 - A$ (or $\\delta \\approx (n(\\lambda) - 1)A$ for small apex angles).',
+          'Because short-wavelength violet light ($\\lambda \\approx 400\\text{ nm}$) travels slower in glass and experiences a higher refractive index than red light ($n_{\\text{violet}} > n_{\\text{red}}$), **violet rays deviate most strongly** ($\\delta_{\\text{violet}} > \\delta_{\\text{red}}$), fanning white light out into Newton’s continuous rainbow spectrum.'
+        ]
+      },
+      emwave: {
+        uk: [
+          'Згідно з теорією Джеймса Клерка Максвелла (1865 р.), змінне у часі магнітне поле породжує вихрове електричне поле ($\\nabla \\times \\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t}$), а змінне електричне поле (струм зміщення) породжує вихрове магнітне поле ($\\nabla \\times \\vec{B} = \\mu_0\\varepsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$). Внаслідок цього взаємного перетворення у просторі поширюється самопідтримувана **поперечна електромагнітна хвиля** зі швидкістю світла $c = \\frac{1}{\\sqrt{\\varepsilon_0\\mu_0}} \\approx 3\\times 10^8\\text{ м/с}$.',
+          'У плоскій біжучій хвилі вектори напруженості електричного поля $\\vec{E}(x,t) = \\vec{E}_0\\sin(kx - \\omega t)$ та індукції магнітного поля $\\vec{B}(x,t) = \\vec{B}_0\\sin(kx - \\omega t)$ коливаються **строго в одній фазі** (синфазно), взаємно перпендикулярні ($\\vec{E} \\perp \\vec{B}$) та перпендикулярні до напрямку поширення хвилі $\\vec{k}$, утворюючи праву трійку векторів. У вакуумі їхні амплітуди пов’язані співвідношенням $E_0 = c B_0$.',
+          'Густина потоку електромагнітної енергії (потужність, що переноситься хвилею через одиницю площі) описується **вектором Умова — Пойнтінга** $\\vec{S} = \\frac{1}{\\mu_0}[\\vec{E} \\times \\vec{B}]$, а об’ємні густини енергії електричного $w_E = \\frac{1}{2}\\varepsilon_0 E^2$ та магнітного $w_B = \\frac{B^2}{2\\mu_0}$ полів у кожній точці хвилі точно рівні між собою ($w_E = w_B$).'
+        ],
+        en: [
+          'According to James Clerk Maxwell’s electrodynamics, a time-varying magnetic field induces a solenoidal electric field ($\\nabla \\times \\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t}$), while a time-varying electric displacement current generates a magnetic field ($\\nabla \\times \\vec{B} = \\mu_0\\varepsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$). Together they sustain a self-propagating **transverse electromagnetic wave** traveling at the speed of light $c = \\frac{1}{\\sqrt{\\varepsilon_0\\mu_0}} \\approx 3\\times 10^8\\text{ m/s}$.',
+          'In a plane travelling wave, the electric field $\\vec{E}(x,t) = \\vec{E}_0\\sin(kx - \\omega t)$ and magnetic field $\\vec{B}(x,t) = \\vec{B}_0\\sin(kx - \\omega t)$ oscillate **strictly in phase**, are mutually orthogonal ($\\vec{E} \\perp \\vec{B}$), and form a right-handed triad with the wavevector $\\vec{k}$, with amplitudes linked by $E_0 = c B_0$.',
+          'Directional energy flux is given by the **Poynting vector** $\\vec{S} = \\frac{1}{\\mu_0}[\\vec{E} \\times \\vec{B}]$, and the instantaneous electric energy density $w_E = \\frac{1}{2}\\varepsilon_0 E^2$ and magnetic energy density $w_B = \\frac{B^2}{2\\mu_0}$ are equal at every point and instant ($w_E = w_B$).'
+        ]
+      },
+      bernoulli: {
+        uk: [
+          'Стаціонарний ламінарний потік ідеальної нестисливої рідини ($\\rho = \\text{const}$) у трубі змінного перерізу підпорядковується двом фундаментальним законам. Перший — **рівняння неперервності струменя**: об’ємна витрата рідини $Q_V = S_1 v_1 = S_2 v_2 = \\text{const}$ однакова в кожному перерізі, тому у вузькій горловині труби Вентурі ($S_2 < S_1$) потік прискорюється у $S_1/S_2$ разів.',
+          'Другий — **інтеграл Бернуллі** (закон збереження механічної енергії для одиниці об’єму рідини): вздовж лінії течії сума статичного тиску $p$, динамічного (швидкісного) напору $\\frac{1}{2}\\rho v^2$ та гідростатичного тиску $\\rho g h$ є сталою: $p_1 + \\frac{1}{2}\\rho v_1^2 = p_2 + \\frac{1}{2}\\rho v_2^2 = \\text{const}$ (для горизонтальної труби $h_1 = h_2$).',
+          'Саме звідси випливає парадоксальний на перший погляд **гідродинамічний ефект Вентурі**: щоб рідина прискорилася при вході у вузьку ділянку ($v_2 > v_1$), на неї має діяти додатний перепад тиску $p_1 - p_2 = \\frac{1}{2}\\rho v_1^2\\!\\left[\\left(\\frac{S_1}{S_2}\\right)^2 - 1\\right] > 0$. Отже, там, де швидкість потоку найбільша, статичний тиск на стінки труби (і рівень рідини у п’єзометричній трубці) є найменшим!'
+        ],
+        en: [
+          'Steady laminar flow of an ideal incompressible fluid ($\\rho = \\text{const}$) through a variable-cross-section pipe obeys two conservation laws. First is the **continuity equation**: volume flow rate $Q_V = S_1 v_1 = S_2 v_2 = \\text{const}$ is invariant along the tube, forcing the fluid to accelerate wherever the cross-section narrows ($S_2 < S_1 \\implies v_2 > v_1$).',
+          'Second is **Bernoulli’s equation** (conservation of mechanical energy per unit volume): along any streamline, the sum of static pressure $p$, dynamic pressure $\\frac{1}{2}\\rho v^2$, and hydrostatic head $\\rho g h$ remains constant: $p_1 + \\frac{1}{2}\\rho v_1^2 = p_2 + \\frac{1}{2}\\rho v_2^2 = \\text{const}$ for a horizontal pipe.',
+          'This explains the **Venturi effect**: accelerating a fluid parcel into the constriction requires a forward pressure gradient $p_1 - p_2 = \\frac{1}{2}\\rho v_1^2\\!\\left[\\left(\\frac{S_1}{S_2}\\right)^2 - 1\\right] > 0$. Consequently, where flow speed is highest, static pressure against the pipe walls (shown by the manometer column) is lowest!'
+        ]
+      },
+      lens: {
+        uk: [
+          'Двоопукла збиральна лінза працює як **фазовий трансформатор світлового хвильового фронту**. Оскільки в центрі лінза товстіша, ніж на краях, центральна частина сферичного чи плоского світлового фронту проходить більший шлях у склі з показником заломлення $n > 1$ (де фазова швидкість $v = c/n$ менша) і затримується за фазою відносно периферійних ділянок фронту, перетворюючи розбіжний фронт на збіжний сферичний фронт, що стягується у фокус.',
+          'Оптична сила тонкої лінзи у повітрі визначається **формулою лінzовика**: $D = \\frac{1}{F} = (n - 1)\\left(\\frac{1}{R_1} + \\frac{1}{R_2}\\right)$ (в діоптріях, $\\text{дптр} = \\text{м}^{-1}$). Відстань від предмета до лінзи $d$, від лінзи до зображення $f$ та фокусна відстань $F$ пов’язані **формулою тонкої лінзи Гаусса**: $\\frac{1}{d} + \\frac{1}{f} = \\frac{1}{F} \\implies f = \\frac{dF}{d - F}$, а лінійне збільшення становить $\\Gamma = \\frac{H}{h} = \\frac{|f|}{d}$.',
+          'Залежно від положення предмета $d$ відносно фокуса $F$ та подвійного фокуса $2F$ змінюється характер зображення: при $d > 2F$ зображення дійсне, обернене і зменшене (як на матриці фотоапарата або сітківці ока); при $F < d < 2F$ — дійсне, обернене і збільшене (проєктор); при $d < F$ промені після лінзи розходяться і око бачить уявне, пряме та збільшене зображення (лупа).'
+        ],
+        en: [
+          'A biconvex converging lens acts as a **spatial phase transformer for light wavefronts**. Because the glass ($n > 1$) is thickest along the optical axis, the central portion of an incident wavefront travels slower ($v = c/n$) over a longer path than the outer edges, bending a diverging or plane wavefront into a converging spherical wavefront.',
+          'Optical power $D = 1/F$ (in diopters, $\\text{m}^{-1}$) is given by the **Lensmaker’s equation** $D = (n - 1)\\left(\\frac{1}{R_1} + \\frac{1}{R_2}\\right)$. Object distance $d$, image distance $f$, and focal length $F$ satisfy the **Gaussian thin-lens equation** $\\frac{1}{d} + \\frac{1}{f} = \\frac{1}{F} \\implies f = \\frac{dF}{d - F}$, with lateral magnification $\\Gamma = \\frac{|f|}{d}$.',
+          'Varying object distance $d$ relative to $F$ and $2F$ transitions across three optical regimes: for $d > 2F$ the image is real, inverted, and diminished (camera sensor / human eye); for $F < d < 2F$ it is real, inverted, and magnified (projector); and for $d < F$ rays diverge to form a virtual, upright, magnified image (magnifying glass).'
+        ]
+      },
+      lorentz: {
+        uk: [
+          'На точковий заряд $q$, що рухається зі швидкістю $\\vec{v}$ в однорідному магнітному полі з індукцією $\\vec{B}$, діє магнітна **сила Лоренца**: $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$. За визначенням векторного добутку, вектор $\\vec{F}_L$ у кожній точці траєкторії строго перпендикулярний як до ліній поля $\\vec{B}$, так і до миттєвої швидкості $\\vec{v}$. Тому потужність сили Лоренца тотожно дорівнює нулю ($P = \\vec{F}_L \\cdot \\vec{v} = 0$), а **кінетична енергія та модуль швидкості частинки в магнітному полі залишаються незмінними**!',
+          'Якщо швидкість $\\vec{v}$ утворює кут $\\alpha$ з вектором $\\vec{B}$, рух розкладається на два незалежні рухи: рівномірний поступальний рух уздовж ліній поля зі швидкістю $v_\\parallel = v\\cos\\alpha = \\text{const}$ та рівномірне обертання в перпендикулярній площині зі швидкістю $v_\\perp = v\\sin\\alpha$. Доцентрове прискорення забезпечується силою Лоренца: $\\frac{mv_\\perp^2}{R} = |q|v_\\perp B$, звідки **ларморівський (циклотронний) радіус** $R = \\frac{mv\\sin\\alpha}{|q|B}$.',
+          'Суперпозиція обертання та поздовжнього дрейфу утворює в 3D-просторі **гвинтову лінію (спіраль)**. Період одного оберту $T = \\frac{2\\pi R}{v_\\perp} = \\frac{2\\pi m}{|q|B}$ та циклотронна частота $\\omega_c = \\frac{|q|B}{m}$ (у нерелятивістській границі) не залежать від швидкості частинки, а крок спіралі дорівнює $h = v_\\parallel T = \\frac{2\\pi m v\\cos\\alpha}{|q|B}$. На цьому принципі працюють циклотрони, мас-спектрометри та магнітні пастки плазми.'
+        ],
+        en: [
+          'A point charge $q$ moving at velocity $\\vec{v}$ through a uniform magnetic field $\\vec{B}$ experiences the magnetic **Lorentz force** $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$. Because the cross product is always orthogonal to $\\vec{v}$, the mechanical power delivered by the magnetic field is identically zero ($P = \\vec{F}_L \\cdot \\vec{v} = 0$), leaving the particle’s **speed $v$ and kinetic energy strictly constant**!',
+          'Decomposing velocity relative to $\\vec{B}$ at pitch angle $\\alpha$ yields uniform drift along the field lines at $v_\\parallel = v\\cos\\alpha = \\text{const}$ and circular motion in the transverse plane at $v_\\perp = v\\sin\\alpha$. Equating centripetal force to Lorentz force gives $\\frac{mv_\\perp^2}{R} = |q|v_\\perp B$, defining the **Larmor (cyclotron) radius** $R = \\frac{mv\\sin\\alpha}{|q|B}$.',
+          'Combining circular gyration with parallel drift traces a **3D helix**. Crucially, the cyclotron period $T = \\frac{2\\pi m}{|q|B}$ and frequency $\\omega_c = \\frac{|q|B}{m}$ are independent of particle speed, with helical pitch $h = v_\\parallel T = \\frac{2\\pi m v\\cos\\alpha}{|q|B}$. This governs cyclotrons, mass spectrometers, and magnetic plasma confinement.'
+        ]
+      },
+      faraday: {
+        uk: [
+          'Явище електромагнітної індукції, відкрите Майклом Фарадеєм у 1831 році, полягає у виникненні вихрового електричного поля та електрорушійної сили (ЕРС індукції $\\mathcal{E}_i$) у замкненому провідному контурі при будь-якій зміні магнітного потоку $\\Phi = \\int \\vec{B}\\cdot d\\vec{S}$ крізь поверхню, обмежену цим контуром.',
+          'За **законом Фарадея — Максвелла** з урахуванням $N$ витків котушки, миттєва ЕРС дорівнює швидкості зміни магнітного потоку зі знаком мінус: $\\mathcal{E}_i = -N\\frac{d\\Phi}{dt}$, а індукційний струм у колі з опором $R$ становить $I_i = \\frac{\\mathcal{E}_i}{R}$. Знак мінус математично виражає **правило Ленца**: індукційний струм завжди має такий напрямок, що створене ним власне магнітне поле $\\vec{B}_{\\text{інд}}$ протидіє тій зміні зовнішнього потоку $\\Delta\\Phi$, яка його викликала.',
+          'Тому, коли північний полюс магніту наближається до котушки ($\\frac{d\\Phi}{dt} > 0$), котушка обертається до нього однойменним північним полюсом і відштовхує магніт; коли ж магніт віддаляється ($\\frac{d\\Phi}{dt} < 0$), котушка притягує його; а якщо магніт зупинити всередині котушки ($\\frac{d\\Phi}{dt} = 0$), струм миттєво зникає! Саме тому робота зовнішньої сили проти гальмівної сили Ленца перетворюється на електричну та джоулеву енергію $P = I_i^2 R$.'
+        ],
+        en: [
+          'Discovered by Michael Faraday in 1831, electromagnetic induction generates an electromotive force (induced EMF $\\mathcal{E}_i$) around a closed conducting loop whenever the magnetic flux $\\Phi = \\int \\vec{B}\\cdot d\\vec{S}$ threading the loop changes with time.',
+          'By **Faraday’s Law** for an $N$-turn coil, $\\mathcal{E}_i = -N\\frac{d\\Phi}{dt}$, driving an induced current $I_i = \\frac{\\mathcal{E}_i}{R}$ through resistance $R$. The minus sign encodes **Lenz’s Law**: the induced current always circulates in a direction whose own magnetic field $\\vec{B}_{\\text{ind}}$ opposes the flux change $\\Delta\\Phi$ that produced it.',
+          'Thus, plunging a magnet toward the coil ($\\frac{d\\Phi}{dt} > 0$) induces a repulsive pole that brakes the magnet; pulling it away ($\\frac{d\\Phi}{dt} < 0$) induces an attractive pole; and holding the magnet stationary inside ($\\frac{d\\Phi}{dt} = 0$) yields zero current. Mechanical work done against Lenz’s braking force converts directly into Joule electrical power $P = I_i^2 R$.'
+        ]
+      },
+      kepler: {
+        uk: [
+          'Рух планет, комет і штучних супутників у центральному полі тяжіння масивного тіла $M$ визначається законом всесвітнього тяжіння Ньютона $\\vec{F} = -G\\frac{Mm}{r^3}\\vec{r}$. Оскільки лінія дії центральної сили завжди проходить через центр Сонця, її момент відносно фокуса дорівнює нулю ($\\vec{M} = [\\vec{r} \\times \\vec{F}] = 0$), а отже, **орбітальний момент імпульсу планети $\\vec{L} = m[\\vec{r} \\times \\vec{v}] = \\text{const}$ строго зберігається**.',
+          'Із збереження моменту імпульсу безпосередньо випливає **ІІ закон Кеплера (закон площ)**: площа сектора $dS = \\frac{1}{2}|[\\vec{r} \\times d\\vec{r}]|$, яку замітає радіус-вектор планети за час $dt$, росте з постійною секторною швидкістю $\\frac{dS}{dt} = \\frac{L}{2m} = \\text{const}$. Траєкторією зв’язаного руху ($E < 0$) є еліпс $r(\\theta) = \\frac{a(1 - e^2)}{1 + e\\cos\\theta}$ із великою піввіссю $a$ та ексцентриситетом $e \\in [0, 1)$, у фокусі якого розташоване Сонце.',
+          'У **перигелії** (найближчій до Сонця точці, $r_{\\text{min}} = a(1 - e)$) гравітаційна потенціальна енергія $E_p = -\\frac{GMm}{r}$ є мінімальною, а орбітальна швидкість — максимальною: $v_{\\text{p}} = \\sqrt{\\frac{GM}{a}\\frac{1+e}{1-e}}$. В **афелії** ($r_{\\text{max}} = a(1 + e)$) швидкість спадає до $v_{\\text{a}} = \\sqrt{\\frac{GM}{a}\\frac{1-e}{1+e}}$, так що виконується співвідношення $v_{\\text{p}} / v_{\\text{a}} = (1 + e)/(1 - e)$.'
+        ],
+        en: [
+          'Planetary and satellite orbits in the central gravitational field of a body of mass $M$ are governed by Newton’s law of gravitation $\\vec{F} = -G\\frac{Mm}{r^3}\\vec{r}$. Because a central force exerts zero torque about the force center ($\\vec{\\tau} = [\\vec{r} \\times \\vec{F}] = 0$), the planet’s **orbital angular momentum $\\vec{L} = m[\\vec{r} \\times \\vec{v}] = \\text{const}$ is strictly conserved**.',
+          'Angular momentum conservation directly implies **Kepler’s Second Law (Law of Equal Areas)**: the areal velocity swept out by the radius vector is constant throughout the orbit, $\\frac{dS}{dt} = \\frac{L}{2m} = \\text{const}$. Every bound orbit ($E < 0$) traces an ellipse $r(\\theta) = \\frac{a(1 - e^2)}{1 + e\\cos\\theta}$ of semi-major axis $a$ and eccentricity $e \\in [0, 1)$ with the Sun at one focus.',
+          'At **perihelion** ($r_{\\text{min}} = a(1 - e)$), gravitational potential energy $E_p = -\\frac{GMm}{r}$ is lowest and orbital speed peaks at $v_{\\text{p}} = \\sqrt{\\frac{GM}{a}\\frac{1+e}{1-e}}$. At **aphelion** ($r_{\\text{max}} = a(1 + e)$), speed drops to $v_{\\text{a}} = \\sqrt{\\frac{GM}{a}\\frac{1-e}{1+e}}$, satisfying the exact ratio $v_{\\text{p}} / v_{\\text{a}} = (1 + e)/(1 - e)$.'
+        ]
+      },
+      gyroscope: {
+        uk: [
+          'Коли осесиметричне тверде тіло масою $m$ і радіусом $R$ котиться без проковзування по похилій площині ($v = \\omega R$), його повна кінетична енергія за теоремою Кеніга складається з енергії поступального руху центра мас $E_{\\text{пост}} = \\frac{1}{2}mv^2$ та енергії обертання навколо власної осі $E_{\\text{об}} = \\frac{1}{2}I\\omega^2$.',
+          'Момент інерції тіла зручно записати через **безрозмірний коефіцієнт розподілу маси** $\\beta = \\frac{I}{mR^2}$: для суцільної кулі $\\beta = 0.4$, для суцільного диска чи циліндра $\\beta = 0.5$, а для тонкостінного обруча (труби), де вся маса віддалена на край обода, $\\beta = 1.0$. Тоді закон збереження енергії має вигляд $mgh = \\frac{1}{2}mv^2(1 + \\beta)$, а лінійне прискорення центра мас уздовж схилу дорівнює **$a = \\frac{g\\sin\\alpha}{1 + \\beta}$**.',
+          'Зверніть увагу на фундаментальний результат: прискорення кочення $a$ **не залежить ані від маси $m$, ані від радіуса $R$**, а визначається виключно геометрією розподілу маси $\\beta$! Оскільки в обруча $\\beta = 1.0$ рівно половина ($50\\%$) потенціальної енергії витрачається на розкручування обода, а в суцільного диска ($\beta = 0.5$) — лише третина ($33.3\\%$), суцільний диск або куля завжди перемагають обруч у перегонах по схилу.'
+        ],
+        en: [
+          'When an axisymmetric rigid body of mass $m$ and radius $R$ rolls without slipping ($v = \\omega R$) down an incline, König’s theorem states that its total kinetic energy is the sum of translational kinetic energy $E_{\\text{trans}} = \\frac{1}{2}mv^2$ and rotational kinetic energy $E_{\\text{rot}} = \\frac{1}{2}I\\omega^2$.',
+          'Expressing the moment of inertia via the **dimensionless shape factor** $\\beta = \\frac{I}{mR^2}$ ($\beta = 0.4$ for a solid sphere, $\\beta = 0.5$ for a solid cylinder/disk, $\\beta = 1.0$ for a thin hoop) gives $E_k = \\frac{1}{2}mv^2(1 + \\beta)$. Conservation of energy $mgh = \\frac{1}{2}mv^2(1 + \\beta)$ yields the linear downhill acceleration **$a = \\frac{g\\sin\\alpha}{1 + \\beta}$**.',
+          'Remarkably, the rolling acceleration $a$ is **completely independent of total mass $m$ and radius $R$**, depending only on the mass distribution factor $\\beta$! Because a thin hoop ($\\beta = 1.0$) diverts $50\\%$ of its energy into rotation whereas a solid disk ($\\beta = 0.5$) diverts only $33.3\\%$, the solid disk or sphere always beats the hoop to the bottom.'
+        ]
+      },
+      standingwave: {
+        uk: [
+          '**Стояча хвиля** утворюється внаслідок інтерференції двох когерентних зустрічних біжучих хвиль однакової амплітуди та частоти, що поширюються вздовж закріпленої на кінцях натягнутої струни довжиною $L$: $y(x,t) = y_+(x - vt) + y_-(x + vt) = A\\sin(kx)\\cos(\\omega t)$. На відміну від біжучої хвилі, стояча хвиля не переносить енергію вздовж струни — енергія замкнена в кожній півхвилі між нерухомими точками.',
+          'Граничні умови жорсткого закріплення кінців $y(0,t) = y(L,t) = 0$ вимагають, щоб на довжині струни $L$ укладалося ціле число півхвиль: $L = n\\frac{\\lambda_n}{2}$ ($n = 1, 2, 3, \\dots$). Оскільки фазова швидкість поперечної хвилі в струні з силою натягу $T$ і лінійною густиною $\\mu = m/L$ становить $v = \\sqrt{T/\\mu}$, власні резонансні частоти (гармоніки) утворюють дискретний спектр: **$f_n = \\frac{n}{2L}\\sqrt{\\frac{T}{\\mu}} = n f_1$**.',
+          'Мода $n = 1$ називається **основним тоном**, а моди з $n \\ge 2$ — **обертонами**. Кожна $n$-та гармоніка має $n + 1$ нерухомих **вузлів** (де амплітуда завжди нульова, але деформація нахилу максимальна) та $n$ **пучностей** (де швидкість і амплітуда коливань максимальні). Саме спектр обертонів формує тембр усіх струнних музичних інструментів і слугує класичним прототипом квантування рівнів енергії у квантовій механіці.'
+        ],
+        en: [
+          'A **standing wave** forms from the superposition of two coherent counter-propagating waves of equal amplitude and frequency on a string of length $L$ fixed at both ends: $y(x,t) = y_+(x - vt) + y_-(x + vt) = A\\sin(kx)\\cos(\\omega t)$. Unlike a traveling wave, a standing wave does not transport net energy along the string; instead, kinetic and potential energy oscillate locally within each half-wavelength loop.',
+          'Boundary conditions $y(0,t) = y(L,t) = 0$ quantize the allowed wavelengths so that an integer number of half-waves fits along $L$: $L = n\\frac{\\lambda_n}{2}$ ($n = 1, 2, 3, \\dots$). With transverse wave speed $v = \\sqrt{T/\\mu}$ set by tension $T$ and linear mass density $\\mu$, the natural frequencies form a discrete harmonic series: **$f_n = \\frac{n}{2L}\\sqrt{\\frac{T}{\\mu}} = n f_1$**.',
+          'Mode $n = 1$ is the **fundamental frequency**, while $n \\ge 2$ are **overtones (harmonics)** featuring $n + 1$ stationary **nodes** and $n$ vibrating **antinodes**. This boundary-value quantization underpins musical acoustics and provides the classical wave analogy for quantized electron states in quantum mechanics.'
+        ]
+      },
+      doppler: {
+        uk: [
+          '**Ефект Доплера** (відкритий Крістіаном Доплером у 1842 р.) полягає в зміні частоти $\\nu$ та довжини хвилі $\\lambda$, які реєструє приймач, коли джерело хвиль та/або спостерігач рухаються відносно хвильового середовища. Фізична причина ефекту наочно видна на 3D-картині сферичних фронтів: кожен наступний гребінь хвилі випромінюється з нової точки простору, куди змістилося джерело за період $T_0 = 1/\\nu_0$.',
+          'Попереду джерела, що рухається зі швидкістю $v_s < c_s$, хвильові гребені стискаються: за період $T_0$ фронт проходить шлях $c_s T_0$, а джерело наздоганяє його на $v_s T_0$, тому довжина хвилі зменшується до $\\lambda_{\\text{перед}} = (c_s - v_s)T_0 = \\lambda_0\\!\\left(1 - \\frac{v_s}{c_s}\\right)$, а частота зростає до **$\\nu_{\\text{перед}} = \\frac{\\nu_0}{1 - v_s/c_s}$**. Позаду джерела фронти розтягуються: $\\lambda_{\\text{зад}} = \\lambda_0\\!\\left(1 + \\frac{v_s}{c_s}\\right)$ і частота падає до **$\\nu_{\\text{зад}} = \\frac{\\nu_0}{1 + v_s/c_s}$**.',
+          'Відношення швидкості джерела до швидкості хвилі $M = v_s / c_s$ називається **числом Маха**. При наближенні $v_s \\to c_s$ ($M \\to 1$) усі передні хвильові фронти накладаються в одній точці на носі джерела (звуковий бар’єр та ударний конус Маха з півкутом $\\sin\\mu = c_s/v_s$). Ефект Доплера використовується в медичному УЗД кровотоку, метеорадарах та астрофізиці (червоний зсув галактик).'
+        ],
+        en: [
+          'The **Doppler effect** (Christian Doppler, 1842) is the shift in observed frequency $\\nu$ and wavelength $\\lambda$ produced when a wave source moves relative to the propagation medium. The 3D wavefront geometry makes the mechanism transparent: each successive spherical wave crest is emitted from a newly displaced source position separated by $v_s T_0$.',
+          'Ahead of a source moving at speed $v_s < c_s$, wave crests crowd together so the wavelength shortens to $\\lambda_{\\text{front}} = (c_s - v_s)T_0 = \\lambda_0\\!\\left(1 - \\frac{v_s}{c_s}\\right)$ and the observed frequency rises to **$\\nu_{\\text{front}} = \\frac{\\nu_0}{1 - v_s/c_s}$**. Behind the source, wavefronts stretch out to $\\lambda_{\\text{back}} = \\lambda_0\\!\\left(1 + \\frac{v_s}{c_s}\\right)$ and the frequency drops to **$\\nu_{\\text{back}} = \\frac{\\nu_0}{1 + v_s/c_s}$**.',
+          'The ratio $M = v_s / c_s$ is the **Mach number**. As $M \\to 1$, forward wavefronts pile up constructively into a shock front (sonic boom and Mach cone with half-angle $\\sin\\mu = 1/M$). Doppler shifts are foundational to Doppler ultrasound imaging, weather radar, and cosmological redshift measurements.'
+        ]
+      },
+      brewster: {
+        uk: [
+          'Оскільки світло є **поперечною електромагнітною хвилею** ($\\vec{E} \\perp \\vec{k}$), вектор електричного поля $\\vec{E}$ може мати певну орієнтацію в площині, перпендикулярній до променя. Природне світло є неполяризованим (хаотична суперпозиція всіх азимутів коливань $\\vec{E}$). Лінійний поляризатор пропускає лише складову електричного поля, паралельну його осі пропускання.',
+          'Якщо на аналізатор падає лінійно поляризована хвиля з амплітудою $E_0$ та інтенсивністю $I_0 \\propto E_0^2$, а кут між площиною поляризації променя та віссю аналізатора дорівнює $\\theta$, то крізь аналізатор проходить проєкція амплітуди $E = E_0\\cos\\theta$. Оскільки інтенсивність світла пропорційна квадрату амплітуди поля, отримуємо **закон Малюса**: $I(\\theta) = I_0\\cos^2\\theta$. При схрещених поляризаторах ($\theta = 90^\\circ$) настає повне гасіння світла ($I = 0$).',
+          'Поляризація виникає також при відбиванні світла від межі діелектрика з показником заломлення $n$. За **законом Брюстера**, якщо кут падіння задовольняє умову $\\tan\\theta_B = n$ (при цьому відбитий і заломлений промені взаємно перпендикулярні: $\\theta_B + \\gamma = 90^\\circ$), то відбитий промінь стає **повністю лінійно поляризованим** перпендикулярно до площини падіння ($s$-поляризація). Саме це явище використовують у поляризаційних окулярах і фотофільтрах для усунення відблисків.'
+        ],
+        en: [
+          'Because light is a **transverse electromagnetic wave** ($\\vec{E} \\perp \\vec{k}$), the electric field vector $\\vec{E}$ oscillates in the plane perpendicular to propagation. Unpolarized natural light consists of rapidly varying random polarization orientations, whereas a linear polarizer transmits only the component of $\\vec{E}$ parallel to its transmission axis.',
+          'When linearly polarized light of amplitude $E_0$ and intensity $I_0 \\propto E_0^2$ encounters a second polarizer (analyzer) rotated by angle $\\theta$, only the projected amplitude $E = E_0\\cos\\theta$ passes through. Since optical intensity scales as the square of the electric field amplitude, the transmitted intensity obeys **Malus’s Law**: $I(\\theta) = I_0\\cos^2\\theta$, vanishing completely when the axes are crossed ($\\theta = 90^\\circ$).',
+          'Polarization also occurs by reflection off a dielectric of refractive index $n$. At **Brewster’s angle** $\\tan\\theta_B = n$ (where reflected and refracted rays are orthogonal, $\\theta_B + \\gamma = 90^\\circ$), the $p$-polarized component cannot radiate along the reflection direction, rendering the reflected beam **100% linearly $s$-polarized**—the principle behind anti-glare polarized sunglasses.'
+        ]
+      },
+      diffraction: {
+        uk: [
+          '**Дифракцією світла** називається сукупність явищ огинання світловим хвильовим фронтом країв перешкод і проникнення світла в область геометричної тіні, що зумовлено хвильовою природою світла. Коли плоский монохроматичний фронт із довжиною хвилі $\\lambda$ проходить крізь вузьку щілину шириною $a$, за принципом Гюйгенса — Френеля кожна елементарна смужка відкритої поверхні щілини стає джерелом вторинних когерентних хвиль.',
+          'У дальній зоні (**дифракція Фраунгофера**) вторинні промені, що йдуть під кутом $\\theta$, мають максимальну різницю ходу між лівим і правим краями щілини $\\Delta = a\\sin\\theta$. Розбиваючи щілину на парне число $2m$ зон Френеля шириною $\\frac{a}{2m}$, бачимо, що при **$a\\sin\\theta = \\pm m\\lambda$** ($m = 1, 2, 3, \\dots$) кожні дві сусідні зони гасять одна одну в протифазі, утворюючи **дифракційні мінімуми**. Повний розподіл інтенсивності описується функцією $I(\\theta) = I_0\\!\\left(\\frac{\\sin\\beta}{\\beta}\\right)^2$, де $\\beta = \\frac{\\pi a\\sin\\theta}{\\lambda}$.',
+          'Майже вся світлова енергія ($\\approx 84\\%$) зосереджена в центральному дифракційному максимумі між першими мінімумами $\\sin\\theta_1 = \\pm \\frac{\\lambda}{a}$, лінійна ширина якого на екрані становить $W = \\frac{2\\lambda L}{a}$. Виникає фундаментальний хвильовий парадокс (аналог співвідношення невизначеностей Гейзенберга): **що вужчою ми робимо щілину $a$, то ширше розпливається світлова смуга на екрані!**'
+        ],
+        en: [
+          '**Diffraction** is the bending and spreading of a wave as it passes through an aperture or around an obstacle, violating geometric ray optics whenever the aperture width $a$ is comparable to the wavelength $\\lambda$. By the Huygens–Fresnel principle, every infinitesimal strip across the open slit of width $a$ radiates coherent secondary wavelets.',
+          'In the far-field (**Fraunhofer diffraction**) at angle $\\theta$, the path difference between wavelets from the two slit edges is $\\Delta = a\\sin\\theta$. Dividing the slit into $2m$ equal zones shows that destructive cancellation occurs at **diffraction minima $a\\sin\\theta = \\pm m\\lambda$** ($m = 1, 2, 3, \\dots$). Integrating across the continuous aperture gives the intensity profile $I(\\theta) = I_0\\!\\left(\\frac{\\sin\\beta}{\\beta}\\right)^2$, where $\\beta = \\frac{\\pi a\\sin\\theta}{\\lambda}$.',
+          'Over $84\\%$ of the diffracted light power is concentrated in the central bright maximum bounded by $\\sin\\theta_1 = \\pm \\frac{\\lambda}{a}$, with screen width $W = \\frac{2\\lambda L}{a}$. This reveals a fundamental wave reciprocity: **narrowing the slit $a$ causes the diffracted beam on the screen to spread wider!**'
+        ]
+      },
+      carnot: {
+        uk: [
+          'Будь-яка теплова машина перетворює частину тепла $Q_1$, отриманого робочим тілом від нагрівника з температурою $T_1$, на корисну механічну роботу $A = Q_1 - Q_2$, передаючи залишок тепла $Q_2$ холодильнику з температурою $T_2 < T_1$. За **ІІ началом термодинаміки** (у формулюванні Томсона — Планка) неможливо створити періодично діючий двигун, який би повністю перетворював теплоту $Q_1$ на роботу без передачі частини тепла $Q_2$ холодному джерелу.',
+          'У 1824 році Саді Карно довів, що серед усіх циклічних машин, які працюють між заданими температурами $T_1$ і $T_2$, максимальний коефіцієнт корисної дії (ККД) має оборотний **цикл Карно**, що складається з двох ізотерм ($T_1 = \\text{const}$ і $T_2 = \\text{const}$) та двох адіабат ($\\delta Q = 0$, $PV^\\gamma = \\text{const}$). Для ідеального газу корисна робота за цикл становить $A = \\nu R (T_1 - T_2)\\ln\\frac{V_2}{V_1}$, а граничний ККД дорівнює **$\\eta_{\\text{Карно}} = 1 - \\frac{T_2}{T_1}$**.',
+          'Теорема Карно встановлює фундаментальну межу енергетики: ККД ідеальної машини **не залежить від природи робочого тіла**, а визначається лише відношенням абсолютних температур холодильника й нагрівника $T_2/T_1$. Щоб підвищити $\\eta$, інженери прагнуть максимально підняти температуру згоряння палива $T_1$ у турбінах та знизити температуру конденсатора $T_2$.'
+        ],
+        en: [
+          'A heat engine operates cyclically between a hot reservoir at absolute temperature $T_1$ and a cold sink at $T_2 < T_1$, absorbing heat $Q_1$, performing net mechanical work $W = Q_1 - Q_2 = \\oint P\\,dV$, and rejecting waste heat $Q_2$. By the **Second Law of Thermodynamics** (Kelvin–Planck statement), no cyclic engine can convert $100\\%$ of absorbed heat into work ($Q_2 > 0$).',
+          'In 1824, Sadi Carnot proved that the maximum possible efficiency between temperatures $T_1$ and $T_2$ is achieved by a reversible **Carnot cycle** comprising two isotherms ($T_1 = \\text{const}$, $T_2 = \\text{const}$) and two adiabats ($\\delta Q = 0$, $PV^\\gamma = \\text{const}$). For an ideal gas, net cycle work is $W = \\nu R (T_1 - T_2)\\ln\\frac{V_2}{V_1}$, and the thermal efficiency is **$\\eta_{\\text{Carnot}} = 1 - \\frac{T_2}{T_1}$**.',
+          'Carnot’s theorem establishes an universal thermodynamic bound: maximum efficiency is **independent of the working substance** and depends solely on the absolute temperature ratio $T_2/T_1$. Raising turbine inlet temperature $T_1$ and lowering exhaust temperature $T_2$ is the primary route to higher efficiency in power engineering.'
+        ]
+      },
+      viscosity: {
+        uk: [
+          'Коли тверда сферична кулька радіусом $r$ і густиною $\\rho_s$ опускається у в’язкій рідині густиною $\\rho_f$ за малих чисел Рейнольдса ($\\text{Re} = \\frac{2\\rho_f v r}{\\eta} \\ll 1$), обтікання є плавним і ламінарним (без відриву вихорів). Причиною внутрішнього тертя рідини є перенесення імпульсу між сусідніми шарами, що рухаються з різними швидкостями.',
+          'Джордж Габріель Стокс (1851 р.), розв’язавши рівняння гідродинаміки Нав’є — Стокса для повільного обтікання сфери, вивів формулу сили в’язкого опору (**закон Стокса**): $\\vec{F}_c = -6\\pi \\eta r \\vec{v}$, де $\\eta$ — динамічна в’язкість рідини (у $\\text{Па}\\cdot\\text{с}$). Рівняння руху кульки вздовж вертикалі має вигляд $m\\frac{dv}{dt} = (\\rho_s - \\rho_f)\\frac{4}{3}\\pi r^3 g - 6\\pi \\eta r v$.',
+          'На початку падіння ($v \\approx 0$) кулька прискорюється, але зі зростанням швидкості сила Стокса $F_c \\propto v$ лінійно збільшується, поки повністю не зрівноважить ефективну вагу кульки у рідині ($F_{\\text{тяж}} = F_A + F_c$). Після цього прискорення стає нульовим і встановлюється **гранична (термінальна) швидкість осідання**: $v_{\\text{терм}} = \\frac{2 r^2 g (\\rho_s - \\rho_f)}{9\\eta}$. Цей метод лежить в основі віскозиметра Стокса та знаменитого досліду Міллікена з вимірювання заряду електрона.'
+        ],
+        en: [
+          'When a rigid sphere of radius $r$ and density $\\rho_s$ settles through a viscous fluid of density $\\rho_f$ at low Reynolds number ($\\text{Re} = \\frac{2\\rho_f v r}{\\eta} \\ll 1$), the flow remains smooth and laminar (creeping flow). Internal fluid friction arises from momentum diffusion across adjacent shearing fluid layers.',
+          'By solving the linearized Navier–Stokes equations around a sphere, George Gabriel Stokes (1851) derived **Stokes’ Law** for viscous drag: $\\vec{F}_d = -6\\pi \\eta r \\vec{v}$, where $\\eta$ is the dynamic viscosity (in $\\text{Pa}\\cdot\\text{s}$). Vertical motion is governed by $m\\frac{dv}{dt} = (\\rho_s - \\rho_f)\\frac{4}{3}\\pi r^3 g - 6\\pi \\eta r v$.',
+          'As the sphere accelerates from rest, viscous drag $F_d \\propto v$ grows until it exactly balances net gravity minus buoyancy ($F_g = F_A + F_d$). Acceleration then vanishes and the sphere descends at constant **terminal velocity** $v_{\\text{term}} = \\frac{2 r^2 g (\\rho_s - \\rho_f)}{9\\eta}$, scaling as $r^2$. This relationship underpins falling-sphere viscometry and Millikan’s oil-drop experiment.'
+        ]
+      },
+      coulomb: {
+        uk: [
+          'Фундаментальний закон електростатики, встановлений Шарлем Кулоном у 1785 році за допомогою крутильних терезів, стверджує: сила взаємодії двох нерухомих точкових зарядів $q_1$ та $q_2$ у вакуумі прямо пропорційна добутку модулів зарядів, обернено пропорційна квадрату відстані $r$ між ними і напрямлена вздовж прямої, що їх з’єднує: $F = k\\frac{|q_1 q_2|}{r^2}$, де $k = \\frac{1}{4\\pi\\varepsilon_0} \\approx 8.988\\times 10^9\\text{ Н}\\cdot\\text{м}^2/\\text{Кл}^2$.',
+          'Електричне поле системи зарядів підпорядковується **принципу суперпозиції**: у кожній точці простору вектор напруженості $\\vec{E} = \\sum_i \\vec{E}_i = \\sum_i \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_i}{r_i^3}\\vec{r}_i$, а скалярний електростатичний потенціал дорівнює алгебраїчній сумі $\\varphi = \\sum_i \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_i}{r_i}$. Потенціальна енергія взаємодії двох зарядів становить $W_p = \\frac{k q_1 q_2}{r}$ (додатна для однойменних зарядів і від’ємна для різнойменних).',
+          'Система двох рівних за модулем і протилежних за знаком зарядів $+q$ і $-q$ на відстані $d$ утворює **електричний диполь** із дипольним моментом $\\vec{p} = q\\vec{d}$. Силові лінії поля $\\vec{E}$ завжди починаються на додатних зарядах і закінчуються на від’ємних, ніколи не перетинаються і в кожній точці ортогональні до еквіпотенціальних поверхонь ($\\vec{E} = -\\nabla\\varphi$).'
+        ],
+        en: [
+          'Established by Charles-Augustin de Coulomb in 1785 using a torsion balance, **Coulomb’s Law** states that the electrostatic force between two stationary point charges $q_1$ and $q_2$ in vacuum is proportional to the product of their charges and inversely proportional to the square of their separation $r$: $F = k\\frac{|q_1 q_2|}{r^2}$, where $k = \\frac{1}{4\\pi\\varepsilon_0} \\approx 8.988\\times 10^9\\text{ N}\\cdot\\text{m}^2/\\text{C}^2$.',
+          'Electrostatic fields obey the **superposition principle**: at any point in space, the net electric field vector is $\\vec{E} = \\sum_i \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_i}{r_i^3}\\vec{r}_i$ and the scalar potential is the algebraic sum $\\varphi = \\sum_i \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_i}{r_i}$. The electrostatic potential energy of the pair is $W_p = \\frac{k q_1 q_2}{r}$ (positive for like charges, negative for opposite charges).',
+          'Two opposite charges $+q$ and $-q$ separated by distance $d$ form an **electric dipole** with dipole moment $\\vec{p} = q\\vec{d}$. Field lines originate on positive charges, terminate on negative charges, never cross, and are everywhere orthogonal to equipotential surfaces ($\\vec{E} = -\\nabla\\varphi$).'
+        ]
+      },
+      rlccircuit: {
+        uk: [
+          'Коливальний контур $RLC$, що складається з конденсатора ємністю $C$, котушки індуктивності $L$ та активного опору $R$, є повною електродинамічною аналогією механічного пружинного маятника з тертям. Роль координати зміщення $x$ відіграє заряд на обкладках конденсатора $q(t)$, роль швидкості $\\dot{x}$ — сила струму $I(t) = \\dot{q}$, роль маси $m$ — індуктивність $L$ («інерція» струму через ЕРС самоіндукції $\\mathcal{E}_s = -L\\dot{I}$), а роль жорсткості $k$ — обернена ємність $1/C$.',
+          'За другим правилом Кірхгофа $U_L + U_R + U_C = 0$, що дає диференціальне рівняння вільних коливань: **$L\\ddot{q} + R\\dot{q} + \\frac{1}{C}q = 0$**. За відсутності опору ($R = 0$) у контурі відбуваються незатухаючі гармонічні коливання з власною частотою $\\omega_0 = \\frac{1}{\\sqrt{LC}}$ і періодом, який визначається **формулою Томсона (Кельвіна)**: $T_0 = 2\\pi\\sqrt{LC}$.',
+          'Чотири рази за період відбувається взаємне перетворення енергії електричного поля конденсатора $W_E = \\frac{q^2}{2C} = \\frac{1}{2}CU^2$ на енергію магнітного поля котушки $W_B = \\frac{1}{2}LI^2$. Струм $I(t)$ випереджає заряд $q(t)$ за фазою на $\\pi/2$: коли конденсатор повністю розряджений ($q = 0$), струм і магнітне поле в котушці досягають максимуму. При $R > 0$ енергія поступово розсіюється як джоулеве тепло $P = I^2 R$ з коефіцієнтом загасання $\\beta = \\frac{R}{2L}$.'
+        ],
+        en: [
+          'A series $RLC$ circuit comprising capacitance $C$, inductance $L$, and resistance $R$ is the exact electrodynamic dual of a damped mechanical oscillator. Capacitor charge $q(t)$ corresponds to displacement $x$, current $I(t) = \\dot{q}$ to velocity $\\dot{x}$, inductance $L$ to mass $m$ (via self-induced EMF $\\mathcal{E}_L = -L\\dot{I}$), and inverse capacitance $1/C$ to spring stiffness $k$.',
+          'Kirchhoff’s voltage loop rule $U_L + U_R + U_C = 0$ yields the second-order differential equation **$L\\ddot{q} + R\\dot{q} + \\frac{1}{C}q = 0$**. In an ideal lossless LC tank ($R = 0$), charge oscillates harmonically at natural angular frequency $\\omega_0 = \\frac{1}{\\sqrt{LC}}$ with **Thomson’s period** $T_0 = 2\\pi\\sqrt{LC}$.',
+          'Four times per period, energy sloshes between the capacitor’s electric field $W_E = \\frac{q^2}{2C} = \\frac{1}{2}CU^2$ and the inductor’s magnetic field $W_B = \\frac{1}{2}LI^2$. Because $I = \\dot{q}$, current leads charge in phase by $\\pi/2$. With nonzero resistance ($R > 0$), amplitude decays exponentially at rate $\\beta = \\frac{R}{2L}$ as electromagnetic energy dissipates into Joule heat $P = I^2 R$.'
+        ]
+      },
+      atwood: {
+        uk: [
+          'Машина Атвуда, винайдена Джорджем Атвудом у 1784 році, є класичним приладом для прецизійного дослідження законів динаміки Ньютона в умовах «сповільненої гравітації». Два вантажі масами $m_1$ і $m_2$, зв’язані нерозтяжною ниткою, перекинутою через блок радіусом $R$ і масою $M_p$, рухаються з однаковим за модулем лінійним прискоренням $a = \\varepsilon R$.',
+          'Запишемо ІІ закон Ньютона для кожного вантажу та основне рівняння динаміки обертального руху для блока з моментом інерції $I = \\frac{1}{2}M_p R^2$: $m_1 g - T_1 = m_1 a$, $T_2 - m_2 g = m_2 a$ та $(T_1 - T_2)R = I\\varepsilon = \\frac{1}{2}M_p R a$. Додаючи ці три рівняння, отримуємо точну формулу прискорення системи: **$a = \\frac{(m_1 - m_2)g}{m_1 + m_2 + \\frac{1}{2}M_p}$**.',
+          'Зверніть увагу на принципову деталь: якщо блок має масу ($M_p > 0$), сили натягу нитки по обидва боки блока **не рівні між собою** ($T_1 > T_2$ при $m_1 > m_2$), бо саме різниця моментів $(T_1 - T_2)R$ розкручує масивний шків! Підбираючи близькі маси $m_1 \\approx m_2$, можна зробити прискорення $a \\ll g$ як завгодно малим і детально виміряти закон рівноприскореного руху $h = \\frac{1}{2}at^2$.'
+        ],
+        en: [
+          'Invented by George Atwood in 1784, Atwood’s machine is a classic apparatus for verifying Newton’s laws of motion under “diluted gravity.” Two masses $m_1$ and $m_2$ connected by an inextensible cord over a pulley of radius $R$ and mass $M_p$ share a common linear acceleration $a = \\alpha R$.',
+          'Writing Newton’s second law for both masses and the rotational torque equation for the solid disk pulley ($I = \\frac{1}{2}M_p R^2$) gives $m_1 g - T_1 = m_1 a$, $T_2 - m_2 g = m_2 a$, and $(T_1 - T_2)R = I\\alpha = \\frac{1}{2}M_p R a$. Summing the three equations yields the system acceleration **$a = \\frac{(m_1 - m_2)g}{m_1 + m_2 + \\frac{1}{2}M_p}$**.',
+          'Notice a crucial physical insight: whenever the pulley has inertia ($M_p > 0$), the cord tensions on the two sides **are not equal** ($T_1 \\neq T_2$), because a net torque $(T_1 - T_2)R$ is required to angularly accelerate the pulley! Choosing $m_1 \\approx m_2$ slows the motion ($a \\ll g$) for accurate timing.'
+        ]
+      },
+      coriolis: {
+        uk: [
+          'Закони Ньютона у класичному вигляді виконуються лише в **інерціальних системах відліку (ІСВ)**. Якщо ж ми спостерігаємо за рухом кульки з неінерціальної платформи, яка рівномірно обертається з кутовою швидкістю $\\vec{\\Omega}$, то в рівнянні руху відносно диска з’являються дві сили інерції: відцентрова сила $\\vec{F}_{\\text{відц}} = -m[\\vec{\\Omega} \\times [\\vec{\\Omega} \\times \\vec{r}]]$ та **сила Коріоліса** $\\vec{F}_C = -2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{відн}}]$.',
+          'В інерціальній системі лабораторного столу (погляньте на пряму пунктирну лінію в 3D-сцені!) кулька, запущена з центра диска без тертя зі швидкістю $v_r$, рухається **строго прямолінійно і рівномірно**. Проте за час $t = r / v_r$ сам диск повертається на кут $\\Delta\\varphi = \\Omega t$, тому на поверхні диска кулька залишає вигнутий слід — **спіраль Архімеда** $\\varphi(r) = -\\frac{\\Omega}{v_r}r$ з поперечним відхиленням на краю $s \\approx \\Omega v_r t^2$.',
+          'Оскільки векторний добуток $-2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{відн}}]$ у Північній півкулі Землі ($\Omega_z > 0$) спрямований праворуч від вектора відносної швидкості $\\vec{v}_{\\text{відн}}$, сила Коріоліса відхиляє вітри, морські течії та річки в Північній півкулі праворуч (підмивання правих берегів — закон Бера), закручує циклони проти годинникової стрілки та зумовлює поворот площини коливань маятника Фуко.'
+        ],
+        en: [
+          'Newton’s laws take their standard form only in **inertial reference frames**. When observing motion from a rotating non-inertial platform with angular velocity $\\vec{\\Omega}$, two fictitious inertial forces appear in the rotating frame: the centrifugal force $\\vec{F}_{\\text{cf}} = -m[\\vec{\\Omega} \\times [\\vec{\\Omega} \\times \\vec{r}]]$ and the **Coriolis force** $\\vec{F}_C = -2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{rel}}]$.',
+          'In the stationary laboratory frame (shown by the straight dashed reference line in 3D), a frictionless puck launched radially outward at speed $v_r$ moves in a **perfect straight line**. Meanwhile, the turntable rotates beneath it through angle $\\Delta\\varphi = \\Omega t$, so the trace scribed on the disk forms an **Archimedean spiral** $\\varphi(r) = -\\frac{\\Omega}{v_r}r$ with lateral deflection $s \\approx \\Omega v_r t^2$.',
+          'Because $-2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{rel}}]$ acts perpendicular to $\\vec{v}_{\\text{rel}}$, it performs no work ($\\vec{F}_C \\cdot \\vec{v}_{\\text{rel}} = 0$) yet deflects trajectories to the right in the Northern Hemisphere ($\\Omega_z > 0$), driving cyclonic weather systems, ocean gyres, and the precession of Foucault’s pendulum.'
+        ]
+      },
+      hooke: {
+        uk: [
+          'Класична формула Гука $F = k\\Delta L$ залежить від геометричних розмірів конкретного стрижня (його довжини $L_0$ та площі поперечного перерізу $S$). Щоб сформулювати закон пружності як фундаментальну властивість самого матеріалу, Томас Юнг увів поняття **механічної напруги** $\\sigma = \\frac{F}{S}$ (у паскалях, $\\text{Па} = \\text{Н/м}^2$) та **відносного видовження** $\\varepsilon = \\frac{\\Delta L}{L_0}$ (безрозмірна величина або у відсотках).',
+          'У межах пружних деформацій механічна напруга прямо пропорційна відносному видовженню (**закон Гука в диференціальній формі**): $\\sigma = E\\varepsilon$, звідки абсолютне видовження стрижня дорівнює $\\Delta L = \\frac{F L_0}{E S}$, а еквівалентна жорсткість $k = \\frac{ES}{L_0}$. Коефіцієнт пропорційності $E$ називається **модулем Юнга** і характеризує опір кристалічної ґратки матеріалу розтягу або стиску (наприклад, для гуми $E \\sim 0.01\\text{ ГПа}$, для алюмінію $E \\approx 70\\text{ ГПа}$, для сталі $E \\approx 200\\text{ ГПа}$).',
+          'Об’ємна густина потенціальної енергії пружно деформованого стрижня дорівнює площі під діаграмою розтягу $\\sigma(\\varepsilon)$: $w = \\frac{1}{2}\\sigma\\varepsilon = \\frac{1}{2}E\\varepsilon^2 = \\frac{\\sigma^2}{2E}$, а повна накопичена пружна енергія становить $E_p = \\frac{1}{2}F\\Delta L$. При розтягу стрижень також зазнає поперечного стиснення (коефіцієнт Пуассона $\\nu = -\\varepsilon_\\perp / \\varepsilon_\\parallel$), що відображено в 3D-деформації зразка.'
+        ],
+        en: [
+          'While the elementary spring formula $F = k\\Delta L$ depends on specimen dimensions, continuum mechanics expresses elasticity entirely in terms of intrinsic material quantities: **normal mechanical stress** $\\sigma = \\frac{F}{S}$ (in Pascals, $\\text{Pa} = \\text{N/m}^2$) and **dimensionless longitudinal strain** $\\varepsilon = \\frac{\\Delta L}{L_0}$.',
+          'Within the proportional elastic limit, stress varies linearly with strain (**Hooke’s Law in differential form**): $\\sigma = E\\varepsilon$, yielding total elongation $\\Delta L = \\frac{F L_0}{E S}$ and effective axial stiffness $k = \\frac{ES}{L_0}$. The material constant $E$ is **Young’s modulus**, measuring interatomic bond stiffness (ranging from $\\sim 0.01\\text{ GPa}$ in elastomers to $70\\text{ GPa}$ in aluminum and $200\\text{ GPa}$ in structural steel).',
+          'Elastic strain energy stored per unit volume equals the area under the stress–strain curve: $w = \\frac{1}{2}\\sigma\\varepsilon = \\frac{1}{2}E\\varepsilon^2 = \\frac{\\sigma^2}{2E}$, with total potential energy $E_p = \\frac{1}{2}F\\Delta L$. Axial stretching is accompanied by lateral Poisson contraction ($\\varepsilon_\\perp = -\\nu\\varepsilon_\\parallel$), visible on the 3D tensile specimen.'
+        ]
+      },
+      torricelli: {
+        uk: [
+          'У 1643 році учень Галілея Еванджеліста Торрічеллі встановив дивовижний факт: швидкість витікання струменя ідеальної рідини з малого бічного отвору у відкритій посудині на глибині $h$ під вільною поверхнею точно дорівнює швидкості, якої набуло б будь-яке тверде тіло при вільному падінні у вакуумі з тієї самої висоти $h$: **$v = \\sqrt{2gh}$**.',
+          'Строге доведення формули Торрічеллі випливає з **рівняння Бернуллі**, записаного для лінії течії від вільної поверхні резервуара (переріз $S_1$, висота $H$, атмосферний тиск $p_0$) до вихідного сопла (переріз $S_2 \\ll S_1$, висота $y = H - h$, де струмінь у повітрі також перебуває під атмосферним тиском $p_0$): $p_0 + \\rho g H + \\frac{1}{2}\\rho v_1^2 = p_0 + \\rho g (H - h) + \\frac{1}{2}\\rho v_2^2$. Оскільки при $S_2 \\ll S_1$ швидкість опускання рівня $v_1 = v_2(S_2/S_1) \\approx 0$, густина рідини $\\rho$ скорочується і ми отримуємо $v_2 = \\sqrt{2gh}$.',
+          'Виходячи горизонтально з сопла на висоті $y = H - h$ від основи зі швидкістю $v = \\sqrt{2gh}$, струмінь падає за час $t = \\sqrt{2(H - h)/g}$ і б’є на горизонтальну відстань **$L(h) = v t = 2\\sqrt{h(H - h)}$**. Ця функція симетрична відносно заміни $h \\leftrightarrow H - h$ і досягає абсолютного максимуму **$L_{\\text{max}} = H$** рівно посередині висоти стовпа рідини ($h = H/2$).'
+        ],
+        en: [
+          'In 1643, Evangelista Torricelli discovered that the efflux speed of an ideal liquid jet emerging from a small orifice at depth $h$ below the free surface equals the speed a body would acquire in free fall from height $h$: **$v = \\sqrt{2gh}$**.',
+          'Torricelli’s theorem follows directly from **Bernoulli’s equation** applied along a streamline from the wide free surface (area $S_1$, elevation $H$, pressure $p_0$) to the exit nozzle (area $S_2 \\ll S_1$, elevation $H - h$, also at atmospheric pressure $p_0$): $p_0 + \\rho g H + \\frac{1}{2}\\rho v_1^2 = p_0 + \\rho g (H - h) + \\frac{1}{2}\\rho v_2^2$. Since $v_1 = v_2(S_2/S_1) \\approx 0$ for a wide tank, fluid density $\\rho$ cancels out, leaving $v_2 = \\sqrt{2gh}$.',
+          'Launching horizontally from height $H - h$ above the base, the jet falls for time $t = \\sqrt{2(H - h)/g}$ and strikes at horizontal range **$L(h) = v t = 2\\sqrt{h(H - h)}$**. By symmetry, maximum range **$L_{\\text{max}} = H$** occurs when the nozzle is placed exactly at mid-depth ($h = H/2$).'
+        ]
+      },
+      maxwell: {
+        uk: [
+          'Хоча середня кінетична енергія молекул газу однозначно задається температурою $T$, унаслідок безперервних випадкових зіткнень окремі молекули мають найрізноманітніші швидкості — від майже нульових до надзвукових. У 1859 році Джеймс Клерк Максвелл вивів фундаментальну функцію густини ймовірності модулів швидкостей молекул у стані термодинамічної рівноваги: **$f(v) = 4\\pi\\!\\left(\\frac{M}{2\\pi R T}\\right)^{\\!3/2} v^2 \\exp\\!\\left(-\\frac{M v^2}{2 R T}\\right)$**.',
+          'Структура розподілу Максвелла визначається конкуренцією двох множників: параболічного множника $v^2$ (об’єм сферичного шару $4\\pi v^2 dv$ у просторі швидкостей, через який частка зовсім повільних молекул прямує до нуля) та експоненціального больцманівського множника $\\exp\\!\\left(-\\frac{\\varepsilon_k}{k_B T}\\right)$, що обмежує ймовірність великих енергій.',
+          'Розподіл характеризується трьома строго впорядкованими характерними швидкостями ($v_{\\text{імов}} < \\langle v \\rangle < v_{\\text{кв}}$): 1) **найбільш імовірна швидкість** (максимум купола $df/dv = 0$) $v_{\\text{імов}} = \\sqrt{\\frac{2RT}{M}}$; 2) **середня арифметична швидкість** $\\langle v \\rangle = \\sqrt{\\frac{8RT}{\\pi M}} \\approx 1.128\\,v_{\\text{імов}}$; 3) **середня квадратична швидкість** (що визначає тиск і внутрішню енергію газу) $v_{\\text{кв}} = \\sqrt{\\frac{3RT}{M}} \\approx 1.225\\,v_{\\text{імов}}$. При нагріванні або зменшенні молярної маси $M$ (перехід від $\\text{Xe}$ до $\\text{He}$) крива зміщується праворуч і розширюється за умови нормування $\\int_0^\\infty f(v)\\,dv = 1$.'
+        ],
+        en: [
+          'Although temperature $T$ fixes the mean kinetic energy of an ideal gas, incessant molecular collisions spread individual molecular speeds across a wide spectrum. In 1859, James Clerk Maxwell derived the equilibrium speed probability density function: **$f(v) = 4\\pi\\!\\left(\\frac{M}{2\\pi R T}\\right)^{\\!3/2} v^2 \\exp\\!\\left(-\\frac{M v^2}{2 R T}\\right)$**.',
+          'The shape of the Maxwell–Boltzmann curve arises from the product of the phase-space shell volume factor $4\\pi v^2$ (which suppresses $f(v) \\to 0$ as $v \\to 0$) and the Boltzmann exponential factor $\\exp\\!\\left(-\\frac{Mv^2}{2RT}\\right)$ (which suppresses high-energy tails).',
+          'Three characteristic speeds obey the invariant ordering $v_p < \\langle v \\rangle < v_{\\text{rms}}$: 1) **most probable speed** (peak of $f(v)$) $v_p = \\sqrt{\\frac{2RT}{M}}$; 2) **mean speed** $\\langle v \\rangle = \\sqrt{\\frac{8RT}{\\pi M}} \\approx 1.128\\,v_p$; and 3) **root-mean-square speed** $v_{\\text{rms}} = \\sqrt{\\frac{3RT}{M}} \\approx 1.225\\,v_p$. Raising temperature $T$ or choosing a lighter gas $M$ shifts the peak rightward and lowers its height while preserving total probability $\\int_0^\\infty f(v)\\,dv = 1$.'
+        ]
+      },
+      newtonrings: {
+        uk: [
+          '**Кільця Ньютона** — класичний приклад інтерференції світла «рівної товщини», що виникає при відбиванні монохроматичного пучка від тонкого повітряного клина між плоскою скляною пластиною та опуклою сферичною лінзою великого радіуса кривини $R \\gg r$. На відстані $r$ від точки дотику товщина повітряного прошарку за теоремою Піфагора $(R - d)^2 + r^2 = R^2$ становить **$d(r) \\approx \\frac{r^2}{2R}$**.',
+          'Перший промінь відбивається від верхньої межі «скло — повітря» (від середовища з меншим показником заломлення) без зміни фази. Другий промінь проходить крізь повітряний шар висотою $d(r)$ і відбивається від нижньої межі «повітря — скло» (від оптично густішого середовища $n_{\\text{скла}} > n_{\\text{пов}}$), де за формулами Френеля **фаза хвилі стрибком змінюється на $\\pi$**, що еквівалентно втраті півхвилі $\\frac{\\lambda}{2}$. Тому повна оптична різниця ходу дорівнює **$\\Delta(r) = 2d(r) + \\frac{\\lambda}{2} = \\frac{r^2}{R} + \\frac{\\lambda}{2}$**.',
+          'У точці дотику лінзи і пластини ($r = 0$, $d = 0$) різниця ходу становить $\\Delta = \\frac{\\lambda}{2}$ (протифаза!), тому **в центрі кілець Ньютона у відбитому світлі завжди спостерігається темна пляма**! Радіуси $m$-х темних кілець ($\Delta = (2m + 1)\\frac{\\lambda}{2}$) дорівнюють $r_{\\text{темн},m} = \\sqrt{m\\lambda R}$, а світлих кілець — $r_{\\text{світл},m} = \\sqrt{(m - \\tfrac{1}{2})\\lambda R}$.'
+        ],
+        en: [
+          '**Newton’s rings** are equal-thickness interference fringes formed in the thin air film trapped between a plano-convex lens of large curvature radius $R \\gg r$ and an optical flat. At radial distance $r$ from the contact point, the air-gap thickness follows from $(R - d)^2 + r^2 = R^2$ as **$d(r) \\approx \\frac{r^2}{2R}$**.',
+          'Wave 1 reflects at the upper glass-to-air interface (higher to lower index) with zero phase shift. Wave 2 traverses the air gap twice ($2d(r)$) and reflects at the lower air-to-glass interface (lower to higher index), where Fresnel’s equations dictate an abrupt **$\\pi$ phase inversion** equivalent to an extra $\\frac{\\lambda}{2}$ path difference. Total optical path difference is therefore **$\\Delta(r) = 2d(r) + \\frac{\\lambda}{2} = \\frac{r^2}{R} + \\frac{\\lambda}{2}$**.',
+          'At the central point of contact ($r = 0$, $d = 0$), the $\\lambda/2$ phase reversal leaves the two reflected rays exactly out of phase, producing a **central dark spot** in reflected light! Dark ring radii satisfy $r_{\\text{dark},m} = \\sqrt{m\\lambda R}$ and bright ring radii satisfy $r_{\\text{bright},m} = \\sqrt{(m - \\tfrac{1}{2})\\lambda R}$.'
+        ]
+      },
+      photoelectric: {
+        uk: [
+          'Зовнішній фотоефект — явище виривання електронів із поверхні металу під дією електромагнітного випромінювання (відкрите Г. Герцем і детально досліджене О. Столєтовим та Ф. Ленардом). Класична хвильова електродинаміка не змогла пояснити, чому максимальна кінетична енергія фотоелектронів **не залежить від інтенсивності світла**, а визначається лише його частотою $\\nu$, і чому існує порогова «червона межа» $\\nu_{\\text{min}} = A_{\\text{вих}}/h$.',
+          'У 1905 році Альберт Ейнштейн пояснив ці закони, розвинувши квантову гіпотезу Планка: світло випромінюється і поглинається дискретними квантами (**фотонами**) з енергією $E_\\gamma = h\\nu = \\frac{hc}{\\lambda}$, де $h = 6.626\\times 10^{-34}\\text{ Дж}\\cdot\\text{с}$. Поглинаючи один фотон, електрон витрачає енергію на подолання **роботи виходу** $A_{\\text{вих}}$ з металу, а залишок переходить у його максимальну кінетичну енергію (**рівняння Ейнштейна для фотоефекту**): $h\\nu = A_{\\text{вих}} + E_{k,\\text{max}}$.',
+          'Якщо подати на анод затримувальну напругу $U < 0$, фотострум припиниться при **затримувальному потенціалі** $U_z$, коли робота поля $e U_z = E_{k,\\text{max}} = \\frac{hc}{\\lambda} - A_{\\text{вих}}$. Збільшення ж інтенсивності світла (потоку фотонів при $\\lambda < \\lambda_{\\text{кр}}$) пропорційно збільшує кількість вирваних за секунду електронів (силу фотоструму насичення $I_{\\text{нас}}$), не змінюючи швидкості жодного окремого електрона.'
+        ],
+        en: [
+          'The external photoelectric effect—emission of electrons from a metal surface illuminated by light—defied classical wave electrodynamics, which could not explain why maximum photoelectron kinetic energy is **independent of light intensity** and why emission ceases abruptly above a threshold wavelength $\\lambda_{\\text{max}} = hc / W$.',
+          'In 1905, Albert Einstein resolved the paradox by proposing that light consists of discrete energy quanta (**photons**) of energy $E_\\gamma = h\\nu = \\frac{hc}{\\lambda}$, where $h = 6.626\\times 10^{-34}\\text{ J}\\cdot\\text{s}$ is Planck’s constant. A single electron absorbs one photon, expends the metal’s **work function** $W$ to escape the surface barrier, and retains maximum kinetic energy given by **Einstein’s photoelectric equation**: $h\\nu = W + E_{k,\\text{max}}$.',
+          'Applying a reverse bias halts the photocurrent at the **stopping potential** $U_s$, where $e U_s = E_{k,\\text{max}} = \\frac{hc}{\\lambda} - W$. Increasing optical intensity (for $\\lambda < \\lambda_{\\text{max}}$) increases the photon flux and saturation photocurrent $I_{\\text{sat}}$ proportionally without altering $E_{k,\\text{max}}$.'
+        ]
+      },
+      rutherford: {
+        uk: [
+          'До 1911 року панівною була «пудингова модель» атома Дж. Дж. Томсона, де додатний заряд вважався рівномірно розмазаним по всьому об’єму атома ($R_{\\text{ат}} \\sim 10^{-10}\\text{ м}$). У такій моделі важкі $\\alpha$-частинки ($q_\\alpha = +2e$) повинні були б пролітати крізь золоту фольгу майже без відхилення ($\\theta < 1^\\circ$). Проте досліди Ернеста Резерфорда, Ганса Гейгера та Ернеста Марсдена виявили, що частина $\\alpha$-частинок розсіюється на великі кути $\\theta > 90^\\circ$ і навіть відскакує назад!',
+          'Це довело, що весь додатний заряд $Ze$ і майже вся маса атома ($99.97\\%$) зосереджені в надзвичайно малому **атомному ядрі** радіусом $R_{\\text{ядра}} \\sim 10^{-15}\\text{ м}$. Під дією кулонівської сили відштовхування $F(r) = \\frac{1}{4\\pi\\varepsilon_0}\\frac{2Ze^2}{r^2}$ $\\alpha$-частинка з початковою енергією $E_\\alpha$ та **прицільним параметром** $b$ рухається по гіперболі, а кут розсіяння визначається **формулою Резерфорда**: $\\cot\\!\\left(\\frac{\\theta}{2}\\right) = \\frac{4\\pi\\varepsilon_0 E_\\alpha b}{Z e^2} = \\frac{2b}{d_{\\text{min}}}$.',
+          'При лобовому наближенні ($b \\to 0$, $\\theta \\to 180^\\circ$) уся кінетична енергія переходить у кулонівську потенціальну енергію на мінімальній відстані $d_{\\text{min}} = \\frac{2Ze^2}{4\\pi\\varepsilon_0 E_\\alpha}$, що дозволило Резерфорду вперше оцінити верхню межу розміру атомного ядра і створити **планетарну модель атома**.'
+        ],
+        en: [
+          'Before 1911, J. J. Thomson’s “plum-pudding” model pictured positive charge spread diffusely across the entire atomic volume ($R_{\\text{atom}} \\sim 10^{-10}\\text{ m}$), predicting that fast $\\alpha$-particles ($q_\\alpha = +2e$) would traverse thin gold foil with negligible deflection ($\\theta < 1^\\circ$). Instead, Ernest Rutherford, Hans Geiger, and Ernest Marsden observed rare $\\alpha$-particles scattering through large angles $\\theta > 90^\\circ$!',
+          'Rutherford concluded that all positive charge $+Ze$ and $99.97\\%$ of atomic mass reside in a tiny central **atomic nucleus** ($R_{\\text{nuc}} \\sim 10^{-15}\\text{ m}$). Repelled by the inverse-square Coulomb force $F(r) = \\frac{1}{4\\pi\\varepsilon_0}\\frac{2Ze^2}{r^2}$, an $\\alpha$-particle of kinetic energy $E_\\alpha$ and **impact parameter** $b$ follows a hyperbolic trajectory with scattering angle given by **Rutherford’s formula**: $\\cot\\!\\left(\\frac{\\theta}{2}\\right) = \\frac{4\\pi\\varepsilon_0 E_\\alpha b}{Z e^2} = \\frac{2b}{d_{\\text{min}}}$.',
+          'In a head-on collision ($b \\to 0$, $\\theta \\to 180^\\circ$), kinetic energy converts entirely into electrostatic potential energy at the distance of closest approach $d_{\\text{min}} = \\frac{2Ze^2}{4\\pi\\varepsilon_0 E_\\alpha}$, establishing the **planetary nuclear model of the atom**.'
+        ]
+      },
+      ampere: {
+        uk: [
+          'У 1820 році Андре-Марі Ампер виявив фундаментальну електродинамічну взаємодію між двома паралельними прямолінійними провідниками зі струмами $I_1$ та $I_2$, розташованими на відстані $d$ один від одного. Ця взаємодія відбувається не безпосередньо на відстані, а **через магнітне поле**: перший струм $I_1$ за законом Біо — Савара — Лапласа створює навколо себе концентричні лінії магнітної індукції $B_1 = \\frac{\\mu_0 I_1}{2\\pi d}$ (напрямок визначається правилом правого гвинта).',
+          'Другий провідник довжиною $L$ зі струмом $I_2$, перебуваючи в магнітному полі $\\vec{B}_1$, зазнає дії **сили Ампера** $\\vec{F}_{12} = I_2 [\\vec{L} \\times \\vec{B}_1]$. Отже, на кожну ділянку провідників довжиною $L$ діє сила взаємодії **$F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$**, де $\\mu_0 = 4\\pi\\times 10^{-7}\\text{ Гн/м}$ — магнітна стала.',
+          'За правилом лівої руки (або векторного добутку $\\vec{I}_2 \\times (\\vec{I}_1 \\times \\vec{r}_{12})$): **співнапрямлені паралельні струми притягуються**, а **протилежно напрямлені — відштовхуються**! Саме цей дослід історично використовувався в Міжнародній системі одиниць SI для еталонного означення одиниці сили струму — $1\\text{ Ампера}$ (при $I_1 = I_2 = 1\\text{ А}$ і $d = 1\\text{ м}$ погонна сила становить рівно $2\\times 10^{-7}\\text{ Н/м}$).'
+        ],
+        en: [
+          'In 1820, André-Marie Ampère discovered the mechanical force between two parallel straight conductors carrying currents $I_1$ and $I_2$ separated by distance $d$. The interaction is mediated by the **magnetic field**: wire 1 generates concentric magnetic field lines of magnitude $B_1 = \\frac{\\mu_0 I_1}{2\\pi d}$ at the location of wire 2 (right-hand grip rule).',
+          'Wire 2 of length $L$ carrying current $I_2$ in field $\\vec{B}_1$ experiences the **Ampère force** $\\vec{F}_{12} = I_2 [\\vec{L} \\times \\vec{B}_1]$, yielding a mutual force of magnitude **$F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$**, where $\\mu_0 = 4\\pi\\times 10^{-7}\\text{ H/m}$ is the vacuum permeability.',
+          'Evaluating the double cross product $\\vec{I}_2 \\times (\\vec{I}_1 \\times \\vec{r}_{12})$ proves that **parallel currents in the same direction attract**, whereas **antiparallel currents repel**! Historically, this exact configuration defined the SI base unit of electric current, the **Ampere** ($2\\times 10^{-7}\\text{ N/m}$ at $d = 1\\text{ m}$).'
+        ]
+      },
+      hall: {
+        uk: [
+          '**Ефект Холла** (відкритий Едвіном Холлом у 1879 р.) виникає, коли пластинку провідника чи напівпровідника товщиною $d$ і шириною $w$, крізь яку тече поздовжній струм $I = |q|n v_d w d$, поміщають у перпендикулярне магнітне поле $\\vec{B}$. На носії заряду $q$, що дрейфують зі швидкістю $\\vec{v}_d$, діє поперечна магнітна сила Лоренца $\\vec{F}_B = q[\\vec{v}_d \\times \\vec{B}]$, яка відхиляє їх до однієї з бічних граней пластинки.',
+          'Накопичення зарядів на бічних гранях створює поперечне електростатичне поле Холла $\\vec{E}_H$. В усталеному режимі електрична сила $q\\vec{E}_H$ повністю зрівноважує магнітну силу Лоренца ($|q|E_H = |q|v_d B \\implies E_H = v_d B$), і подальше бокове розділення зарядів припиняється. Між бічними гранями встановлюється **холлівська різниця потенціалів (ЕРС Холла)**: $U_H = E_H w = v_d B w = \\frac{I B}{n |q| d} = R_H \\frac{I B}{d}$, де $R_H = \\frac{1}{nq}$ — **стала Холла**.',
+          'Ефект Холла має унікальне значення у фізиці твердого тіла: 1) за величиною $U_H$ безпосередньо вимірюють **концентрацію вільних носіїв заряду $n$**; 2) за полярністю напруги $U_H$ визначають **знак носіїв струму** (електронна провідність $n$-типу чи діркова провідність $p$-типу), бо і негативні електрони ($q = -e$, $\\vec{v}_d$ проти струму), і позитивні дірки ($q = +e$, $\\vec{v}_d$ за струмом) відхиляються силою Лоренца до однієї й тієї самої бічної грані, заряджаючи її протилежними знаками!'
+        ],
+        en: [
+          'Discovered by Edwin Hall in 1879, the **Hall effect** occurs when a conducting or semiconducting slab of thickness $d$ and width $w$ carrying longitudinal current $I = |q|n v_d w d$ is placed in a perpendicular magnetic field $\\vec{B}$. Charge carriers $q$ drifting at velocity $\\vec{v}_d$ experience a transverse Lorentz force $\\vec{F}_B = q[\\vec{v}_d \\times \\vec{B}]$ that deflects them toward one lateral edge.',
+          'Charge accumulation on the side faces builds up a transverse electrostatic Hall field $\\vec{E}_H$ until electric force balances magnetic deflection ($|q|E_H = |q|v_d B \\implies E_H = v_d B$). The resulting steady-state **Hall voltage** across width $w$ is **$U_H = E_H w = v_d B w = \\frac{I B}{n |q| d} = R_H \\frac{I B}{d}$**, where $R_H = \\frac{1}{nq}$ is the **Hall coefficient**.',
+          'The Hall effect is a cornerstone of solid-state physics and sensor engineering: 1) measuring $U_H$ directly reveals the **carrier concentration $n$**; 2) the polarity of $U_H$ unambiguously identifies the **sign of the majority charge carriers** ($n$-type electrons vs. $p$-type holes), since both are deflected to the same side of the slab!'
+        ]
+      },
+      coupled: {
+        uk: [
+          'Два однакові математичні маятники масою $m$ і довжиною $L$, з’єднані легкою пружиною жорсткості $k$, утворюють класичну **лінійну коливальну систему з двома ступенями вільності**: $m\\ddot{x}_1 = -\\frac{mg}{L}x_1 - k(x_1 - x_2)$ та $m\\ddot{x}_2 = -\\frac{mg}{L}x_2 - k(x_2 - x_1)$. Коливання одного маятника деформують пружину і періодично підштовхують другий маятник.',
+          'Перехід до **нормальних координат** $q_+ = x_1 + x_2$ та $q_- = x_1 - x_2$ розщеплює зв’язану систему на дві незалежні **нормальні моди**: 1) **синфазну моду** ($x_1 = x_2$), де пружина не розтягується і частота дорівнює $\\omega_1 = \\sqrt{\\frac{g}{L}}$; 2) **протифазну моду** ($x_1 = -x_2$), де пружина стискається вдвічі сильніше і частота зростає до $\\omega_2 = \\sqrt{\\frac{g}{L} + \\frac{2k}{m}}$.',
+          'Якщо відхилити лише перший маятник ($x_1(0) = A$, $x_2(0) = 0$), збуджується рівна суперпозиція обох нормальних мод: $x_1(t) = A\\cos\\!\\left(\\frac{\\omega_2 - \\omega_1}{2}t\\right)\\cos(\\bar{\\omega}t)$ та $x_2(t) = A\\sin\\!\\left(\\frac{\\omega_2 - \\omega_1}{2}t\\right)\\sin(\\bar{\\omega}t)$. Виникає **явище биття**: з періодом повного перекачування енергії **$T_{\\text{биття}} = \\frac{2\\pi}{\\omega_2 - \\omega_1}$** перший маятник повністю зупиняється, віддаючи $100\\%$ своєї енергії другому, після чого процес повторюється у зворотному напрямку!'
+        ],
+        en: [
+          'Two identical pendulums of mass $m$ and length $L$ coupled by a horizontal spring of stiffness $k$ form a canonical **two-degree-of-freedom coupled oscillator**: $m\\ddot{x}_1 = -\\frac{mg}{L}x_1 - k(x_1 - x_2)$ and $m\\ddot{x}_2 = -\\frac{mg}{L}x_2 - k(x_2 - x_1)$.',
+          'Transforming to **normal coordinates** $q_+ = x_1 + x_2$ and $q_- = x_1 - x_2$ diagonalizes the equations into two independent **normal modes**: 1) the **in-phase symmetric mode** ($x_1 = x_2$), where the coupling spring remains unstretched and $\\omega_1 = \\sqrt{\\frac{g}{L}}$; 2) the **out-of-phase antisymmetric mode** ($x_1 = -x_2$), where the spring stretches by $2x_1$ and raises the frequency to $\\omega_2 = \\sqrt{\\frac{g}{L} + \\frac{2k}{m}}$.',
+          'Displacing only pendulum 1 at $t = 0$ excites an equal superposition of both normal modes: $x_1(t) = A\\cos\\!\\left(\\frac{\\omega_2 - \\omega_1}{2}t\\right)\\cos(\\bar{\\omega}t)$ and $x_2(t) = A\\sin\\!\\left(\\frac{\\omega_2 - \\omega_1}{2}t\\right)\\sin(\\bar{\\omega}t)$. This produces **energy beats**: with beat period **$T_{\\text{beat}} = \\frac{2\\pi}{\\omega_2 - \\omega_1}$**, pendulum 1 comes to a complete halt while transferring $100\\%$ of its energy to pendulum 2, and then back again!'
+        ]
+      },
+      precession: {
+        uk: [
+          'Чому важка дзиґа або гіроскоп, вісь якої нахилена під кутом $\\theta$ до вертикалі, не падає вниз під дією сили тяжіння, а натомість плавно описує конус у горизонтальній площині? Відповідь дає **основне рівняння динаміки обертального руху у векторній формі**: швидкість зміни вектора моменту імпульсу тіла дорівнює вектору моменту зовнішніх сил $\\frac{d\\vec{L}}{dt} = \\vec{M}$.',
+          'Масивний ротор, розкручений із великою кутовою швидкістю $\\omega_s$, має потужний власний момент імпульсу $\\vec{L} = I\\vec{\\omega}_s$, спрямований уздовж осі симетрії дзиґи. Сила тяжіння $m\\vec{g}$, прикладена в центрі мас на відстані $l$ від точки опори $O$, створює відносно $O$ момент сили $\\vec{M} = [\\vec{r} \\times m\\vec{g}]$ модулем $M = mgl\\sin\\theta$, який за правилом правого гвинта **перпендикулярний до вертикальної площини нахилу осі** (тобто горизонтальний і ортогональний до $\\vec{L}$!).',
+          'Оскільки приріст $d\\vec{L} = \\vec{M}\\,dt$ перпендикулярний до самого вектора $\\vec{L}$, він не змінює його довжину, а лише повертає кінець вектора $\\vec{L}$ по горизонтальному колу радіуса $L\\sin\\theta$. Кутова швидкість цієї регулярної **гіроскопічної прецесії** дорівнює **$\\Omega_p = \\frac{M}{L\\sin\\theta} = \\frac{mgl}{I\\omega_s}$**: що швидше крутиться ротор $\\omega_s$, то повільніше і стабільніше прецесує гіроскоп!'
+        ],
+        en: [
+          'Why does a rapidly spinning heavy top tilted at angle $\\theta$ not topple under gravity, instead sweeping its axis around a horizontal circle? The answer lies in the **vector torque–angular-momentum theorem**: the time rate of change of angular momentum equals the external torque vector, $\\frac{d\\vec{L}}{dt} = \\vec{\\tau}$.',
+          'A rotor with moment of inertia $I$ spinning rapidly at $\\omega_s$ carries a large spin angular momentum $\\vec{L} = I\\vec{\\omega}_s$ directed along its symmetry axis. Gravity $m\\vec{g}$ acting at distance $l$ from the pivot $O$ exerts a torque $\\vec{\\tau} = [\\vec{r} \\times m\\vec{g}]$ of magnitude $\\tau = mgl\\sin\\theta$ that points **horizontally and perpendicular to $\\vec{L}$**.',
+          'Because the infinitesimal increment $d\\vec{L} = \\vec{\\tau}\\,dt$ is orthogonal to $\\vec{L}$, it rotates the direction of $\\vec{L}$ around the vertical axis without changing its tilt angle $\\theta$. The angular velocity of this **gyroscopic precession** is **$\\Omega_p = \\frac{\\tau}{L\\sin\\theta} = \\frac{mgl}{I\\omega_s}$**: spinning the rotor faster ($\\omega_s \\uparrow$) makes the precession slower and more stable!'
+        ]
+      },
+      magnus: {
+        uk: [
+          '**Ефект Магнуса** (описаний Генріхом Магнусом у 1852 р.) — це виникнення поперечної підіймальної (або бічної) сили $\\vec{F}_M$, що діє на тіло (циліндр, м’яч, снаряд), яке одночасно рухається поступально в потоці газу чи рідини зі швидкістю $\\vec{v}_\\infty$ та обертається навколо власної осі з кутовою швидкістю $\\vec{\\omega}$.',
+          'Через в’язке прилипання граничного шару повітря обертовий циліндр радіусом $R$ створює навколо себе вихрову **циркуляцію швидкості** $\\Gamma = \\oint \\vec{v}\\cdot d\\vec{l} = 2\\pi R^2 \\omega$. На тій стороні циліндра, де лінійна швидкість поверхні $\\omega R$ збігається з напрямком набігаючого потоку $v_\\infty$, швидкості додаються ($v_{\\text{верх}} = v_\\infty + \\omega R$); на протилежній стороні потік гальмується ($v_{\\text{низ}} = v_\\infty - \\omega R$). За **рівнянням Бернуллі** $p + \\frac{1}{2}\\rho v^2 = \\text{const}$, там, де швидкість більша, статичний тиск менший ($p_{\\text{верх}} < p_{\\text{низ}}$)!',
+          'Інтегрування різниці тисків по поверхні циліндра довжиною $L$ дає **теорему Жуковського — Кутти**: підіймальна сила на одиницю розмаху дорівнює добутку густини середовища $\\rho$, швидкості потоку $v_\\infty$ та циркуляції $\\Gamma$: **$F_M = \\rho v_\\infty \\Gamma L = 2\\pi \\rho R^2 L \\omega v_\\infty$**. Саме ефект Магнуса змушує підкручений футбольний чи тенісний м’яч закручуватися в польоті по дузі й використовується в турбовітрилах суден Флеттнера.'
+        ],
+        en: [
+          'The **Magnus effect** (Heinrich Gustav Magnus, 1852) is the generation of a transverse aerodynamic lift force $\\vec{F}_M$ on a spinning cylinder or sphere moving through a fluid of density $\\rho$ at freestream velocity $\\vec{v}_\\infty$.',
+          'Through boundary-layer entrainment, a cylinder of radius $R$ spinning at angular speed $\\omega$ establishes a net **velocity circulation** $\\Gamma = \\oint \\vec{v}\\cdot d\\vec{l} = 2\\pi R^2 \\omega$. On the side where surface rotation moves with the freestream, flow speeds add ($v_{\\text{top}} = v_\\infty + \\omega R$); on the opposite side, flow is retarded ($v_{\\text{bot}} = v_\\infty - \\omega R$). By **Bernoulli’s theorem** $p + \\frac{1}{2}\\rho v^2 = \\text{const}$, higher velocity produces lower static pressure ($p_{\\text{top}} < p_{\\text{bot}}$)!',
+          'Integrating pressure around a cylinder of span $L$ yields the **Kutta–Joukowski lift theorem**: **$F_M = \\rho v_\\infty \\Gamma L = 2\\pi \\rho R^2 L \\omega v_\\infty$**, directed along $\\vec{\\omega} \\times \\vec{v}_\\infty$. This mechanism explains curved trajectories of spinning soccer, tennis, and baseballs as well as Flettner rotor ships.'
+        ]
+      },
+      capillary: {
+        uk: [
+          'Молекули поверхневого шару рідини притягуються сусідніми молекулами зсередини об’єму сильніше, ніж розрідженими молекулами пари ззовні, тому вільна поверхня рідини має надлишкову вільну енергію $E_s = \\sigma S$ і поводиться як натягнута пружна плівка з **коефіцієнтом поверхневого натягу** $\\sigma$ (у $\\text{Н/м}$ або $\\text{Дж/м}^2$). Якщо притягання молекул рідини до стінок вузької трубки сильніше за взаємне притягання молекул рідини (**змочування**, крайовий кут $\\theta < 90^\\circ$, як у води на чистому склі), утворюється увігнутий меніск; при **незмочуванні** ($\theta > 90^\\circ$, як у ртуті на склі) меніск є опуклим.',
+          'Викривлена сферична поверхня меніска радіусом $R_m = \\frac{r}{\\cos\\theta}$ (де $r$ — внутрішній радіус капіляра) створює під собою додатковий стрибок тиску за **формулою Юнга — Лапласа**: $\\Delta p = \\frac{2\\sigma}{R_m} = \\frac{2\\sigma\\cos\\theta}{r}$. При змочуванні ($\cos\\theta > 0$) тиск у рідині безпосередньо під увігнутим меніском менший за атмосферний на величину $\\Delta p$, тому зовнішній атмосферний тиск вдавлює стовпчик рідини вгору по капіляру.',
+          'Підйом триває доти, доки гідростатичний тиск піднятого стовпа $\\rho g h$ не зрівноважить капілярний перепад Лапласа ($\rho g h = \\frac{2\\sigma\\cos\\theta}{r}$), звідки отримуємо **формулу Жюрена**: **$h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$**. Отже, висота капілярного підйому обернено пропорційна радіусу трубки $r$, що забезпечує живлення рослин, рух вологи в ґрунтах і пористих матеріалах.'
+        ],
+        en: [
+          'Molecules at a liquid–gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy $E_s = \\sigma S$ characterized by **surface tension** $\\sigma$ ($\text{N/m}$). When liquid–solid adhesion exceeds liquid–liquid cohesion (**wetting**, contact angle $\\theta < 90^\\circ$, such as water in clean glass), a concave meniscus forms; when cohesion dominates (**non-wetting**, $\\theta > 90^\\circ$, such as mercury in glass), the meniscus is convex.',
+          'In a cylindrical capillary tube of inner radius $r$, the spherical meniscus of radius of curvature $R_m = \\frac{r}{\\cos\\theta}$ sustains a pressure jump across the interface given by the **Young–Laplace equation**: $\\Delta p = \\frac{2\\sigma}{R_m} = \\frac{2\\sigma\\cos\\theta}{r}$.',
+          'Equating this Laplace capillary suction to the hydrostatic pressure $\\rho g h$ of the liquid column yields **Jurin’s Law**: **$h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$** (positive rise for $\\theta < 90^\\circ$, capillary depression for $\\theta > 90^\\circ$). Because $h \\propto 1/r$, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.'
+        ]
+      },
+      brownian: {
+        uk: [
+          '**Броунівський рух** (відкритий ботаніком Робертом Броуном у 1827 р.) — це невпинний хаотичний зигзагоподібний рух мікроскопічних зважених частинок (пилку, колоїдних кульок радіусом $r \\sim 0.1\\text{–}1\\text{ мкм}$) у рідині або газі. Через малий розмір броунівської частинки імпульси мільйонів теплових ударів молекул рідини з різних боків у кожен малий інтервал часу **не компенсують один одного**, створюючи випадкову флуктуаційну силу Ланжевена $\\vec{F}_{\\text{фл}}(t)$.',
+          'Оскільки всі напрямки теплових поштовхів рівноймовірні, середній вектор зміщення частинки дорівнює нулю ($\langle \\vec{r}(t) \\rangle = 0$). Проте середній квадрат відстані частинки від початкової точки не зануляється! У 1905 році Альберт Ейнштейн і Маріан Смолуховський довели фундаментальний закон дифузії: **середній квадрат зміщення прямо пропорційний часу спостереження $t$**: $\\langle r^2(t) \\rangle = 2 d_{\\text{вим}} D t$ (для 2D-площини $\\langle r^2 \\rangle = 4Dt$, для 3D-простору $\\langle r^2 \\rangle = 6Dt$).',
+          'Коефіцієнт дифузії $D$ визначається **співвідношенням Ейнштейна — Стокса**: **$D = \\frac{k_B T}{6\\pi \\eta r} = \\frac{R T}{6\\pi \\eta r N_A}$**, яке пов’язує макроскопічну в’язкість $\\eta$ і температуру $T$ зі сталою Авогадро $N_A$. Блискучі експерименти Жана Перрена (1908 р.) з вимірювання $\\langle r^2 \\rangle$ броунівських кульок гумігуту підтвердили формулу Ейнштейна і стали остаточним прямим доказом реального існування атомів і молекул!'
+        ],
+        en: [
+          '**Brownian motion** (discovered by Robert Brown in 1827) is the perpetual, erratic random walk executed by microscopic suspended particles ($r \\sim 0.1\\text{–}1\\text{ }\\mu\\text{m}$) immersed in a fluid. Because the particle’s surface area is small, the incessant thermal impacts of surrounding fluid molecules do not cancel out instantaneously, subjecting the particle to a fluctuating Langevin force $\\vec{F}_{\\text{fl}}(t)$.',
+          'By isotropy, the mean displacement vector vanishes ($\\langle \\vec{r}(t) \\rangle = 0$), yet the particle steadily wanders away from its origin! In 1905, Albert Einstein and Marian Smoluchowski proved that the **mean-squared displacement (MSD) grows linearly with time $t$**: $\\langle r^2(t) \\rangle = 2 d_{\\text{dim}} D t$ ($\langle r^2 \\rangle = 4Dt$ in a 2D plane; $\langle r^2 \\rangle = 6Dt$ in 3D space).',
+          'The diffusion coefficient $D$ obeys the **Stokes–Einstein relation** **$D = \\frac{k_B T}{6\\pi \\eta r} = \\frac{R T}{6\\pi \\eta r N_A}$**, linking thermal energy $k_B T$ to viscous dissipation $6\\pi\\eta r$. Jean Perrin’s 1908 measurements of $\\langle r^2(t) \\rangle$ yielded a precise value of Avogadro’s number $N_A$ and provided definitive proof of the physical reality of atoms.'
+        ]
+      },
+      michelson: {
+        uk: [
+          '**Інтерферометр Майкельсона** (створений Альбертом Майкельсоном у 1881 р.) — це прецизійний двопроменевий оптичний прилад, у якому когерентний пучок світла з довжиною хвилі $\\lambda$ ділиться напівпрозорим світлодільником $BS$ (під кутом $45^\\circ$) на два взаємно перпендикулярні плеча $L_1$ та $L_2$. Відбившись від плоских дзеркал $M_1$ (рухомого за допомогою мікрометричного гвинта) та $M_2$ (нерухомого), обидва промені знову зводяться світлодільником на фотодетектор або екран спостереження.',
+          'Оскільки промінь у першому плечі проходить додаткове зміщення рухомого дзеркала $\\Delta d$ **двічі** (туди і назад), зміна положення дзеркала $M_1$ на величину $\\Delta d$ створює оптичну різницю ходу **$\\Delta = 2\\Delta d$** та фазовий зсув $\\Delta\\varphi = \\frac{2\\pi}{\\lambda}(2\\Delta d) = \\frac{4\\pi \\Delta d}{\\lambda}$. Інтенсивність у центрі інтерференційної картини змінюється за законом $I(\\Delta d) = I_{\\text{max}}\\cos^2\\!\\left(\\frac{2\\pi \\Delta d}{\\lambda}\\right)$.',
+          'Таким чином, зсув дзеркала лише на **чверть довжини хвилі** ($\\Delta d = \\lambda/4$) змінює різницю ходу на $\\lambda/2$ і переводить світлий максимум у темний мінімум, а зсув на $\\Delta d = \\lambda/2$ зсуває картину рівно на одну повну смугу ($N = \\frac{2\\Delta d}{\\lambda}$). Інтерферометр Майкельсона спростував гіпотезу «світового ефіру» (дослід Майкельсона — Морлі 1887 р., що проклав шлях до СТВ Ейнштейна) і лежить в основі лазерних детекторів гравітаційних хвиль LIGO.'
+        ],
+        en: [
+          'Invented by Albert A. Michelson in 1881, the **Michelson interferometer** splits a coherent monochromatic light beam of wavelength $\\lambda$ at a $45^\\circ$ beam splitter ($BS$) into two orthogonal arms of lengths $L_1$ and $L_2$. After reflecting off mirrors $M_1$ (micrometer-adjustable) and $M_2$ (fixed), the beams recombine at $BS$ and interfere on the detector screen.',
+          'Because light traverses arm 1 **twice** (out and back), translating mirror $M_1$ by distance $\\Delta d$ changes the round-trip optical path length by **$\\Delta = 2\\Delta d$**, introducing a phase shift $\\Delta\\varphi = \\frac{4\\pi \\Delta d}{\\lambda}$. Central fringe intensity varies as $I(\\Delta d) = I_{\\text{max}}\\cos^2\\!\\left(\\frac{2\\pi \\Delta d}{\\lambda}\\right)$.',
+          'Consequently, moving mirror $M_1$ by just a **quarter-wavelength** ($\\Delta d = \\lambda/4$) flips a bright maximum into a dark minimum, and every $\\Delta d = \\lambda/2$ shifts the pattern by one full fringe ($N = \\frac{2\\Delta d}{\\lambda}$). This design powered the historic 1887 Michelson–Morley experiment and forms the optical core of the LIGO gravitational-wave observatories.'
+        ]
+      },
+      compton: {
+        uk: [
+          'У 1923 році Артур Комптон досліджував розсіяння жорсткого рентгенівського та $\\gamma$-випромінювання на легких речовинах (графіті) і виявив, що розсіяне під кутом $\\theta$ випромінювання має **більшу довжину хвилі** $\\lambda\' > \\lambda_0$, причому зсув $\\Delta\\lambda = \\lambda\' - \\lambda_0$ не залежить від матеріалу мішені, а визначається виключно кутом розсіяння $\\theta$. У межах класичної електродинаміки Томсона (де електрон розгойдується полем хвилі і випромінює на тій самій частоті $\\lambda\' = \\lambda_0$) пояснити це явище було неможливо.',
+          'Комптон розрахував процес як **пружне релятивістське зіткнення** корпускули-фотона з енергією $E_0 = \\frac{hc}{\\lambda_0}$ та імпульсом $p_0 = \\frac{h}{\\lambda_0}$ із майже вільним нерухомим електроном (енергія спокою $m_e c^2 \\approx 511\\text{ кеВ}$). Із релятивістських законів збереження енергії $E_0 + m_e c^2 = E\' + \\sqrt{p_e^2 c^2 + m_e^2 c^4}$ та векторного імпульсу $\\vec{p}_0 = \\vec{p}\' + \\vec{p}_e$ випливає знаменита **формула Комптона**: **$\\Delta\\lambda = \\lambda\' - \\lambda_0 = \\lambda_C (1 - \\cos\\theta)$**.',
+          'Фундаментальна константа $\\lambda_C = \\frac{h}{m_e c} \\approx 2.426\\text{ пм}$ ($2.426\\times 10^{-12}\\text{ м}$) називається **комптонівською довжиною хвилі електрона**. При розсіянні назад ($\\theta = 180^\\circ$, $\\cos\\theta = -1$) фотон передає електрону віддачі максимальну частку своєї енергії, а його довжина хвилі зростає на подвійну комптонівську величину $\\Delta\\lambda_{\\text{max}} = 2\\lambda_C \\approx 4.85\\text{ пм}$. Дослід Комптона став вирішальним доказом того, що фотон переносить не лише квант енергії $h\\nu$, а й реальний механічний імпульс $\\vec{p} = \\hbar\\vec{k}$.'
+        ],
+        en: [
+          'In 1923, Arthur Holly Compton observed that X-rays scattered by electrons in graphite through angle $\\theta$ emerge with a **longer wavelength** $\\lambda\' > \\lambda_0$, where the wavelength shift $\\Delta\\lambda = \\lambda\' - \\lambda_0$ depends solely on the scattering angle $\\theta$. Classical Thomson scattering (which predicts $\\lambda\' = \\lambda_0$) could not account for this shift.',
+          'Treating the interaction as a **relativistic elastic billiard collision** between a photon of energy $E_0 = \\frac{hc}{\\lambda_0}$ and momentum $p_0 = \\frac{h}{\\lambda_0}$ and a stationary electron of rest energy $m_e c^2 \\approx 511\\text{ keV}$, conservation of relativistic 4-momentum ($E_0 + m_e c^2 = E\' + \\sqrt{p_e^2 c^2 + m_e^2 c^4}$ and $\\vec{p}_0 = \\vec{p}\' + \\vec{p}_e$) yields **Compton’s scattering formula**: **$\\Delta\\lambda = \\lambda\' - \\lambda_0 = \\lambda_C (1 - \\cos\\theta)$**.',
+          'Here $\\lambda_C = \\frac{h}{m_e c} \\approx 2.426\\text{ pm}$ is the **Compton wavelength of the electron**. Maximum energy transfer to the recoil electron occurs for $180^\\circ$ backscattering ($\\cos\\theta = -1$), where $\\Delta\\lambda_{\\text{max}} = 2\\lambda_C \\approx 4.85\\text{ pm}$. Compton’s discovery proved conclusively that photons carry mechanical momentum $\\vec{p} = \\hbar\\vec{k}$.'
+        ]
+      },
+      bohr: {
+        uk: [
+          'У класичній електродинаміці електрон, що обертається навколо ядра з доцентровим прискоренням $a_n = v^2/r$, мав би безперервно випромінювати електромагнітні хвилі, втратити енергію за $\\sim 10^{-11}\\text{ с}$ і впасти на ядро. Щоб розв’язати цю кризу, Нільс Бор у 1913 році сформулював **квантові постулати**: атом може перебувати лише у дискретних стаціонарних станах із моментами імпульсу **$L_n = m_e v_n r_n = n\\hbar$** ($n = 1, 2, 3, \\dots$), у яких електрон не випромінює.',
+          'У 1924 році Луї де Бройль розкрив глибокий хвильовий зміст правила квантування Бора: електрон має довжину хвилі де Бройля $\\lambda_B = \\frac{h}{m_e v_n}$, і стаціонарна орбіта стійка лише тоді, коли вздовж її кола $2\\pi r_n$ вкладається **ціле число $n$ стоячих хвиль де Бройля**: $2\\pi r_n = n\\lambda_B$ (інакше хвиля гасить сама себе внаслідок інтерференції!). Радіуси дозволених орбіт атома водню ростуть квадратично $r_n = n^2 a_0$ ($a_0 = 0.0529\\text{ нм}$ — борівський радіус), а рівні енергії квантуються як **$E_n = -\\frac{13.6\\text{ еВ}}{n^2}$**.',
+          'Випромінювання або поглинання кванта світла відбувається лише під час стрибка електрона між двома орбітами $n_i \\to n_f$: $h\\nu = |E_{n_i} - E_{n_f}|$, що дає **спектральну формулу Рідберга**: $\\frac{1}{\\lambda} = R_H\\!\\left|\\frac{1}{n_f^2} - \\frac{1}{n_i^2}\\right|$ ($R_H = 1.097\\times 10^7\\text{ м}^{-1}$), яка з високою точністю пояснює ультрафіолетову серію Лаймана ($n_f = 1$), видиму серію Бальмера ($n_f = 2$) та інфрачервону серію Пашена ($n_f = 3$).'
+        ],
+        en: [
+          'In classical electrodynamics, an orbiting electron undergoing centripetal acceleration $a_n = v^2/r$ would radiate away its energy and spiral into the nucleus within $\\sim 10^{-11}\\text{ s}$. In 1913, Niels Bohr resolved this instability by postulating that electrons occupy discrete **stationary orbits** with quantized angular momentum **$L_n = m_e v_n r_n = n\\hbar$** ($n = 1, 2, 3, \\dots$) that do not radiate.',
+          'In 1924, Louis de Broglie explained Bohr’s quantization rule geometrically: a stationary orbit is stable if and only if its circumference $2\\pi r_n$ accommodates an **integer number $n$ of electron de Broglie wavelengths** $\\lambda_B = \\frac{h}{m_e v_n}$, forming a closed standing matter wave $2\\pi r_n = n\\lambda_B$! Allowed hydrogen radii scale as $r_n = n^2 a_0$ ($a_0 = 0.0529\\text{ nm}$) and energy levels follow **$E_n = -\\frac{13.6\\text{ eV}}{n^2}$**.',
+          'A photon is emitted or absorbed only during a quantum jump $n_i \\to n_f$: $h\\nu = |E_{n_i} - E_{n_f}|$, yielding the **Rydberg spectral formula** $\\frac{1}{\\lambda} = R_H\\!\\left|\\frac{1}{n_f^2} - \\frac{1}{n_i^2}\\right|$ ($R_H = 1.097\\times 10^7\\text{ m}^{-1}$) across the Lyman ($n_f = 1$, UV), Balmer ($n_f = 2$, visible), and Paschen ($n_f = 3$, IR) series.'
+        ]
+      },
+      biot: {
+        uk: [
+          'За **законом Біо — Савара — Лапласа**, кожен нескінченно малий елемент провідника $d\\vec{l}$ зі струмом $I$ створює в точці з радіус-вектором $\\vec{r}$ елементарну індукцію магнітного поля $d\\vec{B} = \\frac{\\mu_0 I}{4\\pi}\\frac{[d\\vec{l} \\times \\vec{r}]}{r^3}$. Якщо проінтегрувати цей вираз уздовж колового витка радіуса $R$ з $N$ витками для точки на осі симетрії $Ox$ на відстані $x$ від центра, поперечні складові взаємно компенсуються, а осьова індукція становить **$B_1(x) = \\frac{\\mu_0 N I R^2}{2(R^2 + x^2)^{3/2}}$**.',
+          'В одному витку поле в центрі максимальне, але швидко спадає при віддаленні вздовж осі (друга похідна $\\frac{d^2 B_1}{dx^2} < 0$). Щоб отримати **високооднорідне магнітне поле** у відкритому лабораторному об’ємі, Герман фон Гельмгольц запропонував поставити дві однакові співвісні котушки радіуса $R$ зі співнапрямленими струмами на відстані $d$ одна від одної: $B(x) = B_1(x + d/2) + B_1(x - d/2)$.',
+          'У середній точці між котушками ($x = 0$) перша похідна $\\frac{dB}{dx}\\big|_0 = 0$ за симетрією зникає при будь-якому $d$. Якщо ж обрати **відстань Гельмгольца $d = R$** (відстань між котушками точно дорівнює їхньому радіусу!), то в центрі системи одночасно перетворюються на нуль і друга $\\frac{d^2 B}{dx^2}\\big|_0 = 0$, і третя похідні поля! Завдяки цьому між котушками утворюється широке плато однорідного поля з індукцією **$B(0) = \\left(\\frac{4}{5}\\right)^{\\!3/2}\\frac{\\mu_0 N I}{R} \\approx 0.7155\\frac{\\mu_0 N I}{R}$**.'
+        ],
+        en: [
+          'By the **Biot–Savart Law**, a current element $I\\,d\\vec{l}$ produces a magnetic field $d\\vec{B} = \\frac{\\mu_0 I}{4\\pi}\\frac{[d\\vec{l} \\times \\vec{r}]}{r^3}$. Integrating around a circular coil of radius $R$ and $N$ turns at axial distance $x$ cancels all radial components and yields the axial field **$B_1(x) = \\frac{\\mu_0 N I R^2}{2(R^2 + x^2)^{3/2}}$**.',
+          'A single loop’s field peaks at $x = 0$ but curves downward rapidly ($\\frac{d^2 B_1}{dx^2} < 0$). To create a wide region of **uniform magnetic field** with open optical and mechanical access, Hermann von Helmholtz paired two identical coaxial coils of radius $R$ carrying parallel currents separated by distance $d$: $B(x) = B_1(x + d/2) + B_1(x - d/2)$.',
+          'At the midpoint $x = 0$, symmetry guarantees $\\frac{dB}{dx}\\big|_0 = 0$ for any separation $d$. Setting the separation equal to the coil radius (**Helmholtz condition $d = R$**) places the inflection points of the two coils directly at $x = 0$, making both $\\frac{d^2 B}{dx^2}\\big|_0 = 0$ and $\\frac{d^3 B}{dx^3}\\big|_0 = 0$ vanish simultaneously! This creates a flat plateau of uniform field **$B(0) = \\left(\\frac{4}{5}\\right)^{\\!3/2}\\frac{\\mu_0 N I}{R} \\approx 0.7155\\frac{\\mu_0 N I}{R}$**.'
+        ]
+      },
+      transformer: {
+        uk: [
+          '**Трансформатор** — це електромагнітний статичний апарат, призначений для підвищення або зниження напруги змінного струму без зміни його частоти $f$ за допомогою явища взаємної електромагнітної індукції. Первинна обмотка з числом витків $N_1$ та вторинна обмотка з числом витків $N_2$ насаджені на спільне замкнене **феромагнітне осердя** з високою магнітною проникністю ($\\mu \\sim 10^3\\text{–}10^4$), яке концентрує змінний магнітний потік $\\Phi(t) = \\Phi_m\\sin(2\\pi f t)$ так, що він пронизує кожен виток обох котушок.',
+          'За законом електромагнітної індукції Фарадея в одному витку індукується однакова ЕРС $e_1 = -\\frac{d\\Phi}{dt}$. Тому відношення діючих значень напруг на обмотках дорівнює відношенню кількості витків (**коефіцієнт трансформації**): **$\\frac{U_2}{U_1} = \\frac{N_2}{N_1} = k$**. Якщо $N_2 > N_1$ ($k > 1$), трансформатор є **підвищувальним**; якщо $N_2 < N_1$ ($k < 1$) — **знижувальним**.',
+          'Згідно із законом збереження енергії, потужність на виході дорівнює вхідній потужності, помноженій на ККД $\\eta$ (який у силових трансформаторах досягає $95\\text{–}99\\%$ завдяки шихтованому осердю з тонких пластин електротехнічної сталі, що пригнічує вихрові струми Фуко): $P_2 = \\eta P_1 \\implies U_2 I_2 = \\eta U_1 I_1$. Отже, **у скільки разів трансформатор підвищує напругу, у стільки ж разів він зменшує силу струму**: $\\frac{I_2}{I_1} = \\eta\\frac{N_1}{N_2}$. Саме це дозволяє передавати електроенергію в ЛЕП при високих напругах ($110\\text{–}750\\text{ кВ}$) із мінімальними тепловими втратами в дротах $P_{\\text{втр}} = I^2 R_{\\text{лінії}} \\propto 1/U^2$!'
+        ],
+        en: [
+          'An **AC transformer** steps alternating voltage up or down at constant frequency $f$ via mutual electromagnetic induction. A primary winding of $N_1$ turns and a secondary winding of $N_2$ turns are wound around a closed laminated **ferromagnetic core** of high permeability ($\\mu \\sim 10^3\\text{–}10^4$), which channels the alternating magnetic flux $\\Phi(t) = \\Phi_m\\sin(2\\pi f t)$ through every turn of both coils.',
+          'By Faraday’s law of induction, each turn experiences the same induced EMF $-\\frac{d\\Phi}{dt}$. Consequently, the ratio of secondary to primary RMS voltages equals the **turns ratio**: **$\\frac{U_2}{U_1} = \\frac{N_2}{N_1} = k$**. For $N_2 > N_1$ ($k > 1$) it acts as a **step-up transformer**; for $N_2 < N_1$ ($k < 1$) as a **step-down transformer**.',
+          'By conservation of energy with core efficiency $\\eta$ (typically $95\\text{–}99\\%$, using silicon-steel laminations to suppress eddy currents and hysteresis), output power satisfies $P_2 = \\eta P_1 \\implies U_2 I_2 = \\eta U_1 I_1$. Thus **stepping up voltage proportionally steps down current**: $\\frac{I_2}{I_1} = \\eta\\frac{N_1}{N_2}$. High-voltage power grids ($110\\text{–}750\\text{ kV}$) exploit this to slash transmission line Joule losses $P_{\\text{loss}} = I^2 R_{\\text{line}} \\propto 1/U^2$!'
+        ]
+      }
+    };
+
+    const BOOK_SVG_ICON = `<svg class="theory-book-svg" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5C2.5 3.95 2.95 3.5 3.5 3.5H7.8C9.15 3.5 10 4.25 10 5.5V16.2C10 15.35 9.25 14.8 8.2 14.8H3.5C2.95 14.8 2.5 14.35 2.5 13.8V4.5Z"/><path d="M17.5 4.5C17.5 3.95 17.05 3.5 16.5 3.5H12.2C10.85 3.5 10 4.25 10 5.5V16.2C10 15.35 10.75 14.8 11.8 14.8H16.5C17.05 14.8 17.5 14.35 17.5 13.8V4.5Z"/></svg>`;
+
+    let theoryLeftOpen = false;
+    let theoryRightOpen = false;
+
+    function syncTheoryDrawersUI() {
+      const t = tUI();
+      const btnLeft = document.getElementById('btn-theory-book');
+      const drawerLeft = document.getElementById('theory-drawer-box');
+      const btnHdr = document.getElementById('btn-header-theory');
+      if (btnLeft && drawerLeft) {
+        btnLeft.classList.toggle('open', theoryLeftOpen);
+        btnLeft.setAttribute('aria-expanded', theoryLeftOpen ? 'true' : 'false');
+        drawerLeft.classList.toggle('open', theoryLeftOpen);
+        drawerLeft.setAttribute('aria-hidden', theoryLeftOpen ? 'false' : 'true');
+        const lblEl = document.getElementById('ui-theory-btn-label');
+        const hintEl = document.getElementById('ui-theory-btn-hint');
+        if (lblEl) lblEl.textContent = t.theoryBtnTitle;
+        if (hintEl) hintEl.textContent = theoryLeftOpen ? t.theoryCollapseHint : t.theoryExpandHint;
+      }
+      if (btnHdr) {
+        btnHdr.classList.toggle('open', theoryLeftOpen);
+        btnHdr.setAttribute('aria-expanded', theoryLeftOpen ? 'true' : 'false');
+        const hdrLbl = document.getElementById('ui-header-theory-label');
+        if (hdrLbl) hdrLbl.textContent = t.theoryBtnShort;
+      }
+
+      const btnRight = document.getElementById('ui-ref-heading-right');
+      const drawerRight = document.getElementById('theory-drawer-right');
+      if (btnRight && drawerRight) {
+        btnRight.classList.toggle('open', theoryRightOpen);
+        btnRight.setAttribute('aria-expanded', theoryRightOpen ? 'true' : 'false');
+        drawerRight.classList.toggle('open', theoryRightOpen);
+        drawerRight.setAttribute('aria-hidden', theoryRightOpen ? 'false' : 'true');
+        const rightLbl = btnRight.querySelector('.ref-book-label');
+        if (rightLbl) rightLbl.textContent = t.theoryBtnShort;
+      }
+    }
+
+    function buildTheoryInnerHTML(key) {
+      const t = tUI();
+      const langKey = uiState.lang === 'uk' ? 'uk' : 'en';
+      const entry = THEORY_NOTES[key] || THEORY_NOTES.collision;
+      const paragraphs = (entry && entry[langKey]) || entry.en;
+      const cfg = SCENE_CONFIGS[key];
+      const titles = [t.theorySec1Title, t.theorySec2Title, t.theorySec3Title];
+
+      return paragraphs
+        .map((pText, idx) => `
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">${titles[idx] || ''}</div>
+            <p class="theory-note-para">${formatTextbookProse(pText)}</p>
+          </div>
+        `)
+        .join('') + (cfg && cfg.referenceLatex ? `
+          <div class="theory-note-formula">
+            ${renderStackedMath(cfg.referenceLatex)}
+          </div>
+        ` : '');
+    }
+
+    function ensureTheoryBookUI() {
+      // 1. Кнопка книги та розгортний конспект у лівій панелі (відразу під заголовком та епіграфом параграфа)
+      const chapterHeader = document.querySelector('.chapter-header');
+      if (chapterHeader && !document.getElementById('btn-theory-book')) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'btn-theory-book';
+        btn.className = 'btn-theory-book';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = `
+          <span class="theory-book-left">
+            ${BOOK_SVG_ICON}
+            <span id="ui-theory-btn-label" class="theory-book-label">Теоретичний конспект</span>
+          </span>
+          <span class="theory-book-right">
+            <span id="ui-theory-btn-hint" class="theory-book-hint">Читати</span>
+            <span class="theory-book-chevron" aria-hidden="true">▾</span>
+          </span>
+        `;
+
+        const drawer = document.createElement('div');
+        drawer.id = 'theory-drawer-box';
+        drawer.className = 'theory-drawer-box';
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.innerHTML = `<div id="theory-drawer-content" class="theory-drawer-content"></div>`;
+
+        chapterHeader.appendChild(btn);
+        chapterHeader.appendChild(drawer);
+
+        btn.addEventListener('click', () => {
+          theoryLeftOpen = !theoryLeftOpen;
+          syncTheoryDrawersUI();
+          if (theoryLeftOpen) {
+            requestAnimationFrame(fitMathContainers);
+          }
+        });
+      }
+
+      // 2. Компактна кнопка-книжка у верхній панелі навігації (.header-right)
+      const headerRight = document.querySelector('.header-right');
+      if (headerRight && !document.getElementById('btn-header-theory')) {
+        const hdrBtn = document.createElement('button');
+        hdrBtn.type = 'button';
+        hdrBtn.id = 'btn-header-theory';
+        hdrBtn.className = 'btn-header-theory';
+        hdrBtn.setAttribute('aria-expanded', 'false');
+        hdrBtn.title = 'Теоретичний конспект / Theoretical Notes';
+        hdrBtn.innerHTML = `
+          ${BOOK_SVG_ICON}
+          <span id="ui-header-theory-label">Теорія</span>
+        `;
+        headerRight.insertBefore(hdrBtn, headerRight.firstChild);
+
+        hdrBtn.addEventListener('click', () => {
+          const leftSidebar = document.getElementById('left-sidebar');
+          const btnToggleLeftEl = document.getElementById('btn-toggle-left');
+          if (leftSidebar && leftSidebar.classList.contains('panel-hidden')) {
+            leftSidebar.classList.remove('panel-hidden');
+            if (btnToggleLeftEl) {
+              btnToggleLeftEl.classList.remove('collapsed');
+              btnToggleLeftEl.textContent = '‹';
+            }
+          }
+          theoryLeftOpen = !theoryLeftOpen;
+          syncTheoryDrawersUI();
+          if (theoryLeftOpen) {
+            requestAnimationFrame(() => {
+              fitMathContainers();
+              const btnLeft = document.getElementById('btn-theory-book');
+              if (btnLeft) btnLeft.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+          }
+        });
+      }
+
+      // 3. Кнопка-книжка в правій колонці (#ui-ref-heading-right) + локальний розгортний блок під формулами
+      const refRight = document.getElementById('ui-ref-heading-right');
+      const refFormulaBox = document.getElementById('reference-formula-box');
+      if (refRight && refFormulaBox && !refRight.dataset.bookBound) {
+        refRight.dataset.bookBound = '1';
+        refRight.classList.add('btn-ref-book-trigger');
+        refRight.setAttribute('role', 'button');
+        refRight.setAttribute('tabindex', '0');
+        refRight.setAttribute('aria-expanded', 'false');
+        refRight.innerHTML = `${BOOK_SVG_ICON}<span class="ref-book-label">${tUI().theoryBtnShort}</span><span class="ref-book-chev" aria-hidden="true">▾</span>`;
+
+        const drawerRight = document.createElement('div');
+        drawerRight.id = 'theory-drawer-right';
+        drawerRight.className = 'theory-drawer-box theory-drawer-right';
+        drawerRight.setAttribute('aria-hidden', 'true');
+        drawerRight.innerHTML = `<div id="theory-drawer-right-content" class="theory-drawer-content"></div>`;
+        refFormulaBox.insertAdjacentElement('afterend', drawerRight);
+
+        const toggleRight = () => {
+          theoryRightOpen = !theoryRightOpen;
+          syncTheoryDrawersUI();
+          if (theoryRightOpen) {
+            requestAnimationFrame(fitMathContainers);
+          }
+        };
+        refRight.addEventListener('click', toggleRight);
+        refRight.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleRight();
+          }
+        });
+      }
+    }
+
+    function updateTheoryDrawerContent() {
+      ensureTheoryBookUI();
+      const key = uiState.activeScene;
+      const html = buildTheoryInnerHTML(key);
+      const leftContent = document.getElementById('theory-drawer-content');
+      const rightContent = document.getElementById('theory-drawer-right-content');
+      if (leftContent) leftContent.innerHTML = html;
+      if (rightContent) rightContent.innerHTML = html;
+      syncTheoryDrawersUI();
+    }
 
     function tUI() {
       return UI_STRINGS[uiState.lang] || UI_STRINGS.en;
@@ -16156,7 +16916,6 @@
       setTxt('ui-eq-header-right', t.eqHeaderRight);
       setTxt('ui-energy-balance-title', t.energyBalanceTitle);
       setTxt('ui-ref-heading-left', t.refHeadingLeft);
-      setTxt('ui-ref-heading-right', t.refHeadingRight);
       setTxt('ui-params-heading', t.paramsHeading);
       setTxt('btn-preset-default', t.presetDefault);
       setTxt('ui-diagram-heading', t.diagramHeading);
@@ -16457,7 +17216,12 @@
           updateLiveFormulaSubstitution();
 
           if (!uiState.running && activeSim) {
+            uiState.simTime = 0;
+            const t = tUI();
+            document.getElementById('sim-time-readout').textContent = `t = 0.00 ${t.secUnit}`;
+            resetChartHistory();
             activeSim.reset();
+            syncActionButtons();
           } else if (activeSim) {
             if (key === 'projectile') activeSim.computeVacuumCurve();
             if (typeof activeSim.syncVisuals === 'function') {
@@ -16468,6 +17232,7 @@
       });
 
       updateLiveFormulaSubstitution();
+      updateTheoryDrawerContent();
     }
 
     // ============================================================================

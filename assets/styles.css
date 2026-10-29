@@ -1947,3 +1947,419 @@
       white-space: nowrap;
       border: 0;
     }
+
+    /* ==========================================================================
+       ОСВІТНЯ ЛОГІКА ДЛЯ ДІТЕЙ ТА СТУДЕНТІВ (ШКОЛА / ВНЗ, ГІПОТЕЗА → ДОСЛІД → ДОВЕДЕННЯ)
+       ========================================================================== */
+
+    /* Індикатор прогресу учня у верхній панелі («✓ X/46») */
+    .edu-progress-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 28px;
+      padding: 0 9px;
+      border-radius: 6px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .edu-progress-pill:hover {
+      border-color: #16a34a;
+      background: #f0fdf4;
+      color: #15803d;
+    }
+
+    .edu-prog-check {
+      color: #16a34a;
+      font-weight: 700;
+    }
+
+    /* Сегментований перемикач режиму навчання «🎒 Школа / 🎓 ВНЗ» */
+    .edu-level-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--rule-light);
+      border-radius: 7px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .edu-lvl-btn {
+      height: 24px;
+      padding: 0 9px;
+      border: none;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--ink-muted);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.14s ease;
+    }
+
+    .edu-lvl-btn:hover {
+      color: var(--ink-primary);
+    }
+
+    .edu-lvl-btn.active {
+      background: #ffffff;
+      color: var(--accent-oxford);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Картка «Простими словами та в житті» для шкільного режиму */
+    .school-analogy-card {
+      margin-top: 10px;
+      margin-bottom: 2px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #f8faff 0%, #f1f5fe 100%);
+      border: 1px solid rgba(29, 78, 216, 0.18);
+      border-left: 3px solid var(--accent-oxford);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: all 0.16s ease;
+    }
+
+    .school-analogy-card.uni-compact {
+      padding: 5px 10px;
+      background: rgba(15, 23, 42, 0.03);
+      border-color: var(--rule-light);
+      border-left-width: 2px;
+    }
+
+    .school-analogy-card.uni-compact .school-analogy-body {
+      display: none;
+    }
+
+    .school-analogy-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .school-analogy-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-oxford);
+    }
+
+    .school-analogy-card.uni-compact .school-analogy-title {
+      color: var(--ink-muted);
+    }
+
+    .edu-grade-badge {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(29, 78, 216, 0.1);
+      color: var(--accent-oxford);
+      white-space: nowrap;
+    }
+
+    .school-analogy-body {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--ink-secondary);
+      overflow-wrap: break-word;
+    }
+
+    /* Блок інтуїції всередині розгорнутого теоретичного конспекту */
+    .theory-intuition-callout {
+      padding: 9px 11px;
+      border-radius: 7px;
+      background: #f8faff;
+      border: 1px solid rgba(29, 78, 216, 0.16);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .theory-intuition-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-oxford);
+    }
+
+    .theory-grade-pill {
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(29, 78, 216, 0.1);
+      color: var(--accent-oxford);
+    }
+
+    .theory-intuition-body {
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      line-height: 1.48;
+      color: var(--ink-secondary);
+    }
+
+    /* Заголовок блоку гіпотези + кнопка «💡 Підказка» */
+    .problem-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .btn-question-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(217, 119, 6, 0.35);
+      background: #fffbeb;
+      color: #b45309;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .btn-question-hint:hover,
+    .btn-question-hint.active {
+      background: #fef3c7;
+      border-color: #d97706;
+      color: #92400e;
+    }
+
+    .question-hint-box {
+      display: none;
+      padding: 8px 11px;
+      border-radius: 7px;
+      background: #fffbeb;
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      border-left: 3px solid #d97706;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.48;
+      color: #78350f;
+      animation: fadeBook 0.16s ease;
+    }
+
+    .question-hint-box.open {
+      display: block;
+    }
+
+    /* Банер активного спостереження на етапі «ІІ. Дослід» (Predict → Observe → Explain) */
+    .observe-stage-banner {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: #f0fdf4;
+      border: 1px solid rgba(22, 163, 74, 0.28);
+      border-left: 3px solid #16a34a;
+      animation: fadeBook 0.18s ease;
+    }
+
+    .observe-stage-banner.visible {
+      display: flex;
+    }
+
+    .observe-status-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.45;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    .observe-pulse-dot {
+      width: 8px;
+      height: 8px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: #16a34a;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+      animation: pulseObserveDot 1.3s infinite;
+    }
+
+    @keyframes pulseObserveDot {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55); }
+      70% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    .btn-reveal-proof-now {
+      align-self: flex-start;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(22, 163, 74, 0.4);
+      background: #ffffff;
+      color: #15803d;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .btn-reveal-proof-now:hover {
+      background: #dcfce7;
+      border-color: #16a34a;
+    }
+
+    /* Кнопка переходу до наступного уроку знизу блоку Доведення */
+    .btn-next-lesson-cta {
+      margin-top: 4px;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 7px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--accent-oxford);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .btn-next-lesson-cta:hover {
+      background: var(--accent-oxford-soft);
+      border-color: var(--accent-oxford);
+    }
+
+    /* 3 лабораторні пресети («🔬 Мінімум», «⚡ Еталон», «🚀 Максимум») у правій панелі */
+    .lab-presets-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-bottom: 6px;
+    }
+
+    .preset-chip-btn {
+      height: 26px;
+      padding: 0 6px;
+      border-radius: 6px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.12s ease;
+    }
+
+    .preset-chip-btn:hover {
+      border-color: var(--accent-oxford);
+      color: var(--ink-primary);
+      background: #f8faff;
+    }
+
+    .preset-chip-btn.active {
+      background: var(--accent-oxford-soft);
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
+      font-weight: 600;
+    }
+
+    /* Живий пошук у каталозі 46 дослідів та позначки класів */
+    .dropdown-search-wrap {
+      padding: 8px 10px 4px;
+      background: #ffffff;
+    }
+
+    .dropdown-search-input {
+      width: 100%;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 6px;
+      border: 1px solid var(--rule-dark);
+      background: #f8fafc;
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.14s ease, background 0.14s ease;
+    }
+
+    .dropdown-search-input:focus {
+      background: #ffffff;
+      border-color: var(--accent-oxford);
+      box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.12);
+    }
+
+    .exp-done-badge {
+      color: #16a34a;
+      font-weight: 700;
+    }
+
+    .exp-grade-tag {
+      color: var(--accent-oxford);
+      font-weight: 500;
+    }
+
+    /* Рядок клавіатурних скорочень унизу правої панелі */
+    .kbd-shortcuts-bar {
+      padding-top: 10px;
+      margin-top: 4px;
+      border-top: 1px dashed var(--rule-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      color: var(--ink-muted);
+    }
+
+    .kbd-shortcuts-bar kbd {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-secondary);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+    }
+
+    @media (max-width: 1180px) {
+      .edu-progress-pill {
+        display: none;
+      }
+    }

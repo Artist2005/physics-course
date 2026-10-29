@@ -16007,6 +16007,28 @@
         theorySec1Title: '1. Physical Essence & Mechanism',
         theorySec2Title: '2. Mathematical Model & Conservation Laws',
         theorySec3Title: '3. Experimental Analysis & Applications',
+        eduLevelSchool: '🎒 School',
+        eduLevelUni: '🎓 University',
+        eduLevelSchoolTip: 'School mode: real-world analogies, curriculum grade tags & step-by-step hints',
+        eduLevelUniTip: 'University mode: full analytical derivations, differential laws & precision telemetry',
+        analogyCardTitle: '🌍 Real-World Intuition & Everyday Example',
+        hintBtnLabel: 'Hint',
+        hintBtnActive: 'Hide Hint',
+        hintBoxPrefix: '💡 Guiding Hint:',
+        observeBannerText: 'Observe the 3D apparatus and energy graph… Proof opens automatically in ~2 s',
+        observeRevealBtn: 'Check Hypothesis & Open Proof Now →',
+        nextLessonBtnPrefix: 'Next Lesson:',
+        presetModeLabel: 'Experiment Modes:',
+        presetMin: '🔬 Min',
+        presetStd: '⚡ Standard',
+        presetMax: '🚀 Max',
+        presetMinTip: 'Low / threshold parameter values',
+        presetStdTip: 'Calibrated textbook values',
+        presetMaxTip: 'Extreme / maximum physical effect',
+        searchPlaceholder: '🔍 Search by topic, law, scientist, or grade (e.g. Grade 9, Ohm, lens)...',
+        searchNoResults: 'No experiments match your search query.',
+        progressBadgeTip: 'Completed experiments (click to open catalog)',
+        kbdFooterHtml: '<span class="kbd-chip">Space</span> Play/Pause · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint',
         mobileUnsupportedTitle: 'This platform is not supported on this device',
         mobileUnsupportedSub: 'The interactive 3D physics laboratory is designed for desktop and laptop computers. Please open this site on a PC.'
       },
@@ -16079,6 +16101,28 @@
         theorySec1Title: '1. Фізична суть і механізм явища',
         theorySec2Title: '2. Математична модель і закони збереження',
         theorySec3Title: '3. Лабораторний аналіз і застосування',
+        eduLevelSchool: '🎒 Школа',
+        eduLevelUni: '🎓 ВНЗ',
+        eduLevelSchoolTip: 'Шкільний режим: пояснення простими словами, приклади з життя, клас за програмою та підказки',
+        eduLevelUniTip: 'Університетський режим: повні аналітичні викладки, диференціальні закони та телеметрія',
+        analogyCardTitle: '🌍 Простими словами та в житті',
+        hintBtnLabel: 'Підказка',
+        hintBtnActive: 'Сховати',
+        hintBoxPrefix: '💡 Підказка до міркування:',
+        observeBannerText: 'Спостерігайте за 3D-установкою та графіком енергії… Доведення відкриється за ~2 с',
+        observeRevealBtn: 'Перевірити гіпотезу та відкрити доведення →',
+        nextLessonBtnPrefix: 'Наступний дослід:',
+        presetModeLabel: 'Експериментальні режими:',
+        presetMin: '🔬 Мінімум',
+        presetStd: '⚡ Еталон',
+        presetMax: '🚀 Максимум',
+        presetMinTip: 'Мінімальні / порогові параметри установки',
+        presetStdTip: 'Калібровані еталонні значення підручника',
+        presetMaxTip: 'Максимальний / екстремальний прояв ефекту',
+        searchPlaceholder: '🔍 Пошук за темою, законом або класом (напр. 9 клас, Ом, лінза)...',
+        searchNoResults: 'За вашим запитом дослідів не знайдено.',
+        progressBadgeTip: 'Виконані досліди (натисніть, щоб відкрити каталог)',
+        kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка',
         mobileUnsupportedTitle: 'Дана платформа не підтримується на даному пристрої',
         mobileUnsupportedSub: 'Інтерактивний 3D-практикум з фізики розрахований на роботу з комп’ютера або ноутбука. Будь ласка, відкрийте сайт на ПК.'
       }
@@ -16642,10 +16686,548 @@
       }
     };
 
+    // ============================================================================
+    // ПЕДАГОГІЧНІ МЕТАДАНІ ДЛЯ ДІТЕЙ, ШКОЛЯРІВ І СТУДЕНТІВ (46 ЕКСПЕРИМЕНТІВ)
+    // ============================================================================
+    const EDU_META = {
+      collision: {
+        gradeUk: '9 клас',
+        gradeEn: 'Grade 9',
+        analogyUk: 'Уяви дві більярдні кулі або зіткнення вагонів на залізниці. Навіть якщо кулі м’які (як пластилін) і нагріваються при ударі, їхній спільний «розгін» (імпульс $m\\vec{v}$) нікуди не зникає — бо ззовні їх ніхто не штовхав!',
+        analogyEn: 'Think of two billiard balls or train cars coupling on a track. Even if the spheres are soft like clay and warm up on impact, their combined forward push (linear momentum $m\\vec{v}$) never vanishes because no outside force pushed them!',
+        hintUk: 'Подумай: під час удару кулі тиснуть лише одна на одну (внутрішні сили $\\vec{F}_{12} = -\\vec{F}_{21}$). Чи змінюють внутрішні сили загальний імпульс системи, і куди дівається частина механічної енергії при непружному ударі?',
+        hintEn: 'Ask yourself: during impact, the spheres push only on each other (internal forces $\\vec{F}_{12} = -\\vec{F}_{21}$). Can internal forces change total momentum, and where does lost kinetic energy go when $e < 1$?'
+      },
+      incline: {
+        gradeUk: '7–9 клас',
+        gradeEn: 'Grade 7–9',
+        analogyUk: 'Це як з’їжджати з гірки на санчатах або ковзати книжкою по нахиленому столу. Що крутіша гірка (більший кут $\\alpha$), то сильніше земне тяжіння тягне тебе вниз і слабше притискає до поверхні!',
+        analogyEn: 'Picture sledding down a snowy hill or sliding a book down a tilted desk. The steeper the slope (larger angle $\\alpha$), the harder gravity pulls you downhill and the less it presses you into the surface!',
+        hintUk: 'Порівняй складову сили тяжіння вздовж схилу $mg\\sin\\alpha$, яка тягне брусок униз, із максимальною силою тертя $\\mu mg\\cos\\alpha$, яка його утримує.',
+        hintEn: 'Compare the downhill gravity component $mg\\sin\\alpha$ against the maximum friction force $\\mu mg\\cos\\alpha$ holding the block back.'
+      },
+      pendulum: {
+        gradeUk: '9–10 клас',
+        gradeEn: 'Grade 9–10',
+        analogyUk: 'Згадай гойдалку в парку або старовинний годинник із маятником! Чи बैठне на гойдалку легка дитина, чи дорослий — час одного гойдання залежить лише від довжини тросів $L$, а не від маси людини.',
+        analogyEn: 'Think of a playground swing or a grandfather clock! Whether a child or an adult sits on the swing, the time of one back-and-forth swing depends only on the rope length $L$, not on the person’s mass.',
+        hintUk: 'Подивись на формулу Гюйгенса $T = 2\\pi\\sqrt{L/g}$: чи є в ній маса тягарця $m$, і як зміниться корінь $\\sqrt{L}$, якщо довжину нитки $L$ збільшити?',
+        hintEn: 'Look at Huygens’ formula $T = 2\\pi\\sqrt{L/g}$: does the bob mass $m$ appear in it, and how does $\\sqrt{L}$ change when length $L$ increases?'
+      },
+      projectile: {
+        gradeUk: '9–10 клас',
+        gradeEn: 'Grade 9–10',
+        analogyUk: 'Коли ти кидаєш баскетбольний м’яч у кільце або пускаєш струмінь води зі шланга, у вакуумі ідеальний кут для найдальшого польоту — $45^\\circ$. Але в реальному повітрі вітер і опір середовища гальмують м’яч, скорочуючи дальність!',
+        analogyEn: 'When throwing a basketball or spraying water from a garden hose, $45^\\circ$ gives the longest range in vacuum. In real air, aerodynamic drag slows the ball down and bends its path steeper at the end!',
+        hintUk: 'Порівняй пунктирну параболу (у вакуумі) та суцільну криву (в повітрі): куди переходить кінетична енергія ядра, коли діє сила опору повітря $\\vec{F}_{\\text{оп}} = -k\\vec{v}$?',
+        hintEn: 'Compare the dashed vacuum parabola with the solid trajectory in air: what happens to the projectile’s mechanical energy and horizontal range when air drag acts against $\\vec{v}$?'
+      },
+      cradle: {
+        gradeUk: '9 клас',
+        gradeEn: 'Grade 9',
+        analogyUk: 'Знаменита настільна іграшка з кульками! Відхиляєш одну кульку ліворуч — і після клацання рівно одна кулька відлітає праворуч. Чому не дві з половинною швидкістю? Бо мають одночасно зберегтися і імпульс, і кінетична енергія!',
+        analogyEn: 'The famous desk toy! Pull back one steel ball on the left, and after the click, exactly one ball flies out on the right. Why not two balls at half speed? Because both momentum AND kinetic energy must be conserved simultaneously!',
+        hintUk: 'Якби після удару однієї кулі зі швидкістю $v$ відлетіли дві кулі зі швидкістю $v/2$, імпульс би зберігся ($mv = 2m(v/2)$), але порахуй сумарну кінетичну енергію $\\frac{1}{2}mv^2$!',
+        hintEn: 'If one ball of speed $v$ launched two balls at speed $v/2$, momentum would match ($mv = 2m(v/2)$), but calculate the kinetic energy $\\frac{1}{2}mv^2$ — would it match?'
+      },
+      centripetal: {
+        gradeUk: '9–10 клас',
+        gradeEn: 'Grade 9–10',
+        analogyUk: 'Коли автомобіль різко входить у поворот або ти крутиш камінець на мотузці, здається, ніби щось виштовхує його назовні. Насправді тіло просто хоче летіти прямо за інерцією, а нитка чи шини повертають його до центра кола!',
+        analogyEn: 'When a car takes a sharp turn or you whirl a stone on a string, you feel pulled outward. In reality, the stone simply wants to fly straight by inertia, while the string pulls it inward toward the center!',
+        hintUk: 'Куди напрямлена рівнодійна сила (натяг нитки) для тіла, що рухається рівномірно по колу, і як зміниться $F_n = m\\omega^2 R$ зі зростанням кутової швидкості $\\omega$?',
+        hintEn: 'In which direction does the net force (string tension) point during uniform circular motion, and how does $F_n = m\\omega^2 R$ scale with angular speed $\\omega$?'
+      },
+      archimedes: {
+        gradeUk: '7 клас',
+        gradeEn: 'Grade 7',
+        analogyUk: 'Чому величезний сталевий корабель або дерев’яний корковий поплавок тримається на воді, а маленький камінець тоне? Вода знизу тисне сильніше, ніж зверху, і виштовхує тіло з силою, що дорівнює вазі витісненої ним води!',
+        analogyEn: 'Why does a massive steel ship or cork float while a small pebble sinks? Water pushes harder on the bottom of an object than on the top, buoying it upward with a force equal to the weight of the displaced water!',
+        hintUk: 'Порівняй густину тіла $\\rho_{\\text{тіла}}$ з густиною рідини $\\rho_{\\text{рід}}$: за якої умови виштовхувальна сила Архімеда $F_A$ врівноважує силу тяжіння $mg$?',
+        hintEn: 'Compare the body density $\\rho_{\\text{body}}$ with the fluid density $\\rho_{\\text{fluid}}$: when does Archimedes’ buoyant force $F_A$ balance gravity $mg$?'
+      },
+      gas: {
+        gradeUk: '10 клас',
+        gradeEn: 'Grade 10',
+        analogyUk: 'Уяви рій невидимих пружних м’ячиків у накачаній велосипедній шині або повітряній кульці. Якщо нагріти кульку на сонці або стиснути насосом, молекули б’ються об стінки частіше й сильніше — це і є тиск газу!',
+        analogyEn: 'Imagine billions of tiny super-balls bouncing inside a bicycle tire or party balloon. Heat the balloon or squeeze it smaller, and the molecules slam into the walls faster and more often — that is gas pressure!',
+        hintUk: 'За рівнянням Менделєєва — Клапейрона $P \\propto T / V$: що станеться з тиском $P$ і швидкістю молекул при підвищенні температури $T$ або зменшенні об’єму $V$?',
+        hintEn: 'From the ideal gas law $P \\propto T / V$: how do pressure $P$ and molecular speeds change when temperature $T$ rises or volume $V$ shrinks?'
+      },
+      wavefront: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Кинь камінець у воду перед вузьким проходом між камінням: хвиля проходить крізь щілину і знову розходиться півколом! А коли шеренга маршируючих солдатів виходить з асфальту на пісок під кутом, вона повертає — так само заломлюється світло!',
+        analogyEn: 'Drop a pebble in a pond near a narrow gap: the ripple squeezes through and spreads out in circles again! And just as a marching band turns when stepping from pavement onto sand at an angle, light bends when entering glass!',
+        hintUk: 'Коли світлова хвиля переходить у оптично густіше середовище ($n_2 > n_1$), її швидкість $v = c/n$ зменшується. Як при цьому змінюється кут заломлення $\\theta_2$ відносно нормалі?',
+        hintEn: 'When a light wave enters a denser medium ($n_2 > n_1$), its phase speed $v = c/n$ drops. Does the refracted ray bend toward or away from the normal?'
+      },
+      interference: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Два камінці, кинуті у ставок поруч, створюють хвилі, які перетинаються: де гребінь зустрічає гребінь — вода здіймається вдвічі вище, а де гребінь зустрічає западину — поверхня стає гладенькою! Для світла це дає чергування яскравих і темних смуг.',
+        analogyEn: 'Two pebbles dropped side by side in a pond create overlapping ripples: where crest meets crest, waves double up; where crest meets trough, they cancel out! With light, this creates bright and dark stripes on a screen.',
+        hintUk: 'Подивись на формулу ширини інтерференційної смуги $\\Delta y = \\frac{\\lambda L}{d}$: у чисельнику чи знаменнику стоїть відстань між щілинами $d$?',
+        hintEn: 'Check Young’s fringe-spacing formula $\\Delta y = \\frac{\\lambda L}{d}$: is slit separation $d$ in the numerator or the denominator?'
+      },
+      dispersion: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Веселка після дощу або райдужні відблиски від скляної люстри! Біле сонячне світло насправді ховає в собі всі кольори веселки. У склі фіолетові хвилі пригальмовують сильніше за червоні, тому повертають крутіше і віялом розкладаються у спектр.',
+        analogyEn: 'A rainbow after rain or colorful sparkles from a crystal prism! White sunlight hides all rainbow colors inside. In glass, violet waves slow down more than red ones, so they bend more sharply and fan out into a spectrum.',
+        hintUk: 'Які хвилі мають меншу довжину $\\lambda$ і більший показник заломлення $n(\\lambda)$ у склі — червоні чи фіолетові, і який промінь відхиляється призмою найсильніше?',
+        hintEn: 'Which color has the shorter wavelength $\\lambda$ and higher refractive index $n(\\lambda)$ in glass — red or violet — and therefore bends the most?'
+      },
+      emwave: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Світло ліхтарика, сигнал Wi-Fi, радіо та рентген — це все електромагнітні хвилі! Їм не потрібне повітря чи вода, щоб летіти крізь космічний вакуум: змінне електричне поле $\\vec{E}$ породжує магнітне $\\vec{B}$, а магнітне — знову електричне.',
+        analogyEn: 'Flashlight beams, Wi-Fi signals, radio, and X-rays are all electromagnetic waves! They need no air or water to cross empty space: a changing electric field $\\vec{E}$ generates a magnetic field $\\vec{B}$, which in turn regenerates $\\vec{E}$.',
+        hintUk: 'Як орієнтовані вектори $\\vec{E}$ та $\\vec{B}$ відносно один одного та напрямку поширення хвилі $\\vec{c}$, і чи збігаються їхні фази у вакуумі?',
+        hintEn: 'How are vectors $\\vec{E}$ and $\\vec{B}$ oriented relative to each other and to propagation vector $\\vec{c}$, and do they oscillate in phase in vacuum?'
+      },
+      bernoulli: {
+        gradeUk: '10 клас',
+        gradeEn: 'Grade 10',
+        analogyUk: 'Коли затискаєш пальцем кінчик садового шланга, вода у вузькому отворі б’є значно швидше! І парадокс: саме там, де потік мчить найшвидше, його тиск на стінки труби падає. Завдяки цьому ефекту крило літака створює підйомну силу!',
+        analogyEn: 'Put your thumb over the end of a garden hose and water shoots out much faster! Remarkably, right where the fluid speeds up in a narrow throat, its side pressure drops — the very principle that helps airplane wings generate lift!',
+        hintUk: 'У вузькому перерізі труби швидкість потоку $v_2$ зростає ($A_1 v_1 = A_2 v_2$). Що тоді має статися зі статичним тиском $P_2$, щоб сума $P + \\frac{1}{2}\\rho v^2$ залишилася сталою?',
+        hintEn: 'In the narrow constriction, flow speed $v_2$ increases ($A_1 v_1 = A_2 v_2$). What must happen to static pressure $P_2$ if $P + \\frac{1}{2}\\rho v^2 = \\text{const}$?'
+      },
+      lens: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Збільшувальне скло (лупа), об’єктив камери смартфона та кришталик нашого ока працюють однаково: лінза посередині товща, тому пригальмовує центральну частину світлової хвилі і перетворює плоский фронт на кулястий, що збігається у фокусі!',
+        analogyEn: 'A magnifying glass, smartphone camera lens, and the lens in your eye all work the same way: thicker glass in the center delays the middle of the light wave, curving a flat wavefront into a sphere that converges at the focus!',
+        hintUk: 'Згідно з формулою тонкої лінзи $\\frac{1}{F} = \\frac{1}{d} + \\frac{1}{f}$: якщо оптична сила лінзи $D = 1/F$ зростає (фокусна відстань $F$ зменшується), куди зміщується фокус — ближче до лінзи чи далі?',
+        hintEn: 'By the thin-lens equation $\\frac{1}{F} = \\frac{1}{d} + \\frac{1}{f}$: when optical power $D = 1/F$ increases, does the focal point move closer to the lens or farther away?'
+      },
+      lorentz: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Магнітне поле Землі працює як невидимий щит: воно закручує заряджені частинки сонячного вітру у спіралі вздовж магнітних ліній до полюсів, де вони світяться як полярне сяйво! Магніт повертає частинку, але ніколи не змінює модуль її швидкості.',
+        analogyEn: 'Earth’s magnetic field acts as an invisible shield: it twists charged solar-wind particles into spirals toward the poles, creating the glowing aurora! A magnetic field steers a particle sideways without ever changing its speed.',
+        hintUk: 'Сила Лоренца $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$ завжди перпендикулярна до швидкості $\\vec{v}$. Чи може сила, перпендикулярна до переміщення, виконувати роботу й змінювати кінетичну енергію?',
+        hintEn: 'The Lorentz force $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$ is always perpendicular to velocity $\\vec{v}$. Can a force perpendicular to motion do work or change kinetic energy?'
+      },
+      faraday: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Динамовтулка на велосипеді, бездротова зарядка телефона та величезні турбіни електростанцій: коли магніт рухається крізь котушку, в дроті народжується струм! Але щойно магніт зупиниться — струм миттєво зникає, бо важлива лише зміна поля.',
+        analogyEn: 'A bicycle dynamo, wireless phone charger, and power-plant turbines: moving a magnet through a coil creates electric current! Stop the magnet and the current vanishes instantly — only a changing magnetic flux induces voltage.',
+        hintUk: 'За правилом Ленца індукційний струм у котушці завжди протидіє причині, яка його породила (гальмує падіння магніту), а його сила пропорційна швидкості зміни потоку $|\\Delta\\Phi / \\Delta t|$.',
+        hintEn: 'By Lenz’s law, the induced current opposes the motion that causes it (braking the magnet), and the EMF scales with the rate of flux change $|d\\Phi/dt|$.'
+      },
+      kepler: {
+        gradeUk: '10–11 клас',
+        gradeEn: 'Grade 10–11',
+        analogyUk: 'Як фігурист на льоду, що притискає руки до грудей і починає крутитися значно швидше, комета чи планета розганяється до максимуму, коли підлітає найближче до Сонця (у перигелії), і сповільнюється на дальній дузі орбіти!',
+        analogyEn: 'Just like an ice skater spinning faster when pulling their arms in, a comet or planet speeds up dramatically when swinging closest to the Sun (perihelion) and slows down far away (aphelion)!',
+        hintUk: 'За ІІ законом Кеплера (збереження моменту імпульсу $r \\cdot v_\\perp = \\text{const}$): де швидкість планети максимальна — у найближчій точці до зорі (перигелії) чи у найвіддаленішій (афелії)?',
+        hintEn: 'By Kepler’s second law (angular momentum conservation $r \\cdot v_\\perp = \\text{const}$): is orbital speed highest at perihelion (closest to the star) or aphelion (farthest)?'
+      },
+      gyroscope: {
+        gradeUk: '10–11 клас · ВНЗ',
+        gradeEn: 'Grade 10–11 · Uni',
+        analogyUk: 'Влаштуй перегони з гірки між суцільною кулею (більярдною) та порожнистим обручем або кільцем скотчу! Куля завжди виграє: у обруча вся маса розташована далеко від центра на ободі, тому йому набагато важче розкручуватися.',
+        analogyEn: 'Race a solid marble against a hollow ring (like a roll of tape) down a ramp! The solid sphere always wins regardless of weight because the ring’s mass sits far out on the rim, taking more energy just to spin up.',
+        hintUk: 'Порівняй коефіцієнт інерції $\\beta = I/(mR^2)$: у кого він менший — у суцільної кулі ($\\beta = 0.4$) чи в тонкого обруча ($\\beta = 1.0$), і хто тому отримує більше лінійне прискорення $a = \\frac{g\\sin\\alpha}{1+\\beta}$?',
+        hintEn: 'Compare the rotational inertia factor $\\beta = I/(mR^2)$: is it smaller for a solid sphere ($0.4$) or a hoop ($1.0$), and which one gets the higher linear acceleration $a = \\frac{g\\sin\\alpha}{1+\\beta}$?'
+      },
+      standingwave: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Смикаєш гітарну струну або крутиш скакалку разом із другом: хвиля біжить до закріпленого кінця, відбивається назад і накладається сама на себе. Виникають нерухомі точки («вузли») і місця максимального розмаху («пучності») — так звучать усі музичні інструменти!',
+        analogyEn: 'Pluck a guitar string or shake a jump rope with a friend: the wave reflects off the fixed end and overlaps itself, locking into stationary nodes (quiet points) and antinodes (wildly vibrating loops) — the secret behind all musical instruments!',
+        hintUk: 'Скільки півхвиль $\\lambda/2$ вкладається на довжині струни $L$ для $n$-ї гармоніки ($L = n\\frac{\\lambda}{2}$), і скільки пучностей при цьому утворюється?',
+        hintEn: 'How many half-wavelengths $\\lambda/2$ fit along string length $L$ for harmonic mode $n$ ($L = n\\lambda/2$), and how does frequency $f_n$ scale with $n$?'
+      },
+      doppler: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Чув, як машина швидкої допомоги або гоночний болід проїжджає повз тебе: «ІІІ-і-і — УУУ-у-у»? Коли сирена мчить на тебе, вона «наздоганяє» власні звукові хвилі й стискає їх (звук вищий), а позаду хвилі розтягуються (звук стає низьким)!',
+        analogyEn: 'Ever heard an ambulance siren or race car pass by with a classic “NEEEE-YOWWW” pitch drop? Moving forward, the siren crowds its own sound waves together (higher pitch); behind it, the waves stretch out (lower pitch)!',
+        hintUk: 'Що відбувається з довжиною хвилі $\\lambda_{\\text{перед}} = \\lambda_0(1 - v_s/v)$ та частотою $f$ попереду рухомого джерела порівняно з областю позаду нього?',
+        hintEn: 'What happens to the wavelength $\\lambda_{\\text{front}} = \\lambda_0(1 - v_s/v)$ and observed frequency $f$ in front of the moving source compared to behind it?'
+      },
+      brewster: {
+        gradeUk: '11 клас · ВНЗ',
+        gradeEn: 'Grade 11 · Uni',
+        analogyUk: 'Чому поляризаційні окуляри рибалок та водіїв магічно прибирають сліпучі сонячні відблиски з води та мокрого асфальту? Бо при відбиванні під особливим «кутом Брюстера» відблиск стає повністю плоскополяризованим, і фільтр окулярів легко його блокує!',
+        analogyEn: 'Why do polarized sunglasses magically erase blinding glare off water and wet roads? Because light reflecting at Brewster’s angle becomes 100% horizontally polarized, allowing a vertical polarizing filter to block the glare completely!',
+        hintUk: 'За законом Брюстера $\\tan\\theta_B = n_2/n_1$: який кут утворюють між собою відбитий і заломлений промені, коли $p$-поляризована хвиля перестає відбиватися?',
+        hintEn: 'At Brewster’s angle ($\tan\\theta_B = n_2/n_1$), what angle do the reflected and refracted rays make with each other ($\\theta_B + \\theta_2$)?'
+      },
+      diffraction: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Звук легко огинає ріг будинку, бо звукові хвилі довгі. Світло теж огинає перешкоди! Якщо пропустити лазерний промінь крізь дуже вузьку щілину, замість вузької цятки ми побачимо широку смугу з бічними кільцями: що вужча щілина, то ширше розлітається світло!',
+        analogyEn: 'If you shine a laser through a tiny slit between two razor blades, instead of a narrower dot you get a wider central streak with side fringes! Paradoxically, squeezing the slit narrower makes the diffraction pattern spread out wider!',
+        hintUk: 'Подивись на умову першого дифракційного мінімуму $\\sin\\theta_1 = \\lambda / a$: як зміниться кутова ширина центрального максимуму, якщо ширину щілини $a$ зменшувати?',
+        hintEn: 'Look at the first diffraction minimum condition $\\sin\\theta_1 = \\lambda / a$: if slit width $a$ decreases, does angle $\\theta_1$ grow wider or narrower?'
+      },
+      carnot: {
+        gradeUk: '10 клас',
+        gradeEn: 'Grade 10',
+        analogyUk: 'Двигун автомобіля, ракети чи теплової електростанції працює завдяки різниці температур — як водяне колесо крутиться завдяки перепаду висоти води. Жоден двигун не може перетворити 100% тепла на роботу: частина тепла неминуче віддається холодильнику (радіатору)!',
+        analogyEn: 'A car engine or power plant runs on a temperature difference, just like a waterwheel runs on a height drop. No engine can convert 100% of heat into work — some heat must always be exhausted to the cold radiator!',
+        hintUk: 'За теоремою Карно $\\eta = 1 - T_C / T_H$: як підвищити максимальний теоретичний ККД теплової машини — зменшувати чи збільшувати відношення $T_H / T_C$?',
+        hintEn: 'From Carnot’s efficiency formula $\\eta = 1 - T_C / T_H$: how does raising hot reservoir temperature $T_H$ (or lowering $T_C$) affect efficiency $\\eta$?'
+      },
+      viscosity: {
+        gradeUk: '10 клас · ВНЗ',
+        gradeEn: 'Grade 10 · Uni',
+        analogyUk: 'Упусти металеву кульку в банку з густим медом або гліцерином: вона розганяється лише першу мить, а далі пливе вниз із напрочуд постійною швидкістю! Так само парашутист або дощова крапля в повітрі досягає граничної швидкості, коли опір середовища врівноважує тяжіння.',
+        analogyEn: 'Drop a steel marble into a jar of thick honey: it accelerates only briefly and then glides down at a steady constant speed! Skydivers and raindrops reach this same terminal velocity when fluid drag balances gravity minus buoyancy.',
+        hintUk: 'Коли сила в’язкого тертя Стокса $F_S = 6\\pi\\eta r v$ зрівнюється з результуючою силою тяжіння й Архімеда, чому дорівнює прискорення кульки $a$ і як далі рухається тіло?',
+        hintEn: 'Once Stokes’ viscous drag $F_S = 6\\pi\\eta r v$ balances net gravity minus buoyancy, what is the sphere’s acceleration $a$, and how does its velocity behave afterward?'
+      },
+      coulomb: {
+        gradeUk: '8–10 клас',
+        gradeEn: 'Grade 8–10',
+        analogyUk: 'Потри повітряну кульку об вовняний светр — і вона притягне дрібні клаптики паперу або волосся! Однойменні заряди відштовхуються, різнойменні — притягуються, а невидимі силові лінії електричного поля показують шлях, яким побіжить пробний позитивний заряд.',
+        analogyEn: 'Rub a balloon on a wool sweater and it attracts bits of paper! Like charges repel and opposite charges attract, while electric field lines map the invisible highways along which a positive test charge gets pushed.',
+        hintUk: 'За законом Кулона $F \\propto |q_1 q_2| / r^2$: у скільки разів зміниться сила взаємодії зарядів, якщо відстань $r$ між ними зменшити вдвічі?',
+        hintEn: 'By Coulomb’s inverse-square law $F \\propto |q_1 q_2| / r^2$: how does the electrostatic force change when the distance $r$ between charges is halved?'
+      },
+      rlccircuit: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Коливальний контур у радіоприймачі або смартфоні — це електричний брат звичайного маятника! Заряд на конденсаторі — як піднятий угору тягарець (потенціальна енергія $E_C$), а струм у котушці — як розігнаний тягарець унизу (магнітна «кінетична» енергія $E_L$).',
+        analogyEn: 'An RLC circuit in a radio tuner or smartphone is the electrical twin of a swinging pendulum! Charge stored on the capacitor acts like height (potential energy $E_C$), while current in the inductor acts like motion (magnetic energy $E_L$).',
+        hintUk: 'За формулою Томсона $T = 2\\pi\\sqrt{LC}$ і за рахунок опору резистора $R$: куди поступово переходить електромагнітна енергія контуру при загасаючих коливаннях?',
+        hintEn: 'According to Thomson’s formula $T = 2\\pi\\sqrt{LC}$ and Joule heating $I^2 R$: what happens to oscillation amplitude and total electromagnetic energy when resistance $R > 0$?'
+      },
+      atwood: {
+        gradeUk: '9–10 клас',
+        gradeEn: 'Grade 9–10',
+        analogyUk: 'Саме так працює ліфт із противагою у багатоповерхівці! Оскільки два вантажі $m_1$ і $m_2$ зв’язані одним тросом через блок, рушійна сила залежить лише від різниці їхніх мас $(m_1 - m_2)g$, тому система рухається плавно й повільно — дуже зручно для точних вимірювань!',
+        analogyEn: 'This is exactly how an elevator with a counterweight works! Because masses $m_1$ and $m_2$ hang on opposite ends of the same cable, only their weight difference $(m_1 - m_2)g$ drives the motion, slowing gravity down to a gentle pace.',
+        hintUk: 'Рушійна сила системи дорівнює $(m_1 - m_2)g$, але прискорювати доводиться сумарну масу обох тіл і блока ($m_1 + m_2 + I/R^2$). Чи буде прискорення $a$ меншим за $g$?',
+        hintEn: 'The net driving force is $(m_1 - m_2)g$, while the total accelerated inertia is $m_1 + m_2 + I/R^2$. How does acceleration $a$ behave when $m_1$ and $m_2$ are close in value?'
+      },
+      coriolis: {
+        gradeUk: '10–11 клас · ВНЗ',
+        gradeEn: 'Grade 10–11 · Uni',
+        analogyUk: 'Спробуй прокотити м’яч по прямій лінії другу, сидячи на дитячій каруселі, що крутиться: для вас на каруселі м’яч дивовижно зверне вбік! Через обертання Землі ця сама сила Коріоліса закручує величезні циклони й урагани та підмиває праві береги річок у Північній півкулі.',
+        analogyEn: 'Try rolling a ball straight across a spinning playground merry-go-round: to riders on the platform, the ball mysteriously curves sideways! On our rotating Earth, this Coriolis force swirls hurricanes and slowly rotates Foucault’s pendulum.',
+        hintUk: 'У Північній півкулі вектор кутової швидкості Землі напрямлений угору вздовж осі світу. У який бік (праворуч чи ліворуч за ходом руху) сила Коріоліса $\\vec{F}_C = -2m[\\vec{\\Omega}\\times\\vec{v}]$ відхиляє тіло?',
+        hintEn: 'In the Northern Hemisphere, in which direction (right or left relative to velocity $\\vec{v}$) does the Coriolis force $\\vec{F}_C = -2m[\\vec{\\Omega}\\times\\vec{v}]$ deflect a moving body?'
+      },
+      hooke: {
+        gradeUk: '7–10 клас',
+        gradeEn: 'Grade 7–10',
+        analogyUk: 'Коли ти розтягуєш еспандер, пружину динамометра або коли сталевий трос мосту тримає важкі авто, метал трохи видовжується. Поки навантаження помірне, видовження $\\Delta L$ прямо пропорційне силі — як чесна лінійка!',
+        analogyEn: 'When you pull a spring scale, stretch a rubber band, or load a suspension-bridge steel cable, the material stretches slightly. Within the elastic limit, elongation $\\Delta L$ grows in exact proportion to the pulling force!',
+        hintUk: 'За законом Гука $\\Delta L = \\frac{F L_0}{E A}$: якщо збільшити площу поперечного перерізу стрижня $A$ або модуль Юнга матеріалу $E$, видовження $\\Delta L$ збільшиться чи зменшиться?',
+        hintEn: 'From Hooke’s law $\\Delta L = \\frac{F L_0}{E A}$: if cross-sectional area $A$ or Young’s modulus $E$ increases, does elongation $\\Delta L$ increase or decrease?'
+      },
+      torricelli: {
+        gradeUk: '7–10 клас',
+        gradeEn: 'Grade 7–10',
+        analogyUk: 'Якщо зробити маленький отвір унизу високої пластикової пляшки з водою, струмінь вилітає з такою самою швидкістю, яку мала б крапля, вільно впавши з рівня поверхні води! Що вищий стовп води над отвором, то сильніше б’є фонтан.',
+        analogyEn: 'Poke a small hole near the bottom of a tall water bottle: the water jet shoots out at the exact same speed a droplet would reach if dropped freely from the top water surface! Higher water level means higher pressure and a faster jet.',
+        hintUk: 'За формулою Торрічеллі швидкість витікання струменя $v = \\sqrt{2gh}$ визначається висотою стовпа рідини $h$ над отвором і не залежить від густини ідеальної рідини.',
+        hintEn: 'By Torricelli’s theorem $v = \\sqrt{2gh}$, efflux speed depends on depth $h$ below the free surface — how does jet speed change as water depth $h$ increases?'
+      },
+      maxwell: {
+        gradeUk: '10–11 клас · ВНЗ',
+        gradeEn: 'Grade 10–11 · Uni',
+        analogyUk: 'Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю ($\sim 500\\text{ м/с}$!), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей!',
+        analogyEn: 'Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed ($\sim 500\\text{ m/s}$!), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward!',
+        hintUk: 'Коли температура газу $T$ зростає або молярна маса $M$ зменшується, куди зміщується максимум кривої розподілу Максвелла ($v_p = \\sqrt{2RT/M}$) і як змінюється його висота?',
+        hintEn: 'When gas temperature $T$ rises (or molar mass $M$ decreases), how does the peak of the Maxwell speed distribution ($v_p = \\sqrt{2RT/M}$) shift?'
+      },
+      newtonrings: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Бачив райдужні кільця на мильній бульбашці або тонкій плівці бензину на калюжі? Коли опукла лінза лежить на плоскому склі, між ними є тонесенький клин повітря. Промінь, відбитий від верхньої і нижньої межі цього прошарку, інтерферує сам із собою, малюючи концентричні кільця!',
+        analogyEn: 'Ever noticed rainbow rings on a soap bubble or an oil slick on a puddle? Between a curved lens and a flat glass plate lies a microscopic wedge of air; light reflecting off the top and bottom of this air gap interferes to paint bullseye rings!',
+        hintUk: 'У самій точці дотику лінзи і пластинки товщина повітряного прошарку $h = 0$, але при відбиванні від оптично густішого скла хвиля втрачає півхвилі $\\lambda/2$ (зсув фази $\\pi$). Тому в центрі картини у відбитому світлі завжди темна пляма!',
+        hintEn: 'At the center contact point ($h = 0$), reflection off the denser lower glass adds a $\\pi$ phase flip ($\\lambda/2$ path shift). Does that make the central spot bright or dark in reflected light?'
+      },
+      photoelectric: {
+        gradeUk: '11 клас',
+        gradeEn: 'Grade 11',
+        analogyUk: 'Сонячні батареї, датчик освітлення в телефоні та автоматичні двері в супермаркеті працюють завдяки фотоефекту! Світло летить порціями — фотонами, немов більярдні кулі: навіть мільйон слабких червоних кульок не виб’є електрон, а один енергійний синій чи УФ-фотон вибиває його миттєво!',
+        analogyEn: 'Solar panels, smartphone light sensors, and automatic supermarket doors all rely on the photoelectric effect! Light arrives as individual photon bullets: a flood of weak red photons cannot dislodge an electron, whereas a single energetic UV photon knocks it out instantly!',
+        hintUk: 'За рівнянням Ейнштейна $E_{k,\\max} = h\\nu - W$: від чого залежить максимальна кінетична енергія вирваних електронів — від яскравості (інтенсивності) світла чи лише від його частоти $\\nu$ (довжини хвилі $\\lambda$)?',
+        hintEn: 'By Einstein’s equation $E_{k,\\max} = h\\nu - W$: does the maximum kinetic energy of emitted photoelectrons depend on light intensity or on light frequency $\\nu$ (wavelength $\\lambda$)?'
+      },
+      rutherford: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Уяви, що ти стріляєш артилерійським снарядом у аркуш цигаркового паперу — і раптом один снаряд із тисячі відскакує прямо назад у тебе! Саме так здивувався Резерфорд, коли альфа-частинки відскочили від золотої фольги: це довело, що в центрі атома є крихітне й надважке ядро!',
+        analogyEn: 'Imagine firing artillery shells at tissue paper and seeing one shell out of thousands bounce straight back at you! That was Rutherford’s shock when alpha particles rebounded from gold foil — proving that nearly all of an atom’s mass sits in a tiny dense nucleus!',
+        hintUk: 'Як залежить кут кулонівського розсіювання $\\theta$ альфа-частинки від прицільної відстані $b$ (наскільки близько до ядра пролітає частинка)?',
+        hintEn: 'How does the Coulomb scattering angle $\\theta$ depend on the impact parameter $b$ (how closely the alpha particle aims at the nucleus)?'
+      },
+      ampere: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Два дроти зі струмом поводяться як живі магніти навіть без жодного заліза! Якщо струми в них біжать в один бік — дроти дружно притягуються, а якщо назустріч один одному — відштовхуються. Саме через цей дослід Ампера визначають одиницю сили струму — 1 Ампер!',
+        analogyEn: 'Two current-carrying wires act like magnets without a single piece of iron! When currents flow in the same direction, the wires pull together; when currents flow in opposite directions, they push apart.',
+        hintUk: 'За законом Ампера $F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$: як взаємодіють два паралельні провідники, якщо струми в них течуть в одному напрямку, і як — якщо в протилежних?',
+        hintEn: 'By Ampère’s force law $F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$: do parallel wires attract or repel when their currents flow in the same direction?'
+      },
+      hall: {
+        gradeUk: '11 клас · ВНЗ',
+        gradeEn: 'Grade 11 · Uni',
+        analogyUk: 'Як телефон знає, що ти відкрив магнітний чохол, а електровелосипед вимірює оберти колеса? Всередині стоїть крихітний датчик Холла! Коли крізь пластинку зі струмом проходить магнітне поле, сила Лоренца притискає електрони до одного бічного краю, створюючи там поперечну напругу.',
+        analogyEn: 'How does a laptop know its lid is closed, or an e-bike measure wheel speed? Inside sits a tiny Hall sensor! When a magnetic field pierces a current strip, the Lorentz force shoves electrons to one side edge, creating a measurable transverse voltage.',
+        hintUk: 'Коли бічне електричне поле Холла $\\vec{E}_H$ врівноважує магнітну силу Лоренца ($q E_H = q v_d B$), як напруга Холла $U_H = \\frac{I B}{n e d}$ залежить від індукції поля $B$ та струму $I$?',
+        hintEn: 'When the transverse Hall electric field balances the magnetic Lorentz force ($q E_H = q v_d B$), how does Hall voltage $U_H = \\frac{I B}{n e d}$ scale with current $I$ and magnetic field $B$?'
+      },
+      coupled: {
+        gradeUk: '11 клас · ВНЗ',
+        gradeEn: 'Grade 11 · Uni',
+        analogyUk: 'Повісь дві однакові гойдалки на спільну гнучку перекладину або з’єднай два маятники легкою пружинкою! Відштовхни лише перший маятник — і через кілька секунд він повністю зупиниться, передавши всю свою енергію другому, а потім енергія так само повернеться назад!',
+        analogyEn: 'Hang two identical swings from a flexible beam or link two pendulums with a light spring! Push only the first pendulum: within seconds it comes to a dead stop after handing 100% of its energy to the second, and then the energy flows right back!',
+        hintUk: 'Битися між двома зв’язаними маятниками виникають через додавання двох нормальних мод із частотами $\\omega_1$ та $\\omega_2$. Як зміниться частота перекачування енергії $\\omega_{\\text{бит}} = \\omega_2 - \\omega_1$, якщо збільшити жорсткість пружини $k_c$?',
+        hintEn: 'Energy beats arise from the difference between symmetric and antisymmetric normal-mode frequencies ($\\omega_{\\text{beat}} = \\omega_2 - \\omega_1$). What happens to the energy transfer speed when spring stiffness $k_c$ increases?'
+      },
+      precession: {
+        gradeUk: '10–11 клас · ВНЗ',
+        gradeEn: 'Grade 10–11 · Uni',
+        analogyUk: 'Чому дитяча дзиґа (юла) або колесо велосипеда на ходу не падає на бік, хоча земне тяжіння тягне його вниз? Замість падіння вісь швидко розкрученої дзиґи плавно описує коло в горизонтальній площині — це дивовижне явище називається гіроскопічною прецесією!',
+        analogyEn: 'Why doesn’t a spinning toy top or a moving bicycle wheel tip over even when tilted? Instead of falling down under gravity, the axle of a fast-spinning gyroscope sweeps smoothly around in a horizontal circle — gyroscopic precession!',
+        hintUk: 'Подивись на формулу кутової швидкості прецесії $\\Omega_p = \\frac{mgd}{I\\omega_s}$: де стоїть власна кутова швидкість обертання маховика $\\omega_s$ — у чисельнику чи в знаменнику?',
+        hintEn: 'Look at the precession formula $\\Omega_p = \\frac{mgd}{I\\omega_s}$: if the flywheel spins faster (larger $\\omega_s$), does the precession rate $\\Omega_p$ become faster or slower?'
+      },
+      magnus: {
+        gradeUk: '10 клас',
+        gradeEn: 'Grade 10',
+        analogyUk: 'Бачив у футболі знаменитий «сухий лист» або кручений удар зі штрафного, коли м’яч у польоті огинає стінку гравців по дузі? Обертаючись, м’яч з одного боку пришвидшує зустрічне повітря, а з іншого — гальмує. Через різницю тисків Бернуллі виникає бічна сила Магнуса!',
+        analogyEn: 'Ever seen a soccer player bend a free kick around a defensive wall or a baseball pitcher throw a curveball? A spinning ball drags air faster on one side than the other; by Bernoulli’s principle, the pressure difference pushes the ball sideways!',
+        hintUk: 'З якого боку обертового циліндра тиск повітря нижчий (і туди відхиляється м’яч) — де лінійна швидкість поверхні збігається з потоком чи де вона напрямлена назустріч потоку?',
+        hintEn: 'On which side of the spinning sphere is air speed higher and pressure lower — where the surface spins with the airflow or against it?'
+      },
+      capillary: {
+        gradeUk: '10 клас',
+        gradeEn: 'Grade 10',
+        analogyUk: 'Як паперова серветка миттєво вбирає пролитий чай, а високі дерева піднімають воду від коріння до самої верхівки? У тоненьких капілярних трубочках молекули води чіпляються за стінки і поверхневий натяг, немов натягнута батутна плівка, підтягує стовпчик води вгору проти гравітації!',
+        analogyEn: 'How does a paper towel soak up spilled tea, or a tall tree draw water to its leaves? Inside hair-thin capillary tubes, water clings to the walls and surface tension pulls the liquid column upward against gravity!',
+        hintUk: 'За формулою Жюрена $h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$: як зміниться висота підйому рідини $h$, якщо радіус капілярної трубки $r$ зменшити?',
+        hintEn: 'By Jurin’s law $h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$: how does capillary rise height $h$ change when tube radius $r$ becomes narrower?'
+      },
+      brownian: {
+        gradeUk: '8–10 клас',
+        gradeEn: 'Grade 8–10',
+        analogyUk: 'Якщо подивитися в мікроскоп на крихітну пилинку або краплинку молока у воді, вона безперервно смикається й танцює зигзагами! Це тому, що невидимі молекули води щомиті бомбардують пилинку з різних боків нерівномірно — прямий візуальний доказ існування теплового руху молекул!',
+        analogyEn: 'Look through a microscope at a tiny pollen grain in water and you’ll see it jittering and dancing endlessly! Invisible water molecules bombard the grain unevenly from all sides — direct visual proof that atoms and molecules are in constant thermal motion!',
+        hintUk: 'За формулою Ейнштейна — Смолуховського $\\langle r^2 \\rangle = 2dDt$, де $D = \\frac{k_B T}{6\\pi\\eta a}$: як змінюється інтенсивність броунівського блукання при підвищенні температури $T$ або зменшенні розміру частинки $a$?',
+        hintEn: 'From the Einstein–Smoluchowski relation $\\langle r^2 \\rangle = 2dDt$ with $D = \\frac{k_B T}{6\\pi\\eta a}$: how does thermal jittering change when temperature $T$ increases or particle radius $a$ decreases?'
+      },
+      michelson: {
+        gradeUk: '11 клас · ВНЗ',
+        gradeEn: 'Grade 11 · Uni',
+        analogyUk: 'Найточніша «лінійка» у Всесвіті! Лазерний промінь ділиться навпіл, біжить двома перпендикулярними коридорами до дзеркал і повертається назад. Якщо одне дзеркало зсунеться хоча б на частку мікрона (половину довжини світлової хвилі!), кільця на екрані одразу змістяться. Так обсерваторія LIGO зловила гравітаційні хвилі!',
+        analogyEn: 'The most precise ruler in the Universe! A laser beam splits in two, races down perpendicular arms to mirrors, and recombines. Shift one mirror by just half a wavelength of light and the bullseye fringes shift by a full ring — how LIGO detects gravitational waves!',
+        hintUk: 'Оскільки промінь проходить плече інтерферометра двічі (туди й назад), зміщення дзеркала на $\\Delta d$ змінює різницю ходу на $\\Delta = 2\\Delta d$. На яку відстань треба зсунути дзеркало для зсуву картини рівно на 1 смугу ($\\Delta = \\lambda$)?',
+        hintEn: 'Because light travels to the movable mirror and back, shifting the mirror by $\\Delta d$ changes the optical path by $\\Delta = 2\\Delta d$. What mirror shift $\\Delta d$ produces a shift of 1 full fringe ($\\Delta = \\lambda$)?'
+      },
+      compton: {
+        gradeUk: '11 клас · ВНЗ',
+        gradeEn: 'Grade 11 · Uni',
+        analogyUk: 'Квантовий більярд! Коли високоенергетичний рентгенівський фотон налітає на електрон, він штовхає його точнісінько як пружна більярдна куля. Віддавши частину своєї енергії електрону віддачі, відскочений фотон втрачає частоту — тобто його довжина хвилі $\\lambda\'$ стає більшою!',
+        analogyEn: 'Quantum billiards! When an X-ray photon collides with an electron, it bounces off just like a billiard ball. Because the recoiling electron carries away kinetic energy, the scattered photon loses energy and emerges with a longer wavelength $\\lambda\' > \\lambda_0$!',
+        hintUk: 'За формулою Комптона $\\Delta\\lambda = \\lambda\' - \\lambda_0 = \\lambda_C(1 - \\cos\\theta)$: при якому куті розсіювання $\\theta$ збільшення довжини хвилі фотона та енергія електрона віддачі є максимальними?',
+        hintEn: 'From Compton’s formula $\\Delta\\lambda = \\lambda_C(1 - \\cos\\theta)$: how does the scattered wavelength $\\lambda\'$ compare to $\\lambda_0$, and at what angle $\\theta$ is the shift largest?'
+      },
+      bohr: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Електрон в атомі схожий на людину на сходах: він може стояти лише на сходинках $n = 1, 2, 3\\dots$, але ніколи — в повітрі між ними! Чому? Бо електрон — це водночас хвиля, і орбіта стійка лише тоді, коли вздовж кола вкладається ціле число його хвиль де Бройля. Стрибаючи на нижчу сходинку, атом випускає спалах світла (фотон)!',
+        analogyEn: 'An electron in an atom is like a person on a staircase: it can stand on steps $n = 1, 2, 3\\dots$, never in mid-air between them! Why? Because the electron is a matter wave that must wrap around the orbit in a whole number of wavelengths $2\\pi r_n = n\\lambda_B$. Jumping down a step emits a photon of light!',
+        hintUk: 'Скільки повних довжин хвиль де Бройля $\\lambda_B = h/(m_e v)$ має вкластися вздовж кола стаціонарної орбіти з квантовим числом $n$, щоб стояча хвиля не загасила сама себе?',
+        hintEn: 'How many full de Broglie wavelengths $\\lambda_B$ must fit around the circumference $2\\pi r_n$ of the $n$-th stationary Bohr orbit?'
+      },
+      biot: {
+        gradeUk: '11 клас · ВНЗ',
+        gradeEn: 'Grade 11 · Uni',
+        analogyUk: 'Одна котушка зі струмом дає сильне магнітне поле лише в самому центрі, а далі воно швидко слабшає. Але якщо поставити дві однакові котушки на відстані, що точно дорівнює їхньому радіусу ($d = R$), спад поля від першої котушки ідеально компенсується підйомом від другої — утворюється рівний «стіл» однорідного поля!',
+        analogyEn: 'A single current loop creates a magnetic field that drops off quickly away from its center. Place two identical coils apart by a distance equal to their radius ($d = R$), and their fields blend into a remarkably flat plateau of uniform magnetic field right between them!',
+        hintUk: 'За якого співвідношення між відстанню між котушками $d$ та їхнім радіусом $R$ друга похідна магнітного поля в центрі $\\frac{d^2 B}{dx^2}\\big|_{x=0}$ перетворюється на нуль (умова Гельмгольца)?',
+        hintEn: 'At what coil separation $d$ relative to coil radius $R$ does the second derivative $\\frac{d^2 B}{dx^2}\\big|_{x=0}$ vanish, creating the flattest uniform magnetic field?'
+      },
+      transformer: {
+        gradeUk: '9–11 клас',
+        gradeEn: 'Grade 9–11',
+        analogyUk: 'Зарядний блок твого смартфона чи ноутбука і гудіння трансформаторної підстанції у дворі — це робота трансформатора! Змінний струм у першій котушці створює пульсуючий магнітний потік у сталевому осерді, який без жодного дотику дротів наводить напругу в другій котушці: більше витків — вища напруга!',
+        analogyEn: 'Your phone charger and neighborhood power-grid substations both rely on transformers! Alternating current in the primary coil sends a pulsing magnetic flux through the steel core, inducing voltage in the secondary coil without the wires ever touching: more turns mean higher voltage!',
+        hintUk: 'За формулою трансформатора $\\frac{U_2}{U_1} = \\frac{N_2}{N_1}$ та законом збереження енергії $U_2 I_2 \\approx U_1 I_1$: якщо вторинна обмотка має більше витків ($N_2 > N_1$), то напруга $U_2$ підвищується, а що при цьому відбувається з силою струму $I_2$?',
+        hintEn: 'From the turns ratio $\\frac{U_2}{U_1} = \\frac{N_2}{N_1}$ and power conservation $U_2 I_2 \\approx U_1 I_1$: when $N_2 > N_1$ steps voltage up, what happens to secondary current $I_2$?'
+      }
+    };
+
     const BOOK_SVG_ICON = `<svg class="theory-book-svg" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5C2.5 3.95 2.95 3.5 3.5 3.5H7.8C9.15 3.5 10 4.25 10 5.5V16.2C10 15.35 9.25 14.8 8.2 14.8H3.5C2.95 14.8 2.5 14.35 2.5 13.8V4.5Z"/><path d="M17.5 4.5C17.5 3.95 17.05 3.5 16.5 3.5H12.2C10.85 3.5 10 4.25 10 5.5V16.2C10 15.35 10.75 14.8 11.8 14.8H16.5C17.05 14.8 17.5 14.35 17.5 13.8V4.5Z"/></svg>`;
 
     let theoryLeftOpen = false;
     let theoryRightOpen = false;
+    let questionHintOpen = false;
+    let dropdownSearchQuery = '';
+    let activePresetMode = 'std';
+
+    // Збереження режиму навчання ('school' для дітей/школярів за замовчуванням або 'uni' для студентів ВНЗ)
+    try {
+      const savedLevel = localStorage.getItem('physics_edu_level');
+      uiState.eduLevel = savedLevel === 'uni' ? 'uni' : 'school';
+    } catch (e) {
+      uiState.eduLevel = 'school';
+    }
+
+    // Трекер прогресу виконаних лабораторних робіт (зберігається в localStorage)
+    const masteredExperiments = new Set();
+    try {
+      const savedMastered = JSON.parse(localStorage.getItem('physics_mastered_v1') || '[]');
+      if (Array.isArray(savedMastered)) {
+        savedMastered.forEach(k => {
+          if (SCENE_CONFIGS[k]) masteredExperiments.add(k);
+        });
+      }
+    } catch (e) {}
+
+    function markExperimentMastered(sceneKey) {
+      if (!sceneKey || !SCENE_CONFIGS[sceneKey]) return;
+      if (!masteredExperiments.has(sceneKey)) {
+        masteredExperiments.add(sceneKey);
+        try {
+          localStorage.setItem('physics_mastered_v1', JSON.stringify(Array.from(masteredExperiments)));
+        } catch (e) {}
+      }
+      syncEduProgressUI();
+      renderDropdownMenu();
+    }
+
+    function syncEduProgressUI() {
+      const total = Object.keys(SCENE_CONFIGS).length || 46;
+      const done = masteredExperiments.size;
+      const pill = document.getElementById('edu-progress-pill');
+      const countEl = document.getElementById('edu-progress-count');
+      if (countEl) {
+        countEl.textContent = `${done}/${total}`;
+      }
+      if (pill) {
+        pill.title = tUI().progressBadgeTip;
+        pill.classList.toggle('has-progress', done > 0);
+      }
+    }
+
+    function setEduLevel(level) {
+      uiState.eduLevel = level === 'uni' ? 'uni' : 'school';
+      document.body.setAttribute('data-edu-level', uiState.eduLevel);
+      try {
+        localStorage.setItem('physics_edu_level', uiState.eduLevel);
+      } catch (e) {}
+      syncEduLevelUI();
+      updateTheoryDrawerContent();
+      requestAnimationFrame(fitMathContainers);
+    }
+
+    function syncEduLevelUI() {
+      const t = tUI();
+      const key = uiState.activeScene;
+      const meta = EDU_META[key] || EDU_META.collision;
+      const isSchool = uiState.eduLevel !== 'uni';
+      document.body.setAttribute('data-edu-level', isSchool ? 'school' : 'uni');
+
+      const btnSchool = document.getElementById('edu-lvl-school');
+      const btnUni = document.getElementById('edu-lvl-uni');
+      if (btnSchool) {
+        btnSchool.classList.toggle('active', isSchool);
+        btnSchool.textContent = t.eduLevelSchool;
+        btnSchool.title = t.eduLevelSchoolTip;
+      }
+      if (btnUni) {
+        btnUni.classList.toggle('active', !isSchool);
+        btnUni.textContent = t.eduLevelUni;
+        btnUni.title = t.eduLevelUniTip;
+      }
+
+      const analogyCard = document.getElementById('school-analogy-card');
+      const gradeBadge = document.getElementById('ui-edu-grade-badge');
+      const analogyTitle = document.getElementById('ui-analogy-title');
+      const analogyText = document.getElementById('ui-analogy-text');
+
+      if (gradeBadge) {
+        gradeBadge.textContent = uiState.lang === 'uk' ? meta.gradeUk : meta.gradeEn;
+      }
+      if (analogyTitle) {
+        analogyTitle.textContent = t.analogyCardTitle;
+      }
+      if (analogyText) {
+        const rawAnalogy = uiState.lang === 'uk' ? meta.analogyUk : meta.analogyEn;
+        analogyText.innerHTML = formatTextbookProse(rawAnalogy);
+      }
+      if (analogyCard) {
+        analogyCard.classList.toggle('uni-mode-compact', !isSchool);
+      }
+
+      syncQuestionHintUI();
+      syncEduProgressUI();
+    }
+
+    function syncQuestionHintUI() {
+      const t = tUI();
+      const key = uiState.activeScene;
+      const meta = EDU_META[key] || EDU_META.collision;
+      const hintBtn = document.getElementById('btn-question-hint');
+      const hintBtnTxt = document.getElementById('ui-hint-btn-text');
+      const hintBox = document.getElementById('question-hint-box');
+      const hintContent = document.getElementById('question-hint-content');
+
+      if (hintBtn) {
+        hintBtn.classList.toggle('active', questionHintOpen);
+        hintBtn.setAttribute('aria-expanded', questionHintOpen ? 'true' : 'false');
+      }
+      if (hintBtnTxt) {
+        hintBtnTxt.textContent = questionHintOpen ? t.hintBtnActive : t.hintBtnLabel;
+      }
+      if (hintBox) {
+        hintBox.classList.toggle('open', questionHintOpen);
+      }
+      if (hintContent) {
+        const rawHint = uiState.lang === 'uk' ? meta.hintUk : meta.hintEn;
+        hintContent.innerHTML = `<strong class="hint-prefix">${t.hintBoxPrefix}</strong> ${formatTextbookProse(rawHint)}`;
+      }
+    }
+
+    function applyLabPreset(mode) {
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key];
+      if (!cfg) return;
+      activePresetMode = mode;
+
+      if (mode === 'std') {
+        sceneParams[key] = { ...cfg.defaults };
+      } else {
+        const ratio = mode === 'min' ? 0.14 : 0.86;
+        cfg.sliders.forEach(s => {
+          const span = s.max - s.min;
+          const raw = s.min + span * ratio;
+          const steps = Math.round((raw - s.min) / s.step);
+          const decimals = (String(s.step).split('.')[1] || '').length;
+          const snapped = Number((s.min + steps * s.step).toFixed(Math.max(decimals, 3)));
+          sceneParams[key][s.key] = Math.max(s.min, Math.min(s.max, snapped));
+        });
+      }
+
+      renderQuestionAndSliders();
+      document.querySelectorAll('.preset-chip-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.preset === mode);
+      });
+
+      if (!uiState.running && activeSim) {
+        resetCurrentSimulation(uiState.selectedOption !== null);
+      } else if (activeSim) {
+        if (key === 'projectile' && typeof activeSim.computeVacuumCurve === 'function') {
+          activeSim.computeVacuumCurve();
+        }
+        if (typeof activeSim.syncVisuals === 'function') {
+          activeSim.syncVisuals();
+        }
+      }
+    }
 
     function syncTheoryDrawersUI() {
       const t = tUI();
@@ -16685,11 +17267,24 @@
       const t = tUI();
       const langKey = uiState.lang === 'uk' ? 'uk' : 'en';
       const entry = THEORY_NOTES[key] || THEORY_NOTES.collision;
+      const meta = EDU_META[key] || EDU_META.collision;
       const paragraphs = (entry && entry[langKey]) || entry.en;
       const cfg = SCENE_CONFIGS[key];
       const titles = [t.theorySec1Title, t.theorySec2Title, t.theorySec3Title];
+      const analogyStr = langKey === 'uk' ? meta.analogyUk : meta.analogyEn;
+      const gradeStr = langKey === 'uk' ? meta.gradeUk : meta.gradeEn;
 
-      return paragraphs
+      const intuitionBlock = `
+        <div class="theory-intuition-callout">
+          <div class="theory-intuition-hdr">
+            <span class="theory-intuition-title">${t.analogyCardTitle}</span>
+            <span class="theory-grade-pill">${gradeStr}</span>
+          </div>
+          <p class="theory-note-para">${formatTextbookProse(analogyStr)}</p>
+        </div>
+      `;
+
+      return intuitionBlock + paragraphs
         .map((pText, idx) => `
           <div class="theory-note-block">
             <div class="theory-note-subtitle">${titles[idx] || ''}</div>
@@ -16704,8 +17299,25 @@
     }
 
     function ensureTheoryBookUI() {
-      // 1. Кнопка книги та розгортний конспект у лівій панелі (відразу під заголовком та епіграфом параграфа)
+      const t = tUI();
+
+      // 0. Картка «Простими словами та в житті» (для школярів і студентів) + Кнопка книги у .chapter-header
       const chapterHeader = document.querySelector('.chapter-header');
+      if (chapterHeader && !document.getElementById('school-analogy-card')) {
+        const analogyCard = document.createElement('div');
+        analogyCard.id = 'school-analogy-card';
+        analogyCard.className = 'school-analogy-card';
+        analogyCard.innerHTML = `
+          <div class="analogy-card-top">
+            <span id="ui-analogy-title" class="analogy-card-title">${t.analogyCardTitle}</span>
+            <span id="ui-edu-grade-badge" class="edu-grade-badge">9 клас</span>
+          </div>
+          <p id="ui-analogy-text" class="analogy-card-text"></p>
+        `;
+        chapterHeader.appendChild(analogyCard);
+      }
+
+      // 1. Кнопка книги та розгортний конспект у лівій панелі (відразу під заголовком та епіграфом параграфа)
       if (chapterHeader && !document.getElementById('btn-theory-book')) {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -16741,20 +17353,62 @@
         });
       }
 
-      // 2. Компактна кнопка-книжка у верхній панелі навігації (.header-right)
+      // 2. Перемикач рівня «🎒 Школа / 🎓 ВНЗ», прогрес учня «✓ X/46» та кнопка-книжка у верхній панелі (.book-header)
+      const headerLeft = document.querySelector('.header-left');
+      if (headerLeft && !document.getElementById('edu-progress-pill')) {
+        const progBtn = document.createElement('button');
+        progBtn.type = 'button';
+        progBtn.id = 'edu-progress-pill';
+        progBtn.className = 'edu-progress-pill';
+        progBtn.title = t.progressBadgeTip;
+        progBtn.innerHTML = `<span class="edu-prog-check">✓</span><span id="edu-progress-count">0/46</span>`;
+        progBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          const wrapper = document.getElementById('exp-dropdown-wrapper');
+          const trigger = document.getElementById('exp-dropdown-trigger');
+          if (wrapper) {
+            const isOpen = wrapper.classList.toggle('open');
+            if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
+            const searchInp = document.getElementById('dropdown-search-input');
+            if (isOpen && searchInp) setTimeout(() => searchInp.focus(), 40);
+          }
+        });
+        headerLeft.appendChild(progBtn);
+      }
+
       const headerRight = document.querySelector('.header-right');
+      if (headerRight && !document.getElementById('edu-level-switcher')) {
+        const lvlWrap = document.createElement('div');
+        lvlWrap.id = 'edu-level-switcher';
+        lvlWrap.className = 'edu-level-switcher';
+        lvlWrap.setAttribute('role', 'group');
+        lvlWrap.innerHTML = `
+          <button type="button" id="edu-lvl-school" class="edu-lvl-btn active" data-level="school">${t.eduLevelSchool}</button>
+          <button type="button" id="edu-lvl-uni" class="edu-lvl-btn" data-level="uni">${t.eduLevelUni}</button>
+        `;
+        headerRight.insertBefore(lvlWrap, headerRight.firstChild);
+
+        lvlWrap.querySelector('#edu-lvl-school').addEventListener('click', () => setEduLevel('school'));
+        lvlWrap.querySelector('#edu-lvl-uni').addEventListener('click', () => setEduLevel('uni'));
+      }
+
       if (headerRight && !document.getElementById('btn-header-theory')) {
         const hdrBtn = document.createElement('button');
         hdrBtn.type = 'button';
         hdrBtn.id = 'btn-header-theory';
         hdrBtn.className = 'btn-header-theory';
         hdrBtn.setAttribute('aria-expanded', 'false');
-        hdrBtn.title = 'Теоретичний конспект / Theoretical Notes';
+        hdrBtn.title = 'Теоретичний конспект / Theoretical Notes (T)';
         hdrBtn.innerHTML = `
           ${BOOK_SVG_ICON}
           <span id="ui-header-theory-label">Теорія</span>
         `;
-        headerRight.insertBefore(hdrBtn, headerRight.firstChild);
+        const crumbs = headerRight.querySelector('.phase-breadcrumbs');
+        if (crumbs) {
+          headerRight.insertBefore(hdrBtn, crumbs);
+        } else {
+          headerRight.insertBefore(hdrBtn, headerRight.firstChild);
+        }
 
         hdrBtn.addEventListener('click', () => {
           const leftSidebar = document.getElementById('left-sidebar');
@@ -16811,6 +17465,116 @@
           }
         });
       }
+
+      // 4. Кнопка «💡 Підказка» у блоці гіпотези (#predict-section) + банер спостереження (#observe-stage-banner)
+      const predictSection = document.getElementById('predict-section');
+      const probLabel = document.getElementById('ui-problem-label');
+      const questionTextEl = document.getElementById('question-text');
+      if (predictSection && probLabel && questionTextEl && !document.getElementById('btn-question-hint')) {
+        const hdrRow = document.createElement('div');
+        hdrRow.className = 'problem-header-row';
+        probLabel.parentNode.insertBefore(hdrRow, probLabel);
+        hdrRow.appendChild(probLabel);
+
+        const hintBtn = document.createElement('button');
+        hintBtn.type = 'button';
+        hintBtn.id = 'btn-question-hint';
+        hintBtn.className = 'btn-question-hint';
+        hintBtn.title = 'Підказка / Hint (H)';
+        hintBtn.innerHTML = `<span aria-hidden="true">💡</span><span id="ui-hint-btn-text">${t.hintBtnLabel}</span>`;
+        hdrRow.appendChild(hintBtn);
+
+        const hintBox = document.createElement('div');
+        hintBox.id = 'question-hint-box';
+        hintBox.className = 'question-hint-box';
+        hintBox.innerHTML = `<div id="question-hint-content" class="question-hint-content"></div>`;
+        questionTextEl.insertAdjacentElement('afterend', hintBox);
+
+        hintBtn.addEventListener('click', () => {
+          questionHintOpen = !questionHintOpen;
+          syncQuestionHintUI();
+          if (questionHintOpen) requestAnimationFrame(fitMathContainers);
+        });
+      }
+
+      const collapsedPrediction = document.getElementById('collapsed-prediction');
+      if (collapsedPrediction && !document.getElementById('observe-stage-banner')) {
+        const obsBanner = document.createElement('div');
+        obsBanner.id = 'observe-stage-banner';
+        obsBanner.className = 'observe-stage-banner';
+        obsBanner.innerHTML = `
+          <div class="observe-status-row">
+            <span class="observe-pulse-dot" aria-hidden="true"></span>
+            <span id="ui-observe-banner-text">${t.observeBannerText}</span>
+          </div>
+          <button type="button" id="btn-reveal-proof-now" class="btn-reveal-proof-now">${t.observeRevealBtn}</button>
+        `;
+        collapsedPrediction.insertAdjacentElement('afterend', obsBanner);
+        obsBanner.querySelector('#btn-reveal-proof-now').addEventListener('click', () => {
+          transitionToPhase('explain');
+        });
+      }
+
+      // 5. Кнопка «Наступний дослід →» унизу секції Доведення (#explain-stage)
+      const explainStage = document.getElementById('explain-stage');
+      if (explainStage && !document.getElementById('btn-next-lesson-cta')) {
+        const nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.id = 'btn-next-lesson-cta';
+        nextBtn.className = 'btn-next-lesson-cta';
+        explainStage.appendChild(nextBtn);
+        nextBtn.addEventListener('click', () => {
+          const keys = Object.keys(SCENE_CONFIGS);
+          const idx = keys.indexOf(uiState.activeScene);
+          const nextIdx = (idx + 1) % keys.length;
+          loadScene(keys[nextIdx], true);
+          const leftPage = document.getElementById('left-sidebar');
+          if (leftPage) leftPage.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // 6. 3 лабораторні пресети («🔬 Мінімум», «⚡ Еталон», «🚀 Максимум») у правій панелі
+      const slidersContainer = document.getElementById('sliders-container');
+      if (slidersContainer && !document.getElementById('lab-presets-bar')) {
+        const presetsBar = document.createElement('div');
+        presetsBar.id = 'lab-presets-bar';
+        presetsBar.className = 'lab-presets-bar';
+        presetsBar.innerHTML = `
+          <button type="button" class="preset-chip-btn" id="btn-preset-min" data-preset="min" title="${t.presetMinTip}">${t.presetMin}</button>
+          <button type="button" class="preset-chip-btn active" id="btn-preset-std" data-preset="std" title="${t.presetStdTip}">${t.presetStd}</button>
+          <button type="button" class="preset-chip-btn" id="btn-preset-max" data-preset="max" title="${t.presetMaxTip}">${t.presetMax}</button>
+        `;
+        slidersContainer.parentNode.insertBefore(presetsBar, slidersContainer);
+        presetsBar.querySelectorAll('.preset-chip-btn').forEach(b => {
+          b.addEventListener('click', () => applyLabPreset(b.dataset.preset));
+        });
+      }
+
+      // 7. Живий пошук у випадному меню 46 дослідів (#exp-dropdown-menu)
+      const dropdownMenu = document.getElementById('exp-dropdown-menu');
+      const filterBar = dropdownMenu ? dropdownMenu.querySelector('.dropdown-filter-bar') : null;
+      if (dropdownMenu && filterBar && !document.getElementById('dropdown-search-input')) {
+        const searchWrap = document.createElement('div');
+        searchWrap.className = 'dropdown-search-wrap';
+        searchWrap.innerHTML = `<input type="search" id="dropdown-search-input" class="dropdown-search-input" placeholder="${t.searchPlaceholder}" autocomplete="off" />`;
+        dropdownMenu.insertBefore(searchWrap, filterBar);
+        const searchInp = searchWrap.querySelector('#dropdown-search-input');
+        searchInp.addEventListener('click', e => e.stopPropagation());
+        searchInp.addEventListener('input', e => {
+          dropdownSearchQuery = (e.target.value || '').trim().toLowerCase();
+          renderDropdownMenu();
+        });
+      }
+
+      // 8. Підказка гарячих клавіш унизу правої панелі (#right-sidebar)
+      const rightSidebar = document.getElementById('right-sidebar');
+      if (rightSidebar && !document.getElementById('ui-kbd-shortcuts-bar')) {
+        const kbdBar = document.createElement('div');
+        kbdBar.id = 'ui-kbd-shortcuts-bar';
+        kbdBar.className = 'kbd-shortcuts-bar';
+        kbdBar.innerHTML = t.kbdFooterHtml;
+        rightSidebar.appendChild(kbdBar);
+      }
     }
 
     function updateTheoryDrawerContent() {
@@ -16822,6 +17586,7 @@
       if (leftContent) leftContent.innerHTML = html;
       if (rightContent) rightContent.innerHTML = html;
       syncTheoryDrawersUI();
+      syncEduLevelUI();
     }
 
     function tUI() {
@@ -16926,6 +17691,23 @@
       setTxt('ui-mobile-unsupported-title', t.mobileUnsupportedTitle);
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
+      ensureTheoryBookUI();
+      setTxt('ui-observe-banner-text', t.observeBannerText);
+      setTxt('btn-reveal-proof-now', t.observeRevealBtn);
+      setTxt('btn-preset-min', t.presetMin);
+      setTxt('btn-preset-std', t.presetStd);
+      setTxt('btn-preset-max', t.presetMax);
+      const pMin = document.getElementById('btn-preset-min');
+      const pStd = document.getElementById('btn-preset-std');
+      const pMax = document.getElementById('btn-preset-max');
+      if (pMin) pMin.title = t.presetMinTip;
+      if (pStd) pStd.title = t.presetStdTip;
+      if (pMax) pMax.title = t.presetMaxTip;
+      const searchInp = document.getElementById('dropdown-search-input');
+      if (searchInp) searchInp.placeholder = t.searchPlaceholder;
+      const kbdBar = document.getElementById('ui-kbd-shortcuts-bar');
+      if (kbdBar) kbdBar.innerHTML = t.kbdFooterHtml;
+
       const prevBtn = document.getElementById('btn-prev-chapter');
       const nextBtn = document.getElementById('btn-next-chapter');
       if (prevBtn) prevBtn.title = t.prevTitle;
@@ -16951,6 +17733,8 @@
       updateDropdownTriggerUI();
       renderQuestionAndSliders();
       syncActionButtons();
+      syncEduLevelUI();
+      syncEduProgressUI();
 
       if (uiState.phase === 'explain') {
         const cfg = SCENE_CONFIGS[uiState.activeScene];
@@ -16959,6 +17743,13 @@
         verdictBanner.className = `proof-verdict ${isCorrect ? 'correct' : 'incorrect'}`;
         verdictBanner.textContent = isCorrect ? t.verdictCorrect : t.verdictIncorrect;
         document.getElementById('explain-text').innerHTML = formatTextbookProse(cfg.explanation);
+        const nextCta = document.getElementById('btn-next-lesson-cta');
+        if (nextCta) {
+          const keys = Object.keys(SCENE_CONFIGS);
+          const nextKey = keys[(keys.indexOf(uiState.activeScene) + 1) % keys.length];
+          const nextCfg = SCENE_CONFIGS[nextKey];
+          nextCta.textContent = `${t.nextLessonPrefix}: ${nextCfg.secSym} ${nextCfg.shortTitle} →`;
+        }
       }
 
       if (lastEnergyUIArgs) {
@@ -17066,6 +17857,7 @@
 
       const predictSection = document.getElementById('predict-section');
       const collapsedPrediction = document.getElementById('collapsed-prediction');
+      const obsBanner = document.getElementById('observe-stage-banner');
       const actionStage = document.getElementById('action-stage');
       const explainStage = document.getElementById('explain-stage');
 
@@ -17078,6 +17870,7 @@
         cPredict.classList.add('current');
         predictSection.style.display = 'flex';
         collapsedPrediction.classList.remove('visible');
+        if (obsBanner) obsBanner.classList.remove('visible');
         explainStage.classList.remove('visible');
         syncActionButtons();
       } else if (newPhase === 'test') {
@@ -17086,8 +17879,10 @@
         predictSection.style.display = uiState.selectedOption !== null ? 'none' : 'flex';
         if (uiState.selectedOption !== null) {
           collapsedPrediction.classList.add('visible');
+          if (obsBanner) obsBanner.classList.add('visible');
         } else {
           collapsedPrediction.classList.remove('visible');
+          if (obsBanner) obsBanner.classList.remove('visible');
         }
         explainStage.classList.remove('visible');
         syncActionButtons();
@@ -17095,6 +17890,7 @@
         cPredict.classList.add('done');
         cTest.classList.add('done');
         cExplain.classList.add('current');
+        if (obsBanner) obsBanner.classList.remove('visible');
 
         if (uiState.selectedOption !== null) {
           predictSection.style.display = 'none';
@@ -17112,11 +17908,22 @@
           verdictBanner.style.display = 'block';
           verdictBanner.className = `proof-verdict ${isCorrect ? 'correct' : 'incorrect'}`;
           verdictBanner.textContent = isCorrect ? t.verdictCorrect : t.verdictIncorrect;
+          if (isCorrect) {
+            markExperimentMastered(uiState.activeScene);
+          }
         } else {
           const correctLetter = t.letters[cfg.correctIndex] || 'B';
           verdictBanner.style.display = 'block';
           verdictBanner.className = 'proof-verdict correct';
           verdictBanner.textContent = `${t.verdictCorrect} (${t.optionPrefix} ${correctLetter})`;
+        }
+
+        const nextCta = document.getElementById('btn-next-lesson-cta');
+        if (nextCta) {
+          const keys = Object.keys(SCENE_CONFIGS);
+          const nextKey = keys[(keys.indexOf(uiState.activeScene) + 1) % keys.length];
+          const nextCfg = SCENE_CONFIGS[nextKey];
+          nextCta.textContent = `${t.nextLessonPrefix}: ${nextCfg.secSym} ${nextCfg.shortTitle} →`;
         }
 
         document.getElementById('explain-text').innerHTML = formatTextbookProse(cfg.explanation);
@@ -17180,10 +17987,12 @@
         btn.addEventListener('click', () => {
           uiState.selectedOption = idx;
           document.getElementById('chosen-option-summary').textContent = `${t.optionPrefix} ${letters[idx]}`;
-          if (!uiState.running && uiState.simTime === 0) {
+          if (uiState.simTime < 1.2) {
             uiState.running = true;
+            transitionToPhase('test');
+          } else {
+            transitionToPhase('explain');
           }
-          transitionToPhase('explain');
         });
         optionsContainer.appendChild(btn);
       });
@@ -17214,6 +18023,8 @@
           readout.textContent = `${val}${s.unit ? ' ' + s.unit : ''}`;
           updateSliderFill(input);
           updateLiveFormulaSubstitution();
+          activePresetMode = 'custom';
+          document.querySelectorAll('#lab-presets-bar .preset-chip-btn').forEach(b => b.classList.remove('active'));
 
           if (!uiState.running && activeSim) {
             uiState.simTime = 0;
@@ -17282,6 +18093,13 @@
         const cfg = SCENE_CONFIGS[key];
         if (currentDropdownFilter !== 'all' && cfg.category !== currentDropdownFilter) return;
 
+        const meta = EDU_META[key] || {};
+        const gradeTag = uiState.lang === 'uk' ? (meta.gradeUk || '') : (meta.gradeEn || '');
+        if (dropdownSearchQuery) {
+          const haystack = `${cfg.secSym} ${cfg.shortTitle} ${cfg.subtitle} ${cfg.title} ${cfg.badge} ${gradeTag}`.toLowerCase();
+          if (!haystack.includes(dropdownSearchQuery)) return;
+        }
+
         if (cfg.categoryGroupTitle && cfg.categoryGroupTitle !== lastGroupTitle) {
           lastGroupTitle = cfg.categoryGroupTitle;
           const groupHdr = document.createElement('div');
@@ -17291,15 +18109,16 @@
         }
 
         const isActive = key === uiState.activeScene;
+        const isDone = masteredExperiments.has(key);
         const item = document.createElement('a');
         item.href = getExperimentHref(key, uiState.lang);
         item.className = `dropdown-exp-item${isActive ? ' active' : ''}`;
         item.innerHTML = `
           <span class="exp-item-left">
-            <span class="exp-item-sec">${cfg.secSym}</span>
+            <span class="exp-item-sec">${isDone ? '<span class="exp-done-badge" title="Засвоєно / Mastered">✓</span> ' : ''}${cfg.secSym}</span>
             <span class="exp-item-info">
               <span class="exp-item-title">${cfg.shortTitle}</span>
-              <span class="exp-item-sub">${cfg.subtitle}</span>
+              <span class="exp-item-sub">${cfg.subtitle}${gradeTag ? ` · <span class="exp-grade-tag">${gradeTag}</span>` : ''}</span>
             </span>
           </span>
           <span class="exp-item-badge ${cfg.category === 'optics' ? 'optics' : ''}">${cfg.badge}</span>
@@ -17517,6 +18336,11 @@
       uiState.running = false;
       uiState.simTime = 0;
       uiState.selectedOption = null;
+      questionHintOpen = false;
+      activePresetMode = 'std';
+      document.querySelectorAll('#lab-presets-bar .preset-chip-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.preset === 'std');
+      });
       document.getElementById('sim-time-readout').textContent = `t = 0.00 ${tUI().secUnit}`;
       resetChartHistory();
 
@@ -17654,10 +18478,36 @@
     });
 
     document.getElementById('btn-preset-default').addEventListener('click', () => {
-      const key = uiState.activeScene;
-      sceneParams[key] = { ...SCENE_CONFIGS[key].defaults };
-      renderQuestionAndSliders();
-      resetCurrentSimulation(uiState.selectedOption !== null);
+      applyLabPreset('std');
+    });
+
+    // Клавіатурні скорочення для шкільного класу та лекційної аудиторії
+    window.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = (e.target && e.target.tagName) ? e.target.tagName.toUpperCase() : '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target && e.target.isContentEditable)) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        if (uiState.simTime === 0 && !uiState.running) {
+          const cta = document.getElementById('btn-primary-cta');
+          if (cta) cta.click();
+        } else {
+          uiState.running = !uiState.running;
+          syncActionButtons();
+        }
+      } else if (e.code === 'KeyR') {
+        e.preventDefault();
+        resetCurrentSimulation(true);
+      } else if (e.code === 'KeyT') {
+        e.preventDefault();
+        const hdrTheory = document.getElementById('btn-header-theory');
+        if (hdrTheory) hdrTheory.click();
+      } else if (e.code === 'KeyH') {
+        e.preventDefault();
+        const hintBtn = document.getElementById('btn-question-hint');
+        if (hintBtn) hintBtn.click();
+      }
     });
 
     document.querySelectorAll('.speed-opt').forEach(btn => {
@@ -17765,6 +18615,9 @@
         uiState.simTime += scaledDt;
         document.getElementById('sim-time-readout').textContent = `t = ${uiState.simTime.toFixed(2)} ${tUI().secUnit}`;
         activeSim.update(scaledDt);
+        if (uiState.phase === 'test' && uiState.selectedOption !== null && uiState.simTime >= 2.2) {
+          transitionToPhase('explain');
+        }
       }
 
       controls.update();

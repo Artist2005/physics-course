@@ -126,6 +126,58 @@
         .replace(/\$([^$]+)\$/g, (_, tex) => renderMathString(tex, false));
     }
 
+    // Розбиває насичені багатореченнєві абзаци теорії та доведення на легкі для очей структуровані тези
+    function formatStructuredProse(textWithMath) {
+      if (!textWithMath) return '';
+      const mathBlocks = [];
+      let masked = String(textWithMath).replace(/\$([^$]+)\$/g, m => {
+        const idx = mathBlocks.length;
+        mathBlocks.push(m);
+        return `\uE000M${idx}\uE000`;
+      });
+
+      const abbrRegex = /\b(напр|пор|див|ім|рис|табл|рівн|ст|тис|млн|р|рр|м|с|кг|г|Дж|Вт|Гц|Па|К|В|А|Тл|Вб|Гн|Ом|Кл|Ф|нм|мкм|мм|см|дм|км|еВ|кеВ|МеВ|рад|об|хв|год|атм|дптр|од|а\.о|н\.е|e\.g|i\.e|vs|Fig|Eq|approx|cf|Dr|Prof|Mr|St)\./gi;
+      masked = masked.replace(abbrRegex, '$1\uE001');
+
+      let parts = [];
+      if (/\b1\)\s/.test(masked) && /\b2\)\s/.test(masked)) {
+        parts = masked
+          .split(/(?:;\s*|\.\s+|\s*:\s*)(?=\d\)\s)/g)
+          .flatMap(chunk => chunk.split(/(?<=[.!?])\s+(?=[А-ЯІЇЄҐA-Z\uE000*«"(\[]|\d\)\s)/g));
+      } else {
+        parts = masked.split(/(?<=[.!?])\s+(?=[А-ЯІЇЄҐA-Z\uE000*«"(\[])/g);
+      }
+
+      if (parts.length === 1 && masked.length > 135 && masked.includes('; ')) {
+        const semiParts = masked.split(/;\s+/g);
+        if (semiParts.length >= 2 && semiParts.every(p => p.trim().length > 24)) {
+          parts = semiParts.map((p, i) => {
+            const t = p.trim();
+            if (!t) return '';
+            const first = t.charAt(0).toUpperCase() + t.slice(1);
+            return (i < semiParts.length - 1 && !/[.!?]$/.test(first)) ? `${first}.` : first;
+          });
+        }
+      }
+
+      const theses = parts
+        .map(part =>
+          part
+            .replace(/\uE001/g, '.')
+            .replace(/\uE000M(\d+)\uE000/g, (_, i) => mathBlocks[Number(i)] || '')
+            .trim()
+        )
+        .filter(Boolean);
+
+      if (theses.length <= 1) {
+        return `<p class="theory-note-para">${formatTextbookProse(theses[0] || textWithMath)}</p>`;
+      }
+
+      return `<ul class="textbook-thesis-list">${theses
+        .map(item => `<li class="textbook-thesis-item">${formatTextbookProse(item)}</li>`)
+        .join('')}</ul>`;
+    }
+
     // ============================================================================
     // 1. ІНІЦІАЛІЗАЦІЯ 3D-СЦЕНИ У СТИЛІ APPLE / GOOGLE СВІТЛОЇ СТУДІЇ
     // ============================================================================
@@ -17208,7 +17260,7 @@
         .map((pText, idx) => `
           <div class="theory-note-block">
             <div class="theory-note-subtitle">${titles[idx] || ''}</div>
-            <p class="theory-note-para">${formatTextbookProse(pText)}</p>
+            <div class="theory-note-body">${formatStructuredProse(pText)}</div>
           </div>
         `)
         .join('') + (cfg && cfg.referenceLatex ? `
@@ -17556,7 +17608,7 @@
         const isCorrect = uiState.selectedOption === cfg.correctIndex;
         verdictBanner.className = `proof-verdict ${isCorrect ? 'correct' : 'incorrect'}`;
         verdictBanner.textContent = isCorrect ? t.verdictCorrect : t.verdictIncorrect;
-        document.getElementById('explain-text').innerHTML = formatTextbookProse(cfg.explanation);
+        document.getElementById('explain-text').innerHTML = formatStructuredProse(cfg.explanation);
         const nextCta = document.getElementById('btn-next-lesson-cta');
         if (nextCta) {
           const keys = Object.keys(SCENE_CONFIGS);
@@ -17740,7 +17792,7 @@
           nextCta.textContent = `${t.nextLessonPrefix}: ${nextCfg.secSym} ${nextCfg.shortTitle} →`;
         }
 
-        document.getElementById('explain-text').innerHTML = formatTextbookProse(cfg.explanation);
+        document.getElementById('explain-text').innerHTML = formatStructuredProse(cfg.explanation);
         updateLiveFormulaSubstitution();
         syncActionButtons();
       }

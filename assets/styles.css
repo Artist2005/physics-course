@@ -1,19 +1,19 @@
     :root {
       /* Світла інженерно-студійна палітра (macOS / Linear / Stripe) */
       --bg-paper: #eef1f5;
-      --bg-page: rgba(246, 248, 251, 0.92);
+      --bg-page: rgba(248, 250, 252, 0.95);
       --bg-card: #ffffff;
       --bg-inset: #edf1f7;
 
-      /* Глибока типографська ієрархія */
+      /* Глибока типографська ієрархія з комфортною контрастністю для очей */
       --ink-primary: #0f172a;
-      --ink-secondary: #334155;
-      --ink-muted: #64748b;
+      --ink-secondary: #1e293b;
+      --ink-muted: #475569;
       --ink-faint: #94a3b8;
 
       /* Тонкі структурні лінії замість важких рамок */
-      --rule-dark: rgba(15, 23, 42, 0.14);
-      --rule-light: rgba(15, 23, 42, 0.08);
+      --rule-dark: rgba(15, 23, 42, 0.13);
+      --rule-light: rgba(15, 23, 42, 0.075);
       --rule-subtle: rgba(15, 23, 42, 0.045);
       --shadow-hard: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
       --shadow-hard-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.05);
@@ -38,8 +38,8 @@
       --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
       --header-h: 48px;
-      --left-page-w: clamp(310px, 23.5vw, 384px);
-      --right-page-w: clamp(285px, 21vw, 348px);
+      --left-page-w: clamp(340px, 26vw, 424px);
+      --right-page-w: clamp(305px, 22.5vw, 372px);
     }
 
     * {
@@ -530,7 +530,7 @@
       -webkit-backdrop-filter: blur(24px) saturate(160%);
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 20px 20px 28px;
+      padding: 22px 22px 34px;
       display: flex;
       flex-direction: column;
       gap: 0; /* Відступи індивідуальні для кожного смислового блока! */
@@ -622,41 +622,42 @@
        ЛІВА ПАНЕЛЬ: ЖУРНАЛЬНА ТИПОГРАФІКА ТА ЖИВИЙ РИТМ
        ========================================================================== */
     .chapter-header {
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     .chapter-meta {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: var(--ink-muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
       font-variant-numeric: tabular-nums;
+      line-height: 1.4;
     }
 
     .chapter-title {
       font-family: var(--font-sans);
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 700;
-      line-height: 1.18;
+      line-height: 1.24;
       color: var(--ink-primary);
-      margin-bottom: 8px;
-      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+      letter-spacing: -0.022em;
       overflow-wrap: break-word;
     }
 
     .chapter-epigraph {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 14.5px;
-      line-height: 1.45;
-      color: var(--ink-secondary);
+      font-size: 15.5px;
+      line-height: 1.54;
+      color: #334155;
       overflow-wrap: break-word;
     }
 
@@ -664,19 +665,19 @@
        КНОПКА-КНИГА ТА РОЗГОРТАЄМИЙ ТЕОРЕТИЧНИЙ КОНСПЕКТ
        ========================================================================== */
     .btn-theory-book {
-      margin-top: 10px;
+      margin-top: 14px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      padding: 6px 11px 6px 9px;
-      border-radius: 7px;
+      gap: 10px;
+      padding: 9px 13px 9px 11px;
+      border-radius: 9px;
       border: 1px solid var(--rule-dark);
       background: #ffffff;
       color: var(--ink-primary);
       font-family: var(--font-sans);
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
@@ -686,20 +687,20 @@
     .theory-book-left {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       min-width: 0;
     }
 
     .theory-book-right {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       flex-shrink: 0;
     }
 
     .theory-book-hint {
       font-family: var(--font-mono);
-      font-size: 9.5px;
+      font-size: 10.5px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -741,7 +742,7 @@
     .theory-book-chev,
     .theory-book-chevron,
     .ref-book-chev {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--ink-muted);
       transition: transform 0.18s ease;
       margin-left: 2px;
@@ -757,12 +758,12 @@
     /* Розгортаємий блок теоретичного конспекту */
     .theory-drawer-box {
       display: none;
-      margin-top: 10px;
+      margin-top: 12px;
       background: #ffffff;
       border: 1px solid var(--rule-light);
-      border-left: 3px solid var(--accent-oxford);
-      border-radius: 8px;
-      padding: 12px 13px;
+      border-left: 3.5px solid var(--accent-oxford);
+      border-radius: 10px;
+      padding: 16px 16px;
       box-shadow: var(--shadow-hard);
       animation: fadeBook 0.18s ease;
     }
@@ -778,51 +779,105 @@
     .theory-drawer-content {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 16px;
     }
 
     .theory-note-block {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 8px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule-subtle);
+    }
+
+    .theory-note-block:last-of-type {
+      padding-bottom: 2px;
+      border-bottom: none;
     }
 
     .theory-note-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 5px;
+      padding-bottom: 6px;
       border-bottom: 1px solid var(--rule-subtle);
     }
 
     .theory-note-subtitle {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ink-primary);
-      line-height: 1.3;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--accent-oxford);
+      line-height: 1.38;
+      letter-spacing: -0.01em;
     }
 
+    .theory-note-body,
     .theory-note-para {
       font-family: var(--font-sans);
-      font-size: 12px;
-      line-height: 1.56;
+      font-size: 13.8px;
+      line-height: 1.65;
       color: var(--ink-secondary);
       overflow-wrap: break-word;
     }
 
-    .theory-note-para strong {
+    .textbook-thesis-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .textbook-thesis-item {
+      position: relative;
+      padding-left: 15px;
+      font-family: var(--font-sans);
+      font-size: 13.8px;
+      line-height: 1.64;
+      color: var(--ink-secondary);
+      overflow-wrap: break-word;
+    }
+
+    .textbook-thesis-item::before {
+      content: "";
+      position: absolute;
+      left: 1px;
+      top: 0.62em;
+      width: 5.5px;
+      height: 5.5px;
+      border-radius: 50%;
+      background: var(--accent-oxford);
+      opacity: 0.72;
+    }
+
+    .theory-note-para strong,
+    .textbook-thesis-item strong,
+    .proof-text strong {
       color: var(--ink-primary);
       font-weight: 600;
+      background: rgba(29, 78, 216, 0.06);
+      padding: 0 3px;
+      border-radius: 3px;
+    }
+
+    .theory-note-para .katex,
+    .textbook-thesis-item .katex,
+    .problem-question .katex,
+    .book-option-btn .katex,
+    .proof-text .katex {
+      font-size: 1.02em;
+      padding: 0 1px;
     }
 
     .theory-note-formula {
       margin-top: 4px;
-      padding-top: 7px;
+      padding-top: 10px;
       border-top: 1px dashed var(--rule-light);
       text-align: center;
-      font-size: 12.5px;
+      font-size: 13.5px;
       color: var(--ink-primary);
       overflow: hidden;
     }
@@ -831,9 +886,9 @@
     .experiment-controls {
       display: none;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 22px;
-      padding-bottom: 18px;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
       border-bottom: 1px solid var(--rule-light);
     }
 
@@ -843,14 +898,14 @@
 
     .btn-oxford-primary {
       width: 100%;
-      height: 38px;
-      padding: 0 16px;
-      border-radius: 8px;
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 9px;
       border: 1px solid #1e40af;
       background: #1d4ed8;
       color: #ffffff;
       font-family: var(--font-sans);
-      font-size: 12.5px;
+      font-size: 13.8px;
       font-weight: 600;
       letter-spacing: 0.01em;
       cursor: pointer;
@@ -875,19 +930,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .btn-paper-secondary {
-      height: 26px;
-      padding: 0 9px;
+      height: 30px;
+      padding: 0 11px;
       border-radius: 6px;
       border: 1px solid var(--rule-dark);
       background: #ffffff;
       color: var(--ink-secondary);
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.12s ease;
@@ -904,17 +959,17 @@
       background: rgba(15, 23, 42, 0.055);
       border-radius: 6px;
       padding: 2px;
-      gap: 1px;
+      gap: 2px;
     }
 
     .speed-opt {
-      padding: 2px 7px;
+      padding: 3px 8px;
       border: none;
       border-radius: 4px;
       background: transparent;
       color: var(--ink-muted);
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.12s ease;
@@ -935,13 +990,13 @@
     .problem-box {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 22px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .problem-label {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -950,10 +1005,10 @@
 
     .problem-question {
       font-family: var(--font-sans);
-      font-size: 13px;
-      line-height: 1.52;
+      font-size: 14.5px;
+      line-height: 1.62;
       color: var(--ink-primary);
-      font-weight: 400;
+      font-weight: 500;
       margin-bottom: 4px;
       overflow-wrap: break-word;
     }
@@ -961,24 +1016,24 @@
     .options-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 9px;
     }
 
     .book-option-btn {
       width: 100%;
       text-align: left;
-      padding: 9px 11px;
-      border-radius: 8px;
+      padding: 12px 14px;
+      border-radius: 10px;
       border: 1px solid var(--rule-dark);
       background: #ffffff;
       color: var(--ink-primary);
       font-family: var(--font-sans);
-      font-size: 12.5px;
-      line-height: 1.42;
+      font-size: 13.8px;
+      line-height: 1.54;
       cursor: pointer;
       display: flex;
       align-items: flex-start;
-      gap: 9px;
+      gap: 11px;
       box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
       transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
     }
@@ -991,18 +1046,18 @@
 
     .book-option-btn.selected {
       border-color: var(--accent-oxford);
-      border-left: 3px solid var(--accent-oxford);
+      border-left: 3.5px solid var(--accent-oxford);
       background: #f8faff;
     }
 
     /* Клавіша-літера у стилі клавіатурного кейкапа (Linear style) */
     .option-letter {
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 600;
-      width: 20px;
-      height: 20px;
-      border-radius: 5px;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
       border: 1px solid var(--rule-dark);
       background: #f8fafc;
       color: var(--ink-secondary);
@@ -1023,11 +1078,11 @@
       display: none;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 11px;
-      margin-bottom: 14px;
-      border-radius: 7px;
-      background: rgba(15, 23, 42, 0.04);
-      font-size: 12px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.045);
+      font-size: 13px;
       color: var(--ink-secondary);
     }
 
@@ -1040,7 +1095,7 @@
       border: none;
       color: var(--accent-oxford);
       font-family: var(--font-sans);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       padding: 2px 4px;
@@ -1055,8 +1110,8 @@
     .proof-section {
       display: none;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 22px;
+      gap: 14px;
+      margin-bottom: 24px;
       animation: fadeBook 0.2s ease;
     }
 
@@ -1071,11 +1126,12 @@
 
     .proof-verdict {
       font-family: var(--font-sans);
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 600;
-      padding: 7px 10px;
-      border-radius: 6px;
-      border-left: 3px solid transparent;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border-left: 3.5px solid transparent;
+      line-height: 1.45;
     }
 
     .proof-verdict.correct {
@@ -1092,8 +1148,8 @@
 
     .proof-text {
       font-family: var(--font-sans);
-      font-size: 12.5px;
-      line-height: 1.56;
+      font-size: 13.8px;
+      line-height: 1.64;
       color: var(--ink-secondary);
       overflow-wrap: break-word;
     }
@@ -1106,38 +1162,38 @@
     .equation-card {
       background: #ffffff;
       border: 1px solid var(--rule-light);
-      border-left: 2.5px solid var(--accent-oxford);
-      border-radius: 8px;
-      padding: 10px 12px;
+      border-left: 3px solid var(--accent-oxford);
+      border-radius: 9px;
+      padding: 12px 14px;
       overflow: hidden;
     }
 
     .equation-header {
       font-family: var(--font-mono);
-      font-size: 9.5px;
+      font-size: 10.5px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--ink-muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
     }
 
     .katex-display-wrap {
-      padding: 4px 0;
+      padding: 6px 0;
       text-align: center;
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--ink-primary);
       max-width: 100%;
       overflow: hidden;
     }
 
     .katex-live-sub {
-      margin-top: 6px;
-      padding-top: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
       border-top: 1px dashed var(--rule-light);
-      font-size: 11.5px;
+      font-size: 12.2px;
       color: var(--accent-oxford);
       text-align: center;
       max-width: 100%;
@@ -1185,10 +1241,10 @@
       background: #f8fafc;
       border: 1px solid var(--rule-light);
       border-radius: 5px;
-      padding: 2px 7px;
+      padding: 3px 8px;
       max-width: 100%;
       overflow: hidden;
-      font-size: 11px;
+      font-size: 11.8px;
       color: var(--ink-primary);
     }
 
@@ -1196,12 +1252,12 @@
        ТЕЛЕМЕТРІЯ ТА ЕНЕРГІЯ (БЕЗ "КОРОБОК У КОРОБЦІ" — ЧИСТИЙ ПРИЛАДОВИЙ СТИЛЬ)
        ========================================================================== */
     .figure-section {
-      padding-top: 18px;
-      margin-bottom: 20px;
+      padding-top: 20px;
+      margin-bottom: 22px;
       border-top: 1px solid var(--rule-light);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .figure-caption-top {
@@ -1209,7 +1265,7 @@
       justify-content: space-between;
       align-items: baseline;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -1218,7 +1274,7 @@
     }
 
     .energy-bar-book {
-      height: 5px;
+      height: 6px;
       width: 100%;
       background: rgba(15, 23, 42, 0.07);
       border-radius: 3px;
@@ -1234,13 +1290,13 @@
     .energy-metrics-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      padding: 2px 0;
+      gap: 10px;
+      padding: 3px 0;
     }
 
     .metric-box {
-      padding: 0 0 0 7px;
-      border-left: 2px solid var(--rule-dark);
+      padding: 0 0 0 8px;
+      border-left: 2.5px solid var(--rule-dark);
       min-width: 0;
     }
     .metric-box:nth-child(1) { border-left-color: var(--fig-green); }
@@ -1248,13 +1304,13 @@
     .metric-box:nth-child(3) { border-left-color: var(--fig-amber); }
 
     .metric-label {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 500;
       color: var(--ink-muted);
       display: flex;
       align-items: center;
       gap: 4px;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1266,7 +1322,7 @@
 
     .metric-val {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--ink-primary);
       font-variant-numeric: tabular-nums;
@@ -1277,19 +1333,18 @@
 
     #chart-canvas {
       width: 100%;
-      height: 68px;
-      background: rgba(255, 255, 255, 0.6);
+      height: 74px;
+      background: rgba(255, 255, 255, 0.72);
       border-top: 1px solid var(--rule-light);
       border-bottom: 1px solid var(--rule-light);
       display: block;
     }
 
     .figure-caption-bottom {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 12px;
+      font-family: var(--font-sans);
+      font-size: 12.2px;
       color: var(--ink-muted);
-      line-height: 1.3;
+      line-height: 1.45;
     }
 
     /* Таблиця телеметрії: класичні рядки з пунктирною лінією замість шаблонних карток */
@@ -1306,15 +1361,15 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: baseline;
-      padding: 5px 0;
+      padding: 7px 0;
       border-bottom: 1px dashed var(--rule-light);
-      font-size: 11.5px;
+      font-size: 13px;
       min-width: 0;
     }
 
     .meas-name {
       color: var(--ink-secondary);
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 400;
       white-space: nowrap;
       overflow: hidden;
@@ -1324,12 +1379,12 @@
     .meas-num {
       font-family: var(--font-mono);
       font-weight: 600;
-      font-size: 11.5px;
+      font-size: 13px;
       color: var(--ink-primary);
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
       flex-shrink: 0;
-      margin-left: 8px;
+      margin-left: 10px;
     }
 
     /* ==========================================================================
@@ -1338,12 +1393,12 @@
     .journal-section {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 22px;
+      gap: 11px;
+      margin-bottom: 24px;
     }
 
     .journal-section + .journal-section {
-      padding-top: 16px;
+      padding-top: 18px;
       border-top: 1px solid var(--rule-light);
     }
 
@@ -1352,7 +1407,7 @@
       justify-content: space-between;
       align-items: baseline;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.07em;
@@ -1365,10 +1420,10 @@
       background: #ffffff;
       border: 1px solid var(--rule-light);
       border-left: 3px solid var(--accent-oxford);
-      border-radius: 8px;
-      padding: 12px 14px;
+      border-radius: 9px;
+      padding: 13px 15px;
       box-shadow: var(--shadow-hard);
-      font-size: 13px;
+      font-size: 13.8px;
       color: var(--ink-primary);
       text-align: center;
       overflow: hidden;
@@ -1378,8 +1433,8 @@
     .param-control {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      padding: 1px 0;
+      gap: 6px;
+      padding: 3px 0;
     }
 
     .param-header {
@@ -1390,16 +1445,17 @@
     }
 
     .param-title {
-      font-size: 12.5px;
+      font-size: 13.5px;
       font-weight: 500;
       color: var(--ink-primary);
       min-width: 0;
       overflow-wrap: break-word;
+      line-height: 1.4;
     }
 
     .param-readout {
       font-family: var(--font-mono);
-      font-size: 11.5px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--accent-oxford);
       font-variant-numeric: tabular-nums;
@@ -1410,8 +1466,8 @@
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      height: 4px;
-      border-radius: 2px;
+      height: 5px;
+      border-radius: 3px;
       background: linear-gradient(
         to right,
         var(--accent-oxford) 0%,
@@ -1428,8 +1484,8 @@
     input[type="range"].book-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: #ffffff;
       border: 1.5px solid var(--accent-oxford);
@@ -1443,8 +1499,8 @@
     }
 
     input[type="range"].book-slider::-moz-range-thumb {
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: #ffffff;
       border: 1.5px solid var(--accent-oxford);
@@ -1464,10 +1520,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 0;
+      padding: 9px 0;
       border-bottom: 1px solid var(--rule-subtle);
       cursor: pointer;
-      font-size: 12.5px;
+      font-size: 13.5px;
       font-weight: 400;
       color: var(--ink-primary);
     }
@@ -1475,8 +1531,8 @@
     .book-switch {
       appearance: none;
       -webkit-appearance: none;
-      width: 34px;
-      height: 19px;
+      width: 36px;
+      height: 20px;
       background: rgba(15, 23, 42, 0.18);
       border-radius: 999px;
       border: none;
@@ -1489,8 +1545,8 @@
     .book-switch::after {
       content: '';
       position: absolute;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: #ffffff;
       top: 2px;
@@ -1504,22 +1560,22 @@
     }
 
     .book-switch:checked::after {
-      transform: translateX(15px);
+      transform: translateX(16px);
     }
 
     /* Кольорова легенда векторів: чисті інлайн-позначки без коробок */
     .legend-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5px 10px;
-      padding-top: 8px;
+      gap: 7px 12px;
+      padding-top: 10px;
     }
 
     .legend-entry {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 11px;
+      gap: 7px;
+      font-size: 12.2px;
       color: var(--ink-secondary);
       padding: 2px 0;
       background: transparent;
@@ -1527,9 +1583,9 @@
     }
 
     .legend-bar {
-      width: 10px;
-      height: 3px;
-      border-radius: 1.5px;
+      width: 12px;
+      height: 3.5px;
+      border-radius: 2px;
       flex-shrink: 0;
     }
 
@@ -1713,8 +1769,8 @@
 
     @media (max-width: 1080px) {
       :root {
-        --left-page-w: 300px;
-        --right-page-w: 275px;
+        --left-page-w: 315px;
+        --right-page-w: 288px;
       }
       .phase-breadcrumbs {
         display: none;
@@ -1920,14 +1976,14 @@
     .btn-question-hint {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
+      gap: 5px;
+      padding: 3px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(217, 119, 6, 0.35);
+      border: 1px solid rgba(217, 119, 6, 0.38);
       background: #fffbeb;
       color: #b45309;
       font-family: var(--font-sans);
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.14s ease;
@@ -1942,14 +1998,14 @@
 
     .question-hint-box {
       display: none;
-      padding: 8px 11px;
-      border-radius: 7px;
+      padding: 11px 14px;
+      border-radius: 9px;
       background: #fffbeb;
-      border: 1px solid rgba(217, 119, 6, 0.3);
-      border-left: 3px solid #d97706;
+      border: 1px solid rgba(217, 119, 6, 0.32);
+      border-left: 3.5px solid #d97706;
       font-family: var(--font-sans);
-      font-size: 12px;
-      line-height: 1.48;
+      font-size: 13.5px;
+      line-height: 1.56;
       color: #78350f;
       animation: fadeBook 0.16s ease;
     }
@@ -1962,13 +2018,13 @@
     .observe-stage-banner {
       display: none;
       flex-direction: column;
-      gap: 8px;
-      padding: 10px 12px;
-      margin-bottom: 16px;
-      border-radius: 8px;
+      gap: 10px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border-radius: 9px;
       background: #f0fdf4;
       border: 1px solid rgba(22, 163, 74, 0.28);
-      border-left: 3px solid #16a34a;
+      border-left: 3.5px solid #16a34a;
       animation: fadeBook 0.18s ease;
     }
 
@@ -1979,10 +2035,10 @@
     .observe-status-row {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 9px;
       font-family: var(--font-sans);
-      font-size: 12px;
-      line-height: 1.45;
+      font-size: 13.2px;
+      line-height: 1.54;
       color: #166534;
       font-weight: 500;
     }
@@ -1990,7 +2046,7 @@
     .observe-pulse-dot {
       width: 8px;
       height: 8px;
-      margin-top: 4px;
+      margin-top: 5px;
       border-radius: 50%;
       background: #16a34a;
       flex-shrink: 0;
@@ -2006,13 +2062,13 @@
 
     .btn-reveal-proof-now {
       align-self: flex-start;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 6px;
       border: 1px solid rgba(22, 163, 74, 0.4);
       background: #ffffff;
       color: #15803d;
       font-family: var(--font-sans);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.14s ease;
@@ -2025,15 +2081,15 @@
 
     /* Кнопка переходу до наступного уроку знизу блоку Доведення */
     .btn-next-lesson-cta {
-      margin-top: 4px;
+      margin-top: 6px;
       width: 100%;
-      padding: 8px 12px;
-      border-radius: 7px;
+      padding: 10px 14px;
+      border-radius: 8px;
       border: 1px solid var(--rule-dark);
       background: #ffffff;
       color: var(--accent-oxford);
       font-family: var(--font-sans);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       text-align: center;
       cursor: pointer;
@@ -2049,19 +2105,19 @@
     .lab-presets-bar {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 5px;
-      margin-bottom: 6px;
+      gap: 6px;
+      margin-bottom: 8px;
     }
 
     .preset-chip-btn {
-      height: 26px;
-      padding: 0 6px;
-      border-radius: 6px;
+      height: 30px;
+      padding: 0 8px;
+      border-radius: 7px;
       border: 1px solid var(--rule-dark);
       background: #ffffff;
       color: var(--ink-secondary);
       font-family: var(--font-sans);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
       cursor: pointer;
       white-space: nowrap;
@@ -2091,14 +2147,14 @@
 
     .dropdown-search-input {
       width: 100%;
-      height: 30px;
+      height: 32px;
       padding: 0 10px;
       border-radius: 6px;
       border: 1px solid var(--rule-dark);
       background: #f8fafc;
       color: var(--ink-primary);
       font-family: var(--font-sans);
-      font-size: 12px;
+      font-size: 12.5px;
       outline: none;
       transition: border-color 0.14s ease, background 0.14s ease;
     }
@@ -2121,23 +2177,23 @@
 
     /* Рядок клавіатурних скорочень унизу правої панелі */
     .kbd-shortcuts-bar {
-      padding-top: 10px;
-      margin-top: 4px;
+      padding-top: 12px;
+      margin-top: 6px;
       border-top: 1px dashed var(--rule-light);
       display: flex;
       flex-wrap: wrap;
       gap: 6px 10px;
       justify-content: center;
       font-family: var(--font-sans);
-      font-size: 10.5px;
+      font-size: 11px;
       color: var(--ink-muted);
     }
 
     .kbd-shortcuts-bar kbd {
       font-family: var(--font-mono);
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 600;
-      padding: 1px 5px;
+      padding: 1px 6px;
       border-radius: 4px;
       border: 1px solid var(--rule-dark);
       background: #ffffff;

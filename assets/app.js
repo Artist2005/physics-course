@@ -137,8 +137,8 @@
     // ============================================================================
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xeef2f6);
-    scene.fog = new THREE.FogExp2(0xeef2f6, 0.011);
+    scene.background = new THREE.Color(0xf3efe6);
+    scene.fog = new THREE.FogExp2(0xf3efe6, 0.011);
 
     const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 200);
     camera.position.set(0, 6.2, 16.0);
@@ -160,11 +160,11 @@
     controls.maxDistance = 42;
     controls.target.set(0, 2.0, 0);
 
-    // Чисте студійне освітлення
-    const ambientLight = new THREE.AmbientLight(0xf8fafc, 1.38);
+    // Тепле студійне освітлення академічного підручника
+    const ambientLight = new THREE.AmbientLight(0xfaf7f2, 1.38);
     scene.add(ambientLight);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xdbe4ef, 0.85);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe6dfd3, 0.85);
     hemiLight.position.set(0, 25, 0);
     scene.add(hemiLight);
 
@@ -183,7 +183,7 @@
     dirLight.shadow.bias = -0.0004;
     scene.add(dirLight);
 
-    const rimLight = new THREE.DirectionalLight(0xe0f2fe, 0.55);
+    const rimLight = new THREE.DirectionalLight(0xf5efe6, 0.55);
     rimLight.position.set(-12, 10, -10);
     scene.add(rimLight);
 
@@ -191,10 +191,10 @@
     try {
       const pmremGen = new THREE.PMREMGenerator(renderer);
       const envScene = new THREE.Scene();
-      envScene.background = new THREE.Color(0xeef2f6);
+      envScene.background = new THREE.Color(0xf3efe6);
       const skyDome = new THREE.Mesh(
         new THREE.SphereGeometry(20, 24, 16),
-        new THREE.MeshBasicMaterial({ color: 0xf8fafc, side: THREE.BackSide })
+        new THREE.MeshBasicMaterial({ color: 0xfaf7f2, side: THREE.BackSide })
       );
       envScene.add(skyDome);
       const softboxTop = new THREE.Mesh(
@@ -206,14 +206,14 @@
       envScene.add(softboxTop);
       const softboxSide = new THREE.Mesh(
         new THREE.PlaneGeometry(14, 10),
-        new THREE.MeshBasicMaterial({ color: 0xe0f2fe, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xf5efe6, side: THREE.DoubleSide })
       );
       softboxSide.position.set(-12, 6, -8);
       softboxSide.lookAt(0, 0, 0);
       envScene.add(softboxSide);
       const warmBounce = new THREE.Mesh(
         new THREE.PlaneGeometry(24, 24),
-        new THREE.MeshBasicMaterial({ color: 0xdbe4ef, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xe6dfd3, side: THREE.DoubleSide })
       );
       warmBounce.rotation.x = -Math.PI / 2;
       warmBounce.position.y = -6;
@@ -225,7 +225,7 @@
     // Світла студійна основа сцени + делікатна координатна сітка
     const floorGeo = new THREE.PlaneGeometry(90, 90);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0xeef2f6,
+      color: 0xf3efe6,
       roughness: 0.92,
       metalness: 0.02
     });
@@ -234,7 +234,7 @@
     floorMesh.receiveShadow = true;
     scene.add(floorMesh);
 
-    const gridHelper = new THREE.GridHelper(40, 40, 0xc2cddb, 0xd8e1ec);
+    const gridHelper = new THREE.GridHelper(40, 40, 0xd4cbc0, 0xe4ddd2);
     gridHelper.position.y = 0.004;
     gridHelper.material.opacity = 0.65;
     gridHelper.material.transparent = true;
@@ -420,6 +420,7 @@
       'F_ядра (притягання Z_eff)': 'F_nuc (Z_eff attraction)',
       'F_екран (екранування σ)': 'F_shield (σ shielding)',
       'r_ат (ковалентний радіус)': 'r_at (covalent radius)',
+      'r_ат (атомний радіус)': 'r_at (atomic radius)',
       'E_HB (водневий зв’язок O···H)': 'E_HB (H-bond O···H)',
       'F_ковал (міцний зв’язок O–H)': 'F_cov (covalent O–H)',
       'u_тепл (руйнування каркасу)': 'u_th (cage collapse)',
@@ -447,6 +448,61 @@
       'v_росту (приєднання мономеру)': 'v_prop (monomer addition)',
       'R_g (радіус інерції клубка)': 'R_g (coil gyration radius)',
       'Активний радикал •CH₂–': 'Active radical •CH₂–',
+      'σ-зв’язування (конструктивна інтерференція)': 'σ-bonding (constructive interference)',
+      'σ*-антизв’язування (вузлова площина)': 'σ*-antibonding (nodal plane)',
+      'U₀ (енергія ґратки Борна–Ланде)': 'U₀ (Born–Landé lattice energy)',
+      'F_відшт (борнівське відштовхування r⁻ⁿ)': 'F_rep (Born repulsion r⁻ⁿ)',
+      'ΔH_субл + I₁ + ½D (витрати енергії)': 'ΔH_sub + I₁ + ½D (energy input)',
+      'EA + U₀ (вивільнення енергії)': 'EA + U₀ (energy release)',
+      'P_A + P_B (загальний тиск пари P_заг)': 'P_A + P_B (total vapor pressure)',
+      'μ_L = μ_V (фазова рівновага)': 'μ_L = μ_V (phase equilibrium)',
+      'ΔT_b = i·K_b·m (ебуліоскопічний зсув)': 'ΔT_b = i·K_b·m (ebullioscopic shift)',
+      'Зниження тиску пари ΔP': 'Vapor pressure lowering ΔP',
+      'C_орг / C_водн = K_D (екстракція в ефір)': 'C_org / C_aq = K_D (ether extraction)',
+      'Масоперенесення крізь межу фаз': 'Interfacial mass transfer',
+      'Потік адсорбції r_ads = k_a·P·(1−θ)': 'Adsorption flux r_ads = k_a·P·(1−θ)',
+      'Потік десорбції r_des = k_d·θ': 'Desorption flux r_des = k_d·θ',
+      'r = k_cat[ES] (вихід продукту P)': 'r = k_cat[ES] (product P release)',
+      'Зв’язування S + E ⇄ ES (K_M)': 'Binding S + E ⇄ ES (K_M)',
+      'k₁ (первинний розпад A → B)': 'k₁ (primary step A → B)',
+      'k₂ (вторинний перехід B → C)': 'k₂ (secondary step B → C)',
+      'D_eff (дифузія реагенту A до ядра)': 'D_eff (diffusion of A to core)',
+      'Фронт реакції r_c(t)': 'Reaction front r_c(t)',
+      'F_електр (притягання протиіонів)': 'F_elec (counter-ion attraction)',
+      'F_тепл (дифузія у подвійному шарі κ⁻¹)': 'F_th (double-layer diffusion κ⁻¹)',
+      'E_відшт (електростатичний бар’єр ζ)': 'E_rep (electrostatic ζ barrier)',
+      'E_ВДВ (дисперсійне притягання Гамакера)': 'E_vdW (Hamaker vdW attraction)',
+      'Δ_o (розщеплення d-рівнів полем лігандів)': 'Δ_o (ligand-field d-orbital splitting)',
+      'Перехід d → d* (поглинання hν)': 'd → d* transition (hν absorption)',
+      'Зв’язування Ca²⁺ гексадентатним ЕДТА⁴⁻': 'Ca²⁺ chelation by hexadentate EDTA⁴⁻',
+      'TΔS > 0 (вивільнення 6 молекул H₂O)': 'TΔS > 0 (release of 6 H₂O molecules)',
+      'Атака нуклеофіла Nu⁻ з тилу (180°)': 'Backside Nu⁻ attack (180°)',
+      'Відхід групи X⁻ (інверсія Вальдена)': 'Leaving group X⁻ departure (Walden inversion)',
+      'π-електронне кільце (6 π-електронів)': 'π-electron ring (6 π-electrons)',
+      'B_ind (індукований кільцевий струм)': 'B_ind (induced ring current)',
+      'Фронт елюенту (рухома фаза u_0)': 'Eluent front (mobile phase u_0)',
+      'Утримування в нерухомій фазі (R_f)': 'Stationary phase retention (R_f)',
+      'F_Лоренца = q(v⃗ × B⃗) (відхилення в полі B)': 'F_Lorentz = q(v⃗ × B⃗) (magnetic deflection)',
+      'Кінетична енергія прискорення qU': 'Acceleration kinetic energy qU',
+      'Q₁, Q₂ (нормальні коливальні моди)': 'Q₁, Q₂ (normal vibrational modes)',
+      'hν_ІЧ (резонансне поглинання Δμ ≠ 0)': 'hν_IR (resonant absorption Δμ ≠ 0)',
+      'Мережа водневих зв’язків N–H···O=C (i → i+4)': 'H-bond network N–H···O=C (i → i+4)',
+      'Теплова денатурація (руйнування спіралі)': 'Thermal denaturation (helix unfolding)',
+      'ΣΔH_ендо': 'ΣΔH_endo',
+      '−U_реш': '−U_lattice',
+      'μ_сумарний': 'μ_net',
+      'Q_нагр': 'Q_heat',
+      'v_кат': 'v_cat',
+      'P_розч': 'P_soln',
+      'L_фронту': 'L_front',
+      'ζ-потенціал': 'ζ-potential',
+      'I_Тіндаля': 'I_Tyndall',
+      'h_гідр': 'h_hydr',
+      'j_кор': 'j_corr',
+      'Атака Nu⁻': 'Nu⁻ Attack',
+      'Відхід LG⁻': 'LG⁻ Leaving',
+      'η_естеру': 'η_ester',
+      'N_H-зв': 'N_H-bonds',
     };
     const activeVectorArrows = new Set();
 
@@ -467,46 +523,46 @@
         : text;
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      const fontStr = '600 22px "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      const fontStr = '600 21px "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
       ctx.font = fontStr;
 
       const measuredW = Math.ceil(ctx.measureText(displayText).width);
-      const padOuterX = 12;
+      const padOuterX = 10;
       const pillY = 14;
-      const pillH = 54;
-      const innerLeftPad = 12;
-      const markerW = 7;
-      const markerGap = 11;
-      const innerRightPad = 18;
-      const contentW = Math.max(46, Math.ceil(measuredW * 1.08) + 14);
+      const pillH = 52;
+      const innerLeftPad = 11;
+      const markerW = 6;
+      const markerGap = 10;
+      const innerRightPad = 15;
+      const contentW = Math.max(44, Math.ceil(measuredW * 1.05) + 10);
       const pillW = innerLeftPad + markerW + markerGap + contentW + innerRightPad;
 
       canvas.width = pillW + padOuterX * 2;
-      canvas.height = 88;
+      canvas.height = 84;
 
-      // М'яка тінь у стилі Apple / Google
+      // Чітка технічна плашка з гострими кутами (6px) без розмиття
       ctx.save();
-      ctx.shadowColor = 'rgba(15, 23, 42, 0.16)';
-      ctx.shadowBlur = 10;
-      ctx.shadowOffsetY = 3;
-      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 14);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
+      ctx.shadowColor = 'rgba(15, 23, 42, 0.14)';
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetY = 2;
+      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 6);
+      ctx.fillStyle = '#ffffff';
       ctx.fill();
       ctx.restore();
 
-      // Тонкий контур капсули
-      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 14);
-      ctx.strokeStyle = '#cbd5e1';
-      ctx.lineWidth = 1.8;
+      // Чіткий технічний контур
+      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 6);
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 2.0;
       ctx.stroke();
 
-      // Кольоровий маркер зліва
+      // Кольоровий індикатор зліва
       const markerX = padOuterX + innerLeftPad;
       ctx.fillStyle = borderColor;
-      drawPillRect(ctx, markerX, pillY + 13, markerW, 28, 3.5);
+      drawPillRect(ctx, markerX, pillY + 11, markerW, 30, 2);
       ctx.fill();
 
-      // Підпис строго праворуч від маркера всередині капсули
+      // Підпис праворуч від маркера
       ctx.font = fontStr;
       ctx.fillStyle = '#0f172a';
       ctx.textAlign = 'center';
@@ -515,14 +571,16 @@
       ctx.fillText(displayText, textCenterX, pillY + pillH / 2 + 1, contentW);
 
       const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
       texture.minFilter = THREE.LinearFilter;
       const spriteMat = new THREE.SpriteMaterial({
         map: texture,
         transparent: true,
-        depthTest: false
+        depthTest: false,
+        toneMapped: false
       });
       const sprite = new THREE.Sprite(spriteMat);
-      const spriteH = 0.39;
+      const spriteH = 0.36;
       const spriteW = spriteH * (canvas.width / canvas.height);
       sprite.scale.set(spriteW, spriteH, 1);
       sprite.renderOrder = 999;
@@ -562,7 +620,10 @@
     class SmartVectorArrow {
       constructor(label, colorHex = 0x166534, labelStrColor = '#166534') {
         this.rawLabel = label;
-        this.labelStrColor = labelStrColor;
+        const resolvedCssColor = (typeof labelStrColor === 'string' && labelStrColor.startsWith('#'))
+          ? labelStrColor
+          : ('#' + new THREE.Color(colorHex).getHexString());
+        this.labelStrColor = resolvedCssColor;
         this.group = new THREE.Group();
 
         const shaftGeo = new THREE.CylinderGeometry(0.04, 0.04, 1, 12);
@@ -581,7 +642,7 @@
         this.group.add(this.shaft);
         this.group.add(this.head);
 
-        this.labelSprite = makeBookVectorSprite(label, labelStrColor);
+        this.labelSprite = makeBookVectorSprite(label, resolvedCssColor);
         scene.add(this.labelSprite);
         worldGroup.add(this.group);
         activeVectorArrows.add(this);
@@ -3197,10 +3258,13 @@
         formulaLatex: String.raw`m(\mathrm{Cu}) = \frac{M_{\mathrm{Cu}} \cdot I \cdot t}{z \cdot F}, \qquad V(\mathrm{O_2}) = \frac{I \cdot t}{4 F}\cdot 22.4\text{ л}`,
         liveLatexFn: p => {
           const F = 96485;
+          const z = Math.round(p.ionValence || 2);
+          const mMolar = z === 1 ? 107.87 : (z === 2 ? 63.55 : 196.97);
+          const sym = z === 1 ? 'Ag' : (z === 2 ? 'Cu' : 'Au');
           const qCoulomb = p.currentAmp * p.durationMin * 60;
-          const mCuGrams = (63.55 * qCoulomb) / (p.ionValence * F);
+          const mGrams = (mMolar * qCoulomb) / (z * F);
           const vO2Ml = (qCoulomb / (4 * F)) * 22414;
-          return String.raw`Q = ${qCoulomb.toFixed(0)}\text{ Кл}, \quad m = ${mCuGrams.toFixed(2)}\text{ г}, \quad V(\mathrm{O_2}) = ${vO2Ml.toFixed(0)}\text{ мл}`;
+          return String.raw`Q = ${qCoulomb.toFixed(0)}\text{ Кл}, \quad m(\mathrm{${sym}}) = ${mGrams.toFixed(2)}\text{ г}, \quad V(\mathrm{O_2}) = ${vO2Ml.toFixed(0)}\text{ мл}`;
         },
         defaults: { currentAmp: 5.0, durationMin: 15, ionValence: 2, voltageV: 4.5 },
         sliders: [
@@ -3260,85 +3324,41 @@
         discipline: 'chemistry',
         category: 'chem_struct',
         categoryGroupTitle: 'Частина І. Будова атома, хімічний зв’язок та кристали',
-        shortTitle: 'Періодичний закон: радіус атома, енергія йонізації та χ',
-        subtitle: 'Періодична зміна атомного радіуса r_ат, енергії йонізації I₁ та електронегативності Полінга χ залежно від ефективного заряду ядра Z_eff = Z − σ',
-        badge: 'Періодичний закон',
-        secTag: 'Параграф § Х-11 — Будова речовини · Періодичний закон Д. І. Менделєєва, правила Слейтера та періодичні тренди властивостей атомів',
-        title: 'Періодичний закон: радіус атома, енергія йонізації I₁ та електронегативність χ',
-        epigraph: 'Зі зростанням заряду ядра вздовж періоду ефективний притягувальний заряд Z_eff = Z − σ монотонно зростає, стискаючи валентну оболонку атома.',
-        figCaption: 'Рис. Х-11.1 — Квантово-механічна 3D-модель електронних оболонок Бора—Слейтера та тривимірна діаграма періодичних властивостей елементів (періоди 1–4, групи IA–VIIIA)',
+        shortTitle: 'Періодична система Д. І. Менделєєва (118 елементів): r_ат, I₁ та χ',
+        subtitle: 'Повна 3D-таблиця всіх 118 хімічних елементів (періоди 1–7, групи 1–18, s-, p-, d-, f-блоки: лантаноїди та актиноїди), радіус атома r_ат, енергія йонізації I₁ та електронегативність χ',
+        badge: 'Періодичний закон (118)',
+        secTag: 'Параграф § Х-11 — Будова речовини · Періодичний закон Д. І. Менделєєва (усі 118 елементів), правила Слейтера та періодичні тренди властивостей атомів',
+        title: 'Періодична система Д. І. Менделєєва (118 елементів): радіус r_ат, енергія йонізації I₁ та χ',
+        epigraph: 'Зі зростанням заряду ядра Z вздовж періоду ефективний притягувальний заряд Z_eff = Z − σ монотонно зростає, стискаючи валентну оболонку атома, а з переходом до нового періоду додається новий електронний шар.',
+        figCaption: 'Рис. Х-11.1 — Повна 18-колонкова 3D-таблиця Д. І. Менделєєва з усіма 118 елементами (включно з d-елементами, лантаноїдами 4f та актиноїдами 5f) і багатооболонкова 3D-модель атома Бора—Слейтера (n = 1..7)',
         ekLabel: 'Йонізація I₁',
         epLabel: 'Радіус r_ат',
         qLabel: 'Заряд Z_eff',
-        cameraPos: [0, 6.2, 13.8],
-        cameraTarget: [0, 2.4, 0],
+        cameraPos: [0, 7.2, 14.6],
+        cameraTarget: [-0.2, 2.2, 0.1],
         referenceLatex: String.raw`\begin{aligned}
           Z_{\text{eff}} &= Z - \sigma, \qquad r_{\text{ат}} \propto \frac{n^2 a_0}{Z_{\text{eff}}}, \qquad I_1 = E(\mathrm{X}^+) - E(\mathrm{X}^0) \\
-          \text{Уздовж періоду } (n = \text{const},\; Z\uparrow): &\quad Z_{\text{eff}}\uparrow \implies r_{\text{ат}}\downarrow, \quad I_1\uparrow, \quad \chi\uparrow
+          \text{Періоди } 1\text{–}7,\; \text{Групи } 1\text{–}18\;(Z = 1\dots 118): &\quad s\text{-},\; p\text{-},\; d\text{- та } f\text{-блоки (лантаноїди й актиноїди)}
         \end{aligned}`,
-        question: 'Як змінюються атомний радіус $r_{\\text{ат}}$, перша енергія йонізації $I_1$ та електронегативність $\\chi$ при русі зліва направо вздовж одного періоду головних підгруп?',
+        question: 'Як змінюються атомний радіус $r_{\\text{ат}}$, перша енергія йонізації $I_1$ та електронегативність $\\chi$ при русі зліва направо вздовж одного періоду Періодичної системи?',
         options: [
           'Атомний радіус $r_{\\text{ат}}$ зменшується (через зростання ефективного заряду ядра $Z_{\\text{eff}} = Z - \\sigma$ і кулонівський стиск оболонки), а енергія йонізації $I_1$ та електронегативність $\\chi$ зростають',
           'Атомний радіус $r_{\\text{ат}}$ збільшується, а енергія йонізації $I_1$ зменшується через додавання електронів',
           'Усі три величини ($r_{\\text{ат}}, I_1, \\chi$) залишаються незмінними в межах одного періоду'
         ],
         correctIndex: 0,
-        explanation: 'При русі зліва направо вздовж періоду головне квантове число $n$ залишається сталим, а заряд ядра $Z$ зростає. Оскільки електрони однієї оболонки екранують ядро слабо ($\\Delta\\sigma \\approx 0.35$), ефективний заряд ядра Слейтера $Z_{\\text{eff}} = Z - \\sigma$ зростає на $\\approx 0.65$ одиниці на кожен крок. Сильніше кулонівське притягання стискає валентну оболонку ($r_{\\text{ат}}$ зменшується) і міцніше утримує електрони ($I_1$ та $\\chi$ зростають).',
+        explanation: 'При русі зліва направо вздовж періоду головне квантове число $n$ залишається сталим, а заряд ядра $Z$ зростає. Оскільки електрони однієї оболонки екранують ядро слабо, ефективний заряд ядра Слейтера $Z_{\\text{eff}} = Z - \\sigma$ зростає. Сильніше кулонівське притягання стискає валентну оболонку ($r_{\\text{ат}}$ зменшується, включно з $d$- та $4f$-лантаноїдним стиском) і міцніше утримує електрони ($I_1$ та $\\chi$ зростають).',
         formulaLatex: String.raw`Z_{\text{eff}} = Z - \sigma, \qquad r_{\text{ат}} \approx \frac{n^2 a_0}{Z_{\text{eff}}}, \qquad I_1 \propto \frac{Z_{\text{eff}}^2}{n^2}`,
         liveLatexFn: p => {
-          const n = Math.round(p.periodN);
-          const g = Math.round(p.groupG);
-          const TABLE = {
-            1: [
-              { sym: 'H', z: 1, r: 53, i1: 13.60, chi: 2.20, zeff: 1.00 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 }
-            ],
-            2: [
-              { sym: 'Li', z: 3, r: 167, i1: 5.39, chi: 0.98, zeff: 1.30 },
-              { sym: 'Be', z: 4, r: 112, i1: 9.32, chi: 1.57, zeff: 1.95 },
-              { sym: 'B', z: 5, r: 87, i1: 8.30, chi: 2.04, zeff: 2.60 },
-              { sym: 'C', z: 6, r: 67, i1: 11.26, chi: 2.55, zeff: 3.25 },
-              { sym: 'N', z: 7, r: 56, i1: 14.53, chi: 3.04, zeff: 3.90 },
-              { sym: 'O', z: 8, r: 48, i1: 13.62, chi: 3.44, zeff: 4.55 },
-              { sym: 'F', z: 9, r: 42, i1: 17.42, chi: 3.98, zeff: 5.20 },
-              { sym: 'Ne', z: 10, r: 38, i1: 21.56, chi: 0.00, zeff: 5.85 }
-            ],
-            3: [
-              { sym: 'Na', z: 11, r: 190, i1: 5.14, chi: 0.93, zeff: 2.20 },
-              { sym: 'Mg', z: 12, r: 145, i1: 7.65, chi: 1.31, zeff: 2.85 },
-              { sym: 'Al', z: 13, r: 118, i1: 5.99, chi: 1.61, zeff: 3.50 },
-              { sym: 'Si', z: 14, r: 111, i1: 8.15, chi: 1.90, zeff: 4.15 },
-              { sym: 'P', z: 15, r: 98, i1: 10.49, chi: 2.19, zeff: 4.80 },
-              { sym: 'S', z: 16, r: 88, i1: 10.36, chi: 2.58, zeff: 5.45 },
-              { sym: 'Cl', z: 17, r: 79, i1: 12.97, chi: 3.16, zeff: 6.10 },
-              { sym: 'Ar', z: 18, r: 71, i1: 15.76, chi: 0.00, zeff: 6.75 }
-            ],
-            4: [
-              { sym: 'K', z: 19, r: 243, i1: 4.34, chi: 0.82, zeff: 2.20 },
-              { sym: 'Ca', z: 20, r: 194, i1: 6.11, chi: 1.00, zeff: 2.85 },
-              { sym: 'Ga', z: 31, r: 136, i1: 6.00, chi: 1.81, zeff: 5.00 },
-              { sym: 'Ge', z: 32, r: 125, i1: 7.90, chi: 2.01, zeff: 5.65 },
-              { sym: 'As', z: 33, r: 114, i1: 9.79, chi: 2.18, zeff: 6.30 },
-              { sym: 'Se', z: 34, r: 103, i1: 9.75, chi: 2.55, zeff: 6.95 },
-              { sym: 'Br', z: 35, r: 94, i1: 11.81, chi: 2.96, zeff: 7.60 },
-              { sym: 'Kr', z: 36, r: 88, i1: 14.00, chi: 3.00, zeff: 8.25 }
-            ]
-          };
-          const el = (TABLE[n] || TABLE[2])[g - 1] || TABLE[2][0];
-          return String.raw`\mathrm{${el.sym}}\;(Z=${el.z}):\;\; Z_{\text{eff}} \approx ${el.zeff.toFixed(2)}, \quad r_{\text{ат}} = ${el.r}\text{ пм}, \quad I_1 = ${el.i1.toFixed(2)}\text{ еВ}, \quad \chi = ${el.chi > 0 ? el.chi.toFixed(2) : '\\text{інерт.}'}`;
+          const el = window.__resolvePeriodicElement ? window.__resolvePeriodicElement(p) : { sym: 'Fe', z: 26, n: 4, g: 8, block: 'd', r: 126, i1: 7.90, chi: 1.83, zeff: 3.75 };
+          return String.raw`\mathrm{${el.sym}}\;(Z=${el.z},\;\text{пер. }${el.n},\;\text{гр. }${el.g},\;${el.block}\text{-блок}):\;\; Z_{\text{eff}} \approx ${el.zeff.toFixed(2)}, \quad r_{\text{ат}} = ${el.r}\text{ пм}, \quad I_1 = ${el.i1.toFixed(2)}\text{ еВ}, \quad \chi = ${el.chi > 0 ? el.chi.toFixed(2) : '\\text{інерт.}'}`;
         },
-        defaults: { periodN: 2, groupG: 6, propMode: 1, extField: 0.0 },
+        defaults: { atomicZ: 26, periodN: 4, groupG: 8, propMode: 1 },
         sliders: [
-          { key: 'periodN', label: 'Номер періоду n (кількість електронних шарів)', min: 1, max: 4, step: 1, unit: '' },
-          { key: 'groupG', label: 'Номер головної підгрупи (IA–VIIIA, валентні e⁻)', min: 1, max: 8, step: 1, unit: 'e⁻' },
-          { key: 'propMode', label: 'Рельєф 3D-матриці (1=Радіус r_ат, 2=Енергія I₁, 3=Електронег. χ)', min: 1, max: 3, step: 1, unit: '' },
-          { key: 'extField', label: 'Зовнішнє електричне поле іонізації E', min: 0.0, max: 1.0, step: 0.1, unit: 'В/нм' }
+          { key: 'atomicZ', label: 'Порядковий номер елемента Z (усі 118 елементів)', min: 1, max: 118, step: 1, unit: '' },
+          { key: 'periodN', label: 'Номер періоду n (1–7, електронні шари)', min: 1, max: 7, step: 1, unit: '' },
+          { key: 'groupG', label: 'Номер групи IUPAC (1–18: s-, d-, p-блоки)', min: 1, max: 18, step: 1, unit: '' },
+          { key: 'propMode', label: 'Рельєф 3D-матриці (1=Радіус r_ат, 2=Енергія I₁, 3=Електронег. χ)', min: 1, max: 3, step: 1, unit: '' }
         ]
       },
       chem_hbond: {
@@ -3751,6 +3771,944 @@
           { key: 'initiatorI', label: 'Концентрація радикального ініціатора [I₂]', min: 0.5, max: 5.0, step: 0.5, unit: 'ммоль/л' },
           { key: 'monomerM', label: 'Концентрація мономеру етилену [CH₂=CH₂]', min: 0.5, max: 3.0, step: 0.25, unit: 'моль/л' },
           { key: 'temperatureT', label: 'Температура полімеризаційного реактора T', min: 300, max: 420, step: 10, unit: 'К' }
+        ]
+      },
+
+      chem_mo: {
+        discipline: 'chemistry',
+        secSym: '§ Х-21',
+        secTag: 'ХІМІЯ · РОЗДІЛ І · § Х-21. ТЕОРІЯ МОЛЕКУЛЯРНИХ ОРБІТАЛЕЙ (МО ЛКАО)',
+        shortTitle: 'Молекулярні орбіталі (МО ЛКАО)',
+        subtitle: 'Зв’язувальні σ, π та розпушувальні σ*, π* орбіталі, порядок зв’язку і парамагнетизм O₂',
+        category: 'chem_struct',
+        badge: 'Квант. хімія',
+        categoryGroupTitle: 'Частина І. Будова атома, хімічний зв’язок та кристали',
+        title: 'Метод молекулярних орбіталей (МО ЛКАО) та парамагнетизм кисню',
+        epigraph: '«Атомна орбіталь одноцентрова, а молекулярна орбіталь охоплює всі ядра молекули як єдина квантова хвиля» — Роберт Маллікен.',
+        figCaption: 'Рис. Х-21. 3D-інтерференція атомних орбіталей за методом ЛКАО: конструктивне додавання хвильових функцій $\\psi_A + \\psi_B$ (зв’язувальна орбіталь $\\sigma, \\pi$) та деструктивне віднімання $\\psi_A - \\psi_B$ з вузловою площиною (розпушувальна орбіталь $\\sigma^*, \\pi^*$).',
+        cameraPos: [0.0, 4.2, 11.2],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Енергія стабілізації зв’язувальних МО E_зв',
+        epLabel: 'Енергія дестабілізації розпушувальних МО E_розп',
+        qLabel: 'Чиста енергія дисоціації зв’язку D₀',
+        referenceLatex: String.raw`\text{ПЗ} = \frac{N_{\text{зв}} - N_{\text{розп}}}{2}, \qquad \psi_{\pm} = c_1\phi_A \pm c_2\phi_B, \qquad \mu_{\text{магн}} = \sqrt{n(n+2)}\,\mu_B`,
+        question: 'Чому рідкий кисень $\\text{O}_2$ притягується до полюсів сильного магніту (є парамагнетиком), хоча має парну кількість електронів ($16\\,e^-$) і подвійний зв’язок $\\text{O=O}$?',
+        options: [
+          'На двох вироджених розпушувальних орбіталях $\\pi^*_{2p_x}$ та $\\pi^*_{2p_y}$ за правилом Гунда розташовуються 2 неспарені електрони з паралельними спінами ($S = 1$), при цьому порядок зв’язку дорівнює $(8 - 4)/2 = 2$',
+          'Усі 16 електронів у молекулі $\\text{O}_2$ спарені, а притягання до магніту зумовлене електростатичним зарядом ядер Оксигену',
+          'Порядок зв’язку в молекулі $\\text{O}_2$ дорівнює $3$, як у молекулі азоту $\\text{N}_2$'
+        ],
+        correctIndex: 0,
+        explanation: 'Класична теорія валентних зв’язків зображує молекулу $\\text{O}_2$ з усіма спареними електронами, що не пояснює її парамагнетизм. У методі **молекулярних орбіталей (МО ЛКАО)** з $12$ валентних електронів двох атомів Оксигену ($2s^2 2p^4$) $8$ електронів заповнюють зв’язувальні орбіталі ($\\sigma_{2s}^2, \\sigma_{2p_z}^2, \\pi_{2p_x}^2, \\pi_{2p_y}^2$), а $4$ електрони — розпушувальні ($\\sigma^*_{2s}{}^2$ та дві вироджені $\\pi^*_{2p_x}^1, \\pi^*_{2p_y}^1$). За **правилом Гунда** два останні електрони займають різні $\\pi^*$-орбіталі з паралельними спінами ($n = 2$ неспарені електрони, $\\mu = \\sqrt{8}\\,\\mu_B \\approx 2.83\\,\\mu_B$), а порядок зв’язку становить $\\text{ПЗ} = (8 - 4)/2 = 2$.',
+        formulaLatex: String.raw`\text{ПЗ} = \frac{N_{\text{зв}} - N_{\text{розп}}}{2}, \qquad \Delta E_{\text{розщ}} = 2|\beta|\,S_{AB}, \qquad \mu = \sqrt{n(n+2)}\,\mu_B`,
+        liveLatexFn: p => {
+          const mIdx = Math.round(p.diatomicIdx);
+          const mols = [
+            { name: '\\text{H}_2', nb: 2, na: 0, unp: 0, d0: 436, r0: 0.74 },
+            { name: '\\text{He}_2^+', nb: 2, na: 1, unp: 1, d0: 238, r0: 1.08 },
+            { name: '\\text{N}_2', nb: 8, na: 2, unp: 0, d0: 945, r0: 1.10 },
+            { name: '\\text{O}_2', nb: 8, na: 4, unp: 2, d0: 498, r0: 1.21 },
+            { name: '\\text{F}_2', nb: 8, na: 6, unp: 0, d0: 159, r0: 1.42 }
+          ];
+          const m = mols[Math.max(0, Math.min(4, mIdx - 1))];
+          const bo = (m.nb - m.na) / 2;
+          const mu = Math.sqrt(m.unp * (m.unp + 2));
+          return String.raw`${m.name}: \quad \text{ПЗ} = \frac{${m.nb} - ${m.na}}{2} = ${bo.toFixed(1)}, \quad n_{\uparrow} = ${m.unp}\;(\mu = ${mu.toFixed(2)}\,\mu_B), \quad D_0 \approx ${m.d0}\text{ кДж/моль}`;
+        },
+        defaults: { diatomicIdx: 4, internuclearR: 1.21, moType: 1, overlapBeta: 2.5 },
+        sliders: [
+          { key: 'diatomicIdx', label: 'Двоатомна частинка (1: H₂, 2: He₂⁺, 3: N₂, 4: O₂, 5: F₂)', min: 1, max: 5, step: 1, unit: '' },
+          { key: 'internuclearR', label: 'Між’ядерна відстань R між центрами A та B', min: 0.70, max: 2.20, step: 0.05, unit: 'Å' },
+          { key: 'moType', label: 'Показана 3D-хмара МО (1: σ зв’яз., 2: σ* розп., 3: π зв’яз., 4: π* розп.)', min: 1, max: 4, step: 1, unit: '' },
+          { key: 'overlapBeta', label: 'Резонансний інтеграл перекривання |β|', min: 1.0, max: 4.5, step: 0.25, unit: 'еВ' }
+        ]
+      },
+
+      chem_allotropes: {
+        discipline: 'chemistry',
+        secSym: '§ Х-22',
+        secTag: 'ХІМІЯ · РОЗДІЛ І · § Х-22. АЛОТРОПІЯ КАРБОНУ ТА НАНОСТРУКТУРИ',
+        shortTitle: 'Наноструктури Карбону (C₆₀, CNT, графен)',
+        subtitle: 'Фулерен C₆₀, вуглецева нанотрубка та графеновий лист: sp²-делокалізація і геометрія',
+        category: 'chem_struct',
+        badge: 'Нанохімія',
+        categoryGroupTitle: 'Частина І. Будова атома, хімічний зв’язок та кристали',
+        title: 'Алотропні модифікації та наноструктури Карбону: Графен, Нанотрубка і Фулерен C₆₀',
+        epigraph: '«Карбон — неперевершений архітектор природи: з одного й того самого атома він будує і найтвердіший алмаз, і одноатомний графен, і футбольний м’яч фулерену C₆₀» — Гарольд Крото.',
+        figCaption: 'Рис. Х-22. Тривимірні наноструктури $sp^2$-гібридизованого Карбону: (1) плоский стільниковий лист графену (0D-щілина, надвисока рухливість $\\pi$-електронів), (2) циліндрична вуглецева нанотрубка (CNT) та (3) ікосаедричний фулерен Бакмінстера $\\text{C}_{60}$ (12 п’ятикутників і 20 шестикутників).',
+        cameraPos: [0.0, 4.0, 10.8],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Енергія делокалізованої π-системи E_π',
+        epLabel: 'Енергія кутового напруження каркаса E_напр',
+        qLabel: 'Питома міцність зв’язків σ(C–C)',
+        referenceLatex: String.raw`V - E + F = 2 \;\Rightarrow\; N_{\text{п'ятикут}} = 12, \qquad d_{\text{CNT}} = \frac{a\sqrt{3}}{\pi}\sqrt{n^2 + nm + m^2}`,
+        question: 'Чому графен, вуглецеві нанотрубки (CNT) та графіт добре проводять електричний струм, тоді як алмаз є класичним діелектриком?',
+        options: [
+          'У графені та нанотрубках кожен атом Карбону має $sp^2$-гібридизацію ($3$ $\\sigma$-зв’язки), а четвертий $2p_z$-електрон утворює єдину делокалізовану $\\pi$-зону провідності; в алмазі всі $4$ електрони жорстко локалізовані в $sp^3$ $\\sigma$-зв’язках',
+          'В алмазі відсутні ковалентні зв’язки між атомами Карбону',
+          'Графен містить вільні катіони металів між шестикутними кільцями'
+        ],
+        correctIndex: 0,
+        explanation: 'В алмазі кожен атом Карбону перебуває у стані **$sp^3$-гібридизації** й витрачає всі $4$ валентні електрони на локалізовані ковалентні $\\sigma$-зв’язки (ширина забороненої зони $\\approx 5.5\\text{ еВ}$ — ізолятор). Натомість у **графені**, **нанотрубках** та **фулерені $\\text{C}_{60}$** атоми Карбону мають **$sp^2$-гібридизацію**: три електрони формують надміцний гексагональний $\\sigma$-каркас ($r_{\\text{C–C}} \\approx 1.42\\text{ Å}$), а четвертий негібридизований $2p_z$-електрон кожного атома входить у спільну делокалізовану $\\pi$-електронну хмару, забезпечуючи високу електро- та теплопровідність. За теоремою Ейлера для замкненого багатогранника з шестикутників і п’ятикутників будь-який фулерен завжди містить рівно **12 п’ятикутних граней**.',
+        formulaLatex: String.raw`V - E + F = 2 \;\;(\text{C}_{60}: V{=}60,\; E{=}90,\; F{=}32 = 12\text{ п'ятик.} + 20\text{ шестик.})`,
+        liveLatexFn: p => {
+          const mode = Math.round(p.nanoMode);
+          const names = ['\\text{Графен (2D)}', '\\text{Нанотрубка CNT (1D)}', '\\text{Фулерен C}_{60}\\text{ (0D)}'];
+          const dCnt = (0.246 / Math.PI) * Math.sqrt(3 * p.chiralN * p.chiralN);
+          return String.raw`${names[mode - 1]}: \quad r_{\text{C–C}} = 1.42\text{ Å}\;(sp^2), \quad d_{\text{каркас}} \approx ${(mode === 3 ? 0.71 : dCnt).toFixed(2)}\text{ нм}, \quad E_{\text{Юнга}} \approx 1.0\text{ ТПа}`;
+        },
+        defaults: { nanoMode: 3, chiralN: 6, eFieldV: 1.5, tempK: 300 },
+        sliders: [
+          { key: 'nanoMode', label: 'Наноструктура Карбону (1: Графен 2D, 2: Нанотрубка CNT, 3: Фулерен C₆₀)', min: 1, max: 3, step: 1, unit: '' },
+          { key: 'chiralN', label: 'Індекс діаметра / масштабу каркаса n', min: 4, max: 10, step: 1, unit: '' },
+          { key: 'eFieldV', label: 'Напруга вздовж наноструктури U (дрейф π-електронів)', min: 0.0, max: 4.0, step: 0.25, unit: 'В' },
+          { key: 'tempK', label: 'Температура фононних коливань ґратки T', min: 100, max: 900, step: 50, unit: 'К' }
+        ]
+      },
+
+      chem_complex: {
+        discipline: 'chemistry',
+        secSym: '§ Х-23',
+        secTag: 'ХІМІЯ · РОЗДІЛ І · § Х-23. КООРДИНАЦІЙНІ СПОЛУКИ ТА ТЕОРІЯ КРИСТАЛІЧНОГО ПОЛЯ',
+        shortTitle: 'Комплексні сполуки та розщеплення d-орбіталей',
+        subtitle: 'Октаедричний комплекс [ML₆]ⁿ⁺, розщеплення t₂g / e_g (Δ_o), спектрохімічний ряд і колір',
+        category: 'chem_struct',
+        badge: 'Коорд. хімія',
+        categoryGroupTitle: 'Частина І. Будова атома, хімічний зв’язок та кристали',
+        title: 'Координаційні сполуки Вернера та теорія кристалічного поля (розщеплення d-орбіталей)',
+        epigraph: '«Колір рубіна, смарагду та розчинів перехідних металів — це видимий автограф розщеплення п’яти d-орбіталей в електричному полі лігандів» — Ганс Бете.',
+        figCaption: 'Рис. Х-23. Октаедричний координаційний комплекс $[\\text{ML}_6]^{n+}$ (КЧ $= 6$): шість лігандів на осях $\\pm x, \\pm y, \\pm z$ розщеплюють вироджені $d$-орбіталі центрального катіона на низькоенергетичний триплет $t_{2g}$ ($d_{xy}, d_{xz}, d_{yz}$) та високоенергетичний дублет $e_g$ ($d_{z^2}, d_{x^2-y^2}$) з енергетичною щілиною $\\Delta_o = h c / \\lambda_{\\text{погл}}$.',
+        cameraPos: [0.0, 4.1, 11.0],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Енергія розщеплення кристалічного поля Δ_o',
+        epLabel: 'Енергія стабілізації кристалічним полем ЕСКП',
+        qLabel: 'Енергія спарювання електронів P',
+        referenceLatex: String.raw`\Delta_o = E(e_g) - E(t_{2g}) = \frac{h c N_A}{\lambda_{\text{погл}}}, \qquad \text{ЕСКП} = -0.4\,n(t_{2g})\Delta_o + 0.6\,n(e_g)\Delta_o`,
+        question: 'Як змінюється енергія розщеплення $d$-орбіталей $\\Delta_o$, довжина хвилі поглинутого світла $\\lambda_{\\text{погл}}$ та спіновий стан октаедричного комплексу $\\text{Fe(II)}$ ($d^6$) при заміні лігандів слабкого поля ($\\text{H}_2\\text{O}$) на ліганди сильного поля ($\\text{CN}^-$) у спектрохімічному ряді?',
+        options: [
+          'Енергія розщеплення $\\Delta_o$ зростає ($\\Delta_o > P$), комплекс переходить із високоспінового парамагнітного стану ($t_{2g}^4 e_g^2$, $4$ неспарені $e^-$) у низькоспіновий діамагнітний ($t_{2g}^6 e_g^0$, $0$ неспарених $e^-$), а смуга поглинання зміщується в бік коротших довжин хвиль $\\lambda_{\\text{погл}}$',
+          'Енергія $\\Delta_o$ зменшується до нуля, а всі 6 лігандів відщеплюються',
+          'Кількість неспарених електронів зростає до 6 незалежно від природи ліганда'
+        ],
+        correctIndex: 0,
+        explanation: 'Згідно з **теорією кристалічного поля (ТКП)**, в октаедричному полі шести лігандів ($\\text{КЧ} = 6$) дві орбіталі $e_g$ ($d_{z^2}, d_{x^2-y^2}$), частки яких спрямовані безпосередньо назустріч неподіленим електронним парам лігандів, зазнають сильного електростатичного відштовхування й підвищують енергію на $+0.6\\Delta_o$, тоді як три орбіталі $t_{2g}$ ($d_{xy}, d_{xz}, d_{yz}$), розташовані між осями, знижують енергію на $-0.4\\Delta_o$. У спектрохімічному ряді ($\\text{I}^- < \\text{Cl}^- < \\text{H}_2\\text{O} < \\text{NH}_3 < \\text{en} < \\text{CN}^-$) ціанід-іон створює сильне поле ($\\Delta_o > P$): усі $6$ $d$-електронів $\\text{Fe}^{2+}$ спарюються на рівні $t_{2g}^6$ (низькоспіновий діамагнітний гексаціаноферат $[\\text{Fe(CN)}_6]^{4-}$), а поглинання зміщується у фіолетову область ($\\lambda = hc/\\Delta_o \\downarrow$).',
+        formulaLatex: String.raw`\Delta_o = \frac{119627}{\lambda_{\text{погл}}\text{ [нм]}}\text{ кДж/моль}, \qquad \text{ЕСКП} = \bigl(-0.4\,n_{t_{2g}} + 0.6\,n_{e_g}\bigr)\Delta_o`,
+        liveLatexFn: p => {
+          const dCount = Math.round(p.dElectrons);
+          const deltaKj = p.ligandFieldStrength;
+          const lambdaNm = 119627 / deltaKj;
+          const pairingP = 190;
+          const lowSpin = deltaKj > pairingP;
+          let t2g = 0, eg = 0;
+          for (let i = 1; i <= dCount; i++) {
+            if (i <= 3) t2g++;
+            else if (i <= 5) { if (lowSpin) t2g++; else eg++; }
+            else if (i === 6) { if (lowSpin) t2g++; else t2g++; }
+            else if (i === 7) { if (lowSpin) eg++; else t2g++; }
+            else if (i === 8) { if (lowSpin && eg < 2) eg++; else t2g = 6, eg = dCount - 6; }
+            else { t2g = 6; eg = dCount - 6; }
+          }
+          const cfse = (0.4 * t2g - 0.6 * eg) * deltaKj;
+          return String.raw`d^{${dCount}}\;(${lowSpin ? '\\text{низькоспін.}' : '\\text{високоспін.}'}): \quad t_{2g}^{${t2g}}e_g^{${eg}}, \quad \Delta_o = ${deltaKj.toFixed(0)}\text{ кДж/моль}\;(\lambda_{\text{погл}} \approx ${lambdaNm.toFixed(0)}\text{ нм}), \quad |\text{ЕСКП}| = ${cfse.toFixed(0)}\text{ кДж/моль}`;
+        },
+        defaults: { dElectrons: 6, ligandFieldStrength: 210, metalLBond: 2.0, coordGeom: 1 },
+        sliders: [
+          { key: 'dElectrons', label: 'Кількість d-електронів центрального катіона Mⁿ⁺ (d¹ … d⁹)', min: 1, max: 9, step: 1, unit: 'e⁻' },
+          { key: 'ligandFieldStrength', label: 'Сила поля лігандів Δ_o (спектрохімічний ряд: Cl⁻ → H₂O → NH₃ → CN⁻)', min: 130, max: 320, step: 10, unit: 'кДж/моль' },
+          { key: 'metalLBond', label: 'Довжина координаційного зв’язку метал–ліганд r(M←:L)', min: 1.75, max: 2.45, step: 0.05, unit: 'Å' },
+          { key: 'coordGeom', label: 'Геометрія комплексу (1: Октаедр [ML₆], 2: Тетраедр [ML₄])', min: 1, max: 2, step: 1, unit: '' }
+        ]
+      },
+
+      chem_bornhaber: {
+        discipline: 'chemistry',
+        secSym: '§ Х-24',
+        secTag: 'ХІМІЯ · РОЗДІЛ І · § Х-24. ЦИКЛ БОРНА — ГАБЕРА ТА ЕНЕРГІЯ КРИСТАЛІЧНОЇ ҐРАТКИ',
+        shortTitle: 'Цикл Борна — Габера (енергія ґратки)',
+        subtitle: 'Термодинамічний баланс сублімації, дисоціації, йонізації, спорідненості до електрона та U_ґрат',
+        category: 'chem_struct',
+        badge: 'Термохімія кристалів',
+        categoryGroupTitle: 'Частина І. Будова атома, хімічний зв’язок та кристали',
+        title: 'Круговий термодинамічний цикл Борна — Габера для йонних кристалів',
+        epigraph: '«Хоча перенесення електрона від ізольованого атома Натрію до атома Хлору є ендотермічним, грандіозний виграш енергії під час збирання тривимірної йонної ґратки робить утворення солі бурхливо екзотермічним» — Макс Борн.',
+        figCaption: 'Рис. Х-24. Енергетична 3D-діаграма циклу Борна — Габера та іонне збирання кристала $\\text{MX}$: 5 послідовних стадій перетворення простих речовин $\\text{M(тв)} + \\frac{1}{2}\\text{X}_2\\text{(г)}$ через газоподібні іони $\\text{M}^+\\text{(г)} + \\text{X}^-\\text{(г)}$ у кристалічну сіль $\\text{MX(тв)}$.',
+        cameraPos: [0.0, 4.3, 11.4],
+        cameraTarget: [0, 2.4, 0],
+        ekLabel: 'Екзотермічний виграш енергії (U_ґрат + E_ea)',
+        epLabel: 'Ендотермічні витрати (ΔH_субл + ½D + I₁)',
+        qLabel: 'Стандартна ентальпія утворення солі −ΔH°_f',
+        referenceLatex: String.raw`\Delta H^\circ_f(\text{MX}) = \Delta H_{\text{субл}} + \frac{1}{2}D(\text{X}_2) + I_1(\text{M}) + E_{\text{ea}}(\text{X}) - U_{\text{ґрат}}`,
+        question: 'Відомо, що відрив електрона від атома Натрію потребує $I_1(\\text{Na}) = +496\\text{ кДж/моль}$, а приєднання електрона до атома Хлору виділяє лише $E_{\\text{ea}}(\\text{Cl}) = -349\\text{ кДж/моль}$ (разом $+147\\text{ кДж/моль} > 0$). Чому ж реакція $2\\text{Na(тв)} + \\text{Cl}_2\\text{(г)} \\to 2\\text{NaCl(тв)}$ відбувається з яскравим полум’ям і виділенням $\\Delta H^\\circ_f = -411\\text{ кДж/моль}$?',
+        options: [
+          'Тому що під час конденсації газоподібних іонів $\\text{Na}^+\\text{(г)}$ і $\\text{Cl}^-\\text{(г)}$ у тривимірну кристалічну ґратку виділяється величезна енергія ґратки $U_{\\text{ґрат}} = 788\\text{ кДж/моль}$, яка з надлишком перекриває всі ендотермічні стадії',
+          'Тому що сублімація металічного натрію та дисоціація молекул $\\text{Cl}_2$ виділяють теплоту',
+          'Тому що в кристалі $\\text{NaCl}$ утворюються потрійні ковалентні зв’язки'
+        ],
+        correctIndex: 0,
+        explanation: 'Оскільки пряме вимірювання енергії кристалічної ґратки $U_{\\text{ґрат}}$ неможливе, Макс Борн і Фріц Габер (1919) застосували **закон Гесса** до кругового циклу утворення йонного кристала $\\text{NaCl}$: 1) сублімація металу $\\Delta H_{\\text{субл}} = +108\\text{ кДж/моль}$; 2) дисоціація $\\frac{1}{2}\\text{Cl}_2$: $+121\\text{ кДж/моль}$; 3) йонізація $\\text{Na} \\to \\text{Na}^+ + e^-$: $I_1 = +496\\text{ кДж/моль}$ (сума ендотермічних витрат $+725\\text{ кДж/моль}$); 4) спорідненість Хлору до електрона $E_{\\text{ea}} = -349\\text{ кДж/моль}$; 5) збирання газоподібних іонів у кристал виділяє **енергію ґратки** $-U_{\\text{ґрат}} = -787\\text{ кДж/моль}$. Підсумковий баланс: $\\Delta H^\\circ_f = 725 - 349 - 787 = -411\\text{ кДж/моль}$.',
+        formulaLatex: String.raw`U_{\text{ґрат}} = \Delta H_{\text{субл}} + \frac{1}{2}D_{\text{X}_2} + I_1 + E_{\text{ea}} - \Delta H^\circ_f \approx \frac{107.9\cdot 10^3\,\nu\,|z_+ z_-|}{r_+ + r_-}\text{ [кДж/моль]}`,
+        liveLatexFn: p => {
+          const endo = p.sublH + p.dissHalfD + p.ionizI1;
+          const ea = -349;
+          const uLat = p.latticeU;
+          const dhf = endo + ea - uLat;
+          return String.raw`\Delta H_{\text{ендо}} = +${endo.toFixed(0)}, \quad E_{\text{ea}} = ${ea}, \quad -U_{\text{ґрат}} = -${uLat.toFixed(0)} \;\Rightarrow\; \Delta H^\circ_f = ${dhf.toFixed(0)}\text{ кДж/моль}`;
+        },
+        defaults: { sublH: 108, dissHalfD: 121, ionizI1: 496, latticeU: 787 },
+        sliders: [
+          { key: 'sublH', label: 'Ентальпія сублімації металу ΔH_субл(M)', min: 75, max: 180, step: 5, unit: 'кДж/моль' },
+          { key: 'dissHalfD', label: 'Половина енергії дисоціації галогену ½D(X₂)', min: 75, max: 160, step: 5, unit: 'кДж/моль' },
+          { key: 'ionizI1', label: 'Перша енергія йонізації металу I₁(M)', min: 375, max: 600, step: 5, unit: 'кДж/моль' },
+          { key: 'latticeU', label: 'Енергія кристалічної ґратки U_ґрат(MX)', min: 650, max: 1050, step: 10, unit: 'кДж/моль' }
+        ]
+      },
+
+      chem_dipole: {
+        discipline: 'chemistry',
+        secSym: '§ Х-25',
+        secTag: 'ХІМІЯ · РОЗДІЛ І · § Х-25. ПОЛЯРНІСТЬ ЗВ’ЯЗКІВ, ДИПОЛЬНИЙ МОМЕНТ ТА ЕЛЕКТРОСТАТИЧНИЙ ПОТЕНЦІАЛ',
+        shortTitle: 'Полярність молекул і дипольний момент μ',
+        subtitle: 'Часткові заряди δ⁺/δ⁻, векторна сума диполів зв’язків і орієнтація молекули в полі E',
+        category: 'chem_struct',
+        badge: 'Фіз. хімія будови',
+        categoryGroupTitle: 'Частина І. Будова атома, хімічний зв’язок та кристали',
+        title: 'Полярність хімічного зв’язку, електричний дипольний момент та орієнтаційна поляризація',
+        epigraph: '«Дипольний момент молекули — це геометрія молекули, помножена на асиметрію її електронної хмари» — Петер Дебай.',
+        figCaption: 'Рис. Х-25. Карта молекулярного електростатичного потенціалу ($\\delta^+$ — синя область, $\\delta^-$ — червона область) та векторне додавання дипольних моментів окремих зв’язків $\\vec{\\mu}_{\\text{сум}} = \\sum \\vec{\\mu}_i$ у зовнішньому однорідному електричному полі конденсатора $\\vec{E}$.',
+        cameraPos: [0.0, 4.0, 10.8],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Дипольний момент молекули μ_сум (у Дебаях)',
+        epLabel: 'Енергія орієнтації диполя в полі |U_ор| = μE',
+        qLabel: 'Ступінь іонності зв’язку δ = μ / (e·l)',
+        referenceLatex: String.raw`\vec{\mu} = \sum_i q_i \vec{r}_i, \qquad \mu_{\text{сум}(\text{AB}_2)} = 2\mu_0\cos\frac{\theta}{2}, \qquad \vec{M} = [\vec{\mu} \times \vec{E}]`,
+        question: 'У молекулі вуглекислого газу $\\text{CO}_2$ та молекулі води $\\text{H}_2\\text{O}$ кожен окремий зв’язок ($\\text{C=O}$ та $\\text{O–H}$) є сильно полярним ($\\Delta\\chi > 0.9$). Чому ж молекула $\\text{H}_2\\text{O}$ має великий дипольний момент ($\\mu = 1.85\\text{ Д}$), а молекула $\\text{CO}_2$ є повністю неполярною ($\\mu = 0\\text{ Д}$)?',
+        options: [
+          'Молекула $\\text{CO}_2$ має лінійну будову ($\\theta = 180^\\circ$), тому два рівні й протилежно спрямовані вектори дипольних моментів зв’язків $\\vec{\\mu}_{\\text{C=O}}$ взаємно компенсуються ($\\cos 90^\\circ = 0$), а кутова молекула $\\text{H}_2\\text{O}$ ($104.5^\\circ$) дає ненульову векторну суму',
+          'Атоми Карбону та Оксигену мають однакову електронегативність за Полінгом',
+          'У молекулі $\\text{CO}_2$ відсутні валентні електрони'
+        ],
+        correctIndex: 0,
+        explanation: 'Дипольний момент окремого полярного зв’язку $\\vec{\\mu}_0 = \\delta e \\cdot \\vec{l}$ є **векторною величиною** (у хімії вектор спрямовують від $\\delta^+$ до $\\delta^-$; $1\\text{ Дебай (Д)} = 3.336\\times 10^{-30}\\text{ Кл}\\cdot\\text{м}$). Для триатомної молекули $\\text{AB}_2$ результуючий дипольний момент дорівнює геометричній сумі двох векторів під валентним кутом $\\theta$: $\\mu_{\\text{сум}} = 2\\mu_0\\cos(\\theta/2)$. У лінійній молекулі $\\text{CO}_2$ ($sp$-гібридизація, $\\theta = 180^\\circ$) диполі $\\vec{\\mu}_1 + \\vec{\\mu}_2 = 0$, тому $\\mu_{\\text{сум}} = 0\\text{ Д}$. У кутовій молекулі $\\text{H}_2\\text{O}$ ($\\theta = 104.5^\\circ$) складові вздовж бісектриси додаються: $\\mu_{\\text{сум}} = 2 \\times 1.51\\text{ Д} \\times \\cos(52.25^\\circ) = 1.85\\text{ Д}$, і в зовнішньому полі $\\vec{E}$ на молекулу діє обертальний момент $\\vec{M} = [\\vec{\\mu}\\times\\vec{E}]$.',
+        formulaLatex: String.raw`\mu_0 = 4.803\,\delta\,l(\text{Å})\text{ [Д]}, \qquad \mu_{\text{сум}} = 2\mu_0\cos\left(\frac{\theta}{2}\right), \qquad U_{\text{ел}} = -\vec{\mu}\cdot\vec{E}`,
+        liveLatexFn: p => {
+          const delta = Math.min(0.85, 0.16 * p.deltaChi + 0.035 * p.deltaChi * p.deltaChi);
+          const mu0 = 4.803 * delta * p.bondLenA;
+          const halfRad = (p.bondAngleDeg * 0.5 * Math.PI) / 180;
+          const muNet = 2 * mu0 * Math.cos(halfRad);
+          return String.raw`\delta \approx ${delta.toFixed(2)}\,e, \quad \mu_0 = ${mu0.toFixed(2)}\text{ Д}, \quad \theta = ${p.bondAngleDeg.toFixed(0)}^\circ \;\Rightarrow\; \mu_{\text{сум}} = ${Math.abs(muNet).toFixed(2)}\text{ Д}`;
+        },
+        defaults: { deltaChi: 1.24, bondAngleDeg: 105, bondLenA: 0.96, extFieldE: 2.0 },
+        sliders: [
+          { key: 'deltaChi', label: 'Різниця електронегативностей зв’язку Δχ = |χ_B − χ_A|', min: 0.0, max: 2.5, step: 0.05, unit: '' },
+          { key: 'bondAngleDeg', label: 'Валентний кут між зв’язками θ (105° = H₂O, 180° = CO₂)', min: 90, max: 180, step: 5, unit: '°' },
+          { key: 'bondLenA', label: 'Довжина ковалентного зв’язку l(A–B)', min: 0.90, max: 1.80, step: 0.05, unit: 'Å' },
+          { key: 'extFieldE', label: 'Напруженість зовнішнього електричного поля E', min: 0.0, max: 5.0, step: 0.5, unit: 'кВ/см' }
+        ]
+      },
+
+      chem_phase: {
+        discipline: 'chemistry',
+        secSym: '§ Х-26',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІ · § Х-26. ФАЗОВІ ДІАГРАМИ P–T, ПОТРІЙНА ТОЧКА ТА НАДКРИТИЧНИЙ ФЛЮЇД',
+        shortTitle: 'Фазові діаграми P–T та потрійна точка',
+        subtitle: 'Рівняння Клапейрона — Клаузіуса, сублімація CO₂ («сухий лід») і надкритичний стан',
+        category: 'chem_kinetics',
+        badge: 'Фіз. хімія фаз',
+        categoryGroupTitle: 'Частина ІІ. Газові закони, хімічна кінетика та рівновага',
+        title: 'Фазові діаграми речовини (P–T), потрійна точка та надкритичний стан (H₂O і CO₂)',
+        epigraph: '«Правило фаз Гіббса встановлює строгу конституцію природи: скільки фаз може співіснувати в рівновазі при заданих тиску й температурі» — Віллард Гіббс.',
+        figCaption: 'Рис. Х-26. Рельєфна 3D-фазова діаграма $P\\text{–}T$ та циліндричний автоклав високого тиску зі скляним оглядовим вікном: межі фазових переходів «тверде тіло — рідина — газ», потрійна точка ($C_{\\text{ст}} = 0$) та зникнення меніска вище критичної точки $(T_{\\text{кр}}, P_{\\text{кр}})$.',
+        cameraPos: [0.0, 4.2, 11.2],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Кінетична енергія теплового руху RT',
+        epLabel: 'Міжмолекулярне зчеплення конденсованої фази E_ког',
+        qLabel: 'Прихована теплота фазового переходу ΔH_фаз',
+        referenceLatex: String.raw`\frac{dP}{dT} = \frac{\Delta H_{\text{фаз}}}{T\,\Delta V_{\text{фаз}}}, \qquad \ln\frac{P_2}{P_1} = -\frac{\Delta H_{\text{вип}}}{R}\left(\frac{1}{T_2} - \frac{1}{T_1}\right), \qquad F = C - \Phi + 2`,
+        question: 'Чому твердий діоксид карбону $\\text{CO}_2$ («сухий лід») за нормального атмосферного тиску ($P = 1\\text{ атм}$) не плавиться з утворенням рідини, а відразу переходить у газ (сублімує при $-78.5\\,^\\circ\\text{C}$)?',
+        options: [
+          'Тому що потрійна точка $\\text{CO}_2$ лежить при тиску $P_{\\text{потр}} = 5.11\\text{ атм}$ ($T_{\\text{потр}} = -56.6\\,^\\circ\\text{C}$), а при нижчих тисках ($1\\text{ атм} < 5.11\\text{ атм}$) рідка фаза термодинамічно нестійка і лінія нагрівання перетинає криву сублімації «тверде тіло — газ»',
+          'Тому що молекули $\\text{CO}_2$ розкладаються на вуглець і кисень при кімнатній температурі',
+          'Тому що критична температура $\\text{CO}_2$ нижча за абсолютний нуль'
+        ],
+        correctIndex: 0,
+        explanation: 'На фазовій діаграмі $P\\text{–}T$ три криві фазової рівноваги (сублімації, плавлення і кипіння) перетинаються в єдиній **потрійній точці** $(T_{\\text{потр}}, P_{\\text{потр}})$, де одночасно співіснують тверда, рідка та газова фази (за правилом фаз Гіббса число ступенів вільності $F = 1 - 3 + 2 = 0$). У води потрійна точка лежить при низькому тиску $P_{\\text{потр}} = 0.006\\text{ атм}$ ($0.01\\,^\\circ\\text{C}$), тому при $1\\text{ атм}$ лід спочатку плавиться, а потім кипить. Натомість у **$\\text{CO}_2$** потрійна точка розташована при **$P_{\\text{потр}} = 5.11\\text{ атм}$** і $T_{\\text{потр}} = 216.6\\text{ К}$ ($-56.6\\,^\\circ\\text{C}$): за тиску $1\\text{ атм}$ рідкий $\\text{CO}_2$ існувати не може. Вище критичної точки ($T_{\\text{кр}} = 304.1\\text{ К}$, $P_{\\text{кр}} = 72.8\\text{ атм}$) межа поділу між рідиною і газом зникає — утворюється **надкритичний флюїд**.',
+        formulaLatex: String.raw`\frac{dP}{dT} = \frac{\Delta H}{T\,\Delta V}, \qquad F = 1 - \Phi + 2 = 3 - \Phi`,
+        liveLatexFn: p => {
+          const isCo2 = Math.round(p.substanceType) === 2;
+          const tK = p.tempK;
+          const pAtm = p.pressAtm;
+          let phaseStr = '\\text{Газ (пара)}';
+          if (isCo2) {
+            if (tK > 304.1 && pAtm > 72.8) phaseStr = '\\text{Надкритичний флюїд (Ф=1, F=2)}';
+            else if (Math.abs(tK - 216.6) <= 4 && Math.abs(pAtm - 5.11) <= 1.2) phaseStr = '\\text{Потрійна точка (Ф=3, F=0)}';
+            else if (pAtm >= 5.11 && tK < 216.6 + (pAtm - 5.11) * 0.2) phaseStr = '\\text{Твердий CO}_2';
+            else if (pAtm < 5.11 && tK < 194.7 + (pAtm - 1) * 5.3) phaseStr = '\\text{Твердий (сухий лід)}';
+            else if (pAtm >= 5.11 && tK < 216.6 + (304.1 - 216.6) * Math.pow((pAtm - 5.11) / 67.7, 0.45)) phaseStr = '\\text{Рідкий CO}_2';
+          } else {
+            if (tK > 647 && pAtm > 218) phaseStr = '\\text{Надкритичний флюїд}';
+            else if (tK < 273.15 - pAtm * 0.0075) phaseStr = '\\text{Лід I}_h\\text{ (тверда фаза)}';
+            else if (pAtm >= Math.exp(13.7 - 5100 / tK)) phaseStr = '\\text{Рідка вода}';
+          }
+          return String.raw`${isCo2 ? '\\text{CO}_2' : '\\text{H}_2\\text{O}'}\;\text{при}\;T = ${tK.toFixed(0)}\text{ К},\;P = ${pAtm.toFixed(1)}\text{ атм}: \quad \text{Стан} = ${phaseStr}`;
+        },
+        defaults: { substanceType: 2, tempK: 260, pressAtm: 15.0, heatInputQ: 2.0 },
+        sliders: [
+          { key: 'substanceType', label: 'Досліджувана речовина (1: Вода H₂O, 2: Діоксид карбону CO₂)', min: 1, max: 2, step: 1, unit: '' },
+          { key: 'tempK', label: 'Температура в автоклаві T', min: 170, max: 420, step: 5, unit: 'К' },
+          { key: 'pressAtm', label: 'Зовнішній тиск у камері P', min: 1.0, max: 90.0, step: 1.0, unit: 'атм' },
+          { key: 'heatInputQ', label: 'Потужність теплового обміну Q', min: 0.5, max: 5.0, step: 0.5, unit: 'кДж' }
+        ]
+      },
+
+      chem_arrhenius: {
+        discipline: 'chemistry',
+        secSym: '§ Х-27',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІ · § Х-27. ПОРЯДКИ ХІМІЧНИХ РЕАКЦІЙ ТА ПЕРІОД НАПІВПЕРЕТВОРЕННЯ',
+        shortTitle: 'Порядки реакцій (0, 1, 2) та t₁/₂',
+        subtitle: 'Інтегральні кінетичні рівняння нульового, першого та другого порядків і період напіврозпаду',
+        category: 'chem_kinetics',
+        badge: 'Хім. кінетика',
+        categoryGroupTitle: 'Частина ІІ. Газові закони, хімічна кінетика та рівновага',
+        title: 'Кінетичні рівняння нульового, першого та другого порядків і період напівперетворення t₁/₂',
+        epigraph: '«Порядок реакції розкриває справжній молекулярний сценарій перетворення, прихований за підсумковим стехіометричним рівнянням» — Якоб Вант-Гофф.',
+        figCaption: 'Рис. Х-27. Кінетичний фотохімічний реактор із 3D-профілем спадання концентрації реагента $[\\text{A}](t)$ та наростання продукту $[\\text{P}](t)$ для реакцій нульового ($n = 0$), першого ($n = 1$) та другого ($n = 2$) порядків.',
+        cameraPos: [0.0, 4.1, 11.0],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Поточна концентрація реагента [A](t)',
+        epLabel: 'Концентрація утвореного продукту [P](t)',
+        qLabel: 'Миттєва швидкість реакції v = k[A]ⁿ',
+        referenceLatex: String.raw`v = -\frac{d[\mathrm{A}]}{dt} = k[\mathrm{A}]^n \;\Rightarrow\; \begin{cases} n=0:\; [\mathrm{A}] = [\mathrm{A}]_0 - kt,\;\; t_{1/2} = \frac{[\mathrm{A}]_0}{2k} \\ n=1:\; [\mathrm{A}] = [\mathrm{A}]_0 e^{-kt},\;\; t_{1/2} = \frac{\ln 2}{k} \\ n=2:\; \frac{1}{[\mathrm{A}]} = \frac{1}{[\mathrm{A}]_0} + kt,\;\; t_{1/2} = \frac{1}{k[\mathrm{A}]_0} \end{cases}`,
+        question: 'Для реакції якого кінетичного порядку $n$ період напівперетворення $t_{1/2}$ (час, за який реагує рівно половина вихідної речовини) не залежить від початкової концентрації реагента $[\\text{A}]_0$?',
+        options: [
+          'Тільки для реакції першого порядку ($n = 1$), де $[\\text{A}](t) = [\\text{A}]_0 e^{-kt}$ і період напівперетворення є сталим: $t_{1/2} = \\frac{\\ln 2}{k} \\approx \\frac{0.693}{k}$',
+          'Для реакції нульового порядку ($n = 0$), де $t_{1/2} = [\\text{A}]_0 / (2k)$',
+          'Для реакції другого порядку ($n = 2$), де $t_{1/2} = 1 / (k[\\text{A}]_0)$'
+        ],
+        correctIndex: 0,
+        explanation: 'Інтегрування диференціального кінетичного закону $-\\frac{d[\\text{A}]}{dt} = k[\\text{A}]^n$ дає три фундаментальні залежності: 1) при **$n = 0$** (гетерогенний каталіз при насиченні поверхні) швидкість постійна $v = k$, концентрація спадає лінійно $[\\text{A}] = [\\text{A}]_0 - kt$, а $t_{1/2} = \\frac{[\\text{A}]_0}{2k}$ прямо пропорційний $[\\text{A}]_0$; 2) при **$n = 1$** (мономолекулярний розпад $\\text{N}_2\\text{O}_5$, радіоактивний розпад) швидкість $v = k[\\text{A}]$, концентрація спадає експоненційно $[\\text{A}] = [\\text{A}]_0 e^{-kt}$, а період напівперетворення **$t_{1/2} = \\frac{\\ln 2}{k} = \\text{const}$** не залежить від $[\\text{A}]_0$; 3) при **$n = 2$** (бімолекулярна взаємодія $2\\text{HI} \\to \\text{H}_2 + \\text{I}_2$) лінійною є обернена концентрація $\\frac{1}{[\\text{A}]} = \\frac{1}{[\\text{A}]_0} + kt$, а $t_{1/2} = \\frac{1}{k[\\text{A}]_0}$ зростає зі зменшенням концентрації.',
+        formulaLatex: String.raw`-\frac{d[\mathrm{A}]}{dt} = k[\mathrm{A}]^n, \qquad t_{1/2}(n{=}1) = \frac{0.693}{k}, \qquad t_{1/2}(n{=}2) = \frac{1}{k[\mathrm{A}]_0}`,
+        liveLatexFn: p => {
+          const n = Math.round(p.rxnOrder);
+          const a0 = p.initConcA0;
+          const k = p.rateConstK;
+          const t = p.elapsedTimeT;
+          let at = a0, tHalf = 0;
+          if (n === 0) {
+            at = Math.max(0, a0 - k * t);
+            tHalf = a0 / (2 * k);
+          } else if (n === 1) {
+            at = a0 * Math.exp(-k * t);
+            tHalf = Math.LN2 / k;
+          } else {
+            at = a0 / (1 + a0 * k * t);
+            tHalf = 1 / (k * a0);
+          }
+          return String.raw`n = ${n}: \quad [\mathrm{A}]_0 = ${a0.toFixed(2)}\text{ М}, \quad t_{1/2} = ${tHalf.toFixed(2)}\text{ с}, \quad [\mathrm{A}](${t.toFixed(1)}\text{ с}) = ${at.toFixed(3)}\text{ моль/л}`;
+        },
+        defaults: { rxnOrder: 1, initConcA0: 2.0, rateConstK: 0.35, elapsedTimeT: 2.0 },
+        sliders: [
+          { key: 'rxnOrder', label: 'Кінетичний порядок реакції n (0: нульовий, 1: перший, 2: другий)', min: 0, max: 2, step: 1, unit: '' },
+          { key: 'initConcA0', label: 'Початкова концентрація реагента [A]₀', min: 0.5, max: 3.0, step: 0.25, unit: 'моль/л' },
+          { key: 'rateConstK', label: 'Константа швидкості реакції k', min: 0.10, max: 1.00, step: 0.05, unit: 'с⁻¹' },
+          { key: 'elapsedTimeT', label: 'Час перебігу реакції в реакторі t', min: 0.0, max: 6.0, step: 0.25, unit: 'с' }
+        ]
+      },
+
+      chem_enzyme: {
+        discipline: 'chemistry',
+        secSym: '§ Х-28',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІ · § Х-28. ФЕРМЕНТАТИВНИЙ КАТАЛІЗ ТА КІНЕТИКА МІХАЕЛІСА — МЕНТЕН',
+        shortTitle: 'Ферментативний каталіз (Міхаеліс — Ментен)',
+        subtitle: 'Комплекс фермент–субстрат ES, модель «ключ–замок», V_max, K_M та конкурентне інгібування',
+        category: 'chem_kinetics',
+        badge: 'Біохімія та каталіз',
+        categoryGroupTitle: 'Частина ІІ. Газові закони, хімічна кінетика та рівновага',
+        title: 'Ферментативний каталіз: рівняння Міхаеліса — Ментен та конкурентне інгібування',
+        epigraph: '«Фермент — це молекулярна рука, чия долоня (активний центр) ідеально пристосована, щоб обійняти перехідний стан субстрату» — Лайнус Полінг.',
+        figCaption: 'Рис. Х-28. 3D-глобула білка-ферменту $\\text{E}$ з комплементарною порожниною активного центру: оборотне утворення комплексу фермент–субстрат $\\text{E} + \\text{S} \\rightleftharpoons \\text{ES} \\xrightarrow{k_{\\text{cat}}} \\text{E} + \\text{P}$, насичення швидкості $v([\\text{S}])$ та блокування центру молекулою конкурентного інгібітора $\\text{I}$.',
+        cameraPos: [0.0, 4.1, 11.0],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Початкова швидкість ферментативної реакції v₀',
+        epLabel: 'Максимальна швидкість при насиченні V_max',
+        qLabel: 'Частка зайнятих активних центрів θ_ES',
+        referenceLatex: String.raw`\mathrm{E} + \mathrm{S} \underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} \mathrm{ES} \overset{k_{\text{cat}}}{\longrightarrow} \mathrm{E} + \mathrm{P}, \qquad v_0 = \frac{V_{\max}[\mathrm{S}]}{K_M\left(1 + \frac{[\mathrm{I}]}{K_i}\right) + [\mathrm{S}]}`,
+        question: 'Чому при дуже високих концентраціях субстрату ($[\\text{S}] \\gg K_M$) швидкість ферментативної реакції перестає зростати й виходить на горизонтальне плато $v_0 \\to V_{\\max} = k_{\\text{cat}}[\\text{E}]_0$, і як на $V_{\\max}$ та уявну константу $K_M^{\\text{еф}}$ впливає конкурентний інгібітор $\\text{I}$?',
+        options: [
+          'При $[\\text{S}] \\gg K_M$ усі активні центри молекул ферменту зайняті субстратом ($[\\text{ES}] \\approx [\\text{E}]_0$, нульовий порядок за $\\text{S}$); конкурентний інгібітор збільшує уявну константу Міхаеліса $K_M^{\\text{еф}} = K_M(1 + [\\text{I}]/K_i)$, але не змінює максимальну швидкість $V_{\\max}$',
+          'Фермент повністю руйнується при додаванні субстрату, тому швидкість падає до нуля',
+          'Конкурентний інгібітор зменшує $K_M$ і збільшує $V_{\\max}$ удвічі'
+        ],
+        correctIndex: 0,
+        explanation: 'За моделлю **Леонори Міхаеліс і Мод Ментен (1913)** фермент $\\text{E}$ оборотно зв’язує субстрат $\\text{S}$ в активному центрі з утворенням комплексу $\\text{ES}$: $v_0 = \\frac{V_{\\max}[\\text{S}]}{K_M + [\\text{S}]}$, де константа Міхаеліса $K_M = \\frac{k_{-1} + k_{\\text{cat}}}{k_1}$ чисельно дорівнює концентрації субстрату, при якій швидкість становить рівно половину максимальної ($v_0 = 0.5\\,V_{\\max}$). При малих $[\\text{S}] \\ll K_M$ реакція має перший порядок ($v_0 \\approx \\frac{V_{\\max}}{K_M}[\\text{S}]$), а при великих $[\\text{S}] \\gg K_M$ настає **насичення всіх активних центрів** ($v_0 \\approx V_{\\max}$, нульовий порядок). **Конкурентний інгібітор $\\text{I}$**, структурно схожий на субстрат, конкурує за той самий активний центр ($\\text{E} + \\text{I} \\rightleftharpoons \\text{EI}$), підвищуючи $K_M^{\\text{еф}} = K_M(1 + [\\text{I}]/K_i)$, проте великий надлишок субстрату здатен повністю витіснити інгібітор і досягти тієї ж границі $V_{\\max}$.',
+        formulaLatex: String.raw`v_0 = \frac{k_{\text{cat}}[\mathrm{E}]_0[\mathrm{S}]}{K_M^{\text{еф}} + [\mathrm{S}]}, \qquad K_M^{\text{еф}} = K_M\left(1 + \frac{[\mathrm{I}]}{K_i}\right), \qquad \theta_{\text{ES}} = \frac{v_0}{V_{\max}}`,
+        liveLatexFn: p => {
+          const vmax = p.kCat * 1.0;
+          const kmEff = p.kmVal * (1 + p.inhibitorI / 1.5);
+          const v0 = (vmax * p.substrateS) / (kmEff + p.substrateS);
+          const occ = (v0 / vmax) * 100;
+          return String.raw`V_{\max} = ${vmax.toFixed(1)}, \quad K_M^{\text{еф}} = ${kmEff.toFixed(2)}\text{ мМ}, \quad v_0 = ${v0.toFixed(2)}\text{ мМ/с}\;(\theta_{\text{ES}} = ${occ.toFixed(0)}\%)`;
+        },
+        defaults: { substrateS: 4.0, kmVal: 1.5, kCat: 8.0, inhibitorI: 0.0 },
+        sliders: [
+          { key: 'substrateS', label: 'Концентрація субстрату в розчині [S]', min: 0.25, max: 12.0, step: 0.25, unit: 'ммоль/л' },
+          { key: 'kmVal', label: 'Константа Міхаеліса K_M (спорідненість центру: менша K_M = міцніше)', min: 0.5, max: 5.0, step: 0.25, unit: 'ммоль/л' },
+          { key: 'kCat', label: 'Каталітичне число обертів ферменту k_cat (V_max)', min: 2.0, max: 14.0, step: 0.5, unit: 'с⁻¹' },
+          { key: 'inhibitorI', label: 'Концентрація конкурентного інгібітора [I]', min: 0.0, max: 6.0, step: 0.5, unit: 'ммоль/л' }
+        ]
+      },
+
+      chem_gibbs: {
+        discipline: 'chemistry',
+        secSym: '§ Х-29',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІ · § Х-29. ВІЛЬНА ЕНЕРГІЯ ГІББСА ΔG = ΔH − TΔS ТА КРИТЕРІЙ СПОНТАННОСТІ',
+        shortTitle: 'Енергія Гіббса ΔG = ΔH − TΔS і рівновага',
+        subtitle: 'Конкуренція ентальпійного ΔH і ентропійного TΔS факторів, температура інверсії T_рівн = ΔH/ΔS',
+        category: 'chem_kinetics',
+        badge: 'Хім. термодинаміка',
+        categoryGroupTitle: 'Частина ІІ. Газові закони, хімічна кінетика та рівновага',
+        title: 'Вільна енергія Гіббса (ΔG = ΔH − TΔS), ентропія та термодинамічний критерій напрямку реакції',
+        epigraph: '«Природа прагне одночасно до двох протилежних цілей: мінімуму енергії (ΔH < 0) при низьких температурах і максимуму безладу (ΔS > 0) при високих температурах» — Джозайя Віллард Гіббс.',
+        figCaption: 'Рис. Х-29. Термодинамічні терези вільної енергії Гіббса $\\Delta G = \\Delta H - T\\Delta S$ та двокамерний реакційний сосуд: порівняння ентальпійного внеску $\\Delta H$ із тепловим ентропійним членом $T\\Delta S$ та зв’язок із константою рівноваги $K = \\exp(-\\Delta G^\\circ / RT)$.',
+        cameraPos: [0.0, 4.1, 11.2],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Ентропійний фактор безладу |T·ΔS|',
+        epLabel: 'Ентальпійний тепловий ефект |ΔH|',
+        qLabel: 'Модуль вільної енергії Гіббса |ΔG|',
+        referenceLatex: String.raw`\Delta G = \Delta H - T\Delta S, \qquad \Delta G^\circ = -RT\ln K, \qquad T_{\text{інв}} = \frac{\Delta H}{\Delta S}`,
+        question: 'За якої умови ендотермічна хімічна реакція ($\\Delta H > 0$, поглинання теплоти, наприклад термічний розклад вапняку $\\text{CaCO}_3\\text{(тв)} \\to \\text{CaO(тв)} + \\text{CO}_2\\uparrow$) стає термодинамічно самочинною ($\\Delta G < 0$)?',
+        options: [
+          'Якщо реакція супроводжується зростанням ентропії ($\\Delta S > 0$, виділення газу) і температура перевищує температуру інверсії $T > T_{\\text{інв}} = \\frac{\\Delta H}{\\Delta S}$, коли ентропійний член $T\\Delta S$ переважає позитивну ентальпію $\\Delta H$',
+          'Ендотермічні реакції ($\\Delta H > 0$) ніколи не можуть відбуватися самочинно за жодної температури',
+          'Лише при охолодженні системи до абсолютного нуля ($T \\to 0\\text{ К}$)'
+        ],
+        correctIndex: 0,
+        explanation: 'За постійних температури $T$ і тиску $P$ єдиним строгим критерієм самочинного (спонтанного) перебігу хімічної реакції є зменшення **вільної енергії Гіббса**: $\\Delta G = \\Delta H - T\\Delta S < 0$. Існують $4$ фундаментальні випадки: 1) $\\Delta H < 0, \\Delta S > 0$ — реакція самочинна при **будь-яких $T$**; 2) $\\Delta H > 0, \\Delta S < 0$ — несамочинна при будь-яких $T$ ($\\Delta G > 0$); 3) $\\Delta H < 0, \\Delta S < 0$ — самочинна при **низьких температурах** ($T < \\Delta H/\\Delta S$); 4) **$\\Delta H > 0, \\Delta S > 0$** — стає самочинною при **високих температурах** ($T > T_{\\text{інв}} = \\Delta H / \\Delta S$), коли ентропійний виграш $T\\Delta S$ переважає витрати енергії $\\Delta H$. У точці рівноваги $\\Delta G = 0$, а стандартна енергія Гіббса визначає константу рівноваги: $K = e^{-\\Delta G^\\circ / (RT)}$.',
+        formulaLatex: String.raw`\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ = -RT\ln K, \qquad K = \exp\!\left(-\frac{\Delta G^\circ}{RT}\right)`,
+        liveLatexFn: p => {
+          const tds = (p.tempK * p.deltaS) / 1000;
+          const dg = p.deltaH - tds;
+          const lnK = Math.max(-25, Math.min(25, (-dg * 1000) / (8.314 * p.tempK)));
+          const kVal = Math.exp(lnK);
+          const kStr = kVal >= 1000 || kVal < 0.01 ? kVal.toExponential(2) : kVal.toFixed(2);
+          return String.raw`\Delta H = ${p.deltaH >= 0 ? '+' : ''}${p.deltaH.toFixed(0)}, \quad T\Delta S = ${tds >= 0 ? '+' : ''}${tds.toFixed(1)}\text{ кДж/моль} \;\Rightarrow\; \Delta G = ${dg >= 0 ? '+' : ''}${dg.toFixed(1)}\text{ кДж/моль}\;(K \approx ${kStr})`;
+        },
+        defaults: { deltaH: 60, deltaS: 150, tempK: 500, pressureP: 1.0 },
+        sliders: [
+          { key: 'deltaH', label: 'Ентальпія реакції ΔH° (− екзотермічна, + ендотермічна)', min: -120, max: 120, step: 10, unit: 'кДж/моль' },
+          { key: 'deltaS', label: 'Зміна ентропії реакції ΔS° (+ ріст безладу/газів, − впорядкування)', min: -200, max: 250, step: 10, unit: 'Дж/(моль·К)' },
+          { key: 'tempK', label: 'Абсолютна температура системи T', min: 200, max: 1000, step: 25, unit: 'К' },
+          { key: 'pressureP', label: 'Парціальний тиск продуктів P', min: 0.5, max: 5.0, step: 0.5, unit: 'атм' }
+        ]
+      },
+
+      chem_haber: {
+        discipline: 'chemistry',
+        secSym: '§ Х-30',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІ · § Х-30. ПРОМИСЛОВИЙ СИНТЕЗ АМІАКУ (ПРОЦЕС ГАБЕРА — БОША)',
+        shortTitle: 'Синтез аміаку Габера — Боша (N₂ + 3H₂ ⇄ 2NH₃)',
+        subtitle: 'Компроміс між кінетикою та рівновагою: високий тиск P, оптимальна температура 450 °C і Fe-каталізатор',
+        category: 'chem_kinetics',
+        badge: 'Хім. технологія',
+        categoryGroupTitle: 'Частина ІІ. Газові закони, хімічна кінетика та рівновага',
+        title: 'Синтез аміаку Габера — Боша та гетерогенний каталіз на поверхні заліза',
+        epigraph: '«Хліб із повітря: розірвати потрійний зв’язок молекули азоту N≡N вдалося лише завдяки союзу високого тиску, хімічної термодинаміки та залізного каталізатора» — Фріц Габер.',
+        figCaption: 'Рис. Х-30. Каталітична колона синтезу аміаку $\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3 + 92\\text{ кДж}$: дисоціативна хемосорбція молекул $\\text{N}\\equiv\\text{N}$ та $\\text{H–H}$ на активних центрах пористого $\\text{Fe}$-каталізатора (промотованого $\\text{K}_2\\text{O}, \\text{Al}_2\\text{O}_3$) під високим тиском.',
+        cameraPos: [0.0, 4.1, 11.2],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Рівноважний об’ємний вихід аміаку φ(NH₃)',
+        epLabel: 'Швидкість каталітичного синтезу v_синт',
+        qLabel: 'Виділена теплота екзотермічної реакції Q',
+        referenceLatex: String.raw`\mathrm{N_2(г)} + 3\mathrm{H_2(г)} \;\underset{\text{Fe, }P,T}{\rightleftharpoons}\; 2\mathrm{NH_3(г)}, \quad \Delta H^\circ = -92.4\text{ кДж/моль}, \quad K_p = \frac{P_{\mathrm{NH_3}}^2}{P_{\mathrm{N_2}}\,P_{\mathrm{H_2}}^3}`,
+        question: 'Оскільки синтез аміаку $\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3$ є екзотермічним ($\\Delta H^\\circ = -92.4\\text{ кДж/моль}$) і супроводжується зменшенням об’єму газу ($4\\text{ моль} \\to 2\\text{ моль}$), чому в промисловості колону підтримують при помірній температурі $450\\text{–}500\\,^\\circ\\text{C}$ та високому тиску $150\\text{–}300\\text{ атм}$, а не при кімнатній температурі?',
+        options: [
+          'При низькій температурі рівноважний вихід $\\text{NH}_3$ високий, але швидкість розриву надміцного потрійного зв’язку $\\text{N}\\equiv\\text{N}$ ($945\\text{ кДж/моль}$) майже нульова; тому обирають компромісну температуру $450\\,^\\circ\\text{C}$, де працює $\\text{Fe}$-каталізатор, а зсув рівноваги компенсують високим тиском $P$',
+          'Тому що реакція утворення аміаку є ендотермічною і потребує нагрівання до $2000\\,^\\circ\\text{C}$',
+          'Залізний каталізатор зміщує хімічну рівновагу праворуч у бік $100\\%$ виходу $\\text{NH}_3$'
+        ],
+        correctIndex: 0,
+        explanation: 'Синтез аміаку **Габера — Боша** ілюструє класичний технологічний компроміс між **термодинамікою (рівновагою)** та **кінетикою (швидкістю)**: 1) У рівнянні $\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3$ з $4$ об’ємів газу утворюються $2$ об’єми, тому за принципом Ле Шательє підвищення тиску $P$ до $200\\text{–}300\\text{ атм}$ різко зміщує рівновагу праворуч і одночасно підвищує швидкість реакції; 2) Реакція екзотермічна ($\\Delta H = -92.4\\text{ кДж/моль}$), тож нагрівання зменшує константу рівноваги $K_p(T)$. Проте при $T < 350\\,^\\circ\\text{C}$ навіть на промотованому залізному каталізаторі ($\\text{Fe} + \\text{K}_2\\text{O} + \\text{Al}_2\\text{O}_3$) дисоціативна адсорбція молекул $\\text{N}\\equiv\\text{N}$ відбувається надто повільно. Тому працюють у «температурному вікні» **$450\\text{–}500\\,^\\circ\\text{C}$**, безперервно конденсуючи утворений $\\text{NH}_3$ і повертаючи непрореаговані $\\text{N}_2 + 3\\text{H}_2$ у цикл.',
+        formulaLatex: String.raw`\lg K_p \approx \frac{4825}{T} - 10.6, \qquad \varphi(\mathrm{NH_3})_{\text{рівн}} \uparrow \text{ при } P\uparrow,\; T\downarrow`,
+        liveLatexFn: p => {
+          const tK = p.tempC + 273.15;
+          const kp = Math.pow(10, 2095 / tK - 4.58);
+          const x = kp * p.pressAtm;
+          const yieldPct = Math.min(92, (100 * Math.pow(x, 0.65)) / (1 + Math.pow(x, 0.65)));
+          const rateRel = Math.exp(-6500 / (tK * (0.45 + 0.55 * p.feCatalyst))) * Math.pow(p.pressAtm / 100, 1.2) * 1.8e4;
+          return String.raw`T = ${p.tempC.toFixed(0)}\,^\circ\text{C},\; P = ${p.pressAtm.toFixed(0)}\text{ атм}: \quad \varphi_{\text{рівн}}(\mathrm{NH_3}) \approx ${yieldPct.toFixed(1)}\%, \quad v_{\text{кат}} \approx ${rateRel.toFixed(2)}\text{ ум. од.}`;
+        },
+        defaults: { pressAtm: 200, tempC: 450, feCatalyst: 1.0, ratioH2N2: 3.0 },
+        sliders: [
+          { key: 'pressAtm', label: 'Робочий тиск у колоні синтезу P', min: 50, max: 350, step: 25, unit: 'атм' },
+          { key: 'tempC', label: 'Температура каталітичного реактора t', min: 300, max: 600, step: 25, unit: '°C' },
+          { key: 'feCatalyst', label: 'Активність пористого Fe-каталізатора (0: без кат., 1: промотований Fe)', min: 0.0, max: 1.0, step: 0.5, unit: '' },
+          { key: 'ratioH2N2', label: 'Стехіометричне відношення газів [H₂] / [N₂] на вході', min: 1.0, max: 4.0, step: 0.5, unit: '' }
+        ]
+      },
+
+      chem_raoult: {
+        discipline: 'chemistry',
+        secSym: '§ Х-31',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІІ · § Х-31. КОЛІГАТИВНІ ВЛАСТИВОСТІ: ЗАКОН РАУЛЯ, ЕБУЛІОСКОПІЯ ТА КРІОСКОПІЯ',
+        shortTitle: 'Закон Рауля, кипіння ΔT_b і замерзання ΔT_f',
+        subtitle: 'Зниження тиску насиченої пари ΔP = x₂P₀, підвищення T_кип і зниження T_зам розчинів',
+        category: 'chem_solutions',
+        badge: 'Фіз. хімія розчинів',
+        categoryGroupTitle: 'Частина ІІІ. Розчини, електролітична дисоціація та аналітична хімія',
+        title: 'Колігативні властивості розчинів: Закон Рауля, ебуліоскопія (ΔT_кип) та кріоскопія (ΔT_зам)',
+        epigraph: '«Зниження тиску насиченої пари та точки замерзання розчину залежить лише від відносної кількості частинок розчиненої речовини, а не від їхньої хімічної природи» — Франсуа Марі Рауль.',
+        figCaption: 'Рис. Х-31. Дві герметичні колби під спільним U-подібним диференціальним манометром: порівняння тиску насиченої пари над чистим розчинником $P_0$ (ліворуч) та над розчином нелеткої речовини $P = x_1 P_0 < P_0$ (праворуч), де частина поверхні заблокована сольватованими іонами.',
+        cameraPos: [0.0, 4.1, 11.2],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Тиск насиченої пари над розчином P (кПа)',
+        epLabel: 'Депресія тиску пари ΔP = P₀ − P (кПа)',
+        qLabel: 'Кріоскопічне зниження температури замерзання ΔT_f (К)',
+        referenceLatex: String.raw`\frac{P_0 - P}{P_0} = x_2 = \frac{i\,\nu_2}{\nu_1 + i\,\nu_2}, \qquad \Delta T_{\text{кип}} = i\,K_b\,m, \qquad \Delta T_{\text{зам}} = i\,K_f\,m`,
+        question: 'Чому взимку зледенілі дороги посипають хлоридом кальцію $\\text{CaCl}_2$ або хлоридом натрію $\\text{NaCl}$, і чому за однакової моляльної концентрації ($m = 1\\text{ моль/кг}$) розчин $\\text{CaCl}_2$ знижує температуру замерзання води приблизно втричі сильніше, ніж розчин глюкози?',
+        options: [
+          'Згідно із законами Рауля та Бекмана, зниження температури замерзання $\\Delta T_{\\text{зам}} = i K_f m$ пропорційне загальній концентрації частинок $i\\cdot m$; глюкоза не дисоціює ($i = 1$), $\\text{NaCl}$ дає $2$ іони ($i \\approx 2$), а $\\text{CaCl}_2 \\to \\text{Ca}^{2+} + 2\\text{Cl}^-$ дає $3$ іони ($i \\approx 3$)',
+          'Сіль вступає з льодом у ядерну реакцію з виділенням світла',
+          'Розчинення солі підвищує температуру замерзання води до $+15\\,^\\circ\\text{C}$'
+        ],
+        correctIndex: 0,
+        explanation: '**Колігативними** називаються властивості розчинів, які залежать лише від сумарної концентрації кінетично самостійних частинок розчиненої речовини ($i\\cdot m$), а не від їхньої хімічної природи. За **першим законом Рауля** нелетка розчинена речовина зменшує мольну частку розчинника на поверхні та знижує його хімічний потенціал, через що тиск насиченої пари над розчином падає: $\\Delta P = P_0 - P = x_2 P_0$. Як наслідок (**другий закон Рауля**), розчин закипає за вищої температури ($\\Delta T_{\\text{кип}} = i K_b m$, для води $K_b = 0.512\\text{ К}\\cdot\\text{кг/моль}$) і замерзає за нижчої температури ($\\Delta T_{\\text{зам}} = i K_f m$, для води $K_f = 1.86\\text{ К}\\cdot\\text{кг/моль}$). Для сильного електроліту $\\text{CaCl}_2$ ізотонічний коефіцієнт Вант-Гоффа становить $i \\approx 3$, тому при $m = 2\\text{ моль/кг}$ лід плавиться навіть при $-11\\,^\\circ\\text{C}$!',
+        formulaLatex: String.raw`\Delta P = P_0\,\frac{i\,m}{55.5 + i\,m}, \qquad T_{\text{кип}} = 100 + 0.512\,i\,m, \qquad T_{\text{зам}} = 0 - 1.86\,i\,m`,
+        liveLatexFn: p => {
+          const effM = p.vantHoffI * p.molalityM;
+          const x2 = effM / (55.51 + effM);
+          const dp = p.vaporP0 * x2;
+          const dtb = 0.512 * effM;
+          const dtf = 1.86 * effM;
+          return String.raw`i\cdot m = ${effM.toFixed(1)}\text{ моль/кг}: \quad \Delta P = ${dp.toFixed(2)}\text{ кПа}, \quad T_{\text{кип}} = ${(100 + dtb).toFixed(2)}\,^\circ\text{C}, \quad T_{\text{зам}} = ${(-dtf).toFixed(2)}\,^\circ\text{C}`;
+        },
+        defaults: { molalityM: 2.0, vantHoffI: 2, vaporP0: 23.8, tempC: 65 },
+        sliders: [
+          { key: 'molalityM', label: 'Моляльна концентрація розчину m (моль на 1 кг H₂O)', min: 0.5, max: 5.0, step: 0.5, unit: 'моль/кг' },
+          { key: 'vantHoffI', label: 'Ізотонічний коефіцієнт Вант-Гоффа i (1: глюкоза, 2: NaCl, 3: CaCl₂)', min: 1, max: 3, step: 1, unit: '' },
+          { key: 'vaporP0', label: 'Тиск насиченої пари чистої води P₀(T)', min: 3.2, max: 101.3, step: 4.9, unit: 'кПа' },
+          { key: 'tempC', label: 'Температура термостата t', min: 25, max: 100, step: 5, unit: '°C' }
+        ]
+      },
+
+      chem_chromatography: {
+        discipline: 'chemistry',
+        secSym: '§ Х-32',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІІ · § Х-32. ХРОМАТОГРАФІЯ: РОЗДІЛЕННЯ СУМІШЕЙ ТА ФАКТОР УТРИМУВАННЯ Rf',
+        shortTitle: 'Хроматографія (ТШХ і колонкова, фактор R_f)',
+        subtitle: 'Розподіл між нерухомою (сорбент SiO₂) і рухомою (елюент) фазами та розділення пігментів',
+        category: 'chem_solutions',
+        badge: 'Аналіт. хімія',
+        categoryGroupTitle: 'Частина ІІІ. Розчини, електролітична дисоціація та аналітична хімія',
+        title: 'Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f',
+        epigraph: '«Подібно до променів світла у призмі, компоненти складної суміші в потоці розчинника закономірно розташовуються у вигляді кольорових зон — хроматограми» — Михайло Цвєт (1903).',
+        figCaption: 'Рис. Х-32. Препаративна скляна хроматографічна колонка з пористим силікагелем ($\\text{SiO}_2$) та камера тонкошарової хроматографії (ТШХ): розділення трикомпонентної суміші барвників (неполярного $\\beta$-каротину, середньополярного хлорофілу $a$ та сильнополярного ксантофілу) за різною спорідненістю до сорбенту.',
+        cameraPos: [0.0, 4.2, 11.2],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Фактор утримування малополярного компонента R_f1',
+        epLabel: 'Фактор утримування середньополярного компонента R_f2',
+        qLabel: 'Ступінь розділення зон Δx_12',
+        referenceLatex: String.raw`R_f = \frac{x_{\text{реч}}}{x_{\text{ел}}} = \frac{1}{1 + k'} = \frac{1}{1 + K_d\frac{V_s}{V_m}}, \qquad K_d = \frac{C_{\text{нерух}}}{C_{\text{рух}}}`,
+        question: 'На полярну пластинку силікагелю ($\\text{SiO}_2\\cdot n\\text{H}_2\\text{O}$ з полярними групами $\\text{–Si–OH}$) нанесли суміш трьох рослинних пігментів і занурили край у менш полярний органічний елюент. Який компонент підніметься найвище разом із фронтом розчинника (матиме найбільший фактор $R_f$)?',
+        options: [
+          'Найменш полярний компонент ($\\beta$-каротин), оскільки він найслабше адсорбується на полярних силанольних групах $\\text{SiO}_2$ ($K_d$ малий) і більшу частину часу переміщується з рухомою фазою ($R_f \\to 0.85\\text{–}0.95$)',
+          'Найбільш полярний компонент, бо він утворює міцні водневі зв’язки зі стаціонарною фазою $\\text{SiO}_2$',
+          'Усі речовини завжди рухаються з однаковою швидкістю і мають $R_f > 1.5$'
+        ],
+        correctIndex: 0,
+        explanation: 'В основі будь-якого хроматографічного методу (відкритого М. С. Цвєтом у 1903 р. під час розділення пігментів зеленого листя) лежить багаторазовий динамічний перерозподіл речовин між **нерухомою (стаціонарною) фазою** (пористий сорбент $\\text{SiO}_2$ або $\\text{Al}_2\\text{O}_3$) та потоком **рухомої фази (елюента)** згідно з коефіцієнтом розподілу $K_d = C_s / C_m$. У нормально-фазовій хроматографії сорбент є полярним: **полярні молекули** (ксантофіли з $\\text{–OH}$ групами) міцно утримуються водневими зв’язками на поверхні $\\text{SiO}_2$ ($K_d$ великий) і рухаються повільно (малий $R_f = x_{\\text{реч}} / x_{\\text{фронту}}$), тоді як **неполярні вуглеводні** ($\\beta$-каротин $\\text{C}_{40}\\text{H}_{56}$) слабо взаємодіють із сорбентом і швидко виносяться елюентом ($R_f$ близький до $0.9$). Завдяки тому, що речовина не може обігнати фронт розчинника, завжди $0 \\le R_f \\le 1$.',
+        formulaLatex: String.raw`R_f = \frac{x_i}{x_{\text{фронту}}} = \frac{1}{1 + K_d\,(V_s/V_m)} \in [0, 1]`,
+        liveLatexFn: p => {
+          const elPol = p.eluentPolarity;
+          const rf1 = Math.min(0.95, 0.62 + 0.30 * elPol) / (1 + 0.08 * (p.sorbentAct - 1));
+          const rf2 = Math.min(0.88, 0.25 + 0.45 * elPol) / (1 + 0.22 * (p.sorbentAct - 1));
+          const rf3 = Math.min(0.75, 0.08 + 0.35 * elPol) / (1 + 0.38 * (p.sorbentAct - 1));
+          return String.raw`x_{\text{фр}} = ${p.frontHeight.toFixed(1)}\text{ см}: \quad R_{f1}(\text{каротин}) = ${rf1.toFixed(2)}, \quad R_{f2}(\text{хлорофіл}) = ${rf2.toFixed(2)}, \quad R_{f3}(\text{ксантофіл}) = ${rf3.toFixed(2)}`;
+        },
+        defaults: { eluentPolarity: 0.55, frontHeight: 7.5, sorbentAct: 1.2, sampleLoad: 1.5 },
+        sliders: [
+          { key: 'eluentPolarity', label: 'Елюювальна сила (полярність) розчинника ε⁰ (гексан → етилацетат)', min: 0.15, max: 0.95, step: 0.05, unit: '' },
+          { key: 'frontHeight', label: 'Пробіг фронту розчинника вздовж пластинки ТШХ x_фронту', min: 2.0, max: 9.5, step: 0.5, unit: 'см' },
+          { key: 'sorbentAct', label: 'Адсорбційна активність нерухомої фази SiO₂ (V_s / V_m)', min: 0.6, max: 2.0, step: 0.2, unit: '' },
+          { key: 'sampleLoad', label: 'Об’єм нанесеної проби суміші барвників V_проби', min: 0.5, max: 3.0, step: 0.5, unit: 'мкл' }
+        ]
+      },
+
+      chem_adsorption: {
+        discipline: 'chemistry',
+        secSym: '§ Х-33',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІІ · § Х-33. ПОВЕРХНЕВА АДСОРБЦІЯ ТА ІЗОТЕРМА ЛЕНГМЮРА',
+        shortTitle: 'Адсорбція на активованому вугіллі (Ленгмюр)',
+        subtitle: 'Мономолекулярний шар на активних центрах, ступінь заповнення θ = KP/(1 + KP) і десорбція',
+        category: 'chem_solutions',
+        badge: 'Колоїдна й поверхн. хімія',
+        categoryGroupTitle: 'Частина ІІІ. Розчини, електролітична дисоціація та аналітична хімія',
+        title: 'Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра',
+        epigraph: '«Поверхня твердого тіла — це шахівниця еквівалентних активних центрів, де кожна клітинка може утримати лише одну молекулу адсорбату» — Ірвінг Ленгмюр (Нобелівська премія, 1932).',
+        figCaption: 'Рис. Х-33. Динамічна рівновага адсорбції та десорбції молекул газу (або барвника) на мікропористій графеновій поверхні активованого вугілля: мономолекулярне заповнення активних центрів $\\theta = \\frac{K_{\\text{адс}} P}{1 + K_{\\text{адс}} P}$.',
+        cameraPos: [0.0, 4.0, 11.0],
+        cameraTarget: [0, 2.1, 0],
+        ekLabel: 'Ступінь заповнення моношару θ (%)',
+        epLabel: 'Питома величина адсорбції Γ (ммоль/г)',
+        qLabel: 'Виділена теплота адсорбції −ΔH_адс (кДж/моль)',
+        referenceLatex: String.raw`\theta = \frac{\Gamma}{\Gamma_\infty} = \frac{K_{\text{адс}}P}{1 + K_{\text{адс}}P}, \qquad K_{\text{адс}}(T) = \frac{k_a}{k_d} = K_0\exp\!\left(\frac{Q_{\text{адс}}}{RT}\right)`,
+        question: 'Оскільки фізична адсорбція газу на поверхні активованого вугілля є самочинним процесом упорядкування молекул ($\\Delta S_{\\text{адс}} < 0$), яким за знаком є тепловий ефект адсорбції $\\Delta H_{\\text{адс}}$ і як зміниться ступінь заповнення поверхні $\\theta$ при нагріванні адсорбента?',
+        options: [
+          'Адсорбція завжди є екзотермічним процесом ($\\Delta H_{\\text{адс}} < 0$, виділяється теплота $Q_{\\text{адс}} > 0$), тому при підвищенні температури $T$ рівновага за принципом Ле Шательє зміщується в бік десорбції і ступінь заповнення $\\theta$ зменшується',
+          'Адсорбція є ендотермічною, тому нагрівання вугілля збільшує поглинання газу в десятки разів',
+          'Величина адсорбції не залежить ні від тиску газу, ні від температури'
+        ],
+        correctIndex: 0,
+        explanation: 'При переході молекул із тривимірного хаотичного руху в газовій фазі у зв’язаний двовимірний шар на поверхні твердого сорбенту їхня рухливість і ентропія падають ($\\Delta S_{\\text{адс}} < 0$). Щоб процес відбувався самочинно ($\\Delta G_{\\text{адс}} = \\Delta H_{\\text{адс}} - T\\Delta S_{\\text{адс}} < 0$), зміна ентальпії обов’язково має бути від’ємною (**$\\Delta H_{\\text{адс}} < 0$ — адсорбція екзотермічна**). За теорією **Ірвінга Ленгмюра**, коли швидкість прилипання до вільних центрів $v_a = k_a P(1 - \\theta)$ зрівнюється зі швидкістю відриву (десорбції) $v_d = k_d \\theta$, установлюється **ізотерма Ленгмюра**: $\\theta = \\frac{K P}{1 + K P}$. При малих тисках $\\theta \\approx KP$ (лінійна область Генрі), при високих — настає насичення моношару ($\\theta \\to 1$, $\\Gamma \\to \\Gamma_\\infty$). Нагрівання зменшує константу $K(T) \\propto e^{Q_{\\text{адс}}/RT}$, що використовують для термічної регенерації вугільних фільтрів та протигазів.',
+        formulaLatex: String.raw`v_{\text{адс}} = k_a P(1-\theta) = v_{\text{дес}} = k_d\theta \;\Rightarrow\; \theta = \frac{K(T)\,P}{1 + K(T)\,P}`,
+        liveLatexFn: p => {
+          const kT = p.langmuirK0 * Math.exp((p.qAdsKj * 1000 / 8.314) * (1 / p.tempK - 1 / 300));
+          const theta = (kT * p.gasPressP) / (1 + kT * p.gasPressP);
+          const gamma = 4.5 * theta;
+          return String.raw`K(${p.tempK}\text{ К}) = ${kT.toFixed(2)}\text{ атм}^{-1}, \quad \theta = ${(theta * 100).toFixed(1)}\%, \quad \Gamma = ${gamma.toFixed(2)}\text{ ммоль/г}`;
+        },
+        defaults: { gasPressP: 2.0, tempK: 300, langmuirK0: 1.2, qAdsKj: 25 },
+        sliders: [
+          { key: 'gasPressP', label: 'Рівноважний тиск газу-адсорбату над вугіллям P', min: 0.2, max: 6.0, step: 0.2, unit: 'атм' },
+          { key: 'tempK', label: 'Температура активованого вугілля T (нагрів → десорбція)', min: 250, max: 450, step: 10, unit: 'К' },
+          { key: 'langmuirK0', label: 'Константа адсорбційної спорідненості K₀ (при 300 К)', min: 0.3, max: 3.0, step: 0.15, unit: 'атм⁻¹' },
+          { key: 'qAdsKj', label: 'Молярна теплота адсорбції Q_адс = −ΔH_адс', min: 15, max: 45, step: 5, unit: 'кДж/моль' }
+        ]
+      },
+
+      chem_colloids: {
+        discipline: 'chemistry',
+        secSym: '§ Х-34',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІІ · § Х-34. КОЛОЇДНІ СИСТЕМИ: МІЦЕЛА, КОНУС ТІНДАЛЯ ТА КОАГУЛЯЦІЯ',
+        shortTitle: 'Колоїдні розчини: міцела, Тіндаль і коагуляція',
+        subtitle: 'Будова міцели золю, подвійний електричний шар (ζ-потенціал), ефект Тіндаля і правило Шульце — Гарді',
+        category: 'chem_solutions',
+        badge: 'Колоїдна хімія',
+        categoryGroupTitle: 'Частина ІІІ. Розчини, електролітична дисоціація та аналітична хімія',
+        title: 'Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція',
+        epigraph: '«Між світом істинних молекулярних розчинів і світом грубих суспензій лежить особливий нанорозмірний світ колоїдів, де панують поверхнева енергія та подвійний електричний шар» — Томас Грем.',
+        figCaption: 'Рис. Х-34. Світловий конус Фарадея — Тіндаля при проходженні лазерного променя крізь колоїдний золь та будова міцели $\\{[m\\text{AgI}]\\,n\\text{I}^- (n-x)\\text{K}^+\\}^{x-} x\\text{K}^+$: стиснення дифузного шару та зниження дзета-потенціалу $\\zeta$ при додаванні коагулюючого електроліту.',
+        cameraPos: [0.0, 4.0, 11.0],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Електрокінетичний ζ-потенціал гранул (мВ)',
+        epLabel: 'Інтенсивність розсіювання конуса Тіндаля I_Тінд',
+        qLabel: 'Ступінь коагуляції (злипання) золю (%)',
+        referenceLatex: String.raw`I_{\text{розс}} \propto \frac{N\,V_{\text{част}}^2}{\lambda^4}, \qquad \gamma_{\text{пор}} \propto \frac{1}{z_{\text{протиіона}}^6}\quad(\text{Шульце — Гарді}: 1 : \tfrac{1}{64} : \tfrac{1}{729})`,
+        question: 'Чому промінь лазера залишається невидимим збоку в істинному розчині кухонної солі $\\text{NaCl}$, але утворює яскравий світний конус (ефект Тіндаля) у колоїдному золі, і як залежить коагулююча здатність електроліту від заряду протиіона $z$ за правилом Шульце — Гарді?',
+        options: [
+          'Частинки колоїдного золю мають розмір $1\\text{–}100\\text{ нм}$ і дифракційно розсіюють світло ($I \\propto V^2/\\lambda^4$), а поріг коагуляції різко спадає зі зростанням заряду протиіона як $\\gamma \\propto z^{-6}$ (тому $\\text{Al}^{3+}$ коагулює негативний золь у сотні разів сильніше за $\\text{Na}^+$)',
+          'В істинному розчині молекули води повністю поглинають лазерний промінь',
+          'Однойменно заряджені колоїдні гранули притягуються завдяки кулонівським силам'
+        ],
+        correctIndex: 0,
+        explanation: 'Колоїдні розчини (**золі**) — це мікрогетерогенні дисперсні системи з розміром частинок $d = 1\\text{–}100\\text{ нм}$. На відміну від істинних розчинів ($d < 1\\text{ нм}$), колоїдні міцели викликають інтенсивне релеївське розсіювання світла ($I \\propto d^6 / \\lambda^4$), утворюючи видимий збоку **світловий конус Фарадея — Тіндаля**. Агрегативна стійкість гідрофобного золю (наприклад, негативно зарядженої гранули $\\{[m\\text{AgI}]n\\text{I}^-(n-x)\\text{K}^+\\}^{x-}$) забезпечується електростатичним відштовхуванням однойменних зарядів гранул та високим **електрокінетичним $\\zeta$-потенціалом** ($|\\zeta| > 30\\text{ мВ}$). При додаванні стороннього електроліту дифузний шар протиіонів стискається, $|\\zeta|$-потенціал падає нижче критичного порога ($\\approx 25\\text{ мВ}$), і частинки злипаються (**коагуляція**). За **правилом Шульце — Гарді** і теорією ДЛФО коагулююча дія протиіона пропорційна шостому степеню його валентності $z^6$ ($\\text{K}^+ : \\text{Ba}^{2+} : \\text{Al}^{3+} = 1 : 64 : 729$).',
+        formulaLatex: String.raw`\zeta = \zeta_0\,\exp(-\kappa\,\delta), \qquad \kappa \propto \sqrt{\sum c_i z_i^2}, \qquad \gamma_{\text{коаг}} \propto z^{-6}`,
+        liveLatexFn: p => {
+          const z = Math.round(p.counterIonZ);
+          const z6 = Math.pow(z, 6);
+          const zeta = 58 / (1 + 0.035 * p.electrolyteC * Math.pow(z, 2.4));
+          const coag = Math.min(100, Math.max(0, ((32 - zeta) / 22) * 100));
+          return String.raw`z = +${z}\;(z^6 = ${z6}): \quad |\zeta| = ${zeta.toFixed(1)}\text{ мВ}, \quad \text{Стан золю: } ${zeta > 28 ? '\\text{стійкий золь}' : '\\text{коагуляція (' + coag.toFixed(0) + '\\%)}'} `;
+        },
+        defaults: { particleSizeNm: 35, electrolyteC: 2.0, counterIonZ: 1, laserWaveNm: 532 },
+        sliders: [
+          { key: 'particleSizeNm', label: 'Радіус колоїдної міцели дисперсної фази r (1 нм = істинний р-н)', min: 2, max: 80, step: 2, unit: 'нм' },
+          { key: 'electrolyteC', label: 'Концентрація доданого електроліту-коагулянта C_ел', min: 0.0, max: 15.0, step: 0.5, unit: 'ммоль/л' },
+          { key: 'counterIonZ', label: 'Заряд протиіона коагулянта z (+1: K⁺, +2: Ba²⁺, +3: Al³⁺)', min: 1, max: 3, step: 1, unit: '' },
+          { key: 'laserWaveNm', label: 'Довжина хвилі лазерного променя λ (конус Тіндаля ∝ λ⁻⁴)', min: 405, max: 650, step: 15, unit: 'нм' }
+        ]
+      },
+
+      chem_hydrolysis: {
+        discipline: 'chemistry',
+        secSym: '§ Х-35',
+        secTag: 'ХІМІЯ · РОЗДІЛ ІІІ · § Х-35. ГІДРОЛІЗ СОЛЕЙ У ВОДНИХ РОЗЧИНАХ',
+        shortTitle: 'Гідроліз солей (за катіоном і аніоном)',
+        subtitle: 'Константа K_г = K_w / K_a, ступінь гідролізу h = √(K_г/C) та реакція середовища розчинів солей',
+        category: 'chem_solutions',
+        badge: 'Розчини електролітів',
+        categoryGroupTitle: 'Частина ІІІ. Розчини, електролітична дисоціація та аналітична хімія',
+        title: 'Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища',
+        epigraph: '«Навіть нейтральна за формулою сіль, що не містить у своєму складі ні іонів H⁺, ні іонів OH⁻, у воді здатна забарвити індикатор у лужний або кислий колір» — Сванте Арреніус.',
+        figCaption: 'Рис. Х-35. Штатив із 4 лабораторними склянками та цифровим pH-зондом: порівняння водного середовища розчинів солей чотирьох типів ($\\text{NaCl}$, $\\text{CH}_3\\text{COONa}$, $\\text{NH}_4\\text{Cl}$, $\\text{Na}_2\\text{CO}_3$) із універсальним індикатором та молекулярна схема протолізу води.',
+        cameraPos: [0.0, 4.1, 11.2],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Поточний водневий показник розчину pH',
+        epLabel: 'Ступінь гідролізу солі h (‰)',
+        qLabel: 'Ентальпія гідролізу ΔH_гідр = +57.3 кДж/моль',
+        referenceLatex: String.raw`K_{\text{г}} = \frac{K_w}{K_{\text{слабк}}}, \qquad h = \sqrt{\frac{K_{\text{г}}}{C_{\text{солі}}}} = \sqrt{\frac{K_w(T)}{K_{\text{слабк}}\,C}}, \qquad K_w = [\mathrm{H^+}][\mathrm{OH^-}]`,
+        question: 'Яку реакцію середовища ($\\text{pH}$) має водний розчин натрій карбонату $\\text{Na}_2\\text{CO}_3$ (кальцинованої соди), і як зміниться ступінь гідролізу солі $h$ при розведенні розчину водою (зменшенні $C$) та при його нагріванні?',
+        options: [
+          'Середовище лужне ($\\text{pH} > 7$), бо сіль утворена сильною основою $\\text{NaOH}$ і слабкою кислотою $\\text{H}_2\\text{CO}_3$ (гідроліз за аніоном $\\text{CO}_3^{2-} + \\text{H}_2\\text{O} \\rightleftharpoons \\text{HCO}_3^- + \\text{OH}^-$); при розведенні ($h \\propto 1/\\sqrt{C}$) та нагріванні ($\\Delta H_{\\text{гідр}} > 0$) ступінь гідролізу $h$ зростає',
+          'Середовище сильнокисле ($\\text{pH} < 3$), а при нагріванні гідроліз припиняється',
+          'Розчин карбонату натрію завжди має строго нейтральне середовище ($\\text{pH} = 7.00$)'
+        ],
+        correctIndex: 0,
+        explanation: '**Гідроліз солі** — це оборотна реакція обмінної взаємодії іонів солі з молекулами води, що приводить до утворення малодисоційованого електроліту (слабкої кислоти або слабкої основи) та зміщення рівноваги автопротолізу води ($\\text{pH} \\ne 7$). Правило: **«сильний перемагає»** — реакцію середовища визначає сильний електроліт, що утворив сіль: 1) сіль сильної основи і сильної кислоти ($\\text{NaCl}$) гідролізу не зазнає ($\\text{pH} = 7.0$); 2) сіль сильної основи і слабкої кислоти ($\\text{CH}_3\\text{COONa}$, $\\text{Na}_2\\text{CO}_3$) гідролізує **за аніоном** ($\\text{A}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{HA} + \\text{OH}^-$, середовище **лужне**, $\\text{pH} > 7$); 3) сіль слабкої основи і сильної кислоти ($\\text{NH}_4\\text{Cl}$, $\\text{CuSO}_4$) гідролізує **за катіоном** ($\\text{NH}_4^+ + \\text{H}_2\\text{O} \\rightleftharpoons \\text{NH}_3\\cdot\\text{H}_2\\text{O} + \\text{H}^+$, середовище **кисле**, $\\text{pH} < 7$). Оскільки гідроліз є процесом, зворотним до екзотермічної нейтралізації ($\\Delta H_{\\text{гідр}} = +57.3\\text{ кДж/моль} > 0$), **нагрівання та розведення ($h = \\sqrt{K_{\\text{г}}/C}$)** завжди посилюють гідроліз.',
+        formulaLatex: String.raw`\text{Аніонний: }\mathrm{pH} = 7 + \tfrac{1}{2}\mathrm{p}K_a + \tfrac{1}{2}\lg C; \qquad \text{Катіонний: }\mathrm{pH} = 7 - \tfrac{1}{2}\mathrm{p}K_b - \tfrac{1}{2}\lg C`,
+        liveLatexFn: p => {
+          const sType = Math.round(p.saltType);
+          const c = p.saltConcC;
+          const kwScale = Math.exp(0.062 * (p.tempC - 25));
+          let ph = 7.0, hPct = 0, name = '\\text{NaCl}';
+          if (sType === 1) {
+            name = '\\text{NaCl (гідролізу немає)}';
+            ph = 7.0 - 0.013 * (p.tempC - 25);
+          } else if (sType === 2) {
+            name = '\\text{CH}_3\\text{COONa (за аніоном)}';
+            const kh = (1e-14 * kwScale) / 1.75e-5;
+            const h = Math.sqrt(kh / c);
+            hPct = h * 100;
+            ph = 7 + 0.5 * 4.76 + 0.5 * Math.log10(c) + 0.008 * (p.tempC - 25);
+          } else if (sType === 3) {
+            name = '\\text{NH}_4\\text{Cl (за катіоном)}';
+            const kh = (1e-14 * kwScale) / 1.75e-5;
+            const h = Math.sqrt(kh / c);
+            hPct = h * 100;
+            ph = 7 - 0.5 * 4.76 - 0.5 * Math.log10(c) - 0.012 * (p.tempC - 25);
+          } else {
+            name = '\\text{Na}_2\\text{CO}_3\\text{ (за аніоном)}';
+            const kh = (1e-14 * kwScale) / 4.7e-11;
+            const h = Math.sqrt(kh / c);
+            hPct = h * 100;
+            ph = 7 + 0.5 * 10.33 + 0.5 * Math.log10(c) + 0.01 * (p.tempC - 25);
+          }
+          return String.raw`${name}: \quad \mathrm{pH} = ${ph.toFixed(2)}, \quad h = ${hPct.toFixed(3)}\%`;
+        },
+        defaults: { saltType: 4, saltConcC: 0.10, tempC: 25, dilutionFactor: 1.0 },
+        sliders: [
+          { key: 'saltType', label: 'Досліджувана сіль (1: NaCl, 2: CH₃COONa, 3: NH₄Cl, 4: Na₂CO₃)', min: 1, max: 4, step: 1, unit: '' },
+          { key: 'saltConcC', label: 'Молярна концентрація солі C', min: 0.01, max: 0.50, step: 0.01, unit: 'моль/л' },
+          { key: 'tempC', label: 'Температура розчину t (нагрів посилює гідроліз)', min: 15, max: 85, step: 5, unit: '°C' },
+          { key: 'dilutionFactor', label: 'Коефіцієнт розведення водою V / V₀', min: 1.0, max: 10.0, step: 1.0, unit: 'разів' }
+        ]
+      },
+
+      chem_corrosion: {
+        discipline: 'chemistry',
+        secSym: '§ Х-36',
+        secTag: 'ХІМІЯ · РОЗДІЛ IV · § Х-36. ЕЛЕКТРОХІМІЧНА КОРОЗІЯ МЕТАЛІВ ТА ПРОТЕКТОРНИЙ ЗАХИСТ',
+        shortTitle: 'Електрохімічна корозія та протекторний захист',
+        subtitle: 'Мікрогальванічні пари Fe–Cu (руйнування заліза) та Fe–Zn / Fe–Mg (жертовний анод-протектор)',
+        category: 'chem_electro_org',
+        badge: 'Електрохімія',
+        categoryGroupTitle: 'Частина IV. Електрохімія та органічна хімія',
+        title: 'Електрохімічна корозія заліза з кисневою деполяризацією та катодний протекторний захист',
+        epigraph: '«Корозія — це гальванічний елемент, що працює на руйнування металу; але варто приєднати активніший метал-протектор, і ті самі закони електрохімії стають його надійним щитом» — Гемфрі Деві.',
+        figCaption: 'Рис. Х-36. Корозійна ванна з морським електролітом ($\\text{NaCl} + \\text{O}_2$): сталева пластина $\\text{Fe}$ ($E^\\circ = -0.44\\text{ В}$) у контакті з обраним металом-партнером ($\\text{Cu}$, $\\text{Zn}$ або $\\text{Mg}$), потік електронів у металі та утворення іржі $\\text{Fe(OH)}_3$ або захист сталі жертовним протектором.',
+        cameraPos: [0.0, 4.1, 11.2],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'ЕРС мікрогальванічної пари ΔE° (В)',
+        epLabel: 'Густина корозійного струму I_кор (мА/см²)',
+        qLabel: 'Швидкість розчинення анодного металу v_кор',
+        referenceLatex: String.raw`\text{Анод }(-):\; \mathrm{M} \to \mathrm{M}^{n+} + ne^-; \qquad \text{Катод }(+):\; \mathrm{O_2} + 2\mathrm{H_2O} + 4e^- \to 4\mathrm{OH^-}`,
+        question: 'Сталевий корпус корабля ($\\text{Fe}$, $E^\\circ = -0.44\\text{ В}$) перебуває у морській воді. Що відбуватиметься при порушенні покриття, якщо залізо контактує з мідною заклепкою ($\\text{Cu}$, $E^\\circ = +0.34\\text{ В}$), і що зміниться, якщо до корпусу прикріпити цинковий протектор ($\\text{Zn}$, $E^\\circ = -0.76\\text{ В}$)?',
+        options: [
+          'У парі $\\text{Fe–Cu}$ залізо має нижчий потенціал і стає анодом, тому прискорено руйнується ($\\text{Fe} \\to \\text{Fe}^{2+} + 2e^-$); а в парі $\\text{Fe–Zn}$ анодом стає активніший цинк ($\\text{Zn} \\to \\text{Zn}^{2+} + 2e^-$), перетворюючи сталевий корпус на катод і повністю захищаючи його від корозії',
+          'Мідь є активнішою за залізо, тому мідні заклепки захищають сталь від іржавіння',
+          'Солона морська вода та розчинений кисень зупиняють електрохімічну корозію'
+        ],
+        correctIndex: 0,
+        explanation: '**Електрохімічна корозія** виникає при контакті двох металів із різними стандартними електродними потенціалами в середовищі електроліту. Метал із **меншим (більш від’ємним) потенціалом $E^\\circ$** завжди стає **анодом ($-$)** і окиснюється (розчиняється), віддаючи електрони металу з більшим потенціалом — **катоду ($+$)**, на поверхні якого відбувається відновлення окисника (у нейтральній воді — киснева деполяризація $\\text{O}_2 + 2\\text{H}_2\\text{O} + 4e^- \\to 4\\text{OH}^-$). Тому при пошкодженні лудженого заліза (вкритого оловом $\\text{Sn}$, $E^\\circ = -0.14\\text{ В}$) або контакті з міддю ($+0.34\\text{ В}$) залізо ($-0.44\\text{ В}$) є анодом і швидко іржавіє. Натомість при контакті з **цинком ($-0.76\\text{ В}$)** або **магнієм ($-2.37\\text{ В}$)** залізо стає катодом: руйнується лише жертовний анод (**протекторний захист**), а сталь залишається неушкодженою навіть на відкритих подряпинах.',
+        formulaLatex: String.raw`\Delta E_{\text{кор}} = E_{\text{катода}} - E_{\text{анода}}, \qquad m_{\text{анода}} = \frac{M\,I_{\text{кор}}\,t}{z\,F}`,
+        liveLatexFn: p => {
+          const pIdx = Math.round(p.partnerMetal);
+          const partners = [
+            { sym: 'Cu', e0: 0.34, anode: 'Fe (сталь іржавіє!)', de: 0.78 },
+            { sym: 'Sn', e0: -0.14, anode: 'Fe (сталь іржавіє!)', de: 0.30 },
+            { sym: 'Zn', e0: -0.76, anode: 'Zn (протектор захищає Fe)', de: 0.32 },
+            { sym: 'Mg', e0: -2.37, anode: 'Mg (протектор захищає Fe)', de: 1.93 }
+          ];
+          const pt = partners[Math.max(0, Math.min(3, pIdx - 1))];
+          const iCorr = pt.de * (0.4 + 1.8 * p.naclConc) * (p.o2Conc / 8.0) * 12;
+          return String.raw`\text{Пара Fe–}${pt.sym}: \quad \Delta E^\circ = ${pt.de.toFixed(2)}\text{ В}, \quad \text{Анод }(-): \text{${pt.anode}}, \quad j_{\text{кор}} \approx ${iCorr.toFixed(1)}\text{ мА/см}^2`;
+        },
+        defaults: { partnerMetal: 1, naclConc: 0.5, o2Conc: 8.0, pHVal: 7.0 },
+        sliders: [
+          { key: 'partnerMetal', label: 'Контактний метал у парі зі сталлю Fe (1: Cu, 2: Sn, 3: Zn-протектор, 4: Mg-протектор)', min: 1, max: 4, step: 1, unit: '' },
+          { key: 'naclConc', label: 'Солоність електроліту [NaCl] (електропровідність води)', min: 0.05, max: 1.50, step: 0.05, unit: 'моль/л' },
+          { key: 'o2Conc', label: 'Концентрація розчиненого кисню [O₂] (деполяризатор)', min: 1.0, max: 12.0, step: 1.0, unit: 'мг/л' },
+          { key: 'pHVal', label: 'Кислотність середовища pH (при pH < 4 — воднева деполяризація)', min: 3.0, max: 10.0, step: 0.5, unit: '' }
+        ]
+      },
+
+      chem_liion: {
+        discipline: 'chemistry',
+        secSym: '§ Х-37',
+        secTag: 'ХІМІЯ · РОЗДІЛ IV · § Х-37. ЛІТІЙ-ІОННИЙ АКУМУЛЯТОР ТА ІНТЕРКАЛЯЦІЯ ІОНІВ Li⁺',
+        shortTitle: 'Літій-іонний акумулятор (інтеркаляція Li⁺)',
+        subtitle: 'Шаруватий катод LiCoO₂ та графітовий анод LiC₆: цикл «гойдалки» розряджання / заряджання і напруга 3.7 В',
+        category: 'chem_electro_org',
+        badge: 'Сучасна електрохімія',
+        categoryGroupTitle: 'Частина IV. Електрохімія та органічна хімія',
+        title: 'Літій-іонний акумулятор (LiCoO₂ || C₆): оборотна інтеркаляція іонів Li⁺ (Нобелівська премія, 2019)',
+        epigraph: '«Замість руйнівного осадження металічного літію ми навчили іони Li⁺ м’яко входити й виходити між атомними шарами графіту та оксиду кобальту, немов гості у багатоповерховому готелі» — Джон Гуденаф і Стенлі Віттінгем.',
+        figCaption: 'Рис. Х-37. 3D-будова літій-іонної комірки: графенові шари анода $\\text{Li}_x\\text{C}_6$ ліворуч, полімерний сепаратор у центрі та кристалічні октаедричні шари катода $\\text{Li}_{1-x}\\text{CoO}_2$ праворуч із зустрічним рухом катіонів $\\text{Li}^+$ всередині електроліту та електронів $e^-$ у зовнішньому колі.',
+        cameraPos: [0.0, 4.1, 11.2],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Робоча напруга Li-ion акумулятора U (В)',
+        epLabel: 'Запас питомої енергії комірки W (Вт·год/кг)',
+        qLabel: 'Рівень заряду акумулятора SoC (%)',
+        referenceLatex: String.raw`\mathrm{Li}_x\mathrm{C_6} + \mathrm{Li}_{1-x}\mathrm{CoO_2} \;\underset{\text{Заряд}}{\overset{\text{Розряд}}{\rightleftharpoons}}\; \mathrm{C_6} + \mathrm{LiCoO_2}, \qquad E^\circ_{\text{ком}} \approx 3.70\text{–}4.20\text{ В}`,
+        question: 'Куди рухаються катіони літію $\\text{Li}^+$ всередині електроліту та електрони $e^-$ у зовнішньому колі під час **розряджання** літій-іонного акумулятора (живлення смартфона або електромобіля)?',
+        options: [
+          'Під час розряджання іони $\\text{Li}^+$ деінтеркалюють із міжшарового простору графітового анода ($\\text{LiC}_6 \\to \\text{C}_6 + \\text{Li}^+ + e^-$) і мігрують крізь сепаратор до катода $\\text{Li}_{1-x}\\text{CoO}_2$, а електрони $e^-$ біжать від анода до катода через зовнішнє навантаження',
+          'Під час розряджання іони $\\text{Li}^+$ вилітають назовні у повітря, перетворюючись на газ',
+          'Літій-іонний акумулятор працює у водному розчині сульфатної кислоти при напрузі $0.5\\text{ В}$'
+        ],
+        correctIndex: 0,
+        explanation: 'Робота **літій-іонного акумулятора** (Нобелівська премія з хімії 2019 р. — Дж. Гуденаф, С. Віттінгем, А. Йосіно) базується на оборотному процесі **інтеркаляції** — проникненні катіонів $\\text{Li}^+$ у міжшаровий простір кристалічних матриць без руйнування їхньої структури («принцип крісла-гойдалки»). 1) Під час **розряджання** графітовий електрод $\\text{Li}_x\\text{C}_6$ працює як **анод ($-$)**: атоми літію віддають електрони в зовнішнє коло ($\\text{Li}_x\\text{C}_6 \\to \\text{C}_6 + x\\text{Li}^+ + xe^-$), а катіони $\\text{Li}^+$ в органічному апротонному електроліті ($\\text{LiPF}_6$ в етиленкарбонаті) проходять крізь пористий сепаратор і вбудовуються (інтеркалюють) у шаруватий оксид кобальту на **катоді ($+$)**: $\\text{Li}_{1-x}\\text{CoO}_2 + x\\text{Li}^+ + xe^- \\to \\text{LiCoO}_2$ (де $\\text{Co}^{4+}$ відновлюється до $\\text{Co}^{3+}$). 2) Під час **заряджання** зовнішнє джерело струму повертає іони $\\text{Li}^+$ та електрони назад у графіт. Завдяки рекордно низькому потенціалу літію ($-3.04\\text{ В}$) одна комірка розвиває напругу **$3.6\\text{–}4.2\\text{ В}$** (утричі вищу за водяні акумулятори!).',
+        formulaLatex: String.raw`E(\text{SoC}) \approx 3.55 + 0.58\,\text{SoC} + \frac{RT}{F}\ln\frac{\text{SoC}}{1-\text{SoC}}, \qquad U = E \mp I\,R_{\text{вн}}`,
+        liveLatexFn: p => {
+          const soc = Math.max(0.04, Math.min(0.98, p.socPercent / 100));
+          const eOcv = 3.52 + 0.58 * soc + 0.026 * Math.log(soc / (1 - soc));
+          const isCharge = Math.round(p.cycleMode) === 2;
+          const uTerm = isCharge ? eOcv + p.currentC * 0.08 : eOcv - p.currentC * 0.08;
+          return String.raw`\text{Режим: }${isCharge ? '\\text{Заряджання (CoO}_2\\to\\text{C}_6)' : '\\text{Розряджання (C}_6\\to\\text{CoO}_2)'}, \quad \text{SoC} = ${p.socPercent.toFixed(0)}\%\;(x = ${(soc).toFixed(2)}), \quad U = ${uTerm.toFixed(2)}\text{ В}`;
+        },
+        defaults: { cycleMode: 1, socPercent: 75, currentC: 1.5, tempC: 25 },
+        sliders: [
+          { key: 'cycleMode', label: 'Режим роботи акумулятора (1: Розряджання на навантаження, 2: Заряджання)', min: 1, max: 2, step: 1, unit: '' },
+          { key: 'socPercent', label: 'Рівень заряду акумулятора SoC (частка Li⁺ у графіті Li_xC₆)', min: 10, max: 95, step: 5, unit: '%' },
+          { key: 'currentC', label: 'Струм циклування I (швидкість міграції іонів Li⁺)', min: 0.5, max: 4.0, step: 0.5, unit: 'А' },
+          { key: 'tempC', label: 'Робоча температура комірки t', min: 0, max: 50, step: 5, unit: '°C' }
+        ]
+      },
+
+      chem_sn2: {
+        discipline: 'chemistry',
+        secSym: '§ Х-38',
+        secTag: 'ХІМІЯ · РОЗДІЛ IV · § Х-38. МЕХАНІЗМ НУКЛЕОФІЛЬНОГО ЗАМІЩЕННЯ SN2 ТА ВАЛЬДЕНІВСЬКЕ ОБЕРТАННЯ',
+        shortTitle: 'Механізм реакції S_N2 (інверсія Вальдена)',
+        subtitle: 'Тилова атака нуклеофіла OH⁻ під кутом 180°, тригонально-біпірамідальний перехідний стан і вивертання конфігурації',
+        category: 'chem_electro_org',
+        badge: 'Механізми орган. реакцій',
+        categoryGroupTitle: 'Частина IV. Електрохімія та органічна хімія',
+        title: 'Бімолекулярне нуклеофільне заміщення (S_N2): перехідний стан та інверсія конфігурації Вальдена',
+        epigraph: '«У реакції S_N2 тетраедр карбонового атома вивертається навиворіт під натиском нуклеофіла — точнісінько як парасолька під час сильного пориву вітру» — Крістофер Інгольд.',
+        figCaption: 'Рис. Х-38. Узгоджений одностадійний механізм реакції $\\text{S}_{\\text{N}}2$ ($\\text{HO}^- + \\text{CH}_3\\text{Br} \\to [\\text{HO}^{\\delta-}\\cdots\\text{CH}_3\\cdots\\text{Br}^{\\delta-}]^\\ddagger \\to \\text{CH}_3\\text{OH} + \\text{Br}^-$): тилова атака нуклеофіла під кутом $180^\\circ$, плоский п’ятикоординований перехідний стан ($\\xi = 0.50$) та вальденівське обертання тетраедра.',
+        cameraPos: [0.0, 4.0, 10.8],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Кінетична швидкість v = k₂[R–X][Nu⁻]',
+        epLabel: 'Потенціальна енергія уздовж координати реакції E(ξ)',
+        qLabel: 'Ступінь інверсії валентної парасольки (%)',
+        referenceLatex: String.raw`v = k_2[\mathrm{R\text{–}X}][\mathrm{Nu^-}], \qquad \mathrm{HO^-} + (R)\text{-}\mathrm{CR_1R_2R_3Br} \longrightarrow [\mathrm{HO^{\delta-}{\cdots}C{\cdots}Br^{\delta-}}]^\ddagger \longrightarrow (S)\text{-}\mathrm{CR_1R_2R_3OH} + \mathrm{Br^-}`,
+        question: 'Якими є кінетичний закон швидкості, геометрія перехідного стану та стереохімічний результат одностадійної реакції бімолекулярного нуклеофільного заміщення $\\text{S}_{\\text{N}}2$ на хіральному атомі Карбону?',
+        options: [
+          'Швидкість має другий порядок ($v = k_2[\\text{R–X}][\\text{Nu}^-]$); нуклеофіл атакує з тильного боку ($180^\\circ$ до відхідної групи) через плоский тригонально-біпірамідальний перехідний стан, що спричиняє $100\\%$ обертання конфігурації (інверсію Вальдена $(R) \\to (S)$)',
+          'Реакція відбувається у дві стадії через плоский карбокатіон і дає рацемічну суміш $(R + S)$',
+          'Швидкість реакції $\\text{S}_{\\text{N}}2$ не залежить від концентрації нуклеофіла $[\\text{Nu}^-]$'
+        ],
+        correctIndex: 0,
+        explanation: 'Механізм **$\\text{S}_{\\text{N}}2$** (запропонований К. Інгольдом і Е. Х’юзом) — це **узгоджений одностадійний процес** без проміжних інтермедіатів, у лімітуючій стадії якого одночасно беруть участь дві частинки: молекула субстрату $\\text{R–X}$ та нуклеофіл $\\text{Nu}^-$. Тому реакція має **другий кінетичний порядок**: $v = k_2[\\text{R–X}][\\text{Nu}^-]$. Нуклеофіл (наприклад, $\\text{OH}^-$) атакує електрофільний атом Карбону ($\\delta^+$) строго з **тильного боку під кутом $180^\\circ$** до зв’язку $\\text{C–Br}$ (на розпушувальну орбіталь $\\sigma^*_{\\text{C–Br}}$). На вершині енергетичного бар’єра ($\\xi = 0.5$) утворюється **тригонально-біпірамідальний перехідний стан** $[\\text{HO}^{\\delta-}\\cdots\\text{C}\\cdots\\text{Br}^{\\delta-}]^\\ddagger$, де три замісники лежать в одній екваторіальній площині ($sp^2$). Коли бромід-іон $\\text{Br}^-$ відщеплюється, три замісники «вивертаються» в протилежний бік — відбувається **100% вальденівське обертання конфігурації**.',
+        formulaLatex: String.raw`v = k_2[\mathrm{CH_3Br}][\mathrm{OH^-}], \qquad E(\xi) = E_a\sin^2(\pi\xi) + \Delta H_{\text{реакц}}\,\xi^2`,
+        liveLatexFn: p => {
+          const xi = p.rxnCoordXi;
+          const eCur = p.eaBarrier * Math.pow(Math.sin(Math.PI * xi), 2) - 24 * xi * xi;
+          const umbrellaDeg = 109.5 - 39.0 * xi;
+          const stateStr = xi < 0.35 ? '\\text{Реагенти (тетраедр }R)' : (xi <= 0.65 ? '\\text{Перехідний стан }[\\ddagger]' : '\\text{Продукти (інверсія }S)');
+          return String.raw`\xi = ${xi.toFixed(2)}\;(${stateStr}): \quad E(\xi) = ${eCur >= 0 ? '+' : ''}${eCur.toFixed(1)}\text{ кДж/моль}, \quad \angle(\mathrm{Nu\text{–}C\text{–}H}) \approx ${(180 - umbrellaDeg).toFixed(0)}^\circ`;
+        },
+        defaults: { rxnCoordXi: 0.50, concSub: 1.0, concNu: 1.5, eaBarrier: 75 },
+        sliders: [
+          { key: 'rxnCoordXi', label: 'Координата реакції ξ (0: реагенти, 0.50: перехідний стан ‡, 1: інверсія)', min: 0.0, max: 1.0, step: 0.02, unit: '' },
+          { key: 'concSub', label: 'Концентрація галогеноалкану [R–Br]', min: 0.25, max: 2.50, step: 0.25, unit: 'моль/л' },
+          { key: 'concNu', label: 'Концентрація нуклеофіла [OH⁻]', min: 0.25, max: 2.50, step: 0.25, unit: 'моль/л' },
+          { key: 'eaBarrier', label: 'Енергія активації перехідного стану E_a (стеричний фактор)', min: 45, max: 110, step: 5, unit: 'кДж/моль' }
+        ]
+      },
+
+      chem_ester: {
+        discipline: 'chemistry',
+        secSym: '§ Х-39',
+        secTag: 'ХІМІЯ · РОЗДІЛ IV · § Х-39. РЕАКЦІЯ ЕСТЕРИФІКАЦІЇ ФІШЕРА ТА ІЗОТОПНА МІТКА ¹⁸O',
+        shortTitle: 'Естерифікація Фішера та ізотопна мітка ¹⁸O',
+        subtitle: 'Синтез етилетаноату CH₃COOH + C₂H₅¹⁸OH ⇄ CH₃CO¹⁸OC₂H₅ + H₂O, константа рівноваги K_c = 4',
+        category: 'chem_electro_org',
+        badge: 'Органічний синтез',
+        categoryGroupTitle: 'Частина IV. Електрохімія та органічна хімія',
+        title: 'Реакція естерифікації Фішера та доведення її механізму методом мічених атомів (¹⁸O)',
+        epigraph: '«Мічений важкий ізотоп Оксигену ¹⁸O став хімічним детективом, який безпомилково показав, який саме зв’язок розривається у карбоновій кислоті, а який — у спирті» — Мелвін Кальвін і Майкл Поляні.',
+        figCaption: 'Рис. Х-39. Механізм кислотно-каталізованої естерифікації оцтової кислоти етанолом, міченим важким ізотопом $^{18}\\text{O}$ (світиться пурпуровим кольором): нуклеофільне приєднання спирту до карбонільного Карбону, відщеплення гідроксильної групи $\\text{–OH}$ від кислоти у молекулу води $\\text{H}_2{}^{16}\\text{O}$ та входження $^{18}\\text{O}$ до складу естеру.',
+        cameraPos: [0.0, 4.1, 11.0],
+        cameraTarget: [0, 2.2, 0],
+        ekLabel: 'Рівноважний вихід етилетаноату η_естер (%)',
+        epLabel: 'Мольна частка міченого ¹⁸O в естері (%)',
+        qLabel: 'Швидкість прямої та зворотної реакцій v',
+        referenceLatex: String.raw`\mathrm{CH_3C({=}O)\mathbf{OH}} + \mathrm{H\mathbf{^{18}O}C_2H_5} \;\underset{\mathrm{H_2SO_4}}{\rightleftharpoons}\; \mathrm{CH_3C({=}O)\mathbf{^{18}O}C_2H_5} + \mathrm{H_2O}, \qquad K_c = \frac{[\text{Естер}][\mathrm{H_2O}]}{[\text{Кислота}][\text{Спирт}]} \approx 4.0`,
+        question: 'Під час взаємодії оцтової кислоти $\\text{CH}_3\\text{COOH}$ з етанолом, збагаченим важким ізотопом оксигену $\\text{C}_2\\text{H}_5{}^{18}\\text{OH}$ (у присутності $\\text{H}_2\\text{SO}_4$), в якій із утворених речовин виявиться ізотопна мітка $^{18}\\text{O}$ і який максимальний вихід естеру досягається при еквімолярному співвідношенні реагентів $1:1$ ($K_c = 4$)?',
+        options: [
+          'Увесь важкий ізотоп $^{18}\\text{O}$ переходить виключно до складу молекули естеру ($\\text{CH}_3\\text{CO}^{18}\\text{OC}_2\\text{H}_5$), бо від кислоти відщеплюється група $\\text{–OH}$, а від спирту — лише протон $\\text{H}^+$; при співвідношенні $1:1$ і $K_c = 4$ рівноважний вихід становить $\\frac{\\sqrt{4}}{1+\\sqrt{4}} = \\frac{2}{3} \\approx 66.7\\%$',
+          'Ізотоп $^{18}\\text{O}$ переходить у молекулу води $\\text{H}_2{}^{18}\\text{O}$, бо від спирту відщеплюється група $\\text{–}^{18}\\text{OH}$',
+          'Реакція естерифікації є необоротною і завжди дає $100\\%$ виходу без водовідбірних засобів'
+        ],
+        correctIndex: 0,
+        explanation: 'Класичний дослід М. Поляні та А. Робертса (1938) з **ізотопною міткою $^{18}\\text{O}$** довів істинний механізм естерифікації Фішера ($A_{\\text{Ac}}2$): протон каталізатора $\\text{H}^+$ активує карбонільний Оксиген кислоти, після чого атом $^{18}\\text{O}$ спирту атакує електрофільний карбонільний Карбон, утворюючи тетраедричний інтермедіат. Далі протон переноситься на гідроксильну групу **кислоти**, яка відщеплюється у вигляді звичайної води **$\\text{H}_2{}^{16}\\text{O}$**, тоді як алкоксильна група **$\\text{–}^{18}\\text{OC}_2\\text{H}_5$ повністю входить у молекулу естеру** $\\text{CH}_3\\text{CO}^{18}\\text{OC}_2\\text{H}_5$. Оскільки константа рівноваги дорівнює $K_c = \\frac{x^2}{(1-x)(b-x)} \\approx 4.0$, для еквімолярної суміші ($1:1$) рівняння $\\frac{x^2}{(1-x)^2} = 4$ дає $x = \\frac{2}{3} \\approx 66.7\\%$. Щоб змістити рівновагу до $\\approx 95\\text{–}99\\%$, беруть надлишок спирту або відганяють воду з реакційної суміші.',
+        formulaLatex: String.raw`K_c = \frac{x(x - w_{\text{відігн}})}{(a - x)(b - x)} = 4.0 \quad\xrightarrow{a=b=1,\; w=0}\quad \eta_{\text{рівн}} = \frac{\sqrt{K_c}}{1 + \sqrt{K_c}} = 66.7\%`,
+        liveLatexFn: p => {
+          const b = p.alcoholRatioB;
+          const kc = 4.0 * (1 + 0.65 * p.waterRemoval);
+          // Solve kc * (1 - x) * (b - x) = x^2 => (kc - 1)x^2 - kc*(1+b)*x + kc*b = 0
+          const A = kc - 1;
+          const B = -kc * (1 + b);
+          const C = kc * b;
+          const disc = Math.max(0, B * B - 4 * A * C);
+          const x = (-B - Math.sqrt(disc)) / (2 * A);
+          const yieldPct = Math.min(99.2, Math.max(10, x * 100));
+          return String.raw`[\text{Спирт}]_0 / [\text{К-та}]_0 = ${b.toFixed(1)}, \quad K_{\text{еф}} = ${kc.toFixed(1)} \;\Rightarrow\; \eta(\mathrm{CH_3CO^{18}OC_2H_5}) = ${yieldPct.toFixed(1)}\%`;
+        },
+        defaults: { alcoholRatioB: 1.0, waterRemoval: 0.0, acidCatalystH: 1.0, tempC: 78 },
+        sliders: [
+          { key: 'alcoholRatioB', label: 'Мольне відношення реагентів [C₂H₅¹⁸OH]₀ / [CH₃COOH]₀', min: 0.5, max: 5.0, step: 0.5, unit: 'моль/моль' },
+          { key: 'waterRemoval', label: 'Частка видаленої води H₂O (азеотропна відгонка / H₂SO₄ конц.)', min: 0.0, max: 1.0, step: 0.1, unit: '' },
+          { key: 'acidCatalystH', label: 'Концентрація кислотного каталізатора [H₂SO₄]', min: 0.2, max: 2.0, step: 0.2, unit: 'моль/л' },
+          { key: 'tempC', label: 'Температура реакційної суміші t', min: 40, max: 100, step: 5, unit: '°C' }
+        ]
+      },
+
+      chem_biopol: {
+        discipline: 'chemistry',
+        secSym: '§ Х-40',
+        secTag: 'ХІМІЯ · РОЗДІЛ IV · § Х-40. БІОПОЛІМЕРИ: ПЕПТИДНИЙ ЗВ’ЯЗОК, α-СПІРАЛЬ БІЛКА ТА ПОДВІЙНА СПІРАЛЬ ДНК',
+        shortTitle: 'Біополімери: α-спіраль білка та ДНК',
+        subtitle: 'Пептидна група –CO–NH–, водневі зв’язки в α-спіралі Полінга і комплементарні пари A=T, G≡C у ДНК',
+        category: 'chem_electro_org',
+        badge: 'Біоорганічна хімія',
+        categoryGroupTitle: 'Частина IV. Електрохімія та органічна хімія',
+        title: 'Структура біополімерів: плоский пептидний зв’язок, α-спіраль білка та подвійна спіраль ДНК',
+        epigraph: '«Як тільки ми побачили, що аденін завжди з’єднується двома водневими зв’язками з тиміном, а гуанін — трьома з цитозином, таємниця копіювання спадковості стала очевидною» — Джеймс Вотсон і Френсіс Крік (1953).',
+        figCaption: 'Рис. Х-40. Тривимірна архітектура біополімерів: (1) права $\\alpha$-спіраль Полінга — Корі в білках ($3.6$ амінокислотних залишків на виток, внутрішньоланцюгові $\\text{H}$-зв’язки $\\text{C=O}_i \\cdots \\text{H–N}_{i+4}$) та (2) антипаралельна подвійна спіраль B-ДНК Вотсона — Кріка зі сходинками комплементарних пар основ ($\\text{A=T}$ — $2$ Н-зв’язки, $\\text{G}\\equiv\\text{C}$ — $3$ Н-зв’язки).',
+        cameraPos: [0.0, 4.2, 11.2],
+        cameraTarget: [0, 2.3, 0],
+        ekLabel: 'Сумарна енергія водневих зв’язків E_HB (кДж/моль)',
+        epLabel: 'Температура плавлення (денатурації) T_m (°C)',
+        qLabel: 'Частка збереженої нативної спіралі (%)',
+        referenceLatex: String.raw`N(\text{H-зв'язків ДНК}) = 2\,N_{\mathrm{AT}} + 3\,N_{\mathrm{GC}}, \qquad T_m(^\circ\mathrm{C}) \approx 64.9 + 41\,\frac{N_{\mathrm{GC}} - 16.4}{N_{\text{заг}}}`,
+        question: 'Чому ділянки подвійної спіралі ДНК з високим вмістом пар гуанін–цитозин ($\\text{G–C}$) мають значно вищу температуру термічної денатурації (плавлення $T_m$), ніж ділянки, багаті на пари аденін–тимін ($\\text{A–T}$)?',
+        options: [
+          'Тому що комплементарна пара $\\text{G}\\equiv\\text{C}$ утримується трьома водневими зв’язками та сильнішою стекінг-взаємодією, тоді як пара $\\text{A=T}$ утворює лише два водневі зв’язки',
+          'Тому що між парами $\\text{A–T}$ взагалі немає водневих зв’язків',
+          'Тому що ланцюги ДНК з’єднані між собою дисульфідними містками $\\text{–S–S–}$'
+        ],
+        correctIndex: 0,
+        explanation: 'Два головні інформаційні біополімери живих клітин — **білки** та **нуклеїнові кислоти (ДНК, РНК)** — утримують свою просторову вторинну структуру завдяки кооперативній мережі **водневих зв’язків**: 1) У білках $\\alpha$-амінокислоти з’єднані амідними (**пептидними**) зв’язками $\\text{–CO–NH–}$, які є плоскими й жорсткими через $p\\text{-}\\pi$ спряження (частково подвійний характер зв’язку $\\text{C–N}$, $1.33\\text{ Å}$). Права **$\\alpha$-спіраль Полінга — Корі** містить $3.6$ залишків на виток (крок $5.4\\text{ Å}$) і стабілізована водневими зв’язками між карбонільною групою $i$-го залишку та $\\text{NH}$-групою $(i+4)$-го залишку. 2) У **подвійній спіралі ДНК Вотсона — Кріка** два антипаралельні цукрово-фосфатні ланцюги скріплені азотистими основами за принципом комплементарності (правила Чаргаффа $[\\text{A}]=[\\text{T}], [\\text{G}]=[\\text{C}]$): пара **аденін–тимін ($\\text{A=T}$) утворює $2$ водневі зв’язки**, а пара **гуанін–цитозин ($\\text{G}\\equiv\\text{C}$) — $3$ водневі зв’язки**. Тому підвищення частки $\\text{GC}$-пар лінійно підвищує температуру плавлення спіралі $T_m$.',
+        formulaLatex: String.raw`n_{\text{Н-зв}} = 2\,N(\mathrm{A{=}T}) + 3\,N(\mathrm{G{\equiv}C}), \qquad T_m \approx 69.3 + 0.41\,(\%\mathrm{GC})\text{ [}^\circ\text{C]}`,
+        liveLatexFn: p => {
+          const mode = Math.round(p.biopolMode);
+          const nTurns = Math.round(p.helixLength);
+          const gcPct = p.gcFraction;
+          const nBp = nTurns * 3;
+          const nGc = Math.round(nBp * (gcPct / 100));
+          const nAt = nBp - nGc;
+          const nHb = mode === 2 ? (2 * nAt + 3 * nGc) : nBp;
+          const tm = mode === 2 ? (69.3 + 0.41 * gcPct) : (62 + 0.2 * gcPct);
+          const intact = 100 / (1 + Math.exp((p.tempC - tm) / 4.2));
+          return String.raw`${mode === 2 ? '\\text{B-ДНК (Вотсон — Крік)}' : '\\alpha\\text{-спіраль білка}'}: \quad N_{\text{Н-зв}} = ${nHb}, \quad T_m \approx ${tm.toFixed(1)}\,^\circ\text{C}, \quad \text{Нативна спіраль: }${intact.toFixed(0)}\%`;
+        },
+        defaults: { biopolMode: 2, gcFraction: 50, helixLength: 4, tempC: 37 },
+        sliders: [
+          { key: 'biopolMode', label: 'Тип біополімеру (1: α-спіраль білка, 2: Подвійна спіраль B-ДНК)', min: 1, max: 2, step: 1, unit: '' },
+          { key: 'gcFraction', label: 'Частка пар Гуанін≡Цитозин (% G≡C, 3 Н-зв’язки) / стабільність', min: 10, max: 90, step: 10, unit: '%' },
+          { key: 'helixLength', label: 'Кількість витків спіралі біополімеру N_вит', min: 2, max: 6, step: 1, unit: 'витків' },
+          { key: 'tempC', label: 'Температура розчину t (вище T_m — теплова денатурація)', min: 20, max: 95, step: 5, unit: '°C' }
         ]
       }
     };
@@ -16575,24 +17533,28 @@
 
       syncVisuals() {
         const p = sceneParams.chem_equilibrium;
-        const lnKp = -(57200 / 8.314) * (1 / p.tempK - 1 / 298) + Math.log(8.8);
-        const kpDimer = Math.exp(lnKp);
-        const kdDissoc = 1 / kpDimer;
-        const alpha = Math.sqrt(kdDissoc / (4 * p.pressAtm + kdDissoc));
+        const dH = 57200;
+        const dS = 175.8;
+        const kp = Math.exp(-(dH - p.tempK * dS) / (8.314 * p.tempK));
+        const alpha = Math.sqrt(kp / (kp + 4 * p.pressAtm));
         const xNO2 = (2 * alpha) / (1 + alpha);
         const xN2O4 = (1 - alpha) / (1 + alpha);
+        const nu0 = p.totalMoles || 1.0;
 
-        const hGas = Math.min(3.8, Math.max(1.1, 3.2 / Math.pow(p.pressAtm, 0.32)));
+        const hGas = Math.min(3.9, Math.max(1.0, (2.6 * Math.pow(nu0, 0.35) * (1 + alpha * 0.25)) / Math.pow(p.pressAtm, 0.32)));
         this.pistonY = 0.64 + hGas;
         this.pistonGroup.position.set(0, this.pistonY, 0);
 
         this.gasTintMesh.scale.set(1, hGas, 1);
         this.gasTintMesh.position.set(0, 0.64 + hGas * 0.5, 0);
-        this.gasTintMat.opacity = 0.04 + 0.46 * xNO2;
+        this.gasTintMat.opacity = 0.04 + 0.46 * xNO2 * Math.min(1.3, 0.65 + 0.35 * nu0);
 
-        const no2Count = Math.round(this.totalSlots * xNO2);
+        const activeSlots = Math.max(8, Math.min(this.totalSlots, Math.round(this.totalSlots * (nu0 / 1.5))));
+        const no2Count = Math.round(activeSlots * xNO2);
         for (let i = 0; i < this.totalSlots; i++) {
           const m = this.particles3D[i];
+          m.grp.visible = (i < activeSlots);
+          if (!m.grp.visible) continue;
           const isMonomer = i < no2Count;
           m.s1.material = isMonomer ? m.no2Mat : m.n2o4Mat;
           m.s2.visible = !isMonomer;
@@ -16603,21 +17565,21 @@
         const colorDesc = xNO2 > 0.65 ? 'Густий бурий (NO₂)' : (xNO2 > 0.32 ? 'Світло-коричневий' : 'Майже безбарвний (N₂O₄)');
 
         this.fwdArrow.update(
-          new THREE.Vector3(-0.9, 0.64 + hGas * 0.55, 0.8),
+          new THREE.Vector3(-0.9, 0.64 + hGas * 0.62, 0.8),
           new THREE.Vector3(1, 0, 0),
           Math.min(1.8, 0.65 + xN2O4 * 1.1),
           uiState.showVectors
         );
         this.revArrow.update(
-          new THREE.Vector3(0.9, 0.64 + hGas * 0.35, 0.8),
+          new THREE.Vector3(0.9, 0.64 + hGas * 0.32, 0.8),
           new THREE.Vector3(-1, 0, 0),
           Math.min(1.8, 0.65 + xNO2 * 1.1),
           uiState.showVectors
         );
 
-        updateEnergyUI(xN2O4 * 3.0, xNO2 * 3.0, kpDimer > 10 ? 3.0 : kpDimer * 0.3, 8, [
-          { label: 'Константа рівноваги K_p(T)', val: `${kpDimer.toFixed(2)} атм⁻¹` },
-          { label: 'Ступінь дисоціації α (NO₂)', val: `${(alpha * 100).toFixed(1)}%` },
+        updateEnergyUI(xN2O4 * 3.0, xNO2 * 3.0, Math.min(3.5, kp * 0.6), 8, [
+          { label: 'Константа рівноваги K_p(T)', val: `${kp.toFixed(2)} атм` },
+          { label: 'Ступінь дисоціації α (NO₂)', val: `${(alpha * 100).toFixed(1)}% (ν₀ = ${nu0.toFixed(2)} моль)` },
           { label: 'Мольна частка N₂O₄ / NO₂', val: `${(xN2O4 * 100).toFixed(0)}% / ${(xNO2 * 100).toFixed(0)}%` },
           { label: 'Колір газової суміші (NO₂)', val: colorDesc }
         ]);
@@ -16773,7 +17735,7 @@
 
       syncVisuals() {
         const p = sceneParams.chem_titration;
-        const vAcid = 20.0;
+        const vAcid = 25.0;
         const nAcid = p.acidConc * vAcid;
         const nBase = p.baseConc * p.titrantVol;
         const vTot = vAcid + p.titrantVol;
@@ -17394,12 +18356,145 @@
     // 11.11–11.20 ADDITIONAL 10 CHEMISTRY SIMULATIONS (§ Х-11 — § Х-20)
     // ============================================================================
 
+    const PERIODIC_118_RAW = [
+      [1,'H','Гідроген','Hydrogen',1,1,'s','1s¹',53,13.60,2.20,1.00,0x0ea5e9,0,0],
+      [2,'He','Гелій','Helium',1,18,'s','1s²',31,24.59,0.00,1.70,0x8b5cf6,0,0],
+      [3,'Li','Літій','Lithium',2,1,'s','[He] 2s¹',167,5.39,0.98,1.30,0xef4444,0,0],
+      [4,'Be','Берилій','Beryllium',2,2,'s','[He] 2s²',112,9.32,1.57,1.95,0xf97316,0,0],
+      [5,'B','Бор','Boron',2,13,'p','[He] 2s²2p¹',87,8.30,2.04,2.60,0xd97706,0,0],
+      [6,'C','Карбон','Carbon',2,14,'p','[He] 2s²2p²',67,11.26,2.55,3.25,0x059669,0,0],
+      [7,'N','Нітроген','Nitrogen',2,15,'p','[He] 2s²2p³',56,14.53,3.04,3.90,0x059669,0,0],
+      [8,'O','Оксиген','Oxygen',2,16,'p','[He] 2s²2p⁴',48,13.62,3.44,4.55,0x059669,0,0],
+      [9,'F','Флуор','Fluorine',2,17,'p','[He] 2s²2p⁵',42,17.42,3.98,5.20,0x0d9488,0,0],
+      [10,'Ne','Неон','Neon',2,18,'p','[He] 2s²2p⁶',38,21.56,0.00,5.85,0x8b5cf6,0,0],
+      [11,'Na','Натрій','Sodium',3,1,'s','[Ne] 3s¹',190,5.14,0.93,2.20,0xef4444,0,0],
+      [12,'Mg','Магній','Magnesium',3,2,'s','[Ne] 3s²',145,7.65,1.31,2.85,0xf97316,0,0],
+      [13,'Al','Алюміній','Aluminium',3,13,'p','[Ne] 3s²3p¹',118,5.99,1.61,3.50,0x64748b,0,0],
+      [14,'Si','Силіцій','Silicon',3,14,'p','[Ne] 3s²3p²',111,8.15,1.90,4.15,0xd97706,0,0],
+      [15,'P','Фосфор','Phosphorus',3,15,'p','[Ne] 3s²3p³',98,10.49,2.19,4.80,0x059669,0,0],
+      [16,'S','Сульфур','Sulfur',3,16,'p','[Ne] 3s²3p⁴',88,10.36,2.58,5.45,0x059669,0,0],
+      [17,'Cl','Хлор','Chlorine',3,17,'p','[Ne] 3s²3p⁵',79,12.97,3.16,6.10,0x0d9488,0,0],
+      [18,'Ar','Аргон','Argon',3,18,'p','[Ne] 3s²3p⁶',71,15.76,0.00,6.75,0x8b5cf6,0,0],
+      [19,'K','Калій','Potassium',4,1,'s','[Ar] 4s¹',243,4.34,0.82,2.20,0xef4444,0,0],
+      [20,'Ca','Кальцій','Calcium',4,2,'s','[Ar] 4s²',194,6.11,1.00,2.85,0xf97316,0,0],
+      [21,'Sc','Скандій','Scandium',4,3,'d','[Ar] 3d¹4s²',184,6.56,1.36,3.00,0x2563eb,0,0],
+      [22,'Ti','Титан','Titanium',4,4,'d','[Ar] 3d²4s²',176,6.83,1.54,3.15,0x2563eb,0,0],
+      [23,'V','Ванадій','Vanadium',4,5,'d','[Ar] 3d³4s²',171,6.75,1.63,3.30,0x2563eb,0,0],
+      [24,'Cr','Хром','Chromium',4,6,'d','[Ar] 3d⁵4s¹',166,6.77,1.66,3.45,0x2563eb,0,0],
+      [25,'Mn','Манган','Manganese',4,7,'d','[Ar] 3d⁵4s²',161,7.43,1.55,3.60,0x2563eb,0,0],
+      [26,'Fe','Ферум','Iron',4,8,'d','[Ar] 3d⁶4s²',156,7.90,1.83,3.75,0x2563eb,0,0],
+      [27,'Co','Кобальт','Cobalt',4,9,'d','[Ar] 3d⁷4s²',152,7.88,1.88,3.90,0x2563eb,0,0],
+      [28,'Ni','Нікель','Nickel',4,10,'d','[Ar] 3d⁸4s²',149,7.64,1.91,4.05,0x2563eb,0,0],
+      [29,'Cu','Купрум','Copper',4,11,'d','[Ar] 3d¹⁰4s¹',145,7.73,1.90,4.20,0x2563eb,0,0],
+      [30,'Zn','Цинк','Zinc',4,12,'d','[Ar] 3d¹⁰4s²',142,9.39,1.65,4.35,0x2563eb,0,0],
+      [31,'Ga','Галій','Gallium',4,13,'p','[Ar] 3d¹⁰4s²4p¹',136,6.00,1.81,5.00,0x64748b,0,0],
+      [32,'Ge','Германій','Germanium',4,14,'p','[Ar] 3d¹⁰4s²4p²',125,7.90,2.01,5.65,0xd97706,0,0],
+      [33,'As','Арсен','Arsenic',4,15,'p','[Ar] 3d¹⁰4s²4p³',114,9.79,2.18,6.30,0xd97706,0,0],
+      [34,'Se','Селен','Selenium',4,16,'p','[Ar] 3d¹⁰4s²4p⁴',103,9.75,2.55,6.95,0x059669,0,0],
+      [35,'Br','Бром','Bromine',4,17,'p','[Ar] 3d¹⁰4s²4p⁵',94,11.81,2.96,7.60,0x0d9488,0,0],
+      [36,'Kr','Криптон','Krypton',4,18,'p','[Ar] 3d¹⁰4s²4p⁶',88,14.00,3.00,8.25,0x8b5cf6,0,0],
+      [37,'Rb','Рубідій','Rubidium',5,1,'s','[Kr] 5s¹',265,4.18,0.82,2.20,0xef4444,0,0],
+      [38,'Sr','Стронцій','Strontium',5,2,'s','[Kr] 5s²',219,5.69,0.95,2.85,0xf97316,0,0],
+      [39,'Y','Ітрій','Yttrium',5,3,'d','[Kr] 4d¹5s²',212,6.22,1.22,3.00,0x2563eb,0,0],
+      [40,'Zr','Цирконій','Zirconium',5,4,'d','[Kr] 4d²5s²',206,6.63,1.33,3.15,0x2563eb,0,0],
+      [41,'Nb','Ніобій','Niobium',5,5,'d','[Kr] 4d⁴5s¹',198,6.76,1.60,3.30,0x2563eb,0,0],
+      [42,'Mo','Молібден','Molybdenum',5,6,'d','[Kr] 4d⁵5s¹',190,7.09,2.16,3.45,0x2563eb,0,0],
+      [43,'Tc','Технецій','Technetium',5,7,'d','[Kr] 4d⁵5s²',183,7.28,1.90,3.60,0x2563eb,0,0],
+      [44,'Ru','Рутеній','Ruthenium',5,8,'d','[Kr] 4d⁷5s¹',178,7.36,2.20,3.75,0x2563eb,0,0],
+      [45,'Rh','Родій','Rhodium',5,9,'d','[Kr] 4d⁸5s¹',173,7.46,2.28,3.90,0x2563eb,0,0],
+      [46,'Pd','Паладій','Palladium',5,10,'d','[Kr] 4d¹⁰',169,8.34,2.20,4.05,0x2563eb,0,0],
+      [47,'Ag','Аргентум','Silver',5,11,'d','[Kr] 4d¹⁰5s¹',165,7.58,1.93,4.20,0x2563eb,0,0],
+      [48,'Cd','Кадмій','Cadmium',5,12,'d','[Kr] 4d¹⁰5s²',161,8.99,1.69,4.35,0x2563eb,0,0],
+      [49,'In','Індій','Indium',5,13,'p','[Kr] 4d¹⁰5s²5p¹',156,5.79,1.78,5.00,0x64748b,0,0],
+      [50,'Sn','Станум','Tin',5,14,'p','[Kr] 4d¹⁰5s²5p²',145,7.34,1.96,5.65,0x64748b,0,0],
+      [51,'Sb','Стибій','Antimony',5,15,'p','[Kr] 4d¹⁰5s²5p³',133,8.61,2.05,6.30,0xd97706,0,0],
+      [52,'Te','Телур','Tellurium',5,16,'p','[Kr] 4d¹⁰5s²5p⁴',123,9.01,2.10,6.95,0xd97706,0,0],
+      [53,'I','Йод','Iodine',5,17,'p','[Kr] 4d¹⁰5s²5p⁵',115,10.45,2.66,7.60,0x0d9488,0,0],
+      [54,'Xe','Ксенон','Xenon',5,18,'p','[Kr] 4d¹⁰5s²5p⁶',108,12.13,2.60,8.25,0x8b5cf6,0,0],
+      [55,'Cs','Цезій','Cesium',6,1,'s','[Xe] 6s¹',298,3.89,0.79,2.20,0xef4444,0,0],
+      [56,'Ba','Барій','Barium',6,2,'s','[Xe] 6s²',253,5.21,0.89,2.85,0xf97316,0,0],
+      [57,'La','Лантан','Lanthanum',6,3,'f','[Xe] 5d¹6s²',226,5.58,1.10,3.00,0xdb2777,0,0],
+      [58,'Ce','Церій','Cerium',6,3,'f','[Xe] 4f¹5d¹6s²',210,5.54,1.12,3.05,0xdb2777,1,4],
+      [59,'Pr','Празеодим','Praseodymium',6,3,'f','[Xe] 4f³6s²',247,5.47,1.13,3.10,0xdb2777,1,5],
+      [60,'Nd','Неодим','Neodymium',6,3,'f','[Xe] 4f⁴6s²',206,5.53,1.14,3.15,0xdb2777,1,6],
+      [61,'Pm','Прометій','Promethium',6,3,'f','[Xe] 4f⁵6s²',205,5.58,1.13,3.20,0xdb2777,1,7],
+      [62,'Sm','Самарій','Samarium',6,3,'f','[Xe] 4f⁶6s²',238,5.64,1.17,3.25,0xdb2777,1,8],
+      [63,'Eu','Європій','Europium',6,3,'f','[Xe] 4f⁷6s²',231,5.67,1.20,3.30,0xdb2777,1,9],
+      [64,'Gd','Гадоліній','Gadolinium',6,3,'f','[Xe] 4f⁷5d¹6s²',233,6.15,1.20,3.35,0xdb2777,1,10],
+      [65,'Tb','Тербій','Terbium',6,3,'f','[Xe] 4f⁹6s²',225,5.86,1.20,3.40,0xdb2777,1,11],
+      [66,'Dy','Диспрозій','Dysprosium',6,3,'f','[Xe] 4f¹⁰6s²',228,5.94,1.22,3.45,0xdb2777,1,12],
+      [67,'Ho','Гольмій','Holmium',6,3,'f','[Xe] 4f¹¹6s²',226,6.02,1.23,3.50,0xdb2777,1,13],
+      [68,'Er','Ербій','Erbium',6,3,'f','[Xe] 4f¹²6s²',226,6.11,1.24,3.55,0xdb2777,1,14],
+      [69,'Tm','Тулій','Thulium',6,3,'f','[Xe] 4f¹³6s²',222,6.18,1.25,3.60,0xdb2777,1,15],
+      [70,'Yb','Ітербій','Ytterbium',6,3,'f','[Xe] 4f¹⁴6s²',222,6.25,1.10,3.65,0xdb2777,1,16],
+      [71,'Lu','Лютецій','Lutetium',6,3,'f','[Xe] 4f¹⁴5d¹6s²',217,5.43,1.27,3.70,0xdb2777,1,17],
+      [72,'Hf','Гафній','Hafnium',6,4,'d','[Xe] 4f¹⁴5d²6s²',208,6.83,1.30,3.15,0x2563eb,0,0],
+      [73,'Ta','Тантал','Tantalum',6,5,'d','[Xe] 4f¹⁴5d³6s²',200,7.55,1.50,3.30,0x2563eb,0,0],
+      [74,'W','Вольфрам','Tungsten',6,6,'d','[Xe] 4f¹⁴5d⁴6s²',193,7.86,2.36,3.45,0x2563eb,0,0],
+      [75,'Re','Реній','Rhenium',6,7,'d','[Xe] 4f¹⁴5d⁵6s²',188,7.83,1.90,3.60,0x2563eb,0,0],
+      [76,'Os','Осмій','Osmium',6,8,'d','[Xe] 4f¹⁴5d⁶6s²',185,8.44,2.20,3.75,0x2563eb,0,0],
+      [77,'Ir','Іридій','Iridium',6,9,'d','[Xe] 4f¹⁴5d⁷6s²',180,8.97,2.20,3.90,0x2563eb,0,0],
+      [78,'Pt','Платина','Platinum',6,10,'d','[Xe] 4f¹⁴5d⁹6s¹',177,8.96,2.28,4.05,0x2563eb,0,0],
+      [79,'Au','Аурум','Gold',6,11,'d','[Xe] 4f¹⁴5d¹⁰6s¹',174,9.23,2.54,4.20,0x2563eb,0,0],
+      [80,'Hg','Меркурій','Mercury',6,12,'d','[Xe] 4f¹⁴5d¹⁰6s²',171,10.44,2.00,4.35,0x2563eb,0,0],
+      [81,'Tl','Талій','Thallium',6,13,'p','[Xe] 4f¹⁴5d¹⁰6s²6p¹',156,6.11,1.62,5.00,0x64748b,0,0],
+      [82,'Pb','Плюмбум','Lead',6,14,'p','[Xe] 4f¹⁴5d¹⁰6s²6p²',154,7.42,2.33,5.65,0x64748b,0,0],
+      [83,'Bi','Бісмут','Bismuth',6,15,'p','[Xe] 4f¹⁴5d¹⁰6s²6p³',143,7.29,2.02,6.30,0x64748b,0,0],
+      [84,'Po','Полоній','Polonium',6,16,'p','[Xe] 4f¹⁴5d¹⁰6s²6p⁴',135,8.42,2.00,6.95,0x64748b,0,0],
+      [85,'At','Астат','Astatine',6,17,'p','[Xe] 4f¹⁴5d¹⁰6s²6p⁵',127,9.32,2.20,7.60,0x0d9488,0,0],
+      [86,'Rn','Радон','Radon',6,18,'p','[Xe] 4f¹⁴5d¹⁰6s²6p⁶',120,10.75,2.20,8.25,0x8b5cf6,0,0],
+      [87,'Fr','Францій','Francium',7,1,'s','[Rn] 7s¹',348,4.07,0.70,2.20,0xef4444,0,0],
+      [88,'Ra','Радій','Radium',7,2,'s','[Rn] 7s²',283,5.28,0.90,2.85,0xf97316,0,0],
+      [89,'Ac','Актиній','Actinium',7,3,'f','[Rn] 6d¹7s²',215,5.17,1.10,3.00,0x9333ea,0,0],
+      [90,'Th','Торій','Thorium',7,3,'f','[Rn] 6d²7s²',206,6.31,1.30,3.05,0x9333ea,2,4],
+      [91,'Pa','Протактиній','Protactinium',7,3,'f','[Rn] 5f²6d¹7s²',200,5.89,1.50,3.10,0x9333ea,2,5],
+      [92,'U','Уран','Uranium',7,3,'f','[Rn] 5f³6d¹7s²',196,6.19,1.38,3.15,0x9333ea,2,6],
+      [93,'Np','Нептуній','Neptunium',7,3,'f','[Rn] 5f⁴6d¹7s²',190,6.27,1.36,3.20,0x9333ea,2,7],
+      [94,'Pu','Плутоній','Plutonium',7,3,'f','[Rn] 5f⁶7s²',187,6.03,1.28,3.25,0x9333ea,2,8],
+      [95,'Am','Америцій','Americium',7,3,'f','[Rn] 5f⁷7s²',180,5.97,1.30,3.30,0x9333ea,2,9],
+      [96,'Cm','Кюрій','Curium',7,3,'f','[Rn] 5f⁷6d¹7s²',169,5.99,1.30,3.35,0x9333ea,2,10],
+      [97,'Bk','Берклій','Berkelium',7,3,'f','[Rn] 5f⁹7s²',170,6.20,1.30,3.40,0x9333ea,2,11],
+      [98,'Cf','Каліфорній','Californium',7,3,'f','[Rn] 5f¹⁰7s²',168,6.28,1.30,3.45,0x9333ea,2,12],
+      [99,'Es','Ейнштейній','Einsteinium',7,3,'f','[Rn] 5f¹¹7s²',165,6.42,1.30,3.50,0x9333ea,2,13],
+      [100,'Fm','Фермій','Fermium',7,3,'f','[Rn] 5f¹²7s²',167,6.50,1.30,3.55,0x9333ea,2,14],
+      [101,'Md','Менделєєвій','Mendelevium',7,3,'f','[Rn] 5f¹³7s²',173,6.58,1.30,3.60,0x9333ea,2,15],
+      [102,'No','Нобелій','Nobelium',7,3,'f','[Rn] 5f¹⁴7s²',176,6.65,1.30,3.65,0x9333ea,2,16],
+      [103,'Lr','Лоуренсій','Lawrencium',7,3,'f','[Rn] 5f¹⁴7s²7p¹',161,4.96,1.30,3.70,0x9333ea,2,17],
+      [104,'Rf','Резерфордій','Rutherfordium',7,4,'d','[Rn] 5f¹⁴6d²7s²',157,6.01,1.30,3.15,0x2563eb,0,0],
+      [105,'Db','Дубній','Dubnium',7,5,'d','[Rn] 5f¹⁴6d³7s²',149,6.80,1.50,3.30,0x2563eb,0,0],
+      [106,'Sg','Сіборгій','Seaborgium',7,6,'d','[Rn] 5f¹⁴6d⁴7s²',143,7.85,1.70,3.45,0x2563eb,0,0],
+      [107,'Bh','Борій','Bohrium',7,7,'d','[Rn] 5f¹⁴6d⁵7s²',141,7.70,1.80,3.60,0x2563eb,0,0],
+      [108,'Hs','Гасій','Hassium',7,8,'d','[Rn] 5f¹⁴6d⁶7s²',134,7.60,1.90,3.75,0x2563eb,0,0],
+      [109,'Mt','Майтнерій','Meitnerium',7,9,'d','[Rn] 5f¹⁴6d⁷7s²',129,8.30,2.00,3.90,0x2563eb,0,0],
+      [110,'Ds','Дармштадтій','Darmstadtium',7,10,'d','[Rn] 5f¹⁴6d⁸7s²',128,9.60,2.10,4.05,0x2563eb,0,0],
+      [111,'Rg','Рентгеній','Roentgenium',7,11,'d','[Rn] 5f¹⁴6d⁹7s²',121,10.60,2.10,4.20,0x2563eb,0,0],
+      [112,'Cn','Коперницій','Copernicium',7,12,'d','[Rn] 5f¹⁴6d¹⁰7s²',122,11.97,2.00,4.35,0x2563eb,0,0],
+      [113,'Nh','Ніхоній','Nihonium',7,13,'p','[Rn] 5f¹⁴6d¹⁰7s²7p¹',136,7.31,1.80,5.00,0x64748b,0,0],
+      [114,'Fl','Флеровій','Flerovium',7,14,'p','[Rn] 5f¹⁴6d¹⁰7s²7p²',143,8.54,1.90,5.65,0x64748b,0,0],
+      [115,'Mc','Московій','Moscovium',7,15,'p','[Rn] 5f¹⁴6d¹⁰7s²7p³',162,5.58,2.00,6.30,0x64748b,0,0],
+      [116,'Lv','Ліверморій','Livermorium',7,16,'p','[Rn] 5f¹⁴6d¹⁰7s²7p⁴',175,6.80,2.00,6.95,0x64748b,0,0],
+      [117,'Ts','Теннессин','Tennessine',7,17,'p','[Rn] 5f¹⁴6d¹⁰7s²7p⁵',165,7.70,2.10,7.60,0x0d9488,0,0],
+      [118,'Og','Оганесон','Oganesson',7,18,'p','[Rn] 5f¹⁴6d¹⁰7s²7p⁶',157,8.91,0.00,8.25,0x8b5cf6,0,0]
+    ];
+
+    const PERIODIC_118 = PERIODIC_118_RAW.map(row => ({
+      z: row[0], sym: row[1], nameUk: row[2], nameEn: row[3],
+      n: row[4], g: row[5], block: row[6], cfg: row[7],
+      r: row[8], i1: row[9], chi: row[10], zeff: row[11],
+      col: row[12], fRow: row[13], fCol: row[14]
+    }));
+
+    window.__resolvePeriodicElement = function(p) {
+      const z = Math.max(1, Math.min(118, Math.round((p && p.atomicZ) || 26)));
+      return PERIODIC_118[z - 1] || PERIODIC_118[25];
+    };
+
     class ChemPeriodicTrendsSimulation {
       constructor() {
         this.group = new THREE.Group();
         worldGroup.add(this.group);
         const labBase = new THREE.Mesh(
-          new THREE.BoxGeometry(11.5, 0.36, 8.8),
+          new THREE.BoxGeometry(13.6, 0.36, 9.6),
           new THREE.MeshStandardMaterial({ color: 0xd6cfc2, roughness: 0.62, metalness: 0.1 })
         );
         labBase.position.set(0, 0.18, 0);
@@ -17411,137 +18506,438 @@
         this.bars = [];
         this.shells = [];
         this.valenceDots = [];
+        this.lastCardKey = '';
+        this.lastMode = -1;
+        this.prevZ = 26;
+        this.prevN = 4;
+        this.prevG = 8;
         this.buildScene();
         this.reset();
       }
 
-      getElementData(n, g) {
-        const TABLE = {
-          1: [
-            { sym: 'H', z: 1, r: 53, i1: 13.60, chi: 2.20, zeff: 1.00, col: 0x38bdf8 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 },
-            { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70, col: 0xa855f7 }
-          ],
-          2: [
-            { sym: 'Li', z: 3, r: 167, i1: 5.39, chi: 0.98, zeff: 1.30, col: 0xef4444 },
-            { sym: 'Be', z: 4, r: 112, i1: 9.32, chi: 1.57, zeff: 1.95, col: 0xf97316 },
-            { sym: 'B', z: 5, r: 87, i1: 8.30, chi: 2.04, zeff: 2.60, col: 0xfbbf24 },
-            { sym: 'C', z: 6, r: 67, i1: 11.26, chi: 2.55, zeff: 3.25, col: 0x64748b },
-            { sym: 'N', z: 7, r: 56, i1: 14.53, chi: 3.04, zeff: 3.90, col: 0x3b82f6 },
-            { sym: 'O', z: 8, r: 48, i1: 13.62, chi: 3.44, zeff: 4.55, col: 0xef4444 },
-            { sym: 'F', z: 9, r: 42, i1: 17.42, chi: 3.98, zeff: 5.20, col: 0x10b981 },
-            { sym: 'Ne', z: 10, r: 38, i1: 21.56, chi: 0.00, zeff: 5.85, col: 0xa855f7 }
-          ],
-          3: [
-            { sym: 'Na', z: 11, r: 190, i1: 5.14, chi: 0.93, zeff: 2.20, col: 0xef4444 },
-            { sym: 'Mg', z: 12, r: 145, i1: 7.65, chi: 1.31, zeff: 2.85, col: 0xf97316 },
-            { sym: 'Al', z: 13, r: 118, i1: 5.99, chi: 1.61, zeff: 3.50, col: 0x94a3b8 },
-            { sym: 'Si', z: 14, r: 111, i1: 8.15, chi: 1.90, zeff: 4.15, col: 0xfbbf24 },
-            { sym: 'P', z: 15, r: 98, i1: 10.49, chi: 2.19, zeff: 4.80, col: 0xf59e0b },
-            { sym: 'S', z: 16, r: 88, i1: 10.36, chi: 2.58, zeff: 5.45, col: 0xeab308 },
-            { sym: 'Cl', z: 17, r: 79, i1: 12.97, chi: 3.16, zeff: 6.10, col: 0x10b981 },
-            { sym: 'Ar', z: 18, r: 71, i1: 15.76, chi: 0.00, zeff: 6.75, col: 0xa855f7 }
-          ],
-          4: [
-            { sym: 'K', z: 19, r: 243, i1: 4.34, chi: 0.82, zeff: 2.20, col: 0xef4444 },
-            { sym: 'Ca', z: 20, r: 194, i1: 6.11, chi: 1.00, zeff: 2.85, col: 0xf97316 },
-            { sym: 'Ga', z: 31, r: 136, i1: 6.00, chi: 1.81, zeff: 5.00, col: 0x94a3b8 },
-            { sym: 'Ge', z: 32, r: 125, i1: 7.90, chi: 2.01, zeff: 5.65, col: 0xfbbf24 },
-            { sym: 'As', z: 33, r: 114, i1: 9.79, chi: 2.18, zeff: 6.30, col: 0xf59e0b },
-            { sym: 'Se', z: 34, r: 103, i1: 9.75, chi: 2.55, zeff: 6.95, col: 0xeab308 },
-            { sym: 'Br', z: 35, r: 94, i1: 11.81, chi: 2.96, zeff: 7.60, col: 0xd97706 },
-            { sym: 'Kr', z: 36, r: 88, i1: 14.00, chi: 3.00, zeff: 8.25, col: 0xa855f7 }
-          ]
-        };
-        return (TABLE[n] || TABLE[2])[g - 1] || TABLE[2][0];
+      getElementByZ(z) {
+        const idx = Math.max(1, Math.min(118, Math.round(z || 26))) - 1;
+        return PERIODIC_118[idx] || PERIODIC_118[25];
+      }
+
+      getElementByPeriodGroup(n, g) {
+        const mainCandidates = PERIODIC_118.filter(el => el.n === n && el.fRow === 0);
+        if (!mainCandidates.length) return PERIODIC_118[25];
+        let best = mainCandidates[0];
+        let bestDist = Math.abs(best.g - g);
+        for (const el of mainCandidates) {
+          const d = Math.abs(el.g - g);
+          if (d < bestDist) {
+            best = el;
+            bestDist = d;
+          }
+        }
+        return best;
+      }
+
+      makeTileTexture(el, mode, isSelected) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 256;
+        canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+        const hexStr = '#' + new THREE.Color(el.col).getHexString();
+
+        // Crisp technical card background (6px radius)
+        ctx.fillStyle = isSelected ? '#fffbeb' : '#ffffff';
+        ctx.beginPath();
+        ctx.roundRect(4, 4, 248, 248, 6);
+        ctx.fill();
+
+        // Top category header bar
+        ctx.fillStyle = hexStr;
+        ctx.beginPath();
+        ctx.roundRect(8, 8, 240, 52, [4, 4, 0, 0]);
+        ctx.fill();
+
+        // Crisp border
+        ctx.lineWidth = isSelected ? 10 : 4;
+        ctx.strokeStyle = isSelected ? '#d97706' : hexStr;
+        ctx.beginPath();
+        ctx.roundRect(4, 4, 248, 248, 6);
+        ctx.stroke();
+
+        // Atomic number Z (top-left) & Block/Group (top-right)
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 34px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(String(el.z), 18, 46);
+        ctx.font = '600 22px "IBM Plex Mono", monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText(`${el.g}·${el.block}`, 238, 44);
+
+        // Large Chemical Symbol
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '700 84px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(el.sym, 128, 142);
+
+        // Element name
+        const isEn = uiState.lang === 'en';
+        ctx.fillStyle = '#334155';
+        ctx.font = '600 22px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.fillText(isEn ? el.nameEn : el.nameUk, 128, 179, 224);
+
+        // Bottom property bar (4px radius)
+        ctx.fillStyle = isSelected ? '#fef3c7' : '#f1f5f9';
+        ctx.beginPath();
+        ctx.roundRect(14, 194, 228, 44, 4);
+        ctx.fill();
+        ctx.strokeStyle = isSelected ? '#f59e0b' : '#cbd5e1';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        let propStr = `${el.r} ${isEn ? 'pm' : 'пм'}`;
+        if (mode === 2) propStr = `${el.i1.toFixed(1)} ${isEn ? 'eV' : 'еВ'}`;
+        else if (mode === 3) propStr = el.chi > 0 ? `χ=${el.chi.toFixed(2)}` : (isEn ? 'inert' : 'інерт.');
+
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '700 23px "IBM Plex Mono", monospace';
+        ctx.fillText(propStr, 128, 224);
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = 4;
+        tex.needsUpdate = true;
+        return tex;
+      }
+
+      makeHeaderBadgeTexture(text, subText = '', bgHex = '#0f172a', textHex = '#f8fafc') {
+        const canvas = document.createElement('canvas');
+        canvas.width = 192;
+        canvas.height = 128;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = bgHex;
+        ctx.beginPath();
+        ctx.roundRect(4, 4, 184, 120, 6);
+        ctx.fill();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#475569';
+        ctx.stroke();
+
+        ctx.fillStyle = textHex;
+        ctx.textAlign = 'center';
+        ctx.font = '700 40px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.fillText(text, 96, subText ? 58 : 76);
+        if (subText) {
+          ctx.fillStyle = '#cbd5e1';
+          ctx.font = '600 22px "IBM Plex Mono", monospace';
+          ctx.fillText(subText, 96, 98);
+        }
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.needsUpdate = true;
+        return tex;
+      }
+
+      updatePassportCard(el) {
+        const isEn = uiState.lang === 'en';
+        const mode = Math.round((sceneParams.chem_periodic && sceneParams.chem_periodic.propMode) || 1);
+        const key = `${el.z}_${mode}_${isEn ? 'en' : 'uk'}`;
+
+        const container = document.getElementById('canvas-container');
+        if (!container) return;
+
+        const adBanner = document.getElementById('ad-viewport-banner');
+        const adVisible = adBanner && !adBanner.classList.contains('ad-closed') && adBanner.offsetHeight > 0;
+        const targetTop = adVisible ? Math.max(118, adBanner.offsetTop + adBanner.offsetHeight + 10) : 64;
+
+        let hud = document.getElementById('periodic-element-hud');
+        if (hud) {
+          hud.style.top = `${targetTop}px`;
+        }
+        if (this.lastCardKey === key && hud) return;
+        this.lastCardKey = key;
+
+        if (!hud) {
+          hud = document.createElement('div');
+          hud.id = 'periodic-element-hud';
+          hud.style.cssText = [
+            'position:fixed',
+            `top:${targetTop}px`,
+            'left:50%',
+            'transform:translateX(-50%)',
+            'z-index:26',
+            'display:flex',
+            'align-items:center',
+            'gap:12px',
+            'background:rgba(250,247,242,0.96)',
+            'border:1px solid #cfc7ba',
+            'border-radius:3px',
+            'padding:7px 14px',
+            'box-shadow:0 3px 10px rgba(28,25,23,0.10)',
+            'font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+            'color:#1c1917',
+            'pointer-events:none',
+            'max-width:calc(100vw - 40px)',
+            'white-space:nowrap',
+            'transition:top 0.2s ease'
+          ].join(';');
+          container.appendChild(hud);
+        }
+
+        const hexStr = '#' + new THREE.Color(el.col).getHexString();
+        const sigma = (el.z - el.zeff).toFixed(2);
+        const fTag = el.fRow === 1
+          ? (isEn ? '4f Lanthanide' : '4f-лантаноїд')
+          : (el.fRow === 2 ? (isEn ? '5f Actinide' : '5f-актиноїд') : `${el.block}-${isEn ? 'block' : 'блок'}`);
+        const chiText = el.chi > 0 ? el.chi.toFixed(2) : (isEn ? 'Inert' : 'Інерт.');
+
+        hud.innerHTML = `
+          <div style="display:flex;align-items:center;gap:8px;background:${hexStr};color:#fff;padding:4px 10px;border-radius:3px;min-width:92px;">
+            <div style="font-size:22px;font-weight:700;line-height:1;letter-spacing:-0.02em;">${el.sym}</div>
+            <div style="display:flex;flex-direction:column;line-height:1.15;">
+              <span style="font-size:10px;font-family:'IBM Plex Mono',monospace;opacity:0.92;">Z = ${el.z}</span>
+              <span style="font-size:12px;font-weight:600;">${isEn ? el.nameEn : el.nameUk}</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;font-size:12px;line-height:1.25;">
+            <div style="display:flex;align-items:center;gap:10px;color:#1e293b;font-weight:600;">
+              <span>${isEn ? `Period ${el.n} · Group ${el.g} · ${fTag}` : `Період ${el.n} · Група ${el.g} · ${fTag}`}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;background:#f1f5f9;border:1px solid #cbd5e1;padding:1px 6px;border-radius:3px;color:#0f172a;">${el.cfg}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#334155;">
+              <span><strong style="color:#0284c7;">Z_eff</strong> = ${el.zeff.toFixed(2)}e (σ=${sigma})</span>
+              <span><strong style="color:#059669;">r_at</strong> = ${el.r} ${isEn ? 'pm' : 'пм'}</span>
+              <span><strong style="color:#d97706;">I₁</strong> = ${el.i1.toFixed(2)} ${isEn ? 'eV' : 'еВ'}</span>
+              <span><strong style="color:#7c3aed;">χ</strong> = ${chiText}</span>
+            </div>
+          </div>
+        `;
       }
 
       buildScene() {
-        const baseMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.7, roughness: 0.3 });
-        // Left: 3D Periodic Table Relief Board resting on platform
-        const board = new THREE.Mesh(new THREE.BoxGeometry(6.8, 0.25, 4.2), baseMat);
-        board.position.set(-2.4, 0.48, 0);
+        const baseMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.55, roughness: 0.42 });
+        const trimMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.45, roughness: 0.45 });
+
+        // Left/Center: Full 18-Column × 7-Period + 2 f-Block Rows (All 118 Elements) Architectural Platform
+        const board = new THREE.Mesh(new THREE.BoxGeometry(8.55, 0.28, 5.65), baseMat);
+        board.position.set(-2.15, 0.50, 0.05);
         board.receiveShadow = true;
         this.group.add(board);
 
-        for (let r = 1; r <= 4; r++) {
-          for (let c = 1; c <= 8; c++) {
-            if (r === 1 && c > 1 && c < 8) continue;
-            const el = this.getElementData(r, c);
-            const mat = new THREE.MeshStandardMaterial({
-              color: el.col,
-              roughness: 0.25,
-              metalness: 0.35,
-              emissive: el.col,
-              emissiveIntensity: 0.15
-            });
-            const cyl = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 1.0, 20), mat);
-            const x = -5.2 + (c - 1) * 0.78;
-            const z = -1.35 + (r - 1) * 0.90;
-            cyl.position.set(x, 1.1, z);
-            cyl.castShadow = true;
-            this.group.add(cyl);
-            this.bars.push({ mesh: cyl, r, c, el, x, z });
-          }
+        const boardRim = new THREE.Mesh(new THREE.BoxGeometry(8.72, 0.14, 5.82), trimMat);
+        boardRim.position.set(-2.15, 0.41, 0.05);
+        this.group.add(boardRim);
+
+        const colX = c => -5.85 + (c - 1) * 0.435;
+        const rowZ = r => -2.18 + (r - 1) * 0.465;
+        const fRowZ = fRow => (fRow === 1 ? 1.38 : 1.86);
+
+        // 18 IUPAC Group header plaques along the back of the Periodic Table (1 .. 18)
+        const grpSub = ['IA','IIA','IIIB','IVB','VB','VIB','VIIB','VIIIB','VIIIB','VIIIB','IB','IIB','IIIA','IVA','VA','VIA','VIIA','VIIIA'];
+        for (let c = 1; c <= 18; c++) {
+          const hTex = this.makeHeaderBadgeTexture(String(c), grpSub[c - 1], '#0f172a', '#fde047');
+          const plaque = new THREE.Mesh(
+            new THREE.BoxGeometry(0.39, 0.16, 0.34),
+            [
+              trimMat, trimMat,
+              new THREE.MeshBasicMaterial({ map: hTex, toneMapped: false }),
+              trimMat, trimMat, trimMat
+            ]
+          );
+          plaque.position.set(colX(c), 0.71, -2.56);
+          this.group.add(plaque);
         }
 
-        // Selection ring on periodic relief
+        // 7 Period header plaques along the left side (Periods 1 .. 7) + 4f and 5f plaques
+        for (let r = 1; r <= 7; r++) {
+          const pTex = this.makeHeaderBadgeTexture(`${r}`, `n=${r}`, '#0f172a', '#38bdf8');
+          const plaque = new THREE.Mesh(
+            new THREE.BoxGeometry(0.42, 0.16, 0.41),
+            [
+              trimMat, trimMat,
+              new THREE.MeshBasicMaterial({ map: pTex, toneMapped: false }),
+              trimMat, trimMat, trimMat
+            ]
+          );
+          plaque.position.set(-6.34, 0.71, rowZ(r));
+          this.group.add(plaque);
+        }
+
+        const fHeaders = [
+          { fRow: 1, title: '4f*', sub: '58–71', col: '#f472b6' },
+          { fRow: 2, title: '5f**', sub: '90–103', col: '#c084fc' }
+        ];
+        for (const fh of fHeaders) {
+          const fTex = this.makeHeaderBadgeTexture(fh.title, fh.sub, '#1e1b4b', fh.col);
+          const plaque = new THREE.Mesh(
+            new THREE.BoxGeometry(1.18, 0.16, 0.41),
+            [
+              trimMat, trimMat,
+              new THREE.MeshBasicMaterial({ map: fTex, toneMapped: false }),
+              trimMat, trimMat, trimMat
+            ]
+          );
+          plaque.position.set(colX(2) - 0.15, 0.71, fRowZ(fh.fRow));
+          this.group.add(plaque);
+        }
+
+        // All 118 Element 3D Rectangular Prism Tiles with crisp non-tone-mapped top textures
+        for (const el of PERIODIC_118) {
+          const sideMat = new THREE.MeshStandardMaterial({
+            color: el.col,
+            roughness: 0.35,
+            metalness: 0.22,
+            emissive: el.col,
+            emissiveIntensity: 0.12
+          });
+          const topTex = this.makeTileTexture(el, 1, false);
+          const topMat = new THREE.MeshBasicMaterial({ map: topTex, toneMapped: false });
+
+          const boxGeo = new THREE.BoxGeometry(0.39, 1.0, 0.42);
+          const materials = [sideMat, sideMat, topMat, sideMat, sideMat, sideMat];
+          const tileMesh = new THREE.Mesh(boxGeo, materials);
+          const x = el.fRow > 0 ? colX(el.fCol) : colX(el.g);
+          const z = el.fRow > 0 ? fRowZ(el.fRow) : rowZ(el.n);
+          tileMesh.position.set(x, 1.14, z);
+          tileMesh.castShadow = true;
+          tileMesh.receiveShadow = true;
+          tileMesh.userData = {
+            periodicTile: true,
+            atomicZ: el.z,
+            periodN: el.n,
+            groupG: el.g,
+            sym: el.sym,
+            nameUk: el.nameUk,
+            nameEn: el.nameEn
+          };
+          this.group.add(tileMesh);
+
+          this.bars.push({ mesh: tileMesh, sideMat, topMat, el, x, z });
+        }
+
+        // Crisp 3D rectangular selection frame around the active element tile
+        const frameShape = new THREE.Shape();
+        frameShape.moveTo(-0.23, -0.25);
+        frameShape.lineTo(0.23, -0.25);
+        frameShape.lineTo(0.23, 0.25);
+        frameShape.lineTo(-0.23, 0.25);
+        frameShape.closePath();
+        const hole = new THREE.Path();
+        hole.moveTo(-0.18, -0.20);
+        hole.lineTo(0.18, -0.20);
+        hole.lineTo(0.18, 0.20);
+        hole.lineTo(-0.18, 0.20);
+        hole.closePath();
+        frameShape.holes.push(hole);
+        const frameGeo = new THREE.ExtrudeGeometry(frameShape, { depth: 0.05, bevelEnabled: false });
+        frameGeo.rotateX(Math.PI / 2);
         this.selRing = new THREE.Mesh(
-          new THREE.TorusGeometry(0.36, 0.045, 12, 28),
-          new THREE.MeshBasicMaterial({ color: 0xffffff })
+          frameGeo,
+          new THREE.MeshBasicMaterial({ color: 0xf59e0b, toneMapped: false })
         );
-        this.selRing.rotation.x = Math.PI / 2;
         this.group.add(this.selRing);
 
-        // Right: Atomic Shell Pedestal on platform
-        const pedBase = new THREE.Mesh(new THREE.CylinderGeometry(1.6, 1.8, 0.35, 32), baseMat);
-        pedBase.position.set(3.4, 0.53, 0);
+        // Right: Clean Magnetic-Trap / Gimbal Atomic Showcase (NO central vertical stick impaling the nucleus!)
+        this.atomCenter = new THREE.Vector3(4.35, 2.55, 0);
+
+        const pedBase = new THREE.Mesh(new THREE.CylinderGeometry(1.65, 1.82, 0.26, 36), baseMat);
+        pedBase.position.set(4.35, 0.49, 0);
+        pedBase.receiveShadow = true;
         this.group.add(pedBase);
 
-        const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.18, 3.0, 16), baseMat);
-        pillar.position.set(3.4, 2.1, 0);
-        this.group.add(pillar);
-
-        this.atomCenter = new THREE.Vector3(3.4, 3.6, 0);
-        this.nucleus = new THREE.Mesh(
-          new THREE.SphereGeometry(0.28, 24, 24),
-          new THREE.MeshStandardMaterial({ color: 0xf43f5e, emissive: 0xe11d48, emissiveIntensity: 0.5, roughness: 0.2 })
+        const pedRing = new THREE.Mesh(
+          new THREE.TorusGeometry(1.38, 0.045, 16, 48),
+          new THREE.MeshStandardMaterial({ color: 0x0284c7, metalness: 0.65, roughness: 0.25, emissive: 0x0284c7, emissiveIntensity: 0.25 })
         );
-        this.nucleus.position.copy(this.atomCenter);
-        this.group.add(this.nucleus);
+        pedRing.rotation.x = Math.PI / 2;
+        pedRing.position.set(4.35, 0.63, 0);
+        this.group.add(pedRing);
 
-        // 4 concentric Bohr-Slater shells
-        for (let s = 1; s <= 4; s++) {
+        // Subtle lower cradle arc outside the electron shells (connects base to magnetic trap without piercing the atom)
+        const cradleArc = new THREE.Mesh(
+          new THREE.TorusGeometry(1.92, 0.04, 14, 48, Math.PI),
+          trimMat
+        );
+        cradleArc.rotation.z = Math.PI;
+        cradleArc.position.copy(this.atomCenter);
+        this.group.add(cradleArc);
+
+        const cradleStem = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.14, 0.22, 16), baseMat);
+        cradleStem.position.set(4.35, 0.68, 0);
+        this.group.add(cradleStem);
+
+        // Multi-nucleon 3D Nucleus Cluster (protons + neutrons packed in a tight sphere)
+        this.nucleusGroup = new THREE.Group();
+        this.nucleusGroup.position.copy(this.atomCenter);
+        this.group.add(this.nucleusGroup);
+
+        const protonMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.28, metalness: 0.15, emissive: 0x991b1b, emissiveIntensity: 0.22 });
+        const neutronMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.35, metalness: 0.25 });
+        const nucleonGeo = new THREE.SphereGeometry(0.088, 14, 14);
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+        for (let k = 0; k < 24; k++) {
+          const yOff = 1 - (k / 23) * 2;
+          const rHoriz = Math.sqrt(Math.max(0, 1 - yOff * yOff));
+          const theta = goldenAngle * k;
+          const rad = k === 0 ? 0 : (k < 8 ? 0.10 : 0.175);
+          const nucMesh = new THREE.Mesh(nucleonGeo, k % 2 === 0 ? protonMat : neutronMat);
+          nucMesh.position.set(Math.cos(theta) * rHoriz * rad, yOff * rad, Math.sin(theta) * rHoriz * rad);
+          this.nucleusGroup.add(nucMesh);
+        }
+
+        // Translucent covalent-radius boundary sphere so user visually sees the atomic volume
+        this.covSphere = new THREE.Mesh(
+          new THREE.SphereGeometry(1.0, 28, 28),
+          new THREE.MeshStandardMaterial({
+            color: 0x38bdf8,
+            transparent: true,
+            opacity: 0.08,
+            roughness: 0.2,
+            depthWrite: false
+          })
+        );
+        this.covSphere.position.copy(this.atomCenter);
+        this.group.add(this.covSphere);
+
+        // Up to 7 concentric Bohr-Slater shells (n = 1 .. 7)
+        for (let s = 1; s <= 7; s++) {
           const ring = new THREE.Mesh(
-            new THREE.TorusGeometry(0.55 * s, 0.022, 12, 48),
-            new THREE.MeshStandardMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.45, emissive: 0x0284c7, emissiveIntensity: 0.25 })
+            new THREE.TorusGeometry(0.32 * s, 0.016, 12, 56),
+            new THREE.MeshStandardMaterial({ color: 0x0284c7, transparent: true, opacity: 0.52, emissive: 0x0369a1, emissiveIntensity: 0.25 })
           );
           ring.position.copy(this.atomCenter);
           this.group.add(ring);
           this.shells.push(ring);
         }
 
-        // Up to 8 valence electron spheres
-        const eMat = new THREE.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0xf59e0b, emissiveIntensity: 0.6 });
-        for (let i = 0; i < 8; i++) {
-          const dot = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), eMat);
+        // Up to 18 outer/valence electron spheres
+        const eMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xd97706, emissiveIntensity: 0.55, roughness: 0.2 });
+        for (let i = 0; i < 18; i++) {
+          const dot = new THREE.Mesh(new THREE.SphereGeometry(0.082, 14, 14), eMat);
           this.group.add(dot);
           this.valenceDots.push(dot);
         }
 
-        this.arrZeff = new SmartVectorArrow('F_ядра (притягання Z_eff)', 0x38bdf8, uiState.showVectors, uiState.showLabels);
-        this.arrShield = new SmartVectorArrow('F_екран (екранування σ)', 0xf59e0b, uiState.showVectors, uiState.showLabels);
-        this.arrRadius = new SmartVectorArrow('r_ат (ковалентний радіус)', 0x10b981, uiState.showVectors, uiState.showLabels);
+        this.arrZeff = new SmartVectorArrow('F_ядра (притягання Z_eff)', 0x0284c7, '#0284c7');
+        this.arrShield = new SmartVectorArrow('F_екран (екранування σ)', 0xd97706, '#d97706');
+        this.arrRadius = new SmartVectorArrow('r_ат (атомний радіус)', 0x059669, '#059669');
         this.arrows.push(this.arrZeff, this.arrShield, this.arrRadius);
+      }
+
+      syncSliderDOM(key, val) {
+        const cfg = SCENE_CONFIGS.chem_periodic;
+        const sMeta = cfg && cfg.sliders && cfg.sliders.find(s => s.key === key);
+        const inp = document.querySelector(`#sliders-container input[data-param-key="${key}"]`);
+        const lbl = document.getElementById(`readout-${key}`);
+        if (inp) {
+          inp.value = String(val);
+          if (typeof updateSliderFill === 'function') updateSliderFill(inp);
+        }
+        if (lbl && sMeta) {
+          lbl.textContent = `${val}${sMeta.unit ? ' ' + sMeta.unit : ''}`;
+        }
       }
 
       reset() {
         this.phase = 0;
+        this.lastMode = -1;
+        this.lastCardKey = '';
         this.particles.clear();
         this.syncVisuals();
       }
@@ -17551,68 +18947,134 @@
       }
 
       syncVisuals() {
-        const n = Math.round(sceneParams.chem_periodic.periodN || 2);
-        const g = Math.round(sceneParams.chem_periodic.groupG || 1);
-        const mode = Math.round(sceneParams.chem_periodic.propMode || 1);
-        const effG = (n === 1 && g > 1) ? 8 : g;
-        const activeEl = this.getElementData(n, effG);
+        const p = sceneParams.chem_periodic;
+        const curZ = Math.max(1, Math.min(118, Math.round(p.atomicZ || 26)));
+        const curN = Math.max(1, Math.min(7, Math.round(p.periodN || 4)));
+        const curG = Math.max(1, Math.min(18, Math.round(p.groupG || 8)));
 
-        // Update 3D periodic table relief heights
+        if (curZ !== this.prevZ) {
+          const el = this.getElementByZ(curZ);
+          p.periodN = el.n;
+          p.groupG = el.g;
+          this.prevZ = el.z;
+          this.prevN = el.n;
+          this.prevG = el.g;
+          this.syncSliderDOM('periodN', el.n);
+          this.syncSliderDOM('groupG', el.g);
+          if (typeof updateLiveFormulaSubstitution === 'function') updateLiveFormulaSubstitution();
+        } else if (curN !== this.prevN || curG !== this.prevG) {
+          const el = this.getElementByPeriodGroup(curN, curG);
+          p.atomicZ = el.z;
+          p.periodN = el.n;
+          p.groupG = el.g;
+          this.prevZ = el.z;
+          this.prevN = el.n;
+          this.prevG = el.g;
+          this.syncSliderDOM('atomicZ', el.z);
+          this.syncSliderDOM('periodN', el.n);
+          this.syncSliderDOM('groupG', el.g);
+          if (typeof updateLiveFormulaSubstitution === 'function') updateLiveFormulaSubstitution();
+        }
+
+        const z = Math.max(1, Math.min(118, Math.round(p.atomicZ || 26)));
+        const mode = Math.round(p.propMode || 1);
+        const activeEl = this.getElementByZ(z);
+        const n = activeEl.n;
+        const needTexRefresh = (this.lastMode !== mode);
+        this.lastMode = mode;
+
+        // Update all 118 3D periodic table element tiles
         for (const b of this.bars) {
-          let h = 1.0;
-          if (mode === 1) h = Math.max(0.25, (b.el.r / 243) * 2.8);
-          else if (mode === 2) h = Math.max(0.25, (b.el.i1 / 24.6) * 2.8);
-          else h = Math.max(0.20, (b.el.chi / 4.0) * 2.8);
+          let h = 0.75;
+          if (mode === 1) h = Math.max(0.28, (b.el.r / 298) * 1.85);
+          else if (mode === 2) h = Math.max(0.28, (b.el.i1 / 24.6) * 1.85);
+          else h = Math.max(0.24, (b.el.chi / 4.0) * 1.85);
 
           b.mesh.scale.y = h;
-          b.mesh.position.y = 0.60 + h * 0.5;
-          const isSelected = (b.r === n && b.c === effG);
-          b.mesh.material.emissiveIntensity = isSelected ? 0.75 : 0.15;
+          b.mesh.position.y = 0.64 + h * 0.5;
+          const isSelected = (b.el.z === activeEl.z);
+          b.sideMat.emissiveIntensity = isSelected ? 0.65 : 0.12;
+
+          if (needTexRefresh || b.wasSelected !== isSelected || b.wasLang !== uiState.lang) {
+            b.wasSelected = isSelected;
+            b.wasLang = uiState.lang;
+            if (b.topMat.map) b.topMat.map.dispose();
+            b.topMat.map = this.makeTileTexture(b.el, mode, isSelected);
+            b.topMat.needsUpdate = true;
+          }
+
           if (isSelected) {
-            this.selRing.position.set(b.x, 0.63 + h, b.z);
+            this.selRing.position.set(b.x, 0.67 + h, b.z);
           }
         }
 
-        // Update Bohr-Slater shells
-        const outerR = Math.max(0.65, (activeEl.r / 100) * 1.15);
-        for (let s = 0; s < 4; s++) {
+        this.updatePassportCard(activeEl);
+
+        // Scale nucleus cluster slightly with Z and rotate gently
+        const nucScale = 0.72 + Math.pow(activeEl.z / 118, 0.33) * 0.65;
+        this.nucleusGroup.scale.setScalar(nucScale);
+        this.nucleusGroup.rotation.y = this.phase * 0.35;
+        this.nucleusGroup.rotation.x = Math.sin(this.phase * 0.25) * 0.18;
+
+        // Update 7-shell Bohr-Slater model & translucent covalent sphere
+        const outerR = Math.max(0.62, Math.min(1.68, (activeEl.r / 135) * 0.95));
+        this.covSphere.scale.setScalar(outerR);
+
+        for (let s = 0; s < 7; s++) {
           const sh = this.shells[s];
           sh.visible = (s < n);
           if (s < n) {
             const frac = (s + 1) / n;
             const rad = outerR * frac;
-            sh.scale.setScalar(rad / (0.55 * (s + 1)));
-            sh.rotation.x = 0.35 * s;
-            sh.rotation.y = 0.25 * s;
+            sh.scale.setScalar(rad / (0.32 * (s + 1)));
+            sh.rotation.x = 0.22 * s;
+            sh.rotation.y = 0.16 * s;
           }
         }
 
-        const valCount = (n === 1 && g > 1) ? 2 : g;
-        for (let i = 0; i < 8; i++) {
+        const valCount = activeEl.g <= 2 ? activeEl.g : (activeEl.g >= 13 ? activeEl.g - 10 : Math.min(12, activeEl.g));
+        for (let i = 0; i < this.valenceDots.length; i++) {
           const dot = this.valenceDots[i];
           dot.visible = (i < valCount);
           if (dot.visible) {
-            const ang = this.phase * 2.2 + (i * Math.PI * 2) / valCount;
+            const ang = this.phase * 1.65 + (i * Math.PI * 2) / valCount;
             dot.position.set(
               this.atomCenter.x + outerR * Math.cos(ang),
-              this.atomCenter.y + outerR * Math.sin(ang) * Math.cos(0.35 * (n - 1)),
-              this.atomCenter.z + outerR * Math.sin(ang) * Math.sin(0.35 * (n - 1))
+              this.atomCenter.y + outerR * Math.sin(ang) * Math.cos(0.22 * (n - 1)),
+              this.atomCenter.z + outerR * Math.sin(ang) * Math.sin(0.22 * (n - 1))
             );
           }
         }
 
-        const vPos = this.valenceDots[0].position;
-        const inward = new THREE.Vector3().subVectors(this.atomCenter, vPos).normalize();
-        this.arrZeff.update(vPos, inward, 0.45 + activeEl.zeff * 0.16, uiState.showVectors, uiState.showLabels);
-        const outward = inward.clone().negate();
+        // Three well-separated vector arrows around the Bohr atom so labels never collide
+        this.arrRadius.update(
+          this.atomCenter.clone(),
+          new THREE.Vector3(0.76, 0.65, 0).normalize(),
+          outerR,
+          uiState.showVectors
+        );
+        const zeffLen = Math.min(1.22, 0.45 + activeEl.zeff * 0.10);
+        const zeffStart = this.atomCenter.clone().add(new THREE.Vector3(-outerR - 0.18, 0.55, 0.25));
+        this.arrZeff.update(
+          zeffStart,
+          new THREE.Vector3(1, 0, 0),
+          zeffLen,
+          uiState.showVectors
+        );
         const sigma = Math.max(0.1, activeEl.z - activeEl.zeff);
-        this.arrShield.update(this.atomCenter.clone().add(new THREE.Vector3(0, -0.35, 0)), outward, Math.min(1.6, 0.35 + sigma * 0.05), uiState.showVectors, uiState.showLabels);
-        this.arrRadius.update(this.atomCenter, new THREE.Vector3(1, 0.2, 0).normalize(), outerR, uiState.showVectors, uiState.showLabels);
+        const shieldLen = Math.min(1.22, 0.45 + sigma * 0.012);
+        this.arrShield.update(
+          this.atomCenter.clone().add(new THREE.Vector3(0.18, -0.35, 0.25)),
+          new THREE.Vector3(0.78, -0.62, 0).normalize(),
+          shieldLen,
+          uiState.showVectors
+        );
 
-                const modeName = mode === 1 ? 'Атомний радіус r_ат' : (mode === 2 ? 'Енергія йонізації I₁' : 'Електронегативність χ');
-updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
-          { label: 'Хімічний елемент', val: `${activeEl.sym} (Z = ${activeEl.z})` },
-          { label: 'Період n / Група', val: `${n}-й період, група ${effG}A` },
+        const modeName = mode === 1 ? 'Атомний радіус r_ат' : (mode === 2 ? 'Енергія йонізації I₁' : 'Електронегативність χ');
+        const blockLabel = activeEl.fRow === 1 ? '4f-лантаноїд' : (activeEl.fRow === 2 ? '5f-актиноїд' : `${activeEl.block}-елемент`);
+        updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
+          { label: 'Хімічний елемент (1–118)', val: `${activeEl.sym} — ${activeEl.nameUk} (Z = ${activeEl.z})` },
+          { label: 'Період / Група / Блок', val: `${activeEl.n}-й період, гр. ${activeEl.g}, ${blockLabel} (${activeEl.cfg})` },
           { label: 'Ефективний заряд Z_eff', val: `${activeEl.zeff.toFixed(2)} e (σ = ${(activeEl.z - activeEl.zeff).toFixed(2)})` },
           { label: 'Атомний радіус r_ат', val: `${activeEl.r} пм (${(activeEl.r / 100).toFixed(2)} Å)` },
           { label: 'Енергія йонізації I₁', val: `${activeEl.i1.toFixed(2)} еВ (${(activeEl.i1 * 96.485).toFixed(0)} кДж/моль)` },
@@ -17621,11 +19083,13 @@ updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
       }
 
       update(dt) {
-        this.phase += dt * (1 + (sceneParams.chem_periodic.extField || 2.0) * 0.15);
+        this.phase += dt * 1.15;
         this.syncVisuals();
       }
 
       dispose() {
+        const hud = document.getElementById('periodic-element-hud');
+        if (hud && hud.parentNode) hud.parentNode.removeChild(hud);
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
       }
@@ -17747,9 +19211,9 @@ updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
           this.hBonds.push({ mesh: rod, a, b });
         }
 
-        this.arrHB = new SmartVectorArrow('E_HB (водневий зв’язок O···H)', 0x38bdf8, uiState.showVectors, uiState.showLabels);
-        this.arrCov = new SmartVectorArrow('F_ковал (міцний зв’язок O–H)', 0x10b981, uiState.showVectors, uiState.showLabels);
-        this.arrTherm = new SmartVectorArrow('u_тепл (руйнування каркасу)', 0xf59e0b, uiState.showVectors, uiState.showLabels);
+        this.arrHB = new SmartVectorArrow('E_HB (водневий зв’язок O···H)', 0x0284c7, '#0284c7');
+        this.arrCov = new SmartVectorArrow('F_ковал (міцний зв’язок O–H)', 0x059669, '#059669');
+        this.arrTherm = new SmartVectorArrow('u_тепл (руйнування каркасу)', 0xd97706, '#d97706');
         this.arrows.push(this.arrHB, this.arrCov, this.arrTherm);
       }
 
@@ -17764,8 +19228,8 @@ updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
       }
 
       syncVisuals() {
-        const tC = sceneParams.chem_hbond.tempC !== undefined ? sceneParams.chem_hbond.tempC : -10;
-        const eHB = sceneParams.chem_hbond.hBondEnergy || 21;
+        const tC = sceneParams.chem_hbond.tempC !== undefined ? sceneParams.chem_hbond.tempC : -5;
+        const eHB = sceneParams.chem_hbond.hBondStrength ?? sceneParams.chem_hbond.hBondEnergy ?? 21.0;
         const pMPa = sceneParams.chem_hbond.pressureMPa || 0.1;
         const mu = sceneParams.chem_hbond.dipoleD || 1.85;
 
@@ -17806,9 +19270,9 @@ updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
         const m0 = this.molecules[0].group.position;
         const m1 = this.molecules[1].group.position;
         const hbDir = new THREE.Vector3().subVectors(m1, m0).normalize();
-        this.arrHB.update(m0, hbDir, 0.6 + (eHB / 35) * 0.9, uiState.showVectors, uiState.showLabels);
-        this.arrCov.update(this.molecules[3].group.position, new THREE.Vector3(0, 1, 0), 0.7 + (mu / 2.6) * 0.6, uiState.showVectors, uiState.showLabels);
-        this.arrTherm.update(this.molecules[6].group.position, new THREE.Vector3(1, 0.3, 0).normalize(), 0.45 + meltFactor * 1.1, uiState.showVectors, uiState.showLabels);
+        this.arrHB.update(m0, hbDir, 0.65 + (eHB / 35) * 0.85, uiState.showVectors);
+        this.arrCov.update(this.molecules[9].group.position, new THREE.Vector3(0, 1, 0), 0.75 + (mu / 2.6) * 0.55, uiState.showVectors);
+        this.arrTherm.update(this.molecules[3].group.position, new THREE.Vector3(-1, -0.35, 0).normalize(), 0.5 + meltFactor * 1.05, uiState.showVectors);
 
         const rho = isIce
           ? (0.917 + 0.0001 * pMPa)
@@ -19332,6 +20796,2622 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Радіус інерції клубка R_g', val: `${rgAngstrom.toFixed(1)} Å (${(rgAngstrom * 0.1).toFixed(2)} нм)` },
           { label: 'Швидкість росту ланцюга v_p', val: `${vProp.toFixed(2)} моль/(л·с)` },
           { label: 'Виділена ентальпія −ΔH_полі', val: `${qRel.toFixed(0)} кДж/моль ланцюгів (93 кДж/моль мономеру)` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    function createTechnicalMaterial(colorHex, roughness = 0.4, metalness = 0.3) {
+      return new THREE.MeshStandardMaterial({ color: colorHex, roughness, metalness });
+    }
+
+    // 11.21 MOLECULAR ORBITAL THEORY (MO LCAO)
+    // ============================================================================
+    class ChemMolecularOrbitalsSimulation {
+      constructor() {
+        this.params = sceneParams.chem_mo;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Two support pedestals for the diatomic nuclei
+        this.pedLeft = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.22, 2.0, 20), createTechnicalMaterial(0x475569, 0.4, 0.6));
+        this.pedRight = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.22, 2.0, 20), createTechnicalMaterial(0x475569, 0.4, 0.6));
+        this.group.add(this.pedLeft, this.pedRight);
+
+        this.nucLeft = new THREE.Mesh(new THREE.SphereGeometry(0.32, 28, 28), createTechnicalMaterial(0xef4444, 0.25, 0.35));
+        this.nucRight = new THREE.Mesh(new THREE.SphereGeometry(0.32, 28, 28), createTechnicalMaterial(0xef4444, 0.25, 0.35));
+        this.nucLeft.castShadow = true;
+        this.nucRight.castShadow = true;
+        this.group.add(this.nucLeft, this.nucRight);
+
+        // Bond axis rod
+        this.bondAxis = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1, 16), createTechnicalMaterial(0x94a3b8, 0.3, 0.5));
+        this.bondAxis.rotation.z = Math.PI / 2;
+        this.bondAxis.position.set(0, 2.15, 0);
+        this.group.add(this.bondAxis);
+
+        // MO lobes (up to 4 lobes for bonding/antibonding sigma & pi)
+        this.lobes = [];
+        const lobeColors = [0x3b82f6, 0xf43f5e, 0x3b82f6, 0xf43f5e];
+        for (let i = 0; i < 4; i++) {
+          const m = new THREE.Mesh(new THREE.SphereGeometry(0.6, 28, 24), new THREE.MeshPhysicalMaterial({
+            color: lobeColors[i], roughness: 0.2, transmission: 0.48, transparent: true, opacity: 0.68
+          }));
+          this.group.add(m);
+          this.lobes.push(m);
+        }
+
+        // Nodal plane disk
+        this.nodalPlane = new THREE.Mesh(new THREE.RingGeometry(0.05, 1.45, 32), new THREE.MeshBasicMaterial({
+          color: 0xfef08a, side: THREE.DoubleSide, transparent: true, opacity: 0.38
+        }));
+        this.nodalPlane.position.set(0, 2.15, 0);
+        this.group.add(this.nodalPlane);
+
+        // Right-side MO Energy correlation diagram stand
+        const diagBack = new THREE.Mesh(new THREE.BoxGeometry(2.8, 3.2, 0.14), createTechnicalMaterial(0x0f172a, 0.5, 0.2));
+        diagBack.position.set(3.1, 1.85, -1.2);
+        this.group.add(diagBack);
+
+        this.levelAO1 = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.08, 0.18), new THREE.MeshBasicMaterial({ color: 0x94a3b8 }));
+        this.levelAO2 = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.08, 0.18), new THREE.MeshBasicMaterial({ color: 0x94a3b8 }));
+        this.levelBonding = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.1, 0.2), new THREE.MeshBasicMaterial({ color: 0x10b981 }));
+        this.levelAntibond = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.1, 0.2), new THREE.MeshBasicMaterial({ color: 0xf43f5e }));
+        this.levelAO1.position.set(2.15, 1.85, -1.1);
+        this.levelAO2.position.set(4.05, 1.85, -1.1);
+        this.group.add(this.levelAO1, this.levelAO2, this.levelBonding, this.levelAntibond);
+
+        // Orbiting electron spheres
+        this.electrons = [];
+        for (let i = 0; i < 6; i++) {
+          const el = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 16), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+          this.group.add(el);
+          this.electrons.push(el);
+        }
+
+        this.arrSplit = new SmartVectorArrow('ΔE_MO', 0xf59e0b);
+        this.arrOrder = new SmartVectorArrow('BO', 0x10b981);
+        this.arrows.push(this.arrSplit, this.arrOrder);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const idx = Math.round(this.params.diatomicIdx);
+        const rA = this.params.internuclearR;
+        const moType = Math.round(this.params.moType);
+        const beta = this.params.overlapBeta;
+
+        const mols = [
+          null,
+          { name: 'H₂', nb: 2, na: 0, col: 0x38bdf8, r0: 0.74, spins: 0 },
+          { name: 'He₂ (нестійка)', nb: 2, na: 2, col: 0xa855f7, r0: 1.08, spins: 0 },
+          { name: 'N₂', nb: 8, na: 2, col: 0x3b82f6, r0: 1.10, spins: 0 },
+          { name: 'O₂ (триплет)', nb: 8, na: 4, col: 0xef4444, r0: 1.21, spins: 2 },
+          { name: 'F₂', nb: 8, na: 6, col: 0x10b981, r0: 1.42, spins: 0 }
+        ];
+        const mol = mols[idx] || mols[4];
+        const bo = 0.5 * (mol.nb - mol.na);
+        const overlapS = Math.exp(-0.85 * Math.abs(rA - mol.r0));
+        const deltaE = 2 * beta * overlapS;
+
+        const halfSpan = Math.max(0.55, rA * 0.85);
+        this.pedLeft.position.set(-1.1 - halfSpan, 1.12, 0.2);
+        this.pedRight.position.set(-1.1 + halfSpan, 1.12, 0.2);
+        this.nucLeft.position.set(-1.1 - halfSpan, 2.15, 0.2);
+        this.nucRight.position.set(-1.1 + halfSpan, 2.15, 0.2);
+        this.nucLeft.material.color.setHex(mol.col);
+        this.nucRight.material.color.setHex(mol.col);
+
+        this.bondAxis.position.set(-1.1, 2.15, 0.2);
+        this.bondAxis.scale.set(1, halfSpan * 2, 1);
+
+        const breath = 1 + 0.04 * Math.sin(this.phase * 3.2);
+        this.lobes.forEach(l => { l.visible = false; });
+
+        if (moType === 1) {
+          this.lobes[0].visible = true;
+          this.lobes[0].position.set(-1.1, 2.15, 0.2);
+          this.lobes[0].scale.set((halfSpan * 1.45 + 0.35) * breath, 0.72 * breath, 0.72 * breath);
+          this.nodalPlane.visible = false;
+        } else if (moType === 2) {
+          this.lobes[0].visible = true;
+          this.lobes[1].visible = true;
+          this.lobes[0].position.set(-1.1 - halfSpan - 0.38, 2.15, 0.2);
+          this.lobes[1].position.set(-1.1 + halfSpan + 0.38, 2.15, 0.2);
+          this.lobes[0].scale.set(0.62 * breath, 0.75 * breath, 0.75 * breath);
+          this.lobes[1].scale.set(0.62 * breath, 0.75 * breath, 0.75 * breath);
+          this.nodalPlane.visible = true;
+          this.nodalPlane.position.set(-1.1, 2.15, 0.2);
+          this.nodalPlane.rotation.set(0, Math.PI / 2, 0);
+        } else if (moType === 3) {
+          this.lobes[0].visible = true;
+          this.lobes[1].visible = true;
+          this.lobes[0].position.set(-1.1, 2.75, 0.2);
+          this.lobes[1].position.set(-1.1, 1.55, 0.2);
+          this.lobes[0].scale.set((halfSpan * 1.35) * breath, 0.46 * breath, 0.52 * breath);
+          this.lobes[1].scale.set((halfSpan * 1.35) * breath, 0.46 * breath, 0.52 * breath);
+          this.nodalPlane.visible = true;
+          this.nodalPlane.position.set(-1.1, 2.15, 0.2);
+          this.nodalPlane.rotation.set(Math.PI / 2, 0, 0);
+        } else {
+          for (let i = 0; i < 4; i++) {
+            this.lobes[i].visible = true;
+            const sx = (i < 2) ? -1 : 1;
+            const sy = (i % 2 === 0) ? 1 : -1;
+            this.lobes[i].position.set(-1.1 + sx * (halfSpan * 0.65), 2.15 + sy * 0.58, 0.2);
+            this.lobes[i].scale.set(0.55 * breath, 0.48 * breath, 0.48 * breath);
+          }
+          this.nodalPlane.visible = true;
+          this.nodalPlane.position.set(-1.1, 2.15, 0.2);
+          this.nodalPlane.rotation.set(0, Math.PI / 2, 0);
+        }
+
+        const splitH = Math.min(1.05, deltaE * 0.14);
+        this.levelBonding.position.set(3.1, 1.85 - splitH, -1.1);
+        this.levelAntibond.position.set(3.1, 1.85 + splitH, -1.1);
+
+        this.electrons.forEach((el, i) => {
+          const a = this.phase * (2.6 + i * 0.3) + i * 1.05;
+          el.position.set(
+            -1.1 + Math.cos(a) * (halfSpan * 0.85),
+            2.15 + Math.sin(a * 2) * 0.55,
+            0.2 + Math.sin(a) * 0.55
+          );
+        });
+
+        this.arrSplit.update(new THREE.Vector3(3.1, 1.85 - splitH, -0.9), new THREE.Vector3(0, 1, 0), Math.max(0.4, splitH * 2), uiState.showVectors, uiState.showLabels);
+        this.arrOrder.update(new THREE.Vector3(-1.1, 3.25, 0.2), new THREE.Vector3(1, 0, 0), Math.max(0.35, bo * 0.65), uiState.showVectors, uiState.showLabels);
+
+        const moNames = ['', 'σ (зв\'язуюча)', 'σ* (розпушуюча)', 'π (зв\'язуюча)', 'π* (розпушуюча)'];
+        updateEnergyUI(mol.nb * beta, mol.na * beta, deltaE, 25, [
+          { label: 'Двохатомна молекула', val: `${mol.name} (R₀ = ${mol.r0.toFixed(2)} Å, поточне R = ${rA.toFixed(2)} Å)` },
+          { label: 'Активна молекулярна орбіталь', val: moNames[moType] },
+          { label: 'Електрони (N_b / N_a)', val: `Зв'язуючі N_b = ${mol.nb}, Розпушуючі N_a = ${mol.na}` },
+          { label: 'Порядок зв\'язку BO', val: `${bo.toFixed(1)} (${bo === 0 ? 'молекула розпадається' : bo + '-кратний ковалентний зв\'язок'})` },
+          { label: 'Розщеплення рівнів ΔE_MO', val: `${deltaE.toFixed(2)} еВ (інтеграл перекриття S = ${overlapS.toFixed(2)})` },
+          { label: 'Магнітні властивості', val: mol.spins > 0 ? `Парамагнетик (${mol.spins} неспарені e⁻ на π*)` : 'Діамагнетик (усі спіни спарені)' }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.22 CARBON ALLOTROPES: GRAPHENE, CNT & FULLERENE C60
+    // ============================================================================
+    class ChemCarbonAllotropesSimulation {
+      constructor() {
+        this.params = sceneParams.chem_allotropes;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.atoms = [];
+        this.bonds = [];
+        this.delocElectrons = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.4), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.leadLeft = new THREE.Mesh(new THREE.BoxGeometry(0.55, 2.2, 2.4), createTechnicalMaterial(0xf59e0b, 0.3, 0.8));
+        this.leadRight = new THREE.Mesh(new THREE.BoxGeometry(0.55, 2.2, 2.4), createTechnicalMaterial(0xf59e0b, 0.3, 0.8));
+        this.leadLeft.position.set(-3.4, 1.22, 0);
+        this.leadRight.position.set(3.4, 1.22, 0);
+        this.group.add(this.leadLeft, this.leadRight);
+
+        this.nanoGroup = new THREE.Group();
+        this.nanoGroup.position.set(0, 2.1, 0);
+        this.group.add(this.nanoGroup);
+
+        const atomGeo = new THREE.SphereGeometry(0.11, 16, 16);
+        const atomMat = createTechnicalMaterial(0x334155, 0.25, 0.55);
+        for (let i = 0; i < 60; i++) {
+          const m = new THREE.Mesh(atomGeo, atomMat);
+          m.castShadow = true;
+          this.nanoGroup.add(m);
+          this.atoms.push(m);
+        }
+
+        const bondGeo = new THREE.CylinderGeometry(0.028, 0.028, 1, 10);
+        const bondMat = createTechnicalMaterial(0x94a3b8, 0.35, 0.45);
+        for (let i = 0; i < 90; i++) {
+          const b = new THREE.Mesh(bondGeo, bondMat);
+          this.nanoGroup.add(b);
+          this.bonds.push(b);
+        }
+
+        for (let i = 0; i < 18; i++) {
+          const el = new THREE.Mesh(new THREE.SphereGeometry(0.065, 12, 12), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+          this.group.add(el);
+          this.delocElectrons.push(el);
+        }
+
+        this.arrCurrent = new SmartVectorArrow('I_π', 0x38bdf8);
+        this.arrField = new SmartVectorArrow('E', 0xf59e0b);
+        this.arrows.push(this.arrCurrent, this.arrField);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const mode = Math.round(this.params.nanoMode);
+        const n = Math.round(this.params.chiralN);
+        const vBias = this.params.eFieldV;
+        const tempK = this.params.tempK;
+
+        const dNm = 0.0783 * Math.sqrt(3 * n * n);
+        const gCond = (mode <= 3 ? 2.0 : 0.05) * (1 - 0.0004 * (tempK - 300));
+        const currentUa = gCond * 77.48 * vBias;
+        const vib = 0.015 * Math.sqrt(tempK / 300);
+
+        const coords = [];
+        if (mode === 1) {
+          let idx = 0;
+          for (let r = 0; r < 6; r++) {
+            for (let c = 0; c < 10; c++) {
+              if (idx >= 60) break;
+              const x = (c - 4.5) * 0.52;
+              const z = (r - 2.5) * 0.45 + ((c % 2) * 0.18);
+              const y = Math.sin(this.phase * 3 + x * 1.4) * (0.06 + vib);
+              coords.push(new THREE.Vector3(x, y, z));
+              idx++;
+            }
+          }
+        } else if (mode === 2) {
+          for (let layer = 0; layer < 2; layer++) {
+            const y0 = layer === 0 ? -0.32 : 0.32;
+            const shift = layer * 0.18;
+            for (let i = 0; i < 30; i++) {
+              const r = Math.floor(i / 6);
+              const c = i % 6;
+              const x = (c - 2.5) * 0.68 + shift;
+              const z = (r - 2.0) * 0.55;
+              coords.push(new THREE.Vector3(x, y0 + Math.sin(this.phase * 2.5 + x) * vib, z));
+            }
+          }
+        } else if (mode === 3) {
+          const rad = 0.45 + n * 0.055;
+          for (let i = 0; i < 60; i++) {
+            const ring = Math.floor(i / 10);
+            const seg = i % 10;
+            const ang = (seg / 10) * Math.PI * 2 + (ring % 2) * 0.31 + this.phase * 0.35;
+            const x = (ring - 2.5) * 0.88;
+            coords.push(new THREE.Vector3(x, Math.cos(ang) * rad, Math.sin(ang) * rad));
+          }
+        } else {
+          const rad = 1.05;
+          const phi = (1 + Math.sqrt(5)) / 2;
+          for (let i = 0; i < 60; i++) {
+            const y = 1 - (i / 59) * 2;
+            const r = Math.sqrt(Math.max(0, 1 - y * y));
+            const theta = 2 * Math.PI * i / phi + this.phase * 0.45;
+            coords.push(new THREE.Vector3(Math.cos(theta) * r * rad, y * rad, Math.sin(theta) * r * rad));
+          }
+        }
+
+        for (let i = 0; i < 60; i++) {
+          this.atoms[i].position.copy(coords[i]);
+        }
+
+        let bIdx = 0;
+        const maxDist = mode === 4 ? 0.68 : 0.82;
+        const up = new THREE.Vector3(0, 1, 0);
+        for (let i = 0; i < 60; i++) {
+          for (let j = i + 1; j < 60; j++) {
+            if (bIdx >= this.bonds.length) break;
+            const d = coords[i].distanceTo(coords[j]);
+            if (d > 0.2 && d < maxDist) {
+              const b = this.bonds[bIdx++];
+              b.visible = true;
+              b.position.copy(coords[i]).add(coords[j]).multiplyScalar(0.5);
+              b.scale.set(1, d, 1);
+              b.quaternion.setFromUnitVectors(up, coords[j].clone().sub(coords[i]).normalize());
+            }
+          }
+        }
+        for (let k = bIdx; k < this.bonds.length; k++) {
+          this.bonds[k].visible = false;
+        }
+
+        this.delocElectrons.forEach((el, i) => {
+          if (vBias <= 0.01) {
+            el.visible = false;
+            return;
+          }
+          el.visible = true;
+          const prog = ((this.phase * (0.4 + vBias * 0.35) + i / 18) % 1);
+          const x = -2.6 + prog * 5.2;
+          const z = ((i % 3) - 1) * 0.45;
+          const y = 2.1 + Math.sin(prog * Math.PI * 4 + i) * 0.25;
+          el.position.set(x, y, z);
+        });
+
+        this.arrField.update(new THREE.Vector3(-2.2, 3.3, 0), new THREE.Vector3(1, 0, 0), Math.max(0.3, vBias * 0.55), uiState.showVectors, uiState.showLabels);
+        this.arrCurrent.update(new THREE.Vector3(0.4, 3.3, 0), new THREE.Vector3(1, 0, 0), Math.min(2.2, currentUa * 0.008), uiState.showVectors, uiState.showLabels);
+
+        const modeNames = ['', 'Моношар графену (2D sp²)', 'Двошаровий графен (AB-пакування)', `Вуглецева нанотрубка (${n},${n})`, 'Фулерен C₆₀ (бакібол)'];
+        updateEnergyUI(currentUa, dNm * 10, tempK * 0.1, 250, [
+          { label: 'Алотропна наноструктура C', val: modeNames[mode] },
+          { label: 'Гібридизація та C–C зв\'язок', val: 'sp² + делокалізована π-система (a_CC = 1.42 Å)' },
+          { label: 'Діаметр наноструктури d_t', val: mode === 3 ? `${dNm.toFixed(2)} нм` : (mode === 4 ? '0.71 нм (клітка C₆₀)' : 'Плоский 2D-лист') },
+          { label: 'Провідність каналу G', val: `${gCond.toFixed(2)} G₀ (1 G₀ = 2e²/h = 77.5 мкСм)` },
+          { label: 'Струм π-електронів I', val: `${currentUa.toFixed(1)} мкА (при V = ${vBias.toFixed(2)} В)` },
+          { label: 'Температура решітки T', val: `${tempK.toFixed(0)} К` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.23 COORDINATION COMPLEXES & CRYSTAL FIELD THEORY (CFT)
+    // ============================================================================
+    class ChemCoordinationComplexSimulation {
+      constructor() {
+        this.params = sceneParams.chem_complex;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.ligands = [];
+        this.bonds = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.stand = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.24, 1.9, 20), createTechnicalMaterial(0x475569, 0.4, 0.6));
+        this.stand.position.set(-1.2, 1.05, 0.2);
+        this.group.add(this.stand);
+
+        this.centralMetal = new THREE.Mesh(new THREE.SphereGeometry(0.38, 32, 32), createTechnicalMaterial(0x6366f1, 0.2, 0.65));
+        this.centralMetal.position.set(-1.2, 2.15, 0.2);
+        this.centralMetal.castShadow = true;
+        this.group.add(this.centralMetal);
+
+        for (let i = 0; i < 6; i++) {
+          const lig = new THREE.Mesh(new THREE.SphereGeometry(0.24, 24, 24), createTechnicalMaterial(0x38bdf8, 0.25, 0.3));
+          const bond = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1, 12), createTechnicalMaterial(0x94a3b8, 0.3, 0.5));
+          this.group.add(lig, bond);
+          this.ligands.push(lig);
+          this.bonds.push(bond);
+        }
+
+        const board = new THREE.Mesh(new THREE.BoxGeometry(3.0, 3.1, 0.14), createTechnicalMaterial(0x0f172a, 0.5, 0.2));
+        board.position.set(2.9, 1.85, -1.0);
+        this.group.add(board);
+
+        this.t2gBars = [];
+        this.egBars = [];
+        for (let i = 0; i < 3; i++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.09, 0.2), new THREE.MeshBasicMaterial({ color: 0x10b981 }));
+          this.group.add(bar);
+          this.t2gBars.push(bar);
+        }
+        for (let i = 0; i < 2; i++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.09, 0.2), new THREE.MeshBasicMaterial({ color: 0xf43f5e }));
+          this.group.add(bar);
+          this.egBars.push(bar);
+        }
+
+        this.arrDelta = new SmartVectorArrow('Δ_o', 0xf59e0b);
+        this.arrMag = new SmartVectorArrow('μ_eff', 0xa855f7);
+        this.arrows.push(this.arrDelta, this.arrMag);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const dn = Math.round(this.params.dElectrons);
+        const delta0 = this.params.ligandFieldStrength;
+        const rML = this.params.metalLBond;
+        const geom = Math.round(this.params.coordGeom);
+
+        const deltaEff = delta0 * Math.pow(2.0 / rML, 5) * (geom === 1 ? 1.0 : (geom === 2 ? 0.444 : 1.3));
+        const pairingP = 175;
+        const isLowSpin = (dn >= 4 && dn <= 7 && deltaEff > pairingP && geom !== 2);
+
+        const highSpins = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0];
+        const lowSpins  = [0, 1, 2, 3, 2, 1, 0, 1, 2, 1, 0];
+        const nUnpaired = isLowSpin ? lowSpins[dn] : highSpins[dn];
+        const muEff = Math.sqrt(nUnpaired * (nUnpaired + 2));
+        const lambdaNm = Math.min(750, Math.max(380, (119626 / Math.max(80, deltaEff))));
+
+        const hue = ((lambdaNm - 380) / 370 + 0.5) % 1.0;
+        this.centralMetal.material.color.setHSL(hue, 0.78, 0.52);
+
+        const center = this.centralMetal.position;
+        const scaleR = rML * 0.68;
+        const dirs = (geom === 1) ? [
+          new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0),
+          new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, -1, 0),
+          new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, -1)
+        ] : (geom === 2) ? [
+          new THREE.Vector3(1, 1, 1).normalize(), new THREE.Vector3(1, -1, -1).normalize(),
+          new THREE.Vector3(-1, 1, -1).normalize(), new THREE.Vector3(-1, -1, 1).normalize()
+        ] : [
+          new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0),
+          new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, -1)
+        ];
+
+        const up = new THREE.Vector3(0, 1, 0);
+        for (let i = 0; i < 6; i++) {
+          if (i < dirs.length) {
+            this.ligands[i].visible = true;
+            this.bonds[i].visible = true;
+            const pos = center.clone().add(dirs[i].clone().multiplyScalar(scaleR));
+            this.ligands[i].position.copy(pos);
+            this.bonds[i].position.copy(center).add(pos).multiplyScalar(0.5);
+            this.bonds[i].scale.set(1, scaleR, 1);
+            this.bonds[i].quaternion.setFromUnitVectors(up, dirs[i]);
+          } else {
+            this.ligands[i].visible = false;
+            this.bonds[i].visible = false;
+          }
+        }
+
+        const splitY = Math.min(1.0, deltaEff / 280);
+        this.t2gBars.forEach((b, i) => {
+          b.position.set(2.05 + i * 0.85, 1.85 - splitY * 0.45, -0.88);
+        });
+        this.egBars.forEach((b, i) => {
+          b.position.set(2.45 + i * 0.9, 1.85 + splitY * 0.65, -0.88);
+        });
+
+        this.arrDelta.update(new THREE.Vector3(2.9, 1.85 - splitY * 0.45, -0.7), new THREE.Vector3(0, 1, 0), Math.max(0.35, splitY * 1.1), uiState.showVectors, uiState.showLabels);
+        this.arrMag.update(new THREE.Vector3(-1.2, 2.75, 0.2), new THREE.Vector3(0, 1, 0), Math.max(0.3, muEff * 0.25), uiState.showVectors, uiState.showLabels);
+
+        const geomNames = ['', 'Октаедрична Oh (КЧ = 6)', 'Тетраедрична Td (КЧ = 4)', 'Плоскоквадратна D4h (КЧ = 4)'];
+        updateEnergyUI(deltaEff, muEff * 30, lambdaNm * 0.2, 350, [
+          { label: 'Координаційна геометрія', val: geomNames[geom] },
+          { label: 'Конфігурація центрального йона', val: `d^${dn} (${isLowSpin ? 'Низькоспіновий LS, Δ > P' : 'Високоспіновий HS, Δ < P'})` },
+          { label: 'Розщеплення кристалічного поля Δ', val: `${deltaEff.toFixed(1)} кДж/моль (при R_M-L = ${rML.toFixed(2)} Å)` },
+          { label: 'Кількість неспарених електронів n', val: `${nUnpaired} e⁻` },
+          { label: 'Магнітний момент комплексу μ_eff', val: `${muEff.toFixed(2)} μ_B` },
+          { label: 'Смуга d–d поглинання λ_max', val: `${lambdaNm.toFixed(0)} нм` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.24 BORN-HABER THERMOCHEMICAL CYCLE & IONIC LATTICE ENERGY
+    // ============================================================================
+    class ChemBornHaberCycleSimulation {
+      constructor() {
+        this.params = sceneParams.chem_bornhaber;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.StepBars = [];
+        this.ions = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 1.1, 0.35, 24), createTechnicalMaterial(0x334155, 0.4, 0.5));
+        this.pedestal.position.set(-2.2, 0.42, 0.2);
+        this.group.add(this.pedestal);
+
+        this.latticeGroup = new THREE.Group();
+        this.latticeGroup.position.set(-2.2, 1.85, 0.2);
+        this.group.add(this.latticeGroup);
+
+        for (let ix = -1; ix <= 1; ix++) {
+          for (let iy = -1; iy <= 1; iy++) {
+            for (let iz = -1; iz <= 1; iz++) {
+              const isCation = ((ix + iy + iz + 6) % 2 === 0);
+              const m = new THREE.Mesh(
+                new THREE.SphereGeometry(isCation ? 0.15 : 0.22, 18, 18),
+                createTechnicalMaterial(isCation ? 0xa855f7 : 0x10b981, 0.22, 0.35)
+              );
+              m.userData = { ix, iy, iz, isCation };
+              this.latticeGroup.add(m);
+              this.ions.push(m);
+            }
+          }
+        }
+
+        const stepCols = [0xf59e0b, 0xf97316, 0xef4444, 0x3b82f6, 0x10b981];
+        for (let i = 0; i < 5; i++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(0.52, 1.0, 0.52), createTechnicalMaterial(stepCols[i], 0.3, 0.25));
+          bar.castShadow = true;
+          this.group.add(bar);
+          this.StepBars.push(bar);
+        }
+
+        this.arrEndo = new SmartVectorArrow('ΣΔH_ендо', 0xef4444);
+        this.arrLattice = new SmartVectorArrow('−U_реш', 0x10b981);
+        this.arrows.push(this.arrEndo, this.arrLattice);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const subl = this.params.sublH;
+        const diss = this.params.dissHalfD;
+        const ioniz = this.params.ionizI1;
+        const uLat = this.params.latticeU;
+        const eaCl = -349;
+
+        const dhForm = subl + diss + ioniz + eaCl - uLat;
+        const spacing = Math.max(0.42, 0.72 - (uLat - 600) * 0.0005);
+
+        this.ions.forEach(ion => {
+          const { ix, iy, iz } = ion.userData;
+          ion.position.set(ix * spacing, iy * spacing, iz * spacing);
+        });
+        this.latticeGroup.rotation.y = this.phase * 0.35;
+
+        const heights = [subl / 320, diss / 320, ioniz / 320, Math.abs(eaCl) / 320, uLat / 320];
+        this.StepBars.forEach((bar, i) => {
+          const h = Math.max(0.2, heights[i]);
+          bar.scale.set(1, h, 1);
+          bar.position.set(0.35 + i * 0.85, 0.25 + h * 0.5, -0.3);
+        });
+
+        const hPeak = Math.min(3.4, (subl + diss + ioniz) / 280);
+        this.arrEndo.update(new THREE.Vector3(1.2, 0.4, 0.5), new THREE.Vector3(0, 1, 0), hPeak, uiState.showVectors, uiState.showLabels);
+        this.arrLattice.update(new THREE.Vector3(3.75, 0.4 + Math.min(3.2, uLat / 280), 0.5), new THREE.Vector3(0, -1, 0), Math.min(3.0, uLat / 280), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(subl + diss + ioniz, uLat, Math.abs(dhForm), 1000, [
+          { label: 'Сублімація ΔH_sub + Дисоціація ½D', val: `+${subl} + ${diss} = +${subl + diss} кДж/моль` },
+          { label: 'Енергія іонізації металу I₁', val: `+${ioniz} кДж/моль` },
+          { label: 'Електронна спорідненість X(г) E_ea', val: `${eaCl} кДж/моль (екзотермічне приєднання e⁻)` },
+          { label: 'Енергія кристалічної ґратки U_реш', val: `${uLat} кДж/моль (виділяється −${uLat} кДж/моль)` },
+          { label: 'Ентальпія утворення солі ΔH°_f', val: `${dhForm.toFixed(0)} кДж/моль` },
+          { label: 'Термодинамічна стійкість кристалу', val: dhForm < 0 ? 'Екзотермічно стабільна йонна сіль' : 'Ендотермічно нестійка фаза' }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.25 MOLECULAR DIPOLE MOMENT & BOND POLARITY
+    // ============================================================================
+    class ChemDipolePolaritySimulation {
+      constructor() {
+        this.params = sceneParams.chem_dipole;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.plateNeg = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.8, 3.2), createTechnicalMaterial(0x3b82f6, 0.35, 0.6));
+        this.platePos = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.8, 3.2), createTechnicalMaterial(0xef4444, 0.35, 0.6));
+        this.platePos.position.set(-3.4, 1.52, 0);
+        this.plateNeg.position.set(3.4, 1.52, 0);
+        this.group.add(this.platePos, this.plateNeg);
+
+        this.molGroup = new THREE.Group();
+        this.molGroup.position.set(0, 1.9, 0);
+        this.group.add(this.molGroup);
+
+        this.atomA = new THREE.Mesh(new THREE.SphereGeometry(0.42, 32, 32), createTechnicalMaterial(0xef4444, 0.2, 0.3));
+        this.atomB1 = new THREE.Mesh(new THREE.SphereGeometry(0.26, 24, 24), createTechnicalMaterial(0x38bdf8, 0.25, 0.25));
+        this.atomB2 = new THREE.Mesh(new THREE.SphereGeometry(0.26, 24, 24), createTechnicalMaterial(0x38bdf8, 0.25, 0.25));
+        this.bond1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1, 16), createTechnicalMaterial(0xcbd5e1, 0.3, 0.4));
+        this.bond2 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1, 16), createTechnicalMaterial(0xcbd5e1, 0.3, 0.4));
+
+        this.espCloud = new THREE.Mesh(new THREE.SphereGeometry(1.15, 28, 24), new THREE.MeshPhysicalMaterial({
+          color: 0x6366f1, roughness: 0.2, transmission: 0.58, transparent: true, opacity: 0.32
+        }));
+        this.molGroup.add(this.atomA, this.atomB1, this.atomB2, this.bond1, this.bond2, this.espCloud);
+
+        this.arrMu1 = new SmartVectorArrow('μ₁', 0x38bdf8);
+        this.arrMu2 = new SmartVectorArrow('μ₂', 0x38bdf8);
+        this.arrMuTot = new SmartVectorArrow('μ_сумарний', 0xf59e0b);
+        this.arrows.push(this.arrMu1, this.arrMu2, this.arrMuTot);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const dChi = this.params.deltaChi;
+        const thetaDeg = this.params.bondAngleDeg;
+        const rA = this.params.bondLenA;
+        const extE = this.params.extFieldE;
+
+        const ionicPct = 100 * (1 - Math.exp(-0.25 * dChi * dChi));
+        const deltaQ = ionicPct / 100;
+        const muBond = 4.803 * deltaQ * rA;
+        const halfRad = (thetaDeg * Math.PI) / 360;
+        const muTotal = 2 * muBond * Math.cos(halfRad);
+
+        const len = rA * 1.35;
+        const p1 = new THREE.Vector3(Math.cos(halfRad) * len, -Math.sin(halfRad) * len, 0);
+        const p2 = new THREE.Vector3(Math.cos(halfRad) * len, Math.sin(halfRad) * len, 0);
+
+        this.atomB1.position.copy(p1);
+        this.atomB2.position.copy(p2);
+
+        const up = new THREE.Vector3(0, 1, 0);
+        this.bond1.position.copy(p1).multiplyScalar(0.5);
+        this.bond1.scale.set(1, len, 1);
+        this.bond1.quaternion.setFromUnitVectors(up, p1.clone().normalize());
+
+        this.bond2.position.copy(p2).multiplyScalar(0.5);
+        this.bond2.scale.set(1, len, 1);
+        this.bond2.quaternion.setFromUnitVectors(up, p2.clone().normalize());
+
+        const alignFactor = Math.min(1, (extE * muTotal) / 6.0);
+        const osc = (1 - alignFactor * 0.85) * 0.45 * Math.sin(this.phase * 2.8);
+        this.molGroup.rotation.z = osc;
+
+        const centerW = this.molGroup.position;
+        this.arrMu1.update(centerW, p1.clone().negate().normalize(), Math.max(0.25, muBond * 0.65), uiState.showVectors, uiState.showLabels);
+        this.arrMu2.update(centerW, p2.clone().negate().normalize(), Math.max(0.25, muBond * 0.65), uiState.showVectors, uiState.showLabels);
+        this.arrMuTot.update(centerW.clone().add(new THREE.Vector3(0, 0, 0.45)), new THREE.Vector3(-1, 0, 0), Math.max(0.15, muTotal * 0.75), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(muBond * 10, muTotal * 10, ionicPct * 0.3, 40, [
+          { label: 'Різниця електронегативностей Δχ', val: `${dChi.toFixed(2)} (частковий заряд δ = ±${deltaQ.toFixed(2)} e)` },
+          { label: 'Ступінь іонності зв\'язку (за Полінгом)', val: `${ionicPct.toFixed(1)} %` },
+          { label: 'Дипольний момент одного зв\'язку μ_зв', val: `${muBond.toFixed(2)} Д (при l = ${rA.toFixed(2)} Å)` },
+          { label: 'Валентний кут θ (B–A–B)', val: `${thetaDeg.toFixed(0)}° (${thetaDeg === 180 ? 'лінійна симетрична' : 'кутова геометрія'})` },
+          { label: 'Сумарний дипольний момент молекули μ_сум', val: `${muTotal.toFixed(2)} Дебай (${muTotal < 0.05 ? 'неполярна молекула' : 'полярний диполь'})` },
+          { label: 'Зовнішнє електричне поле E_зовн', val: `${extE.toFixed(1)} кВ/см` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.26 P-T PHASE DIAGRAM, TRIPLE POINT & SUPERCRITICAL FLUID
+    // ============================================================================
+    class ChemPhaseDiagramSimulation {
+      constructor() {
+        this.params = sceneParams.chem_phase;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.mols = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.cellWall = new THREE.Mesh(new THREE.CylinderGeometry(1.35, 1.35, 2.7, 28, 1, true), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.15, transmission: 0.72, transparent: true, opacity: 0.42, side: THREE.DoubleSide
+        }));
+        this.cellWall.position.set(-1.9, 1.6, 0.2);
+        this.group.add(this.cellWall);
+
+        this.piston = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 0.25, 28), createTechnicalMaterial(0x475569, 0.35, 0.7));
+        this.piston.position.set(-1.9, 2.7, 0.2);
+        this.group.add(this.piston);
+
+        for (let i = 0; i < 36; i++) {
+          const m = new THREE.Mesh(new THREE.SphereGeometry(0.11, 14, 14), createTechnicalMaterial(0x38bdf8, 0.25, 0.25));
+          this.group.add(m);
+          this.mols.push(m);
+        }
+
+        this.board = new THREE.Mesh(new THREE.BoxGeometry(3.4, 2.8, 0.14), createTechnicalMaterial(0x0f172a, 0.45, 0.2));
+        this.board.position.set(2.1, 1.65, -0.5);
+        this.group.add(this.board);
+
+        this.stateDot = new THREE.Mesh(new THREE.SphereGeometry(0.15, 20, 20), new THREE.MeshBasicMaterial({ color: 0xfef08a }));
+        this.tripleDot = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), new THREE.MeshBasicMaterial({ color: 0x10b981 }));
+        this.critDot = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), new THREE.MeshBasicMaterial({ color: 0xf43f5e }));
+        this.group.add(this.stateDot, this.tripleDot, this.critDot);
+
+        this.arrP = new SmartVectorArrow('P', 0xf59e0b);
+        this.arrQ = new SmartVectorArrow('Q_нагр', 0xef4444);
+        this.arrows.push(this.arrP, this.arrQ);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const sub = Math.round(this.params.substanceType);
+        const T = this.params.tempK;
+        const P = this.params.pressAtm;
+        const qHeat = this.params.heatInputQ;
+
+        const data = [
+          null,
+          { name: 'Вода H₂O (dP/dT_пл < 0)', tTr: 273.16, pTr: 0.006, tCr: 647, pCr: 218, slopeM: -135 },
+          { name: 'Діоксид вуглецю CO₂ (сухий лід)', tTr: 216.6, pTr: 5.11, tCr: 304.2, pCr: 72.8, slopeM: 45 },
+          { name: 'Молекулярний азот N₂', tTr: 63.15, pTr: 0.125, tCr: 126.2, pCr: 33.5, slopeM: 38 }
+        ][sub];
+
+        const tMelt = data.tTr + (P - data.pTr) / data.slopeM;
+        const pSat = data.pTr * Math.exp(12.5 * (1 - data.tTr / Math.max(100, T)));
+
+        let phaseState = 'Газ (пара)';
+        let stateMode = 3;
+        if (T >= data.tCr && P >= data.pCr) {
+          phaseState = 'Надкритичний флюїд (SCF)';
+          stateMode = 4;
+        } else if (T < tMelt && P >= pSat * 0.2) {
+          phaseState = 'Тверда кристалічна фаза';
+          stateMode = 1;
+        } else if (P >= pSat && T < data.tCr) {
+          phaseState = 'Рідка фаза';
+          stateMode = 2;
+        }
+
+        this.piston.position.y = 2.85 - Math.min(0.65, P / 140);
+
+        this.mols.forEach((m, i) => {
+          const ix = (i % 4) - 1.5;
+          const iy = Math.floor((i % 12) / 4);
+          const iz = Math.floor(i / 12) - 1;
+          if (stateMode === 1) {
+            m.position.set(-1.9 + ix * 0.35 + Math.sin(this.phase * 8 + i) * 0.02, 0.55 + iy * 0.35, 0.2 + iz * 0.35);
+            m.material.color.setHex(0x93c5fd);
+          } else if (stateMode === 2) {
+            m.position.set(-1.9 + ix * 0.42 + Math.sin(this.phase * 3.5 + i) * 0.12, 0.5 + iy * 0.38 + Math.cos(this.phase * 3 + i) * 0.06, 0.2 + iz * 0.42);
+            m.material.color.setHex(0x3b82f6);
+          } else {
+            const a = this.phase * (2.2 + (i % 5) * 0.3) + i;
+            m.position.set(-1.9 + Math.cos(a) * 0.9, 1.45 + Math.sin(a * 1.7) * 0.85, 0.2 + Math.sin(a) * 0.9);
+            m.material.color.setHex(stateMode === 4 ? 0xf59e0b : 0x38bdf8);
+          }
+        });
+
+        const tx = 0.65 + ((T - 180) / 520) * 2.9;
+        const py = 0.45 + (P / 100) * 2.3;
+        this.stateDot.position.set(tx, py, -0.35);
+        this.tripleDot.position.set(0.65 + ((data.tTr - 180) / 520) * 2.9, 0.45 + Math.min(2.2, (data.pTr / 100) * 2.3), -0.36);
+        this.critDot.position.set(0.65 + ((data.tCr - 180) / 520) * 2.9, 0.45 + Math.min(2.25, (data.pCr / 100) * 2.3), -0.36);
+
+        this.arrP.update(new THREE.Vector3(-1.9, this.piston.position.y + 0.65, 0.2), new THREE.Vector3(0, -1, 0), Math.max(0.35, P / 50), uiState.showVectors, uiState.showLabels);
+        this.arrQ.update(new THREE.Vector3(-1.9, 0.25, 1.45), new THREE.Vector3(0, 1, 0), Math.max(0.3, qHeat * 0.22), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(T * 0.2, P * 1.2, qHeat * 15, 160, [
+          { label: 'Досліджувана речовина', val: data.name },
+          { label: 'Поточна фаза при (T, P)', val: `${phaseState} (${T.toFixed(0)} К, ${P.toFixed(1)} атм)` },
+          { label: 'Потрійна точка (T_tr, P_tr)', val: `${data.tTr} К, ${data.pTr} атм` },
+          { label: 'Критична точка (T_cr, P_cr)', val: `${data.tCr} К, ${data.pCr} атм` },
+          { label: 'Нахил кривої плавлення dP/dT', val: `${data.slopeM > 0 ? '+' : ''}${data.slopeM} атм/К (рівняння Клапейрона–Клаузіуса)` },
+          { label: 'Підведене тепло Q', val: `${qHeat.toFixed(1)} кДж/моль` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.27 REACTION ORDERS (0, 1, 2) & HALF-LIFE KINETICS
+    // ============================================================================
+    class ChemReactionOrdersSimulation {
+      constructor() {
+        this.params = sceneParams.chem_arrhenius;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.reactantMols = [];
+        this.curveSpheres = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.vessel = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 2.5, 28, 1, true), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.15, transmission: 0.78, transparent: true, opacity: 0.36, side: THREE.DoubleSide
+        }));
+        this.vessel.position.set(-2.0, 1.5, 0.2);
+        this.group.add(this.vessel);
+
+        for (let i = 0; i < 32; i++) {
+          const m = new THREE.Mesh(new THREE.SphereGeometry(0.12, 16, 16), createTechnicalMaterial(0x3b82f6, 0.25, 0.25));
+          this.group.add(m);
+          this.reactantMols.push(m);
+        }
+
+        const board = new THREE.Mesh(new THREE.BoxGeometry(3.5, 2.6, 0.14), createTechnicalMaterial(0x0f172a, 0.45, 0.2));
+        board.position.set(2.0, 1.6, -0.5);
+        this.group.add(board);
+
+        for (let i = 0; i < 20; i++) {
+          const pt = new THREE.Mesh(new THREE.SphereGeometry(0.065, 12, 12), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+          this.group.add(pt);
+          this.curveSpheres.push(pt);
+        }
+
+        this.cursorSphere = new THREE.Mesh(new THREE.SphereGeometry(0.13, 18, 18), new THREE.MeshBasicMaterial({ color: 0xfef08a }));
+        this.group.add(this.cursorSphere);
+
+        this.arrRate = new SmartVectorArrow('v = k[A]^n', 0xf43f5e);
+        this.arrHalf = new SmartVectorArrow('t_1/2', 0x10b981);
+        this.arrows.push(this.arrRate, this.arrHalf);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const n = Math.round(this.params.rxnOrder);
+        const a0 = this.params.initConcA0;
+        const k = this.params.rateConstK;
+        const t = this.params.elapsedTimeT;
+
+        const calcAt = (time) => {
+          if (n === 0) return Math.max(0, a0 - k * time);
+          if (n === 1) return a0 * Math.exp(-k * time);
+          return a0 / (1 + k * a0 * time);
+        };
+
+        const at = calcAt(t);
+        const rateV = k * Math.pow(at, n);
+        const tHalf = (n === 0) ? (a0 / (2 * k)) : (n === 1 ? (0.69315 / k) : (1 / (k * a0)));
+
+        const fracA = at / Math.max(0.01, a0);
+        const nActive = Math.round(fracA * this.reactantMols.length);
+
+        this.reactantMols.forEach((m, i) => {
+          const a = this.phase * 2.2 + i * 1.1;
+          m.position.set(-2.0 + Math.cos(a) * 0.92, 0.55 + (i / 32) * 1.85 + Math.sin(a * 1.5) * 0.08, 0.2 + Math.sin(a) * 0.92);
+          m.material.color.setHex(i < nActive ? 0x3b82f6 : 0x10b981);
+        });
+
+        this.curveSpheres.forEach((pt, i) => {
+          const ti = (i / 19) * 10.0;
+          const ai = calcAt(ti);
+          pt.position.set(0.45 + (ti / 10.0) * 3.1, 0.5 + (ai / 4.0) * 2.0, -0.38);
+        });
+
+        this.cursorSphere.position.set(0.45 + (t / 10.0) * 3.1, 0.5 + (at / 4.0) * 2.0, -0.34);
+
+        this.arrRate.update(new THREE.Vector3(-2.0, 2.85, 0.2), new THREE.Vector3(1, 0, 0), Math.min(2.2, Math.max(0.25, rateV * 0.65)), uiState.showVectors, uiState.showLabels);
+        this.arrHalf.update(new THREE.Vector3(0.45, 0.42, -0.3), new THREE.Vector3(1, 0, 0), Math.min(2.8, Math.max(0.3, (tHalf / 10.0) * 3.1)), uiState.showVectors, uiState.showLabels);
+
+        const laws = ['[A](t) = [A]₀ − kt', '[A](t) = [A]₀·e^(−kt)', '1/[A](t) = 1/[A]₀ + kt'];
+        updateEnergyUI(at * 10, (a0 - at) * 10, rateV * 10, 45, [
+          { label: 'Порядок реакції n та інтегральний закон', val: `n = ${n}: ${laws[n]}` },
+          { label: 'Поточна концентрація реагенту [A](t)', val: `${at.toFixed(3)} моль/л (від [A]₀ = ${a0.toFixed(2)} М)` },
+          { label: 'Концентрація продукту [P](t)', val: `${(a0 - at).toFixed(3)} моль/л` },
+          { label: 'Миттєва швидкість реакції v(t)', val: `${rateV.toFixed(3)} моль/(л·с)` },
+          { label: 'Період напівперетворення t₁/₂', val: `${tHalf.toFixed(2)} с (${n === 1 ? 'не залежить від [A]₀!' : 'залежить від [A]₀'})` },
+          { label: 'Час реакції t', val: `${t.toFixed(1)} с` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.28 ENZYME KINETICS: MICHAELIS-MENTEN & COMPETITIVE INHIBITION
+    // ============================================================================
+    class ChemEnzymeKineticsSimulation {
+      constructor() {
+        this.params = sceneParams.chem_enzyme;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.substrates = [];
+        this.inhibitors = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.enzymeGroup = new THREE.Group();
+        this.enzymeGroup.position.set(-1.4, 1.55, 0.2);
+        this.group.add(this.enzymeGroup);
+
+        const lobe1 = new THREE.Mesh(new THREE.SphereGeometry(1.05, 28, 24), createTechnicalMaterial(0x6366f1, 0.35, 0.2));
+        const lobe2 = new THREE.Mesh(new THREE.SphereGeometry(0.85, 28, 24), createTechnicalMaterial(0x4f46e5, 0.35, 0.2));
+        lobe1.position.set(-0.35, 0, 0);
+        lobe2.position.set(0.45, -0.25, 0.15);
+        this.activePocket = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.28, 0.45, 20), new THREE.MeshBasicMaterial({ color: 0xfef08a }));
+        this.activePocket.position.set(0.15, 0.45, 0.25);
+        this.enzymeGroup.add(lobe1, lobe2, this.activePocket);
+
+        for (let i = 0; i < 16; i++) {
+          const s = new THREE.Mesh(new THREE.OctahedronGeometry(0.16, 1), createTechnicalMaterial(0x10b981, 0.2, 0.3));
+          this.group.add(s);
+          this.substrates.push(s);
+        }
+
+        for (let i = 0; i < 10; i++) {
+          const inh = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.24, 0.24), createTechnicalMaterial(0xf43f5e, 0.25, 0.3));
+          this.group.add(inh);
+          this.inhibitors.push(inh);
+        }
+
+        this.arrV0 = new SmartVectorArrow('v₀', 0x10b981);
+        this.arrVmax = new SmartVectorArrow('V_max', 0xf59e0b);
+        this.arrows.push(this.arrV0, this.arrVmax);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const S = this.params.substrateS;
+        const km = this.params.kmVal;
+        const kcat = this.params.kCat;
+        const I = this.params.inhibitorI;
+
+        const alpha = 1 + I / 1.0;
+        const kmApp = km * alpha;
+        const vMax = kcat * 1.0;
+        const v0 = (vMax * S) / (kmApp + S);
+        const thetaES = S / (kmApp + S);
+
+        this.enzymeGroup.position.y = 1.55 + Math.sin(this.phase * 2.5) * 0.05;
+
+        const nSub = Math.max(1, Math.round((S / 10.0) * this.substrates.length));
+        this.substrates.forEach((m, i) => {
+          m.visible = i < nSub;
+          if (!m.visible) return;
+          if (i === 0 && thetaES > 0.35) {
+            m.position.set(-1.25, 2.08 + Math.sin(this.phase * 6) * 0.04, 0.45);
+          } else {
+            const a = this.phase * (1.8 + (i % 4) * 0.35) + i;
+            m.position.set(-1.2 + Math.cos(a) * 2.1, 1.5 + Math.sin(a * 1.3) * 0.95, 0.2 + Math.sin(a) * 1.4);
+          }
+        });
+
+        const nInh = Math.round((I / 5.0) * this.inhibitors.length);
+        this.inhibitors.forEach((m, i) => {
+          m.visible = i < nInh;
+          if (!m.visible) return;
+          const a = -this.phase * 2.0 + i * 1.2;
+          m.position.set(-1.2 + Math.cos(a) * 1.65, 1.85 + Math.sin(a * 1.7) * 0.7, 0.2 + Math.sin(a) * 1.2);
+        });
+
+        this.arrV0.update(new THREE.Vector3(1.5, 0.5, 0), new THREE.Vector3(0, 1, 0), Math.max(0.3, v0 * 0.14), uiState.showVectors, uiState.showLabels);
+        this.arrVmax.update(new THREE.Vector3(2.6, 0.5, 0), new THREE.Vector3(0, 1, 0), Math.max(0.35, vMax * 0.14), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(v0, vMax, thetaES * 20, 25, [
+          { label: 'Концентрація субстрату [S]', val: `${S.toFixed(2)} мМ (інгібітор [I] = ${I.toFixed(2)} мМ)` },
+          { label: 'Уявна константа Міхаеліса K_m^app', val: `${kmApp.toFixed(2)} мМ (K_m = ${km.toFixed(2)} мМ, α = ${alpha.toFixed(2)})` },
+          { label: 'Гранична швидкість V_max = k_cat[E]₀', val: `${vMax.toFixed(2)} мМ/с` },
+          { label: 'Початкова швидкість ферментації v₀', val: `${v0.toFixed(2)} мМ/с (${((v0 / vMax) * 100).toFixed(1)} % від V_max)` },
+          { label: 'Частка активних комплексів [ES]/[E]₀', val: `${(thetaES * 100).toFixed(1)} %` },
+          { label: 'Тип гальмування', val: I > 0.05 ? 'Конкурентне інгібування (зростає K_m^app, V_max = const)' : 'Без інгібітора (класична кінетика Міхаеліса–Ментен)' }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.29 GIBBS FREE ENERGY & REACTION SPONTANEITY (ΔG = ΔH - TΔS)
+    // ============================================================================
+    class ChemGibbsFreeEnergySimulation {
+      constructor() {
+        this.params = sceneParams.chem_gibbs;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.wellReact = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 0.9, 1.2, 24), createTechnicalMaterial(0x3b82f6, 0.35, 0.3));
+        this.wellProd = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 0.9, 1.2, 24), createTechnicalMaterial(0x10b981, 0.35, 0.3));
+        this.group.add(this.wellReact, this.wellProd);
+
+        this.stateBall = new THREE.Mesh(new THREE.SphereGeometry(0.28, 28, 28), createTechnicalMaterial(0xf59e0b, 0.2, 0.5));
+        this.stateBall.castShadow = true;
+        this.group.add(this.stateBall);
+
+        this.ramp = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.12, 1.1), createTechnicalMaterial(0x475569, 0.4, 0.5));
+        this.group.add(this.ramp);
+
+        this.arrH = new SmartVectorArrow('ΔH', 0xef4444);
+        this.arrTS = new SmartVectorArrow('−TΔS', 0xa855f7);
+        this.arrG = new SmartVectorArrow('ΔG', 0x10b981);
+        this.arrows.push(this.arrH, this.arrTS, this.arrG);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const dH = this.params.deltaH;
+        const dS = this.params.deltaS;
+        const T = this.params.tempK;
+
+        const tdsKj = (T * dS) / 1000;
+        const dG = dH - tdsKj;
+        const lnK = (-dG * 1000) / (8.314 * T);
+
+        const hReact = 1.5;
+        const hProd = Math.max(0.55, Math.min(2.65, 1.5 + dG / 140));
+
+        this.wellReact.scale.set(1, hReact / 1.2, 1);
+        this.wellReact.position.set(-2.1, 0.25 + hReact * 0.5, 0);
+
+        this.wellProd.scale.set(1, hProd / 1.2, 1);
+        this.wellProd.position.set(2.1, 0.25 + hProd * 0.5, 0);
+
+        this.ramp.position.set(0, 0.25 + (hReact + hProd) * 0.5, 0);
+        this.ramp.rotation.z = Math.atan2(hProd - hReact, 4.2);
+
+        const targetX = dG < -2 ? 1.8 : (dG > 2 ? -1.8 : 0);
+        const bx = targetX + Math.sin(this.phase * 2.4) * 0.22;
+        const frac = (bx + 2.1) / 4.2;
+        const by = hReact * (1 - frac) + hProd * frac + 0.58;
+        this.stateBall.position.set(bx, by, 0);
+
+        this.arrH.update(new THREE.Vector3(-3.5, 1.4, 1.2), new THREE.Vector3(0, dH >= 0 ? 1 : -1, 0), Math.max(0.25, Math.abs(dH) / 110), uiState.showVectors, uiState.showLabels);
+        this.arrTS.update(new THREE.Vector3(-2.6, 1.4, 1.2), new THREE.Vector3(0, -dS >= 0 ? 1 : -1, 0), Math.max(0.25, Math.abs(tdsKj) / 110), uiState.showVectors, uiState.showLabels);
+        this.arrG.update(new THREE.Vector3(0, 2.55, 0), new THREE.Vector3(dG < 0 ? 1 : -1, 0, 0), Math.min(2.2, Math.max(0.25, Math.abs(dG) / 80)), uiState.showVectors, uiState.showLabels);
+
+        const tInv = (dH * dS > 0) ? `${((dH * 1000) / dS).toFixed(0)} К` : 'Не існує (знаки ΔH і ΔS протилежні)';
+        updateEnergyUI(Math.abs(dH), Math.abs(tdsKj), Math.abs(dG), 220, [
+          { label: 'Ентальпійний фактор ΔH', val: `${dH >= 0 ? '+' : ''}${dH.toFixed(0)} кДж/моль` },
+          { label: 'Ентропійний внесок TΔS', val: `${tdsKj >= 0 ? '+' : ''}${tdsKj.toFixed(1)} кДж/моль (ΔS = ${dS} Дж/(моль·К))` },
+          { label: 'Вільна енергія Гіббса ΔG = ΔH − TΔS', val: `${dG >= 0 ? '+' : ''}${dG.toFixed(1)} кДж/моль` },
+          { label: 'Напрямок процесу при T = ' + T + ' К', val: dG < -0.5 ? 'Самочинна пряма реакція (екзергонічна, ΔG < 0)' : (dG > 0.5 ? 'Несамочинна пряма реакція (ендергонічна, ΔG > 0)' : 'Хімічна рівновага (ΔG ≈ 0)') },
+          { label: 'Логарифм константи рівноваги ln K_p', val: `${lnK.toFixed(2)}` },
+          { label: 'Температура інверсії T_інв = ΔH/ΔS', val: tInv }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.30 INDUSTRIAL HABER-BOSCH AMMONIA SYNTHESIS
+    // ============================================================================
+    class ChemHaberBoschSimulation {
+      constructor() {
+        this.params = sceneParams.chem_haber;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.gasParticles = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.column = new THREE.Mesh(new THREE.CylinderGeometry(1.45, 1.45, 3.0, 28, 1, true), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.2, transmission: 0.72, transparent: true, opacity: 0.38, side: THREE.DoubleSide
+        }));
+        this.column.position.set(0, 1.75, 0);
+        this.group.add(this.column);
+
+        this.beds = [];
+        for (let i = 0; i < 3; i++) {
+          const bed = new THREE.Mesh(new THREE.CylinderGeometry(1.38, 1.38, 0.22, 24), createTechnicalMaterial(0x78350f, 0.75, 0.45));
+          bed.position.set(0, 1.0 + i * 0.75, 0);
+          this.group.add(bed);
+          this.beds.push(bed);
+        }
+
+        for (let i = 0; i < 36; i++) {
+          const p = new THREE.Mesh(new THREE.SphereGeometry(0.11, 14, 14), createTechnicalMaterial(0x3b82f6, 0.25, 0.3));
+          this.group.add(p);
+          this.gasParticles.push(p);
+        }
+
+        this.arrYield = new SmartVectorArrow('φ(NH₃)', 0x10b981);
+        this.arrRate = new SmartVectorArrow('v_кат', 0xf59e0b);
+        this.arrows.push(this.arrYield, this.arrRate);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const P = this.params.pressAtm;
+        const tC = this.params.tempC;
+        const cat = this.params.feCatalyst;
+        const r = this.params.ratioH2N2;
+
+        const rEff = Math.exp(-Math.pow(r - 3.0, 2) * 0.35);
+        const eqYield = Math.min(92, (100 * (P / 150) * Math.exp((450 - tC) / 140) * rEff) / (1 + (P / 150) * Math.exp((450 - tC) / 140)));
+        const kinFactor = Math.min(1, 0.18 * cat * Math.exp((tC - 350) / 110));
+        const actualYield = eqYield * kinFactor;
+
+        this.beds.forEach((b) => {
+          b.scale.set(1, 0.4 + cat * 0.6, 1);
+        });
+
+        this.gasParticles.forEach((m, i) => {
+          const prog = ((this.phase * (0.35 + kinFactor * 0.55) + i / 36) % 1);
+          const y = 3.1 - prog * 2.6;
+          const a = i * 1.7 + prog * 4;
+          m.position.set(Math.cos(a) * 1.05, y, Math.sin(a) * 1.05);
+          const isNH3 = (prog > 0.45 && (i % 100) < actualYield);
+          m.material.color.setHex(isNH3 ? 0x10b981 : (i % 4 === 0 ? 0x3b82f6 : 0x38bdf8));
+        });
+
+        this.arrYield.update(new THREE.Vector3(2.1, 0.6, 0), new THREE.Vector3(0, 1, 0), Math.max(0.3, (actualYield / 100) * 2.4), uiState.showVectors, uiState.showLabels);
+        this.arrRate.update(new THREE.Vector3(-2.1, 0.6, 0), new THREE.Vector3(0, 1, 0), Math.max(0.3, kinFactor * 2.2), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(eqYield, actualYield, kinFactor * 50, 100, [
+          { label: 'Режим колони синтезу (P, T)', val: `${P.toFixed(0)} атм, ${tC.toFixed(0)} °C (${tC + 273} К)` },
+          { label: 'Стехіометрія суміші H₂ : N₂', val: `${r.toFixed(1)} : 1 (оптимум 3 : 1)` },
+          { label: 'Рівноважний вихід аміаку φ_рівн(NH₃)', val: `${eqYield.toFixed(1)} % (за принципом Ле Шательє)` },
+          { label: 'Кінетичний фактор Fe-каталізатора', val: `${(kinFactor * 100).toFixed(0)} % досягнення рівноваги за прохід` },
+          { label: 'Фактичний вихід φ_практ(NH₃)', val: `${actualYield.toFixed(1)} % об.` },
+          { label: 'Тепловий ефект реакції ΔH°', val: '−92.4 кДж/моль (екзотермічний синтез)' }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.31 RAOULT'S LAW & COLLIGATIVE PROPERTIES OF SOLUTIONS
+    // ============================================================================
+    class ChemRaoultColligativeSimulation {
+      constructor() {
+        this.params = sceneParams.chem_raoult;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.pureVapors = [];
+        this.solnVapors = [];
+        this.soluteIons = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        const glassMat = new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.15, transmission: 0.78, transparent: true, opacity: 0.36, side: THREE.DoubleSide
+        });
+        // Left bell jar: Pure H2O; Right bell jar: Solution with solute
+        this.jarPure = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.25, 2.6, 28, 1, true), glassMat);
+        this.jarSoln = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.25, 2.6, 28, 1, true), glassMat);
+        this.jarPure.position.set(-2.1, 1.55, 0);
+        this.jarSoln.position.set(2.1, 1.55, 0);
+        this.group.add(this.jarPure, this.jarSoln);
+
+        const liqPure = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.2, 1.0, 28), new THREE.MeshPhysicalMaterial({
+          color: 0x38bdf8, roughness: 0.15, transmission: 0.6, transparent: true, opacity: 0.65
+        }));
+        const liqSoln = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.2, 1.0, 28), new THREE.MeshPhysicalMaterial({
+          color: 0x2563eb, roughness: 0.15, transmission: 0.6, transparent: true, opacity: 0.68
+        }));
+        liqPure.position.set(-2.1, 0.75, 0);
+        liqSoln.position.set(2.1, 0.75, 0);
+        this.group.add(liqPure, liqSoln);
+
+        for (let i = 0; i < 18; i++) {
+          const vp = new THREE.Mesh(new THREE.SphereGeometry(0.085, 12, 12), new THREE.MeshBasicMaterial({ color: 0x7dd3fc }));
+          const vs = new THREE.Mesh(new THREE.SphereGeometry(0.085, 12, 12), new THREE.MeshBasicMaterial({ color: 0x7dd3fc }));
+          this.group.add(vp, vs);
+          this.pureVapors.push(vp);
+          this.solnVapors.push(vs);
+        }
+
+        for (let i = 0; i < 20; i++) {
+          const ion = new THREE.Mesh(new THREE.SphereGeometry(0.11, 14, 14), createTechnicalMaterial(0xf59e0b, 0.25, 0.3));
+          this.group.add(ion);
+          this.soluteIons.push(ion);
+        }
+
+        this.arrP0 = new SmartVectorArrow('P₀', 0x38bdf8);
+        this.arrP = new SmartVectorArrow('P_розч', 0x10b981);
+        this.arrows.push(this.arrP0, this.arrP);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const m = this.params.molalityM;
+        const iFactor = Math.round(this.params.vantHoffI);
+        const p0 = this.params.vaporP0;
+        const tC = this.params.tempC;
+
+        const nWater = 55.51;
+        const xSolvent = nWater / (nWater + iFactor * m);
+        const pSoln = p0 * xSolvent;
+        const deltaP = p0 - pSoln;
+        const dTf = iFactor * 1.86 * m;
+        const dTb = iFactor * 0.512 * m;
+
+        this.pureVapors.forEach((v, idx) => {
+          const a = this.phase * 2.5 + idx;
+          v.position.set(-2.1 + Math.cos(a) * 0.88, 1.45 + ((idx / 18) + Math.sin(a) * 0.15) * 1.1, Math.sin(a * 1.3) * 0.88);
+        });
+
+        const activeVap = Math.max(2, Math.round(xSolvent * this.solnVapors.length));
+        this.solnVapors.forEach((v, idx) => {
+          v.visible = idx < activeVap;
+          const a = this.phase * 2.2 + idx * 1.2;
+          v.position.set(2.1 + Math.cos(a) * 0.88, 1.45 + ((idx / 18) + Math.sin(a) * 0.12) * 1.05, Math.sin(a * 1.3) * 0.88);
+        });
+
+        const nSolute = Math.min(20, Math.round((iFactor * m / 12) * 20));
+        this.soluteIons.forEach((ion, idx) => {
+          ion.visible = idx < nSolute;
+          const a = this.phase * 1.4 + idx * 0.9;
+          ion.position.set(2.1 + Math.cos(a) * 0.85, 0.55 + (idx % 4) * 0.16, Math.sin(a) * 0.85);
+        });
+
+        this.arrP0.update(new THREE.Vector3(-2.1, 2.85, 0), new THREE.Vector3(0, 1, 0), Math.min(1.8, p0 / 35), uiState.showVectors, uiState.showLabels);
+        this.arrP.update(new THREE.Vector3(2.1, 2.85, 0), new THREE.Vector3(0, 1, 0), Math.min(1.8, pSoln / 35), uiState.showVectors, uiState.showLabels);
+
+        const elNames = ['', 'Неелектроліт (i = 1, глюкоза)', 'Бінарний електроліт (i = 2, NaCl)', 'Триіонний електроліт (i = 3, CaCl₂)'];
+        updateEnergyUI(p0, pSoln, dTf * 2, 100, [
+          { label: 'Тип розчиненої речовини', val: `${elNames[iFactor]}, моляльність m = ${m.toFixed(2)} моль/кг` },
+          { label: 'Мольна частка води χ₁', val: `${xSolvent.toFixed(4)} (χ₂ = ${(1 - xSolvent).toFixed(4)})` },
+          { label: 'Тиск насиченої пари P_розч (за Раулем)', val: `${pSoln.toFixed(2)} мм рт. ст. (ΔP = −${deltaP.toFixed(2)} мм рт. ст.)` },
+          { label: 'Кріоскопічне зниження T_зам', val: `ΔT_f = −${dTf.toFixed(2)} °C (T_зам = ${(0 - dTf).toFixed(2)} °C)` },
+          { label: 'Ебуліоскопічне підвищення T_кип', val: `ΔT_b = +${dTb.toFixed(2)} °C (T_кип = ${(100 + dTb).toFixed(2)} °C)` },
+          { label: 'Температура термостата T', val: `${tC.toFixed(0)} °C` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.32 THIN-LAYER & COLUMN CHROMATOGRAPHY (Rf & Kp)
+    // ============================================================================
+    class ChemChromatographySimulation {
+      constructor() {
+        this.params = sceneParams.chem_chromatography;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.spots = [];
+        this.colBands = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Left: TLC Silica Gel Plate in developing chamber
+        this.tlcPlate = new THREE.Mesh(new THREE.BoxGeometry(1.9, 3.0, 0.1), createTechnicalMaterial(0xf8fafc, 0.8, 0.05));
+        this.tlcPlate.position.set(-1.8, 1.75, 0);
+        this.group.add(this.tlcPlate);
+
+        this.solventFrontMesh = new THREE.Mesh(new THREE.BoxGeometry(1.92, 0.05, 0.12), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+        this.group.add(this.solventFrontMesh);
+
+        const spotCols = [0xf59e0b, 0x10b981, 0x3b82f6]; // Carotene (nonpolar), Chlorophyll a, Xanthophyll (polar)
+        for (let i = 0; i < 3; i++) {
+          const sp = new THREE.Mesh(new THREE.SphereGeometry(0.18, 20, 20), new THREE.MeshBasicMaterial({ color: spotCols[i] }));
+          sp.scale.set(1.2, 0.85, 0.35);
+          this.group.add(sp);
+          this.spots.push(sp);
+        }
+
+        // Right: Glass preparative chromatography column with separating bands
+        this.colTube = new THREE.Mesh(new THREE.CylinderGeometry(0.65, 0.65, 3.0, 24, 1, true), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.15, transmission: 0.78, transparent: true, opacity: 0.38, side: THREE.DoubleSide
+        }));
+        this.colTube.position.set(1.8, 1.75, 0);
+        this.group.add(this.colTube);
+
+        for (let i = 0; i < 3; i++) {
+          const band = new THREE.Mesh(new THREE.CylinderGeometry(0.61, 0.61, 0.22, 24), new THREE.MeshBasicMaterial({
+            color: spotCols[i], transparent: true, opacity: 0.82
+          }));
+          this.group.add(band);
+          this.colBands.push(band);
+        }
+
+        this.arrFront = new SmartVectorArrow('L_фронту', 0x38bdf8);
+        this.arrRf = new SmartVectorArrow('R_f', 0x10b981);
+        this.arrows.push(this.arrFront, this.arrRf);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const eps = this.params.eluentPolarity;
+        const lFront = this.params.frontHeight;
+        const act = this.params.sorbentAct;
+        const load = this.params.sampleLoad;
+
+        // 3 pigments with different adsorption affinities Kp0
+        const kp0 = [0.35, 1.15, 2.85];
+        const rfs = kp0.map(k0 => {
+          const kp = (k0 * act) / Math.max(0.15, eps + 0.25);
+          return Math.min(0.96, Math.max(0.05, 1 / (1 + kp)));
+        });
+
+        const yStart = 0.55;
+        const scaleCm = 0.25; // 10 cm = 2.5 units
+        const yFront = yStart + lFront * scaleCm;
+        this.solventFrontMesh.position.set(-1.8, yFront, 0.02);
+
+        this.spots.forEach((sp, i) => {
+          const ySpot = yStart + rfs[i] * lFront * scaleCm;
+          sp.position.set(-1.8 + (i - 1) * 0.48, ySpot, 0.06);
+          const sz = 0.75 + load * 0.25;
+          sp.scale.set(sz * 1.1, sz * 0.85, 0.35);
+        });
+
+        this.colBands.forEach((band, i) => {
+          const yBand = 3.05 - rfs[i] * (lFront / 10) * 2.4;
+          band.position.set(1.8, yBand, 0);
+          band.scale.set(1, 0.7 + load * 0.25, 1);
+        });
+
+        const resRs = 2.4 * Math.abs(rfs[0] - rfs[2]) * Math.sqrt(lFront / 5.0);
+
+        this.arrFront.update(new THREE.Vector3(-2.95, yStart, 0), new THREE.Vector3(0, 1, 0), Math.max(0.3, lFront * scaleCm), uiState.showVectors, uiState.showLabels);
+        this.arrRf.update(new THREE.Vector3(-0.65, yStart, 0), new THREE.Vector3(0, 1, 0), Math.max(0.25, rfs[1] * lFront * scaleCm), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(rfs[0] * 100, rfs[1] * 100, rfs[2] * 100, 100, [
+          { label: 'Фронт елюента L_f та полярність ε°', val: `L_f = ${lFront.toFixed(1)} см, ε° = ${eps.toFixed(2)}` },
+          { label: 'β-Каротин (неполярний, жовтий)', val: `R_f1 = ${rfs[0].toFixed(2)} (L₁ = ${(rfs[0] * lFront).toFixed(2)} см)` },
+          { label: 'Хлорофіл a (помірно полярний, зелений)', val: `R_f2 = ${rfs[1].toFixed(2)} (L₂ = ${(rfs[1] * lFront).toFixed(2)} см)` },
+          { label: 'Ксантофіл (полярний, синій маркер)', val: `R_f3 = ${rfs[2].toFixed(2)} (L₃ = ${(rfs[2] * lFront).toFixed(2)} см)` },
+          { label: 'Роздільна здатність колонки R_s', val: `${resRs.toFixed(2)} (${resRs >= 1.5 ? 'повне базове розділення піків' : 'часткове перекриття зон'})` },
+          { label: 'Активність силікагелю SiO₂', val: `${act.toFixed(2)}` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.33 LANGMUIR ADSORPTION ISOTHERM & SURFACE COVERAGE
+    // ============================================================================
+    class ChemLangmuirAdsorptionSimulation {
+      constructor() {
+        this.params = sceneParams.chem_adsorption;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.sites = [];
+        this.adsorbates = [];
+        this.gasMols = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Crystal slab with 6x6 = 36 active adsorption sites
+        const slab = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.32, 4.0), createTechnicalMaterial(0x334155, 0.45, 0.55));
+        slab.position.set(0, 0.42, 0);
+        this.group.add(slab);
+
+        for (let r = 0; r < 6; r++) {
+          for (let c = 0; c < 6; c++) {
+            const x = (c - 2.5) * 0.65;
+            const z = (r - 2.5) * 0.58;
+            const pad = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.05, 16), createTechnicalMaterial(0x64748b, 0.3, 0.6));
+            pad.position.set(x, 0.6, z);
+            this.group.add(pad);
+            this.sites.push(pad);
+
+            const ads = new THREE.Mesh(new THREE.SphereGeometry(0.16, 18, 18), createTechnicalMaterial(0x10b981, 0.22, 0.3));
+            ads.position.set(x, 0.76, z);
+            this.group.add(ads);
+            this.adsorbates.push(ads);
+          }
+        }
+
+        for (let i = 0; i < 24; i++) {
+          const gm = new THREE.Mesh(new THREE.SphereGeometry(0.12, 14, 14), createTechnicalMaterial(0x38bdf8, 0.25, 0.25));
+          this.group.add(gm);
+          this.gasMols.push(gm);
+        }
+
+        this.arrAds = new SmartVectorArrow('r_ads', 0x10b981);
+        this.arrDes = new SmartVectorArrow('r_des', 0xf43f5e);
+        this.arrows.push(this.arrAds, this.arrDes);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const P = this.params.gasPressP;
+        const T = this.params.tempK;
+        const k0 = this.params.langmuirK0;
+        const qKj = this.params.qAdsKj;
+
+        const kEff = k0 * Math.exp((qKj / 25) * (300 / T - 1));
+        const theta = (kEff * P) / (1 + kEff * P);
+        const nOccupied = Math.round(theta * 36);
+
+        this.adsorbates.forEach((ads, i) => {
+          // Deterministic pseudo-random site occupation
+          const hash = (i * 17 + 5) % 36;
+          ads.visible = hash < nOccupied;
+          if (ads.visible) {
+            ads.position.y = 0.76 + Math.sin(this.phase * 6 + i) * 0.02;
+          }
+        });
+
+        const nGas = Math.max(2, Math.round((P / 10) * 24));
+        this.gasMols.forEach((gm, i) => {
+          gm.visible = i < nGas;
+          if (!gm.visible) return;
+          const a = this.phase * (2.0 + (i % 5) * 0.3) + i * 1.1;
+          gm.position.set(Math.cos(a) * 1.9, 1.35 + Math.abs(Math.sin(a * 1.6)) * 1.5, Math.sin(a * 1.3) * 1.6);
+        });
+
+        const rEq = theta * 1.8;
+        this.arrAds.update(new THREE.Vector3(-2.6, 2.3, 0), new THREE.Vector3(0, -1, 0), Math.max(0.3, rEq), uiState.showVectors, uiState.showLabels);
+        this.arrDes.update(new THREE.Vector3(2.6, 0.7, 0), new THREE.Vector3(0, 1, 0), Math.max(0.3, rEq), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(theta * 100, (1 - theta) * 100, qKj, 100, [
+          { label: 'Тиск газу P та температура T', val: `P = ${P.toFixed(2)} атм, T = ${T.toFixed(0)} К` },
+          { label: 'Ефективна константа адсорбції K(T)', val: `${kEff.toFixed(3)} атм⁻¹ (Q_адс = ${qKj} кДж/моль)` },
+          { label: 'Ступінь заповнення моношару θ', val: `${(theta * 100).toFixed(1)} % (${nOccupied} з 36 активних центрів)` },
+          { label: 'Частка вільних центрів (1 − θ)', val: `${((1 - theta) * 100).toFixed(1)} %` },
+          { label: 'Режим ізотерми Ленгмюра', val: theta < 0.25 ? 'Лінійна область Генрі (θ ≈ K·P)' : (theta > 0.82 ? 'Насичення моношару (θ → 1)' : 'Перехідна область ізотерми') },
+          { label: 'Динамічна рівновага поверхні', val: 'r_адс = k_a·P·(1 − θ) = r_дес = k_d·θ' }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.34 COLLOIDAL MICELLES, TYNDALL CONE & DLVO COAGULATION
+    // ============================================================================
+    class ChemColloidTyndallSimulation {
+      constructor() {
+        this.params = sceneParams.chem_colloids;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.micelles = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Laser emitter on left
+        const laserBody = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 1.3, 20), createTechnicalMaterial(0x334155, 0.3, 0.8));
+        laserBody.rotation.z = Math.PI / 2;
+        laserBody.position.set(-3.5, 1.65, 0);
+        this.group.add(laserBody);
+
+        // Optical glass cuvette in center
+        const cuvette = new THREE.Mesh(new THREE.BoxGeometry(3.8, 2.5, 2.2), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.12, transmission: 0.82, transparent: true, opacity: 0.32, side: THREE.DoubleSide
+        }));
+        cuvette.position.set(0, 1.55, 0);
+        this.group.add(cuvette);
+
+        // Tyndall scattering light cone inside cuvette
+        this.tyndallCone = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.62, 3.7, 28, 1, true), new THREE.MeshBasicMaterial({
+          color: 0x10b981, transparent: true, opacity: 0.45, side: THREE.DoubleSide
+        }));
+        this.tyndallCone.rotation.z = -Math.PI / 2;
+        this.tyndallCone.position.set(0, 1.65, 0);
+        this.group.add(this.tyndallCone);
+
+        for (let i = 0; i < 24; i++) {
+          const mic = new THREE.Mesh(new THREE.SphereGeometry(0.14, 18, 18), createTechnicalMaterial(0xf59e0b, 0.25, 0.45));
+          this.group.add(mic);
+          this.micelles.push(mic);
+        }
+
+        this.arrZeta = new SmartVectorArrow('ζ-потенціал', 0x38bdf8);
+        this.arrScat = new SmartVectorArrow('I_Тіндаля', 0x10b981);
+        this.arrows.push(this.arrZeta, this.arrScat);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const dNm = this.params.particleSizeNm;
+        const cEl = this.params.electrolyteC;
+        const zIon = Math.round(this.params.counterIonZ);
+        const lam = this.params.laserWaveNm;
+
+        // Schulze-Hardy critical coagulation concentration ~ 1 / z^6
+        const cccMm = 64 / Math.pow(zIon, 6);
+        const zetaMv = Math.max(0, 58 * Math.exp(-cEl / (cccMm * 1.15)));
+        const coagulated = cEl >= cccMm;
+
+        // Rayleigh scattering intensity ~ d^3 * (532/lambda)^4
+        const iTyndall = Math.min(100, Math.pow(dNm / 25, 2.2) * Math.pow(532 / lam, 4) * 18);
+
+        const hue = Math.max(0, Math.min(0.78, (680 - lam) / 380));
+        this.tyndallCone.material.color.setHSL(hue, 0.9, 0.52);
+        this.tyndallCone.material.opacity = Math.min(0.78, 0.08 + (iTyndall / 100) * 0.68);
+
+        const scaleMic = 0.6 + (dNm / 100) * 1.1;
+        this.micelles.forEach((m, i) => {
+          m.scale.setScalar(scaleMic);
+          if (coagulated) {
+            // Settle into coagulated flocculate at bottom of cuvette
+            const ix = (i % 6) - 2.5;
+            const iz = Math.floor(i / 6) - 1.5;
+            m.position.set(ix * 0.32, 0.48 + (i % 2) * 0.16, iz * 0.28);
+          } else {
+            const a = this.phase * 1.8 + i * 1.3;
+            m.position.set(Math.cos(a) * 1.45, 1.45 + Math.sin(a * 1.7) * 0.75, Math.sin(a * 1.2) * 0.75);
+          }
+        });
+
+        this.arrZeta.update(new THREE.Vector3(-1.4, 2.9, 0), new THREE.Vector3(0, 1, 0), Math.max(0.2, zetaMv / 35), uiState.showVectors, uiState.showLabels);
+        this.arrScat.update(new THREE.Vector3(1.4, 2.9, 0), new THREE.Vector3(0, 1, 0), Math.max(0.25, iTyndall / 45), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(zetaMv, iTyndall, cccMm, 100, [
+          { label: 'Діаметр колоїдних міцел d', val: `${dNm.toFixed(0)} нм (${dNm < 5 ? 'істинний розчин' : 'колоїдний золь'})` },
+          { label: 'Інтенсивність конуса Тіндаля I_розс', val: `${iTyndall.toFixed(1)} ум. од. (λ = ${lam} нм, закон Релея ∝ λ⁻⁴)` },
+          { label: 'Дзета-потенціал ПЕШ ζ', val: `${zetaMv.toFixed(1)} мВ (критичний поріг ~30 мВ)` },
+          { label: 'Поріг коагуляції γ_кр (Шульце–Гарді)', val: `${cccMm.toFixed(2)} ммоль/л для z = ${zIon} (γ ∝ 1/z⁶)` },
+          { label: 'Агрегативна стійкість золю (ДЛФО)', val: coagulated ? 'Швидка коагуляція та седиментація осаду!' : 'Стійкий золь (електростатичне відштовхування ПЕШ)' },
+          { label: 'Концентрація електроліту C_ел', val: `${cEl.toFixed(1)} ммоль/л` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.35 SALT HYDROLYSIS IN AQUEOUS SOLUTIONS & INDICATOR pH
+    // ============================================================================
+    class ChemSaltHydrolysisSimulation {
+      constructor() {
+        this.params = sceneParams.chem_hydrolysis;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.ions = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        const beaker = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 2.6, 28, 1, true), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.12, transmission: 0.82, transparent: true, opacity: 0.35, side: THREE.DoubleSide
+        }));
+        beaker.position.set(0, 1.55, 0);
+        this.group.add(beaker);
+
+        this.solutionMesh = new THREE.Mesh(new THREE.CylinderGeometry(1.44, 1.44, 1.9, 28), new THREE.MeshPhysicalMaterial({
+          color: 0x3b82f6, roughness: 0.15, transmission: 0.55, transparent: true, opacity: 0.65
+        }));
+        this.solutionMesh.position.set(0, 1.2, 0);
+        this.group.add(this.solutionMesh);
+
+        for (let i = 0; i < 28; i++) {
+          const m = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), createTechnicalMaterial(0x38bdf8, 0.25, 0.3));
+          this.group.add(m);
+          this.ions.push(m);
+        }
+
+        this.arrPh = new SmartVectorArrow('pH', 0x10b981);
+        this.arrH = new SmartVectorArrow('h_гідр', 0xf59e0b);
+        this.arrows.push(this.arrPh, this.arrH);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const type = Math.round(this.params.saltType);
+        const c0 = this.params.saltConcC;
+        const tC = this.params.tempC;
+        const dil = this.params.dilutionFactor;
+
+        const cEff = c0 / dil;
+        const kwScale = Math.exp(0.032 * (tC - 25));
+        const ka = 1.8e-5;
+        const kh = (1e-14 * kwScale) / ka;
+        const hDeg = Math.min(0.45, Math.sqrt(kh / Math.max(1e-4, cEff)));
+
+        let ph = 7.0;
+        let saltInfo = '';
+        let eqText = '';
+        if (type === 1) {
+          ph = 7.0;
+          saltInfo = 'NaCl (сильна основа NaOH + сильна кислота HCl)';
+          eqText = 'Гідроліз не відбувається ([H⁺] = [OH⁻])';
+        } else if (type === 2) {
+          ph = Math.max(1.5, -Math.log10(cEff * hDeg));
+          saltInfo = 'NH₄Cl (слабка основа NH₄OH + сильна кислота HCl)';
+          eqText = 'Гідроліз за катіоном: NH₄⁺ + H₂O ⇄ NH₄OH + H⁺ (pH < 7)';
+        } else if (type === 3) {
+          ph = Math.min(12.5, 14 + Math.log10(cEff * hDeg));
+          saltInfo = 'CH₃COONa (сильна основа NaOH + слабка кислота CH₃COOH)';
+          eqText = 'Гідроліз за аніоном: CH₃COO⁻ + H₂O ⇄ CH₃COOH + OH⁻ (pH > 7)';
+        } else {
+          ph = Math.min(13.2, 14 + Math.log10(cEff * hDeg * 8.5));
+          saltInfo = 'Na₂CO₃ (сильна основа NaOH + слабка двоосновна H₂CO₃)';
+          eqText = 'Гідроліз за аніоном: CO₃²⁻ + H₂O ⇄ HCO₃⁻ + OH⁻ (лужне середовище)';
+        }
+
+        // Universal indicator color mapping: red (pH 3) -> green (pH 7) -> blue/violet (pH 11)
+        const hue = Math.max(0, Math.min(0.76, (ph - 3.0) / 10.5 * 0.72));
+        this.solutionMesh.material.color.setHSL(hue, 0.82, 0.48);
+
+        this.ions.forEach((m, i) => {
+          const a = this.phase * 2.0 + i * 1.15;
+          m.position.set(Math.cos(a) * 1.05, 0.45 + (i / 28) * 1.45, Math.sin(a * 1.3) * 1.05);
+          m.material.color.setHex(ph < 6.8 ? 0xf43f5e : (ph > 7.2 ? 0x38bdf8 : 0x10b981));
+        });
+
+        this.arrPh.update(new THREE.Vector3(-2.2, 0.5, 0), new THREE.Vector3(0, 1, 0), (ph / 14) * 2.4, uiState.showVectors, uiState.showLabels);
+        this.arrH.update(new THREE.Vector3(2.2, 0.5, 0), new THREE.Vector3(0, 1, 0), Math.max(0.25, hDeg * 45), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(ph, hDeg * 1000, cEff * 100, 14, [
+          { label: 'Досліджувана сіль', val: saltInfo },
+          { label: 'Йонно-молекулярне рівняння', val: eqText },
+          { label: 'Водневий показник розчину pH', val: `${ph.toFixed(2)} (${ph < 6.8 ? 'кисле' : (ph > 7.2 ? 'лужне' : 'нейтральне')} середовище)` },
+          { label: 'Ступінь гідролізу h = √(K_h / C)', val: `${(hDeg * 100).toFixed(2)} % (при C_еф = ${cEff.toFixed(3)} М)` },
+          { label: 'Константа гідролізу K_h (при ' + tC + ' °C)', val: `${type === 1 ? '0' : kh.toExponential(2)}` },
+          { label: 'Вплив розведення та нагрівання', val: 'Підвищення T та розведення водою посилюють гідроліз' }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.36 ELECTROCHEMICAL CORROSION OF IRON & CATHODIC PROTECTION
+    // ============================================================================
+    class ChemCorrosionProtectionSimulation {
+      constructor() {
+        this.params = sceneParams.chem_corrosion;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.electrons = [];
+        this.ions = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Steel plate (Fe, E0 = -0.44 V) paired with Partner metal plate under electrolyte drop
+        this.fePlate = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.35, 2.6), createTechnicalMaterial(0x64748b, 0.35, 0.75));
+        this.partnerPlate = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.38, 2.2), createTechnicalMaterial(0x94a3b8, 0.3, 0.8));
+        this.fePlate.position.set(-1.1, 0.45, 0);
+        this.partnerPlate.position.set(1.1, 0.46, 0);
+        this.group.add(this.fePlate, this.partnerPlate);
+
+        // Rust layer mesh on Fe surface
+        this.rustLayer = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.12, 2.4), createTechnicalMaterial(0xb45309, 0.85, 0.15));
+        this.rustLayer.position.set(-1.1, 0.66, 0);
+        this.group.add(this.rustLayer);
+
+        // Electrolyte dome covering the bimetallic contact
+        const dome = new THREE.Mesh(new THREE.SphereGeometry(2.35, 28, 20, 0, Math.PI * 2, 0, Math.PI * 0.5), new THREE.MeshPhysicalMaterial({
+          color: 0x38bdf8, roughness: 0.15, transmission: 0.72, transparent: true, opacity: 0.42
+        }));
+        dome.position.set(0, 0.45, 0);
+        this.group.add(dome);
+
+        for (let i = 0; i < 14; i++) {
+          const el = new THREE.Mesh(new THREE.SphereGeometry(0.075, 12, 12), new THREE.MeshBasicMaterial({ color: 0xfef08a }));
+          this.group.add(el);
+          this.electrons.push(el);
+        }
+
+        for (let i = 0; i < 16; i++) {
+          const ion = new THREE.Mesh(new THREE.SphereGeometry(0.1, 14, 14), createTechnicalMaterial(0x10b981, 0.25, 0.3));
+          this.group.add(ion);
+          this.ions.push(ion);
+        }
+
+        this.arrElec = new SmartVectorArrow('e⁻', 0xfef08a);
+        this.arrIcorr = new SmartVectorArrow('j_кор', 0xf43f5e);
+        this.arrows.push(this.arrElec, this.arrIcorr);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const mIdx = Math.round(this.params.partnerMetal);
+        const nacl = this.params.naclConc;
+        const o2 = this.params.o2Conc;
+        const ph = this.params.pHVal;
+
+        const partners = [
+          null,
+          { sym: 'Zn (протектор)', e0: -0.76, col: 0x94a3b8 },
+          { sym: 'Mg (активний протектор)', e0: -2.37, col: 0xe2e8f0 },
+          { sym: 'Sn (біла жерсть)', e0: -0.14, col: 0xcbd5e1 },
+          { sym: 'Cu (мідний контакт)', e0: 0.34, col: 0xd97706 }
+        ];
+        const part = partners[mIdx];
+        const eFe = -0.44;
+        const isProtected = part.e0 < eFe;
+        const dE = Math.abs(eFe - part.e0);
+        const jCorr = dE * (0.35 + nacl * 1.1) * (o2 / 8.0) * (1 + Math.max(0, 7 - ph) * 0.22);
+
+        this.partnerPlate.material.color.setHex(part.col);
+        this.rustLayer.visible = !isProtected;
+        if (!isProtected) {
+          this.rustLayer.scale.set(1, 0.5 + Math.min(2.5, jCorr * 0.8), 1);
+        }
+
+        const dirX = isProtected ? -1 : 1; // If Zn/Mg is anode, e- flows from right (Zn) to left (Fe)
+        this.electrons.forEach((el, i) => {
+          const prog = ((this.phase * (0.6 + jCorr * 0.4) + i / 14) % 1);
+          const x = isProtected ? (1.1 - prog * 2.2) : (-1.1 + prog * 2.2);
+          el.position.set(x, 0.52, ((i % 3) - 1) * 0.55);
+        });
+
+        this.ions.forEach((ion, i) => {
+          const a = this.phase * 1.8 + i;
+          const x0 = isProtected ? 1.1 : -1.1;
+          ion.position.set(x0 + Math.cos(a) * 0.65, 0.85 + (i / 16) * 1.1, Math.sin(a) * 0.65);
+          ion.material.color.setHex(isProtected ? 0x38bdf8 : 0xd97706);
+        });
+
+        this.arrElec.update(new THREE.Vector3(0, 0.78, 0), new THREE.Vector3(dirX, 0, 0), Math.min(2.0, 0.5 + dE * 0.6), uiState.showVectors, uiState.showLabels);
+        this.arrIcorr.update(new THREE.Vector3(isProtected ? 1.1 : -1.1, 1.0, 0), new THREE.Vector3(0, 1, 0), Math.min(2.0, 0.35 + jCorr * 0.55), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(dE * 10, jCorr * 10, nacl * 10, 25, [
+          { label: 'Контактна гальванічна пара', val: `Fe (E° = −0.44 В) / ${part.sym} (E° = ${part.e0 > 0 ? '+' : ''}${part.e0} В)` },
+          { label: 'ЕРС корозійного мікроелемента ΔE', val: `${dE.toFixed(2)} В` },
+          { label: 'Роль заліза (Fe) у парі', val: isProtected ? 'КАТОД (залізо захищене, окиснюється протектор!)' : 'АНОД (залізо інтенсивно руйнується: Fe → Fe²⁺ + 2e⁻)' },
+          { label: 'Катодний процес деполяризації', val: ph < 5.0 ? 'Воднева деполяризація: 2H⁺ + 2e⁻ → H₂↑' : 'Киснева деполяризація: O₂ + 2H₂O + 4e⁻ → 4OH⁻' },
+          { label: 'Густина струму корозії j_кор', val: `${jCorr.toFixed(2)} мА/см²` },
+          { label: 'Склад середовища', val: `[NaCl] = ${nacl.toFixed(2)} М, [O₂] = ${o2.toFixed(1)} мг/л, pH = ${ph.toFixed(1)}` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.37 LITHIUM-ION BATTERY & LITHIUM INTERCALATION (LiCoO2 / C6)
+    // ============================================================================
+    class ChemLithiumIonBatterySimulation {
+      constructor() {
+        this.params = sceneParams.chem_liion;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.liIons = [];
+        this.extElectrons = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Left: Layered graphite anode C6 (4 sheets)
+        for (let i = 0; i < 4; i++) {
+          const sheet = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.1, 2.2), createTechnicalMaterial(0x334155, 0.4, 0.6));
+          sheet.position.set(-2.3, 0.7 + i * 0.55, 0);
+          this.group.add(sheet);
+        }
+
+        // Center porous separator membrane
+        const sep = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.4, 2.4), new THREE.MeshPhysicalMaterial({
+          color: 0xf8fafc, roughness: 0.3, transmission: 0.5, transparent: true, opacity: 0.45
+        }));
+        sep.position.set(0, 1.45, 0);
+        this.group.add(sep);
+
+        // Right: Layered LiCoO2 cathode slabs
+        for (let i = 0; i < 4; i++) {
+          const slab = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.14, 2.2), createTechnicalMaterial(0x4f46e5, 0.35, 0.55));
+          slab.position.set(2.3, 0.7 + i * 0.55, 0);
+          this.group.add(slab);
+        }
+
+        // Top external circuit bridge
+        const wire = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 4.6, 16), createTechnicalMaterial(0xf59e0b, 0.3, 0.8));
+        wire.rotation.z = Math.PI / 2;
+        wire.position.set(0, 3.05, 0);
+        this.group.add(wire);
+
+        for (let i = 0; i < 20; i++) {
+          const li = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), createTechnicalMaterial(0xa855f7, 0.2, 0.3));
+          this.group.add(li);
+          this.liIons.push(li);
+        }
+
+        for (let i = 0; i < 12; i++) {
+          const el = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+          this.group.add(el);
+          this.extElectrons.push(el);
+        }
+
+        this.arrLi = new SmartVectorArrow('Li⁺', 0xa855f7);
+        this.arrEl = new SmartVectorArrow('e⁻', 0x38bdf8);
+        this.arrows.push(this.arrLi, this.arrEl);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const mode = Math.round(this.params.cycleMode);
+        const soc = this.params.socPercent;
+        const cRate = this.params.currentC;
+        const tC = this.params.tempC;
+
+        const xStoich = soc / 100;
+        const vOcv = 3.2 + 0.95 * xStoich;
+        const rInt = 0.06 * Math.exp((25 - tC) / 35);
+        const vTerm = mode === 1 ? (vOcv - cRate * rInt) : (vOcv + cRate * rInt);
+        const powerW = vTerm * cRate * 3.0;
+
+        const dir = mode === 1 ? 1 : -1; // 1 = Discharge (Li+ moves Anode -> Cathode, left to right)
+        this.liIons.forEach((li, i) => {
+          const prog = ((this.phase * (0.25 + cRate * 0.22) * dir + i / 20) % 1 + 1) % 1;
+          const x = -2.6 + prog * 5.2;
+          const layer = i % 3;
+          li.position.set(x, 0.98 + layer * 0.55, ((i % 4) - 1.5) * 0.42);
+        });
+
+        this.extElectrons.forEach((el, i) => {
+          const prog = ((this.phase * (0.35 + cRate * 0.25) * dir + i / 12) % 1 + 1) % 1;
+          el.position.set(-2.3 + prog * 4.6, 3.05, 0);
+        });
+
+        this.arrLi.update(new THREE.Vector3(0, 1.5, 1.35), new THREE.Vector3(dir, 0, 0), Math.max(0.35, cRate * 0.5), uiState.showVectors, uiState.showLabels);
+        this.arrEl.update(new THREE.Vector3(0, 3.3, 0), new THREE.Vector3(dir, 0, 0), Math.max(0.35, cRate * 0.5), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(vTerm * 10, soc * 0.4, powerW, 45, [
+          { label: 'Режим роботи Li-ion комірки', val: mode === 1 ? 'Розряджання (живлення навантаження)' : 'Заряджання (інтеркаляція Li⁺ у графіт C₆)' },
+          { label: 'Ступінь заряду SOC (x у Li_xC₆)', val: `${soc.toFixed(0)} % (x = ${xStoich.toFixed(2)})` },
+          { label: 'ЕРС розімкненого кола E_OCV', val: `${vOcv.toFixed(2)} В` },
+          { label: 'Напруга на клемах U_клем', val: `${vTerm.toFixed(2)} В (при струмі ${cRate.toFixed(1)} C)` },
+          { label: 'Напрямок міграції йонів Li⁺', val: mode === 1 ? 'Анод (Li_xC₆) → Електроліт → Катод (LiCoO₂)' : 'Катод (LiCoO₂) → Електроліт → Анод (Li_xC₆)' },
+          { label: 'Питома потужність комірки P', val: `${powerW.toFixed(1)} Вт (T = ${tC} °C)` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.38 BIMOLECULAR NUCLEOPHILIC SUBSTITUTION (SN2) & WALDEN INVERSION
+    // ============================================================================
+    class ChemSN2MechanismSimulation {
+      constructor() {
+        this.params = sceneParams.chem_sn2;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.hAtoms = [];
+        this.hBonds = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.stand = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.2, 1.7, 20), createTechnicalMaterial(0x475569, 0.4, 0.6));
+        this.stand.position.set(0, 0.95, 0);
+        this.group.add(this.stand);
+
+        // Central chiral/prochiral carbon atom
+        this.carbon = new THREE.Mesh(new THREE.SphereGeometry(0.36, 28, 28), createTechnicalMaterial(0x334155, 0.25, 0.5));
+        this.carbon.position.set(0, 2.0, 0);
+        this.group.add(this.carbon);
+
+        // Incoming Nucleophile (OH-, red/emerald) on left and Leaving Group (Br-, brown/orange) on right
+        this.nucleophile = new THREE.Mesh(new THREE.SphereGeometry(0.3, 24, 24), createTechnicalMaterial(0x10b981, 0.2, 0.3));
+        this.leavingGroup = new THREE.Mesh(new THREE.SphereGeometry(0.34, 24, 24), createTechnicalMaterial(0xd97706, 0.25, 0.35));
+        this.group.add(this.nucleophile, this.leavingGroup);
+
+        this.bondNu = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 1, 14), createTechnicalMaterial(0x10b981, 0.3, 0.4));
+        this.bondNu.rotation.z = Math.PI / 2;
+        this.bondLg = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 1, 14), createTechnicalMaterial(0xd97706, 0.3, 0.4));
+        this.bondLg.rotation.z = Math.PI / 2;
+        this.group.add(this.bondNu, this.bondLg);
+
+        // 3 substituent H atoms that undergo Walden umbrella inversion
+        for (let i = 0; i < 3; i++) {
+          const h = new THREE.Mesh(new THREE.SphereGeometry(0.18, 20, 20), createTechnicalMaterial(0xf8fafc, 0.2, 0.1));
+          const b = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1, 12), createTechnicalMaterial(0xcbd5e1, 0.3, 0.3));
+          this.group.add(h, b);
+          this.hAtoms.push(h);
+          this.hBonds.push(b);
+        }
+
+        this.arrAttack = new SmartVectorArrow('Атака Nu⁻', 0x10b981);
+        this.arrLeave = new SmartVectorArrow('Відхід LG⁻', 0xf59e0b);
+        this.arrows.push(this.arrAttack, this.arrLeave);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const xi = this.params.rxnCoordXi;
+        const cSub = this.params.concSub;
+        const cNu = this.params.concNu;
+        const ea = this.params.eaBarrier;
+
+        // Potential energy along reaction coordinate xi (bell curve peaking at xi = 0.5)
+        const eProfile = ea * Math.sin(xi * Math.PI) - 22 * xi;
+        const k2 = 1.2 * Math.exp(-(ea - 60) / 15);
+        const rateV = k2 * cSub * cNu;
+
+        const cPos = this.carbon.position;
+        const xNu = -2.6 + xi * 1.45;
+        const xLg = 1.15 + xi * 1.45;
+        this.nucleophile.position.set(xNu, 2.0, 0);
+        this.leavingGroup.position.set(xLg, 2.0, 0);
+
+        this.bondNu.position.set(xNu * 0.5, 2.0, 0);
+        this.bondNu.scale.set(0.4 + xi * 0.8, Math.abs(xNu), 0.4 + xi * 0.8);
+
+        this.bondLg.position.set(xLg * 0.5, 2.0, 0);
+        this.bondLg.scale.set(1.2 - xi * 0.8, Math.abs(xLg), 1.2 - xi * 0.8);
+
+        // Walden umbrella inversion: at xi=0, H atoms tilt left (-0.38); at xi=0.5, planar (0); at xi=1, tilt right (+0.38)
+        const umbrellaX = (xi - 0.5) * 0.88;
+        const rH = 0.92;
+        const up = new THREE.Vector3(0, 1, 0);
+        for (let i = 0; i < 3; i++) {
+          const ang = (i * 2 * Math.PI) / 3 + this.phase * 0.4;
+          const hPos = new THREE.Vector3(umbrellaX, 2.0 + Math.cos(ang) * rH, Math.sin(ang) * rH);
+          this.hAtoms[i].position.copy(hPos);
+          const diff = hPos.clone().sub(cPos);
+          this.hBonds[i].position.copy(cPos).add(hPos).multiplyScalar(0.5);
+          this.hBonds[i].scale.set(1, diff.length(), 1);
+          this.hBonds[i].quaternion.setFromUnitVectors(up, diff.normalize());
+        }
+
+        this.arrAttack.update(new THREE.Vector3(xNu - 0.85, 2.0, 0), new THREE.Vector3(1, 0, 0), 0.7, uiState.showVectors, uiState.showLabels);
+        this.arrLeave.update(new THREE.Vector3(xLg + 0.35, 2.0, 0), new THREE.Vector3(1, 0, 0), 0.7, uiState.showVectors, uiState.showLabels);
+
+        const stateDesc = Math.abs(xi - 0.5) < 0.08
+          ? 'Тригонально-біпірамідальний перехідний стан [HO···CH₃···Br]⁻‡ (sp²)'
+          : (xi < 0.5 ? 'Вихідний субстрат CH₃Br + тильна атака OH⁻' : 'Інвертований продукт CH₃OH + відщеплений Br⁻');
+
+        updateEnergyUI(Math.max(0, eProfile), rateV * 20, ea, 110, [
+          { label: 'Стадія координати реакції ξ', val: `${xi.toFixed(2)}: ${stateDesc}` },
+          { label: 'Кінетичний закон реакції S_N2', val: `v = k₂[R–X][Nu⁻] = ${rateV.toFixed(2)} моль/(л·с) (2-й порядок)` },
+          { label: 'Енергія вздовж шляху реакції E(ξ)', val: `${eProfile.toFixed(1)} кДж/моль (бар'єр ΔG‡ = ${ea} кДж/моль)` },
+          { label: 'Стереохімічний наслідок', val: '100 % вальденівське обернення конфігурації («парасолька»)' },
+          { label: 'Довжини зв\'язків d(Nu–C) / d(C–LG)', val: `${Math.abs(xNu).toFixed(2)} Å / ${Math.abs(xLg).toFixed(2)} Å` },
+          { label: 'Концентрації реагентів', val: `[CH₃Br] = ${cSub.toFixed(1)} М, [OH⁻] = ${cNu.toFixed(1)} М` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.39 FISCHER ESTERIFICATION EQUILIBRIUM & ISOTOPIC O-18 LABELING
+    // ============================================================================
+    class ChemFischerEsterificationSimulation {
+      constructor() {
+        this.params = sceneParams.chem_ester;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        // Left: Acetic acid CH3-C(=O)-OH; Right: Ethanol CH3CH2-18OH uniting into Ethyl Acetate + H2O
+        this.acidGroup = new THREE.Group();
+        this.alcoholGroup = new THREE.Group();
+        this.esterGroup = new THREE.Group();
+        this.group.add(this.acidGroup, this.alcoholGroup, this.esterGroup);
+
+        // Carbonyl carbon (black), carbonyl O (red), acid OH (blue-cyan to show it leaves as H2O)
+        const cCarb = new THREE.Mesh(new THREE.SphereGeometry(0.32, 24, 24), createTechnicalMaterial(0x334155, 0.25, 0.5));
+        const oCarb = new THREE.Mesh(new THREE.SphereGeometry(0.26, 20, 20), createTechnicalMaterial(0xef4444, 0.2, 0.3));
+        oCarb.position.set(0, 0.68, 0);
+        this.leavingOH = new THREE.Mesh(new THREE.SphereGeometry(0.26, 20, 20), createTechnicalMaterial(0x38bdf8, 0.2, 0.3));
+        this.leavingOH.position.set(0.62, -0.35, 0);
+        this.acidGroup.add(cCarb, oCarb, this.leavingOH);
+
+        // Alcohol group with glowing gold/emerald 18O isotope tag
+        this.isoO18 = new THREE.Mesh(new THREE.SphereGeometry(0.3, 24, 24), createTechnicalMaterial(0x10b981, 0.18, 0.4));
+        const ethylTail = new THREE.Mesh(new THREE.SphereGeometry(0.34, 24, 24), createTechnicalMaterial(0x475569, 0.3, 0.4));
+        ethylTail.position.set(0.65, -0.25, 0);
+        this.alcoholGroup.add(this.isoO18, ethylTail);
+
+        // Dean-Stark water trap cylinder on right
+        this.trap = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 2.0, 24, 1, true), new THREE.MeshPhysicalMaterial({
+          color: 0x94a3b8, roughness: 0.15, transmission: 0.78, transparent: true, opacity: 0.38, side: THREE.DoubleSide
+        }));
+        this.trap.position.set(3.2, 1.25, 0);
+        this.group.add(this.trap);
+
+        this.waterLevel = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 1.0, 24), new THREE.MeshPhysicalMaterial({
+          color: 0x38bdf8, roughness: 0.15, transmission: 0.6, transparent: true, opacity: 0.72
+        }));
+        this.group.add(this.waterLevel);
+
+        this.arrYield = new SmartVectorArrow('η_естеру', 0x10b981);
+        this.arrCat = new SmartVectorArrow('k(H⁺)', 0xf59e0b);
+        this.arrows.push(this.arrYield, this.arrCat);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const b = this.params.alcoholRatioB;
+        const wRem = this.params.waterRemoval;
+        const hCat = this.params.acidCatalystH;
+        const tC = this.params.tempC;
+
+        const kEq = 4.0 / (1 - 0.92 * wRem);
+        const disc = Math.sqrt(Math.max(0, Math.pow(kEq * (1 + b), 2) - 4 * kEq * (kEq - 1) * b));
+        const xYield = (kEq * (1 + b) - disc) / (2 * (kEq - 1));
+        const pct = Math.min(99.5, xYield * 100);
+        const rateRel = hCat * Math.exp((tC - 60) / 25);
+
+        const approach = 0.55 * (1 - xYield) + 0.15 * Math.sin(this.phase * (2 + rateRel * 0.5));
+        this.acidGroup.position.set(-1.3 - approach, 1.85, 0);
+        this.alcoholGroup.position.set(-0.35 + approach, 1.85, 0);
+
+        // Leaving OH moves toward the Dean-Stark trap as water is removed
+        this.leavingOH.position.set(0.62 + wRem * 2.2, -0.35 - wRem * 0.4, 0);
+
+        const hWat = Math.max(0.15, xYield * (0.4 + wRem * 1.1));
+        this.waterLevel.scale.set(1, hWat, 1);
+        this.waterLevel.position.set(3.2, 0.25 + hWat * 0.5, 0);
+
+        this.arrYield.update(new THREE.Vector3(-0.8, 2.8, 0), new THREE.Vector3(0, 1, 0), (pct / 100) * 1.8, uiState.showVectors, uiState.showLabels);
+        this.arrCat.update(new THREE.Vector3(1.5, 2.8, 0), new THREE.Vector3(0, 1, 0), Math.min(1.8, 0.3 + rateRel * 0.25), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(pct, kEq, rateRel * 10, 100, [
+          { label: 'Співвідношення [Спирт]₀ / [Кислота]₀', val: `b = ${b.toFixed(1)} : 1` },
+          { label: 'Ефективна константа рівноваги K_еф', val: `${kEq.toFixed(1)} (класична K_c = 4.0 без відгонки води)` },
+          { label: 'Рівноважний вихід естеру η', val: `${pct.toFixed(1)} % мол.` },
+          { label: 'Механізм за міченим ізотопом ¹⁸O', val: 'Ацил-кисневе розщеплення: −OH від карбонової кислоти, −¹⁸OR\' входить в естер' },
+          { label: 'Роль каталізатора H₂SO₄', val: `Протонує карбонільний О (прискорення у ${rateRel.toFixed(1)}×), не зміщує K_c` },
+          { label: 'Відведення води (насадка Діна–Старка)', val: `${(wRem * 100).toFixed(0)} %` }
+        ]);
+      }
+
+      update(dt) {
+        this.phase += dt;
+        this.syncVisuals();
+      }
+
+      dispose() {
+        this.arrows.forEach(a => a.dispose());
+        this.particles.dispose();
+      }
+    }
+
+    // ============================================================================
+    // 11.40 BIOPOLYMERS: α-HELIX PROTEIN & B-DNA DOUBLE HELIX
+    // ============================================================================
+    class ChemBiopolymersHelixSimulation {
+      constructor() {
+        this.params = sceneParams.chem_biopol;
+        this.group = new THREE.Group();
+        worldGroup.add(this.group);
+        this.phase = 0;
+        this.arrows = [];
+        this.particles = new EnergyParticleSystem(60);
+        this.strand1 = [];
+        this.strand2 = [];
+        this.rungs = [];
+        this.buildScene();
+        this.reset();
+      }
+
+      buildScene() {
+        const base = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.25, 5.2), createTechnicalMaterial(0x1e293b, 0.65, 0.25));
+        base.position.set(0, 0.125, 0);
+        base.receiveShadow = true;
+        this.group.add(base);
+
+        this.helixGroup = new THREE.Group();
+        this.helixGroup.position.set(0, 1.85, 0);
+        this.group.add(this.helixGroup);
+
+        for (let i = 0; i < 28; i++) {
+          const s1 = new THREE.Mesh(new THREE.SphereGeometry(0.14, 16, 16), createTechnicalMaterial(0x38bdf8, 0.25, 0.35));
+          const s2 = new THREE.Mesh(new THREE.SphereGeometry(0.14, 16, 16), createTechnicalMaterial(0xa855f7, 0.25, 0.35));
+          const rung = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1, 12), createTechnicalMaterial(0x10b981, 0.3, 0.3));
+          this.helixGroup.add(s1, s2, rung);
+          this.strand1.push(s1);
+          this.strand2.push(s2);
+          this.rungs.push(rung);
+        }
+
+        this.arrTm = new SmartVectorArrow('T_m', 0xef4444);
+        this.arrHbond = new SmartVectorArrow('N_H-зв', 0x10b981);
+        this.arrows.push(this.arrTm, this.arrHbond);
+      }
+
+      reset() {
+        this.phase = 0;
+        this.particles.clear();
+        this.syncVisuals();
+      }
+
+      onParamChange() {
+        this.syncVisuals();
+      }
+
+      syncVisuals() {
+        const mode = Math.round(this.params.biopolMode);
+        const gc = this.params.gcFraction;
+        const turns = Math.round(this.params.helixLength);
+        const tC = this.params.tempC;
+
+        const nBp = turns * 10;
+        const nHbonds = Math.round(nBp * (2 + gc / 100));
+        const tm = 64.9 + 0.41 * gc - 500 / nBp;
+        const meltFrac = 1 / (1 + Math.exp(-(tC - tm) / 3.5));
+
+        const activeCount = Math.min(28, turns * 4);
+        const up = new THREE.Vector3(0, 1, 0);
+        this.helixGroup.rotation.y = this.phase * 0.45;
+
+        for (let i = 0; i < 28; i++) {
+          const vis = i < activeCount;
+          this.strand1[i].visible = vis;
+          this.strand2[i].visible = vis && (mode === 2);
+          this.rungs[i].visible = vis;
+          if (!vis) continue;
+
+          const frac = (i / (activeCount - 1)) - 0.5;
+          const y = frac * 2.6;
+          const ang = (i / 4) * Math.PI * 2;
+          const rad = (mode === 2 ? 0.78 : 0.55) + meltFrac * 0.65 * Math.sin(i * 0.8 + this.phase * 3);
+
+          const p1 = new THREE.Vector3(Math.cos(ang) * rad, y, Math.sin(ang) * rad);
+          this.strand1[i].position.copy(p1);
+
+          if (mode === 2) {
+            const p2 = new THREE.Vector3(Math.cos(ang + Math.PI) * rad, y, Math.sin(ang + Math.PI) * rad);
+            this.strand2[i].position.copy(p2);
+
+            const isGC = ((i * 37) % 100) < gc;
+            this.rungs[i].material.color.setHex(isGC ? 0x10b981 : 0xf59e0b);
+            this.rungs[i].visible = meltFrac < 0.65;
+            this.rungs[i].position.copy(p1).add(p2).multiplyScalar(0.5);
+            this.rungs[i].scale.set(isGC ? 1.35 : 0.9, p1.distanceTo(p2), isGC ? 1.35 : 0.9);
+            this.rungs[i].quaternion.setFromUnitVectors(up, p2.clone().sub(p1).normalize());
+          } else {
+            // Protein alpha-helix: vertical H-bonds between i and i+4 along backbone
+            this.rungs[i].material.color.setHex(0x38bdf8);
+            this.rungs[i].position.set(p1.x, y + 0.18, p1.z);
+            this.rungs[i].scale.set(0.8, 0.35, 0.8);
+            this.rungs[i].quaternion.identity();
+          }
+        }
+
+        this.arrTm.update(new THREE.Vector3(-2.6, 0.5, 0), new THREE.Vector3(0, 1, 0), (tm / 100) * 2.2, uiState.showVectors, uiState.showLabels);
+        this.arrHbond.update(new THREE.Vector3(2.6, 0.5, 0), new THREE.Vector3(0, 1, 0), Math.min(2.4, nHbonds / 80), uiState.showVectors, uiState.showLabels);
+
+        updateEnergyUI(nHbonds, tm, (1 - meltFrac) * 100, 200, [
+          { label: 'Тип біополімерної спіралі', val: mode === 1 ? 'α-Спіраль білка Полінга–Корі (3.6 амінокислоти/виток)' : 'Подвійна спіраль B-ДНК Вотсона–Кріка (10 п.о./виток, крок 3.4 нм)' },
+          { label: 'Вміст пар Гуанін–Цитозин (% G≡C)', val: `${gc.toFixed(0)} % (3 водневі зв'язки на пару G≡C проти 2 у A=T)` },
+          { label: 'Сумарне число водневих зв\'язків N_HB', val: `${nHbonds} зв'язків на ${nBp} пар основ` },
+          { label: 'Температура плавлення спіралі T_m', val: `${tm.toFixed(1)} °C (за рівнянням Мармура–Доті)` },
+          { label: 'Частка нативної спіралі при T = ' + tC + ' °C', val: `${((1 - meltFrac) * 100).toFixed(1)} % (${meltFrac > 0.5 ? 'Теплова денатурація / плавлення!' : 'Нативна стабільна конформація'})` },
+          { label: 'Правила Чаргаффа для B-ДНК', val: `[G] = [C] = ${(gc / 2).toFixed(1)} %, [A] = [T] = ${((100 - gc) / 2).toFixed(1)} %` }
         ]);
       }
 
@@ -21411,10 +25491,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         formulaLatex: String.raw`m(\mathrm{Cu}) = \frac{M_{\mathrm{Cu}} \cdot I \cdot t}{z \cdot F}, \qquad V(\mathrm{O_2}) = \frac{I \cdot t}{4 F}\cdot 22.4\text{ L}`,
         liveLatexFn: p => {
           const F = 96485;
+          const z = Math.round(p.ionValence || 2);
+          const mMolar = z === 1 ? 107.87 : (z === 2 ? 63.55 : 196.97);
+          const sym = z === 1 ? 'Ag' : (z === 2 ? 'Cu' : 'Au');
           const qCoulomb = p.currentAmp * p.durationMin * 60;
-          const mCuGrams = (63.55 * qCoulomb) / (p.ionValence * F);
+          const mGrams = (mMolar * qCoulomb) / (z * F);
           const vO2Ml = (qCoulomb / (4 * F)) * 22414;
-          return String.raw`Q = ${qCoulomb.toFixed(0)}\text{ C}, \quad m = ${mCuGrams.toFixed(2)}\text{ g}, \quad V(\mathrm{O_2}) = ${vO2Ml.toFixed(0)}\text{ mL}`;
+          return String.raw`Q = ${qCoulomb.toFixed(0)}\text{ C}, \quad m(\mathrm{${sym}}) = ${mGrams.toFixed(2)}\text{ g}, \quad V(\mathrm{O_2}) = ${vO2Ml.toFixed(0)}\text{ mL}`;
         },
         sliders: [
           { label: 'Direct electrolysis current I', unit: 'A' },
@@ -21462,82 +25545,38 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_periodic: {
-        secTag: 'Section § C-11 — Atomic Structure · Periodic Law, Slater’s Effective Nuclear Charge Z_eff & Periodic Trends',
-        shortTitle: 'Periodic Law: Atomic Radius, Ionization Energy & χ',
-        subtitle: 'Periodic variation of atomic radius r_at, first ionization energy I₁, and Pauling electronegativity χ across periods and groups',
-        badge: 'Periodic Trends',
+        secTag: 'Section § C-11 — Atomic Structure · Mendeleev’s Periodic System (All 118 Elements), Slater’s Effective Nuclear Charge Z_eff & Periodic Trends',
+        shortTitle: 'Periodic Table of Elements (All 118): r_at, I₁ & χ',
+        subtitle: 'Complete 3D Periodic Table of all 118 chemical elements (Periods 1–7, Groups 1–18, s-, p-, d-, and f-blocks: Lanthanides & Actinides), atomic radius r_at, ionization energy I₁ & electronegativity χ',
+        badge: 'Periodic Table (118)',
         categoryGroupTitle: 'Part I. Atomic Structure, Chemical Bonding & Crystals',
-        title: 'Periodic Law: Atomic Radius, Ionization Energy I₁ & Electronegativity χ',
-        epigraph: 'Moving left to right across a period, effective nuclear charge Z_eff = Z − σ rises steadily, contracting the valence shell and binding electrons more tightly.',
-        figCaption: 'Fig. C-11.1 — 3D Bohr–Slater multi-shell atomic model and interactive 3D periodic property relief matrix (Periods 1–4, Main Groups IA–VIIIA)',
+        title: 'Periodic Table of Elements (118 Elements): Atomic Radius r_at, Ionization I₁ & χ',
+        epigraph: 'Moving left to right across a period, effective nuclear charge Z_eff = Z − σ rises steadily, contracting the valence shell, while stepping down to a new period adds a new principal electron shell.',
+        figCaption: 'Fig. C-11.1 — Complete 18-column 3D Mendeleev Periodic Table with all 118 elements (including d-block transition metals, 4f Lanthanides & 5f Actinides) and 7-shell 3D Bohr–Slater atomic model',
         ekLabel: 'Ionization I₁',
         epLabel: 'Radius r_at',
         qLabel: 'Charge Z_eff',
         referenceLatex: String.raw`\begin{aligned}
           Z_{\text{eff}} &= Z - \sigma, \qquad r_{\text{at}} \propto \frac{n^2 a_0}{Z_{\text{eff}}}, \qquad I_1 = E(\mathrm{X}^+) - E(\mathrm{X}^0) \\
-          \text{Across a period } (n = \text{const},\; Z\uparrow): &\quad Z_{\text{eff}}\uparrow \implies r_{\text{at}}\downarrow, \quad I_1\uparrow, \quad \chi\uparrow
+          \text{Periods } 1\text{–}7,\; \text{Groups } 1\text{–}18\;(Z = 1\dots 118): &\quad s\text{-},\; p\text{-},\; d\text{- and } f\text{-blocks (Lanthanides \& Actinides)}
         \end{aligned}`,
-        question: 'How do atomic radius $r_{\\text{at}}$, first ionization energy $I_1$, and electronegativity $\\chi$ change as you move from left to right across a single period of main-group elements?',
+        question: 'How do atomic radius $r_{\\text{at}}$, first ionization energy $I_1$, and electronegativity $\\chi$ change as you move from left to right across a single period of the Periodic Table?',
         options: [
           'Atomic radius $r_{\\text{at}}$ decreases (due to rising effective nuclear charge $Z_{\\text{eff}} = Z - \\sigma$ pulling the shell inward), while ionization energy $I_1$ and electronegativity $\\chi$ increase',
           'Atomic radius $r_{\\text{at}}$ increases and ionization energy $I_1$ decreases as electrons are added',
           'All three properties ($r_{\\text{at}}, I_1, \\chi$) remain constant across a period'
         ],
-        explanation: 'Across a period, electrons enter the same principal shell $n$ and shield one another poorly ($\\Delta\\sigma \\approx 0.35$), so Slater’s effective nuclear charge $Z_{\\text{eff}} = Z - \\sigma$ increases by $\\approx 0.65$ per step. Stronger Coulomb attraction contracts the valence shell ($r_{\\text{at}}$ decreases) and binds valence electrons more tightly ($I_1$ and $\\chi$ increase).',
+        explanation: 'Across a period, electrons enter the same outer shell $n$ and shield one another imperfectly, so Slater’s effective nuclear charge $Z_{\\text{eff}} = Z - \\sigma$ increases. Stronger Coulomb attraction contracts the valence shell ($r_{\\text{at}}$ decreases, including $d$-block and $4f$ lanthanide contraction) and binds valence electrons more tightly ($I_1$ and $\\chi$ increase).',
         formulaLatex: String.raw`Z_{\text{eff}} = Z - \sigma, \qquad r_{\text{at}} \approx \frac{n^2 a_0}{Z_{\text{eff}}}, \qquad I_1 \propto \frac{Z_{\text{eff}}^2}{n^2}`,
         liveLatexFn: p => {
-          const n = Math.round(p.periodN);
-          const g = Math.round(p.groupG);
-          const TABLE = {
-            1: [
-              { sym: 'H', z: 1, r: 53, i1: 13.60, chi: 2.20, zeff: 1.00 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 },
-              { sym: 'He', z: 2, r: 31, i1: 24.59, chi: 0.00, zeff: 1.70 }
-            ],
-            2: [
-              { sym: 'Li', z: 3, r: 167, i1: 5.39, chi: 0.98, zeff: 1.30 },
-              { sym: 'Be', z: 4, r: 112, i1: 9.32, chi: 1.57, zeff: 1.95 },
-              { sym: 'B', z: 5, r: 87, i1: 8.30, chi: 2.04, zeff: 2.60 },
-              { sym: 'C', z: 6, r: 67, i1: 11.26, chi: 2.55, zeff: 3.25 },
-              { sym: 'N', z: 7, r: 56, i1: 14.53, chi: 3.04, zeff: 3.90 },
-              { sym: 'O', z: 8, r: 48, i1: 13.62, chi: 3.44, zeff: 4.55 },
-              { sym: 'F', z: 9, r: 42, i1: 17.42, chi: 3.98, zeff: 5.20 },
-              { sym: 'Ne', z: 10, r: 38, i1: 21.56, chi: 0.00, zeff: 5.85 }
-            ],
-            3: [
-              { sym: 'Na', z: 11, r: 190, i1: 5.14, chi: 0.93, zeff: 2.20 },
-              { sym: 'Mg', z: 12, r: 145, i1: 7.65, chi: 1.31, zeff: 2.85 },
-              { sym: 'Al', z: 13, r: 118, i1: 5.99, chi: 1.61, zeff: 3.50 },
-              { sym: 'Si', z: 14, r: 111, i1: 8.15, chi: 1.90, zeff: 4.15 },
-              { sym: 'P', z: 15, r: 98, i1: 10.49, chi: 2.19, zeff: 4.80 },
-              { sym: 'S', z: 16, r: 88, i1: 10.36, chi: 2.58, zeff: 5.45 },
-              { sym: 'Cl', z: 17, r: 79, i1: 12.97, chi: 3.16, zeff: 6.10 },
-              { sym: 'Ar', z: 18, r: 71, i1: 15.76, chi: 0.00, zeff: 6.75 }
-            ],
-            4: [
-              { sym: 'K', z: 19, r: 243, i1: 4.34, chi: 0.82, zeff: 2.20 },
-              { sym: 'Ca', z: 20, r: 194, i1: 6.11, chi: 1.00, zeff: 2.85 },
-              { sym: 'Ga', z: 31, r: 136, i1: 6.00, chi: 1.81, zeff: 5.00 },
-              { sym: 'Ge', z: 32, r: 125, i1: 7.90, chi: 2.01, zeff: 5.65 },
-              { sym: 'As', z: 33, r: 114, i1: 9.79, chi: 2.18, zeff: 6.30 },
-              { sym: 'Se', z: 34, r: 103, i1: 9.75, chi: 2.55, zeff: 6.95 },
-              { sym: 'Br', z: 35, r: 94, i1: 11.81, chi: 2.96, zeff: 7.60 },
-              { sym: 'Kr', z: 36, r: 88, i1: 14.00, chi: 3.00, zeff: 8.25 }
-            ]
-          };
-          const el = (TABLE[n] || TABLE[2])[g - 1] || TABLE[2][0];
-          return String.raw`\mathrm{${el.sym}}\;(Z=${el.z}):\;\; Z_{\text{eff}} \approx ${el.zeff.toFixed(2)}, \quad r_{\text{at}} = ${el.r}\text{ pm}, \quad I_1 = ${el.i1.toFixed(2)}\text{ eV}, \quad \chi = ${el.chi > 0 ? el.chi.toFixed(2) : '\\text{inert}'}`;
+          const el = window.__resolvePeriodicElement ? window.__resolvePeriodicElement(p) : { sym: 'Fe', z: 26, n: 4, g: 8, block: 'd', r: 126, i1: 7.90, chi: 1.83, zeff: 3.75 };
+          return String.raw`\mathrm{${el.sym}}\;(Z=${el.z},\;\text{Per. }${el.n},\;\text{Grp. }${el.g},\;${el.block}\text{-block}):\;\; Z_{\text{eff}} \approx ${el.zeff.toFixed(2)}, \quad r_{\text{at}} = ${el.r}\text{ pm}, \quad I_1 = ${el.i1.toFixed(2)}\text{ eV}, \quad \chi = ${el.chi > 0 ? el.chi.toFixed(2) : '\\text{inert}'}`;
         },
         sliders: [
-          { label: 'Period n (number of electron shells)', unit: '' },
-          { label: 'Main group (IA–VIIIA, valence e⁻)', unit: 'e⁻' },
-          { label: '3D matrix relief (1=Radius r_at, 2=Ionization I₁, 3=Electroneg. χ)', unit: '' },
-          { label: 'External ionizing electric field E', unit: 'V/nm' }
+          { label: 'Atomic number Z (all 118 elements)', unit: '' },
+          { label: 'Period n (1–7, electron shells)', unit: '' },
+          { label: 'IUPAC Group (1–18: s-, d-, p-blocks)', unit: '' },
+          { label: '3D matrix relief (1=Radius r_at, 2=Ionization I₁, 3=Electroneg. χ)', unit: '' }
         ]
       },
       chem_hbond: {
@@ -21887,6 +25926,576 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Radical initiator concentration [I₂]', unit: 'mmol/L' },
           { label: 'Ethylene monomer concentration [CH₂=CH₂]', unit: 'mol/L' },
           { label: 'Polymerization reactor temperature T', unit: 'K' }
+        ]
+      },
+      chem_mo: {
+        section: '§ C-21',
+        title: 'Molecular Orbitals (LCAO–MO): Bonding σ/π, Antibonding σ*/π* & Bond Order',
+        subtitle: 'Chapter XXI. Quantum Chemistry: Wavefunction Interference (ψ_A ± ψ_B) & Paramagnetism of O₂',
+        question: 'In Molecular Orbital (MO) theory, how is the bond order $B$ defined, and why does the oxygen molecule $\\text{O}_2$ exhibit paramagnetism (attraction into a magnetic field)?',
+        options: [
+          'Bond order is $B = \\frac{1}{2}(N_b - N_a)$ ($B = 2$ for $\\text{O}_2$), and $\\text{O}_2$ is paramagnetic because two unpaired electrons occupy the two degenerate antibonding $\\pi_{2p}^*$ orbitals according to Hund’s rule',
+          'Bond order equals the sum of all valence electrons ($N_b + N_a$), and $\\text{O}_2$ is diamagnetic with all spins paired',
+          'Antibonding $\\sigma^*$ and $\\pi^*$ orbitals have lower energy than atomic orbitals and stabilize the molecule without nodes'
+        ],
+        explanation: 'Constructive interference of atomic wavefunctions ($\\psi_+ = c(\\psi_A + \\psi_B)$) builds electron density between nuclei, forming a lower-energy **bonding MO** ($\\sigma, \\pi$). Destructive interference ($\\psi_- = c(\\psi_A - \\psi_B)$) creates a nodal plane between nuclei and a higher-energy **antibonding MO** ($\\sigma^*, \\pi^*$). In $\\text{O}_2$ ($12$ valence electrons), the last two electrons singly occupy the degenerate $\\pi_{2p,x}^*$ and $\\pi_{2p,y}^*$ orbitals with parallel spins ($S = 1$), yielding bond order $B = \\frac{1}{2}(8 - 4) = 2.0$ and strong paramagnetism.',
+        formulaLatex: String.raw`\psi_{\pm} = \frac{\psi_A \pm \psi_B}{\sqrt{2(1 \pm S)}}, \qquad B = \frac{N_{\text{bond}} - N_{\text{anti}}}{2}, \qquad \mu_s = \sqrt{n(n+2)}\,\mu_B`,
+        liveLatexFn: p => {
+          const mols = [
+            { sym: 'H_2', nb: 2, na: 0, unp: 0, d0: 436 },
+            { sym: 'He_2', nb: 2, na: 2, unp: 0, d0: 0 },
+            { sym: 'N_2', nb: 8, na: 2, unp: 0, d0: 945 },
+            { sym: 'O_2', nb: 8, na: 4, unp: 2, d0: 498 },
+            { sym: 'F_2', nb: 8, na: 6, unp: 0, d0: 159 }
+          ];
+          const m = mols[Math.min(4, Math.max(0, Math.round(p.diatomicIdx) - 1))];
+          const bo = (m.nb - m.na) / 2;
+          const muB = Math.sqrt(m.unp * (m.unp + 2));
+          return String.raw`\mathrm{${m.sym}}: \quad N_b = ${m.nb},\; N_a = ${m.na} \;\Rightarrow\; B = ${bo.toFixed(1)}, \quad \mu_s = ${muB.toFixed(2)}\,\mu_B, \quad D_0 \approx ${m.d0}\text{ kJ/mol}`;
+        },
+        sliders: [
+          { label: 'Diatomic molecule (1=H₂, 2=He₂, 3=N₂, 4=O₂, 5=F₂)', unit: '' },
+          { label: 'Internuclear distance R', unit: 'Å' },
+          { label: 'Displayed MO (1=σ_g bonding, 2=σ*_u, 3=π_u, 4=π*_g)', unit: '' },
+          { label: 'Resonance overlap integral |β|', unit: 'eV' }
+        ]
+      },
+      chem_allotropes: {
+        section: '§ C-22',
+        title: 'Carbon Nanostructures & Allotropes: Buckminsterfullerene C₆₀, Nanotubes & Graphene',
+        subtitle: 'Chapter XXII. sp² Conjugation, Euler’s Polyhedron Theorem (12 Pentagons + 20 Hexagons) & Dirac Cones',
+        question: 'Why does graphene conduct electricity like a semimetal, and how many pentagonal and hexagonal faces form the truncated icosahedral cage of fullerene $\\text{C}_{60}$?',
+        options: [
+          'Each $sp^2$ carbon contributes one $2p_z$ electron to a delocalized $\\pi$-band, and by Euler’s theorem ($V - E + F = 2$) fullerene $\\text{C}_{60}$ consists of exactly $12$ pentagons and $20$ hexagons',
+          'Graphene and fullerene $\\text{C}_{60}$ have $sp^3$ diamond hybridization and are wide-bandgap insulators',
+          'A closed fullerene cage can be constructed purely from hexagonal rings without any pentagons'
+        ],
+        explanation: 'In graphene, carbon nanotubes (CNTs), and fullerenes, carbon atoms are predominantly $sp^2$-hybridized: three $\\sigma$-bonds form a honeycomb lattice while the fourth $2p_z$ electron enters a delocalized $\\pi$-system. By Euler’s polyhedron theorem ($V - E + F = 2$), closing a hexagonal sheet into a sphere requires **exactly $12$ pentagons**; in $\\text{C}_{60}$ ($V=60, E=90, F=32$) there are $12$ pentagons and $20$ hexagons. For $(n,0)$ zigzag nanotubes, the tube is metallic when $n$ is a multiple of $3$.',
+        formulaLatex: String.raw`V - E + F = 2 \;\Rightarrow\; N_{\text{pent}} = 12, \qquad d_{\text{CNT}} = \frac{a\sqrt{3}}{\pi}\sqrt{n^2 + nm + m^2}`,
+        liveLatexFn: p => {
+          const mode = Math.round(p.nanoMode);
+          const n = Math.round(p.chiralN);
+          const dCnt = mode === 3 ? 0.71 : (0.246 / Math.PI) * n;
+          const isMetal = (n % 3 === 0);
+          const eg = mode === 1 ? 0.0 : (mode === 3 ? 1.85 : (isMetal ? 0.0 : (0.85 / dCnt)));
+          const modeName = mode === 1 ? '\\text{Graphene 2D}' : (mode === 2 ? `\\text{CNT }(${n},0)` : '\\text{Fullerene C}_{60}');
+          return String.raw`${modeName}: \quad d = ${dCnt.toFixed(2)}\text{ nm}, \quad E_g \approx ${eg.toFixed(2)}\text{ eV}, \quad U = ${p.eFieldV.toFixed(1)}\text{ V}`;
+        },
+        sliders: [
+          { label: 'Carbon nanostructure (1=Graphene 2D, 2=Nanotube CNT, 3=Fullerene C₆₀)', unit: '' },
+          { label: 'Nanotube chirality index n in (n, 0)', unit: '' },
+          { label: 'Applied bias voltage U (π-electron drift)', unit: 'V' },
+          { label: 'Lattice temperature T (phonon vibrations)', unit: 'K' }
+        ]
+      },
+      chem_complex: {
+        section: '§ C-23',
+        title: 'Coordination Complexes & Crystal Field Theory (d-Orbital Splitting Δ_o)',
+        subtitle: 'Chapter XXIII. Octahedral [ML₆]ⁿ⁺ vs. Tetrahedral [ML₄]ⁿ⁺ Complexes, Spectrochemical Series & Color',
+        question: 'How do six ligands along the $\\pm x, \\pm y, \\pm z$ axes split the five degenerate $d$-orbitals in an octahedral complex $[\\text{ML}_6]^{n+}$, and when does a low-spin configuration form?',
+        options: [
+          'The $d$-level splits into a lower triplet $t_{2g}$ ($d_{xy}, d_{xz}, d_{yz}$) and an upper doublet $e_g$ ($d_{z^2}, d_{x^2-y^2}$) separated by $\\Delta_o$; strong-field ligands ($\\Delta_o > P$) produce a low-spin complex',
+          'All five $d$-orbitals shift equally in energy without splitting, so transition metal complexes are always colorless',
+          'In an octahedral field, the $d_{z^2}$ and $d_{x^2-y^2}$ orbitals lie lower in energy than $d_{xy}, d_{xz}, d_{yz}$'
+        ],
+        explanation: 'In an octahedral complex $[\\text{ML}_6]^{n+}$, ligand lone pairs approach directly along the coordinate axes, strongly repelling the axial $e_g$ orbitals ($d_{z^2}, d_{x^2-y^2}$) and raising their energy by $+0.6\\Delta_o$, while the inter-axial $t_{2g}$ orbitals ($d_{xy}, d_{xz}, d_{yz}$) are stabilized by $-0.4\\Delta_o$. When a strong-field ligand (such as $\\text{CN}^-$ or $\\text{CO}$) makes $\\Delta_o$ exceed the spin-pairing energy $P$, electrons pair up in the lower $t_{2g}$ level (**low-spin state**). Photons of wavelength $\\lambda_{\\text{abs}} = hc / \\Delta_o$ promote an electron across the gap ($d\\text{–}d$ transition), giving the solution its complementary color.',
+        formulaLatex: String.raw`\Delta_o = E(e_g) - E(t_{2g}) = \frac{h c}{\lambda_{\text{abs}}}, \qquad \text{CFSE} = (-0.4\,n_{t_{2g}} + 0.6\,n_{e_g})\Delta_o`,
+        liveLatexFn: p => {
+          const dN = Math.round(p.dElectrons);
+          const isOct = Math.round(p.coordGeom) === 1;
+          const deltaKj = isOct ? p.ligandFieldStrength : (p.ligandFieldStrength * 4 / 9);
+          const lamNm = (119626 / deltaKj);
+          const isLowSpin = isOct && (deltaKj >= 200) && (dN >= 4 && dN <= 7);
+          return String.raw`d^{${dN}}\text{ (${isLowSpin ? 'Low-Spin' : 'High-Spin'})}: \quad \Delta = ${deltaKj.toFixed(0)}\text{ kJ/mol}, \quad \lambda_{\text{abs}} = ${lamNm.toFixed(0)}\text{ nm}`;
+        },
+        sliders: [
+          { label: 'Central metal dⁿ electron count (d¹ … d⁹)', unit: 'e⁻' },
+          { label: 'Ligand field splitting Δ_o (spectrochemical series: Cl⁻ → H₂O → NH₃ → CN⁻)', unit: 'kJ/mol' },
+          { label: 'Metal–ligand coordinate bond length d(M←L)', unit: 'Å' },
+          { label: 'Coordination geometry (1=Octahedron [ML₆], 2=Tetrahedron [ML₄])', unit: '' }
+        ]
+      },
+      chem_bornhaber: {
+        section: '§ C-24',
+        title: 'Born–Haber Thermodynamic Cycle & Ionic Lattice Energy U_L',
+        subtitle: 'Chapter XXIV. Sublimation, Ionization, Bond Dissociation, Electron Affinity & Madelung Constant',
+        question: 'Why cannot the ionic lattice enthalpy $U_{\\text{lat}}$ of a crystal like $\\text{NaCl(s)}$ be measured directly in a single calorimeter run, and how is it determined via the Born–Haber cycle?',
+        options: [
+          'By Hess’s law, the closed thermodynamic cycle equates the standard enthalpy of formation $\\Delta H_f^\\circ$ to the sum of sublimation $\\Delta H_{\\text{sub}}$, dissociation $\\frac{1}{2}D_{\\text{X}_2}$, ionization $I_1$, electron affinity $E_{ea}$, and lattice formation $-U_{\\text{lat}}$',
+          'Lattice energy depends only on the melting point of the metal and is independent of ionic radii or charges',
+          'Electron affinity and ionization energy are always equal in magnitude and cancel out in every salt'
+        ],
+        explanation: 'Because gaseous ions ($\\text{M}^+\\text{(g)} + \\text{X}^-\\text{(g)}$) cannot be weighed into a calorimeter under standard conditions, Born and Haber applied **Hess’s Law** to construct a closed thermodynamic cycle: $\\Delta H_f^\\circ = \\Delta H_{\\text{sub}} + \\frac{1}{2}D(\\text{X}_2) + I_1(\\text{M}) + E_{ea}(\\text{X}) - U_{\\text{lat}}$. The endothermic steps of atomization and ionization are more than compensated by the huge exothermic electrostatic attraction when gaseous ions condense into the 3D crystal lattice ($U_{\\text{lat}} \\propto \\frac{N_A A z^+ z^- e^2}{4\\pi\\varepsilon_0 r_0}$).',
+        formulaLatex: String.raw`\Delta H_f^\circ = \Delta H_{\text{sub}} + \tfrac{1}{2}D_{\mathrm{X_2}} + I_1 + E_{ea} - U_{\text{lat}}, \qquad U_{\text{lat}} = \frac{N_A M z^+ z^- e^2}{4\pi\varepsilon_0 r_0}\left(1 - \frac{1}{n}\right)`,
+        liveLatexFn: p => {
+          const ea = -349;
+          const dhf = p.sublH + p.dissHalfD + p.ionizI1 + ea - p.latticeU;
+          return String.raw`\Delta H_f^\circ = ${p.sublH.toFixed(0)} + ${p.dissHalfD.toFixed(0)} + ${p.ionizI1.toFixed(0)} - 349 - ${p.latticeU.toFixed(0)} = ${dhf.toFixed(0)}\text{ kJ/mol}`;
+        },
+        sliders: [
+          { label: 'Metal sublimation enthalpy ΔH_sub(M)', unit: 'kJ/mol' },
+          { label: 'Halogen dissociation enthalpy ½D(X₂)', unit: 'kJ/mol' },
+          { label: 'Metal first ionization energy I₁(M → M⁺)', unit: 'kJ/mol' },
+          { label: 'Crystal lattice energy U_lat(M⁺ + X⁻ → MX)', unit: 'kJ/mol' }
+        ]
+      },
+      chem_dipole: {
+        section: '§ C-25',
+        title: 'Electronegativity, Bond Polarity & Molecular Dipole Moment Vector μ',
+        subtitle: 'Chapter XXV. Pauling Electronegativity Δχ, Partial Charges δ±, Vector Addition & Field Alignment',
+        question: 'Why does the bent water molecule $\\text{H}_2\\text{O}$ ($\\theta = 104.5^\\circ$) possess a large permanent dipole moment ($\\mu = 1.85\\text{ D}$), whereas linear carbon dioxide $\\text{CO}_2$ ($\\theta = 180^\\circ$) is nonpolar ($\\mu_{\\text{net}} = 0$)?',
+        options: [
+          'Molecular dipole moment is the vector sum $\\vec{\\mu}_{\\text{net}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$, yielding $\\mu_{\\text{net}} = 2\\mu_{\\text{bond}}\\cos(\\theta/2)$: at $\\theta = 180^\\circ$ ($\\cos 90^\\circ = 0$) the two polar bond vectors cancel exactly',
+          'Carbon and oxygen have identical electronegativities ($\\Delta\\chi = 0$), so individual $\\text{C=O}$ bonds are completely nonpolar',
+          'Dipole moment is a scalar sum of bond lengths and never depends on the bond angle $\\theta$'
+        ],
+        explanation: 'A difference in Pauling electronegativity $\\Delta\\chi = |\\chi_A - \\chi_B|$ shifts shared electron density toward the more electronegative atom, creating partial charges $\\pm\\delta q$ and a bond dipole vector $\\vec{\\mu}_{\\text{bond}} = \\delta q \\cdot \\vec{d}$ ($1\\text{ D} = 3.336\\times 10^{-30}\\text{ C}\\cdot\\text{m}$). For a symmetrical triatomic molecule $\\text{AB}_2$ with bond angle $\\theta$, vector addition gives $\\mu_{\\text{net}} = 2\\mu_{\\text{bond}}\\cos(\\theta/2)$. When $\\theta = 180^\\circ$ ($\\text{CO}_2$, $\\text{BeCl}_2$), the two equal and opposite bond dipoles cancel ($\\mu_{\\text{net}} = 0$).',
+        formulaLatex: String.raw`\mu_{\text{bond}} = \delta q \cdot d, \qquad \vec{\mu}_{\text{net}} = \sum_i \vec{\mu}_i \;\Rightarrow\; \mu_{\text{net}} = 2\mu_{\text{bond}}\cos\!\left(\frac{\theta}{2}\right), \qquad \vec{\tau} = \vec{\mu}\times\vec{E}`,
+        liveLatexFn: p => {
+          const muBond = 0.85 * p.deltaChi * p.bondLenA;
+          const halfRad = (p.bondAngleDeg * 0.5 * Math.PI) / 180;
+          const muNet = Math.max(0, 2 * muBond * Math.cos(halfRad));
+          const ionicPct = 100 * (1 - Math.exp(-0.25 * p.deltaChi * p.deltaChi));
+          return String.raw`\Delta\chi = ${p.deltaChi.toFixed(2)}, \quad \theta = ${p.bondAngleDeg.toFixed(1)}^\circ \;\Rightarrow\; \mu_{\text{bond}} = ${muBond.toFixed(2)}\text{ D}, \quad \mu_{\text{net}} = ${muNet.toFixed(2)}\text{ D} \;\;(${ionicPct.toFixed(0)}\%\text{ ionic})`;
+        },
+        sliders: [
+          { label: 'Pauling electronegativity difference Δχ = |χ_A − χ_B|', unit: '' },
+          { label: 'Valence bond angle θ (B–A–B)', unit: '°' },
+          { label: 'Interatomic bond length d(A–B)', unit: 'Å' },
+          { label: 'External electric field strength E', unit: 'kV/cm' }
+        ]
+      },
+      chem_phase: {
+        section: '§ C-26',
+        title: 'Phase Diagrams P–T, Triple Point, Critical Point & Supercritical Fluid',
+        subtitle: 'Chapter XXVI. Clausius–Clapeyron Equation, Dry Ice Sublimation & Water’s Negative Melting Slope',
+        question: 'What is unique about the triple point $(T_t, P_t)$ and critical point $(T_c, P_c)$ on a single-component $P\\text{–}T$ phase diagram, and why does the fusion curve of water have a negative slope $dP/dT < 0$?',
+        options: [
+          'At the triple point all three phases (solid, liquid, gas) coexist in equilibrium ($f = 0$); above $(T_c, P_c)$ the liquid–gas boundary vanishes into a supercritical fluid; for water $V_{\\text{liquid}} < V_{\\text{ice}}$, so by the Clapeyron equation $dP/dT = \\Delta H_{\\text{fus}}/(T\\Delta V) < 0$',
+          'Above the critical temperature $T_c$, a gas can always be liquefied simply by applying slightly more pressure',
+          'Carbon dioxide $\\text{CO}_2$ melts into a liquid at $1\\text{ atm}$ atmospheric pressure because its triple point lies below $0.1\\text{ atm}$'
+        ],
+        explanation: 'By **Gibbs’ Phase Rule** ($f = C - P + 2 = 3 - P$), three phases coexist only at a single invariant **triple point** ($f = 0$). For $\\text{CO}_2$, $P_t = 5.11\\text{ atm} > 1\\text{ atm}$, so at atmospheric pressure solid dry ice sublimes directly into gas at $-78.5\\,^\\circ\\text{C}$. Above the **critical point** ($T > T_c, P > P_c$), the density of gas equals that of liquid, the meniscus disappears, and the substance forms a **supercritical fluid**. For water, ice is less dense than liquid water ($\\Delta V_{\\text{fus}} < 0$), giving a negative Clapeyron melting slope $dP/dT < 0$.',
+        formulaLatex: String.raw`\frac{dP}{dT} = \frac{\Delta H_{\text{tr}}}{T\,\Delta V_{\text{tr}}}, \qquad \ln\frac{P_2}{P_1} = -\frac{\Delta H_{\text{vap}}}{R}\left(\frac{1}{T_2} - \frac{1}{T_1}\right), \qquad f = C - \Phi + 2`,
+        liveLatexFn: p => {
+          const isH2O = Math.round(p.substanceType) === 1;
+          const name = isH2O ? '\\mathrm{H_2O}' : '\\mathrm{CO_2}';
+          const tt = isH2O ? 273.16 : 216.58;
+          const pt = isH2O ? 0.006 : 5.11;
+          const tc = isH2O ? 647.1 : 304.1;
+          const pc = isH2O ? 217.7 : 72.8;
+          let phase = 'Gas (Vapor)';
+          if (p.tempK >= tc && p.pressAtm >= pc * 0.35) phase = 'Supercritical Fluid';
+          else if (p.tempK < tt) phase = p.pressAtm > pt ? 'Solid (Crystal)' : 'Gas (Sublimation)';
+          else phase = p.pressAtm > pt * Math.exp(3.2 * (1 - tt / p.tempK)) ? 'Liquid' : 'Gas (Vapor)';
+          return String.raw`${name}: \quad T = ${p.tempK.toFixed(0)}\text{ K},\; P = ${p.pressAtm.toFixed(1)}\text{ atm} \;\Rightarrow\; \text{Phase: \textbf{${phase}}}`;
+        },
+        sliders: [
+          { label: 'Substance (1=H₂O anomalous, 2=CO₂ dry ice / supercritical)', unit: '' },
+          { label: 'Absolute temperature T', unit: 'K' },
+          { label: 'External pressure P', unit: 'atm' },
+          { label: 'Latent heat input Q', unit: 'kJ/mol' }
+        ]
+      },
+      chem_arrhenius: {
+        section: '§ C-27',
+        title: 'Reaction Orders (0th, 1st & 2nd Order), Rate Laws & Half-Life t₁/₂',
+        subtitle: 'Chapter XXVII. Differential & Integrated Rate Equations, Linearization & Half-Life Scaling',
+        question: 'How does the half-life $t_{1/2}$ depend on the initial reactant concentration $[A]_0$ for reactions of zero ($n=0$), first ($n=1$), and second ($n=2$) kinetic order?',
+        options: [
+          'For 1st-order reactions $t_{1/2} = \\frac{\\ln 2}{k}$ is completely independent of $[A]_0$; for 0th-order $t_{1/2} = \\frac{[A]_0}{2k} \\propto [A]_0$; and for 2nd-order $t_{1/2} = \\frac{1}{k[A]_0} \\propto \\frac{1}{[A]_0}$',
+          'For every reaction order, the half-life $t_{1/2}$ is always constant and independent of initial concentration $[A]_0$',
+          'In a zero-order reaction, reactant concentration decays exponentially and never reaches zero'
+        ],
+        explanation: 'Integrating the differential rate law $-\\frac{d[A]}{dt} = k[A]^n$ yields three distinct concentration profiles: **0th order** ($n=0$, saturated heterogeneous catalysis): $[A](t) = [A]_0 - kt$, $t_{1/2} = \\frac{[A]_0}{2k}$; **1st order** ($n=1$, unimolecular decay): $[A](t) = [A]_0 e^{-kt}$, $t_{1/2} = \\frac{\\ln 2}{k} \\approx \\frac{0.693}{k}$ (independent of $[A]_0$); **2nd order** ($n=2$, bimolecular collisions): $\\frac{1}{[A](t)} = \\frac{1}{[A]_0} + kt$, $t_{1/2} = \\frac{1}{k[A]_0}$.',
+        formulaLatex: String.raw`-\frac{d[A]}{dt} = k[A]^n \;\Rightarrow\; \begin{cases} [A] = [A]_0 - kt, & t_{1/2} = \frac{[A]_0}{2k} \;\;(n=0) \\ [A] = [A]_0 e^{-kt}, & t_{1/2} = \frac{\ln 2}{k} \;\;(n=1) \\ \frac{1}{[A]} = \frac{1}{[A]_0} + kt, & t_{1/2} = \frac{1}{k[A]_0} \;\;(n=2) \end{cases}`,
+        liveLatexFn: p => {
+          const ord = Math.round(p.rxnOrder);
+          const a0 = p.initConcA0;
+          const k = p.rateConstK;
+          const t = p.elapsedTimeT;
+          let at = a0, tHalf = 0;
+          if (ord === 0) { at = Math.max(0, a0 - k * t); tHalf = a0 / (2 * k); }
+          else if (ord === 1) { at = a0 * Math.exp(-k * t); tHalf = Math.LN2 / k; }
+          else { at = a0 / (1 + a0 * k * t); tHalf = 1 / (k * a0); }
+          return String.raw`\text{Order } n = ${ord}: \quad [A](${t.toFixed(1)}\text{ s}) = ${at.toFixed(3)}\text{ M}, \quad t_{1/2} = ${tHalf.toFixed(2)}\text{ s}`;
+        },
+        sliders: [
+          { label: 'Reaction order n (0 = zero, 1 = first, 2 = second)', unit: '' },
+          { label: 'Initial reactant concentration [A]₀', unit: 'mol/L' },
+          { label: 'Rate constant k', unit: 's⁻¹' },
+          { label: 'Reaction time t', unit: 's' }
+        ]
+      },
+      chem_enzyme: {
+        section: '§ C-28',
+        title: 'Enzyme Catalysis, Michaelis–Menten Kinetics & Active-Site Inhibition',
+        subtitle: 'Chapter XXVIII. Enzyme–Substrate Complex [ES], Michaelis Constant K_M, Turnover k_cat & Competitive Inhibition',
+        question: 'Why does the reaction rate $v([S])$ of an enzyme-catalyzed reaction plateau at $V_{\\max} = k_{\\text{cat}}[E]_0$ at high substrate concentrations, and how does a competitive inhibitor $[I]$ alter $K_M$ and $V_{\\max}$?',
+        options: [
+          'At $[S] \\gg K_M$ all enzyme active sites are saturated in the $[ES]$ complex ($v \\to V_{\\max}$, 0th order in $[S]$); a competitive inhibitor increases the apparent Michaelis constant $K_M^{\\text{app}} = K_M(1 + [I]/K_I)$ without changing $V_{\\max}$',
+          'Reaction rate increases linearly with $[S]$ without bound, and a competitive inhibitor permanently destroys $V_{\\max}$',
+          'The Michaelis constant $K_M$ is the maximum possible velocity of the enzyme'
+        ],
+        explanation: 'In the **Michaelis–Menten mechanism** ($E + S \\rightleftharpoons ES \\xrightarrow{k_{\\text{cat}}} E + P$), the steady-state rate is $v = \\frac{V_{\\max}[S]}{K_M + [S]}$, where $V_{\\max} = k_{\\text{cat}}[E]_0$ and $K_M$ is the substrate concentration at which $v = \\frac{1}{2}V_{\\max}$. At low $[S] \\ll K_M$, $v \\approx \\frac{V_{\\max}}{K_M}[S]$ (1st order); at high $[S] \\gg K_M$, active sites are fully saturated and $v \\to V_{\\max}$ (0th order). A **competitive inhibitor** $I$ competes with $S$ for the active site, raising $K_M^{\\text{app}} = K_M(1 + [I]/K_I)$ while leaving $V_{\\max}$ unchanged at high $[S]$.',
+        formulaLatex: String.raw`E + S \underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} ES \overset{k_{\text{cat}}}{\longrightarrow} E + P, \qquad v = \frac{V_{\max}[S]}{K_M\left(1 + \frac{[I]}{K_I}\right) + [S]}`,
+        liveLatexFn: p => {
+          const vmax = p.kCat * 1.0;
+          const kmApp = p.kmVal * (1 + p.inhibitorI / 2.0);
+          const v = (vmax * p.substrateS) / (kmApp + p.substrateS);
+          const satPct = (100 * p.substrateS) / (kmApp + p.substrateS);
+          return String.raw`V_{\max} = ${vmax.toFixed(1)}\;\mu\text{M/s}, \quad K_M^{\text{app}} = ${kmApp.toFixed(2)}\text{ mM} \;\Rightarrow\; v = ${v.toFixed(1)}\;\mu\text{M/s} \;\;(\theta_{ES} = ${satPct.toFixed(0)}\%)`;
+        },
+        sliders: [
+          { label: 'Substrate concentration [S]', unit: 'mM' },
+          { label: 'Michaelis constant K_M (inverse affinity)', unit: 'mM' },
+          { label: 'Catalytic turnover number k_cat', unit: 's⁻¹' },
+          { label: 'Competitive inhibitor concentration [I]', unit: 'mM' }
+        ]
+      },
+      chem_gibbs: {
+        section: '§ C-29',
+        title: 'Gibbs Free Energy ΔG = ΔH − TΔS, Entropy & Reaction Spontaneity',
+        subtitle: 'Chapter XXIX. Enthalpy vs. Entropy Driving Forces, Inversion Temperature T* = ΔH/ΔS & Equilibrium K_eq',
+        question: 'Under what thermodynamic condition is an endothermic chemical reaction ($\\Delta H > 0$) spontaneous ($\\Delta G < 0$) at constant temperature and pressure?',
+        options: [
+          'When the entropy change of the system is positive ($\\Delta S > 0$) and the absolute temperature exceeds the inversion temperature $T > T^* = \\frac{\\Delta H}{\\Delta S}$, so that $T\\Delta S > \\Delta H$',
+          'Endothermic reactions ($\\Delta H > 0$) can never occur spontaneously at any temperature',
+          'When $\\Delta S < 0$ and the temperature approaches absolute zero ($T \\to 0\\text{ K}$)'
+        ],
+        explanation: 'At constant $T$ and $P$, the criterion for spontaneity is the **Gibbs free energy** change $\\Delta G = \\Delta H - T\\Delta S < 0$, which is linked to the equilibrium constant via $\\Delta G^\\circ = -RT\\ln K_{eq}$. There are four regimes: 1) $\\Delta H < 0, \\Delta S > 0$: spontaneous at all $T$; 2) $\\Delta H > 0, \\Delta S < 0$: non-spontaneous at all $T$; 3) $\\Delta H < 0, \\Delta S < 0$: spontaneous below $T^* = \\Delta H / \\Delta S$; 4) $\\Delta H > 0, \\Delta S > 0$ (entropy-driven endothermic processes): spontaneous above $T > T^* = \\Delta H / \\Delta S$.',
+        formulaLatex: String.raw`\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ = -RT\ln K_{eq}, \qquad T_{\text{inv}}^* = \frac{\Delta H^\circ}{\Delta S^\circ}`,
+        liveLatexFn: p => {
+          const dg = p.deltaH - (p.tempK * p.deltaS) / 1000.0;
+          const lnK = (-dg * 1000) / (8.314 * p.tempK);
+          const logK = lnK / Math.LN10;
+          const spont = dg < -0.5 ? '\\text{Spontaneous } (\\Delta G < 0)' : (dg > 0.5 ? '\\text{Non-spontaneous } (\\Delta G > 0)' : '\\text{Equilibrium } (\\Delta G \\approx 0)');
+          return String.raw`\Delta G^\circ = ${p.deltaH.toFixed(0)} - ${p.tempK.toFixed(0)}\cdot(${(p.deltaS / 1000).toFixed(3)}) = ${dg.toFixed(1)}\text{ kJ/mol}, \quad \lg K_{eq} = ${logK.toFixed(2)} \;\;(${spont})`;
+        },
+        sliders: [
+          { label: 'Reaction enthalpy ΔH° (− exo, + endo)', unit: 'kJ/mol' },
+          { label: 'Reaction entropy ΔS°', unit: 'J/(mol·K)' },
+          { label: 'Absolute temperature T', unit: 'K' },
+          { label: 'System pressure P', unit: 'atm' }
+        ]
+      },
+      chem_haber: {
+        section: '§ C-30',
+        title: 'Industrial Ammonia Synthesis (Haber–Bosch Process): N₂ + 3H₂ ⇄ 2NH₃',
+        subtitle: 'Chapter XXX. Thermodynamic Yield vs. Kinetic Rate Optimization on Promoted Iron Catalyst at 450 °C & 200 atm',
+        question: 'Why is industrial ammonia synthesis ($\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3,\\; \\Delta H^\\circ = -92.4\\text{ kJ/mol}$) operated at a compromise temperature of $400\\text{–}500\\,^\\circ\\text{C}$ and high pressure ($150\\text{–}300\\text{ atm}$) over an iron catalyst?',
+        options: [
+          'High pressure shifts equilibrium toward fewer gas moles ($4\\text{ mol} \\to 2\\text{ mol NH}_3$); because the reaction is exothermic, low $T$ favors equilibrium yield, but $450\\,^\\circ\\text{C}$ plus an $\\text{Fe}$ catalyst is required to cleave the triple bond $\\text{N}\\equiv\\text{N}$ at a practical rate',
+          'Adding an iron catalyst shifts the equilibrium constant $K_p$ to $100\\%$ yield at any temperature',
+          'Ammonia synthesis is endothermic and proceeds with an increase in gas volume, so low pressure and $2000\\,^\\circ\\text{C}$ maximize yield'
+        ],
+        explanation: 'The reaction $\\text{N}_2\\text{(g)} + 3\\text{H}_2\\text{(g)} \\rightleftharpoons 2\\text{NH}_3\\text{(g)}$ ($\\Delta H^\\circ = -92.4\\text{ kJ/mol}$) reduces the number of gas molecules from $4$ to $2$ ($\\Delta n_{\\text{gas}} = -2$). By Le Chatelier’s principle, **high pressure** ($150\\text{–}300\\text{ atm}$) strongly increases equilibrium $\\text{NH}_3$ yield. Although lower temperature favors the exothermic equilibrium, the $\\text{N}\\equiv\\text{N}$ triple bond ($945\\text{ kJ/mol}$) is kinetically inert at room temperature. A promoted porous **iron ($\\text{Fe}$) catalyst** dissociatively chemisorbs $\\text{N}_2$ and $\\text{H}_2$, allowing rapid synthesis at the industrial compromise temperature of $400\\text{–}500\\,^\\circ\\text{C}$.',
+        formulaLatex: String.raw`\mathrm{N_2(g) + 3H_2(g) \rightleftharpoons 2NH_3(g)}, \quad \Delta H^\circ = -92.4\text{ kJ/mol}, \quad K_p = \frac{P_{\mathrm{NH_3}}^2}{P_{\mathrm{N_2}}\,P_{\mathrm{H_2}}^3}`,
+        liveLatexFn: p => {
+          const tk = p.tempC + 273.15;
+          const logKp = 2018 / tk - 4.38;
+          const kp = Math.pow(10, logKp);
+          const xEq = Math.min(96, (100 * Math.sqrt(kp) * Math.pow(p.pressAtm, 0.85)) / (1 + Math.sqrt(kp) * Math.pow(p.pressAtm, 0.85)));
+          return String.raw`T = ${p.tempC.toFixed(0)}\,^\circ\text{C},\; P = ${p.pressAtm.toFixed(0)}\text{ atm} \;\Rightarrow\; K_p = ${kp.toExponential(2)}\text{ atm}^{-2}, \quad \eta_{\text{eq}}(\mathrm{NH_3}) \approx ${xEq.toFixed(1)}\%`;
+        },
+        sliders: [
+          { label: 'Synthesis column pressure P', unit: 'atm' },
+          { label: 'Catalyst bed temperature t', unit: '°C' },
+          { label: 'Promoted Fe catalyst activity', unit: '' },
+          { label: 'Feed stoichiometric ratio [H₂]:[N₂]', unit: '' }
+        ]
+      },
+      chem_raoult: {
+        section: '§ C-31',
+        title: 'Raoult’s Law & Colligative Properties: Ebullioscopy ΔT_b & Cryoscopy ΔT_f',
+        subtitle: 'Chapter XXXI. Vapor Pressure Lowering ΔP = χ₂P°, Boiling Point Elevation & Freezing Point Depression',
+        question: 'Why does spreading salt ($\\text{NaCl}$, $i \\approx 2$ or $\\text{CaCl}_2$, $i \\approx 3$) melt ice on winter roads, and why does an aqueous solution boil at a temperature above $100\\,^\\circ\\text{C}$?',
+        options: [
+          'Non-volatile solute particles lower the solvent’s saturated vapor pressure by Raoult’s law ($\\Delta P = \\chi_{\\text{solute}} P_0^\\circ$), shifting freezing down by $\\Delta T_f = i K_f m$ and boiling up by $\\Delta T_b = i K_b m$',
+          'Dissolving salt chemically reacts with ice to generate combustion flames that raise water’s vapor pressure',
+          'Colligative properties depend only on the color of the solute and are independent of molality $m$ or the van ’t Hoff factor $i$'
+        ],
+        explanation: 'According to **Raoult’s Law**, a non-volatile solute lowers the mole fraction of solvent at the surface and reduces its chemical potential, depressing the equilibrium vapor pressure: $P = \\chi_1 P_0^\\circ \\Rightarrow \\Delta P = P_0^\\circ - P = \\chi_2 P_0^\\circ$. Because the solution’s vapor pressure curve lies below that of pure water, a higher temperature is needed to reach $1\\text{ atm}$ (**boiling point elevation** $\\Delta T_b = i K_b m$, $K_b = 0.512\\text{ K}\\cdot\\text{kg/mol}$) and a lower temperature is required to freeze (**freezing point depression** $\\Delta T_f = i K_f m$, $K_f = 1.86\\text{ K}\\cdot\\text{kg/mol}$).',
+        formulaLatex: String.raw`P = \chi_1 P_0^\circ, \qquad \Delta T_b = i\,K_b\,m, \qquad \Delta T_f = i\,K_f\,m, \qquad \chi_2 = \frac{i\,m}{55.5 + i\,m}`,
+        liveLatexFn: p => {
+          const effM = p.vantHoffI * p.molalityM;
+          const dtb = 0.512 * effM;
+          const dtf = 1.86 * effM;
+          const x2 = effM / (55.5 + effM);
+          const pSol = p.vaporP0 * (1 - x2);
+          return String.raw`i\cdot m = ${effM.toFixed(2)}\text{ mol/kg}: \quad P = ${pSol.toFixed(2)}\text{ kPa}, \quad T_{\text{boil}} = ${(100 + dtb).toFixed(2)}\,^\circ\text{C}, \quad T_{\text{freeze}} = ${(-dtf).toFixed(2)}\,^\circ\text{C}`;
+        },
+        sliders: [
+          { label: 'Solute molality m (moles per 1 kg H₂O)', unit: 'mol/kg' },
+          { label: 'Van ’t Hoff factor i (1=glucose, 2=NaCl, 3=CaCl₂)', unit: '' },
+          { label: 'Pure solvent vapor pressure P₀°', unit: 'kPa' },
+          { label: 'Manometer bath temperature t', unit: '°C' }
+        ]
+      },
+      chem_chromatography: {
+        section: '§ C-32',
+        title: 'Chromatography (TLC & Column): Partition Coefficient K_d & Retention Factor R_f',
+        subtitle: 'Chapter XXXII. Stationary Silica Gel vs. Mobile Eluent Phase & Mixture Separation of Plant Pigments',
+        question: 'On a polar silica gel ($\\text{SiO}_2\\cdot x\\text{H}_2\\text{O}$) thin-layer chromatography (TLC) plate, why do non-polar $\\beta$-carotene molecules travel near the solvent front ($R_f \\approx 0.90$) while polar chlorophyll $b$ migrates slowly ($R_f \\approx 0.25$)?',
+        options: [
+          'Polar silanol groups ($\\text{–Si–OH}$) strongly adsorb polar molecules via hydrogen bonds and dipole interactions (large $K_d$), whereas non-polar molecules stay dissolved in the moving eluent ($R_f = z_i / z_f \\to 1$)',
+          'Retention factor $R_f$ depends only on gravity and is always greater than $2.0$',
+          'Polar molecules are repelled by polar silica gel and always move faster than the solvent front'
+        ],
+        explanation: 'Chromatographic separation relies on continuous partitioning of analytes between a **stationary phase** (polar silica gel $\\text{SiO}_2$ with surface $\\text{–OH}$ groups) and a **mobile eluent phase** rising by capillary action. Each component $i$ has a characteristic **retention factor** $R_{f,i} = \\frac{z_i}{z_{\\text{front}}} = \\frac{1}{1 + k_i}$, where $z_i$ is the distance traveled by spot $i$ and $z_{\\text{front}}$ is the solvent front height. Increasing eluent polarity increases elution strength $\\varepsilon^\\circ$, raising $R_f$ for all components.',
+        formulaLatex: String.raw`R_f = \frac{z_{\text{spot}}}{z_{\text{front}}} = \frac{1}{1 + K_d\,(V_s / V_m)}, \qquad R_s = \frac{2(z_2 - z_1)}{w_1 + w_2}`,
+        liveLatexFn: p => {
+          const pol = p.eluentPolarity;
+          const act = p.sorbentAct;
+          const rf1 = Math.min(0.96, (0.78 + 0.18 * pol) / (0.85 + 0.15 * act));
+          const rf2 = Math.min(0.88, (0.38 + 0.42 * pol) / (0.75 + 0.25 * act));
+          const rf3 = Math.min(0.75, (0.12 + 0.48 * pol) / (0.70 + 0.30 * act));
+          return String.raw`z_f = ${p.frontHeight.toFixed(1)}\text{ cm}: \quad R_f(\text{Carotene}) = ${rf1.toFixed(2)}, \quad R_f(\text{Chl }a) = ${rf2.toFixed(2)}, \quad R_f(\text{Chl }b) = ${rf3.toFixed(2)}`;
+        },
+        sliders: [
+          { label: 'Mobile phase (eluent) polarity ε°', unit: '' },
+          { label: 'Solvent front migration height z_front', unit: 'cm' },
+          { label: 'Silica gel stationary phase activity', unit: '' },
+          { label: 'Applied sample spot volume V_sample', unit: 'μL' }
+        ]
+      },
+      chem_adsorption: {
+        section: '§ C-33',
+        title: 'Surface Adsorption & the Langmuir Isotherm: θ = K·P / (1 + K·P)',
+        subtitle: 'Chapter XXXIII. Dynamic Adsorption–Desorption Equilibrium on Activated Carbon & Monolayer Saturation',
+        question: 'Why does the fractional surface coverage $\\theta(P)$ in the Langmuir adsorption isotherm rise linearly at low gas pressures ($\\theta \\approx KP$) but approach a horizontal asymptote $\\theta \\to 1$ at high pressures, and how does heating affect physisorption?',
+        options: [
+          'A solid surface has a finite number of active sites ($\\theta \\to 1$ when the monolayer is full); because adsorption is exothermic ($\\Delta H_{\\text{ads}} < 0$), raising temperature $T$ decreases $K(T)$ and promotes desorption',
+          'Surface coverage $\\theta$ grows linearly to infinity with pressure, and heating always increases gas adsorption',
+          'At equilibrium, all gas molecules freeze permanently onto the surface with zero desorption rate'
+        ],
+        explanation: 'Irving Langmuir modeled a crystal or activated-carbon surface as an array of $N_0$ equivalent adsorption sites. Dynamic equilibrium is reached when the adsorption rate equals the desorption rate: $k_a P (1 - \\theta) = k_d \\theta$, yielding the **Langmuir Isotherm** $\\theta = \\frac{K P}{1 + K P}$ where $K = k_a / k_d = K_0 e^{Q_{\\text{ads}} / (RT)}$. Because gas adsorption reduces translational entropy ($\\Delta S_{\\text{ads}} < 0$), spontaneous adsorption is always **exothermic** ($\\Delta H_{\\text{ads}} = -Q_{\\text{ads}} < 0$), so heating shifts equilibrium toward desorption.',
+        formulaLatex: String.raw`r_{\text{ads}} = k_a P(1-\theta) = r_{\text{des}} = k_d\theta \;\Rightarrow\; \theta(P,T) = \frac{K(T)\,P}{1 + K(T)\,P}, \qquad K(T) = K_0\exp\!\left(\frac{Q_{\text{ads}}}{RT}\right)`,
+        liveLatexFn: p => {
+          const kEff = p.langmuirK0 * Math.exp((p.qAdsKj * 1000) / (8.314 * p.tempK) - (p.qAdsKj * 1000) / (8.314 * 300));
+          const theta = (kEff * p.gasPressP) / (1 + kEff * p.gasPressP);
+          return String.raw`K(${p.tempK.toFixed(0)}\text{ K}) = ${kEff.toFixed(2)}\text{ atm}^{-1}, \quad P = ${p.gasPressP.toFixed(2)}\text{ atm} \;\Rightarrow\; \theta = ${(theta * 100).toFixed(1)}\%\text{ monolayer}`;
+        },
+        sliders: [
+          { label: 'Adsorbate gas pressure P', unit: 'atm' },
+          { label: 'Surface temperature T', unit: 'K' },
+          { label: 'Adsorption affinity constant K₀ (at 300 K)', unit: 'atm⁻¹' },
+          { label: 'Heat of adsorption Q_ads = −ΔH_ads', unit: 'kJ/mol' }
+        ]
+      },
+      chem_colloids: {
+        section: '§ C-34',
+        title: 'Colloidal Systems, Micelle Structure, Tyndall Cone & Schulze–Hardy Coagulation',
+        subtitle: 'Chapter XXXIV. Rayleigh Light Scattering (I ∝ d⁶/λ⁴), Zeta Potential ζ & Coagulation by Multivalent Ions (z⁶)',
+        question: 'How can a colloidal sol (particle size $1\\text{–}100\\text{ nm}$) be distinguished optically from a true solution, and why is $\\text{Al}^{3+}$ ($z=3$) hundreds of times more effective at coagulating a negatively charged sol than $\\text{Na}^+$ ($z=1$)?',
+        options: [
+          'Colloidal micelles scatter a laser beam into a visible **Tyndall cone** ($I_s \\propto d^6 / \\lambda^4$); by the Schulze–Hardy and DLVO rules, the critical coagulation concentration scales inversely with the 6th power of counter-ion charge ($\\text{CCC} \\propto z^{-6}$, so $1 : 3^{-6} = 1 : 729$)',
+          'True molecular solutions scatter light much more strongly than colloids, and counter-ion charge $z$ has no effect on coagulation',
+          'Adding electrolyte increases the Zeta potential $\\zeta$ to infinity and prevents micelles from ever colliding'
+        ],
+        explanation: 'Colloidal micelles ($1\\text{–}100\\text{ nm}$, such as gold sol or $\\text{Fe(OH)}_3$ sol) are stabilized against van der Waals attraction by electrostatic repulsion of their electrical double layers, characterized by the **zeta potential** $\\zeta$. When a laser beam passes through the sol, particles scatter light with Rayleigh intensity $I_{\\text{scat}} \\propto \\frac{N d^6}{\\lambda^4}$, forming a glowing **Tyndall cone**. Adding an electrolyte compresses the diffuse double layer; by the **Schulze–Hardy rule** (derived from DLVO theory), the critical coagulation concentration drops as $\\text{CCC} \\propto \\frac{1}{z^6}$ ($\\text{Na}^+ : \\text{Ca}^{2+} : \\text{Al}^{3+} \\approx 1 : 64 : 729$).',
+        formulaLatex: String.raw`I_{\text{Tyndall}} \propto I_0\,\frac{N\,d^6}{\lambda^4}, \qquad \zeta = \frac{\sigma\,\kappa^{-1}}{\varepsilon\varepsilon_0}, \qquad \text{CCC} \propto \frac{1}{z^6}\;\;(\text{Schulze–Hardy})`,
+        liveLatexFn: p => {
+          const z = Math.round(p.counterIonZ);
+          const ccc = 120.0 / Math.pow(z, 6);
+          const zetaMv = Math.max(2, 52 * Math.exp(-p.electrolyteC / Math.max(0.15, ccc)));
+          const state = zetaMv < 18 ? '\\text{Coagulation (Flocculation!)}' : '\\text{Stable Colloidal Sol}';
+          return String.raw`d = ${p.particleSizeNm.toFixed(0)}\text{ nm}, \quad z = +${z}\;\;(\text{CCC} \approx ${ccc.toFixed(2)}\text{ mM}) \;\Rightarrow\; |\zeta| = ${zetaMv.toFixed(1)}\text{ mV} \;\;(${state})`;
+        },
+        sliders: [
+          { label: 'Colloidal micelle core diameter d', unit: 'nm' },
+          { label: 'Coagulating electrolyte concentration C', unit: 'mmol/L' },
+          { label: 'Coagulating counter-ion charge z (1=Na⁺, 2=Ca²⁺, 3=Al³⁺)', unit: '' },
+          { label: 'Laser beam wavelength λ', unit: 'nm' }
+        ]
+      },
+      chem_hydrolysis: {
+        section: '§ C-35',
+        title: 'Salt Hydrolysis in Aqueous Solution: K_h = K_w / K_a, Degree h & Medium pH',
+        subtitle: 'Chapter XXXV. Proton Exchange of Weak-Acid Anions (CH₃COO⁻, CO₃²⁻) & Weak-Base Cations (NH₄⁺, Al³⁺)',
+        question: 'Why does an aqueous solution of sodium acetate $\\text{CH}_3\\text{COONa}$ turn phenolphthalein pink ($\\text{pH} > 7$, alkaline), whereas ammonium chloride $\\text{NH}_4\\text{Cl}$ gives an acidic reaction ($\\text{pH} < 7$)?',
+        options: [
+          'Hydrolysis is driven by the ion of the weak electrolyte: $\\text{CH}_3\\text{COO}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{CH}_3\\text{COOH} + \\text{OH}^-$ releases $\\text{OH}^-$ ($\\text{pH} > 7$), whereas $\\text{NH}_4^+ + \\text{H}_2\\text{O} \\rightleftharpoons \\text{NH}_3\\cdot\\text{H}_2\\text{O} + \\text{H}_3\\text{O}^+$ releases $\\text{H}_3\\text{O}^+$ ($\\text{pH} < 7$)',
+          'All salts in water always have a strictly neutral $\\text{pH} = 7.00$ regardless of the parent acid or base strength',
+          'Heating a salt solution completely stops hydrolysis because $K_w$ drops to zero at $80\\,^\\circ\\text{C}$'
+        ],
+        explanation: '**Salt hydrolysis** is the protolytic reaction of salt ions with water to form a weak electrolyte. 1) **Salt of a weak acid & strong base** ($\\text{CH}_3\\text{COONa}$): anion hydrolysis $\\text{A}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{HA} + \\text{OH}^-$, $K_h = K_w / K_a$, $\\text{pH} = 7 + \\frac{1}{2}(\\text{p}K_a + \\lg C) > 7$. 2) **Salt of a strong acid & weak base** ($\\text{NH}_4\\text{Cl}$): cation hydrolysis $\\text{BH}^+ + \\text{H}_2\\text{O} \\rightleftharpoons \\text{B} + \\text{H}_3\\text{O}^+$, $K_h = K_w / K_b$, $\\text{pH} = 7 - \\frac{1}{2}(\\text{p}K_b - \\lg C) < 7$. Dilution ($C \\downarrow$) and heating ($K_w \\uparrow$) both increase the degree of hydrolysis $h = \\sqrt{K_h / C}$.',
+        formulaLatex: String.raw`K_h = \frac{K_w}{K_{\text{weak}}}, \qquad h = \sqrt{\frac{K_h}{C}}, \qquad \mathrm{pH} = \begin{cases} 7 + \tfrac{1}{2}(\mathrm{p}K_a + \lg C) & (\text{Weak Acid + Strong Base}) \\ 7 - \tfrac{1}{2}(\mathrm{p}K_b - \lg C) & (\text{Strong Acid + Weak Base}) \end{cases}`,
+        liveLatexFn: p => {
+          const st = Math.round(p.saltType);
+          const cEff = p.saltConcC / Math.max(1, p.dilutionFactor);
+          const kwFactor = Math.exp(0.068 * (p.tempC - 25));
+          const kw = 1e-14 * kwFactor;
+          let ph = 7.0, hPct = 0, name = 'NaCl';
+          if (st === 2) {
+            name = 'CH_3COONa';
+            const kh = kw / 1.8e-5;
+            const oh = Math.sqrt(kh * cEff);
+            ph = Math.min(11.5, 14 + Math.log10(oh));
+            hPct = 100 * Math.sqrt(kh / cEff);
+          } else if (st === 3) {
+            name = 'NH_4Cl';
+            const kh = kw / 1.8e-5;
+            const h = Math.sqrt(kh * cEff);
+            ph = Math.max(3.0, -Math.log10(h));
+            hPct = 100 * Math.sqrt(kh / cEff);
+          } else if (st === 4) {
+            name = 'Na_2CO_3';
+            const kh = kw / 2.1e-4;
+            const oh = Math.sqrt(kh * cEff);
+            ph = Math.min(12.2, 14 + Math.log10(oh));
+            hPct = 100 * Math.sqrt(kh / cEff);
+          }
+          return String.raw`\mathrm{${name}}\;\;(C = ${cEff.toFixed(3)}\text{ M}): \quad h = ${hPct.toFixed(3)}\%, \quad \mathrm{pH} = ${ph.toFixed(2)}`;
+        },
+        sliders: [
+          { label: 'Salt (1=NaCl, 2=CH₃COONa, 3=NH₄Cl, 4=Na₂CO₃)', unit: '' },
+          { label: 'Initial salt concentration C₀', unit: 'mol/L' },
+          { label: 'Solution temperature t (K_w rises with T)', unit: '°C' },
+          { label: 'Water dilution factor (V / V₀)', unit: '×' }
+        ]
+      },
+      chem_corrosion: {
+        section: '§ C-36',
+        title: 'Electrochemical Corrosion of Metals & Sacrificial Anode Cathodic Protection',
+        subtitle: 'Chapter XXXVI. Microgalvanic Cells (Fe | Zn vs. Fe | Cu), Oxygen Depolarization & Rust Formation',
+        question: 'Why does a scratch in a zinc coating (galvanized steel, $E^\\circ_{\\text{Zn}} = -0.76\\text{ V}$) still protect the underlying iron ($E^\\circ_{\\text{Fe}} = -0.44\\text{ V}$) from rusting, whereas a scratch in a tin or copper coating ($E^\\circ_{\\text{Cu}} = +0.34\\text{ V}$) drastically accelerates iron corrosion?',
+        options: [
+          'In the galvanic couple, the metal with the more negative standard electrode potential acts as the **anode** and dissolves: $\\text{Zn}$ sacrifices itself to protect $\\text{Fe}$ (cathode), whereas when coupled with $\\text{Cu}$, iron becomes the anode ($\\text{Fe} \\to \\text{Fe}^{2+} + 2e^-$) and corrodes rapidly',
+          'Zinc mechanically seals oxygen out from a distance without any electron transfer',
+          'Copper has a more negative potential than iron and dissolves first in salt water'
+        ],
+        explanation: 'Electrochemical corrosion operates as a short-circuited **microgalvanic cell** on the metal surface beneath an electrolyte film. The metal with the lower electrode potential serves as the **anode** (oxidation) while oxygen reduction ($\\text{O}_2 + 2\\text{H}_2\\text{O} + 4e^- \\to 4\\text{OH}^-$) or proton reduction ($2\\text{H}^+ + 2e^- \\to \\text{H}_2\\uparrow$) occurs at the **cathode**. Because $E^\\circ(\\text{Zn}^{2+}/\\text{Zn}) = -0.76\\text{ V} < E^\\circ(\\text{Fe}^{2+}/\\text{Fe}) = -0.44\\text{ V}$, a zinc **sacrificial protector** oxidizes ($\\text{Zn} \\to \\text{Zn}^{2+} + 2e^-$) and feeds electrons to the iron hull, completely suppressing rust formation.',
+        formulaLatex: String.raw`\text{Anode } (-): M \to M^{n+} + ne^-, \qquad \text{Cathode } (+): \mathrm{O_2 + 2H_2O + 4e^- \to 4OH^-}, \qquad j_{\text{corr}} \propto \Delta E_{\text{galv}}\,\sigma_{\mathrm{NaCl}}`,
+        liveLatexFn: p => {
+          const mIdx = Math.round(p.partnerMetal);
+          const names = ['\\text{Cu (Cathode)}', '\\text{Sn (Tinplate)}', '\\text{Zn (Protector)}', '\\text{Mg (Protector)}'];
+          const ePots = [+0.34, -0.14, -0.76, -2.37];
+          const ePartner = ePots[Math.min(3, Math.max(0, mIdx - 1))];
+          const feIsAnode = mIdx <= 2;
+          const jCorr = feIsAnode ? (0.8 + (ePartner - (-0.44)) * 3.5) * (0.4 + p.naclConc) * (p.o2Conc / 8.0) * (1 + (7 - p.pHVal) * 0.18) : 0.0;
+          return String.raw`\text{Couple Fe / } ${names[mIdx - 1]}: \quad E^\circ_{\text{partner}} = ${ePartner.toFixed(2)}\text{ V} \;\Rightarrow\; v_{\text{rust}}(\mathrm{Fe}) = ${jCorr.toFixed(2)}\text{ mm/yr}`;
+        },
+        sliders: [
+          { label: 'Contact metal coupled to Fe (1=Cu, 2=Sn, 3=Zn protector, 4=Mg protector)', unit: '' },
+          { label: 'Electrolyte salinity [NaCl]', unit: 'mol/L' },
+          { label: 'Dissolved oxygen concentration [O₂]', unit: 'mg/L' },
+          { label: 'Medium acidity pH', unit: 'pH' }
+        ]
+      },
+      chem_liion: {
+        section: '§ C-37',
+        title: 'Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂',
+        subtitle: 'Chapter XXXVII. Li⁺ Intercalation Between Graphite Layers & Transition-Metal Oxide Octahedra at 3.7 V',
+        question: 'How does a rechargeable lithium-ion battery store and release electrical energy without forming metallic lithium dendrites during normal operation?',
+        options: [
+          'By reversible **intercalation** ("rocking-chair" mechanism): during discharge, $\\text{Li}^+$ ions de-intercalate from the layered graphite anode ($\\text{Li}_x\\text{C}_6 \\to \\text{C}_6 + x\\text{Li}^+ + xe^-$) and insert into the $\\text{Li}_{1-x}\\text{CoO}_2$ cathode host lattice while electrons flow through the external circuit ($E_{\\text{cell}} \\approx 3.7\\text{ V}$)',
+          'Lithium ions are permanently consumed by combustion with water inside an aqueous acid electrolyte',
+          'During discharge, electrons flow directly through the organic carbonate electrolyte while $\\text{Li}^+$ ions travel through the copper wire'
+        ],
+        explanation: 'A **Li-ion cell** operates via topotactic **intercalation** of $\\text{Li}^+$ ions between two layered host lattices separated by a porous polymer separator in a non-aqueous electrolyte ($\\text{LiPF}_6$ in EC/DMC): **Anode ($-$)**: graphene sheets of graphite $\\text{Li}_x\\text{C}_6$ ($E^\\circ \\approx -3.0\\text{ V}$); **Cathode ($+$)**: layered cobalt oxide $\\text{Li}_{1-x}\\text{CoO}_2$ ($E^\\circ \\approx +0.7\\text{ V}$). During **discharge** ($\\text{mode}=1$), $\\text{Li}^+$ ions migrate from graphite through the separator into $\\text{CoO}_2$ while electrons power the external load at $U \\approx 3.6\\text{–}4.2\\text{ V}$. During **charging** ($\\text{mode}=2$), an external charger drives $\\text{Li}^+$ back into the graphite layers.',
+        formulaLatex: String.raw`\mathrm{Li}_x\mathrm{C_6} + \mathrm{Li}_{1-x}\mathrm{CoO_2} \underset{\text{Charge}}{\overset{\text{Discharge}}{\rightleftharpoons}} \mathrm{C_6} + \mathrm{LiCoO_2}, \qquad E_{\text{OCV}}(x) \approx 3.70 + \frac{RT}{F}\ln\!\left(\frac{x}{1-x}\right)`,
+        liveLatexFn: p => {
+          const soc = p.socPercent / 100;
+          const xClamped = Math.min(0.98, Math.max(0.02, soc));
+          const ocv = 3.72 + 0.14 * Math.log(xClamped / (1 - xClamped));
+          const isDis = Math.round(p.cycleMode) === 1;
+          const rInt = 0.08 * Math.exp((25 - p.tempC) * 0.02);
+          const uTerm = isDis ? (ocv - p.currentC * rInt) : (ocv + p.currentC * rInt);
+          return String.raw`\text{SoC} = ${p.socPercent.toFixed(0)}\%\;\;(\mathrm{Li_{${soc.toFixed(2)}}C_6}): \quad E_{\text{OCV}} = ${ocv.toFixed(2)}\text{ V}, \quad U_{\text{cell}} = ${uTerm.toFixed(2)}\text{ V}\;\;(${isDis ? '\\text{Discharge}' : '\\text{Charge}'})`;
+        },
+        sliders: [
+          { label: 'Operating mode (1 = Discharge to load, 2 = Charge)', unit: '' },
+          { label: 'State of Charge SoC (x in Li_xC₆)', unit: '%' },
+          { label: 'C-rate current I', unit: 'C' },
+          { label: 'Cell temperature t', unit: '°C' }
+        ]
+      },
+      chem_sn2: {
+        section: '§ C-38',
+        title: 'Bimolecular Nucleophilic Substitution (S_N2) & Walden Inversion of Configuration',
+        subtitle: 'Chapter XXXVIII. Backside Attack HO⁻ + CH₃Br → [HO···CH₃···Br]‡ → CH₃OH + Br⁻ & Pentacoordinate Transition State',
+        question: 'Why does the bimolecular nucleophilic substitution reaction $\\text{HO}^- + \\text{CH}_3\\text{Br} \\to \\text{CH}_3\\text{OH} + \\text{Br}^-$ ($\\text{S}_{\\text{N}}2$) proceed in a single concerted step with $100\\%$ **Walden inversion** of stereochemical configuration?',
+        options: [
+          'The nucleophile $\\text{HO}^-$ attacks the electrophilic carbon from the backside ($180^\\circ$ opposite the leaving group $\\text{Br}^-$) into the $\\sigma^*_{\\text{C–Br}}$ antibonding orbital, passing through a planar trigonal-bipyramidal transition state $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ that flips the three $\\text{C–H}$ bonds like an umbrella in the wind',
+          'The reaction first forms a stable carbocation intermediate $\\text{CH}_3^+$ that is attacked equally from both sides',
+          'Reaction rate $v = k[\\text{CH}_3\\text{Br}]$ is independent of nucleophile concentration $[\\text{HO}^-]$'
+        ],
+        explanation: 'In the concerted **$\\text{S}_{\\text{N}}2$ mechanism** (*Substitution Nucleophilic Bimolecular*), the rate law is second-order: $v = k_2[\\text{R–X}][\\text{Nu}^-]$. The incoming nucleophile ($\\text{HO}^-$) approaches at $180^\\circ$ to the $\\text{C–Br}$ bond (**backside attack**) to maximize overlap with the empty $\\sigma^*_{\\text{C–Br}}$ orbital and minimize steric/electrostatic repulsion. At the energy maximum ($\\xi = 0.50$), the carbon atom is $sp^2$-hybridized in a planar **pentacoordinate transition state** $[\\text{HO}^{\\delta-}\\cdots\\text{CH}_3\\cdots\\text{Br}^{\\delta-}]^\\ddagger$. As $\\text{Br}^-$ departs, the three substituents invert their tetrahedral umbrella (**Walden inversion**, $(R) \\to (S)$).',
+        formulaLatex: String.raw`v = k_2[\mathrm{CH_3Br}][\mathrm{OH^-}], \qquad \mathrm{HO^- + CH_3Br \longrightarrow \left[HO^{\delta-}\!\cdots CH_3\cdots Br^{\delta-}\right]^\ddagger \longrightarrow HOCH_3 + Br^-}`,
+        liveLatexFn: p => {
+          const xi = p.rxnCoordXi;
+          const eBarrier = p.eaBarrier * Math.sin(Math.PI * xi) * Math.sin(Math.PI * xi) - 24.0 * (xi * xi * (3 - 2 * xi));
+          const umbrellaDeg = 109.5 - 39.0 * xi;
+          const stage = xi < 0.35 ? '\\text{Reactants}' : (xi <= 0.65 ? '\\text{Transition State } [\\ddagger]' : '\\text{Inverted Product (Walden)}');
+          return String.raw`\xi = ${xi.toFixed(2)}\;\;(${stage}): \quad E(\xi) = ${eBarrier.toFixed(1)}\text{ kJ/mol}, \quad \theta_{\mathrm{O-C-H}} = ${umbrellaDeg.toFixed(1)}^\circ`;
+        },
+        sliders: [
+          { label: 'Reaction coordinate ξ (0=Reactants, 0.5=TS‡, 1=Products)', unit: '' },
+          { label: 'Substrate concentration [CH₃Br]', unit: 'mol/L' },
+          { label: 'Nucleophile concentration [OH⁻]', unit: 'mol/L' },
+          { label: 'Activation energy barrier E_a‡', unit: 'kJ/mol' }
+        ]
+      },
+      chem_ester: {
+        section: '§ C-39',
+        title: 'Fischer Esterification & Isotopic ¹⁸O Tracer: R–COOH + R′–¹⁸OH ⇄ R–CO–¹⁸OR′ + H₂O',
+        subtitle: 'Chapter XXXIX. Acid-Catalyzed Acyl Substitution, Equilibrium Constant K_eq ≈ 4.0 & Dean–Stark Water Removal',
+        question: 'When acetic acid $\\text{CH}_3\\text{COOH}$ reacts with isotopically labeled ethanol $\\text{C}_2\\text{H}_5\\text{–}^{18}\\text{OH}$, where does the heavy oxygen isotope $^{18}\\text{O}$ end up, and why does classical equimolar esterification stop at $\\approx 66.7\\%$ yield?',
+        options: [
+          'The $^{18}\\text{O}$ label stays in the **ester** $\\text{CH}_3\\text{CO–}^{18}\\text{OC}_2\\text{H}_5$ because the carboxylic acid loses its $\\text{–OH}$ group while the alcohol loses only $\\text{–H}$; since $K_{eq} \\approx 4.0$, an equimolar mixture reaches equilibrium at $\\eta = \\frac{\\sqrt{K_{eq}}}{1 + \\sqrt{K_{eq}}} = \\frac{2}{3} \\approx 66.7\\%$',
+          'The $^{18}\\text{O}$ atom goes exclusively into the eliminated water molecule $\\text{H}_2\\,^{18}\\text{O}$',
+          'Sulfuric acid $\\text{H}_2\\text{SO}_4$ is only a spectator and removing water shifts the equilibrium backward toward acetic acid'
+        ],
+        explanation: 'Isotopic labeling ($^{18}\\text{O}$) proved that **Fischer esterification** proceeds via nucleophilic acyl addition–elimination: the alcohol oxygen $^{18}\\text{O}$ attacks the protonated carbonyl carbon $\\text{C=O}^+\\text{H}$, while the carboxylic $\\text{–OH}$ group leaves as normal water $\\text{H}_2\\text{O}$. Because the reaction is thermoneutral ($\\Delta H^\\circ \\approx 0$, $K_{eq} = \\frac{[\\text{Ester}][\\text{H}_2\\text{O}]}{[\\text{Acid}][\\text{Alcohol}]} \\approx 4.0$), mixing $1\\text{ mol}$ acid with $1\\text{ mol}$ alcohol yields $x / (1-x) = \\sqrt{4} = 2 \\Rightarrow x = 66.7\\%$. Using excess alcohol or continuously distilling off water drives conversion toward $100\\%$.',
+        formulaLatex: String.raw`\mathrm{CH_3C({=}O)\mathbf{OH} + H\mathbf{^{18}O}C_2H_5 \;\underset{H^+}{\rightleftharpoons}\; CH_3C({=}O)\mathbf{^{18}O}C_2H_5 + H_2\mathbf{O}}, \qquad K_{eq} = \frac{x(x - w)}{(1 - x)(b - x)} \approx 4.0`,
+        liveLatexFn: p => {
+          const b = p.alcoholRatioB;
+          const keqEff = 4.0 / Math.max(0.05, 1 - 0.92 * p.waterRemoval);
+          const aCoef = keqEff - 1;
+          const bCoef = -keqEff * (1 + b);
+          const cCoef = keqEff * b;
+          const disc = Math.max(0, bCoef * bCoef - 4 * aCoef * cCoef);
+          const xEq = aCoef > 0.001 ? (-bCoef - Math.sqrt(disc)) / (2 * aCoef) : b / (1 + b);
+          const yieldPct = Math.min(99.8, Math.max(0, xEq * 100));
+          return String.raw`b = ${b.toFixed(1)}\text{ eq Et}^{18}\text{OH}, \quad K_{\text{eff}} = ${keqEff.toFixed(1)} \;\Rightarrow\; \eta_{\text{eq}}(\text{Ethyl Acetate-}^{18}\text{O}) = ${yieldPct.toFixed(1)}\%`;
+        },
+        sliders: [
+          { label: 'Molar ratio of alcohol to acid b = [R′¹⁸OH]₀ / [RCOOH]₀', unit: 'eq' },
+          { label: 'Fraction of water removed (Dean–Stark trap)', unit: '' },
+          { label: 'Acid catalyst concentration [H₂SO₄]', unit: 'mol/L' },
+          { label: 'Reflux temperature t', unit: '°C' }
+        ]
+      },
+      chem_biopol: {
+        section: '§ C-40',
+        title: 'Biopolymers: Peptide Bond Planarity, Protein α-Helix & DNA Double Helix (A=T, G≡C)',
+        subtitle: 'Chapter XL. Pauling–Corey α-Helix (3.6 res/turn) vs. Watson–Crick B-DNA, Chargaff’s Rules & Melting T_m',
+        question: 'Why does a DNA double helix with a higher guanine–cytosine ($\\text{G}\\equiv\\text{C}$) content have a significantly higher thermal denaturation (melting) temperature $T_m$ than an $\\text{A=T}$-rich duplex?',
+        options: [
+          'Watson–Crick $\\text{G}\\equiv\\text{C}$ base pairs are held together by **three** complementary hydrogen bonds and stronger $\\pi\\text{–}\\pi$ base stacking, whereas $\\text{A=T}$ pairs form only **two** hydrogen bonds ($T_m = 69.3 + 0.41(\\%\\text{GC})$)',
+          'Adenine pairs with cytosine via four covalent bonds, while guanine pairs with thymine via one bond',
+          'Heating DNA strengthens hydrogen bonds so the two antiparallel strands can never separate'
+        ],
+        explanation: 'Biological macromolecules rely on cooperative **hydrogen bonding** for their 3D secondary structure: 1) In the **Pauling–Corey protein $\\alpha$-helix** ($3.6$ amino acid residues per turn, pitch $0.54\\text{ nm}$), each backbone carbonyl $\\text{C=O}$ of residue $i$ forms an intramolecular H-bond with the amide $\\text{N–H}$ of residue $i+4$, while the peptide bond $\\text{–CO–NH–}$ remains rigid and planar due to $sp^2$ resonance. 2) In **Watson–Crick B-DNA** ($10\\text{ bp/turn}$, pitch $3.4\\text{ nm}$), two antiparallel polynucleotide strands pair via complementary purine–pyrimidine H-bonds: **$\\text{A=T}$ ($2$ H-bonds)** and **$\\text{G}\\equiv\\text{C}$ ($3$ H-bonds)**, obeying Chargaff’s rule ($[\\text{A}]=[\\text{T}],\\; [\\text{G}]=[\\text{C}]$).',
+        formulaLatex: String.raw`\text{Chargaff: } [\mathrm{A}]=[\mathrm{T}],\; [\mathrm{G}]=[\mathrm{C}], \qquad N_{\text{H-bonds}} = 2\,N_{\mathrm{AT}} + 3\,N_{\mathrm{GC}}, \qquad T_m \approx 69.3 + 0.41\,(\%\mathrm{GC})\;[{}^\circ\text{C}]`,
+        liveLatexFn: p => {
+          const isDna = Math.round(p.biopolMode) === 2;
+          const turns = Math.round(p.helixLength);
+          const nBp = turns * 3;
+          const gcPct = p.gcFraction;
+          const nGC = Math.round(nBp * (gcPct / 100));
+          const nAT = nBp - nGC;
+          const hBonds = isDna ? (2 * nAT + 3 * nGC) : nBp;
+          const tm = isDna ? (69.3 + 0.41 * gcPct) : (62.0 + 0.2 * gcPct);
+          const intactPct = 100 / (1 + Math.exp((p.tempC - tm) / 4.2));
+          return String.raw`${isDna ? '\\text{B-DNA Duplex}' : '\\text{Protein }\\alpha\\text{-Helix}'}: \quad N_{\text{H-bonds}} = ${hBonds}, \quad T_m \approx ${tm.toFixed(1)}\,^\circ\text{C}, \quad \text{Native Helix} = ${intactPct.toFixed(0)}\%`;
+        },
+        sliders: [
+          { label: 'Biopolymer (1=Protein α-Helix, 2=B-DNA Double Helix)', unit: '' },
+          { label: 'G≡C base-pair content (% G≡C, 3 H-bonds) / stability', unit: '%' },
+          { label: 'Number of biopolymer helix turns N_turns', unit: 'turns' },
+          { label: 'Solution temperature t (thermal denaturation above T_m)', unit: '°C' }
         ]
       }
     };
@@ -22534,25 +27143,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         theorySec1Title: '1. Physical Essence & Mechanism',
         theorySec2Title: '2. Mathematical Model & Conservation Laws',
         theorySec3Title: '3. Experimental Analysis & Applications',
-        eduLevelSchool: '🎒 School',
-        eduLevelUni: '🎓 University',
+        eduLevelSchool: 'School',
+        eduLevelUni: 'University',
         eduLevelSchoolTip: 'School mode: real-world analogies, curriculum grade tags & step-by-step hints',
         eduLevelUniTip: 'University mode: full analytical derivations, differential laws & precision telemetry',
-        analogyCardTitle: '🌍 Real-World Intuition & Everyday Example',
+        analogyCardTitle: 'Real-World Intuition & Everyday Example',
         hintBtnLabel: 'Hint',
         hintBtnActive: 'Hide Hint',
-        hintBoxPrefix: '💡 Guiding Hint:',
+        hintBoxPrefix: 'Guiding Hint:',
         observeBannerText: 'Observe the 3D apparatus and energy graph… Proof opens automatically in ~2 s',
         observeRevealBtn: 'Check Hypothesis & Open Proof Now →',
         nextLessonBtnPrefix: 'Next Lesson:',
         presetModeLabel: 'Experiment Modes:',
-        presetMin: '🔬 Min',
-        presetStd: '⚡ Standard',
-        presetMax: '🚀 Max',
+        presetMin: 'Min',
+        presetStd: 'Standard',
+        presetMax: 'Max',
         presetMinTip: 'Low / threshold parameter values',
         presetStdTip: 'Calibrated textbook values',
         presetMaxTip: 'Extreme / maximum physical effect',
-        searchPlaceholder: '🔍 Search by topic, law, scientist, or grade (e.g. Grade 9, Ohm, lens)...',
+        searchPlaceholder: 'Search by topic, law, scientist, or grade (e.g. Grade 9, Ohm, lens)...',
         searchNoResults: 'No experiments match your search query.',
         progressBadgeTip: 'Completed experiments (click to open catalog)',
         kbdFooterHtml: '<span class="kbd-chip">Space</span> Play/Pause · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint',
@@ -22561,8 +27170,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         discPhysics: 'Physics',
         discPhysicsTip: 'Interactive 3D Physics Practicum (46 Experiments)',
         discChemistry: 'Chemistry',
-        discChemistryBadge: '20',
-        discChemistryTip: 'Interactive 3D Chemistry Practicum (20 Experiments)',
+        discChemistryBadge: '40',
+        discChemistryTip: 'Interactive 3D Chemistry Practicum (40 Experiments)',
         chemModalBadge: 'UPCOMING DISCIPLINE · 3D CHEMISTRY LAB',
         chemModalTitle: 'Interactive 3D Chemistry Practicum',
         chemModalSub: 'We are preparing a comprehensive 3D laboratory of molecular structures, orbitals, and chemical reactions with the same 3-step inquiry flow (Hypothesis → Experiment → Proof).',
@@ -22657,25 +27266,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         theorySec1Title: '1. Фізична суть і механізм явища',
         theorySec2Title: '2. Математична модель і закони збереження',
         theorySec3Title: '3. Лабораторний аналіз і застосування',
-        eduLevelSchool: '🎒 Школа',
-        eduLevelUni: '🎓 ВНЗ',
+        eduLevelSchool: 'Школа',
+        eduLevelUni: 'ВНЗ',
         eduLevelSchoolTip: 'Шкільний режим: пояснення простими словами, приклади з життя, клас за програмою та підказки',
         eduLevelUniTip: 'Університетський режим: повні аналітичні викладки, диференціальні закони та телеметрія',
-        analogyCardTitle: '🌍 Простими словами та в житті',
+        analogyCardTitle: 'Простими словами та в житті',
         hintBtnLabel: 'Підказка',
         hintBtnActive: 'Сховати',
-        hintBoxPrefix: '💡 Підказка до міркування:',
+        hintBoxPrefix: 'Підказка до міркування:',
         observeBannerText: 'Спостерігайте за 3D-установкою та графіком енергії… Доведення відкриється за ~2 с',
         observeRevealBtn: 'Перевірити гіпотезу та відкрити доведення →',
         nextLessonBtnPrefix: 'Наступний дослід:',
         presetModeLabel: 'Експериментальні режими:',
-        presetMin: '🔬 Мінімум',
-        presetStd: '⚡ Еталон',
-        presetMax: '🚀 Максимум',
+        presetMin: 'Мінімум',
+        presetStd: 'Еталон',
+        presetMax: 'Максимум',
         presetMinTip: 'Мінімальні / порогові параметри установки',
         presetStdTip: 'Калібровані еталонні значення підручника',
         presetMaxTip: 'Максимальний / екстремальний прояв ефекту',
-        searchPlaceholder: '🔍 Пошук за темою, законом або класом (напр. 9 клас, Ом, лінза)...',
+        searchPlaceholder: 'Пошук за темою, законом або класом (напр. 9 клас, Ом, лінза)...',
         searchNoResults: 'За вашим запитом дослідів не знайдено.',
         progressBadgeTip: 'Виконані досліди (натисніть, щоб відкрити каталог)',
         kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка',
@@ -22684,8 +27293,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         discPhysics: 'Фізика',
         discPhysicsTip: 'Інтерактивний 3D-практикум з фізики (46 дослідів)',
         discChemistry: 'Хімія',
-        discChemistryBadge: '20',
-        discChemistryTip: 'Інтерактивний 3D-практикум з хімії (20 дослідів)',
+        discChemistryBadge: '40',
+        discChemistryTip: 'Інтерактивний 3D-практикум з хімії (40 дослідів)',
         chemModalBadge: 'НОВИЙ РОЗДІЛ ПЛАТФОРМИ · 3D ХІМІЧНА ЛАБОРАТОРІЯ',
         chemModalTitle: 'Інтерактивний 3D-практикум з Хімії',
         chemModalSub: 'Ми готуємо повноцінний курс тривимірних хімічних симуляцій — від квантових орбіталей і кристалічних ґраток до титрування та електролізу за методикою «Гіпотеза → Дослід → Доведення».',
@@ -22822,13 +27431,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         en: [
           'According to the **Huygens–Fresnel principle**, every point on an advancing light wavefront acts as a point source of secondary spherical wavelets. The wavefront surface at a later instant $t + \\Delta t$ is formed by the forward tangent envelope of all these secondary wavelets.',
           'When an oblique plane wavefront strikes the interface between media of refractive indices $n_1$ and $n_2 > n_1$ at angle $\\alpha$, its phase velocity drops from $v_1 = c/n_1$ to $v_2 = c/n_2$. While the outer edge of the wavefront travels distance $BC = v_1 \\Delta t = AB\\sin\\alpha$ in medium 1, the edge that entered medium 2 expands only to radius $AD = v_2 \\Delta t = AB\\sin\\gamma$. Taking the ratio immediately proves **Snell’s Law of Refraction**: $\\frac{\\sin\\alpha}{\\sin\\gamma} = \\frac{v_1}{v_2} = \\frac{n_2}{n_1}$.',
-          'Observe in 3D how entering optically denser glass ($n_2 > n_1$) compresses the spacing between wavefront crests ($\lambda_2 = \\lambda_0 / n_2$) while keeping frequency $\\nu$ constant, rotating the wavefront normal toward the interface normal ($\\gamma < \\alpha$).'
+          'Observe in 3D how entering optically denser glass ($n_2 > n_1$) compresses the spacing between wavefront crests ($\\lambda_2 = \\lambda_0 / n_2$) while keeping frequency $\\nu$ constant, rotating the wavefront normal toward the interface normal ($\\gamma < \\alpha$).'
         ]
       },
       interference: {
         uk: [
           'Класичний дослід Томаса Юнга (1801 р.) довів хвильову природу світла. Коли плоский монохроматичний світловий фронт падає на екран із двома вузькими паралельними щілинами $S_1$ та $S_2$ на відстані $d$ одна від одної, за принципом Гюйгенса щілини стають двома **когерентними джерелами** циліндричних хвиль з однаковою частотою і сталою різницею фаз.',
-          'У довільній точці екрана на відстані $L \\gg d$ накладаються дві хвилі, що пройшли геометричні шляхи $r_1$ та $r_2$. **Оптична різниця ходу** при малих кутах становить $\\Delta = r_2 - r_1 = d\\sin\\theta \\approx d\\frac{x}{L}$, що відповідає різниці фаз $\\Delta\\varphi = \\frac{2\\pi}{\\lambda}\\Delta$. Результуюча інтенсивність розподіляється за законом $I(x) = 4I_0 \\cos^2\\!\\left(\\frac{\\pi d \\cdot x}{\\lambda L}\\right)$: у максимумах ($\Delta = m\\lambda$) інтенсивність учетверо перевищує інтенсивність однієї щілини ($4I_0$), а в мінімумах ($\Delta = (m + \\tfrac{1}{2})\\lambda$) світло + світло дає темряву ($I = 0$).',
+          'У довільній точці екрана на відстані $L \\gg d$ накладаються дві хвилі, що пройшли геометричні шляхи $r_1$ та $r_2$. **Оптична різниця ходу** при малих кутах становить $\\Delta = r_2 - r_1 = d\\sin\\theta \\approx d\\frac{x}{L}$, що відповідає різниці фаз $\\Delta\\varphi = \\frac{2\\pi}{\\lambda}\\Delta$. Результуюча інтенсивність розподіляється за законом $I(x) = 4I_0 \\cos^2\\!\\left(\\frac{\\pi d \\cdot x}{\\lambda L}\\right)$: у максимумах ($\\Delta = m\\lambda$) інтенсивність учетверо перевищує інтенсивність однієї щілини ($4I_0$), а в мінімумах ($\\Delta = (m + \\tfrac{1}{2})\\lambda$) світло + світло дає темряву ($I = 0$).',
           'Відстань між сусідніми світлими смугами (ширина інтерференційної смуги) дорівнює **$\\Delta x = \\frac{\\lambda L}{d}$**. Тому збільшення довжини хвилі $\\lambda$ (перехід від фіолетового світла до червоного) розширює смуги на екрані, а розсування щілин $d$ робить інтерференційну гребінку густішою.'
         ],
         en: [
@@ -22841,7 +27450,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         uk: [
           '**Нормальною дисперсією світла** називається залежність абсолютного показника заломлення речовини $n(\\lambda)$ від довжини світлової хвилі $\\lambda$ (або частоти $\\omega$). В області прозорості скла чи кварцу показник заломлення монотонно зростає при зменшенні довжини хвилі, що описується **емпіричною формулою Коші**: $n(\\lambda) = A + \\frac{B}{\\lambda^2} + \\frac{C}{\\lambda^4}$, де сталі $A, B, C$ визначаються власною частотою електронних осциляторів атома.',
           'При проходженні променя крізь тригранну призму із заломним кутом $A$ промінь двічі заломлюється на її гранях: $\\sin\\alpha_1 = n\\sin\\gamma_1$, $\\gamma_1 + \\gamma_2 = A$, $\\sin\\alpha_2 = n\\sin\\gamma_2$. Повний кут відхилення променя від початкового напрямку становить $\\delta(\\lambda) = \\alpha_1 + \\alpha_2 - A$ (для тонкої призми $\\delta \\approx (n(\\lambda) - 1)A$).',
-          'Оскільки для коротких фіолетових хвиль ($\lambda \\approx 400\\text{ нм}$) фазова швидкість у склі найменша, а показник заломлення найбільший ($n_{\\text{фіол}} > n_{\\text{черв}}$), **фіолетові промені заломлюються сильніше за червоні** ($\delta_{\\text{фіол}} > \\delta_{\\text{черв}}$), розкладаючи вузький пучок білого світла у неперервний спектр Ньютона.'
+          'Оскільки для коротких фіолетових хвиль ($\\lambda \\approx 400\\text{ нм}$) фазова швидкість у склі найменша, а показник заломлення найбільший ($n_{\\text{фіол}} > n_{\\text{черв}}$), **фіолетові промені заломлюються сильніше за червоні** ($\\delta_{\\text{фіол}} > \\delta_{\\text{черв}}$), розкладаючи вузький пучок білого світла у неперервний спектр Ньютона.'
         ],
         en: [
           '**Optical dispersion** is the dependence of a medium’s refractive index $n(\\lambda)$ on wavelength $\\lambda$. In transparent dielectrics such as crown or flint glass (normal dispersion), $n(\\lambda)$ increases as wavelength decreases according to **Cauchy’s equation**: $n(\\lambda) = A + \\frac{B}{\\lambda^2} + \\frac{C}{\\lambda^4}$, driven by ultraviolet electronic resonances of the material.',
@@ -22925,11 +27534,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         uk: [
           'Коли осесиметричне тверде тіло масою $m$ і радіусом $R$ котиться без проковзування по похилій площині ($v = \\omega R$), його повна кінетична енергія за теоремою Кеніга складається з енергії поступального руху центра мас $E_{\\text{пост}} = \\frac{1}{2}mv^2$ та енергії обертання навколо власної осі $E_{\\text{об}} = \\frac{1}{2}I\\omega^2$.',
           'Момент інерції тіла зручно записати через **безрозмірний коефіцієнт розподілу маси** $\\beta = \\frac{I}{mR^2}$: для суцільної кулі $\\beta = 0.4$, для суцільного диска чи циліндра $\\beta = 0.5$, а для тонкостінного обруча (труби), де вся маса віддалена на край обода, $\\beta = 1.0$. Тоді закон збереження енергії має вигляд $mgh = \\frac{1}{2}mv^2(1 + \\beta)$, а лінійне прискорення центра мас уздовж схилу дорівнює **$a = \\frac{g\\sin\\alpha}{1 + \\beta}$**.',
-          'Зверніть увагу на фундаментальний результат: прискорення кочення $a$ **не залежить ані від маси $m$, ані від радіуса $R$**, а визначається виключно геометрією розподілу маси $\\beta$! Оскільки в обруча $\\beta = 1.0$ рівно половина ($50\\%$) потенціальної енергії витрачається на розкручування обода, а в суцільного диска ($\beta = 0.5$) — лише третина ($33.3\\%$), суцільний диск або куля завжди перемагають обруч у перегонах по схилу.'
+          'Зверніть увагу на фундаментальний результат: прискорення кочення $a$ **не залежить ані від маси $m$, ані від радіуса $R$**, а визначається виключно геометрією розподілу маси $\\beta$! Оскільки в обруча $\\beta = 1.0$ рівно половина ($50\\%$) потенціальної енергії витрачається на розкручування обода, а в суцільного диска ($\\beta = 0.5$) — лише третина ($33.3\\%$), суцільний диск або куля завжди перемагають обруч у перегонах по схилу.'
         ],
         en: [
           'When an axisymmetric rigid body of mass $m$ and radius $R$ rolls without slipping ($v = \\omega R$) down an incline, König’s theorem states that its total kinetic energy is the sum of translational kinetic energy $E_{\\text{trans}} = \\frac{1}{2}mv^2$ and rotational kinetic energy $E_{\\text{rot}} = \\frac{1}{2}I\\omega^2$.',
-          'Expressing the moment of inertia via the **dimensionless shape factor** $\\beta = \\frac{I}{mR^2}$ ($\beta = 0.4$ for a solid sphere, $\\beta = 0.5$ for a solid cylinder/disk, $\\beta = 1.0$ for a thin hoop) gives $E_k = \\frac{1}{2}mv^2(1 + \\beta)$. Conservation of energy $mgh = \\frac{1}{2}mv^2(1 + \\beta)$ yields the linear downhill acceleration **$a = \\frac{g\\sin\\alpha}{1 + \\beta}$**.',
+          'Expressing the moment of inertia via the **dimensionless shape factor** $\\beta = \\frac{I}{mR^2}$ ($\\beta = 0.4$ for a solid sphere, $\\beta = 0.5$ for a solid cylinder/disk, $\\beta = 1.0$ for a thin hoop) gives $E_k = \\frac{1}{2}mv^2(1 + \\beta)$. Conservation of energy $mgh = \\frac{1}{2}mv^2(1 + \\beta)$ yields the linear downhill acceleration **$a = \\frac{g\\sin\\alpha}{1 + \\beta}$**.',
           'Remarkably, the rolling acceleration $a$ is **completely independent of total mass $m$ and radius $R$**, depending only on the mass distribution factor $\\beta$! Because a thin hoop ($\\beta = 1.0$) diverts $50\\%$ of its energy into rotation whereas a solid disk ($\\beta = 0.5$) diverts only $33.3\\%$, the solid disk or sphere always beats the hoop to the bottom.'
         ]
       },
@@ -22960,7 +27569,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       brewster: {
         uk: [
           'Оскільки світло є **поперечною електромагнітною хвилею** ($\\vec{E} \\perp \\vec{k}$), вектор електричного поля $\\vec{E}$ може мати певну орієнтацію в площині, перпендикулярній до променя. Природне світло є неполяризованим (хаотична суперпозиція всіх азимутів коливань $\\vec{E}$). Лінійний поляризатор пропускає лише складову електричного поля, паралельну його осі пропускання.',
-          'Якщо на аналізатор падає лінійно поляризована хвиля з амплітудою $E_0$ та інтенсивністю $I_0 \\propto E_0^2$, а кут між площиною поляризації променя та віссю аналізатора дорівнює $\\theta$, то крізь аналізатор проходить проєкція амплітуди $E = E_0\\cos\\theta$. Оскільки інтенсивність світла пропорційна квадрату амплітуди поля, отримуємо **закон Малюса**: $I(\\theta) = I_0\\cos^2\\theta$. При схрещених поляризаторах ($\theta = 90^\\circ$) настає повне гасіння світла ($I = 0$).',
+          'Якщо на аналізатор падає лінійно поляризована хвиля з амплітудою $E_0$ та інтенсивністю $I_0 \\propto E_0^2$, а кут між площиною поляризації променя та віссю аналізатора дорівнює $\\theta$, то крізь аналізатор проходить проєкція амплітуди $E = E_0\\cos\\theta$. Оскільки інтенсивність світла пропорційна квадрату амплітуди поля, отримуємо **закон Малюса**: $I(\\theta) = I_0\\cos^2\\theta$. При схрещених поляризаторах ($\\theta = 90^\\circ$) настає повне гасіння світла ($I = 0$).',
           'Поляризація виникає також при відбиванні світла від межі діелектрика з показником заломлення $n$. За **законом Брюстера**, якщо кут падіння задовольняє умову $\\tan\\theta_B = n$ (при цьому відбитий і заломлений промені взаємно перпендикулярні: $\\theta_B + \\gamma = 90^\\circ$), то відбитий промінь стає **повністю лінійно поляризованим** перпендикулярно до площини падіння ($s$-поляризація). Саме це явище використовують у поляризаційних окулярах і фотофільтрах для усунення відблисків.'
         ],
         en: [
@@ -23045,7 +27654,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         uk: [
           'Закони Ньютона у класичному вигляді виконуються лише в **інерціальних системах відліку (ІСВ)**. Якщо ж ми спостерігаємо за рухом кульки з неінерціальної платформи, яка рівномірно обертається з кутовою швидкістю $\\vec{\\Omega}$, то в рівнянні руху відносно диска з’являються дві сили інерції: відцентрова сила $\\vec{F}_{\\text{відц}} = -m[\\vec{\\Omega} \\times [\\vec{\\Omega} \\times \\vec{r}]]$ та **сила Коріоліса** $\\vec{F}_C = -2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{відн}}]$.',
           'В інерціальній системі лабораторного столу (погляньте на пряму пунктирну лінію в 3D-сцені!) кулька, запущена з центра диска без тертя зі швидкістю $v_r$, рухається **строго прямолінійно і рівномірно**. Проте за час $t = r / v_r$ сам диск повертається на кут $\\Delta\\varphi = \\Omega t$, тому на поверхні диска кулька залишає вигнутий слід — **спіраль Архімеда** $\\varphi(r) = -\\frac{\\Omega}{v_r}r$ з поперечним відхиленням на краю $s \\approx \\Omega v_r t^2$.',
-          'Оскільки векторний добуток $-2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{відн}}]$ у Північній півкулі Землі ($\Omega_z > 0$) спрямований праворуч від вектора відносної швидкості $\\vec{v}_{\\text{відн}}$, сила Коріоліса відхиляє вітри, морські течії та річки в Північній півкулі праворуч (підмивання правих берегів — закон Бера), закручує циклони проти годинникової стрілки та зумовлює поворот площини коливань маятника Фуко.'
+          'Оскільки векторний добуток $-2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{відн}}]$ у Північній півкулі Землі ($\\Omega_z > 0$) спрямований праворуч від вектора відносної швидкості $\\vec{v}_{\\text{відн}}$, сила Коріоліса відхиляє вітри, морські течії та річки в Північній півкулі праворуч (підмивання правих берегів — закон Бера), закручує циклони проти годинникової стрілки та зумовлює поворот площини коливань маятника Фуко.'
         ],
         en: [
           'Newton’s laws take their standard form only in **inertial reference frames**. When observing motion from a rotating non-inertial platform with angular velocity $\\vec{\\Omega}$, two fictitious inertial forces appear in the rotating frame: the centrifugal force $\\vec{F}_{\\text{cf}} = -m[\\vec{\\Omega} \\times [\\vec{\\Omega} \\times \\vec{r}]]$ and the **Coriolis force** $\\vec{F}_C = -2m[\\vec{\\Omega} \\times \\vec{v}_{\\text{rel}}]$.',
@@ -23093,7 +27702,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         uk: [
           '**Кільця Ньютона** — класичний приклад інтерференції світла «рівної товщини», що виникає при відбиванні монохроматичного пучка від тонкого повітряного клина між плоскою скляною пластиною та опуклою сферичною лінзою великого радіуса кривини $R \\gg r$. На відстані $r$ від точки дотику товщина повітряного прошарку за теоремою Піфагора $(R - d)^2 + r^2 = R^2$ становить **$d(r) \\approx \\frac{r^2}{2R}$**.',
           'Перший промінь відбивається від верхньої межі «скло — повітря» (від середовища з меншим показником заломлення) без зміни фази. Другий промінь проходить крізь повітряний шар висотою $d(r)$ і відбивається від нижньої межі «повітря — скло» (від оптично густішого середовища $n_{\\text{скла}} > n_{\\text{пов}}$), де за формулами Френеля **фаза хвилі стрибком змінюється на $\\pi$**, що еквівалентно втраті півхвилі $\\frac{\\lambda}{2}$. Тому повна оптична різниця ходу дорівнює **$\\Delta(r) = 2d(r) + \\frac{\\lambda}{2} = \\frac{r^2}{R} + \\frac{\\lambda}{2}$**.',
-          'У точці дотику лінзи і пластини ($r = 0$, $d = 0$) різниця ходу становить $\\Delta = \\frac{\\lambda}{2}$ (протифаза!), тому **в центрі кілець Ньютона у відбитому світлі завжди спостерігається темна пляма**! Радіуси $m$-х темних кілець ($\Delta = (2m + 1)\\frac{\\lambda}{2}$) дорівнюють $r_{\\text{темн},m} = \\sqrt{m\\lambda R}$, а світлих кілець — $r_{\\text{світл},m} = \\sqrt{(m - \\tfrac{1}{2})\\lambda R}$.'
+          'У точці дотику лінзи і пластини ($r = 0$, $d = 0$) різниця ходу становить $\\Delta = \\frac{\\lambda}{2}$ (протифаза!), тому **в центрі кілець Ньютона у відбитому світлі завжди спостерігається темна пляма**! Радіуси $m$-х темних кілець ($\\Delta = (2m + 1)\\frac{\\lambda}{2}$) дорівнюють $r_{\\text{темн},m} = \\sqrt{m\\lambda R}$, а світлих кілець — $r_{\\text{світл},m} = \\sqrt{(m - \\tfrac{1}{2})\\lambda R}$.'
         ],
         en: [
           '**Newton’s rings** are equal-thickness interference fringes formed in the thin air film trapped between a plano-convex lens of large curvature radius $R \\gg r$ and an optical flat. At radial distance $r$ from the contact point, the air-gap thickness follows from $(R - d)^2 + r^2 = R^2$ as **$d(r) \\approx \\frac{r^2}{2R}$**.',
@@ -23187,12 +27796,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       capillary: {
         uk: [
-          'Молекули поверхневого шару рідини притягуються сусідніми молекулами зсередини об’єму сильніше, ніж розрідженими молекулами пари ззовні, тому вільна поверхня рідини має надлишкову вільну енергію $E_s = \\sigma S$ і поводиться як натягнута пружна плівка з **коефіцієнтом поверхневого натягу** $\\sigma$ (у $\\text{Н/м}$ або $\\text{Дж/м}^2$). Якщо притягання молекул рідини до стінок вузької трубки сильніше за взаємне притягання молекул рідини (**змочування**, крайовий кут $\\theta < 90^\\circ$, як у води на чистому склі), утворюється увігнутий меніск; при **незмочуванні** ($\theta > 90^\\circ$, як у ртуті на склі) меніск є опуклим.',
-          'Викривлена сферична поверхня меніска радіусом $R_m = \\frac{r}{\\cos\\theta}$ (де $r$ — внутрішній радіус капіляра) створює під собою додатковий стрибок тиску за **формулою Юнга — Лапласа**: $\\Delta p = \\frac{2\\sigma}{R_m} = \\frac{2\\sigma\\cos\\theta}{r}$. При змочуванні ($\cos\\theta > 0$) тиск у рідині безпосередньо під увігнутим меніском менший за атмосферний на величину $\\Delta p$, тому зовнішній атмосферний тиск вдавлює стовпчик рідини вгору по капіляру.',
-          'Підйом триває доти, доки гідростатичний тиск піднятого стовпа $\\rho g h$ не зрівноважить капілярний перепад Лапласа ($\rho g h = \\frac{2\\sigma\\cos\\theta}{r}$), звідки отримуємо **формулу Жюрена**: **$h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$**. Отже, висота капілярного підйому обернено пропорційна радіусу трубки $r$, що забезпечує живлення рослин, рух вологи в ґрунтах і пористих матеріалах.'
+          'Молекули поверхневого шару рідини притягуються сусідніми молекулами зсередини об’єму сильніше, ніж розрідженими молекулами пари ззовні, тому вільна поверхня рідини має надлишкову вільну енергію $E_s = \\sigma S$ і поводиться як натягнута пружна плівка з **коефіцієнтом поверхневого натягу** $\\sigma$ (у $\\text{Н/м}$ або $\\text{Дж/м}^2$). Якщо притягання молекул рідини до стінок вузької трубки сильніше за взаємне притягання молекул рідини (**змочування**, крайовий кут $\\theta < 90^\\circ$, як у води на чистому склі), утворюється увігнутий меніск; при **незмочуванні** ($\\theta > 90^\\circ$, як у ртуті на склі) меніск є опуклим.',
+          'Викривлена сферична поверхня меніска радіусом $R_m = \\frac{r}{\\cos\\theta}$ (де $r$ — внутрішній радіус капіляра) створює під собою додатковий стрибок тиску за **формулою Юнга — Лапласа**: $\\Delta p = \\frac{2\\sigma}{R_m} = \\frac{2\\sigma\\cos\\theta}{r}$. При змочуванні ($\\cos\\theta > 0$) тиск у рідині безпосередньо під увігнутим меніском менший за атмосферний на величину $\\Delta p$, тому зовнішній атмосферний тиск вдавлює стовпчик рідини вгору по капіляру.',
+          'Підйом триває доти, доки гідростатичний тиск піднятого стовпа $\\rho g h$ не зрівноважить капілярний перепад Лапласа ($\\rho g h = \\frac{2\\sigma\\cos\\theta}{r}$), звідки отримуємо **формулу Жюрена**: **$h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$**. Отже, висота капілярного підйому обернено пропорційна радіусу трубки $r$, що забезпечує живлення рослин, рух вологи в ґрунтах і пористих матеріалах.'
         ],
         en: [
-          'Molecules at a liquid–gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy $E_s = \\sigma S$ characterized by **surface tension** $\\sigma$ ($\text{N/m}$). When liquid–solid adhesion exceeds liquid–liquid cohesion (**wetting**, contact angle $\\theta < 90^\\circ$, such as water in clean glass), a concave meniscus forms; when cohesion dominates (**non-wetting**, $\\theta > 90^\\circ$, such as mercury in glass), the meniscus is convex.',
+          'Molecules at a liquid–gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy $E_s = \\sigma S$ characterized by **surface tension** $\\sigma$ ($\\text{N/m}$). When liquid–solid adhesion exceeds liquid–liquid cohesion (**wetting**, contact angle $\\theta < 90^\\circ$, such as water in clean glass), a concave meniscus forms; when cohesion dominates (**non-wetting**, $\\theta > 90^\\circ$, such as mercury in glass), the meniscus is convex.',
           'In a cylindrical capillary tube of inner radius $r$, the spherical meniscus of radius of curvature $R_m = \\frac{r}{\\cos\\theta}$ sustains a pressure jump across the interface given by the **Young–Laplace equation**: $\\Delta p = \\frac{2\\sigma}{R_m} = \\frac{2\\sigma\\cos\\theta}{r}$.',
           'Equating this Laplace capillary suction to the hydrostatic pressure $\\rho g h$ of the liquid column yields **Jurin’s Law**: **$h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$** (positive rise for $\\theta < 90^\\circ$, capillary depression for $\\theta > 90^\\circ$). Because $h \\propto 1/r$, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.'
         ]
@@ -23200,12 +27809,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       brownian: {
         uk: [
           '**Броунівський рух** (відкритий ботаніком Робертом Броуном у 1827 р.) — це невпинний хаотичний зигзагоподібний рух мікроскопічних зважених частинок (пилку, колоїдних кульок радіусом $r \\sim 0.1\\text{–}1\\text{ мкм}$) у рідині або газі. Через малий розмір броунівської частинки імпульси мільйонів теплових ударів молекул рідини з різних боків у кожен малий інтервал часу **не компенсують один одного**, створюючи випадкову флуктуаційну силу Ланжевена $\\vec{F}_{\\text{фл}}(t)$.',
-          'Оскільки всі напрямки теплових поштовхів рівноймовірні, середній вектор зміщення частинки дорівнює нулю ($\langle \\vec{r}(t) \\rangle = 0$). Проте середній квадрат відстані частинки від початкової точки не зануляється! У 1905 році Альберт Ейнштейн і Маріан Смолуховський довели фундаментальний закон дифузії: **середній квадрат зміщення прямо пропорційний часу спостереження $t$**: $\\langle r^2(t) \\rangle = 2 d_{\\text{вим}} D t$ (для 2D-площини $\\langle r^2 \\rangle = 4Dt$, для 3D-простору $\\langle r^2 \\rangle = 6Dt$).',
+          'Оскільки всі напрямки теплових поштовхів рівноймовірні, середній вектор зміщення частинки дорівнює нулю ($\\langle \\vec{r}(t) \\rangle = 0$). Проте середній квадрат відстані частинки від початкової точки не зануляється! У 1905 році Альберт Ейнштейн і Маріан Смолуховський довели фундаментальний закон дифузії: **середній квадрат зміщення прямо пропорційний часу спостереження $t$**: $\\langle r^2(t) \\rangle = 2 d_{\\text{вим}} D t$ (для 2D-площини $\\langle r^2 \\rangle = 4Dt$, для 3D-простору $\\langle r^2 \\rangle = 6Dt$).',
           'Коефіцієнт дифузії $D$ визначається **співвідношенням Ейнштейна — Стокса**: **$D = \\frac{k_B T}{6\\pi \\eta r} = \\frac{R T}{6\\pi \\eta r N_A}$**, яке пов’язує макроскопічну в’язкість $\\eta$ і температуру $T$ зі сталою Авогадро $N_A$. Блискучі експерименти Жана Перрена (1908 р.) з вимірювання $\\langle r^2 \\rangle$ броунівських кульок гумігуту підтвердили формулу Ейнштейна і стали остаточним прямим доказом реального існування атомів і молекул!'
         ],
         en: [
           '**Brownian motion** (discovered by Robert Brown in 1827) is the perpetual, erratic random walk executed by microscopic suspended particles ($r \\sim 0.1\\text{–}1\\text{ }\\mu\\text{m}$) immersed in a fluid. Because the particle’s surface area is small, the incessant thermal impacts of surrounding fluid molecules do not cancel out instantaneously, subjecting the particle to a fluctuating Langevin force $\\vec{F}_{\\text{fl}}(t)$.',
-          'By isotropy, the mean displacement vector vanishes ($\\langle \\vec{r}(t) \\rangle = 0$), yet the particle steadily wanders away from its origin! In 1905, Albert Einstein and Marian Smoluchowski proved that the **mean-squared displacement (MSD) grows linearly with time $t$**: $\\langle r^2(t) \\rangle = 2 d_{\\text{dim}} D t$ ($\langle r^2 \\rangle = 4Dt$ in a 2D plane; $\langle r^2 \\rangle = 6Dt$ in 3D space).',
+          'By isotropy, the mean displacement vector vanishes ($\\langle \\vec{r}(t) \\rangle = 0$), yet the particle steadily wanders away from its origin! In 1905, Albert Einstein and Marian Smoluchowski proved that the **mean-squared displacement (MSD) grows linearly with time $t$**: $\\langle r^2(t) \\rangle = 2 d_{\\text{dim}} D t$ ($\\langle r^2 \\rangle = 4Dt$ in a 2D plane; $\\langle r^2 \\rangle = 6Dt$ in 3D space).',
           'The diffusion coefficient $D$ obeys the **Stokes–Einstein relation** **$D = \\frac{k_B T}{6\\pi \\eta r} = \\frac{R T}{6\\pi \\eta r N_A}$**, linking thermal energy $k_B T$ to viscous dissipation $6\\pi\\eta r$. Jean Perrin’s 1908 measurements of $\\langle r^2(t) \\rangle$ yielded a precise value of Avogadro’s number $N_A$ and provided definitive proof of the physical reality of atoms.'
         ]
       },
@@ -23367,12 +27976,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_electrolysis: {
         uk: [
-          '**Електроліз** — це вимушений окисно-відновний процес, який відбувається на електродах у розчині або розплаві електроліту під час проходження постійного електричного струму від зовнішнього джерела ($\Delta G > 0$). На відміну від гальванічного елемента, під час електролізу **катод є негативно зарядженим електродом** (до нього рухаються катіони і приймають електрони — відбувається відновлення), а **анод є позитивно зарядженим електродом** (на ньому відбувається окиснення).',
+          '**Електроліз** — це вимушений окисно-відновний процес, який відбувається на електродах у розчині або розплаві електроліту під час проходження постійного електричного струму від зовнішнього джерела ($\\Delta G > 0$). На відміну від гальванічного елемента, під час електролізу **катод є негативно зарядженим електродом** (до нього рухаються катіони і приймають електрони — відбувається відновлення), а **анод є позитивно зарядженим електродом** (на ньому відбувається окиснення).',
           'При електролізі водного розчину купрум(ІІ) сульфату $\\text{CuSO}_4$ з інертними графітовими або платиновими електродами на катоді відновлюються катіони міді (оскільки $E^\\circ(\\text{Cu}^{2+}/\\text{Cu}) = +0.34\\text{ В} > E(\\text{2H}_2\\text{O}/\\text{H}_2)$): $\\text{Cu}^{2+} + 2e^- \\to \\text{Cu}^0\\downarrow$. На інертному аноді сульфат-йони $\\text{SO}_4^{2-}$ не окиснюються у водному розчині, тому окиснюються молекули води з виділенням бульбашок газоподібного кисню: $2\\text{H}_2\\text{O} - 4e^- \\to \\text{O}_2\\uparrow + 4\\text{H}^+$.',
           'Кількісні співвідношення електролізу описуються **об’єднаним законом Фарадея**: маса виділеної на електроді речовини прямо пропорційна перенесеному заряду $Q = I\\cdot t$ та молярній масі еквівалента $M/z$: $m = \\frac{M\\cdot I\\cdot t}{z\\cdot F}$, де $F = e N_A \\approx 96\\,485\\text{ Кл/моль}$ — **стала Фарадея** (заряд одного моля електронів). Якщо замість інертного анода використати мідний (активний анод), то він сам розчинятиметься ($\\text{Cu}^0 - 2e^- \\to \\text{Cu}^{2+}$), що застосовується для промислового електролітичного рафінування міді високої чистоти ($99.99\\%$).'
         ],
         en: [
-          '**Electrolysis** is a non-spontaneous redox process ($\Delta G > 0$) driven by an external DC power supply across electrodes immersed in an electrolyte. Unlike a galvanic cell, in an electrolytic cell the **cathode is the negative electrode** (supplying electrons for reduction of cations), while the **anode is the positive electrode** (withdrawing electrons for oxidation).',
+          '**Electrolysis** is a non-spontaneous redox process ($\\Delta G > 0$) driven by an external DC power supply across electrodes immersed in an electrolyte. Unlike a galvanic cell, in an electrolytic cell the **cathode is the negative electrode** (supplying electrons for reduction of cations), while the **anode is the positive electrode** (withdrawing electrons for oxidation).',
           'During electrolysis of aqueous $\\text{CuSO}_4$ with inert graphite or platinum electrodes, $\\text{Cu}^{2+}$ ions are preferentially reduced at the cathode ($E^\\circ = +0.34\\text{ V}$): $\\text{Cu}^{2+} + 2e^- \\to \\text{Cu}^0\\downarrow$. At the inert anode, oxygenated $\\text{SO}_4^{2-}$ anions resist oxidation, so water molecules are oxidized instead, evolving oxygen gas bubbles: $2\\text{H}_2\\text{O} - 4e^- \\to \\text{O}_2\\uparrow + 4\\text{H}^+$.',
           'Quantitative electrode yields obey **Faraday’s combined law of electrolysis**: $m = \\frac{M\\cdot I\\cdot t}{z\\cdot F}$, where $Q = I\\cdot t$ is total passed charge, $z$ is the electron stoichiometry per ion, and $F = e N_A \\approx 96\\,485\\text{ C/mol}$ is **Faraday’s constant** (the charge of one mole of electrons).'
         ]
@@ -23507,6 +28116,246 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           '**Chain-growth polymerization** is the sequential addition of unsaturated **monomer** molecules $\\text{M}$ (such as ethylene $\\text{CH}_2{=}\\text{CH}_2$) to an active propagating center, forming a long **macromolecular polymer chain** $(-\\text{CH}_2\\text{–CH}_2-)_n$ (polyethylene) without eliminating any small byproduct molecules.',
           'Free-radical polymerization proceeds through three kinetic stages: 1) **Initiation** — homolytic cleavage of an initiator $\\text{I}_2 \\to 2R^\\bullet$ and attack on the first monomer $R^\\bullet + \\text{CH}_2{=}\\text{CH}_2 \\to R\\text{–CH}_2\\text{–CH}_2^\\bullet$; 2) **Propagation** — rapid sequential monomer addition to the active radical tip at rate $v_p = k_p [\\text{M}][R^\\bullet] \\propto [\\text{M}]\\sqrt{[\\text{I}_2]}$; 3) **Termination** via radical combination or disproportionation.',
           'In each propagation step, a weaker monomer $\\pi$-bond ($268\\text{ kJ/mol}$, planar $sp^2$ carbon, $1.34\\text{ Å}$) converts into a stronger backbone $\\text{C–C}$ $\\sigma$-bond ($348\\text{ kJ/mol}$, tetrahedral $sp^3$ carbon, $109.5^\\circ$, $1.54\\text{ Å}$), making polymerization strongly **exothermic** ($\\Delta H_{\\text{poly}} \\approx -93\\text{ kJ/mol}$). The **degree of polymerization** $n$ governs the molar mass $M_n = n M_0$ and the statistical coil radius of gyration $R_g \\propto l_0\\sqrt{n}$.'
+        ]
+      },
+      chem_mo: {
+        uk: [
+          '**Метод молекулярних орбіталей (ММО) у наближенні ЛКАО** (*лінійна комбінація атомних орбіталей*) розглядає молекулу як єдину квантову систему, де валентні електрони рухаються в спільному полі обох ядер. При зближенні двох атомних орбіталей $\\psi_A$ та $\\psi_B$ на відстань $R$ відбувається інтерференція хвильових функцій де Бройля.',
+          '**Конструктивна інтерференція** ($\\psi_+ = \\frac{\\psi_A + \\psi_B}{\\sqrt{2(1+S)}}$) концентрує електронну густину в між’ядерному просторі, екрануючи кулонівське відштовхування ядер і знижуючи енергію на величину резонансного інтеграла $|\\beta|$ — утворюється **зв’язуюча МО** ($\\sigma_g, \\pi_u$). **Деструктивна інтерференція** ($\\psi_- = \\frac{\\psi_A - \\psi_B}{\\sqrt{2(1-S)}}$) створює вузлову площину ($\\psi = 0$) посередині між ядрами й підвищує енергію — утворюється **розпушуюча МО** ($\\sigma_u^*, \\pi_g^*$).',
+          'Кратність (порядок) хімічного зв’язку дорівнює піврізниці чисел електронів на зв’язуючих та розпушуючих орбіталях: $B = \\frac{N_b - N_a}{2}$. Саме ММО пояснив **парамагнетизм кисню $\\text{O}_2$** ($B = \\frac{8-4}{2} = 2$): два останні валентні електрони за правилом Гунда розміщуються по одному з паралельними спінами на двох вироджених розпушуючих орбіталях $\\pi_{2p,x}^*$ та $\\pi_{2p,y}^*$ ($\\mu_s = \\sqrt{2(2+2)}\\,\\mu_B = 2.83\\,\\mu_B$).'
+        ],
+        en: [
+          'The **Molecular Orbital (LCAO–MO) theory** treats valence electrons as delocalized over the entire molecule via linear combinations of atomic orbitals $\\psi_A$ and $\\psi_B$. Constructive interference ($\\psi_+ = c(\\psi_A + \\psi_B)$) accumulates electron density between the nuclei, forming a lower-energy **bonding MO** ($\\sigma_g, \\pi_u$). Destructive interference ($\\psi_- = c(\\psi_A - \\psi_B)$) creates a nodal plane between the nuclei, forming a higher-energy **antibonding MO** ($\\sigma_u^*, \\pi_g^*$).',
+          'Chemical **bond order** is defined as $B = \\frac{1}{2}(N_{\\text{bond}} - N_{\\text{anti}})$. For $\\text{He}_2$, $B = \\frac{1}{2}(2 - 2) = 0$ (unstable), whereas for dinitrogen $\\text{N}_2$, $B = \\frac{1}{2}(8 - 2) = 3.0$ ($D_0 = 945\\text{ kJ/mol}$).',
+          'MO theory triumphantly explains why liquid and gaseous **dioxygen $\\text{O}_2$ is paramagnetic**: of its $12$ valence electrons, the highest two occupy the degenerate antibonding $\\pi_{2p,x}^*$ and $\\pi_{2p,y}^*$ orbitals singly with parallel spins (Hund’s rule, $S = 1, \\mu_s = 2.83\\,\\mu_B$), giving $B = 2.0$.'
+        ]
+      },
+      chem_allotropes: {
+        uk: [
+          '**Вуглецеві наноструктури** — графен, одностінні вуглецеві нанотрубки (CNT) та фулерен $\\text{C}_{60}$ — побудовані з атомів Карбону в стані **$sp^2$-гібридизації**. Кожен атом утворює три міцні ковалентні $\\sigma$-зв’язки під кутом $120^\\circ$ ($d_{\\text{C–C}} \\approx 1.42\\text{ Å}$), а четвертий $2p_z$-електрон делокалізується в єдиній спряженій $\\pi$-електронній системі.',
+          '**Графен** — це двовимірний моношар гексагональної («стільникової») ґратки, у якому валентна зона і зона провідності дотикаються в точках Дірака ($E_g = 0$), зумовлюючи рекордну рухливість носіїв заряду. При згортанні стрічки графену в циліндр утворюється **вуглецева нанотрубка** з індексами хіральності $(n, m)$: якщо $(n - m)$ ділиться на $3$, нанотрубка має металічну провідність, інакше — напівпровідникову ($E_g \\propto 1/d$).',
+          'За **теоремою Ейлера для багатогранників** ($V - E + F = 2$), щоб замкнути гексагональну сітку в сферичну клітку, необхідно рівно **$12$ п’ятикутників**. У молекулі **бакмінстерфулерену $\\text{C}_{60}$** ($V=60$ вершин, $E=90$ ребер, $F=32$ грані) є $12$ пентагонів і $20$ гексагонів (форма усіченого ікосаедра — класичного футбольного м’яча).'
+        ],
+        en: [
+          '**Carbon nanostructures** — 2D graphene, 1D carbon nanotubes (CNTs), and 0D fullerenes ($\\text{C}_{60}$) — share an $sp^2$-hybridized carbon framework in which three $\\sigma$-bonds form a honeycomb lattice while unhybridized $2p_z$ orbitals merge into a delocalized $\\pi$-conduction network.',
+          'In **graphene**, the $\\pi$ valence band and $\\pi^*$ conduction band meet at massless **Dirac cones** ($E_g = 0$). Rolling graphene along chiral vector $(n,m)$ produces a single-walled **carbon nanotube** of diameter $d = \\frac{a\\sqrt{3}}{\\pi}\\sqrt{n^2+nm+m^2}$, which is metallic when $(n-m)$ is divisible by $3$ and semiconducting otherwise.',
+          'By **Euler’s polyhedron theorem** ($V - E + F = 2$), any closed cage of trivalent carbon atoms built from pentagons and hexagons must contain **exactly $12$ pentagons**. Truncated icosahedral **buckminsterfullerene $\\text{C}_{60}$** ($V=60, E=90, F=32$) comprises $12$ pentagons and $20$ hexagons.'
+        ]
+      },
+      chem_complex: {
+        uk: [
+          '**Координаційні (комплексні) сполуки** складаються з центрального катіона перехідного металу $\\text{M}^{n+}$ (комплексоутворювача з незаповненою $d$-оболонкою) та оточуючих його **лігандів** $\\text{L}$, які надають неподілені електронні пари для утворення координаційних зв’язків $\\text{M}\\leftarrow\\text{L}$ за донорно-акцепторним механізмом.',
+          'Згідно з **теорією кристалічного поля (ТКП)** Бете і Ван Флека, в октаедричному комплексі $[\\text{ML}_6]^{n+}$ шість лігандів на осях $\\pm x, \\pm y, \\pm z$ сильніше відштовхують осьові орбіталі дублету **$e_g$** ($d_{z^2}, d_{x^2-y^2}$, енергія $+0.6\\Delta_o$) і слабше — міжосьові орбіталі триплету **$t_{2g}$** ($d_{xy}, d_{xz}, d_{yz}$, енергія $-0.4\\Delta_o$). Величина розщеплення $\\Delta_o$ зростає в **спектрохімічному ряді лігандів**: $\\text{I}^- < \\text{Br}^- < \\text{Cl}^- < \\text{F}^- < \\text{H}_2\\text{O} < \\text{NH}_3 < \\text{en} < \\text{CN}^- < \\text{CO}$.',
+          'Для конфігурацій $d^4\\dots d^7$ виникає конкуренція між $\\Delta_o$ та енергією спарювання електронів $P$: ліганди слабкого поля ($\\Delta_o < P$) дають **високоспіновий комплекс**, а ліганди сильного поля ($\\Delta_o > P$) — **низькоспіновий**. Поглинання видимого кванта $h\\nu = hc / \\lambda_{\\text{abs}} = \\Delta_o$ переводить електрон з $t_{2g}$ на $e_g$ ($d\\text{–}d$ перехід), забарвлюючи розчин у **доповнювальний колір**.'
+        ],
+        en: [
+          'In **Crystal Field Theory (CFT)**, electrostatic repulsion from six octahedral ligands along the $\\pm x, \\pm y, \\pm z$ axes lifts the five-fold degeneracy of metal $d$-orbitals into a lower **$t_{2g}$ triplet** ($d_{xy}, d_{xz}, d_{yz}$ at $-0.4\\Delta_o$) and an upper **$e_g$ doublet** ($d_{z^2}, d_{x^2-y^2}$ at $+0.6\\Delta_o$). In a tetrahedral field $[\\text{ML}_4]^{n+}$, the splitting is inverted and smaller ($\\Delta_t \\approx \\frac{4}{9}\\Delta_o$).',
+          'The splitting parameter $\\Delta_o$ increases across the **spectrochemical series**: $\\text{I}^- < \\text{Cl}^- < \\text{H}_2\\text{O} < \\text{NH}_3 < \\text{CN}^- < \\text{CO}$. For $d^4\\text{–}d^7$ ions, weak-field ligands ($\\Delta_o < P$) yield **high-spin** states, while strong-field ligands ($\\Delta_o > P$) force spin pairing into **low-spin** states.',
+          'Absorption of a visible photon matching $\\Delta_o = hc / \\lambda_{\\text{abs}}$ promotes an electron from $t_{2g}$ to $e_g$ ($d\\text{–}d$ transition), imparting vivid complementary colors to transition-metal complexes.'
+        ]
+      },
+      chem_bornhaber: {
+        uk: [
+          '**Цикл Борна — Габера** — це застосування фундаментального **закону Гесса** до утворення йонного кристала (наприклад, $\\text{NaCl(тв)}$) з простих речовин. Оскільки ентальпія є функцією стану, прямий шлях синтезу $\\text{Na(тв)} + \\frac{1}{2}\\text{Cl}_2\\text{(г)} \\to \\text{NaCl(тв)}$ ($\\Delta H_f^\\circ$) дорівнює сумі п’яти послідовних термодинамічних стадій через газову фазу.',
+          'Три стадії є ендотермічними (потребують витрати енергії): 1) **сублімація металу** $\\Delta H_{\\text{субл}}(\\text{Na}) = +108\\text{ кДж/моль}$; 2) **дисоціація молекули галогену** $\\frac{1}{2}D(\\text{Cl}_2) = +121\\text{ кДж/моль}$; 3) **іонізація атома металу** $I_1(\\text{Na}) = +496\\text{ кДж/моль}$. Четверта стадія — приєднання електрона до атома хлору (**спорідненість до електрона** $E_{ea}(\\text{Cl}) = -349\\text{ кДж/моль}$).',
+          'Вирішальний енергетичний виграш дає п’ята стадія — конденсація газоподібних йонів $\\text{Na}^+\\text{(г)} + \\text{Cl}^-\\text{(г)} \\to \\text{NaCl(тв)}$ із виділенням величезної **енергії кристалічної ґратки** $U_{\\text{ґр}} = 787\\text{ кДж/моль}$, яка за формулою Борна — Ланде визначається константою Маделунга $M$, добутком зарядів йонів $z^+ z^-$ та оберненою між’ядерною відстанню $1/r_0$.'
+        ],
+        en: [
+          'The **Born–Haber cycle** applies **Hess’s Law** to relate the standard enthalpy of formation $\\Delta H_f^\\circ$ of an ionic solid $\\text{MX(s)}$ to its **lattice energy** $U_{\\text{lat}}$ by constructing a closed thermodynamic path through gaseous atoms and ions.',
+          'Converting standard elements into gaseous ions requires endothermic **sublimation** ($\\Delta H_{\\text{sub}}$), **bond dissociation** ($\\frac{1}{2}D_{\\text{X}_2}$), and **ionization** ($I_1$), partially offset by the exothermic **electron affinity** ($E_{ea}$) of the nonmetal.',
+          'The overall formation of the salt is strongly exothermic because condensing gaseous ions into a 3D crystal lattice releases a massive **lattice enthalpy** $U_{\\text{lat}} = \\Delta H_{\\text{sub}} + \\frac{1}{2}D_{\\text{X}_2} + I_1 + E_{ea} - \\Delta H_f^\\circ$, which scales with ionic charges and inverse interionic distance according to the Born–Landé equation.'
+        ]
+      },
+      chem_dipole: {
+        uk: [
+          '**Електронегативність ($\\chi$ за Полінгом)** характеризує здатність атома в молекулі притягувати до себе спільну електронну густину ковалентного зв’язку. Якщо зв’язок утворений атомами з різною електронегативністю ($\\Delta\\chi = |\\chi_A - \\chi_B| > 0$), спільна електронна хмара зміщується до більш електронегативного атома, створюючи часткові заряди $+\\delta q$ та $-\\delta q$.',
+          'Кількісною мірою полярності зв’язку є вектор **дипольного моменту** $\\vec{\\mu}_{\\text{зв}} = \\delta q \\cdot \\vec{d}$ (у хімії напрямлений від $+\\delta$ до $-\\delta$, одиниця — Дебай: $1\\text{ Д} = 3.336\\times 10^{-30}\\text{ Кл}\\cdot\\text{м}$). Проте полярність усієї багатоатомної молекули визначається **векторною сумою** дипольних моментів усіх її зв’язків: $\\vec{\\mu}_{\\text{мол}} = \\sum_i \\vec{\\mu}_i$.',
+          'Для симетричної триатомної молекули $\\text{AB}_2$ з валентним кутом $\\theta$ модуль сумарного диполя становить $\\mu_{\\text{мол}} = 2\\mu_{\\text{зв}}\\cos(\\theta/2)$. Тому кутова молекула води $\\text{H}_2\\text{O}$ ($\\theta = 104.5^\\circ$) є сильно полярною ($\\mu = 1.85\\text{ Д}$) і орієнтується вздовж зовнішнього електричного поля $\\vec{E}$ під дією моменту сил $\\vec{\\tau} = \\vec{\\mu}\\times\\vec{E}$, тоді як лінійна молекула $\\text{CO}_2$ ($\\theta = 180^\\circ$) має $\\mu_{\\text{мол}} = 0$.'
+        ],
+        en: [
+          'When two bonded atoms differ in **Pauling electronegativity** ($\\Delta\\chi = |\\chi_A - \\chi_B| > 0$), shared electron density shifts toward the more electronegative atom, generating partial charges $\\pm\\delta q$ and a **bond dipole vector** $\\vec{\\mu}_{\\text{bond}} = \\delta q\\,\\vec{d}$ ($1\\text{ D} = 3.336\\times 10^{-30}\\text{ C}\\cdot\\text{m}$).',
+          'The net polarity of a polyatomic molecule is the **vector sum** of its individual bond dipoles: $\\vec{\\mu}_{\\text{net}} = \\sum_i \\vec{\\mu}_i$. For a triatomic $\\text{AB}_2$ molecule with bond angle $\\theta$, $\\mu_{\\text{net}} = 2\\mu_{\\text{bond}}\\cos(\\theta/2)$.',
+          'Consequently, bent $\\text{H}_2\\text{O}$ ($\\theta = 104.5^\\circ$) has a large permanent dipole ($1.85\\text{ D}$) and experiences an aligning torque $\\vec{\\tau} = \\vec{\\mu}\\times\\vec{E}$ in an external electric field, whereas linear $\\text{CO}_2$ ($\\theta = 180^\\circ$) has $\\mu_{\\text{net}} = 0$ because its two polar $\\text{C=O}$ vectors cancel.'
+        ]
+      },
+      chem_phase: {
+        uk: [
+          '**Фазова діаграма $P\\text{–}T$** однокомпонентної речовини відображає області термодинамічної стійкості твердої, рідкої та газоподібної фаз. Криві фазової рівноваги (сублімації, плавлення та кипіння) описуються диференціальним **рівнянням Клапейрона — Клаузіуса**: $\\frac{dP}{dT} = \\frac{\\Delta H_{\\text{ф.п.}}}{T\\,\\Delta V_{\\text{ф.п.}}}$.',
+          'За **правилом фаз Гіббса** ($f = C - \\Phi + 2 = 3 - \\Phi$), усі три агрегатні стани ($\\Phi = 3$) можуть співіснувати в рівновазі лише в єдиній інваріантній ($f = 0$) **потрійній точці** $(T_{\\text{потр}}, P_{\\text{потр}})$. Для $\\text{CO}_2$ тиск потрійної точки дорівнює $5.11\\text{ атм} > 1\\text{ атм}$, тому за нормального атмосферного тиску рідкий $\\text{CO}_2$ не існує і твердий «сухий лід» одразу **сублімує** в газ при $-78.5\\,^\\circ\\text{C}$. Для води питомий об’єм льоду більший за об’єм рідкої води ($\\Delta V_{\\text{пл}} < 0$), тому крива плавлення льоду має **від’ємний нахил** ($dP/dT < 0$).',
+          'Крива кипіння закінчується у **критичній точці** $(T_c, P_c)$, де густини рідини і насиченої пари зрівнюються, поверхневий натяг і теплота пароутворення падають до нуля, а за $T > T_c, P > P_c$ речовина переходить у стан **надкритичного флюїду**.'
+        ],
+        en: [
+          'A single-component **$P\\text{–}T$ phase diagram** maps the stability fields of solid, liquid, and gas separated by coexistence curves governed by the **Clapeyron equation** $\\frac{dP}{dT} = \\frac{\\Delta H_{\\text{tr}}}{T\\,\\Delta V_{\\text{tr}}}$. Because ice is less dense than liquid water ($\\Delta V_{\\text{fus}} < 0$), water’s melting curve has an anomalous negative slope ($dP/dT < 0$).',
+          'By **Gibbs’ Phase Rule** ($f = 3 - \\Phi$), solid, liquid, and vapor coexist exclusively at the invariant **triple point** $(T_t, P_t)$. Because $P_t(\\text{CO}_2) = 5.11\\text{ atm} > 1\\text{ atm}$, solid $\\text{CO}_2$ ("dry ice") sublimes directly into gas at atmospheric pressure.',
+          'The liquid–vapor boundary terminates at the **critical point** $(T_c, P_c)$; beyond this point the meniscus vanishes and the substance forms a **supercritical fluid** combining liquid-like solvating density with gas-like diffusivity.'
+        ]
+      },
+      chem_arrhenius: {
+        uk: [
+          '**Кінетичний порядок реакції $n$** у диференціальному законі діючих мас $v = -\\frac{d[A]}{dt} = k[A]^n$ показує, як миттєва швидкість перетворення реагенту залежить від його поточної молярної концентрації $[A](t)$, і визначає закон зміни концентрації в часі та формулу **періоду напівперетворення $t_{1/2}$**.',
+          '1) **Нульовий порядок ($n=0$)** — характерний для гетерогенного та ферментативного каталізу при повному насиченні поверхні каталізатора: швидкість стала $v = k$, концентрація спадає лінійно $[A](t) = [A]_0 - kt$, а час напівперетворення прямо пропорційний початковій концентрації: $t_{1/2} = \\frac{[A]_0}{2k}$.',
+          '2) **Перший порядок ($n=1$)** — мономолекулярний розклад та радіоактивний розпад: $[A](t) = [A]_0 e^{-kt}$ (лінеаризується у координатах $\\ln[A]$ від $t$), а період напіврозпаду **$t_{1/2} = \\frac{\\ln 2}{k} \\approx \\frac{0.693}{k}$ взагалі не залежить від $[A]_0$**. 3) **Другий порядок ($n=2$)** — бімолекулярні зіткнення $2A \\to P$: $\\frac{1}{[A](t)} = \\frac{1}{[A]_0} + kt$, а $t_{1/2} = \\frac{1}{k[A]_0}$ обернено пропорційний початковій концентрації.'
+        ],
+        en: [
+          'The **reaction order $n$** in the differential rate law $v = -\\frac{d[A]}{dt} = k[A]^n$ dictates both the integrated concentration decay $[A](t)$ and the scaling of the **half-life $t_{1/2}$** with initial concentration $[A]_0$.',
+          'For **zero-order kinetics ($n=0$)** (e.g., surface-saturated catalysis), rate is constant ($v = k$), $[A](t) = [A]_0 - kt$, and $t_{1/2} = \\frac{[A]_0}{2k} \\propto [A]_0$. For **first-order kinetics ($n=1$)**, decay is exponential $[A](t) = [A]_0 e^{-kt}$ and the half-life **$t_{1/2} = \\frac{\\ln 2}{k}$ is strictly independent of $[A]_0$**.',
+          'For **second-order kinetics ($n=2$)** (bimolecular collisions $2A \\to P$), $\\frac{1}{[A](t)} = \\frac{1}{[A]_0} + kt$ (linear in $1/[A]$ vs. $t$) and the half-life scales inversely with initial concentration: $t_{1/2} = \\frac{1}{k[A]_0}$.'
+        ]
+      },
+      chem_enzyme: {
+        uk: [
+          '**Ферменти (ензими)** — це високоспецифічні білкові біокаталізатори, які прискорюють біохімічні реакції в клітині в $10^6\\text{–}10^{12}$ разів завдяки комплементарному зв’язуванню молекули **субстрату $S$** в активному центрі ферменту $E$ з утворенням проміжного **фермент-субстратного комплексу $[ES]$**: $E + S \\underset{k_{-1}}{\\overset{k_1}{\\rightleftharpoons}} ES \\overset{k_{\\text{cat}}}{\\longrightarrow} E + P$.',
+          'Застосування методу квазістаціонарних концентрацій Бріггса — Голдейна ($d[ES]/dt = 0$) дає класичне **рівняння Міхаеліса — Ментен**: $v = \\frac{V_{\\max}[S]}{K_M + [S]}$, де $V_{\\max} = k_{\\text{cat}}[E]_0$ — гранична швидкість при повному насиченні всіх активних центрів ферменту, а **константа Міхаеліса $K_M = \\frac{k_{-1} + k_{\\text{cat}}}{k_1}$** чисельно дорівнює концентрації субстрату, за якої $v = \\frac{1}{2}V_{\\max}$ (що менша $K_M$, то вища спорідненість ферменту до субстрату).',
+          '**Конкурентний інгібітор $I$** має просторову будову, подібну до субстрату, і оборотно конкурує з ним за активний центр ($E + I \\rightleftharpoons EI$). Це збільшує уявну константу Міхаеліса в $\\alpha = 1 + [I]/K_I$ разів ($K_M^{\\text{app}} = \\alpha K_M$), але за великого надлишку субстрату ($[S] \\gg K_M^{\\text{app}}$) субстрат витісняє інгібітор, тому максимальна швидкість $V_{\\max}$ не змінюється.'
+        ],
+        en: [
+          '**Enzymes** achieve extraordinary catalytic rate enhancements by binding substrate $S$ within a complementary active-site pocket to form an **enzyme–substrate complex $ES$**: $E + S \\rightleftharpoons ES \\xrightarrow{k_{\\text{cat}}} E + P$.',
+          'Under steady-state conditions ($d[ES]/dt = 0$), reaction velocity obeys the **Michaelis–Menten equation** $v = \\frac{V_{\\max}[S]}{K_M + [S]}$, transitioning from 1st-order ($v \\approx \\frac{V_{\\max}}{K_M}[S]$) at low $[S]$ to 0th-order saturation ($v \\to V_{\\max} = k_{\\text{cat}}[E]_0$) when all active sites are occupied ($[S] \\gg K_M$).',
+          'A **competitive inhibitor $I$** competes reversibly for the active site ($E + I \\rightleftharpoons EI$), increasing the apparent Michaelis constant to $K_M^{\\text{app}} = K_M(1 + [I]/K_I)$ while leaving the asymptotic $V_{\\max}$ unchanged.'
+        ]
+      },
+      chem_gibbs: {
+        uk: [
+          'У хімічній термодинаміці напрямок самочинного перебігу реакції за сталих температури $T$ і тиску $P$ визначається конкуренцією двох факторів: прагненням системи до мінімуму потенціальної енергії зв’язків (**ентальпійний фактор $\\Delta H$**) та прагненням до максимуму термодинамічної ймовірності й безладу (**ентропійний фактор $T\\Delta S$**).',
+          'Ці два фактори об’єднує ізобарно-ізотермічний потенціал — **вільна енергія Гіббса**: $\\Delta G = \\Delta H - T\\Delta S$. Реакція відбувається **самочинно (спонтанно)** у прямому напрямку лише тоді, коли **$\\Delta G < 0$**; за $\\Delta G > 0$ пряма реакція термодинамічно заборонена (самочинно йде зворотна), а умова **$\\Delta G = 0$** відповідає стану хімічної рівноваги, причому стандартна енергія Гіббса однозначно визначає константу рівноваги: $\\Delta G^\\circ = -RT\\ln K_{eq}$.',
+          'Якщо $\\Delta H$ і $\\Delta S$ мають однаковий знак, знак $\\Delta G$ змінюється при переході через **температуру інверсії $T^* = \\frac{\\Delta H^\\circ}{\\Delta S^\\circ}$**: ендотермічні реакції розкладу чи дисоціації ($\\Delta H > 0, \\Delta S > 0$) стають термодинамічно самочинними за високих температур $T > T^*$, коли ентропійний доданок $T\\Delta S$ переважає $\\Delta H$.'
+        ],
+        en: [
+          'At constant temperature $T$ and pressure $P$, chemical spontaneity is governed by the **Gibbs free energy** $\\Delta G = \\Delta H - T\\Delta S$, which balances the **enthalpic driving force** ($\\Delta H$, heat of bond rearrangement) against the **entropic driving force** ($T\\Delta S$, disorder and microstate multiplicity).',
+          'A reaction is **spontaneous** when $\\Delta G < 0$, non-spontaneous when $\\Delta G > 0$, and at **chemical equilibrium** when $\\Delta G = 0$. The standard free energy change determines the equilibrium constant through the van ’t Hoff isotherm: $\\Delta G^\\circ = -RT\\ln K_{eq}$.',
+          'When $\\Delta H$ and $\\Delta S$ share the same sign, spontaneity reverses across the **inversion temperature** $T^* = \\frac{\\Delta H^\\circ}{\\Delta S^\\circ}$: an endothermic reaction with positive entropy change ($\\Delta H > 0, \\Delta S > 0$) becomes spontaneous at high temperatures $T > T^*$.'
+        ]
+      },
+      chem_haber: {
+        uk: [
+          '**Промисловий синтез аміаку за методом Габера — Боша** ($\\text{N}_2\\text{(г)} + 3\\text{H}_2\\text{(г)} \\rightleftharpoons 2\\text{NH}_3\\text{(г)},\\; \\Delta H^\\circ = -92.4\\text{ кДж/моль}$) є класичним прикладом фізико-хімічної оптимізації, де вимоги термодинаміки та хімічної кінетики суперечать одна одній.',
+          'За принципом Ле Шательє, оскільки пряма реакція є **екзотермічною** ($\\Delta H < 0$) і супроводжується **вдвічі меншим об’ємом газу** ($4\\text{ моль} \\to 2\\text{ моль}$), рівноважний вихід аміаку зростає при **підвищенні тиску $P$** та **зниженні температури $T$**. Проте при низькій температурі швидкість реакції дорівнює нулю через колосальну міцність потрійного зв’язку в молекулі азоту $\\text{N}\\equiv\\text{N}$ ($E_{\\text{диc}} = 945\\text{ кДж/моль}$).',
+          'Тому в промисловості застосовують **компромісний режим**: високий тиск $P = 150\\text{–}300\\text{ атм}$, помірну температуру $t = 420\\text{–}500\\,^\\circ\\text{C}$ та пористий **залізний каталізатор $\\text{Fe}$**, промотований $\\text{K}_2\\text{O}$ та $\\text{Al}_2\\text{O}_3$, на поверхні якого молекули $\\text{N}_2$ та $\\text{H}_2$ дисоціативно хемосорбуються зі зниженням енергії активації.'
+        ],
+        en: [
+          'The **Haber–Bosch synthesis of ammonia** ($\\text{N}_2\\text{(g)} + 3\\text{H}_2\\text{(g)} \\rightleftharpoons 2\\text{NH}_3\\text{(g)},\\; \\Delta H^\\circ = -92.4\\text{ kJ/mol}$) illustrates the classic industrial trade-off between chemical thermodynamics and reaction kinetics.',
+          'Because the forward reaction is **exothermic** and reduces gas mole count from $4$ to $2$, Le Chatelier’s principle dictates that equilibrium yield $\\eta_{\\text{eq}}(\\text{NH}_3)$ is maximized at **high pressure** and **low temperature**. However, at low temperatures the reaction is kinetically frozen by the immense dissociation energy of the $\\text{N}\\equiv\\text{N}$ triple bond ($945\\text{ kJ/mol}$).',
+          'Industrial reactors therefore operate at a **kinetic–thermodynamic compromise** of $400\\text{–}500\\,^\\circ\\text{C}$ and $150\\text{–}300\\text{ atm}$ over a promoted porous **iron ($\\text{Fe}$) catalyst** that lowers the activation barrier via dissociative chemisorption.'
+        ]
+      },
+      chem_raoult: {
+        uk: [
+          '**Колігативні властивості розчинів** — це фізико-хімічні властивості розбавлених розчинів, які залежать лише від **концентрації розчинених частинок** (молекул або йонів з урахуванням ізотонічного коефіцієнта Вант-Гоффа $i$), але не залежать від їхньої хімічної природи.',
+          'Згідно з **першим законом Рауля**, додавання нелеткої розчиненої речовини зменшує мольну частку розчинника $\\chi_1 = 1 - \\chi_2$ на поверхні випаровування, тому тиск насиченої пари розчину $P$ завжди нижчий за тиск пари чистого розчинника $P_0^\\circ$: $P = \\chi_1 P_0^\\circ \\Rightarrow \\frac{P_0^\\circ - P}{P_0^\\circ} = \\chi_2 = \\frac{i\\,n_{\\text{реч}}}{n_{\\text{води}} + i\\,n_{\\text{реч}}}$.',
+          'Зниження тиску насиченої пари над розчином зміщує точки фазових переходів води (**другий закон Рауля**): 1) **ебуліоскопія** — підвищення температури кипіння розчину $\\Delta T_{\\text{кип}} = i\\,K_b\\,m$ (для води $K_b = 0.512\\text{ К}\\cdot\\text{кг/моль}$); 2) **кріоскопія** — зниження температури замерзання розчину $\\Delta T_{\\text{зам}} = i\\,K_f\\,m$ ($K_f = 1.86\\text{ К}\\cdot\\text{кг/моль}$), на чому ґрунтується дія автомобільних антифризів та посипання зледенілих доріг сіллю $\\text{NaCl}$ ($i \\approx 2$) або $\\text{CaCl}_2$ ($i \\approx 3$).'
+        ],
+        en: [
+          '**Colligative properties** depend solely on the total concentration of dissolved solute particles ($i\\cdot m$, where $i$ is the van ’t Hoff dissociation factor and $m$ is molality) rather than their chemical identity.',
+          'By **Raoult’s Law**, a non-volatile solute reduces the surface mole fraction of solvent ($\\chi_1 = 1 - \\chi_2$), lowering the equilibrium vapor pressure proportionally: $P = \\chi_1 P_0^\\circ \\Rightarrow \\Delta P = P_0^\\circ - P = \\chi_2 P_0^\\circ$.',
+          'Because the solution’s vapor pressure curve is depressed relative to pure solvent, the boiling point rises (**ebullioscopy**, $\\Delta T_b = i K_b m$, $K_b = 0.512\\text{ K}\\cdot\\text{kg/mol}$ for water) and the freezing point drops (**cryoscopy**, $\\Delta T_f = i K_f m$, $K_f = 1.86\\text{ K}\\cdot\\text{kg/mol}$), explaining road de-icing salts and antifreeze coolants.'
+        ]
+      },
+      chem_chromatography: {
+        uk: [
+          '**Хроматографія** (відкрита М. С. Цвєтом під час розділення пігментів зеленого листя) — це фізико-хімічний метод розділення та аналізу сумішей, заснований на багаторазовому перерозподілі компонентів між двома фазами, що не змішуються: **нерухомою стаціонарною фазою** (сорбентом, наприклад полярним силікагелем $\\text{SiO}_2\\cdot x\\text{H}_2\\text{O}$) та **рухомою фазою (елюентом)**, яка тече вздовж сорбенту.',
+          'Кожна речовина $i$ характеризується **коефіцієнтом розподілу** $K_d = C_{\\text{ст}} / C_{\\text{рух}}$. Речовини, які слабко адсорбуються на силікагелі (неполярний оранжевий $\\beta$-каротин), майже весь час перебувають у потоці елюента і рухаються швидко вслід за фронтом розчинника. Полярні речовини (зелений хлорофіл $b$), які утворюють міцні водневі зв’язки з силанольними групами $\\text{–Si–OH}$, затримуються сорбентом і рухаються повільно.',
+          'У тонкошаровій хроматографії (ТШХ) положення плями компонента кількісно описують безрозмірним **коефіцієнтом рухомості (утримування) $R_f$** (*Retention factor*): $R_f = \\frac{z_i}{z_{\\text{фронт}}} \\in (0, 1)$, що дорівнює відношенню шляху центра плями речовини $z_i$ до шляху фронту розчинника $z_{\\text{фронт}}$ від лінії старту.'
+        ],
+        en: [
+          '**Chromatography** separates chemical mixtures by continuously partitioning analyte molecules between a **stationary phase** (such as polar silica gel $\\text{SiO}_2$ coated on a TLC plate or packed in a column) and a moving **mobile phase (eluent)**.',
+          'On polar silica gel, polar analytes form strong hydrogen bonds and dipole interactions with surface silanol ($\\text{–Si–OH}$) groups (large partition coefficient $K_d$) and migrate slowly, whereas non-polar compounds remain in the mobile phase and travel rapidly near the solvent front.',
+          'Each component is identified by its dimensionless **retention factor** $R_f = \\frac{z_{\\text{spot}}}{z_{\\text{front}}} = \\frac{1}{1 + k\\prime}$, the ratio of the spot’s migration distance $z_{\\text{spot}}$ to the total distance traveled by the solvent front $z_{\\text{front}}$.'
+        ]
+      },
+      chem_adsorption: {
+        uk: [
+          '**Адсорбція** — це самочинне концентрування молекул газу або розчиненої речовини (**адсорбату**) на поверхні поділу фаз із твердим тілом (**адсорбентом** — активованим вугіллям, цеолітом, силікагелем чи металічним каталізатором) за рахунок нескомпенсованих поверхневих сил Ван-дер-Ваальса (фізична адсорбція) або хімічних зв’язків (хемосорбція).',
+          'Модель **моношарової адсорбції Ленгмюра** виходить з того, що поверхня кристала містить скінченне число енергетично рівноцінних активних центрів $N_0$. Динамічна рівновага настає тоді, коли швидкість прилипання молекул на вільну частку поверхні $(1-\\theta)$ зрівнюється зі швидкістю десорбції з зайнятої частки $\\theta$: $k_a P(1-\\theta) = k_d\\theta$, звідки випливає **ізотерма адсорбції Ленгмюра**: $\\theta(P) = \\frac{K P}{1 + K P}$, де $K = k_a/k_d$ — константа адсорбційної рівноваги.',
+          'За малих тисків ($KP \\ll 1$) заповнення поверхні зростає лінійно за законом Генрі ($\\theta \\approx KP$), а за високих тисків ($KP \\gg 1$) усі активні центри зайняті й поверхня насичується до суцільного моношару ($\\theta \\to 1$). Оскільки адсорбція газу завжди супроводжується виділенням теплоти ($\\Delta H_{\\text{адс}} = -Q_{\\text{адс}} < 0$), підвищення температури зменшує $K(T) = K_0 e^{Q_{\\text{адс}}/(RT)}$ і спричиняє **десорбцію**.'
+        ],
+        en: [
+          '**Adsorption** is the accumulation of gas or solute molecules (**adsorbate**) onto the surface of a solid (**adsorbent**, such as activated carbon or a metal catalyst). Because gas molecules lose translational freedom upon binding ($\\Delta S_{\\text{ads}} < 0$), spontaneous adsorption is universally **exothermic** ($\\Delta H_{\\text{ads}} = -Q_{\\text{ads}} < 0$).',
+          '**Langmuir’s monolayer model** assumes a fixed number of equivalent surface sites. Equating the rate of adsorption on vacant sites $k_a P(1-\\theta)$ to the rate of desorption from occupied sites $k_d\\theta$ yields the **Langmuir isotherm**: $\\theta(P) = \\frac{K P}{1 + K P}$, where $K = k_a / k_d$.',
+          'At low pressures ($KP \\ll 1$), fractional coverage rises linearly ($\\theta \\approx KP$, Henry’s regime); at high pressures ($KP \\gg 1$), the surface saturates at a complete monolayer ($\\theta \\to 1$). Raising temperature $T$ decreases $K(T)$ and drives thermal desorption.'
+        ]
+      },
+      chem_colloids: {
+        uk: [
+          '**Колоїдні розчини (золі)** — це ультрамікрогетерогенні дисперсні системи з розміром частинок (міцел) від **$1$ до $100\\text{ нм}$**, що посідають проміжне місце між істинними молекулярними розчинами ($< 1\\text{ нм}$) та грубодисперсними суспензіями ($> 100\\text{ нм}$). Кожна колоїдна **міцела** має ядро, оточене подвійним електричним шаром (ПЕШ) потенціалвизначальних йонів та протиіонів, що створює електрокінетичний **дзета-потенціал $\\zeta$** і перешкоджає злипанню частинок.',
+          'Під час проходження вузького променя світла крізь прозорий золь спостерігається **оптичний ефект Фарадея — Тіндаля** — світіння конуса променя збоку внаслідок дифракційного **розсіяння Релея**, інтенсивність якого пропорційна шостому степеню діаметра частинок і обернено пропорційна четвертому степеню довжини хвилі: $I_{\\text{розс}} \\propto \\frac{N d^6}{\\lambda^4}$. В істинних розчинах конус Тіндаля відсутній.',
+          'Додавання електроліту стискає дифузний шар протиіонів і знижує $|\\zeta|$-потенціал нижче критичної межі ($\\approx 20\\text{ мВ}$), викликаючи злипання міцел в агрегати — **коагуляцію**. За **правилом Шульце — Гарді** (та теорією ДЛФО), поріг коагуляції обернено пропорційний шостому степеню заряду протиіона: $C_{\\text{кр}} \\propto \\frac{1}{z^6}$ (для $\\text{Na}^+ : \\text{Ca}^{2+} : \\text{Al}^{3+}$ співвідношення порогів становить $1 : \\frac{1}{64} : \\frac{1}{729}$).'
+        ],
+        en: [
+          '**Colloidal sols** contain dispersed nanoparticles or **micelles** ranging from **$1$ to $100\\text{ nm}$** in diameter. Unlike true solutions ($< 1\\text{ nm}$), colloids scatter an incident light beam into a visible **Tyndall cone** via Rayleigh scattering ($I_{\\text{scat}} \\propto N d^6 / \\lambda^4$).',
+          'Colloidal stability is governed by **DLVO theory**: micelles remain dispersed as long as electrostatic repulsion between their electrical double layers (measured by the **zeta potential $\\zeta$**) outweighs short-range van der Waals attraction.',
+          'Adding an electrolyte compresses the double layer and triggers **coagulation (flocculation)**. According to the **Schulze–Hardy rule**, the critical coagulation concentration ($\\text{CCC}$) drops inversely with the **sixth power** of the counter-ion charge: $\\text{CCC} \\propto z^{-6}$ ($\\text{Na}^+ : \\text{Ca}^{2+} : \\text{Al}^{3+} = 1 : 64^{-1} : 729^{-1}$).'
+        ]
+      },
+      chem_hydrolysis: {
+        uk: [
+          '**Гідроліз солей** — це оборотна протолітична взаємодія йонів розчиненої солі з молекулами води, яка супроводжується зв’язуванням йонів $\\text{H}^+$ або $\\text{OH}^-$ у малодисоційований слабкий електроліт і зміною реакції середовища ($\\text{pH} \\neq 7$). Напрямок гідролізу завжди визначається правилом: **реакцію середовища створює сильний електроліт**, а гідролізу піддається йон слабкого.',
+          '1) **Сіль слабкої кислоти і сильної основи** ($\\text{CH}_3\\text{COONa}$, $\\text{Na}_2\\text{CO}_3$) — **гідроліз за аніоном**: $\\text{CH}_3\\text{COO}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{CH}_3\\text{COOH} + \\text{OH}^-$, накопичуються гідроксид-іони й середовище стає **лужним ($\\text{pH} > 7$)**. 2) **Сіль сильної кислоти і слабкої основи** ($\\text{NH}_4\\text{Cl}$, $\\text{AlCl}_3$) — **гідроліз за катіоном**: $\\text{NH}_4^+ + \\text{H}_2\\text{O} \\rightleftharpoons \\text{NH}_3\\cdot\\text{H}_2\\text{O} + \\text{H}_3\\text{O}^+$, середовище стає **кислим ($\\text{pH} < 7$)**. 3) Сіль сильної кислоти і сильної основи ($\\text{NaCl}$) не гідролізується ($\\text{pH} = 7$).',
+          'Константа гідролізу дорівнює $K_h = \\frac{K_w}{K_{\\text{слаб}}}$, а **ступінь гідролізу $h = \\sqrt{\\frac{K_h}{C}}$** зростає під час **розбавлення розчину водою** ($C \\downarrow$, за законом розбавлення Оствальда) та під час **нагрівання** ($T \\uparrow$), оскільки дисоціація води є ендотермічним процесом і $K_w(T)$ стрімко зростає.'
+        ],
+        en: [
+          '**Salt hydrolysis** is the proton-transfer reaction between dissolved salt ions and water molecules that shifts solution $\\text{pH}$ away from neutrality. Only ions conjugate to weak acids or weak bases undergo hydrolysis; **the stronger parent electrolyte dictates whether the solution is acidic or basic**.',
+          '1) **Weak-acid + strong-base salt** ($\\text{CH}_3\\text{COONa}$, $\\text{Na}_2\\text{CO}_3$): **anion hydrolysis** $\\text{A}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{HA} + \\text{OH}^-$ yields a **basic solution ($\\text{pH} > 7$)**. 2) **Strong-acid + weak-base salt** ($\\text{NH}_4\\text{Cl}$): **cation hydrolysis** $\\text{BH}^+ + \\text{H}_2\\text{O} \\rightleftharpoons \\text{B} + \\text{H}_3\\text{O}^+$ yields an **acidic solution ($\\text{pH} < 7$)**. 3) Strong-acid + strong-base salts ($\\text{NaCl}$) do not hydrolyze ($\\text{pH} = 7.0$).',
+          'The hydrolysis constant is $K_h = K_w / K_{\\text{weak}}$, and the **degree of hydrolysis** $h = \\sqrt{K_h / C}$ increases upon **dilution** ($C \\downarrow$) and **heating** (since $K_w$ increases strongly with temperature).'
+        ]
+      },
+      chem_corrosion: {
+        uk: [
+          '**Електрохімічна корозія металів** — це самочинне руйнування металів у провідному вологому середовищі внаслідок роботи безлічі короткозамкнених **мікрогальванічних елементів** на поверхні виробу. У кожній гальванічній парі метал із більш від’ємним електродним потенціалом стає **анодом ($-$)** і окиснюється, переходячи в розчин у вигляді катіонів ($M \\to M^{n+} + ne^-$), а метал із вищим потенціалом стає **катодом ($+$)**, на якому відновлюється розчинений кисень ($\\text{O}_2 + 2\\text{H}_2\\text{O} + 4e^- \\to 4\\text{OH}^-$) або йони Гідрогену.',
+          'Для заліза стандартний потенціал становить $E^\\circ(\\text{Fe}^{2+}/\\text{Fe}) = -0.44\\text{ В}$. У разі контакту заліза з міддю ($E^\\circ = +0.34\\text{ В}$) або оловом (луджена жерсть, $E^\\circ = -0.14\\text{ В}$) залізо виступає анодом і в разі подряпини покриття іржавіє в рази швидше ($\\text{Fe}^{2+} \\to \\text{Fe(OH)}_3\\downarrow \\to \\text{Fe}_2\\text{O}_3\\cdot n\\text{H}_2\\text{O}$).',
+          'Натомість при **оцинкуванні** або приєднанні **протектора з цинку чи магнію** ($E^\\circ_{\\text{Zn}} = -0.76\\text{ В} < -0.44\\text{ В}$) анодом стає саме цинк ($\\text{Zn} \\to \\text{Zn}^{2+} + 2e^-$). Він жертвує собою, віддаючи електрони сталевому корпусу корабля чи трубопроводу (катоду), і повністю блокує корозію заліза навіть за наявності глибоких подряпин (**протекторний катодний захист**).'
+        ],
+        en: [
+          '**Electrochemical corrosion** destroys metals via short-circuited **microgalvanic cells** beneath an aqueous electrolyte film. In any bimetallic couple, the metal with the more negative standard reduction potential $E^\\circ$ acts as the **anode ($-$)** and dissolves ($M \\to M^{n+} + ne^-$), while dissolved oxygen is reduced at the **cathode ($+$)**: $\\text{O}_2 + 2\\text{H}_2\\text{O} + 4e^- \\to 4\\text{OH}^-$.',
+          'Because $E^\\circ(\\text{Fe}^{2+}/\\text{Fe}) = -0.44\\text{ V}$, coupling steel with a nobler metal such as tin ($-0.14\\text{ V}$) or copper ($+0.34\\text{ V}$) makes iron the anode, severely accelerating rusting at any coating scratch.',
+          'In **sacrificial cathodic protection** (galvanized steel or hull anodes), iron is coupled to a more active metal such as **zinc** ($E^\\circ = -0.76\\text{ V}$). Zinc serves as the sacrificial anode ($\\text{Zn} \\to \\text{Zn}^{2+} + 2e^-$), pumping electrons into the steel cathode and preventing iron oxidation even if the coating is breached.'
+        ]
+      },
+      chem_liion: {
+        uk: [
+          '**Літій-іонний акумулятор (Li-ion)** працює за принципом оборотного топотактичного проникнення — **інтеркаляції** («крісла-гойдалки», *rocking-chair battery*) катіонів $\\text{Li}^+$ між двома шаруватими кристалічними матрицями (електродами-господарями) без виділення металічного літію.',
+          'Негативним електродом у зарядженому стані є шаруватий **графіт $\\text{Li}_x\\text{C}_6$** ($E^\\circ \\approx -3.0\\text{ В}$), де йони $\\text{Li}^+$ розташовані між графеновими площинами, а позитивним електродом — шаруватий оксид перехідного металу **$\\text{Li}_{1-x}\\text{CoO}_2$** ($E^\\circ \\approx +0.7\\text{ В}$), утворений октаедрами $[\\text{CoO}_6]$. Між електродами розміщений пористий полімерний сепаратор, просочений апротонним органічним електролітом ($\\text{LiPF}_6$ в етиленкарбонаті).',
+          'Під час **розряду** графіт є анодом ($-$): $\\text{Li}_x\\text{C}_6 \\to \\text{C}_6 + x\\text{Li}^+ + xe^-$, катіони $\\text{Li}^+$ мігрують крізь сепаратор і вбудовуються в катод ($+$): $\\text{Li}_{1-x}\\text{CoO}_2 + x\\text{Li}^+ + xe^- \\to \\text{LiCoO}_2$, а електрони в зовнішньому колі створюють високу напругу **$U \\approx 3.6\\text{–}4.2\\text{ В}$**. Під час **заряду** зовнішнє джерело струму повертає йони $\\text{Li}^+$ назад у графіт.'
+        ],
+        en: [
+          'A **rechargeable Lithium-Ion Battery** stores energy via reversible **intercalation** ("rocking-chair" shuttle) of $\\text{Li}^+$ ions between two layered host crystals separated by a microporous separator in a non-aqueous organic electrolyte.',
+          'The negative electrode consists of graphene sheets in **graphite ($\\text{Li}_x\\text{C}_6$)** ($E^\\circ \\approx -3.0\\text{ V}$), while the positive electrode is a layered transition-metal oxide such as **$\\text{Li}_{1-x}\\text{CoO}_2$** ($E^\\circ \\approx +0.7\\text{ V}$), delivering a cell voltage of **$3.6\\text{–}4.2\\text{ V}$**.',
+          'During **discharge**, $\\text{Li}^+$ ions de-intercalate from the graphite anode ($\\text{Li}_x\\text{C}_6 \\to \\text{C}_6 + x\\text{Li}^+ + xe^-$) and intercalate into the $\\text{CoO}_2$ cathode while electrons power the external load; during **charging**, an external voltage reverses both ion and electron flows.'
+        ]
+      },
+      chem_sn2: {
+        uk: [
+          '**Бімолекулярне нуклеофільне заміщення $\\text{S}_{\\text{N}}2$** (*Substitution Nucleophilic Bimolecular*, відкрите К. Інгольдом і Е. Х’юзом) — це класичний одностадійний (узгоджений) механізм органічних реакцій галогеноалканів, наприклад $\\text{HO}^- + \\text{CH}_3\\text{Br} \\to \\text{CH}_3\\text{OH} + \\text{Br}^-$. Оскільки лімітуюча стадія включає одночасне зіткнення двох частинок — субстрату та нуклеофілу, реакція має **другий сумарний кінетичний порядок**: $v = k_2[\\text{R–X}][\\text{Nu}^-]$.',
+          'Нуклеофіл $\\text{HO}^-$ з неподіленою парою електронів атакує електрофільний атом Карбону $\\text{C}^{\\delta+}$ суворо **з тильного боку** — під кутом $180^\\circ$ до зв’язку $\\text{C–Br}$, що розривається, спрямовуючи електронну густину на вакантну розпушуючу орбіталь $\\sigma^*_{\\text{C–Br}}$.',
+          'У точці максимуму енергії ($\\xi = 0.50$, бар’єр $E_a^\\ddagger$) утворюється плоский тригонально-біпірамідальний **пентакоординований перехідний стан** $[\\text{HO}^{\\delta-}\\cdots\\text{CH}_3\\cdots\\text{Br}^{\\delta-}]^\\ddagger$, де Карбон має $sp^2$-гібридизацію, три зв’язки $\\text{C–H}$ лежать в одній екваторіальній площині, а осьові часткові зв’язки з $\\text{OH}$ та $\\text{Br}$ утворені $p_z$-орбіталлю. Відхід аніона $\\text{Br}^-$ завершується повним вивертанням тетраедра навиворіт (як парасольки на вітрі) — **інверсією конфігурації Вальдена** ($(R) \\to (S)$).'
+        ],
+        en: [
+          '**Bimolecular nucleophilic substitution ($\\text{S}_{\\text{N}}2$)** is a concerted, single-step reaction mechanism ($\\text{HO}^- + \\text{CH}_3\\text{Br} \\to \\text{CH}_3\\text{OH} + \\text{Br}^-$) whose rate law is first-order in both substrate and nucleophile ($v = k_2[\\text{R–X}][\\text{Nu}^-]$, second-order overall).',
+          'The nucleophile attacks the electrophilic carbon from the **backside ($180^\\circ$ opposite the leaving group)** to overlap with the antibonding $\\sigma^*_{\\text{C–X}}$ orbital. At the saddle point ($\\xi = 0.50$), the system passes through a planar trigonal-bipyramidal **pentacoordinate transition state** $[\\text{HO}^{\\delta-}\\cdots\\text{CH}_3\\cdots\\text{Br}^{\\delta-}]^\\ddagger$ with no intermediate.',
+          'Departure of the leaving group flips the three substituents to the opposite side like an umbrella in a gale, resulting in $100\\%$ stereospecific **Walden inversion** of configuration ($(R) \\to (S)$ at a chiral center).'
+        ]
+      },
+      chem_ester: {
+        uk: [
+          '**Реакція естерифікації Фішера** — це оборотна кислотно-каталізована взаємодія карбонової кислоти зі спиртом з утворенням складного ефіру (**естеру**) та води: $\\text{R–COOH} + \\text{R}\\prime\\text{–OH} \\underset{\\text{H}^+}{\\rightleftharpoons} \\text{R–CO–OR}\\prime + \\text{H}_2\\text{O}$. Сильна мінеральна кислота ($\\text{H}_2\\text{SO}_4$) протонує карбонільний атом Оксигену, різко підвищуючи позитивний заряд $\\delta+$ на карбонільному Карбоні й полегшуючи нуклеофільну атаку молекули спирту.',
+          'Фундаментальний механізм ацильного заміщення було доведено методом **ізотопної мітки (мічених атомів $^{18}\\text{O}$)** Поляньї та Шабо: якщо взяти етанол, збагачений важким ізотопом оксигену $\\text{C}_2\\text{H}_5\\text{–}^{18}\\text{OH}$, і звичайну оцтову кислоту $\\text{CH}_3\\text{COOH}$, то **вся ізотопна мітка $^{18}\\text{O}$ переходить виключно до складу етилацетату** $\\text{CH}_3\\text{CO–}^{18}\\text{OC}_2\\text{H}_5$, а вода $\\text{H}_2\\text{O}$ утворюється за рахунок відщеплення гідроксильної групи $\\text{–OH}$ від кислоти та протона $\\text{–H}$ від спирту.',
+          'Для еквімолярної суміші ($1:1$) константа рівноваги дорівнює $K_{eq} = \\frac{[\\text{Естер}][\\text{H}_2\\text{O}]}{[\\text{Кислота}][\\text{Спирт}]} \\approx 4.0$, тому граничний вихід становить $\\eta = \\frac{\\sqrt{4}}{1+\\sqrt{4}} = \\frac{2}{3} \\approx 66.7\\%$. Щоб змістити рівновагу до майже $100\\%$ виходу естеру за принципом Ле Шательє, беруть надлишок спирту або безперервно відганяють воду з реакційної суміші (насадка Діна — Старка).'
+        ],
+        en: [
+          '**Fischer esterification** is the reversible, acid-catalyzed condensation of a carboxylic acid and an alcohol to form an **ester** and water: $\\text{R–COOH} + \\text{R}\\prime\\text{–OH} \\rightleftharpoons \\text{R–COOR}\\prime + \\text{H}_2\\text{O}$. Protonation of the carbonyl oxygen by $\\text{H}^+$ activates the acyl carbon toward nucleophilic attack by the alcohol.',
+          'Isotopic tracer experiments using **$^{18}\\text{O}$-labeled alcohol ($\\text{R}\\prime\\text{–}^{18}\\text{OH}$)** established the acyl-oxygen cleavage mechanism: the heavy $^{18}\\text{O}$ atom is incorporated **exclusively into the ester** ($\\text{R–CO–}^{18}\\text{OR}\\prime$), proving that the carboxylic acid loses its $\\text{–OH}$ group while the alcohol loses only $\\text{–H}$.',
+          'Because $K_{eq} \\approx 4.0$, an equimolar ($1:1$) mixture reaches equilibrium at $66.7\\%$ conversion. High yields ($>98\\%$) are achieved by applying Le Chatelier’s principle: adding excess alcohol or continuously removing water via azeotropic distillation (Dean–Stark trap).'
+        ]
+      },
+      chem_biopol: {
+        uk: [
+          '**Біополімери (білки та нуклеїнові кислоти)** — це інформаційні та структурні макромолекули живої клітини, чия просторова (вторинна) конформація стабілізується кооперативною системою внутрішньо- або міжмолекулярних **водневих зв’язків**.',
+          'У **білках** $\\alpha$-амінокислотні залишки з’єднані амідними **пептидними зв’язками $\\text{–CO–NH–}$**, які завдяки $p\\text{–}\\pi$ спряженню мають частково подвійний характер і є жорсткими та плоскими. У правозакрученій **$\\alpha$-спіралі Полінга — Корі** ($3.6$ амінокислотного залишку на один виток, крок спіралі $0.54\\text{ нм}$) кожна карбонільна група $\\text{C=O}$ $i$-го залишку утворює водневий зв’язок із групою $\\text{H–N}$ $(i+4)$-го залишку паралельно осі спіралі.',
+          'У **подвійній спіралі B-ДНК Вотсона — Кріка** ($10$ пар основ на виток, крок $3.4\\text{ нм}$) два антипаралельні полінуклеотидні ланцюги ($5\\prime\\to 3\\prime$ та $3\\prime\\to 5\\prime$) утримуються комплементарними водневими зв’язками між азотистими основами всередині спіралі (**правило Чаргаффа**: $[\\text{A}]=[\\text{T}],\\; [\\text{G}]=[\\text{C}]$): пара **аденін–тимін ($\\text{A=T}$) утворює $2$ водневі зв’язки**, а пара **гуанін–цитозин ($\\text{G}\\equiv\\text{C}$) — $3$ водневі зв’язки**. Тому температура теплової денатурації (плавлення) ДНК лінійно зростає з часткою $\\text{GC}$-пар: $T_m \\approx 69.3 + 0.41(\\%\\text{GC})$.'
+        ],
+        en: [
+          '**Biopolymers** (proteins and nucleic acids) fold into regular 3D secondary structures stabilized by cooperative networks of directional **hydrogen bonds**.',
+          'In the **Pauling–Corey protein $\\alpha$-helix** ($3.6$ residues/turn, pitch $0.54\\text{ nm}$), planar trans peptide bonds ($\\text{–CO–NH–}$) coil into a right-handed helix where every backbone $\\text{C=O}$ of residue $i$ hydrogen-bonds to the amide $\\text{N–H}$ of residue $i+4$.',
+          'In **Watson–Crick B-DNA** ($10\\text{ bp/turn}$, pitch $3.4\\text{ nm}$), two antiparallel sugar-phosphate strands pair via complementary base hydrogen bonding obeying **Chargaff’s rules**: **Adenine–Thymine ($\\text{A=T}$) forms $2$ H-bonds**, whereas **Guanine–Cytosine ($\\text{G}\\equiv\\text{C}$) forms $3$ H-bonds**. Consequently, the thermal melting temperature $T_m$ increases linearly with $\\%\\text{GC}$ content: $T_m \\approx 69.3 + 0.41(\\%\\text{GC})$.'
         ]
       }
     };
@@ -23681,7 +28530,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         analogyUk: 'Чому поляризаційні окуляри рибалок та водіїв магічно прибирають сліпучі сонячні відблиски з води та мокрого асфальту? Бо при відбиванні під особливим «кутом Брюстера» відблиск стає повністю плоскополяризованим, і фільтр окулярів легко його блокує!',
         analogyEn: 'Why do polarized sunglasses magically erase blinding glare off water and wet roads? Because light reflecting at Brewster’s angle becomes 100% horizontally polarized, allowing a vertical polarizing filter to block the glare completely!',
         hintUk: 'За законом Брюстера $\\tan\\theta_B = n_2/n_1$: який кут утворюють між собою відбитий і заломлений промені, коли $p$-поляризована хвиля перестає відбиватися?',
-        hintEn: 'At Brewster’s angle ($\tan\\theta_B = n_2/n_1$), what angle do the reflected and refracted rays make with each other ($\\theta_B + \\theta_2$)?'
+        hintEn: 'At Brewster’s angle ($\\tan\\theta_B = n_2/n_1$), what angle do the reflected and refracted rays make with each other ($\\theta_B + \\theta_2$)?'
       },
       diffraction: {
         gradeUk: '11 клас',
@@ -23758,8 +28607,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       maxwell: {
         gradeUk: '10–11 клас · ВНЗ',
         gradeEn: 'Grade 10–11 · Uni',
-        analogyUk: 'Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю ($\sim 500\\text{ м/с}$!), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей!',
-        analogyEn: 'Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed ($\sim 500\\text{ m/s}$!), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward!',
+        analogyUk: 'Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю ($\\sim 500\\text{ м/с}$!), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей!',
+        analogyEn: 'Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed ($\\sim 500\\text{ m/s}$!), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward!',
         hintUk: 'Коли температура газу $T$ зростає або молярна маса $M$ зменшується, куди зміщується максимум кривої розподілу Максвелла ($v_p = \\sqrt{2RT/M}$) і як змінюється його висота?',
         hintEn: 'When gas temperature $T$ rises (or molar mass $M$ decreases), how does the peak of the Maxwell speed distribution ($v_p = \\sqrt{2RT/M}$) shift?'
       },
@@ -24042,6 +28891,166 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         analogyEn: 'Ethylene monomers $\\text{CH}_2{=}\\text{CH}_2$ hold onto themselves with two hands (a double bond $\\sigma + \\pi$). Triggered by a radical initiator, each monomer opens its weaker $\\pi$-bond to clasp hands with its neighbor, zipping thousands of units into a long polyethylene chain!',
         hintUk: 'Під час полімеризації етилену менш міцний $\\pi$-зв’язок розривається з утворенням нових одинарних $\\sigma$-зв’язків $\\text{C–C}$ у ланцюгу, а гібридизація Карбону переходить із плоскої $sp^2$ ($120^\\circ$) у тетраедричну $sp^3$ ($109.5^\\circ$).',
         hintEn: 'During ethylene polymerization, the weaker $\\pi$-bond cleaves to form new single $\\text{C–C}$ $\\sigma$-bonds in the polymer chain, shifting carbon hybridization from planar $sp^2$ ($120^\\circ$) to tetrahedral $sp^3$ ($109.5^\\circ$).'
+      },
+      chem_mo: {
+        gradeUk: '10–11 клас · Квантова хімія',
+        gradeEn: 'Grade 10–11 · Quantum Chemistry',
+        analogyUk: 'Уяви дві хвилі на воді: коли гребінь накладається на гребінь, хвиля посилюється між ядрами й скріплює атоми (зв’язуюча орбіталь $\\sigma, \\pi$). А коли гребінь гасить западину, посередині виникає вузол тиші, який розштовхує ядра (розпушуюча орбіталь $\\sigma^*, \\pi^*$).',
+        analogyEn: 'Picture two water waves meeting: crest-on-crest builds electron density between the nuclei to glue the atoms together (bonding MO $\\sigma, \\pi$), whereas crest-on-trough cancels out at a nodal plane and pushes the nuclei apart (antibonding MO $\\sigma^*, \\pi^*$).',
+        hintUk: 'Порахуй порядок зв’язку $B = \\frac{1}{2}(N_b - N_a)$ і згадай правило Гунда для двох останніх електронів кисню $\\text{O}_2$ на вироджених $\\pi^*_{2p}$-орбіталях.',
+        hintEn: 'Calculate bond order $B = \\frac{1}{2}(N_b - N_a)$ and apply Hund’s rule to the last two electrons of $\\text{O}_2$ in the degenerate $\\pi^*_{2p}$ orbitals.'
+      },
+      chem_allotropes: {
+        gradeUk: '9–11 клас · Алотропія Карбону та нанотехнології',
+        gradeEn: 'Grade 9–11 · Carbon Allotropes & Nanotech',
+        analogyUk: 'Графен — це ніби ідеальна бджолина стільника з атомів Карбону завтовшки в один атом, по якій вільні $\\pi$-електрони мчать без опору. Якщо згорнути цей аркуш у трубочку — отримаєш нанотрубку, а якщо додати $12$ п’ятикутників — футбольний м’яч фулерену $\\text{C}_{60}$!',
+        analogyEn: 'Graphene is a one-atom-thick honeycomb sheet where $\\pi$-electrons race like massless particles. Roll that sheet into a cylinder to get a carbon nanotube, or stitch in $12$ pentagons to close it into a $\\text{C}_{60}$ soccer-ball cage!',
+        hintUk: 'Кожен $sp^2$-атом Карбону віддає четвертий $2p_z$-електрон у спільну провідну $\\pi$-зону, а за теоремою Ейлера замкнений фулерен $\\text{C}_{60}$ містить $12$ п’ятикутників і $20$ шестикутників.',
+        hintEn: 'Each $sp^2$ carbon contributes one $2p_z$ electron to the delocalized $\\pi$-band, and by Euler’s theorem $\\text{C}_{60}$ has $12$ pentagons and $20$ hexagons.'
+      },
+      chem_complex: {
+        gradeUk: '11 клас · Комплексні сполуки',
+        gradeEn: 'Grade 11 · Coordination Chemistry',
+        analogyUk: 'Шість лігандів навколо іона металу діють як шість точкових прожекторів уздовж осей $x, y, z$: тим $d$-орбіталям, які дивляться прямо на ліганди ($e_g$), стає «тісно» й їхня енергія підскакує, а тим, що сховані між осями ($t_{2g}$), — просторо й вигідно!',
+        analogyEn: 'Six octahedral ligands along the $x, y, z$ axes act like bumper cars: $d$-orbitals pointing straight at the ligands ($e_g$) get pushed up in energy, while orbitals tucked between the axes ($t_{2g}$) sit lower in energy by $\\Delta_o$!',
+        hintUk: 'В октаедричному полі $d$-орбіталі розщеплюються на нижній триплет $t_{2g}$ та верхній дублет $e_g$, а сильні ліганди ($\\Delta_o > P$) спарюють електрони в низькоспіновий стан.',
+        hintEn: 'In an octahedral field, $d$-orbitals split into a lower $t_{2g}$ triplet and upper $e_g$ doublet; strong-field ligands ($\\Delta_o > P$) create a low-spin state.'
+      },
+      chem_bornhaber: {
+        gradeUk: '10–11 клас · Термохімія кристалів',
+        gradeEn: 'Grade 10–11 · Crystal Thermochemistry',
+        analogyUk: 'Щоб побудувати міцний цегляний будинок ($\\text{NaCl}$), спочатку треба витратити зусилля, щоб розібрати старі матеріали на окремі цеглини (сублімація, дисоціація, іонізація), але коли різнойменні йони $\\text{Na}^+$ і $\\text{Cl}^-$ нарешті злітаються в кристал, виділяється лавина енергії $U_{\\text{ґр}}$!',
+        analogyEn: 'Building an ionic crystal is like climbing a small hill to jump into a deep canyon: you invest energy to vaporize and ionize the elements, then get a massive exothermic payoff $U_{\\text{lat}}$ when $\\text{Na}^+$ and $\\text{Cl}^-$ snap into a 3D lattice!',
+        hintUk: 'За законом Гесса тепловий ефект утворення солі $\\Delta H_f^\\circ$ дорівнює алгебраїчній сумі всіх стадій циклу Борна — Габера включно з $-U_{\\text{ґр}}$.',
+        hintEn: 'By Hess’s law, the enthalpy of formation $\\Delta H_f^\\circ$ equals the sum of sublimation, dissociation, ionization, electron affinity, and $-U_{\\text{lat}}$.'
+      },
+      chem_dipole: {
+        gradeUk: '8–10 клас · Полярність молекул',
+        gradeEn: 'Grade 8–10 · Molecular Polarity',
+        analogyUk: 'Уяви перетягування каната! У лінійній молекулі $\\text{CO}_2$ ($180^\\circ$) два атоми Оксигену тягнуть електрони з однаковою силою в протилежні боки — і нічия ($\\mu = 0$). А у зігнутій молекулі води ($104.5^\\circ$) обидва канати тягнуть під кутом угору, створюючи потужний електричний диполь!',
+        analogyEn: 'Think of a tug-of-war! In linear $\\text{CO}_2$ ($180^\\circ$), two oxygen atoms pull electrons equally in opposite directions so the vectors cancel ($\\mu = 0$). In bent water ($104.5^\\circ$), both pulls angle toward oxygen, creating a strong net dipole!',
+        hintUk: 'Дипольний момент молекули є векторною сумою $\\vec{\\mu}_{\\text{мол}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$, тому при $\\theta = 180^\\circ$ рівні за модулем диполі зв’язків взаємно компенсуються.',
+        hintEn: 'Molecular dipole moment is the vector sum $\\vec{\\mu}_{\\text{net}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$; at $\\theta = 180^\\circ$ the two opposing bond dipoles cancel to zero.'
+      },
+      chem_phase: {
+        gradeUk: '10–11 клас · Фазові рівноваги',
+        gradeEn: 'Grade 10–11 · Phase Equilibria',
+        analogyUk: 'Чому ковзани так легко ковзають по льоду, а «сухий лід» $\\text{CO}_2$ димить у кімнаті без жодної калюжі? Бо лід під тиском леза трохи плавиться (крива плавлення води нахилена вліво!), а для $\\text{CO}_2$ потрійна точка лежить аж при $5.1\\text{ атм}$, тому при $1\\text{ атм}$ він одразу перетворюється на газ!',
+        analogyEn: 'Why do ice skates glide on a thin water film while dry ice ($\\text{CO}_2$) smokes without melting into a puddle? Because water expands on freezing ($dP/dT < 0$), and $\\text{CO}_2$’s triple point ($5.11\\text{ atm}$) lies above atmospheric pressure!',
+        hintUk: 'У потрійній точці співіснують усі $3$ фази, вище критичної точки утворюється надкритичний флюїд, а для води $\\Delta V_{\\text{пл}} < 0 \\Rightarrow dP/dT < 0$.',
+        hintEn: 'At the triple point all $3$ phases coexist, above the critical point a supercritical fluid forms, and for water $\\Delta V_{\\text{fus}} < 0 \\Rightarrow dP/dT < 0$.'
+      },
+      chem_arrhenius: {
+        gradeUk: '10–11 клас · Кінетичні рівняння',
+        gradeEn: 'Grade 10–11 · Rate Laws & Half-Life',
+        analogyUk: 'Реакція 0-го порядку — як черга перед одним турнікетом метро: що більше людей $[A]_0$, то довше чекати половині черги. Реакція 1-го порядку — як радіоактивний розпад: половина атомів завжди розпадається за однаковий час $t_{1/2} = \\frac{\\ln 2}{k}$. А в 2-му порядку частинкам треба знайти пару, тому коли їх стає мало, пошук пари сповільнюється!',
+        analogyEn: '0th-order is like a single tollbooth line ($t_{1/2} \\propto [A]_0$); 1st-order is like radioactive decay where half Always vanishes in a fixed time $t_{1/2} = \\frac{\\ln 2}{k}$; 2nd-order requires partner collisions, so as molecules thin out, finding a partner takes much longer ($t_{1/2} \\propto 1/[A]_0$)!',
+        hintUk: 'Для 1-го порядку $t_{1/2} = \\frac{\\ln 2}{k}$ не залежить від $[A]_0$, для 0-го $t_{1/2} = \\frac{[A]_0}{2k}$, а для 2-го $t_{1/2} = \\frac{1}{k[A]_0}$.',
+        hintEn: 'For 1st order $t_{1/2} = \\frac{\\ln 2}{k}$ is independent of $[A]_0$, for 0th order $t_{1/2} = \\frac{[A]_0}{2k}$, and for 2nd order $t_{1/2} = \\frac{1}{k[A]_0}$.'
+      },
+      chem_enzyme: {
+        gradeUk: '10–11 клас · Біохімія та ферменти',
+        gradeEn: 'Grade 10–11 · Enzyme Kinetics',
+        analogyUk: 'Фермент — це майстер-ключник із замковою щілиною (активним центром), а субстрат — ключ. Коли ключів дуже багато, усі майстри зайняті роботою і швидкість досягає стелі $V_{\\max}$. А конкурентний інгібітор — це «фальшивий ключ», який тимчасово застрягає в замку й заважає справжнім ключам!',
+        analogyEn: 'An enzyme active site is a lock and the substrate is the key. When keys flood the room, every lock is busy working at top speed $V_{\\max}$. A competitive inhibitor is a decoy key that jams the lock, requiring more real keys (higher $K_M^{\\text{app}}$) to reach $V_{\\max}$!',
+        hintUk: 'При насиченні активних центрів ($[S] \\gg K_M$) швидкість прямує до $V_{\\max} = k_{\\text{cat}}[E]_0$, а конкурентний інгібітор збільшує $K_M^{\\text{app}}$ без зміни $V_{\\max}$.',
+        hintEn: 'When active sites saturate ($[S] \\gg K_M$), velocity plateaus at $V_{\\max} = k_{\\text{cat}}[E]_0$; competitive inhibition increases $K_M^{\\text{app}}$ without changing $V_{\\max}$.'
+      },
+      chem_gibbs: {
+        gradeUk: '10–11 клас · Хімічна термодинаміка',
+        gradeEn: 'Grade 10–11 · Chemical Thermodynamics',
+        analogyUk: 'У природі все прагне або скотитися з гірки вниз (виділити тепло, $\\Delta H < 0$), або розбігтися в творчий безлад (збільшити ентропію, $\\Delta S > 0$). Формула Гіббса $\\Delta G = \\Delta H - T\\Delta S$ — це головний суддя: якщо на дворі спекотно (висока $T$), перемагає прагнення до безладу $T\\Delta S$!',
+        analogyEn: 'Nature loves rolling downhill in energy ($\\Delta H < 0$) and spreading out into disorder ($\\Delta S > 0$). Gibbs free energy $\\Delta G = \\Delta H - T\\Delta S$ is the referee: at high temperature $T$, the entropy term $T\\Delta S$ wins and drives endothermic reactions forward!',
+        hintUk: 'Ендотермічна реакція ($\\Delta H > 0$) стає самочинною ($\\Delta G < 0$) лише за додатного приросту ентропії ($\\Delta S > 0$) та температури вище $T^* = \\Delta H / \\Delta S$.',
+        hintEn: 'An endothermic reaction ($\\Delta H > 0$) is spontaneous ($\\Delta G < 0$) when $\\Delta S > 0$ and temperature exceeds $T^* = \\Delta H / \\Delta S$.'
+      },
+      chem_haber: {
+        gradeUk: '9–11 клас · Хімічна технологія',
+        gradeEn: 'Grade 9–11 · Industrial Chemistry',
+        analogyUk: 'Молекула азоту $\\text{N}\\equiv\\text{N}$ скріплена потрійним зв’язком міцніше за сейф! На холоді вона взагалі не реагує з воднем, а при сильній спеці аміак $\\text{NH}_3$ сам розпадається назад. Тому Габер і Бош знайшли золоту середину: $450\\,^\\circ\\text{C}$, тиск $200\\text{ атм}$ і залізний каталізатор!',
+        analogyEn: 'Dinitrogen $\\text{N}\\equiv\\text{N}$ is locked by a triple bond: too cold and nothing reacts, too hot and exothermic $\\text{NH}_3$ decomposes back! Haber and Bosch solved the dilemma with high pressure ($200\\text{ atm}$), $450\\,^\\circ\\text{C}$, and a porous iron catalyst.',
+        hintUk: 'Високий тиск зміщує рівновагу вбік меншого числа молів газу ($4 \\to 2$), а температура $450\\,^\\circ\\text{C}$ і $\\text{Fe}$-каталізатор забезпечують достатню швидкість розриву $\\text{N}\\equiv\\text{N}$.',
+        hintEn: 'High pressure favors fewer gas moles ($4 \\to 2$), while $450\\,^\\circ\\text{C}$ and an $\\text{Fe}$ catalyst provide kinetic speed to cleave $\\text{N}\\equiv\\text{N}$.'
+      },
+      chem_raoult: {
+        gradeUk: '9–11 клас · Властивості розчинів',
+        gradeEn: 'Grade 9–11 · Colligative Properties',
+        analogyUk: 'Уяви, що молекули води хочуть вилетіти з каструлі в пару або вишикуватися в кристал льоду, але розчинені іони солі стоять біля поверхні й «тримають їх за поли». Тому солоній воді важче закипіти (кипить вище $100\\,^\\circ\\text{C}$) і важче замерзнути (лід на дорозі тане навіть у мороз)!',
+        analogyEn: 'Dissolved salt ions act like friendly blockers at the liquid surface, making it harder for water molecules to escape into vapor or lock into ice. That’s why salted water boils above $100\\,^\\circ\\text{C}$ and melts road ice below $0\\,^\\circ\\text{C}$!',
+        hintUk: 'За законом Рауля нелетка речовина знижує тиск насиченої пари розчинника ($\\Delta P = \\chi_2 P_0^\\circ$), підвищуючи $T_{\\text{кип}}$ на $i K_b m$ і знижуючи $T_{\\text{зам}}$ на $i K_f m$.',
+        hintEn: 'By Raoult’s law, a non-volatile solute lowers vapor pressure ($\\Delta P = \\chi_2 P_0^\\circ$), raising $T_b$ by $i K_b m$ and depressing $T_f$ by $i K_f m$.'
+      },
+      chem_chromatography: {
+        gradeUk: '8–11 клас · Методи розділення сумішей',
+        gradeEn: 'Grade 8–11 · Separation Science',
+        analogyUk: 'Уяви забіг туристів крізь вулицю з магазинами (полярний силікагель). Ті, хто не любить шопінг (неполярний каротин), біжать разом із потоком до самого фінішу ($R_f \\approx 0.9$), а ті, хто зупиняється біля кожної вітрини (полярний хлорофіл $b$), відстають на старті ($R_f \\approx 0.25$)!',
+        analogyEn: 'Picture runners jogging down a street lined with shops (polar silica gel). Non-polar carotene ignores the shops and sprints with the solvent front ($R_f \\approx 0.9$), while polar chlorophyll $b$ stops to hydrogen-bond at every shop window ($R_f \\approx 0.25$)!',
+        hintUk: 'Полярний силікагель сильніше утримує полярні молекули (менший $R_f$), тоді як неполярні компоненти рухаються разом з елюентом (більший $R_f = z_i / z_f$).',
+        hintEn: 'Polar silica gel strongly adsorbs polar molecules (lower $R_f$), whereas non-polar molecules travel rapidly with the mobile eluent (higher $R_f = z_i / z_f$).'
+      },
+      chem_adsorption: {
+        gradeUk: '9–11 клас · Поверхневі явища',
+        gradeEn: 'Grade 9–11 · Surface Chemistry',
+        analogyUk: 'Поверхня активованого вугілля у протигазі або фільтрі для води — це парковка з обмеженою кількістю місць. Спочатку газові «автомобілі» легко знаходять вільні місця ($\\theta \\approx KP$), але коли всі місця зайняті в один шар, парковка заповнена на $100\\%$ ($\\theta \\to 1$)!',
+        analogyEn: 'An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily ($\\theta \\approx KP$), but once every spot is taken in a monolayer, coverage hits a ceiling ($\\theta \\to 1$)!',
+        hintUk: 'Кількість активних центрів поверхні обмежена моношаром ($\\theta \\to 1$), а оскільки адсорбція екзотермічна ($\\Delta H_{\\text{адс}} < 0$), нагрівання посилює десорбцію.',
+        hintEn: 'Surface sites saturate at a monolayer ($\\theta \\to 1$), and because adsorption is exothermic ($\\Delta H_{\\text{ads}} < 0$), heating promotes desorption.'
+      },
+      chem_colloids: {
+        gradeUk: '9–11 клас · Дисперсні та колоїдні системи',
+        gradeEn: 'Grade 9–11 · Colloid & Interface Science',
+        analogyUk: 'Промінь сонця у чистій кімнаті невидимий збоку, але варто піднятися пилу чи туману — і промінь яскраво світиться! Це конус Тіндаля на наночастинках золю. А щоб ці частинки злиплися (коагулювали), тризарядний іон $\\text{Al}^{3+}$ діє у $3^6 = 729$ разів сильніше за однозарядний $\\text{Na}^+$!',
+        analogyEn: 'A laser beam is invisible from the side in pure water, but in a colloidal sol it glows like a lightsaber — the Tyndall cone! To make those charged micelles clump together, a trivalent $\\text{Al}^{3+}$ ion is $3^6 = 729$ times more potent than $\\text{Na}^+$!',
+        hintUk: 'Колоїдні міцели розсіюють світло в конус Тіндаля ($I \\propto d^6/\\lambda^4$), а поріг коагуляції за правилом Шульце — Гарді спадає як $1/z^6$.',
+        hintEn: 'Colloidal micelles scatter light into a Tyndall cone ($I \\propto d^6/\\lambda^4$), and critical coagulation concentration scales as $1/z^6$ (Schulze–Hardy rule).'
+      },
+      chem_hydrolysis: {
+        gradeUk: '9–11 клас · Гідроліз солей у розчинах',
+        gradeEn: 'Grade 9–11 · Salt Hydrolysis',
+        analogyUk: 'У солі завжди перемагає «сильніший з батьків»! Харчова сода чи ацетат натрію утворені сильною основою $\\text{NaOH}$ і слабкою кислотою — тому в розчині перемагає луг ($\\text{pH} > 7$). А нашатир $\\text{NH}_4\\text{Cl}$ утворений сильною кислотою $\\text{HCl}$ і слабкою основою — тому розчин стає кислим ($\\text{pH} < 7$)!',
+        analogyEn: 'In a salt solution, the stronger parent wins! Sodium acetate comes from strong base $\\text{NaOH}$ + weak acid, so its solution is basic ($\\text{pH} > 7$). Ammonium chloride comes from strong acid $\\text{HCl}$ + weak base, so its solution is acidic ($\\text{pH} < 7$)!',
+        hintUk: 'Гідролізу піддається йон слабкого електроліту: $\\text{CH}_3\\text{COO}^-$ зв’язує $\\text{H}^+$ і звільняє $\\text{OH}^-$ ($\\text{pH} > 7$), а $\\text{NH}_4^+$ віддає протон воді ($\\text{pH} < 7$).',
+        hintEn: 'The weak-electrolyte ion hydrolyzes water: $\\text{CH}_3\\text{COO}^-$ generates $\\text{OH}^-$ ($\\text{pH} > 7$), whereas $\\text{NH}_4^+$ generates $\\text{H}_3\\text{O}^+$ ($\\text{pH} < 7$).'
+      },
+      chem_corrosion: {
+        gradeUk: '9–11 клас · Корозія та захист металів',
+        gradeEn: 'Grade 9–11 · Corrosion & Protection',
+        analogyUk: 'Цинк для заліза — справжній лицар-охоронець! Оскільки цинк активніший за залізо, при подряпині оцинкованого даху чи корпусу корабля цинк бере удар на себе (віддає електрони і розчиняється), не даючи залізу іржавіти. А от мідь чи олово, навпаки, змушують залізо іржавіти за двох!',
+        analogyEn: 'Zinc is a bodyguard for steel! Because zinc has a more negative potential ($-0.76\\text{ V}$) than iron ($-0.44\\text{ V}$), a zinc anode sacrifices itself by feeding electrons to the steel hull. Copper ($+0.34\\text{ V}$), by contrast, forces iron to rust faster!',
+        hintUk: 'У гальванічній парі окиснюється (стає анодом) більш активний метал з нижчим потенціалом $E^\\circ$: у парі $\\text{Fe/Zn}$ руйнується цинк, а в парі $\\text{Fe/Cu}$ — залізо.',
+        hintEn: 'In a galvanic couple, the metal with the more negative $E^\\circ$ acts as the anode: $\\text{Zn}$ sacrifices itself to protect $\\text{Fe}$, whereas $\\text{Cu}$ makes $\\text{Fe}$ the corroding anode.'
+      },
+      chem_liion: {
+        gradeUk: '9–11 клас · Сучасні хімічні джерела струму',
+        gradeEn: 'Grade 9–11 · Lithium-Ion Batteries',
+        analogyUk: 'Літій-іонний акумулятор смартфона чи електромобіля — це «крісло-гойдалка» або два багатоповерхові готелі (графіт і $\\text{CoO}_2$). Під час зарядки іони $\\text{Li}^+$ заселяються між поверхами графіту, а коли ти граєш на телефоні (розряд) — вони переїжджають крізь мембрану в готель $\\text{CoO}_2$, віддаючи струм $3.7\\text{ В}$!',
+        analogyEn: 'A Li-ion battery works like two apartment buildings (layered graphite and $\\text{CoO}_2$): charging checks $\\text{Li}^+$ guests into the graphite floors, and discharging shuttles them across the separator into $\\text{CoO}_2$ while electrons power your phone at $3.7\\text{ V}$!',
+        hintUk: 'Під час розряду катіони $\\text{Li}^+$ деінтеркалюють із шарів графітового анода $\\text{Li}_x\\text{C}_6$ і вбудовуються в катод $\\text{Li}_{1-x}\\text{CoO}_2$.',
+        hintEn: 'During discharge, $\\text{Li}^+$ ions de-intercalate from the layered graphite anode ($\\text{Li}_x\\text{C}_6$) and intercalate into the $\\text{Li}_{1-x}\\text{CoO}_2$ cathode.'
+      },
+      chem_sn2: {
+        gradeUk: '10–11 клас · Механізми органічних реакцій',
+        gradeEn: 'Grade 10–11 · Organic Reaction Mechanisms',
+        analogyUk: 'Уяви, що ти йдеш проти сильного вітру з парасолькою, і раптом порив вітру ззаду вивертає купол парасольки навиворіт! Саме так гідроксид-іон $\\text{HO}^-$ атакує молекулу $\\text{CH}_3\\text{Br}$ з тилу ($180^\\circ$), виштовхуючи бромід $\\text{Br}^-$ і вивертаючи три зв’язки $\\text{C–H}$ (інверсія Вальдена)!',
+        analogyEn: 'Picture an umbrella flipping inside-out in a strong gust of wind! In an $\\text{S}_{\\text{N}}2$ reaction, $\\text{HO}^-$ attacks carbon from the backside ($180^\\circ$), kicking out $\\text{Br}^-$ and inverting the three $\\text{C–H}$ bonds through a planar transition state (Walden inversion)!',
+        hintUk: 'Тильна атака нуклеофілу під кутом $180^\\circ$ проходить через плоский пентакоординований перехідний стан $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ з повною інверсією конфігурації.',
+        hintEn: 'Backside attack at $180^\\circ$ proceeds through a planar pentacoordinate transition state $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ with $100\\%$ Walden inversion.'
+      },
+      chem_ester: {
+        gradeUk: '10–11 клас · Естери та мічені атоми',
+        gradeEn: 'Grade 10–11 · Esters & Isotopic Tracers',
+        analogyUk: 'Звідки береться фруктовий аромат груші чи ананаса? Це естери, які народжуються зі спирту й кислоти! А щоб дізнатися, хто з них віддає атом Оксигену у воду, хіміки «пофарбували» Оксиген спирту важким ізотопом $^{18}\\text{O}$ — і вся мітка залишилась усередині запашного естеру!',
+        analogyEn: 'Where do fruity pear and pineapple aromas come from? Esters made from an acid and an alcohol! By tagging the alcohol oxygen with heavy $^{18}\\text{O}$, chemists proved that the acid loses $\\text{–OH}$ while the $^{18}\\text{O}$ stays locked inside the fragrant ester!',
+        hintUk: 'Карбонова кислота відщеплює групу $\\text{–OH}$, а спирт — лише протон $\\text{–H}$, тому ізотоп $^{18}\\text{O}$ спирту повністю переходить в естер ($\\eta_{\\text{рівн}} = 66.7\\%$ при $1:1$ та $K_{eq}=4$).',
+        hintEn: 'The carboxylic acid loses $\\text{–OH}$ while the alcohol loses $\\text{–H}$, so the alcohol’s $^{18}\\text{O}$ label stays in the ester ($\\eta_{\\text{eq}} = 66.7\\%$ at $1:1$ with $K_{eq}=4$).'
+      },
+      chem_biopol: {
+        gradeUk: '10–11 клас · Біохімія: Білки та ДНК',
+        gradeEn: 'Grade 10–11 · Biochemistry: Proteins & DNA',
+        analogyUk: 'Подвійна спіраль ДНК схожа на гвинтові сходи або застібку-блискавку, де сходинки тримаються на водневих «магнітах»: пара $\\text{A=T}$ тримається двома зв’язками, а пара $\\text{G}\\equiv\\text{C}$ — трьома! Тому ділянки ДНК, багаті на $\\text{G}\\equiv\\text{C}$, витримують значно вищу температуру без розплітання.',
+        analogyEn: 'The DNA double helix is a twisted ladder whose rungs are held together by hydrogen-bond "magnets": $\\text{A=T}$ pairs have $2$ H-bonds while $\\text{G}\\equiv\\text{C}$ pairs have $3$ H-bonds! That extra bond makes $\\text{GC}$-rich DNA much harder to melt apart by heat.',
+        hintUk: 'За правилом Чаргаффа пара $\\text{A=T}$ утворює $2$ водневі зв’язки, а пара $\\text{G}\\equiv\\text{C}$ — $3$ водневі зв’язки, тому температура плавлення $T_m$ зростає з часткою $\\text{GC}$.',
+        hintEn: 'Watson–Crick $\\text{A=T}$ pairs form $2$ H-bonds whereas $\\text{G}\\equiv\\text{C}$ pairs form $3$ H-bonds, raising the melting temperature $T_m$ with $\\%\\text{GC}$.'
       }
     };
 
@@ -24126,11 +29135,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       if (isChem) {
         const isUk = uiState.lang === 'uk';
-        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? 'Усі досліди з хімії (20)' : 'All Chemistry (20)'; }
-        if (fOpt) { fOpt.dataset.filter = 'chem_struct'; fOpt.textContent = isUk ? 'Будова речовини (5)' : 'Structure & Bonding (5)'; }
-        if (fMech) { fMech.dataset.filter = 'chem_kinetics'; fMech.textContent = isUk ? 'Гази, термохімія і кінетика (4)' : 'Gases, Thermo & Kinetics (4)'; }
-        if (fTherm) { fTherm.dataset.filter = 'chem_solutions'; fTherm.textContent = isUk ? 'Розчини, pH та аналіз (5)' : 'Solutions, pH & Analysis (5)'; }
-        if (fElec) { fElec.dataset.filter = 'chem_electro_org'; fElec.textContent = isUk ? 'Електрохімія й органіка (6)' : 'Electrochem & Organic (6)'; }
+        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? 'Усі досліди з хімії (40)' : 'All Chemistry (40)'; }
+        if (fOpt) { fOpt.dataset.filter = 'chem_struct'; fOpt.textContent = isUk ? 'Будова речовини (10)' : 'Structure & Bonding (10)'; }
+        if (fMech) { fMech.dataset.filter = 'chem_kinetics'; fMech.textContent = isUk ? 'Гази, термохімія і кінетика (9)' : 'Gases, Thermo & Kinetics (9)'; }
+        if (fTherm) { fTherm.dataset.filter = 'chem_solutions'; fTherm.textContent = isUk ? 'Розчини, pH та аналіз (10)' : 'Solutions, pH & Analysis (10)'; }
+        if (fElec) { fElec.dataset.filter = 'chem_electro_org'; fElec.textContent = isUk ? 'Електрохімія й органіка (11)' : 'Electrochem & Organic (11)'; }
       } else {
         if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = t.filterAll; }
         if (fOpt) { fOpt.dataset.filter = 'optics'; fOpt.textContent = t.filterOptics; }
@@ -24352,7 +29361,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
                 <path d="M7 16h10"/>
               </svg>
               <span id="ui-disc-chemistry">${t.discChemistry}</span>
-              <span id="ui-disc-chem-badge" class="disc-count-pill">20</span>
+              <span id="ui-disc-chem-badge" class="disc-count-pill">40</span>
             </button>
           </div>
           <span class="header-v-divider" aria-hidden="true"></span>
@@ -24411,7 +29420,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         hintBtn.id = 'btn-question-hint';
         hintBtn.className = 'btn-question-hint';
         hintBtn.title = 'Підказка / Hint (H)';
-        hintBtn.innerHTML = `<span aria-hidden="true">💡</span><span id="ui-hint-btn-text">${t.hintBtnLabel}</span>`;
+        hintBtn.innerHTML = `<span class="hint-icon-sym" aria-hidden="true">?</span><span id="ui-hint-btn-text">${t.hintBtnLabel}</span>`;
         hdrRow.appendChild(hintBtn);
 
         const hintBox = document.createElement('div');
@@ -24689,6 +29698,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
 
       activeVectorArrows.forEach(arrow => arrow.refreshLanguage());
+      if (typeof setInteractionBadgeText === 'function') setInteractionBadgeText();
+      if (activeSim && typeof activeSim.syncVisuals === 'function') activeSim.syncVisuals();
 
       updateDropdownTriggerUI();
       renderQuestionAndSliders();
@@ -24766,7 +29777,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const h = chartCanvas.height;
       chartCtx.clearRect(0, 0, w, h);
 
-      chartCtx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
+      chartCtx.strokeStyle = 'rgba(28, 25, 23, 0.11)';
       chartCtx.lineWidth = 1;
       for (let y = 18; y < h; y += 22) {
         chartCtx.beginPath();
@@ -24778,7 +29789,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const drawSeries = (arr, color) => {
         if (arr.length < 2) return;
         chartCtx.strokeStyle = color;
-        chartCtx.lineWidth = 2.0;
+        chartCtx.lineWidth = 1.8;
         chartCtx.beginPath();
         for (let i = 0; i < arr.length; i++) {
           const x = (i / (chartHistory.maxPoints - 1)) * w;
@@ -24789,9 +29800,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         chartCtx.stroke();
       };
 
-      drawSeries(chartHistory.ek, '#16a34a');
-      drawSeries(chartHistory.ep, '#2563eb');
-      drawSeries(chartHistory.q, '#d97706');
+      drawSeries(chartHistory.ek, '#1e5631');
+      drawSeries(chartHistory.ep, '#1e3a5f');
+      drawSeries(chartHistory.q, '#9a5b13');
     }
 
     function updateLiveFormulaSubstitution() {
@@ -24967,9 +29978,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         item.innerHTML = `
           <div class="param-header">
             <span class="param-title">${s.label}</span>
-            <span class="param-readout">${currentVal}${s.unit ? ' ' + s.unit : ''}</span>
+            <span class="param-readout" id="readout-${s.key}">${currentVal}${s.unit ? ' ' + s.unit : ''}</span>
           </div>
-          <input type="range" class="book-slider" min="${s.min}" max="${s.max}" step="${s.step}" value="${currentVal}" />
+          <input type="range" class="book-slider" data-param-key="${s.key}" min="${s.min}" max="${s.max}" step="${s.step}" value="${currentVal}" />
         `;
         slidersContainer.appendChild(item);
 
@@ -25428,6 +30439,26 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       else if (sceneKey === 'chem_fuelcell') activeSim = new ChemFuelCellSimulation();
       else if (sceneKey === 'chem_isomerism') activeSim = new ChemStereoisomerismSimulation();
       else if (sceneKey === 'chem_polymer') activeSim = new ChemPolymerizationSimulation();
+      else if (sceneKey === 'chem_mo') activeSim = new ChemMolecularOrbitalsSimulation();
+      else if (sceneKey === 'chem_allotropes') activeSim = new ChemCarbonAllotropesSimulation();
+      else if (sceneKey === 'chem_complex') activeSim = new ChemCoordinationComplexSimulation();
+      else if (sceneKey === 'chem_bornhaber') activeSim = new ChemBornHaberCycleSimulation();
+      else if (sceneKey === 'chem_dipole') activeSim = new ChemDipolePolaritySimulation();
+      else if (sceneKey === 'chem_phase') activeSim = new ChemPhaseDiagramSimulation();
+      else if (sceneKey === 'chem_arrhenius') activeSim = new ChemReactionOrdersSimulation();
+      else if (sceneKey === 'chem_enzyme') activeSim = new ChemEnzymeKineticsSimulation();
+      else if (sceneKey === 'chem_gibbs') activeSim = new ChemGibbsFreeEnergySimulation();
+      else if (sceneKey === 'chem_haber') activeSim = new ChemHaberBoschSimulation();
+      else if (sceneKey === 'chem_raoult') activeSim = new ChemRaoultColligativeSimulation();
+      else if (sceneKey === 'chem_chromatography') activeSim = new ChemChromatographySimulation();
+      else if (sceneKey === 'chem_adsorption') activeSim = new ChemLangmuirAdsorptionSimulation();
+      else if (sceneKey === 'chem_colloids') activeSim = new ChemColloidTyndallSimulation();
+      else if (sceneKey === 'chem_hydrolysis') activeSim = new ChemSaltHydrolysisSimulation();
+      else if (sceneKey === 'chem_corrosion') activeSim = new ChemCorrosionProtectionSimulation();
+      else if (sceneKey === 'chem_liion') activeSim = new ChemLithiumIonBatterySimulation();
+      else if (sceneKey === 'chem_sn2') activeSim = new ChemSN2MechanismSimulation();
+      else if (sceneKey === 'chem_ester') activeSim = new ChemFischerEsterificationSimulation();
+      else if (sceneKey === 'chem_biopol') activeSim = new ChemBiopolymersHelixSimulation();
       window.activeSim = activeSim;
       syncPageSeoAndUrl(pushHistory);
     }
@@ -25621,7 +30652,448 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => {
           activeVectorArrows.forEach(arrow => arrow.refreshLanguage());
+      if (typeof setInteractionBadgeText === 'function') setInteractionBadgeText();
+      if (activeSim && typeof activeSim.syncVisuals === 'function') activeSim.syncVisuals();
         });
+      }
+    });
+
+    // ============================================================================
+    // 13B. UNIVERSAL 3D DIRECT MANIPULATION & RAYCASTER INTERACTIVITY (ALL 66 SIMS)
+    // ============================================================================
+    const raycaster3D = new THREE.Raycaster();
+    const pointerNDC = new THREE.Vector2();
+
+    const interactionHudBadge = document.createElement('div');
+    interactionHudBadge.id = 'interactive-3d-hud-badge';
+    Object.assign(interactionHudBadge.style, {
+      position: 'fixed',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      bottom: '16px',
+      zIndex: '25',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      padding: '6px 14px',
+      borderRadius: '2px',
+      background: 'rgba(250, 247, 242, 0.94)',
+      color: '#3f3a34',
+      fontFamily: '"Crimson Pro", Georgia, serif',
+      fontStyle: 'italic',
+      fontSize: '14px',
+      fontWeight: '400',
+      whiteSpace: 'nowrap',
+      border: '1px solid rgba(28, 25, 23, 0.18)',
+      boxShadow: '0 2px 8px rgba(28, 25, 23, 0.06)',
+      pointerEvents: 'none',
+      transition: 'border-color 0.14s ease, background 0.14s ease'
+    });
+    document.body.appendChild(interactionHudBadge);
+
+    function setInteractionBadgeText(customText = null, activeHighlight = false) {
+      const isEn = uiState.lang === 'en';
+      const defaultMsg = isEn
+        ? 'Fig. interactive — drag apparatus elements to adjust parameters or click to interact'
+        : 'Рис. інтерактивний — перетягуйте деталі мишею або клікайте для взаємодії';
+      interactionHudBadge.textContent = customText || defaultMsg;
+      interactionHudBadge.style.borderColor = activeHighlight ? '#1c1917' : 'rgba(28, 25, 23, 0.18)';
+      interactionHudBadge.style.background = activeHighlight ? '#f0ebe1' : 'rgba(250, 247, 242, 0.94)';
+      interactionHudBadge.style.color = activeHighlight ? '#1c1917' : '#3f3a34';
+      interactionHudBadge.style.fontStyle = activeHighlight ? 'normal' : 'italic';
+      interactionHudBadge.style.fontFamily = activeHighlight
+        ? '"IBM Plex Mono", monospace'
+        : '"Crimson Pro", Georgia, serif';
+      interactionHudBadge.style.fontSize = activeHighlight ? '12px' : '14px';
+    }
+    setInteractionBadgeText();
+
+    const SCENE_3D_BINDINGS = {
+      // 46 Physics Simulations (exact slider keys & natural drag directions)
+      collision: { leftH: 'v1', leftV: 'm1', rightH: 'v2', rightV: 'm2', h: 'v1', v: 'm1', clickCycle: 'restitution' },
+      incline: { h: 'mu', v: 'angle', leftH: 'mass', rightV: 'angle' },
+      pendulum: { leftH: 'theta0', leftV: 'length', leftVSign: -1, rightH: 'stiffness', rightV: 'mass', rightVSign: -1, h: 'theta0', v: 'length', vSign: -1 },
+      projectile: { h: 'v0', v: 'angle', leftV: 'h0' },
+      cradle: { h: 'theta0', hSign: -1, v: 'length', vSign: -1, clickCycle: 'liftedBalls' },
+      centripetal: { h: 'radius', v: 'omega' },
+      archimedes: { v: 'rhoBody', vSign: -1, h: 'volume' },
+      gas: { v: 'pistonLoad', vSign: -1, h: 'temperature' },
+      wavefront: { h: 'angle', v: 'n2', clickCycle: 'waveletCount' },
+      interference: { h: 'screenL', v: 'slitD', leftV: 'slitD', rightH: 'probeZ' },
+      dispersion: { h: 'incAngle', v: 'apexAngle' },
+      emwave: { h: 'wavelength', v: 'ampE', clickCycle: 'ellipticity' },
+      bernoulli: { h: 'v1', v: 'd2', leftV: 'd1' },
+      lens: { h: 'radiusR', v: 'beamAperture' },
+      lorentz: { h: 'v0', v: 'fieldB', clickCycle: 'qOverM' },
+      faraday: { h: 'freq', v: 'magnetB', clickCycle: 'turnsN' },
+      kepler: { h: 'semiMajorA', v: 'eccentricity' },
+      gyroscope: { h: 'radius', v: 'angle', clickCycle: 'betaFactor' },
+      standingwave: { h: 'tension', v: 'amplitude', clickCycle: 'harmonicN' },
+      doppler: { h: 'machRatio', v: 'emitFreq' },
+      brewster: { h: 'analyzerAngle', v: 'refractiveN' },
+      diffraction: { h: 'slitWidth', v: 'wavelength', clickCycle: 'orderM' },
+      carnot: { h: 'rpmSpeed', v: 'tempHot', leftV: 'tempHot', rightV: 'tempCold' },
+      viscosity: { h: 'radiusR', v: 'viscosityEta' },
+      coulomb: { h: 'distanceD', leftV: 'q1', rightV: 'q2', v: 'q1' },
+      rlccircuit: { h: 'capacitanceC', v: 'voltageU0', leftV: 'inductanceL', rightV: 'capacitanceC' },
+      atwood: { leftV: 'mass1', leftVSign: -1, rightV: 'mass2', rightVSign: -1, h: 'pulleyRadius', v: 'mass1', vSign: -1 },
+      coriolis: { h: 'omegaDisk', v: 'ballSpeed' },
+      hooke: { v: 'loadForce', vSign: -1, h: 'rodDiam' },
+      torricelli: { v: 'waterLevelH', h: 'nozzleDepthH' },
+      maxwell: { h: 'gasTempT', v: 'molarMassM' },
+      newtonrings: { h: 'lensRadiusR', v: 'lambdaNm' },
+      photoelectric: { h: 'wavelengthNm', v: 'intensityFlux' },
+      rutherford: { v: 'impactParamB', h: 'alphaEnergyMev' },
+      ampere: { h: 'wireDistD', leftV: 'current1', rightV: 'current2', v: 'current1', clickCycle: 'directionSign' },
+      hall: { h: 'currentI', v: 'magFieldB', clickCycle: 'carrierSign' },
+      coupled: { h: 'springK', v: 'pendLength', vSign: -1, clickCycle: 'initMode' },
+      precession: { h: 'spinOmega', v: 'tiltDeg', vSign: -1 },
+      magnus: { h: 'flowSpeed', v: 'spinOmega' },
+      capillary: { h: 'tubeRadiusMm', v: 'sigmaMilli' },
+      brownian: { h: 'tempK', v: 'grainRadiusUm' },
+      michelson: { h: 'mirrorShiftNm', v: 'wavelengthNm' },
+      compton: { h: 'scatterAngleDeg', v: 'lambda0Pm' },
+      bohr: { v: 'levelInit', h: 'levelFinal', clickCycle: 'levelInit' },
+      biot: { h: 'coilSepRatio', v: 'currentI', clickCycle: 'turnsN' },
+      transformer: { leftV: 'turnsN1', rightV: 'turnsN2', h: 'voltageU1', v: 'turnsN2' },
+
+      // 20 Chemistry Simulations
+      chem_orbitals: { v: 'quantumN', h: 'zEff', clickCycle: 'quantumL' },
+      chem_vsepr: { h: 'bondLength', v: 'deltaEN', clickCycle: 'vseprType' },
+      chem_lattice: { h: 'interionicR', v: 'tempK', clickCycle: 'ionCharge' },
+      chem_gaslaws: { v: 'pressKpa', vSign: -1, h: 'tempK' },
+      chem_kinetics: { v: 'tempK', h: 'eaBarrier', clickCycle: 'catDrop' },
+      chem_equilibrium: { v: 'pressAtm', vSign: -1, h: 'tempK' },
+      chem_titration: { v: 'titrantVol', vSign: -1, h: 'acidConc', clickCycle: 'indicatorType' },
+      chem_galvanic: { leftV: 'concZn', rightV: 'concCu', v: 'concCu', h: 'tempK' },
+      chem_electrolysis: { h: 'currentAmp', v: 'voltageV', clickCycle: 'ionValence' },
+      chem_organic: { h: 'piDeloc', v: 'ringTilt' },
+      chem_periodic: { h: 'groupG', v: 'periodN', vSign: -1, clickCycle: 'propMode' },
+      chem_hbond: { v: 'tempC', h: 'pressureMPa' },
+      chem_calorimetry: { v: 'molesNu', h: 'waterMass', clickCycle: 'rxnType' },
+      chem_osmosis: { v: 'concentrationC', h: 'extPressureP', clickCycle: 'vantHoffI' },
+      chem_buffer: { h: 'addedStrong', leftV: 'concHA', rightV: 'concA', v: 'concA' },
+      chem_ksp: { h: 'concI', v: 'tempC', clickCycle: 'commonIonKI' },
+      chem_beer: { h: 'pathLengthL', v: 'concentrationC', clickCycle: 'soluteType' },
+      chem_fuelcell: { h: 'currentDensity', leftV: 'h2Pressure', rightV: 'o2Pressure', v: 'h2Pressure' },
+      chem_isomerism: { h: 'concOpt', v: 'tubeLengthDm', clickCycle: 'isomerMode' },
+      chem_polymer: { h: 'degPolyN', v: 'temperatureT' },
+      chem_mo: { h: 'bondElec', v: 'antibondElec', clickCycle: 'moSym' },
+      chem_allotropes: { h: 'strainPct', v: 'tempK', clickCycle: 'allotropeType' },
+      chem_complex: { h: 'ligandStrength', v: 'dElectrons', clickCycle: 'geomMode' },
+      chem_bornhaber: { h: 'ionChargeZ', v: 'interionicR', clickCycle: 'stepHighlight' },
+      chem_dipole: { h: 'deltaChi', v: 'bondAngleDeg', clickCycle: 'molShape' },
+      chem_phase: { h: 'tempC', v: 'pressAtm', clickCycle: 'substanceType' },
+      chem_arrhenius: { h: 'tempK', v: 'actEnergyEa', clickCycle: 'rxnOrder' },
+      chem_enzyme: { h: 'substrateS', v: 'kmVal', clickCycle: 'inhibMode' },
+      chem_gibbs: { h: 'deltaH', v: 'tempK', leftV: 'deltaS', rightV: 'tempK' },
+      chem_haber: { h: 'pressAtm', v: 'tempC', clickCycle: 'catFe' },
+      chem_raoult: { h: 'molalityM', v: 'tempC', clickCycle: 'vantHoffI' },
+      chem_chromatography: { h: 'eluentPolarity', v: 'elutionProgress', clickCycle: 'stationarySilica' },
+      chem_adsorption: { h: 'pressureP', v: 'tempK', clickCycle: 'adsConstantK' },
+      chem_colloids: { h: 'particleRadiusNm', v: 'electrolyteConc', clickCycle: 'laserWavelength' },
+      chem_hydrolysis: { h: 'saltConcC', v: 'tempC', clickCycle: 'saltType' },
+      chem_corrosion: { h: 'protectorType', v: 'naclConc', leftV: 'o2Dissolved', rightV: 'naclConc' },
+      chem_liion: { h: 'socPct', v: 'cRate', clickCycle: 'modeCharge' },
+      chem_sn2: { h: 'rxnCoord', v: 'nucStrength', clickCycle: 'stericBulk' },
+      chem_ester: { h: 'acidEq', v: 'alcoholEq', clickCycle: 'removeWater' },
+      chem_biopol: { h: 'gcContentPct', v: 'tempC', clickCycle: 'biopolType' }
+    };
+
+    function isInteractiveSimMesh(obj) {
+      if (!obj || !obj.isMesh || !obj.visible) return false;
+      let cur = obj;
+      while (cur) {
+        if (cur.visible === false) return false;
+        for (const arr of activeVectorArrows) {
+          if (cur === arr.group) return false;
+        }
+        cur = cur.parent;
+      }
+      // Ignore transparent outer glass containers/walls/chambers so raycast hits objects inside and allows camera orbit on glass
+      const mat = obj.material;
+      if (mat && !Array.isArray(mat) && mat.transparent && mat.opacity < 0.42) {
+        return false;
+      }
+      const p = obj.geometry && obj.geometry.parameters;
+      if (p) {
+        // Ignore laboratory table base slabs and wide flat platforms
+        if (p.width >= 4.5 && p.height <= 0.45 && obj.position.y <= 0.4) return false;
+        // Ignore tiny ruler ticks / scale markings
+        if (p.height !== undefined && p.height <= 0.04 && (p.width <= 0.5 || p.depth <= 0.5)) return false;
+        // Ignore outer support frame pillars so clicking frame rotates camera
+        if (p.radiusTop !== undefined && p.radiusTop <= 0.22 && p.height >= 3.5 && (Math.abs(obj.position.x) >= 2.8 || Math.abs(obj.position.z) >= 1.0)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function resolveHitBindings(sceneKey, hitPoint) {
+      const bind = SCENE_3D_BINDINGS[sceneKey] || {};
+      const cfg = SCENE_CONFIGS[sceneKey];
+      const sliders = (cfg && cfg.sliders) || [];
+      const hasSlider = k => k && sliders.some(s => s.key === k);
+
+      let hKey = hasSlider(bind.h) ? bind.h : (sliders[0] && sliders[0].key);
+      let vKey = hasSlider(bind.v) ? bind.v : ((sliders[1] && sliders[1].key) || hKey);
+      let hSign = bind.hSign || 1;
+      let vSign = bind.vSign || 1;
+
+      if (hitPoint && hitPoint.x < -0.25) {
+        if (hasSlider(bind.leftH)) {
+          hKey = bind.leftH;
+          hSign = bind.leftHSign || bind.hSign || 1;
+        }
+        if (hasSlider(bind.leftV)) {
+          vKey = bind.leftV;
+          vSign = bind.leftVSign || bind.vSign || 1;
+        }
+      } else if (hitPoint && hitPoint.x >= 0.25) {
+        if (hasSlider(bind.rightH)) {
+          hKey = bind.rightH;
+          hSign = bind.rightHSign || bind.hSign || 1;
+        }
+        if (hasSlider(bind.rightV)) {
+          vKey = bind.rightV;
+          vSign = bind.rightVSign || bind.vSign || 1;
+        }
+      }
+
+      return { hKey, vKey, hSign, vSign, clickCycle: bind.clickCycle || null };
+    }
+
+    function setSimParamFrom3D(sceneKey, paramKey, rawVal) {
+      const cfg = SCENE_CONFIGS[sceneKey];
+      if (!cfg || !cfg.sliders) return null;
+      const sMeta = cfg.sliders.find(s => s.key === paramKey);
+      if (!sMeta) return null;
+
+      let clamped = Math.max(sMeta.min, Math.min(sMeta.max, rawVal));
+      const step = sMeta.step || 1;
+      clamped = Math.round((clamped - sMeta.min) / step) * step + sMeta.min;
+      const decimals = (step.toString().split('.')[1] || '').length;
+      clamped = parseFloat(clamped.toFixed(decimals));
+
+      sceneParams[sceneKey][paramKey] = clamped;
+      activePresetMode = 'custom';
+      document.querySelectorAll('#lab-presets-bar .preset-chip-btn').forEach(b => b.classList.remove('active'));
+
+      // Sync slider DOM element & readout
+      const inputEl = document.querySelector(`#sliders-container input[data-param-key="${paramKey}"]`);
+      if (inputEl) {
+        inputEl.value = String(clamped);
+        updateSliderFill(inputEl);
+      }
+      const readoutEl = document.getElementById(`readout-${paramKey}`);
+      if (readoutEl) {
+        readoutEl.textContent = `${clamped}${sMeta.unit ? ' ' + sMeta.unit : ''}`;
+      }
+
+      updateLiveFormulaSubstitution();
+      if (activeSim) {
+        if (!uiState.running) {
+          uiState.simTime = 0;
+          const t = tUI();
+          const timeEl = document.getElementById('sim-time-readout');
+          if (timeEl) timeEl.textContent = `t = 0.00 ${t.secUnit}`;
+          resetChartHistory();
+          if (typeof activeSim.reset === 'function') activeSim.reset();
+          syncActionButtons();
+        } else {
+          // Direct live 3D visual coupling while running
+          if (sceneKey === 'pendulum' && (paramKey === 'theta0' || paramKey === 'length')) {
+            activeSim.theta = THREE.MathUtils.degToRad(sceneParams.pendulum.theta0);
+            activeSim.omega = 0;
+          } else if (sceneKey === 'cradle' || sceneKey === 'collision' || sceneKey === 'atwood' || (sceneKey === 'projectile' && activeSim.landed)) {
+            if (typeof activeSim.reset === 'function') activeSim.reset();
+          } else if (sceneKey === 'projectile') {
+            const p = sceneParams.projectile;
+            if (activeSim.pedestal) activeSim.pedestal.scale.set(1, Math.max(0.1, p.h0), 1);
+            if (activeSim.cannonPivot) {
+              activeSim.cannonPivot.position.set(activeSim.startX, p.h0, 0);
+              activeSim.cannonPivot.rotation.z = THREE.MathUtils.degToRad(p.angle);
+            }
+            if (typeof activeSim.computeVacuumCurve === 'function') activeSim.computeVacuumCurve();
+          } else if (sceneKey === 'centripetal' && paramKey === 'radius') {
+            activeSim.rCurrent = clamped;
+          } else if (sceneKey === 'gas' && typeof activeSim.targetPistonHeight === 'function') {
+            activeSim.pistonH = activeSim.targetPistonHeight();
+          }
+          if (typeof activeSim.onParamChange === 'function') activeSim.onParamChange();
+          else if (typeof activeSim.syncVisuals === 'function') activeSim.syncVisuals();
+        }
+      }
+      return { label: sMeta.label, val: clamped, unit: sMeta.unit || '' };
+    }
+
+    let dragState3D = null;
+
+    function pickInteractiveHit(clientX, clientY) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      pointerNDC.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+      pointerNDC.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster3D.setFromCamera(pointerNDC, camera);
+      const hits = raycaster3D.intersectObjects(worldGroup.children, true);
+      for (const h of hits) {
+        if (isInteractiveSimMesh(h.object)) return h;
+      }
+      return null;
+    }
+
+    renderer.domElement.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      const hit = pickInteractiveHit(e.clientX, e.clientY);
+      if (!hit) return;
+
+      const sceneKey = uiState.activeScene;
+      const { hKey, vKey, hSign, vSign, clickCycle } = resolveHitBindings(sceneKey, hit.point);
+
+      let tileObj = hit.object;
+      while (tileObj && (!tileObj.userData || !tileObj.userData.periodicTile)) {
+        tileObj = tileObj.parent;
+      }
+
+      dragState3D = {
+        sceneKey,
+        startX: e.clientX,
+        startY: e.clientY,
+        moved: false,
+        lockedAxis: null,
+        hitPoint: hit.point.clone(),
+        hitObject: hit.object,
+        periodicTile: tileObj ? tileObj.userData : null,
+        hKey,
+        vKey,
+        hSign,
+        vSign,
+        clickCycle,
+        startHVal: hKey ? sceneParams[sceneKey][hKey] : 0,
+        startVVal: vKey ? sceneParams[sceneKey][vKey] : 0
+      };
+
+      controls.enabled = false;
+      renderer.domElement.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('pointermove', e => {
+      if (!dragState3D) {
+        // Hover state feedback on canvas showing exact parameters for the hovered 3D object
+        if (e.target !== renderer.domElement) return;
+        const hit = pickInteractiveHit(e.clientX, e.clientY);
+        if (hit) {
+          let tileObj = hit.object;
+          while (tileObj && (!tileObj.userData || !tileObj.userData.periodicTile)) {
+            tileObj = tileObj.parent;
+          }
+          if (tileObj && tileObj.userData && tileObj.userData.periodicTile) {
+            renderer.domElement.style.cursor = 'pointer';
+            const td = tileObj.userData;
+            setInteractionBadgeText(
+              uiState.lang === 'en'
+                ? `▸ Click 3D tile to select element: #${td.atomicZ} ${td.sym} — ${td.nameEn} (Period ${td.periodN}, Group ${td.groupG})`
+                : `▸ Клікніть по 3D-клітинці для вибору елемента: №${td.atomicZ} ${td.sym} — ${td.nameUk} (Період ${td.periodN}, Група ${td.groupG})`,
+              true
+            );
+          } else {
+            renderer.domElement.style.cursor = 'grab';
+            const sceneKey = uiState.activeScene;
+            const cfg = SCENE_CONFIGS[sceneKey];
+            const sliders = (cfg && cfg.sliders) || [];
+            const { hKey, vKey } = resolveHitBindings(sceneKey, hit.point);
+            const hMeta = sliders.find(s => s.key === hKey);
+            const vMeta = sliders.find(s => s.key === vKey);
+            if (hMeta && vMeta && hKey !== vKey) {
+              setInteractionBadgeText(`↔ ${hMeta.label}   |   ↕ ${vMeta.label}`, true);
+            } else if (hMeta) {
+              setInteractionBadgeText(`↔ ${hMeta.label}`, true);
+            } else {
+              setInteractionBadgeText(null, true);
+            }
+          }
+        } else {
+          renderer.domElement.style.cursor = '';
+          setInteractionBadgeText(null, false);
+        }
+        return;
+      }
+
+      const dx = e.clientX - dragState3D.startX;
+      const dy = -(e.clientY - dragState3D.startY); // Upward drag is positive
+      if (!dragState3D.moved && Math.hypot(dx, dy) > 6) {
+        dragState3D.moved = true;
+        // Lock to a single primary axis ('h' or 'v') for the entire drag so only one parameter changes cleanly
+        dragState3D.lockedAxis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
+      }
+      if (!dragState3D.moved) return;
+
+      const { sceneKey, hKey, vKey, hSign, vSign, startHVal, startVVal, lockedAxis } = dragState3D;
+      const cfg = SCENE_CONFIGS[sceneKey];
+      if (!cfg || !cfg.sliders) return;
+
+      let updatedInfo = null;
+      let axisSymbol = '▸';
+      if (lockedAxis === 'h' && hKey) {
+        const sMeta = cfg.sliders.find(s => s.key === hKey);
+        if (sMeta) {
+          const span = sMeta.max - sMeta.min;
+          const newVal = startHVal + ((dx * hSign) / 210) * span;
+          updatedInfo = setSimParamFrom3D(sceneKey, hKey, newVal);
+          axisSymbol = '↔';
+        }
+      } else if (lockedAxis === 'v' && vKey) {
+        const sMeta = cfg.sliders.find(s => s.key === vKey);
+        if (sMeta) {
+          const span = sMeta.max - sMeta.min;
+          const newVal = startVVal + ((dy * vSign) / 180) * span;
+          updatedInfo = setSimParamFrom3D(sceneKey, vKey, newVal);
+          axisSymbol = '↕';
+        }
+      }
+
+      if (updatedInfo) {
+        setInteractionBadgeText(`${axisSymbol} ${updatedInfo.label}: ${updatedInfo.val} ${updatedInfo.unit}`.trim(), true);
+      }
+    });
+
+    window.addEventListener('pointerup', () => {
+      if (!dragState3D) return;
+      const st = dragState3D;
+      dragState3D = null;
+      controls.enabled = true;
+      renderer.domElement.style.cursor = '';
+
+      if (!st.moved) {
+        // Click interaction without drag
+        if (st.periodicTile && st.sceneKey === 'chem_periodic') {
+          if (st.periodicTile.atomicZ) {
+            setSimParamFrom3D('chem_periodic', 'atomicZ', st.periodicTile.atomicZ);
+          } else {
+            setSimParamFrom3D('chem_periodic', 'periodN', st.periodicTile.periodN);
+            setSimParamFrom3D('chem_periodic', 'groupG', st.periodicTile.groupG);
+          }
+          setInteractionBadgeText(
+            uiState.lang === 'en'
+              ? `✓ Selected element: #${st.periodicTile.atomicZ} ${st.periodicTile.sym} — ${st.periodicTile.nameEn} (Period ${st.periodicTile.periodN}, Group ${st.periodicTile.groupG})`
+              : `✓ Обрано елемент: №${st.periodicTile.atomicZ} ${st.periodicTile.sym} — ${st.periodicTile.nameUk} (Період ${st.periodicTile.periodN}, Група ${st.periodicTile.groupG})`,
+            true
+          );
+          return;
+        }
+        if (st.clickCycle) {
+          const cfg = SCENE_CONFIGS[st.sceneKey];
+          const sMeta = cfg && cfg.sliders && cfg.sliders.find(s => s.key === st.clickCycle);
+          if (sMeta) {
+            let nextVal = (sceneParams[st.sceneKey][st.clickCycle] || sMeta.min) + (sMeta.step || 1);
+            if (nextVal > sMeta.max) nextVal = sMeta.min;
+            const info = setSimParamFrom3D(st.sceneKey, st.clickCycle, nextVal);
+            if (info) {
+              setInteractionBadgeText(`▸ ${info.label}: ${info.val} ${info.unit}`.trim(), true);
+            }
+          }
+        }
+      } else {
+        setInteractionBadgeText(null, false);
       }
     });
 

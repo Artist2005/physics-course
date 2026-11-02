@@ -123,7 +123,14 @@
       if (!textWithMath) return '';
       return textWithMath
         .replace(/\*\*([^*]+)\*\*/g, '$1')
-        .replace(/\$([^$]+)\$/g, (_, tex) => renderMathString(tex, false));
+        .split(/(\$[^$]+\$)/g)
+        .map(seg => {
+          if (seg.startsWith('$') && seg.endsWith('$')) {
+            return renderMathString(seg.slice(1, -1), false);
+          }
+          return seg.replace(/\s+—\s+/g, ', ').replace(/!/g, '.');
+        })
+        .join('');
     }
 
     // Форматує абзаци теорії та доведення як вирівняні по ширині книжкові блоки з акцентами та KaTeX
@@ -133,12 +140,12 @@
     }
 
     // ============================================================================
-    // 1. ІНІЦІАЛІЗАЦІЯ 3D-СЦЕНИ У СТИЛІ APPLE / GOOGLE СВІТЛОЇ СТУДІЇ
+    // 1. ІНІЦІАЛІЗАЦІЯ 3D-СЦЕНИ
     // ============================================================================
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf1f5f9);
-    scene.fog = new THREE.FogExp2(0xf1f5f9, 0.011);
+    scene.background = new THREE.Color(0xf4f2ed);
+    scene.fog = new THREE.FogExp2(0xf4f2ed, 0.011);
 
     const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 200);
     camera.position.set(0, 6.2, 16.0);
@@ -164,7 +171,7 @@
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.35);
     scene.add(ambientLight);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe2e8f0, 0.85);
+    const hemiLight = new THREE.HemisphereLight(0xfaf9f5, 0xe6e3dd, 0.85);
     hemiLight.position.set(0, 25, 0);
     scene.add(hemiLight);
 
@@ -183,7 +190,7 @@
     dirLight.shadow.bias = -0.0004;
     scene.add(dirLight);
 
-    const rimLight = new THREE.DirectionalLight(0xf8fafc, 0.55);
+    const rimLight = new THREE.DirectionalLight(0xfaf9f5, 0.55);
     rimLight.position.set(-12, 10, -10);
     scene.add(rimLight);
 
@@ -191,10 +198,10 @@
     try {
       const pmremGen = new THREE.PMREMGenerator(renderer);
       const envScene = new THREE.Scene();
-      envScene.background = new THREE.Color(0xf1f5f9);
+      envScene.background = new THREE.Color(0xf4f2ed);
       const skyDome = new THREE.Mesh(
         new THREE.SphereGeometry(20, 24, 16),
-        new THREE.MeshBasicMaterial({ color: 0xf8fafc, side: THREE.BackSide })
+        new THREE.MeshBasicMaterial({ color: 0xfaf9f5, side: THREE.BackSide })
       );
       envScene.add(skyDome);
       const softboxTop = new THREE.Mesh(
@@ -206,14 +213,14 @@
       envScene.add(softboxTop);
       const softboxSide = new THREE.Mesh(
         new THREE.PlaneGeometry(14, 10),
-        new THREE.MeshBasicMaterial({ color: 0xf1f5f9, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xf4f2ed, side: THREE.DoubleSide })
       );
       softboxSide.position.set(-12, 6, -8);
       softboxSide.lookAt(0, 0, 0);
       envScene.add(softboxSide);
       const warmBounce = new THREE.Mesh(
         new THREE.PlaneGeometry(24, 24),
-        new THREE.MeshBasicMaterial({ color: 0xe2e8f0, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xe6e3dd, side: THREE.DoubleSide })
       );
       warmBounce.rotation.x = -Math.PI / 2;
       warmBounce.position.y = -6;
@@ -225,8 +232,8 @@
     // Світла студійна основа сцени + делікатна координатна сітка
     const floorGeo = new THREE.PlaneGeometry(90, 90);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0xf1f5f9,
-      roughness: 0.92,
+      color: 0xf4f2ed,
+      roughness: 0.94,
       metalness: 0.02
     });
     const floorMesh = new THREE.Mesh(floorGeo, floorMat);
@@ -234,9 +241,9 @@
     floorMesh.receiveShadow = true;
     scene.add(floorMesh);
 
-    const gridHelper = new THREE.GridHelper(40, 40, 0xcbd5e1, 0xe2e8f0);
+    const gridHelper = new THREE.GridHelper(40, 40, 0xd6d3cd, 0xe6e3dd);
     gridHelper.position.y = 0.004;
-    gridHelper.material.opacity = 0.72;
+    gridHelper.material.opacity = 0.65;
     gridHelper.material.transparent = true;
     scene.add(gridHelper);
 
@@ -540,31 +547,31 @@
       canvas.width = pillW + padOuterX * 2;
       canvas.height = 84;
 
-      // Чітка технічна плашка з гострими кутами (6px) без розмиття
+      // Чітка технічна плашка з гострими кутами (2px) без розмиття
       ctx.save();
-      ctx.shadowColor = 'rgba(15, 23, 42, 0.14)';
-      ctx.shadowBlur = 6;
-      ctx.shadowOffsetY = 2;
-      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 6);
-      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = 'rgba(24, 24, 27, 0.12)';
+      ctx.shadowBlur = 4;
+      ctx.shadowOffsetY = 1;
+      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 2);
+      ctx.fillStyle = '#faf9f5';
       ctx.fill();
       ctx.restore();
 
       // Чіткий технічний контур
-      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 6);
-      ctx.strokeStyle = '#94a3b8';
-      ctx.lineWidth = 2.0;
+      drawPillRect(ctx, padOuterX, pillY, pillW, pillH, 2);
+      ctx.strokeStyle = '#c4bfb6';
+      ctx.lineWidth = 1.5;
       ctx.stroke();
 
       // Кольоровий індикатор зліва
       const markerX = padOuterX + innerLeftPad;
       ctx.fillStyle = borderColor;
-      drawPillRect(ctx, markerX, pillY + 11, markerW, 30, 2);
+      drawPillRect(ctx, markerX, pillY + 11, markerW, 30, 1);
       ctx.fill();
 
       // Підпис праворуч від маркера
       ctx.font = fontStr;
-      ctx.fillStyle = '#0f172a';
+      ctx.fillStyle = '#18181b';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       const textCenterX = markerX + markerW + markerGap + contentW / 2;
@@ -27334,8 +27341,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         resumeBtn: 'Resume',
         stepBtn: 'Step +0.02 s',
         resetBtn: 'Reset',
-        verdictCorrect: '✓ Your prediction matches the experiment',
-        verdictIncorrect: '✗ The experiment shows a different result. See the derivation below',
+        verdictCorrect: 'Your prediction matches the experiment.',
+        verdictIncorrect: 'The experiment shows a different result. See the derivation below.',
         eqHeaderLeft: 'Formula',
         eqHeaderRight: '',
         energyBalanceTitle: 'Energy balance',
@@ -27360,9 +27367,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         theoryBtnShort: 'Theory',
         theoryExpandHint: 'Open',
         theoryCollapseHint: 'Close',
-        theorySec1Title: '1. Mechanism',
-        theorySec2Title: '2. Equations and conservation laws',
-        theorySec3Title: '3. Measurements and applications',
+        theorySec1Title: 'Mechanism',
+        theorySec2Title: 'Equations and conservation laws',
+        theorySec3Title: 'Measurements and applications',
         eduLevelSchool: 'School',
         eduLevelUni: 'University',
         eduLevelSchoolTip: 'School mode with everyday examples and hints',
@@ -27371,8 +27378,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         hintBtnLabel: 'Hint',
         hintBtnActive: 'Hide hint',
         hintBoxPrefix: '',
-        observeBannerText: 'Watch the 3D apparatus and energy plot. The proof opens in 2 s',
-        observeRevealBtn: 'Show proof now →',
+        observeBannerText: '',
+        observeRevealBtn: 'Show derivation',
         nextLessonPrefix: 'Next',
         nextLessonBtnPrefix: 'Next',
         presetModeLabel: 'Presets',
@@ -27382,17 +27389,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         presetMinTip: 'Low parameter values',
         presetStdTip: 'Default textbook values',
         presetMaxTip: 'High parameter values',
-        searchPlaceholder: 'Search by topic, law, or grade (e.g. Grade 9, Ohm, lens)...',
+        searchPlaceholder: 'Search by topic or law...',
         searchNoResults: 'No matching experiments found.',
-        progressBadgeTip: 'Completed experiments (click to open catalog)',
-        kbdFooterHtml: '<span class="kbd-chip">Space</span> Play/Pause · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint',
+        progressBadgeTip: 'Catalog',
+        kbdFooterHtml: '',
         brandTitle: '3D Science Lab',
         brandSub: 'Interactive lab',
         discPhysics: 'Physics',
-        discPhysicsTip: '3D physics lab (46 experiments)',
+        discPhysicsTip: 'Physics (46 experiments)',
         discChemistry: 'Chemistry',
         discChemistryBadge: '40',
-        discChemistryTip: '3D chemistry lab (40 experiments)',
+        discChemistryTip: 'Chemistry (40 experiments)',
         chemModalBadge: '3D chemistry lab',
         chemModalTitle: '3D chemistry lab',
         chemModalSub: 'Interactive 3D simulations of molecular orbitals, crystal lattices, chemical kinetics, titration, and electrochemistry.',
@@ -27415,7 +27422,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         chemMod6Sec: '§ 41–46 · Organic chemistry',
         chemMod6Title: 'Hydrocarbons, functional groups, and isomers',
         chemMod6Desc: '3D conformations of alkanes and alkenes, benzene aromaticity, chiral centers, and optical isomers.',
-        chemModalBackBtn: '← Back to physics lab (46 experiments)',
+        chemModalBackBtn: 'Back to physics',
         mobileUnsupportedTitle: 'Desktop screen required',
         mobileUnsupportedSub: 'This 3D laboratory is designed for desktop and laptop screens. Please open the site on a computer.'
       },
@@ -27428,21 +27435,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         adHdrBadge: 'AD',
         adHdrText: 'Освітній ресурс та обладнання',
         adHdrSub: 'Google AdSense · Партнерський банер · Освітні та наукові проєкти',
-        adHdrCta: 'Розмістити →',
+        adHdrCta: 'Розмістити',
         adLeftLabel: 'Реклама',
         adLeftTitle: 'Місце для реклами',
         adLeftSub: 'Банер 320×100 px або адаптивний блок AdSense',
         adRightLabel: 'Реклама',
         adRightTitle: 'Місце для реклами',
         adRightSub: 'Стандартний блок 300×250 px під Google AdSense або банер',
-        filterAll: 'Усі досліди (46)',
+        filterAll: 'Усі (46)',
         filterOptics: 'Оптика і хвилі (14)',
         filterMechanics: 'Механіка (15)',
         filterThermo: 'Рідини та МКТ (9)',
         filterElectro: 'Електромагнетизм (8)',
-        crumbPredict: '1. Гіпотеза',
-        crumbTest: '2. Дослід',
-        crumbExplain: '3. Доведення',
+        crumbPredict: 'Гіпотеза',
+        crumbTest: 'Дослід',
+        crumbExplain: 'Доведення',
         camIso: 'Ізометрія',
         camFront: 'Фронт',
         camTop: 'План',
@@ -27459,15 +27466,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         resumeBtn: 'Продовжити',
         stepBtn: 'Крок +0.02 с',
         resetBtn: 'Скинути',
-        verdictCorrect: '✓ Дослід підтвердив вашу відповідь',
-        verdictIncorrect: '✗ Дослід дав інший результат. Нижче наведено пояснення',
+        verdictCorrect: 'Дослід підтвердив вашу відповідь.',
+        verdictIncorrect: 'Дослід дав інший результат. Нижче наведено доведення.',
         eqHeaderLeft: 'Формула',
         eqHeaderRight: '',
         energyBalanceTitle: 'Баланс енергії',
         refHeadingLeft: 'Рівняння',
         refHeadingRight: '',
         paramsHeading: 'Параметри',
-        presetDefault: 'За замовчуванням',
+        presetDefault: 'Скинути',
         diagramHeading: 'Позначення на сцені',
         toggleVectors: 'Вектори сил і швидкостей',
         toggleLabels: 'Підписи векторів',
@@ -27485,9 +27492,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         theoryBtnShort: 'Теорія',
         theoryExpandHint: 'Читати',
         theoryCollapseHint: 'Згорнути',
-        theorySec1Title: '1. Механізм явища',
-        theorySec2Title: '2. Рівняння і закони збереження',
-        theorySec3Title: '3. Вимірювання і застосування',
+        theorySec1Title: 'Механізм явища',
+        theorySec2Title: 'Рівняння і закони збереження',
+        theorySec3Title: 'Вимірювання і застосування',
         eduLevelSchool: 'Школа',
         eduLevelUni: 'ВНЗ',
         eduLevelSchoolTip: 'Шкільний режим з прикладами і підказками',
@@ -27496,8 +27503,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         hintBtnLabel: 'Підказка',
         hintBtnActive: 'Сховати',
         hintBoxPrefix: '',
-        observeBannerText: 'Спостерігайте за установкою та графіком енергії. Доведення відкриється за 2 с',
-        observeRevealBtn: 'Показати доведення →',
+        observeBannerText: '',
+        observeRevealBtn: 'Показати доведення',
         nextLessonPrefix: 'Далі',
         nextLessonBtnPrefix: 'Далі',
         presetModeLabel: 'Режими',
@@ -27507,7 +27514,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         presetMinTip: 'Мінімальні значення параметрів',
         presetStdTip: 'Стандартні значення параметрів',
         presetMaxTip: 'Максимальні значення параметрів',
-        searchPlaceholder: 'Пошук за темою, законом або класом (напр. 9 клас, Ом, лінза)...',
+        searchPlaceholder: 'Пошук за темою або законом...',
         searchNoResults: 'Дослідів за цим запитом не знайдено.',
         progressBadgeTip: 'Виконані досліди (натисніть, щоб відкрити список)',
         kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка',
@@ -29513,7 +29520,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function ensureTheoryBookUI() {
       const t = tUI();
 
-      // 1. Кнопка книги та розгортний конспект у лівій панелі (відразу під заголовком та епіграфом параграфа)
+      // 1. Розгортний теоретичний конспект у лівій панелі
       const chapterHeader = document.querySelector('.chapter-header');
       if (chapterHeader && !document.getElementById('btn-theory-book')) {
         const btn = document.createElement('button');
@@ -29523,7 +29530,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         btn.setAttribute('aria-expanded', 'false');
         btn.innerHTML = `
           <span class="theory-book-left">
-            ${BOOK_SVG_ICON}
             <span id="ui-theory-btn-label" class="theory-book-label">Теоретичний конспект</span>
           </span>
           <span class="theory-book-right">
@@ -29550,44 +29556,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
       }
 
-      // 2. Брендова шапка + перемикач дисциплін (Фізика | Хімія) та прогрес учня «✓ X/46» у верхній панелі (.book-header)
+      // 2. Перемикач дисциплін (Фізика | Хімія) у верхній панелі (.book-header)
       const headerLeft = document.querySelector('.header-left');
       if (headerLeft && !document.getElementById('header-brand-discipline')) {
         const brandGroup = document.createElement('div');
         brandGroup.id = 'header-brand-discipline';
         brandGroup.className = 'header-brand-discipline';
         brandGroup.innerHTML = `
-          <div class="header-brand-badge" title="${t.brandTitle}">
-            <span class="header-brand-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
-            </span>
-            <span id="ui-brand-title" class="header-brand-title">${t.brandTitle}</span>
-          </div>
           <div id="discipline-switcher" class="discipline-switcher" role="tablist" aria-label="Science disciplines">
             <button type="button" id="disc-tab-physics" class="disc-tab active" role="tab" aria-selected="true" title="${t.discPhysicsTip}">
-              <svg class="disc-tab-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="2.2"/>
-                <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/>
-                <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/>
-              </svg>
               <span id="ui-disc-physics">${t.discPhysics}</span>
-              <span class="disc-count-pill">46</span>
             </button>
             <button type="button" id="disc-tab-chemistry" class="disc-tab disc-tab-chem" role="tab" aria-selected="false" title="${t.discChemistryTip}">
-              <svg class="disc-tab-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 2v7.31l-4.89 8.15A2 2 0 0 0 6.82 20.5h10.36a2 2 0 0 0 1.71-3.04L14 9.31V2"/>
-                <path d="M8.5 2h7"/>
-                <path d="M7 16h10"/>
-              </svg>
               <span id="ui-disc-chemistry">${t.discChemistry}</span>
-              <span id="ui-disc-chem-badge" class="disc-count-pill">40</span>
             </button>
           </div>
-          <span class="header-v-divider" aria-hidden="true"></span>
         `;
         headerLeft.insertBefore(brandGroup, headerLeft.firstChild);
 
@@ -29607,28 +29590,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
       }
 
-      if (headerLeft && !document.getElementById('edu-progress-pill')) {
-        const progBtn = document.createElement('button');
-        progBtn.type = 'button';
-        progBtn.id = 'edu-progress-pill';
-        progBtn.className = 'edu-progress-pill';
-        progBtn.title = t.progressBadgeTip;
-        progBtn.innerHTML = `<span class="edu-prog-check">✓</span><span id="edu-progress-count">0/46</span>`;
-        progBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          const wrapper = document.getElementById('exp-dropdown-wrapper');
-          const trigger = document.getElementById('exp-dropdown-trigger');
-          if (wrapper) {
-            const isOpen = wrapper.classList.toggle('open');
-            if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
-            const searchInp = document.getElementById('dropdown-search-input');
-            if (isOpen && searchInp) setTimeout(() => searchInp.focus(), 40);
-          }
-        });
-        headerLeft.appendChild(progBtn);
-      }
-
-      // 4. Кнопка «💡 Підказка» у блоці гіпотези (#predict-section) + банер спостереження (#observe-stage-banner)
+      // 3. Кнопка підказки у блоці питання (#predict-section) + перехід до доведення (#observe-stage-banner)
       const predictSection = document.getElementById('predict-section');
       const probLabel = document.getElementById('ui-problem-label');
       const questionTextEl = document.getElementById('question-text');
@@ -29643,7 +29605,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         hintBtn.id = 'btn-question-hint';
         hintBtn.className = 'btn-question-hint';
         hintBtn.title = 'Підказка / Hint (H)';
-        hintBtn.innerHTML = `<span class="hint-icon-sym" aria-hidden="true">?</span><span id="ui-hint-btn-text">${t.hintBtnLabel}</span>`;
+        hintBtn.innerHTML = `<span id="ui-hint-btn-text">${t.hintBtnLabel}</span>`;
         hdrRow.appendChild(hintBtn);
 
         const hintBox = document.createElement('div');
@@ -29665,10 +29627,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         obsBanner.id = 'observe-stage-banner';
         obsBanner.className = 'observe-stage-banner';
         obsBanner.innerHTML = `
-          <div class="observe-status-row">
-            <span class="observe-pulse-dot" aria-hidden="true"></span>
-            <span id="ui-observe-banner-text">${t.observeBannerText}</span>
-          </div>
           <button type="button" id="btn-reveal-proof-now" class="btn-reveal-proof-now">${t.observeRevealBtn}</button>
         `;
         collapsedPrediction.insertAdjacentElement('afterend', obsBanner);
@@ -29677,7 +29635,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
       }
 
-      // 5. Кнопка «Наступний дослід →» унизу секції Доведення (#explain-stage)
+      // 4. Кнопка переходу до наступного параграфа унизу секції Доведення (#explain-stage)
       const explainStage = document.getElementById('explain-stage');
       if (explainStage && !document.getElementById('btn-next-lesson-cta')) {
         const nextBtn = document.createElement('button');
@@ -29695,24 +29653,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
       }
 
-      // 6. 3 лабораторні пресети («🔬 Мінімум», «⚡ Еталон», «🚀 Максимум») у правій панелі
-      const slidersContainer = document.getElementById('sliders-container');
-      if (slidersContainer && !document.getElementById('lab-presets-bar')) {
-        const presetsBar = document.createElement('div');
-        presetsBar.id = 'lab-presets-bar';
-        presetsBar.className = 'lab-presets-bar';
-        presetsBar.innerHTML = `
-          <button type="button" class="preset-chip-btn" id="btn-preset-min" data-preset="min" title="${t.presetMinTip}">${t.presetMin}</button>
-          <button type="button" class="preset-chip-btn active" id="btn-preset-std" data-preset="std" title="${t.presetStdTip}">${t.presetStd}</button>
-          <button type="button" class="preset-chip-btn" id="btn-preset-max" data-preset="max" title="${t.presetMaxTip}">${t.presetMax}</button>
-        `;
-        slidersContainer.parentNode.insertBefore(presetsBar, slidersContainer);
-        presetsBar.querySelectorAll('.preset-chip-btn').forEach(b => {
-          b.addEventListener('click', () => applyLabPreset(b.dataset.preset));
-        });
-      }
-
-      // 7. Живий пошук у випадному меню 46 дослідів (#exp-dropdown-menu)
+      // 5. Живий пошук у випадному меню дослідів (#exp-dropdown-menu)
       const dropdownMenu = document.getElementById('exp-dropdown-menu');
       const filterBar = dropdownMenu ? dropdownMenu.querySelector('.dropdown-filter-bar') : null;
       if (dropdownMenu && filterBar && !document.getElementById('dropdown-search-input')) {
@@ -29726,16 +29667,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           dropdownSearchQuery = (e.target.value || '').trim().toLowerCase();
           renderDropdownMenu();
         });
-      }
-
-      // 8. Підказка гарячих клавіш унизу правої панелі (#right-sidebar)
-      const rightSidebar = document.getElementById('right-sidebar');
-      if (rightSidebar && !document.getElementById('ui-kbd-shortcuts-bar')) {
-        const kbdBar = document.createElement('div');
-        kbdBar.id = 'ui-kbd-shortcuts-bar';
-        kbdBar.className = 'kbd-shortcuts-bar';
-        kbdBar.innerHTML = t.kbdFooterHtml;
-        rightSidebar.appendChild(kbdBar);
       }
     }
 
@@ -30166,10 +30097,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const cfg = SCENE_CONFIGS[key];
       const t = tUI();
 
-      document.getElementById('chapter-section-tag').textContent = cfg.secTag;
+      document.getElementById('chapter-section-tag').textContent = cfg.secTag ? cfg.secTag.split('·').slice(0, 2).map(s => s.trim()).join(' · ') : cfg.secSym;
       document.getElementById('scene-title').textContent = cfg.title;
-      document.getElementById('scene-epigraph').textContent = cfg.epigraph;
-      document.getElementById('figure-caption-text').textContent = cfg.figCaption;
+      document.getElementById('scene-epigraph').textContent = cfg.epigraph ? cfg.epigraph.replace(/\s+—\s+/g, ', ') : '';
+      document.getElementById('figure-caption-text').textContent = cfg.figCaption ? cfg.figCaption.replace(/\s+—\s+/g, ', ') : '';
 
       document.getElementById('ek-label').textContent = cfg.ekLabel;
       document.getElementById('ep-label').textContent = cfg.epLabel;
@@ -30311,16 +30242,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
 
         const isActive = key === uiState.activeScene;
-        const isDone = masteredExperiments.has(key);
         const item = document.createElement('a');
         item.href = getExperimentHref(key, uiState.lang);
         item.className = `dropdown-exp-item${isActive ? ' active' : ''}`;
         item.innerHTML = `
           <span class="exp-item-left">
-            <span class="exp-item-sec">${isDone ? '<span class="exp-done-badge" title="Засвоєно / Mastered">✓</span> ' : ''}${cfg.secSym}</span>
+            <span class="exp-item-sec">${cfg.secSym}</span>
             <span class="exp-item-info">
               <span class="exp-item-title">${cfg.shortTitle}</span>
-              <span class="exp-item-sub">${cfg.subtitle}${gradeTag ? ` · <span class="exp-grade-tag">${gradeTag}</span>` : ''}</span>
+              <span class="exp-item-sub">${cfg.subtitle}</span>
             </span>
           </span>
           <span class="exp-item-badge ${cfg.category === 'optics' ? 'optics' : ''}">${cfg.badge}</span>
@@ -30899,45 +30829,41 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     Object.assign(interactionHudBadge.style, {
       position: 'fixed',
       left: '50%',
-      transform: 'translateX(-50%)',
+      transform: 'translateX(-50%) translateY(4px)',
       bottom: '54px',
       zIndex: '34',
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
-      padding: '5px 14px',
-      borderRadius: '6px',
-      background: 'rgba(255, 255, 255, 0.94)',
-      color: '#334155',
-      fontFamily: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif',
+      padding: '4px 12px',
+      borderRadius: '2px',
+      background: '#faf9f5',
+      color: '#18181b',
+      fontFamily: '"IBM Plex Mono", monospace',
       fontStyle: 'normal',
-      fontSize: '12px',
+      fontSize: '11.5px',
       fontWeight: '500',
       whiteSpace: 'nowrap',
       maxWidth: 'calc(100vw - var(--left-page-w, 340px) - var(--right-page-w, 360px) - 32px)',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      border: '1px solid #e2e8f0',
-      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.06)',
+      border: '1px solid #d6d3cd',
+      boxShadow: '0 2px 6px rgba(24, 24, 27, 0.08)',
       pointerEvents: 'none',
-      transition: 'border-color 0.14s ease, background 0.14s ease'
+      opacity: '0',
+      transition: 'opacity 0.14s ease, transform 0.14s ease'
     });
     document.body.appendChild(interactionHudBadge);
 
     function setInteractionBadgeText(customText = null, activeHighlight = false) {
-      const isEn = uiState.lang === 'en';
-      const defaultMsg = isEn
-        ? 'Drag parts on the 3D scene to change parameters, or click to interact'
-        : 'Перетягуйте деталі мишею або клікайте для взаємодії';
-      interactionHudBadge.textContent = customText || defaultMsg;
-      interactionHudBadge.style.borderColor = activeHighlight ? '#2563eb' : '#e2e8f0';
-      interactionHudBadge.style.background = activeHighlight ? '#eff6ff' : 'rgba(255, 255, 255, 0.94)';
-      interactionHudBadge.style.color = activeHighlight ? '#1d4ed8' : '#334155';
-      interactionHudBadge.style.fontStyle = 'normal';
-      interactionHudBadge.style.fontFamily = activeHighlight
-        ? '"IBM Plex Mono", monospace'
-        : '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif';
-      interactionHudBadge.style.fontSize = '12px';
+      if (!activeHighlight || !customText) {
+        interactionHudBadge.style.opacity = '0';
+        interactionHudBadge.style.transform = 'translateX(-50%) translateY(4px)';
+        return;
+      }
+      interactionHudBadge.textContent = customText;
+      interactionHudBadge.style.opacity = '1';
+      interactionHudBadge.style.transform = 'translateX(-50%) translateY(0)';
     }
     setInteractionBadgeText();
 

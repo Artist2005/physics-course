@@ -28216,16 +28216,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         spineMain: 'Physics lab',
         prevTitle: 'Previous chapter',
         nextTitle: 'Next chapter',
-        adHdrBadge: 'Ad',
-        adHdrText: 'Educational resource',
-        adHdrSub: 'Google AdSense · Sponsor banner · Lab equipment partners',
-        adHdrCta: 'Place ad →',
-        adLeftLabel: 'Advertisement',
-        adLeftTitle: 'Ad space',
-        adLeftSub: 'Banner 320×100 px or responsive AdSense unit',
-        adRightLabel: 'Sponsored',
-        adRightTitle: 'Ad space',
-        adRightSub: 'Standard 300×250 rectangle for Google AdSense or partner banner',
+        adHdrBadge: 'SPONSOR',
+        adHdrText: 'Precision USB Lab Sensors, Optical Benches & STEM Kits',
+        adHdrSub: 'Calibrated 1000 Hz telemetry interfaces for schools & universities',
+        adHdrCta: 'Catalog →',
+        adLeftLabel: 'Sponsored Partner',
+        adLeftTitle: 'Digital USB Oscilloscopes & Telemetry Sensors',
+        adLeftSub: 'Calibrated 1000 Hz data-acquisition modules for mechanics, optics & electrodynamics labs',
+        adLeftSpec: 'Lab Equipment Catalog →',
+        adRightLabel: 'Featured Course',
+        adRightTitle: 'Olympiad Physics, Chemistry & Engineering Prep',
+        adRightSub: 'Structured problem sets, 3D lab workbooks, and university exam preparation',
+        adRightSpec: 'Explore Programs →',
         filterAll: 'All experiments (46)',
         filterOptics: 'Optics and waves (14)',
         filterMechanics: 'Mechanics (15)',
@@ -28341,16 +28343,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         spineMain: 'Фізичний практикум',
         prevTitle: 'Попередній параграф',
         nextTitle: 'Наступний параграф',
-        adHdrBadge: 'AD',
-        adHdrText: 'Освітній ресурс та обладнання',
-        adHdrSub: 'Google AdSense · Партнерський банер · Освітні та наукові проєкти',
-        adHdrCta: 'Розмістити',
-        adLeftLabel: 'Реклама',
-        adLeftTitle: 'Місце для реклами',
-        adLeftSub: 'Банер 320×100 px або адаптивний блок AdSense',
-        adRightLabel: 'Реклама',
-        adRightTitle: 'Місце для реклами',
-        adRightSub: 'Стандартний блок 300×250 px під Google AdSense або банер',
+        adHdrBadge: 'ПАРТНЕР',
+        adHdrText: 'Цифрові лабораторні датчики, оптичні лави та STEM-набори',
+        adHdrSub: 'Калібровані інтерфейси телеметрії 1000 Гц для шкіл та університетів',
+        adHdrCta: 'Каталог →',
+        adLeftLabel: 'Партнерський блок',
+        adLeftTitle: 'Цифрові USB-осцилографи та датчики телеметрії',
+        adLeftSub: 'Модулі збору даних 1000 Гц для практикумів з механіки, оптики й електродинаміки',
+        adLeftSpec: 'Каталог обладнання →',
+        adRightLabel: 'Освітня програма',
+        adRightTitle: 'Олімпіадна підготовка з фізики, хімії та інженерії',
+        adRightSub: 'Авторські задачники, 3D-практикуми та підготовка до університетських іспитів',
+        adRightSpec: 'Переглянути курси →',
         filterAll: 'Усі (46)',
         filterOptics: 'Оптика і хвилі (14)',
         filterMechanics: 'Механіка (15)',
@@ -30665,6 +30669,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-ad-right-label', t.adRightLabel);
       setTxt('ui-ad-right-title', t.adRightTitle);
       setTxt('ui-ad-right-sub', t.adRightSub);
+      const leftSpecEl = document.querySelector('#ad-slot-left .ad-slot-spec');
+      if (leftSpecEl && t.adLeftSpec) leftSpecEl.textContent = t.adLeftSpec;
+      const rightSpecEl = document.querySelector('#ad-slot-right .ad-slot-spec');
+      if (rightSpecEl && t.adRightSpec) rightSpecEl.textContent = t.adRightSpec;
       setTxt('filter-btn-all', t.filterAll);
       setTxt('filter-btn-optics', t.filterOptics);
       setTxt('filter-btn-mechanics', t.filterMechanics);

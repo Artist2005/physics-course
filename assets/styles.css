@@ -1621,33 +1621,28 @@
     }
 
     /* ==========================================================================
-       РЕКЛАМНІ БЛОКИ GOOGLE ADS / ADSENSE (ПОКАЗУЮТЬСЯ ЛИШЕ ПРИ ЗАПОВНЕНОМУ СЛОТІ)
+       РЕКЛАМНІ ТА ПАРТНЕРСЬКІ БЛОКИ (GOOGLE ADSENSE + КОМЕРЦІЙНІ СЛОТИ)
        ========================================================================== */
     .ad-viewport-leaderboard {
       position: fixed;
       top: calc(var(--header-h) + 10px);
       left: 50%;
       transform: translateX(-50%);
-      width: min(600px, calc(100vw - var(--left-page-w) - var(--right-page-w) - 48px));
-      min-height: 46px;
+      width: min(560px, calc(100vw - var(--left-page-w) - var(--right-page-w) - 56px));
+      min-height: 44px;
       z-index: 25;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(250, 249, 245, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--rule-dark);
-      border-radius: 6px;
-      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+      border-left: 3px solid var(--accent-oxford);
+      border-radius: 3px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
       padding: 6px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-    }
-
-    .ad-viewport-leaderboard:not(:has(ins.adsbygoogle[data-ad-status="filled"])),
-    .ad-sidebar-card:not(:has(ins.adsbygoogle[data-ad-status="filled"])),
-    .mobile-unsupported-ad:not(:has(ins.adsbygoogle[data-ad-status="filled"])) {
-      display: none !important;
     }
 
     .ad-viewport-leaderboard.ad-closed {
@@ -1659,6 +1654,7 @@
       align-items: center;
       gap: 10px;
       min-width: 0;
+      flex: 1;
     }
 
     .ad-lb-badge {
@@ -1667,10 +1663,10 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 3px 6px;
-      border-radius: 4px;
-      background: var(--bg-inset);
-      color: var(--ink-muted);
+      padding: 2px 6px;
+      border-radius: 2px;
+      background: var(--accent-oxford);
+      color: #faf9f5;
       flex-shrink: 0;
     }
 
@@ -1693,7 +1689,7 @@
     .ad-lb-subline {
       font-family: var(--font-sans);
       font-size: 10.5px;
-      color: var(--ink-muted);
+      color: var(--ink-secondary);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1702,14 +1698,15 @@
     .ad-lb-actions {
       display: flex;
       align-items: center;
+      gap: 6px;
       flex-shrink: 0;
     }
 
     .ad-lb-close {
       width: 22px;
       height: 22px;
-      border-radius: 4px;
-      border: none;
+      border-radius: 2px;
+      border: 1px solid transparent;
       background: transparent;
       color: var(--ink-muted);
       font-size: 14px;
@@ -1722,16 +1719,17 @@
 
     .ad-lb-close:hover {
       background: var(--bg-inset);
+      border-color: var(--rule-dark);
       color: var(--ink-primary);
     }
 
     .ad-sidebar-card {
-      margin-top: auto;
+      margin-top: 18px;
       padding-top: 14px;
-      border-top: 1px solid var(--rule-light);
+      border-top: 1px solid var(--rule-dark);
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       flex-shrink: 0;
     }
 
@@ -1740,43 +1738,59 @@
       justify-content: space-between;
       align-items: center;
       font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: 500;
+      font-size: 9.5px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--ink-faint);
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
     }
 
     .ad-card-frame {
       width: 100%;
-      background: var(--bg-inset);
+      background: linear-gradient(180deg, #ffffff 0%, #f3f1eb 100%);
       border: 1px solid var(--rule-dark);
-      border-radius: 6px;
-      padding: 8px 10px;
+      border-left: 3px solid var(--accent-oxford);
+      border-radius: 3px;
+      padding: 11px 13px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      text-align: center;
-      gap: 2px;
+      text-align: left;
+      gap: 4px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     }
 
     .ad-card-frame.ad-rect-compact {
-      min-height: 68px;
+      min-height: 84px;
     }
 
     .ad-card-frame.ad-rect-mrec {
-      min-height: 92px;
+      min-height: 118px;
     }
 
-    .ad-viewport-leaderboard ins.adsbygoogle,
-    .ad-card-frame ins.adsbygoogle,
-    .mobile-ad-frame ins.adsbygoogle {
+    .ad-viewport-leaderboard ins.adsbygoogle:not([data-ad-status="filled"]),
+    .ad-card-frame ins.adsbygoogle:not([data-ad-status="filled"]),
+    .mobile-ad-frame ins.adsbygoogle:not([data-ad-status="filled"]) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .ad-viewport-leaderboard ins.adsbygoogle[data-ad-status="filled"],
+    .ad-card-frame ins.adsbygoogle[data-ad-status="filled"],
+    .mobile-ad-frame ins.adsbygoogle[data-ad-status="filled"] {
+      position: relative;
       width: 100%;
       min-width: 160px;
       display: block;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     ins.adsbygoogle[data-ad-status="unfilled"] {
@@ -1789,26 +1803,40 @@
       display: none !important;
     }
 
+    .ad-fallback-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      width: 100%;
+    }
+
+    .ad-viewport-leaderboard .ad-fallback-content {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
     .ad-slot-title {
       font-family: var(--font-sans);
-      font-size: 11.5px;
+      font-size: 12.5px;
       font-weight: 600;
-      color: var(--ink-secondary);
-      line-height: 1.25;
+      color: var(--ink-primary);
+      line-height: 1.3;
     }
 
     .ad-slot-sub {
-      font-size: 10.5px;
-      color: var(--ink-muted);
-      line-height: 1.3;
-      max-width: 28ch;
+      font-size: 11.2px;
+      color: var(--ink-secondary);
+      line-height: 1.4;
+      max-width: 100%;
     }
 
     .ad-slot-spec {
       font-family: var(--font-mono);
-      font-size: 9px;
-      color: var(--ink-faint);
-      margin-top: 2px;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--accent-oxford);
+      margin-top: 3px;
     }
 
     @media (max-width: 1200px) {
@@ -1934,6 +1962,7 @@
     }
 
     .mobile-ad-frame {
+      position: relative;
       min-height: 60px;
       display: flex;
       flex-direction: column;

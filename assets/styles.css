@@ -266,11 +266,11 @@
 
     .dropdown-group-title {
       font-family: var(--font-sans);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--ink-muted);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-secondary);
       padding: 10px 8px 4px;
     }
 
@@ -463,11 +463,11 @@
     }
 
     .cam-dock-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
       color: var(--ink-muted);
       padding: 4px 10px 4px 7px;
       border-right: 1px solid var(--rule-light);
@@ -618,11 +618,11 @@
     }
 
     .chapter-meta {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.065em;
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
       color: var(--ink-muted);
       margin-bottom: 7px;
       display: flex;
@@ -647,9 +647,9 @@
 
     .chapter-epigraph {
       font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 15.8px;
-      line-height: 1.62;
+      font-style: normal;
+      font-size: 15.5px;
+      line-height: 1.6;
       color: var(--ink-secondary);
       padding: 2px 0 4px;
       border: none;
@@ -697,11 +697,11 @@
     }
 
     .theory-book-hint {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
       color: var(--ink-muted);
     }
 
@@ -801,13 +801,13 @@
     }
 
     .theory-note-subtitle {
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-style: normal;
-      font-size: 10.5px;
+      font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-secondary);
       line-height: 1.38;
     }
 
@@ -845,7 +845,7 @@
     }
 
     .textbook-thesis-item::before {
-      content: "—";
+      content: "•";
       position: absolute;
       left: 0;
       top: 0;
@@ -1001,12 +1001,12 @@
     }
 
     .problem-label {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--ink-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-secondary);
     }
 
     .problem-question {
@@ -1194,12 +1194,12 @@
     }
 
     .equation-header {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-secondary);
       margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
@@ -1289,12 +1289,12 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--ink-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-secondary);
       font-variant-numeric: tabular-nums;
     }
 
@@ -1383,8 +1383,8 @@
 
     .figure-caption-bottom {
       font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 13.8px;
+      font-style: normal;
+      font-size: 13.6px;
       color: var(--ink-secondary);
       line-height: 1.54;
       padding-left: 0;
@@ -1452,12 +1452,12 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-family: var(--font-mono);
-      font-size: 11px;
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--ink-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-secondary);
       margin-bottom: 2px;
     }
 
@@ -2081,8 +2081,8 @@
       background: var(--bg-inset);
       border: 1px solid var(--rule-dark);
       font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14.8px;
+      font-style: normal;
+      font-size: 14.6px;
       line-height: 1.58;
       color: var(--ink-secondary);
       text-align: left;
@@ -2116,8 +2116,8 @@
       align-items: flex-start;
       gap: 9px;
       font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14.6px;
+      font-style: normal;
+      font-size: 14.5px;
       line-height: 1.58;
       color: var(--ink-primary);
       font-weight: 400;
@@ -2472,7 +2472,6 @@
       height: 7px;
       border-radius: 2px;
       background: #0d9488;
-      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.22);
     }
 
     .chem-modal-close {

@@ -25929,9 +25929,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_mo: {
-        section: '§ C-21',
+        secTag: 'Section § C-21 — Quantum Chemistry · Molecular Orbitals (LCAO–MO) & Paramagnetism of O₂',
+        shortTitle: 'Molecular Orbitals (LCAO–MO)',
+        subtitle: 'Wavefunction interference (ψ_A ± ψ_B), bonding σ/π & antibonding σ*/π* orbitals, bond order, and paramagnetism of O₂',
+        badge: 'Quantum Chemistry',
+        categoryGroupTitle: 'Part I. Atomic Structure, Chemical Bonding & Crystals',
         title: 'Molecular Orbitals (LCAO–MO): Bonding σ/π, Antibonding σ*/π* & Bond Order',
-        subtitle: 'Chapter XXI. Quantum Chemistry: Wavefunction Interference (ψ_A ± ψ_B) & Paramagnetism of O₂',
+        epigraph: 'An atomic orbital is monocentric, whereas a molecular orbital embraces all nuclei of the molecule as a single quantum wave.',
+        figCaption: 'Fig. C-21.1 — 3D LCAO interference of atomic orbitals: constructive addition ψ_A + ψ_B (bonding σ, π) and destructive subtraction ψ_A − ψ_B with a nodal plane (antibonding σ*, π*)',
+        ekLabel: 'Bonding E_bond',
+        epLabel: 'Antibonding E_anti',
+        qLabel: 'Dissociation D₀',
+        referenceLatex: String.raw`\begin{aligned}
+          \psi_{\pm} &= \frac{\psi_A \pm \psi_B}{\sqrt{2(1 \pm S)}}, \qquad B = \frac{N_{\text{bond}} - N_{\text{anti}}}{2} \\
+          \mu_s &= \sqrt{n(n+2)}\,\mu_B
+        \end{aligned}`,
         question: 'In Molecular Orbital (MO) theory, how is the bond order $B$ defined, and why does the oxygen molecule $\\text{O}_2$ exhibit paramagnetism (attraction into a magnetic field)?',
         options: [
           'Bond order is $B = \\frac{1}{2}(N_b - N_a)$ ($B = 2$ for $\\text{O}_2$), and $\\text{O}_2$ is paramagnetic because two unpaired electrons occupy the two degenerate antibonding $\\pi_{2p}^*$ orbitals according to Hund’s rule',
@@ -25943,7 +25955,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         liveLatexFn: p => {
           const mols = [
             { sym: 'H_2', nb: 2, na: 0, unp: 0, d0: 436 },
-            { sym: 'He_2', nb: 2, na: 2, unp: 0, d0: 0 },
+            { sym: 'He_2^+', nb: 2, na: 1, unp: 1, d0: 238 },
             { sym: 'N_2', nb: 8, na: 2, unp: 0, d0: 945 },
             { sym: 'O_2', nb: 8, na: 4, unp: 2, d0: 498 },
             { sym: 'F_2', nb: 8, na: 6, unp: 0, d0: 159 }
@@ -25954,16 +25966,28 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           return String.raw`\mathrm{${m.sym}}: \quad N_b = ${m.nb},\; N_a = ${m.na} \;\Rightarrow\; B = ${bo.toFixed(1)}, \quad \mu_s = ${muB.toFixed(2)}\,\mu_B, \quad D_0 \approx ${m.d0}\text{ kJ/mol}`;
         },
         sliders: [
-          { label: 'Diatomic molecule (1=H₂, 2=He₂, 3=N₂, 4=O₂, 5=F₂)', unit: '' },
+          { label: 'Diatomic species (1=H₂, 2=He₂⁺, 3=N₂, 4=O₂, 5=F₂)', unit: '' },
           { label: 'Internuclear distance R', unit: 'Å' },
           { label: 'Displayed MO (1=σ_g bonding, 2=σ*_u, 3=π_u, 4=π*_g)', unit: '' },
           { label: 'Resonance overlap integral |β|', unit: 'eV' }
         ]
       },
       chem_allotropes: {
-        section: '§ C-22',
+        secTag: 'Section § C-22 — Nanochemistry · Carbon Allotropes & Nanostructures (Graphene, CNT, Fullerene C₆₀)',
+        shortTitle: 'Carbon Nanostructures (C₆₀, CNT, Graphene)',
+        subtitle: 'sp² π-electron delocalization, Euler’s polyhedron theorem (12 pentagons + 20 hexagons), and nanotube chirality',
+        badge: 'Nanochemistry',
+        categoryGroupTitle: 'Part I. Atomic Structure, Chemical Bonding & Crystals',
         title: 'Carbon Nanostructures & Allotropes: Buckminsterfullerene C₆₀, Nanotubes & Graphene',
-        subtitle: 'Chapter XXII. sp² Conjugation, Euler’s Polyhedron Theorem (12 Pentagons + 20 Hexagons) & Dirac Cones',
+        epigraph: 'Carbon is nature’s supreme architect: from the same atom it builds the hardest diamond, one-atom-thick graphene, and the soccer-ball cage of fullerene C₆₀.',
+        figCaption: 'Fig. C-22.1 — 3D nanostructures of sp²-hybridized carbon: (1) planar honeycomb graphene sheet, (2) cylindrical carbon nanotube (CNT), and (3) icosahedral Buckminsterfullerene C₆₀',
+        ekLabel: 'π-Band Energy E_π',
+        epLabel: 'Strain Energy E_str',
+        qLabel: 'Strength σ(C–C)',
+        referenceLatex: String.raw`\begin{aligned}
+          V - E + F &= 2 \;\Rightarrow\; N_{\text{pent}} = 12 \quad (\mathrm{C_{60}}:\; V{=}60,\; E{=}90,\; F{=}32) \\
+          d_{\text{CNT}} &= \frac{a\sqrt{3}}{\pi}\sqrt{n^2 + nm + m^2}
+        \end{aligned}`,
         question: 'Why does graphene conduct electricity like a semimetal, and how many pentagonal and hexagonal faces form the truncated icosahedral cage of fullerene $\\text{C}_{60}$?',
         options: [
           'Each $sp^2$ carbon contributes one $2p_z$ electron to a delocalized $\\pi$-band, and by Euler’s theorem ($V - E + F = 2$) fullerene $\\text{C}_{60}$ consists of exactly $12$ pentagons and $20$ hexagons',
@@ -25989,9 +26013,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_complex: {
-        section: '§ C-23',
+        secTag: 'Section § C-23 — Coordination Chemistry · Crystal Field Theory & d-Orbital Splitting Δ_o',
+        shortTitle: 'Coordination Complexes & d-Orbital Splitting',
+        subtitle: 'Octahedral [ML₆]ⁿ⁺ vs. tetrahedral [ML₄]ⁿ⁺ complexes, t₂g / e_g splitting (Δ_o), spectrochemical series, and color',
+        badge: 'Coord. Chemistry',
+        categoryGroupTitle: 'Part I. Atomic Structure, Chemical Bonding & Crystals',
         title: 'Coordination Complexes & Crystal Field Theory (d-Orbital Splitting Δ_o)',
-        subtitle: 'Chapter XXIII. Octahedral [ML₆]ⁿ⁺ vs. Tetrahedral [ML₄]ⁿ⁺ Complexes, Spectrochemical Series & Color',
+        epigraph: 'The vivid colors of ruby, emerald, and transition-metal solutions are the visible signature of five d-orbitals splitting in the electric field of ligands.',
+        figCaption: 'Fig. C-23.1 — Octahedral coordination complex [ML₆]ⁿ⁺ (CN = 6) and crystal-field splitting of d-orbitals into the lower t₂g triplet and upper e_g doublet across gap Δ_o = hc / λ_abs',
+        ekLabel: 'Splitting Δ_o',
+        epLabel: 'Stabilization |CFSE|',
+        qLabel: 'Pairing Energy P',
+        referenceLatex: String.raw`\begin{aligned}
+          \Delta_o &= E(e_g) - E(t_{2g}) = \frac{h c N_A}{\lambda_{\text{abs}}} \\
+          \text{CFSE} &= \bigl(-0.4\,n_{t_{2g}} + 0.6\,n_{e_g}\bigr)\Delta_o
+        \end{aligned}`,
         question: 'How do six ligands along the $\\pm x, \\pm y, \\pm z$ axes split the five degenerate $d$-orbitals in an octahedral complex $[\\text{ML}_6]^{n+}$, and when does a low-spin configuration form?',
         options: [
           'The $d$-level splits into a lower triplet $t_{2g}$ ($d_{xy}, d_{xz}, d_{yz}$) and an upper doublet $e_g$ ($d_{z^2}, d_{x^2-y^2}$) separated by $\\Delta_o$; strong-field ligands ($\\Delta_o > P$) produce a low-spin complex',
@@ -26005,7 +26041,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const isOct = Math.round(p.coordGeom) === 1;
           const deltaKj = isOct ? p.ligandFieldStrength : (p.ligandFieldStrength * 4 / 9);
           const lamNm = (119626 / deltaKj);
-          const isLowSpin = isOct && (deltaKj >= 200) && (dN >= 4 && dN <= 7);
+          const isLowSpin = isOct && (deltaKj >= 190) && (dN >= 4 && dN <= 7);
           return String.raw`d^{${dN}}\text{ (${isLowSpin ? 'Low-Spin' : 'High-Spin'})}: \quad \Delta = ${deltaKj.toFixed(0)}\text{ kJ/mol}, \quad \lambda_{\text{abs}} = ${lamNm.toFixed(0)}\text{ nm}`;
         },
         sliders: [
@@ -26016,9 +26052,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_bornhaber: {
-        section: '§ C-24',
+        secTag: 'Section § C-24 — Crystal Thermochemistry · Born–Haber Cycle & Lattice Energy U_lat',
+        shortTitle: 'Born–Haber Cycle (Lattice Energy)',
+        subtitle: 'Thermodynamic balance of sublimation, dissociation, ionization, electron affinity, and ionic lattice energy U_lat',
+        badge: 'Crystal Thermochem.',
+        categoryGroupTitle: 'Part I. Atomic Structure, Chemical Bonding & Crystals',
         title: 'Born–Haber Thermodynamic Cycle & Ionic Lattice Energy U_L',
-        subtitle: 'Chapter XXIV. Sublimation, Ionization, Bond Dissociation, Electron Affinity & Madelung Constant',
+        epigraph: 'Although transferring an electron from an isolated sodium atom to chlorine is endothermic, the enormous electrostatic energy released upon assembling the 3D ionic lattice makes salt formation strongly exothermic.',
+        figCaption: 'Fig. C-24.1 — 3D Born–Haber thermodynamic cycle and ionic crystal assembly: five sequential enthalpy steps converting M(s) + ½X₂(g) via gaseous ions M⁺(g) + X⁻(g) into crystalline MX(s)',
+        ekLabel: 'Exothermic Gain (U_lat + E_ea)',
+        epLabel: 'Endothermic Input (ΔH_sub + ½D + I₁)',
+        qLabel: 'Formation Enthalpy |ΔH°_f|',
+        referenceLatex: String.raw`\begin{aligned}
+          \Delta H_f^\circ(\mathrm{MX}) &= \Delta H_{\text{sub}} + \tfrac{1}{2}D(\mathrm{X_2}) + I_1(\mathrm{M}) + E_{ea}(\mathrm{X}) - U_{\text{lat}} \\
+          U_{\text{lat}} &= \frac{N_A M z^+ z^- e^2}{4\pi\varepsilon_0 r_0}\left(1 - \frac{1}{n}\right)
+        \end{aligned}`,
         question: 'Why cannot the ionic lattice enthalpy $U_{\\text{lat}}$ of a crystal like $\\text{NaCl(s)}$ be measured directly in a single calorimeter run, and how is it determined via the Born–Haber cycle?',
         options: [
           'By Hess’s law, the closed thermodynamic cycle equates the standard enthalpy of formation $\\Delta H_f^\\circ$ to the sum of sublimation $\\Delta H_{\\text{sub}}$, dissociation $\\frac{1}{2}D_{\\text{X}_2}$, ionization $I_1$, electron affinity $E_{ea}$, and lattice formation $-U_{\\text{lat}}$',
@@ -26040,9 +26088,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_dipole: {
-        section: '§ C-25',
+        secTag: 'Section § C-25 — Molecular Structure · Bond Polarity, Dipole Moment μ & Electrostatic Potential',
+        shortTitle: 'Molecular Polarity & Dipole Moment μ',
+        subtitle: 'Partial charges δ⁺/δ⁻, vector addition of bond dipoles, and molecular torque in an electric field E',
+        badge: 'Molecular Polarity',
+        categoryGroupTitle: 'Part I. Atomic Structure, Chemical Bonding & Crystals',
         title: 'Electronegativity, Bond Polarity & Molecular Dipole Moment Vector μ',
-        subtitle: 'Chapter XXV. Pauling Electronegativity Δχ, Partial Charges δ±, Vector Addition & Field Alignment',
+        epigraph: 'The dipole moment of a molecule is its 3D geometry multiplied by the asymmetry of its electron cloud.',
+        figCaption: 'Fig. C-25.1 — Molecular electrostatic potential surface (δ⁺ blue, δ⁻ red) and vector addition of individual bond dipoles μ_net = Σ μ_i inside a uniform capacitor field E',
+        ekLabel: 'Net Dipole μ_net (D)',
+        epLabel: 'Field Energy |U_or| = μE',
+        qLabel: 'Ionic Character δ (%)',
+        referenceLatex: String.raw`\begin{aligned}
+          \vec{\mu} &= \sum_i q_i \vec{r}_i, \qquad \mu_{\text{net}(\mathrm{AB_2})} = 2\mu_0\cos\frac{\theta}{2} \\
+          \vec{\tau} &= \vec{\mu} \times \vec{E}
+        \end{aligned}`,
         question: 'Why does the bent water molecule $\\text{H}_2\\text{O}$ ($\\theta = 104.5^\\circ$) possess a large permanent dipole moment ($\\mu = 1.85\\text{ D}$), whereas linear carbon dioxide $\\text{CO}_2$ ($\\theta = 180^\\circ$) is nonpolar ($\\mu_{\\text{net}} = 0$)?',
         options: [
           'Molecular dipole moment is the vector sum $\\vec{\\mu}_{\\text{net}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$, yielding $\\mu_{\\text{net}} = 2\\mu_{\\text{bond}}\\cos(\\theta/2)$: at $\\theta = 180^\\circ$ ($\\cos 90^\\circ = 0$) the two polar bond vectors cancel exactly',
@@ -26052,23 +26112,35 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         explanation: 'A difference in Pauling electronegativity $\\Delta\\chi = |\\chi_A - \\chi_B|$ shifts shared electron density toward the more electronegative atom, creating partial charges $\\pm\\delta q$ and a bond dipole vector $\\vec{\\mu}_{\\text{bond}} = \\delta q \\cdot \\vec{d}$ ($1\\text{ D} = 3.336\\times 10^{-30}\\text{ C}\\cdot\\text{m}$). For a symmetrical triatomic molecule $\\text{AB}_2$ with bond angle $\\theta$, vector addition gives $\\mu_{\\text{net}} = 2\\mu_{\\text{bond}}\\cos(\\theta/2)$. When $\\theta = 180^\\circ$ ($\\text{CO}_2$, $\\text{BeCl}_2$), the two equal and opposite bond dipoles cancel ($\\mu_{\\text{net}} = 0$).',
         formulaLatex: String.raw`\mu_{\text{bond}} = \delta q \cdot d, \qquad \vec{\mu}_{\text{net}} = \sum_i \vec{\mu}_i \;\Rightarrow\; \mu_{\text{net}} = 2\mu_{\text{bond}}\cos\!\left(\frac{\theta}{2}\right), \qquad \vec{\tau} = \vec{\mu}\times\vec{E}`,
         liveLatexFn: p => {
-          const muBond = 0.85 * p.deltaChi * p.bondLenA;
+          const delta = Math.min(0.85, 0.16 * p.deltaChi + 0.035 * p.deltaChi * p.deltaChi);
+          const muBond = 4.803 * delta * p.bondLenA;
           const halfRad = (p.bondAngleDeg * 0.5 * Math.PI) / 180;
-          const muNet = Math.max(0, 2 * muBond * Math.cos(halfRad));
-          const ionicPct = 100 * (1 - Math.exp(-0.25 * p.deltaChi * p.deltaChi));
-          return String.raw`\Delta\chi = ${p.deltaChi.toFixed(2)}, \quad \theta = ${p.bondAngleDeg.toFixed(1)}^\circ \;\Rightarrow\; \mu_{\text{bond}} = ${muBond.toFixed(2)}\text{ D}, \quad \mu_{\text{net}} = ${muNet.toFixed(2)}\text{ D} \;\;(${ionicPct.toFixed(0)}\%\text{ ionic})`;
+          const muNet = Math.abs(2 * muBond * Math.cos(halfRad));
+          return String.raw`\Delta\chi = ${p.deltaChi.toFixed(2)}, \quad \theta = ${p.bondAngleDeg.toFixed(0)}^\circ \;\Rightarrow\; \mu_0 = ${muBond.toFixed(2)}\text{ D}, \quad \mu_{\text{net}} = ${muNet.toFixed(2)}\text{ D} \;\;(\delta \approx ${delta.toFixed(2)}\,e)`;
         },
         sliders: [
-          { label: 'Pauling electronegativity difference Δχ = |χ_A − χ_B|', unit: '' },
-          { label: 'Valence bond angle θ (B–A–B)', unit: '°' },
-          { label: 'Interatomic bond length d(A–B)', unit: 'Å' },
+          { label: 'Pauling electronegativity difference Δχ = |χ_B − χ_A|', unit: '' },
+          { label: 'Valence bond angle θ (105° = H₂O, 180° = CO₂)', unit: '°' },
+          { label: 'Interatomic bond length l(A–B)', unit: 'Å' },
           { label: 'External electric field strength E', unit: 'kV/cm' }
         ]
       },
       chem_phase: {
-        section: '§ C-26',
+        secTag: 'Section § C-26 — Phase Equilibria · Phase Diagrams P–T, Triple Point & Supercritical Fluid',
+        shortTitle: 'Phase Diagrams P–T & Triple Point',
+        subtitle: 'Clausius–Clapeyron equation, dry ice CO₂ sublimation, triple point, and supercritical state',
+        badge: 'Phase Equilibria',
+        categoryGroupTitle: 'Part II. Gas Laws, Chemical Kinetics & Equilibrium',
         title: 'Phase Diagrams P–T, Triple Point, Critical Point & Supercritical Fluid',
-        subtitle: 'Chapter XXVI. Clausius–Clapeyron Equation, Dry Ice Sublimation & Water’s Negative Melting Slope',
+        epigraph: 'Gibbs’ phase rule establishes nature’s strict constitution: how many phases may coexist in equilibrium at any given temperature and pressure.',
+        figCaption: 'Fig. C-26.1 — 3D P–T phase diagram surface and high-pressure optical autoclave cell showing solid–liquid–gas boundaries, the invariant triple point (F = 0), and supercritical fluid above (T_c, P_c)',
+        ekLabel: 'Thermal Energy RT',
+        epLabel: 'Cohesive Energy E_coh',
+        qLabel: 'Latent Heat ΔH_tr',
+        referenceLatex: String.raw`\begin{aligned}
+          \frac{dP}{dT} &= \frac{\Delta H_{\text{tr}}}{T\,\Delta V_{\text{tr}}}, \qquad \ln\frac{P_2}{P_1} = -\frac{\Delta H_{\text{vap}}}{R}\left(\frac{1}{T_2} - \frac{1}{T_1}\right) \\
+          F &= C - \Phi + 2
+        \end{aligned}`,
         question: 'What is unique about the triple point $(T_t, P_t)$ and critical point $(T_c, P_c)$ on a single-component $P\\text{–}T$ phase diagram, and why does the fusion curve of water have a negative slope $dP/dT < 0$?',
         options: [
           'At the triple point all three phases (solid, liquid, gas) coexist in equilibrium ($f = 0$); above $(T_c, P_c)$ the liquid–gas boundary vanishes into a supercritical fluid; for water $V_{\\text{liquid}} < V_{\\text{ice}}$, so by the Clapeyron equation $dP/dT = \\Delta H_{\\text{fus}}/(T\\Delta V) < 0$',
@@ -26091,16 +26163,28 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           return String.raw`${name}: \quad T = ${p.tempK.toFixed(0)}\text{ K},\; P = ${p.pressAtm.toFixed(1)}\text{ atm} \;\Rightarrow\; \text{Phase: \textbf{${phase}}}`;
         },
         sliders: [
-          { label: 'Substance (1=H₂O anomalous, 2=CO₂ dry ice / supercritical)', unit: '' },
-          { label: 'Absolute temperature T', unit: 'K' },
-          { label: 'External pressure P', unit: 'atm' },
-          { label: 'Latent heat input Q', unit: 'kJ/mol' }
+          { label: 'Substance (1=H₂O water, 2=CO₂ dry ice / supercritical)', unit: '' },
+          { label: 'Autoclave temperature T', unit: 'K' },
+          { label: 'External chamber pressure P', unit: 'atm' },
+          { label: 'Thermal heat exchange power Q', unit: 'kJ' }
         ]
       },
       chem_arrhenius: {
-        section: '§ C-27',
+        secTag: 'Section § C-27 — Chemical Kinetics · Reaction Orders (0, 1, 2) & Half-Life t₁/₂',
+        shortTitle: 'Reaction Orders (0, 1, 2) & Half-Life t₁/₂',
+        subtitle: 'Integrated rate laws of zero, first, and second order reactions and scaling of half-life t₁/₂',
+        badge: 'Chem. Kinetics',
+        categoryGroupTitle: 'Part II. Gas Laws, Chemical Kinetics & Equilibrium',
         title: 'Reaction Orders (0th, 1st & 2nd Order), Rate Laws & Half-Life t₁/₂',
-        subtitle: 'Chapter XXVII. Differential & Integrated Rate Equations, Linearization & Half-Life Scaling',
+        epigraph: 'The kinetic order of a reaction reveals the true molecular mechanism hidden behind the overall stoichiometric equation.',
+        figCaption: 'Fig. C-27.1 — Photochemical kinetic reactor with 3D concentration decay [A](t) and product growth [P](t) curves for 0th-, 1st-, and 2nd-order reactions',
+        ekLabel: 'Reactant [A](t)',
+        epLabel: 'Product [P](t)',
+        qLabel: 'Reaction Rate v = k[A]ⁿ',
+        referenceLatex: String.raw`\begin{aligned}
+          v &= -\frac{d[\mathrm{A}]}{dt} = k[\mathrm{A}]^n \\
+          n{=}0:\; t_{1/2} &= \frac{[\mathrm{A}]_0}{2k}, \qquad n{=}1:\; t_{1/2} = \frac{\ln 2}{k}, \qquad n{=}2:\; t_{1/2} = \frac{1}{k[\mathrm{A}]_0}
+        \end{aligned}`,
         question: 'How does the half-life $t_{1/2}$ depend on the initial reactant concentration $[A]_0$ for reactions of zero ($n=0$), first ($n=1$), and second ($n=2$) kinetic order?',
         options: [
           'For 1st-order reactions $t_{1/2} = \\frac{\\ln 2}{k}$ is completely independent of $[A]_0$; for 0th-order $t_{1/2} = \\frac{[A]_0}{2k} \\propto [A]_0$; and for 2nd-order $t_{1/2} = \\frac{1}{k[A]_0} \\propto \\frac{1}{[A]_0}$',
@@ -26128,9 +26212,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_enzyme: {
-        section: '§ C-28',
+        secTag: 'Section § C-28 — Biocatalysis · Enzyme Catalysis & Michaelis–Menten Kinetics',
+        shortTitle: 'Enzyme Catalysis (Michaelis–Menten)',
+        subtitle: 'Enzyme–substrate complex ES, lock-and-key active site, V_max, K_M, and competitive inhibition',
+        badge: 'Biocatalysis',
+        categoryGroupTitle: 'Part II. Gas Laws, Chemical Kinetics & Equilibrium',
         title: 'Enzyme Catalysis, Michaelis–Menten Kinetics & Active-Site Inhibition',
-        subtitle: 'Chapter XXVIII. Enzyme–Substrate Complex [ES], Michaelis Constant K_M, Turnover k_cat & Competitive Inhibition',
+        epigraph: 'An enzyme is a molecular glove whose palm — the active site — is shaped to embrace the transition state of its substrate.',
+        figCaption: 'Fig. C-28.1 — 3D enzyme globule E with a complementary active-site pocket: reversible formation of the ES complex, saturation rate v([S]), and competitive inhibition by inhibitor I',
+        ekLabel: 'Initial Rate v₀',
+        epLabel: 'Max Velocity V_max',
+        qLabel: 'Active-Site Occupancy θ_ES',
+        referenceLatex: String.raw`\begin{aligned}
+          \mathrm{E} + \mathrm{S} &\underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} \mathrm{ES} \overset{k_{\text{cat}}}{\longrightarrow} \mathrm{E} + \mathrm{P} \\
+          v_0 &= \frac{V_{\max}[\mathrm{S}]}{K_M\left(1 + \frac{[\mathrm{I}]}{K_i}\right) + [\mathrm{S}]}
+        \end{aligned}`,
         question: 'Why does the reaction rate $v([S])$ of an enzyme-catalyzed reaction plateau at $V_{\\max} = k_{\\text{cat}}[E]_0$ at high substrate concentrations, and how does a competitive inhibitor $[I]$ alter $K_M$ and $V_{\\max}$?',
         options: [
           'At $[S] \\gg K_M$ all enzyme active sites are saturated in the $[ES]$ complex ($v \\to V_{\\max}$, 0th order in $[S]$); a competitive inhibitor increases the apparent Michaelis constant $K_M^{\\text{app}} = K_M(1 + [I]/K_I)$ without changing $V_{\\max}$',
@@ -26141,22 +26237,34 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         formulaLatex: String.raw`E + S \underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} ES \overset{k_{\text{cat}}}{\longrightarrow} E + P, \qquad v = \frac{V_{\max}[S]}{K_M\left(1 + \frac{[I]}{K_I}\right) + [S]}`,
         liveLatexFn: p => {
           const vmax = p.kCat * 1.0;
-          const kmApp = p.kmVal * (1 + p.inhibitorI / 2.0);
+          const kmApp = p.kmVal * (1 + p.inhibitorI / 1.5);
           const v = (vmax * p.substrateS) / (kmApp + p.substrateS);
           const satPct = (100 * p.substrateS) / (kmApp + p.substrateS);
-          return String.raw`V_{\max} = ${vmax.toFixed(1)}\;\mu\text{M/s}, \quad K_M^{\text{app}} = ${kmApp.toFixed(2)}\text{ mM} \;\Rightarrow\; v = ${v.toFixed(1)}\;\mu\text{M/s} \;\;(\theta_{ES} = ${satPct.toFixed(0)}\%)`;
+          return String.raw`V_{\max} = ${vmax.toFixed(1)}\text{ mM/s}, \quad K_M^{\text{app}} = ${kmApp.toFixed(2)}\text{ mM} \;\Rightarrow\; v_0 = ${v.toFixed(2)}\text{ mM/s} \;\;(\theta_{ES} = ${satPct.toFixed(0)}\%)`;
         },
         sliders: [
-          { label: 'Substrate concentration [S]', unit: 'mM' },
-          { label: 'Michaelis constant K_M (inverse affinity)', unit: 'mM' },
-          { label: 'Catalytic turnover number k_cat', unit: 's⁻¹' },
-          { label: 'Competitive inhibitor concentration [I]', unit: 'mM' }
+          { label: 'Substrate concentration [S]', unit: 'mmol/L' },
+          { label: 'Michaelis constant K_M (inverse affinity)', unit: 'mmol/L' },
+          { label: 'Catalytic turnover number k_cat (V_max)', unit: 's⁻¹' },
+          { label: 'Competitive inhibitor concentration [I]', unit: 'mmol/L' }
         ]
       },
       chem_gibbs: {
-        section: '§ C-29',
+        secTag: 'Section § C-29 — Chemical Thermodynamics · Gibbs Free Energy ΔG = ΔH − TΔS & Spontaneity',
+        shortTitle: 'Gibbs Free Energy ΔG = ΔH − TΔS',
+        subtitle: 'Competition between enthalpy ΔH and entropy TΔS, inversion temperature T* = ΔH/ΔS, and equilibrium K',
+        badge: 'Thermodynamics',
+        categoryGroupTitle: 'Part II. Gas Laws, Chemical Kinetics & Equilibrium',
         title: 'Gibbs Free Energy ΔG = ΔH − TΔS, Entropy & Reaction Spontaneity',
-        subtitle: 'Chapter XXIX. Enthalpy vs. Entropy Driving Forces, Inversion Temperature T* = ΔH/ΔS & Equilibrium K_eq',
+        epigraph: 'Nature strives simultaneously toward two opposing goals: minimum enthalpy (ΔH < 0) at low temperatures and maximum entropy (ΔS > 0) at high temperatures.',
+        figCaption: 'Fig. C-29.1 — 3D thermodynamic balance of Gibbs free energy ΔG = ΔH − TΔS and dual-chamber reaction vessel linking ΔG° to the equilibrium constant K = exp(−ΔG°/RT)',
+        ekLabel: 'Entropic Term |T·ΔS|',
+        epLabel: 'Enthalpic Term |ΔH|',
+        qLabel: 'Gibbs Free Energy |ΔG|',
+        referenceLatex: String.raw`\begin{aligned}
+          \Delta G &= \Delta H - T\Delta S, \qquad \Delta G^\circ = -RT\ln K \\
+          T_{\text{inv}}^* &= \frac{\Delta H^\circ}{\Delta S^\circ}
+        \end{aligned}`,
         question: 'Under what thermodynamic condition is an endothermic chemical reaction ($\\Delta H > 0$) spontaneous ($\\Delta G < 0$) at constant temperature and pressure?',
         options: [
           'When the entropy change of the system is positive ($\\Delta S > 0$) and the absolute temperature exceeds the inversion temperature $T > T^* = \\frac{\\Delta H}{\\Delta S}$, so that $T\\Delta S > \\Delta H$',
@@ -26180,9 +26288,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]
       },
       chem_haber: {
-        section: '§ C-30',
+        secTag: 'Section § C-30 — Chemical Technology · Haber–Bosch Ammonia Synthesis (N₂ + 3H₂ ⇄ 2NH₃)',
+        shortTitle: 'Haber–Bosch Ammonia Synthesis (N₂ + 3H₂ ⇄ 2NH₃)',
+        subtitle: 'Thermodynamic yield vs. kinetic rate trade-off at high pressure P, 450 °C, and promoted Fe catalyst',
+        badge: 'Chem. Technology',
+        categoryGroupTitle: 'Part II. Gas Laws, Chemical Kinetics & Equilibrium',
         title: 'Industrial Ammonia Synthesis (Haber–Bosch Process): N₂ + 3H₂ ⇄ 2NH₃',
-        subtitle: 'Chapter XXX. Thermodynamic Yield vs. Kinetic Rate Optimization on Promoted Iron Catalyst at 450 °C & 200 atm',
+        epigraph: 'Bread from air: cleaving the triple bond of nitrogen N≡N required uniting high-pressure chemical thermodynamics with heterogeneous iron catalysis.',
+        figCaption: 'Fig. C-30.1 — High-pressure catalytic ammonia synthesis column (N₂ + 3H₂ ⇄ 2NH₃): dissociative chemisorption of N≡N and H–H on promoted porous iron catalyst beds',
+        ekLabel: 'Equilibrium Yield φ(NH₃)',
+        epLabel: 'Catalytic Rate v_syn',
+        qLabel: 'Exothermic Heat Q',
+        referenceLatex: String.raw`\begin{aligned}
+          \mathrm{N_2(g)} + 3\mathrm{H_2(g)} &\underset{\text{Fe, }P,T}{\rightleftharpoons} 2\mathrm{NH_3(g)}, \qquad \Delta H^\circ = -92.4\text{ kJ/mol} \\
+          K_p &= \frac{P_{\mathrm{NH_3}}^2}{P_{\mathrm{N_2}}\,P_{\mathrm{H_2}}^3}
+        \end{aligned}`,
         question: 'Why is industrial ammonia synthesis ($\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3,\\; \\Delta H^\\circ = -92.4\\text{ kJ/mol}$) operated at a compromise temperature of $400\\text{–}500\\,^\\circ\\text{C}$ and high pressure ($150\\text{–}300\\text{ atm}$) over an iron catalyst?',
         options: [
           'High pressure shifts equilibrium toward fewer gas moles ($4\\text{ mol} \\to 2\\text{ mol NH}_3$); because the reaction is exothermic, low $T$ favors equilibrium yield, but $450\\,^\\circ\\text{C}$ plus an $\\text{Fe}$ catalyst is required to cleave the triple bond $\\text{N}\\equiv\\text{N}$ at a practical rate',
@@ -26207,8 +26327,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_raoult: {
         section: '§ C-31',
+        secTag: 'CHAPTER XXXI · § C-31. RAOULT’S LAW & COLLIGATIVE PROPERTIES OF SOLUTIONS',
+        shortTitle: 'Raoult’s Law, Ebullioscopy & Cryoscopy',
         title: 'Raoult’s Law & Colligative Properties: Ebullioscopy ΔT_b & Cryoscopy ΔT_f',
         subtitle: 'Chapter XXXI. Vapor Pressure Lowering ΔP = χ₂P°, Boiling Point Elevation & Freezing Point Depression',
+        badge: 'Solutions & Analysis',
+        categoryGroupTitle: 'Part III. Solutions, Electrolytic Dissociation & Analytical Chemistry',
+        epigraph: '«The lowering of vapor pressure, elevation of boiling point, and depression of freezing point depend solely on the concentration of solute particles.» — François-Marie Raoult, 1887',
+        figCaption: 'Fig. C-31. Differential manometer comparing pure water and an electrolyte solution, with boiling-point elevation and freezing-point depression.',
+        ekLabel: 'Solvent Vapor Pressure P (kPa)',
+        epLabel: 'Boiling Elevation ΔT_b (×10 K)',
+        qLabel: 'Freezing Depression |ΔT_f| (×5 K)',
+        referenceLatex: String.raw`P = \chi_1 P_0^\circ, \qquad \Delta P = \chi_2 P_0^\circ, \qquad \Delta T_b = i K_b m, \qquad \Delta T_f = i K_f m`,
         question: 'Why does spreading salt ($\\text{NaCl}$, $i \\approx 2$ or $\\text{CaCl}_2$, $i \\approx 3$) melt ice on winter roads, and why does an aqueous solution boil at a temperature above $100\\,^\\circ\\text{C}$?',
         options: [
           'Non-volatile solute particles lower the solvent’s saturated vapor pressure by Raoult’s law ($\\Delta P = \\chi_{\\text{solute}} P_0^\\circ$), shifting freezing down by $\\Delta T_f = i K_f m$ and boiling up by $\\Delta T_b = i K_b m$',
@@ -26234,8 +26364,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_chromatography: {
         section: '§ C-32',
+        secTag: 'CHAPTER XXXII · § C-32. THIN-LAYER CHROMATOGRAPHY (TLC) & RETENTION FACTOR Rf',
+        shortTitle: 'Chromatography (TLC) & Retention Factor Rf',
         title: 'Chromatography (TLC & Column): Partition Coefficient K_d & Retention Factor R_f',
         subtitle: 'Chapter XXXII. Stationary Silica Gel vs. Mobile Eluent Phase & Mixture Separation of Plant Pigments',
+        badge: 'Solutions & Analysis',
+        categoryGroupTitle: 'Part III. Solutions, Electrolytic Dissociation & Analytical Chemistry',
+        epigraph: '«Like rays of light in a spectrum, the components of a pigment mixture separate systematically across the adsorbent layer.» — Mikhail Tsvet, 1903',
+        figCaption: 'Fig. C-32. Glass TLC chamber with a silica gel plate separating β-carotene, chlorophyll a, and chlorophyll b by differential adsorption.',
+        ekLabel: 'β-Carotene R_f (×100)',
+        epLabel: 'Chlorophyll a R_f (×100)',
+        qLabel: 'Chlorophyll b R_f (×100)',
+        referenceLatex: String.raw`R_f = \frac{z_i}{z_{\text{front}}} = \frac{1}{1 + k_i}, \qquad K_d = \frac{C_{\text{stat}}}{C_{\text{mob}}}, \qquad R_s = \frac{2(z_2 - z_1)}{w_1 + w_2}`,
         question: 'On a polar silica gel ($\\text{SiO}_2\\cdot x\\text{H}_2\\text{O}$) thin-layer chromatography (TLC) plate, why do non-polar $\\beta$-carotene molecules travel near the solvent front ($R_f \\approx 0.90$) while polar chlorophyll $b$ migrates slowly ($R_f \\approx 0.25$)?',
         options: [
           'Polar silanol groups ($\\text{–Si–OH}$) strongly adsorb polar molecules via hydrogen bonds and dipole interactions (large $K_d$), whereas non-polar molecules stay dissolved in the moving eluent ($R_f = z_i / z_f \\to 1$)',
@@ -26261,8 +26401,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_adsorption: {
         section: '§ C-33',
+        secTag: 'CHAPTER XXXIII · § C-33. SURFACE ADSORPTION & THE LANGMUIR ISOTHERM',
+        shortTitle: 'Surface Adsorption (Langmuir Isotherm)',
         title: 'Surface Adsorption & the Langmuir Isotherm: θ = K·P / (1 + K·P)',
         subtitle: 'Chapter XXXIII. Dynamic Adsorption–Desorption Equilibrium on Activated Carbon & Monolayer Saturation',
+        badge: 'Solutions & Analysis',
+        categoryGroupTitle: 'Part III. Solutions, Electrolytic Dissociation & Analytical Chemistry',
+        epigraph: '«Every solid crystal surface possesses a definite number of elementary spaces capable of holding adsorbed molecules in a monomolecular layer.» — Irving Langmuir, 1918',
+        figCaption: 'Fig. C-33. Activated-carbon lattice with discrete adsorption sites, dynamic gas-surface exchange, and the Langmuir isotherm curve θ(P).',
+        ekLabel: 'Surface Coverage θ (%)',
+        epLabel: 'Free Active Sites (1 − θ) (%)',
+        qLabel: 'Released Adsorption Heat Q_ads',
+        referenceLatex: String.raw`\theta = \frac{K P}{1 + K P}, \qquad K(T) = K_0\exp\!\left(\frac{Q_{\text{ads}}}{RT}\right), \qquad r_{\text{ads}} = k_a P(1-\theta) = k_d\theta`,
         question: 'Why does the fractional surface coverage $\\theta(P)$ in the Langmuir adsorption isotherm rise linearly at low gas pressures ($\\theta \\approx KP$) but approach a horizontal asymptote $\\theta \\to 1$ at high pressures, and how does heating affect physisorption?',
         options: [
           'A solid surface has a finite number of active sites ($\\theta \\to 1$ when the monolayer is full); because adsorption is exothermic ($\\Delta H_{\\text{ads}} < 0$), raising temperature $T$ decreases $K(T)$ and promotes desorption',
@@ -26285,8 +26435,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_colloids: {
         section: '§ C-34',
+        secTag: 'CHAPTER XXXIV · § C-34. COLLOIDAL SYSTEMS, TYNDALL CONE & COAGULATION',
+        shortTitle: 'Colloids, Micelles & Tyndall Effect',
         title: 'Colloidal Systems, Micelle Structure, Tyndall Cone & Schulze–Hardy Coagulation',
         subtitle: 'Chapter XXXIV. Rayleigh Light Scattering (I ∝ d⁶/λ⁴), Zeta Potential ζ & Coagulation by Multivalent Ions (z⁶)',
+        badge: 'Solutions & Analysis',
+        categoryGroupTitle: 'Part III. Solutions, Electrolytic Dissociation & Analytical Chemistry',
+        epigraph: '«Between the realm of true molecular solutions and coarse suspensions lies the world of neglected dimensions — the colloidal state.» — Wolfgang Ostwald, 1914',
+        figCaption: 'Fig. C-34. Laser beam passing through a true solution (left) and a colloidal sol with a glowing Tyndall cone and electrical double-layer micelles (right).',
+        ekLabel: 'Tyndall Scattering I_scat (rel.)',
+        epLabel: 'Zeta Potential |ζ| (mV)',
+        qLabel: 'Coagulated Aggregate Fraction (%)',
+        referenceLatex: String.raw`I_{\text{scat}} \propto I_0\frac{N d^6}{\lambda^4}, \qquad \zeta = \frac{\sigma\,\kappa^{-1}}{\varepsilon\varepsilon_0}, \qquad \text{CCC} \propto \frac{1}{z^6}`,
         question: 'How can a colloidal sol (particle size $1\\text{–}100\\text{ nm}$) be distinguished optically from a true solution, and why is $\\text{Al}^{3+}$ ($z=3$) hundreds of times more effective at coagulating a negatively charged sol than $\\text{Na}^+$ ($z=1$)?',
         options: [
           'Colloidal micelles scatter a laser beam into a visible **Tyndall cone** ($I_s \\propto d^6 / \\lambda^4$); by the Schulze–Hardy and DLVO rules, the critical coagulation concentration scales inversely with the 6th power of counter-ion charge ($\\text{CCC} \\propto z^{-6}$, so $1 : 3^{-6} = 1 : 729$)',
@@ -26311,8 +26471,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_hydrolysis: {
         section: '§ C-35',
+        secTag: 'CHAPTER XXXV · § C-35. SALT HYDROLYSIS IN AQUEOUS SOLUTIONS & MEDIUM pH',
+        shortTitle: 'Salt Hydrolysis & Indicator pH',
         title: 'Salt Hydrolysis in Aqueous Solution: K_h = K_w / K_a, Degree h & Medium pH',
         subtitle: 'Chapter XXXV. Proton Exchange of Weak-Acid Anions (CH₃COO⁻, CO₃²⁻) & Weak-Base Cations (NH₄⁺, Al³⁺)',
+        badge: 'Solutions & Analysis',
+        categoryGroupTitle: 'Part III. Solutions, Electrolytic Dissociation & Analytical Chemistry',
+        epigraph: '«Even a neutral salt crystal, once dissolved in water, enters into a subtle protolytic dialogue with the solvent.» — J. N. Brønsted, 1923',
+        figCaption: 'Fig. C-35. Reaction of salt ions with water molecules, universal indicator coloration, and digital pH readout.',
+        ekLabel: 'Solution Acidity pH (×10)',
+        epLabel: 'Hydrolysis Degree h (×100 %)',
+        qLabel: 'Ionic Strength I_c (×100)',
+        referenceLatex: String.raw`K_h = \frac{K_w}{K_a}, \qquad h = \sqrt{\frac{K_h}{C}}, \qquad \mathrm{pH} = 7 + \frac{1}{2}(\mathrm{p}K_a + \lg C)`,
         question: 'Why does an aqueous solution of sodium acetate $\\text{CH}_3\\text{COONa}$ turn phenolphthalein pink ($\\text{pH} > 7$, alkaline), whereas ammonium chloride $\\text{NH}_4\\text{Cl}$ gives an acidic reaction ($\\text{pH} < 7$)?',
         options: [
           'Hydrolysis is driven by the ion of the weak electrolyte: $\\text{CH}_3\\text{COO}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{CH}_3\\text{COOH} + \\text{OH}^-$ releases $\\text{OH}^-$ ($\\text{pH} > 7$), whereas $\\text{NH}_4^+ + \\text{H}_2\\text{O} \\rightleftharpoons \\text{NH}_3\\cdot\\text{H}_2\\text{O} + \\text{H}_3\\text{O}^+$ releases $\\text{H}_3\\text{O}^+$ ($\\text{pH} < 7$)',
@@ -26357,8 +26527,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_corrosion: {
         section: '§ C-36',
+        secTag: 'CHAPTER XXXVI · § C-36. ELECTROCHEMICAL CORROSION & CATHODIC PROTECTION',
+        shortTitle: 'Metal Corrosion & Sacrificial Protection',
         title: 'Electrochemical Corrosion of Metals & Sacrificial Anode Cathodic Protection',
         subtitle: 'Chapter XXXVI. Microgalvanic Cells (Fe | Zn vs. Fe | Cu), Oxygen Depolarization & Rust Formation',
+        badge: 'Electrochem & Organic',
+        categoryGroupTitle: 'Part IV. Electrochemistry & Organic Chemistry',
+        epigraph: '«Attach a small block of zinc or iron to the copper sheathing of a ship, and the sea water will no longer corrode the protected metal.» — Humphry Davy, 1824',
+        figCaption: 'Fig. C-36. Microgalvanic corrosion couple on an iron plate in an aerated electrolyte drop: anodic dissolution vs. sacrificial Zn/Mg cathodic protection.',
+        ekLabel: 'Galvanic EMF ΔE_galv (×20 V)',
+        epLabel: 'Fe Corrosion Rate v_rust (×10)',
+        qLabel: 'Cathodic Protection Efficiency (%)',
+        referenceLatex: String.raw`\text{Anode }(-): \mathrm{Fe \to Fe^{2+} + 2e^-}, \qquad \text{Cathode }(+): \mathrm{O_2 + 2H_2O + 4e^- \to 4OH^-}`,
         question: 'Why does a scratch in a zinc coating (galvanized steel, $E^\\circ_{\\text{Zn}} = -0.76\\text{ V}$) still protect the underlying iron ($E^\\circ_{\\text{Fe}} = -0.44\\text{ V}$) from rusting, whereas a scratch in a tin or copper coating ($E^\\circ_{\\text{Cu}} = +0.34\\text{ V}$) drastically accelerates iron corrosion?',
         options: [
           'In the galvanic couple, the metal with the more negative standard electrode potential acts as the **anode** and dissolves: $\\text{Zn}$ sacrifices itself to protect $\\text{Fe}$ (cathode), whereas when coupled with $\\text{Cu}$, iron becomes the anode ($\\text{Fe} \\to \\text{Fe}^{2+} + 2e^-$) and corrodes rapidly',
@@ -26385,8 +26565,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_liion: {
         section: '§ C-37',
+        secTag: 'CHAPTER XXXVII · § C-37. LITHIUM-ION BATTERY & ROCKING-CHAIR INTERCALATION',
+        shortTitle: 'Lithium-Ion Battery (Li⁺ Intercalation)',
         title: 'Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂',
         subtitle: 'Chapter XXXVII. Li⁺ Intercalation Between Graphite Layers & Transition-Metal Oxide Octahedra at 3.7 V',
+        badge: 'Electrochem & Organic',
+        categoryGroupTitle: 'Part IV. Electrochemistry & Organic Chemistry',
+        epigraph: '«By shuttling lithium ions reversibly between two layered host lattices, we created a rechargeable battery that transformed portable electronics.» — M. Stanley Whittingham, John Goodenough & Akira Yoshino, Nobel Prize 2019',
+        figCaption: 'Fig. C-37. Layered graphite anode (Li_xC₆), porous separator, and LiCoO₂ cathode during Li⁺ intercalation/de-intercalation.',
+        ekLabel: 'Cell Voltage U_cell (×15 V)',
+        epLabel: 'State of Charge SoC (%)',
+        qLabel: 'Ohmic Overpotential η_IR (×50 V)',
+        referenceLatex: String.raw`\mathrm{Li_xC_6 + Li_{1-x}CoO_2 \rightleftharpoons C_6 + LiCoO_2}, \qquad E_{\text{cell}} \approx 3.7\text{ V}`,
         question: 'How does a rechargeable lithium-ion battery store and release electrical energy without forming metallic lithium dendrites during normal operation?',
         options: [
           'By reversible **intercalation** ("rocking-chair" mechanism): during discharge, $\\text{Li}^+$ ions de-intercalate from the layered graphite anode ($\\text{Li}_x\\text{C}_6 \\to \\text{C}_6 + x\\text{Li}^+ + xe^-$) and insert into the $\\text{Li}_{1-x}\\text{CoO}_2$ cathode host lattice while electrons flow through the external circuit ($E_{\\text{cell}} \\approx 3.7\\text{ V}$)',
@@ -26413,8 +26603,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_sn2: {
         section: '§ C-38',
+        secTag: 'CHAPTER XXXVIII · § C-38. BIMOLECULAR NUCLEOPHILIC SUBSTITUTION (SN2) & WALDEN INVERSION',
+        shortTitle: 'Nucleophilic Substitution SN2 & Walden Inversion',
         title: 'Bimolecular Nucleophilic Substitution (S_N2) & Walden Inversion of Configuration',
         subtitle: 'Chapter XXXVIII. Backside Attack HO⁻ + CH₃Br → [HO···CH₃···Br]‡ → CH₃OH + Br⁻ & Pentacoordinate Transition State',
+        badge: 'Electrochem & Organic',
+        categoryGroupTitle: 'Part IV. Electrochemistry & Organic Chemistry',
+        epigraph: '«The incoming group approaches the carbon atom on the side opposite to the replaced group, turning the tetrahedral configuration inside out.» — Christopher K. Ingold & Edward D. Hughes, 1937',
+        figCaption: 'Fig. C-38. Concerted backside attack of OH⁻ on CH₃Br through the planar pentacoordinate transition state [HO···CH₃···Br]‡ with Walden umbrella inversion.',
+        ekLabel: 'Second-Order Rate v = k₂[R–X][Nu⁻]',
+        epLabel: 'Potential Barrier E(ξ) (kJ/mol)',
+        qLabel: 'Umbrella Inversion Progress (%)',
+        referenceLatex: String.raw`v = k_2[\mathrm{R{-}X}][\mathrm{Nu^-}], \qquad \mathrm{HO^- + CH_3Br \to [HO^{\delta-}\!\cdots CH_3\cdots Br^{\delta-}]^\ddagger \to HOCH_3 + Br^-}`,
         question: 'Why does the bimolecular nucleophilic substitution reaction $\\text{HO}^- + \\text{CH}_3\\text{Br} \\to \\text{CH}_3\\text{OH} + \\text{Br}^-$ ($\\text{S}_{\\text{N}}2$) proceed in a single concerted step with $100\\%$ **Walden inversion** of stereochemical configuration?',
         options: [
           'The nucleophile $\\text{HO}^-$ attacks the electrophilic carbon from the backside ($180^\\circ$ opposite the leaving group $\\text{Br}^-$) into the $\\sigma^*_{\\text{C–Br}}$ antibonding orbital, passing through a planar trigonal-bipyramidal transition state $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ that flips the three $\\text{C–H}$ bonds like an umbrella in the wind',
@@ -26439,8 +26639,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_ester: {
         section: '§ C-39',
+        secTag: 'CHAPTER XXXIX · § C-39. FISCHER ESTERIFICATION & ISOTOPIC ¹⁸O TRACER',
+        shortTitle: 'Fischer Esterification & ¹⁸O Isotope Tracer',
         title: 'Fischer Esterification & Isotopic ¹⁸O Tracer: R–COOH + R′–¹⁸OH ⇄ R–CO–¹⁸OR′ + H₂O',
         subtitle: 'Chapter XXXIX. Acid-Catalyzed Acyl Substitution, Equilibrium Constant K_eq ≈ 4.0 & Dean–Stark Water Removal',
+        badge: 'Electrochem & Organic',
+        categoryGroupTitle: 'Part IV. Electrochemistry & Organic Chemistry',
+        epigraph: '«Tracing the heavy oxygen isotope ¹⁸O proved conclusively that the carboxylic acid supplies the hydroxyl group of water while the alcohol oxygen remains in the ester.» — Irving Roberts & Harold C. Urey, 1938',
+        figCaption: 'Fig. C-39. Acid-catalyzed reaction of acetic acid with ¹⁸O-labeled ethanol (highlighted in gold), showing acyl–oxygen cleavage and equilibrium yield.',
+        ekLabel: 'Equilibrium Ester Yield η_eq (%)',
+        epLabel: 'Unreacted Acid (1 − η) (%)',
+        qLabel: 'Effective Constant K_eff (×5)',
+        referenceLatex: String.raw`\mathrm{R{-}C({=}O)\mathbf{OH} + H\mathbf{^{18}O}{-}R' \underset{H^+}{\rightleftharpoons} R{-}C({=}O)\mathbf{^{18}O}{-}R' + H_2\mathbf{O}}, \qquad K_{eq} = \frac{[\text{Ester}][\mathrm{H_2O}]}{[\text{Acid}][\text{Alcohol}]} \approx 4.0`,
         question: 'When acetic acid $\\text{CH}_3\\text{COOH}$ reacts with isotopically labeled ethanol $\\text{C}_2\\text{H}_5\\text{–}^{18}\\text{OH}$, where does the heavy oxygen isotope $^{18}\\text{O}$ end up, and why does classical equimolar esterification stop at $\\approx 66.7\\%$ yield?',
         options: [
           'The $^{18}\\text{O}$ label stays in the **ester** $\\text{CH}_3\\text{CO–}^{18}\\text{OC}_2\\text{H}_5$ because the carboxylic acid loses its $\\text{–OH}$ group while the alcohol loses only $\\text{–H}$; since $K_{eq} \\approx 4.0$, an equimolar mixture reaches equilibrium at $\\eta = \\frac{\\sqrt{K_{eq}}}{1 + \\sqrt{K_{eq}}} = \\frac{2}{3} \\approx 66.7\\%$',
@@ -26469,8 +26679,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_biopol: {
         section: '§ C-40',
+        secTag: 'CHAPTER XL · § C-40. BIOPOLYMERS: PROTEIN α-HELIX & DNA DOUBLE HELIX',
+        shortTitle: 'Biopolymers: Protein α-Helix & DNA Duplex',
         title: 'Biopolymers: Peptide Bond Planarity, Protein α-Helix & DNA Double Helix (A=T, G≡C)',
         subtitle: 'Chapter XL. Pauling–Corey α-Helix (3.6 res/turn) vs. Watson–Crick B-DNA, Chargaff’s Rules & Melting T_m',
+        badge: 'Electrochem & Organic',
+        categoryGroupTitle: 'Part IV. Electrochemistry & Organic Chemistry',
+        epigraph: '«It has not escaped our notice that the specific pairing we have postulated immediately suggests a possible copying mechanism for the genetic material.» — James D. Watson & Francis H. C. Crick, 1953',
+        figCaption: 'Fig. C-40. 3D secondary structure of the Pauling–Corey protein α-helix (i → i+4 H-bonds) and Watson–Crick B-DNA double helix (A=T and G≡C base pairs).',
+        ekLabel: 'Complementary H-Bond Count N_HB',
+        epLabel: 'Native Helix Integrity (%)',
+        qLabel: 'Melting Temperature T_m (°C)',
+        referenceLatex: String.raw`[\mathrm{A}]=[\mathrm{T}],\;\;[\mathrm{G}]=[\mathrm{C}], \qquad \mathrm{A{=}T}\;(2\text{ H-bonds}),\;\;\mathrm{G{\equiv}C}\;(3\text{ H-bonds}), \qquad T_m \approx 69.3 + 0.41(\%\mathrm{GC})`,
         question: 'Why does a DNA double helix with a higher guanine–cytosine ($\\text{G}\\equiv\\text{C}$) content have a significantly higher thermal denaturation (melting) temperature $T_m$ than an $\\text{A=T}$-rich duplex?',
         options: [
           'Watson–Crick $\\text{G}\\equiv\\text{C}$ base pairs are held together by **three** complementary hydrogen bonds and stronger $\\pi\\text{–}\\pi$ base stacking, whereas $\\text{A=T}$ pairs form only **two** hydrogen bonds ($T_m = 69.3 + 0.41(\\%\\text{GC})$)',
@@ -29554,29 +29774,36 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const src = dict[k];
         if (!src) return;
         const target = SCENE_CONFIGS[k];
-        target.secTag = src.secTag;
-        target.shortTitle = src.shortTitle;
-        target.subtitle = src.subtitle;
-        target.badge = src.badge;
-        target.categoryGroupTitle = src.categoryGroupTitle;
-        target.title = src.title;
-        target.epigraph = src.epigraph;
-        target.figCaption = src.figCaption;
-        target.ekLabel = src.ekLabel;
-        target.epLabel = src.epLabel;
-        target.qLabel = src.qLabel;
-        target.question = src.question;
-        target.options = [...src.options];
-        target.explanation = src.explanation;
-        target.referenceLatex = src.referenceLatex;
-        target.formulaLatex = src.formulaLatex;
-        target.liveLatexFn = src.liveLatexFn;
-        src.sliders.forEach((sTrans, idx) => {
-          if (target.sliders[idx]) {
-            target.sliders[idx].label = sTrans.label;
-            target.sliders[idx].unit = sTrans.unit;
-          }
-        });
+        if (target.secSym) {
+          target.secSym = uiState.lang === 'en'
+            ? target.secSym.replace('§ Х-', '§ C-')
+            : target.secSym.replace('§ C-', '§ Х-');
+        }
+        target.secTag = src.secTag ?? target.secTag;
+        target.shortTitle = src.shortTitle ?? src.title ?? target.shortTitle;
+        target.subtitle = src.subtitle ?? target.subtitle;
+        target.badge = src.badge ?? target.badge;
+        target.categoryGroupTitle = src.categoryGroupTitle ?? target.categoryGroupTitle;
+        target.title = src.title ?? target.title;
+        target.epigraph = src.epigraph ?? target.epigraph;
+        target.figCaption = src.figCaption ?? target.figCaption;
+        target.ekLabel = src.ekLabel ?? target.ekLabel;
+        target.epLabel = src.epLabel ?? target.epLabel;
+        target.qLabel = src.qLabel ?? target.qLabel;
+        target.question = src.question ?? target.question;
+        if (Array.isArray(src.options)) target.options = [...src.options];
+        target.explanation = src.explanation ?? target.explanation;
+        target.referenceLatex = src.referenceLatex ?? src.formulaLatex ?? target.referenceLatex;
+        target.formulaLatex = src.formulaLatex ?? target.formulaLatex;
+        target.liveLatexFn = src.liveLatexFn ?? target.liveLatexFn;
+        if (Array.isArray(src.sliders)) {
+          src.sliders.forEach((sTrans, idx) => {
+            if (target.sliders[idx]) {
+              target.sliders[idx].label = sTrans.label ?? target.sliders[idx].label;
+              target.sliders[idx].unit = sTrans.unit ?? target.sliders[idx].unit;
+            }
+          });
+        }
       });
 
       const setTxt = (id, val) => {

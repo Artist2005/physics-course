@@ -19080,7 +19080,7 @@
         const modeName = mode === 1 ? 'Атомний радіус r_ат' : (mode === 2 ? 'Енергія йонізації I₁' : 'Електронегативність χ');
         const blockLabel = activeEl.fRow === 1 ? '4f-лантаноїд' : (activeEl.fRow === 2 ? '5f-актиноїд' : `${activeEl.block}-елемент`);
         updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
-          { label: 'Хімічний елемент (1–118)', val: `${activeEl.sym}, ${activeEl.nameUk} (Z = ${activeEl.z})` },
+          { label: 'Хімічний елемент (1–118)', val: `${activeEl.sym}, ${uiState.lang === 'en' ? activeEl.nameEn : activeEl.nameUk} (Z = ${activeEl.z})` },
           { label: 'Період / Група / Блок', val: `${activeEl.n}-й період, гр. ${activeEl.g}, ${blockLabel} (${activeEl.cfg})` },
           { label: 'Ефективний заряд Z_eff', val: `${activeEl.zeff.toFixed(2)} e (σ = ${(activeEl.z - activeEl.zeff).toFixed(2)})` },
           { label: 'Атомний радіус r_ат', val: `${activeEl.r} пм (${(activeEl.r / 100).toFixed(2)} Å)` },
@@ -27108,12 +27108,284 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       'Перехід гібридизації C': 'Carbon hybridization shift',
       'Радіус інерції клубка R_g': 'Coil radius of gyration R_g',
       'Швидкість росту ланцюга v_p': 'Chain propagation rate v_p',
-      'Виділена ентальпія −ΔH_полі': 'Released enthalpy −ΔH_poly'
+      'Виділена ентальпія −ΔH_полі': 'Released enthalpy −ΔH_poly',
+      'Хімічний елемент (1–118)': 'Chemical element (1–118)',
+      'Період / Група / Блок': 'Period / Group / Block',
+      'Двохатомна молекула': 'Diatomic molecule',
+      'Активна молекулярна орбіталь': 'Active molecular orbital',
+      'Електрони (N_b / N_a)': 'Electrons (N_b / N_a)',
+      'Порядок зв\'язку BO': 'Bond order BO',
+      'Розщеплення рівнів ΔE_MO': 'Level splitting ΔE_MO',
+      'Магнітні властивості': 'Magnetic behavior',
+      'Алотропна наноструктура C': 'Carbon nanostructure',
+      'Гібридизація та C–C зв\'язок': 'Hybridization & C–C bond',
+      'Діаметр наноструктури d_t': 'Nanostructure diameter d_t',
+      'Провідність каналу G': 'Channel conductance G',
+      'Струм π-електронів I': 'π-electron current I',
+      'Температура решітки T': 'Lattice temperature T',
+      'Координаційна геометрія': 'Coordination geometry',
+      'Конфігурація центрального йона': 'Central ion configuration',
+      'Розщеплення кристалічного поля Δ': 'Crystal field splitting Δ',
+      'Кількість неспарених електронів n': 'Unpaired electrons n',
+      'Магнітний момент комплексу μ_eff': 'Magnetic moment μ_eff',
+      'Смуга d–d поглинання λ_max': 'd–d absorption band λ_max',
+      'Сублімація ΔH_sub + Дисоціація ½D': 'Sublimation ΔH_sub + Dissociation ½D',
+      'Енергія іонізації металу I₁': 'Metal ionization energy I₁',
+      'Електронна спорідненість X(г) E_ea': 'Electron affinity X(g) E_ea',
+      'Енергія кристалічної ґратки U_реш': 'Crystal lattice energy U_lat',
+      'Ентальпія утворення солі ΔH°_f': 'Standard formation enthalpy ΔH°_f',
+      'Термодинамічна стійкість кристалу': 'Thermodynamic crystal stability',
+      'Різниця електронегативностей Δχ': 'Electronegativity difference Δχ',
+      'Ступінь іонності зв\'язку (за Полінгом)': 'Pauling ionic character',
+      'Дипольний момент одного зв\'язку μ_зв': 'Single-bond dipole μ_bond',
+      'Валентний кут θ (B–A–B)': 'Bond angle θ (B–A–B)',
+      'Сумарний дипольний момент молекули μ_сум': 'Net molecular dipole μ_net',
+      'Зовнішнє електричне поле E_зовн': 'External electric field E_ext',
+      'Досліджувана речовина': 'Substance under study',
+      'Поточна фаза при (T, P)': 'Phase state at (T, P)',
+      'Потрійна точка (T_tr, P_tr)': 'Triple point (T_tr, P_tr)',
+      'Критична точка (T_cr, P_cr)': 'Critical point (T_cr, P_cr)',
+      'Нахил кривої плавлення dP/dT': 'Melting curve slope dP/dT',
+      'Підведене тепло Q': 'Supplied heat Q',
+      'Порядок реакції n та інтегральний закон': 'Reaction order n & integrated law',
+      'Поточна концентрація реагенту [A](t)': 'Reactant concentration [A](t)',
+      'Концентрація продукту [P](t)': 'Product concentration [P](t)',
+      'Миттєва швидкість реакції v(t)': 'Instantaneous rate v(t)',
+      'Період напівперетворення t₁/₂': 'Half-life period t₁/₂',
+      'Час реакції t': 'Reaction time t',
+      'Концентрація субстрату [S]': 'Substrate concentration [S]',
+      'Уявна константа Міхаеліса K_m^app': 'Apparent Michaelis constant K_m^app',
+      'Гранична швидкість V_max = k_cat[E]₀': 'Maximum velocity V_max = k_cat[E]₀',
+      'Початкова швидкість ферментації v₀': 'Initial enzymatic rate v₀',
+      'Частка активних комплексів [ES]/[E]₀': 'Active complex fraction [ES]/[E]₀',
+      'Тип гальмування': 'Inhibition regime',
+      'Ентальпійний фактор ΔH': 'Enthalpy factor ΔH',
+      'Ентропійний внесок TΔS': 'Entropic term TΔS',
+      'Вільна енергія Гіббса ΔG = ΔH − TΔS': 'Gibbs free energy ΔG = ΔH − TΔS',
+      'Логарифм константи рівноваги ln K_p': 'Log equilibrium constant ln K_p',
+      'Температура інверсії T_інв = ΔH/ΔS': 'Inversion temperature T_inv = ΔH/ΔS',
+      'Режим колони синтезу (P, T)': 'Synthesis column state (P, T)',
+      'Стехіометрія суміші H₂ : N₂': 'Feed stoichiometry H₂ : N₂',
+      'Рівноважний вихід аміаку φ_рівн(NH₃)': 'Equilibrium NH₃ yield φ_eq',
+      'Кінетичний фактор Fe-каталізатора': 'Fe-catalyst kinetic factor',
+      'Фактичний вихід φ_практ(NH₃)': 'Actual single-pass NH₃ yield',
+      'Тепловий ефект реакції ΔH°': 'Reaction enthalpy ΔH°',
+      'Тип розчиненої речовини': 'Dissolved solute type',
+      'Мольна частка води χ₁': 'Water mole fraction χ₁',
+      'Тиск насиченої пари P_розч (за Раулем)': 'Solution vapor pressure P_soln (Raoult)',
+      'Кріоскопічне зниження T_зам': 'Freezing-point depression ΔT_f',
+      'Ебуліоскопічне підвищення T_кип': 'Boiling-point elevation ΔT_b',
+      'Температура термостата T': 'Thermostat temperature T',
+      'Фронт елюента L_f та полярність ε°': 'Eluent front L_f & polarity ε°',
+      'β-Каротин (неполярний, жовтий)': 'β-Carotene (nonpolar, yellow)',
+      'Хлорофіл a (помірно полярний, зелений)': 'Chlorophyll a (medium polarity, green)',
+      'Ксантофіл (полярний, синій маркер)': 'Xanthophyll (polar, blue marker)',
+      'Роздільна здатність колонки R_s': 'Column resolution R_s',
+      'Активність силікагелю SiO₂': 'Silica gel SiO₂ activity',
+      'Тиск газу P та температура T': 'Gas pressure P & temperature T',
+      'Ефективна константа адсорбції K(T)': 'Effective adsorption constant K(T)',
+      'Ступінь заповнення моношару θ': 'Monolayer surface coverage θ',
+      'Частка вільних центрів (1 − θ)': 'Vacant site fraction (1 − θ)',
+      'Режим ізотерми Ленгмюра': 'Langmuir isotherm regime',
+      'Динамічна рівновага поверхні': 'Surface dynamic equilibrium',
+      'Діаметр колоїдних міцел d': 'Colloidal micelle diameter d',
+      'Інтенсивність конуса Тіндаля I_розс': 'Tyndall scattering intensity I_scat',
+      'Дзета-потенціал ПЕШ ζ': 'Double-layer zeta potential ζ',
+      'Поріг коагуляції γ_кр (Шульце–Гарді)': 'Coagulation threshold CCC (Schulze–Hardy)',
+      'Агрегативна стійкість золю (ДЛФО)': 'DLVO colloidal stability',
+      'Концентрація електроліту C_ел': 'Electrolyte concentration C_el',
+      'Досліджувана сіль': 'Salt under study',
+      'Йонно-молекулярне рівняння': 'Net ionic hydrolysis equation',
+      'Водневий показник розчину pH': 'Solution pH',
+      'Ступінь гідролізу h = √(K_h / C)': 'Hydrolysis degree h = √(K_h / C)',
+      'Вплив розведення та нагрівання': 'Effect of dilution & heating',
+      'Контактна гальванічна пара': 'Contact galvanic couple',
+      'ЕРС корозійного мікроелемента ΔE': 'Microgalvanic cell EMF ΔE',
+      'Роль заліза (Fe) у парі': 'Electrochemical role of iron (Fe)',
+      'Катодний процес деполяризації': 'Cathodic depolarization process',
+      'Густина струму корозії j_кор': 'Corrosion current density j_corr',
+      'Склад середовища': 'Electrolyte composition',
+      'Режим роботи Li-ion комірки': 'Li-ion cell operating mode',
+      'Ступінь заряду SOC (x у Li_xC₆)': 'State of Charge SoC (x in Li_xC₆)',
+      'ЕРС розімкненого кола E_OCV': 'Open-circuit voltage E_OCV',
+      'Напруга на клемах U_клем': 'Terminal voltage U_term',
+      'Напрямок міграції йонів Li⁺': 'Li⁺ ion migration path',
+      'Питома потужність комірки P': 'Cell power output P',
+      'Стадія координати реакції ξ': 'Reaction coordinate stage ξ',
+      'Кінетичний закон реакції S_N2': 'S_N2 rate law',
+      'Енергія вздовж шляху реакції E(ξ)': 'Reaction path energy E(ξ)',
+      'Стереохімічний наслідок': 'Stereochemical outcome',
+      'Довжини зв\'язків d(Nu–C) / d(C–LG)': 'Bond distances d(Nu–C) / d(C–LG)',
+      'Концентрації реагентів': 'Reactant concentrations',
+      'Співвідношення [Спирт]₀ / [Кислота]₀': 'Initial ratio [Alcohol]₀ / [Acid]₀',
+      'Ефективна константа рівноваги K_еф': 'Effective equilibrium constant K_eff',
+      'Рівноважний вихід естеру η': 'Equilibrium ester yield η',
+      'Механізм за міченим ізотопом ¹⁸O': 'Isotopic ¹⁸O tracer mechanism',
+      'Роль каталізатора H₂SO₄': 'Role of H₂SO₄ acid catalyst',
+      'Відведення води (насадка Діна–Старка)': 'Water removal (Dean–Stark trap)',
+      'Тип біополімерної спіралі': 'Biopolymer helix structure',
+      'Вміст пар Гуанін–Цитозин (% G≡C)': 'Guanine–Cytosine content (% G≡C)',
+      'Сумарне число водневих зв\'язків N_HB': 'Total hydrogen bonds N_HB',
+      'Температура плавлення спіралі T_m': 'Helix melting temperature T_m',
+      'Правила Чаргаффа для B-ДНК': 'Chargaff\'s rules for B-DNA'
     };
+
+    function translateTelemetryLabel(labelStr) {
+      if (uiState.lang !== 'en' || typeof labelStr !== 'string') return labelStr;
+      if (TELEMETRY_LABEL_EN[labelStr]) return TELEMETRY_LABEL_EN[labelStr];
+      return labelStr
+        .replace('Напрямок процесу при T = ', 'Process direction at T = ')
+        .replace('Константа гідролізу K_h (при ', 'Hydrolysis constant K_h (at ')
+        .replace('Частка нативної спіралі при T = ', 'Native helix fraction at T = ')
+        .replace(/ К$/, ' K');
+    }
 
     function translateTelemetryVal(valStr) {
       if (uiState.lang !== 'en' || typeof valStr !== 'string') return valStr;
       return valStr
+        .replace('He₂ (нестійка)', 'He₂ (unstable)')
+        .replace('O₂ (триплет)', 'O₂ (triplet)')
+        .replace(', поточне R = ', ', current R = ')
+        .replace('σ (зв\'язуюча)', 'σ (bonding)')
+        .replace('σ* (розпушуюча)', 'σ* (antibonding)')
+        .replace('π (зв\'язуюча)', 'π (bonding)')
+        .replace('π* (розпушуюча)', 'π* (antibonding)')
+        .replace('Зв\'язуючі N_b = ', 'Bonding N_b = ')
+        .replace(', Розпушуючі N_a = ', ', Antibonding N_a = ')
+        .replace('молекула розпадається', 'unstable (dissociates)')
+        .replace('-кратний ковалентний зв\'язок', '-fold covalent bond')
+        .replace('інтеграл перекриття S = ', 'overlap integral S = ')
+        .replace('Парамагнетик (', 'Paramagnetic (')
+        .replace(' неспарені e⁻ на π*)', ' unpaired e⁻ in π*)')
+        .replace('Діамагнетик (усі спіни спарені)', 'Diamagnetic (all spins paired)')
+        .replace('Моношар графену (2D sp²)', 'Graphene monolayer (2D sp²)')
+        .replace('Двошаровий графен (AB-пакування)', 'Bilayer graphene (AB stacking)')
+        .replace('Вуглецева нанотрубка ', 'Carbon nanotube ')
+        .replace('Фулерен C₆₀ (бакібол)', 'Fullerene C₆₀ (buckyball)')
+        .replace('sp² + делокалізована π-система (a_CC = 1.42 Å)', 'sp² + delocalized π-system (a_CC = 1.42 Å)')
+        .replace('0.71 нм (клітка C₆₀)', '0.71 nm (C₆₀ cage)')
+        .replace('Плоский 2D-лист', 'Planar 2D sheet')
+        .replace('мкСм', 'μS')
+        .replace('(при V = ', '(at V = ')
+        .replace('Октаедрична Oh (КЧ = 6)', 'Octahedral Oh (CN = 6)')
+        .replace('Тетраедрична Td (КЧ = 4)', 'Tetrahedral Td (CN = 4)')
+        .replace('Плоскоквадратна D4h (КЧ = 4)', 'Square planar D4h (CN = 4)')
+        .replace('Низькоспіновий LS, Δ > P', 'Low-spin LS, Δ > P')
+        .replace('Високоспіновий HS, Δ < P', 'High-spin HS, Δ < P')
+        .replace('(при R_M-L = ', '(at R_M-L = ')
+        .replace('(екзотермічне приєднання e⁻)', '(exothermic e⁻ attachment)')
+        .replace('(виділяється −', '(released −')
+        .replace('Екзотермічно стабільна йонна сіль', 'Exothermically stable ionic salt')
+        .replace('Ендотермічно нестійка фаза', 'Endothermically unstable phase')
+        .replace('(частковий заряд δ = ±', '(partial charge δ = ±')
+        .replace(' Д (при l = ', ' D (at l = ')
+        .replace('лінійна симетрична', 'linear symmetric')
+        .replace('кутова геометрія', 'bent geometry')
+        .replace(' Дебай (', ' D (')
+        .replace('неполярна молекула', 'nonpolar molecule')
+        .replace('полярний диполь', 'polar dipole')
+        .replace('кВ/см', 'kV/cm')
+        .replace('Вода H₂O (dP/dT_пл < 0)', 'Water H₂O (dP/dT_melt < 0)')
+        .replace('Діоксид вуглецю CO₂ (сухий лід)', 'Carbon dioxide CO₂ (dry ice)')
+        .replace('Молекулярний азот N₂', 'Molecular nitrogen N₂')
+        .replace('Газ (пара)', 'Gas (vapor)')
+        .replace('Надкритичний флюїд (SCF)', 'Supercritical fluid (SCF)')
+        .replace('Тверда кристалічна фаза', 'Solid crystalline phase')
+        .replace('Рідка фаза', 'Liquid phase')
+        .replace('атм/К (рівняння Клапейрона–Клаузіуса)', 'atm/K (Clapeyron–Clausius eq.)')
+        .replace('(від [A]₀ = ', '(from [A]₀ = ')
+        .replace('не залежить від [A]₀!', 'independent of [A]₀!')
+        .replace('залежить від [A]₀', 'depends on [A]₀')
+        .replace('(інгібітор [I] = ', '(inhibitor [I] = ')
+        .replace(/мМ\/с/g, 'mM/s')
+        .replace('% від V_max', '% of V_max')
+        .replace('Конкурентне інгібування (зростає K_m^app, V_max = const)', 'Competitive inhibition (K_m^app rises, V_max = const)')
+        .replace('Без інгібітора (класична кінетика Міхаеліса–Ментен)', 'Uninhibited (Michaelis–Menten kinetics)')
+        .replace('Не існує (знаки ΔH і ΔS протилежні)', 'None (ΔH and ΔS have opposite signs)')
+        .replace('Дж/(моль·К)', 'J/(mol·K)')
+        .replace('Самочинна пряма реакція (екзергонічна, ΔG < 0)', 'Spontaneous forward reaction (exergonic, ΔG < 0)')
+        .replace('Несамочинна пряма реакція (ендергонічна, ΔG > 0)', 'Non-spontaneous forward (endergonic, ΔG > 0)')
+        .replace('Хімічна рівновага (ΔG ≈ 0)', 'Chemical equilibrium (ΔG ≈ 0)')
+        .replace('(оптимум 3 : 1)', '(optimum 3 : 1)')
+        .replace('(за принципом Ле Шательє)', '(by Le Chatelier principle)')
+        .replace('% досягнення рівноваги за прохід', '% of equilibrium reached per pass')
+        .replace('% об.', 'vol %')
+        .replace('(екзотермічний синтез)', '(exothermic synthesis)')
+        .replace('Неелектроліт (i = 1, глюкоза)', 'Non-electrolyte (i = 1, glucose)')
+        .replace('Бінарний електроліт (i = 2, NaCl)', 'Binary electrolyte (i = 2, NaCl)')
+        .replace('Триіонний електроліт (i = 3, CaCl₂)', 'Ternary electrolyte (i = 3, CaCl₂)')
+        .replace(', моляльність m = ', ', molality m = ')
+        .replace(/мм рт\. ст\./g, 'mmHg')
+        .replace('T_зам =', 'T_freeze =')
+        .replace('T_кип =', 'T_boil =')
+        .replace('повне базове розділення піків', 'baseline peak separation')
+        .replace('часткове перекриття зон', 'partial zone overlap')
+        .replace('Q_адс =', 'Q_ads =')
+        .replace(' з 36 активних центрів)', ' of 36 active sites)')
+        .replace('Лінійна область Генрі (θ ≈ K·P)', 'Henry linear region (θ ≈ K·P)')
+        .replace('Насичення моношару (θ → 1)', 'Monolayer saturation (θ → 1)')
+        .replace('Перехідна область ізотерми', 'Intermediate Langmuir region')
+        .replace('r_адс = k_a·P·(1 − θ) = r_дес = k_d·θ', 'r_ads = k_a·P·(1 − θ) = r_des = k_d·θ')
+        .replace('істинний розчин', 'true molecular solution')
+        .replace('колоїдний золь', 'colloidal sol')
+        .replace('ум. од.', 'a.u.')
+        .replace('закон Релея ∝ λ⁻⁴', 'Rayleigh law ∝ λ⁻⁴')
+        .replace('критичний поріг ~30 мВ', 'critical threshold ~30 mV')
+        .replace(' для z = ', ' for z = ')
+        .replace('Швидка коагуляція та седиментація осаду!', 'Rapid coagulation & flocculation!')
+        .replace('Стійкий золь (електростатичне відштовхування ПЕШ)', 'Stable sol (EDL electrostatic repulsion)')
+        .replace('NaCl (сильна основа NaOH + сильна кислота HCl)', 'NaCl (strong base NaOH + strong acid HCl)')
+        .replace('Гідроліз не відбувається ([H⁺] = [OH⁻])', 'No hydrolysis ([H⁺] = [OH⁻])')
+        .replace('NH₄Cl (слабка основа NH₄OH + сильна кислота HCl)', 'NH₄Cl (weak base NH₄OH + strong acid HCl)')
+        .replace('Гідроліз за катіоном: NH₄⁺ + H₂O ⇄ NH₄OH + H⁺ (pH < 7)', 'Cation hydrolysis: NH₄⁺ + H₂O ⇄ NH₄OH + H⁺ (pH < 7)')
+        .replace('CH₃COONa (сильна основа NaOH + слабка кислота CH₃COOH)', 'CH₃COONa (strong base NaOH + weak acid CH₃COOH)')
+        .replace('Гідроліз за аніоном: CH₃COO⁻ + H₂O ⇄ CH₃COOH + OH⁻ (pH > 7)', 'Anion hydrolysis: CH₃COO⁻ + H₂O ⇄ CH₃COOH + OH⁻ (pH > 7)')
+        .replace('Na₂CO₃ (сильна основа NaOH + слабка двоосновна H₂CO₃)', 'Na₂CO₃ (strong base NaOH + weak diprotic H₂CO₃)')
+        .replace('Гідроліз за аніоном: CO₃²⁻ + H₂O ⇄ HCO₃⁻ + OH⁻ (лужне середовище)', 'Anion hydrolysis: CO₃²⁻ + H₂O ⇄ HCO₃⁻ + OH⁻ (alkaline)')
+        .replace('кисле середовище', 'acidic medium')
+        .replace('лужне середовище', 'alkaline medium')
+        .replace('нейтральне середовище', 'neutral medium')
+        .replace('(при C_еф = ', '(at C_eff = ')
+        .replace('Підвищення T та розведення водою посилюють гідроліз', 'Higher T and dilution increase hydrolysis degree h')
+        .replace('Zn (протектор)', 'Zn (sacrificial anode)')
+        .replace('Mg (активний протектор)', 'Mg (active protector)')
+        .replace('Sn (біла жерсть)', 'Sn (tinplate)')
+        .replace('Cu (мідний контакт)', 'Cu (copper contact)')
+        .replace('КАТОД (залізо захищене, окиснюється протектор!)', 'CATHODE (Fe protected, sacrificial anode oxidizes!)')
+        .replace('АНОД (залізо інтенсивно руйнується: Fe → Fe²⁺ + 2e⁻)', 'ANODE (Fe corrodes: Fe → Fe²⁺ + 2e⁻)')
+        .replace('Воднева деполяризація: 2H⁺ + 2e⁻ → H₂↑', 'Hydrogen depolarization: 2H⁺ + 2e⁻ → H₂↑')
+        .replace('Киснева деполяризація: O₂ + 2H₂O + 4e⁻ → 4OH⁻', 'Oxygen depolarization: O₂ + 2H₂O + 4e⁻ → 4OH⁻')
+        .replace('мА/см²', 'mA/cm²')
+        .replace('мг/л', 'mg/L')
+        .replace('Розряджання (живлення навантаження)', 'Discharging (powering external load)')
+        .replace('Заряджання (інтеркаляція Li⁺ у графіт C₆)', 'Charging (Li⁺ intercalation into C₆)')
+        .replace(' В (при струмі ', ' V (at current ')
+        .replace('Анод (Li_xC₆) → Електроліт → Катод (LiCoO₂)', 'Anode (Li_xC₆) → Electrolyte → Cathode (LiCoO₂)')
+        .replace('Катод (LiCoO₂) → Електроліт → Анод (Li_xC₆)', 'Cathode (LiCoO₂) → Electrolyte → Anode (Li_xC₆)')
+        .replace(' Вт (T = ', ' W (T = ')
+        .replace('Тригонально-біпірамідальний перехідний стан [HO···CH₃···Br]⁻‡ (sp²)', 'Trigonal-bipyramidal transition state [HO···CH₃···Br]⁻‡ (sp²)')
+        .replace('Вихідний субстрат CH₃Br + тильна атака OH⁻', 'Reactant CH₃Br + backside attack of OH⁻')
+        .replace('Інвертований продукт CH₃OH + відщеплений Br⁻', 'Inverted product CH₃OH + departed Br⁻')
+        .replace('(2-й порядок)', '(2nd order)')
+        .replace('(бар\'єр ΔG‡ = ', '(barrier ΔG‡ = ')
+        .replace('100 % вальденівське обернення конфігурації («парасолька»)', '100% Walden inversion of configuration (umbrella flip)')
+        .replace('(класична K_c = 4.0 без відгонки води)', '(classical K_c = 4.0 without water removal)')
+        .replace('% мол.', 'mol %')
+        .replace('Ацил-кисневе розщеплення: −OH від карбонової кислоти, −¹⁸OR\' входить в естер', 'Acyl-oxygen cleavage: −OH from acid, −¹⁸OR\' enters ester')
+        .replace('Протонує карбонільний О (прискорення у ', 'Protonates carbonyl O (speedup ')
+        .replace('), не зміщує K_c', '), K_c unchanged')
+        .replace('α-Спіраль білка Полінга–Корі (3.6 амінокислоти/виток)', 'Pauling–Corey protein α-helix (3.6 aa/turn)')
+        .replace('Подвійна спіраль B-ДНК Вотсона–Кріка (10 п.о./виток, крок 3.4 нм)', 'Watson–Crick B-DNA duplex (10 bp/turn, pitch 3.4 nm)')
+        .replace('3 водневі зв\'язки на пару G≡C проти 2 у A=T', '3 H-bonds per G≡C pair vs. 2 in A=T')
+        .replace(' зв\'язків на ', ' H-bonds across ')
+        .replace(' пар основ', ' base pairs')
+        .replace('(за рівнянням Мармура–Доті)', '(Marmur–Doty equation)')
+        .replace('Теплова денатурація / плавлення!', 'Thermal denaturation (melting)!')
+        .replace('Нативна стабільна конформація', 'Native folded conformation')
+        .replace('-й період, гр. ', 'th period, group ')
+        .replace('4f-лантаноїд', '4f-lanthanide')
+        .replace('5f-актиноїд', '5f-actinide')
+        .replace('-елемент', '-block')
         .replace(' рад. / ', ' rad. / ')
         .replace(' кут.', ' ang.')
         .replace('AX₂ (лінійна, CO₂ / BeCl₂)', 'AX₂ (linear, CO₂ / BeCl₂)')
@@ -27140,6 +27412,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace('[H⁺] > [OH⁻] (кисле)', '[H⁺] > [OH⁻] (acidic)')
         .replace('[OH⁻] > [H⁺] (лужне)', '[OH⁻] > [H⁺] (alkaline)')
         .replace('[H⁺] = [OH⁻] (нейтральне)', '[H⁺] = [OH⁻] (neutral)')
+        .replaceAll('кисле', 'acidic')
+        .replaceAll('лужне', 'alkaline')
+        .replaceAll('нейтральне', 'neutral')
+        .replaceAll('середовище', 'medium')
         .replace('1.5 (усі 1.40 Å)', '1.5 (all 1.40 Å)')
         .replace('4n + 2 = 6 (n = 1, ароматичний)', '4n + 2 = 6 (n = 1, aromatic)')
         .replace('-й період, група ', 'th period, group ')
@@ -27173,8 +27449,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace('CuSO₄ (купрум сульфат, λ_max = 650 нм)', 'CuSO₄ (copper sulfate, λ_max = 650 nm)')
         .replace('K₂Cr₂O₇ (дихромат, λ_max = 450 нм)', 'K₂Cr₂O₇ (dichromate, λ_max = 450 nm)')
         .replace('л/(ммоль·см)', 'L/(mmol·cm)')
-        .replace('ммоль/л', 'mmol/L')
-        .replace('ммоль', 'mmol')
+        .replaceAll('ммоль/л', 'mmol/L')
+        .replaceAll('ммоль', 'mmol')
         .replace('втрати η =', 'loss η =')
         .replace('Вт/см²', 'W/cm²')
         .replace('при j =', 'at j =')
@@ -27196,20 +27472,24 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace('ланок (', 'units (')
         .replace('атомів C)', 'C atoms)')
         .replace('кДж/моль ланцюгів (93 кДж/моль мономеру)', 'kJ/mol chains (93 kJ/mol monomer)')
-        .replace('г/см³', 'g/cm³')
-        .replace('г/моль', 'g/mol')
-        .replace('Дж/К', 'J/K')
-        .replace('моль', 'mol')
-        .replace('мМ', 'mM')
+        .replaceAll('моль/(л·с)', 'mol/(L·s)')
+        .replaceAll('кДж/моль', 'kJ/mol')
+        .replaceAll('моль/кг', 'mol/kg')
+        .replaceAll('моль/л', 'mol/L')
+        .replaceAll('л/моль', 'L/mol')
+        .replaceAll('г/моль', 'g/mol')
+        .replaceAll('г/см³', 'g/cm³')
+        .replaceAll('Дж/К', 'J/K')
+        .replaceAll('кДж', 'kJ')
+        .replaceAll('моль', 'mol')
+        .replaceAll('мМ', 'mM')
         .replace('м.ч. (ppm)', 'ppm')
-        .replace('кДж/моль', 'kJ/mol')
-        .replace('л/моль', 'L/mol')
-        .replace('моль/(л·с)', 'mol/(L·s)')
-        .replace('атм⁻¹', 'atm⁻¹')
-        .replace('мг/Кл', 'mg/C')
+        .replaceAll('атм⁻¹', 'atm⁻¹')
+        .replaceAll('мг/Кл', 'mg/C')
         .replace('додано', 'added')
         .replace(/ мл/g, ' mL')
         .replace(/ Кл/g, ' C')
+        .replaceAll(' Д (', ' D (')
         .replace(/ Д$/g, ' D')
         .replace(/ г /g, ' g ')
         .replace('ПВВ (повне відбиття)', 'TIR (total reflection)')
@@ -27289,11 +27569,23 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace(/од\./g, 'u.')
         .replace(/Дж/g, 'J')
         .replace(/Тл/g, 'T')
+        .replaceAll(' А (', ' A (')
+        .replaceAll(' В)', ' V)')
+        .replaceAll(' В ', ' V ')
+        .replaceAll(' К)', ' K)')
+        .replaceAll(' К,', ' K,')
+        .replaceAll(' К ', ' K ')
+        .replaceAll(' М)', ' M)')
+        .replaceAll(' М,', ' M,')
+        .replaceAll(' М ', ' M ')
+        .replaceAll(' с (', ' s (')
         .replace(/ А$/g, ' A')
         .replace(/ Н$/g, ' N')
         .replace(/ В$/g, ' V')
         .replace(/ л$/g, ' L')
         .replace(/ К$/g, ' K')
+        .replace(/ М$/g, ' M')
+        .replace(/ Б$/g, ' B')
         .replaceAll(' м)', ' m)')
         .replaceAll(' м ', ' m ')
         .replace(/ м$/g, ' m')
@@ -29910,7 +30202,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const grid = document.getElementById('telemetry-grid');
       grid.innerHTML = telemetryItems
         .map(item => {
-          const lbl = uiState.lang === 'en' ? (TELEMETRY_LABEL_EN[item.label] || item.label) : item.label;
+          const lbl = translateTelemetryLabel(item.label);
           const val = translateTelemetryVal(item.val);
           return `
         <div class="meas-cell">

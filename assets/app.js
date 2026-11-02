@@ -5007,6 +5007,38 @@
           worldGroup.add(tick);
         }
 
+        // Торцеві пружні відбійники повітряної/рейкової доріжки та оптичні фотоворота
+        const bumperMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.32 });
+        const brassBufMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.82, roughness: 0.24 });
+        for (const side of [-1, 1]) {
+          const endBlock = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.68, 5.22), bumperMat);
+          endBlock.position.set(side * 8.84, 0.52, 0);
+          endBlock.castShadow = true;
+          worldGroup.add(endBlock);
+
+          for (const zBuf of [-1.2, 0, 1.2]) {
+            const plunger = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.26, 16), brassBufMat);
+            plunger.rotation.z = Math.PI / 2;
+            plunger.position.set(side * 8.58, 0.56, zBuf);
+            worldGroup.add(plunger);
+          }
+        }
+
+        for (const gx of [-2.4, 2.4]) {
+          const gateLeft = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.65, 0.14), bumperMat);
+          gateLeft.position.set(gx, 1.18, 2.52);
+          const gateRight = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.65, 0.14), bumperMat);
+          gateRight.position.set(gx, 1.18, -2.52);
+          const gateTop = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.14, 5.22), bumperMat);
+          gateTop.position.set(gx, 1.98, 0);
+          const sensorLed = new THREE.Mesh(
+            new THREE.SphereGeometry(0.055, 12, 12),
+            new THREE.MeshBasicMaterial({ color: 0xef4444 })
+          );
+          sensorLed.position.set(gx, 1.92, 2.42);
+          worldGroup.add(gateLeft, gateRight, gateTop, sensorLed);
+        }
+
         const sphereGeo = new THREE.SphereGeometry(1, 48, 48);
         this.mat1 = new THREE.MeshPhysicalMaterial({ color: 0x1e3a5f, metalness: 0.25, roughness: 0.2, clearcoat: 0.6 });
         this.mat2 = new THREE.MeshPhysicalMaterial({ color: 0x8b261d, metalness: 0.25, roughness: 0.2, clearcoat: 0.6 });
@@ -5241,6 +5273,34 @@
           this.inclinePivot.add(mark);
         }
 
+        // Бічні напрямні бортики жолоба, верхній упор з блоком та нижній шарнірний вузол з транспортиром
+        const railMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.62, roughness: 0.34 });
+        const brassMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.82, roughness: 0.24 });
+        for (const zSide of [-1.24, 1.24]) {
+          const sideRail = new THREE.Mesh(new THREE.BoxGeometry(this.rampLength, 0.14, 0.08), railMat);
+          sideRail.position.set(this.rampLength / 2, 0.07, zSide);
+          this.inclinePivot.add(sideRail);
+
+          const clevisEar = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.42, 0.12), railMat);
+          clevisEar.position.set(-4.5, 0.22, zSide * 1.06);
+          worldGroup.add(clevisEar);
+        }
+        const hingePin = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 2.86, 18), brassMat);
+        hingePin.rotation.x = Math.PI / 2;
+        hingePin.position.set(-4.5, 0.2, 0);
+        worldGroup.add(hingePin);
+
+        const topStop = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.46, 2.56), railMat);
+        topStop.position.set(this.rampLength - 0.09, 0.22, 0);
+        this.inclinePivot.add(topStop);
+
+        const protractorArc = new THREE.Mesh(
+          new THREE.RingGeometry(2.05, 2.32, 32, 1, 0, Math.PI * 0.38),
+          new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.72, roughness: 0.3, side: THREE.DoubleSide })
+        );
+        protractorArc.position.set(-4.5, 0.2, 1.31);
+        worldGroup.add(protractorArc);
+
         this.blockWidth = 1.1;
         this.blockHeight = 0.7;
         this.block = new THREE.Mesh(
@@ -5426,18 +5486,37 @@
       }
 
       buildScene() {
-        const frameMat = new THREE.MeshStandardMaterial({ color: 0x57534e, metalness: 0.4, roughness: 0.4 });
+        const basePlate = new THREE.Mesh(
+          new THREE.BoxGeometry(9.6, 0.32, 3.6),
+          new THREE.MeshStandardMaterial({ color: 0xd6cfc2, roughness: 0.58, metalness: 0.08 })
+        );
+        basePlate.position.set(0, 0.16, 0);
+        basePlate.receiveShadow = true;
+        basePlate.castShadow = true;
+        worldGroup.add(basePlate);
+
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x57534e, metalness: 0.55, roughness: 0.35 });
+        const brassMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.82, roughness: 0.24 });
         const topBar = new THREE.Mesh(new THREE.BoxGeometry(8.5, 0.28, 0.5), frameMat);
         topBar.position.set(0, 6.2, 0);
         topBar.castShadow = true;
 
-        const leftPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, 6.2, 20), frameMat);
-        leftPillar.position.set(-4.0, 3.1, 0);
+        const leftPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, 6.0, 20), frameMat);
+        leftPillar.position.set(-4.0, 3.16, 0);
         leftPillar.castShadow = true;
 
-        const rightPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, 6.2, 20), frameMat);
-        rightPillar.position.set(4.0, 3.1, 0);
+        const rightPillar = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, 6.0, 20), frameMat);
+        rightPillar.position.set(4.0, 3.16, 0);
         rightPillar.castShadow = true;
+
+        // Верхні вузли підвісу маятників (цангові затискачі з латунними фіксаторами)
+        for (const px of [-1.8, 1.8]) {
+          const clampBlock = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.42, 0.64), frameMat);
+          clampBlock.position.set(px, 6.2, 0);
+          const chuckRing = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.11, 0.22, 18), brassMat);
+          chuckRing.position.set(px, 6.02, 0);
+          worldGroup.add(clampBlock, chuckRing);
+        }
 
         worldGroup.add(topBar, leftPillar, rightPillar);
 
@@ -5478,6 +5557,15 @@
         this.weightMat = new THREE.MeshPhysicalMaterial({ color: 0x8b261d, roughness: 0.25, metalness: 0.2, clearcoat: 0.6 });
         this.weightMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.65, 32), this.weightMat);
         this.weightMesh.castShadow = true;
+        const hookRing = new THREE.Mesh(new THREE.TorusGeometry(0.095, 0.024, 12, 24), brassMat);
+        hookRing.position.y = 0.38;
+        this.weightMesh.add(hookRing);
+        for (const gy of [-0.14, 0.14]) {
+          const slotRing = new THREE.Mesh(new THREE.TorusGeometry(0.425, 0.018, 10, 28), brassMat);
+          slotRing.rotation.x = Math.PI / 2;
+          slotRing.position.y = gy;
+          this.weightMesh.add(slotRing);
+        }
         worldGroup.add(this.weightMesh);
 
         this.tensionArrow = new SmartVectorArrow('T', 0xb45309, '#b45309');
@@ -5910,9 +5998,10 @@
         base.castShadow = true;
         worldGroup.add(base);
 
-        const metalFrameMat = new THREE.MeshStandardMaterial({ color: 0x57534e, metalness: 0.6, roughness: 0.3 });
+        const metalFrameMat = new THREE.MeshStandardMaterial({ color: 0x57534e, metalness: 0.68, roughness: 0.28 });
+        const brassMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.84, roughness: 0.22 });
         for (const z of [-1.2, 1.2]) {
-          const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 6.4, 16), metalFrameMat);
+          const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 6.2, 16), metalFrameMat);
           bar.rotation.z = Math.PI / 2;
           bar.position.set(0, this.pivotY, z);
           worldGroup.add(bar);
@@ -5922,14 +6011,26 @@
             leg.position.set(x, this.pivotY / 2, z);
             leg.castShadow = true;
             worldGroup.add(leg);
+
+            const cornerJoint = new THREE.Mesh(new THREE.SphereGeometry(0.125, 18, 18), brassMat);
+            cornerJoint.position.set(x, this.pivotY, z);
+            worldGroup.add(cornerJoint);
           }
         }
 
+        // Поперечні торцеві стяжки рами між передньою та задньою дугами
+        for (const x of [-3.1, 3.1]) {
+          const crossBrace = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 2.4, 16), metalFrameMat);
+          crossBrace.rotation.x = Math.PI / 2;
+          crossBrace.position.set(x, this.pivotY, 0);
+          worldGroup.add(crossBrace);
+        }
+
         const steelMat = new THREE.MeshPhysicalMaterial({
-          color: 0x475569,
-          metalness: 0.82,
-          roughness: 0.15,
-          clearcoat: 0.8
+          color: 0x64748b,
+          metalness: 0.88,
+          roughness: 0.12,
+          clearcoat: 0.85
         });
 
         this.bobs = [];
@@ -5940,7 +6041,21 @@
           const mesh = new THREE.Mesh(new THREE.SphereGeometry(this.ballRadius, 36, 36), steelMat.clone());
           mesh.castShadow = true;
           mesh.receiveShadow = true;
+
+          // Латунне вушко підвісу на вершині кожної сталевої кулі та кільця кріплення на перекладинах
+          const eyeNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.075, 0.08, 14), brassMat);
+          eyeNeck.position.y = this.ballRadius * 0.94;
+          const eyeRing = new THREE.Mesh(new THREE.TorusGeometry(0.065, 0.018, 10, 20), brassMat);
+          eyeRing.position.y = this.ballRadius + 0.04;
+          mesh.add(eyeNeck, eyeRing);
           worldGroup.add(mesh);
+
+          for (const z of [-1.2, 1.2]) {
+            const topCollar = new THREE.Mesh(new THREE.TorusGeometry(0.095, 0.022, 10, 20), brassMat);
+            topCollar.rotation.y = Math.PI / 2;
+            topCollar.position.set(anchorX, this.pivotY, z);
+            worldGroup.add(topCollar);
+          }
 
           const strLine = new THREE.Line(
             new THREE.BufferGeometry(),
@@ -6089,6 +6204,20 @@
       }
 
       buildScene() {
+        // Стаціонарний корпус електроприводу центрифуги під обертовим столом
+        const motorBase = new THREE.Mesh(
+          new THREE.BoxGeometry(11.2, 0.18, 11.2),
+          new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.52, metalness: 0.55 })
+        );
+        motorBase.position.set(0, 0.04, 0);
+        motorBase.receiveShadow = true;
+        const motorHousing = new THREE.Mesh(
+          new THREE.CylinderGeometry(1.65, 1.95, 0.22, 36),
+          new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.4, metalness: 0.7 })
+        );
+        motorHousing.position.set(0, 0.14, 0);
+        worldGroup.add(motorBase, motorHousing);
+
         this.diskGroup = new THREE.Group();
         this.diskGroup.position.set(0, 0.3, 0);
         worldGroup.add(this.diskGroup);
@@ -6100,6 +6229,25 @@
         diskMesh.receiveShadow = true;
         diskMesh.castShadow = true;
         this.diskGroup.add(diskMesh);
+
+        const rimRing = new THREE.Mesh(
+          new THREE.TorusGeometry(this.diskRadius + 0.02, 0.045, 14, 64),
+          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.68, roughness: 0.32 })
+        );
+        rimRing.rotation.x = Math.PI / 2;
+        rimRing.position.y = 0.06;
+        this.diskGroup.add(rimRing);
+
+        // Концентричні радіальні кільця розмітки R = 1, 2, 3, 4 м на поверхні диска
+        for (let r = 1; r <= 4; r++) {
+          const rRing = new THREE.Mesh(
+            new THREE.RingGeometry(r - 0.018, r + 0.018, 48),
+            new THREE.MeshBasicMaterial({ color: 0x78716c, side: THREE.DoubleSide })
+          );
+          rRing.rotation.x = -Math.PI / 2;
+          rRing.position.y = 0.132;
+          this.diskGroup.add(rRing);
+        }
 
         // Радіальні лінії на диску для наочності обертання
         for (let i = 0; i < 8; i++) {
@@ -6596,20 +6744,58 @@
         wallMesh.renderOrder = 4;
         worldGroup.add(wallMesh);
 
-        // Рухомий поршень зі штоком
+        // Рухомий поршень з подвійними ущільнювальними кільцями, штоком та вантажною платформою
         this.pistonGroup = new THREE.Group();
         const disk = new THREE.Mesh(
           new THREE.CylinderGeometry(this.cylRadius - 0.04, this.cylRadius - 0.04, 0.28, 36),
-          new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.55, roughness: 0.3 })
+          new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.65, roughness: 0.28 })
         );
         disk.castShadow = true;
+        const oRingMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.75, metalness: 0.15 });
+        for (const oy of [-0.08, 0.08]) {
+          const oRing = new THREE.Mesh(new THREE.TorusGeometry(this.cylRadius - 0.03, 0.026, 12, 36), oRingMat);
+          oRing.rotation.x = Math.PI / 2;
+          oRing.position.y = oy;
+          disk.add(oRing);
+        }
         const rod = new THREE.Mesh(
           new THREE.CylinderGeometry(0.14, 0.14, 1.4, 16),
-          new THREE.MeshStandardMaterial({ color: 0x78716c, metalness: 0.6, roughness: 0.3 })
+          new THREE.MeshStandardMaterial({ color: 0x78716c, metalness: 0.68, roughness: 0.28 })
         );
         rod.position.y = 0.8;
-        this.pistonGroup.add(disk, rod);
+        const loadPlaten = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.68, 0.68, 0.18, 28),
+          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.62, roughness: 0.32 })
+        );
+        loadPlaten.position.y = 1.52;
+        this.pistonGroup.add(disk, rod, loadPlaten);
         worldGroup.add(this.pistonGroup);
+
+        // Зовнішні сталеві стяжні шпильки автоклава/циліндра, верхній фланець та донна спіраль нагрівача
+        const tieRodMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.75, roughness: 0.25 });
+        const topFlange = new THREE.Mesh(
+          new THREE.TorusGeometry(this.cylRadius + 0.08, 0.09, 16, 40),
+          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.65, roughness: 0.32 })
+        );
+        topFlange.rotation.x = Math.PI / 2;
+        topFlange.position.set(0, this.baseY + 5.2, 0);
+        worldGroup.add(topFlange);
+
+        for (let k = 0; k < 4; k++) {
+          const ang = (k * Math.PI) * 0.5 + Math.PI * 0.25;
+          const rTie = this.cylRadius + 0.12;
+          const tieRod = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 5.35, 14), tieRodMat);
+          tieRod.position.set(Math.cos(ang) * rTie, this.baseY + 2.6, Math.sin(ang) * rTie);
+          worldGroup.add(tieRod);
+        }
+
+        const heaterCoil = new THREE.Mesh(
+          new THREE.TorusGeometry(this.cylRadius * 0.58, 0.055, 14, 32),
+          new THREE.MeshStandardMaterial({ color: 0xd97706, emissive: 0xb45309, emissiveIntensity: 0.35, metalness: 0.5, roughness: 0.3 })
+        );
+        heaterCoil.rotation.x = Math.PI / 2;
+        heaterCoil.position.set(0, this.baseY + 0.05, 0);
+        worldGroup.add(heaterCoil);
 
         // Пул молекул газу
         const molGeo = new THREE.SphereGeometry(0.11, 16, 16);
@@ -21719,6 +21905,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.pedestal.position.set(-2.2, 0.42, 0.2);
         this.group.add(this.pedestal);
 
+        const stemMount = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.11, 1.35, 16), createTechnicalMaterial(0x64748b, 0.35, 0.72));
+        stemMount.position.set(-2.2, 1.15, 0.2);
+        this.group.add(stemMount);
+
         this.latticeGroup = new THREE.Group();
         this.latticeGroup.position.set(-2.2, 1.85, 0.2);
         this.group.add(this.latticeGroup);
@@ -21737,6 +21927,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             }
           }
         }
+
+        // Каркас йонної кристалічної ґратки типу NaCl між сусідніми вузлами
+        this.latticeEdgesLine = new THREE.LineSegments(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.55 })
+        );
+        this.latticeGroup.add(this.latticeEdgesLine);
 
         const stepCols = [0xf59e0b, 0xf97316, 0xef4444, 0x3b82f6, 0x10b981];
         for (let i = 0; i < 5; i++) {
@@ -21775,6 +21972,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const { ix, iy, iz } = ion.userData;
           ion.position.set(ix * spacing, iy * spacing, iz * spacing);
         });
+        if (this.latticeEdgesLine) {
+          const edgePts = [];
+          for (let a = 0; a < this.ions.length; a++) {
+            const u = this.ions[a].userData;
+            for (let b = a + 1; b < this.ions.length; b++) {
+              const v = this.ions[b].userData;
+              if (Math.abs(u.ix - v.ix) + Math.abs(u.iy - v.iy) + Math.abs(u.iz - v.iz) === 1) {
+                edgePts.push(this.ions[a].position.clone(), this.ions[b].position.clone());
+              }
+            }
+          }
+          this.latticeEdgesLine.geometry.setFromPoints(edgePts);
+        }
         this.latticeGroup.rotation.y = this.phase * 0.35;
 
         const heights = [subl / 320, diss / 320, ioniz / 320, Math.abs(eaCl) / 320, uLat / 320];
@@ -22109,6 +22319,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.group.add(pt);
           this.curveSpheres.push(pt);
         }
+        this.curveLine = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x38bdf8, linewidth: 2 })
+        );
+        this.group.add(this.curveLine);
 
         this.cursorSphere = new THREE.Mesh(new THREE.SphereGeometry(0.13, 18, 18), new THREE.MeshBasicMaterial({ color: 0xfef08a }));
         this.group.add(this.cursorSphere);
@@ -22153,11 +22368,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           m.material.color.setHex(i < nActive ? 0x3b82f6 : 0x10b981);
         });
 
+        const curvePts = [];
         this.curveSpheres.forEach((pt, i) => {
           const ti = (i / 19) * 10.0;
           const ai = calcAt(ti);
           pt.position.set(0.45 + (ti / 10.0) * 3.1, 0.5 + (ai / 4.0) * 2.0, -0.38);
+          curvePts.push(pt.position.clone());
         });
+        if (this.curveLine) {
+          this.curveLine.geometry.setFromPoints(curvePts);
+        }
 
         this.cursorSphere.position.set(0.45 + (t / 10.0) * 3.1, 0.5 + (at / 4.0) * 2.0, -0.34);
 
@@ -23304,7 +23524,23 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.group.add(slab);
         }
 
-        // Top external circuit bridge
+        // Top external circuit bridge, vertical current collectors, and transparent prismatic cell casing
+        const cellCase = new THREE.Mesh(
+          new THREE.BoxGeometry(6.4, 2.45, 2.55),
+          new THREE.MeshPhysicalMaterial({ color: 0x94a3b8, roughness: 0.12, transmission: 0.72, transparent: true, opacity: 0.24, depthWrite: false })
+        );
+        cellCase.position.set(0, 1.48, 0);
+        this.group.add(cellCase);
+
+        const cuPost = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.6, 16), createTechnicalMaterial(0xd97706, 0.28, 0.85));
+        cuPost.position.set(-2.3, 1.75, 0);
+        const alPost = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.6, 16), createTechnicalMaterial(0xcbd5e1, 0.28, 0.85));
+        alPost.position.set(2.3, 1.75, 0);
+        const loadUnit = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.85, 20), createTechnicalMaterial(0x334155, 0.35, 0.65));
+        loadUnit.rotation.z = Math.PI / 2;
+        loadUnit.position.set(0, 3.05, 0);
+        this.group.add(cuPost, alPost, loadUnit);
+
         const wire = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 4.6, 16), createTechnicalMaterial(0xf59e0b, 0.3, 0.8));
         wire.rotation.z = Math.PI / 2;
         wire.position.set(0, 3.05, 0);
@@ -23545,19 +23781,46 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.esterGroup = new THREE.Group();
         this.group.add(this.acidGroup, this.alcoholGroup, this.esterGroup);
 
-        // Carbonyl carbon (black), carbonyl O (red), acid OH (blue-cyan to show it leaves as H2O)
+        // Carbonyl carbon (black), carbonyl O (red), methyl CH3 (slate), acid OH (blue-cyan to show it leaves as H2O)
+        const bondMat = createTechnicalMaterial(0xcbd5e1, 0.3, 0.45);
         const cCarb = new THREE.Mesh(new THREE.SphereGeometry(0.32, 24, 24), createTechnicalMaterial(0x334155, 0.25, 0.5));
         const oCarb = new THREE.Mesh(new THREE.SphereGeometry(0.26, 20, 20), createTechnicalMaterial(0xef4444, 0.2, 0.3));
         oCarb.position.set(0, 0.68, 0);
+        const ch3Acid = new THREE.Mesh(new THREE.SphereGeometry(0.28, 20, 20), createTechnicalMaterial(0x475569, 0.3, 0.4));
+        ch3Acid.position.set(-0.62, -0.35, 0);
+        const bDouble1 = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.68, 12), bondMat);
+        bDouble1.position.set(-0.06, 0.34, 0);
+        const bDouble2 = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.68, 12), bondMat);
+        bDouble2.position.set(0.06, 0.34, 0);
+        const bMethyl = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.72, 12), bondMat);
+        bMethyl.position.set(-0.31, -0.175, 0);
+        bMethyl.rotation.z = -1.05;
         this.leavingOH = new THREE.Mesh(new THREE.SphereGeometry(0.26, 20, 20), createTechnicalMaterial(0x38bdf8, 0.2, 0.3));
         this.leavingOH.position.set(0.62, -0.35, 0);
-        this.acidGroup.add(cCarb, oCarb, this.leavingOH);
+        this.acidGroup.add(cCarb, oCarb, ch3Acid, bDouble1, bDouble2, bMethyl, this.leavingOH);
 
-        // Alcohol group with glowing gold/emerald 18O isotope tag
+        // Alcohol group with glowing gold/emerald 18O isotope tag and covalent bond
         this.isoO18 = new THREE.Mesh(new THREE.SphereGeometry(0.3, 24, 24), createTechnicalMaterial(0x10b981, 0.18, 0.4));
         const ethylTail = new THREE.Mesh(new THREE.SphereGeometry(0.34, 24, 24), createTechnicalMaterial(0x475569, 0.3, 0.4));
         ethylTail.position.set(0.65, -0.25, 0);
-        this.alcoholGroup.add(this.isoO18, ethylTail);
+        const bEthyl = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.70, 12), bondMat);
+        bEthyl.position.set(0.325, -0.125, 0);
+        bEthyl.rotation.z = 1.20;
+        this.alcoholGroup.add(this.isoO18, ethylTail, bEthyl);
+
+        // Скляний реактор естерифікації та паропровід до пастки Діна–Старка
+        const rxnVessel = new THREE.Mesh(
+          new THREE.CylinderGeometry(1.75, 1.75, 2.5, 28, 1, true),
+          new THREE.MeshPhysicalMaterial({ color: 0x94a3b8, roughness: 0.14, transmission: 0.78, transparent: true, opacity: 0.30, side: THREE.DoubleSide })
+        );
+        rxnVessel.position.set(-0.85, 1.5, 0);
+        const vaporBridge = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.11, 0.11, 4.1, 16),
+          new THREE.MeshPhysicalMaterial({ color: 0xcbd5e1, roughness: 0.15, transparent: true, opacity: 0.42 })
+        );
+        vaporBridge.rotation.z = Math.PI / 2;
+        vaporBridge.position.set(1.18, 2.55, 0);
+        this.group.add(rxnVessel, vaporBridge);
 
         // Dean-Stark water trap cylinder on right
         this.trap = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 2.0, 24, 1, true), new THREE.MeshPhysicalMaterial({
@@ -23657,6 +23920,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.receiveShadow = true;
         this.group.add(base);
 
+        const centralRod = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.055, 0.085, 3.1, 16),
+          createTechnicalMaterial(0x475569, 0.35, 0.72)
+        );
+        centralRod.position.set(0, 1.8, 0);
+        this.group.add(centralRod);
+
         this.helixGroup = new THREE.Group();
         this.helixGroup.position.set(0, 1.85, 0);
         this.group.add(this.helixGroup);
@@ -23670,6 +23940,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.strand2.push(s2);
           this.rungs.push(rung);
         }
+
+        this.backbone1Line = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x38bdf8, linewidth: 2 })
+        );
+        this.backbone2Line = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0xa855f7, linewidth: 2 })
+        );
+        this.helixGroup.add(this.backbone1Line, this.backbone2Line);
 
         this.arrTm = new SmartVectorArrow('T_m', 0xef4444);
         this.arrHbond = new SmartVectorArrow('N_H-зв', 0x10b981);
@@ -23701,6 +23981,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const up = new THREE.Vector3(0, 1, 0);
         this.helixGroup.rotation.y = this.phase * 0.45;
 
+        const pts1 = [];
+        const pts2 = [];
         for (let i = 0; i < 28; i++) {
           const vis = i < activeCount;
           this.strand1[i].visible = vis;
@@ -23715,10 +23997,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
           const p1 = new THREE.Vector3(Math.cos(ang) * rad, y, Math.sin(ang) * rad);
           this.strand1[i].position.copy(p1);
+          pts1.push(p1.clone());
 
           if (mode === 2) {
             const p2 = new THREE.Vector3(Math.cos(ang + Math.PI) * rad, y, Math.sin(ang + Math.PI) * rad);
             this.strand2[i].position.copy(p2);
+            pts2.push(p2.clone());
 
             const isGC = ((i * 37) % 100) < gc;
             this.rungs[i].material.color.setHex(isGC ? 0x10b981 : 0xf59e0b);
@@ -23733,6 +24017,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             this.rungs[i].scale.set(0.8, 0.35, 0.8);
             this.rungs[i].quaternion.identity();
           }
+        }
+        if (this.backbone1Line) {
+          this.backbone1Line.geometry.setFromPoints(pts1);
+        }
+        if (this.backbone2Line) {
+          this.backbone2Line.visible = (mode === 2);
+          if (mode === 2) this.backbone2Line.geometry.setFromPoints(pts2);
         }
 
         this.arrTm.update(new THREE.Vector3(-2.6, 0.5, 0), new THREE.Vector3(0, 1, 0), (tm / 100) * 2.2, uiState.showVectors, uiState.showLabels);
@@ -31390,6 +31681,52 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         cadSharedCache.rubberFootMat.userData = { persistent: true };
       }
 
+      if (!cadSharedCache.enamelTickMat) {
+        cadSharedCache.enamelTickMat = new THREE.MeshBasicMaterial({
+          color: 0xe2e8f0,
+          transparent: true,
+          opacity: 0.72
+        });
+        cadSharedCache.enamelTickMat.userData = { persistent: true };
+      }
+
+      if (!cadSharedCache.screenGridTex) {
+        const cs = document.createElement('canvas');
+        cs.width = 512;
+        cs.height = 512;
+        const ctx = cs.getContext('2d');
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, 512, 512);
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.14)';
+        ctx.lineWidth = 1;
+        for (let g = 0; g <= 512; g += 32) {
+          ctx.beginPath();
+          ctx.moveTo(g, 0);
+          ctx.lineTo(g, 512);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(0, g);
+          ctx.lineTo(512, g);
+          ctx.stroke();
+        }
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.26)';
+        ctx.lineWidth = 1.5;
+        for (let g = 0; g <= 512; g += 128) {
+          ctx.beginPath();
+          ctx.moveTo(g, 0);
+          ctx.lineTo(g, 512);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(0, g);
+          ctx.lineTo(512, g);
+          ctx.stroke();
+        }
+        const tex = new THREE.CanvasTexture(cs);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.userData = { persistent: true };
+        cadSharedCache.screenGridTex = tex;
+      }
+
       return cadSharedCache;
     }
 
@@ -31543,8 +31880,69 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
                 hardwareGrp.add(foot);
               }
             }
+
+            // Фронтальний латунний шильдик приладу на передньому торці опорної плити
+            const nameplate = new THREE.Mesh(
+              new THREE.BoxGeometry(Math.min(1.15, w * 0.18), Math.min(0.11, h * 0.48), 0.022),
+              assets.brassMat
+            );
+            nameplate.position.set(0, 0, d * 0.5 + 0.011);
+            hardwareGrp.add(nameplate);
+
             markNoRaycastRecursive(hardwareGrp);
             mesh.add(hardwareGrp);
+          }
+
+          // Вертикальні табло/екрани осцилографів та діаграм: сітка, металева рамка та опорні стійки до бази
+          if (w >= 1.8 && h >= 1.5 && d <= 0.30 && isUpright && !isTransparent && worldPos.y >= 1.0 && mesh.scale.x === 1 && mesh.scale.y === 1) {
+            const hex = (mat && mat.color) ? mat.color.getHex() : 0;
+            if ((hex === 0x0f172a || hex === 0x1e293b || hex === 0x111827) && !mat.map) {
+              mat.map = assets.screenGridTex;
+              mat.roughness = 0.32;
+              mat.metalness = 0.25;
+              mat.needsUpdate = true;
+            }
+            const boardGrp = new THREE.Group();
+            const bz = 0.055;
+            const topRim = new THREE.Mesh(new THREE.BoxGeometry(w + bz * 2, bz, d + 0.04), assets.darkSteelMat);
+            topRim.position.y = h * 0.5 + bz * 0.5;
+            const botRim = new THREE.Mesh(new THREE.BoxGeometry(w + bz * 2, bz, d + 0.04), assets.darkSteelMat);
+            botRim.position.y = -h * 0.5 - bz * 0.5;
+            const leftRim = new THREE.Mesh(new THREE.BoxGeometry(bz, h, d + 0.04), assets.darkSteelMat);
+            leftRim.position.x = -w * 0.5 - bz * 0.5;
+            const rightRim = new THREE.Mesh(new THREE.BoxGeometry(bz, h, d + 0.04), assets.darkSteelMat);
+            rightRim.position.x = w * 0.5 + bz * 0.5;
+            boardGrp.add(topRim, botRim, leftRim, rightRim);
+
+            const botY = worldPos.y - h * 0.5;
+            if (botY > 0.26 && botY < 1.8) {
+              const legH = botY - 0.24;
+              for (const sx of [-w * 0.35, w * 0.35]) {
+                const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.065, legH, 14), assets.darkSteelMat);
+                leg.position.set(sx, -h * 0.5 - legH * 0.5, 0);
+                const footFlange = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.15, 0.04, 16), assets.brassMat);
+                footFlange.position.set(sx, -h * 0.5 - legH + 0.02, 0);
+                boardGrp.add(leg, footFlange);
+              }
+            }
+            markNoRaycastRecursive(boardGrp);
+            mesh.add(boardGrp);
+          }
+
+          // Вертикальні електродні/конденсаторні пластини: ізоляторна стійка до бази
+          if (w <= 0.32 && h >= 1.5 && d >= 1.5 && isUpright && !isTransparent && mesh.scale.y === 1) {
+            const botY = worldPos.y - h * 0.5;
+            if (botY > 0.26 && botY < 1.5) {
+              const legH = botY - 0.24;
+              const insGrp = new THREE.Group();
+              const post = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, legH, 16), assets.darkSteelMat);
+              post.position.y = -h * 0.5 - legH * 0.5;
+              const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.05, 16), assets.brassMat);
+              collar.position.y = -h * 0.5 - 0.025;
+              insGrp.add(post, collar);
+              markNoRaycastRecursive(insGrp);
+              mesh.add(insGrp);
+            }
           }
 
           // Чіткі креслярські ребра (EdgesGeometry) для прямокутних деталей
@@ -31629,22 +32027,77 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             mesh.add(postHardware);
           }
 
-          // Відбортований скляний вінчик на прозорих лабораторних склянках та циліндрах
-          if (isUpright && isTransparent && !isVeryFaint && rTop >= 0.36 && rTop <= 2.4 && h >= 0.85 && Math.abs(rTop - rBot) < 0.15) {
-            const glassLip = new THREE.Mesh(
-              new THREE.TorusGeometry(rTop, 0.022, 12, 36),
-              new THREE.MeshPhysicalMaterial({
-                color: 0xe2e8f0,
-                transparent: true,
-                opacity: Math.min(0.65, (mat.opacity || 0.25) + 0.22),
-                roughness: 0.08,
-                metalness: 0.05
-              })
-            );
+          // Відбортований скляний вінчик, скляне дно, мірна шкала та опорний триножник на прозорих лабораторних склянках і реакторах
+          if (isUpright && isTransparent && !isVeryFaint && !isDynamicRod && rTop >= 0.36 && rTop <= 2.4 && h >= 0.85 && Math.abs(rTop - rBot) < 0.15) {
+            const glassVesselGrp = new THREE.Group();
+            const lipMat = new THREE.MeshPhysicalMaterial({
+              color: 0xe2e8f0,
+              transparent: true,
+              opacity: Math.min(0.65, (mat.opacity || 0.25) + 0.22),
+              roughness: 0.08,
+              metalness: 0.05
+            });
+            const glassLip = new THREE.Mesh(new THREE.TorusGeometry(rTop, 0.022, 12, 36), lipMat);
             glassLip.rotation.x = Math.PI / 2;
             glassLip.position.y = h * 0.5;
-            markNoRaycastRecursive(glassLip);
-            mesh.add(glassLip);
+            glassVesselGrp.add(glassLip);
+
+            if (p.openEnded) {
+              const botDisk = new THREE.Mesh(new THREE.CylinderGeometry(rBot, rBot, 0.035, 32), lipMat);
+              botDisk.position.y = -h * 0.5 + 0.018;
+              const botCollar = new THREE.Mesh(new THREE.TorusGeometry(rBot * 1.01, 0.026, 12, 36), assets.darkSteelMat);
+              botCollar.rotation.x = Math.PI / 2;
+              botCollar.position.y = -h * 0.5 + 0.02;
+              glassVesselGrp.add(botDisk, botCollar);
+            }
+
+            // Градуйована емалева шкала об'єму на передній твірній циліндра
+            const tickCount = 7;
+            for (let t = 0; t <= tickCount; t++) {
+              const ty = -h * 0.36 + (t / tickCount) * (h * 0.72);
+              const isMaj = (t % 2 === 0);
+              const tw = isMaj ? Math.min(0.22, rTop * 0.24) : Math.min(0.12, rTop * 0.14);
+              const tick = new THREE.Mesh(new THREE.BoxGeometry(tw, 0.014, 0.012), assets.enamelTickMat);
+              tick.position.set(rTop * 0.18, ty, rTop + 0.006);
+              glassVesselGrp.add(tick);
+            }
+
+            // Якщо скляна колба/колона висить над базовою плитою, додаємо лабораторне опорне кільце зі стійками
+            const botWorldY = worldPos.y - h * 0.5;
+            if (botWorldY > 0.27 && botWorldY < 1.85) {
+              const standH = botWorldY - 0.24;
+              const ringSupport = new THREE.Mesh(new THREE.TorusGeometry(rBot * 0.96, 0.032, 12, 32), assets.darkSteelMat);
+              ringSupport.rotation.x = Math.PI / 2;
+              ringSupport.position.y = -h * 0.5 - 0.015;
+              glassVesselGrp.add(ringSupport);
+
+              for (let k = 0; k < 3; k++) {
+                const ang = (k * Math.PI * 2) / 3 + Math.PI / 6;
+                const lx = Math.cos(ang) * (rBot * 0.92);
+                const lz = Math.sin(ang) * (rBot * 0.92);
+                const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.045, standH, 12), assets.darkSteelMat);
+                leg.position.set(lx, -h * 0.5 - standH * 0.5, lz);
+                const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.085, 0.03, 12), assets.brassMat);
+                foot.position.set(lx, -h * 0.5 - standH + 0.015, lz);
+                glassVesselGrp.add(leg, foot);
+              }
+            }
+
+            markNoRaycastRecursive(glassVesselGrp);
+            mesh.add(glassVesselGrp);
+          }
+
+          // Горизонтальні циліндричні перекладини та шини: точені латунні торцеві муфти
+          const isHorizX = Math.abs(Math.abs(mesh.rotation.z) - Math.PI / 2) < 0.08 && Math.abs(mesh.rotation.x) < 0.08;
+          if (isHorizX && !isTransparent && !isDynamicRod && rAvg >= 0.035 && rAvg <= 0.16 && h >= 2.2) {
+            const capGrp = new THREE.Group();
+            for (const s of [-1, 1]) {
+              const cap = new THREE.Mesh(new THREE.CylinderGeometry(rAvg * 1.35, rAvg * 1.35, 0.08, 16), assets.brassMat);
+              cap.position.y = s * (h * 0.5 - 0.04);
+              capGrp.add(cap);
+            }
+            markNoRaycastRecursive(capGrp);
+            mesh.add(capGrp);
           }
 
           // Креслярський контур торців циліндра

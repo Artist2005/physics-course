@@ -1,45 +1,39 @@
     :root {
-      /* Тепла палітра друкованого академічного підручника та бавовняного паперу */
-      --bg-paper: #f3efe6;
-      --bg-page: #faf7f2;
-      --bg-card: #fffdf9;
-      --bg-inset: #f0ebe1;
+      --bg-paper: #f1f5f9;
+      --bg-page: #ffffff;
+      --bg-card: #ffffff;
+      --bg-inset: #f8fafc;
 
-      /* Глибока типографська ієрархія теплого графіту та друкарської фарби */
-      --ink-primary: #1c1917;
-      --ink-secondary: #3f3a34;
-      --ink-muted: #70675e;
-      --ink-faint: #a1988d;
+      --ink-primary: #0f172a;
+      --ink-secondary: #334155;
+      --ink-muted: #64748b;
+      --ink-faint: #94a3b8;
 
-      /* Тонкі друкарські лінії (hairlines) */
-      --rule-dark: rgba(28, 25, 23, 0.18);
-      --rule-light: rgba(28, 25, 23, 0.10);
-      --rule-subtle: rgba(28, 25, 23, 0.06);
-      --shadow-hard: 0 1px 2px rgba(28, 25, 23, 0.04);
-      --shadow-hard-lg: 0 10px 28px -4px rgba(28, 25, 23, 0.12), 0 2px 6px rgba(28, 25, 23, 0.05);
+      --rule-dark: #e2e8f0;
+      --rule-light: #f1f5f9;
+      --rule-subtle: #f8fafc;
+      --shadow-hard: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-hard-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(15, 23, 42, 0.04);
 
-      /* Стримані книжкові акценти: глибоке чорнило, теракота та тепла латунь */
-      --accent-oxford: #1e3a5f;
-      --accent-oxford-soft: rgba(30, 58, 95, 0.08);
-      --accent-crimson: #8c2d19;
-      --accent-crimson-soft: rgba(140, 45, 25, 0.08);
-      --accent-brass: #9a5b13;
-      --accent-brass-soft: rgba(154, 91, 19, 0.08);
+      --accent-oxford: #2563eb;
+      --accent-oxford-soft: rgba(37, 99, 235, 0.08);
+      --accent-crimson: #dc2626;
+      --accent-crimson-soft: rgba(220, 38, 38, 0.08);
+      --accent-brass: #d97706;
+      --accent-brass-soft: rgba(217, 119, 6, 0.08);
 
-      /* Кольори фізичних величин */
-      --fig-green: #1e5631;
-      --fig-blue: #1e3a5f;
-      --fig-amber: #9a5b13;
-      --fig-red: #8c2d19;
+      --fig-green: #16a34a;
+      --fig-blue: #2563eb;
+      --fig-amber: #d97706;
+      --fig-red: #dc2626;
 
-      /* Поєднання класичної антикви, гуманістичного гротеску та табличного моноширинного шрифту */
-      --font-serif: "Crimson Pro", "Georgia", "Times New Roman", serif;
       --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      --font-serif: var(--font-sans);
       --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-      --header-h: 52px;
-      --left-page-w: clamp(340px, 26vw, 424px);
-      --right-page-w: clamp(305px, 22.5vw, 372px);
+      --header-h: 48px;
+      --left-page-w: clamp(336px, 25vw, 408px);
+      --right-page-w: clamp(300px, 22vw, 356px);
     }
 
     * {
@@ -447,13 +441,13 @@
       display: flex;
       align-items: center;
       gap: 2px;
-      padding: 3px 5px;
-      background: rgba(250, 247, 242, 0.94);
+      padding: 4px 6px;
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--rule-dark);
-      border-radius: 2px;
-      box-shadow: 0 4px 16px rgba(28, 25, 23, 0.08);
+      border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
       max-width: calc(100vw - var(--left-page-w) - var(--right-page-w) - 32px);
       overflow-x: auto;
       scrollbar-width: none;
@@ -470,7 +464,7 @@
       letter-spacing: 0;
       color: var(--ink-muted);
       padding: 4px 10px 4px 7px;
-      border-right: 1px solid var(--rule-light);
+      border-right: 1px solid var(--rule-dark);
       margin-right: 2px;
       white-space: nowrap;
     }
@@ -482,13 +476,13 @@
     }
 
     .proj-btn {
-      padding: 4px 9px;
-      border-radius: 2px;
+      padding: 4px 10px;
+      border-radius: 4px;
       border: none;
       background: transparent;
       color: var(--ink-secondary);
       font-family: var(--font-sans);
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.12s ease;
@@ -634,22 +628,22 @@
     }
 
     .chapter-title {
-      font-family: var(--font-serif);
-      font-size: 24px;
+      font-family: var(--font-sans);
+      font-size: 21px;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.24;
       color: var(--ink-primary);
-      margin-bottom: 10px;
-      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
       overflow-wrap: break-word;
       text-wrap: balance;
     }
 
     .chapter-epigraph {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-style: normal;
-      font-size: 15.5px;
-      line-height: 1.6;
+      font-size: 13.8px;
+      line-height: 1.56;
       color: var(--ink-secondary);
       padding: 2px 0 4px;
       border: none;
@@ -663,16 +657,16 @@
        КНОПКА-КНИГА ТА РОЗГОРТАЄМИЙ ТЕОРЕТИЧНИЙ КОНСПЕКТ
        ========================================================================== */
     .btn-theory-book {
-      margin-top: 14px;
+      margin-top: 12px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      padding: 7px 11px;
-      border-radius: 2px;
+      padding: 8px 12px;
+      border-radius: 6px;
       border: 1px solid var(--rule-dark);
-      background: var(--bg-card);
+      background: var(--bg-inset);
       color: var(--ink-primary);
       font-family: var(--font-sans);
       font-size: 12.5px;
@@ -706,18 +700,18 @@
     }
 
     .btn-theory-book:hover {
-      border-color: var(--ink-primary);
-      background: var(--bg-inset);
+      border-color: var(--accent-oxford);
+      background: var(--accent-oxford-soft);
     }
 
     .btn-theory-book:hover .theory-book-hint,
     .btn-theory-book.open .theory-book-hint {
-      color: var(--ink-primary);
+      color: var(--accent-oxford);
     }
 
     .btn-theory-book.open {
-      background: var(--bg-inset);
-      border-color: var(--ink-primary);
+      background: var(--accent-oxford-soft);
+      border-color: var(--accent-oxford);
       color: var(--ink-primary);
     }
 
@@ -732,7 +726,7 @@
     .btn-theory-book:hover .book-svg-icon,
     .btn-header-theory:hover .theory-book-svg,
     .btn-header-theory:hover .book-svg-icon {
-      color: var(--ink-primary);
+      color: var(--accent-oxford);
     }
 
     .theory-book-chev,
@@ -748,19 +742,17 @@
     .btn-theory-book.open .theory-book-chev,
     .btn-theory-book.open .theory-book-chevron {
       transform: rotate(180deg);
-      color: var(--ink-primary);
+      color: var(--accent-oxford);
     }
 
     /* Розгортаємий блок теоретичного конспекту */
     .theory-drawer-box {
       display: none;
-      margin-top: 10px;
+      margin-top: 8px;
       background: var(--bg-inset);
-      border: none;
-      border-top: 1px solid var(--rule-dark);
-      border-bottom: 1px solid var(--rule-dark);
-      border-radius: 0;
-      padding: 14px 12px 15px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 6px;
+      padding: 14px;
       box-shadow: none;
       animation: fadeBook 0.18s ease;
     }
@@ -776,15 +768,15 @@
     .theory-drawer-content {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 14px;
     }
 
     .theory-note-block {
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      padding-bottom: 13px;
-      border-bottom: 1px solid var(--rule-subtle);
+      gap: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule-dark);
     }
 
     .theory-note-block:last-of-type {
@@ -796,8 +788,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 5px;
-      border-bottom: 1px solid var(--rule-subtle);
+      padding-bottom: 4px;
     }
 
     .theory-note-subtitle {
@@ -813,9 +804,9 @@
 
     .theory-note-body,
     .theory-note-para {
-      font-family: var(--font-serif);
-      font-size: 15.4px;
-      line-height: 1.64;
+      font-family: var(--font-sans);
+      font-size: 13.6px;
+      line-height: 1.58;
       color: var(--ink-primary);
       text-align: left;
       text-wrap: pretty;
@@ -826,7 +817,7 @@
     .textbook-thesis-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -835,9 +826,9 @@
     .textbook-thesis-item {
       position: relative;
       padding-left: 14px;
-      font-family: var(--font-serif);
-      font-size: 15.2px;
-      line-height: 1.62;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.56;
       color: var(--ink-primary);
       text-align: left;
       text-wrap: pretty;
@@ -875,10 +866,10 @@
       margin-top: 6px;
       padding: 9px 11px;
       background: var(--bg-card);
-      border-top: 1px solid var(--rule-light);
-      border-bottom: 1px solid var(--rule-light);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
       text-align: center;
-      font-size: 13.5px;
+      font-size: 13.2px;
       color: var(--ink-primary);
       overflow: hidden;
     }
@@ -892,7 +883,7 @@
       padding: 4px 0 16px;
       background: transparent;
       border: none;
-      border-bottom: 1px solid var(--rule-light);
+      border-bottom: 1px solid var(--rule-dark);
       border-radius: 0;
     }
 
@@ -904,26 +895,26 @@
       width: 100%;
       height: 38px;
       padding: 0 16px;
-      border-radius: 2px;
-      border: 1px solid var(--ink-primary);
-      background: var(--ink-primary);
-      color: var(--bg-page);
+      border-radius: 6px;
+      border: 1px solid var(--accent-oxford);
+      background: var(--accent-oxford);
+      color: #ffffff;
       font-family: var(--font-sans);
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.015em;
+      letter-spacing: 0.01em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: none;
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.18);
       transition: background 0.12s ease, border-color 0.12s ease, transform 0.1s ease;
     }
 
     .btn-oxford-primary:hover {
-      background: var(--accent-oxford);
-      border-color: var(--accent-oxford);
+      background: #1d4ed8;
+      border-color: #1d4ed8;
     }
 
     .btn-oxford-primary:active {
@@ -941,12 +932,12 @@
     .btn-paper-secondary {
       height: 28px;
       padding: 0 11px;
-      border-radius: 2px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-card);
       color: var(--ink-secondary);
-      font-family: var(--font-mono);
-      font-size: 11px;
+      font-family: var(--font-sans);
+      font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.12s ease;
@@ -955,14 +946,14 @@
     .btn-paper-secondary:hover {
       background: var(--bg-inset);
       color: var(--ink-primary);
-      border-color: var(--ink-primary);
+      border-color: var(--ink-muted);
     }
 
     .speed-group {
       display: inline-flex;
       background: var(--bg-inset);
-      border: 1px solid var(--rule-light);
-      border-radius: 2px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
       padding: 2px;
       gap: 2px;
     }
@@ -970,7 +961,7 @@
     .speed-opt {
       padding: 2px 8px;
       border: none;
-      border-radius: 1px;
+      border-radius: 3px;
       background: transparent;
       color: var(--ink-muted);
       font-family: var(--font-mono);
@@ -988,7 +979,7 @@
       background: var(--bg-card);
       color: var(--ink-primary);
       font-weight: 600;
-      box-shadow: 0 1px 2px rgba(28, 25, 23, 0.08);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
     }
 
     /* Секція Задачі: чітка академічна подача питання та варіантів */
@@ -996,7 +987,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       padding-top: 2px;
     }
 
@@ -1010,13 +1001,13 @@
     }
 
     .problem-question {
-      font-family: var(--font-serif);
-      font-size: 16.4px;
-      line-height: 1.58;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.56;
       color: var(--ink-primary);
-      font-weight: 400;
+      font-weight: 500;
       margin-bottom: 4px;
-      padding: 2px 0 6px;
+      padding: 2px 0 4px;
       background: transparent;
       border: none;
       text-align: left;
@@ -1036,13 +1027,13 @@
       text-align: left;
       text-wrap: pretty;
       padding: 10px 12px;
-      border-radius: 2px;
+      border-radius: 6px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-card);
       color: var(--ink-primary);
       font-family: var(--font-sans);
-      font-size: 13.4px;
-      line-height: 1.54;
+      font-size: 13.2px;
+      line-height: 1.52;
       cursor: pointer;
       display: flex;
       align-items: flex-start;
@@ -1058,13 +1049,13 @@
     }
 
     .book-option-btn:hover {
-      border-color: var(--ink-secondary);
+      border-color: #94a3b8;
       background: var(--bg-inset);
     }
 
     .book-option-btn.selected {
-      border-color: var(--ink-primary);
-      background: var(--bg-inset);
+      border-color: var(--accent-oxford);
+      background: var(--accent-oxford-soft);
     }
 
     /* Клавіша-літера у стилі друкованого індексу */
@@ -1072,11 +1063,11 @@
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 600;
-      width: 21px;
-      height: 21px;
-      border-radius: 2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
-      background: var(--bg-page);
+      background: var(--bg-inset);
       color: var(--ink-secondary);
       display: inline-flex;
       align-items: center;
@@ -1086,18 +1077,18 @@
     }
 
     .book-option-btn.selected .option-letter {
-      background: var(--ink-primary);
-      color: var(--bg-page);
-      border-color: var(--ink-primary);
+      background: var(--accent-oxford);
+      color: #ffffff;
+      border-color: var(--accent-oxford);
     }
 
     .collapsed-hypothesis {
       display: none;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 11px;
+      padding: 8px 12px;
       margin-bottom: 14px;
-      border-radius: 2px;
+      border-radius: 6px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-inset);
       font-size: 12.5px;
@@ -1117,7 +1108,7 @@
       font-weight: 600;
       cursor: pointer;
       padding: 2px 5px;
-      border-radius: 2px;
+      border-radius: 4px;
     }
 
     .text-link-btn:hover {
@@ -1129,7 +1120,7 @@
       display: none;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       padding-top: 4px;
       animation: fadeBook 0.2s ease;
     }
@@ -1147,30 +1138,30 @@
       font-family: var(--font-sans);
       font-size: 12.8px;
       font-weight: 600;
-      padding: 8px 11px;
-      border-radius: 2px;
+      padding: 8px 12px;
+      border-radius: 6px;
       border: 1px solid var(--rule-dark);
       line-height: 1.48;
     }
 
     .proof-verdict.correct {
-      background: rgba(30, 86, 49, 0.07);
-      color: var(--fig-green);
-      border-color: rgba(30, 86, 49, 0.28);
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      border-color: rgba(22, 163, 74, 0.28);
     }
 
     .proof-verdict.incorrect {
-      background: rgba(140, 45, 25, 0.07);
-      color: var(--fig-red);
-      border-color: rgba(140, 45, 25, 0.28);
+      background: rgba(220, 38, 38, 0.08);
+      color: #b91c1c;
+      border-color: rgba(220, 38, 38, 0.28);
     }
 
     .proof-text {
-      font-family: var(--font-serif);
-      font-size: 15.8px;
-      line-height: 1.66;
+      font-family: var(--font-sans);
+      font-size: 13.8px;
+      line-height: 1.6;
       color: var(--ink-primary);
-      padding: 4px 0 6px;
+      padding: 2px 0 4px;
       background: transparent;
       border: none;
       text-align: left;
@@ -1185,11 +1176,9 @@
 
     .equation-card {
       background: var(--bg-inset);
-      border: none;
-      border-top: 1px solid var(--rule-dark);
-      border-bottom: 1px solid var(--rule-dark);
-      border-radius: 0;
-      padding: 12px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 6px;
+      padding: 12px;
       overflow: hidden;
     }
 
@@ -1217,7 +1206,7 @@
     .katex-live-sub {
       margin-top: 8px;
       padding-top: 8px;
-      border-top: 1px dashed var(--rule-light);
+      border-top: 1px solid var(--rule-dark);
       font-size: 12.2px;
       color: var(--accent-oxford);
       text-align: center;
@@ -1376,30 +1365,30 @@
       width: 100%;
       height: 74px;
       background: var(--bg-inset);
-      border-top: 1px solid var(--rule-dark);
-      border-bottom: 1px solid var(--rule-dark);
+      border: 1px solid var(--rule-dark);
+      border-radius: 6px;
       display: block;
     }
 
     .figure-caption-bottom {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-style: normal;
-      font-size: 13.6px;
-      color: var(--ink-secondary);
-      line-height: 1.54;
+      font-size: 12.6px;
+      color: var(--ink-muted);
+      line-height: 1.5;
       padding-left: 0;
       border-left: none;
       text-align: left;
       text-wrap: pretty;
     }
 
-    /* Таблиця телеметрії: класичні рядки з пунктирною лінією замість шаблонних карток */
+    /* Таблиця телеметрії */
     .measurements-table {
       display: flex;
       flex-direction: column;
       gap: 0;
       margin-top: 2px;
-      border-top: 1px solid var(--rule-light);
+      border-top: 1px solid var(--rule-dark);
     }
 
     .meas-cell {
@@ -1408,7 +1397,7 @@
       justify-content: space-between;
       align-items: baseline;
       padding: 6.5px 2px;
-      border-bottom: 1px dashed var(--rule-light);
+      border-bottom: 1px solid var(--rule-light);
       font-size: 13px;
       min-width: 0;
     }
@@ -1434,7 +1423,7 @@
     }
 
     /* ==========================================================================
-       ПРАВА ПАНЕЛЬ: ТЕОРІЯ, ПОВЗУНКИ ТА ПЕРЕМИКАЧІ (РІЗНИЙ ВІЗУАЛЬНИЙ ХАРАКТЕР)
+       ПРАВА ПАНЕЛЬ: ТЕОРІЯ, ПОВЗУНКИ ТА ПЕРЕМИКАЧІ
        ========================================================================== */
     .journal-section {
       display: flex;
@@ -1445,7 +1434,7 @@
 
     .journal-section + .journal-section {
       padding-top: 16px;
-      border-top: 1px solid var(--rule-light);
+      border-top: 1px solid var(--rule-dark);
     }
 
     .section-heading-row {
@@ -1461,14 +1450,12 @@
       margin-bottom: 2px;
     }
 
-    /* Блок базових рівнянь у стилі книжкової математичної вкладки */
+    /* Блок базових рівнянь */
     .laws-reference-box {
       background: var(--bg-inset);
-      border: none;
-      border-top: 1px solid var(--rule-dark);
-      border-bottom: 1px solid var(--rule-dark);
-      border-radius: 0;
-      padding: 12px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 6px;
+      padding: 12px;
       box-shadow: none;
       font-size: 13.8px;
       color: var(--ink-primary);
@@ -1476,13 +1463,13 @@
       overflow: hidden;
     }
 
-    /* Повзунки параметрів: чиста інженерна шкала з делікатним пунктирним розділенням */
+    /* Повзунки параметрів */
     .param-control {
       display: flex;
       flex-direction: column;
       gap: 5px;
-      padding: 5px 0 7px;
-      border-bottom: 1px dashed rgba(15, 23, 42, 0.055);
+      padding: 6px 0 8px;
+      border-bottom: 1px solid var(--rule-light);
     }
 
     .param-control:last-child {
@@ -1498,7 +1485,7 @@
     }
 
     .param-title {
-      font-size: 13.5px;
+      font-size: 13.2px;
       font-weight: 500;
       color: var(--ink-primary);
       min-width: 0;
@@ -1525,8 +1512,8 @@
         to right,
         var(--accent-oxford) 0%,
         var(--accent-oxford) var(--progress, 50%),
-        rgba(15, 23, 42, 0.14) var(--progress, 50%),
-        rgba(15, 23, 42, 0.14) 100%
+        #cbd5e1 var(--progress, 50%),
+        #cbd5e1 100%
       );
       outline: none;
       cursor: pointer;
@@ -1541,8 +1528,8 @@
       height: 16px;
       border-radius: 50%;
       background: #ffffff;
-      border: 1.5px solid var(--accent-oxford);
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+      border: 2px solid var(--accent-oxford);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
       cursor: grab;
       transition: transform 0.1s ease;
     }
@@ -1556,27 +1543,27 @@
       height: 16px;
       border-radius: 50%;
       background: #ffffff;
-      border: 1.5px solid var(--accent-oxford);
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+      border: 2px solid var(--accent-oxford);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
       cursor: grab;
     }
 
-    /* Перемикачі шарів: згрупований список із тонкими лініями між рядками (macOS Settings) */
+    /* Перемикачі шарів */
     .drawing-toggles {
       display: flex;
       flex-direction: column;
       gap: 0;
-      border-top: 1px solid var(--rule-subtle);
+      border-top: 1px solid var(--rule-light);
     }
 
     .toggle-line {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--rule-subtle);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule-light);
       cursor: pointer;
-      font-size: 13.5px;
+      font-size: 13.2px;
       font-weight: 400;
       color: var(--ink-primary);
     }
@@ -1586,8 +1573,8 @@
       -webkit-appearance: none;
       width: 36px;
       height: 20px;
-      background: rgba(15, 23, 42, 0.18);
-      border-radius: 3px;
+      background: #cbd5e1;
+      border-radius: 999px;
       border: none;
       position: relative;
       cursor: pointer;
@@ -1600,11 +1587,11 @@
       position: absolute;
       width: 16px;
       height: 16px;
-      border-radius: 2px;
+      border-radius: 50%;
       background: #ffffff;
       top: 2px;
       left: 2px;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.2);
       transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -1616,7 +1603,7 @@
       transform: translateX(16px);
     }
 
-    /* Кольорова легенда векторів: чисті інлайн-позначки без коробок */
+    /* Кольорова легенда векторів */
     .legend-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1643,7 +1630,7 @@
     }
 
     /* ==========================================================================
-       РЕКЛАМНІ БЛОКИ GOOGLE ADS / ADSENSE (ДЕЛІКАТНІ ТА НЕНАВ'ЯЗЛИВІ)
+       РЕКЛАМНІ БЛОКИ GOOGLE ADS / ADSENSE (ПОКАЗУЮТЬСЯ ЛИШЕ ПРИ ЗАПОВНЕНОМУ СЛОТІ)
        ========================================================================== */
     .ad-viewport-leaderboard {
       position: fixed;
@@ -1653,17 +1640,23 @@
       width: min(600px, calc(100vw - var(--left-page-w) - var(--right-page-w) - 48px));
       min-height: 46px;
       z-index: 25;
-      background: rgba(250, 247, 242, 0.94);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--rule-dark);
-      border-radius: 2px;
-      box-shadow: 0 3px 12px rgba(28, 25, 23, 0.06);
+      border-radius: 6px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
       padding: 6px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+    }
+
+    .ad-viewport-leaderboard:not(:has(ins.adsbygoogle[data-ad-status="filled"])),
+    .ad-sidebar-card:not(:has(ins.adsbygoogle[data-ad-status="filled"])),
+    .mobile-unsupported-ad:not(:has(ins.adsbygoogle[data-ad-status="filled"])) {
+      display: none !important;
     }
 
     .ad-viewport-leaderboard.ad-closed {
@@ -1684,8 +1677,8 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 3px 6px;
-      border-radius: 2px;
-      background: rgba(15, 23, 42, 0.06);
+      border-radius: 4px;
+      background: var(--bg-inset);
       color: var(--ink-muted);
       flex-shrink: 0;
     }
@@ -1724,7 +1717,7 @@
     .ad-lb-close {
       width: 22px;
       height: 22px;
-      border-radius: 2px;
+      border-radius: 4px;
       border: none;
       background: transparent;
       color: var(--ink-muted);
@@ -1737,7 +1730,7 @@
     }
 
     .ad-lb-close:hover {
-      background: rgba(15, 23, 42, 0.06);
+      background: var(--bg-inset);
       color: var(--ink-primary);
     }
 
@@ -1765,9 +1758,9 @@
 
     .ad-card-frame {
       width: 100%;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px dashed var(--rule-dark);
-      border-radius: 3px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 6px;
       padding: 8px 10px;
       display: flex;
       flex-direction: column;
@@ -2008,8 +2001,8 @@
       gap: 5px;
       height: 26px;
       padding: 0 8px;
-      border-radius: 2px;
-      border: 1px solid var(--rule-light);
+      border-radius: 4px;
+      border: 1px solid var(--rule-dark);
       background: transparent;
       color: var(--ink-muted);
       font-family: var(--font-mono);
@@ -2021,7 +2014,7 @@
     }
 
     .edu-progress-pill:hover {
-      border-color: var(--rule-dark);
+      border-color: var(--accent-oxford);
       background: var(--bg-inset);
       color: var(--ink-primary);
     }
@@ -2043,8 +2036,8 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 2px 8px;
-      border-radius: 2px;
+      padding: 3px 9px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
       background: transparent;
       color: var(--ink-secondary);
@@ -2059,9 +2052,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 12px;
+      font-family: var(--font-mono);
+      font-style: normal;
+      font-size: 11px;
       font-weight: 600;
       color: var(--ink-muted);
       line-height: 1;
@@ -2069,21 +2062,21 @@
 
     .btn-question-hint:hover,
     .btn-question-hint.active {
-      background: var(--bg-inset);
-      border-color: var(--ink-primary);
-      color: var(--ink-primary);
+      background: var(--accent-oxford-soft);
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
     }
 
     .question-hint-box {
       display: none;
       padding: 10px 12px;
-      border-radius: 2px;
+      border-radius: 6px;
       background: var(--bg-inset);
       border: 1px solid var(--rule-dark);
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-style: normal;
-      font-size: 14.6px;
-      line-height: 1.58;
+      font-size: 13.4px;
+      line-height: 1.56;
       color: var(--ink-secondary);
       text-align: left;
       text-wrap: pretty;
@@ -2101,7 +2094,7 @@
       gap: 9px;
       padding: 11px 13px;
       margin-bottom: 18px;
-      border-radius: 2px;
+      border-radius: 6px;
       background: var(--bg-inset);
       border: 1px solid var(--rule-dark);
       animation: fadeBook 0.18s ease;
@@ -2115,10 +2108,10 @@
       display: flex;
       align-items: flex-start;
       gap: 9px;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-style: normal;
-      font-size: 14.5px;
-      line-height: 1.58;
+      font-size: 13.4px;
+      line-height: 1.56;
       color: var(--ink-primary);
       font-weight: 400;
       text-align: left;
@@ -2137,7 +2130,7 @@
     .btn-reveal-proof-now {
       align-self: flex-start;
       padding: 5px 11px;
-      border-radius: 2px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-card);
       color: var(--ink-primary);
@@ -2149,9 +2142,9 @@
     }
 
     .btn-reveal-proof-now:hover {
-      background: var(--ink-primary);
-      color: var(--bg-page);
-      border-color: var(--ink-primary);
+      background: var(--accent-oxford);
+      color: #ffffff;
+      border-color: var(--accent-oxford);
     }
 
     /* Кнопка переходу до наступного уроку знизу блоку Доведення */
@@ -2159,7 +2152,7 @@
       margin-top: 6px;
       width: 100%;
       padding: 8px 14px;
-      border-radius: 2px;
+      border-radius: 6px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-card);
       color: var(--ink-primary);
@@ -2173,7 +2166,8 @@
 
     .btn-next-lesson-cta:hover {
       background: var(--bg-inset);
-      border-color: var(--ink-primary);
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
     }
 
     /* 3 лабораторні пресети («Мінімум», «Еталон», «Максимум») у правій панелі */
@@ -2187,7 +2181,7 @@
     .preset-chip-btn {
       height: 28px;
       padding: 0 8px;
-      border-radius: 2px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-card);
       color: var(--ink-secondary);
@@ -2202,15 +2196,15 @@
     }
 
     .preset-chip-btn:hover {
-      border-color: var(--ink-primary);
-      color: var(--ink-primary);
+      border-color: var(--accent-oxford);
+      color: var(--accent-oxford);
       background: var(--bg-inset);
     }
 
     .preset-chip-btn.active {
-      background: var(--ink-primary);
-      border-color: var(--ink-primary);
-      color: var(--bg-page);
+      background: var(--accent-oxford);
+      border-color: var(--accent-oxford);
+      color: #ffffff;
       font-weight: 600;
     }
 
@@ -2222,9 +2216,9 @@
 
     .dropdown-search-input {
       width: 100%;
-      height: 31px;
+      height: 32px;
       padding: 0 10px;
-      border-radius: 2px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
       background: var(--bg-card);
       color: var(--ink-primary);
@@ -2236,7 +2230,7 @@
 
     .dropdown-search-input:focus {
       background: #ffffff;
-      border-color: var(--ink-primary);
+      border-color: var(--accent-oxford);
     }
 
     .exp-done-badge {
@@ -2253,7 +2247,7 @@
     .kbd-shortcuts-bar {
       padding-top: 12px;
       margin-top: 6px;
-      border-top: 1px dashed var(--rule-light);
+      border-top: 1px solid var(--rule-light);
       display: flex;
       flex-wrap: wrap;
       gap: 6px 10px;
@@ -2268,9 +2262,9 @@
       font-size: 10px;
       font-weight: 600;
       padding: 1px 6px;
-      border-radius: 2px;
+      border-radius: 4px;
       border: 1px solid var(--rule-dark);
-      background: var(--bg-card);
+      background: var(--bg-inset);
       color: var(--ink-secondary);
     }
 
@@ -2282,7 +2276,7 @@
     }
 
     /* ==========================================================================
-       ШАПКА САЙТУ: СТРИМАНИЙ КНИЖКОВИЙ ТИТУЛ + ПЕРЕМИКАЧ ДИСЦИПЛІН
+       ШАПКА САЙТУ: ТИТУЛ + ПЕРЕМИКАЧ ДИСЦИПЛІН
        ========================================================================== */
     .header-brand-discipline {
       display: inline-flex;
@@ -2306,7 +2300,7 @@
       width: 18px;
       height: 18px;
       background: transparent;
-      color: var(--ink-primary);
+      color: var(--accent-oxford);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -2315,10 +2309,10 @@
     }
 
     .header-brand-title {
-      font-family: var(--font-serif);
-      font-size: 16px;
+      font-family: var(--font-sans);
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
       color: var(--ink-primary);
       white-space: nowrap;
     }
@@ -2328,9 +2322,9 @@
       align-items: center;
       gap: 2px;
       padding: 2px;
-      border-radius: 2px;
+      border-radius: 6px;
       background: var(--bg-inset);
-      border: 1px solid var(--rule-light);
+      border: 1px solid var(--rule-dark);
       flex-shrink: 0;
     }
 
@@ -2340,7 +2334,7 @@
       gap: 5px;
       height: 26px;
       padding: 0 10px;
-      border-radius: 1px;
+      border-radius: 4px;
       border: none;
       background: transparent;
       color: var(--ink-secondary);
@@ -2360,7 +2354,7 @@
       background: var(--bg-card);
       color: var(--ink-primary);
       font-weight: 600;
-      box-shadow: 0 1px 2px rgba(28, 25, 23, 0.08), 0 0 0 0.5px rgba(28, 25, 23, 0.08);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 0 0 0.5px rgba(15, 23, 42, 0.08);
     }
 
     .disc-tab-chem.active {

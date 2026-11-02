@@ -137,8 +137,8 @@
     // ============================================================================
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf3efe6);
-    scene.fog = new THREE.FogExp2(0xf3efe6, 0.011);
+    scene.background = new THREE.Color(0xf1f5f9);
+    scene.fog = new THREE.FogExp2(0xf1f5f9, 0.011);
 
     const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 200);
     camera.position.set(0, 6.2, 16.0);
@@ -160,11 +160,11 @@
     controls.maxDistance = 42;
     controls.target.set(0, 2.0, 0);
 
-    // Тепле студійне освітлення академічного підручника
-    const ambientLight = new THREE.AmbientLight(0xfaf7f2, 1.38);
+    // Світле студійне освітлення
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.35);
     scene.add(ambientLight);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe6dfd3, 0.85);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe2e8f0, 0.85);
     hemiLight.position.set(0, 25, 0);
     scene.add(hemiLight);
 
@@ -183,7 +183,7 @@
     dirLight.shadow.bias = -0.0004;
     scene.add(dirLight);
 
-    const rimLight = new THREE.DirectionalLight(0xf5efe6, 0.55);
+    const rimLight = new THREE.DirectionalLight(0xf8fafc, 0.55);
     rimLight.position.set(-12, 10, -10);
     scene.add(rimLight);
 
@@ -191,10 +191,10 @@
     try {
       const pmremGen = new THREE.PMREMGenerator(renderer);
       const envScene = new THREE.Scene();
-      envScene.background = new THREE.Color(0xf3efe6);
+      envScene.background = new THREE.Color(0xf1f5f9);
       const skyDome = new THREE.Mesh(
         new THREE.SphereGeometry(20, 24, 16),
-        new THREE.MeshBasicMaterial({ color: 0xfaf7f2, side: THREE.BackSide })
+        new THREE.MeshBasicMaterial({ color: 0xf8fafc, side: THREE.BackSide })
       );
       envScene.add(skyDome);
       const softboxTop = new THREE.Mesh(
@@ -206,14 +206,14 @@
       envScene.add(softboxTop);
       const softboxSide = new THREE.Mesh(
         new THREE.PlaneGeometry(14, 10),
-        new THREE.MeshBasicMaterial({ color: 0xf5efe6, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xf1f5f9, side: THREE.DoubleSide })
       );
       softboxSide.position.set(-12, 6, -8);
       softboxSide.lookAt(0, 0, 0);
       envScene.add(softboxSide);
       const warmBounce = new THREE.Mesh(
         new THREE.PlaneGeometry(24, 24),
-        new THREE.MeshBasicMaterial({ color: 0xe6dfd3, side: THREE.DoubleSide })
+        new THREE.MeshBasicMaterial({ color: 0xe2e8f0, side: THREE.DoubleSide })
       );
       warmBounce.rotation.x = -Math.PI / 2;
       warmBounce.position.y = -6;
@@ -225,7 +225,7 @@
     // Світла студійна основа сцени + делікатна координатна сітка
     const floorGeo = new THREE.PlaneGeometry(90, 90);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0xf3efe6,
+      color: 0xf1f5f9,
       roughness: 0.92,
       metalness: 0.02
     });
@@ -234,9 +234,9 @@
     floorMesh.receiveShadow = true;
     scene.add(floorMesh);
 
-    const gridHelper = new THREE.GridHelper(40, 40, 0xd4cbc0, 0xe4ddd2);
+    const gridHelper = new THREE.GridHelper(40, 40, 0xcbd5e1, 0xe2e8f0);
     gridHelper.position.y = 0.004;
-    gridHelper.material.opacity = 0.65;
+    gridHelper.material.opacity = 0.72;
     gridHelper.material.transparent = true;
     scene.add(gridHelper);
 
@@ -30007,7 +30007,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const h = chartCanvas.height;
       chartCtx.clearRect(0, 0, w, h);
 
-      chartCtx.strokeStyle = 'rgba(28, 25, 23, 0.11)';
+      chartCtx.strokeStyle = 'rgba(15, 23, 42, 0.07)';
       chartCtx.lineWidth = 1;
       for (let y = 18; y < h; y += 22) {
         chartCtx.beginPath();
@@ -30030,9 +30030,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         chartCtx.stroke();
       };
 
-      drawSeries(chartHistory.ek, '#1e5631');
-      drawSeries(chartHistory.ep, '#1e3a5f');
-      drawSeries(chartHistory.q, '#9a5b13');
+      drawSeries(chartHistory.ek, '#16a34a');
+      drawSeries(chartHistory.ep, '#2563eb');
+      drawSeries(chartHistory.q, '#d97706');
     }
 
     function updateLiveFormulaSubstitution() {
@@ -30906,10 +30906,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       alignItems: 'center',
       gap: '8px',
       padding: '5px 14px',
-      borderRadius: '2px',
-      background: 'rgba(250, 247, 242, 0.94)',
-      color: '#3f3a34',
-      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+      borderRadius: '6px',
+      background: 'rgba(255, 255, 255, 0.94)',
+      color: '#334155',
+      fontFamily: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif',
       fontStyle: 'normal',
       fontSize: '12px',
       fontWeight: '500',
@@ -30917,8 +30917,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       maxWidth: 'calc(100vw - var(--left-page-w, 340px) - var(--right-page-w, 360px) - 32px)',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      border: '1px solid rgba(28, 25, 23, 0.18)',
-      boxShadow: '0 2px 8px rgba(28, 25, 23, 0.06)',
+      border: '1px solid #e2e8f0',
+      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.06)',
       pointerEvents: 'none',
       transition: 'border-color 0.14s ease, background 0.14s ease'
     });
@@ -30930,13 +30930,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ? 'Drag parts on the 3D scene to change parameters, or click to interact'
         : 'Перетягуйте деталі мишею або клікайте для взаємодії';
       interactionHudBadge.textContent = customText || defaultMsg;
-      interactionHudBadge.style.borderColor = activeHighlight ? '#1c1917' : 'rgba(28, 25, 23, 0.18)';
-      interactionHudBadge.style.background = activeHighlight ? '#f0ebe1' : 'rgba(250, 247, 242, 0.94)';
-      interactionHudBadge.style.color = activeHighlight ? '#1c1917' : '#3f3a34';
+      interactionHudBadge.style.borderColor = activeHighlight ? '#2563eb' : '#e2e8f0';
+      interactionHudBadge.style.background = activeHighlight ? '#eff6ff' : 'rgba(255, 255, 255, 0.94)';
+      interactionHudBadge.style.color = activeHighlight ? '#1d4ed8' : '#334155';
       interactionHudBadge.style.fontStyle = 'normal';
       interactionHudBadge.style.fontFamily = activeHighlight
         ? '"IBM Plex Mono", monospace'
-        : '"Inter", -apple-system, BlinkMacSystemFont, sans-serif';
+        : '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif';
       interactionHudBadge.style.fontSize = '12px';
     }
     setInteractionBadgeText();

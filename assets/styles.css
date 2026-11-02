@@ -127,13 +127,17 @@
 
     .exp-dropdown-wrapper {
       position: relative;
-      min-width: 0;
+      width: 420px;
+      flex: 0 0 420px;
+      min-width: 420px;
+      max-width: 420px;
     }
 
     .exp-dropdown-trigger {
       display: flex;
       align-items: center;
       gap: 10px;
+      width: 100%;
       height: 32px;
       padding: 0 11px;
       border-radius: 3px;
@@ -142,8 +146,6 @@
       color: var(--ink-primary);
       cursor: pointer;
       transition: background 0.12s ease, border-color 0.12s ease;
-      min-width: 220px;
-      max-width: 460px;
       justify-content: space-between;
     }
 
@@ -158,6 +160,7 @@
       align-items: baseline;
       gap: 6px;
       min-width: 0;
+      flex: 1 1 auto;
       overflow: hidden;
     }
 
@@ -165,6 +168,7 @@
       font-family: var(--font-mono);
       font-size: 11.5px;
       font-weight: 600;
+      font-variant-numeric: tabular-nums;
       color: var(--accent-oxford);
       flex-shrink: 0;
     }
@@ -1820,6 +1824,12 @@
       }
       .phase-breadcrumbs {
         display: none;
+      }
+      .exp-dropdown-wrapper {
+        width: 340px;
+        flex: 0 0 340px;
+        min-width: 340px;
+        max-width: 340px;
       }
     }
 

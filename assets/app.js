@@ -31457,7 +31457,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const canonicalPath = keepRootMeta
         ? (isUk ? '/uk/' : '/')
         : (isUk ? `/uk/sim/${uiState.activeScene}` : `/sim/${uiState.activeScene}`);
-      const canonicalAbs = `https://sheua.com${canonicalPath}`;
+      const siteOrigin = window.location.protocol.startsWith('http')
+        ? window.location.origin
+        : 'https://physics.sheua.com';
+      const canonicalAbs = `${siteOrigin}${canonicalPath}`;
       const canonicalEl = document.querySelector('link[rel="canonical"]');
       if (canonicalEl) canonicalEl.setAttribute('href', canonicalAbs);
       setMetaContent('meta[property="og:url"]', canonicalAbs);

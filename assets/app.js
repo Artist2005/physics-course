@@ -627,6 +627,30 @@
       'Відхід LG⁻': 'LG⁻ Leaving',
       'η_естеру': 'η_ester',
       'N_H-зв': 'N_H-bonds',
+      'J_вх (O₂, субстрати)': 'J_in (O₂, nutrients)',
+      'v_вез (екзоцитоз)': 'v_ves (secretion)',
+      'J_H+ (накачування)': 'J_H+ (ETC pump)',
+      'ω_F0F1 (синтез АТФ)': 'ω_F0F1 (ATP synthesis)',
+      'F_кін,Л': 'F_kin,L',
+      'F_кін,П': 'F_kin,R',
+      'Ведучий 5′→3′': 'Leading 5′→3′',
+      'Оказакі 5′→3′': 'Okazaki 5′→3′',
+      'мРНК (5′→3′)': 'mRNA (5′→3′)',
+      'Поліпептид (N→C)': 'Polypeptide (N→C)',
+      '2pq (Гетерозиготи Aa)': '2pq (Heterozygotes Aa)',
+      'p² (Гомозиготи AA)': 'p² (Dominant AA)',
+      '3 Na⁺ назовні (АТФ)': '3 Na⁺ out (ATP)',
+      '2 K⁺ усередину': '2 K⁺ in (pump)',
+      'v_пров (Нервовий імпульс)': 'v_cond (Action Potential)',
+      'I_Na (деполяризація)': 'I_Na (depolarization)',
+      'F_скор,Л': 'F_contract,L',
+      'F_скор,П': 'F_contract,R',
+      'hν (Кванти світла)': 'hν (Photons → PSII/I)',
+      'АТФ + НАДФ·H → Кальвін': 'ATP + NADPH → Calvin',
+      'Зв’язування O₂ (R-стан)': 'O₂ binding (R-state)',
+      'Віддача O₂ (ефект Бора)': 'Bohr release (H⁺/CO₂)',
+      'd(x,y)/dt (Фазовий вектор)': 'd(x,y)/dt (Phase velocity)',
+      'Трофічний потік (10%)': 'Trophic flux (10% rule)'
     };
     const activeVectorArrows = new Set();
 
@@ -684,7 +708,31 @@
       'Мережа водневих зв’язків N–H···O=C (i → i+4)': 'E_HB',
       'Теплова денатурація (руйнування спіралі)': 'ΔH_den',
       'Атака Nu⁻': 'Nu⁻',
-      'Відхід LG⁻': 'LG⁻'
+      'Відхід LG⁻': 'LG⁻',
+      'J_вх (O₂, субстрати)': 'J_in',
+      'v_вез (екзоцитоз)': 'v_ves',
+      'J_H+ (накачування)': 'J(H⁺)',
+      'ω_F0F1 (синтез АТФ)': 'ω_ATP',
+      'F_кін,Л': 'F_k,L',
+      'F_кін,П': 'F_k,R',
+      'Ведучий 5′→3′': '5′→3′',
+      'Оказакі 5′→3′': 'Okazaki',
+      'мРНК (5′→3′)': 'mRNA',
+      'Поліпептид (N→C)': 'Pept',
+      '2pq (Гетерозиготи Aa)': '2pq',
+      'p² (Гомозиготи AA)': 'p²',
+      '3 Na⁺ назовні (АТФ)': '3Na⁺',
+      '2 K⁺ усередину': '2K⁺',
+      'v_пров (Нервовий імпульс)': 'v_AP',
+      'I_Na (деполяризація)': 'I_Na',
+      'F_скор,Л': 'F_L',
+      'F_скор,П': 'F_R',
+      'hν (Кванти світла)': 'hν',
+      'АТФ + НАДФ·H → Кальвін': 'NADPH',
+      'Зв’язування O₂ (R-стан)': '+O₂',
+      'Віддача O₂ (ефект Бора)': '−O₂',
+      'd(x,y)/dt (Фазовий вектор)': 'dX/dt',
+      'Трофічний потік (10%)': '10%'
     };
 
     function extractShortVectorSymbol(rawText, localizedText) {
@@ -808,7 +856,11 @@
 
     class SmartVectorArrow {
       constructor(label, colorHex = 0x166534, labelStrColor = '#166534') {
-        this.rawLabel = label;
+        if (label && typeof label === 'object' && labelStrColor && typeof labelStrColor === 'object') {
+          label = labelStrColor.labelUk || labelStrColor.labelEn || 'F';
+          labelStrColor = '#' + new THREE.Color(colorHex).getHexString();
+        }
+        this.rawLabel = String(label || 'F');
         const resolvedCssColor = (typeof labelStrColor === 'string' && labelStrColor.startsWith('#'))
           ? labelStrColor
           : ('#' + new THREE.Color(colorHex).getHexString());
@@ -973,7 +1025,13 @@
 
       emit(pos, velocitySpread = 2.0, count = 4, colorHex = 0xb45309) {
         if (!uiState.showParticles || !this.particles.length) return;
-        for (let i = 0; i < count; i++) {
+        if (velocitySpread && typeof velocitySpread === 'object') {
+          if (typeof count === 'number' && count > 256) colorHex = count;
+          count = 2;
+          velocitySpread = 1.4;
+        }
+        const safeCount = Math.min(24, Math.max(1, Number(count) || 2));
+        for (let i = 0; i < safeCount; i++) {
           const p = this.particles[this.cursor];
           this.cursor = (this.cursor + 1) % this.max;
           p.mesh.position.copy(pos);
@@ -24572,6 +24630,302 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     // ============================================================================
     // БІОЛОГІЯ ТА БІОФІЗИКА: 12 ІНТЕРАКТИВНИХ 3D-СИМУЛЯЦІЙ (§ Б-01 — § Б-12)
     // ============================================================================
+    const activeBioCalloutPins = new Set();
+
+    function createBioCalloutPin3D(anchorVec, badgeVec, titleUk, titleEn, subUk = '', subEn = '', colorHex = 0x15803d) {
+      const pin = {
+        anchorPos: anchorVec.clone(),
+        badgePos: badgeVec.clone(),
+        titleUk,
+        titleEn,
+        subUk,
+        subEn,
+        colorHex,
+        cssColor: '#' + new THREE.Color(colorHex).getHexString(),
+        group: new THREE.Group()
+      };
+      pin.group.userData = { isCadHardware: true, isBioCallout: true };
+
+      const dotGeo = new THREE.SphereGeometry(0.08, 12, 12);
+      const dotMat = new THREE.MeshBasicMaterial({ color: colorHex });
+      pin.dot = new THREE.Mesh(dotGeo, dotMat);
+      pin.dot.position.copy(pin.anchorPos);
+      pin.dot.raycast = () => {};
+      pin.group.add(pin.dot);
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([pin.anchorPos, pin.badgePos]);
+      const lineMat = new THREE.LineBasicMaterial({
+        color: colorHex,
+        transparent: true,
+        opacity: 0.82
+      });
+      pin.line = new THREE.Line(lineGeo, lineMat);
+      pin.line.raycast = () => {};
+      pin.group.add(pin.line);
+
+      pin.buildSprite = function() {
+        const isEn = (typeof uiState !== 'undefined' && uiState.lang === 'en');
+        const title = isEn ? (this.titleEn || this.titleUk) : this.titleUk;
+        const sub = isEn ? (this.subEn || this.subUk) : this.subUk;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const titleFont = '700 22px "Inter", "Segoe UI", sans-serif';
+        const subFont = '600 17px "IBM Plex Mono", monospace';
+
+        ctx.font = titleFont;
+        const wTitle = Math.ceil(ctx.measureText(title).width);
+        let wSub = 0;
+        if (sub) {
+          ctx.font = subFont;
+          wSub = Math.ceil(ctx.measureText(sub).width);
+        }
+
+        const padX = 16;
+        const padOuter = 6;
+        const boxW = Math.max(116, Math.max(wTitle, wSub) + padX * 2 + 8);
+        const boxH = sub ? 58 : 38;
+
+        canvas.width = boxW + padOuter * 2;
+        canvas.height = boxH + padOuter * 2;
+
+        ctx.save();
+        ctx.shadowColor = 'rgba(15, 23, 42, 0.22)';
+        ctx.shadowBlur = 5;
+        ctx.shadowOffsetY = 2;
+        drawPillRect(ctx, padOuter, padOuter, boxW, boxH, 7);
+        ctx.fillStyle = 'rgba(250, 249, 245, 0.96)';
+        ctx.fill();
+        ctx.restore();
+
+        drawPillRect(ctx, padOuter, padOuter, boxW, boxH, 7);
+        ctx.strokeStyle = this.cssColor;
+        ctx.lineWidth = 2.4;
+        ctx.stroke();
+
+        ctx.fillStyle = this.cssColor;
+        ctx.fillRect(padOuter + 1.5, padOuter + 5, 5, boxH - 10);
+
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.font = titleFont;
+        ctx.fillStyle = '#0f172a';
+        if (sub) {
+          ctx.fillText(title, padOuter + padX + 4, padOuter + 20);
+          ctx.font = subFont;
+          ctx.fillStyle = this.cssColor;
+          ctx.fillText(sub, padOuter + padX + 4, padOuter + 43);
+        } else {
+          ctx.fillText(title, padOuter + padX + 4, padOuter + boxH / 2 + 1);
+        }
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.minFilter = THREE.LinearFilter;
+        const mat = new THREE.SpriteMaterial({
+          map: tex,
+          transparent: true,
+          depthTest: false,
+          toneMapped: false
+        });
+        const sprite = new THREE.Sprite(mat);
+        const h3d = sub ? 0.45 : 0.31;
+        const w3d = h3d * (canvas.width / canvas.height);
+        sprite.scale.set(w3d, h3d, 1);
+        sprite.renderOrder = 995;
+        return sprite;
+      };
+
+      pin.setText = function(tUk, tEn, sUk = '', sEn = '') {
+        if (this.titleUk === tUk && this.titleEn === tEn && this.subUk === sUk && this.subEn === sEn) {
+          return;
+        }
+        this.titleUk = tUk;
+        this.titleEn = tEn;
+        this.subUk = sUk;
+        this.subEn = sEn;
+        this.refreshLanguage();
+      };
+
+      pin.setPositions = function(aVec, bVec) {
+        if (aVec) this.anchorPos.copy(aVec);
+        if (bVec) this.badgePos.copy(bVec);
+        this.dot.position.copy(this.anchorPos);
+        this.sprite.position.copy(this.badgePos);
+        const posAttr = this.line.geometry.attributes.position;
+        posAttr.setXYZ(0, this.anchorPos.x, this.anchorPos.y, this.anchorPos.z);
+        posAttr.setXYZ(1, this.badgePos.x, this.badgePos.y, this.badgePos.z);
+        posAttr.needsUpdate = true;
+      };
+
+      pin.refreshLanguage = function() {
+        if (this.sprite) {
+          this.group.remove(this.sprite);
+          if (this.sprite.material && this.sprite.material.map) this.sprite.material.map.dispose();
+          if (this.sprite.material) this.sprite.material.dispose();
+        }
+        this.sprite = this.buildSprite();
+        this.sprite.position.copy(this.badgePos);
+        this.sprite.raycast = () => {};
+        this.group.add(this.sprite);
+      };
+
+      pin.dispose = function() {
+        activeBioCalloutPins.delete(this);
+        if (this.group && this.group.parent) this.group.parent.remove(this.group);
+        if (this.dot && this.dot.geometry) this.dot.geometry.dispose();
+        if (this.dot && this.dot.material) this.dot.material.dispose();
+        if (this.line && this.line.geometry) this.line.geometry.dispose();
+        if (this.line && this.line.material) this.line.material.dispose();
+        if (this.sprite && this.sprite.material) {
+          if (this.sprite.material.map) this.sprite.material.map.dispose();
+          this.sprite.material.dispose();
+        }
+      };
+
+      pin.sprite = pin.buildSprite();
+      pin.sprite.position.copy(pin.badgePos);
+      pin.sprite.raycast = () => {};
+      pin.group.add(pin.sprite);
+
+      worldGroup.add(pin.group);
+      activeBioCalloutPins.add(pin);
+      return pin;
+    }
+
+    function ensureBioPins(sim, defs) {
+      if (!sim.bioCallouts) sim.bioCallouts = [];
+      if (sim.bioCallouts.length === 0) {
+        defs.forEach(d => {
+          sim.bioCallouts.push(createBioCalloutPin3D(d.a, d.b, d.tuk, d.ten, d.suk, d.sen, d.col));
+        });
+      }
+      sim.bioCallouts.forEach(pin => {
+        pin.group.visible = (typeof uiState === 'undefined' || uiState.showLabels !== false);
+      });
+      return sim.bioCallouts;
+    }
+
+    function cleanupSceneHuds(nextSceneKey) {
+      const bioHud = document.getElementById('bio-scene-hud');
+      if (bioHud && (!nextSceneKey || !nextSceneKey.startsWith('bio_'))) {
+        bioHud.remove();
+      }
+      const periodicHud = document.getElementById('periodic-table-hud');
+      if (periodicHud && nextSceneKey !== 'chem_periodic') {
+        periodicHud.remove();
+      }
+    }
+
+    function applyBioPresetParams(sceneKey, paramObj) {
+      const target = sceneParams[sceneKey];
+      const cfg = SCENE_CONFIGS[sceneKey];
+      if (!target || !cfg) return;
+      Object.entries(paramObj).forEach(([k, v]) => {
+        if (target[k] !== undefined) {
+          target[k] = v;
+          const inp = document.querySelector(`#sliders-container input[data-param-key="${k}"]`);
+          const sCfg = (cfg.sliders || []).find(s => s.key === k);
+          if (inp) {
+            inp.value = v;
+            if (typeof updateSliderFill === 'function') updateSliderFill(inp);
+          }
+          const rd = document.getElementById(`readout-${k}`);
+          if (rd && sCfg) {
+            rd.textContent = `${v}${sCfg.unit ? ' ' + sCfg.unit : ''}`;
+          }
+        }
+      });
+      if (typeof updateLiveFormulaSubstitution === 'function') updateLiveFormulaSubstitution();
+      if (activeSim) {
+        if (typeof activeSim.onParamChange === 'function') activeSim.onParamChange();
+        if (typeof activeSim.syncVisuals === 'function') activeSim.syncVisuals();
+      }
+      if (!uiState.running) {
+        uiState.running = true;
+        if (typeof syncActionButtons === 'function') syncActionButtons();
+      }
+    }
+
+    function updateBioSceneHud(sceneKey, config) {
+      if (typeof uiState !== 'undefined' && uiState.activeScene && uiState.activeScene !== sceneKey) return;
+      const container = document.getElementById('canvas-container');
+      if (!container) return;
+
+      let hud = document.getElementById('bio-scene-hud');
+      if (!hud) {
+        hud = document.createElement('div');
+        hud.id = 'bio-scene-hud';
+        Object.assign(hud.style, {
+          position: 'absolute',
+          top: '62px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: 'min(700px, calc(100% - 24px))',
+          background: 'rgba(250, 249, 245, 0.94)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid #cbd5e1',
+          borderLeft: '4px solid #15803d',
+          borderRadius: '8px',
+          padding: '8px 12px',
+          boxShadow: '0 4px 16px rgba(15, 23, 42, 0.11)',
+          zIndex: '24',
+          fontFamily: '"Inter", system-ui, sans-serif',
+          color: '#1e293b',
+          pointerEvents: 'auto'
+        });
+        container.appendChild(hud);
+      }
+
+      const isEn = (typeof uiState !== 'undefined' && uiState.lang === 'en');
+      const legendHtml = (config.legend || []).map(item => `
+        <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 7px;border-radius:4px;border:1px solid #e2e8f0;">
+          <span style="width:9px;height:9px;border-radius:50%;background:${item.color};display:inline-block;flex-shrink:0;"></span>
+          <span>${isEn ? item.en : item.uk}</span>
+        </span>
+      `).join('');
+
+      const presetsKey = (config.presets || []).map(prItem => prItem.id).join('|') + ':' + (isEn ? 'en' : 'uk') + ':' + sceneKey;
+      if (hud.dataset.presetsKey !== presetsKey) {
+        hud.dataset.presetsKey = presetsKey;
+        const presetsHtml = (config.presets || []).map((pr, idx) => `
+          <button type="button" data-bio-preset-idx="${idx}" style="cursor:pointer;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;border:1px solid #15803d;background:#f0fdf4;color:#166534;transition:all 0.15s;">
+            ▸ ${isEn ? pr.en : pr.uk}
+          </button>
+        `).join('');
+
+        hud.innerHTML = `
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-bottom:5px;">
+            <div style="display:flex;flex-wrap:wrap;gap:4px;" id="bio-hud-legend">${legendHtml}</div>
+          </div>
+          <div id="bio-hud-status" style="font-size:12px;line-height:1.4;color:#0f172a;font-weight:500;margin-bottom:6px;padding:4px 8px;background:#ffffff;border-radius:4px;border:1px solid #e2e8f0;"></div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:5px;">
+            <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#64748b;margin-right:2px;">
+              ${isEn ? '1-Click Regimes:' : 'Наочні режими:'}
+            </span>
+            ${presetsHtml}
+          </div>
+        `;
+
+        hud.querySelectorAll('button[data-bio-preset-idx]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-bio-preset-idx'), 10);
+            const pr = config.presets[idx];
+            if (pr && pr.values) {
+              applyBioPresetParams(sceneKey, pr.values);
+            }
+          });
+        });
+      } else {
+        const legEl = hud.querySelector('#bio-hud-legend');
+        if (legEl) legEl.innerHTML = legendHtml;
+      }
+
+      const statusEl = hud.querySelector('#bio-hud-status');
+      if (statusEl) {
+        statusEl.innerHTML = isEn ? config.statusEn : config.statusUk;
+      }
+    }
 
     class BioEukaryoticCellSimulation {
       constructor() {
@@ -24721,8 +25075,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.vesicles.push({ mesh: ves, offset: v / 8 });
         }
 
-        this.arrowFlux = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'J_in (O₂, nutrients)', labelUk: 'J_вх (O₂, субстрати)' });
-        this.arrowExport = new SmartVectorArrow(worldGroup, 0xf59e0b, { labelEn: 'v_ves (secretion)', labelUk: 'v_вез (екзоцитоз)' });
+        this.arrowFlux = new SmartVectorArrow('J_вх (O₂, субстрати)', 0x22c55e);
+        this.arrowExport = new SmartVectorArrow('v_вез (екзоцитоз)', 0xf59e0b);
         this.arrows.push(this.arrowFlux, this.arrowExport);
       }
 
@@ -24796,6 +25150,30 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Час пасивної дифузії τ ≈ R² / 6D', val: `${diffTimeSec.toFixed(2)} с` },
           { label: 'Активний компартмент', val: focusNames[focus - 1] || focusNames[0] }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(-0.25 * scaleR, 2.35 + 0.9 * scaleR, -0.15 * scaleR), b: new THREE.Vector3(-2.6, 4.45, 0), tuk: 'Ядро + Ядерце + ЕПС', ten: 'Nucleus + Nucleolus + ER', suk: 'Транскрипція ДНК → мРНК', sen: 'DNA → mRNA transcription', col: 0x6366f1 },
+          { a: new THREE.Vector3(0.95 * scaleR, 2.35 + 0.85 * scaleR, 0.42 * scaleR), b: new THREE.Vector3(2.8, 4.35, 0.4), tuk: 'Апарат Гольджі та Лізосоми', ten: 'Golgi Apparatus & Lysosomes', suk: 'Сортування білків і везикул', sen: 'Protein sorting & vesicles', col: 0xf59e0b },
+          { a: new THREE.Vector3(-1.08 * scaleR, 2.35 + 0.72 * scaleR, 0.65 * scaleR), b: new THREE.Vector3(-2.9, 1.45, 0.9), tuk: 'Мітохондрії (кристи)', ten: 'Mitochondria (cristae)', suk: 'Окисне фосфорилювання (30–32 АТФ)', sen: 'Oxidative phosphorylation (ATP)', col: 0xef4444 },
+          { a: new THREE.Vector3(1.85 * scaleR, 2.35 + 0.5 * scaleR, 0), b: new THREE.Vector3(3.0, 1.55, 0), tuk: 'Плазматична мембрана', ten: 'Plasma Membrane Bilayer', suk: `S/V = ${svRatio.toFixed(2)} мкм⁻¹ (R = ${R} мкм)`, sen: `S/V = ${svRatio.toFixed(2)} μm⁻¹ (R = ${R} μm)`, col: 0x0ea5e9 }
+        ]);
+        c[3].setText('Плазматична мембрана', 'Plasma Membrane Bilayer', `S/V = 3/R = ${svRatio.toFixed(2)} мкм⁻¹ (R = ${R} мкм)`, `S/V = 3/R = ${svRatio.toFixed(2)} μm⁻¹ (R = ${R} μm)`);
+        updateBioSceneHud('bio_eukaryote', {
+          legend: [
+            { color: '#6366f1', uk: 'Ядро + шорстка ЕПС', en: 'Nucleus + Rough ER' },
+            { color: '#f59e0b', uk: 'Апарат Гольджі', en: 'Golgi Apparatus' },
+            { color: '#ec4899', uk: 'Лізосоми', en: 'Lysosomes' },
+            { color: '#ef4444', uk: 'Мітохондрії (АТФ)', en: 'Mitochondria (ATP)' },
+            { color: '#22c55e', uk: 'Транспортні везикули', en: 'Transport Vesicles' }
+          ],
+          statusUk: `Радіус клітини R = ${R} мкм: питома поверхня мембранного обміну S/V = 3/R = ${svRatio.toFixed(2)} мкм⁻¹. ${focus === 2 ? 'Підсвічено Ядро + ЕПС.' : (focus === 3 ? 'Підсвічено Апарат Гольджі.' : (focus === 4 ? 'Підсвічено Мітохондрії.' : 'Показано всі органели.'))}`,
+          statusEn: `Cell radius R = ${R} μm: surface-to-volume ratio S/V = 3/R = ${svRatio.toFixed(2)} μm⁻¹. ${focus === 2 ? 'Highlighting Nucleus + ER.' : (focus === 3 ? 'Highlighting Golgi.' : (focus === 4 ? 'Highlighting Mitochondria.' : 'Showing all organelles.'))}`,
+          presets: [
+            { id: 'small', uk: 'Мала клітина (швидкий обмін)', en: 'Small Cell (Fast Exchange)', values: { cellRadiusUm: 8, organelleFocus: 1, metabolicRate: 2.0, vesicleSpeed: 2.2 } },
+            { id: 'nucleus', uk: 'Фокус: Ядро + ЕПС', en: 'Focus: Nucleus + ER', values: { cellRadiusUm: 15, organelleFocus: 2, metabolicRate: 1.5, vesicleSpeed: 1.5 } },
+            { id: 'golgi', uk: 'Фокус: Гольджі (секреція)', en: 'Focus: Golgi Secretion', values: { cellRadiusUm: 15, organelleFocus: 3, metabolicRate: 1.8, vesicleSpeed: 2.8 } },
+            { id: 'giant', uk: 'Гігантська клітина (дефіцит S/V)', en: 'Giant Cell (Low S/V)', values: { cellRadiusUm: 30, organelleFocus: 4, metabolicRate: 2.5, vesicleSpeed: 1.2 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -24804,7 +25182,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (uiState.showParticles && Math.random() < 0.35 * p.metabolicRate) {
           this.particles.emit(
             new THREE.Vector3((Math.random() - 0.5) * 1.6, 3.1, (Math.random() - 0.5) * 1.6),
-            new THREE.Vector3((Math.random() - 0.5) * 0.6, 0.9, (Math.random() - 0.5) * 0.6),
+            1.2,
+            2,
             0x38bdf8
           );
         }
@@ -24815,6 +25194,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -24928,8 +25308,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.protons.push({ mesh: pr, offset: i / 12, lane: i % 4 });
         }
 
-        this.arrowPump = new SmartVectorArrow(worldGroup, 0xef4444, { labelEn: 'J_H+ (ETC pump)', labelUk: 'J_H+ (накачування)' });
-        this.arrowSynth = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'ω_F0F1 (ATP synthesis)', labelUk: 'ω_F0F1 (синтез АТФ)' });
+        this.arrowPump = new SmartVectorArrow('J_H+ (накачування)', 0xef4444);
+        this.arrowSynth = new SmartVectorArrow('ω_F0F1 (синтез АТФ)', 0x22c55e);
         this.arrows.push(this.arrowPump, this.arrowSynth);
       }
 
@@ -25007,6 +25387,30 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Частота обертання γ-субодиниці (3 АТФ/об)', val: `${(atpRate / 3).toFixed(1)} об/с` },
           { label: 'Коефіцієнт P/O (пов’язаність дихання)', val: `${(2.5 * (1 - 0.85 * leak)).toFixed(2)} АТФ / ½O₂` }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(-1.5, 2.6, 0), b: new THREE.Vector3(-2.6, 4.15, 0), tuk: 'Дихальні комплекси I · III · IV', ten: 'ETC Complexes I · III · IV', suk: 'Викачують протони H⁺ у міжмембранний простір', sen: 'Pump H⁺ protons across inner membrane', col: 0x3b82f6 },
+          { a: new THREE.Vector3(1.15, 2.55, 0), b: new THREE.Vector3(0.4, 4.15, 0.5), tuk: 'Термогенін UCP1 (витік H⁺)', ten: 'UCP1 Uncoupler Channel', suk: `Шунт протонів в обхід АТФ-синтази (${(leak * 100).toFixed(0)}%)`, sen: `Proton leak bypasses ATP synthase (${(leak * 100).toFixed(0)}%)`, col: 0xf97316 },
+          { a: new THREE.Vector3(2.55, 2.35, 0), b: new THREE.Vector3(3.3, 3.85, 0), tuk: 'Ротор F₀ (у мембрані кристи)', ten: 'F₀ Proton Rotor (Membrane)', suk: 'Обертається потоком H⁺ за градієнтом Δp', sen: 'Driven by proton-motive force Δp', col: 0xf59e0b },
+          { a: new THREE.Vector3(2.55, 1.05, 0), b: new THREE.Vector3(3.1, 0.65, 0.9), tuk: 'Голівка F₁ у матриксі (3 АТФ/об)', ten: 'F₁ Catalytic Head (3 ATP/rev)', suk: `Синтез: ${atpRate.toFixed(0)} молекул АТФ/с`, sen: `Synthesis: ${atpRate.toFixed(0)} ATP/s`, col: 0x22c55e }
+        ]);
+        c[1].setText('Термогенін UCP1 (витік H⁺)', 'UCP1 Uncoupler Channel', `Витік H⁺ у тепло: ${(leak * 100).toFixed(0)}%`, `Proton heat shunt: ${(leak * 100).toFixed(0)}%`);
+        c[3].setText('Голівка F₁ у матриксі (3 АТФ/об)', 'F₁ Catalytic Head (3 ATP/rev)', `Вихід: ${atpRate.toFixed(0)} АТФ/с (${(atpRate / 3).toFixed(1)} об/с)`, `Output: ${atpRate.toFixed(0)} ATP/s (${(atpRate / 3).toFixed(1)} rev/s)`);
+        updateBioSceneHud('bio_mitochondria', {
+          legend: [
+            { color: '#3b82f6', uk: 'Комплекси I, III, IV (помпа H⁺)', en: 'Complexes I, III, IV (H⁺ pump)' },
+            { color: '#f97316', uk: 'Канал витоку UCP1', en: 'UCP1 Uncoupler' },
+            { color: '#f59e0b', uk: 'Ротор F₀ та вал γ', en: 'F₀ Rotor & γ-stalk' },
+            { color: '#22c55e', uk: 'Каталітична голівка F₁ (АТФ)', en: 'F₁ Head (ATP synthesis)' },
+            { color: '#ef4444', uk: 'Протони H⁺', en: 'Protons H⁺' }
+          ],
+          statusUk: `Протонна рушійна сила Δp = ${dpEff.toFixed(0)} мВ обертає ротор F₀F₁ зі швидкістю ${(atpRate / 3).toFixed(1)} об/с, синтезуючи ${atpRate.toFixed(0)} АТФ/с.`,
+          statusEn: `Proton-motive force Δp = ${dpEff.toFixed(0)} mV spins the F₀F₁ rotor at ${(atpRate / 3).toFixed(1)} rev/s, synthesizing ${atpRate.toFixed(0)} ATP/s.`,
+          presets: [
+            { id: 'norm', uk: 'Активне дихання (норма)', en: 'Active Respiration', values: { nadhFlux: 1.5, membranePsiMv: 160, deltaPh: 1.0, uncouplerLeak: 0.05 } },
+            { id: 'max', uk: 'Максимальний синтез АТФ', en: 'Peak ATP Synthesis', values: { nadhFlux: 2.5, membranePsiMv: 195, deltaPh: 1.4, uncouplerLeak: 0.0 } },
+            { id: 'ucp', uk: 'Роз’єднання ДНФ / Бурий жир (тепло)', en: 'Uncoupled / Brown Fat (Heat)', values: { nadhFlux: 2.2, membranePsiMv: 130, deltaPh: 0.5, uncouplerLeak: 0.85 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -25019,7 +25423,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (uiState.showParticles && Math.random() < 0.35 * p.nadhFlux) {
           this.particles.emit(
             new THREE.Vector3(2.55, 1.05, 0),
-            new THREE.Vector3((Math.random() - 0.5) * 1.2, -0.6, (Math.random() - 0.5) * 1.2),
+            1.2,
+            2,
             0x22c55e
           );
         }
@@ -25030,6 +25435,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -25111,8 +25517,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.chromatidGroups.push({ sisL, sisR, lineL, lineR, index: i });
         }
 
-        this.arrowLeftPull = new SmartVectorArrow(worldGroup, 0xef4444, { labelEn: 'F_kin,L', labelUk: 'F_кін,Л' });
-        this.arrowRightPull = new SmartVectorArrow(worldGroup, 0x3b82f6, { labelEn: 'F_kin,R', labelUk: 'F_кін,П' });
+        this.arrowLeftPull = new SmartVectorArrow('F_кін,Л', 0xef4444);
+        this.arrowRightPull = new SmartVectorArrow('F_кін,П', 0x3b82f6);
         this.arrows.push(this.arrowLeftPull, this.arrowRightPull);
       }
 
@@ -25213,6 +25619,32 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Відстань між центросомами полюсів', val: `${(poleX * 6).toFixed(1)} мкм` },
           { label: 'Контрольна точка веретена (SAC)', val: stage >= 2 ? 'Пройдено (біорієнтація кінетохорів)' : 'Очікування вирівнювання' }
         ]);
+        const stageNamesEn = ['1. Prophase (2n4c — condensation)', '2. Metaphase (2n4c — equatorial plate)', '3. Anaphase (4n4c — sister chromatids separate)', '4. Telophase & Cytokinesis (two 2n2c daughter cells)'];
+        const c = ensureBioPins(this, [
+          { a: this.leftPole.position.clone(), b: new THREE.Vector3(-3.3, 4.1, 0), tuk: 'Ліва центросома (полюс веретена)', ten: 'Left Centrosome (Spindle Pole)', suk: 'Організує мікротрубочки веретена поділу', sen: 'Organizes spindle microtubules', col: 0xf59e0b },
+          { a: this.rightPole.position.clone(), b: new THREE.Vector3(3.3, 4.1, 0), tuk: 'Права центросома (полюс веретена)', ten: 'Right Centrosome (Spindle Pole)', suk: 'Тягне хроматиди за кінетохори', sen: 'Pulls chromatids via kinetochores', col: 0xf59e0b },
+          { a: new THREE.Vector3(0, 2.5, 0), b: new THREE.Vector3(0, 4.45, 0), tuk: stageNames[stage - 1] || stageNames[1], ten: stageNamesEn[stage - 1] || stageNamesEn[1], suk: `Диплоїдний набір 2n = ${totalChrom} хромосом`, sen: `Diploid set 2n = ${totalChrom} chromosomes`, col: 0xef4444 },
+          { a: new THREE.Vector3(0, 1.0, 0.9), b: new THREE.Vector3(0, 0.65, 1.6), tuk: 'Клітинна мембрана (цитокінез)', ten: 'Dividing Cell Membrane', suk: stage === 4 ? 'Борозна поділу ділить цитоплазму надвоє' : 'Материнська клітина', sen: stage === 4 ? 'Cleavage furrow pinches cell in two' : 'Parent dividing cell', col: 0x0284c7 }
+        ]);
+        c[0].setPositions(this.leftPole.position.clone(), new THREE.Vector3(-3.3, 4.1, 0));
+        c[1].setPositions(this.rightPole.position.clone(), new THREE.Vector3(3.3, 4.1, 0));
+        c[2].setText(stageNames[stage - 1] || stageNames[1], stageNamesEn[stage - 1] || stageNamesEn[1], stage === 3 ? `Тимчасово 4n = ${totalChrom * 2}, 4c у клітині` : `Набір 2n = ${totalChrom}`, stage === 3 ? `Temporarily 4n = ${totalChrom * 2}, 4c in cell` : `Set 2n = ${totalChrom}`);
+        updateBioSceneHud('bio_mitosis', {
+          legend: [
+            { color: '#f59e0b', uk: 'Центросоми (полюси)', en: 'Centrosomes (poles)' },
+            { color: '#ef4444', uk: 'Сестринські хроматиди', en: 'Sister Chromatids' },
+            { color: '#eab308', uk: 'Центромера / Кінетохор', en: 'Centromere / Kinetochore' },
+            { color: '#94a3b8', uk: 'Нитки веретена поділу', en: 'Spindle Microtubules' }
+          ],
+          statusUk: `${stageNames[stage - 1] || stageNames[1]}. Натисніть кнопки нижче, щоб перемкнути фазу мітозу покроково!`,
+          statusEn: `${stageNamesEn[stage - 1] || stageNamesEn[1]}. Click the phase buttons below to step through mitosis!`,
+          presets: [
+            { id: 'pro', uk: '1. Профаза (2n4c)', en: '1. Prophase (2n4c)', values: { mitosisStage: 1, chromPairs: 2, spindleTension: 1.0, poleSeparation: 1.0 } },
+            { id: 'meta', uk: '2. Метафаза (екватор 2n4c)', en: '2. Metaphase (Equator 2n4c)', values: { mitosisStage: 2, chromPairs: 2, spindleTension: 1.4, poleSeparation: 1.2 } },
+            { id: 'ana', uk: '3. Анафаза (розходження 4n4c)', en: '3. Anaphase (Separation 4n4c)', values: { mitosisStage: 3, chromPairs: 2, spindleTension: 2.2, poleSeparation: 1.6 } },
+            { id: 'telo', uk: '4. Телофаза (дві клітини 2n2c)', en: '4. Telophase (Two 2n2c Cells)', values: { mitosisStage: 4, chromPairs: 2, spindleTension: 1.0, poleSeparation: 2.0 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -25223,6 +25655,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -25295,8 +25728,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.basePairs.push({ topParent, botParent, topNew, botNew, rung, index: i });
         }
 
-        this.arrowLead = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'Leading 5′→3′', labelUk: 'Ведучий 5′→3′' });
-        this.arrowLag = new SmartVectorArrow(worldGroup, 0xf97316, { labelEn: 'Okazaki 5′→3′', labelUk: 'Оказакі 5′→3′' });
+        this.arrowLead = new SmartVectorArrow('Ведучий 5′→3′', 0x22c55e);
+        this.arrowLag = new SmartVectorArrow('Оказакі 5′→3′', 0xf97316);
         this.arrows.push(this.arrowLead, this.arrowLag);
       }
 
@@ -25384,6 +25817,32 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Частка гібридної ДНК ¹⁵N/¹⁴N', val: `${hybridPct.toFixed(1)} % (2 молекули з ${totalMol})` },
           { label: 'Частка легкої ДНК ¹⁴N/¹⁴N', val: `${lightPct.toFixed(1)} % (${totalMol - 2} молекул з ${totalMol})` }
         ]);
+        const c = ensureBioPins(this, [
+          { a: this.helicaseRing.position.clone(), b: new THREE.Vector3(0.0, 4.35, 0), tuk: 'ДНК-геліказа (розплітання вилки)', ten: 'DNA Helicase (Fork Unwinding)', suk: `Руйнує Н-зв’язки (G≡C: ${gc}%)`, sen: `Breaks H-bonds (G≡C: ${gc}%)`, col: 0xf59e0b },
+          { a: this.polLeading.position.clone(), b: new THREE.Vector3(-2.6, 4.15, 0.3), tuk: 'Ведучий ланцюг (ДНК-пол III)', ten: 'Leading Strand (DNA Pol III)', suk: 'Безперервний синтез 5′ → 3′ у бік вилки', sen: 'Continuous 5′ → 3′ synthesis toward fork', col: 0x22c55e },
+          { a: this.polLagging.position.clone(), b: new THREE.Vector3(-2.4, 0.75, 0.5), tuk: 'Відстаючий ланцюг (фрагменти Оказакі)', ten: 'Lagging Strand (Okazaki Fragments)', suk: 'Переривчастий синтез 5′ → 3′ + ДНК-лігаза', sen: 'Discontinuous 5′ → 3′ synthesis + DNA ligase', col: 0xf97316 },
+          { a: new THREE.Vector3(2.4, 2.25, 0), b: new THREE.Vector3(3.1, 3.95, 0), tuk: `Дослід Мезельсона–Сталя (k = ${gen})`, ten: `Meselson–Stahl Generation k = ${gen}`, suk: `¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% · ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, sen: `¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% · ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, col: 0x2563eb }
+        ]);
+        c[0].setPositions(this.helicaseRing.position.clone(), new THREE.Vector3(0.0, 4.35, 0));
+        c[1].setPositions(this.polLeading.position.clone(), new THREE.Vector3(-2.6, 4.15, 0.3));
+        c[2].setPositions(this.polLagging.position.clone(), new THREE.Vector3(-2.4, 0.75, 0.5));
+        c[3].setText(`Напівконсервативна реплікація (k = ${gen})`, `Semiconservative Replication (k = ${gen})`, `Гібридні ¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% | Легкі ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, `Hybrid ¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% | Light ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`);
+        updateBioSceneHud('bio_replication', {
+          legend: [
+            { color: '#2563eb', uk: 'Материнські нитки ДНК (¹⁵N)', en: 'Parent DNA strands (¹⁵N)' },
+            { color: '#f59e0b', uk: 'ДНК-геліказа', en: 'DNA Helicase' },
+            { color: '#22c55e', uk: 'Ведучий ланцюг (5′→3′)', en: 'Leading strand (5′→3′)' },
+            { color: '#f97316', uk: 'Фрагменти Оказакі (5′→3′)', en: 'Okazaki fragments (5′→3′)' }
+          ],
+          statusUk: `Покоління k = ${gen} (усього 2^${gen} = ${totalMol} молекул ДНК): ${hybridPct.toFixed(1)}% гібридних дуплексів ¹⁵N/¹⁴N та ${lightPct.toFixed(1)}% легких ¹⁴N/¹⁴N.`,
+          statusEn: `Generation k = ${gen} (2^${gen} = ${totalMol} DNA duplexes): ${hybridPct.toFixed(1)}% hybrid ¹⁵N/¹⁴N and ${lightPct.toFixed(1)}% light ¹⁴N/¹⁴N.`,
+          presets: [
+            { id: 'g1', uk: 'k = 1 (100% гібридна ¹⁵N/¹⁴N)', en: 'k = 1 (100% Hybrid ¹⁵N/¹⁴N)', values: { helicaseSpeed: 1.2, gcContent: 50, okazakiLen: 2, generationCount: 1 } },
+            { id: 'g2', uk: 'k = 2 (50% гібридна / 50% легка)', en: 'k = 2 (50% Hybrid / 50% Light)', values: { helicaseSpeed: 1.5, gcContent: 50, okazakiLen: 2, generationCount: 2 } },
+            { id: 'g3', uk: 'k = 3 (25% гібридна / 75% легка)', en: 'k = 3 (25% Hybrid / 75% Light)', values: { helicaseSpeed: 1.8, gcContent: 50, okazakiLen: 2, generationCount: 3 } },
+            { id: 'g4', uk: 'k = 4 (12.5% гібридна / 87.5% легка)', en: 'k = 4 (12.5% Hybrid / 87.5% Light)', values: { helicaseSpeed: 2.0, gcContent: 65, okazakiLen: 3, generationCount: 4 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -25394,6 +25853,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -25490,8 +25950,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.peptideBeads.push(bead);
         }
 
-        this.arrowMrna = new SmartVectorArrow(worldGroup, 0x38bdf8, { labelEn: 'mRNA (5′→3′)', labelUk: 'мРНК (5′→3′)' });
-        this.arrowPeptide = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'Polypeptide (N→C)', labelUk: 'Поліпептид (N→C)' });
+        this.arrowMrna = new SmartVectorArrow('мРНК (5′→3′)', 0x38bdf8);
+        this.arrowPeptide = new SmartVectorArrow('Поліпептид (N→C)', 0x22c55e);
         this.arrows.push(this.arrowMrna, this.arrowPeptide);
       }
 
@@ -25575,6 +26035,35 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Декодування кодону в A-сайті', val: mutLabels[mut - 1] || mutLabels[0] },
           { label: 'Асоціація субодиниць при [Mg²⁺]', val: mg >= 1.5 ? 'Стабільний 80S/70S комплекс' : 'Часткова дисоціація субодиниць' }
         ]);
+        const mutLabelsEn = [
+          'UUC → Phe (wild-type)',
+          'UUU → Phe (silent mutation, degenerate code)',
+          'UAC → Tyr (missense mutation, amino acid swap)'
+        ];
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(0, 3.1, 0), b: new THREE.Vector3(-2.7, 4.15, 0), tuk: 'Велика субодиниця рибосоми (60S)', ten: 'Large Ribosomal Subunit (60S)', suk: 'Утворює пептидний зв’язок між АК', sen: 'Catalyzes peptide bond formation', col: 0x6366f1 },
+          { a: new THREE.Vector3(0, 1.5, 0), b: new THREE.Vector3(-2.7, 1.05, 0.6), tuk: 'Мала субодиниця (40S) + мРНК', ten: 'Small Subunit (40S) + mRNA', suk: `Зчитує ${nAa + 1} триплетних кодонів (5′→3′)`, sen: `Decodes ${nAa + 1} triplet codons (5′→3′)`, col: 0x0284c7 },
+          { a: new THREE.Vector3(0.82, 2.4, 0.2), b: new THREE.Vector3(2.9, 2.25, 0.4), tuk: 'Сайти E · P · A (молекули тРНК)', ten: 'E · P · A Sites (tRNA)', suk: mutLabels[mut - 1] || mutLabels[0], sen: mutLabelsEn[mut - 1] || mutLabelsEn[0], col: 0xf59e0b },
+          { a: new THREE.Vector3(0, 4.2, 0), b: new THREE.Vector3(2.5, 4.45, 0), tuk: `Поліпептидний ланцюг (${nAa} АК)`, ten: `Polypeptide Chain (${nAa} AA)`, suk: `Витрачено ${gtpCost} молекул АТФ/ГТФ`, sen: `Cost: ${gtpCost} ATP/GTP equivalents`, col: 0x10b981 }
+        ]);
+        c[2].setText('Сайти E · P · A (молекули тРНК)', 'E · P · A Sites (tRNA)', mutLabels[mut - 1] || mutLabels[0], mutLabelsEn[mut - 1] || mutLabelsEn[0]);
+        c[3].setText(`Поліпептидний ланцюг (${nAa} АК)`, `Polypeptide Chain (${nAa} AA)`, `Маса ${massKda.toFixed(1)} кДа · витрата ${gtpCost} ГТФ/АТФ`, `Mass ${massKda.toFixed(1)} kDa · cost ${gtpCost} GTP/ATP`);
+        updateBioSceneHud('bio_ribosome', {
+          legend: [
+            { color: '#6366f1', uk: '60S велика субодиниця', en: '60S Large Subunit' },
+            { color: '#0284c7', uk: '40S мала субодиниця', en: '40S Small Subunit' },
+            { color: '#22c55e', uk: 'тРНК у сайтах E · P · A', en: 'tRNA in E · P · A sites' },
+            { color: '#10b981', uk: 'Поліпептидний ланцюг білка', en: 'Growing Polypeptide' }
+          ],
+          statusUk: `${mutLabels[mut - 1] || mutLabels[0]}. Для білка з ${nAa} амінокислот мРНК містить ${nNt} нуклеотидів, а трансляція потребує ${gtpCost} макроергічних зв’язків.`,
+          statusEn: `${mutLabelsEn[mut - 1] || mutLabelsEn[0]}. A ${nAa}-AA protein requires ${nNt} mRNA nucleotides and ${gtpCost} high-energy phosphate bonds.`,
+          presets: [
+            { id: 'wt', uk: 'Норма (UUC → Phe)', en: 'Wild-Type (UUC → Phe)', values: { riboSpeed: 1.5, proteinLenAa: 120, mgConcMm: 2.0, mutationMode: 1 } },
+            { id: 'silent', uk: 'Мовчазна мутація (UUU → Phe)', en: 'Silent Mutation (UUU → Phe)', values: { riboSpeed: 1.5, proteinLenAa: 120, mgConcMm: 2.0, mutationMode: 2 } },
+            { id: 'missense', uk: 'Місенс-мутація (UAC → Tyr)', en: 'Missense Swap (UAC → Tyr)', values: { riboSpeed: 1.4, proteinLenAa: 120, mgConcMm: 2.0, mutationMode: 3 } },
+            { id: 'lowmg', uk: 'Дефіцит Mg²⁺ (дисоціація 40S/60S)', en: 'Low Mg²⁺ (Subunit Split)', values: { riboSpeed: 0.8, proteinLenAa: 100, mgConcMm: 0.6, mutationMode: 1 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -25585,6 +26074,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -25640,8 +26130,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         worldGroup.add(this.barAA, this.barAa, this.baraa);
 
-        this.arrowHet = new SmartVectorArrow(worldGroup, 0x10b981, { labelEn: '2pq (Heterozygotes Aa)', labelUk: '2pq (Гетерозиготи Aa)' });
-        this.arrowDom = new SmartVectorArrow(worldGroup, 0x2563eb, { labelEn: 'p² (Dominant AA)', labelUk: 'p² (Гомозиготи AA)' });
+        this.arrowHet = new SmartVectorArrow('2pq (Гетерозиготи Aa)', 0x10b981);
+        this.arrowDom = new SmartVectorArrow('p² (Гомозиготи AA)', 0x2563eb);
         this.arrows.push(this.arrowHet, this.arrowDom);
       }
 
@@ -25733,6 +26223,31 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Частка домінантного фенотипу', val: `${domPhenoPct.toFixed(1)} % (${domH >= 0.9 ? 'Повне домінування' : 'Неповне домінування'})` },
           { label: 'Частота p′ у наступному поколінні (при s = ' + selS.toFixed(1) + ')', val: `p′ = ${pNext.toFixed(3)} (w̄ = ${meanFitnessW.toFixed(3)})` }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(-1.95, 1.4, 0), b: new THREE.Vector3(-2.6, 3.85, 0), tuk: `3D-Решітка Пеннета (p=${freqP.toFixed(2)}, q=${freqQ.toFixed(2)})`, ten: `3D Punnett Square (p=${freqP.toFixed(2)}, q=${freqQ.toFixed(2)})`, suk: 'Площі блоків пропорційні частотам генотипів', sen: 'Block areas scale with genotype frequencies', col: 0x334155 },
+          { a: this.barAA.position.clone().add(new THREE.Vector3(0, 0.5, 0)), b: new THREE.Vector3(0.7, 4.15, 0), tuk: `Гомозиготи AA = ${(fAA * 100).toFixed(1)}%`, ten: `AA Homozygotes = ${(fAA * 100).toFixed(1)}%`, suk: `p² = ${fAA.toFixed(3)} (~${Math.round(fAA * N)} особ.)`, sen: `p² = ${fAA.toFixed(3)} (~${Math.round(fAA * N)} ind.)`, col: 0x2563eb },
+          { a: this.barAa.position.clone().add(new THREE.Vector3(0, 0.5, 0)), b: new THREE.Vector3(2.15, 4.55, 0), tuk: `Гетерозиготи 2Aa = ${(fAa * 100).toFixed(1)}%`, ten: `2Aa Heterozygotes = ${(fAa * 100).toFixed(1)}%`, suk: `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} носіїв)`, sen: `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} carriers)`, col: 0x10b981 },
+          { a: this.baraa.position.clone().add(new THREE.Vector3(0, 0.5, 0)), b: new THREE.Vector3(3.55, 3.75, 0), tuk: `Рецесивні aa = ${(faa * 100).toFixed(1)}%`, ten: `aa Recessive = ${(faa * 100).toFixed(1)}%`, suk: `q² = ${faa.toFixed(3)} (~${Math.round(faa * N)} особ.)`, sen: `q² = ${faa.toFixed(3)} (~${Math.round(faa * N)} ind.)`, col: 0xf59e0b }
+        ]);
+        c[0].setText(`3D-Решітка Пеннета (p=${freqP.toFixed(2)}, q=${freqQ.toFixed(2)})`, `3D Punnett Square (p=${freqP.toFixed(2)}, q=${freqQ.toFixed(2)})`, '4 квадранти: AA (синій), Aa/aA (зелений), aa (бурштин.)', '4 quadrants: AA (blue), Aa/aA (green), aa (amber)');
+        c[1].setText(`Гомозиготи AA = ${(fAA * 100).toFixed(1)}%`, `AA Homozygotes = ${(fAA * 100).toFixed(1)}%`, `p² = ${fAA.toFixed(3)} (~${Math.round(fAA * N)} особ.)`, `p² = ${fAA.toFixed(3)} (~${Math.round(fAA * N)} ind.)`);
+        c[2].setText(`Гетерозиготи 2Aa = ${(fAa * 100).toFixed(1)}%`, `2Aa Heterozygotes = ${(fAa * 100).toFixed(1)}%`, `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} носіїв)`, `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} carriers)`);
+        c[3].setText(`Рецесивні aa = ${(faa * 100).toFixed(1)}%`, `aa Recessive = ${(faa * 100).toFixed(1)}%`, `q² = ${faa.toFixed(3)} (~${Math.round(faa * N)} особ., s=${selS})`, `q² = ${faa.toFixed(3)} (~${Math.round(faa * N)} ind., s=${selS})`);
+        updateBioSceneHud('bio_mendel', {
+          legend: [
+            { color: '#2563eb', uk: 'AA (домінантні гомозиготи p²)', en: 'AA (dominant homozygotes p²)' },
+            { color: '#10b981', uk: '2Aa (гетерозиготи-носії 2pq)', en: '2Aa (heterozygous carriers 2pq)' },
+            { color: '#f59e0b', uk: 'aa (рецесивні гомозиготи q²)', en: 'aa (recessive homozygotes q²)' }
+          ],
+          statusUk: `Закон Гарді–Вайнберга (p + q = 1): AA = ${(fAA * 100).toFixed(1)}%, 2Aa = ${(fAa * 100).toFixed(1)}%, aa = ${(faa * 100).toFixed(1)}% (із N = ${N} особин).`,
+          statusEn: `Hardy–Weinberg Equilibrium (p + q = 1): AA = ${(fAA * 100).toFixed(1)}%, 2Aa = ${(fAa * 100).toFixed(1)}%, aa = ${(faa * 100).toFixed(1)}% (of N = ${N}).`,
+          presets: [
+            { id: 'mendel', uk: 'Мендель F₂ (p=0.5 → 25:50:25)', en: 'Mendel F₂ (p=0.5 → 25:50:25)', values: { alleleP: 0.5, dominanceH: 1.0, selectionS: 0.0, popSizeN: 1000 } },
+            { id: 'hw70', uk: 'Рівновага (p=0.7, q=0.3 → 42% Aa)', en: 'Equilibrium (p=0.7, q=0.3 → 42% Aa)', values: { alleleP: 0.7, dominanceH: 1.0, selectionS: 0.0, popSizeN: 1000 } },
+            { id: 'rare', uk: 'Рідкісний рецесив (q=0.1 → 18% носіїв)', en: 'Rare Recessive (q=0.1 → 18% carriers)', values: { alleleP: 0.9, dominanceH: 1.0, selectionS: 0.0, popSizeN: 2000 } },
+            { id: 'select', uk: 'Добір проти aa (s = 0.8)', en: 'Selection Against aa (s = 0.8)', values: { alleleP: 0.6, dominanceH: 1.0, selectionS: 0.8, popSizeN: 1000 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -25743,6 +26258,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -25839,8 +26355,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.kIons.push({ mesh: k, idx: i });
         }
 
-        this.arrowNaOut = new SmartVectorArrow(worldGroup, 0xf97316, { labelEn: '3 Na⁺ out (ATP)', labelUk: '3 Na⁺ назовні (АТФ)' });
-        this.arrowKIn = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: '2 K⁺ in (pump)', labelUk: '2 K⁺ усередину' });
+        this.arrowNaOut = new SmartVectorArrow('3 Na⁺ назовні (АТФ)', 0xf97316);
+        this.arrowKIn = new SmartVectorArrow('2 K⁺ усередину', 0x22c55e);
         this.arrows.push(this.arrowNaOut, this.arrowKIn);
       }
 
@@ -25918,6 +26434,29 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Питома ємність бішару C_m', val: '1.0 мкФ/см² (товщина d ≈ 5 нм)' },
           { label: 'Напруженість поля в мембрані E = |V_m|/d', val: `${(Math.abs(vmGhk) * 0.2).toFixed(1)} кВ/см` }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(0, 2.75, 0), b: new THREE.Vector3(-1.8, 4.25, 0), tuk: 'Na⁺/K⁺-АТФаза (активний насос)', ten: 'Na⁺/K⁺-ATPase Pump', suk: 'Викачує 3 Na⁺ назовні та закачує 2 K⁺ за 1 АТФ', sen: 'Pumps 3 Na⁺ out & 2 K⁺ in per 1 ATP', col: 0x7c3aed },
+          { a: new THREE.Vector3(1.84, 2.75, 0), b: new THREE.Vector3(2.6, 4.15, 0), tuk: 'Калієвий канал витоку (K⁺)', ten: 'K⁺ Leak Channel', suk: 'Пасивний вихід K⁺ створює негативний V_m', sen: 'Passive K⁺ efflux sets negative V_m', col: 0x10b981 },
+          { a: new THREE.Vector3(-2.5, 2.6, 0), b: new THREE.Vector3(-3.4, 3.25, 0), tuk: 'Фосфоліпідний бішар (d ≈ 5 нм)', ten: 'Phospholipid Bilayer (d ≈ 5 nm)', suk: 'Гідрофільні голівки PO₄³⁻ + гідрофобні хвости', sen: 'Hydrophilic heads + hydrophobic tails', col: 0x0284c7 },
+          { a: new THREE.Vector3(0, 1.0, 0), b: new THREE.Vector3(0, 0.65, 1.3), tuk: `Цитоплазма (−): V_m = ${vmGhk.toFixed(1)} мВ`, ten: `Cytoplasm (−): V_m = ${vmGhk.toFixed(1)} mV`, suk: `[K⁺]_in = 140 мМ, [Na⁺]_in = ${nai} мМ | Ззовні [K⁺]_o = ${ko.toFixed(1)} мМ`, sen: `[K⁺]_in = 140 mM, [Na⁺]_in = ${nai} mM | Outside [K⁺]_o = ${ko.toFixed(1)} mM`, col: 0xf97316 }
+        ]);
+        c[3].setText(`Цитоплазма (−): V_m = ${vmGhk.toFixed(1)} мВ`, `Cytoplasm (−): V_m = ${vmGhk.toFixed(1)} mV`, `[K⁺]_in = 140 мМ, [Na⁺]_in = ${nai} мМ | Ззовні [K⁺]_o = ${ko.toFixed(1)} мМ`, `[K⁺]_in = 140 mM, [Na⁺]_in = ${nai} mM | Outside [K⁺]_o = ${ko.toFixed(1)} mM`);
+        updateBioSceneHud('bio_membrane', {
+          legend: [
+            { color: '#7c3aed', uk: 'Na⁺/K⁺-АТФаза (насос)', en: 'Na⁺/K⁺-ATPase Pump' },
+            { color: '#10b981', uk: 'Калієвий канал витоку K⁺', en: 'K⁺ Leak Channel' },
+            { color: '#f97316', uk: 'Іони Na⁺ (3 назовні)', en: 'Na⁺ ions (3 out)' },
+            { color: '#22c55e', uk: 'Іони K⁺ (2 всередину)', en: 'K⁺ ions (2 in)' },
+            { color: '#38bdf8', uk: 'Ліпідний бішар', en: 'Lipid Bilayer' }
+          ],
+          statusUk: `Потенціал спокою Гольдмана V_m = ${vmGhk.toFixed(1)} мВ (при зовнішньому [K⁺]_o = ${ko.toFixed(1)} мМ та P_Na/P_K = ${pRatio.toFixed(2)}).`,
+          statusEn: `Goldman resting potential V_m = ${vmGhk.toFixed(1)} mV (at extracellular [K⁺]_o = ${ko.toFixed(1)} mM and P_Na/P_K = ${pRatio.toFixed(2)}).`,
+          presets: [
+            { id: 'rest', uk: 'Нормальний спокій (−70 мВ)', en: 'Normal Resting (−70 mV)', values: { atpPumpRate: 1.2, kOutMm: 4.5, naInMm: 14, pNaOverPK: 0.04 } },
+            { id: 'hyperk', uk: 'Гіперкаліємія ([K⁺]_o = 12 мМ → деполяризація)', en: 'Hyperkalemia ([K⁺]_o = 12 mM)', values: { atpPumpRate: 1.2, kOutMm: 12.0, naInMm: 14, pNaOverPK: 0.04 } },
+            { id: 'openna', uk: 'Ріст проникності Na⁺ (деполяризація)', en: 'High Na⁺ Permeability', values: { atpPumpRate: 1.5, kOutMm: 4.5, naInMm: 20, pNaOverPK: 0.10 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -25928,6 +26467,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -26017,8 +26557,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         worldGroup.add(this.traceLine);
 
-        this.arrowProp = new SmartVectorArrow(worldGroup, 0xef4444, { labelEn: 'v_cond (Action Potential)', labelUk: 'v_пров (Нервовий імпульс)' });
-        this.arrowIna = new SmartVectorArrow(worldGroup, 0xf97316, { labelEn: 'I_Na (depolarization)', labelUk: 'I_Na (деполяризація)' });
+        this.arrowProp = new SmartVectorArrow('v_пров (Нервовий імпульс)', 0xef4444);
+        this.arrowIna = new SmartVectorArrow('I_Na (деполяризація)', 0xf97316);
         this.arrows.push(this.arrowProp, this.arrowIna);
       }
 
@@ -26105,6 +26645,32 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Стала довжини кабелю λ = √(r_m / r_i)', val: `${(isMyelinated ? 2.4 * Math.sqrt(diam / 10) : 0.45 * Math.sqrt(diam / 10)).toFixed(2)} мм` },
           { label: 'Абсолютний рефрактерний період τ_рефр', val: '1.2 мс (інактивація h-воріт Na⁺-каналів)' }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(-2.7, 2.5, 0), b: new THREE.Vector3(-2.9, 1.0, 0.8), tuk: isMyelinated ? 'Мієлінова оболонка (клітина Шванна)' : 'Безмієліновий аксон (неперервний)', ten: isMyelinated ? 'Myelin Sheath (Schwann Cell)' : 'Unmyelinated Axon (Continuous)', suk: isMyelinated ? 'Ізолює аксон, прискорюючи імпульс у ~10×' : 'Повільне безперервне проведення', sen: isMyelinated ? 'Insulates axon, boosting speed ~10×' : 'Slow continuous conduction', col: 0xfacc15 },
+          { a: new THREE.Vector3(0.0, 2.45, 0), b: new THREE.Vector3(0.5, 0.95, 0.8), tuk: 'Перехват Ранв’є (Na⁺/K⁺-канали)', ten: 'Node of Ranvier (Na⁺/K⁺ channels)', suk: 'Стрибкоподібна (сальтаторна) регенерація спайку', sen: 'Saltatory spike regeneration node', col: 0x22c55e },
+          { a: this.spikePulse.position.clone().add(new THREE.Vector3(0, 1.2, 0)), b: new THREE.Vector3(0, 4.45, 0), tuk: fired ? `Хвиля потенціалу дії (+${peakVm.toFixed(0)} мВ)` : `Підпороговий стимул (${peakVm.toFixed(0)} мВ < −55 мВ)`, ten: fired ? `Action Potential Spike (+${peakVm.toFixed(0)} mV)` : `Subthreshold Stimulus (${peakVm.toFixed(0)} mV < −55 mV)`, suk: fired ? `Швидкість v = ${vCond.toFixed(1)} м/с` : 'Імпульс не виникає (закон «усе або нічого»)', sen: fired ? `Velocity v = ${vCond.toFixed(1)} m/s` : 'No spike fires (all-or-none law)', col: 0xef4444 }
+        ]);
+        c[0].setText(isMyelinated ? 'Мієлінова оболонка (клітина Шванна)' : 'Безмієліновий аксон', isMyelinated ? 'Myelin Sheath (Schwann Cell)' : 'Unmyelinated Axon', isMyelinated ? 'Сальтаторне проведення імпульсу' : 'Безперервне проведення імпульсу', isMyelinated ? 'Saltatory conduction mode' : 'Continuous conduction mode');
+        c[2].setText(fired ? `Хвиля потенціалу дії (+${peakVm.toFixed(0)} мВ)` : `Підпороговий стимул (${peakVm.toFixed(0)} мВ)`, fired ? `Action Potential Spike (+${peakVm.toFixed(0)} mV)` : `Subthreshold Stimulus (${peakVm.toFixed(0)} mV)`, fired ? `Швидкість v = ${vCond.toFixed(1)} м/с (діаметр d = ${diam} мкм)` : 'Збільшіть струм I_стим ≥ 1.0 для запуску спайку', fired ? `Velocity v = ${vCond.toFixed(1)} m/s (diameter d = ${diam} μm)` : 'Increase I_stim ≥ 1.0 to fire spike');
+        updateBioSceneHud('bio_neuron', {
+          legend: [
+            { color: '#0284c7', uk: 'Осьовий циліндр аксона', en: 'Axon Core Cylinder' },
+            { color: '#facc15', uk: 'Мієлінові муфти (Шванна)', en: 'Myelin Sheath Internodes' },
+            { color: '#22c55e', uk: 'Перехвати Ранв’є та профіль V_m(x)', en: 'Nodes of Ranvier & V_m(x) Trace' },
+            { color: '#ef4444', uk: 'Хвиля потенціалу дії (деполяризація)', en: 'Action Potential Spike Wave' }
+          ],
+          statusUk: fired
+            ? `Надпороговий стимул (I = ${stim}): спайк +${peakVm.toFixed(0)} мВ біжить аксоном зі швидкістю v = ${vCond.toFixed(1)} м/с (${isMyelinated ? 'сальтаторно' : 'безперервно'}).`
+            : `Підпороговий стимул (I = ${stim} < 1.0): деполяризація до ${peakVm.toFixed(0)} мВ не досягає порогу −55 мВ, спайк не генерується.`,
+          statusEn: fired
+            ? `Suprathreshold stimulus (I = ${stim}): +${peakVm.toFixed(0)} mV spike propagates at v = ${vCond.toFixed(1)} m/s (${isMyelinated ? 'saltatory' : 'continuous'}).`
+            : `Subthreshold stimulus (I = ${stim} < 1.0): V_m = ${peakVm.toFixed(0)} mV stays below −55 mV threshold — no spike fires.`,
+          presets: [
+            { id: 'salt', uk: 'Швидкий мієліновий аксон', en: 'Fast Myelinated Axon', values: { stimCurrent: 1.6, myelinFactor: 2, axonDiamUm: 14, gNaScale: 1.2 } },
+            { id: 'unmyel', uk: 'Повільний безмієліновий аксон', en: 'Slow Unmyelinated Axon', values: { stimCurrent: 1.5, myelinFactor: 1, axonDiamUm: 10, gNaScale: 1.0 } },
+            { id: 'sub', uk: 'Підпороговий стимул (немає спайку)', en: 'Subthreshold (No Spike)', values: { stimCurrent: 0.6, myelinFactor: 2, axonDiamUm: 10, gNaScale: 1.0 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -26115,6 +26681,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -26188,8 +26755,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.actinRight.push({ mesh: actR, yPos });
         }
 
-        this.arrowLeftZ = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'F_contract,L', labelUk: 'F_скор,Л' });
-        this.arrowRightZ = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'F_contract,R', labelUk: 'F_скор,П' });
+        this.arrowLeftZ = new SmartVectorArrow('F_скор,Л', 0x22c55e);
+        this.arrowRightZ = new SmartVectorArrow('F_скор,П', 0x22c55e);
         this.arrows.push(this.arrowLeftZ, this.arrowRightZ);
       }
 
@@ -26263,6 +26830,30 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Швидкість укорочення за Гіллом v(F)', val: `${vShort.toFixed(2)} L₀/с` },
           { label: 'Механічна потужність м’яза P = F · v', val: `${powerW.toFixed(1)} Вт` }
         ]);
+        const c = ensureBioPins(this, [
+          { a: this.zDiscLeft.position.clone().add(new THREE.Vector3(0, 1.2, 0)), b: new THREE.Vector3(-3.3, 4.15, 0), tuk: 'Лівий Z-диск (межа саркомера)', ten: 'Left Z-Disc (Sarcomere Border)', suk: `Довжина саркомера L = ${l0.toFixed(1)} мкм`, sen: `Sarcomere length L = ${l0.toFixed(1)} μm`, col: 0x0284c7 },
+          { a: new THREE.Vector3(0, 2.75, 0), b: new THREE.Vector3(0, 4.35, 0), tuk: 'Товсті нитки міозину + головки S1', ten: 'Thick Myosin Filaments + Heads', suk: `Ізометрична сила F₀ = ${f0.toFixed(0)} Н (перекриття ${(overlap * 100).toFixed(0)}%)`, sen: `Isometric force F₀ = ${f0.toFixed(0)} N (overlap ${(overlap * 100).toFixed(0)}%)`, col: 0xef4444 },
+          { a: new THREE.Vector3(1.4, 1.28, 0), b: new THREE.Vector3(2.4, 0.75, 0.8), tuk: 'Тонкі нитки актину + тропонін (Ca²⁺)', ten: 'Thin Actin Filaments + Troponin (Ca²⁺)', suk: `Активація Ca²⁺: ${(caAct * 100).toFixed(0)}% · v(F) = ${vShort.toFixed(2)} L₀/с`, sen: `Ca²⁺ activation: ${(caAct * 100).toFixed(0)}% · v(F) = ${vShort.toFixed(2)} L₀/s`, col: 0x22c55e }
+        ]);
+        c[0].setPositions(this.zDiscLeft.position.clone().add(new THREE.Vector3(0, 1.2, 0)), new THREE.Vector3(-3.3, 4.15, 0));
+        c[0].setText('Лівий Z-диск (межа саркомера)', 'Left Z-Disc (Sarcomere Border)', `Довжина саркомера L = ${l0.toFixed(1)} мкм (оптимум 2.1 мкм)`, `Sarcomere length L = ${l0.toFixed(1)} μm (optimum 2.1 μm)`);
+        c[1].setText('Товсті нитки міозину + головки S1', 'Thick Myosin Filaments + Heads', `F₀ = ${f0.toFixed(0)} Н · перекриття ${(overlap * 100).toFixed(0)}%`, `F₀ = ${f0.toFixed(0)} N · overlap ${(overlap * 100).toFixed(0)}%`);
+        c[2].setText('Тонкі нитки актину + тропонін (Ca²⁺)', 'Thin Actin Filaments + Troponin (Ca²⁺)', `Активація Ca²⁺: ${(caAct * 100).toFixed(0)}% · швидкість v = ${vShort.toFixed(2)} L₀/с`, `Ca²⁺ activation: ${(caAct * 100).toFixed(0)}% · velocity v = ${vShort.toFixed(2)} L₀/s`);
+        updateBioSceneHud('bio_sarcomere', {
+          legend: [
+            { color: '#0284c7', uk: 'Z-диски (рухомі межі)', en: 'Z-Discs (movable borders)' },
+            { color: '#ef4444', uk: 'Товсті нитки міозину (A-диск)', en: 'Thick Myosin (A-band)' },
+            { color: '#facc15', uk: 'Міозинові головки (містки)', en: 'Myosin Cross-Bridges' },
+            { color: '#22c55e', uk: 'Тонкі нитки актину', en: 'Thin Actin Filaments' }
+          ],
+          statusUk: `Ковзання ниток: актин і міозин не змінюють власної довжини, але Z-диски зближуються зі швидкістю v = ${vShort.toFixed(2)} L₀/с (сила тяги F₀ = ${f0.toFixed(0)} Н).`,
+          statusEn: `Sliding filaments: actin and myosin keep constant length while Z-discs pull together at v = ${vShort.toFixed(2)} L₀/s (isometric force F₀ = ${f0.toFixed(0)} N).`,
+          presets: [
+            { id: 'opt', uk: 'Швидке ізотонічне скорочення', en: 'Fast Isotonic Contraction', values: { caConcUm: 4.5, sarcomereLenUm: 2.1, loadRatio: 0.15, atpSupply: 1.8 } },
+            { id: 'iso', uk: 'Ізометричне напруження (F = F₀, v = 0)', en: 'Isometric Tension (F = F₀, v = 0)', values: { caConcUm: 5.0, sarcomereLenUm: 2.1, loadRatio: 1.0, atpSupply: 1.5 } },
+            { id: 'relax', uk: 'Розслаблений м’яз (мало Ca²⁺)', en: 'Relaxed Muscle (Low Ca²⁺)', values: { caConcUm: 0.2, sarcomereLenUm: 2.2, loadRatio: 0.3, atpSupply: 1.5 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -26273,6 +26864,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -26363,8 +26955,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.o2Bubbles.push({ mesh: bub, offset: i / 6 });
         }
 
-        this.arrowLight = new SmartVectorArrow(worldGroup, 0xf59e0b, { labelEn: 'hν (Photons → PSII/I)', labelUk: 'hν (Кванти світла)' });
-        this.arrowAssimil = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'ATP + NADPH → Calvin', labelUk: 'АТФ + НАДФ·H → Кальвін' });
+        this.arrowLight = new SmartVectorArrow('hν (Кванти світла)', 0xf59e0b);
+        this.arrowAssimil = new SmartVectorArrow('АТФ + НАДФ·H → Кальвін', 0x22c55e);
         this.arrows.push(this.arrowLight, this.arrowAssimil);
       }
 
@@ -26440,6 +27032,30 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Активність РуБісКО при T = ' + tC + ' °C', val: `${(tempEff * 100).toFixed(0)} %` },
           { label: 'Джерело вільного кисню O₂', val: 'Виключно фотоліз води 2H₂O у ФС ІІ (P680)' }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(-2.75, 2.35, 0), b: new THREE.Vector3(-3.3, 4.15, 0), tuk: 'Фотосистема II (P680) + фотоліз H₂O', ten: 'Photosystem II (P680) + H₂O Splitting', suk: `2H₂O → O₂↑ + 4H⁺ + 4e⁻ (поглинання ${(absEff * 100).toFixed(0)}%)`, sen: `2H₂O → O₂↑ + 4H⁺ + 4e⁻ (absorption ${(absEff * 100).toFixed(0)}%)`, col: 0x22c55e },
+          { a: new THREE.Vector3(-1.65, 2.35, 0), b: new THREE.Vector3(-1.65, 0.75, 0.9), tuk: 'Цитохром b₆f (мембрана тилакоїда)', ten: 'Cytochrome b₆f (Thylakoid)', suk: 'Транспортує e⁻ та закачує H⁺ у люмен', sen: 'Transfers e⁻ & pumps H⁺ into lumen', col: 0x0ea5e9 },
+          { a: new THREE.Vector3(-0.55, 2.35, 0), b: new THREE.Vector3(-0.4, 3.85, 0), tuk: 'Фотосистема I (P700)', ten: 'Photosystem I (P700)', suk: 'Відновлює НАДФ⁺ → НАДФ·H', sen: 'Reduces NADP⁺ → NADPH', col: 0x10b981 },
+          { a: new THREE.Vector3(2.15, 3.5, 0), b: new THREE.Vector3(2.5, 4.45, 0), tuk: 'Цикл Кальвіна у стромі (РуБісКО)', ten: 'Calvin Cycle in Stroma (RuBisCO)', suk: `6 CO₂ + 18 АТФ + 12 НАДФ·H → C₆H₁₂O₆ (${photoRate.toFixed(1)}%)`, sen: `6 CO₂ + 18 ATP + 12 NADPH → Glucose (${photoRate.toFixed(1)}%)`, col: 0xf59e0b }
+        ]);
+        c[0].setText('Фотосистема II (P680) + фотоліз H₂O', 'Photosystem II (P680) + H₂O Splitting', `λ = ${wl} нм (поглинання хлорофілом ${(absEff * 100).toFixed(0)}%)`, `λ = ${wl} nm (chlorophyll absorption ${(absEff * 100).toFixed(0)}%)`);
+        c[3].setText('Цикл Кальвіна у стромі (РуБісКО)', 'Calvin Cycle in Stroma (RuBisCO)', `Швидкість асиміляції: ${photoRate.toFixed(1)}% від максимуму`, `Assimilation rate: ${photoRate.toFixed(1)}% of max`);
+        updateBioSceneHud('bio_photosynthesis', {
+          legend: [
+            { color: '#22c55e', uk: 'ФС ІІ (P680, виділення O₂)', en: 'PS II (P680, O₂ evolution)' },
+            { color: '#0ea5e9', uk: 'Цитохром b₆f', en: 'Cytochrome b₆f' },
+            { color: '#10b981', uk: 'ФС І (P700 → НАДФ·H)', en: 'PS I (P700 → NADPH)' },
+            { color: '#f59e0b', uk: 'Колесо циклу Кальвіна (строма)', en: 'Calvin Cycle Wheel (Stroma)' }
+          ],
+          statusUk: `При довжині хвилі λ = ${wl} нм хлорофіл поглинає ${(absEff * 100).toFixed(0)}% світла, а швидкість фотосинтезу становить ${photoRate.toFixed(1)}%.`,
+          statusEn: `At wavelength λ = ${wl} nm, chlorophyll absorbs ${(absEff * 100).toFixed(0)}% of light, yielding a ${photoRate.toFixed(1)}% photosynthetic rate.`,
+          presets: [
+            { id: 'red', uk: 'Червоний максимум (675 нм)', en: 'Red Peak (675 nm)', values: { lightPar: 1200, co2Ppm: 600, wavelengthNm: 675, rubiscoTemp: 25 } },
+            { id: 'blue', uk: 'Синій максимум (445 нм)', en: 'Blue Peak (445 nm)', values: { lightPar: 1200, co2Ppm: 600, wavelengthNm: 445, rubiscoTemp: 25 } },
+            { id: 'green', uk: 'Зелений провал (540 нм — відбиття)', en: 'Green Trough (540 nm)', values: { lightPar: 1200, co2Ppm: 600, wavelengthNm: 540, rubiscoTemp: 25 } },
+            { id: 'heat', uk: 'Теплова інактивація РуБісКО (42 °C)', en: 'Heat Stress (42 °C)', values: { lightPar: 1000, co2Ppm: 420, wavelengthNm: 675, rubiscoTemp: 42 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -26457,6 +27073,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -26532,8 +27149,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.rbcs.push({ mesh: rbc, offset: i / 4 });
         }
 
-        this.arrowBind = new SmartVectorArrow(worldGroup, 0x38bdf8, { labelEn: 'O₂ binding (R-state)', labelUk: 'Зв’язування O₂ (R-стан)' });
-        this.arrowBohr = new SmartVectorArrow(worldGroup, 0xf59e0b, { labelEn: 'Bohr release (H⁺/CO₂)', labelUk: 'Віддача O₂ (ефект Бора)' });
+        this.arrowBind = new SmartVectorArrow('Зв’язування O₂ (R-стан)', 0x38bdf8);
+        this.arrowBohr = new SmartVectorArrow('Віддача O₂ (ефект Бора)', 0xf59e0b);
         this.arrows.push(this.arrowBind, this.arrowBohr);
       }
 
@@ -26601,6 +27218,29 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Ефект Бора при pH = ' + ph.toFixed(2), val: ph < 7.35 ? 'Зсув праворуч (посилена віддача O₂ тканинам)' : (ph > 7.45 ? 'Зсув ліворуч (алкалоз)' : 'Фізіологічна норма артеріальної крові') },
           { label: 'Ступінь окиснення Феруму в гемі', val: 'Fe²⁺ (незмінний при оксигенації)' }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(0, 3.1, 0), b: new THREE.Vector3(-2.3, 4.35, 0), tuk: `Тетрамер гемоглобіну α₂β₂ (${boundCount}/4 O₂)`, ten: `Hemoglobin α₂β₂ Tetramer (${boundCount}/4 O₂)`, suk: yHb >= 0.5 ? 'R-форма (оксигемоглобін, висока спорідненість)' : 'T-форма (дезоксигемоглобін, віддача O₂ тканинам)', sen: yHb >= 0.5 ? 'R-state (oxyhemoglobin, high affinity)' : 'T-state (deoxyhemoglobin, O₂ release)', col: 0xbe123c },
+          { a: new THREE.Vector3(0.65, 2.85, 0.4), b: new THREE.Vector3(2.5, 4.15, 0), tuk: 'Порфіриновий гем Fe²⁺ та ліганд O₂', ten: 'Porphyrin Heme Fe²⁺ & O₂ Ligand', suk: `Насичення Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} мм рт.ст.`, sen: `Saturation Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} mmHg`, col: 0xfacc15 },
+          { a: new THREE.Vector3(0, 1.05, -1.35), b: new THREE.Vector3(0, 0.7, 1.2), tuk: 'Еритроцити у капілярному руслі', ten: 'Red Blood Cells in Capillary', suk: `Ефект Бора при pH = ${ph.toFixed(2)}, T = ${tC}°C`, sen: `Bohr effect at pH = ${ph.toFixed(2)}, T = ${tC}°C`, col: 0xdc2626 }
+        ]);
+        c[0].setText(`Тетрамер гемоглобіну α₂β₂ (${boundCount}/4 O₂)`, `Hemoglobin α₂β₂ Tetramer (${boundCount}/4 O₂)`, yHb >= 0.5 ? 'R-стан (оксигемоглобін, яскраво-червоний)' : 'T-стан (дезоксигемоглобін, темно-вишневий)', yHb >= 0.5 ? 'R-state (oxyhemoglobin, bright red)' : 'T-state (deoxyhemoglobin, dark red)');
+        c[1].setText('Порфіриновий гем Fe²⁺ та ліганд O₂', 'Porphyrin Heme Fe²⁺ & O₂ Ligand', `Насичення Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} мм рт.ст.`, `Saturation Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} mmHg`);
+        c[2].setText('Еритроцити у капілярному руслі', 'Red Blood Cells in Capillary', `pH = ${ph.toFixed(2)} (${ph < 7.35 ? 'ацидоз — зсув Бора праворуч' : 'норма'}), T = ${tC}°C`, `pH = ${ph.toFixed(2)} (${ph < 7.35 ? 'acidosis — Bohr right shift' : 'normal'}), T = ${tC}°C`);
+        updateBioSceneHud('bio_hemo', {
+          legend: [
+            { color: '#ef4444', uk: 'Субодиниці глобіну (R-окси / T-дезокси)', en: 'Globin Subunits (R-oxy / T-deoxy)' },
+            { color: '#facc15', uk: 'Кільця гему з Fe²⁺', en: 'Heme Rings with Fe²⁺' },
+            { color: '#38bdf8', uk: 'Зв’язані молекули O₂', en: 'Bound O₂ Molecules' },
+            { color: '#dc2626', uk: 'Еритроцити в капілярі', en: 'Red Blood Cells' }
+          ],
+          statusUk: `При pO₂ = ${po2} мм рт.ст. насичення гемоглобіну Y_Hb = ${(yHb * 100).toFixed(1)}% (зайнято ${boundCount} з 4 гемів Fe²⁺), тиск напівнасичення P₅₀ = ${p50.toFixed(1)} мм рт.ст.`,
+          statusEn: `At pO₂ = ${po2} mmHg, hemoglobin saturation Y_Hb = ${(yHb * 100).toFixed(1)}% (${boundCount} of 4 Fe²⁺ hemes bound), half-saturation P₅₀ = ${p50.toFixed(1)} mmHg.`,
+          presets: [
+            { id: 'lungs', uk: 'Капіляри легень (pO₂ = 100 → 98% HbO₂)', en: 'Lung Capillaries (pO₂ = 100 → 98% HbO₂)', values: { po2MmHg: 100, bloodPh: 7.45, tempC: 37, bpgLevel: 1.0 } },
+            { id: 'rest', uk: 'Тканини у спокої (pO₂ = 40 → 75% HbO₂)', en: 'Resting Tissue (pO₂ = 40 → 75% HbO₂)', values: { po2MmHg: 40, bloodPh: 7.4, tempC: 37, bpgLevel: 1.0 } },
+            { id: 'muscle', uk: 'Працюючий м’яз (ефект Бора, pH 7.15)', en: 'Working Muscle (Bohr Shift, pH 7.15)', values: { po2MmHg: 25, bloodPh: 7.15, tempC: 39.5, bpgLevel: 1.5 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -26611,6 +27251,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -26673,8 +27314,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         worldGroup.add(this.stateOrb);
 
-        this.arrowPhase = new SmartVectorArrow(worldGroup, 0x38bdf8, { labelEn: 'd(x,y)/dt (Phase velocity)', labelUk: 'd(x,y)/dt (Фазовий вектор)' });
-        this.arrowTrophic = new SmartVectorArrow(worldGroup, 0x22c55e, { labelEn: 'Trophic flux (10% rule)', labelUk: 'Трофічний потік (10%)' });
+        this.arrowPhase = new SmartVectorArrow('d(x,y)/dt (Фазовий вектор)', 0x38bdf8);
+        this.arrowTrophic = new SmartVectorArrow('Трофічний потік (10%)', 0x22c55e);
         this.arrows.push(this.arrowPhase, this.arrowTrophic);
       }
 
@@ -26757,6 +27398,31 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Зсув фаз хвилі хижаків відносно жертв', val: 'Запізнення на +π/2 (1/4 періоду циклу)' },
           { label: 'Екологічне правило Ліндемана', val: '~10 % енергії переходить на вищий трофічний рівень' }
         ]);
+        const c = ensureBioPins(this, [
+          { a: new THREE.Vector3(-3.3, 2.5, 0), b: new THREE.Vector3(-3.6, 4.15, 0), tuk: 'Продуценти (рослинна біомаса)', ten: 'Producers (Plant Biomass)', suk: 'Правило Ліндемана: 10% енергії на наступний рівень', sen: 'Lindeman rule: 10% energy transfer per level', col: 0x15803d },
+          { a: this.barPrey.position.clone().add(new THREE.Vector3(0, 0.6, 0)), b: new THREE.Vector3(-2.0, 4.55, 0), tuk: `Жертви x(t) = ${xNow.toFixed(0)} особ.`, ten: `Prey x(t) = ${xNow.toFixed(0)} ind.`, suk: `Рівновага x* = γ/δ = ${xEq.toFixed(0)}`, sen: `Equilibrium x* = γ/δ = ${xEq.toFixed(0)}`, col: 0x22c55e },
+          { a: this.barPred.position.clone().add(new THREE.Vector3(0, 0.6, 0)), b: new THREE.Vector3(-0.6, 3.85, 0), tuk: `Хижаки y(t) = ${yNow.toFixed(0)} особ.`, ten: `Predators y(t) = ${yNow.toFixed(0)} ind.`, suk: `Рівновага y* = α/β = ${yEq.toFixed(0)} (відстає на ¼ T)`, sen: `Equilibrium y* = α/β = ${yEq.toFixed(0)} (lags by ¼ T)`, col: 0xef4444 },
+          { a: new THREE.Vector3(1.85, 2.25, 0), b: new THREE.Vector3(2.3, 4.25, 0), tuk: 'Фазовий портрет (x, y) та точка (x*, y*)', ten: 'Phase Portrait (x, y) & Center (x*, y*)', suk: `Період коливань T ≈ ${periodT.toFixed(1)} років`, sen: `Oscillation period T ≈ ${periodT.toFixed(1)} yrs`, col: 0x38bdf8 }
+        ]);
+        c[1].setText(`Жертви x(t) = ${xNow.toFixed(0)} особ.`, `Prey x(t) = ${xNow.toFixed(0)} ind.`, `Рівновага x* = γ/δ = ${xEq.toFixed(0)}`, `Equilibrium x* = γ/δ = ${xEq.toFixed(0)}`);
+        c[2].setText(`Хижаки y(t) = ${yNow.toFixed(0)} особ.`, `Predators y(t) = ${yNow.toFixed(0)} ind.`, `Рівновага y* = α/β = ${yEq.toFixed(0)} (запізнення +π/2)`, `Equilibrium y* = α/β = ${yEq.toFixed(0)} (lags +π/2)`);
+        c[3].setText('Фазовий портрет (x, y) та центр (x*, y*)', 'Phase Portrait (x, y) & Center (x*, y*)', `Період циклу T ≈ ${periodT.toFixed(1)} р.`, `Cycle period T ≈ ${periodT.toFixed(1)} yr`);
+        updateBioSceneHud('bio_lotka', {
+          legend: [
+            { color: '#15803d', uk: 'Продуценти (100% біомаси)', en: 'Producers (100% biomass)' },
+            { color: '#22c55e', uk: 'Жертви x(t) (рослиноїдні)', en: 'Prey x(t) (herbivores)' },
+            { color: '#ef4444', uk: 'Хижаки y(t) (м’ясоїдні)', en: 'Predators y(t) (carnivores)' },
+            { color: '#38bdf8', uk: 'Фазова траєкторія (x, y)', en: 'Phase Orbit (x, y)' },
+            { color: '#facc15', uk: 'Точка рівноваги (x*, y*)', en: 'Equilibrium Center (x*, y*)' }
+          ],
+          statusUk: `Чисельність: жертви x(t) = ${xNow.toFixed(0)}, хижаки y(t) = ${yNow.toFixed(0)}. Центр рівноваги (x* = ${xEq.toFixed(0)}, y* = ${yEq.toFixed(0)}), період циклу T ≈ ${periodT.toFixed(1)} років.`,
+          statusEn: `Populations: Prey x(t) = ${xNow.toFixed(0)}, Predators y(t) = ${yNow.toFixed(0)}. Equilibrium (x* = ${xEq.toFixed(0)}, y* = ${yEq.toFixed(0)}), period T ≈ ${periodT.toFixed(1)} years.`,
+          presets: [
+            { id: 'classic', uk: 'Класичний цикл (заєць і рись)', en: 'Classic Cycle (Hare & Lynx)', values: { alphaGrowth: 0.8, betaPred: 0.04, gammaDeath: 0.6, deltaEff: 0.015 } },
+            { id: 'boom', uk: 'Висока народжуваність жертв', en: 'Prey Boom (High α)', values: { alphaGrowth: 1.4, betaPred: 0.03, gammaDeath: 0.5, deltaEff: 0.012 } },
+            { id: 'pred', uk: 'Інтенсивне хижацтво (малі x*)', en: 'Intense Predation', values: { alphaGrowth: 0.6, betaPred: 0.06, gammaDeath: 0.4, deltaEff: 0.02 } }
+          ]
+        });
       }
 
       update(dt) {
@@ -26767,6 +27433,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       dispose() {
         this.arrows.forEach(a => a.dispose());
         this.particles.dispose();
+        if (this.bioCallouts) this.bioCallouts.forEach(c => c.dispose());
       }
     }
 
@@ -34451,6 +35118,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
 
       activeVectorArrows.forEach(arrow => arrow.refreshLanguage());
+      activeBioCalloutPins.forEach(pin => pin.refreshLanguage());
       if (typeof setInteractionBadgeText === 'function') setInteractionBadgeText();
       if (activeSim && typeof activeSim.syncVisuals === 'function') activeSim.syncVisuals();
 
@@ -35187,6 +35855,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         activeSim = null;
       }
 
+      cleanupSceneHuds(sceneKey);
+      if (activeBioCalloutPins.size > 0) {
+        for (const pin of Array.from(activeBioCalloutPins)) {
+          try {
+            pin.dispose();
+          } catch (e) {}
+        }
+        activeBioCalloutPins.clear();
+      }
       if (activeVectorArrows.size > 0) {
         for (const arrow of Array.from(activeVectorArrows)) {
           try {

@@ -656,7 +656,7 @@
       'Зсув pH до точки еквівалентності': 'ΔpH',
       'Потік електронів e⁻ (Zn→Cu)': 'I(e⁻)',
       'Міграція йонів у містку (K⁺, Cl⁻)': 'J_ion',
-      'Осадження металу на катоді (−)': 'm_кат',
+      'Осадження металу на катоді (−)': 'm_cat',
       'Виділення газу O₂↑ на аноді (+)': 'J(O₂↑)',
       'Зв’язування H⁺ ацетат-йонами A⁻': 'J(H⁺)',
       'Нейтралізація OH⁻ кислотою HA': 'J(OH⁻)',
@@ -665,10 +665,10 @@
       'Поглинання хромофорами εlC': 'ε·l·C',
       'Потік H⁺ крізь мембрану': 'J(H⁺)',
       'Потік e⁻ у зовнішньому колі': 'I(e⁻)',
-      'Подача газу H₂ / O₂': 'J_газ',
+      'Подача газу H₂ / O₂': 'J_gas',
       'Активний радикал •CH₂–': '•CH₂–',
       'Зниження тиску пари ΔP': 'ΔP',
-      'Масоперенесення крізь межу фаз': 'J_фаз',
+      'Масоперенесення крізь межу фаз': 'J_ph',
       'Потік адсорбції r_ads = k_a·P·(1−θ)': 'r_ads',
       'Потік десорбції r_des = k_d·θ': 'r_des',
       'Зв’язування S + E ⇄ ES (K_M)': 'k₁[E][S]',
@@ -4011,8 +4011,8 @@
           const n = Math.round(p.degPolyN);
           const mn = n * 28.05;
           const rg = 1.54 * Math.sqrt(2 * n * 2.0) * 0.1;
-          const qTot = n * 93.0;
-          return String.raw`n = ${n}\text{ ланок}: \quad M_n = ${mn.toFixed(1)}\text{ г/моль}, \quad R_g \approx ${rg.toFixed(2)}\text{ нм}, \quad -\Delta H_\Sigma = ${qTot.toFixed(0)}\text{ кДж/моль}`;
+          const vProp = p.monomerM * Math.sqrt(p.initiatorI) * Math.exp(-(3500 / p.temperatureT) + 9.7);
+          return String.raw`n = ${n}\text{ ланок}: \quad M_n = ${mn.toFixed(1)}\text{ г/моль}, \quad R_g \approx ${rg.toFixed(2)}\text{ нм}, \quad v_p = ${vProp.toFixed(2)}\text{ моль/(л·с)}`;
         },
         defaults: { degPolyN: 10, initiatorI: 2.0, monomerM: 1.5, temperatureT: 350 },
         sliders: [
@@ -4435,8 +4435,9 @@
         formulaLatex: String.raw`\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ = -RT\ln K, \qquad K = \exp\!\left(-\frac{\Delta G^\circ}{RT}\right)`,
         liveLatexFn: p => {
           const tds = (p.tempK * p.deltaS) / 1000;
-          const dg = p.deltaH - tds;
-          const lnK = Math.max(-25, Math.min(25, (-dg * 1000) / (8.314 * p.tempK)));
+          const rtLnP = (8.314 * p.tempK * Math.log(Math.max(0.1, p.pressureP || 1.0))) / 1000;
+          const dg = p.deltaH - tds + rtLnP;
+          const lnK = Math.max(-25, Math.min(25, (-(p.deltaH - tds) * 1000) / (8.314 * p.tempK)));
           const kVal = Math.exp(lnK);
           const kStr = kVal >= 1000 || kVal < 0.01 ? kVal.toExponential(2) : kVal.toFixed(2);
           return String.raw`\Delta H = ${p.deltaH >= 0 ? '+' : ''}${p.deltaH.toFixed(0)}, \quad T\Delta S = ${tds >= 0 ? '+' : ''}${tds.toFixed(1)}\text{ кДж/моль} \;\Rightarrow\; \Delta G = ${dg >= 0 ? '+' : ''}${dg.toFixed(1)}\text{ кДж/моль}\;(K \approx ${kStr})`;
@@ -19736,7 +19737,7 @@
 
       syncVisuals() {
         const tC = sceneParams.chem_hbond.tempC !== undefined ? sceneParams.chem_hbond.tempC : -5;
-        const eHB = sceneParams.chem_hbond.hBondStrength ?? sceneParams.chem_hbond.hBondEnergy ?? 21.0;
+        const eHB = sceneParams.chem_hbond.hBondStrength ?? 21.0;
         const pMPa = sceneParams.chem_hbond.pressureMPa || 0.1;
         const mu = sceneParams.chem_hbond.dipoleD || 1.85;
 
@@ -21274,9 +21275,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       syncVisuals() {
         const n = Math.round(sceneParams.chem_polymer.degPolyN || 12);
-        const cInit = sceneParams.chem_polymer.initiatorConc || 0.5;
-        const cMon = sceneParams.chem_polymer.monomerConc || 2.5;
-        const T = sceneParams.chem_polymer.tempK || 360;
+        const cInit = sceneParams.chem_polymer.initiatorI || 0.5;
+        const cMon = sceneParams.chem_polymer.monomerM || 2.5;
+        const T = sceneParams.chem_polymer.temperatureT || 360;
 
         if (this.lastN !== n) {
           this.rebuildChain(n);
@@ -22578,10 +22579,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const dH = this.params.deltaH;
         const dS = this.params.deltaS;
         const T = this.params.tempK;
+        const pAtm = this.params.pressureP || 1.0;
 
         const tdsKj = (T * dS) / 1000;
-        const dG = dH - tdsKj;
-        const lnK = (-dG * 1000) / (8.314 * T);
+        const rtLnP = (8.314 * T * Math.log(Math.max(0.1, pAtm))) / 1000;
+        const dG = dH - tdsKj + rtLnP;
+        const lnK = (-(dH - tdsKj) * 1000) / (8.314 * T);
 
         const hReact = 1.5;
         const hProd = Math.max(0.55, Math.min(2.65, 1.5 + dG / 140));
@@ -26542,8 +26545,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const n = Math.round(p.degPolyN);
           const mn = n * 28.05;
           const rg = 1.54 * Math.sqrt(2 * n * 2.0) * 0.1;
-          const qTot = n * 93.0;
-          return String.raw`n = ${n}\text{ units}: \quad M_n = ${mn.toFixed(1)}\text{ g/mol}, \quad R_g \approx ${rg.toFixed(2)}\text{ nm}, \quad -\Delta H_\Sigma = ${qTot.toFixed(0)}\text{ kJ/mol}`;
+          const vProp = p.monomerM * Math.sqrt(p.initiatorI) * Math.exp(-(3500 / p.temperatureT) + 9.7);
+          return String.raw`n = ${n}\text{ units}: \quad M_n = ${mn.toFixed(1)}\text{ g/mol}, \quad R_g \approx ${rg.toFixed(2)}\text{ nm}, \quad v_p = ${vProp.toFixed(2)}\text{ mol/(L·s)}`;
         },
         sliders: [
           { label: 'Degree of polymerization n (–CH₂–CH₂– repeat units)', unit: 'units' },
@@ -26898,11 +26901,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         explanation: 'At constant $T$ and $P$, the criterion for spontaneity is the **Gibbs free energy** change $\\Delta G = \\Delta H - T\\Delta S < 0$, which is linked to the equilibrium constant via $\\Delta G^\\circ = -RT\\ln K_{eq}$. There are four regimes: 1) $\\Delta H < 0, \\Delta S > 0$: spontaneous at all $T$; 2) $\\Delta H > 0, \\Delta S < 0$: non-spontaneous at all $T$; 3) $\\Delta H < 0, \\Delta S < 0$: spontaneous below $T^* = \\Delta H / \\Delta S$; 4) $\\Delta H > 0, \\Delta S > 0$ (entropy-driven endothermic processes): spontaneous above $T > T^* = \\Delta H / \\Delta S$.',
         formulaLatex: String.raw`\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ = -RT\ln K_{eq}, \qquad T_{\text{inv}}^* = \frac{\Delta H^\circ}{\Delta S^\circ}`,
         liveLatexFn: p => {
-          const dg = p.deltaH - (p.tempK * p.deltaS) / 1000.0;
-          const lnK = (-dg * 1000) / (8.314 * p.tempK);
+          const rtLnP = (8.314 * p.tempK * Math.log(Math.max(0.1, p.pressureP || 1.0))) / 1000.0;
+          const dg0 = p.deltaH - (p.tempK * p.deltaS) / 1000.0;
+          const dg = dg0 + rtLnP;
+          const lnK = (-dg0 * 1000) / (8.314 * p.tempK);
           const logK = lnK / Math.LN10;
           const spont = dg < -0.5 ? '\\text{Spontaneous } (\\Delta G < 0)' : (dg > 0.5 ? '\\text{Non-spontaneous } (\\Delta G > 0)' : '\\text{Equilibrium } (\\Delta G \\approx 0)');
-          return String.raw`\Delta G^\circ = ${p.deltaH.toFixed(0)} - ${p.tempK.toFixed(0)}\cdot(${(p.deltaS / 1000).toFixed(3)}) = ${dg.toFixed(1)}\text{ kJ/mol}, \quad \lg K_{eq} = ${logK.toFixed(2)} \;\;(${spont})`;
+          return String.raw`\Delta G = ${dg.toFixed(1)}\text{ kJ/mol}, \quad \lg K_{eq} = ${logK.toFixed(2)} \;\;(${spont})`;
         },
         sliders: [
           { label: 'Reaction enthalpy ΔH° (− exo, + endo)', unit: 'kJ/mol' },
@@ -28481,7 +28486,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           'By varying the mass ratio $m_1/m_2$ and restitution $e$, observe the two fundamental limits: for $e = 1$ and $m_1 = m_2$, the spheres completely exchange velocities ($Q = 0$), whereas for $e = 0$ they coalesce and move at the center-of-mass velocity $v_C$. This formalism supports ballistic pendulums, neutron moderation in nuclear reactors, and particle collider kinematics.'
         ]
       },
-      inclined: {
+      incline: {
         uk: [
           'На тіло масою $m$, що перебуває на похилій площині з кутом нахилу $\\alpha$, діють три сили: вертикальна сила тяжіння $m\\vec{g}$, сила нормальної реакції опори $\\vec{N}$ (перпендикулярна до поверхні клина) та сила тертя $\\vec{F}_{\\text{тер}}$ (спрямована вздовж схилу проти руху або тенденції до зісковзування). Розкладання вектора $m\\vec{g}$ на дотичну вісь $Ox$ та нормальну вісь $Oy$ дозволяє звести двовимірну задачу до одновимірного руху вздовж схилу.',
           'З умови рівноваги вздовж нормалі $Oy$ маємо $N = mg\\cos\\alpha$. Максимальна сила тертя спокою за законом Амонтона–Кулона становить $F_{\\text{тер,max}} = \\mu N = \\mu mg\\cos\\alpha$. Якщо скочувальна складова перевищує цей поріг ($mg\\sin\\alpha > \\mu mg\\cos\\alpha$, тобто $\\tan\\alpha > \\mu$), тіло починає рівноприскорений рух із прискоренням $a = g(\\sin\\alpha - \\mu\\cos\\alpha)$, яке **не залежить від маси бруска** $m$.',
@@ -32435,27 +32440,27 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       chem_beer: { h: 'pathLengthL', v: 'concentrationC', clickCycle: 'soluteType' },
       chem_fuelcell: { h: 'currentDensity', leftV: 'h2Pressure', rightV: 'o2Pressure', v: 'h2Pressure' },
       chem_isomerism: { h: 'concOpt', v: 'tubeLengthDm', clickCycle: 'isomerMode' },
-      chem_polymer: { h: 'degPolyN', v: 'temperatureT' },
-      chem_mo: { h: 'bondElec', v: 'antibondElec', clickCycle: 'moSym' },
-      chem_allotropes: { h: 'strainPct', v: 'tempK', clickCycle: 'allotropeType' },
-      chem_complex: { h: 'ligandStrength', v: 'dElectrons', clickCycle: 'geomMode' },
-      chem_bornhaber: { h: 'ionChargeZ', v: 'interionicR', clickCycle: 'stepHighlight' },
-      chem_dipole: { h: 'deltaChi', v: 'bondAngleDeg', clickCycle: 'molShape' },
-      chem_phase: { h: 'tempC', v: 'pressAtm', clickCycle: 'substanceType' },
-      chem_arrhenius: { h: 'tempK', v: 'actEnergyEa', clickCycle: 'rxnOrder' },
-      chem_enzyme: { h: 'substrateS', v: 'kmVal', clickCycle: 'inhibMode' },
-      chem_gibbs: { h: 'deltaH', v: 'tempK', leftV: 'deltaS', rightV: 'tempK' },
-      chem_haber: { h: 'pressAtm', v: 'tempC', clickCycle: 'catFe' },
-      chem_raoult: { h: 'molalityM', v: 'tempC', clickCycle: 'vantHoffI' },
-      chem_chromatography: { h: 'eluentPolarity', v: 'elutionProgress', clickCycle: 'stationarySilica' },
-      chem_adsorption: { h: 'pressureP', v: 'tempK', clickCycle: 'adsConstantK' },
-      chem_colloids: { h: 'particleRadiusNm', v: 'electrolyteConc', clickCycle: 'laserWavelength' },
+      chem_polymer: { h: 'degPolyN', v: 'temperatureT', leftV: 'initiatorI', rightV: 'monomerM' },
+      chem_mo: { h: 'internuclearR', v: 'overlapBeta', leftV: 'diatomicIdx', clickCycle: 'moType' },
+      chem_allotropes: { h: 'chiralN', v: 'tempK', leftV: 'eFieldV', clickCycle: 'nanoMode' },
+      chem_complex: { h: 'ligandFieldStrength', v: 'dElectrons', rightV: 'metalLBond', clickCycle: 'coordGeom' },
+      chem_bornhaber: { h: 'sublH', v: 'latticeU', leftV: 'ionizI1', rightV: 'dissHalfD' },
+      chem_dipole: { h: 'deltaChi', v: 'bondAngleDeg', leftV: 'bondLenA', rightV: 'extFieldE' },
+      chem_phase: { h: 'tempK', v: 'pressAtm', rightV: 'heatInputQ', clickCycle: 'substanceType' },
+      chem_arrhenius: { h: 'elapsedTimeT', v: 'initConcA0', rightV: 'rateConstK', clickCycle: 'rxnOrder' },
+      chem_enzyme: { h: 'substrateS', v: 'kmVal', leftV: 'kCat', rightV: 'inhibitorI' },
+      chem_gibbs: { h: 'deltaH', v: 'tempK', leftV: 'deltaS', rightV: 'pressureP' },
+      chem_haber: { h: 'pressAtm', v: 'tempC', rightV: 'ratioH2N2', clickCycle: 'feCatalyst' },
+      chem_raoult: { h: 'molalityM', v: 'tempC', rightV: 'vaporP0', clickCycle: 'vantHoffI' },
+      chem_chromatography: { h: 'eluentPolarity', v: 'frontHeight', leftV: 'sorbentAct', rightV: 'sampleLoad' },
+      chem_adsorption: { h: 'gasPressP', v: 'tempK', leftV: 'langmuirK0', rightV: 'qAdsKj' },
+      chem_colloids: { h: 'particleSizeNm', v: 'electrolyteC', leftV: 'counterIonZ', clickCycle: 'laserWaveNm' },
       chem_hydrolysis: { h: 'saltConcC', v: 'tempC', clickCycle: 'saltType' },
-      chem_corrosion: { h: 'protectorType', v: 'naclConc', leftV: 'o2Dissolved', rightV: 'naclConc' },
-      chem_liion: { h: 'socPct', v: 'cRate', clickCycle: 'modeCharge' },
-      chem_sn2: { h: 'rxnCoord', v: 'nucStrength', clickCycle: 'stericBulk' },
-      chem_ester: { h: 'acidEq', v: 'alcoholEq', clickCycle: 'removeWater' },
-      chem_biopol: { h: 'gcContentPct', v: 'tempC', clickCycle: 'biopolType' }
+      chem_corrosion: { h: 'partnerMetal', v: 'naclConc', leftV: 'o2Conc', rightV: 'pHVal', clickCycle: 'partnerMetal' },
+      chem_liion: { h: 'socPercent', v: 'currentC', rightV: 'tempC', clickCycle: 'cycleMode' },
+      chem_sn2: { h: 'rxnCoordXi', v: 'eaBarrier', leftV: 'concSub', rightV: 'concNu' },
+      chem_ester: { h: 'alcoholRatioB', v: 'tempC', leftV: 'acidCatalystH', rightV: 'waterRemoval' },
+      chem_biopol: { h: 'gcFraction', v: 'tempC', rightV: 'helixLength', clickCycle: 'biopolMode' }
     };
 
     function isInteractiveSimMesh(obj) {
@@ -32519,7 +32524,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
       }
 
-      return { hKey, vKey, hSign, vSign, clickCycle: bind.clickCycle || null };
+      return { hKey, vKey, hSign, vSign, clickCycle: hasSlider(bind.clickCycle) ? bind.clickCycle : null };
     }
 
     function setSimParamFrom3D(sceneKey, paramKey, rawVal) {

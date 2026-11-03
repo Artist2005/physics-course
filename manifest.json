@@ -1,0 +1,20 @@
+{
+  "name": "3D Science Lab: 86 Interactive Physics & Chemistry Simulations",
+  "short_name": "3D Science Lab",
+  "description": "Interactive 3D virtual laboratory and textbook with 46 Physics and 40 Chemistry simulations, live telemetry, energy diagrams, and step-by-step derivations in English and Ukrainian.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f2ed",
+  "theme_color": "#18181b",
+  "lang": "en",
+  "categories": ["education", "science", "books", "reference"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

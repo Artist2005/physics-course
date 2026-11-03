@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f5f0"/>
+      <stop offset="100%" stop-color="#eae5da"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d6d1c4" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.65"/>
+  <rect x="28" y="28" width="1144" height="574" fill="none" stroke="#18181b" stroke-width="2.5"/>
+  <rect x="36" y="36" width="1128" height="558" fill="none" stroke="#a19b8e" stroke-width="1"/>
+
+  <!-- Left Archival Emblem & 3D Apparatus Diagram -->
+  <g transform="translate(860, 315)">
+    <circle cx="0" cy="0" r="195" fill="#faf9f5" stroke="#18181b" stroke-width="2"/>
+    <circle cx="0" cy="0" r="185" fill="none" stroke="#c8962e" stroke-width="1.2" stroke-dasharray="6 4"/>
+    <ellipse cx="0" cy="0" rx="155" ry="62" transform="rotate(-30)" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+    <ellipse cx="0" cy="0" rx="155" ry="62" transform="rotate(30)" fill="none" stroke="#15803d" stroke-width="3"/>
+    <ellipse cx="0" cy="0" rx="155" ry="62" transform="rotate(90)" fill="none" stroke="#b45309" stroke-width="2.5" stroke-dasharray="8 6"/>
+    <circle cx="-118" cy="-68" r="11" fill="#1d4ed8" stroke="#faf9f5" stroke-width="2.5"/>
+    <circle cx="118" cy="-68" r="11" fill="#15803d" stroke="#faf9f5" stroke-width="2.5"/>
+    <circle cx="0" cy="155" r="11" fill="#b45309" stroke="#faf9f5" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="28" fill="#b91c1c" stroke="#18181b" stroke-width="2.5"/>
+  </g>
+
+  <!-- Typography Column -->
+  <g transform="translate(84, 118)">
+    <rect x="0" y="0" width="380" height="36" rx="3" fill="#18181b"/>
+    <text x="16" y="24" font-family="'IBM Plex Mono', monospace" font-size="15" font-weight="600" fill="#faf9f5" letter-spacing="1.5">SHEUA.COM · INTERACTIVE 3D LAB</text>
+
+    <text x="0" y="106" font-family="'Georgia', 'Crimson Pro', serif" font-size="54" font-weight="700" fill="#18181b">3D Physics &amp; Chemistry</text>
+    <text x="0" y="168" font-family="'Georgia', 'Crimson Pro', serif" font-size="54" font-weight="700" fill="#1d4ed8">Interactive Textbook</text>
+
+    <text x="0" y="232" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="500" fill="#3f3f46">86 Virtual 3D Laboratory Simulations · EN / УКР</text>
+    <text x="0" y="272" font-family="'IBM Plex Sans', sans-serif" font-size="21" font-weight="400" fill="#52525b">46 Physics Experiments · 40 Chemistry Experiments</text>
+
+    <line x1="0" y1="312" x2="560" y2="312" stroke="#d4d0c8" stroke-width="2"/>
+
+    <text x="0" y="356" font-family="'IBM Plex Mono', monospace" font-size="18" font-weight="600" fill="#15803d">▸ Mechanics · Optics · Electromagnetism · Quantum</text>
+    <text x="0" y="392" font-family="'IBM Plex Mono', monospace" font-size="18" font-weight="600" fill="#b45309">▸ Orbitals · Kinetics · Electrochemistry · Organic</text>
+  </g>
+</svg>

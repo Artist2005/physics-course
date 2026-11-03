@@ -31366,27 +31366,105 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         : `${rootPrefix}sim/${sceneKey}.html`;
     }
 
+    const GREEK_LATEX_MAP = {
+      '\\alpha': 'α', '\\beta': 'β', '\\gamma': 'γ', '\\delta': 'δ', '\\Delta': 'Δ',
+      '\\varepsilon': 'ε', '\\epsilon': 'ε', '\\zeta': 'ζ', '\\eta': 'η', '\\theta': 'θ',
+      '\\Theta': 'Θ', '\\kappa': 'κ', '\\lambda': 'λ', '\\Lambda': 'Λ', '\\mu': 'μ',
+      '\\nu': 'ν', '\\xi': 'ξ', '\\pi': 'π', '\\Pi': 'Π', '\\rho': 'ρ', '\\sigma': 'σ',
+      '\\Sigma': 'Σ', '\\tau': 'τ', '\\varphi': 'φ', '\\phi': 'φ', '\\Phi': 'Φ',
+      '\\chi': 'χ', '\\psi': 'ψ', '\\Psi': 'Ψ', '\\omega': 'ω', '\\Omega': 'Ω',
+      '\\cdot': '·', '\\times': '×', '\\pm': '±', '\\mp': '∓', '\\approx': '≈',
+      '\\neq': '≠', '\\ne': '≠', '\\le': '≤', '\\leq': '≤', '\\ge': '≥', '\\geq': '≥',
+      '\\propto': '∝', '\\infty': '∞', '\\partial': '∂', '\\nabla': '∇',
+      '\\implies': '⇒', '\\Rightarrow': '⇒', '\\to': '→', '\\rightarrow': '→',
+      '\\rightleftharpoons': '⇄', '\\leftrightarrows': '⇄', '\\equiv': '≡',
+      '\\perp': '⊥', '\\parallel': '∥', '\\circ': '°', '\\degree': '°',
+      '\\ell': 'l', '\\hbar': 'ℏ', '\\mathcal{E}': 'ℰ', '\\ldots': '…', '\\dots': '…'
+    };
+
+    const SUB_DIGITS = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉', '+': '₊', '-': '₋' };
+    const SUP_DIGITS = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '+': '⁺', '-': '⁻' };
+
     function stripHtmlAndMath(str) {
-      return String(str || '')
+      let s = String(str || '')
         .replace(/<[^>]+>/g, '')
-        .replace(/\$([^$]+)\$/g, '$1')
-        .replace(/\s+/g, ' ')
-        .trim();
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\$([^$]+)\$/g, '$1');
+      s = s.replace(/\\text\{([^}]*)\}/g, '$1')
+           .replace(/\\mathrm\{([^}]*)\}/g, '$1')
+           .replace(/\\mathbf\{([^}]*)\}/g, '$1')
+           .replace(/\\vec\{([^}]*)\}/g, '$1')
+           .replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '($1)/($2)')
+           .replace(/\\dfrac\{([^{}]+)\}\{([^{}]+)\}/g, '($1)/($2)')
+           .replace(/\\sqrt\{([^{}]+)\}/g, '√($1)');
+      for (const [k, v] of Object.entries(GREEK_LATEX_MAP)) {
+        s = s.split(k).join(v);
+      }
+      s = s.replace(/_\{([0-9+-]+)\}/g, (_, d) => d.split('').map(c => SUB_DIGITS[c] || c).join(''))
+           .replace(/_([0-9])/g, (_, d) => SUB_DIGITS[d] || d)
+           .replace(/\^\{([0-9+-]+)\}/g, (_, d) => d.split('').map(c => SUP_DIGITS[c] || c).join(''))
+           .replace(/\^([0-9+-])/g, (_, d) => SUP_DIGITS[d] || d)
+           .replace(/\\[,;!]/g, ' ')
+           .replace(/\\(?:left|right)\b/g, '')
+           .replace(/[{}]/g, '')
+           .replace(/\\/g, '')
+           .replace(/\s+—\s+/g, ', ')
+           .replace(/\s+/g, ' ')
+           .trim();
+      return s;
+    }
+
+    function truncateAtWord(str, maxLen = 160) {
+      const clean = stripHtmlAndMath(str);
+      if (clean.length <= maxLen) return clean;
+      const cut = clean.slice(0, maxLen);
+      const lastSpace = cut.lastIndexOf(' ');
+      return (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[,;:\s]+$/, '') + '…';
     }
 
     function syncPageSeoAndUrl(pushHistory = false) {
       const cfg = SCENE_CONFIGS[uiState.activeScene];
       const t = tUI();
       if (!cfg) return;
-      document.title = `${cfg.secSym} ${cfg.title} · ${t.docTitle}`;
-      const descMeta = document.querySelector('meta[name="description"]');
-      if (descMeta) {
-        descMeta.setAttribute('content', stripHtmlAndMath(`${cfg.epigraph} ${cfg.question}`).slice(0, 260));
-      }
+      const isUk = uiState.lang === 'uk';
+      const isRootPath = /^\/(?:uk\/?)?(?:index\.html)?$/i.test(window.location.pathname) && !window.location.search.includes('sim=');
+      const keepRootMeta = !pushHistory && isRootPath;
+
+      const pageTitle = keepRootMeta
+        ? (isUk
+          ? '3D Лабораторія Фізики та Хімії: 86 інтерактивних 3D-симуляцій і віртуальний практикум'
+          : '3D Physics & Chemistry Lab: 86 Interactive 3D Simulations & Virtual Textbook')
+        : `${cfg.secSym} ${cfg.title} · ${isUk ? '3D Лабораторія Фізики та Хімії' : '3D Physics & Chemistry Lab'}`;
+
+      const pageDesc = keepRootMeta
+        ? (isUk
+          ? 'Безкоштовна інтерактивна 3D-лабораторія та підручник: 46 симуляцій з фізики і 40 з хімії. Механіка, оптика, електромагнетизм, квантова фізика, орбіталі, кінетика та електрохімія.'
+          : 'Free interactive 3D science laboratory and textbook with 46 Physics and 40 Chemistry simulations. Explore mechanics, optics, electromagnetism, orbitals, kinetics, and electrochemistry.')
+        : truncateAtWord(`${cfg.subtitle ? cfg.subtitle + '. ' : ''}${cfg.epigraph} ${cfg.question}`, 162);
+
+      document.title = pageTitle;
+
+      const setMetaContent = (selector, val) => {
+        const el = document.querySelector(selector);
+        if (el && val) el.setAttribute('content', val);
+      };
+      setMetaContent('meta[name="description"]', pageDesc);
+      setMetaContent('meta[property="og:title"]', pageTitle);
+      setMetaContent('meta[property="og:description"]', pageDesc);
+      setMetaContent('meta[name="twitter:title"]', pageTitle);
+      setMetaContent('meta[name="twitter:description"]', pageDesc);
+
+      const canonicalPath = keepRootMeta
+        ? (isUk ? '/uk/' : '/')
+        : (isUk ? `/uk/sim/${uiState.activeScene}` : `/sim/${uiState.activeScene}`);
+      const canonicalAbs = `https://sheua.com${canonicalPath}`;
+      const canonicalEl = document.querySelector('link[rel="canonical"]');
+      if (canonicalEl) canonicalEl.setAttribute('href', canonicalAbs);
+      setMetaContent('meta[property="og:url"]', canonicalAbs);
+
       if (window.location.protocol.startsWith('http')) {
-        const isRootPath = /^\/(?:uk\/?)?(?:index\.html)?$/i.test(window.location.pathname);
-        const targetUrl = (!pushHistory && isRootPath)
-          ? (uiState.lang === 'uk' ? '/uk/' : '/')
+        const targetUrl = keepRootMeta
+          ? (isUk ? '/uk/' : '/')
           : getExperimentHref(uiState.activeScene, uiState.lang);
         try {
           if (pushHistory) {

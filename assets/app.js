@@ -5048,10 +5048,11 @@
       }      ,
       bio_eukaryote: {
         secSym: '§ Б-01',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ І · § 1 · ЦИТОЛОГІЯ ТА ОРГАНЕЛИ',
         category: 'bio_cell',
         badge: 'Клітина',
-        categoryGroupTitle: 'Модуль І · Клітинна біологія та поділ клітини',
+        categoryGroupTitle: 'Частина І. Клітинна біологія та поділ клітини',
         shortTitle: 'Будова еукаріотичної клітини',
         subtitle: 'Ядро, мітохондрії, ЕПС, апарат Гольджі, лізосоми та відношення площі до об’єму S/V = 3/R',
         title: 'Еукаріотична клітина: компартменталізація органел і геометрична межа S/V',
@@ -5066,8 +5067,7 @@
         options: [
           'Відношення $S/V$ зростає вдвічі, тому великі клітини обмінюються речовинами швидше без внутрішніх мембран',
           'Відношення $S/V = 3/R$ зменшується вдвічі, тому дифузія крізь зовнішню мембрану стає лімітуючою, а внутрішні мембрани ЕПС та крист компенсують дефіцит площі',
-          'Площа $S$ і об’єм $V$ зростають пропорційно, тому розмір клітини не впливає на швидкість транспорту',
-          'Органели еукаріотів зменшують площу мембран задля економії ліпідів'
+          'Площа $S$ і об’єм $V$ зростають пропорційно, тому розмір клітини не впливає на швидкість транспорту'
         ],
         correctIndex: 1,
         explanation: 'Для сферичної клітини радіуса $R$ відношення площі поверхні до об’єму становить $S/V = (4\\pi R^2) / (\\frac{4}{3}\\pi R^3) = 3/R$. Коли радіус зростає вдвічі, об’єм (і метаболічна потреба клітини в $\\text{O}_2$ та поживних речовинах) зростає у $2^3 = 8$ разів, тоді як площа зовнішньої мембрани лише у $2^2 = 4$ рази. Відношення $S/V$ падає вдвічі, і проста дифузія вже не встигає живити цитоплазму. Еукаріоти розв’язали цю проблему завдяки компартменталізації (розвинена ендоплазматична сітка, апарат Гольджі, кристи мітохондрій) та активному моторному транспорту везикул вздовж мікротрубочок.',
@@ -5090,10 +5090,11 @@
       },
       bio_mitochondria: {
         secSym: '§ Б-02',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ І · § 2 · БІОЕНЕРГЕТИКА МІТОХОНДРІЇ',
         category: 'bio_cell',
         badge: 'Клітина',
-        categoryGroupTitle: 'Модуль І · Клітинна біологія та поділ клітини',
+        categoryGroupTitle: 'Частина І. Клітинна біологія та поділ клітини',
         shortTitle: 'Мітохондрія та АТФ-синтаза',
         subtitle: 'Дихальний ланцюг (комплекси I–IV), протонний градієнт Δp і роторний мотор F₀F₁-АТФ-синтази',
         title: 'Хеміосмотична теорія Мітчелла: протонна рушійна сила Δp і синтез АТФ',
@@ -5108,8 +5109,7 @@
         options: [
           'Протонна рушійна сила $\\Delta p$ і швидкість обертання АТФ-синтази зростуть удвічі',
           'Протонний градієнт $\\Delta p$ спадає, синтез АТФ зменшується, а енергія окиснення НАДН безпосередньо розсіюється у вигляді тепла (нескоротливий термогенез)',
-          'Перенесення електронів у дихальному ланцюзі миттєво зупиняється через надлишок АТФ',
-          'Електричний потенціал $\\Delta\\psi$ змінює знак без зміни синтезу АТФ'
+          'Перенесення електронів у дихальному ланцюзі миттєво зупиняється через надлишок АТФ'
         ],
         correctIndex: 1,
         explanation: 'Дихальні комплекси I, III та IV викачують протони $\\text{H}^+$ з матриксу у міжмембранний простір, створюючи протонну рушійну силу $\\Delta p = \\Delta\\psi - 61.5\\,\\Delta\\text{pH} \\approx 180\\text{–}220\\text{ мВ}$ (де $\\Delta\\text{pH} = \\text{pH}_{\\text{МП}} - \\text{pH}_{\\text{матр}} < 0$). У нормі повернення $\\text{H}^+$ за градієнтом крізь канал $\\text{F}_0$ обертає $\\gamma$-субодиницю у каталітичній голівці $\\text{F}_1$, синтезуючи $3$ молекули АТФ за один повний оберт. Протонофори або білок UCP1 шунтують мембрану: протони повертаються в матрикс в обхід АТФ-синтази, $\\Delta p$ падає, синтез АТФ гальмується, а вільна енергія окиснення НАДН кількісно переходить у тепло $Q$.',
@@ -5133,10 +5133,11 @@
       },
       bio_mitosis: {
         secSym: '§ Б-03',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ І · § 3 · ПОДІЛ КЛІТИНИ ТА МІТОЗ',
         category: 'bio_cell',
         badge: 'Клітина',
-        categoryGroupTitle: 'Модуль І · Клітинна біологія та поділ клітини',
+        categoryGroupTitle: 'Частина І. Клітинна біологія та поділ клітини',
         shortTitle: 'Мітоз клітини та веретено поділу',
         subtitle: 'Профаза, метафазна пластинка, анафазне розходження сестринських хроматид і телофаза (2n → 2n)',
         title: 'Мітотичний поділ клітини: динаміка мікротрубочок веретена та збереження плоїдності',
@@ -5151,8 +5152,7 @@
         options: [
           'У метафазі $1n2c$, а в анафазі біля кожного полюса $1n1c$ (гаплоїдний набір)',
           'У метафазі $2n4c$ (кожна з $2n$ хромосом складається з двох сестринських хроматид), а в анафазі після розходження хроматид біля кожного полюса формується повноцінний набір $2n2c$',
-          'У метафазі $4n4c$, а після телофази утворюються чотири клітини $1n1c$',
-          'Кількість молекул ДНК подвоюється безпосередньо під час анафази за рахунок тяги мікротрубочок'
+          'У метафазі $4n4c$, а після телофази утворюються чотири клітини $1n1c$'
         ],
         correctIndex: 1,
         explanation: 'Реплікація ДНК відбувається ще в $S$-фазі інтерфази, тому клітина входить у профазу та метафазу з формулою $2n4c$: хромосом залишається диплоїдне число $2n$, але кожна хромосома складається з двох ідентичних сестринських хроматид ($4c$ ДНК), з’єднаних білком когезином у ділянці центромери. На початку анафази фермент сепараза розщеплює когезин, і кожна відокремлена хроматида стає самостійною дочірньою хромосомою. Тимчасово в одній клітині до завершення цитокінезу стає $4n4c$, тобто біля кожного з двох полюсів формується генетично ідентичний диплоїдний набір $2n2c$.',
@@ -5174,10 +5174,11 @@
       },
       bio_replication: {
         secSym: '§ Б-04',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ ІІ · § 4 · МОЛЕКУЛЯРНА ГЕНЕТИКА',
         category: 'bio_genetics',
         badge: 'Генетика',
-        categoryGroupTitle: 'Модуль ІІ · Молекулярна біологія та спадковість',
+        categoryGroupTitle: 'Частина ІІ. Молекулярна біологія та спадковість',
         shortTitle: 'Реплікація ДНК та вилка',
         subtitle: 'Геліказа, ДНК-полімераза III, синтез 5′→3′, ведучий ланцюг і фрагменти Оказакі відстаючого ланцюга',
         title: 'Напівконсервативна реплікація ДНК: реплікативна вилка Мезельсона–Сталя',
@@ -5192,8 +5193,7 @@
         options: [
           'Обидва ланцюги синтезуються безперервно, а після 2 поколінь усі 100% молекул ДНК залишаються важкими',
           'Ведучий ланцюг росте у бік руху гелікази ($5\'\\to 3\'$), відстаючий синтезується фрагментами Оказакі у протилежний бік із подальшим зшиванням ДНК-лігазою; після $k=2$ поколінь частка гібридних молекул становить $2/2^2 = 50\\%$',
-          'Відстаючий ланцюг синтезується у напрямку $3\'\\to 5\'$ без участі праймази',
-          'Після 2 поколінь реплікації зберігається лише 1 материнський ланцюг (25% гібридних молекул)'
+          'Відстаючий ланцюг синтезується у напрямку $3\'\\to 5\'$ без участі праймази'
         ],
         correctIndex: 1,
         explanation: 'Оскільки ДНК-полімераза каталізує нуклеофільну атаку $3\'\\text{-OH}$ групи праймера на $\\alpha$-фосфат вхідного dNTP, ріст ланцюга можливий лише у напрямку $5\'\\to 3\'$. На матриці $3\'\\to 5\'$ ведучий ланцюг рухається слідом за геліказою безперервно. На антипаралельній матриці $5\'\\to 3\'$ полімераза змушена рухатися від вилки, синтезуючи короткі фрагменти Оказакі (від РНК-праймерів), які потім зшиває ДНК-лігаза. За напівконсервативним механізмом після $k$ циклів подвоєння з однієї важкої молекули $^{15}\\text{N}/^{15}\\text{N}$ у середовищі $^{14}\\text{N}$ серед $2^k$ молекул завжди рівно $2$ молекули є гібридними $^{15}\\text{N}/^{14}\\text{N}$ (при $k=2$ це $2/4 = 50\\%$), а решта $2^k - 2$ — повністю легкими $^{14}\\text{N}/^{14}\\text{N}$.',
@@ -5217,10 +5217,11 @@
       },
       bio_ribosome: {
         secSym: '§ Б-05',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ ІІ · § 5 · БІОСИНТЕЗ БІЛКА (ТРАНСЛЯЦІЯ)',
         category: 'bio_genetics',
         badge: 'Генетика',
-        categoryGroupTitle: 'Модуль ІІ · Молекулярна біологія та спадковість',
+        categoryGroupTitle: 'Частина ІІ. Молекулярна біологія та спадковість',
         shortTitle: 'Трансляція мРНК на рибосомі',
         subtitle: 'Центральна догма ДНК → мРНК → Білок, триплетний генетичний код, сайти A–P–E рибосоми та тРНК',
         title: 'Експресія генів і трансляція: декодування мРНК рибосомою та синтез поліпептиду',
@@ -5231,12 +5232,11 @@
         ekLabel: 'Кінетична робота транслокації рибосоми вздовж мРНК E_трансл',
         epLabel: 'Енергія пептидних зв’язків синтезованого білка E_пептид',
         qLabel: 'Витрати макроергів (АТФ на аміноацилювання + 2 ГТФ/кодон) Q_ГТФ',
-        question: 'Кожна амінокислота у поліпептидному ланцюзі кодується одним триплетом (кодоном) мРНК з $3$ нуклеотидів, причому термінаторний стоп-кодон ($\text{UAA}$, $\text{UAG}$ або $\text{UGA}$) амінокислоти не кодує. Скільки нуклеотидів містить кодуюча ділянка зрілої мРНК (разом зі старт-кодоном $\text{AUG}$ та одним стоп-кодоном) і скільки макроергічних зв’язків АТФ/ГТФ витрачає клітина для синтезу білка з $N_{\\text{аа}} = 100$ амінокислотних залишків ($4$ макроерги на кожну амінокислоту)?',
+        question: 'Кожна амінокислота у поліпептидному ланцюзі кодується одним триплетом (кодоном) мРНК з $3$ нуклеотидів, причому термінаторний стоп-кодон ($\\text{UAA}$, $\\text{UAG}$ або $\\text{UGA}$) амінокислоти не кодує. Скільки нуклеотидів містить кодуюча ділянка зрілої мРНК (разом зі старт-кодоном $\\text{AUG}$ та одним стоп-кодоном) і скільки макроергічних зв’язків АТФ/ГТФ витрачає клітина для синтезу білка з $N_{\\text{аа}} = 100$ амінокислотних залишків ($4$ макроерги на кожну амінокислоту)?',
         options: [
           '100 нуклеотидів мРНК і 100 молекул АТФ',
           'Кодуюча послідовність мРНК містить $3 N_{\\text{аа}} + 3 = 303$ нуклеотиди (100 смислових кодонів + 1 стоп-кодон), а енергетичні витрати становлять $\\approx 4 N_{\\text{аа}} = 400$ макроергічних зв’язків АТФ/ГТФ',
-          '300 нуклеотидів мРНК, оскільки стоп-кодон також кодує останню амінокислоту триптофан',
-          '900 нуклеотидів мРНК, тому що кожен нуклеотид зчитується тричі зі зсувом рамки'
+          '300 нуклеотидів мРНК, оскільки стоп-кодон також кодує останню амінокислоту триптофан'
         ],
         correctIndex: 1,
         explanation: 'Генетичний код є триплетним і неперекривним: кожні $3$ нуклеотиди мРНК визначають одну амінокислоту (починаючи зі старт-кодону $\\text{AUG}$ — метіоніну). Завершення трансляції сигналізується одним із трьох стоп-кодонів ($\\text{UAA}, \\text{UAG}, \\text{UGA}$), який розпізнається білковим фактором термінації RF і не кодує амінокислоти. Тому для поліпептиду з $N_{\\text{аа}}$ амінокислот потрібно $N_{\\text{нт}} = 3 N_{\\text{аа}} + 3$ нуклеотиди мРНК (для $100$ амінокислот — $303$ нуклеотиди). На приєднання однієї амінокислоти витрачається $2$ макроергічні зв’язки при активації тРНК ($\\text{АТФ} \\to \\text{АМФ} + \\text{PP}_i$) та $2$ молекули ГТФ на рибосомі (фактори EF-Tu і EF-G), тобто $4 N_{\\text{аа}} = 400$ еквівалентів АТФ/ГТФ.',
@@ -5259,10 +5259,11 @@
       },
       bio_mendel: {
         secSym: '§ Б-06',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ ІІ · § 6 · КЛАСИЧНА ТА ПОПУЛЯЦІЙНА ГЕНЕТИКА',
         category: 'bio_genetics',
         badge: 'Генетика',
-        categoryGroupTitle: 'Модуль ІІ · Молекулярна біологія та спадковість',
+        categoryGroupTitle: 'Частина ІІ. Молекулярна біологія та спадковість',
         shortTitle: 'Закони Менделя та Гарді–Вайнберг',
         subtitle: 'Решітка Пеннета, розщеплення 3:1 і 9:3:3:1 та популяційна рівновага частот алелів p² + 2pq + q² = 1',
         title: 'Генетика Менделя та закон Гарді–Вайнберга: динаміка частот генотипів у популяції',
@@ -5277,8 +5278,7 @@
         options: [
           'Частота алеля $q = 0.16$, $p = 0.84$, а частка гетерозигот $2pq = 0.16$',
           'Частота рецесивного алеля $q = \\sqrt{0.16} = 0.40$, домінантного $p = 1 - 0.40 = 0.60$, а частка гетерозиготних носіїв $Aa$ становить $2pq = 2 \\cdot 0.60 \\cdot 0.40 = 0.48$ ($48\\%$)',
-          'Усі особини з домінантним фенотипом ($84\\%$) є гомозиготами $AA$',
-          'Частка гетерозигот завжди дорівнює $50\\%$ незалежно від частот алелів $p$ і $q$'
+          'Усі особини з домінантним фенотипом ($84\\%$) є гомозиготами $AA$'
         ],
         correctIndex: 1,
         explanation: 'За законом Гарді–Вайнберга сума частот альтернативних алелів дорівнює одиниці ($p + q = 1$), а рівноважні частоти генотипів становлять $f(AA) = p^2$, $f(Aa) = 2pq$, $f(aa) = q^2$. Оскільки рецесивний фенотип проявляється лише у гомозигот $aa$, з умови $q^2 = 0.16$ знаходимо частоту рецесивного алеля: $q = \\sqrt{0.16} = 0.40$. Тоді частота домінантного алеля дорівнює $p = 1 - q = 0.60$. Частка домінантних гомозигот $AA$ становить $p^2 = 0.36$ ($36\\%$), а частка гетерозиготних носіїв $Aa$ дорівнює $2pq = 2 \\cdot 0.60 \\cdot 0.40 = 0.48$ ($48\\%$). При моногібридному схрещуванні двох гетерозигот ($p = q = 0.5$) отримуємо класичне менделівське розщеплення за генотипом $1:2:1$ ($0.25 : 0.50 : 0.25$) і за фенотипом $3:1$ ($75\\% : 25\\%$).',
@@ -5302,10 +5302,11 @@
       },
       bio_membrane: {
         secSym: '§ Б-07',
+        discipline: 'biology',
         secTag: 'Біофізика · Розділ ІІІ · § 7 · БІОФІЗИКА МЕМБРАН',
         category: 'bio_biophysics',
         badge: 'Біофізика',
-        categoryGroupTitle: 'Модуль ІІІ · Біофізика мембран, збудливих тканин і м’язів',
+        categoryGroupTitle: 'Частина ІІІ. Біофізика мембран, нейрона та м’язів',
         shortTitle: 'Ліпідний бішар і Na⁺/K⁺-насос',
         subtitle: 'Рідинно-мозаїчна модель Сінгера–Ніколсона, активний транспорт 3Na⁺/2K⁺ і рівняння Нернста',
         title: 'Біофізика плазматичної мембрани: електрогенний Na⁺/K⁺-насос і потенціал спокою',
@@ -5320,8 +5321,7 @@
         options: [
           'Насос переносить 2 Na⁺ усередину клітини і 3 K⁺ назовні без витрат АТФ',
           'За 1 молекулу АТФ насос виводить 3 Na⁺ назовні та вводить 2 K⁺ усередину клітини (електрогенний транспорт), а у стані спокою проникність мембрани для іонів K⁺ через канали витоку набагато вища, ніж для Na⁺ ($P_{\\text{K}} \\gg P_{\\text{Na}}$)',
-          'У стані спокою мембрана абсолютно непроникна для іонів K⁺ і повністю відкрита для Na⁺',
-          'Рівноважний потенціал Нернста не залежить від співвідношення концентрацій іонів ззовні та всередині клітини'
+          'У стані спокою мембрана абсолютно непроникна для іонів K⁺ і повністю відкрита для Na⁺'
         ],
         correctIndex: 1,
         explanation: 'Кожен цикл роботи $\\text{Na}^+/\\text{K}^+$-АТФази використовує енергію гідролізу однієї молекули АТФ для виведення $3$ іонів $\\text{Na}^+$ у позаклітинне середовище та закачування $2$ іонів $\\text{K}^+$ у цитоплазму. Завдяки цьому всередині клітини підтримується висока концентрація калію ($[\\text{K}^+]_i \\approx 140\\text{ мМ}$ проти $[\\text{K}^+]_o \\approx 4\\text{–}5\\text{ мМ}$), а ззовні — висока концентрація натрію ($[\\text{Na}^+]_o \\approx 145\\text{ мМ}$ проти $[\\text{Na}^+]_i \\approx 12\\text{ мМ}$). Оскільки у стані спокою в мембрані відкриті переважно калієві канали витоку ($P_{\\text{K}} \\gg P_{\\text{Na}}$), іони $\\text{K}^+$ дифундують назовні за градієнтом концентрації, заряджаючи внутрішню поверхню мембрани негативно майже до рівня потенціалу Нернста $E_{\\text{K}} \\approx -90\\text{ мВ}$ (з урахуванням невеликого витоку $\\text{Na}^+$ за рівнянням Гольдмана–Ходжкіна–Катца $V_m \\approx -70\\text{ мВ}$).',
@@ -5347,10 +5347,11 @@
       },
       bio_neuron: {
         secSym: '§ Б-08',
+        discipline: 'biology',
         secTag: 'Біофізика · Розділ ІІІ · § 8 · ЕЛЕКТРОФІЗІОЛОГІЯ НЕЙРОНА',
         category: 'bio_biophysics',
         badge: 'Біофізика',
-        categoryGroupTitle: 'Модуль ІІІ · Біофізика мембран, збудливих тканин і м’язів',
+        categoryGroupTitle: 'Частина ІІІ. Біофізика мембран, нейрона та м’язів',
         shortTitle: 'Потенціал дії нейрона та аксон',
         subtitle: 'Модель Ходжкіна–Хакслі, деполяризація Na⁺, реполяризація K⁺, мієлінова оболонка та перехвати Ранв’є',
         title: 'Потенціал дії нейрона: поширення нервового імпульсу та сальтаторне проведення',
@@ -5365,8 +5366,7 @@
         options: [
           'Деполяризація зумовлена виходом іонів Cl⁻, а мієлін збільшує ємність мембрани',
           'Деполяризація спричинена лавиноподібним входом іонів Na⁺ у клітину, реполяризація — інактивацією Na⁺-каналів і виходом іонів K⁺ назовні; мієлін зменшує погонну ємність і витік струму, забезпечуючи стрибкоподібне (сальтаторне) проведення між перехватами Ранв’є',
-          'Амплітуда потенціалу дії лінійно зростає зі збільшенням сили подразника втричі вище порога',
-          'У перехватах Ранв’є повністю відсутні потенціалзалежні іонні канали'
+          'Амплітуда потенціалу дії лінійно зростає зі збільшенням сили подразника втричі вище порога'
         ],
         correctIndex: 1,
         explanation: 'За теорією Ходжкіна–Хакслі, коли стимул зміщує потенціал мембрани вище порога ($\\approx -55\\text{ мВ}$), стрімко відкриваються потенціалзалежні $\\text{Na}^+$-канали. Потік $\\text{Na}^+$ всередину аксона перезаряджає мембрану до $+30\\ldots+40\\text{ мВ}$ (фаза деполяризації та овершуту). Далі $\\text{Na}^+$-канали інактивуються, а повільніші потенціалзалежні $\\text{K}^+$-канали відкриваються, виводячи $\\text{K}^+$ назовні та повертаючи потенціал до $-70\\text{ мВ}$ (реполяризація та слідова гіперполяризація). Мієлінова оболонка є багатошаровим діелектриком: вона різко підвищує поперечний опір мембрани $r_m$ і зменшує її ємність $c_m$, тому локальні струми миттєво досягають сусіднього перехвату Ранв’є (сальтаторне проведення зі швидкістю до $100\\text{ м/с}$).',
@@ -5389,10 +5389,11 @@
       },
       bio_sarcomere: {
         secSym: '§ Б-09',
+        discipline: 'biology',
         secTag: 'Біофізика · Розділ ІІІ · § 9 · БІОМЕХАНІКА М’ЯЗОВОГО СКОРОЧЕННЯ',
         category: 'bio_biophysics',
         badge: 'Біофізика',
-        categoryGroupTitle: 'Модуль ІІІ · Біофізика мембран, збудливих тканин і м’язів',
+        categoryGroupTitle: 'Частина ІІІ. Біофізика мембран, нейрона та м’язів',
         shortTitle: 'Саркомер м’яза і рівняння Гілла',
         subtitle: 'Ковзання ниток актину й міозину (Гакслі), роль Ca²⁺ і тропоміозину та гіпербола сили–швидкості Гілла',
         title: 'Біофізика м’язового скорочення: модель ковзних ниток саркомера та рівняння Гілла',
@@ -5407,8 +5408,7 @@
         options: [
           'Максимальна швидкість $v_{\\max}$ досягається при максимальному вантажі $F = F_0$',
           'Максимальна швидкість укорочення $v_{\\max} = b F_0 / a$ досягається без навантаження ($F = 0$), максимальна ізометрична сила $F_0$ розвивається при $v = 0$, а при надмірному розтягненні саркомера зменшується зона перекриття ниток актину й міозину (менше робочих містків)',
-          'Під час скорочення саркомера нитки міозину вкорочуються вдвічі за рахунок скручування у спіраль',
-          'Іони $\\text{Ca}^{2+}$ блокують міозин і викликають розслаблення м’яза'
+          'Під час скорочення саркомера нитки міозину вкорочуються вдвічі за рахунок скручування у спіраль'
         ],
         correctIndex: 1,
         explanation: 'У моделі ковзних ниток Г. Гакслі та А. Гакслі іони $\\text{Ca}^{2+}$, зв’язуючись із тропоніном C, зсувають тропоміозин і відкривають центри зв’язування на актині. Міозинові голівки за рахунок гідролізу АТФ здійснюють гребкові рухи, зближуючи Z-диски без зміни довжини самих філаментів. Оптимальна довжина саркомера ($L_0 \\approx 2.0\\text{–}2.2\\text{ мкм}$) забезпечує максимальне число задіяних поперечних містків; при перерозтягненні перекриття зникає і сила $F_0$ падає. Рівняння Гілла $(F + a)(v + b) = (F_0 + a)b$ показує: коли вантаж відсутній ($F = 0$), швидкість максимальна ($v_{\\max} = b F_0 / a$); коли ж вантаж дорівнює $F_0$, м’яз працює в ізометричному режимі ($v = 0$), а максимум механічної потужності $P = Fv$ припадає на $F \\approx 0.31 F_0$.',
@@ -5436,10 +5436,11 @@
       },
       bio_photosynthesis: {
         secSym: '§ Б-10',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ IV · § 10 · ФОТОСИНТЕЗ І БІОЕНЕРГЕТИКА РОСЛИН',
         category: 'bio_physio',
         badge: 'Фізіологія та екологія',
-        categoryGroupTitle: 'Модуль IV · Фізіологія організмів та математична екологія',
+        categoryGroupTitle: 'Частина IV. Фізіологія організмів та екологія',
         shortTitle: 'Хлоропласт і фотосинтез (Z-схема)',
         subtitle: 'Світлова фаза на мембрані тилакоїда (ФС ІІ, фотоліз води, ФС І) та цикл Кальвіна в стромі',
         title: 'Фотосинтез у хлоропласті: Z-схема електронного транспорту та фіксація CO₂ у циклі Кальвіна',
@@ -5454,8 +5455,7 @@
         options: [
           'Кисень $\\text{O}_2$ утворюється під час розщеплення вуглекислого газу $\\text{CO}_2$ у циклі Кальвіна без участі води',
           'Джерелом усього вільного кисню $\\text{O}_2$ є фотоліз води у фотосистемі ІІ ($2\\text{H}_2\\text{O} \\to \\text{O}_2 + 4\\text{H}^+ + 4e^-$), а для синтезу 1 молекули глюкози з $6\\,\\text{CO}_2$ цикл Кальвіна споживає $18\\,\\text{АТФ}$ та $12\\,\\text{НАДФ}\\cdot\\text{H}$',
-          'Цикл Кальвіна відбувається всередині люмена тилакоїда і виділяє світлові кванти',
-          'Зелене світло ($\\lambda \\approx 540\\text{ нм}$) поглинається хлорофілом у 10 разів сильніше за червоне ($680\\text{ нм}$) і синє ($440\\text{ нм}$)'
+          'Цикл Кальвіна відбувається всередині люмена тилакоїда і виділяє світлові кванти'
         ],
         correctIndex: 1,
         explanation: 'Як довів Рубен і Камен за допомогою важкого ізотопу $^{18}\\text{O}$, увесь молекулярний кисень при фотосинтезі походить із води ($\\text{H}_2^{18}\\text{O}$), яка розщеплюється у марганцевому водоокиснювальному комплексі фотосистеми ІІ (P680) на внутрішній стороні мембрани тилакоїда: $2\\text{H}_2\\text{O} \\xrightarrow{4h\\nu} \\text{O}_2\\uparrow + 4\\text{H}^+ + 4e^-$. Електрони через пластохінон, комплекс $b_6f$ та пластоціанін надходять до фотосистеми І (P700), де після повторного збудження світлом відновлюють $\\text{НАДФ}^+$ до $\\text{НАДФ}\\cdot\\text{H}$, а протонний градієнт між люменом і стромою обертає $\\text{CF}_0\\text{CF}_1$-АТФ-синтазу. У стромі хлоропласта цикл Кальвіна на кожну молекулу $\\text{CO}_2$ витрачає $3\\,\\text{АТФ}$ і $2\\,\\text{НАДФ}\\cdot\\text{H}$, тобто на синтез 1 молекули глюкози ($6\\,\\text{CO}_2$) витрачається рівно $18\\,\\text{АТФ}$ і $12\\,\\text{НАДФ}\\cdot\\text{H}$.',
@@ -5479,10 +5479,11 @@
       },
       bio_hemo: {
         secSym: '§ Б-11',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ IV · § 11 · ФІЗІОЛОГІЯ ДИХАННЯ ТА ГЕМОГЛОБІН',
         category: 'bio_physio',
         badge: 'Фізіологія та екологія',
-        categoryGroupTitle: 'Модуль IV · Фізіологія організмів та математична екологія',
+        categoryGroupTitle: 'Частина IV. Фізіологія організмів та екологія',
         shortTitle: 'Гемоглобін і ефект Бора (O₂)',
         subtitle: 'Тетрамер α₂β₂ з 4 гемами Fe²⁺, кооперативна сигмоїда Гілла (n ≈ 2.8), міоглобін і зсув кривої Бора',
         title: 'Транспорт кисню гемоглобіном: алостерична кооперативність (T ↔ R) і ефект Бора',
@@ -5497,8 +5498,7 @@
         options: [
           'При зниженні pH спорідненість гемоглобіну до O₂ зростає, і кисень не віддається тканинам',
           'Підвищення концентрації H⁺ (зниження pH) і CO₂ стабілізує дезокси-форму (T-стан) гемоглобіну, збільшуючи $P_{50}$ і зсуваючи криву дисоціації праворуч, що посилює вивільнення $\\text{O}_2$ саме в метаболічно активних тканинах',
-          'Під час оксигенації залізо гему окиснюється з Fe²⁺ до Fe³⁺ (метгемоглобіну)',
-          'Тетрамер гемоглобіну здатний зв’язати лише 1 молекулу O₂'
+          'Під час оксигенації залізо гему окиснюється з Fe²⁺ до Fe³⁺ (метгемоглобіну)'
         ],
         correctIndex: 1,
         explanation: 'Молекула гемоглобіну A є тетрамером $\\alpha_2\\beta_2$, кожна з $4$ субодиниць якого містить гем із двовалентним іоном $\\text{Fe}^{2+}$ (ступінь окиснення $+2$ при нормальній оксигенації не змінюється!). Завдяки позитивній кооперативності ($n \\approx 2.8$) у легенях при $p\\text{O}_2 \\approx 100\\text{ мм рт. ст.}$ гемоглобін насичується на $\\approx 98\\%$, а у капілярах тканин ($p\\text{O}_2 \\approx 25\\text{–}40\\text{ мм рт. ст.}$) легко віддає кисень. За ефектом Христіана Бора у працюючому м’язі накопичуються $\\text{CO}_2$, молочна кислота ($\\text{H}^+$, падіння $\\text{pH}$ з $7.4$ до $7.2$) і росте температура; протони протонують гістидинові залишки гемоглобіну, стабілізуючи T-конформацію з нижчою спорідненістю до $\\text{O}_2$. У результаті $P_{50}$ зростає (крива зсувається праворуч), і тканини отримують значно більше кисню.',
@@ -5523,10 +5523,11 @@
       },
       bio_lotka: {
         secSym: '§ Б-12',
+        discipline: 'biology',
         secTag: 'Біологія · Розділ IV · § 12 · МАТЕМАТИЧНА ЕКОЛОГІЯ ТА БІОСФЕРА',
         category: 'bio_physio',
         badge: 'Фізіологія та екологія',
-        categoryGroupTitle: 'Модуль IV · Фізіологія організмів та математична екологія',
+        categoryGroupTitle: 'Частина IV. Фізіологія організмів та екологія',
         shortTitle: 'Модель Лотки–Вольтерри (екосистема)',
         subtitle: 'Диференціальні рівняння «хижак–жертва», фазовий портрет, хвилі популяцій і піраміда Ліндемана (10%)',
         title: 'Динаміка екосистем: автоколивання «хижак–жертва» Лотки–Вольтерри та трофічні рівні',
@@ -5541,8 +5542,7 @@
         options: [
           'Стаціонарна точка залежить лише від початкової кількості особин, а коливання відбуваються синхронно в одній фазі',
           'Стаціонарна рівновага визначається виключно коефіцієнтами народжуваності, смертності та полювання: $x^* = \\gamma/\\delta$ і $y^* = \\alpha/\\beta$, а максимуми чисельності хижаків завжди відстають за фазою (запізнюються приблизно на $1/4$ періоду) від максимумів чисельності жертв',
-          'Популяція хижаків завжди перевищує популяцію жертв у 10 разів за правилом Ліндемана',
-          'Збільшення природжуваності жертв $\\alpha$ зменшує рівноважну чисельність хижаків $y^*$'
+          'Популяція хижаків завжди перевищує популяцію жертв у 10 разів за правилом Ліндемана'
         ],
         correctIndex: 1,
         explanation: 'Прирівнявши праві частини рівнянь Лотки–Вольтерри до нуля при $x > 0, y > 0$, отримуємо умови стаціонарної рівноваги: $\\alpha - \\beta y^* = 0 \\implies y^* = \\alpha/\\beta$ та $\\delta x^* - \\gamma = 0 \\implies x^* = \\gamma/\\delta$. Отже, середня за період чисельність жертв $x^* = \\gamma/\\delta$ визначається параметрами хижаків, а середня чисельність хижаків $y^* = \\alpha/\\beta$ — параметрами жертв (принцип Вольтерри). На фазовій площині $(x, y)$ траєкторії утворюють замкнені орбіти навколо центру $(x^*, y^*)$, які обходяться проти годинникової стрілки: спочатку росте чисельність жертв $x$, далі на достатній кормовій базі із запізненням на $\\approx \\pi/2$ росте чисельність хижаків $y$, що призводить до спаду жертв, а за ним — і до спаду хижаків.',
@@ -31143,7 +31143,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_eukaryote: {
         secTag: 'Biology · Part I · § 1 · CYTOLOGY & ORGANELLES',
         badge: 'Cell Biology',
-        categoryGroupTitle: 'Module I · Cell Biology & Cell Division',
+        categoryGroupTitle: 'Part I. Cell Biology & Cell Division',
         shortTitle: 'Eukaryotic Cell & Organelles',
         subtitle: 'Nucleus, Mitochondria, Rough/Smooth ER, Golgi Apparatus, Lysosomes & Surface-to-Volume Ratio S/V = 3/R',
         title: 'Eukaryotic Cell Architecture: Organelle Compartmentalization & S/V Scaling Limit',
@@ -31156,8 +31156,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'The $S/V$ ratio doubles, so larger cells exchange nutrients faster without internal membranes',
           'The ratio $S/V = 3/R$ drops by half, making diffusion across the outer membrane rate-limiting; internal ER and cristae membranes compensate for this surface deficit',
-          'Surface area $S$ and volume $V$ scale identically, so cell size has no effect on nutrient transport',
-          'Eukaryotic organelles reduce total membrane area to conserve phospholipids'
+          'Surface area $S$ and volume $V$ scale identically, so cell size has no effect on nutrient transport'
         ],
         explanation: 'For a spherical cell of radius $R$, the surface-to-volume ratio is $S/V = (4\\pi R^2)/(\\frac{4}{3}\\pi R^3) = 3/R$. Doubling $R$ increases metabolic volume $2^3 = 8$-fold while plasma membrane area increases only $2^2 = 4$-fold, halving $S/V$. Simple diffusion across the outer membrane becomes insufficient, so eukaryotic cells rely on internal membrane compartmentalization (ER, Golgi, mitochondrial cristae) and motorized vesicular transport along microtubules.',
         referenceLatex: String.raw`S = 4\pi R^2, \quad V = \frac{4}{3}\pi R^3, \quad \frac{S}{V} = \frac{3}{R}, \quad \tau_{\text{diff}} \approx \frac{R^2}{6D}`,
@@ -31179,7 +31178,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_mitochondria: {
         secTag: 'Biology · Part I · § 2 · MITOCHONDRIAL BIOENERGETICS',
         badge: 'Cell Biology',
-        categoryGroupTitle: 'Module I · Cell Biology & Cell Division',
+        categoryGroupTitle: 'Part I. Cell Biology & Cell Division',
         shortTitle: 'Mitochondria & ATP Synthase',
         subtitle: 'Electron Transport Chain (Complexes I–IV), Proton-Motive Force Δp & Rotary F₀F₁-ATP Synthase',
         title: 'Mitchell’s Chemiosmotic Theory: Proton-Motive Force Δp & Rotary ATP Synthesis',
@@ -31192,8 +31191,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Both the proton-motive force $\\Delta p$ and ATP synthase rotation rate double',
           'The proton gradient $\\Delta p$ collapses, ATP synthesis drops, and NADH oxidation energy is dissipated directly as heat (non-shivering thermogenesis)',
-          'Electron transport stops immediately due to excess ATP accumulation',
-          'Membrane potential $\\Delta\\psi$ reverses polarity without affecting ATP synthesis'
+          'Electron transport stops immediately due to excess ATP accumulation'
         ],
         explanation: 'Respiratory Complexes I, III, and IV pump $\\text{H}^+$ from the matrix into the intermembrane space, building a proton-motive force $\\Delta p = \\Delta\\psi + 61.5\\,(\\text{pH}_{\\text{matrix}} - \\text{pH}_{\\text{IMS}}) \\approx 180\\text{–}220\\text{ mV}$. Normally, $\\text{H}^+$ reentry through the $\\text{F}_0$ c-ring rotates the central $\\gamma$-stalk inside the $\\text{F}_1$ head, synthesizing $3$ ATP per revolution. Protonophores or UCP1 create a proton shunt across the membrane: $\\Delta p$ diminishes, ATP phosphorylation falls, and respiratory redox energy is quantitatively converted into thermal energy $Q$.',
         referenceLatex: String.raw`\Delta p = \Delta\psi - \frac{2.303\,RT}{F}\,\Delta\text{pH} \approx \Delta\psi + 61.5\,\Delta\text{pH}_{\text{mat}-\text{IMS}}\;\text{(mV)}, \quad \Delta G_{\text{ATP}} \le n_{\text{H}^+} F\,\Delta p`,
@@ -31216,7 +31214,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_mitosis: {
         secTag: 'Biology · Part I · § 3 · CELL DIVISION & MITOSIS',
         badge: 'Cell Biology',
-        categoryGroupTitle: 'Module I · Cell Biology & Cell Division',
+        categoryGroupTitle: 'Part I. Cell Biology & Cell Division',
         shortTitle: 'Mitosis & Mitotic Spindle',
         subtitle: 'Prophase, Metaphase Plate, Anaphase Sister Chromatid Separation & Telophase (2n → 2n)',
         title: 'Mitotic Cell Division: Spindle Microtubule Mechanics & Ploidy Conservation',
@@ -31229,8 +31227,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'In metaphase $1n2c$, and at each pole in anaphase $1n1c$ (haploid)',
           'In metaphase $2n4c$ (each of the $2n$ chromosomes consists of two sister chromatids), and in anaphase after cohesin cleavage each pole receives a complete diploid set $2n2c$',
-          'In metaphase $4n4c$, producing four $1n1c$ cells after telophase',
-          'DNA molecules replicate directly during anaphase via microtubule tension'
+          'In metaphase $4n4c$, producing four $1n1c$ cells after telophase'
         ],
         explanation: 'DNA replication occurs during interphase S-phase, so the cell enters prophase and metaphase with $2n4c$: there are $2n$ chromosomes, each composed of two identical sister chromatids ($4c$ DNA) held together by cohesin at the centromere. At anaphase onset, separase cleaves cohesin and each separated chromatid becomes an independent daughter chromosome. Temporarily the dividing cell contains $4n4c$, meaning each spindle pole receives a genetically identical diploid complement of $2n2c$.',
         referenceLatex: String.raw`\text{G}_1\,(2n2c) \xrightarrow{\text{S-phase}} \text{G}_2/\text{Metaphase}\,(2n4c) \xrightarrow{\text{Anaphase}} 2 \times (2n2c), \quad F_{\text{kin}} = N_{\text{MT}}\,f_0`,
@@ -31251,7 +31248,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_replication: {
         secTag: 'Biology · Part II · § 4 · MOLECULAR GENETICS',
         badge: 'Genetics',
-        categoryGroupTitle: 'Module II · Molecular Biology & Heredity',
+        categoryGroupTitle: 'Part II. Molecular Biology & Heredity',
         shortTitle: 'DNA Replication & Fork',
         subtitle: 'Helicase, DNA Polymerase III, 5′→3′ Synthesis, Continuous Leading Strand & Lagging Okazaki Fragments',
         title: 'Semiconservative DNA Replication: Replication Fork Mechanics & Meselson–Stahl Experiment',
@@ -31264,8 +31261,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Both strands are synthesized continuously, and 100% of DNA molecules remain heavy after 2 generations',
           'The leading strand elongates continuously ($5\'\\to 3\'$) toward the replication fork while the lagging strand is synthesized discontinuously as Okazaki fragments joined by DNA ligase; after $k=2$ generations the hybrid fraction is $2/2^2 = 50\\%$',
-          'The lagging strand is synthesized in the $3\'\\to 5\'$ direction without RNA primers',
-          'After 2 generations only 1 parental strand survives, giving 25% hybrid DNA'
+          'The lagging strand is synthesized in the $3\'\\to 5\'$ direction without RNA primers'
         ],
         explanation: 'Because DNA polymerase catalyzes nucleophilic attack of the primer $3\'\\text{-OH}$ on the incoming dNTP $\\alpha$-phosphate, chain elongation proceeds strictly $5\'\\to 3\'$. On the $3\'\\to 5\'$ template, the leading strand follows helicase continuously. On the antiparallel $5\'\\to 3\'$ template, polymerase must move away from the fork, synthesizing short Okazaki fragments from RNA primers that are subsequently sealed by DNA ligase. By semiconservative replication of a heavy $^{15}\\text{N}/^{15}\\text{N}$ duplex in $^{14}\\text{N}$ medium, after $k$ generations exactly $2$ out of $2^k$ duplexes are $^{15}\\text{N}/^{14}\\text{N}$ hybrids ($2/4 = 50\\%$ at $k=2$) and $2^k - 2$ are light $^{14}\\text{N}/^{14}\\text{N}$.',
         referenceLatex: String.raw`\text{dNTP} + \text{DNA}_n \xrightarrow{\text{DNA Pol}} \text{DNA}_{n+1} + \text{PP}_i, \quad f_{\text{hybrid}}(k) = \frac{2}{2^k} = 2^{1-k}`,
@@ -31288,7 +31284,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_ribosome: {
         secTag: 'Biology · Part II · § 5 · PROTEIN BIOSYNTHESIS (TRANSLATION)',
         badge: 'Genetics',
-        categoryGroupTitle: 'Module II · Molecular Biology & Heredity',
+        categoryGroupTitle: 'Part II. Molecular Biology & Heredity',
         shortTitle: 'mRNA Translation on Ribosome',
         subtitle: 'Central Dogma DNA → mRNA → Protein, Triplet Genetic Code, Ribosomal A–P–E Sites & tRNA Decoding',
         title: 'Gene Expression & Translation: Ribosomal mRNA Decoding & Polypeptide Elongation',
@@ -31301,8 +31297,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           '100 mRNA nucleotides and 100 ATP molecules',
           'The coding mRNA region contains $3 N_{\\text{aa}} + 3 = 303$ nucleotides (100 sense codons + 1 stop codon), and translation consumes $\\approx 4 N_{\\text{aa}} = 400$ high-energy ATP/GTP equivalents',
-          '300 mRNA nucleotides, because the stop codon also encodes tryptophan',
-          '900 mRNA nucleotides, because every nucleotide is read three times in overlapping frames'
+          '300 mRNA nucleotides, because the stop codon also encodes tryptophan'
         ],
         explanation: 'The genetic code is triplet and non-overlapping: every $3$ consecutive mRNA nucleotides specify one amino acid (starting with $\\text{AUG}$ for methionine). Translation termination is triggered by a stop codon ($\\text{UAA}, \\text{UAG}, \\text{UGA}$) recognized by release factors (RF) rather than a tRNA. Thus, a polypeptide of $N_{\\text{aa}}$ residues requires $N_{\\text{nt}} = 3 N_{\\text{aa}} + 3$ coding nucleotides ($303\\text{ nt}$ for $100\\text{ aa}$). Incorporating each residue consumes $2$ high-energy bonds during aminoacyl-tRNA charging ($\\text{ATP} \\to \\text{AMP} + \\text{PP}_i$) plus $2\\,\\text{GTP}$ molecules on the ribosome (EF-Tu and EF-G), totaling $4 N_{\\text{aa}} = 400$ ATP/GTP equivalents.',
         referenceLatex: String.raw`N_{\text{nt, mRNA}} = 3\,N_{\text{aa}} + 3_{\text{stop}}, \quad E_{\text{transl}} \approx 4\,N_{\text{aa}}\;\text{ATP/GTP eq.}, \quad M_{\text{protein}} \approx 110\,N_{\text{aa}}\;\text{Da}`,
@@ -31324,7 +31319,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_mendel: {
         secTag: 'Biology · Part II · § 6 · CLASSICAL & POPULATION GENETICS',
         badge: 'Genetics',
-        categoryGroupTitle: 'Module II · Molecular Biology & Heredity',
+        categoryGroupTitle: 'Part II. Molecular Biology & Heredity',
         shortTitle: 'Mendel’s Laws & Hardy–Weinberg',
         subtitle: 'Punnett Square, 3:1 & 9:3:3:1 Segregation Ratios & Population Allele Equilibrium p² + 2pq + q² = 1',
         title: 'Mendelian Genetics & Hardy–Weinberg Equilibrium: Genotype Frequency Dynamics',
@@ -31337,8 +31332,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Recessive allele $q = 0.16$, dominant allele $p = 0.84$, and heterozygotes $2pq = 0.16$',
           'Recessive allele $q = \\sqrt{0.16} = 0.40$, dominant allele $p = 1 - 0.40 = 0.60$, and heterozygous carriers $Aa$ make up $2pq = 2 \\cdot 0.60 \\cdot 0.40 = 0.48$ ($48\\%$)',
-          'All individuals showing the dominant phenotype ($84\\%$) are homozygous $AA$',
-          'Heterozygote frequency is always $50\\%$ regardless of $p$ and $q$'
+          'All individuals showing the dominant phenotype ($84\\%$) are homozygous $AA$'
         ],
         explanation: 'Under Hardy–Weinberg equilibrium, alternative allele frequencies sum to unity ($p + q = 1$) and genotype frequencies are $f(AA) = p^2$, $f(Aa) = 2pq$, and $f(aa) = q^2$. Since the recessive phenotype occurs only in $aa$ homozygotes, $q^2 = 0.16$ yields $q = \\sqrt{0.16} = 0.40$. The dominant allele frequency is $p = 1 - q = 0.60$. Homozygous dominants $AA$ represent $p^2 = 0.36$ ($36\\%$), while heterozygous carriers $Aa$ represent $2pq = 2 \\cdot 0.60 \\cdot 0.40 = 0.48$ ($48\\%$). When $p = q = 0.5$ (monohybrid cross $Aa \\times Aa$), we recover Mendel’s classic $1:2:1$ genotype ratio ($25\\% : 50\\% : 25\\%$) and $3:1$ dominant-to-recessive phenotype ratio.',
         referenceLatex: String.raw`p + q = 1, \quad p^2\,(\text{AA}) + 2pq\,(\text{Aa}) + q^2\,(\text{aa}) = 1, \quad p' = \frac{p^2 + pq}{1 - s\,q^2}`,
@@ -31361,7 +31355,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_membrane: {
         secTag: 'Biophysics · Part III · § 7 · MEMBRANE BIOPHYSICS',
         badge: 'Biophysics',
-        categoryGroupTitle: 'Module III · Biophysics of Membranes, Neurons & Muscles',
+        categoryGroupTitle: 'Part III. Biophysics of Membranes, Neurons & Muscles',
         shortTitle: 'Lipid Bilayer & Na⁺/K⁺ Pump',
         subtitle: 'Singer–Nicolson Fluid Mosaic Model, Active 3Na⁺/2K⁺ Transport & Nernst–Goldman Potential',
         title: 'Plasma Membrane Biophysics: Electrogenic Na⁺/K⁺-ATPase Pump & Resting Potential',
@@ -31374,8 +31368,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'The pump imports 2 Na⁺ and exports 3 K⁺ without consuming ATP',
           'Per ATP hydrolyzed, the pump exports 3 Na⁺ out of the cell and imports 2 K⁺ into the cytoplasm (electrogenic transport), while at rest membrane permeability to K⁺ through leak channels vastly exceeds Na⁺ permeability ($P_{\\text{K}} \\gg P_{\\text{Na}}$)',
-          'At rest the membrane is impermeable to K⁺ and freely permeable to Na⁺',
-          'The Nernst equilibrium potential does not depend on extracellular or intracellular ion concentrations'
+          'At rest the membrane is impermeable to K⁺ and freely permeable to Na⁺'
         ],
         explanation: 'Each conformational cycle of $\\text{Na}^+/\\text{K}^+$-ATPase hydrolyzes one ATP molecule to pump $3\\,\\text{Na}^+$ ions out of the cell and $2\\,\\text{K}^+$ ions into the cytosol. This maintains high intracellular potassium ($[\\text{K}^+]_i \\approx 140\\text{ mM}$ vs. $[\\text{K}^+]_o \\approx 4.5\\text{ mM}$) and high extracellular sodium ($[\\text{Na}^+]_o \\approx 145\\text{ mM}$ vs. $[\\text{Na}^+]_i \\approx 12\\text{ mM}$). Because open $\\text{K}^+$ leak channels dominate resting permeability ($P_{\\text{K}} \\gg P_{\\text{Na}}$), $\\text{K}^+$ diffuses outward down its concentration gradient, leaving net negative charge inside near $E_{\\text{K}} \\approx -90\\text{ mV}$ ($V_m \\approx -70\\text{ mV}$ by the Goldman–Hodgkin–Katz equation).',
         referenceLatex: String.raw`E_{\text{K}} = \frac{RT}{zF}\ln\frac{[\text{K}^+]_{\text{out}}}{[\text{K}^+]_{\text{in}}}, \quad V_m = \frac{RT}{F}\ln\frac{P_{\text{K}}[\text{K}^+]_o + P_{\text{Na}}[\text{Na}^+]_o}{P_{\text{K}}[\text{K}^+]_i + P_{\text{Na}}[\text{Na}^+]_i}`,
@@ -31400,7 +31393,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_neuron: {
         secTag: 'Biophysics · Part III · § 8 · NEURON ELECTROPHYSIOLOGY',
         badge: 'Biophysics',
-        categoryGroupTitle: 'Module III · Biophysics of Membranes, Neurons & Muscles',
+        categoryGroupTitle: 'Part III. Biophysics of Membranes, Neurons & Muscles',
         shortTitle: 'Neuron Action Potential & Axon',
         subtitle: 'Hodgkin–Huxley Model, Na⁺ Depolarization, K⁺ Repolarization, Myelin Sheath & Nodes of Ranvier',
         title: 'Action Potential Propagation: Hodgkin–Huxley Spike & Saltatory Conduction',
@@ -31413,8 +31406,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Depolarization is caused by Cl⁻ efflux, and myelin increases membrane capacitance',
           'Depolarization is driven by regenerative Na⁺ influx, repolarization by Na⁺ channel inactivation and K⁺ efflux; myelin reduces membrane capacitance and leak conductance so the impulse jumps saltatorily between nodes of Ranvier',
-          'Action potential amplitude scales linearly with stimulus strength above threshold',
-          'Nodes of Ranvier lack voltage-gated Na⁺ channels'
+          'Action potential amplitude scales linearly with stimulus strength above threshold'
         ],
         explanation: 'In the Hodgkin–Huxley model, a suprathreshold stimulus ($V_m > -55\\text{ mV}$) triggers rapid opening of voltage-gated $\\text{Na}^+$ channels. Inward $\\text{Na}^+$ current drives $V_m$ toward $E_{\\text{Na}}$ ($+35\\text{ mV}$ overshoot). Voltage-gated $\\text{Na}^+$ channels then inactivate ($h$-gate closes) while delayed-rectifier $\\text{K}^+$ channels open, allowing $\\text{K}^+$ efflux to repolarize and briefly hyperpolarize the membrane. Myelin wraps the internodal axon in a thick dielectric sheath that lowers capacitance $c_m$ and raises transverse resistance $r_m$, increasing the electrotonic length constant $\\lambda = \\sqrt{r_m/r_i}$ so local circuit currents rapidly trigger the next node of Ranvier (saltatory conduction).',
         referenceLatex: String.raw`C_m\frac{dV_m}{dt} = I_{\text{stim}} - g_{\text{Na}}m^3h(V_m - E_{\text{Na}}) - g_{\text{K}}n^4(V_m - E_{\text{K}}) - g_L(V_m - E_L)`,
@@ -31436,7 +31428,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_sarcomere: {
         secTag: 'Biophysics · Part III · § 9 · BIOMECHANICS OF MUSCLE CONTRACTION',
         badge: 'Biophysics',
-        categoryGroupTitle: 'Module III · Biophysics of Membranes, Neurons & Muscles',
+        categoryGroupTitle: 'Part III. Biophysics of Membranes, Neurons & Muscles',
         shortTitle: 'Muscle Sarcomere & Hill’s Law',
         subtitle: 'Huxley Sliding Filaments (Actin & Myosin), Ca²⁺-Troponin Gating & Hill’s Force–Velocity Hyperbola',
         title: 'Biomechanics of Muscle Contraction: Sliding Filament Sarcomere & Hill’s Equation',
@@ -31449,8 +31441,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Maximum velocity $v_{\\max}$ occurs at maximum load $F = F_0$',
           'Unloaded shortening ($F = 0$) yields maximum velocity $v_{\\max} = b F_0 / a$, zero velocity ($v = 0$) yields maximum isometric force $F_0$, and overstretching reduces actin–myosin overlap so fewer cross-bridges can form',
-          'Myosin filaments coil and shrink to half their length during contraction',
-          'Ca²⁺ ions inhibit myosin ATPase and cause muscle relaxation'
+          'Myosin filaments coil and shrink to half their length during contraction'
         ],
         explanation: 'In the Huxley sliding-filament mechanism, $\\text{Ca}^{2+}$ binding to troponin C shifts tropomyosin, exposing myosin-binding sites on actin. Myosin heads hydrolyze ATP and execute power strokes that pull thin filaments toward the M-line without changing filament lengths. Optimal sarcomere length ($L_0 \\approx 2.0\\text{–}2.2\\;\\mu\\text{m}$) maximizes cross-bridge overlap; overstretching eliminates overlap and reduces $F_0$. Hill’s equation $(F + a)(v + b) = (F_0 + a)b$ shows that $v = v_{\\max} = b F_0 / a$ when $F = 0$, $v = 0$ when $F = F_0$ (isometric contraction), and mechanical power $P = Fv$ peaks near $F \\approx 0.31 F_0$.',
         referenceLatex: String.raw`(F + a)(v + b) = (F_0 + a)b \implies v(F) = b\,\frac{F_0 - F}{F + a}, \quad P_{\text{mech}} = F\cdot v(F)`,
@@ -31477,7 +31468,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_photosynthesis: {
         secTag: 'Biology · Part IV · § 10 · PHOTOSYNTHESIS & PLANT BIOENERGETICS',
         badge: 'Physiology & Ecology',
-        categoryGroupTitle: 'Module IV · Organismal Physiology & Mathematical Ecology',
+        categoryGroupTitle: 'Part IV. Organismal Physiology & Mathematical Ecology',
         shortTitle: 'Chloroplast & Z-Scheme',
         subtitle: 'Thylakoid Light Reactions (PSII, Water Photolysis, PSI) & Stroma Calvin Cycle (RuBisCO)',
         title: 'Chloroplast Photosynthesis: Z-Scheme Electron Transport & Calvin Cycle CO₂ Fixation',
@@ -31490,8 +31481,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Molecular $\\text{O}_2$ is cleaved directly from $\\text{CO}_2$ in the Calvin cycle without water',
           'All evolved $\\text{O}_2$ originates from water photolysis at Photosystem II ($2\\text{H}_2\\text{O} \\to \\text{O}_2 + 4\\text{H}^+ + 4e^-$), and synthesizing 1 glucose from $6\\,\\text{CO}_2$ in the Calvin cycle requires $18\\,\\text{ATP}$ and $12\\,\\text{NADPH}$',
-          'The Calvin cycle takes place inside the thylakoid lumen and emits photons',
-          'Green light ($\\lambda \\approx 540\\text{ nm}$) is absorbed ten times more strongly by chlorophyll than blue ($440\\text{ nm}$) or red ($670\\text{ nm}$) light'
+          'The Calvin cycle takes place inside the thylakoid lumen and emits photons'
         ],
         explanation: 'Isotopic tracer experiments with $\\text{H}_2^{18}\\text{O}$ proved that all photosynthetic $\\text{O}_2$ comes from water splitting at the $\\text{Mn}_4\\text{CaO}_5$ oxygen-evolving complex of Photosystem II (P680): $2\\text{H}_2\\text{O} \\xrightarrow{4h\\nu} \\text{O}_2\\uparrow + 4\\text{H}^+ + 4e^-$. Electrons travel via plastoquinone, cytochrome $b_6f$, and plastocyanin to Photosystem I (P700) to reduce $\\text{NADP}^+$ to $\\text{NADPH}$, while the lumen-to-stroma proton gradient drives $\\text{CF}_0\\text{CF}_1$-ATP synthase. In the stroma, fixing each $\\text{CO}_2$ molecule in the Calvin–Benson cycle requires $3\\,\\text{ATP}$ and $2\\,\\text{NADPH}$, totaling $18\\,\\text{ATP}$ and $12\\,\\text{NADPH}$ per molecule of glucose ($\text{C}_6\\text{H}_{12}\\text{O}_6$).',
         referenceLatex: String.raw`6\,\text{CO}_2 + 12\,\text{H}_2\text{O}^* \xrightarrow{h\nu} \text{C}_6\text{H}_{12}\text{O}_6 + 6\,\text{O}_2^*\!\uparrow + 6\,\text{H}_2\text{O}\quad (18\,\text{ATP} + 12\,\text{NADPH})`,
@@ -31514,7 +31504,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_hemo: {
         secTag: 'Biology · Part IV · § 11 · RESPIRATORY PHYSIOLOGY & HEMOGLOBIN',
         badge: 'Physiology & Ecology',
-        categoryGroupTitle: 'Module IV · Organismal Physiology & Mathematical Ecology',
+        categoryGroupTitle: 'Part IV. Organismal Physiology & Mathematical Ecology',
         shortTitle: 'Hemoglobin & Bohr Effect (O₂)',
         subtitle: 'α₂β₂ Tetramer with 4 Fe²⁺ Hemes, Cooperative Hill Sigmoid (n ≈ 2.8), Myoglobin & Bohr Shift',
         title: 'Oxygen Transport by Hemoglobin: Allosteric Cooperativity (T ↔ R) & the Bohr Effect',
@@ -31527,8 +31517,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Lower pH increases hemoglobin oxygen affinity, preventing O₂ release to tissues',
           'Elevated H⁺ (lower pH) and CO₂ stabilize the tense deoxy (T) conformation of hemoglobin, increasing $P_{50}$ and shifting the dissociation curve to the right to enhance $\\text{O}_2$ unloading in metabolically active tissues',
-          'Oxygenation oxidizes heme iron from Fe²⁺ to Fe³⁺ (methemoglobin)',
-          'A hemoglobin tetramer can bind only 1 molecule of O₂'
+          'Oxygenation oxidizes heme iron from Fe²⁺ to Fe³⁺ (methemoglobin)'
         ],
         explanation: 'Adult hemoglobin A is an $\\alpha_2\\beta_2$ tetramer containing four prosthetic heme groups, each with a ferrous $\\text{Fe}^{2+}$ ion (which remains $\\text{Fe}^{2+}$ during reversible oxygenation). Positive cooperativity ($n \\approx 2.8$) ensures nearly full saturation ($\\approx 98\\%$) in alveolar capillaries ($p\\text{O}_2 \\approx 100\\text{ mmHg}$) and steep unloading in peripheral tissues ($p\\text{O}_2 \\approx 25\\text{–}40\\text{ mmHg}$). By Christian Bohr’s effect, exercising muscle produces $\\text{CO}_2$, lactic acid ($\\text{H}^+$, lowering $\\text{pH}$ from $7.4$ to $7.2$), and heat; protonation of key histidine residues stabilizes the low-affinity T-state, raising $P_{50}$ (rightward shift) and boosting $\\text{O}_2$ delivery to working cells.',
         referenceLatex: String.raw`Y_{\text{Hb}} = \frac{(p\text{O}_2)^n}{(P_{50})^n + (p\text{O}_2)^n}\;\;(n \approx 2.8), \quad Y_{\text{Mb}} = \frac{p\text{O}_2}{P_{50,\text{Mb}} + p\text{O}_2}\;\;(n = 1)`,
@@ -31552,7 +31541,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       bio_lotka: {
         secTag: 'Biology · Part IV · § 12 · MATHEMATICAL ECOLOGY & BIOSPHERE',
         badge: 'Physiology & Ecology',
-        categoryGroupTitle: 'Module IV · Organismal Physiology & Mathematical Ecology',
+        categoryGroupTitle: 'Part IV. Organismal Physiology & Mathematical Ecology',
         shortTitle: 'Lotka–Volterra Ecology Model',
         subtitle: 'Predator–Prey Differential Equations, Phase-Space Attractor, Population Waves & Lindeman’s 10% Pyramid',
         title: 'Ecosystem Dynamics: Lotka–Volterra Predator–Prey Oscillations & Trophic Energy Transfer',
@@ -31565,8 +31554,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         options: [
           'Equilibrium depends only on initial population sizes, and both populations peak simultaneously in phase',
           'The equilibrium point is determined solely by interaction parameters: $x^* = \\gamma/\\delta$ and $y^* = \\alpha/\\beta$, and predator peaks systematically lag behind prey peaks by approximately one-quarter period ($\\pi/2$)',
-          'Predator biomass is always 10 times larger than prey biomass by Lindeman’s rule',
-          'Increasing prey birth rate $\\alpha$ decreases the equilibrium predator density $y^*$'
+          'Predator biomass is always 10 times larger than prey biomass by Lindeman’s rule'
         ],
         explanation: 'Setting $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = 0$ for $x > 0, y > 0$ yields $\\alpha - \\beta y^* = 0 \\implies y^* = \\alpha/\\beta$ and $\\delta x^* - \\gamma = 0 \\implies x^* = \\gamma/\\delta$. Remarkably, the average prey density $x^* = \\gamma/\\delta$ is governed by predator mortality and conversion efficiency, whereas average predator density $y^* = \\alpha/\\beta$ is governed by prey growth and predation rate (Volterra’s principle). In the $(x, y)$ phase plane, trajectories form closed orbits circulating counterclockwise around $(x^*, y^*)$: abundant prey $x$ fuels predator growth $y$ with a quarter-cycle lag ($\\approx \\pi/2$), which then depletes prey, causing predator decline and allowing prey recovery.',
         referenceLatex: String.raw`\frac{dx}{dt} = \alpha x - \beta xy, \quad \frac{dy}{dt} = \delta xy - \gamma y, \quad x^* = \frac{\gamma}{\delta}, \quad y^* = \frac{\alpha}{\beta}`,
@@ -32652,7 +32640,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         legendP: '<span class="legend-bar" style="background:#1d4ed8;"></span> Momentum / projections',
         legendMg: '<span class="legend-bar" style="background:#b91c1c;"></span> Gravity ($m\\vec{g}$)',
         legendN: '<span class="legend-bar" style="background:#b45309;"></span> Normal / tension / pressure',
-        letters: ['A', 'B', 'C'],
+        letters: ['A', 'B', 'C', 'D'],
         optionPrefix: 'Option',
         secUnit: 's',
         jouleUnit: 'J',
@@ -32786,7 +32774,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         legendP: '<span class="legend-bar" style="background:#1d4ed8;"></span> Імпульс / проєкції',
         legendMg: '<span class="legend-bar" style="background:#b91c1c;"></span> Сила тяжіння ($m\\vec{g}$)',
         legendN: '<span class="legend-bar" style="background:#b45309;"></span> Реакція / натяг / тиск',
-        letters: ['А', 'Б', 'В'],
+        letters: ['А', 'Б', 'В', 'Г'],
         optionPrefix: 'Варіант',
         secUnit: 'с',
         jouleUnit: 'Дж',
@@ -34885,10 +34873,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       chemistry: 'chem_orbitals',
       biology: 'bio_eukaryote'
     };
+    let currentDropdownFilter = 'all';
 
     function getDisciplineOfScene(key) {
       const d = SCENE_CONFIGS[key] && SCENE_CONFIGS[key].discipline;
       if (d === 'chemistry' || d === 'biology') return d;
+      if (typeof key === 'string') {
+        if (key.startsWith('bio_')) return 'biology';
+        if (key.startsWith('chem_')) return 'chemistry';
+      }
       return 'physics';
     }
 
@@ -34971,13 +34964,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const fElec = document.getElementById('filter-btn-electro');
 
       if (isBio) {
-        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? `Усі досліди (${bioCount})` : `All biology (${bioCount})`; }
+        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? `Усі з біології (${bioCount})` : `All biology (${bioCount})`; }
         if (fOpt) { fOpt.dataset.filter = 'bio_cell'; fOpt.textContent = isUk ? 'Клітина й органели (3)' : 'Cell & organelles (3)'; }
         if (fMech) { fMech.dataset.filter = 'bio_genetics'; fMech.textContent = isUk ? 'ДНК та генетика (3)' : 'DNA & genetics (3)'; }
         if (fTherm) { fTherm.dataset.filter = 'bio_biophysics'; fTherm.textContent = isUk ? 'Мембрани й нейрон (3)' : 'Membranes & neuron (3)'; }
         if (fElec) { fElec.dataset.filter = 'bio_physio'; fElec.textContent = isUk ? 'Фотосинтез і фізіологія (3)' : 'Photosynthesis & ecology (3)'; }
       } else if (isChem) {
-        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? 'Усі досліди з хімії (40)' : 'All chemistry (40)'; }
+        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? `Усі з хімії (${chemCount})` : `All chemistry (${chemCount})`; }
         if (fOpt) { fOpt.dataset.filter = 'chem_struct'; fOpt.textContent = isUk ? 'Будова речовини (10)' : 'Structure and bonding (10)'; }
         if (fMech) { fMech.dataset.filter = 'chem_kinetics'; fMech.textContent = isUk ? 'Гази, термохімія і кінетика (9)' : 'Gases, thermo, and kinetics (9)'; }
         if (fTherm) { fTherm.dataset.filter = 'chem_solutions'; fTherm.textContent = isUk ? 'Розчини, pH та аналіз (10)' : 'Solutions, pH, and analysis (10)'; }
@@ -34988,6 +34981,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (fMech) { fMech.dataset.filter = 'mechanics'; fMech.textContent = t.filterMechanics; }
         if (fTherm) { fTherm.dataset.filter = 'thermo'; fTherm.textContent = t.filterThermo; }
         if (fElec) { fElec.dataset.filter = 'electro'; fElec.textContent = t.filterElectro; }
+      }
+
+      const filterBtns = [fAll, fOpt, fMech, fTherm, fElec].filter(Boolean);
+      if (typeof currentDropdownFilter !== 'undefined') {
+        const validFilters = filterBtns.map(b => b.dataset.filter);
+        if (!validFilters.includes(currentDropdownFilter)) {
+          currentDropdownFilter = 'all';
+        }
+        filterBtns.forEach(b => {
+          b.classList.toggle('active', b.dataset.filter === currentDropdownFilter);
+        });
       }
     }
 
@@ -35851,7 +35855,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     // 13. DROPDOWN MENU WITH 16 EXPERIMENTS, CAMERA PROJECTIONS & LANGUAGE TOGGLE
     // ============================================================================
     const SCENE_KEYS_ORDER = Object.keys(SCENE_CONFIGS);
-    let currentDropdownFilter = 'all';
 
     document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('lang-uk').addEventListener('click', () => applyLanguage('uk'));
@@ -37701,6 +37704,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
     });
 
+    uiState.activeScene = initialScene;
+    uiState.discipline = getDisciplineOfScene(initialScene);
     applyLanguage(initialLang);
     if (document.body.classList.contains('is-mobile-phone') && queryLang !== 'uk') {
       setMobileOverlayLang('en');

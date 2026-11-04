@@ -24646,10 +24646,29 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       };
       pin.group.userData = { isCadHardware: true, isBioCallout: true };
 
-      const dotGeo = new THREE.SphereGeometry(0.08, 12, 12);
-      const dotMat = new THREE.MeshBasicMaterial({ color: colorHex });
+      const haloGeo = new THREE.SphereGeometry(0.115, 14, 14);
+      const haloMat = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false
+      });
+      pin.halo = new THREE.Mesh(haloGeo, haloMat);
+      pin.halo.position.copy(pin.anchorPos);
+      pin.halo.renderOrder = 993;
+      pin.halo.raycast = () => {};
+      pin.group.add(pin.halo);
+
+      const dotGeo = new THREE.SphereGeometry(0.08, 14, 14);
+      const dotMat = new THREE.MeshBasicMaterial({
+        color: colorHex,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false
+      });
       pin.dot = new THREE.Mesh(dotGeo, dotMat);
       pin.dot.position.copy(pin.anchorPos);
+      pin.dot.renderOrder = 994;
       pin.dot.raycast = () => {};
       pin.group.add(pin.dot);
 
@@ -24657,9 +24676,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const lineMat = new THREE.LineBasicMaterial({
         color: colorHex,
         transparent: true,
-        opacity: 0.82
+        opacity: 0.92,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false
       });
       pin.line = new THREE.Line(lineGeo, lineMat);
+      pin.line.renderOrder = 992;
       pin.line.raycast = () => {};
       pin.group.add(pin.line);
 
@@ -24750,6 +24773,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       pin.setPositions = function(aVec, bVec) {
         if (aVec) this.anchorPos.copy(aVec);
         if (bVec) this.badgePos.copy(bVec);
+        if (this.halo) this.halo.position.copy(this.anchorPos);
         this.dot.position.copy(this.anchorPos);
         this.sprite.position.copy(this.badgePos);
         const posAttr = this.line.geometry.attributes.position;
@@ -24773,6 +24797,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       pin.dispose = function() {
         activeBioCalloutPins.delete(this);
         if (this.group && this.group.parent) this.group.parent.remove(this.group);
+        if (this.halo && this.halo.geometry) this.halo.geometry.dispose();
+        if (this.halo && this.halo.material) this.halo.material.dispose();
         if (this.dot && this.dot.geometry) this.dot.geometry.dispose();
         if (this.dot && this.dot.material) this.dot.material.dispose();
         if (this.line && this.line.geometry) this.line.geometry.dispose();
@@ -24810,6 +24836,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const bioHud = document.getElementById('bio-scene-hud');
       if (bioHud && (!nextSceneKey || !nextSceneKey.startsWith('bio_'))) {
         bioHud.remove();
+      }
+      const bioSidebarPresets = document.getElementById('bio-sidebar-presets');
+      if (bioSidebarPresets && (!nextSceneKey || !nextSceneKey.startsWith('bio_'))) {
+        bioSidebarPresets.remove();
       }
       const periodicHud = document.getElementById('periodic-table-hud');
       if (periodicHud && nextSceneKey !== 'chem_periodic') {
@@ -24856,51 +24886,52 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (!hud) {
         hud = document.createElement('div');
         hud.id = 'bio-scene-hud';
-        Object.assign(hud.style, {
-          position: 'absolute',
-          top: '62px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: 'min(700px, calc(100% - 24px))',
-          background: 'rgba(250, 249, 245, 0.94)',
-          backdropFilter: 'blur(8px)',
-          border: '1px solid #cbd5e1',
-          borderLeft: '4px solid #15803d',
-          borderRadius: '8px',
-          padding: '8px 12px',
-          boxShadow: '0 4px 16px rgba(15, 23, 42, 0.11)',
-          zIndex: '24',
-          fontFamily: '"Inter", system-ui, sans-serif',
-          color: '#1e293b',
-          pointerEvents: 'auto'
-        });
         container.appendChild(hud);
       }
+      Object.assign(hud.style, {
+        position: 'absolute',
+        top: 'auto',
+        bottom: '50px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 'min(680px, calc(100% - 24px))',
+        background: 'rgba(250, 249, 245, 0.95)',
+        backdropFilter: 'blur(8px)',
+        border: '1px solid #cbd5e1',
+        borderLeft: '4px solid #15803d',
+        borderRadius: '8px',
+        padding: '6px 10px',
+        boxShadow: '0 4px 16px rgba(15, 23, 42, 0.14)',
+        zIndex: '24',
+        fontFamily: '"Inter", system-ui, sans-serif',
+        color: '#1e293b',
+        pointerEvents: 'auto'
+      });
 
       const isEn = (typeof uiState !== 'undefined' && uiState.lang === 'en');
       const legendHtml = (config.legend || []).map(item => `
-        <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 7px;border-radius:4px;border:1px solid #e2e8f0;">
-          <span style="width:9px;height:9px;border-radius:50%;background:${item.color};display:inline-block;flex-shrink:0;"></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:#334155;background:#f1f5f9;padding:1.5px 6px;border-radius:4px;border:1px solid #e2e8f0;">
+          <span style="width:8px;height:8px;border-radius:50%;background:${item.color};display:inline-block;flex-shrink:0;"></span>
           <span>${isEn ? item.en : item.uk}</span>
         </span>
       `).join('');
 
       const presetsKey = (config.presets || []).map(prItem => prItem.id).join('|') + ':' + (isEn ? 'en' : 'uk') + ':' + sceneKey;
+      const presetsHtml = (config.presets || []).map((pr, idx) => `
+        <button type="button" data-bio-preset-idx="${idx}" style="cursor:pointer;font-size:10.5px;font-weight:600;padding:2.5px 8px;border-radius:4px;border:1px solid #15803d;background:#f0fdf4;color:#166534;transition:all 0.15s;">
+          ▸ ${isEn ? pr.en : pr.uk}
+        </button>
+      `).join('');
+
       if (hud.dataset.presetsKey !== presetsKey) {
         hud.dataset.presetsKey = presetsKey;
-        const presetsHtml = (config.presets || []).map((pr, idx) => `
-          <button type="button" data-bio-preset-idx="${idx}" style="cursor:pointer;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;border:1px solid #15803d;background:#f0fdf4;color:#166534;transition:all 0.15s;">
-            ▸ ${isEn ? pr.en : pr.uk}
-          </button>
-        `).join('');
-
         hud.innerHTML = `
-          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-bottom:5px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px;margin-bottom:4px;">
             <div style="display:flex;flex-wrap:wrap;gap:4px;" id="bio-hud-legend">${legendHtml}</div>
           </div>
-          <div id="bio-hud-status" style="font-size:12px;line-height:1.4;color:#0f172a;font-weight:500;margin-bottom:6px;padding:4px 8px;background:#ffffff;border-radius:4px;border:1px solid #e2e8f0;"></div>
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:5px;">
-            <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#64748b;margin-right:2px;">
+          <div id="bio-hud-status" style="font-size:11.5px;line-height:1.35;color:#0f172a;font-weight:500;margin-bottom:5px;padding:3px 7px;background:#ffffff;border-radius:4px;border:1px solid #e2e8f0;"></div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;">
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#64748b;margin-right:2px;">
               ${isEn ? '1-Click Regimes:' : 'Наочні режими:'}
             </span>
             ${presetsHtml}
@@ -24925,6 +24956,42 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (statusEl) {
         statusEl.innerHTML = isEn ? config.statusEn : config.statusUk;
       }
+
+      const slidersContainer = document.getElementById('sliders-container');
+      if (slidersContainer && slidersContainer.parentElement) {
+        let sideBox = document.getElementById('bio-sidebar-presets');
+        if (!sideBox) {
+          sideBox = document.createElement('div');
+          sideBox.id = 'bio-sidebar-presets';
+          Object.assign(sideBox.style, {
+            marginBottom: '10px',
+            padding: '8px 10px',
+            background: '#f0fdf4',
+            border: '1px solid #bbf7d0',
+            borderLeft: '3px solid #15803d',
+            borderRadius: '6px'
+          });
+          slidersContainer.parentElement.insertBefore(sideBox, slidersContainer);
+        }
+        if (sideBox.dataset.presetsKey !== presetsKey) {
+          sideBox.dataset.presetsKey = presetsKey;
+          sideBox.innerHTML = `
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#166534;margin-bottom:5px;">
+              ${isEn ? '1-Click Biological Regimes' : 'Швидкі біологічні режими (1 клік)'}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;">${presetsHtml}</div>
+          `;
+          sideBox.querySelectorAll('button[data-bio-preset-idx]').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const idx = parseInt(btn.getAttribute('data-bio-preset-idx'), 10);
+              const pr = config.presets[idx];
+              if (pr && pr.values) {
+                applyBioPresetParams(sceneKey, pr.values);
+              }
+            });
+          });
+        }
+      }
     }
 
     class BioEukaryoticCellSimulation {
@@ -24946,120 +25013,183 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Лабораторний тримач чашки Петрі та предметний столик мікроскопа
+        // Низькопрофільне предметне кільце мікроскопа (без штиря всередині клітини)
         const stageRing = new THREE.Mesh(
-          new THREE.CylinderGeometry(2.65, 2.85, 0.24, 40),
+          new THREE.CylinderGeometry(2.35, 2.55, 0.14, 44),
           new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.28 })
         );
-        stageRing.position.set(0, 0.40, 0);
+        stageRing.position.set(0, 0.35, 0);
         worldGroup.add(stageRing);
 
-        const pedestal = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.42, 0.56, 1.35, 24),
-          new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.6, roughness: 0.3 })
+        const glassSlide = new THREE.Mesh(
+          new THREE.CylinderGeometry(2.15, 2.15, 0.05, 44),
+          new THREE.MeshPhysicalMaterial({
+            color: 0x94a3b8,
+            transparent: true,
+            opacity: 0.24,
+            roughness: 0.15,
+            depthWrite: false
+          })
         );
-        pedestal.position.set(0, 1.15, 0);
-        worldGroup.add(pedestal);
+        glassSlide.position.set(0, 0.44, 0);
+        worldGroup.add(glassSlide);
 
         this.cellGroup = new THREE.Group();
-        this.cellGroup.position.set(0, 2.35, 0);
+        this.cellGroup.position.set(0, 2.25, 0);
         worldGroup.add(this.cellGroup);
 
-        // Зовнішня плазматична мембрана (півсферичний розріз клітини)
+        // Зовнішня плазматична мембрана (відкритий спереду-зверху 3/4 анатомічний розріз, depthWrite: false)
         this.plasmaShell = new THREE.Mesh(
-          new THREE.SphereGeometry(2.15, 36, 28, 0, Math.PI * 2, Math.PI * 0.22, Math.PI * 0.78),
+          new THREE.SphereGeometry(2.12, 40, 28, Math.PI * 0.22, Math.PI * 1.56, Math.PI * 0.20, Math.PI * 0.78),
           new THREE.MeshPhysicalMaterial({
             color: 0x0ea5e9,
             transparent: true,
-            opacity: 0.34,
+            opacity: 0.26,
             roughness: 0.18,
-            metalness: 0.08,
+            metalness: 0.05,
+            side: THREE.DoubleSide,
+            depthWrite: false
+          })
+        );
+        this.plasmaShell.rotation.y = Math.PI * 0.28;
+        this.cellGroup.add(this.plasmaShell);
+
+        // Ліпідний бішар (золотисто-блакитний обідок зрізу мембрани)
+        const membraneRim = new THREE.Mesh(
+          new THREE.TorusGeometry(1.96, 0.045, 14, 52),
+          new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.25, metalness: 0.15 })
+        );
+        membraneRim.rotation.x = Math.PI / 2;
+        membraneRim.position.y = 0.56;
+        this.cellGroup.add(membraneRim);
+
+        // Цитоплазматичний матрикс у площині зрізу (depthWrite: false)
+        this.cytoplasmDisk = new THREE.Mesh(
+          new THREE.CylinderGeometry(1.94, 1.82, 0.10, 40),
+          new THREE.MeshStandardMaterial({
+            color: 0x0284c7,
+            transparent: true,
+            opacity: 0.30,
+            roughness: 0.38,
+            depthWrite: false
+          })
+        );
+        this.cytoplasmDisk.position.y = 0.52;
+        this.cellGroup.add(this.cytoplasmDisk);
+
+        // 1. Ядро (Nucleus) з відкритим сектором + ядерце (Nucleolus) + складчаста шорстка ЕПС з рибосомами
+        this.nucleusGroup = new THREE.Group();
+        this.nucleusGroup.position.set(-0.35, 0.70, -0.22);
+        const nucEnv = new THREE.Mesh(
+          new THREE.SphereGeometry(0.62, 28, 22, Math.PI * 0.32, Math.PI * 1.48, 0, Math.PI),
+          new THREE.MeshStandardMaterial({
+            color: 0x6366f1,
+            roughness: 0.28,
+            metalness: 0.15,
             side: THREE.DoubleSide
           })
         );
-        this.cellGroup.add(this.plasmaShell);
-
-        // Цитоплазматичний матрикс у площині зрізу
-        this.cytoplasmDisk = new THREE.Mesh(
-          new THREE.CylinderGeometry(1.98, 1.85, 0.14, 36),
-          new THREE.MeshStandardMaterial({ color: 0x0284c7, transparent: true, opacity: 0.42, roughness: 0.35 })
-        );
-        this.cytoplasmDisk.position.y = 0.65;
-        this.cellGroup.add(this.cytoplasmDisk);
-
-        // 1. Ядро (Nucleus) + ядерце (Nucleolus) + шорстка ЕПС (Rough ER)
-        this.nucleusGroup = new THREE.Group();
-        this.nucleusGroup.position.set(-0.25, 0.68, -0.15);
-        const nucEnv = new THREE.Mesh(
-          new THREE.SphereGeometry(0.68, 28, 22),
-          new THREE.MeshStandardMaterial({ color: 0x6366f1, roughness: 0.28, metalness: 0.18 })
-        );
+        nucEnv.rotation.y = Math.PI * 0.25;
         const nucleolus = new THREE.Mesh(
-          new THREE.SphereGeometry(0.28, 20, 16),
-          new THREE.MeshStandardMaterial({ color: 0xc084fc, emissive: 0x7e22ce, emissiveIntensity: 0.35 })
+          new THREE.SphereGeometry(0.26, 20, 16),
+          new THREE.MeshStandardMaterial({ color: 0xd946ef, emissive: 0xa21caf, emissiveIntensity: 0.42, roughness: 0.2 })
         );
-        nucleolus.position.set(0.12, 0.16, 0.18);
+        nucleolus.position.set(0.06, 0.08, 0.12);
         this.nucleusGroup.add(nucEnv, nucleolus);
 
-        // Кільця цистерн ендоплазматичної сітки (ЕПС) навколо ядра
+        // Складчасті цистерни шорсткої ЕПС (Rough ER) з точками-рибосомами позаду-ліворуч від ядра
         for (let r = 0; r < 3; r++) {
-          const erTorus = new THREE.Mesh(
-            new THREE.TorusGeometry(0.84 + r * 0.16, 0.048, 12, 32, Math.PI * 1.15),
-            new THREE.MeshStandardMaterial({ color: 0x818cf8, roughness: 0.32 })
+          const radiusEr = 0.76 + r * 0.14;
+          const erSheet = new THREE.Mesh(
+            new THREE.CylinderGeometry(radiusEr, radiusEr, 0.34 - r * 0.04, 24, 1, true, Math.PI * 0.65, Math.PI * 0.95),
+            new THREE.MeshStandardMaterial({ color: 0x818cf8, roughness: 0.3, side: THREE.DoubleSide })
           );
-          erTorus.rotation.x = Math.PI / 2;
-          erTorus.rotation.z = -0.35 + r * 0.25;
-          erTorus.position.y = 0.08;
-          this.nucleusGroup.add(erTorus);
+          erSheet.position.y = 0.04;
+          this.nucleusGroup.add(erSheet);
+
+          for (let rb = 0; rb < 6; rb++) {
+            const ang = Math.PI * 0.72 + (rb / 5) * Math.PI * 0.80;
+            const riboDot = new THREE.Mesh(
+              new THREE.SphereGeometry(0.032, 8, 8),
+              new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xeab308, emissiveIntensity: 0.3 })
+            );
+            riboDot.position.set(-Math.sin(ang) * (radiusEr + 0.025), 0.12 - (rb % 2) * 0.14, -Math.cos(ang) * (radiusEr + 0.025));
+            this.nucleusGroup.add(riboDot);
+          }
         }
         this.cellGroup.add(this.nucleusGroup);
 
-        // 2. Апарат Гольджі та лізосоми
+        // 2. Апарат Гольджі (стопка вигнутих цистерн із секреторними пухирцями на кінцях) та окремі лізосоми
         this.golgiGroup = new THREE.Group();
-        this.golgiGroup.position.set(0.95, 0.72, 0.42);
+        this.golgiGroup.position.set(0.98, 0.70, 0.28);
         for (let c = 0; c < 4; c++) {
+          const radG = 0.28 + c * 0.075;
           const cisterna = new THREE.Mesh(
-            new THREE.TorusGeometry(0.32 + c * 0.07, 0.042, 10, 24, Math.PI * 0.9),
-            new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.28 })
+            new THREE.TorusGeometry(radG, 0.042, 12, 24, Math.PI * 0.82),
+            new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.25 })
           );
           cisterna.rotation.x = Math.PI / 2;
-          cisterna.rotation.z = 0.4;
-          cisterna.position.y = (c - 1.5) * 0.08;
+          cisterna.rotation.z = 0.25;
+          cisterna.position.y = (c - 1.5) * 0.075;
           this.golgiGroup.add(cisterna);
-        }
-        for (let l = 0; l < 3; l++) {
-          const lyso = new THREE.Mesh(
-            new THREE.SphereGeometry(0.13, 16, 14),
-            new THREE.MeshStandardMaterial({ color: 0xec4899, roughness: 0.24 })
+
+          const bud = new THREE.Mesh(
+            new THREE.SphereGeometry(0.058, 10, 10),
+            new THREE.MeshStandardMaterial({ color: 0xfbbf24, roughness: 0.22 })
           );
-          lyso.position.set(-0.22 + l * 0.28, 0.14, 0.34 - l * 0.12);
-          this.golgiGroup.add(lyso);
+          bud.position.set(Math.cos(0.25) * radG, (c - 1.5) * 0.075, Math.sin(0.25) * radG);
+          this.golgiGroup.add(bud);
         }
+        // Лізосоми (рожеві сфери з гідролітичними ферментами) окремо в цитоплазмі спереду
+        const lysoOffsets = [
+          [-0.52, -0.02, 0.58],
+          [-0.22, 0.05, 0.72],
+          [0.12, -0.04, 0.64]
+        ];
+        lysoOffsets.forEach(([lx, ly, lz]) => {
+          const lyso = new THREE.Mesh(
+            new THREE.SphereGeometry(0.135, 16, 14),
+            new THREE.MeshStandardMaterial({ color: 0xec4899, roughness: 0.22 })
+          );
+          lyso.position.set(lx, ly, lz);
+          this.golgiGroup.add(lyso);
+        });
         this.cellGroup.add(this.golgiGroup);
 
-        // 3. Мітохондрії (енергетичні станції клітини)
+        // 3. Мітохондрії (овальні капсули з внутрішніми складками-кристами)
         this.mitoGroup = new THREE.Group();
         const mitoCoords = [
-          [-1.08, 0.72, 0.65, 0.45],
-          [0.35, 0.72, -1.02, -0.35],
-          [1.05, 0.72, -0.45, 0.85],
-          [-0.95, 0.72, -0.82, -0.75]
+          [-1.08, 0.68, 0.68, 0.45],
+          [0.42, 0.68, -1.04, -0.35],
+          [1.08, 0.68, -0.52, 0.85],
+          [-1.05, 0.68, -0.78, -0.75]
         ];
         mitoCoords.forEach(([mx, my, mz, rot]) => {
           const mWrap = new THREE.Group();
           mWrap.position.set(mx, my, mz);
           mWrap.rotation.y = rot;
           const mBody = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.16, 0.16, 0.44, 16),
+            new THREE.CylinderGeometry(0.16, 0.16, 0.46, 16),
             new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.28 })
           );
           mBody.rotation.z = Math.PI / 2;
-          const cristaStripe = new THREE.Mesh(
-            new THREE.BoxGeometry(0.36, 0.06, 0.22),
-            new THREE.MeshStandardMaterial({ color: 0xfde047, roughness: 0.3 })
+          const capL = new THREE.Mesh(
+            new THREE.SphereGeometry(0.16, 14, 12),
+            new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.28 })
           );
-          cristaStripe.position.y = 0.14;
-          mWrap.add(mBody, cristaStripe);
+          capL.position.x = -0.23;
+          const capR = capL.clone();
+          capR.position.x = 0.23;
+          mWrap.add(mBody, capL, capR);
+
+          for (let cr = -1; cr <= 1; cr++) {
+            const cristaFold = new THREE.Mesh(
+              new THREE.BoxGeometry(0.08, 0.07, 0.24),
+              new THREE.MeshStandardMaterial({ color: 0xfde047, emissive: 0xca8a04, emissiveIntensity: 0.25, roughness: 0.25 })
+            );
+            cristaFold.position.set(cr * 0.13, 0.135, 0);
+            mWrap.add(cristaFold);
+          }
           this.mitoGroup.add(mWrap);
           this.mitochondriaList.push(mWrap);
         });
@@ -25068,7 +25198,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         // Транспортні везикули на мікротрубочках
         for (let v = 0; v < 8; v++) {
           const ves = new THREE.Mesh(
-            new THREE.SphereGeometry(0.085, 14, 12),
+            new THREE.SphereGeometry(0.08, 14, 12),
             new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x16a34a, emissiveIntensity: 0.35 })
           );
           this.cellGroup.add(ves);
@@ -25093,12 +25223,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const met = p.metabolicRate;
         const vSpeed = p.vesicleSpeed;
 
-        const scaleR = 0.68 + (R / 30) * 0.56;
+        const scaleR = 0.68 + (R / 30) * 0.54;
         this.cellGroup.scale.setScalar(scaleR);
 
         // Підсвітка обраного компартмента
         this.nucleusGroup.scale.setScalar(focus === 2 ? 1.18 : 1.0);
-        this.golgiGroup.scale.setScalar(focus === 3 ? 1.22 : 1.0);
+        this.golgiGroup.scale.setScalar(focus === 3 ? 1.20 : 1.0);
         this.mitoGroup.scale.setScalar(focus === 4 ? 1.22 : 1.0);
 
         this.mitochondriaList.forEach((m, idx) => {
@@ -25109,10 +25239,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.vesicles.forEach((vObj, idx) => {
           const t = (this.phase * 0.35 * vSpeed + vObj.offset) % 1;
           const ang = idx * (Math.PI / 4);
-          const rad = 0.65 + t * 1.15;
+          const rad = 0.65 + t * 1.12;
           vObj.mesh.position.set(
             Math.cos(ang) * rad,
-            0.78 + Math.sin(t * Math.PI) * 0.22,
+            0.72 + Math.sin(t * Math.PI) * 0.20,
             Math.sin(ang) * rad
           );
         });
@@ -25122,17 +25252,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const svRatio = 3 / R;
         const diffTimeSec = (R * R) / (6 * 120);
 
+        // Вектори розташовано біля входу і виходу мембрани без перетину з ядром чи виносками
         this.arrowFlux.update(
-          new THREE.Vector3(-2.6 * scaleR, 3.0, 0),
-          new THREE.Vector3(1, 0, 0),
-          Math.min(2.2, svRatio * 10 * met),
+          new THREE.Vector3(-2.95 * scaleR, 2.65, 0.45),
+          new THREE.Vector3(1, 0, -0.15).normalize(),
+          Math.min(1.05, 0.45 + svRatio * 3.2 * met),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowExport.update(
-          new THREE.Vector3(0.4, 3.1, 0.3),
-          new THREE.Vector3(0.85, 0.35, 0.38).normalize(),
-          Math.min(2.2, 0.7 + vSpeed * 0.55),
+          new THREE.Vector3(1.35 * scaleR, 2.55, 0.88),
+          new THREE.Vector3(0.82, 0.12, 0.56).normalize(),
+          Math.min(1.05, 0.45 + vSpeed * 0.25),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -25151,11 +25282,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Активний компартмент', val: focusNames[focus - 1] || focusNames[0] }
         ]);
         const c = ensureBioPins(this, [
-          { a: new THREE.Vector3(-0.25 * scaleR, 2.35 + 0.9 * scaleR, -0.15 * scaleR), b: new THREE.Vector3(-2.6, 4.45, 0), tuk: 'Ядро + Ядерце + ЕПС', ten: 'Nucleus + Nucleolus + ER', suk: 'Транскрипція ДНК → мРНК', sen: 'DNA → mRNA transcription', col: 0x6366f1 },
-          { a: new THREE.Vector3(0.95 * scaleR, 2.35 + 0.85 * scaleR, 0.42 * scaleR), b: new THREE.Vector3(2.8, 4.35, 0.4), tuk: 'Апарат Гольджі та Лізосоми', ten: 'Golgi Apparatus & Lysosomes', suk: 'Сортування білків і везикул', sen: 'Protein sorting & vesicles', col: 0xf59e0b },
-          { a: new THREE.Vector3(-1.08 * scaleR, 2.35 + 0.72 * scaleR, 0.65 * scaleR), b: new THREE.Vector3(-2.9, 1.45, 0.9), tuk: 'Мітохондрії (кристи)', ten: 'Mitochondria (cristae)', suk: 'Окисне фосфорилювання (30–32 АТФ)', sen: 'Oxidative phosphorylation (ATP)', col: 0xef4444 },
-          { a: new THREE.Vector3(1.85 * scaleR, 2.35 + 0.5 * scaleR, 0), b: new THREE.Vector3(3.0, 1.55, 0), tuk: 'Плазматична мембрана', ten: 'Plasma Membrane Bilayer', suk: `S/V = ${svRatio.toFixed(2)} мкм⁻¹ (R = ${R} мкм)`, sen: `S/V = ${svRatio.toFixed(2)} μm⁻¹ (R = ${R} μm)`, col: 0x0ea5e9 }
+          { a: new THREE.Vector3(-0.35 * scaleR, 2.25 + 0.85 * scaleR, -0.22 * scaleR), b: new THREE.Vector3(-2.45, 4.15, -0.25), tuk: 'Ядро + Ядерце + ЕПС', ten: 'Nucleus + Nucleolus + ER', suk: 'Транскрипція ДНК → мРНК і рибосоми', sen: 'DNA → mRNA transcription & ribosomes', col: 0x6366f1 },
+          { a: new THREE.Vector3(0.98 * scaleR, 2.25 + 0.78 * scaleR, 0.28 * scaleR), b: new THREE.Vector3(2.55, 4.10, 0.25), tuk: 'Апарат Гольджі та Лізосоми', ten: 'Golgi Apparatus & Lysosomes', suk: 'Сортування білків і везикул', sen: 'Protein sorting & vesicles', col: 0xf59e0b },
+          { a: new THREE.Vector3(-1.08 * scaleR, 2.25 + 0.68 * scaleR, 0.68 * scaleR), b: new THREE.Vector3(-2.65, 1.45, 0.85), tuk: 'Мітохондрії (кристи)', ten: 'Mitochondria (cristae)', suk: 'Окисне фосфорилювання (30–32 АТФ)', sen: 'Oxidative phosphorylation (ATP)', col: 0xef4444 },
+          { a: new THREE.Vector3(1.88 * scaleR, 2.25 + 0.56 * scaleR, 0.25 * scaleR), b: new THREE.Vector3(2.85, 1.48, 0.25), tuk: 'Плазматична мембрана', ten: 'Plasma Membrane Bilayer', suk: `S/V = ${svRatio.toFixed(2)} мкм⁻¹ (R = ${R} мкм)`, sen: `S/V = ${svRatio.toFixed(2)} μm⁻¹ (R = ${R} μm)`, col: 0x0ea5e9 }
         ]);
+        c[0].setPositions(new THREE.Vector3(-0.35 * scaleR, 2.25 + 0.85 * scaleR, -0.22 * scaleR), new THREE.Vector3(-2.45, 4.15, -0.25));
+        c[1].setPositions(new THREE.Vector3(0.98 * scaleR, 2.25 + 0.78 * scaleR, 0.28 * scaleR), new THREE.Vector3(2.55, 4.10, 0.25));
+        c[2].setPositions(new THREE.Vector3(-1.08 * scaleR, 2.25 + 0.68 * scaleR, 0.68 * scaleR), new THREE.Vector3(-2.65, 1.45, 0.85));
+        c[3].setPositions(new THREE.Vector3(1.88 * scaleR, 2.25 + 0.56 * scaleR, 0.25 * scaleR), new THREE.Vector3(2.85, 1.48, 0.25));
         c[3].setText('Плазматична мембрана', 'Plasma Membrane Bilayer', `S/V = 3/R = ${svRatio.toFixed(2)} мкм⁻¹ (R = ${R} мкм)`, `S/V = 3/R = ${svRatio.toFixed(2)} μm⁻¹ (R = ${R} μm)`);
         updateBioSceneHud('bio_eukaryote', {
           legend: [
@@ -25228,13 +25363,30 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           worldGroup.add(post);
         }
 
-        // Внутрішня мембрана мітохондрії (криста) на рівні y = 2.15
+        // Внутрішня мембрана мітохондрії (криста) на рівні y = 2.15 (depthWrite: false для прозорості)
         this.innerMembrane = new THREE.Mesh(
-          new THREE.BoxGeometry(7.6, 0.38, 2.6),
-          new THREE.MeshStandardMaterial({ color: 0x0284c7, transparent: true, opacity: 0.52, roughness: 0.25 })
+          new THREE.BoxGeometry(7.6, 0.36, 2.4),
+          new THREE.MeshStandardMaterial({
+            color: 0x0284c7,
+            transparent: true,
+            opacity: 0.36,
+            roughness: 0.25,
+            depthWrite: false
+          })
         );
         this.innerMembrane.position.set(0, 2.15, 0);
         worldGroup.add(this.innerMembrane);
+
+        // Ряди гідрофільних голівок фосфоліпідного бішару на передньому краї мембрани
+        const headGeo = new THREE.SphereGeometry(0.065, 10, 8);
+        const headMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.3 });
+        for (let hx = -3.6; hx <= 3.6; hx += 0.36) {
+          const hTop = new THREE.Mesh(headGeo, headMat);
+          hTop.position.set(hx, 2.34, 1.18);
+          const hBot = new THREE.Mesh(headGeo, headMat);
+          hBot.position.set(hx, 1.96, 1.18);
+          worldGroup.add(hTop, hBot);
+        }
 
         // Дихальні комплекси I, III, IV та UCP1 у мембрані
         const complexData = [
@@ -25253,12 +25405,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           return m;
         });
 
-        // Роторний комплекс F₀F₁-АТФ-синтази (праворуч x = 2.6)
+        // Роторний комплекс F₀F₁-АТФ-синтази (праворуч x = 2.55)
         this.atpSynthaseGroup = new THREE.Group();
         this.atpSynthaseGroup.position.set(2.55, 2.15, 0);
         worldGroup.add(this.atpSynthaseGroup);
 
-        // Мембранний ротор F₀ (c-кільце) і центральний вал γ
+        // Статорна ніжка (a-субодиниця + b₂-стебло + OSCP), що утримує F₁-голівку
+        const statorA = new THREE.Mesh(
+          new THREE.BoxGeometry(0.24, 0.52, 0.36),
+          new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.3 })
+        );
+        statorA.position.set(0.52, 0, 0);
+        const statorStalk = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.055, 0.055, 1.18, 12),
+          new THREE.MeshStandardMaterial({ color: 0x34d399, roughness: 0.3 })
+        );
+        statorStalk.position.set(0.52, -0.58, 0);
+        this.atpSynthaseGroup.add(statorA, statorStalk);
+
+        // Мембранний ротор F₀ (c-кільце з ребрами субодиниць) і центральний вал γ
         this.rotorF0 = new THREE.Group();
         const cRing = new THREE.Mesh(
           new THREE.CylinderGeometry(0.42, 0.42, 0.54, 12),
@@ -25361,16 +25526,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
 
         this.arrowPump.update(
-          new THREE.Vector3(-1.5, 2.35, 0),
+          new THREE.Vector3(-1.5, 2.65, 0.65),
           new THREE.Vector3(0, 1, 0),
-          Math.min(2.1, 0.6 + nadh * 0.6),
+          Math.min(1.05, 0.45 + nadh * 0.25),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowSynth.update(
-          new THREE.Vector3(2.55, 3.25, 0),
+          new THREE.Vector3(2.55, 3.05, 0.65),
           new THREE.Vector3(0, -1, 0),
-          Math.min(2.1, 0.4 + (atpRate / 120) * 1.2),
+          Math.min(1.05, 0.4 + (atpRate / 120) * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -25458,22 +25623,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Опорні стійки клітинної камери
-        for (const sx of [-3.4, 3.4]) {
-          const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.11, 0.13, 2.1, 18),
-            new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.3 })
-          );
-          post.position.set(sx, 1.2, 0);
-          worldGroup.add(post);
-        }
+        // Низькопрофільне предметне скло мікроскопа під клітиною, що ділиться
+        const slidePlate = new THREE.Mesh(
+          new THREE.BoxGeometry(6.8, 0.08, 3.6),
+          new THREE.MeshPhysicalMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.24, roughness: 0.18, depthWrite: false })
+        );
+        slidePlate.position.set(0, 0.34, 0);
+        worldGroup.add(slidePlate);
 
-        // Дві півсфери клітинної мембрани (розсуваються при цитокінезі у телофазі)
+        // Дві півсфери клітинної мембрани (depthWrite: false, щоб веретено й хромосоми були чіткими)
         const shellMat = new THREE.MeshPhysicalMaterial({
           color: 0x38bdf8,
           transparent: true,
-          opacity: 0.24,
-          roughness: 0.15
+          opacity: 0.22,
+          roughness: 0.15,
+          depthWrite: false
         });
         this.leftCellHalf = new THREE.Mesh(new THREE.SphereGeometry(1.75, 28, 22), shellMat);
         this.rightCellHalf = new THREE.Mesh(new THREE.SphereGeometry(1.75, 28, 22), shellMat);
@@ -25481,7 +25645,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.rightCellHalf.position.set(0.6, 2.35, 0);
         worldGroup.add(this.leftCellHalf, this.rightCellHalf);
 
-        // Два полюси веретена поділу (центросоми з центріолями)
+        // Два полюси веретена поділу (центросоми з парою перпендикулярних центріолей)
         const poleMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xd97706, emissiveIntensity: 0.35 });
         this.leftPole = new THREE.Mesh(new THREE.SphereGeometry(0.24, 20, 16), poleMat);
         this.rightPole = new THREE.Mesh(new THREE.SphereGeometry(0.24, 20, 16), poleMat);
@@ -25489,27 +25653,35 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.rightPole.position.set(2.5, 2.35, 0);
         worldGroup.add(this.leftPole, this.rightPole);
 
-        // До 6 гомологічних хромосом (кожна складається з лівої та правої сестринської хроматиди)
+        // До 6 гомологічних хромосом (кожна складається з лівої та правої V-подібної сестринської хроматиди -> X-хромосома)
         const colors = [0xef4444, 0x3b82f6, 0x10b981, 0xa855f7, 0xf97316, 0xec4899];
         for (let i = 0; i < 6; i++) {
           const col = colors[i];
-          const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.28, metalness: 0.15 });
+          const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.26, metalness: 0.12 });
           const sisL = new THREE.Group();
           const sisR = new THREE.Group();
 
-          const armL1 = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.56, 12), mat);
-          armL1.rotation.z = 0.28;
-          const centromereL = new THREE.Mesh(new THREE.SphereGeometry(0.09, 12, 10), new THREE.MeshStandardMaterial({ color: 0xfef08a }));
-          sisL.add(armL1, centromereL);
+          const armLTop = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.34, 12), mat);
+          armLTop.position.set(-0.06, 0.14, 0);
+          armLTop.rotation.z = 0.42;
+          const armLBot = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.34, 12), mat);
+          armLBot.position.set(-0.06, -0.14, 0);
+          armLBot.rotation.z = -0.42;
+          const centromereL = new THREE.Mesh(new THREE.SphereGeometry(0.085, 12, 10), new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xca8a04, emissiveIntensity: 0.3 }));
+          sisL.add(armLTop, armLBot, centromereL);
 
-          const armR1 = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.56, 12), mat);
-          armR1.rotation.z = -0.28;
-          const centromereR = new THREE.Mesh(new THREE.SphereGeometry(0.09, 12, 10), new THREE.MeshStandardMaterial({ color: 0xfef08a }));
-          sisR.add(armR1, centromereR);
+          const armRTop = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.34, 12), mat);
+          armRTop.position.set(0.06, 0.14, 0);
+          armRTop.rotation.z = -0.42;
+          const armRBot = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.34, 12), mat);
+          armRBot.position.set(0.06, -0.14, 0);
+          armRBot.rotation.z = 0.42;
+          const centromereR = new THREE.Mesh(new THREE.SphereGeometry(0.085, 12, 10), new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xca8a04, emissiveIntensity: 0.3 }));
+          sisR.add(armRTop, armRBot, centromereR);
 
           worldGroup.add(sisL, sisR);
 
-          const lineMat = new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.78 });
+          const lineMat = new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.85 });
           const lineL = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]), lineMat);
           const lineR = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]), lineMat);
           worldGroup.add(lineL, lineR);
@@ -25590,16 +25762,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
         const fKinPn = tension * totalChrom * 6;
         this.arrowLeftPull.update(
-          new THREE.Vector3(-0.35, 3.25, 0),
+          new THREE.Vector3(-0.55, 1.35, 0.65),
           new THREE.Vector3(-1, 0, 0),
-          Math.min(2.1, 0.6 + tension * 0.55),
+          Math.min(1.05, 0.45 + tension * 0.25),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowRightPull.update(
-          new THREE.Vector3(0.35, 3.25, 0),
+          new THREE.Vector3(0.55, 1.35, 0.65),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.1, 0.6 + tension * 0.55),
+          Math.min(1.05, 0.45 + tension * 0.25),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -25677,15 +25849,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        for (const sx of [-3.9, 3.9]) {
-          const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.11, 0.13, 2.3, 18),
-            new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.28 })
-          );
-          post.position.set(sx, 1.3, 0);
-          worldGroup.add(post);
-        }
-
         // Кільцевий гексамер ДНК-гелікази у точці розгалуження вилки
         this.helicaseRing = new THREE.Mesh(
           new THREE.TorusGeometry(0.55, 0.14, 16, 32),
@@ -25700,6 +25863,48 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.polLeading = new THREE.Mesh(new THREE.SphereGeometry(0.28, 20, 16), polMat);
         this.polLagging = new THREE.Mesh(new THREE.SphereGeometry(0.28, 20, 16), new THREE.MeshStandardMaterial({ color: 0xec4899, roughness: 0.28 }));
         worldGroup.add(this.polLeading, this.polLagging);
+
+        // Неперервні лінії цукрово-фосфатного остову 4 ланцюгів ДНК
+        this.strandTopParentLine = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x2563eb })
+        );
+        this.strandBotParentLine = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x1d4ed8 })
+        );
+        this.strandTopNewLine = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x22c55e })
+        );
+        this.strandBotNewLine = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0xf97316 })
+        );
+        worldGroup.add(this.strandTopParentLine, this.strandBotParentLine, this.strandTopNewLine, this.strandBotNewLine);
+
+        // Пробірка ультрацентрифуги CsCl (дослід Мезельсона–Сталя праворуч x = 3.55)
+        const tubeStand = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.45, 0.52, 0.22, 24),
+          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.6, roughness: 0.3 })
+        );
+        tubeStand.position.set(3.55, 0.39, 0);
+        const csclTube = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.32, 0.32, 2.3, 24),
+          new THREE.MeshPhysicalMaterial({ color: 0xe2e8f0, transparent: true, opacity: 0.25, roughness: 0.12, depthWrite: false })
+        );
+        csclTube.position.set(3.55, 1.65, 0);
+        this.bandHybrid = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.29, 0.29, 0.12, 24),
+          new THREE.MeshStandardMaterial({ color: 0x8b5cf6, emissive: 0x7c3aed, emissiveIntensity: 0.45 })
+        );
+        this.bandHybrid.position.set(3.55, 1.45, 0);
+        this.bandLight = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.29, 0.29, 0.12, 24),
+          new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x16a34a, emissiveIntensity: 0.45 })
+        );
+        this.bandLight.position.set(3.55, 2.05, 0);
+        worldGroup.add(tubeStand, csclTube, this.bandHybrid, this.bandLight);
 
         // 18 пар нуклеотидів уздовж осі X (праворуч від вилки — материнський дуплекс, ліворуч — два дочірні дуплекси)
         const nSteps = 18;
@@ -25746,7 +25951,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const okazaki = Math.round(p.okazakiLen);
         const gen = Math.round(p.generationCount);
 
-        const forkX = -0.6 + Math.sin(this.phase * 1.1 * speed) * 0.9;
+        const forkX = -0.75 + Math.sin(this.phase * 1.1 * speed) * 0.75;
         this.helicaseRing.position.set(forkX, 2.25, 0);
         this.helicaseRing.rotation.x = this.phase * 3.2 * speed;
 
@@ -25754,8 +25959,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const lagOffset = ((this.phase * speed * 1.4) % 1) * 1.2;
         this.polLagging.position.set(forkX - 0.35 - lagOffset, 1.45, -0.15);
 
+        const ptsTopParent = [];
+        const ptsBotParent = [];
+        const ptsTopNew = [];
+        const ptsBotNew = [];
+
         this.basePairs.forEach(bp => {
-          const x = -3.4 + (bp.index / 17) * 6.8;
+          const x = -3.4 + (bp.index / 17) * 5.8;
           const twist = bp.index * 0.55 + this.phase * 1.8 * speed;
           if (x >= forkX) {
             // Нерозплетена материнська подвійна спіраль праворуч від гелікази
@@ -25781,20 +25991,29 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             bp.botNew.visible = showOkazaki;
             bp.botNew.position.set(x, 2.25 - spread + 0.14, -0.12);
             bp.rung.visible = false;
+            ptsTopNew.push(bp.topNew.position.clone());
+            if (showOkazaki) ptsBotNew.push(bp.botNew.position.clone());
           }
+          ptsTopParent.push(bp.topParent.position.clone());
+          ptsBotParent.push(bp.botParent.position.clone());
         });
 
+        this.strandTopParentLine.geometry.setFromPoints(ptsTopParent);
+        this.strandBotParentLine.geometry.setFromPoints(ptsBotParent);
+        this.strandTopNewLine.geometry.setFromPoints(ptsTopNew);
+        this.strandBotNewLine.geometry.setFromPoints(ptsBotNew);
+
         this.arrowLead.update(
-          new THREE.Vector3(forkX - 1.6, 3.45, 0),
+          new THREE.Vector3(forkX - 1.55, 3.45, 0.35),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.0, 0.8 + speed * 0.45),
+          Math.min(1.05, 0.55 + speed * 0.22),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowLag.update(
-          new THREE.Vector3(forkX - 0.5, 1.05, 0),
+          new THREE.Vector3(forkX - 0.55, 1.05, 0.35),
           new THREE.Vector3(-1, 0, 0),
-          Math.min(2.0, 0.7 + speed * 0.4),
+          Math.min(1.05, 0.50 + speed * 0.22),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -25804,6 +26023,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const lightPct = 100 - hybridPct;
         const rateBp = speed * 500;
         const hBondsPerTurn = Math.round(10 * (2 + gc / 100));
+
+        if (this.bandHybrid && this.bandLight) {
+          this.bandHybrid.scale.y = Math.max(0.35, (hybridPct / 100) * 2.2);
+          this.bandLight.visible = lightPct > 0;
+          this.bandLight.scale.y = Math.max(0.35, (lightPct / 100) * 2.2);
+        }
 
         const ek = speed * 28;
         const ep = gc * 0.65;
@@ -25821,12 +26046,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { a: this.helicaseRing.position.clone(), b: new THREE.Vector3(0.0, 4.35, 0), tuk: 'ДНК-геліказа (розплітання вилки)', ten: 'DNA Helicase (Fork Unwinding)', suk: `Руйнує Н-зв’язки (G≡C: ${gc}%)`, sen: `Breaks H-bonds (G≡C: ${gc}%)`, col: 0xf59e0b },
           { a: this.polLeading.position.clone(), b: new THREE.Vector3(-2.6, 4.15, 0.3), tuk: 'Ведучий ланцюг (ДНК-пол III)', ten: 'Leading Strand (DNA Pol III)', suk: 'Безперервний синтез 5′ → 3′ у бік вилки', sen: 'Continuous 5′ → 3′ synthesis toward fork', col: 0x22c55e },
           { a: this.polLagging.position.clone(), b: new THREE.Vector3(-2.4, 0.75, 0.5), tuk: 'Відстаючий ланцюг (фрагменти Оказакі)', ten: 'Lagging Strand (Okazaki Fragments)', suk: 'Переривчастий синтез 5′ → 3′ + ДНК-лігаза', sen: 'Discontinuous 5′ → 3′ synthesis + DNA ligase', col: 0xf97316 },
-          { a: new THREE.Vector3(2.4, 2.25, 0), b: new THREE.Vector3(3.1, 3.95, 0), tuk: `Дослід Мезельсона–Сталя (k = ${gen})`, ten: `Meselson–Stahl Generation k = ${gen}`, suk: `¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% · ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, sen: `¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% · ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, col: 0x2563eb }
+          { a: new THREE.Vector3(3.55, 1.85, 0), b: new THREE.Vector3(3.15, 3.95, 0), tuk: `Пробірка CsCl Мезельсона–Сталя (k = ${gen})`, ten: `Meselson–Stahl CsCl Tube (k = ${gen})`, suk: `¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% · ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, sen: `¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% · ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, col: 0x8b5cf6 }
         ]);
         c[0].setPositions(this.helicaseRing.position.clone(), new THREE.Vector3(0.0, 4.35, 0));
         c[1].setPositions(this.polLeading.position.clone(), new THREE.Vector3(-2.6, 4.15, 0.3));
         c[2].setPositions(this.polLagging.position.clone(), new THREE.Vector3(-2.4, 0.75, 0.5));
-        c[3].setText(`Напівконсервативна реплікація (k = ${gen})`, `Semiconservative Replication (k = ${gen})`, `Гібридні ¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% | Легкі ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, `Hybrid ¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% | Light ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`);
+        c[3].setPositions(new THREE.Vector3(3.55, 1.85, 0), new THREE.Vector3(3.15, 3.95, 0));
+        c[3].setText(`Пробірка CsCl Мезельсона–Сталя (k = ${gen})`, `Meselson–Stahl CsCl Tube (k = ${gen})`, `Гібридні ¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% | Легкі ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`, `Hybrid ¹⁵N/¹⁴N: ${hybridPct.toFixed(1)}% | Light ¹⁴N/¹⁴N: ${lightPct.toFixed(1)}%`);
         updateBioSceneHud('bio_replication', {
           legend: [
             { color: '#2563eb', uk: 'Материнські нитки ДНК (¹⁵N)', en: 'Parent DNA strands (¹⁵N)' },
@@ -25877,47 +26103,68 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Опора рибосомного комплексу
+        // Низькопрофільна опора під малою субодиницею рибосоми (не протикає субодиницю)
         const stand = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.32, 0.45, 1.05, 22),
+          new THREE.CylinderGeometry(0.36, 0.48, 0.62, 22),
           new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.3 })
         );
-        stand.position.set(0, 0.80, 0);
+        stand.position.set(0, 0.59, 0);
         worldGroup.add(stand);
 
         this.riboGroup = new THREE.Group();
         this.riboGroup.position.set(0, 2.15, 0);
         worldGroup.add(this.riboGroup);
 
-        // Мала субодиниця рибосоми (40S / 30S) знизу мРНК
+        // Мала субодиниця рибосоми (40S / 30S) знизу мРНК (depthWrite: false)
         this.smallSubunit = new THREE.Mesh(
           new THREE.SphereGeometry(1.15, 28, 20),
-          new THREE.MeshStandardMaterial({ color: 0x0284c7, transparent: true, opacity: 0.55, roughness: 0.3 })
+          new THREE.MeshStandardMaterial({
+            color: 0x0284c7,
+            transparent: true,
+            opacity: 0.38,
+            roughness: 0.3,
+            depthWrite: false
+          })
         );
         this.smallSubunit.scale.set(1.55, 0.55, 1.05);
         this.smallSubunit.position.set(0, -0.55, 0);
         this.riboGroup.add(this.smallSubunit);
 
-        // Велика субодиниця рибосоми (60S / 50S) зверху мРНК
+        // Велика субодиниця рибосоми (60S / 50S) зверху мРНК (depthWrite: false)
         this.largeSubunit = new THREE.Mesh(
           new THREE.SphereGeometry(1.45, 32, 24),
-          new THREE.MeshStandardMaterial({ color: 0x6366f1, transparent: true, opacity: 0.42, roughness: 0.28 })
+          new THREE.MeshStandardMaterial({
+            color: 0x6366f1,
+            transparent: true,
+            opacity: 0.30,
+            roughness: 0.28,
+            depthWrite: false
+          })
         );
         this.largeSubunit.scale.set(1.45, 0.92, 1.12);
         this.largeSubunit.position.set(0, 0.55, 0);
         this.riboGroup.add(this.largeSubunit);
 
-        // Три сайти рибосоми: E (ліворуч), P (центр), A (праворуч) і 3 молекули тРНК у них
+        // Три сайти рибосоми: E (ліворуч), P (центр), A (праворуч) і 3 L-подібні молекули тРНК у них
         const sitePositions = [-0.82, 0.0, 0.82];
         const siteColors = [0x94a3b8, 0x22c55e, 0xf59e0b];
         sitePositions.forEach((sx, idx) => {
-          const tRna = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.18, 0.14, 0.86, 16),
-            new THREE.MeshStandardMaterial({ color: siteColors[idx], roughness: 0.25 })
+          const tRnaWrap = new THREE.Group();
+          const mat = new THREE.MeshStandardMaterial({ color: siteColors[idx], roughness: 0.25 });
+          const stemVert = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.11, 0.78, 16), mat);
+          const armHoriz = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.36, 14), mat);
+          armHoriz.rotation.z = Math.PI / 2;
+          armHoriz.position.set(0.12, 0.32, 0);
+          const anticodonLoop = new THREE.Mesh(
+            new THREE.TorusGeometry(0.12, 0.035, 10, 18),
+            new THREE.MeshStandardMaterial({ color: 0xfef08a, roughness: 0.25 })
           );
-          tRna.position.set(sx, 0.25, 0.18);
-          this.riboGroup.add(tRna);
-          this.tRnaMeshes.push(tRna);
+          anticodonLoop.position.set(0, -0.42, 0);
+          tRnaWrap.add(stemVert, armHoriz, anticodonLoop);
+          tRnaWrap.position.set(sx, 0.25, 0.18);
+          tRnaWrap.userData = { primaryMat: mat };
+          this.riboGroup.add(tRnaWrap);
+          this.tRnaMeshes.push(tRnaWrap);
         });
 
         // Стрічка мРНК з нуклеотидними триплетами
@@ -25983,9 +26230,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.tRnaMeshes.forEach((tr, idx) => {
           const baseX = [-0.82, 0.0, 0.82][idx];
           tr.position.x = baseX - (shift - 0.42) * 0.35;
-          if (idx === 2) {
+          if (idx === 2 && tr.userData && tr.userData.primaryMat) {
             // Колір тРНК в A-сайті залежно від мутації кодону
-            tr.material.color.setHex(mut === 3 ? 0xec4899 : 0xf59e0b);
+            tr.userData.primaryMat.color.setHex(mut === 3 ? 0xec4899 : 0xf59e0b);
           }
         });
 
@@ -26000,16 +26247,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
 
         this.arrowMrna.update(
-          new THREE.Vector3(-2.6, 1.55, 0.5),
+          new THREE.Vector3(-2.85, 1.85, 0.55),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.0, 0.75 + speed * 0.45),
+          Math.min(1.05, 0.55 + speed * 0.22),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowPeptide.update(
-          new THREE.Vector3(0.45, 3.15, 0),
+          new THREE.Vector3(0.55, 3.35, 0.35),
           new THREE.Vector3(0, 1, 0),
-          Math.min(2.0, 0.8 + (nAa / 200) * 0.9),
+          Math.min(1.05, 0.55 + (nAa / 200) * 0.45),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -26196,16 +26443,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.baraa.position.set(3.25, 0.28 + colaaH * 0.5, 0);
 
         this.arrowDom.update(
-          new THREE.Vector3(1.05, 0.35 + colAAH, 0),
+          new THREE.Vector3(1.05, 0.35 + colAAH, 0.45),
           new THREE.Vector3(0, 1, 0),
-          Math.min(1.8, 0.5 + fAA * 1.3),
+          Math.min(0.85, 0.35 + fAA * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowHet.update(
-          new THREE.Vector3(2.15, 0.35 + colAaH, 0),
+          new THREE.Vector3(2.15, 0.35 + colAaH, 0.45),
           new THREE.Vector3(0, 1, 0),
-          Math.min(1.8, 0.5 + fAa * 1.3),
+          Math.min(0.85, 0.35 + fAa * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -26229,6 +26476,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { a: this.barAa.position.clone().add(new THREE.Vector3(0, 0.5, 0)), b: new THREE.Vector3(2.15, 4.55, 0), tuk: `Гетерозиготи 2Aa = ${(fAa * 100).toFixed(1)}%`, ten: `2Aa Heterozygotes = ${(fAa * 100).toFixed(1)}%`, suk: `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} носіїв)`, sen: `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} carriers)`, col: 0x10b981 },
           { a: this.baraa.position.clone().add(new THREE.Vector3(0, 0.5, 0)), b: new THREE.Vector3(3.55, 3.75, 0), tuk: `Рецесивні aa = ${(faa * 100).toFixed(1)}%`, ten: `aa Recessive = ${(faa * 100).toFixed(1)}%`, suk: `q² = ${faa.toFixed(3)} (~${Math.round(faa * N)} особ.)`, sen: `q² = ${faa.toFixed(3)} (~${Math.round(faa * N)} ind.)`, col: 0xf59e0b }
         ]);
+        c[1].setPositions(this.barAA.position.clone().add(new THREE.Vector3(0, 0.5, 0)), new THREE.Vector3(0.7, 4.15, 0));
+        c[2].setPositions(this.barAa.position.clone().add(new THREE.Vector3(0, 0.5, 0)), new THREE.Vector3(2.15, 4.55, 0));
+        c[3].setPositions(this.baraa.position.clone().add(new THREE.Vector3(0, 0.5, 0)), new THREE.Vector3(3.55, 3.75, 0));
         c[0].setText(`3D-Решітка Пеннета (p=${freqP.toFixed(2)}, q=${freqQ.toFixed(2)})`, `3D Punnett Square (p=${freqP.toFixed(2)}, q=${freqQ.toFixed(2)})`, '4 квадранти: AA (синій), Aa/aA (зелений), aa (бурштин.)', '4 quadrants: AA (blue), Aa/aA (green), aa (amber)');
         c[1].setText(`Гомозиготи AA = ${(fAA * 100).toFixed(1)}%`, `AA Homozygotes = ${(fAA * 100).toFixed(1)}%`, `p² = ${fAA.toFixed(3)} (~${Math.round(fAA * N)} особ.)`, `p² = ${fAA.toFixed(3)} (~${Math.round(fAA * N)} ind.)`);
         c[2].setText(`Гетерозиготи 2Aa = ${(fAa * 100).toFixed(1)}%`, `2Aa Heterozygotes = ${(fAa * 100).toFixed(1)}%`, `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} носіїв)`, `2pq = ${fAa.toFixed(3)} (~${Math.round(fAa * N)} carriers)`);
@@ -26283,12 +26533,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        for (const sx of [-3.9, 3.9]) {
+        // Лабораторні тримачі бішарової мембрани по краях (x = ±3.55)
+        for (const sx of [-3.55, 3.55]) {
           const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.11, 0.13, 2.2, 18),
+            new THREE.CylinderGeometry(0.11, 0.13, 2.35, 18),
             new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.28 })
           );
-          post.position.set(sx, 1.25, 0);
+          post.position.set(sx, 1.32, 0);
           worldGroup.add(post);
         }
 
@@ -26408,16 +26659,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const vmGhk = 26.7 * Math.log((ko + pRatio * nao) / (ki + pRatio * nai));
 
         this.arrowNaOut.update(
-          new THREE.Vector3(-0.65, 2.85, 0),
+          new THREE.Vector3(-0.75, 2.75, 0.55),
           new THREE.Vector3(0, 1, 0),
-          Math.min(2.1, 0.65 + rate * 0.55),
+          Math.min(0.95, 0.45 + rate * 0.25),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowKIn.update(
-          new THREE.Vector3(0.65, 3.25, 0),
+          new THREE.Vector3(0.75, 3.15, 0.55),
           new THREE.Vector3(0, -1, 0),
-          Math.min(2.1, 0.55 + rate * 0.45),
+          Math.min(0.95, 0.40 + rate * 0.22),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -26490,18 +26741,37 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        for (const sx of [-3.8, 3.8]) {
+        for (const sx of [-3.6, 3.6]) {
           const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.10, 0.12, 1.95, 16),
+            new THREE.CylinderGeometry(0.10, 0.12, 1.90, 16),
             new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.3 })
           );
-          post.position.set(sx, 1.12, 0);
+          post.position.set(sx, 1.15, 0);
           worldGroup.add(post);
         }
 
+        // Тіло нейрона (сома з ядром та дендритами ліворуч x = -3.95) і синаптична терміналь праворуч (x = 3.85)
+        const somaMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.28, metalness: 0.15 });
+        const somaBody = new THREE.Mesh(new THREE.SphereGeometry(0.55, 24, 18), somaMat);
+        somaBody.position.set(-3.95, 2.15, 0);
+        worldGroup.add(somaBody);
+        for (let d = 0; d < 5; d++) {
+          const ang = (d / 4 - 0.5) * Math.PI * 0.85;
+          const dend = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.08, 0.75, 10), somaMat);
+          dend.position.set(-3.95 - Math.cos(ang) * 0.65, 2.15 + Math.sin(ang) * 0.65, (d % 2 === 0 ? 0.18 : -0.18));
+          dend.rotation.z = Math.PI / 2 - ang;
+          worldGroup.add(dend);
+        }
+        const bouton = new THREE.Mesh(
+          new THREE.SphereGeometry(0.36, 20, 16),
+          new THREE.MeshStandardMaterial({ color: 0x0ea5e9, roughness: 0.25 })
+        );
+        bouton.position.set(3.85, 2.15, 0);
+        worldGroup.add(bouton);
+
         // Осьовий циліндр аксона (уздовж осі X)
         this.axonCore = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.24, 0.24, 7.8, 24),
+          new THREE.CylinderGeometry(0.24, 0.24, 7.6, 24),
           new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.3, metalness: 0.15 })
         );
         this.axonCore.rotation.z = Math.PI / 2;
@@ -26533,7 +26803,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.nodeRings.push({ mesh: ring, x: nx });
         }
 
-        // Світлова хвиля потенціалу дії вздовж аксона
+        // Світлова хвиля потенціалу дії вздовж аксона (depthWrite: false)
         this.spikePulse = new THREE.Mesh(
           new THREE.SphereGeometry(0.48, 22, 18),
           new THREE.MeshStandardMaterial({
@@ -26541,7 +26811,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             emissive: 0xdc2626,
             emissiveIntensity: 0.65,
             transparent: true,
-            opacity: 0.72
+            opacity: 0.62,
+            depthWrite: false
           })
         );
         this.spikePulse.position.set(-3.6, 2.15, 0);
@@ -26618,16 +26889,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.traceGeo.attributes.position.needsUpdate = true;
 
         this.arrowProp.update(
-          new THREE.Vector3(waveX, 2.75, 0),
+          new THREE.Vector3(waveX, 2.75, 0.45),
           new THREE.Vector3(1, 0, 0),
-          fired ? Math.min(2.2, 0.75 + (vCond / 80) * 1.25) : 0.35,
+          fired ? Math.min(1.05, 0.55 + (vCond / 80) * 0.45) : 0.35,
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowIna.update(
-          new THREE.Vector3(waveX, 3.05, 0.45),
-          new THREE.Vector3(0, -1, 0),
-          fired ? Math.min(1.8, 0.7 + gNa * 0.5) : 0.25,
+          new THREE.Vector3(waveX, 1.55, 0.45),
+          new THREE.Vector3(0, 1, 0),
+          fired ? Math.min(0.85, 0.45 + gNa * 0.25) : 0.25,
           uiState.showVectors,
           uiState.showLabels
         );
@@ -26650,11 +26921,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { a: new THREE.Vector3(0.0, 2.45, 0), b: new THREE.Vector3(0.5, 0.95, 0.8), tuk: 'Перехват Ранв’є (Na⁺/K⁺-канали)', ten: 'Node of Ranvier (Na⁺/K⁺ channels)', suk: 'Стрибкоподібна (сальтаторна) регенерація спайку', sen: 'Saltatory spike regeneration node', col: 0x22c55e },
           { a: this.spikePulse.position.clone().add(new THREE.Vector3(0, 1.2, 0)), b: new THREE.Vector3(0, 4.45, 0), tuk: fired ? `Хвиля потенціалу дії (+${peakVm.toFixed(0)} мВ)` : `Підпороговий стимул (${peakVm.toFixed(0)} мВ < −55 мВ)`, ten: fired ? `Action Potential Spike (+${peakVm.toFixed(0)} mV)` : `Subthreshold Stimulus (${peakVm.toFixed(0)} mV < −55 mV)`, suk: fired ? `Швидкість v = ${vCond.toFixed(1)} м/с` : 'Імпульс не виникає (закон «усе або нічого»)', sen: fired ? `Velocity v = ${vCond.toFixed(1)} m/s` : 'No spike fires (all-or-none law)', col: 0xef4444 }
         ]);
+        c[2].setPositions(this.spikePulse.position.clone().add(new THREE.Vector3(0, 1.2, 0)), new THREE.Vector3(0, 4.45, 0));
         c[0].setText(isMyelinated ? 'Мієлінова оболонка (клітина Шванна)' : 'Безмієліновий аксон', isMyelinated ? 'Myelin Sheath (Schwann Cell)' : 'Unmyelinated Axon', isMyelinated ? 'Сальтаторне проведення імпульсу' : 'Безперервне проведення імпульсу', isMyelinated ? 'Saltatory conduction mode' : 'Continuous conduction mode');
         c[2].setText(fired ? `Хвиля потенціалу дії (+${peakVm.toFixed(0)} мВ)` : `Підпороговий стимул (${peakVm.toFixed(0)} мВ)`, fired ? `Action Potential Spike (+${peakVm.toFixed(0)} mV)` : `Subthreshold Stimulus (${peakVm.toFixed(0)} mV)`, fired ? `Швидкість v = ${vCond.toFixed(1)} м/с (діаметр d = ${diam} мкм)` : 'Збільшіть струм I_стим ≥ 1.0 для запуску спайку', fired ? `Velocity v = ${vCond.toFixed(1)} m/s (diameter d = ${diam} μm)` : 'Increase I_stim ≥ 1.0 to fire spike');
         updateBioSceneHud('bio_neuron', {
           legend: [
-            { color: '#0284c7', uk: 'Осьовий циліндр аксона', en: 'Axon Core Cylinder' },
+            { color: '#0284c7', uk: 'Сома, дендрити й аксон', en: 'Soma, Dendrites & Axon' },
             { color: '#facc15', uk: 'Мієлінові муфти (Шванна)', en: 'Myelin Sheath Internodes' },
             { color: '#22c55e', uk: 'Перехвати Ранв’є та профіль V_m(x)', en: 'Nodes of Ranvier & V_m(x) Trace' },
             { color: '#ef4444', uk: 'Хвиля потенціалу дії (деполяризація)', en: 'Action Potential Spike Wave' }
@@ -26705,18 +26977,26 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Центральна M-лінія саркомера
+        // Напрямні рейки міографа на базовій плиті
+        const rail = new THREE.Mesh(
+          new THREE.BoxGeometry(7.2, 0.12, 0.65),
+          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.28 })
+        );
+        rail.position.set(0, 0.34, 0);
+        worldGroup.add(rail);
+
+        // Центральна M-лінія саркомера (спирається на рейку міографа)
         const mLine = new THREE.Mesh(
-          new THREE.BoxGeometry(0.10, 2.4, 1.8),
+          new THREE.BoxGeometry(0.10, 3.05, 1.8),
           new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.6, roughness: 0.3 })
         );
-        mLine.position.set(0, 2.2, 0);
+        mLine.position.set(0, 1.90, 0);
         worldGroup.add(mLine);
 
         // Лівий та правий Z-диски (рухаються назустріч під час скорочення)
         const zMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, metalness: 0.45, roughness: 0.25 });
-        this.zDiscLeft = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.45, 1.9), zMat);
-        this.zDiscRight = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.45, 1.9), zMat);
+        this.zDiscLeft = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.95, 1.9), zMat);
+        this.zDiscRight = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.95, 1.9), zMat);
         worldGroup.add(this.zDiscLeft, this.zDiscRight);
 
         // 2 товсті міозинові філаменти у центрі (довжина постійна = 3.2 од.)
@@ -26787,8 +27067,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const shortenOsc = ((Math.sin(this.phase * (1.2 + vShort * 0.6)) + 1) * 0.5) * Math.min(0.65, vShort * 0.18);
         const halfZ = Math.max(1.55, (l0 * 1.15) - shortenOsc);
 
-        this.zDiscLeft.position.set(-halfZ, 2.2, 0);
-        this.zDiscRight.position.set(halfZ, 2.2, 0);
+        this.zDiscLeft.position.set(-halfZ, 1.90, 0);
+        this.zDiscRight.position.set(halfZ, 1.90, 0);
 
         this.actinLeft.forEach(a => {
           a.mesh.position.set(-halfZ + 0.975, a.yPos, 0);
@@ -26804,16 +27084,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
 
         this.arrowLeftZ.update(
-          new THREE.Vector3(-halfZ - 0.25, 3.55, 0),
+          new THREE.Vector3(-halfZ - 0.25, 3.45, 0.45),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.1, 0.5 + (f0 / 100) * 1.4),
+          Math.min(1.05, 0.45 + (f0 / 100) * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowRightZ.update(
-          new THREE.Vector3(halfZ + 0.25, 3.55, 0),
+          new THREE.Vector3(halfZ + 0.25, 3.45, 0.45),
           new THREE.Vector3(-1, 0, 0),
-          Math.min(2.1, 0.5 + (f0 / 100) * 1.4),
+          Math.min(1.05, 0.45 + (f0 / 100) * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -26888,13 +27168,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Тилакоїдний диск грана ліворуч (мембрана з ФС ІІ, цитохромом b₆f та ФС І)
+        // Стопка тилакоїдів грана хлоропласта ліворуч (нижній диск + робоча мембрана з ФС ІІ, Cyt b₆f та ФС І)
+        const lowerThyla = new THREE.Mesh(
+          new THREE.CylinderGeometry(2.10, 2.10, 0.38, 36),
+          new THREE.MeshStandardMaterial({ color: 0x166534, roughness: 0.32, metalness: 0.12 })
+        );
+        lowerThyla.position.set(-1.65, 1.05, 0);
         const thylaMembrane = new THREE.Mesh(
-          new THREE.CylinderGeometry(2.15, 2.15, 0.45, 36),
+          new THREE.CylinderGeometry(2.15, 2.15, 0.42, 36),
           new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.28, metalness: 0.15 })
         );
         thylaMembrane.position.set(-1.65, 1.65, 0);
-        worldGroup.add(thylaMembrane);
+        worldGroup.add(lowerThyla, thylaMembrane);
 
         // 3 комплекси на мембрані тилакоїда: ФС ІІ (P680), Cyt b₆f, ФС І (P700)
         this.psII = new THREE.Mesh(
@@ -26916,10 +27201,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.psI.position.set(-0.55, 1.95, 0);
         worldGroup.add(this.psII, this.cytB6f, this.psI);
 
-        // Промінь світла ФАР, що падає на фотосистеми
+        // Промінь світла ФАР, що падає на фотосистеми (depthWrite: false)
         this.lightBeam = new THREE.Mesh(
           new THREE.ConeGeometry(1.55, 2.6, 24, 1, true),
-          new THREE.MeshBasicMaterial({ color: 0xef4444, transparent: true, opacity: 0.22, side: THREE.DoubleSide })
+          new THREE.MeshBasicMaterial({
+            color: 0xef4444,
+            transparent: true,
+            opacity: 0.20,
+            side: THREE.DoubleSide,
+            depthWrite: false
+          })
         );
         this.lightBeam.position.set(-1.65, 3.35, 0);
         worldGroup.add(this.lightBeam);
@@ -26945,11 +27236,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         worldGroup.add(this.calvinWheel);
 
-        // Пухирці кисню O₂ від фотолізу води у ФС ІІ
+        // Пухирці кисню O₂ від фотолізу води у ФС ІІ (depthWrite: false)
         for (let i = 0; i < 6; i++) {
           const bub = new THREE.Mesh(
             new THREE.SphereGeometry(0.095, 14, 12),
-            new THREE.MeshStandardMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.78, roughness: 0.15 })
+            new THREE.MeshStandardMaterial({
+              color: 0x38bdf8,
+              transparent: true,
+              opacity: 0.78,
+              roughness: 0.15,
+              depthWrite: false
+            })
           );
           worldGroup.add(bub);
           this.o2Bubbles.push({ mesh: bub, offset: i / 6 });
@@ -26992,7 +27289,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const photoRate = 100 * absEff * fLight * fCo2 * tempEff;
 
         this.lightBeam.material.color.setHex(this.wavelengthToHex(wl));
-        this.lightBeam.material.opacity = 0.12 + (par / 1800) * 0.28;
+        this.lightBeam.material.opacity = 0.12 + (par / 1800) * 0.24;
 
         this.calvinWheel.rotation.z = -this.calvinAngle;
 
@@ -27000,22 +27297,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const t = (this.phase * 0.45 * (0.3 + photoRate / 70) + b.offset) % 1;
           b.mesh.position.set(
             -2.75 + Math.sin(t * 8 + idx) * 0.18,
-            2.35 + t * 1.85,
+            2.35 + t * 1.65,
             0.25
           );
         });
 
         this.arrowLight.update(
-          new THREE.Vector3(-1.65, 4.15, 0),
+          new THREE.Vector3(-1.65, 3.85, 0.45),
           new THREE.Vector3(0, -1, 0),
-          Math.min(2.1, 0.55 + (par / 1800) * 1.35),
+          Math.min(1.05, 0.45 + (par / 1800) * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowAssimil.update(
-          new THREE.Vector3(-0.15, 2.35, 0),
+          new THREE.Vector3(-0.05, 2.35, 0.35),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.1, 0.5 + (photoRate / 100) * 1.4),
+          Math.min(1.05, 0.45 + (photoRate / 100) * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -27096,48 +27393,77 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Опора центрального тетрамера гемоглобіну
+        // Низькопрофільна опора центрального тетрамера гемоглобіну (ліворуч x = -0.85)
         const stand = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.28, 0.40, 1.35, 20),
+          new THREE.CylinderGeometry(0.32, 0.45, 0.72, 20),
           new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.3 })
         );
-        stand.position.set(0, 0.95, 0);
+        stand.position.set(-0.85, 0.64, 0);
         worldGroup.add(stand);
 
         // Тетрамер гемоглобіну α₂β₂ (4 субодиниці з порфіриновими гемами Fe²⁺ та лігандами O₂)
         this.tetramerGroup = new THREE.Group();
-        this.tetramerGroup.position.set(0, 2.35, 0);
+        this.tetramerGroup.position.set(-0.85, 2.35, 0);
         worldGroup.add(this.tetramerGroup);
 
         const tetCoords = [
-          [-0.65, 0.52, 0.35],
-          [0.65, 0.52, -0.35],
-          [-0.65, -0.52, -0.35],
-          [0.65, -0.52, 0.35]
+          [-0.62, 0.50, 0.35],
+          [0.62, 0.50, -0.35],
+          [-0.62, -0.50, -0.35],
+          [0.62, -0.50, 0.35]
         ];
         tetCoords.forEach(([sx, sy, sz], idx) => {
           const subGroup = new THREE.Group();
           subGroup.position.set(sx, sy, sz);
 
           const globin = new THREE.Mesh(
-            new THREE.SphereGeometry(0.56, 24, 18),
+            new THREE.SphereGeometry(0.54, 24, 18),
             new THREE.MeshStandardMaterial({ color: 0xbe123c, roughness: 0.28, metalness: 0.16 })
           );
           const hemeRing = new THREE.Mesh(
             new THREE.TorusGeometry(0.24, 0.045, 12, 24),
             new THREE.MeshStandardMaterial({ color: 0xfacc15, metalness: 0.45, roughness: 0.25 })
           );
-          hemeRing.position.z = 0.48;
+          hemeRing.position.z = 0.46;
           const o2Mol = new THREE.Mesh(
             new THREE.SphereGeometry(0.14, 16, 14),
             new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.55 })
           );
-          o2Mol.position.z = 0.62;
+          o2Mol.position.z = 0.60;
 
           subGroup.add(globin, hemeRing, o2Mol);
           this.tetramerGroup.add(subGroup);
           this.subunits.push({ subGroup, globin, o2Mol, basePos: new THREE.Vector3(sx, sy, sz), idx });
         });
+
+        // 3D-графік S-подібної кривої дисоціації оксигемоглобіну Y(pO₂) та гіперболи міоглобіну праворуч (x = 1.25..3.65)
+        const axisMat = new THREE.LineBasicMaterial({ color: 0x64748b });
+        const xAxis = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(1.25, 0.95, 0), new THREE.Vector3(3.65, 0.95, 0)]),
+          axisMat
+        );
+        const yAxis = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(1.25, 0.95, 0), new THREE.Vector3(1.25, 3.25, 0)]),
+          axisMat
+        );
+        worldGroup.add(xAxis, yAxis);
+
+        const curvePts = [];
+        const mbPts = [];
+        for (let i = 0; i <= 40; i++) {
+          const pVal = (i / 40) * 110;
+          const yMbVal = pVal / (2.8 + pVal);
+          curvePts.push(new THREE.Vector3(1.25 + (i / 40) * 2.35, 0.95, 0));
+          mbPts.push(new THREE.Vector3(1.25 + (i / 40) * 2.35, 0.95 + yMbVal * 2.15, -0.05));
+        }
+        this.hbCurveGeo = new THREE.BufferGeometry().setFromPoints(curvePts);
+        this.hbCurveLine = new THREE.Line(this.hbCurveGeo, new THREE.LineBasicMaterial({ color: 0xef4444 }));
+        const mbCurveLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(mbPts), new THREE.LineBasicMaterial({ color: 0x94a3b8 }));
+        this.hbStateMarker = new THREE.Mesh(
+          new THREE.SphereGeometry(0.12, 16, 14),
+          new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.65 })
+        );
+        worldGroup.add(this.hbCurveLine, mbCurveLine, this.hbStateMarker);
 
         // Двовігнуті диски еритроцитів у капілярному руслі позаду
         for (let i = 0; i < 4; i++) {
@@ -27185,6 +27511,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           s.globin.material.color.setHex(hasO2 ? 0xef4444 : 0x881337);
         });
 
+        // Оновлення живої S-подібної кривої Гілла Y_Hb(pO₂)
+        if (this.hbCurveGeo) {
+          const arr = this.hbCurveGeo.attributes.position.array;
+          for (let i = 0; i <= 40; i++) {
+            const pVal = (i / 40) * 110;
+            const yVal = Math.pow(pVal, nHill) / (Math.pow(p50, nHill) + Math.pow(pVal, nHill));
+            arr[i * 3] = 1.25 + (i / 40) * 2.35;
+            arr[i * 3 + 1] = 0.95 + yVal * 2.15;
+            arr[i * 3 + 2] = 0;
+          }
+          this.hbCurveGeo.attributes.position.needsUpdate = true;
+        }
+        if (this.hbStateMarker) {
+          this.hbStateMarker.position.set(1.25 + Math.min(1, po2 / 110) * 2.35, 0.95 + yHb * 2.15, 0.05);
+        }
+
         this.rbcs.forEach(r => {
           const t = (this.phase * 0.25 + r.offset) % 1;
           const x = -3.8 + t * 7.6;
@@ -27193,16 +27535,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
 
         this.arrowBind.update(
-          new THREE.Vector3(-1.95, 2.55, 0),
+          new THREE.Vector3(-2.65, 2.55, 0.45),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.1, 0.5 + yHb * 1.45),
+          Math.min(1.05, 0.45 + yHb * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowBohr.update(
-          new THREE.Vector3(1.95, 2.55, 0),
+          new THREE.Vector3(0.45, 2.55, 0.45),
           new THREE.Vector3(1, 0, 0),
-          Math.min(2.1, 0.5 + (1 - yHb) * 1.45),
+          Math.min(1.05, 0.45 + (1 - yHb) * 0.55),
           uiState.showVectors,
           uiState.showLabels
         );
@@ -27219,19 +27561,20 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Ступінь окиснення Феруму в гемі', val: 'Fe²⁺ (незмінний при оксигенації)' }
         ]);
         const c = ensureBioPins(this, [
-          { a: new THREE.Vector3(0, 3.1, 0), b: new THREE.Vector3(-2.3, 4.35, 0), tuk: `Тетрамер гемоглобіну α₂β₂ (${boundCount}/4 O₂)`, ten: `Hemoglobin α₂β₂ Tetramer (${boundCount}/4 O₂)`, suk: yHb >= 0.5 ? 'R-форма (оксигемоглобін, висока спорідненість)' : 'T-форма (дезоксигемоглобін, віддача O₂ тканинам)', sen: yHb >= 0.5 ? 'R-state (oxyhemoglobin, high affinity)' : 'T-state (deoxyhemoglobin, O₂ release)', col: 0xbe123c },
-          { a: new THREE.Vector3(0.65, 2.85, 0.4), b: new THREE.Vector3(2.5, 4.15, 0), tuk: 'Порфіриновий гем Fe²⁺ та ліганд O₂', ten: 'Porphyrin Heme Fe²⁺ & O₂ Ligand', suk: `Насичення Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} мм рт.ст.`, sen: `Saturation Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} mmHg`, col: 0xfacc15 },
+          { a: new THREE.Vector3(-0.85, 3.05, 0), b: new THREE.Vector3(-2.45, 4.25, 0), tuk: `Тетрамер гемоглобіну α₂β₂ (${boundCount}/4 O₂)`, ten: `Hemoglobin α₂β₂ Tetramer (${boundCount}/4 O₂)`, suk: yHb >= 0.5 ? 'R-форма (оксигемоглобін, висока спорідненість)' : 'T-форма (дезоксигемоглобін, віддача O₂ тканинам)', sen: yHb >= 0.5 ? 'R-state (oxyhemoglobin, high affinity)' : 'T-state (deoxyhemoglobin, O₂ release)', col: 0xbe123c },
+          { a: this.hbStateMarker.position.clone(), b: new THREE.Vector3(2.45, 4.15, 0), tuk: 'S-подібна крива Гілла Y(pO₂) та ефект Бора', ten: 'Sigmoidal Hill Curve Y(pO₂) & Bohr Shift', suk: `Насичення Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} мм рт.ст.`, sen: `Saturation Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} mmHg`, col: 0x38bdf8 },
           { a: new THREE.Vector3(0, 1.05, -1.35), b: new THREE.Vector3(0, 0.7, 1.2), tuk: 'Еритроцити у капілярному руслі', ten: 'Red Blood Cells in Capillary', suk: `Ефект Бора при pH = ${ph.toFixed(2)}, T = ${tC}°C`, sen: `Bohr effect at pH = ${ph.toFixed(2)}, T = ${tC}°C`, col: 0xdc2626 }
         ]);
+        c[1].setPositions(this.hbStateMarker.position.clone(), new THREE.Vector3(2.45, 4.15, 0));
         c[0].setText(`Тетрамер гемоглобіну α₂β₂ (${boundCount}/4 O₂)`, `Hemoglobin α₂β₂ Tetramer (${boundCount}/4 O₂)`, yHb >= 0.5 ? 'R-стан (оксигемоглобін, яскраво-червоний)' : 'T-стан (дезоксигемоглобін, темно-вишневий)', yHb >= 0.5 ? 'R-state (oxyhemoglobin, bright red)' : 'T-state (deoxyhemoglobin, dark red)');
-        c[1].setText('Порфіриновий гем Fe²⁺ та ліганд O₂', 'Porphyrin Heme Fe²⁺ & O₂ Ligand', `Насичення Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} мм рт.ст.`, `Saturation Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} mmHg`);
+        c[1].setText('S-подібна крива Гілла Y(pO₂) та ефект Бора', 'Sigmoidal Hill Curve Y(pO₂) & Bohr Shift', `Насичення Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} мм рт.ст.`, `Saturation Y = ${(yHb * 100).toFixed(1)}% · P₅₀ = ${p50.toFixed(1)} mmHg`);
         c[2].setText('Еритроцити у капілярному руслі', 'Red Blood Cells in Capillary', `pH = ${ph.toFixed(2)} (${ph < 7.35 ? 'ацидоз — зсув Бора праворуч' : 'норма'}), T = ${tC}°C`, `pH = ${ph.toFixed(2)} (${ph < 7.35 ? 'acidosis — Bohr right shift' : 'normal'}), T = ${tC}°C`);
         updateBioSceneHud('bio_hemo', {
           legend: [
-            { color: '#ef4444', uk: 'Субодиниці глобіну (R-окси / T-дезокси)', en: 'Globin Subunits (R-oxy / T-deoxy)' },
+            { color: '#ef4444', uk: 'Субодиниці глобіну та крива Hb', en: 'Globin Subunits & Hb Curve' },
             { color: '#facc15', uk: 'Кільця гему з Fe²⁺', en: 'Heme Rings with Fe²⁺' },
-            { color: '#38bdf8', uk: 'Зв’язані молекули O₂', en: 'Bound O₂ Molecules' },
-            { color: '#dc2626', uk: 'Еритроцити в капілярі', en: 'Red Blood Cells' }
+            { color: '#38bdf8', uk: 'Зв’язаний O₂ та робоча точка', en: 'Bound O₂ & Operating Point' },
+            { color: '#94a3b8', uk: 'Гіпербола міоглобіну (n = 1)', en: 'Myoglobin Hyperbola (n = 1)' }
           ],
           statusUk: `При pO₂ = ${po2} мм рт.ст. насичення гемоглобіну Y_Hb = ${(yHb * 100).toFixed(1)}% (зайнято ${boundCount} з 4 гемів Fe²⁺), тиск напівнасичення P₅₀ = ${p50.toFixed(1)} мм рт.ст.`,
           statusEn: `At pO₂ = ${po2} mmHg, hemoglobin saturation Y_Hb = ${(yHb * 100).toFixed(1)}% (${boundCount} of 4 Fe²⁺ hemes bound), half-saturation P₅₀ = ${p50.toFixed(1)} mmHg.`,
@@ -27289,6 +27632,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.25 })
         );
         worldGroup.add(this.barPrey, this.barPred);
+
+        // Координатні осі фазової площини (x — жертви, y — хижаки) праворуч
+        const phAxisMat = new THREE.LineBasicMaterial({ color: 0x64748b });
+        const phAxisX = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0.35, 0.95, 0), new THREE.Vector3(3.45, 0.95, 0)]),
+          phAxisMat
+        );
+        const phAxisY = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0.35, 0.95, 0), new THREE.Vector3(0.35, 3.55, 0)]),
+          phAxisMat
+        );
+        worldGroup.add(phAxisX, phAxisY);
 
         // 3D-фазова орбіта Лотки–Вольтерри праворуч та біжуча фазова кулька (x(t), y(t))
         const orbitPts = [];
@@ -27375,14 +27730,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.arrowPhase.update(
           new THREE.Vector3(curX, curY, curZ),
           tangent,
-          1.15,
+          0.95,
           uiState.showVectors,
           uiState.showLabels
         );
         this.arrowTrophic.update(
-          new THREE.Vector3(-2.65, 2.15, 0),
+          new THREE.Vector3(-2.65, 2.15, 0.45),
           new THREE.Vector3(1, 0, 0),
-          1.25,
+          0.95,
           uiState.showVectors,
           uiState.showLabels
         );
@@ -27400,10 +27755,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ]);
         const c = ensureBioPins(this, [
           { a: new THREE.Vector3(-3.3, 2.5, 0), b: new THREE.Vector3(-3.6, 4.15, 0), tuk: 'Продуценти (рослинна біомаса)', ten: 'Producers (Plant Biomass)', suk: 'Правило Ліндемана: 10% енергії на наступний рівень', sen: 'Lindeman rule: 10% energy transfer per level', col: 0x15803d },
-          { a: this.barPrey.position.clone().add(new THREE.Vector3(0, 0.6, 0)), b: new THREE.Vector3(-2.0, 4.55, 0), tuk: `Жертви x(t) = ${xNow.toFixed(0)} особ.`, ten: `Prey x(t) = ${xNow.toFixed(0)} ind.`, suk: `Рівновага x* = γ/δ = ${xEq.toFixed(0)}`, sen: `Equilibrium x* = γ/δ = ${xEq.toFixed(0)}`, col: 0x22c55e },
-          { a: this.barPred.position.clone().add(new THREE.Vector3(0, 0.6, 0)), b: new THREE.Vector3(-0.6, 3.85, 0), tuk: `Хижаки y(t) = ${yNow.toFixed(0)} особ.`, ten: `Predators y(t) = ${yNow.toFixed(0)} ind.`, suk: `Рівновага y* = α/β = ${yEq.toFixed(0)} (відстає на ¼ T)`, sen: `Equilibrium y* = α/β = ${yEq.toFixed(0)} (lags by ¼ T)`, col: 0xef4444 },
+          { a: new THREE.Vector3(-2.05, 0.28 + hPrey, 0), b: new THREE.Vector3(-2.0, 4.55, 0), tuk: `Жертви x(t) = ${xNow.toFixed(0)} особ.`, ten: `Prey x(t) = ${xNow.toFixed(0)} ind.`, suk: `Рівновага x* = γ/δ = ${xEq.toFixed(0)}`, sen: `Equilibrium x* = γ/δ = ${xEq.toFixed(0)}`, col: 0x22c55e },
+          { a: new THREE.Vector3(-0.85, 0.28 + hPred, 0), b: new THREE.Vector3(-0.6, 3.85, 0), tuk: `Хижаки y(t) = ${yNow.toFixed(0)} особ.`, ten: `Predators y(t) = ${yNow.toFixed(0)} ind.`, suk: `Рівновага y* = α/β = ${yEq.toFixed(0)} (відстає на ¼ T)`, sen: `Equilibrium y* = α/β = ${yEq.toFixed(0)} (lags by ¼ T)`, col: 0xef4444 },
           { a: new THREE.Vector3(1.85, 2.25, 0), b: new THREE.Vector3(2.3, 4.25, 0), tuk: 'Фазовий портрет (x, y) та точка (x*, y*)', ten: 'Phase Portrait (x, y) & Center (x*, y*)', suk: `Період коливань T ≈ ${periodT.toFixed(1)} років`, sen: `Oscillation period T ≈ ${periodT.toFixed(1)} yrs`, col: 0x38bdf8 }
         ]);
+        c[1].setPositions(new THREE.Vector3(-2.05, 0.28 + hPrey, 0), new THREE.Vector3(-2.0, 4.55, 0));
+        c[2].setPositions(new THREE.Vector3(-0.85, 0.28 + hPred, 0), new THREE.Vector3(-0.6, 3.85, 0));
         c[1].setText(`Жертви x(t) = ${xNow.toFixed(0)} особ.`, `Prey x(t) = ${xNow.toFixed(0)} ind.`, `Рівновага x* = γ/δ = ${xEq.toFixed(0)}`, `Equilibrium x* = γ/δ = ${xEq.toFixed(0)}`);
         c[2].setText(`Хижаки y(t) = ${yNow.toFixed(0)} особ.`, `Predators y(t) = ${yNow.toFixed(0)} ind.`, `Рівновага y* = α/β = ${yEq.toFixed(0)} (запізнення +π/2)`, `Equilibrium y* = α/β = ${yEq.toFixed(0)} (lags +π/2)`);
         c[3].setText('Фазовий портрет (x, y) та центр (x*, y*)', 'Phase Portrait (x, y) & Center (x*, y*)', `Період циклу T ≈ ${periodT.toFixed(1)} р.`, `Cycle period T ≈ ${periodT.toFixed(1)} yr`);

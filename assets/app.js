@@ -24997,7 +24997,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
       }
 
-      // 2. Render flat textbook regime buttons in the right sidebar Parameters section
+      // 2. Render flat textbook regime buttons + live observation status in the right sidebar Parameters section
       const slidersContainer = document.getElementById('sliders-container');
       if (slidersContainer && slidersContainer.parentElement) {
         let sideBox = document.getElementById('bio-sidebar-presets');
@@ -25026,17 +25026,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               ${isEn ? 'Experiment regimes' : 'Режими досліду'}
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:5px;">${presetsHtml}</div>
+            <div id="bio-sidebar-status" style="font-family:var(--font-serif);font-size:11.5px;line-height:1.42;color:var(--ink-secondary);margin-top:8px;padding-top:7px;border-top:1px dashed var(--rule-light);"></div>
           `;
           sideBox.querySelectorAll('button[data-bio-preset-idx]').forEach(btn => {
             btn.addEventListener('click', () => {
-              sideBox.querySelectorAll('button[data-bio-preset-idx]').forEach(b => {
-                b.style.background = '';
-                b.style.color = '';
-                b.style.borderColor = '';
-              });
-              btn.style.background = 'var(--ink-primary)';
-              btn.style.color = '#faf9f5';
-              btn.style.borderColor = 'var(--ink-primary)';
               const idx = parseInt(btn.getAttribute('data-bio-preset-idx'), 10);
               const pr = config.presets[idx];
               if (pr && pr.values) {
@@ -25044,6 +25037,26 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               }
             });
           });
+        }
+        // Highlight whichever preset matches current sceneParams[sceneKey]
+        const curParams = sceneParams[sceneKey];
+        if (curParams && Array.isArray(config.presets)) {
+          sideBox.querySelectorAll('button[data-bio-preset-idx]').forEach(btn => {
+            const idx = parseInt(btn.getAttribute('data-bio-preset-idx'), 10);
+            const pr = config.presets[idx];
+            const isMatch = pr && pr.values && Object.entries(pr.values).every(([k, v]) => Math.abs((curParams[k] ?? 0) - v) < 1e-4);
+            btn.style.background = isMatch ? 'var(--ink-primary)' : '';
+            btn.style.color = isMatch ? '#faf9f5' : '';
+            btn.style.borderColor = isMatch ? 'var(--ink-primary)' : '';
+          });
+        }
+        const statusEl = sideBox.querySelector('#bio-sidebar-status');
+        if (statusEl) {
+          const statusTxt = (isEn ? config.statusEn : config.statusUk) || '';
+          if (statusEl.textContent !== statusTxt) {
+            statusEl.textContent = statusTxt;
+          }
+          statusEl.style.display = statusTxt ? 'block' : 'none';
         }
       }
     }
@@ -25249,8 +25262,26 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
         this.cellGroup.add(this.mitoGroup);
 
-        // Транспортні везикули на мікротрубочках
+        // Центросома (пара центріолей) і радіальні мікротрубочки цитоскелета, вздовж яких рухаються везикули
+        const centrosomeMat = new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.32, metalness: 0.18 });
+        const centriole1 = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.24, 12), centrosomeMat);
+        centriole1.position.set(0.18, 0.72, -0.05);
+        const centriole2 = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.24, 12), centrosomeMat);
+        centriole2.rotation.z = Math.PI / 2;
+        centriole2.position.set(0.28, 0.72, 0.05);
+        this.cellGroup.add(centriole1, centriole2);
+
+        const mtLineMat = new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.45 });
         for (let v = 0; v < 8; v++) {
+          const ang = v * (Math.PI / 4);
+          const mtPts = [
+            new THREE.Vector3(Math.cos(ang) * 0.55, 0.70, Math.sin(ang) * 0.55),
+            new THREE.Vector3(Math.cos(ang) * 1.20, 0.86, Math.sin(ang) * 1.20),
+            new THREE.Vector3(Math.cos(ang) * 1.78, 0.68, Math.sin(ang) * 1.78)
+          ];
+          const mtLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(mtPts), mtLineMat);
+          this.cellGroup.add(mtLine);
+
           const ves = new THREE.Mesh(
             new THREE.SphereGeometry(0.08, 14, 12),
             new THREE.MeshStandardMaterial({ color: 0x166534, roughness: 0.28 })
@@ -25258,6 +25289,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.cellGroup.add(ves);
           this.vesicles.push({ mesh: ves, offset: v / 8 });
         }
+
+        // Кільце фокусування на обраній органелі (organelleFocus = 2, 3, 4)
+        this.focusRing = new THREE.Mesh(
+          new THREE.TorusGeometry(0.72, 0.032, 12, 36),
+          new THREE.MeshBasicMaterial({ color: 0x1e40af, transparent: true, opacity: 0.65, depthWrite: false })
+        );
+        this.focusRing.rotation.x = Math.PI / 2;
+        this.focusRing.visible = false;
+        this.cellGroup.add(this.focusRing);
 
         this.arrowFlux = new SmartVectorArrow('J_вх (O₂, субстрати)', 0x166534);
         this.arrowExport = new SmartVectorArrow('v_вез (екзоцитоз)', 0xb45309);
@@ -25280,10 +25320,26 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const scaleR = 0.68 + (R / 30) * 0.54;
         this.cellGroup.scale.setScalar(scaleR);
 
-        // Підсвітка обраного компартмента
+        // Підсвітка обраного компартмента та індикаторне кільце фокусу
         this.nucleusGroup.scale.setScalar(focus === 2 ? 1.18 : 1.0);
         this.golgiGroup.scale.setScalar(focus === 3 ? 1.20 : 1.0);
         this.mitoGroup.scale.setScalar(focus === 4 ? 1.22 : 1.0);
+        if (this.focusRing) {
+          this.focusRing.visible = focus >= 2;
+          if (focus === 2) {
+            this.focusRing.position.set(-0.35, 0.72, -0.22);
+            this.focusRing.scale.setScalar(1.15);
+            this.focusRing.material.color.setHex(0x1e40af);
+          } else if (focus === 3) {
+            this.focusRing.position.set(0.98, 0.72, 0.28);
+            this.focusRing.scale.setScalar(0.85);
+            this.focusRing.material.color.setHex(0xb45309);
+          } else if (focus === 4) {
+            this.focusRing.position.set(-1.08, 0.68, 0.68);
+            this.focusRing.scale.setScalar(0.65);
+            this.focusRing.material.color.setHex(0x991b1b);
+          }
+        }
 
         this.mitochondriaList.forEach((m, idx) => {
           const pulse = 1 + 0.08 * Math.sin(this.phase * 4 * met + idx);
@@ -25507,7 +25563,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         this.atpSynthaseGroup.add(this.headF1);
 
-        // Рухомі електрони e⁻ вздовж мембрани та протони H⁺
+        // Лінія електронно-транспортного ланцюга (Убіхінон Q -> Цитохром c) між комплексами I, III, IV
+        const etcPts = [];
+        for (let i = 0; i <= 32; i++) {
+          const t = i / 32;
+          etcPts.push(new THREE.Vector3(-3.2 + t * 3.3, 2.15 + Math.sin(t * Math.PI * 6) * 0.12, 0.42));
+        }
+        const etcPathLine = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(etcPts),
+          new THREE.LineBasicMaterial({ color: 0x0369a1, transparent: true, opacity: 0.55 })
+        );
+        worldGroup.add(etcPathLine);
+
+        // Рухомі електрони e⁻ вздовж мембрани та протони H⁺ (5 доріжок: I, III, IV, ротор F₀F₁ та шунт UCP1)
         for (let i = 0; i < 6; i++) {
           const el = new THREE.Mesh(
             new THREE.SphereGeometry(0.085, 14, 12),
@@ -25517,13 +25585,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.electrons.push({ mesh: el, offset: i / 6 });
         }
 
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < 15; i++) {
           const pr = new THREE.Mesh(
             new THREE.SphereGeometry(0.08, 12, 10),
             new THREE.MeshStandardMaterial({ color: 0x991b1b, roughness: 0.25 })
           );
           worldGroup.add(pr);
-          this.protons.push({ mesh: pr, offset: i / 12, lane: i % 4 });
+          this.protons.push({ mesh: pr, offset: i / 15, lane: i % 5 });
         }
 
         this.arrowPump = new SmartVectorArrow('J_H+ (накачування)', 0x991b1b);
@@ -25568,13 +25636,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const t = (this.phase * 0.5 * nadh + pObj.offset) % 1;
           if (pObj.lane < 3) {
             // Викачування H⁺ вгору у міжмембранний простір через комплекси I, III, IV
+            pObj.mesh.visible = true;
             const cx = [-2.8, -1.5, -0.2][pObj.lane];
             const py = 1.15 + t * 2.25;
             pObj.mesh.position.set(cx + Math.sin(t * 6) * 0.12, py, 0.35);
-          } else {
+          } else if (pObj.lane === 3) {
             // Повернення H⁺ вниз через ротор F₀F₁ у матрикс
+            pObj.mesh.visible = leak < 0.92;
             const py = 3.45 - t * 2.35;
             pObj.mesh.position.set(2.55 + Math.cos(t * 8) * 0.25, py, 0.35);
+          } else {
+            // Протонний шунт через термогенін UCP1 (x = 1.15) при роз’єднанні дихання
+            pObj.mesh.visible = leak > 0.08;
+            const tLeak = (this.phase * (0.4 + leak * 1.1) + pObj.offset) % 1;
+            const py = 3.45 - tLeak * 2.35;
+            pObj.mesh.position.set(1.15 + Math.sin(tLeak * 6) * 0.10, py, 0.35);
           }
         });
 
@@ -25705,6 +25781,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.rightPole.position.set(2.5, 2.35, 0);
         worldGroup.add(this.leftPole, this.rightPole);
 
+        // Екваторіальне кільце метафазної пластинки та актин-міозинове скоротливе кільце цитокінезу (x = 0)
+        this.metaphaseRing = new THREE.Mesh(
+          new THREE.TorusGeometry(1.55, 0.022, 12, 40),
+          new THREE.MeshBasicMaterial({ color: 0x1e40af, transparent: true, opacity: 0.45, depthWrite: false })
+        );
+        this.metaphaseRing.rotation.y = Math.PI / 2;
+        this.metaphaseRing.position.set(0, 2.35, 0);
+        this.cleavageRing = new THREE.Mesh(
+          new THREE.TorusGeometry(1.45, 0.045, 14, 40),
+          new THREE.MeshStandardMaterial({ color: 0x991b1b, roughness: 0.32 })
+        );
+        this.cleavageRing.rotation.y = Math.PI / 2;
+        this.cleavageRing.position.set(0, 2.35, 0);
+        this.cleavageRing.visible = false;
+        worldGroup.add(this.metaphaseRing, this.cleavageRing);
+
         // До 6 гомологічних хромосом (кожна складається з лівої та правої V-подібної сестринської хроматиди -> X-хромосома)
         const colors = [0x991b1b, 0x1e40af, 0x166534, 0x475569, 0x9a3412, 0x854d0e];
         for (let i = 0; i < 6; i++) {
@@ -25767,6 +25859,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const cellShift = stage === 4 ? 1.15 : (stage === 3 ? 0.55 : 0.25);
         this.leftCellHalf.position.set(-cellShift, 2.35, 0);
         this.rightCellHalf.position.set(cellShift, 2.35, 0);
+        if (this.metaphaseRing) {
+          this.metaphaseRing.visible = stage <= 2;
+          this.metaphaseRing.material.opacity = stage === 2 ? 0.65 : 0.22;
+        }
+        if (this.cleavageRing) {
+          this.cleavageRing.visible = stage >= 3;
+          const pinchScale = stage === 4 ? 0.42 : 0.85;
+          this.cleavageRing.scale.setScalar(pinchScale);
+        }
 
         this.chromatidGroups.forEach((cg, idx) => {
           const active = idx < totalChrom;
@@ -25981,8 +26082,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             new THREE.CylinderGeometry(0.03, 0.03, 1.0, 8),
             new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.35 })
           );
-          worldGroup.add(topParent, botParent, topNew, botNew, rung);
-          this.basePairs.push({ topParent, botParent, topNew, botNew, rung, index: i });
+          const rungTop = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.025, 0.025, 0.32, 8),
+            new THREE.MeshStandardMaterial({ color: 0x166534, roughness: 0.35 })
+          );
+          const rungBot = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.025, 0.025, 0.32, 8),
+            new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.35 })
+          );
+          worldGroup.add(topParent, botParent, topNew, botNew, rung, rungTop, rungBot);
+          this.basePairs.push({ topParent, botParent, topNew, botNew, rung, rungTop, rungBot, index: i });
         }
 
         this.arrowLead = new SmartVectorArrow('Ведучий 5′→3′', 0x166534);
@@ -26027,6 +26136,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             bp.botParent.position.set(x, 2.25 - dy, -dz);
             bp.topNew.visible = false;
             bp.botNew.visible = false;
+            bp.rungTop.visible = false;
+            bp.rungBot.visible = false;
             bp.rung.visible = true;
             bp.rung.position.set(x, 2.25, 0);
             bp.rung.rotation.set(Math.atan2(dz, dy), 0, 0);
@@ -26037,11 +26148,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             bp.topParent.position.set(x, 2.25 + spread + 0.18, 0.12);
             bp.topNew.visible = true;
             bp.topNew.position.set(x, 2.25 + spread - 0.14, 0.12);
+            bp.rungTop.visible = true;
+            bp.rungTop.position.set(x, 2.25 + spread + 0.02, 0.12);
 
             bp.botParent.position.set(x, 2.25 - spread - 0.18, -0.12);
             const showOkazaki = (bp.index % (okazaki + 1)) !== 0;
             bp.botNew.visible = showOkazaki;
             bp.botNew.position.set(x, 2.25 - spread + 0.14, -0.12);
+            bp.rungBot.visible = showOkazaki;
+            bp.rungBot.position.set(x, 2.25 - spread - 0.02, -0.12);
             bp.rung.visible = false;
             ptsTopNew.push(bp.topNew.position.clone());
             if (showOkazaki) ptsBotNew.push(bp.botNew.position.clone());
@@ -26238,7 +26353,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           this.codons.push({ mesh: nt, index: i });
         }
 
-        // Ростучий поліпептидний ланцюг з амінокислотних кульок зверху великої субодиниці
+        // Ростучий поліпептидний ланцюг з амінокислотних кульок зверху великої субодиниці + пептидний остов
+        this.peptideLine = new THREE.Line(
+          new THREE.BufferGeometry(),
+          new THREE.LineBasicMaterial({ color: 0x166534 })
+        );
+        this.riboGroup.add(this.peptideLine);
+
         const aaCols = [0x166534, 0x991b1b, 0x1e40af, 0xb45309, 0x475569];
         for (let a = 0; a < 10; a++) {
           const bead = new THREE.Mesh(
@@ -26289,14 +26410,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
 
         // Змієподібний вихід поліпептидного ланцюга з рибосомного тунелю
+        const pepPts = [new THREE.Vector3(0, 0.52, 0.12)];
         this.peptideBeads.forEach((bead, idx) => {
           const h = 0.85 + idx * 0.21;
           const wag = Math.sin(this.phase * 2.2 * speed + idx * 0.6) * (0.08 + idx * 0.02);
           bead.position.set(wag, h + gap, 0);
+          pepPts.push(bead.position.clone());
           if (idx === 3) {
             bead.material.color.setHex(mut === 3 ? 0x991b1b : 0xb45309);
           }
         });
+        if (this.peptideLine) {
+          this.peptideLine.geometry.setFromPoints(pepPts);
+        }
 
         this.arrowMrna.update(
           new THREE.Vector3(-2.85, 1.85, 0.55),
@@ -26429,6 +26555,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         worldGroup.add(this.barAA, this.barAa, this.baraa);
 
+        // 3D-параболи рівноваги Гарді–Вайнберга де Фінетті позаду колон (z = -1.25): p², 2pq, q² від p ∈ [0, 1]
+        const ptsAA = [];
+        const ptsAa = [];
+        const ptsaa = [];
+        for (let i = 0; i <= 40; i++) {
+          const pv = i / 40;
+          const qv = 1 - pv;
+          const gx = 0.75 + pv * 2.80;
+          ptsAA.push(new THREE.Vector3(gx, 0.42 + (pv * pv) * 3.0, -1.25));
+          ptsAa.push(new THREE.Vector3(gx, 0.42 + (2 * pv * qv) * 3.0, -1.25));
+          ptsaa.push(new THREE.Vector3(gx, 0.42 + (qv * qv) * 3.0, -1.25));
+        }
+        const curveAALine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ptsAA), new THREE.LineBasicMaterial({ color: 0x1e40af, transparent: true, opacity: 0.65 }));
+        const curveAaLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ptsAa), new THREE.LineBasicMaterial({ color: 0x166534, transparent: true, opacity: 0.75 }));
+        const curveaaLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ptsaa), new THREE.LineBasicMaterial({ color: 0xb45309, transparent: true, opacity: 0.65 }));
+        this.hwCursorGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(2.15, 0.42, -1.25), new THREE.Vector3(2.15, 3.42, -1.25)]);
+        const hwCursorLine = new THREE.Line(this.hwCursorGeo, new THREE.LineBasicMaterial({ color: 0x334155 }));
+        worldGroup.add(curveAALine, curveAaLine, curveaaLine, hwCursorLine);
+
         this.arrowHet = new SmartVectorArrow('2pq (Гетерозиготи Aa)', 0x166534);
         this.arrowDom = new SmartVectorArrow('p² (Гомозиготи AA)', 0x1e40af);
         this.arrows.push(this.arrowHet, this.arrowDom);
@@ -26493,6 +26638,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
         this.baraa.scale.set(1, colaaH, 1);
         this.baraa.position.set(3.25, 0.28 + colaaH * 0.5, 0);
+
+        if (this.hwCursorGeo) {
+          const curX = 0.75 + freqP * 2.80;
+          this.hwCursorGeo.setFromPoints([
+            new THREE.Vector3(curX, 0.42, -1.25),
+            new THREE.Vector3(curX, 3.42, -1.25)
+          ]);
+        }
 
         this.arrowDom.update(
           new THREE.Vector3(1.05, 0.35 + colAAH, 0.45),
@@ -26870,7 +27023,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.spikePulse.position.set(-3.6, 2.15, 0);
         worldGroup.add(this.spikePulse);
 
-        // 3D-лінія профілю потенціалу дії V_m(x) над аксоном
+        // 3D-лінія профілю потенціалу дії V_m(x) над аксоном + опорні лінії спокою (-70 мВ) та порогу (-55 мВ)
+        const restLine = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-3.6, 3.15, 0), new THREE.Vector3(3.6, 3.15, 0)]),
+          new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.45 })
+        );
+        const threshY = 3.15 + (15 / 105) * 0.95;
+        const threshLine = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-3.6, threshY, 0), new THREE.Vector3(3.6, threshY, 0)]),
+          new THREE.LineBasicMaterial({ color: 0xb45309, transparent: true, opacity: 0.65 })
+        );
+        worldGroup.add(restLine, threshLine);
+
         const pts = [];
         for (let i = 0; i <= 60; i++) pts.push(new THREE.Vector3(-3.6 + (i / 60) * 7.2, 3.2, 0));
         this.traceGeo = new THREE.BufferGeometry().setFromPoints(pts);
@@ -27165,12 +27329,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const c = ensureBioPins(this, [
           { a: this.zDiscLeft.position.clone().add(new THREE.Vector3(0, 1.2, 0)), b: new THREE.Vector3(-3.3, 4.15, 0), tuk: 'Лівий Z-диск (межа саркомера)', ten: 'Left Z-Disc (Sarcomere Border)', suk: `Довжина саркомера L = ${l0.toFixed(1)} мкм`, sen: `Sarcomere length L = ${l0.toFixed(1)} μm`, col: 0x1e40af },
           { a: new THREE.Vector3(0, 2.75, 0), b: new THREE.Vector3(0, 4.35, 0), tuk: 'Товсті нитки міозину + головки S1', ten: 'Thick Myosin Filaments + Heads', suk: `Ізометрична сила F₀ = ${f0.toFixed(0)} Н (перекриття ${(overlap * 100).toFixed(0)}%)`, sen: `Isometric force F₀ = ${f0.toFixed(0)} N (overlap ${(overlap * 100).toFixed(0)}%)`, col: 0x991b1b },
-          { a: new THREE.Vector3(1.4, 1.28, 0), b: new THREE.Vector3(2.4, 0.75, 0.8), tuk: 'Тонкі нитки актину + тропонін (Ca²⁺)', ten: 'Thin Actin Filaments + Troponin (Ca²⁺)', suk: `Активація Ca²⁺: ${(caAct * 100).toFixed(0)}% · v(F) = ${vShort.toFixed(2)} L₀/с`, sen: `Ca²⁺ activation: ${(caAct * 100).toFixed(0)}% · v(F) = ${vShort.toFixed(2)} L₀/s`, col: 0x166534 }
+          { a: new THREE.Vector3(1.4, 1.28, 0), b: new THREE.Vector3(2.4, 0.75, 0.8), tuk: 'Тонкі нитки актину + тропонін (Ca²⁺)', ten: 'Thin Actin Filaments + Troponin (Ca²⁺)', suk: `Активація Ca²⁺: ${(caAct * 100).toFixed(0)}% · v(F) = ${vShort.toFixed(2)} L₀/с`, sen: `Ca²⁺ activation: ${(caAct * 100).toFixed(0)}% · v(F) = ${vShort.toFixed(2)} L₀/s`, col: 0x166534 },
+          { a: this.zDiscRight.position.clone().add(new THREE.Vector3(0, 1.2, 0)), b: new THREE.Vector3(3.3, 4.15, 0), tuk: 'Правий Z-диск (ковзання ниток)', ten: 'Right Z-Disc (Sliding Border)', suk: `Потужність P = F·v = ${powerW.toFixed(1)} Вт`, sen: `Mechanical power P = F·v = ${powerW.toFixed(1)} W`, col: 0x1e40af }
         ]);
         c[0].setPositions(this.zDiscLeft.position.clone().add(new THREE.Vector3(0, 1.2, 0)), new THREE.Vector3(-3.3, 4.15, 0));
+        c[3].setPositions(this.zDiscRight.position.clone().add(new THREE.Vector3(0, 1.2, 0)), new THREE.Vector3(3.3, 4.15, 0));
         c[0].setText('Лівий Z-диск (межа саркомера)', 'Left Z-Disc (Sarcomere Border)', `Довжина саркомера L = ${l0.toFixed(1)} мкм (оптимум 2.1 мкм)`, `Sarcomere length L = ${l0.toFixed(1)} μm (optimum 2.1 μm)`);
         c[1].setText('Товсті нитки міозину + головки S1', 'Thick Myosin Filaments + Heads', `F₀ = ${f0.toFixed(0)} Н · перекриття ${(overlap * 100).toFixed(0)}%`, `F₀ = ${f0.toFixed(0)} N · overlap ${(overlap * 100).toFixed(0)}%`);
         c[2].setText('Тонкі нитки актину + тропонін (Ca²⁺)', 'Thin Actin Filaments + Troponin (Ca²⁺)', `Активація Ca²⁺: ${(caAct * 100).toFixed(0)}% · швидкість v = ${vShort.toFixed(2)} L₀/с`, `Ca²⁺ activation: ${(caAct * 100).toFixed(0)}% · velocity v = ${vShort.toFixed(2)} L₀/s`);
+        c[3].setText('Правий Z-диск (ковзання ниток)', 'Right Z-Disc (Sliding Border)', `Навантаження F = ${fLoad.toFixed(0)} Н · P = ${powerW.toFixed(1)} Вт`, `Load F = ${fLoad.toFixed(0)} N · P = ${powerW.toFixed(1)} W`);
         updateBioSceneHud('bio_sarcomere', {
           legend: [
             { color: '#1e40af', uk: 'Z-диски (рухомі межі)', en: 'Z-Discs (movable borders)' },
@@ -27288,6 +27455,31 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         worldGroup.add(this.calvinWheel);
 
+        // Z-схема транспорту електронів (P680 → Пластохінон → Cyt b₆f → Пластоціанін → P700 → НАДФ·H → Цикл Кальвіна)
+        const zPathPts = [
+          new THREE.Vector3(-2.75, 1.85, 0.36),
+          new THREE.Vector3(-2.75, 2.55, 0.36),
+          new THREE.Vector3(-1.65, 2.05, 0.36),
+          new THREE.Vector3(-0.55, 1.85, 0.36),
+          new THREE.Vector3(-0.55, 2.65, 0.36),
+          new THREE.Vector3(0.95, 2.35, 0.15)
+        ];
+        const zSchemeLine = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(zPathPts),
+          new THREE.LineBasicMaterial({ color: 0xb45309, transparent: true, opacity: 0.72 })
+        );
+        worldGroup.add(zSchemeLine);
+        this.zPathPts = zPathPts;
+        this.photoElectrons = [];
+        for (let i = 0; i < 5; i++) {
+          const el = new THREE.Mesh(
+            new THREE.SphereGeometry(0.085, 14, 12),
+            new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.25 })
+          );
+          worldGroup.add(el);
+          this.photoElectrons.push({ mesh: el, offset: i / 5 });
+        }
+
         // Пухирці кисню O₂ від фотолізу води у ФС ІІ (depthWrite: false)
         for (let i = 0; i < 6; i++) {
           const bub = new THREE.Mesh(
@@ -27353,6 +27545,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             0.25
           );
         });
+
+        if (this.photoElectrons && this.zPathPts) {
+          const nSeg = this.zPathPts.length - 1;
+          this.photoElectrons.forEach(eObj => {
+            const u = ((this.phase * 0.38 * (0.25 + photoRate / 65) + eObj.offset) % 1) * nSeg;
+            const segIdx = Math.min(nSeg - 1, Math.floor(u));
+            const frac = u - segIdx;
+            eObj.mesh.position.lerpVectors(this.zPathPts[segIdx], this.zPathPts[segIdx + 1], frac);
+          });
+        }
 
         this.arrowLight.update(
           new THREE.Vector3(-1.65, 3.85, 0.45),
@@ -27511,11 +27713,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.hbCurveGeo = new THREE.BufferGeometry().setFromPoints(curvePts);
         this.hbCurveLine = new THREE.Line(this.hbCurveGeo, new THREE.LineBasicMaterial({ color: 0x991b1b }));
         const mbCurveLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(mbPts), new THREE.LineBasicMaterial({ color: 0x64748b }));
+        const halfSatLine = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(1.25, 2.025, 0), new THREE.Vector3(3.60, 2.025, 0)]),
+          new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.35 })
+        );
+        this.p50DropGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(1.82, 0.95, 0), new THREE.Vector3(1.82, 2.025, 0)]);
+        const p50DropLine = new THREE.Line(this.p50DropGeo, new THREE.LineBasicMaterial({ color: 0xb45309, transparent: true, opacity: 0.75 }));
         this.hbStateMarker = new THREE.Mesh(
           new THREE.SphereGeometry(0.12, 16, 14),
           new THREE.MeshStandardMaterial({ color: 0x1e40af, roughness: 0.3 })
         );
-        worldGroup.add(this.hbCurveLine, mbCurveLine, this.hbStateMarker);
+        worldGroup.add(this.hbCurveLine, mbCurveLine, halfSatLine, p50DropLine, this.hbStateMarker);
 
         // Двовігнуті диски еритроцитів у капілярному руслі позаду
         for (let i = 0; i < 4; i++) {
@@ -27577,6 +27785,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         if (this.hbStateMarker) {
           this.hbStateMarker.position.set(1.25 + Math.min(1, po2 / 110) * 2.35, 0.95 + yHb * 2.15, 0.05);
+        }
+        if (this.p50DropGeo) {
+          const p50X = 1.25 + Math.min(1, p50 / 110) * 2.35;
+          this.p50DropGeo.setFromPoints([
+            new THREE.Vector3(p50X, 0.95, 0),
+            new THREE.Vector3(p50X, 2.025, 0)
+          ]);
         }
 
         this.rbcs.forEach(r => {
@@ -27685,7 +27900,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         worldGroup.add(this.barPrey, this.barPred);
 
-        // Координатні осі фазової площини (x — жертви, y — хижаки) праворуч
+        // Координатні осі фазової площини (x — жертви, y — хижаки) праворуч + нуль-ізокліни через (x*, y*)
         const phAxisMat = new THREE.LineBasicMaterial({ color: 0x475569 });
         const phAxisX = new THREE.Line(
           new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0.35, 0.95, 0), new THREE.Vector3(3.45, 0.95, 0)]),
@@ -27695,7 +27910,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0.35, 0.95, 0), new THREE.Vector3(0.35, 3.55, 0)]),
           phAxisMat
         );
-        worldGroup.add(phAxisX, phAxisY);
+        const nullclineMat = new THREE.LineBasicMaterial({ color: 0xb45309, transparent: true, opacity: 0.38 });
+        const nullclineX = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(1.85, 0.95, 0), new THREE.Vector3(1.85, 3.45, 0)]),
+          nullclineMat
+        );
+        const nullclineY = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0.35, 2.25, 0), new THREE.Vector3(3.35, 2.25, 0)]),
+          nullclineMat
+        );
+        worldGroup.add(phAxisX, phAxisY, nullclineX, nullclineY);
 
         // 3D-фазова орбіта Лотки–Вольтерри праворуч та біжуча фазова кулька (x(t), y(t))
         const orbitPts = [];

@@ -147,11 +147,13 @@
     scene.background = new THREE.Color(0xf4f2ed);
     scene.fog = new THREE.FogExp2(0xf4f2ed, 0.011);
 
-    const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 200);
+    const initVpW = (container && container.clientWidth) ? container.clientWidth : window.innerWidth;
+    const initVpH = (container && container.clientHeight) ? container.clientHeight : window.innerHeight;
+    const camera = new THREE.PerspectiveCamera(42, initVpW / Math.max(1, initVpH), 0.1, 200);
     camera.position.set(0, 6.2, 16.0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(initVpW, initVpH);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -22417,7 +22419,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.centralMetal.material.color.setHSL(hue, 0.78, 0.52);
 
         const center = this.centralMetal.position;
-        const scaleR = rML * 0.68;
+        const breathe = 1 + 0.045 * Math.sin(this.phase * 3.0);
+        const scaleR = rML * 0.68 * breathe;
+        const rotY = this.phase * 0.42;
         const dirs = (geom === 1) ? [
           new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0),
           new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, -1, 0),
@@ -22431,15 +22435,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ];
 
         const up = new THREE.Vector3(0, 1, 0);
+        const yAxis = new THREE.Vector3(0, 1, 0);
         for (let i = 0; i < 6; i++) {
           if (i < dirs.length) {
             this.ligands[i].visible = true;
             this.bonds[i].visible = true;
-            const pos = center.clone().add(dirs[i].clone().multiplyScalar(scaleR));
+            const rDir = dirs[i].clone().applyAxisAngle(yAxis, rotY);
+            const pos = center.clone().add(rDir.clone().multiplyScalar(scaleR));
             this.ligands[i].position.copy(pos);
             this.bonds[i].position.copy(center).add(pos).multiplyScalar(0.5);
             this.bonds[i].scale.set(1, scaleR, 1);
-            this.bonds[i].quaternion.setFromUnitVectors(up, dirs[i]);
+            this.bonds[i].quaternion.setFromUnitVectors(up, rDir);
           } else {
             this.ligands[i].visible = false;
             this.bonds[i].visible = false;
@@ -22448,10 +22454,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
         const splitY = Math.min(1.0, deltaEff / 280);
         this.t2gBars.forEach((b, i) => {
-          b.position.set(2.05 + i * 0.85, 1.85 - splitY * 0.45, -0.88);
+          b.position.set(2.05 + i * 0.85, 1.85 - splitY * 0.45 + Math.sin(this.phase * 3.5 + i) * 0.02, -0.88);
         });
         this.egBars.forEach((b, i) => {
-          b.position.set(2.45 + i * 0.9, 1.85 + splitY * 0.65, -0.88);
+          b.position.set(2.45 + i * 0.9, 1.85 + splitY * 0.65 + Math.cos(this.phase * 3.5 + i) * 0.02, -0.88);
         });
 
         this.arrDelta.update(new THREE.Vector3(2.9, 1.85 - splitY * 0.45, -0.7), new THREE.Vector3(0, 1, 0), Math.max(0.35, splitY * 1.1), uiState.showVectors, uiState.showLabels);
@@ -22470,6 +22476,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       update(dt) {
         this.phase += dt;
+        if (Math.random() < 0.28) {
+          this.particles.emit(
+            new THREE.Vector3(2.85 + (Math.random() - 0.5) * 0.9, 1.55, -0.82),
+            new THREE.Vector3((Math.random() - 0.5) * 0.3, 0.9 + Math.random() * 0.4, 0),
+            0x38bdf8
+          );
+        }
+        this.particles.update(dt);
         this.syncVisuals();
       }
 
@@ -22998,6 +23012,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       update(dt) {
         this.phase += dt;
+        if (uiState.running) {
+          this.params.elapsedTimeT += dt * 1.15;
+          if (this.params.elapsedTimeT > 10.0) {
+            this.params.elapsedTimeT = 0.0;
+          }
+          const sl = document.getElementById('slider-elapsedTimeT');
+          const vl = document.getElementById('val-elapsedTimeT');
+          if (sl) sl.value = this.params.elapsedTimeT;
+          if (vl) vl.textContent = `${this.params.elapsedTimeT.toFixed(1)} ${uiState.lang === 'en' ? 's' : 'с'}`;
+          updateLiveFormula();
+        }
         this.syncVisuals();
       }
 
@@ -23555,14 +23580,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.spots.forEach((sp, i) => {
           const ySpot = yStart + rfs[i] * lFront * scaleCm;
           sp.position.set(-1.8 + (i - 1) * 0.48, ySpot, 0.06);
-          const sz = 0.75 + load * 0.25;
+          const sz = (0.75 + load * 0.25) * (1 + 0.03 * Math.sin(this.phase * 3.2 + i));
           sp.scale.set(sz * 1.1, sz * 0.85, 0.35);
         });
 
         this.colBands.forEach((band, i) => {
           const yBand = 3.05 - rfs[i] * (lFront / 10) * 2.4;
           band.position.set(1.8, yBand, 0);
-          band.scale.set(1, 0.7 + load * 0.25, 1);
+          band.scale.set(1, (0.7 + load * 0.25) * (1 + 0.03 * Math.cos(this.phase * 3.2 + i)), 1);
         });
 
         const resRs = 2.4 * Math.abs(rfs[0] - rfs[2]) * Math.sqrt(lFront / 5.0);
@@ -23582,6 +23607,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       update(dt) {
         this.phase += dt;
+        if (uiState.running) {
+          this.params.frontHeight += dt * 0.95;
+          if (this.params.frontHeight > 9.5) {
+            this.params.frontHeight = 2.0;
+          }
+          const sl = document.getElementById('slider-frontHeight');
+          const vl = document.getElementById('val-frontHeight');
+          if (sl) sl.value = this.params.frontHeight;
+          if (vl) vl.textContent = `${this.params.frontHeight.toFixed(1)} ${uiState.lang === 'en' ? 'cm' : 'см'}`;
+          updateLiveFormula();
+        }
         this.syncVisuals();
       }
 
@@ -23808,7 +23844,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.arrZeta.update(new THREE.Vector3(-1.4, 2.9, 0), new THREE.Vector3(0, 1, 0), Math.max(0.2, zetaMv / 35), uiState.showVectors, uiState.showLabels);
         this.arrScat.update(new THREE.Vector3(1.4, 2.9, 0), new THREE.Vector3(0, 1, 0), Math.max(0.25, iTyndall / 45), uiState.showVectors, uiState.showLabels);
 
-        updateEnergyUI(zetaMv, iTyndall, cccMm, 100, [
+        const coagPct = Math.min(100, Math.max(0, (1 - zetaMv / 58) * 100));
+        updateEnergyUI(zetaMv, iTyndall, coagPct, 100, [
           { label: 'Діаметр колоїдних міцел d', val: `${dNm.toFixed(0)} нм (${dNm < 5 ? 'істинний розчин' : 'колоїдний золь'})` },
           { label: 'Інтенсивність конуса Тіндаля I_розс', val: `${iTyndall.toFixed(1)} ум. од. (λ = ${lam} нм, закон Релея ∝ λ⁻⁴)` },
           { label: 'Дзета-потенціал ПЕШ ζ', val: `${zetaMv.toFixed(1)} мВ (критичний поріг ~30 мВ)` },
@@ -24248,10 +24285,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.receiveShadow = true;
         this.group.add(base);
 
-        this.stand = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.2, 1.7, 20), createTechnicalMaterial(0x475569, 0.4, 0.6));
-        this.stand.position.set(0, 0.95, 0);
-        this.group.add(this.stand);
-
         // Central chiral/prochiral carbon atom
         this.carbon = new THREE.Mesh(new THREE.SphereGeometry(0.36, 28, 28), createTechnicalMaterial(0x334155, 0.25, 0.5));
         this.carbon.position.set(0, 2.0, 0);
@@ -24336,7 +24369,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           ? 'Тригонально-біпірамідальний перехідний стан [HO···CH₃···Br]⁻‡ (sp²)'
           : (xi < 0.5 ? 'Вихідний субстрат CH₃Br + тильна атака OH⁻' : 'Інвертований продукт CH₃OH + відщеплений Br⁻');
 
-        updateEnergyUI(Math.max(0, eProfile), rateV * 20, ea, 110, [
+        updateEnergyUI(rateV * 20, Math.max(0, eProfile), xi * 100, 110, [
           { label: 'Стадія координати реакції ξ', val: `${xi.toFixed(2)}: ${stateDesc}` },
           { label: 'Кінетичний закон реакції S_N2', val: `v = k₂[R–X][Nu⁻] = ${rateV.toFixed(2)} моль/(л·с) (2-й порядок)` },
           { label: 'Енергія вздовж шляху реакції E(ξ)', val: `${eProfile.toFixed(1)} кДж/моль (бар'єр ΔG‡ = ${ea} кДж/моль)` },
@@ -24348,6 +24381,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       update(dt) {
         this.phase += dt;
+        if (uiState.running) {
+          this.params.rxnCoordXi += dt * 0.22;
+          if (this.params.rxnCoordXi > 1.0) {
+            this.params.rxnCoordXi = 0.0;
+          }
+          const sl = document.getElementById('slider-rxnCoordXi');
+          const vl = document.getElementById('val-rxnCoordXi');
+          if (sl) sl.value = this.params.rxnCoordXi;
+          if (vl) vl.textContent = `${this.params.rxnCoordXi.toFixed(2)}`;
+          updateLiveFormula();
+        }
         this.syncVisuals();
       }
 
@@ -24952,7 +24996,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const inp = document.querySelector(`#sliders-container input[data-param-key="${k}"]`);
           const sCfg = (cfg.sliders || []).find(s => s.key === k);
           if (inp) {
-            inp.value = v;
+            const curMin = parseFloat(inp.min);
+            const curMax = parseFloat(inp.max);
+            const curStep = parseFloat(inp.step) || 1;
+            if (v < curMin) inp.min = String(v);
+            if (v > curMax) inp.max = String(v);
+            const kSteps = (v - parseFloat(inp.min)) / curStep;
+            if (Math.abs(kSteps - Math.round(kSteps)) > 1e-5) {
+              const dec = Math.max((String(curStep).split('.')[1] || '').length, (String(v).split('.')[1] || '').length);
+              inp.step = String(dec > 0 ? Math.pow(10, -dec) : 1);
+            }
+            inp.value = String(v);
             if (typeof updateSliderFill === 'function') updateSliderFill(inp);
           }
           const rd = document.getElementById(`readout-${k}`);
@@ -25462,16 +25516,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
 
-        // Опорні стійки біоенергетичної камери
-        for (const sx of [-3.9, 3.9]) {
-          const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.11, 0.13, 3.8, 18),
-            new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.28 })
-          );
-          post.position.set(sx, 2.05, -1.6);
-          worldGroup.add(post);
-        }
-
         // Внутрішня мембрана мітохондрії (криста) на рівні y = 2.15 (depthWrite: false для прозорості)
         this.innerMembrane = new THREE.Mesh(
           new THREE.BoxGeometry(7.6, 0.36, 2.4),
@@ -25974,6 +26018,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       update(dt) {
         this.phase += dt;
+        this.stageTimer = (this.stageTimer || 0) + dt;
+        if (this.stageTimer >= 3.2) {
+          this.stageTimer = 0;
+          const p = sceneParams.bio_mitosis;
+          const nextStage = (Math.round(p.mitosisStage) % 4) + 1;
+          p.mitosisStage = nextStage;
+          const inp = document.querySelector('#sliders-container input[data-param-key="mitosisStage"]');
+          if (inp) {
+            inp.value = String(nextStage);
+            if (typeof updateSliderFill === 'function') updateSliderFill(inp);
+          }
+          const rd = document.getElementById('readout-mitosisStage');
+          if (rd) rd.textContent = String(nextStage);
+          if (typeof updateLiveFormulaSubstitution === 'function') updateLiveFormulaSubstitution();
+        }
+        if (Math.random() < 0.35) {
+          this.particles.emit(new THREE.Vector3((Math.random() - 0.5) * 1.4, 2.35 + (Math.random() - 0.5) * 0.8, 0), 1, 0xd97706);
+        }
+        this.particles.update(dt);
         this.syncVisuals();
       }
 
@@ -26269,14 +26332,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
-
-        // Низькопрофільна опора під малою субодиницею рибосоми (не протикає субодиницю)
-        const stand = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.36, 0.48, 0.62, 22),
-          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.3 })
-        );
-        stand.position.set(0, 0.59, 0);
-        worldGroup.add(stand);
 
         this.riboGroup = new THREE.Group();
         this.riboGroup.position.set(0, 2.15, 0);
@@ -26607,12 +26662,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const topZ = cz - totalSize * 0.5;
 
         // Квадрант AA (p × p)
-        const hAA = 0.4 + fAA * 2.4;
+        const pulse0 = 1 + Math.sin(this.phase * 2.4) * 0.04;
+        const pulse1 = 1 + Math.sin(this.phase * 2.4 + 1.5) * 0.04;
+        const pulse2 = 1 + Math.sin(this.phase * 2.4 + 3.0) * 0.04;
+        const hAA = (0.4 + fAA * 2.4) * pulse0;
         this.blocks[0].scale.set(wP * 0.94, hAA, wP * 0.94);
         this.blocks[0].position.set(leftX + wP * 0.5, 0.46 + hAA * 0.5, topZ + wP * 0.5);
 
         // Квадрант Aa (p × q)
-        const hAa = 0.4 + (freqP * freqQ) * 2.4;
+        const hAa = (0.4 + (freqP * freqQ) * 2.4) * pulse1;
         this.blocks[1].scale.set(wQ * 0.94, hAa, wP * 0.94);
         this.blocks[1].position.set(leftX + wP + wQ * 0.5, 0.46 + hAa * 0.5, topZ + wP * 0.5);
 
@@ -26621,14 +26679,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.blocks[2].position.set(leftX + wP * 0.5, 0.46 + hAa * 0.5, topZ + wP + wQ * 0.5);
 
         // Квадрант aa (q × q)
-        const haa = 0.4 + faa * 2.4 * (1 - selS * 0.5);
+        const haa = (0.4 + faa * 2.4 * (1 - selS * 0.5)) * pulse2;
         this.blocks[3].scale.set(wQ * 0.94, haa, wQ * 0.94);
         this.blocks[3].position.set(leftX + wP + wQ * 0.5, 0.46 + haa * 0.5, topZ + wP + wQ * 0.5);
 
         // Колони частот генотипів праворуч
-        const colAAH = Math.max(0.2, fAA * 3.4);
-        const colAaH = Math.max(0.2, fAa * 3.4);
-        const colaaH = Math.max(0.2, faa * 3.4);
+        const colAAH = Math.max(0.2, fAA * 3.4 * pulse0);
+        const colAaH = Math.max(0.2, fAa * 3.4 * pulse1);
+        const colaaH = Math.max(0.2, faa * 3.4 * pulse2);
 
         this.barAA.scale.set(1, colAAH, 1);
         this.barAA.position.set(1.05, 0.28 + colAAH * 0.5, 0);
@@ -26707,6 +26765,33 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       update(dt) {
         this.phase += dt;
+        const p = sceneParams.bio_mendel;
+        if (p.selectionS > 0.01) {
+          this.genTimer = (this.genTimer || 0) + dt;
+          if (this.genTimer >= 1.2) {
+            this.genTimer = 0;
+            const fp = p.alleleP;
+            const fq = 1 - fp;
+            const wBar = Math.max(0.05, 1 - p.selectionS * fq * fq);
+            const nextP = Math.min(0.95, parseFloat(((fp * fp + fp * fq) / wBar).toFixed(2)));
+            if (Math.abs(nextP - fp) >= 0.01) {
+              p.alleleP = nextP;
+              const inp = document.querySelector('#sliders-container input[data-param-key="alleleP"]');
+              if (inp) {
+                inp.value = String(nextP);
+                if (typeof updateSliderFill === 'function') updateSliderFill(inp);
+              }
+              const rd = document.getElementById('readout-alleleP');
+              if (rd) rd.textContent = String(nextP);
+              if (typeof updateLiveFormulaSubstitution === 'function') updateLiveFormulaSubstitution();
+            }
+          }
+        }
+        if (Math.random() < 0.35) {
+          const cols = [0x1e40af, 0x166534, 0xb45309];
+          this.particles.emit(new THREE.Vector3(-1.95 + (Math.random() - 0.5) * 1.6, 1.2, (Math.random() - 0.5) * 1.6), 1, cols[Math.floor(Math.random() * 3)]);
+        }
+        this.particles.update(dt);
         this.syncVisuals();
       }
 
@@ -26737,16 +26822,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
-
-        // Лабораторні тримачі бішарової мембрани по краях (x = ±3.55)
-        for (const sx of [-3.55, 3.55]) {
-          const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.11, 0.13, 2.35, 18),
-            new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.28 })
-          );
-          post.position.set(sx, 1.32, 0);
-          worldGroup.add(post);
-        }
 
         // Ліпідний бішар (гідрофільні фосфатні голівки зверху й знизу + вуглеводневі хвости)
         const headMat = new THREE.MeshStandardMaterial({ color: 0x0369a1, roughness: 0.34 });
@@ -26945,15 +27020,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
-
-        for (const sx of [-3.6, 3.6]) {
-          const post = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.10, 0.12, 1.90, 16),
-            new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.3 })
-          );
-          post.position.set(sx, 1.15, 0);
-          worldGroup.add(post);
-        }
 
         // Тіло нейрона (сома з ядром та дендритами ліворуч x = -3.95) і синаптична терміналь праворуч (x = 3.85)
         const somaMat = new THREE.MeshStandardMaterial({ color: 0x1e40af, roughness: 0.34, metalness: 0.15 });
@@ -27646,14 +27712,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         );
         base.position.set(0, 0.14, 0);
         worldGroup.add(base);
-
-        // Низькопрофільна опора центрального тетрамера гемоглобіну (ліворуч x = -0.85)
-        const stand = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.32, 0.45, 0.72, 20),
-          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.3 })
-        );
-        stand.position.set(-0.85, 0.64, 0);
-        worldGroup.add(stand);
 
         // Тетрамер гемоглобіну α₂β₂ (4 субодиниці з порфіриновими гемами Fe²⁺ та лігандами O₂)
         this.tetramerGroup = new THREE.Group();
@@ -31089,8 +31147,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         categoryGroupTitle: 'Part III. Solutions, Electrolytic Dissociation & Analytical Chemistry',
         epigraph: '«Between the realm of true molecular solutions and coarse suspensions lies the world of neglected dimensions, the colloidal state.», Wolfgang Ostwald, 1914',
         figCaption: 'Fig. C-34. Laser beam passing through a true solution (left) and a colloidal sol with a glowing Tyndall cone and electrical double-layer micelles (right).',
-        ekLabel: 'Tyndall Scattering I_scat (rel.)',
-        epLabel: 'Zeta Potential |ζ| (mV)',
+        ekLabel: 'Zeta Potential |ζ| (mV)',
+        epLabel: 'Tyndall Scattering I_scat (rel.)',
         qLabel: 'Coagulated Aggregate Fraction (%)',
         referenceLatex: String.raw`I_{\text{scat}} \propto I_0\frac{N d^6}{\lambda^4}, \qquad \zeta = \frac{\sigma\,\kappa^{-1}}{\varepsilon\varepsilon_0}, \qquad \text{CCC} \propto \frac{1}{z^6}`,
         question: 'How can a colloidal sol (particle size $1\\text{–}100\\text{ nm}$) be distinguished optically from a true solution, and why is $\\text{Al}^{3+}$ ($z=3$) hundreds of times more effective at coagulating a negatively charged sol than $\\text{Na}^+$ ($z=1$)?',
@@ -31334,8 +31392,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         epigraph: '«It has not escaped our notice that the specific pairing we have postulated immediately suggests a possible copying mechanism for the genetic material.», James D. Watson & Francis H. C. Crick, 1953',
         figCaption: 'Fig. C-40. 3D secondary structure of the Pauling–Corey protein α-helix (i → i+4 H-bonds) and Watson–Crick B-DNA double helix (A=T and G≡C base pairs).',
         ekLabel: 'Complementary H-Bond Count N_HB',
-        epLabel: 'Native Helix Integrity (%)',
-        qLabel: 'Melting Temperature T_m (°C)',
+        epLabel: 'Melting Temperature T_m (°C)',
+        qLabel: 'Native Helix Integrity (%)',
         referenceLatex: String.raw`[\mathrm{A}]=[\mathrm{T}],\;\;[\mathrm{G}]=[\mathrm{C}], \qquad \mathrm{A{=}T}\;(2\text{ H-bonds}),\;\;\mathrm{G{\equiv}C}\;(3\text{ H-bonds}), \qquad T_m \approx 69.3 + 0.41(\%\mathrm{GC})`,
         question: 'Why does a DNA double helix with a higher guanine–cytosine ($\\text{G}\\equiv\\text{C}$) content have a significantly higher thermal denaturation (melting) temperature $T_m$ than an $\\text{A=T}$-rich duplex?',
         options: [
@@ -32811,17 +32869,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         prevTitle: 'Previous chapter',
         nextTitle: 'Next chapter',
         adHdrBadge: 'AD',
-        adHdrText: 'Google Ads Space',
-        adHdrSub: 'Responsive Banner · ca-pub-2903108049371777',
+        adHdrText: 'Advertisement',
+        adHdrSub: 'Sponsored Banner',
         adHdrCta: '',
-        adLeftLabel: 'Google Ads',
-        adLeftTitle: 'Google Ads Space',
+        adLeftLabel: 'Advertisement',
+        adLeftTitle: 'Advertisement',
         adLeftSub: 'Banner 320×100 / Responsive Unit',
-        adLeftSpec: 'AdSense Slot · 4173783296',
-        adRightLabel: 'Google Ads',
-        adRightTitle: 'Google Ads Space',
+        adLeftSpec: 'Sponsored Slot',
+        adRightLabel: 'Advertisement',
+        adRightTitle: 'Advertisement',
         adRightSub: 'Rectangle 300×250 MREC Unit',
-        adRightSpec: 'AdSense Slot · 4173783296',
+        adRightSpec: 'Sponsored Slot',
         filterAll: 'All experiments (46)',
         filterOptics: 'Optics and waves (14)',
         filterMechanics: 'Mechanics (15)',
@@ -32936,7 +32994,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         chemMod6Desc: '3D conformations of alkanes and alkenes, benzene aromaticity, chiral centers, and optical isomers.',
         chemModalBackBtn: 'Back to physics',
         mobileUnsupportedTitle: 'Desktop screen required',
-        mobileUnsupportedSub: 'This 3D laboratory is designed for desktop and laptop screens. Please open the site on a computer.'
+        mobileUnsupportedSub: 'This 3D laboratory is designed for desktop and laptop screens. Please open the site on a computer.',
+        footerAbout: 'About & Contact',
+        footerPrivacy: 'Privacy Policy',
+        footerTerms: 'Terms of Use',
+        footerCopy: '© 2026 physics.sheua.com · Interactive 3D Science Lab (98 Simulations)'
       },
       uk: {
         docTitle: 'Курс загальної фізики · Інтерактивний 3D-підручник',
@@ -32945,17 +33007,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         prevTitle: 'Попередній параграф',
         nextTitle: 'Наступний параграф',
         adHdrBadge: 'AD',
-        adHdrText: 'Місце під рекламу Google Ads',
-        adHdrSub: 'Адаптивний банер · ca-pub-2903108049371777',
+        adHdrText: 'Реклама',
+        adHdrSub: 'Спонсорський банер',
         adHdrCta: '',
-        adLeftLabel: 'Google Ads',
-        adLeftTitle: 'Місце під рекламу Google Ads',
+        adLeftLabel: 'Реклама',
+        adLeftTitle: 'Реклама',
         adLeftSub: 'Банер 320×100 / Адаптивний блок',
-        adLeftSpec: 'AdSense Slot · 4173783296',
-        adRightLabel: 'Google Ads',
-        adRightTitle: 'Місце під рекламу Google Ads',
+        adLeftSpec: 'Спонсорський блок',
+        adRightLabel: 'Реклама',
+        adRightTitle: 'Реклама',
         adRightSub: 'Прямокутник 300×250 MREC',
-        adRightSpec: 'AdSense Slot · 4173783296',
+        adRightSpec: 'Спонсорський блок',
         filterAll: 'Усі (46)',
         filterOptics: 'Оптика і хвилі (14)',
         filterMechanics: 'Механіка (15)',
@@ -33069,7 +33131,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         chemMod6Desc: '3D-конформації алканів і циклоалканів, π-система бензену, цис-транс і оптична ізомерія.',
         chemModalBackBtn: '← Повернутися до практикуму з фізики (46 дослідів)',
         mobileUnsupportedTitle: 'Потрібен екран комп\'ютера',
-        mobileUnsupportedSub: 'Ця 3D-лабораторія розрахована на роботу з комп\'ютера або ноутбука. Відкрийте сайт на ПК.'
+        mobileUnsupportedSub: 'Ця 3D-лабораторія розрахована на роботу з комп\'ютера або ноутбука. Відкрийте сайт на ПК.',
+        footerAbout: 'Про проєкт і контакти',
+        footerPrivacy: 'Політика конфіденційності',
+        footerTerms: 'Умови використання',
+        footerCopy: '© 2026 physics.sheua.com · Інтерактивний 3D-підручник (98 симуляцій)'
       }
     };
 
@@ -35047,7 +35113,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
     const BOOK_SVG_ICON = `<svg class="theory-book-svg" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5C2.5 3.95 2.95 3.5 3.5 3.5H7.8C9.15 3.5 10 4.25 10 5.5V16.2C10 15.35 9.25 14.8 8.2 14.8H3.5C2.95 14.8 2.5 14.35 2.5 13.8V4.5Z"/><path d="M17.5 4.5C17.5 3.95 17.05 3.5 16.5 3.5H12.2C10.85 3.5 10 4.25 10 5.5V16.2C10 15.35 10.75 14.8 11.8 14.8H16.5C17.05 14.8 17.5 14.35 17.5 13.8V4.5Z"/></svg>`;
 
-    let theoryLeftOpen = false;
+    let theoryLeftOpen = true;
     let theoryRightOpen = false;
     let questionHintOpen = false;
     let dropdownSearchQuery = '';
@@ -35558,6 +35624,32 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           renderDropdownMenu();
         });
       }
+
+      // 6. Видимий каталог курсу та офіційний підвал сайту (Політика конфіденційності, Умови, Про проєкт)
+      const rightPage = document.getElementById('right-sidebar');
+      const seoNav = document.getElementById('seo-experiment-links');
+      if (rightPage && seoNav && seoNav.parentElement !== rightPage) {
+        rightPage.appendChild(seoNav);
+      }
+      if (rightPage && !document.getElementById('site-legal-footer')) {
+        const rootPrefix = window.location.protocol.startsWith('http')
+          ? '/'
+          : (/(?:^|\/)uk\/sim\//i.test(window.location.pathname) ? '../../' : (/(?:^|\/)(?:sim|uk)\//i.test(window.location.pathname) ? '../' : ''));
+        const footer = document.createElement('footer');
+        footer.id = 'site-legal-footer';
+        footer.className = 'site-legal-footer';
+        footer.innerHTML = `
+          <div class="site-legal-links">
+            <a id="ui-footer-about" href="${rootPrefix}about.html">${t.footerAbout}</a>
+            <span aria-hidden="true">·</span>
+            <a id="ui-footer-privacy" href="${rootPrefix}privacy.html">${t.footerPrivacy}</a>
+            <span aria-hidden="true">·</span>
+            <a id="ui-footer-terms" href="${rootPrefix}terms.html">${t.footerTerms}</a>
+          </div>
+          <div id="ui-footer-copy" class="site-legal-copy">${t.footerCopy}</div>
+        `;
+        rightPage.appendChild(footer);
+      }
     }
 
     function updateTheoryDrawerContent() {
@@ -35685,6 +35777,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
+      setTxt('ui-footer-about', t.footerAbout);
+      setTxt('ui-footer-privacy', t.footerPrivacy);
+      setTxt('ui-footer-terms', t.footerTerms);
+      setTxt('ui-footer-copy', t.footerCopy);
       setTxt('ui-brand-title', t.brandTitle);
       setTxt('ui-disc-physics', t.discPhysics);
       setTxt('ui-disc-chemistry', t.discChemistry);
@@ -35790,19 +35886,135 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     const chartCanvas = document.getElementById('chart-canvas');
     const chartCtx = chartCanvas.getContext('2d');
 
+    function formatMetricBarSlot(rawVal, rawLabel, sceneKey, isEn) {
+      const lbl = String(rawLabel || '');
+      let val = Number.isFinite(rawVal) ? rawVal : 0;
+
+      // Unscale values where label indicates a visual multiplier like (×10), (×7), (×100)
+      const multMatch = lbl.match(/\(×\s*(\d+(?:\.\d+)?)\s*([a-zA-Zа-яА-ЯіїєґІЇЄҐ%°]*)\)/);
+      let explicitMultUnit = '';
+      if (multMatch) {
+        const factor = parseFloat(multMatch[1]);
+        if (factor > 0) val = val / factor;
+        explicitMultUnit = (multMatch[2] || '').trim();
+      }
+
+      if (sceneKey === 'bio_mendel' || sceneKey === 'bio_hemo') {
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (sceneKey === 'bio_lotka') {
+        if (/дисипац|dissip|10%/i.test(lbl)) {
+          return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        return { text: `${val.toFixed(0)} ${isEn ? 'ind.' : 'особ.'}`, unit: isEn ? 'ind.' : 'особ.', isEnergy: false };
+      }
+      if (sceneKey === 'photoelectric' || sceneKey === 'bohr' || sceneKey === 'compton' || sceneKey === 'chem_orbitals') {
+        if (/Δλ|зсув|shift/i.test(lbl)) {
+          return { text: `${val.toFixed(2)} ${isEn ? 'pm' : 'пм'}`, unit: isEn ? 'pm' : 'пм', isEnergy: false };
+        }
+        const uEv = isEn ? 'eV' : 'еВ';
+        return { text: `${val.toFixed(2)} ${uEv}`, unit: uEv, isEnergy: true };
+      }
+
+      if (explicitMultUnit) {
+        return { text: `${val.toFixed(2)} ${explicitMultUnit}`.trim(), unit: explicitMultUnit, isEnergy: false };
+      }
+      if (/\(%\)|%|частка.*%|вихід.*%|ступінь.*%|інверсії|коагуляції|заряду.*SoC|нативної спіралі|гетерозигот/i.test(lbl)) {
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (/\(‰\)|‰/.test(lbl)) {
+        return { text: `${val.toFixed(2)} ‰`, unit: '‰', isEnergy: false };
+      }
+      if (/\bpH\b/i.test(lbl)) {
+        const phVal = (sceneKey === 'chem_titration' && val > 14.5) ? (val / 7) : ((val > 14.5) ? (val / 10) : val);
+        return { text: `${phVal.toFixed(2)}`, unit: '', isEnergy: false };
+      }
+      if (/\bR_f\b|Індекс lg|Абсорбція A|Absorbance|Ступінь іонності|Хвильовий зсув|Фазовий зсув/i.test(lbl)) {
+        return { text: `${val.toFixed(2)}`, unit: '', isEnergy: false };
+      }
+      if (/\(мВ\)|\(mV\)|ζ-потенціал|Zeta/i.test(lbl)) {
+        const u = isEn ? 'mV' : 'мВ';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/\(В\)|\(V\)|Напруга|ЕРС|Voltage|EMF/i.test(lbl)) {
+        const u = isEn ? 'V' : 'В';
+        const vScaled = val > 25 ? val / 10 : val;
+        return { text: `${vScaled.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/\(кПа\)|\(kPa\)|Тиск|Pressure|напір/i.test(lbl)) {
+        const u = isEn ? 'kPa' : 'кПа';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/\(°C\)|°C/i.test(lbl)) {
+        return { text: `${val.toFixed(1)} °C`, unit: '°C', isEnergy: false };
+      }
+      if (/\(К\)|\(K\)|ΔT/i.test(lbl)) {
+        const u = isEn ? 'K' : 'К';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/Дебаях|Debye|Диполь μ|Dipole/i.test(lbl)) {
+        return { text: `${val.toFixed(2)} D`, unit: 'D', isEnergy: false };
+      }
+      if (/кДж\/моль|kJ\/mol|Ентальпія|Enthalpy|ΔH|ΔG|Δ_o|ЕСКП|CFSE|Енергія стабілізації|Енергія розщеплення|Потенціальна енергія уздовж|Potential Barrier/i.test(lbl)) {
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: true };
+      }
+      if (/концентрація|Concentration|\[A\]|\[P\]|\[NO₂\]|\[N₂O₄\]|Розчинність S/i.test(lbl)) {
+        const u = isEn ? 'mol/L' : 'моль/л';
+        const cScaled = val > 10 ? val / 10 : val;
+        return { text: `${cScaled.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/швидкість реакції|Rate v|v₀|V_max|v_синт|v_реакц/i.test(lbl)) {
+        const u = isEn ? 'mol/(L·s)' : 'моль/(л·с)';
+        const rScaled = val > 10 ? val / 10 : val;
+        return { text: `${rScaled.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/Частота|Frequency f/i.test(lbl)) {
+        const u = isEn ? 'Hz' : 'Гц';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (/Інтенсив|Intensity|Тіндаля|Tyndall|потік T|потік R|Flux/i.test(lbl)) {
+        const u = isEn ? 'rel.' : 'відн.';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+
+      const uJ = tUI().jouleUnit;
+      return { text: `${val.toFixed(1)} ${uJ}`, unit: uJ, isEnergy: true };
+    }
+
     function updateEnergyUI(ek, ep, q, maxRefEnergy, telemetryItems, skipHistory = false) {
       lastEnergyUIArgs = [ek, ep, q, maxRefEnergy, telemetryItems];
-      const uJ = tUI().jouleUnit;
-      document.getElementById('ek-val').textContent = `${ek.toFixed(1)} ${uJ}`;
-      document.getElementById('ep-val').textContent = `${ep.toFixed(1)} ${uJ}`;
-      document.getElementById('q-val').textContent = `${q.toFixed(1)} ${uJ}`;
+      const t = tUI();
+      const isEn = uiState.lang === 'en';
+      const sceneKey = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[sceneKey] || {};
+
+      const s0 = formatMetricBarSlot(ek, cfg.ekLabel, sceneKey, isEn);
+      const s1 = formatMetricBarSlot(ep, cfg.epLabel, sceneKey, isEn);
+      const s2 = formatMetricBarSlot(q, cfg.qLabel, sceneKey, isEn);
+
+      document.getElementById('ek-val').textContent = s0.text;
+      document.getElementById('ep-val').textContent = s1.text;
+      document.getElementById('q-val').textContent = s2.text;
+
       const tot = ek + ep + q;
-      document.getElementById('etot-val').textContent = `E = ${tot.toFixed(1)} ${uJ}`;
+      const titleEl = document.getElementById('ui-energy-balance-title');
+      const totEl = document.getElementById('etot-val');
+      if (sceneKey === 'bio_mendel') {
+        if (titleEl) titleEl.textContent = isEn ? 'Genotype ratio' : 'Співвідношення генотипів';
+        if (totEl) totEl.textContent = 'p² + 2pq + q² = 100%';
+      } else if (s0.isEnergy && s1.isEnergy && s2.isEnergy && s0.unit === s1.unit && s1.unit === s2.unit) {
+        if (titleEl) titleEl.textContent = t.energyBalanceTitle;
+        if (totEl) totEl.textContent = `E = ${tot.toFixed(1)} ${s0.unit}`;
+      } else {
+        if (titleEl) titleEl.textContent = isEn ? 'Key indicators' : 'Ключові показники';
+        if (totEl) totEl.textContent = s0.text;
+      }
 
       const denom = Math.max(maxRefEnergy, tot, 0.01);
-      document.getElementById('ek-bar').style.width = `${Math.min(100, (ek / denom) * 100)}%`;
-      document.getElementById('ep-bar').style.width = `${Math.min(100, (ep / denom) * 100)}%`;
-      document.getElementById('q-bar').style.width = `${Math.min(100, (q / denom) * 100)}%`;
+      document.getElementById('ek-bar').style.width = `${Math.min(100, Math.max(0, (ek / denom) * 100))}%`;
+      document.getElementById('ep-bar').style.width = `${Math.min(100, Math.max(0, (ep / denom) * 100))}%`;
+      document.getElementById('q-bar').style.width = `${Math.min(100, Math.max(0, (q / denom) * 100))}%`;
 
       const grid = document.getElementById('telemetry-grid');
       grid.innerHTML = telemetryItems
@@ -35999,9 +36211,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       document.getElementById('scene-epigraph').textContent = cfg.epigraph ? cfg.epigraph.replace(/\s+—\s+/g, ', ') : '';
       document.getElementById('figure-caption-text').textContent = cfg.figCaption ? cfg.figCaption.replace(/\s+—\s+/g, ', ') : '';
 
-      document.getElementById('ek-label').textContent = cfg.ekLabel;
-      document.getElementById('ep-label').textContent = cfg.epLabel;
-      document.getElementById('q-label').textContent = cfg.qLabel;
+      const cleanMetricLabel = str => String(str || '').replace(/\s*\(×\s*\d+(?:\.\d+)?\s*([a-zA-Zа-яА-ЯіїєґІЇЄҐ%°]*)\)/g, (_, u) => u ? ` (${u})` : '');
+      document.getElementById('ek-label').textContent = cleanMetricLabel(cfg.ekLabel);
+      document.getElementById('ep-label').textContent = cleanMetricLabel(cfg.epLabel);
+      document.getElementById('q-label').textContent = cleanMetricLabel(cfg.qLabel);
 
       document.getElementById('question-text').innerHTML = formatTextbookProse(cfg.question);
 
@@ -36031,6 +36244,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       cfg.sliders.forEach(s => {
         const currentVal = sceneParams[key][s.key];
+        const defVal = (cfg.defaults && cfg.defaults[s.key] !== undefined) ? cfg.defaults[s.key] : currentVal;
+        let effStep = s.step;
+        const isAligned = v => {
+          const k = (v - s.min) / effStep;
+          return Math.abs(k - Math.round(k)) < 1e-5;
+        };
+        if (!isAligned(currentVal) || !isAligned(defVal)) {
+          const decOf = n => (String(n).split('.')[1] || '').length;
+          const maxDec = Math.max(decOf(s.step), decOf(s.min), decOf(defVal), decOf(currentVal));
+          effStep = maxDec > 0 ? Math.pow(10, -maxDec) : 1;
+        }
+        const effMin = Math.min(s.min, currentVal, defVal);
+        const effMax = Math.max(s.max, currentVal, defVal);
         const item = document.createElement('div');
         item.className = 'param-control';
         item.innerHTML = `
@@ -36038,7 +36264,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             <span class="param-title">${s.label}</span>
             <span class="param-readout" id="readout-${s.key}">${currentVal}${s.unit ? ' ' + s.unit : ''}</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="${s.key}" min="${s.min}" max="${s.max}" step="${s.step}" value="${currentVal}" />
+          <input type="range" class="book-slider" data-param-key="${s.key}" min="${effMin}" max="${effMax}" step="${effStep}" value="${currentVal}" />
         `;
         slidersContainer.appendChild(item);
 
@@ -36245,13 +36471,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     };
 
     function detectMobilePhone() {
-      const ua = navigator.userAgent || '';
-      const isPhoneUA = /Android.*Mobile|iPhone|iPod|Windows Phone|BlackBerry|Opera Mini|IEMobile/i.test(ua);
-      const isSmallViewport = window.innerWidth <= 820;
-      if (isPhoneUA || isSmallViewport) {
-        document.body.classList.add('is-mobile-phone');
-      } else {
-        document.body.classList.remove('is-mobile-phone');
+      document.body.classList.remove('is-mobile-phone');
+      const mobileOverlay = document.getElementById('mobile-unsupported-overlay');
+      if (mobileOverlay) {
+        mobileOverlay.setAttribute('aria-hidden', 'true');
+        mobileOverlay.style.display = 'none';
       }
     }
     detectMobilePhone();
@@ -36271,6 +36495,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         document.head.appendChild(s);
       }
 
+      const mobileAd = document.getElementById('ad-mobile-bottom');
+      if (mobileAd) mobileAd.remove();
+
       const topIns = document.querySelector('#ad-viewport-banner ins.adsbygoogle');
       if (topIns && isRealClient && ADSENSE_CONFIG.slots.topBanner && ADSENSE_CONFIG.slots.topBanner !== '1111111111') {
         topIns.style.display = 'block';
@@ -36279,15 +36506,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         topIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.topBanner);
         topIns.setAttribute('data-ad-format', 'auto');
         topIns.setAttribute('data-full-width-responsive', 'true');
-      }
-      const mobileIns = document.querySelector('#ad-mobile-bottom ins.adsbygoogle');
-      if (mobileIns && isRealClient && ADSENSE_CONFIG.slots.topBanner && ADSENSE_CONFIG.slots.topBanner !== '1111111111') {
-        mobileIns.style.display = 'block';
-        mobileIns.style.width = '100%';
-        mobileIns.setAttribute('data-ad-client', configuredClient);
-        mobileIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.topBanner);
-        mobileIns.setAttribute('data-ad-format', 'auto');
-        mobileIns.setAttribute('data-full-width-responsive', 'true');
       }
       const leftIns = document.querySelector('#ad-slot-left ins.adsbygoogle');
       if (leftIns && isRealClient && ADSENSE_CONFIG.slots.leftSidebar) {
@@ -36310,6 +36528,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       const pushVisibleAdSlots = () => {
         document.querySelectorAll('ins.adsbygoogle').forEach(slot => {
+          if (slot.closest('#mobile-unsupported-overlay')) return;
           if (slot.getAttribute('data-adsbygoogle-status') || slot.offsetParent === null) return;
           const rect = slot.getBoundingClientRect();
           if (rect.width < 120) return;
@@ -36931,6 +37150,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const isTransparent = Boolean(mat && mat.transparent && mat.opacity < 0.62);
         const isVeryFaint = Boolean(mat && mat.transparent && mat.opacity < 0.18);
         const isPeriodicTile = Boolean(mesh.userData && mesh.userData.periodicTile);
+        const isBioScene = Boolean(sceneKey && sceneKey.startsWith('bio_'));
+        const isMolecularChem = Boolean(sceneKey && /^(chem_orbitals|chem_vsepr|chem_lattice|chem_organic|chem_periodic|chem_hbond|chem_isomerism|chem_polymer|chem_mo|chem_allotropes|chem_complex|chem_bornhaber|chem_dipole|chem_enzyme|chem_sn2|chem_biopol)$/.test(sceneKey));
+        const isBioOrMolecular = isBioScene || isMolecularChem;
 
         // 2. Текстурування та кріплення основних лабораторних плит/стендів (BoxGeometry)
         if (gType === 'BoxGeometry' && !isPeriodicTile) {
@@ -36944,61 +37166,70 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
           // Широка опорна плита лабораторного столу
           if (w >= 4.2 && h >= 0.14 && h <= 0.48 && d >= 1.5 && worldPos.y <= 0.68 && isUpright && !isTransparent) {
-            const hex = (mat && mat.color) ? mat.color.getHex() : 0xd6cfc2;
-            if (hex === 0xd6cfc2 || hex === 0xc2b69f || hex === 0xe2d9c8 || hex === 0xd6d3d1) {
-              mat.map = assets.woodTex;
-              mat.roughness = 0.58;
-              mat.metalness = 0.06;
-              mat.needsUpdate = true;
-            } else if (hex === 0x1e293b || hex === 0x334155 || hex === 0x0f172a) {
-              mat.map = assets.breadboardTex;
-              mat.roughness = 0.42;
-              mat.metalness = 0.52;
-              mat.needsUpdate = true;
-            }
+            if (isBioOrMolecular) {
+              if (mat && mat.color) {
+                mat.color.setHex(0xe5e0d5);
+                mat.roughness = 0.78;
+                mat.metalness = 0.04;
+                mat.needsUpdate = true;
+              }
+            } else {
+              const hex = (mat && mat.color) ? mat.color.getHex() : 0xd6cfc2;
+              if (hex === 0xd6cfc2 || hex === 0xc2b69f || hex === 0xe2d9c8 || hex === 0xd6d3d1) {
+                mat.map = assets.woodTex;
+                mat.roughness = 0.58;
+                mat.metalness = 0.06;
+                mat.needsUpdate = true;
+              } else if (hex === 0x1e293b || hex === 0x334155 || hex === 0x0f172a) {
+                mat.map = assets.breadboardTex;
+                mat.roughness = 0.42;
+                mat.metalness = 0.52;
+                mat.needsUpdate = true;
+              }
 
-            // 4 кутові шестигранні болти та 4 регульовані віброопори
-            const hw = Math.max(0.4, w * 0.5 - 0.32);
-            const hd = Math.max(0.3, d * 0.5 - 0.32);
-            const corners = [[-hw, hd], [hw, hd], [-hw, -hd], [hw, -hd]];
-            const hardwareGrp = new THREE.Group();
-            for (const [cx, cz] of corners) {
-              const boltHead = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.065, 0.065, 0.024, 6),
-                assets.darkSteelMat
-              );
-              boltHead.position.set(cx, h * 0.5 + 0.012, cz);
-              const washer = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.095, 0.095, 0.010, 16),
+              // 4 кутові шестигранні болти та 4 регульовані віброопори
+              const hw = Math.max(0.4, w * 0.5 - 0.32);
+              const hd = Math.max(0.3, d * 0.5 - 0.32);
+              const corners = [[-hw, hd], [hw, hd], [-hw, -hd], [hw, -hd]];
+              const hardwareGrp = new THREE.Group();
+              for (const [cx, cz] of corners) {
+                const boltHead = new THREE.Mesh(
+                  new THREE.CylinderGeometry(0.065, 0.065, 0.024, 6),
+                  assets.darkSteelMat
+                );
+                boltHead.position.set(cx, h * 0.5 + 0.012, cz);
+                const washer = new THREE.Mesh(
+                  new THREE.CylinderGeometry(0.095, 0.095, 0.010, 16),
+                  assets.brassMat
+                );
+                washer.position.set(cx, h * 0.5 + 0.005, cz);
+                hardwareGrp.add(boltHead, washer);
+
+                if (worldPos.y - h * 0.5 >= -0.02) {
+                  const foot = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.14, 0.18, 0.06, 16),
+                    assets.rubberFootMat
+                  );
+                  foot.position.set(cx, -h * 0.5 - 0.02, cz);
+                  hardwareGrp.add(foot);
+                }
+              }
+
+              // Фронтальний латунний шильдик приладу на передньому торці опорної плити
+              const nameplate = new THREE.Mesh(
+                new THREE.BoxGeometry(Math.min(1.15, w * 0.18), Math.min(0.11, h * 0.48), 0.022),
                 assets.brassMat
               );
-              washer.position.set(cx, h * 0.5 + 0.005, cz);
-              hardwareGrp.add(boltHead, washer);
+              nameplate.position.set(0, 0, d * 0.5 + 0.011);
+              hardwareGrp.add(nameplate);
 
-              if (worldPos.y - h * 0.5 >= -0.02) {
-                const foot = new THREE.Mesh(
-                  new THREE.CylinderGeometry(0.14, 0.18, 0.06, 16),
-                  assets.rubberFootMat
-                );
-                foot.position.set(cx, -h * 0.5 - 0.02, cz);
-                hardwareGrp.add(foot);
-              }
+              markNoRaycastRecursive(hardwareGrp);
+              mesh.add(hardwareGrp);
             }
-
-            // Фронтальний латунний шильдик приладу на передньому торці опорної плити
-            const nameplate = new THREE.Mesh(
-              new THREE.BoxGeometry(Math.min(1.15, w * 0.18), Math.min(0.11, h * 0.48), 0.022),
-              assets.brassMat
-            );
-            nameplate.position.set(0, 0, d * 0.5 + 0.011);
-            hardwareGrp.add(nameplate);
-
-            markNoRaycastRecursive(hardwareGrp);
-            mesh.add(hardwareGrp);
           }
 
           // Вертикальні табло/екрани осцилографів та діаграм: сітка, металева рамка та опорні стійки до бази
-          if (w >= 1.8 && h >= 1.5 && d <= 0.30 && isUpright && !isTransparent && worldPos.y >= 1.0 && mesh.scale.x === 1 && mesh.scale.y === 1) {
+          if (!isBioOrMolecular && w >= 1.8 && h >= 1.5 && d <= 0.30 && isUpright && !isTransparent && worldPos.y >= 1.0 && mesh.scale.x === 1 && mesh.scale.y === 1) {
             const hex = (mat && mat.color) ? mat.color.getHex() : 0;
             if ((hex === 0x0f172a || hex === 0x1e293b || hex === 0x111827) && !mat.map) {
               mat.map = assets.screenGridTex;
@@ -37034,7 +37265,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           }
 
           // Вертикальні електродні/конденсаторні пластини: ізоляторна стійка до бази
-          if (w <= 0.32 && h >= 1.5 && d >= 1.5 && isUpright && !isTransparent && mesh.scale.y === 1) {
+          if (!isBioOrMolecular && w <= 0.32 && h >= 1.5 && d >= 1.5 && isUpright && !isTransparent && mesh.scale.y === 1) {
             const botY = worldPos.y - h * 0.5;
             if (botY > 0.26 && botY < 1.5) {
               const legH = botY - 0.24;
@@ -37049,10 +37280,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             }
           }
 
-          // Чіткі креслярські ребра (EdgesGeometry) для прямокутних деталей
+          // Чіткі креслярські ребра (EdgesGeometry) для прямокутних деталей приладів
           const minDim = Math.min(w, h, d);
           const maxDim = Math.max(w, h, d);
-          if (maxDim >= 0.20 && minDim >= 0.035 && !isVeryFaint) {
+          if (!isBioOrMolecular && maxDim >= 0.20 && minDim >= 0.035 && !isVeryFaint) {
             const edges = new THREE.LineSegments(
               new THREE.EdgesGeometry(geo, 28),
               isTransparent ? assets.glassEdgeMat : assets.solidEdgeMat
@@ -37063,7 +37294,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
 
         // 3. Деталізація вертикальних стійок, штативів, циліндрів та скляних колб (CylinderGeometry)
-        if (gType === 'CylinderGeometry') {
+        if (gType === 'CylinderGeometry' && !isBioOrMolecular) {
           const rTop = p.radiusTop !== undefined ? p.radiusTop : 0.1;
           const rBot = p.radiusBottom !== undefined ? p.radiusBottom : 0.1;
           const h = p.height !== undefined ? p.height : 1;
@@ -37394,9 +37625,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     });
 
     window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const vpW = (container && container.clientWidth) ? container.clientWidth : window.innerWidth;
+      const vpH = (container && container.clientHeight) ? container.clientHeight : window.innerHeight;
+      camera.aspect = vpW / Math.max(1, vpH);
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(vpW, vpH);
       fitMathContainers();
     });
 
@@ -37716,38 +37949,43 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (!hit) return;
 
       const sceneKey = uiState.activeScene;
-      const { hKey, vKey, hSign, vSign, clickCycle } = resolveHitBindings(sceneKey, hit.point);
-
       let tileObj = hit.object;
       while (tileObj && (!tileObj.userData || !tileObj.userData.periodicTile)) {
         tileObj = tileObj.parent;
       }
+      const periodicTile = tileObj ? tileObj.userData : null;
+
+      // Normal left-drag always rotates the 3D camera; Shift+drag adjusts parameters directly
+      if (!e.shiftKey && !periodicTile) return;
+
+      const { hKey, vKey, hSign, vSign } = resolveHitBindings(sceneKey, hit.point);
 
       dragState3D = {
         sceneKey,
         startX: e.clientX,
         startY: e.clientY,
         moved: false,
+        shiftDrag: Boolean(e.shiftKey),
         lockedAxis: null,
         hitPoint: hit.point.clone(),
         hitObject: hit.object,
-        periodicTile: tileObj ? tileObj.userData : null,
+        periodicTile,
         hKey,
         vKey,
         hSign,
         vSign,
-        clickCycle,
         startHVal: hKey ? sceneParams[sceneKey][hKey] : 0,
         startVVal: vKey ? sceneParams[sceneKey][vKey] : 0
       };
 
-      controls.enabled = false;
-      renderer.domElement.style.cursor = 'grabbing';
+      if (e.shiftKey) {
+        controls.enabled = false;
+        renderer.domElement.style.cursor = 'grabbing';
+      }
     });
 
     window.addEventListener('pointermove', e => {
       if (!dragState3D) {
-        // Hover state feedback on canvas showing exact parameters for the hovered 3D object
         if (e.target !== renderer.domElement) return;
         const hit = pickInteractiveHit(e.clientX, e.clientY);
         if (hit) {
@@ -37764,7 +38002,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
                 : `Клікніть по 3D-клітинці для вибору елемента №${td.atomicZ} ${td.sym} (${td.nameUk}, Період ${td.periodN}, Група ${td.groupG})`,
               true
             );
-          } else {
+          } else if (e.shiftKey) {
             renderer.domElement.style.cursor = 'grab';
             const sceneKey = uiState.activeScene;
             const cfg = SCENE_CONFIGS[sceneKey];
@@ -37777,8 +38015,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             } else if (hMeta) {
               setInteractionBadgeText(`↔ ${hMeta.label}`, true);
             } else {
-              setInteractionBadgeText(null, true);
+              setInteractionBadgeText(null, false);
             }
+          } else {
+            renderer.domElement.style.cursor = '';
+            setInteractionBadgeText(null, false);
           }
         } else {
           renderer.domElement.style.cursor = '';
@@ -37788,13 +38029,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
 
       const dx = e.clientX - dragState3D.startX;
-      const dy = -(e.clientY - dragState3D.startY); // Upward drag is positive
+      const dy = -(e.clientY - dragState3D.startY);
       if (!dragState3D.moved && Math.hypot(dx, dy) > 6) {
         dragState3D.moved = true;
-        // Lock to a single primary axis ('h' or 'v') for the entire drag so only one parameter changes cleanly
         dragState3D.lockedAxis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
       }
-      if (!dragState3D.moved) return;
+      if (!dragState3D.moved || !dragState3D.shiftDrag) return;
 
       const { sceneKey, hKey, vKey, hSign, vSign, startHVal, startVVal, lockedAxis } = dragState3D;
       const cfg = SCENE_CONFIGS[sceneKey];
@@ -37832,35 +38072,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       controls.enabled = true;
       renderer.domElement.style.cursor = '';
 
-      if (!st.moved) {
-        // Click interaction without drag
-        if (st.periodicTile && st.sceneKey === 'chem_periodic') {
-          if (st.periodicTile.atomicZ) {
-            setSimParamFrom3D('chem_periodic', 'atomicZ', st.periodicTile.atomicZ);
-          } else {
-            setSimParamFrom3D('chem_periodic', 'periodN', st.periodicTile.periodN);
-            setSimParamFrom3D('chem_periodic', 'groupG', st.periodicTile.groupG);
-          }
-          setInteractionBadgeText(
-            uiState.lang === 'en'
-              ? `Selected element #${st.periodicTile.atomicZ} ${st.periodicTile.sym} (${st.periodicTile.nameEn}, Period ${st.periodicTile.periodN}, Group ${st.periodicTile.groupG})`
-              : `Обрано елемент №${st.periodicTile.atomicZ} ${st.periodicTile.sym} (${st.periodicTile.nameUk}, Період ${st.periodicTile.periodN}, Група ${st.periodicTile.groupG})`,
-            true
-          );
-          return;
+      if (!st.moved && st.periodicTile && st.sceneKey === 'chem_periodic') {
+        if (st.periodicTile.atomicZ) {
+          setSimParamFrom3D('chem_periodic', 'atomicZ', st.periodicTile.atomicZ);
+        } else {
+          setSimParamFrom3D('chem_periodic', 'periodN', st.periodicTile.periodN);
+          setSimParamFrom3D('chem_periodic', 'groupG', st.periodicTile.groupG);
         }
-        if (st.clickCycle) {
-          const cfg = SCENE_CONFIGS[st.sceneKey];
-          const sMeta = cfg && cfg.sliders && cfg.sliders.find(s => s.key === st.clickCycle);
-          if (sMeta) {
-            let nextVal = (sceneParams[st.sceneKey][st.clickCycle] || sMeta.min) + (sMeta.step || 1);
-            if (nextVal > sMeta.max) nextVal = sMeta.min;
-            const info = setSimParamFrom3D(st.sceneKey, st.clickCycle, nextVal);
-            if (info) {
-              setInteractionBadgeText(`▸ ${info.label}: ${info.val} ${info.unit}`.trim(), true);
-            }
-          }
-        }
+        setInteractionBadgeText(
+          uiState.lang === 'en'
+            ? `Selected element #${st.periodicTile.atomicZ} ${st.periodicTile.sym} (${st.periodicTile.nameEn}, Period ${st.periodicTile.periodN}, Group ${st.periodicTile.groupG})`
+            : `Обрано елемент №${st.periodicTile.atomicZ} ${st.periodicTile.sym} (${st.periodicTile.nameUk}, Період ${st.periodicTile.periodN}, Група ${st.periodicTile.groupG})`,
+          true
+        );
       } else {
         setInteractionBadgeText(null, false);
       }

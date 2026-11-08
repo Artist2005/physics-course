@@ -2050,6 +2050,56 @@
       text-decoration-color: var(--accent-crimson);
     }
 
+    .cam-dock-sep {
+      display: inline-block;
+      width: 1px;
+      height: 15px;
+      background: var(--rule-dark);
+      margin: 0 3px;
+      flex-shrink: 0;
+    }
+
+    .params-actions-group {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .share-state-btn.copied {
+      color: var(--fig-green);
+      font-weight: 600;
+    }
+
+    .figure-caption-right {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .pin-chart-btn {
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      padding: 1px 6px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      background: var(--bg-inset);
+      text-decoration: none;
+      color: var(--ink-secondary);
+      transition: all 0.12s ease;
+    }
+
+    .pin-chart-btn:hover {
+      background: #efeae0;
+      color: var(--ink-primary);
+    }
+
+    .pin-chart-btn.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+
     .sr-only-seo-nav {
       position: relative;
       order: 6;

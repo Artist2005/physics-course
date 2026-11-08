@@ -35390,10 +35390,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         presetMinTip: 'Low parameter values',
         presetStdTip: 'Default textbook values',
         presetMaxTip: 'High parameter values',
-        searchPlaceholder: 'Search by topic or law...',
+        searchPlaceholder: 'Search all 106 experiments (/)...',
         searchNoResults: 'No matching experiments found.',
-        progressBadgeTip: 'Catalog',
-        kbdFooterHtml: '',
+        progressBadgeTip: 'Solved experiments in this discipline (click for next unsolved)',
+        kbdFooterHtml: '<span class="kbd-chip">Space</span> Run/Pause · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint · <span class="kbd-chip">F</span> Focus 3D · <span class="kbd-chip">/</span> Search',
         brandTitle: '3D Science Lab',
         brandSub: 'Interactive lab',
         discMenuHeader: 'Scientific discipline',
@@ -35537,10 +35537,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         presetMinTip: 'Мінімальні значення параметрів',
         presetStdTip: 'Стандартні значення параметрів',
         presetMaxTip: 'Максимальні значення параметрів',
-        searchPlaceholder: 'Пошук за темою або законом...',
+        searchPlaceholder: 'Пошук серед усіх 106 дослідів (/)...',
         searchNoResults: 'Дослідів за цим запитом не знайдено.',
-        progressBadgeTip: 'Виконані досліди (натисніть, щоб відкрити список)',
-        kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка · <span class="kbd-chip">F</span> Екран',
+        progressBadgeTip: 'Виконані досліди (натисніть, щоб перейти до наступного невиконаного)',
+        kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка · <span class="kbd-chip">F</span> Екран · <span class="kbd-chip">/</span> Пошук',
         brandTitle: '3D Лабораторія',
         brandSub: 'Природничий практикум',
         discMenuHeader: 'Наукова дисципліна',
@@ -36896,7 +36896,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       pendulum: {
         gradeUk: '9–10 клас',
         gradeEn: 'Grade 9–10',
-        analogyUk: 'Згадай гойдалку в парку або старовинний годинник із маятником! Чи बैठне на гойдалку легка дитина, чи дорослий, час одного гойдання залежить лише від довжини тросів $L$, а не від маси людини.',
+        analogyUk: 'Згадай гойдалку в парку або старовинний годинник із маятником! Чи сяде на гойдалку легка дитина, чи дорослий, час одного гойдання залежить лише від довжини тросів $L$, а не від маси людини.',
         analogyEn: 'Think of a playground swing or a grandfather clock! Whether a child or an adult sits on the swing, the time of one back-and-forth swing depends only on the rope length $L$, not on the person’s mass.',
         hintUk: 'Подивись на формулу Гюйгенса $T = 2\\pi\\sqrt{L/g}$: чи є в ній маса тягарця $m$, і як зміниться корінь $\\sqrt{L}$, якщо довжину нитки $L$ збільшити?',
         hintEn: 'Look at Huygens’ formula $T = 2\\pi\\sqrt{L/g}$: does the bob mass $m$ appear in it, and how does $\\sqrt{L}$ change when length $L$ increases?'
@@ -38093,20 +38093,40 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const entry = THEORY_NOTES[key] || THEORY_NOTES.collision;
       const paragraphs = (entry && entry[langKey]) || entry.en;
       const cfg = SCENE_CONFIGS[key];
+      const meta = EDU_META[key] || {};
+      const gradeTag = langKey === 'uk' ? (meta.gradeUk || '') : (meta.gradeEn || '');
+      const analogyTxt = langKey === 'uk' ? (meta.analogyUk || '') : (meta.analogyEn || '');
       const titles = [t.theorySec1Title, t.theorySec2Title, t.theorySec3Title];
 
-      return paragraphs
+      const gradeHtml = gradeTag ? `
+        <div class="theory-meta-bar">
+          <span class="theory-grade-pill">${gradeTag}</span>
+        </div>
+      ` : '';
+
+      const notesHtml = paragraphs
         .map((pText, idx) => `
           <div class="theory-note-block">
             <div class="theory-note-subtitle">${titles[idx] || ''}</div>
             <div class="theory-note-body">${formatStructuredProse(pText)}</div>
           </div>
         `)
-        .join('') + (cfg && cfg.referenceLatex ? `
-          <div class="theory-note-formula">
-            ${renderStackedMath(cfg.referenceLatex)}
-          </div>
-        ` : '');
+        .join('');
+
+      const analogyHtml = analogyTxt ? `
+        <div class="theory-analogy-card">
+          <div class="theory-analogy-title">${t.analogyCardTitle}</div>
+          <div class="theory-analogy-body">${formatTextbookProse(analogyTxt)}</div>
+        </div>
+      ` : '';
+
+      const formulaHtml = (cfg && cfg.referenceLatex) ? `
+        <div class="theory-note-formula">
+          ${renderStackedMath(cfg.referenceLatex)}
+        </div>
+      ` : '';
+
+      return gradeHtml + notesHtml + analogyHtml + formulaHtml;
     }
 
     function shareCurrentExperimentState() {
@@ -38479,6 +38499,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           dropdownSearchQuery = (e.target.value || '').trim().toLowerCase();
           renderDropdownMenu();
         });
+        searchInp.addEventListener('keydown', e => {
+          if (e.key === 'Enter') {
+            const firstItem = document.querySelector('#dropdown-items-list .dropdown-exp-item');
+            if (firstItem) {
+              e.preventDefault();
+              firstItem.click();
+            }
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            if (dropdownSearchQuery) {
+              searchInp.value = '';
+              dropdownSearchQuery = '';
+              renderDropdownMenu();
+            } else {
+              closeDropdownMenu();
+              searchInp.blur();
+            }
+          }
+        });
       }
 
       // 6. Видимий каталог курсу та офіційний підвал сайту (Політика конфіденційності, Умови, Про проєкт)
@@ -38518,6 +38557,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           });
         }
       }
+      if (rightPage && !document.getElementById('ui-kbd-shortcuts-bar')) {
+        const kbdBar = document.createElement('div');
+        kbdBar.id = 'ui-kbd-shortcuts-bar';
+        kbdBar.className = 'kbd-shortcuts-bar';
+        kbdBar.innerHTML = t.kbdFooterHtml;
+        const catDetails = document.getElementById('curriculum-catalog-details');
+        if (catDetails && catDetails.parentElement === rightPage) {
+          rightPage.insertBefore(kbdBar, catDetails);
+        } else {
+          rightPage.appendChild(kbdBar);
+        }
+      }
       if (rightPage && !document.getElementById('site-legal-footer')) {
         const rootPrefix = window.location.protocol.startsWith('http')
           ? '/'
@@ -38538,7 +38589,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         rightPage.appendChild(footer);
       }
 
-      // 7. Кнопка копіювання посилання зі станом повзунків (#btn-share-state)
+      // 7. Кнопка копіювання посилання зі станом повзунків (#btn-share-state) та панель швидких пресетів (#lab-presets-bar)
       const presetDefaultBtn = document.getElementById('btn-preset-default');
       if (presetDefaultBtn && !document.getElementById('btn-share-state')) {
         let actGroup = presetDefaultBtn.parentElement;
@@ -38559,13 +38610,31 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (actGroup) actGroup.insertBefore(shareBtn, presetDefaultBtn);
       }
 
+      const slidersContainer = document.getElementById('sliders-container');
+      if (slidersContainer && slidersContainer.parentElement && !document.getElementById('lab-presets-bar')) {
+        const presetsBar = document.createElement('div');
+        presetsBar.id = 'lab-presets-bar';
+        presetsBar.className = 'lab-presets-bar';
+        presetsBar.innerHTML = `
+          <button type="button" id="btn-preset-min" class="preset-chip-btn" data-preset="min" title="${t.presetMinTip}">${t.presetMin}</button>
+          <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="${t.presetStdTip}">${t.presetStd}</button>
+          <button type="button" id="btn-preset-max" class="preset-chip-btn" data-preset="max" title="${t.presetMaxTip}">${t.presetMax}</button>
+        `;
+        slidersContainer.parentElement.insertBefore(presetsBar, slidersContainer);
+        presetsBar.querySelectorAll('.preset-chip-btn').forEach(chip => {
+          chip.addEventListener('click', () => {
+            applyLabPreset(chip.dataset.preset);
+          });
+        });
+      }
+
       // 8. Кнопка фіксації еталонної кривої на осцилограмі (#btn-pin-chart)
       const figCaptionTop = document.querySelector('.figure-caption-top');
-      const simTimeReadout = document.getElementById('sim-time-readout');
-      if (figCaptionTop && simTimeReadout && !document.getElementById('btn-pin-chart')) {
+      const etotValEl = document.getElementById('etot-val') || (figCaptionTop ? figCaptionTop.lastElementChild : null);
+      if (figCaptionTop && etotValEl && !document.getElementById('btn-pin-chart')) {
         const rightWrap = document.createElement('div');
         rightWrap.className = 'figure-caption-right';
-        simTimeReadout.parentNode.insertBefore(rightWrap, simTimeReadout);
+        figCaptionTop.insertBefore(rightWrap, etotValEl);
         const pinBtn = document.createElement('button');
         pinBtn.type = 'button';
         pinBtn.id = 'btn-pin-chart';
@@ -38574,7 +38643,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         pinBtn.title = t.pinChartTip;
         pinBtn.addEventListener('click', togglePinChartReference);
         rightWrap.appendChild(pinBtn);
-        rightWrap.appendChild(simTimeReadout);
+        rightWrap.appendChild(etotValEl);
       }
 
       // 9. Кнопки презентаційного режиму (#cam-present) та PNG-знімка (#cam-snapshot) у доці камери
@@ -38601,6 +38670,46 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         camProjections.appendChild(sep);
         camProjections.appendChild(presBtn);
         camProjections.appendChild(snapBtn);
+      }
+
+      // 10. Лічильник опанованих дослідів у верхній панелі (#edu-progress-pill)
+      const headerRight = document.querySelector('.header-right');
+      const langSwitcher = headerRight ? headerRight.querySelector('.lang-switcher') : null;
+      if (headerRight && !document.getElementById('edu-progress-pill')) {
+        const progPill = document.createElement('button');
+        progPill.type = 'button';
+        progPill.id = 'edu-progress-pill';
+        progPill.className = 'edu-progress-pill';
+        progPill.title = t.progressBadgeTip;
+        progPill.innerHTML = `<span class="edu-progress-check">✓</span><span id="edu-progress-count">0/46</span>`;
+        if (langSwitcher) {
+          headerRight.insertBefore(progPill, langSwitcher);
+        } else {
+          headerRight.appendChild(progPill);
+        }
+        progPill.addEventListener('click', () => {
+          const discKeys = getDisciplineSceneKeys(uiState.discipline || 'physics');
+          const curIdx = discKeys.indexOf(uiState.activeScene);
+          let nextUnmastered = null;
+          for (let i = 1; i <= discKeys.length; i++) {
+            const candidate = discKeys[(curIdx + i) % discKeys.length];
+            if (!masteredExperiments.has(candidate)) {
+              nextUnmastered = candidate;
+              break;
+            }
+          }
+          if (nextUnmastered) {
+            loadScene(nextUnmastered, true);
+          } else {
+            const expWrap = document.getElementById('exp-dropdown-wrapper');
+            const expTrig = document.getElementById('exp-dropdown-trigger');
+            if (expWrap && expTrig) {
+              expWrap.classList.add('open');
+              expTrig.setAttribute('aria-expanded', 'true');
+            }
+          }
+        });
+        syncEduProgressUI();
       }
     }
 
@@ -39083,6 +39192,24 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       drawEnergyChart();
     }
 
+    let chartHoverRatio = null;
+    if (chartCanvas) {
+      chartCanvas.addEventListener('mousemove', e => {
+        const rect = chartCanvas.getBoundingClientRect();
+        if (!rect.width) return;
+        chartHoverRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        drawEnergyChart();
+      });
+      chartCanvas.addEventListener('mouseleave', () => {
+        chartHoverRatio = null;
+        drawEnergyChart();
+      });
+      chartCanvas.addEventListener('dblclick', () => {
+        resetChartHistory();
+        drawEnergyChart();
+      });
+    }
+
     function drawEnergyChart() {
       const w = chartCanvas.width;
       const h = chartCanvas.height;
@@ -39126,6 +39253,59 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       drawSeries(chartHistory.ek, '#16a34a', false);
       drawSeries(chartHistory.ep, '#2563eb', false);
       drawSeries(chartHistory.q, '#d97706', false);
+
+      if (chartHoverRatio !== null && chartHistory.ek.length >= 2) {
+        const maxIdx = chartHistory.ek.length - 1;
+        const idx = Math.max(0, Math.min(maxIdx, Math.round(chartHoverRatio * (chartHistory.maxPoints - 1))));
+        const x = (idx / (chartHistory.maxPoints - 1)) * w;
+        const vEk = chartHistory.ek[idx] ?? 0;
+        const vEp = chartHistory.ep[idx] ?? 0;
+        const vQ = chartHistory.q[idx] ?? 0;
+        const denom = lastEnergyUIArgs ? Math.max(lastEnergyUIArgs[3] || 1, (lastEnergyUIArgs[0] || 0) + (lastEnergyUIArgs[1] || 0) + (lastEnergyUIArgs[2] || 0), 0.01) : 1;
+
+        chartCtx.save();
+        chartCtx.strokeStyle = 'rgba(24, 24, 27, 0.42)';
+        chartCtx.lineWidth = 1;
+        chartCtx.setLineDash([2, 2]);
+        chartCtx.beginPath();
+        chartCtx.moveTo(x, 4);
+        chartCtx.lineTo(x, h - 4);
+        chartCtx.stroke();
+        chartCtx.setLineDash([]);
+
+        [
+          [vEk, '#16a34a'],
+          [vEp, '#2563eb'],
+          [vQ, '#d97706']
+        ].forEach(([val, col]) => {
+          const y = h - 8 - Math.min(1, Math.max(0, val)) * (h - 16);
+          chartCtx.fillStyle = '#ffffff';
+          chartCtx.strokeStyle = col;
+          chartCtx.lineWidth = 1.8;
+          chartCtx.beginPath();
+          chartCtx.arc(x, y, 3.2, 0, Math.PI * 2);
+          chartCtx.fill();
+          chartCtx.stroke();
+        });
+
+        const fmtN = v => {
+          const realV = v * denom;
+          return realV >= 100 ? realV.toFixed(0) : (realV >= 10 ? realV.toFixed(1) : realV.toFixed(2));
+        };
+        const labelTxt = `${fmtN(vEk)} · ${fmtN(vEp)} · ${fmtN(vQ)}`;
+        chartCtx.font = '600 10px "IBM Plex Mono", monospace';
+        const tw = chartCtx.measureText(labelTxt).width + 10;
+        const bx = Math.max(4, Math.min(w - tw - 4, x - tw / 2));
+        chartCtx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+        chartCtx.strokeStyle = 'rgba(24, 24, 27, 0.18)';
+        chartCtx.lineWidth = 1;
+        chartCtx.fillRect(bx, 4, tw, 15);
+        chartCtx.strokeRect(bx, 4, tw, 15);
+        chartCtx.fillStyle = '#18181b';
+        chartCtx.textBaseline = 'middle';
+        chartCtx.fillText(labelTxt, bx + 5, 11.5);
+        chartCtx.restore();
+      }
     }
 
     function updateLiveFormulaSubstitution() {
@@ -39325,8 +39505,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const readout = item.querySelector('.param-readout');
         updateSliderFill(input);
 
-        input.addEventListener('input', e => {
-          const val = parseFloat(e.target.value);
+        const applySliderValue = rawVal => {
+          const clamped = Math.max(effMin, Math.min(effMax, rawVal));
+          const decOf = n => (String(n).split('.')[1] || '').length;
+          const stepDec = Math.max(decOf(effStep), decOf(rawVal));
+          const val = Number(clamped.toFixed(Math.min(4, stepDec)));
+          input.value = val;
           sceneParams[key][s.key] = val;
           readout.textContent = `${val}${s.unit ? ' ' + s.unit : ''}`;
           updateSliderFill(input);
@@ -39347,6 +39531,55 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               activeSim.syncVisuals();
             }
           }
+        };
+
+        input.addEventListener('input', e => {
+          applySliderValue(parseFloat(e.target.value));
+        });
+
+        input.addEventListener('dblclick', () => {
+          applySliderValue(defVal);
+        });
+
+        readout.title = uiState.lang === 'uk' ? 'Натисніть, щоб ввести точне число' : 'Click to type exact value';
+        readout.addEventListener('click', () => {
+          if (readout.querySelector('input')) return;
+          const cur = sceneParams[key][s.key];
+          const inlineInp = document.createElement('input');
+          inlineInp.type = 'number';
+          inlineInp.className = 'param-inline-input';
+          inlineInp.min = String(effMin);
+          inlineInp.max = String(effMax);
+          inlineInp.step = String(effStep);
+          inlineInp.value = String(cur);
+          readout.textContent = '';
+          readout.appendChild(inlineInp);
+          inlineInp.focus();
+          inlineInp.select();
+
+          let committed = false;
+          const commit = () => {
+            if (committed) return;
+            committed = true;
+            const parsed = parseFloat(inlineInp.value);
+            if (!Number.isNaN(parsed)) {
+              applySliderValue(parsed);
+            } else {
+              readout.textContent = `${sceneParams[key][s.key]}${s.unit ? ' ' + s.unit : ''}`;
+            }
+          };
+          inlineInp.addEventListener('keydown', ev => {
+            ev.stopPropagation();
+            if (ev.key === 'Enter') {
+              ev.preventDefault();
+              commit();
+            } else if (ev.key === 'Escape') {
+              ev.preventDefault();
+              committed = true;
+              readout.textContent = `${sceneParams[key][s.key]}${s.unit ? ' ' + s.unit : ''}`;
+            }
+          });
+          inlineInp.addEventListener('blur', commit);
         });
       });
 
@@ -39398,27 +39631,37 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       listEl.innerHTML = '';
 
       let lastGroupTitle = '';
+      let matchCount = 0;
+      const isGlobalSearch = Boolean(dropdownSearchQuery);
+      const t = tUI();
+
       SCENE_KEYS_ORDER.forEach(key => {
         const cfg = SCENE_CONFIGS[key];
-        if (getDisciplineOfScene(key) !== (uiState.discipline || 'physics')) return;
-        if (currentDropdownFilter !== 'all' && cfg.category !== currentDropdownFilter) return;
+        const sceneDisc = getDisciplineOfScene(key);
+        if (!isGlobalSearch && sceneDisc !== (uiState.discipline || 'physics')) return;
+        if (!isGlobalSearch && currentDropdownFilter !== 'all' && cfg.category !== currentDropdownFilter) return;
 
         const meta = EDU_META[key] || {};
         const gradeTag = uiState.lang === 'uk' ? (meta.gradeUk || '') : (meta.gradeEn || '');
         if (dropdownSearchQuery) {
-          const haystack = `${cfg.secSym} ${cfg.shortTitle} ${cfg.subtitle} ${cfg.title} ${cfg.badge} ${gradeTag}`.toLowerCase();
+          const haystack = `${key} ${cfg.secSym} ${cfg.shortTitle} ${cfg.subtitle} ${cfg.title} ${cfg.badge} ${gradeTag}`.toLowerCase();
           if (!haystack.includes(dropdownSearchQuery)) return;
         }
 
-        if (cfg.categoryGroupTitle && cfg.categoryGroupTitle !== lastGroupTitle) {
-          lastGroupTitle = cfg.categoryGroupTitle;
+        const discPrefix = isGlobalSearch
+          ? (sceneDisc === 'biology' ? `${t.discBiology} · ` : (sceneDisc === 'chemistry' ? `${t.discChemistry} · ` : `${t.discPhysics} · `))
+          : '';
+        const groupLabel = `${discPrefix}${cfg.categoryGroupTitle || ''}`;
+        if (groupLabel && groupLabel !== lastGroupTitle) {
+          lastGroupTitle = groupLabel;
           const groupHdr = document.createElement('div');
           groupHdr.className = 'dropdown-group-title';
-          groupHdr.textContent = cfg.categoryGroupTitle;
+          groupHdr.textContent = groupLabel;
           listEl.appendChild(groupHdr);
         }
 
         const isActive = key === uiState.activeScene;
+        const isMastered = masteredExperiments.has(key);
         const item = document.createElement('a');
         item.href = getExperimentHref(key, uiState.lang);
         item.className = `dropdown-exp-item${isActive ? ' active' : ''}`;
@@ -39426,7 +39669,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           <span class="exp-item-left">
             <span class="exp-item-sec">${cfg.secSym}</span>
             <span class="exp-item-info">
-              <span class="exp-item-title">${cfg.shortTitle}</span>
+              <span class="exp-item-title">${cfg.shortTitle}${isMastered ? '<span class="exp-item-mastered-mark" title="✓">✓</span>' : ''}</span>
               <span class="exp-item-sub">${cfg.subtitle}</span>
             </span>
           </span>
@@ -39439,7 +39682,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           closeDropdownMenu();
         });
         listEl.appendChild(item);
+        matchCount++;
       });
+
+      if (matchCount === 0) {
+        const emptyEl = document.createElement('div');
+        emptyEl.className = 'dropdown-no-results';
+        emptyEl.textContent = t.searchNoResults;
+        listEl.appendChild(emptyEl);
+      }
     }
 
     function updateDropdownTriggerUI() {
@@ -40652,6 +40903,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       } else if (e.code === 'KeyF') {
         e.preventDefault();
         togglePresentationMode();
+      } else if (e.key === '/' || e.code === 'Slash') {
+        e.preventDefault();
+        closeDiscDropdownMenu();
+        const wrapper = document.getElementById('exp-dropdown-wrapper');
+        const trigger = document.getElementById('exp-dropdown-trigger');
+        if (wrapper && trigger) {
+          wrapper.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          const searchInp = document.getElementById('dropdown-search-input');
+          if (searchInp) {
+            requestAnimationFrame(() => {
+              searchInp.focus();
+              searchInp.select();
+            });
+          }
+        }
+      } else if (e.key === 'Escape') {
+        closeDropdownMenu();
+        closeDiscDropdownMenu();
       }
     });
 

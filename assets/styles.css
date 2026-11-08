@@ -2794,3 +2794,126 @@
     .btn-chem-back-physics:hover {
       background: #27272a;
     }
+
+    /* Quick parameter regime presets bar (Min / Standard / Max) */
+    .lab-presets-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .preset-chip-btn {
+      padding: 4px 6px;
+      border-radius: 2px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .preset-chip-btn:hover {
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+
+    .preset-chip-btn.active {
+      background: var(--ink-primary);
+      border-color: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+    }
+
+    /* Click-to-edit numeric readout on sliders */
+    .param-readout {
+      cursor: pointer;
+      padding: 1px 5px;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      transition: border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .param-readout:hover {
+      border-color: var(--rule-dark);
+      background: var(--bg-card);
+    }
+
+    .param-inline-input {
+      width: 68px;
+      padding: 1px 4px;
+      border-radius: 2px;
+      border: 1px solid var(--ink-primary);
+      background: #ffffff;
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-align: right;
+      outline: none;
+    }
+
+    /* Theory drawer grade badge & real-life analogy card */
+    .theory-grade-pill {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-light);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+
+    .theory-analogy-card {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-left: 2px solid var(--fig-amber);
+      background: rgba(217, 119, 6, 0.05);
+    }
+
+    /* Dropdown empty search state & mastered checkmark */
+    .dropdown-no-results {
+      padding: 14px 10px;
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .exp-item-mastered-mark {
+      color: var(--fig-green);
+      font-weight: 700;
+      margin-left: 3px;
+    }
+
+    /* Keyboard shortcuts footer bar */
+    .kbd-shortcuts-bar {
+      padding: 8px 0 4px;
+      border-top: 1px solid var(--rule-light);
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    .kbd-chip {
+      display: inline-block;
+      padding: 0 4px;
+      border-radius: 2px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    #chart-canvas {
+      cursor: crosshair;
+    }

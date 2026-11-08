@@ -46,33 +46,94 @@
       return `<code>${latex}</code>`;
     }
 
-    // Розбиває багаторядкові системи \begin{aligned}...\end{aligned} та довгі рядки з \qquad на окремі охайні рівняння
+    // Допоміжна функція: розбиває LaTeX-рядок за роздільником лише на верхньому рівні (поза фігурними дужками {...} та середовищами \begin{...}...\end{...})
+    function splitLatexTopLevel(str, delimiterRegex) {
+      const results = [];
+      let braceDepth = 0;
+      let envDepth = 0;
+      let lastIdx = 0;
+      let i = 0;
+      while (i < str.length) {
+        if (str.startsWith('\\begin{', i)) {
+          envDepth++;
+          const closeBrace = str.indexOf('}', i + 7);
+          i = closeBrace !== -1 ? closeBrace + 1 : i + 7;
+          continue;
+        }
+        if (str.startsWith('\\end{', i)) {
+          envDepth = Math.max(0, envDepth - 1);
+          const closeBrace = str.indexOf('}', i + 5);
+          i = closeBrace !== -1 ? closeBrace + 1 : i + 5;
+          continue;
+        }
+        const ch = str[i];
+        if (ch === '\\' && i + 1 < str.length && (str[i + 1] === '{' || str[i + 1] === '}')) {
+          i += 2;
+          continue;
+        }
+        if (ch === '{') {
+          braceDepth++;
+          i++;
+          continue;
+        }
+        if (ch === '}') {
+          braceDepth = Math.max(0, braceDepth - 1);
+          i++;
+          continue;
+        }
+        if (braceDepth === 0 && envDepth === 0) {
+          delimiterRegex.lastIndex = i;
+          const m = delimiterRegex.exec(str);
+          if (m && m.index === i) {
+            const chunk = str.slice(lastIdx, i).trim().replace(/,$/, '').trim();
+            if (chunk) results.push(chunk);
+            i += Math.max(1, m[0].length);
+            lastIdx = i;
+            continue;
+          }
+        }
+        i++;
+      }
+      const tail = str.slice(lastIdx).trim().replace(/,$/, '').trim();
+      if (tail) results.push(tail);
+      return results;
+    }
+
+    // Розбиває багаторядкові системи \begin{aligned}...\end{aligned}, \begin{cases}...\end{cases} та довгі рядки з \qquad на окремі охайні рівняння
     function renderStackedMath(latex) {
       if (!latex) return '';
-      let s = latex.trim();
+      let s = latex.trim()
+        .replace(/^\\begin\{aligned\}/, '')
+        .replace(/\\end\{aligned\}$/, '')
+        .trim();
       let parts = [];
 
-      if (s.includes('\\begin{cases}')) {
-        const m = s.match(/^([\s\S]*?\\end\{cases\})\s*(\\implies[\s\S]*)$/);
-        parts = m ? [m[1].trim(), m[2].trim()] : [s];
-      } else {
-        s = s.replace(/\\begin\{aligned\}/g, '').replace(/\\end\{aligned\}/g, '');
-        const lines = s.split(/\\\\/g);
-        for (const rawLine of lines) {
-          const line = rawLine.replace(/&=/g, '=').replace(/&/g, '').trim();
-          if (!line) continue;
-          const subparts = line.split(/,?\s*\\qquad\s*|,\s*\\quad\s*/g);
-          for (let sp of subparts) {
-            sp = sp.trim().replace(/,$/, '').trim();
-            if (!sp) continue;
-            if (sp.length > 72 && sp.includes('\\implies')) {
-              const impParts = sp.split(/\s*(?=\\implies)/g);
-              for (const ip of impParts) {
-                if (ip.trim()) parts.push(ip.trim());
-              }
+      const topLines = splitLatexTopLevel(s, /\\\\/g);
+      for (const rawLine of topLines) {
+        const line = rawLine.replace(/&=/g, '=').replace(/(^|[^\\])&/g, '$1').trim();
+        if (!line) continue;
+        const subparts = splitLatexTopLevel(line, /,?\s*\\qquad\s*|,\s*\\quad(?!\\xrightarrow)\s*/g);
+        for (let sp of subparts) {
+          sp = sp.trim().replace(/,$/, '').trim();
+          if (!sp) continue;
+          if (sp.includes('\\begin{cases}')) {
+            const preMatch = sp.match(/^([\s\S]+?)\s*(?:\\;)?(?:\\Rightarrow|\\implies)(?:\\;)?\s*(\\begin\{cases\}[\s\S]*)$/);
+            const leadPart = preMatch ? preMatch[1].trim() : null;
+            const casesAndTail = preMatch ? preMatch[2].trim() : sp;
+            if (leadPart) parts.push(leadPart);
+            const postMatch = casesAndTail.match(/^([\s\S]*?\\end\{cases\})\s*((?:\\implies|\\Rightarrow)[\s\S]*)$/);
+            if (postMatch) {
+              parts.push(postMatch[1].trim(), postMatch[2].trim());
             } else {
-              parts.push(sp);
+              parts.push(casesAndTail);
             }
+          } else if (sp.length > 72) {
+            const arrowParts = splitLatexTopLevel(sp, /\s*(?=\\implies|\\Rightarrow|\\Longleftrightarrow|\\quad\\xrightarrow)/g);
+            for (const ap of arrowParts) {
+              if (ap.trim()) parts.push(ap.trim());
+            }
+          } else {
+            parts.push(sp);
           }
         }
       }
@@ -86,10 +147,7 @@
     // Розбиває живі числові підстановки на компактні бейджі, що переносяться без виходу за межі блоку
     function renderLiveMathChips(latex) {
       if (!latex) return '';
-      const parts = latex
-        .split(/,?\s*\\qquad\s*|,\s*\\quad\s*/g)
-        .map(s => s.trim().replace(/,$/, '').trim())
-        .filter(Boolean);
+      const parts = splitLatexTopLevel(latex.trim(), /,?\s*\\qquad\s*|,\s*\\quad(?!\\xrightarrow)\s*/g);
       const chips = parts
         .map(part => `<span class="math-chip"><span class="math-fit-inner">${renderMathString(part, false)}</span></span>`)
         .join('');
@@ -3686,7 +3744,7 @@
         explanation: 'При русі зліва направо вздовж періоду головне квантове число $n$ залишається сталим, а заряд ядра $Z$ зростає. Оскільки електрони однієї оболонки екранують ядро слабо, ефективний заряд ядра Слейтера $Z_{\\text{eff}} = Z - \\sigma$ зростає. Сильніше кулонівське притягання стискає валентну оболонку ($r_{\\text{ат}}$ зменшується, включно з $d$- та $4f$-лантаноїдним стиском) і міцніше утримує електрони ($I_1$ та $\\chi$ зростають).',
         formulaLatex: String.raw`Z_{\text{eff}} = Z - \sigma, \qquad r_{\text{ат}} \approx \frac{n^2 a_0}{Z_{\text{eff}}}, \qquad I_1 \propto \frac{Z_{\text{eff}}^2}{n^2}`,
         liveLatexFn: p => {
-          const el = window.__resolvePeriodicElement ? window.__resolvePeriodicElement(p) : { sym: 'Fe', z: 26, n: 4, g: 8, block: 'd', r: 126, i1: 7.90, chi: 1.83, zeff: 3.75 };
+          const el = (typeof window !== 'undefined' && window.__resolvePeriodicElement) ? window.__resolvePeriodicElement(p) : { sym: 'Fe', z: 26, n: 4, g: 8, block: 'd', r: 126, i1: 7.90, chi: 1.83, zeff: 3.75 };
           return String.raw`\mathrm{${el.sym}}\;(Z=${el.z},\;\text{пер. }${el.n},\;\text{гр. }${el.g},\;${el.block}\text{-блок}):\;\; Z_{\text{eff}} \approx ${el.zeff.toFixed(2)}, \quad r_{\text{ат}} = ${el.r}\text{ пм}, \quad I_1 = ${el.i1.toFixed(2)}\text{ еВ}, \quad \chi = ${el.chi > 0 ? el.chi.toFixed(2) : '\\text{інерт.}'}`;
         },
         defaults: { atomicZ: 26, periodN: 4, groupG: 8, propMode: 1 },
@@ -30271,7 +30329,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         explanation: 'Across a period, electrons enter the same outer shell $n$ and shield one another imperfectly, so Slater’s effective nuclear charge $Z_{\\text{eff}} = Z - \\sigma$ increases. Stronger Coulomb attraction contracts the valence shell ($r_{\\text{at}}$ decreases, including $d$-block and $4f$ lanthanide contraction) and binds valence electrons more tightly ($I_1$ and $\\chi$ increase).',
         formulaLatex: String.raw`Z_{\text{eff}} = Z - \sigma, \qquad r_{\text{at}} \approx \frac{n^2 a_0}{Z_{\text{eff}}}, \qquad I_1 \propto \frac{Z_{\text{eff}}^2}{n^2}`,
         liveLatexFn: p => {
-          const el = window.__resolvePeriodicElement ? window.__resolvePeriodicElement(p) : { sym: 'Fe', z: 26, n: 4, g: 8, block: 'd', r: 126, i1: 7.90, chi: 1.83, zeff: 3.75 };
+          const el = (typeof window !== 'undefined' && window.__resolvePeriodicElement) ? window.__resolvePeriodicElement(p) : { sym: 'Fe', z: 26, n: 4, g: 8, block: 'd', r: 126, i1: 7.90, chi: 1.83, zeff: 3.75 };
           return String.raw`\mathrm{${el.sym}}\;(Z=${el.z},\;\text{Per. }${el.n},\;\text{Grp. }${el.g},\;${el.block}\text{-block}):\;\; Z_{\text{eff}} \approx ${el.zeff.toFixed(2)}, \quad r_{\text{at}} = ${el.r}\text{ pm}, \quad I_1 = ${el.i1.toFixed(2)}\text{ eV}, \quad \chi = ${el.chi > 0 ? el.chi.toFixed(2) : '\\text{inert}'}`;
         },
         sliders: [
@@ -32433,6 +32491,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (uiState.lang !== 'en' || typeof labelStr !== 'string') return labelStr;
       if (TELEMETRY_LABEL_EN[labelStr]) return TELEMETRY_LABEL_EN[labelStr];
       return labelStr
+        .replace(/^Радіус темного кільця r_/, 'Dark ring radius r_')
+        .replace(/^Радіус світлого кільця r_/, 'Bright ring radius r_')
         .replace('Напрямок процесу при T = ', 'Process direction at T = ')
         .replace('Константа гідролізу K_h (при ', 'Hydrolysis constant K_h (at ')
         .replace('Частка нативної спіралі при T = ', 'Native helix fraction at T = ')
@@ -32460,7 +32520,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace('Тимчасово 4n =', 'Transiently 4n =')
         .replace('по 2n2c біля полюсів', '2n2c at each pole')
         .replace('2 дочірні клітини по 2n =', '2 daughter cells of 2n =')
-        .replace('ДНК', 'DNA')
         .replace('Пройдено (біорієнтація кінетохорів)', 'Satisfied (kinetochore biorientation)')
         .replace('Очікування вирівнювання', 'Awaiting alignment')
         .replace('п.н./с', 'bp/s')
@@ -32838,7 +32897,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace(/од\./g, 'u.')
         .replace(/Дж/g, 'J')
         .replace(/Тл/g, 'T')
+        .replaceAll('ДНК', 'DNA')
+        .replaceAll('L₀/с', 'L₀/s')
         .replaceAll(' А (', ' A (')
+        .replaceAll(' Н (', ' N (')
+        .replaceAll(' Вт)', ' W)')
+        .replace(/ Вт$/g, ' W')
         .replaceAll(' В)', ' V)')
         .replaceAll(' В ', ' V ')
         .replaceAll(' К)', ' K)')
@@ -32998,7 +33062,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         footerAbout: 'About & Contact',
         footerPrivacy: 'Privacy Policy',
         footerTerms: 'Terms of Use',
-        footerCopy: '© 2026 physics.sheua.com · Interactive 3D Science Lab (98 Simulations)'
+        footerCopy: '© 2026 physics.sheua.com · Interactive 3D Science Lab (98 Simulations)',
+        curriculumSummary: 'Full Curriculum Index (98 Simulations)'
       },
       uk: {
         docTitle: 'Курс загальної фізики · Інтерактивний 3D-підручник',
@@ -33135,7 +33200,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         footerAbout: 'Про проєкт і контакти',
         footerPrivacy: 'Політика конфіденційності',
         footerTerms: 'Умови використання',
-        footerCopy: '© 2026 physics.sheua.com · Інтерактивний 3D-підручник (98 симуляцій)'
+        footerCopy: '© 2026 physics.sheua.com · Інтерактивний 3D-підручник (98 симуляцій)',
+        curriculumSummary: 'Каталог усіх 98 дослідів курсу'
       }
     };
 
@@ -35628,8 +35694,39 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       // 6. Видимий каталог курсу та офіційний підвал сайту (Політика конфіденційності, Умови, Про проєкт)
       const rightPage = document.getElementById('right-sidebar');
       const seoNav = document.getElementById('seo-experiment-links');
-      if (rightPage && seoNav && seoNav.parentElement !== rightPage) {
-        rightPage.appendChild(seoNav);
+      if (rightPage && seoNav) {
+        let catDetails = document.getElementById('curriculum-catalog-details');
+        if (!catDetails) {
+          catDetails = document.createElement('details');
+          catDetails.id = 'curriculum-catalog-details';
+          catDetails.className = 'curriculum-catalog-details';
+          const catSummary = document.createElement('summary');
+          catSummary.id = 'ui-curriculum-summary';
+          catSummary.className = 'curriculum-catalog-summary';
+          catSummary.textContent = t.curriculumSummary;
+          catDetails.appendChild(catSummary);
+          rightPage.appendChild(catDetails);
+        }
+        if (seoNav.parentElement !== catDetails) {
+          catDetails.appendChild(seoNav);
+        }
+        if (!seoNav.dataset.spaBound) {
+          seoNav.dataset.spaBound = '1';
+          seoNav.addEventListener('click', e => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href') || '';
+            const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?$/i);
+            if (m && SCENE_CONFIGS[m[2]]) {
+              e.preventDefault();
+              const targetLang = m[1] ? 'uk' : 'en';
+              if (targetLang !== uiState.lang) {
+                applyLanguage(targetLang);
+              }
+              loadScene(m[2], true);
+            }
+          });
+        }
       }
       if (rightPage && !document.getElementById('site-legal-footer')) {
         const rootPrefix = window.location.protocol.startsWith('http')
@@ -35777,6 +35874,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
+      setTxt('ui-curriculum-summary', t.curriculumSummary);
       setTxt('ui-footer-about', t.footerAbout);
       setTxt('ui-footer-privacy', t.footerPrivacy);
       setTxt('ui-footer-terms', t.footerTerms);
@@ -36208,8 +36306,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       document.getElementById('chapter-section-tag').textContent = cfg.secTag ? cfg.secTag.split('·').slice(0, 2).map(s => s.trim()).join(' · ') : cfg.secSym;
       document.getElementById('scene-title').textContent = cfg.title;
-      document.getElementById('scene-epigraph').textContent = cfg.epigraph ? cfg.epigraph.replace(/\s+—\s+/g, ', ') : '';
-      document.getElementById('figure-caption-text').textContent = cfg.figCaption ? cfg.figCaption.replace(/\s+—\s+/g, ', ') : '';
+      document.getElementById('scene-epigraph').innerHTML = cfg.epigraph ? formatTextbookProse(cfg.epigraph.replace(/\s+—\s+/g, ', ')) : '';
+      document.getElementById('figure-caption-text').innerHTML = cfg.figCaption ? formatTextbookProse(cfg.figCaption.replace(/\s+—\s+/g, ', ')) : '';
 
       const cleanMetricLabel = str => String(str || '').replace(/\s*\(×\s*\d+(?:\.\d+)?\s*([a-zA-Zа-яА-ЯіїєґІЇЄҐ%°]*)\)/g, (_, u) => u ? ` (${u})` : '');
       document.getElementById('ek-label').textContent = cleanMetricLabel(cfg.ekLabel);

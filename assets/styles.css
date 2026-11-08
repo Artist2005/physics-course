@@ -2038,9 +2038,16 @@
       overflow-y: auto;
     }
 
+    .curriculum-catalog-details .seo-platform-overview,
     .curriculum-catalog-details .seo-theory-article,
     .curriculum-catalog-details .seo-legal-links {
       display: none;
+    }
+
+    .sr-only-seo-nav a.active-catalog-link {
+      font-weight: 600;
+      color: var(--accent-crimson);
+      text-decoration-color: var(--accent-crimson);
     }
 
     .sr-only-seo-nav {

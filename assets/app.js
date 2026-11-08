@@ -35349,6 +35349,69 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           b.classList.toggle('active', b.dataset.filter === currentDropdownFilter);
         });
       }
+
+      if (isBio) {
+        setTxt('ui-toggle-vectors', isUk ? 'Вектори потоків і біофізичних сил' : 'Biophysical flux and force vectors');
+        setTxt('ui-toggle-labels', isUk ? 'Виноски органел і підписи (1–4)' : 'Organelle callout pins and labels');
+        setTxt('ui-toggle-trails', isUk ? 'Мембранні контури та осі' : 'Membrane guides and axes');
+        setTxt('ui-toggle-particles', isUk ? 'Йони, молекули АТФ і частинки' : 'Ions, ATP molecules, and particles');
+      } else if (isChem) {
+        setTxt('ui-toggle-vectors', isUk ? 'Вектори диполів, потоків і сил' : 'Dipole, flux, and force vectors');
+        setTxt('ui-toggle-labels', isUk ? 'Підписи векторів та орбіталей' : 'Vector and orbital labels');
+        setTxt('ui-toggle-trails', isUk ? 'Хімічні зв’язки та координатні лінії' : 'Chemical bonds and guide lines');
+        setTxt('ui-toggle-particles', isUk ? 'Молекули, йони та електронні хмари' : 'Molecules, ions, and electron clouds');
+        restoreDefaultLegendGrid();
+        const setChemLegend = (id, htmlStr) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = formatTextbookProse(htmlStr);
+        };
+        setChemLegend('ui-legend-v', isUk
+          ? '<span class="legend-bar" style="background:#166534;"></span> Швидкість реакції / потік ($\\vec{v}, \\vec{J}$)'
+          : '<span class="legend-bar" style="background:#166534;"></span> Reaction rate / flux ($\\vec{v}, \\vec{J}$)');
+        setChemLegend('ui-legend-p', isUk
+          ? '<span class="legend-bar" style="background:#1d4ed8;"></span> Катіони / $\\sigma$-зв’язок / диполь ($\\vec{\\mu}$)'
+          : '<span class="legend-bar" style="background:#1d4ed8;"></span> Cations / $\\sigma$-bond / dipole ($\\vec{\\mu}$)');
+        setChemLegend('ui-legend-mg', isUk
+          ? '<span class="legend-bar" style="background:#b91c1c;"></span> Аніони / притягання / $\\pi$-хмара'
+          : '<span class="legend-bar" style="background:#b91c1c;"></span> Anions / attraction / $\\pi$-cloud');
+        setChemLegend('ui-legend-n', isUk
+          ? '<span class="legend-bar" style="background:#b45309;"></span> Енергія активації / тепловий потік'
+          : '<span class="legend-bar" style="background:#b45309;"></span> Activation barrier / heat flux');
+      } else {
+        setTxt('ui-toggle-vectors', t.toggleVectors);
+        setTxt('ui-toggle-labels', t.toggleLabels);
+        setTxt('ui-toggle-trails', t.toggleTrails);
+        setTxt('ui-toggle-particles', t.toggleParticles);
+        restoreDefaultLegendGrid();
+        const setPhysLegend = (id, htmlStr) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = formatTextbookProse(htmlStr);
+        };
+        setPhysLegend('ui-legend-v', t.legendV);
+        setPhysLegend('ui-legend-p', t.legendP);
+        setPhysLegend('ui-legend-mg', t.legendMg);
+        setPhysLegend('ui-legend-n', t.legendN);
+      }
+    }
+
+    function syncCurriculumCatalogUI() {
+      const seoNav = document.getElementById('seo-experiment-links');
+      if (!seoNav) return;
+      const isUk = uiState.lang === 'uk';
+      const activeKey = uiState.activeScene;
+      seoNav.querySelectorAll('h2').forEach(h2 => {
+        const ul = h2.nextElementSibling;
+        if (!ul || ul.tagName !== 'UL') return;
+        const isUkBlock = Boolean(ul.querySelector('a[hreflang="uk"]'));
+        const show = isUk ? isUkBlock : !isUkBlock;
+        h2.style.display = show ? '' : 'none';
+        ul.style.display = show ? '' : 'none';
+      });
+      seoNav.querySelectorAll('a[href]').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const m = href.match(/(?:^|\/)(?:uk\/)?sim\/([a-z0-9_]+)(?:\.html)?$/i);
+        a.classList.toggle('active-catalog-link', Boolean(m && m[1] === activeKey));
+      });
     }
 
     function switchDiscipline(targetDisc) {
@@ -35933,14 +35996,28 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (prevBtn) prevBtn.title = t.prevTitle;
       if (nextBtn) nextBtn.title = t.nextTitle;
 
-      const setLegend = (id, htmlStr) => {
-        const el = document.getElementById(id);
-        if (el) el.innerHTML = formatTextbookProse(htmlStr);
+      const isUk = uiState.lang === 'uk';
+      const camLabel = document.querySelector('.cam-dock-label');
+      if (camLabel) camLabel.textContent = isUk ? 'Камера' : 'Camera';
+      const setTitle = (sel, val) => {
+        const el = document.querySelector(sel);
+        if (el) el.title = val;
       };
-      setLegend('ui-legend-v', t.legendV);
-      setLegend('ui-legend-p', t.legendP);
-      setLegend('ui-legend-mg', t.legendMg);
-      setLegend('ui-legend-n', t.legendN);
+      setTitle('#cam-iso', isUk ? 'Ізометрична 3D-проєкція' : 'Isometric 3D projection');
+      setTitle('#cam-front', isUk ? 'Вигляд спереду (фронтальний)' : 'Front elevation view');
+      setTitle('#cam-top', isUk ? 'Вигляд зверху (план)' : 'Top plan view');
+      setTitle('#cam-side', isUk ? 'Вигляд збоку (профіль)' : 'Side profile view');
+      setTitle('#cam-macro', isUk ? 'Макрофокус на робочій зоні' : 'Close-up focus on interaction zone');
+      setTitle('#cam-orbit', isUk ? 'Плавне кругове обертання 360°' : 'Smooth 360° orbital rotation');
+      setTitle('#btn-toggle-left', isUk ? 'Згорнути / розгорнути ліву панель' : 'Toggle left panel');
+      setTitle('#btn-toggle-right', isUk ? 'Згорнути / розгорнути праву панель' : 'Toggle right panel');
+      setTitle('#btn-step', isUk ? 'Крок чисельного інтегрування +0.02 с' : 'Integration step +0.02 s');
+      setTitle('#ui-speed-group', isUk ? 'Масштаб часу симуляції' : 'Simulation time scale');
+      setTitle('.phase-breadcrumbs', isUk ? 'Натисніть на етап, щоб перемкнути режим' : 'Click any stage to switch view');
+      setTitle('#btn-close-ad-banner', isUk ? 'Сховати банер' : 'Hide banner');
+
+      syncDisciplineHeaderAndFilters();
+      syncCurriculumCatalogUI();
 
       setTxt('sim-time-readout', `t = ${uiState.simTime.toFixed(2)} ${t.secUnit}`);
 
@@ -36773,6 +36850,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           }
         } catch (e) {}
       }
+      syncCurriculumCatalogUI();
     }
 
     function loadScene(sceneKey, pushHistory = false) {
@@ -37660,6 +37738,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     });
     document.getElementById('chk-labels').addEventListener('change', e => {
       uiState.showLabels = e.target.checked;
+      activeBioCalloutPins.forEach(pin => {
+        if (pin && pin.group) pin.group.visible = uiState.showLabels;
+      });
       if (activeSim) activeSim.syncVisuals();
     });
     document.getElementById('chk-trails').addEventListener('change', e => {

@@ -29,17 +29,17 @@
   <!-- Typography Column -->
   <g transform="translate(84, 118)">
     <rect x="0" y="0" width="380" height="36" rx="3" fill="#18181b"/>
-    <text x="16" y="24" font-family="'IBM Plex Mono', monospace" font-size="15" font-weight="600" fill="#faf9f5" letter-spacing="1.5">SHEUA.COM · INTERACTIVE 3D LAB</text>
+    <text x="16" y="24" font-family="'Google Sans Mono', monospace" font-size="15" font-weight="600" fill="#faf9f5" letter-spacing="1.5">SHEUA.COM · INTERACTIVE 3D LAB</text>
 
-    <text x="0" y="106" font-family="'Georgia', 'Crimson Pro', serif" font-size="54" font-weight="700" fill="#18181b">3D Physics &amp; Chemistry</text>
-    <text x="0" y="168" font-family="'Georgia', 'Crimson Pro', serif" font-size="54" font-weight="700" fill="#1d4ed8">Interactive Textbook</text>
+    <text x="0" y="106" font-family="'Google Sans', sans-serif" font-size="52" font-weight="700" fill="#18181b">3D Physics, Chemistry &amp; Bio</text>
+    <text x="0" y="168" font-family="'Google Sans', sans-serif" font-size="52" font-weight="700" fill="#1d4ed8">Interactive Textbook</text>
 
-    <text x="0" y="232" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="500" fill="#3f3f46">86 Virtual 3D Laboratory Simulations · EN / УКР</text>
-    <text x="0" y="272" font-family="'IBM Plex Sans', sans-serif" font-size="21" font-weight="400" fill="#52525b">46 Physics Experiments · 40 Chemistry Experiments</text>
+    <text x="0" y="232" font-family="'Google Sans', sans-serif" font-size="24" font-weight="500" fill="#3f3f46">106 Virtual 3D Laboratory Simulations · EN / УКР</text>
+    <text x="0" y="272" font-family="'Google Sans', sans-serif" font-size="21" font-weight="400" fill="#52525b">46 Physics · 40 Chemistry · 20 Biology &amp; Biophysics</text>
 
     <line x1="0" y1="312" x2="560" y2="312" stroke="#d4d0c8" stroke-width="2"/>
 
-    <text x="0" y="356" font-family="'IBM Plex Mono', monospace" font-size="18" font-weight="600" fill="#15803d">▸ Mechanics · Optics · Electromagnetism · Quantum</text>
-    <text x="0" y="392" font-family="'IBM Plex Mono', monospace" font-size="18" font-weight="600" fill="#b45309">▸ Orbitals · Kinetics · Electrochemistry · Organic</text>
+    <text x="0" y="356" font-family="'Google Sans Mono', monospace" font-size="18" font-weight="600" fill="#15803d">▸ Mechanics · Optics · Electromagnetism · Quantum</text>
+    <text x="0" y="392" font-family="'Google Sans Mono', monospace" font-size="18" font-weight="600" fill="#b45309">▸ Orbitals · Kinetics · Cell Biology · Biophysics</text>
   </g>
 </svg>

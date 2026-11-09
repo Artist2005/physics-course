@@ -853,7 +853,7 @@
 
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      const fontStr = '700 22px "IBM Plex Mono", "Georgia", monospace';
+      const fontStr = '700 22px "Google Sans Mono", "Google Sans", monospace';
       ctx.font = fontStr;
 
       const measuredW = Math.ceil(ctx.measureText(symbolText).width);
@@ -20374,23 +20374,23 @@
 
         // Atomic number Z (top-left) & Block/Group (top-right)
         ctx.fillStyle = '#ffffff';
-        ctx.font = '700 34px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.font = '700 34px "Google Sans", "Segoe UI", sans-serif';
         ctx.textAlign = 'left';
         ctx.fillText(String(el.z), 18, 46);
-        ctx.font = '600 22px "IBM Plex Mono", monospace';
+        ctx.font = '600 22px "Google Sans Mono", monospace';
         ctx.textAlign = 'right';
         ctx.fillText(`${el.g}·${el.block}`, 238, 44);
 
         // Large Chemical Symbol
         ctx.fillStyle = '#0f172a';
-        ctx.font = '700 84px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.font = '700 84px "Google Sans", "Segoe UI", sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText(el.sym, 128, 142);
 
         // Element name
         const isEn = uiState.lang === 'en';
         ctx.fillStyle = '#334155';
-        ctx.font = '600 22px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.font = '600 22px "Google Sans", "Segoe UI", sans-serif';
         ctx.fillText(isEn ? el.nameEn : el.nameUk, 128, 179, 224);
 
         // Bottom property bar (4px radius)
@@ -20407,7 +20407,7 @@
         else if (mode === 3) propStr = el.chi > 0 ? `χ=${el.chi.toFixed(2)}` : (isEn ? 'inert' : 'інерт.');
 
         ctx.fillStyle = '#0f172a';
-        ctx.font = '700 23px "IBM Plex Mono", monospace';
+        ctx.font = '700 23px "Google Sans Mono", monospace';
         ctx.fillText(propStr, 128, 224);
 
         const tex = new THREE.CanvasTexture(canvas);
@@ -20432,11 +20432,11 @@
 
         ctx.fillStyle = textHex;
         ctx.textAlign = 'center';
-        ctx.font = '700 40px "IBM Plex Sans", "Segoe UI", sans-serif';
+        ctx.font = '700 40px "Google Sans", "Segoe UI", sans-serif';
         ctx.fillText(text, 96, subText ? 58 : 76);
         if (subText) {
           ctx.fillStyle = '#cbd5e1';
-          ctx.font = '600 22px "IBM Plex Mono", monospace';
+          ctx.font = '600 22px "Google Sans Mono", monospace';
           ctx.fillText(subText, 96, 98);
         }
         const tex = new THREE.CanvasTexture(canvas);
@@ -20481,7 +20481,7 @@
             'border-radius:2px',
             'padding:6px 12px',
             'box-shadow:0 1px 4px rgba(24,24,27,0.08)',
-            'font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+            'font-family:"Google Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
             'color:#18181b',
             'pointer-events:none',
             'max-width:calc(100vw - 40px)',
@@ -20499,18 +20499,18 @@
 
         hud.innerHTML = `
           <div style="display:flex;align-items:center;gap:8px;background:#f0ede6;color:#18181b;border:1px solid #d6d3cd;border-left:3px solid #18181b;padding:4px 10px;border-radius:2px;min-width:92px;">
-            <div style="font-family:'Crimson Pro',Georgia,serif;font-size:23px;font-weight:700;line-height:1;letter-spacing:-0.02em;color:#18181b;">${el.sym}</div>
+            <div style="font-family:'Google Sans',sans-serif;font-size:21px;font-weight:700;line-height:1;letter-spacing:-0.02em;color:#18181b;">${el.sym}</div>
             <div style="display:flex;flex-direction:column;line-height:1.15;">
-              <span style="font-size:10px;font-family:'IBM Plex Mono',monospace;color:#71717a;">Z = ${el.z}</span>
+              <span style="font-size:10px;font-family:'Google Sans Mono',monospace;color:#71717a;">Z = ${el.z}</span>
               <span style="font-size:12px;font-weight:600;color:#18181b;">${isEn ? el.nameEn : el.nameUk}</span>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:2px;font-size:12px;line-height:1.25;">
             <div style="display:flex;align-items:center;gap:10px;color:#18181b;font-weight:600;">
               <span>${isEn ? `Period ${el.n} · Group ${el.g} · ${fTag}` : `Період ${el.n} · Група ${el.g} · ${fTag}`}</span>
-              <span style="font-family:'IBM Plex Mono',monospace;background:#f0ede6;border:1px solid #d6d3cd;padding:1px 6px;border-radius:2px;color:#18181b;font-weight:500;">${el.cfg}</span>
+              <span style="font-family:'Google Sans Mono',monospace;background:#f0ede6;border:1px solid #d6d3cd;padding:1px 6px;border-radius:2px;color:#18181b;font-weight:500;">${el.cfg}</span>
             </div>
-            <div style="display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#3f3f46;">
+            <div style="display:flex;align-items:center;gap:12px;font-family:'Google Sans Mono',monospace;font-size:11.5px;color:#3f3f46;">
               <span><strong style="color:#18181b;">Z_eff</strong> = ${el.zeff.toFixed(2)}e (σ=${sigma})</span>
               <span><strong style="color:#18181b;">r_at</strong> = ${el.r} ${isEn ? 'pm' : 'пм'}</span>
               <span><strong style="color:#18181b;">I₁</strong> = ${el.i1.toFixed(2)} ${isEn ? 'eV' : 'еВ'}</span>
@@ -25628,8 +25628,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        const titleFont = '600 18.5px "IBM Plex Sans", Georgia, sans-serif';
-        const subFont = '500 14.5px "IBM Plex Mono", monospace';
+        const titleFont = '600 18.5px "Google Sans", "Segoe UI", sans-serif';
+        const subFont = '500 14.5px "Google Sans Mono", monospace';
 
         ctx.font = titleFont;
         const wTitle = Math.ceil(ctx.measureText(title).width);
@@ -39000,12 +39000,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       const titleFontPx = Math.max(13, Math.round(barH * 0.34));
       const subFontPx = Math.max(11, Math.round(barH * 0.25));
-      ctx.font = `600 ${titleFontPx}px "Crimson Pro", Georgia, serif`;
+      ctx.font = `600 ${titleFontPx}px "Google Sans", sans-serif`;
       ctx.fillStyle = '#faf8f5';
       ctx.textBaseline = 'top';
       ctx.fillText(`${cfg.secSym || ''} ${cfg.title || ''}`.trim(), 18, h - barH + Math.round(barH * 0.16));
 
-      ctx.font = `500 ${subFontPx}px "IBM Plex Mono", monospace`;
+      ctx.font = `500 ${subFontPx}px "Google Sans Mono", monospace`;
       ctx.fillStyle = '#d6d3cd';
       ctx.fillText(paramSummary, 18, h - barH + Math.round(barH * 0.56));
 
@@ -40058,7 +40058,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           return realV >= 100 ? realV.toFixed(0) : (realV >= 10 ? realV.toFixed(1) : realV.toFixed(2));
         };
         const labelTxt = `${fmtN(vEk)} · ${fmtN(vEp)} · ${fmtN(vQ)}`;
-        chartCtx.font = '600 10px "IBM Plex Mono", monospace';
+        chartCtx.font = '600 10px "Google Sans Mono", monospace';
         const tw = chartCtx.measureText(labelTxt).width + 10;
         const bx = Math.max(4, Math.min(w - tw - 4, x - tw / 2));
         chartCtx.fillStyle = 'rgba(255, 255, 255, 0.92)';
@@ -42114,7 +42114,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       borderRadius: '2px',
       background: '#faf9f5',
       color: '#18181b',
-      fontFamily: '"IBM Plex Mono", monospace',
+      fontFamily: '"Google Sans Mono", monospace',
       fontStyle: 'normal',
       fontSize: '11.5px',
       fontWeight: '500',

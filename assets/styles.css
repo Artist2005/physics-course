@@ -27,9 +27,9 @@
       --fig-amber: #b45309;
       --fig-red: #991b1b;
 
-      --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-serif: "Crimson Pro", Georgia, "Times New Roman", serif;
-      --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --font-sans: "Google Sans", "Google Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: "Google Sans", "Google Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", "Google Sans", "SF Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
       --header-h: 46px;
       --left-page-w: clamp(344px, 25vw, 408px);
@@ -183,8 +183,8 @@
     }
 
     .trigger-title {
-      font-family: var(--font-serif);
-      font-size: 15px;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--ink-primary);
       white-space: nowrap;
@@ -639,10 +639,10 @@
     }
 
     .chapter-title {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.18;
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
       color: var(--ink-primary);
       margin-bottom: 8px;
       letter-spacing: -0.015em;
@@ -651,10 +651,10 @@
     }
 
     .chapter-epigraph {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 15.2px;
-      line-height: 1.5;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 13.5px;
+      line-height: 1.54;
       color: var(--ink-secondary);
       padding: 2px 0 4px;
       border: none;
@@ -796,9 +796,9 @@
 
     .theory-note-body,
     .theory-note-para {
-      font-family: var(--font-serif);
-      font-size: 15px;
-      line-height: 1.56;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.58;
       color: var(--ink-primary);
       text-align: left;
       text-wrap: pretty;
@@ -818,9 +818,9 @@
     .textbook-thesis-item {
       position: relative;
       padding-left: 14px;
-      font-family: var(--font-serif);
-      font-size: 15px;
-      line-height: 1.54;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.56;
       color: var(--ink-primary);
       text-align: left;
       text-wrap: pretty;
@@ -994,11 +994,11 @@
     }
 
     .problem-question {
-      font-family: var(--font-serif);
-      font-size: 16px;
-      line-height: 1.52;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.54;
       color: var(--ink-primary);
-      font-weight: 400;
+      font-weight: 500;
       margin-bottom: 2px;
       padding: 2px 0 4px;
       background: transparent;
@@ -1154,9 +1154,9 @@
     }
 
     .proof-text {
-      font-family: var(--font-serif);
-      font-size: 15.4px;
-      line-height: 1.56;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      line-height: 1.58;
       color: var(--ink-primary);
       padding: 2px 0 4px;
       background: transparent;
@@ -1372,9 +1372,9 @@
     }
 
     .figure-caption-bottom {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 13.8px;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 12px;
       color: var(--ink-secondary);
       line-height: 1.48;
       padding-left: 0;
@@ -2305,10 +2305,10 @@
       background: transparent;
       border: none;
       border-left: 2px solid var(--rule-dark);
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14.5px;
-      line-height: 1.5;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 13px;
+      line-height: 1.52;
       color: var(--ink-secondary);
       text-align: left;
       text-wrap: pretty;
@@ -2339,10 +2339,10 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 14.8px;
-      line-height: 1.5;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 13px;
+      line-height: 1.52;
       color: var(--ink-secondary);
       font-weight: 400;
       text-align: left;

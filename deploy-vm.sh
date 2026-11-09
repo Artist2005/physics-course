@@ -26,7 +26,7 @@ fi
 echo "=== [2/4] Копіювання файлів сайту у ${WEB_ROOT} ==="
 sudo mkdir -p "${WEB_ROOT}"
 sudo rm -rf "${WEB_ROOT:?}/"*
-sudo cp -r "${SRC_DIR}/index.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${WEB_ROOT}/"
+sudo cp -r "${SRC_DIR}/index.html" "${SRC_DIR}/404.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${WEB_ROOT}/"
 
 if id "www-data" >/dev/null 2>&1; then
   sudo chown -R www-data:www-data "${WEB_ROOT}"

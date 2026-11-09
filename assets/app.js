@@ -39309,27 +39309,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         rightPage.appendChild(footer);
       }
 
-      // 7. Кнопка копіювання посилання зі станом повзунків (#btn-share-state) та панель швидких пресетів (#lab-presets-bar)
-      const presetDefaultBtn = document.getElementById('btn-preset-default');
-      if (presetDefaultBtn && !document.getElementById('btn-share-state')) {
-        let actGroup = presetDefaultBtn.parentElement;
-        if (actGroup && !actGroup.classList.contains('params-actions-group')) {
-          const wrap = document.createElement('div');
-          wrap.className = 'params-actions-group';
-          actGroup.insertBefore(wrap, presetDefaultBtn);
-          wrap.appendChild(presetDefaultBtn);
-          actGroup = wrap;
-        }
-        const shareBtn = document.createElement('button');
-        shareBtn.type = 'button';
-        shareBtn.id = 'btn-share-state';
-        shareBtn.className = 'preset-btn share-state-btn';
-        shareBtn.textContent = t.shareBtn;
-        shareBtn.title = t.shareTip;
-        shareBtn.addEventListener('click', shareCurrentExperimentState);
-        if (actGroup) actGroup.insertBefore(shareBtn, presetDefaultBtn);
-      }
-
+      // 7. Панель швидких пресетів (#lab-presets-bar)
       const slidersContainer = document.getElementById('sliders-container');
       if (slidersContainer && slidersContainer.parentElement && !document.getElementById('lab-presets-bar')) {
         const presetsBar = document.createElement('div');
@@ -39560,11 +39540,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
-      const shareStateBtn = document.getElementById('btn-share-state');
-      if (shareStateBtn && !shareStateBtn.classList.contains('copied')) {
-        shareStateBtn.textContent = t.shareBtn;
-        shareStateBtn.title = t.shareTip;
-      }
       syncPinChartBtnUI();
       setTxt('cam-present', t.camPresent);
       setTxt('cam-snapshot', t.camSnapshot);

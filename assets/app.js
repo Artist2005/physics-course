@@ -36110,6 +36110,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         pinChartTip: 'Pin current oscillogram as dashed reference curve',
         camPresent: 'Focus 3D',
         camSnapshot: 'PNG',
+        camPinMobile: 'Pin 3D',
+        camPinnedMobile: '3D Pinned',
         chemModalBadge: '3D chemistry lab',
         chemModalTitle: '3D chemistry lab',
         chemModalSub: 'Interactive 3D simulations of molecular orbitals, crystal lattices, chemical kinetics, titration, and electrochemistry.',
@@ -36257,6 +36259,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         pinChartTip: 'Зафіксувати поточну криву пунктиром для порівняння двох дослідів',
         camPresent: 'Екран',
         camSnapshot: 'Фото PNG',
+        camPinMobile: 'Закріпити 3D',
+        camPinnedMobile: '3D закріплено',
         chemModalBadge: '3D хімічна лабораторія',
         chemModalTitle: '3D-практикум з хімії',
         chemModalSub: 'Тривимірні симуляції орбіталей, кристалічних ґраток, кінетики, титрування та електролізу.',
@@ -38423,8 +38427,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
     const BOOK_SVG_ICON = `<svg class="theory-book-svg" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5C2.5 3.95 2.95 3.5 3.5 3.5H7.8C9.15 3.5 10 4.25 10 5.5V16.2C10 15.35 9.25 14.8 8.2 14.8H3.5C2.95 14.8 2.5 14.35 2.5 13.8V4.5Z"/><path d="M17.5 4.5C17.5 3.95 17.05 3.5 16.5 3.5H12.2C10.85 3.5 10 4.25 10 5.5V16.2C10 15.35 10.75 14.8 11.8 14.8H16.5C17.05 14.8 17.5 14.35 17.5 13.8V4.5Z"/></svg>`;
 
-    let theoryLeftOpen = true;
+    let theoryLeftOpen = typeof window !== 'undefined' ? window.innerWidth > 820 : true;
     let theoryRightOpen = false;
+    let mobileCanvasPinned = false;
     let questionHintOpen = false;
     let dropdownSearchQuery = '';
     let activePresetMode = 'std';
@@ -39348,7 +39353,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         rightWrap.appendChild(etotValEl);
       }
 
-      // 9. Кнопки презентаційного режиму (#cam-present) та PNG-знімка (#cam-snapshot) у доці камери
+      // 9. Кнопки презентаційного режиму (#cam-present), мобільного закріплення 3D (#cam-pin-mobile) та PNG-знімка (#cam-snapshot) у доці камери
       const camProjections = document.querySelector('.viewport-cam-dock .view-projections');
       if (camProjections && !document.getElementById('cam-present')) {
         const sep = document.createElement('span');
@@ -39362,6 +39367,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         presBtn.textContent = t.camPresent;
         presBtn.addEventListener('click', togglePresentationMode);
 
+        const pinMobBtn = document.createElement('button');
+        pinMobBtn.type = 'button';
+        pinMobBtn.id = 'cam-pin-mobile';
+        pinMobBtn.className = 'proj-btn cam-pin-mobile-btn';
+        pinMobBtn.textContent = mobileCanvasPinned ? t.camPinnedMobile : t.camPinMobile;
+        pinMobBtn.addEventListener('click', () => {
+          mobileCanvasPinned = !mobileCanvasPinned;
+          document.body.classList.toggle('mobile-canvas-pinned', mobileCanvasPinned);
+          pinMobBtn.classList.toggle('active', mobileCanvasPinned);
+          const curT = tUI();
+          pinMobBtn.textContent = mobileCanvasPinned ? curT.camPinnedMobile : curT.camPinMobile;
+          requestAnimationFrame(() => {
+            window.dispatchEvent(new Event('resize'));
+          });
+        });
+
         const snapBtn = document.createElement('button');
         snapBtn.type = 'button';
         snapBtn.id = 'cam-snapshot';
@@ -39371,6 +39392,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
         camProjections.appendChild(sep);
         camProjections.appendChild(presBtn);
+        camProjections.appendChild(pinMobBtn);
         camProjections.appendChild(snapBtn);
       }
 
@@ -39412,6 +39434,49 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           }
         });
         syncEduProgressUI();
+      }
+
+      // 11. Адаптивний мобільний слот: перенесення повзунків та калькулятора формул одразу під кнопку запуску на телефонах (<= 820px)
+      syncMobileLayoutSlot();
+    }
+
+    function syncMobileLayoutSlot() {
+      const leftPage = document.getElementById('left-sidebar');
+      const rightPage = document.getElementById('right-sidebar');
+      const actionStage = document.getElementById('action-stage');
+      if (!leftPage || !rightPage || !actionStage) return;
+
+      const refBox = document.getElementById('reference-formula-box');
+      const slidersBox = document.getElementById('sliders-container');
+      const eqSec = document.getElementById('journal-sec-equations') || (refBox ? refBox.closest('.journal-section') : null);
+      const paramSec = document.getElementById('journal-sec-params') || (slidersBox ? slidersBox.closest('.journal-section') : null);
+      if (eqSec && !eqSec.id) eqSec.id = 'journal-sec-equations';
+      if (paramSec && !paramSec.id) paramSec.id = 'journal-sec-params';
+      if (!eqSec || !paramSec) return;
+
+      let mobileSlot = document.getElementById('mobile-interactive-slot');
+      if (!mobileSlot) {
+        mobileSlot = document.createElement('div');
+        mobileSlot.id = 'mobile-interactive-slot';
+        mobileSlot.className = 'mobile-interactive-slot';
+        actionStage.insertAdjacentElement('afterend', mobileSlot);
+      }
+
+      const isMobile = window.innerWidth <= 820;
+      if (isMobile) {
+        if (paramSec.parentElement !== mobileSlot) {
+          mobileSlot.appendChild(paramSec);
+        }
+        if (eqSec.parentElement !== mobileSlot) {
+          mobileSlot.appendChild(eqSec);
+        }
+      } else {
+        if (paramSec.parentElement !== rightPage) {
+          rightPage.insertBefore(paramSec, rightPage.firstChild);
+        }
+        if (eqSec.parentElement !== rightPage) {
+          rightPage.insertBefore(eqSec, rightPage.firstChild);
+        }
       }
     }
 
@@ -39544,6 +39609,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       ensureTheoryBookUI();
       syncPinChartBtnUI();
       setTxt('cam-present', t.camPresent);
+      setTxt('cam-pin-mobile', mobileCanvasPinned ? t.camPinnedMobile : t.camPinMobile);
       setTxt('cam-snapshot', t.camSnapshot);
       setTxt('ui-curriculum-summary', t.curriculumSummary);
       setTxt('ui-footer-about', t.footerAbout);
@@ -41958,7 +42024,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
     // 6 CAMERA PROJECTION VIEWS (Isometric, Front, Plan, Profile, Macro, 360° Orbit)
     function setActiveCamButton(id) {
-      document.querySelectorAll('.view-projections .proj-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view-projections .proj-btn:not(#cam-present):not(#cam-pin-mobile):not(#cam-snapshot)').forEach(b => b.classList.remove('active'));
       const btn = document.getElementById(id);
       if (btn) btn.classList.add('active');
     }
@@ -42005,6 +42071,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     });
 
     window.addEventListener('resize', () => {
+      syncMobileLayoutSlot();
       const vpW = (container && container.clientWidth) ? container.clientWidth : window.innerWidth;
       const vpH = (container && container.clientHeight) ? container.clientHeight : window.innerHeight;
       camera.aspect = vpW / Math.max(1, vpH);

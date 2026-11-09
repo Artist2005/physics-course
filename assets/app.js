@@ -3817,7 +3817,7 @@
         formulaLatex: String.raw`E_{\text{HB}} \approx 21\text{ кДж/моль} \ll E_{\text{ковал}}(\mathrm{O{-}H}) = 463\text{ кДж/моль}, \qquad \rho_{\max}(+4^\circ\text{C}) = 1.000\text{ г/см}^3`,
         liveLatexFn: p => {
           const isIce = p.tempC <= 0 - 0.074 * p.pressureMPa;
-          const rho = isIce ? (0.917 + 0.0001 * p.pressureMPa) : (1.000 - 0.00008 * Math.pow(p.tempC - 4, 1.6));
+          const rho = isIce ? (0.917 + 0.0001 * p.pressureMPa) : (1.000 - 0.00008 * Math.pow(Math.abs(p.tempC - 4), 1.6));
           const hbFrac = isIce ? 0.98 : Math.max(0.45, 0.85 - 0.004 * p.tempC);
           return String.raw`t = ${p.tempC}^\circ\text{C}\;(${isIce ? '\\text{Лід } I_h' : '\\text{Рідка H}_2\\text{O}'}): \quad \rho \approx ${Math.max(0.90, rho).toFixed(3)}\text{ г/см}^3, \quad \eta_{\text{HB}} \approx ${(hbFrac * 100).toFixed(0)}\%`;
         },
@@ -20815,7 +20815,7 @@
 
         const rho = isIce
           ? (0.917 + 0.0001 * pMPa)
-          : (1.000 - 0.00008 * Math.pow(tC - 4, 1.6));
+          : (1.000 - 0.00008 * Math.pow(Math.abs(tC - 4), 1.6));
         const rTherm = 8.314 * (tC + 273.15) * 0.001;
         const epNet = (activeHbCount / 18) * 2 * eHB;
 
@@ -23446,11 +23446,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           if (this.params.elapsedTimeT > 10.0) {
             this.params.elapsedTimeT = 0.0;
           }
-          const sl = document.getElementById('slider-elapsedTimeT');
-          const vl = document.getElementById('val-elapsedTimeT');
-          if (sl) sl.value = this.params.elapsedTimeT;
+          const sl = document.querySelector('#sliders-container input[data-param-key="elapsedTimeT"]');
+          const vl = document.getElementById('readout-elapsedTimeT');
+          if (sl) {
+            sl.value = this.params.elapsedTimeT.toFixed(1);
+            updateSliderFill(sl);
+          }
           if (vl) vl.textContent = `${this.params.elapsedTimeT.toFixed(1)} ${uiState.lang === 'en' ? 's' : 'с'}`;
-          updateLiveFormula();
+          updateLiveFormulaSubstitution();
         }
         this.syncVisuals();
       }
@@ -24041,11 +24044,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           if (this.params.frontHeight > 9.5) {
             this.params.frontHeight = 2.0;
           }
-          const sl = document.getElementById('slider-frontHeight');
-          const vl = document.getElementById('val-frontHeight');
-          if (sl) sl.value = this.params.frontHeight;
+          const sl = document.querySelector('#sliders-container input[data-param-key="frontHeight"]');
+          const vl = document.getElementById('readout-frontHeight');
+          if (sl) {
+            sl.value = this.params.frontHeight.toFixed(1);
+            updateSliderFill(sl);
+          }
           if (vl) vl.textContent = `${this.params.frontHeight.toFixed(1)} ${uiState.lang === 'en' ? 'cm' : 'см'}`;
-          updateLiveFormula();
+          updateLiveFormulaSubstitution();
         }
         this.syncVisuals();
       }
@@ -24815,11 +24821,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           if (this.params.rxnCoordXi > 1.0) {
             this.params.rxnCoordXi = 0.0;
           }
-          const sl = document.getElementById('slider-rxnCoordXi');
-          const vl = document.getElementById('val-rxnCoordXi');
-          if (sl) sl.value = this.params.rxnCoordXi;
+          const sl = document.querySelector('#sliders-container input[data-param-key="rxnCoordXi"]');
+          const vl = document.getElementById('readout-rxnCoordXi');
+          if (sl) {
+            sl.value = this.params.rxnCoordXi.toFixed(2);
+            updateSliderFill(sl);
+          }
           if (vl) vl.textContent = `${this.params.rxnCoordXi.toFixed(2)}`;
-          updateLiveFormula();
+          updateLiveFormulaSubstitution();
         }
         this.syncVisuals();
       }
@@ -32319,7 +32328,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         formulaLatex: String.raw`E_{\text{HB}} \approx 21\text{ kJ/mol} \ll E_{\text{cov}}(\mathrm{O{-}H}) = 463\text{ kJ/mol}, \qquad \rho_{\max}(+4^\circ\text{C}) = 1.000\text{ g/cm}^3`,
         liveLatexFn: p => {
           const isIce = p.tempC <= 0 - 0.074 * p.pressureMPa;
-          const rho = isIce ? (0.917 + 0.0001 * p.pressureMPa) : (1.000 - 0.00008 * Math.pow(p.tempC - 4, 1.6));
+          const rho = isIce ? (0.917 + 0.0001 * p.pressureMPa) : (1.000 - 0.00008 * Math.pow(Math.abs(p.tempC - 4), 1.6));
           const hbFrac = isIce ? 0.98 : Math.max(0.45, 0.85 - 0.004 * p.tempC);
           return String.raw`t = ${p.tempC}^\circ\text{C}\;(${isIce ? '\\text{Ice } I_h' : '\\text{Liquid H}_2\\text{O}'}): \quad \rho \approx ${Math.max(0.90, rho).toFixed(3)}\text{ g/cm}^3, \quad \eta_{\text{HB}} \approx ${(hbFrac * 100).toFixed(0)}\%`;
         },

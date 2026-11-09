@@ -1,7 +1,7 @@
 {
-  "name": "3D Science Lab: 86 Interactive Physics & Chemistry Simulations",
+  "name": "3D Science Lab: 106 Interactive Physics, Chemistry & Biology Simulations",
   "short_name": "3D Science Lab",
-  "description": "Interactive 3D virtual laboratory and textbook with 46 Physics and 40 Chemistry simulations, live telemetry, energy diagrams, and step-by-step derivations in English and Ukrainian.",
+  "description": "Interactive 3D virtual laboratory and textbook with 46 Physics, 40 Chemistry, and 20 Biology & Biophysics simulations, live telemetry, energy diagrams, and step-by-step derivations in English and Ukrainian.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

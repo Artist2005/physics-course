@@ -37944,15 +37944,32 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const seoNav = document.getElementById('seo-experiment-links');
       if (!seoNav) return;
       const isUk = uiState.lang === 'uk';
+      const targetLang = isUk ? 'uk' : 'en';
       const activeKey = uiState.activeScene;
-      seoNav.querySelectorAll('h2').forEach(h2 => {
-        const ul = h2.nextElementSibling;
-        if (!ul || ul.tagName !== 'UL') return;
-        const isUkBlock = Boolean(ul.querySelector('a[hreflang="uk"]'));
-        const show = isUk ? isUkBlock : !isUkBlock;
-        h2.style.display = show ? '' : 'none';
-        ul.style.display = show ? '' : 'none';
-      });
+      if (seoNav.dataset.renderedLang !== targetLang) {
+        const dict = isUk ? SCENE_UK : SCENE_EN;
+        const allKeys = Object.keys(SCENE_CONFIGS);
+        const physKeys = allKeys.filter(k => !k.startsWith('chem_') && !k.startsWith('bio_'));
+        const chemKeys = allKeys.filter(k => k.startsWith('chem_'));
+        const bioKeys = allKeys.filter(k => k.startsWith('bio_'));
+        const renderList = keys => keys.map(k => {
+          const item = dict[k] || SCENE_CONFIGS[k];
+          const sec = isUk
+            ? String(item.secSym || SCENE_CONFIGS[k].secSym || '').replace('§ C-', '§ Х-').replace('§ B-', '§ Б-')
+            : String(item.secSym || SCENE_CONFIGS[k].secSym || '').replace('§ Х-', '§ C-').replace('§ Б-', '§ B-');
+          const href = getExperimentHref(k, targetLang);
+          const hreflangAttr = isUk ? ' hreflang="uk"' : '';
+          return `<li><a href="${href}"${hreflangAttr}>${sec} ${item.title}</a></li>`;
+        }).join('');
+        seoNav.innerHTML = isUk
+          ? `<h2>Інтерактивні 3D-симуляції з фізики (${physKeys.length} дослідів)</h2><ul>${renderList(physKeys)}</ul>` +
+            `<h2>Інтерактивні 3D-симуляції з хімії (${chemKeys.length} дослідів)</h2><ul>${renderList(chemKeys)}</ul>` +
+            `<h2>Інтерактивні 3D-симуляції з біології та біофізики (${bioKeys.length} дослідів)</h2><ul>${renderList(bioKeys)}</ul>`
+          : `<h2>Interactive 3D Physics Simulations (${physKeys.length} Experiments)</h2><ul>${renderList(physKeys)}</ul>` +
+            `<h2>Interactive 3D Chemistry Simulations (${chemKeys.length} Experiments)</h2><ul>${renderList(chemKeys)}</ul>` +
+            `<h2>Interactive 3D Biology &amp; Biophysics Simulations (${bioKeys.length} Experiments)</h2><ul>${renderList(bioKeys)}</ul>`;
+        seoNav.dataset.renderedLang = targetLang;
+      }
       seoNav.querySelectorAll('a[href]').forEach(a => {
         const href = a.getAttribute('href') || '';
         const m = href.match(/(?:^|\/)(?:uk\/)?sim\/([a-z0-9_]+)(?:\.html)?$/i);
@@ -38388,7 +38405,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
                   </span>
                 </span>
                 <span class="disc-item-right">
-                  <span id="ui-disc-biology-count" class="disc-item-badge">12</span>
+                  <span id="ui-disc-biology-count" class="disc-item-badge">20</span>
                   <span class="disc-item-check">${DISCIPLINE_SVG_ICONS.check}</span>
                 </span>
               </button>

@@ -1459,6 +1459,42 @@
       overflow: hidden;
     }
 
+    .live-calc-wrap {
+      margin-top: 6px;
+      padding: 8px 10px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-light);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .live-calc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+      font-family: var(--font-sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+
+    .live-calc-hint {
+      font-weight: 400;
+      font-size: 10px;
+      color: var(--ink-muted);
+    }
+
+    .live-calc-box {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-primary);
+      text-align: center;
+      overflow: hidden;
+    }
+
     /* Повзунки параметрів */
     .param-control {
       display: flex;
@@ -1496,6 +1532,17 @@
       color: var(--ink-primary);
       font-variant-numeric: tabular-nums;
       flex-shrink: 0;
+      padding: 1px 6px;
+      border: 1px dashed var(--rule-dark);
+      border-radius: 2px;
+      background: var(--bg-inset);
+      cursor: pointer;
+      transition: border-color 0.14s ease, background 0.14s ease;
+    }
+
+    .param-readout:hover {
+      border-color: var(--ink-primary);
+      background: #efeae0;
     }
 
     input[type="range"].book-slider {
@@ -1830,6 +1877,12 @@
 
       .book-page-right {
         order: 5;
+      }
+
+      .theory-drawer-box.open {
+        max-height: 240px;
+        overflow-y: auto;
+        padding-right: 4px;
       }
     }
 

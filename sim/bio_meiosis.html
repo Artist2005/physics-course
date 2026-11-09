@@ -46,7 +46,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261109b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261109c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -227,6 +227,23 @@
     </div>
 
     <!-- Наукова діаграма балансу енергії (Рис. підручника) -->
+
+    <!-- Рекламний блок лівої колонки (у звичайному потоці внизу панелі, не перекриває вміст) -->
+    <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Sidebar Sponsor Slot">
+      <div class="ad-card-meta">
+        <span id="ui-ad-left-label">Advertisement</span>
+        <span>AD • 320×100</span>
+      </div>
+      <div class="ad-card-frame ad-rect-compact">
+        <!-- Google AdSense Unit: Left Sidebar (320x100) -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2903108049371777"
+             data-ad-slot="4173783296"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+</div>
+    </div>
     <div class="figure-section">
       <div class="figure-caption-top">
         <span id="ui-energy-balance-title">Energy balance</span>
@@ -270,23 +287,6 @@
 
       <div id="telemetry-grid" class="measurements-table"></div>
     </div>
-
-    <!-- Рекламний блок лівої колонки (у звичайному потоці внизу панелі, не перекриває вміст) -->
-    <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Sidebar Sponsor Slot">
-      <div class="ad-card-meta">
-        <span id="ui-ad-left-label">Advertisement</span>
-        <span>AD • 320×100</span>
-      </div>
-      <div class="ad-card-frame ad-rect-compact">
-        <!-- Google AdSense Unit: Left Sidebar (320x100) -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2903108049371777"
-             data-ad-slot="4173783296"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-</div>
-    </div>
   </aside>
 
   <!-- 4. Права сторінка: Довідник формул параграфа та Лабораторна установка -->
@@ -297,6 +297,13 @@
         <span id="ui-ref-heading-right"></span>
       </div>
       <div id="reference-formula-box" class="laws-reference-box"><code>RF = (N_Ab + NₐB)/(Nₜot)· 100% = d (cM), 2n4c xrightarrowMeiosis I 2×(1n2c) xrightarrowMeiosis II 4×(1n1c)</code></div>
+      <div class="live-calc-wrap">
+        <div class="live-calc-header">
+          <span id="ui-live-calc-title">Formula calculator</span>
+          <span id="ui-live-calc-hint" class="live-calc-hint">Click any value below to type</span>
+        </div>
+        <div id="reference-live-calc" class="live-calc-box"><code>Stage: Prophase I (crossing-over, 2n4c), · d = 18 cM ⇒ RF = 18.0%, · Parental = 82.0%, · 2^n = 8</code></div>
+      </div>
     </div>
 
     <div class="journal-section">
@@ -336,6 +343,23 @@
       </div>
 </div>
 
+    <!-- Рекламний блок правої колонки (у звичайному потоці внизу панелі, не перекриває вміст) -->
+    <div id="ad-slot-right" class="ad-sidebar-card" role="complementary" aria-label="Right Sidebar Ad Slot">
+      <div class="ad-card-meta">
+        <span id="ui-ad-right-label">Advertisement</span>
+        <span>AD • 300×250</span>
+      </div>
+      <div class="ad-card-frame ad-rect-mrec">
+        <!-- Google AdSense Unit: Right Sidebar Medium Rectangle (300x250) -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2903108049371777"
+             data-ad-slot="4173783296"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+</div>
+    </div>
+
     <div class="journal-section">
       <div class="section-heading-row">
         <span id="ui-diagram-heading">Overlays</span>
@@ -367,23 +391,6 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-
-    <!-- Рекламний блок правої колонки (у звичайному потоці внизу панелі, не перекриває вміст) -->
-    <div id="ad-slot-right" class="ad-sidebar-card" role="complementary" aria-label="Right Sidebar Ad Slot">
-      <div class="ad-card-meta">
-        <span id="ui-ad-right-label">Advertisement</span>
-        <span>AD • 300×250</span>
-      </div>
-      <div class="ad-card-frame ad-rect-mrec">
-        <!-- Google AdSense Unit: Right Sidebar Medium Rectangle (300x250) -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2903108049371777"
-             data-ad-slot="4173783296"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-</div>
-    </div>
   
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
@@ -410,6 +417,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261109b"></script>
+  <script defer src="../assets/app.js?v=20261109c"></script>
 </body>
 </html>

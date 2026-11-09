@@ -38853,6 +38853,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-energy-balance-title', t.energyBalanceTitle);
       setTxt('ui-ref-heading-left', t.refHeadingLeft);
       setTxt('ui-ref-heading-right', t.refHeadingRight);
+      setTxt('ui-live-calc-title', uiState.lang === 'uk' ? 'Калькулятор за формулою' : 'Formula calculator');
+      setTxt('ui-live-calc-hint', uiState.lang === 'uk' ? 'Натисніть на число нижче для вводу' : 'Click any value below to type');
       setTxt('ui-params-heading', t.paramsHeading);
       setTxt('btn-preset-default', t.presetDefault);
       setTxt('ui-diagram-heading', t.diagramHeading);
@@ -39339,10 +39341,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const cfg = SCENE_CONFIGS[key];
       const p = sceneParams[key];
 
-      document.getElementById('reference-formula-box').innerHTML = renderStackedMath(cfg.referenceLatex);
+      const refBox = document.getElementById('reference-formula-box');
+      if (refBox) refBox.innerHTML = renderStackedMath(cfg.referenceLatex);
       document.getElementById('explain-formula-katex').innerHTML = renderStackedMath(cfg.formulaLatex);
       if (cfg.liveLatexFn) {
-        document.getElementById('explain-live-katex').innerHTML = renderLiveMathChips(cfg.liveLatexFn(p));
+        const liveHtml = renderLiveMathChips(cfg.liveLatexFn(p));
+        document.getElementById('explain-live-katex').innerHTML = liveHtml;
+        const refLiveEl = document.getElementById('reference-live-calc');
+        if (refLiveEl) refLiveEl.innerHTML = liveHtml;
       }
       requestAnimationFrame(fitMathContainers);
     }

@@ -1,30 +1,4 @@
 (async () => {
-    // Миттєва ініціалізація екрана для мобільних телефонів (до завантаження Three.js)
-    const setMobileOverlayLang = (lang) => {
-      const isUk = lang === 'uk';
-      const titleEl = document.getElementById('ui-mobile-unsupported-title');
-      const subEl = document.getElementById('ui-mobile-unsupported-sub');
-      const btnEn = document.getElementById('mobile-lang-en');
-      const btnUk = document.getElementById('mobile-lang-uk');
-      if (titleEl) {
-        titleEl.textContent = isUk
-          ? 'Дана платформа не підтримується на даному пристрої'
-          : 'This platform is not supported on this device';
-      }
-      if (subEl) {
-        subEl.textContent = isUk
-          ? 'Інтерактивний 3D-практикум з фізики розрахований на роботу з комп’ютера або ноутбука. Будь ласка, відкрийте сайт на ПК.'
-          : 'The interactive 3D physics laboratory is designed for desktop and laptop computers. Please open this site on a PC.';
-      }
-      if (btnEn) btnEn.classList.toggle('active', !isUk);
-      if (btnUk) btnUk.classList.toggle('active', isUk);
-    };
-
-    const mobBtnEnEarly = document.getElementById('mobile-lang-en');
-    const mobBtnUkEarly = document.getElementById('mobile-lang-uk');
-    if (mobBtnEnEarly) mobBtnEnEarly.addEventListener('click', () => setMobileOverlayLang('en'));
-    if (mobBtnUkEarly) mobBtnUkEarly.addEventListener('click', () => setMobileOverlayLang('uk'));
-
     const THREE = await import('three');
     const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
 
@@ -210,13 +184,30 @@
     const camera = new THREE.PerspectiveCamera(42, initVpW / Math.max(1, initVpH), 0.1, 200);
     camera.position.set(0, 6.2, 16.0);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    renderer.setSize(initVpW, initVpH);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+      renderer.setSize(initVpW, initVpH);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+    } catch (webglErr) {
+      const fallbackCanvas = document.createElement('canvas');
+      fallbackCanvas.width = initVpW;
+      fallbackCanvas.height = initVpH;
+      renderer = {
+        domElement: fallbackCanvas,
+        shadowMap: { enabled: false, type: null },
+        toneMapping: null,
+        toneMappingExposure: 1,
+        setSize: (w, h) => { fallbackCanvas.width = w; fallbackCanvas.height = h; },
+        setPixelRatio: () => {},
+        render: () => {},
+        dispose: () => {}
+      };
+    }
     container.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -38304,40 +38295,46 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function ensureTheoryBookUI() {
       const t = tUI();
 
-      // 1. Розгортний теоретичний конспект у лівій панелі
+      // 1. Розгортний теоретичний конспект у лівій панелі (відкритий за замовчуванням)
       const chapterHeader = document.querySelector('.chapter-header');
-      if (chapterHeader && !document.getElementById('btn-theory-book')) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.id = 'btn-theory-book';
-        btn.className = 'btn-theory-book';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.innerHTML = `
-          <span class="theory-book-left">
-            <span id="ui-theory-btn-label" class="theory-book-label">Теоретичний конспект</span>
-          </span>
-          <span class="theory-book-right">
-            <span id="ui-theory-btn-hint" class="theory-book-hint">Читати</span>
-            <span class="theory-book-chevron" aria-hidden="true">▾</span>
-          </span>
-        `;
-
-        const drawer = document.createElement('div');
-        drawer.id = 'theory-drawer-box';
-        drawer.className = 'theory-drawer-box';
-        drawer.setAttribute('aria-hidden', 'true');
-        drawer.innerHTML = `<div id="theory-drawer-content" class="theory-drawer-content"></div>`;
-
-        chapterHeader.appendChild(btn);
-        chapterHeader.appendChild(drawer);
-
-        btn.addEventListener('click', () => {
-          theoryLeftOpen = !theoryLeftOpen;
-          syncTheoryDrawersUI();
-          if (theoryLeftOpen) {
-            requestAnimationFrame(fitMathContainers);
-          }
-        });
+      if (chapterHeader) {
+        let btn = document.getElementById('btn-theory-book');
+        let drawer = document.getElementById('theory-drawer-box');
+        if (!btn) {
+          btn = document.createElement('button');
+          btn.type = 'button';
+          btn.id = 'btn-theory-book';
+          btn.className = 'btn-theory-book open';
+          btn.setAttribute('aria-expanded', 'true');
+          btn.innerHTML = `
+            <span class="theory-book-left">
+              <span id="ui-theory-btn-label" class="theory-book-label">${t.theoryBtnTitle}</span>
+            </span>
+            <span class="theory-book-right">
+              <span id="ui-theory-btn-hint" class="theory-book-hint">${t.theoryCollapseHint}</span>
+              <span class="theory-book-chevron" aria-hidden="true">▾</span>
+            </span>
+          `;
+          chapterHeader.appendChild(btn);
+        }
+        if (!drawer) {
+          drawer = document.createElement('div');
+          drawer.id = 'theory-drawer-box';
+          drawer.className = 'theory-drawer-box open';
+          drawer.setAttribute('aria-hidden', 'false');
+          drawer.innerHTML = `<div id="theory-drawer-content" class="theory-drawer-content"></div>`;
+          chapterHeader.appendChild(drawer);
+        }
+        if (!btn.dataset.bound) {
+          btn.dataset.bound = '1';
+          btn.addEventListener('click', () => {
+            theoryLeftOpen = !theoryLeftOpen;
+            syncTheoryDrawersUI();
+            if (theoryLeftOpen) {
+              requestAnimationFrame(fitMathContainers);
+            }
+          });
+        }
       }
 
       // 2. Випадне меню дисциплін (Фізика | Хімія | Біологія та біофізика) з векторними SVG-іконками
@@ -38529,12 +38526,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           catDetails = document.createElement('details');
           catDetails.id = 'curriculum-catalog-details';
           catDetails.className = 'curriculum-catalog-details';
+          catDetails.open = true;
           const catSummary = document.createElement('summary');
           catSummary.id = 'ui-curriculum-summary';
           catSummary.className = 'curriculum-catalog-summary';
           catSummary.textContent = t.curriculumSummary;
           catDetails.appendChild(catSummary);
           rightPage.appendChild(catDetails);
+        } else {
+          catDetails.open = true;
         }
         if (seoNav.parentElement !== catDetails) {
           catDetails.appendChild(seoNav);
@@ -41557,9 +41557,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     uiState.activeScene = initialScene;
     uiState.discipline = getDisciplineOfScene(initialScene);
     applyLanguage(initialLang);
-    if (document.body.classList.contains('is-mobile-phone') && queryLang !== 'uk') {
-      setMobileOverlayLang('en');
-    }
     loadScene(initialScene, false);
     requestAnimationFrame(animate);
     window.__PHYSICS_APP_READY__ = true;

@@ -39310,6 +39310,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
 
       // 7. Панель швидких пресетів (#lab-presets-bar)
+      const staleShareBtn = document.getElementById('btn-share-state');
+      if (staleShareBtn) staleShareBtn.remove();
       const slidersContainer = document.getElementById('sliders-container');
       if (slidersContainer && slidersContainer.parentElement && !document.getElementById('lab-presets-bar')) {
         const presetsBar = document.createElement('div');

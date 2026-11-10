@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 46.1 . Замкнене феромагнітне осердя зі змінним потоком Φ(t), первинною обмоткою N₁ та вторинною обмоткою N₂</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Діюча первинна напруга U₁</span>
             <span class="param-readout" id="readout-voltageU1">110 В</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="voltageU1" min="50" max="220" step="10" value="110" />
+          <input type="range" class="book-slider" aria-label="Діюча первинна напруга U₁" data-param-key="voltageU1" min="50" max="220" step="10" value="110" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Число витків первинної обмотки N₁</span>
             <span class="param-readout" id="readout-turnsN1">20</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="turnsN1" min="10" max="50" step="5" value="20" />
+          <input type="range" class="book-slider" aria-label="Число витків первинної обмотки N₁" data-param-key="turnsN1" min="10" max="50" step="5" value="20" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Число витків вторинної обмотки N₂</span>
             <span class="param-readout" id="readout-turnsN2">40</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="turnsN2" min="10" max="80" step="5" value="40" />
+          <input type="range" class="book-slider" aria-label="Число витків вторинної обмотки N₂" data-param-key="turnsN2" min="10" max="80" step="5" value="40" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Частота змінного струму f (масштабована)</span>
             <span class="param-readout" id="readout-acFreqHz">2 Гц</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="acFreqHz" min="1" max="5" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Частота змінного струму f (масштабована)" data-param-key="acFreqHz" min="1" max="5" step="0.5" value="2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

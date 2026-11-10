@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-40. Тривимірна архітектура біополімерів: (1) права α-спіраль Полінга–Корі в білках (3.6 амінокислотних залишків на виток, внутрішньоланцюгові H-зв’язки C=Oᵢ ⋯ H–Nᵢ+4) та (2) антипаралельна подвійна спіраль B-ДНК Вотсона–Кріка зі сходинками комплементарних пар основ (A=T, 2 Н-зв’язки, G≡C, 3 Н-зв’язки).</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Тип біополімеру (1: α-спіраль білка, 2: Подвійна спіраль B-ДНК)</span>
             <span class="param-readout" id="readout-biopolMode">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="biopolMode" min="1" max="2" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Тип біополімеру (1: α-спіраль білка, 2: Подвійна спіраль B-ДНК)" data-param-key="biopolMode" min="1" max="2" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Частка пар Гуанін≡Цитозин (% G≡C, 3 Н-зв’язки) / стабільність</span>
             <span class="param-readout" id="readout-gcFraction">50 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gcFraction" min="10" max="90" step="10" value="50" />
+          <input type="range" class="book-slider" aria-label="Частка пар Гуанін≡Цитозин (% G≡C, 3 Н-зв’язки) / стабільність" data-param-key="gcFraction" min="10" max="90" step="10" value="50" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Кількість витків спіралі біополімеру N_вит</span>
             <span class="param-readout" id="readout-helixLength">4 витків</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="helixLength" min="2" max="6" step="1" value="4" />
+          <input type="range" class="book-slider" aria-label="Кількість витків спіралі біополімеру N_вит" data-param-key="helixLength" min="2" max="6" step="1" value="4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура розчину t (вище Tₘ, теплова денатурація)</span>
             <span class="param-readout" id="readout-tempC">37 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="20" max="95" step="5" value="37" />
+          <input type="range" class="book-slider" aria-label="Температура розчину t (вище Tₘ, теплова денатурація)" data-param-key="tempC" min="20" max="95" step="5" value="37" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

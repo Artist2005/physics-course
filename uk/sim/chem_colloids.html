@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-34. Світловий конус Фарадея–Тіндаля при проходженні лазерного променя крізь колоїдний золь та будова міцели [mAgI] nI⁻ (n-x)K⁺^x- xK⁺: стиснення дифузного шару та зниження дзета-потенціалу ζ при додаванні коагулюючого електроліту.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Радіус колоїдної міцели дисперсної фази r (1 нм = істинний р-н)</span>
             <span class="param-readout" id="readout-particleSizeNm">35 нм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="particleSizeNm" min="2" max="80" step="2" value="35" />
+          <input type="range" class="book-slider" aria-label="Радіус колоїдної міцели дисперсної фази r (1 нм = істинний р-н)" data-param-key="particleSizeNm" min="2" max="80" step="2" value="35" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація доданого електроліту-коагулянта C_ел</span>
             <span class="param-readout" id="readout-electrolyteC">2 ммоль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="electrolyteC" min="0" max="15" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Концентрація доданого електроліту-коагулянта C_ел" data-param-key="electrolyteC" min="0" max="15" step="0.5" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Заряд протиіона коагулянта z (+1: K⁺, +2: Ba²⁺, +3: Al³⁺)</span>
             <span class="param-readout" id="readout-counterIonZ">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="counterIonZ" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Заряд протиіона коагулянта z (+1: K⁺, +2: Ba²⁺, +3: Al³⁺)" data-param-key="counterIonZ" min="1" max="3" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Довжина хвилі лазерного променя λ (конус Тіндаля ∝ λ⁻⁴)</span>
             <span class="param-readout" id="readout-laserWaveNm">532 нм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="laserWaveNm" min="405" max="650" step="15" value="532" />
+          <input type="range" class="book-slider" aria-label="Довжина хвилі лазерного променя λ (конус Тіндаля ∝ λ⁻⁴)" data-param-key="laserWaveNm" min="405" max="650" step="15" value="532" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

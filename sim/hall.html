@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 36.1 . Semiconductor Hall sensor wafer between magnet poles N–S: drift velocity v_d, Lorentz force F_L, and transverse Hall field E_H</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,35 +337,35 @@
             <span class="param-title">Longitudinal current I</span>
             <span class="param-readout" id="readout-currentI">3 A</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="currentI" min="1" max="6" step="0.5" value="3" />
+          <input type="range" class="book-slider" aria-label="Longitudinal current I" data-param-key="currentI" min="1" max="6" step="0.5" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Magnetic induction B</span>
             <span class="param-readout" id="readout-magFieldB">1.5 T</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="magFieldB" min="0.5" max="3" step="0.25" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Magnetic induction B" data-param-key="magFieldB" min="0.5" max="3" step="0.25" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Carrier concentration n</span>
             <span class="param-readout" id="readout-carrierConcN">2 ×10²² m⁻³</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="carrierConcN" min="0.8" max="5" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Carrier concentration n" data-param-key="carrierConcN" min="0.8" max="5" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Wafer thickness d</span>
             <span class="param-readout" id="readout-slabThickD">1 mm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="slabThickD" min="0.5" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Wafer thickness d" data-param-key="slabThickD" min="0.5" max="2.5" step="0.25" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Conductivity type (−1 n-type, +1 p-type)</span>
             <span class="param-readout" id="readout-carrierSign">-1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="carrierSign" min="-1" max="1" step="2" value="-1" />
+          <input type="range" class="book-slider" aria-label="Conductivity type (−1 n-type, +1 p-type)" data-param-key="carrierSign" min="-1" max="1" step="2" value="-1" />
         </div>
       </div>
 </div>
@@ -464,6 +464,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

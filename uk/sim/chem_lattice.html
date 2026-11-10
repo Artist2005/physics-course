@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-3.1 . Тривимірна гранецентрована кубічна ґратка Na⁺Cl⁻ (координаційне число 6:6) та баланс кулонівського притягання й відштовхування Борна</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Міжйонна відстань r₀ (сума радіусів r₊ + r₋)</span>
             <span class="param-readout" id="readout-interionicR">2.82 Å</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="interionicR" min="2.1" max="3.5" step="0.05" value="2.82" />
+          <input type="range" class="book-slider" aria-label="Міжйонна відстань r₀ (сума радіусів r₊ + r₋)" data-param-key="interionicR" min="2.1" max="3.5" step="0.05" value="2.82" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Модуль заряду йонів |z±| (1=NaCl, 2=MgO)</span>
             <span class="param-readout" id="readout-ionCharge">1 e</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ionCharge" min="1" max="2" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Модуль заряду йонів |z±| (1=NaCl, 2=MgO)" data-param-key="ionCharge" min="1" max="2" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Абсолютна температура кристала T</span>
             <span class="param-readout" id="readout-tempK">300 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="100" max="1000" step="50" value="300" />
+          <input type="range" class="book-slider" aria-label="Абсолютна температура кристала T" data-param-key="tempK" min="100" max="1000" step="50" value="300" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Показник відштовхування Борна n</span>
             <span class="param-readout" id="readout-bornExp">9</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bornExp" min="6" max="12" step="1" value="9" />
+          <input type="range" class="book-slider" aria-label="Показник відштовхування Борна n" data-param-key="bornExp" min="6" max="12" step="1" value="9" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

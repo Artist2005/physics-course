@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 35.1 . Магнітні лінії індукції B₁, B₂ та сили Ампера F₁₂, F₂₁ між двома паралельними шинами зі струмом</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Сила струму в лівому провіднику I₁</span>
             <span class="param-readout" id="readout-current1">15 А</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="current1" min="5" max="30" step="2.5" value="15" />
+          <input type="range" class="book-slider" aria-label="Сила струму в лівому провіднику I₁" data-param-key="current1" min="5" max="30" step="2.5" value="15" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Сила струму в правому провіднику I₂</span>
             <span class="param-readout" id="readout-current2">15 А</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="current2" min="5" max="30" step="2.5" value="15" />
+          <input type="range" class="book-slider" aria-label="Сила струму в правому провіднику I₂" data-param-key="current2" min="5" max="30" step="2.5" value="15" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Відстань між провідниками d</span>
             <span class="param-readout" id="readout-wireDistD">2 см</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="wireDistD" min="1.2" max="3.4" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Відстань між провідниками d" data-param-key="wireDistD" min="1.2" max="3.4" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Напрямок струмів (+1 = однакові, -1 = зустрічні)</span>
             <span class="param-readout" id="readout-directionSign">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="directionSign" min="-1" max="1" step="2" value="1" />
+          <input type="range" class="book-slider" aria-label="Напрямок струмів (+1 = однакові, -1 = зустрічні)" data-param-key="directionSign" min="-1" max="1" step="2" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

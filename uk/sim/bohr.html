@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 44.1 . Дозволені борівські орбіти n = 1..4 із укладеними стоячими хвилями де Бройля та випромінюванням фотона hν при переході</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,21 +337,21 @@
             <span class="param-title">Початковий квантовий рівень nᵢ</span>
             <span class="param-readout" id="readout-levelInit">3</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="levelInit" min="2" max="4" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Початковий квантовий рівень nᵢ" data-param-key="levelInit" min="2" max="4" step="1" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Кінцевий квантовий рівень n_f</span>
             <span class="param-readout" id="readout-levelFinal">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="levelFinal" min="1" max="3" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Кінцевий квантовий рівень n_f" data-param-key="levelFinal" min="1" max="3" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Амплітуда стоячої хвилі де Бройля</span>
             <span class="param-readout" id="readout-deBroglieAmp">0.25 відн.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deBroglieAmp" min="0.1" max="0.45" step="0.05" value="0.25" />
+          <input type="range" class="book-slider" aria-label="Амплітуда стоячої хвилі де Бройля" data-param-key="deBroglieAmp" min="0.1" max="0.45" step="0.05" value="0.25" />
         </div>
       </div>
 </div>
@@ -450,6 +450,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

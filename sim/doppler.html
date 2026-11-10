@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 20.1 . Comparison of forward frequency f₊ (blueshift) and rear frequency f₋ (redshift)</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Source Mach ratio M = vₛ / v</span>
             <span class="param-readout" id="readout-machRatio">0.55</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="machRatio" min="0" max="1.25" step="0.05" value="0.55" />
+          <input type="range" class="book-slider" aria-label="Source Mach ratio M = vₛ / v" data-param-key="machRatio" min="0" max="1.25" step="0.05" value="0.55" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Wavefront speed v</span>
             <span class="param-readout" id="readout-waveSpeed">3.6 m/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="waveSpeed" min="2.2" max="5" step="0.2" value="3.6" />
+          <input type="range" class="book-slider" aria-label="Wavefront speed v" data-param-key="waveSpeed" min="2.2" max="5" step="0.2" value="3.6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Source frequency f₀</span>
             <span class="param-readout" id="readout-emitFreq">2 Hz</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="emitFreq" min="1" max="3.5" step="0.25" value="2" />
+          <input type="range" class="book-slider" aria-label="Source frequency f₀" data-param-key="emitFreq" min="1" max="3.5" step="0.25" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Wavefront crest intensity I₀</span>
             <span class="param-readout" id="readout-amplitude">1 u.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="amplitude" min="0.5" max="1.5" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Wavefront crest intensity I₀" data-param-key="amplitude" min="0.5" max="1.5" step="0.1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

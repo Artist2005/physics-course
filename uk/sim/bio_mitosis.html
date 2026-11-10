@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-3. Чотири фази мітозу: конденсація X-подібних хромосом (2n = 4c), шикування на метафазній пластинці, деполімеризація кінетохорних ниток веретена в анафазі та цитокінез.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Фаза мітозу (1: Профаза, 2: Метафаза, 3: Анафаза, 4: Телофаза)</span>
             <span class="param-readout" id="readout-mitosisStage">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mitosisStage" min="1" max="4" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Фаза мітозу (1: Профаза, 2: Метафаза, 3: Анафаза, 4: Телофаза)" data-param-key="mitosisStage" min="1" max="4" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Кількість гомологічних пар хромосом n (диплоїдний набір 2n)</span>
             <span class="param-readout" id="readout-chromPairs">2 пар</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="chromPairs" min="1" max="3" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Кількість гомологічних пар хромосом n (диплоїдний набір 2n)" data-param-key="chromPairs" min="1" max="3" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Сила тяги кінетохорних мікротрубочок веретена F_кін</span>
             <span class="param-readout" id="readout-spindleTension">1.4 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="spindleTension" min="0.5" max="2.5" step="0.1" value="1.4" />
+          <input type="range" class="book-slider" aria-label="Сила тяги кінетохорних мікротрубочок веретена F_кін" data-param-key="spindleTension" min="0.5" max="2.5" step="0.1" value="1.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Швидкість подовження веретена (анафаза B / розходження полюсів)</span>
             <span class="param-readout" id="readout-poleSeparation">1 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="poleSeparation" min="0.5" max="2" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Швидкість подовження веретена (анафаза B / розходження полюсів)" data-param-key="poleSeparation" min="0.5" max="2" step="0.1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

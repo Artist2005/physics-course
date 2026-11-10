@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 2.1 . Перехід потенціальної енергії mgh у кінетичну та теплоту тертя</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Кут нахилу площини α</span>
             <span class="param-readout" id="readout-angle">30 °</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="angle" min="5" max="55" step="1" value="30" />
+          <input type="range" class="book-slider" aria-label="Кут нахилу площини α" data-param-key="angle" min="5" max="55" step="1" value="30" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Коефіцієнт тертя μ</span>
             <span class="param-readout" id="readout-mu">0.25</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mu" min="0" max="0.85" step="0.05" value="0.25" />
+          <input type="range" class="book-slider" aria-label="Коефіцієнт тертя μ" data-param-key="mu" min="0" max="0.85" step="0.05" value="0.25" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Маса бруска m</span>
             <span class="param-readout" id="readout-mass">2.5 кг</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mass" min="0.5" max="6" step="0.5" value="2.5" />
+          <input type="range" class="book-slider" aria-label="Маса бруска m" data-param-key="mass" min="0.5" max="6" step="0.5" value="2.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Прискорення тяжіння g</span>
             <span class="param-readout" id="readout-gravity">9.81 м/с²</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gravity" min="1.6" max="15" step="0.1" value="9.81" />
+          <input type="range" class="book-slider" aria-label="Прискорення тяжіння g" data-param-key="gravity" min="1.6" max="15" step="0.1" value="9.81" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

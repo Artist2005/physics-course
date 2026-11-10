@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-5. Ribosomal translation complex (small and large subunits): mRNA strand with codons (AUG, UUC, GGA, UAA), A (aminoacyl), P (peptidyl), and E (exit) sites, tRNAs, and growing polypeptide chain.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Ribosome translocation speed vᵣib (codons/s)</span>
             <span class="param-readout" id="readout-riboSpeed">1.2 rel.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="riboSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Ribosome translocation speed vᵣib (codons/s)" data-param-key="riboSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Target polypeptide chain length Nₐa</span>
             <span class="param-readout" id="readout-proteinLenAa">100 aa</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="proteinLenAa" min="20" max="200" step="10" value="100" />
+          <input type="range" class="book-slider" aria-label="Target polypeptide chain length Nₐa" data-param-key="proteinLenAa" min="20" max="200" step="10" value="100" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Mg²⁺ concentration (40S+60S / 30S+50S subunit stabilization)</span>
             <span class="param-readout" id="readout-mgConcMm">2.5 mM</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mgConcMm" min="0.5" max="5" step="0.5" value="2.5" />
+          <input type="range" class="book-slider" aria-label="Mg²⁺ concentration (40S+60S / 30S+50S subunit stabilization)" data-param-key="mgConcMm" min="0.5" max="5" step="0.5" value="2.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Codon state in A-site (1=Wild-type UUC-Phe, 2=Silent UUU, 3=Missense UAC-Tyr)</span>
             <span class="param-readout" id="readout-mutationMode">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mutationMode" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Codon state in A-site (1=Wild-type UUC-Phe, 2=Silent UUU, 3=Missense UAC-Tyr)" data-param-key="mutationMode" min="1" max="3" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

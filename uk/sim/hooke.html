@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 29.1 . Лабораторна розривна машина з мікрометричним індикатором для вимірювання модуля Юнга E</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Розтягувальне навантаження F</span>
             <span class="param-readout" id="readout-loadForce">8 кН</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="loadForce" min="2" max="16" step="0.5" value="8" />
+          <input type="range" class="book-slider" aria-label="Розтягувальне навантаження F" data-param-key="loadForce" min="2" max="16" step="0.5" value="8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Модуль Юнга матеріалу E</span>
             <span class="param-readout" id="readout-youngE">7 ×10¹⁰ Па</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="youngE" min="2" max="20" step="1" value="7" />
+          <input type="range" class="book-slider" aria-label="Модуль Юнга матеріалу E" data-param-key="youngE" min="2" max="20" step="1" value="7" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Діаметр зразка d</span>
             <span class="param-readout" id="readout-rodDiam">6 мм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rodDiam" min="4" max="10" step="0.5" value="6" />
+          <input type="range" class="book-slider" aria-label="Діаметр зразка d" data-param-key="rodDiam" min="4" max="10" step="0.5" value="6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Початкова база зразка l₀</span>
             <span class="param-readout" id="readout-rodLength">2 м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rodLength" min="1.2" max="2.8" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Початкова база зразка l₀" data-param-key="rodLength" min="1.2" max="2.8" step="0.2" value="2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

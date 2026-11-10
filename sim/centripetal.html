@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 6.1 . Balance between required centripetal force and maximum static friction</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Disk angular velocity ω</span>
             <span class="param-readout" id="readout-omega">1.8 rad/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="omega" min="0.5" max="3.5" step="0.1" value="1.8" />
+          <input type="range" class="book-slider" aria-label="Disk angular velocity ω" data-param-key="omega" min="0.5" max="3.5" step="0.1" value="1.8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Orbit radius R</span>
             <span class="param-readout" id="readout-radius">2.6 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="radius" min="1.2" max="4.2" step="0.2" value="2.6" />
+          <input type="range" class="book-slider" aria-label="Orbit radius R" data-param-key="radius" min="1.2" max="4.2" step="0.2" value="2.6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Static friction coeff. μ</span>
             <span class="param-readout" id="readout-mu">0.45</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mu" min="0.1" max="0.9" step="0.05" value="0.45" />
+          <input type="range" class="book-slider" aria-label="Static friction coeff. μ" data-param-key="mu" min="0.1" max="0.9" step="0.05" value="0.45" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Body mass m</span>
             <span class="param-readout" id="readout-mass">2 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mass" min="0.5" max="5" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Body mass m" data-param-key="mass" min="0.5" max="5" step="0.5" value="2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

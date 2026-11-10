@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-17. 3D-структура комплексу CRISPR–Cas9 на геномній ДНК: білковий двочастковий каркас Cas9, жовтий PAM-мотив 5′-NGG-3′, гібридна R-петля «гідова sgRNA, цільовий ланцюг ДНК» та каталітичні центри розрізання HNH і RuvC.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Кількість некомплементарних помилок між sgRNA та ДНК (0, ідеальний збіг 20/20)</span>
             <span class="param-readout" id="readout-mismatchCount">0 помилок</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mismatchCount" min="0" max="6" step="1" value="0" />
+          <input type="range" class="book-slider" aria-label="Кількість некомплементарних помилок між sgRNA та ДНК (0, ідеальний збіг 20/20)" data-param-key="mismatchCount" min="0" max="6" step="1" value="0" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Наявність мотиву PAM 5′-NGG-3′ поруч із мішенню (1: є PAM, 0: мутація PAM)</span>
             <span class="param-readout" id="readout-pamMatch">1 PAM</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pamMatch" min="0" max="1" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Наявність мотиву PAM 5′-NGG-3′ поруч із мішенню (1: є PAM, 0: мутація PAM)" data-param-key="pamMatch" min="0" max="1" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Доступність донорної ДНК-матриці для гомологічної репарації HDR</span>
             <span class="param-readout" id="readout-donorTemplate">65 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="donorTemplate" min="0" max="100" step="5" value="65" />
+          <input type="range" class="book-slider" aria-label="Доступність донорної ДНК-матриці для гомологічної репарації HDR" data-param-key="donorTemplate" min="0" max="100" step="5" value="65" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація рибонуклеопротеїнового комплексу Cas9–sgRNA</span>
             <span class="param-readout" id="readout-cas9ConcNm">50 нМ</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="cas9ConcNm" min="10" max="100" step="10" value="50" />
+          <input type="range" class="book-slider" aria-label="Концентрація рибонуклеопротеїнового комплексу Cas9–sgRNA" data-param-key="cas9ConcNm" min="10" max="100" step="10" value="50" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

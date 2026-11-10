@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 37.1 . Перефазування коливань двох маятників та повний обмін енергією з періодом биття T_б = 2π/(ω₂ − ω₁)</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Довжина підвісу маятників L</span>
             <span class="param-readout" id="readout-pendLength">2.6 м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pendLength" min="1.6" max="3.6" step="0.2" value="2.6" />
+          <input type="range" class="book-slider" aria-label="Довжина підвісу маятників L" data-param-key="pendLength" min="1.6" max="3.6" step="0.2" value="2.6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Жорсткість пружини зв’язку κ</span>
             <span class="param-readout" id="readout-springK">1.8 Н/м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="springK" min="0.4" max="5" step="0.2" value="1.8" />
+          <input type="range" class="book-slider" aria-label="Жорсткість пружини зв’язку κ" data-param-key="springK" min="0.4" max="5" step="0.2" value="1.8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Маса кожного тягарця m</span>
             <span class="param-readout" id="readout-bobMass">1.5 кг</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bobMass" min="0.8" max="3" step="0.2" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Маса кожного тягарця m" data-param-key="bobMass" min="0.8" max="3" step="0.2" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Режим (0 = биття, 1 = синфазна, -1 = протифазна)</span>
             <span class="param-readout" id="readout-initMode">0</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="initMode" min="-1" max="1" step="1" value="0" />
+          <input type="range" class="book-slider" aria-label="Режим (0 = биття, 1 = синфазна, -1 = протифазна)" data-param-key="initMode" min="-1" max="1" step="1" value="0" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-40. 3D secondary structure of the Pauling–Corey protein α-helix (i → i+4 H-bonds) and Watson–Crick B-DNA double helix (A=T and G≡C base pairs).</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Biopolymer (1=Protein α-Helix, 2=B-DNA Double Helix)</span>
             <span class="param-readout" id="readout-biopolMode">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="biopolMode" min="1" max="2" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Biopolymer (1=Protein α-Helix, 2=B-DNA Double Helix)" data-param-key="biopolMode" min="1" max="2" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">G≡C base-pair content (% G≡C, 3 H-bonds) / stability</span>
             <span class="param-readout" id="readout-gcFraction">50 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gcFraction" min="10" max="90" step="10" value="50" />
+          <input type="range" class="book-slider" aria-label="G≡C base-pair content (% G≡C, 3 H-bonds) / stability" data-param-key="gcFraction" min="10" max="90" step="10" value="50" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Number of biopolymer helix turns Nₜurns</span>
             <span class="param-readout" id="readout-helixLength">4 turns</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="helixLength" min="2" max="6" step="1" value="4" />
+          <input type="range" class="book-slider" aria-label="Number of biopolymer helix turns Nₜurns" data-param-key="helixLength" min="2" max="6" step="1" value="4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Solution temperature t (thermal denaturation above Tₘ)</span>
             <span class="param-readout" id="readout-tempC">37 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="20" max="95" step="5" value="37" />
+          <input type="range" class="book-slider" aria-label="Solution temperature t (thermal denaturation above Tₘ)" data-param-key="tempC" min="20" max="95" step="5" value="37" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

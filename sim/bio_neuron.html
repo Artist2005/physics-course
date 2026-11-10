@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-8. Myelinated neuron axon (Schwann cell internodes and nodes of Ranvier): traveling depolarization wave (+35 mV) and live Vₘ(t) action potential oscilloscope trace.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Depolarizing stimulus ratio Iₛtim / Iₜhreshold (≥1.0 fires spike)</span>
             <span class="param-readout" id="readout-stimCurrent">1.5 Iₜh</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="stimCurrent" min="0.4" max="2.5" step="0.1" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Depolarizing stimulus ratio Iₛtim / Iₜhreshold (≥1.0 fires spike)" data-param-key="stimCurrent" min="0.4" max="2.5" step="0.1" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Axon fiber type (1=Unmyelinated continuous, 2=Myelinated saltatory)</span>
             <span class="param-readout" id="readout-myelinFactor">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="myelinFactor" min="1" max="2" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Axon fiber type (1=Unmyelinated continuous, 2=Myelinated saltatory)" data-param-key="myelinFactor" min="1" max="2" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Axon cylinder diameter dₐxon</span>
             <span class="param-readout" id="readout-axonDiamUm">10 μm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="axonDiamUm" min="2" max="20" step="2" value="10" />
+          <input type="range" class="book-slider" aria-label="Axon cylinder diameter dₐxon" data-param-key="axonDiamUm" min="2" max="20" step="2" value="10" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Voltage-gated Na⁺ channel density at nodes of Ranvier</span>
             <span class="param-readout" id="readout-gNaScale">1.2 rel.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gNaScale" min="0.6" max="1.8" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Voltage-gated Na⁺ channel density at nodes of Ranvier" data-param-key="gNaScale" min="0.6" max="1.8" step="0.1" value="1.2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-10.1 . 3D molecular model of benzene C₆H₆: planar sp² σ-framework (d(C–C) = 1.40 Å, 120°) and delocalized π-electron clouds above and below the ring</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">π-delocalization degree (0=Kekulé triene, 1=benzene)</span>
             <span class="param-readout" id="readout-piDeloc">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="piDeloc" min="0" max="1" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="π-delocalization degree (0=Kekulé triene, 1=benzene)" data-param-key="piDeloc" min="0" max="1" step="0.1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">External magnetic field B₀ (induced π-ring current)</span>
             <span class="param-readout" id="readout-magFieldB">1.5 T</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="magFieldB" min="0" max="3" step="0.25" value="1.5" />
+          <input type="range" class="book-slider" aria-label="External magnetic field B₀ (induced π-ring current)" data-param-key="magFieldB" min="0" max="3" step="0.25" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Aromatic ring plane tilt angle</span>
             <span class="param-readout" id="readout-ringTilt">18 °</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ringTilt" min="0" max="45" step="5" value="18" />
+          <input type="range" class="book-slider" aria-label="Aromatic ring plane tilt angle" data-param-key="ringTilt" min="0" max="45" step="5" value="18" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Ring vibrational amplitude</span>
             <span class="param-readout" id="readout-vibAmp">0.4 ×</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="vibAmp" min="0" max="1" step="0.1" value="0.4" />
+          <input type="range" class="book-slider" aria-label="Ring vibrational amplitude" data-param-key="vibAmp" min="0" max="1" step="0.1" value="0.4" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

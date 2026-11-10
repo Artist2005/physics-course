@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 23.1 . Енергетичний потік теплової машини: Q₁ = A_корисн + Q₂ та термічний ККД η_Карно</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Температура нагрівника T₁</span>
             <span class="param-readout" id="readout-tempHot">600 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempHot" min="450" max="900" step="25" value="600" />
+          <input type="range" class="book-slider" aria-label="Температура нагрівника T₁" data-param-key="tempHot" min="450" max="900" step="25" value="600" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура холодильника T₂</span>
             <span class="param-readout" id="readout-tempCold">300 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempCold" min="200" max="400" step="25" value="300" />
+          <input type="range" class="book-slider" aria-label="Температура холодильника T₂" data-param-key="tempCold" min="200" max="400" step="25" value="300" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Теплота від нагрівника за цикл Q₁</span>
             <span class="param-readout" id="readout-heatQ1">120 Дж</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="heatQ1" min="60" max="200" step="10" value="120" />
+          <input type="range" class="book-slider" aria-label="Теплота від нагрівника за цикл Q₁" data-param-key="heatQ1" min="60" max="200" step="10" value="120" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Частота термодинамічного циклу ν</span>
             <span class="param-readout" id="readout-rpmSpeed">1.8 Гц</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rpmSpeed" min="0.8" max="3.2" step="0.2" value="1.8" />
+          <input type="range" class="book-slider" aria-label="Частота термодинамічного циклу ν" data-param-key="rpmSpeed" min="0.8" max="3.2" step="0.2" value="1.8" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

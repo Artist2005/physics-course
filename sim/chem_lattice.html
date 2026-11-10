@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-3.1 . 3D face-centered cubic Na⁺Cl⁻ lattice (6:6 coordination) showing Coulomb attraction and Born short-range repulsion</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Interionic distance r₀ (r₊ + r₋)</span>
             <span class="param-readout" id="readout-interionicR">2.82 Å</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="interionicR" min="2.1" max="3.5" step="0.05" value="2.82" />
+          <input type="range" class="book-slider" aria-label="Interionic distance r₀ (r₊ + r₋)" data-param-key="interionicR" min="2.1" max="3.5" step="0.05" value="2.82" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Ion charge magnitude |z±| (1=NaCl, 2=MgO)</span>
             <span class="param-readout" id="readout-ionCharge">1 e</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ionCharge" min="1" max="2" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Ion charge magnitude |z±| (1=NaCl, 2=MgO)" data-param-key="ionCharge" min="1" max="2" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Crystal temperature T</span>
             <span class="param-readout" id="readout-tempK">300 K</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="100" max="1000" step="50" value="300" />
+          <input type="range" class="book-slider" aria-label="Crystal temperature T" data-param-key="tempK" min="100" max="1000" step="50" value="300" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Born repulsion exponent n</span>
             <span class="param-readout" id="readout-bornExp">9</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bornExp" min="6" max="12" step="1" value="9" />
+          <input type="range" class="book-slider" aria-label="Born repulsion exponent n" data-param-key="bornExp" min="6" max="12" step="1" value="9" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

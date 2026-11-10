@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-19. 3D-модель гемодинаміки артерії: двовігнуті диски еритроцитів в осьовому потоці, параболічний профіль векторів швидкості v(r), манометри градієнта тиску ΔP та гідравлічний опір R_гідр ∝ 1/R⁴.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Внутрішній радіус кровоносної судини R (закон Пуазейля Q ∝ R⁴)</span>
             <span class="param-readout" id="readout-vesselRadiusMm">2 мм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="vesselRadiusMm" min="1" max="3" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Внутрішній радіус кровоносної судини R (закон Пуазейля Q ∝ R⁴)" data-param-key="vesselRadiusMm" min="1" max="3" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Артеріо-венозний перепад тиску вздовж ділянки судини ΔP</span>
             <span class="param-readout" id="readout-deltaPressMmHg">40 мм рт.ст.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deltaPressMmHg" min="15" max="80" step="5" value="40" />
+          <input type="range" class="book-slider" aria-label="Артеріо-венозний перепад тиску вздовж ділянки судини ΔP" data-param-key="deltaPressMmHg" min="15" max="80" step="5" value="40" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Гематокрит Ht (об’ємна частка еритроцитів, що визначає в’язкість η)</span>
             <span class="param-readout" id="readout-hematocritPct">45 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="hematocritPct" min="25" max="65" step="5" value="45" />
+          <input type="range" class="book-slider" aria-label="Гематокрит Ht (об’ємна частка еритроцитів, що визначає в’язкість η)" data-param-key="hematocritPct" min="25" max="65" step="5" value="45" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Коефіцієнт локального судинного опору (1.0, чиста судина, 2.5, стеноз)</span>
             <span class="param-readout" id="readout-stenosisFactor">1 разів</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="stenosisFactor" min="1" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Коефіцієнт локального судинного опору (1.0, чиста судина, 2.5, стеноз)" data-param-key="stenosisFactor" min="1" max="2.5" step="0.25" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

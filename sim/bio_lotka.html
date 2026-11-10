@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-12. 3D Lotka–Volterra phase attractor and trophic ecosystem: spatial trajectory (Prey x, Predators y, Time t), phase-plane vector field around equilibrium (x*, y*), and trophic pyramid.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Prey intrinsic growth rate α</span>
             <span class="param-readout" id="readout-alphaGrowth">1.1 yr⁻¹</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="alphaGrowth" min="0.5" max="2" step="0.1" value="1.1" />
+          <input type="range" class="book-slider" aria-label="Prey intrinsic growth rate α" data-param-key="alphaGrowth" min="0.5" max="2" step="0.1" value="1.1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Predation encounter rate coefficient β</span>
             <span class="param-readout" id="readout-betaPred">0.04</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="betaPred" min="0.02" max="0.08" step="0.01" value="0.04" />
+          <input type="range" class="book-slider" aria-label="Predation encounter rate coefficient β" data-param-key="betaPred" min="0.02" max="0.08" step="0.01" value="0.04" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Predator natural mortality rate γ</span>
             <span class="param-readout" id="readout-gammaDeath">0.9 yr⁻¹</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gammaDeath" min="0.4" max="1.6" step="0.1" value="0.9" />
+          <input type="range" class="book-slider" aria-label="Predator natural mortality rate γ" data-param-key="gammaDeath" min="0.4" max="1.6" step="0.1" value="0.9" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Trophic biomass conversion efficiency δ</span>
             <span class="param-readout" id="readout-deltaEff">0.02</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deltaEff" min="0.01" max="0.05" step="0.005" value="0.02" />
+          <input type="range" class="book-slider" aria-label="Trophic biomass conversion efficiency δ" data-param-key="deltaEff" min="0.01" max="0.05" step="0.005" value="0.02" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

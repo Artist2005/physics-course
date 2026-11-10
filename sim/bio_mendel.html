@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-6. 3D geometric Punnett square (genotype areas AA = p², 2Aa = 2pq, aa = q²) and De Finetti parabola showing homozygote and heterozygote frequencies as a function of dominant allele frequency p.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Dominant allele frequency p (q = 1 − p; p = 0.5 → Mendel 3:1)</span>
             <span class="param-readout" id="readout-alleleP">0.6</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="alleleP" min="0.1" max="0.9" step="0.05" value="0.6" />
+          <input type="range" class="book-slider" aria-label="Dominant allele frequency p (q = 1 − p; p = 0.5 → Mendel 3:1)" data-param-key="alleleP" min="0.1" max="0.9" step="0.05" value="0.6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Inheritance mode (1=Complete dominance 3:1, 0.5=Incomplete dominance 1:2:1)</span>
             <span class="param-readout" id="readout-dominanceH">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="dominanceH" min="0.5" max="1" step="0.5" value="1" />
+          <input type="range" class="book-slider" aria-label="Inheritance mode (1=Complete dominance 3:1, 0.5=Incomplete dominance 1:2:1)" data-param-key="dominanceH" min="0.5" max="1" step="0.5" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Natural selection coefficient s against recessive homozygotes aa</span>
             <span class="param-readout" id="readout-selectionS">0</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="selectionS" min="0" max="0.8" step="0.1" value="0" />
+          <input type="range" class="book-slider" aria-label="Natural selection coefficient s against recessive homozygotes aa" data-param-key="selectionS" min="0" max="0.8" step="0.1" value="0" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Sampled offspring population size Nᵢnd</span>
             <span class="param-readout" id="readout-popSizeN">200 ind.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="popSizeN" min="50" max="500" step="50" value="200" />
+          <input type="range" class="book-slider" aria-label="Sampled offspring population size Nᵢnd" data-param-key="popSizeN" min="50" max="500" step="50" value="200" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

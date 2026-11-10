@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-20.1 . Побудова 3D-макромолекули поліетилену (–CH₂–CH₂–)ₙ з активним радикальним центром R• на кінці ланцюга та мономерами етилену в реакторі</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Ступінь полімеризації n (число ланок –CH₂–CH₂–)</span>
             <span class="param-readout" id="readout-degPolyN">10 ланок</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="degPolyN" min="4" max="18" step="1" value="10" />
+          <input type="range" class="book-slider" aria-label="Ступінь полімеризації n (число ланок –CH₂–CH₂–)" data-param-key="degPolyN" min="4" max="18" step="1" value="10" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація радикального ініціатора [I₂]</span>
             <span class="param-readout" id="readout-initiatorI">2 ммоль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="initiatorI" min="0.5" max="5" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Концентрація радикального ініціатора [I₂]" data-param-key="initiatorI" min="0.5" max="5" step="0.5" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація мономеру етилену [CH₂=CH₂]</span>
             <span class="param-readout" id="readout-monomerM">1.5 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="monomerM" min="0.5" max="3" step="0.25" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Концентрація мономеру етилену [CH₂=CH₂]" data-param-key="monomerM" min="0.5" max="3" step="0.25" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура полімеризаційного реактора T</span>
             <span class="param-readout" id="readout-temperatureT">350 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="temperatureT" min="300" max="420" step="10" value="350" />
+          <input type="range" class="book-slider" aria-label="Температура полімеризаційного реактора T" data-param-key="temperatureT" min="300" max="420" step="10" value="350" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

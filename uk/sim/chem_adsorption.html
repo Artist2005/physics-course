@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-33. Динамічна рівновага адсорбції та десорбції молекул газу (або барвника) на мікропористій графеновій поверхні активованого вугілля: мономолекулярне заповнення активних центрів θ = (K_адс P)/(1 + K_адс P).</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Рівноважний тиск газу-адсорбату над вугіллям P</span>
             <span class="param-readout" id="readout-gasPressP">2 атм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gasPressP" min="0.2" max="6" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Рівноважний тиск газу-адсорбату над вугіллям P" data-param-key="gasPressP" min="0.2" max="6" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура активованого вугілля T (нагрів → десорбція)</span>
             <span class="param-readout" id="readout-tempK">300 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="250" max="450" step="10" value="300" />
+          <input type="range" class="book-slider" aria-label="Температура активованого вугілля T (нагрів → десорбція)" data-param-key="tempK" min="250" max="450" step="10" value="300" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Константа адсорбційної спорідненості K₀ (при 300 К)</span>
             <span class="param-readout" id="readout-langmuirK0">1.2 атм⁻¹</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="langmuirK0" min="0.3" max="3" step="0.15" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Константа адсорбційної спорідненості K₀ (при 300 К)" data-param-key="langmuirK0" min="0.3" max="3" step="0.15" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Молярна теплота адсорбції Q_адс = −ΔH_адс</span>
             <span class="param-readout" id="readout-qAdsKj">25 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="qAdsKj" min="15" max="45" step="5" value="25" />
+          <input type="range" class="book-slider" aria-label="Молярна теплота адсорбції Q_адс = −ΔH_адс" data-param-key="qAdsKj" min="15" max="45" step="5" value="25" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

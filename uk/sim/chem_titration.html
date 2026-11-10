@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-7.1 . Титрувальна установка з бюреткою (NaOH), конічною колбою Ерленмеєра (HCl + індикатор), магнітною мішалкою та цифровим pH-метром</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Доданий об’єм титранту V(NaOH) з бюретки</span>
             <span class="param-readout" id="readout-titrantVol">18 мл</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="titrantVol" min="0" max="40" step="0.5" value="18" />
+          <input type="range" class="book-slider" aria-label="Доданий об’єм титранту V(NaOH) з бюретки" data-param-key="titrantVol" min="0" max="40" step="0.5" value="18" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Початкова концентрація кислоти C(HCl) (V₀ = 25 мл)</span>
             <span class="param-readout" id="readout-acidConc">0.1 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="acidConc" min="0.05" max="0.15" step="0.01" value="0.1" />
+          <input type="range" class="book-slider" aria-label="Початкова концентрація кислоти C(HCl) (V₀ = 25 мл)" data-param-key="acidConc" min="0.05" max="0.15" step="0.01" value="0.1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Молярна концентрація титранту C(NaOH)</span>
             <span class="param-readout" id="readout-baseConc">0.1 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="baseConc" min="0.05" max="0.15" step="0.01" value="0.1" />
+          <input type="range" class="book-slider" aria-label="Молярна концентрація титранту C(NaOH)" data-param-key="baseConc" min="0.05" max="0.15" step="0.01" value="0.1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Індикатор (1=Фенолфталеїн, 2=Бромтимоловий, 3=Метилоранж)</span>
             <span class="param-readout" id="readout-indicatorType">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="indicatorType" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Індикатор (1=Фенолфталеїн, 2=Бромтимоловий, 3=Метилоранж)" data-param-key="indicatorType" min="1" max="3" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

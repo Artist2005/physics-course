@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 25.1 . Work performed by the Coulomb field moving test charge q₀ along a field line</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Left point charge q₁ (+)</span>
             <span class="param-readout" id="readout-q1">2.5 μC</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="q1" min="1" max="4.5" step="0.5" value="2.5" />
+          <input type="range" class="book-slider" aria-label="Left point charge q₁ (+)" data-param-key="q1" min="1" max="4.5" step="0.5" value="2.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Right point charge q₂ (−)</span>
             <span class="param-readout" id="readout-q2">-2.5 μC</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="q2" min="-4.5" max="-1" step="0.5" value="-2.5" />
+          <input type="range" class="book-slider" aria-label="Right point charge q₂ (−)" data-param-key="q2" min="-4.5" max="-1" step="0.5" value="-2.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Charge separation d</span>
             <span class="param-readout" id="readout-distanceD">4.4 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="distanceD" min="2.8" max="6.4" step="0.4" value="4.4" />
+          <input type="range" class="book-slider" aria-label="Charge separation d" data-param-key="distanceD" min="2.8" max="6.4" step="0.4" value="4.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Test charge q₀</span>
             <span class="param-readout" id="readout-testChargeQ">1 μC</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="testChargeQ" min="0.5" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Test charge q₀" data-param-key="testChargeQ" min="0.5" max="2.5" step="0.25" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

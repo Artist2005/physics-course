@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-24. Енергетична 3D-діаграма циклу Борна–Габера та іонне збирання кристала MX: 5 послідовних стадій перетворення простих речовин M(тв) + (1)/(2)X₂(г) через газоподібні іони M⁺(г) + X⁻(г) у кристалічну сіль MX(тв).</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Ентальпія сублімації металу ΔH_субл(M)</span>
             <span class="param-readout" id="readout-sublH">108 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="sublH" min="75" max="180" step="5" value="108" />
+          <input type="range" class="book-slider" aria-label="Ентальпія сублімації металу ΔH_субл(M)" data-param-key="sublH" min="75" max="180" step="5" value="108" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Половина енергії дисоціації галогену ½D(X₂)</span>
             <span class="param-readout" id="readout-dissHalfD">121 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="dissHalfD" min="75" max="160" step="5" value="121" />
+          <input type="range" class="book-slider" aria-label="Половина енергії дисоціації галогену ½D(X₂)" data-param-key="dissHalfD" min="75" max="160" step="5" value="121" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Перша енергія йонізації металу I₁(M)</span>
             <span class="param-readout" id="readout-ionizI1">496 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ionizI1" min="375" max="600" step="5" value="496" />
+          <input type="range" class="book-slider" aria-label="Перша енергія йонізації металу I₁(M)" data-param-key="ionizI1" min="375" max="600" step="5" value="496" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Енергія кристалічної ґратки U_ґрат(MX)</span>
             <span class="param-readout" id="readout-latticeU">787 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="latticeU" min="650" max="1050" step="10" value="787" />
+          <input type="range" class="book-slider" aria-label="Енергія кристалічної ґратки U_ґрат(MX)" data-param-key="latticeU" min="650" max="1050" step="10" value="787" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

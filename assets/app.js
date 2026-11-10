@@ -210,6 +210,10 @@
         dispose: () => {}
       };
     }
+    if (renderer.domElement && renderer.domElement.setAttribute) {
+      renderer.domElement.setAttribute('role', 'img');
+      renderer.domElement.setAttribute('aria-label', 'Interactive 3D science apparatus viewport');
+    }
     container.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -39487,7 +39491,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (dropdownMenu && filterBar && !document.getElementById('dropdown-search-input')) {
         const searchWrap = document.createElement('div');
         searchWrap.className = 'dropdown-search-wrap';
-        searchWrap.innerHTML = `<input type="search" id="dropdown-search-input" class="dropdown-search-input" placeholder="${t.searchPlaceholder}" autocomplete="off" />`;
+        searchWrap.innerHTML = `<input type="search" id="dropdown-search-input" class="dropdown-search-input" placeholder="${t.searchPlaceholder}" aria-label="${t.searchPlaceholder}" autocomplete="off" />`;
         dropdownMenu.insertBefore(searchWrap, filterBar);
         const searchInp = searchWrap.querySelector('#dropdown-search-input');
         searchInp.addEventListener('click', e => e.stopPropagation());
@@ -39741,7 +39745,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         verifyBar.id = 'live-calc-verify-bar';
         verifyBar.className = 'live-calc-verify-bar';
         verifyBar.innerHTML = `
-          <input type="text" inputmode="decimal" id="live-calc-user-input" class="live-calc-user-input" placeholder="${uiState.lang === 'uk' ? 'Перевір свій розрахунок (число)...' : 'Check your calculated value...'}" autocomplete="off" />
+          <input type="text" inputmode="decimal" id="live-calc-user-input" class="live-calc-user-input" placeholder="${uiState.lang === 'uk' ? 'Перевір свій розрахунок (число)...' : 'Check your calculated value...'}" aria-label="${uiState.lang === 'uk' ? 'Перевір свій розрахунок' : 'Check your calculated value'}" autocomplete="off" />
           <button type="button" id="btn-verify-calc" class="btn-verify-calc">${uiState.lang === 'uk' ? 'Перевірити' : 'Check'}</button>
           <div id="live-calc-verify-msg" class="live-calc-verify-msg" aria-live="polite"></div>
         `;
@@ -40770,7 +40774,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             <span class="param-title">${s.label}</span>
             <span class="param-readout" id="readout-${s.key}">${currentVal}${s.unit ? ' ' + s.unit : ''}</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="${s.key}" min="${effMin}" max="${effMax}" step="${effStep}" value="${currentVal}" />
+          <input type="range" class="book-slider" data-param-key="${s.key}" aria-label="${String(s.label || s.key).replace(/"/g, '&quot;')}" min="${effMin}" max="${effMax}" step="${effStep}" value="${currentVal}" />
         `;
         slidersContainer.appendChild(item);
 
@@ -41189,6 +41193,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
            .replace(/\\(?:quad|qquad)\b/g, ' ')
            .replace(/\\[,;!]/g, ' ')
            .replace(/\\(?:left|right)\b/g, '')
+           .replace(/\\(sin|cos|tan|ctg|ln|lg|exp)\b/g, ' $1 ')
            .replace(/[{}]/g, '')
            .replace(/\\/g, '')
            .replace(/\s+—\s+/g, ', ')

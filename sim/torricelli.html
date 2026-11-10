@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 30.1 . Mariotte–Torricelli vessel with side nozzles: comparison of parabolic jets and maximum range at h = H/2</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Water column height H</span>
             <span class="param-readout" id="readout-waterLevelH">4.4 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="waterLevelH" min="2.6" max="5" step="0.2" value="4.4" />
+          <input type="range" class="book-slider" aria-label="Water column height H" data-param-key="waterLevelH" min="2.6" max="5" step="0.2" value="4.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Probed nozzle depth h</span>
             <span class="param-readout" id="readout-nozzleDepthH">2.2 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="nozzleDepthH" min="0.4" max="4.2" step="0.2" value="2.2" />
+          <input type="range" class="book-slider" aria-label="Probed nozzle depth h" data-param-key="nozzleDepthH" min="0.4" max="4.2" step="0.2" value="2.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Nozzle velocity coeff. φ</span>
             <span class="param-readout" id="readout-dischargeMu">0.98</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="dischargeMu" min="0.8" max="1" step="0.02" value="0.98" />
+          <input type="range" class="book-slider" aria-label="Nozzle velocity coeff. φ" data-param-key="dischargeMu" min="0.8" max="1" step="0.02" value="0.98" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Liquid density ρ</span>
             <span class="param-readout" id="readout-liquidRho">1 g/cm³</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="liquidRho" min="0.8" max="1.8" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Liquid density ρ" data-param-key="liquidRho" min="0.8" max="1.8" step="0.1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

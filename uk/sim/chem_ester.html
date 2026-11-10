@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-39. Механізм кислотно-каталізованої естерифікації оцтової кислоти етанолом, міченим важким ізотопом ¹⁸O (світиться пурпуровим кольором): нуклеофільне приєднання спирту до карбонільного Карбону, відщеплення гідроксильної групи –OH від кислоти у молекулу води H₂¹⁶O та входження ¹⁸O до складу естеру.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Мольне відношення реагентів [C₂H₅¹⁸OH]₀ / [CH₃COOH]₀</span>
             <span class="param-readout" id="readout-alcoholRatioB">1 моль/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="alcoholRatioB" min="0.5" max="5" step="0.5" value="1" />
+          <input type="range" class="book-slider" aria-label="Мольне відношення реагентів [C₂H₅¹⁸OH]₀ / [CH₃COOH]₀" data-param-key="alcoholRatioB" min="0.5" max="5" step="0.5" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Частка видаленої води H₂O (азеотропна відгонка / H₂SO₄ конц.)</span>
             <span class="param-readout" id="readout-waterRemoval">0</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="waterRemoval" min="0" max="1" step="0.1" value="0" />
+          <input type="range" class="book-slider" aria-label="Частка видаленої води H₂O (азеотропна відгонка / H₂SO₄ конц.)" data-param-key="waterRemoval" min="0" max="1" step="0.1" value="0" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація кислотного каталізатора [H₂SO₄]</span>
             <span class="param-readout" id="readout-acidCatalystH">1 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="acidCatalystH" min="0.2" max="2" step="0.2" value="1" />
+          <input type="range" class="book-slider" aria-label="Концентрація кислотного каталізатора [H₂SO₄]" data-param-key="acidCatalystH" min="0.2" max="2" step="0.2" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура реакційної суміші t</span>
             <span class="param-readout" id="readout-tempC">78 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="40" max="100" step="5" value="78" />
+          <input type="range" class="book-slider" aria-label="Температура реакційної суміші t" data-param-key="tempC" min="40" max="100" step="5" value="78" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 13.1 . Balance between static pressure P and kinetic energy density ρv²/2</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Inlet flow speed v₁</span>
             <span class="param-readout" id="readout-v1">1.5 m/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="v1" min="0.6" max="2.8" step="0.1" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Inlet flow speed v₁" data-param-key="v1" min="0.6" max="2.8" step="0.1" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Wide pipe diameter D₁</span>
             <span class="param-readout" id="readout-d1">2.2 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="d1" min="1.8" max="2.6" step="0.1" value="2.2" />
+          <input type="range" class="book-slider" aria-label="Wide pipe diameter D₁" data-param-key="d1" min="1.8" max="2.6" step="0.1" value="2.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Throat diameter D₂</span>
             <span class="param-readout" id="readout-d2">1.2 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="d2" min="0.8" max="1.7" step="0.05" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Throat diameter D₂" data-param-key="d2" min="0.8" max="1.7" step="0.05" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Fluid density ρ</span>
             <span class="param-readout" id="readout-rho">1000 kg/m³</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rho" min="700" max="1400" step="50" value="1000" />
+          <input type="range" class="book-slider" aria-label="Fluid density ρ" data-param-key="rho" min="700" max="1400" step="50" value="1000" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

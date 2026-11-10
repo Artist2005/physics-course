@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 26.1 . Перетікання електричної енергії конденсатора W_E = q²/(2C) у магнітну енергію котушки W_B = LI²/2</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Індуктивність котушки L</span>
             <span class="param-readout" id="readout-inductanceL">2 Гн</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="inductanceL" min="0.8" max="4" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Індуктивність котушки L" data-param-key="inductanceL" min="0.8" max="4" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Електроємність конденсатора C</span>
             <span class="param-readout" id="readout-capacitanceC">2 мФ</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="capacitanceC" min="0.8" max="4" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Електроємність конденсатора C" data-param-key="capacitanceC" min="0.8" max="4" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Активний опір контуру R (згасання)</span>
             <span class="param-readout" id="readout-resistanceR">0.05 Ом</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="resistanceR" min="0" max="0.5" step="0.05" value="0.05" />
+          <input type="range" class="book-slider" aria-label="Активний опір контуру R (згасання)" data-param-key="resistanceR" min="0" max="0.5" step="0.05" value="0.05" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Початкова напруга на конденсаторі U₀</span>
             <span class="param-readout" id="readout-voltageU0">5 В</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="voltageU0" min="2" max="8" step="0.5" value="5" />
+          <input type="range" class="book-slider" aria-label="Початкова напруга на конденсаторі U₀" data-param-key="voltageU0" min="2" max="8" step="0.5" value="5" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

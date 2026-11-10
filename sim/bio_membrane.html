@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-7. Phospholipid bilayer (hydrophilic heads and hydrophobic acyl tails) with embedded Na⁺/K⁺-ATPase (3 Na⁺ out, 2 K⁺ in) and K⁺ leak channel.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Na⁺/K⁺-ATPase pump activity (ATP turnover rate)</span>
             <span class="param-readout" id="readout-atpPumpRate">1.4 rel.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="atpPumpRate" min="0.4" max="2.5" step="0.1" value="1.4" />
+          <input type="range" class="book-slider" aria-label="Na⁺/K⁺-ATPase pump activity (ATP turnover rate)" data-param-key="atpPumpRate" min="0.4" max="2.5" step="0.1" value="1.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Extracellular potassium concentration [K⁺]ₒut (normal 4.5 mM)</span>
             <span class="param-readout" id="readout-kOutMm">4.5 mM</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="kOutMm" min="2" max="15" step="0.5" value="4.5" />
+          <input type="range" class="book-slider" aria-label="Extracellular potassium concentration [K⁺]ₒut (normal 4.5 mM)" data-param-key="kOutMm" min="2" max="15" step="0.5" value="4.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Intracellular sodium concentration [Na⁺]ᵢn</span>
             <span class="param-readout" id="readout-naInMm">12 mM</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="naInMm" min="5" max="30" step="1" value="12" />
+          <input type="range" class="book-slider" aria-label="Intracellular sodium concentration [Na⁺]ᵢn" data-param-key="naInMm" min="5" max="30" step="1" value="12" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Relative permeability ratio P_Na / P_K in Goldman equation</span>
             <span class="param-readout" id="readout-pNaOverPK">0.04</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pNaOverPK" min="0.01" max="0.2" step="0.01" value="0.04" />
+          <input type="range" class="book-slider" aria-label="Relative permeability ratio P_Na / P_K in Goldman equation" data-param-key="pNaOverPK" min="0.01" max="0.2" step="0.01" value="0.04" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

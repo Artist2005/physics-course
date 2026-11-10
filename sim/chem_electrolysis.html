@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-9.1 . Electrolytic cell driven by a DC power source with copper plating Cu⁰ on the cathode and O₂↑ gas bubbles evolving at the inert anode</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Direct electrolysis current I</span>
             <span class="param-readout" id="readout-currentAmp">5 A</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="currentAmp" min="1" max="10" step="0.5" value="5" />
+          <input type="range" class="book-slider" aria-label="Direct electrolysis current I" data-param-key="currentAmp" min="1" max="10" step="0.5" value="5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Electrolysis duration t</span>
             <span class="param-readout" id="readout-durationMin">15 min</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="durationMin" min="5" max="30" step="5" value="15" />
+          <input type="range" class="book-slider" aria-label="Electrolysis duration t" data-param-key="durationMin" min="5" max="30" step="5" value="15" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Cation charge number z (1=Ag⁺, 2=Cu²⁺, 3=Au³⁺)</span>
             <span class="param-readout" id="readout-ionValence">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ionValence" min="1" max="3" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Cation charge number z (1=Ag⁺, 2=Cu²⁺, 3=Au³⁺)" data-param-key="ionValence" min="1" max="3" step="1" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">DC power supply voltage U</span>
             <span class="param-readout" id="readout-voltageV">4.5 V</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="voltageV" min="2" max="8" step="0.5" value="4.5" />
+          <input type="range" class="book-slider" aria-label="DC power supply voltage U" data-param-key="voltageV" min="2" max="8" step="0.5" value="4.5" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

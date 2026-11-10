@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 27.1 . Precision vertical Atwood stand with graduated scale, rotating pulley, and force vectors T₁, T₂, m₁g, m₂g</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Left load mass m₁</span>
             <span class="param-readout" id="readout-mass1">3.2 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mass1" min="1" max="5" step="0.2" value="3.2" />
+          <input type="range" class="book-slider" aria-label="Left load mass m₁" data-param-key="mass1" min="1" max="5" step="0.2" value="3.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Right load mass m₂</span>
             <span class="param-readout" id="readout-mass2">1.8 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mass2" min="1" max="5" step="0.2" value="1.8" />
+          <input type="range" class="book-slider" aria-label="Right load mass m₂" data-param-key="mass2" min="1" max="5" step="0.2" value="1.8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Pulley mass Mₚ</span>
             <span class="param-readout" id="readout-pulleyMass">1 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pulleyMass" min="0" max="4" step="0.2" value="1" />
+          <input type="range" class="book-slider" aria-label="Pulley mass Mₚ" data-param-key="pulleyMass" min="0" max="4" step="0.2" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Pulley radius R</span>
             <span class="param-readout" id="readout-pulleyRadius">0.8 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pulleyRadius" min="0.5" max="1.2" step="0.1" value="0.8" />
+          <input type="range" class="book-slider" aria-label="Pulley radius R" data-param-key="pulleyRadius" min="0.5" max="1.2" step="0.1" value="0.8" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 22.1 . Розподіл енергії між центральним дифракційним максимумом та бічними пелюстками sinc²(β)</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Ширина дифракційної щілини b</span>
             <span class="param-readout" id="readout-slitWidth">2.2 мкм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="slitWidth" min="1.2" max="4.5" step="0.2" value="2.2" />
+          <input type="range" class="book-slider" aria-label="Ширина дифракційної щілини b" data-param-key="slitWidth" min="1.2" max="4.5" step="0.2" value="2.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Довжина світлової хвилі λ</span>
             <span class="param-readout" id="readout-wavelength">550 нм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="wavelength" min="400" max="700" step="20" value="550" />
+          <input type="range" class="book-slider" aria-label="Довжина світлової хвилі λ" data-param-key="wavelength" min="400" max="700" step="20" value="550" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Відстань до екрана L</span>
             <span class="param-readout" id="readout-screenDist">4.5 м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="screenDist" min="3" max="6.5" step="0.5" value="4.5" />
+          <input type="range" class="book-slider" aria-label="Відстань до екрана L" data-param-key="screenDist" min="3" max="6.5" step="0.5" value="4.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Порядок дифракційного мінімуму m</span>
             <span class="param-readout" id="readout-orderM">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="orderM" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Порядок дифракційного мінімуму m" data-param-key="orderM" min="1" max="3" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

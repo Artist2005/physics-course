@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-30. Каталітична колона синтезу аміаку N₂ + 3H₂ ⇄ 2NH₃ + 92 кДж: дисоціативна хемосорбція молекул N≡N та H–H на активних центрах пористого Fe-каталізатора (промотованого K₂O, Al₂O₃) під високим тиском.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Робочий тиск у колоні синтезу P</span>
             <span class="param-readout" id="readout-pressAtm">200 атм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pressAtm" min="50" max="350" step="25" value="200" />
+          <input type="range" class="book-slider" aria-label="Робочий тиск у колоні синтезу P" data-param-key="pressAtm" min="50" max="350" step="25" value="200" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура каталітичного реактора t</span>
             <span class="param-readout" id="readout-tempC">450 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="300" max="600" step="25" value="450" />
+          <input type="range" class="book-slider" aria-label="Температура каталітичного реактора t" data-param-key="tempC" min="300" max="600" step="25" value="450" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Активність пористого Fe-каталізатора (0: без кат., 1: промотований Fe)</span>
             <span class="param-readout" id="readout-feCatalyst">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="feCatalyst" min="0" max="1" step="0.5" value="1" />
+          <input type="range" class="book-slider" aria-label="Активність пористого Fe-каталізатора (0: без кат., 1: промотований Fe)" data-param-key="feCatalyst" min="0" max="1" step="0.5" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Стехіометричне відношення газів [H₂] / [N₂] на вході</span>
             <span class="param-readout" id="readout-ratioH2N2">3</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ratioH2N2" min="1" max="4" step="0.5" value="3" />
+          <input type="range" class="book-slider" aria-label="Стехіометричне відношення газів [H₂] / [N₂] на вході" data-param-key="ratioH2N2" min="1" max="4" step="0.5" value="3" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

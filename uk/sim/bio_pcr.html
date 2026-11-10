@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-16. 3D-візуалізація ПЛР-ампліфікації в термоциклері: розходження ланцюгів при 95 °C, гібридизація прямого й зворотного праймерів при 58 °C, добудова ланцюгів ферментом Taq-полімеразою при 72 °C та крива КПК у реальному часі.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Кількість завершених циклів ампліфікації ПЛР n</span>
             <span class="param-readout" id="readout-cycleCount">20 циклів</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="cycleCount" min="1" max="30" step="1" value="20" />
+          <input type="range" class="book-slider" aria-label="Кількість завершених циклів ампліфікації ПЛР n" data-param-key="cycleCount" min="1" max="30" step="1" value="20" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температурна стадія циклу (1: Денатурація 95 °C, 2: Відпал 58 °C, 3: Елонгація 72 °C)</span>
             <span class="param-readout" id="readout-stepMode">3 стадія</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="stepMode" min="1" max="3" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Температурна стадія циклу (1: Денатурація 95 °C, 2: Відпал 58 °C, 3: Елонгація 72 °C)" data-param-key="stepMode" min="1" max="3" step="1" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Початкова кількість матричних молекул ДНК у пробірці N₀</span>
             <span class="param-readout" id="readout-initTemplates">10 молекул</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="initTemplates" min="1" max="100" step="1" value="10" />
+          <input type="range" class="book-slider" aria-label="Початкова кількість матричних молекул ДНК у пробірці N₀" data-param-key="initTemplates" min="1" max="100" step="1" value="10" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Ефективність подвоєння за один цикл E (1.00, ідеальне подвоєння 2ⁿ)</span>
             <span class="param-readout" id="readout-pcrEff">0.98</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pcrEff" min="0.7" max="1" step="0.02" value="0.98" />
+          <input type="range" class="book-slider" aria-label="Ефективність подвоєння за один цикл E (1.00, ідеальне подвоєння 2ⁿ)" data-param-key="pcrEff" min="0.7" max="1" step="0.02" value="0.98" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

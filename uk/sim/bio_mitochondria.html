@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-2. Внутрішня мембрана мітохондрії (криста): перенесення електронів від НАДН до O₂ через комплекси I–IV, накачування H⁺ у міжмембранний простір і обертання ротора АТФ-синтази.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Потік донорів електронів (НАДН / ФАДH₂) у дихальний ланцюг</span>
             <span class="param-readout" id="readout-nadhFlux">1.2 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="nadhFlux" min="0.4" max="2.5" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Потік донорів електронів (НАДН / ФАДH₂) у дихальний ланцюг" data-param-key="nadhFlux" min="0.4" max="2.5" step="0.1" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Мембранний електричний потенціал кристи Δψ</span>
             <span class="param-readout" id="readout-membranePsiMv">150 мВ</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="membranePsiMv" min="80" max="190" step="5" value="150" />
+          <input type="range" class="book-slider" aria-label="Мембранний електричний потенціал кристи Δψ" data-param-key="membranePsiMv" min="80" max="190" step="5" value="150" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Трансмембранний градієнт кислотності ΔpH (pH_матр − pH_МП)</span>
             <span class="param-readout" id="readout-deltaPh">0.8 од. pH</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deltaPh" min="0.2" max="1.5" step="0.1" value="0.8" />
+          <input type="range" class="book-slider" aria-label="Трансмембранний градієнт кислотності ΔpH (pH_матр − pH_МП)" data-param-key="deltaPh" min="0.2" max="1.5" step="0.1" value="0.8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Протонний витік / роз’єднувач термогенін UCP1 (0, норма, 1, шунт)</span>
             <span class="param-readout" id="readout-uncouplerLeak">0.05</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="uncouplerLeak" min="0" max="0.9" step="0.05" value="0.05" />
+          <input type="range" class="book-slider" aria-label="Протонний витік / роз’єднувач термогенін UCP1 (0, норма, 1, шунт)" data-param-key="uncouplerLeak" min="0" max="0.9" step="0.05" value="0.05" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

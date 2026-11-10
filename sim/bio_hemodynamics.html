@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-19. 3D arterial hemodynamics model: biconcave erythrocytes in axial flow, parabolic velocity vector profile v(r), pressure-gradient manometers ΔP, and hydraulic resistance Rₕyd ∝ 1/R⁴.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Internal blood vessel lumen radius R (Poiseuille Q ∝ R⁴)</span>
             <span class="param-readout" id="readout-vesselRadiusMm">2 mm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="vesselRadiusMm" min="1" max="3" step="0.2" value="2" />
+          <input type="range" class="book-slider" aria-label="Internal blood vessel lumen radius R (Poiseuille Q ∝ R⁴)" data-param-key="vesselRadiusMm" min="1" max="3" step="0.2" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Arteriovenous pressure drop along vessel segment ΔP</span>
             <span class="param-readout" id="readout-deltaPressMmHg">40 mmHg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deltaPressMmHg" min="15" max="80" step="5" value="40" />
+          <input type="range" class="book-slider" aria-label="Arteriovenous pressure drop along vessel segment ΔP" data-param-key="deltaPressMmHg" min="15" max="80" step="5" value="40" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Hematocrit Ht (erythrocyte volume fraction governing viscosity η)</span>
             <span class="param-readout" id="readout-hematocritPct">45 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="hematocritPct" min="25" max="65" step="5" value="45" />
+          <input type="range" class="book-slider" aria-label="Hematocrit Ht (erythrocyte volume fraction governing viscosity η)" data-param-key="hematocritPct" min="25" max="65" step="5" value="45" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Local stenosis resistance multiplier (1.0 = clear lumen, 2.5 = stenosis)</span>
             <span class="param-readout" id="readout-stenosisFactor">1 ×</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="stenosisFactor" min="1" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Local stenosis resistance multiplier (1.0 = clear lumen, 2.5 = stenosis)" data-param-key="stenosisFactor" min="1" max="2.5" step="0.25" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

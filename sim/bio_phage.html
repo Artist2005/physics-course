@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-18. 3D model of Bacteriophage T4 on a bacterial cell wall: icosahedral head packed with dsDNA, contractile tail sheath, baseplate with 6 long tail fibers, and inner tail tube puncturing the peptidoglycan envelope.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Infection stage (1: Adsorption, 2: Puncture, 3: DNA Injection, 4: Assembly)</span>
             <span class="param-readout" id="readout-infectionStage">3 stage</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="infectionStage" min="1" max="4" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Infection stage (1: Adsorption, 2: Puncture, 3: DNA Injection, 4: Assembly)" data-param-key="infectionStage" min="1" max="4" step="1" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Initial internal DNA packaging pressure in phage capsid P₀</span>
             <span class="param-readout" id="readout-capsidPressAtm">50 atm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="capsidPressAtm" min="20" max="65" step="5" value="50" />
+          <input type="range" class="book-slider" aria-label="Initial internal DNA packaging pressure in phage capsid P₀" data-param-key="capsidPressAtm" min="20" max="65" step="5" value="50" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Bacterial surface LPS receptor density</span>
             <span class="param-readout" id="readout-receptorDensity">80 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="receptorDensity" min="20" max="100" step="10" value="80" />
+          <input type="range" class="book-slider" aria-label="Bacterial surface LPS receptor density" data-param-key="receptorDensity" min="20" max="100" step="10" value="80" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Lytic burst size (new virions released per host cell)</span>
             <span class="param-readout" id="readout-burstSize">150 phages</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="burstSize" min="50" max="250" step="25" value="150" />
+          <input type="range" class="book-slider" aria-label="Lytic burst size (new virions released per host cell)" data-param-key="burstSize" min="50" max="250" step="25" value="150" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

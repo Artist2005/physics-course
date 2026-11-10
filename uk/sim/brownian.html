@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 41.1 . Ламана траєкторія випадкового блукання броунівської частинки в тепловій ванні молекул</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,21 +337,21 @@
             <span class="param-title">Абсолютна температура рідини T</span>
             <span class="param-readout" id="readout-tempK">310 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="250" max="450" step="10" value="310" />
+          <input type="range" class="book-slider" aria-label="Абсолютна температура рідини T" data-param-key="tempK" min="250" max="450" step="10" value="310" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Радіус броунівської частинки a</span>
             <span class="param-readout" id="readout-grainRadiusUm">1 мкм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="grainRadiusUm" min="0.5" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Радіус броунівської частинки a" data-param-key="grainRadiusUm" min="0.5" max="2.5" step="0.25" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Динамічна в’язкість середовища η</span>
             <span class="param-readout" id="readout-viscosityEta">1 мПа·с</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="viscosityEta" min="0.5" max="3" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Динамічна в’язкість середовища η" data-param-key="viscosityEta" min="0.5" max="3" step="0.25" value="1" />
         </div>
       </div>
 </div>
@@ -450,6 +450,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

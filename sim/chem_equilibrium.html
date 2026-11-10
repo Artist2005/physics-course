@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-6.1 . Sealed thermostated ampoule containing an equilibrium gas mixture of colorless N₂O₄ dimers and brown NO₂ monomers</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,21 +337,21 @@
             <span class="param-title">Thermostat temperature T (273 K = ice, 373 K = boiling)</span>
             <span class="param-readout" id="readout-tempK">315 K</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="260" max="390" step="5" value="315" />
+          <input type="range" class="book-slider" aria-label="Thermostat temperature T (273 K = ice, 373 K = boiling)" data-param-key="tempK" min="260" max="390" step="5" value="315" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Total system pressure P</span>
             <span class="param-readout" id="readout-pressAtm">1 atm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pressAtm" min="0.25" max="4" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Total system pressure P" data-param-key="pressAtm" min="0.25" max="4" step="0.25" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Initial N₂O₄ amount ν₀</span>
             <span class="param-readout" id="readout-totalMoles">1 mol</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="totalMoles" min="0.5" max="2" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Initial N₂O₄ amount ν₀" data-param-key="totalMoles" min="0.5" max="2" step="0.25" value="1" />
         </div>
       </div>
 </div>
@@ -450,6 +450,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-4. Реплікативна вилка ДНК: розплітання подвійної спіралі геліказою, безперервний синтез ведучого ланцюга (5′→3′) та переривчастий синтез фрагментів Оказакі на відстаючому ланцюзі.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Швидкість розплітання гелікази та руху вилки v_гел</span>
             <span class="param-readout" id="readout-helicaseSpeed">1.2 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="helicaseSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Швидкість розплітання гелікази та руху вилки v_гел" data-param-key="helicaseSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Вміст пар G≡C у матричній ДНК (3 водневі зв’язки)</span>
             <span class="param-readout" id="readout-gcContent">50 %</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gcContent" min="20" max="80" step="10" value="50" />
+          <input type="range" class="book-slider" aria-label="Вміст пар G≡C у матричній ДНК (3 водневі зв’язки)" data-param-key="gcContent" min="20" max="80" step="10" value="50" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Довжина фрагментів Оказакі на відстаючому ланцюзі</span>
             <span class="param-readout" id="readout-okazakiLen">3 сегм.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="okazakiLen" min="2" max="5" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Довжина фрагментів Оказакі на відстаючому ланцюзі" data-param-key="okazakiLen" min="2" max="5" step="1" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Покоління реплікації k у досліді Мезельсона–Сталя (¹⁵N → ¹⁴N)</span>
             <span class="param-readout" id="readout-generationCount">2 покол.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="generationCount" min="1" max="4" step="1" value="2" />
+          <input type="range" class="book-slider" aria-label="Покоління реплікації k у досліді Мезельсона–Сталя (¹⁵N → ¹⁴N)" data-param-key="generationCount" min="1" max="4" step="1" value="2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-19.1 . Mirror-plane 3D stereoisomer comparison stage (cis/trans-1,2-dichloroethene and R/S-enantiomers around chiral center C*) with Biot optical polarimeter</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Stereoisomer (1=cis-Z, 2=trans-E, 3=R-enantiomer, 4=S-enantiomer)</span>
             <span class="param-readout" id="readout-isomerMode">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="isomerMode" min="1" max="4" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Stereoisomer (1=cis-Z, 2=trans-E, 3=R-enantiomer, 4=S-enantiomer)" data-param-key="isomerMode" min="1" max="4" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Polarimeter solution concentration c</span>
             <span class="param-readout" id="readout-concOpt">0.5 g/mL</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="concOpt" min="0.1" max="1" step="0.1" value="0.5" />
+          <input type="range" class="book-slider" aria-label="Polarimeter solution concentration c" data-param-key="concOpt" min="0.1" max="1" step="0.1" value="0.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Polarimeter tube length l</span>
             <span class="param-readout" id="readout-tubeLengthDm">2 dm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tubeLengthDm" min="0.5" max="3" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Polarimeter tube length l" data-param-key="tubeLengthDm" min="0.5" max="3" step="0.5" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">3D molecular model rotation speed ω</span>
             <span class="param-readout" id="readout-rotSpeed">0.8 rad/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rotSpeed" min="0" max="2" step="0.2" value="0.8" />
+          <input type="range" class="book-slider" aria-label="3D molecular model rotation speed ω" data-param-key="rotSpeed" min="0" max="2" step="0.2" value="0.8" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

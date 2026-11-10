@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-16.1 . Кристалізація золотистих гексагональних мікрокристалів PbI₂↓ («Золотий дощ») у конічній колбі Ерленмеєра на термоплитці</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Початкова концентрація катіонів плюмбуму [Pb²⁺]₀</span>
             <span class="param-readout" id="readout-concPb">0.005 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="concPb" min="0.001" max="0.015" step="0.001" value="0.005" />
+          <input type="range" class="book-slider" aria-label="Початкова концентрація катіонів плюмбуму [Pb²⁺]₀" data-param-key="concPb" min="0.001" max="0.015" step="0.001" value="0.005" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація йодид-іонів [I⁻]₀</span>
             <span class="param-readout" id="readout-concI">0.01 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="concI" min="0.002" max="0.025" step="0.001" value="0.01" />
+          <input type="range" class="book-slider" aria-label="Концентрація йодид-іонів [I⁻]₀" data-param-key="concI" min="0.002" max="0.025" step="0.001" value="0.01" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура розчину t (нагрівання розчиняє осад)</span>
             <span class="param-readout" id="readout-tempC">25 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="15" max="85" step="5" value="25" />
+          <input type="range" class="book-slider" aria-label="Температура розчину t (нагрівання розчиняє осад)" data-param-key="tempC" min="15" max="85" step="5" value="25" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Додаток солі зі спільним йоном KI (ефект спільного йона)</span>
             <span class="param-readout" id="readout-commonIonKI">0 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="commonIonKI" min="0" max="0.03" step="0.002" value="0" />
+          <input type="range" class="book-slider" aria-label="Додаток солі зі спільним йоном KI (ефект спільного йона)" data-param-key="commonIonKI" min="0" max="0.03" step="0.002" value="0" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

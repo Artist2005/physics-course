@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-23. Октаедричний координаційний комплекс [ML₆]^n+ (КЧ = 6): шість лігандів на осях ± x, ± y, ± z розщеплюють вироджені d-орбіталі центрального катіона на низькоенергетичний триплет t₂g (dₓy, dₓz, d_yz) та високоенергетичний дублет e_g (d_z², dₓ²-y²) з енергетичною щілиною Δₒ = h c / λ_погл.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Кількість d-електронів центрального катіона Mⁿ⁺ (d¹ … d⁹)</span>
             <span class="param-readout" id="readout-dElectrons">6 e⁻</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="dElectrons" min="1" max="9" step="1" value="6" />
+          <input type="range" class="book-slider" aria-label="Кількість d-електронів центрального катіона Mⁿ⁺ (d¹ … d⁹)" data-param-key="dElectrons" min="1" max="9" step="1" value="6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Сила поля лігандів Δₒ (спектрохімічний ряд: Cl⁻ → H₂O → NH₃ → CN⁻)</span>
             <span class="param-readout" id="readout-ligandFieldStrength">210 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ligandFieldStrength" min="130" max="320" step="10" value="210" />
+          <input type="range" class="book-slider" aria-label="Сила поля лігандів Δₒ (спектрохімічний ряд: Cl⁻ → H₂O → NH₃ → CN⁻)" data-param-key="ligandFieldStrength" min="130" max="320" step="10" value="210" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Довжина координаційного зв’язку метал–ліганд r(M←:L)</span>
             <span class="param-readout" id="readout-metalLBond">2 Å</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="metalLBond" min="1.75" max="2.45" step="0.05" value="2" />
+          <input type="range" class="book-slider" aria-label="Довжина координаційного зв’язку метал–ліганд r(M←:L)" data-param-key="metalLBond" min="1.75" max="2.45" step="0.05" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Геометрія комплексу (1: Октаедр [ML₆], 2: Тетраедр [ML₄])</span>
             <span class="param-readout" id="readout-coordGeom">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="coordGeom" min="1" max="2" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Геометрія комплексу (1: Октаедр [ML₆], 2: Тетраедр [ML₄])" data-param-key="coordGeom" min="1" max="2" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

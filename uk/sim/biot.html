@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 45.1 . Силові лінії та профіль осьової магнітної індукції B(x) двох співвісних колових котушок зі струмом I</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Сила струму в обмотках I</span>
             <span class="param-readout" id="readout-currentI">5 А</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="currentI" min="1" max="10" step="0.5" value="5" />
+          <input type="range" class="book-slider" aria-label="Сила струму в обмотках I" data-param-key="currentI" min="1" max="10" step="0.5" value="5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Радіус котушок R</span>
             <span class="param-readout" id="readout-coilRadius">1.8 дм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="coilRadius" min="1.2" max="2.4" step="0.2" value="1.8" />
+          <input type="range" class="book-slider" aria-label="Радіус котушок R" data-param-key="coilRadius" min="1.2" max="2.4" step="0.2" value="1.8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Відношення відстані до радіуса d/R (1.0 = Гельмгольц)</span>
             <span class="param-readout" id="readout-coilSepRatio">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="coilSepRatio" min="0.5" max="2" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Відношення відстані до радіуса d/R (1.0 = Гельмгольц)" data-param-key="coilSepRatio" min="0.5" max="2" step="0.25" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Кількість витків у кожній котушці N</span>
             <span class="param-readout" id="readout-turnsN">20</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="turnsN" min="10" max="40" step="5" value="20" />
+          <input type="range" class="book-slider" aria-label="Кількість витків у кожній котушці N" data-param-key="turnsN" min="10" max="40" step="5" value="20" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

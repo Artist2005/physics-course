@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-14.1 . U-tube osmometer with a selective semipermeable membrane, hydrostatic equilibrium head Δh, and reverse-osmosis piston</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Solute molar concentration C (right arm)</span>
             <span class="param-readout" id="readout-concentrationC">0.2 mol/L</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="concentrationC" min="0.05" max="0.5" step="0.05" value="0.2" />
+          <input type="range" class="book-slider" aria-label="Solute molar concentration C (right arm)" data-param-key="concentrationC" min="0.05" max="0.5" step="0.05" value="0.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">van ’t Hoff factor i (1=glucose, 2=NaCl, 3=CaCl₂)</span>
             <span class="param-readout" id="readout-vantHoffI">2</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="vantHoffI" min="1" max="3" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="van ’t Hoff factor i (1=glucose, 2=NaCl, 3=CaCl₂)" data-param-key="vantHoffI" min="1" max="3" step="0.5" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Absolute solution temperature T</span>
             <span class="param-readout" id="readout-temperatureT">298 K</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="temperatureT" min="273" max="353" step="5" value="298" />
+          <input type="range" class="book-slider" aria-label="Absolute solution temperature T" data-param-key="temperatureT" min="273" max="353" step="5" value="298" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">External piston pressure Pₑxt (reverse osmosis if P &gt; Π)</span>
             <span class="param-readout" id="readout-extPressureP">0 atm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="extPressureP" min="0" max="30" step="1" value="0" />
+          <input type="range" class="book-slider" aria-label="External piston pressure Pₑxt (reverse osmosis if P &gt; Π)" data-param-key="extPressureP" min="0" max="30" step="1" value="0" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

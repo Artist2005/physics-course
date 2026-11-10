@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-36. Microgalvanic corrosion couple on an iron plate in an aerated electrolyte drop: anodic dissolution vs. sacrificial Zn/Mg cathodic protection.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Contact metal coupled to Fe (1=Cu, 2=Sn, 3=Zn protector, 4=Mg protector)</span>
             <span class="param-readout" id="readout-partnerMetal">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="partnerMetal" min="1" max="4" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Contact metal coupled to Fe (1=Cu, 2=Sn, 3=Zn protector, 4=Mg protector)" data-param-key="partnerMetal" min="1" max="4" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Electrolyte salinity [NaCl]</span>
             <span class="param-readout" id="readout-naclConc">0.5 mol/L</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="naclConc" min="0.05" max="1.5" step="0.05" value="0.5" />
+          <input type="range" class="book-slider" aria-label="Electrolyte salinity [NaCl]" data-param-key="naclConc" min="0.05" max="1.5" step="0.05" value="0.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Dissolved oxygen concentration [O₂]</span>
             <span class="param-readout" id="readout-o2Conc">8 mg/L</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="o2Conc" min="1" max="12" step="1" value="8" />
+          <input type="range" class="book-slider" aria-label="Dissolved oxygen concentration [O₂]" data-param-key="o2Conc" min="1" max="12" step="1" value="8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Medium acidity pH</span>
             <span class="param-readout" id="readout-pHVal">7 pH</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pHVal" min="3" max="10" step="0.5" value="7" />
+          <input type="range" class="book-slider" aria-label="Medium acidity pH" data-param-key="pHVal" min="3" max="10" step="0.5" value="7" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

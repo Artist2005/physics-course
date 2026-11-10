@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-21. 3D-інтерференція атомних орбіталей за методом ЛКАО: конструктивне додавання хвильових функцій ψ_A + ψ_B (зв’язувальна орбіталь σ, π) та деструктивне віднімання ψ_A - ψ_B з вузловою площиною (розпушувальна орбіталь σ^*, π^*).</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Двоатомна частинка (1: H₂, 2: He₂⁺, 3: N₂, 4: O₂, 5: F₂)</span>
             <span class="param-readout" id="readout-diatomicIdx">4</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="diatomicIdx" min="1" max="5" step="1" value="4" />
+          <input type="range" class="book-slider" aria-label="Двоатомна частинка (1: H₂, 2: He₂⁺, 3: N₂, 4: O₂, 5: F₂)" data-param-key="diatomicIdx" min="1" max="5" step="1" value="4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Між’ядерна відстань R між центрами A та B</span>
             <span class="param-readout" id="readout-internuclearR">1.21 Å</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="internuclearR" min="0.7" max="2.2" step="0.05" value="1.21" />
+          <input type="range" class="book-slider" aria-label="Між’ядерна відстань R між центрами A та B" data-param-key="internuclearR" min="0.7" max="2.2" step="0.05" value="1.21" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Показана 3D-хмара МО (1: σ зв’яз., 2: σ* розп., 3: π зв’яз., 4: π* розп.)</span>
             <span class="param-readout" id="readout-moType">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="moType" min="1" max="4" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Показана 3D-хмара МО (1: σ зв’яз., 2: σ* розп., 3: π зв’яз., 4: π* розп.)" data-param-key="moType" min="1" max="4" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Резонансний інтеграл перекривання |β|</span>
             <span class="param-readout" id="readout-overlapBeta">2.5 еВ</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="overlapBeta" min="1" max="4.5" step="0.25" value="2.5" />
+          <input type="range" class="book-slider" aria-label="Резонансний інтеграл перекривання |β|" data-param-key="overlapBeta" min="1" max="4.5" step="0.25" value="2.5" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

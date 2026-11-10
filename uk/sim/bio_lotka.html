@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-12. 3D-фазовий атрактор і трофічна екосистема Лотки–Вольтерри: просторова траєкторія (Жертви x, Хижаки y, Час t), векторне поле фазової площини та трофічний потік енергії.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Коефіцієнт природного приросту жертв α (розмноження на кормовій базі)</span>
             <span class="param-readout" id="readout-alphaGrowth">1.1 рік⁻¹</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="alphaGrowth" min="0.5" max="2" step="0.1" value="1.1" />
+          <input type="range" class="book-slider" aria-label="Коефіцієнт природного приросту жертв α (розмноження на кормовій базі)" data-param-key="alphaGrowth" min="0.5" max="2" step="0.1" value="1.1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Коефіцієнт інтенсивності полювання хижаків β</span>
             <span class="param-readout" id="readout-betaPred">0.04</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="betaPred" min="0.02" max="0.08" step="0.01" value="0.04" />
+          <input type="range" class="book-slider" aria-label="Коефіцієнт інтенсивності полювання хижаків β" data-param-key="betaPred" min="0.02" max="0.08" step="0.01" value="0.04" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Коефіцієнт природної смертності хижаків за відсутності здобичі γ</span>
             <span class="param-readout" id="readout-gammaDeath">0.9 рік⁻¹</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gammaDeath" min="0.4" max="1.6" step="0.1" value="0.9" />
+          <input type="range" class="book-slider" aria-label="Коефіцієнт природної смертності хижаків за відсутності здобичі γ" data-param-key="gammaDeath" min="0.4" max="1.6" step="0.1" value="0.9" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Коефіцієнт трофічної конверсії біомаси здобичі у приріст хижаків δ</span>
             <span class="param-readout" id="readout-deltaEff">0.02</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deltaEff" min="0.01" max="0.05" step="0.005" value="0.02" />
+          <input type="range" class="book-slider" aria-label="Коефіцієнт трофічної конверсії біомаси здобичі у приріст хижаків δ" data-param-key="deltaEff" min="0.01" max="0.05" step="0.005" value="0.02" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

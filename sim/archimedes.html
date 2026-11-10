@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 7.1 . Damped vertical oscillations of a body near its equilibrium waterline</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Body density ρ_body</span>
             <span class="param-readout" id="readout-rhoBody">600 kg/m³</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rhoBody" min="200" max="1800" step="50" value="600" />
+          <input type="range" class="book-slider" aria-label="Body density ρ_body" data-param-key="rhoBody" min="200" max="1800" step="50" value="600" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Fluid density ρ_fluid</span>
             <span class="param-readout" id="readout-rhoFluid">1000 kg/m³</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rhoFluid" min="700" max="2000" step="50" value="1000" />
+          <input type="range" class="book-slider" aria-label="Fluid density ρ_fluid" data-param-key="rhoFluid" min="700" max="2000" step="50" value="1000" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Cube side length a</span>
             <span class="param-readout" id="readout-volume">1 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="volume" min="0.8" max="1.6" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Cube side length a" data-param-key="volume" min="0.8" max="1.6" step="0.1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Fluid viscosity η</span>
             <span class="param-readout" id="readout-viscosity">0.35 Pa·s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="viscosity" min="0.1" max="1.2" step="0.05" value="0.35" />
+          <input type="range" class="book-slider" aria-label="Fluid viscosity η" data-param-key="viscosity" min="0.1" max="1.2" step="0.05" value="0.35" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-2.1 . 3D-модель гібридних молекул AX₂ (BeCl₂, 180°), AX₃ (BF₃, 120°), AX₄ (CH₄, 109.5°), AX₃E (NH₃, 107°) та AX₂E₂ (H₂O, 104.5°)</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Тип молекули (1=BeCl₂, 2=BF₃, 3=CH₄, 4=NH₃, 5=H₂O)</span>
             <span class="param-readout" id="readout-vseprType">3</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="vseprType" min="1" max="5" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Тип молекули (1=BeCl₂, 2=BF₃, 3=CH₄, 4=NH₃, 5=H₂O)" data-param-key="vseprType" min="1" max="5" step="1" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Між’ядерна довжина зв’язку d(A–X)</span>
             <span class="param-readout" id="readout-bondLength">1.5 Å</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bondLength" min="1.1" max="2" step="0.05" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Між’ядерна довжина зв’язку d(A–X)" data-param-key="bondLength" min="1.1" max="2" step="0.05" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Різниця електронегативностей Δχ</span>
             <span class="param-readout" id="readout-deltaEN">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="deltaEN" min="0.4" max="1.8" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Різниця електронегативностей Δχ" data-param-key="deltaEN" min="0.4" max="1.8" step="0.1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Амплітуда валентно-деформаційних коливань</span>
             <span class="param-readout" id="readout-thermalVib">0.3 ×</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="thermalVib" min="0" max="1" step="0.1" value="0.3" />
+          <input type="range" class="book-slider" aria-label="Амплітуда валентно-деформаційних коливань" data-param-key="thermalVib" min="0" max="1" step="0.1" value="0.3" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

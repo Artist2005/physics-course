@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 1.1 . Redistribution of kinetic energy during the collision of two spheres</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,42 +337,42 @@
             <span class="param-title">Mass of 1st sphere m₁</span>
             <span class="param-readout" id="readout-m1">2 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="m1" min="0.5" max="6" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Mass of 1st sphere m₁" data-param-key="m1" min="0.5" max="6" step="0.5" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Mass of 2nd sphere m₂</span>
             <span class="param-readout" id="readout-m2">2 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="m2" min="0.5" max="6" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Mass of 2nd sphere m₂" data-param-key="m2" min="0.5" max="6" step="0.5" value="2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Initial velocity v₁</span>
             <span class="param-readout" id="readout-v1">4 m/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="v1" min="1" max="8" step="0.5" value="4" />
+          <input type="range" class="book-slider" aria-label="Initial velocity v₁" data-param-key="v1" min="1" max="8" step="0.5" value="4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Initial velocity v₂</span>
             <span class="param-readout" id="readout-v2">0 m/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="v2" min="-4" max="3" step="0.5" value="0" />
+          <input type="range" class="book-slider" aria-label="Initial velocity v₂" data-param-key="v2" min="-4" max="3" step="0.5" value="0" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Restitution coeff. e</span>
             <span class="param-readout" id="readout-restitution">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="restitution" min="0" max="1" step="0.05" value="1" />
+          <input type="range" class="book-slider" aria-label="Restitution coeff. e" data-param-key="restitution" min="0" max="1" step="0.05" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Impact offset Δz</span>
             <span class="param-readout" id="readout-impactOffset">0 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="impactOffset" min="-0.6" max="0.6" step="0.05" value="0" />
+          <input type="range" class="book-slider" aria-label="Impact offset Δz" data-param-key="impactOffset" min="-0.6" max="0.6" step="0.05" value="0" />
         </div>
       </div>
 </div>
@@ -471,6 +471,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

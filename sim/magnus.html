@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 39.1 . Streamline deflection around a Flettner rotor and generation of transverse Magnus lift F_M</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Free-stream flow velocity v_∞</span>
             <span class="param-readout" id="readout-flowSpeed">8 m/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="flowSpeed" min="3" max="15" step="1" value="8" />
+          <input type="range" class="book-slider" aria-label="Free-stream flow velocity v_∞" data-param-key="flowSpeed" min="3" max="15" step="1" value="8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Cylinder angular velocity ω</span>
             <span class="param-readout" id="readout-spinOmega">25 rad/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="spinOmega" min="-40" max="40" step="5" value="25" />
+          <input type="range" class="book-slider" aria-label="Cylinder angular velocity ω" data-param-key="spinOmega" min="-40" max="40" step="5" value="25" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Rotor radius R</span>
             <span class="param-readout" id="readout-cylRadius">1.2 dm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="cylRadius" min="0.8" max="1.8" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Rotor radius R" data-param-key="cylRadius" min="0.8" max="1.8" step="0.1" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Fluid density ρ</span>
             <span class="param-readout" id="readout-airDensity">1.25 kg/m³</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="airDensity" min="0.6" max="2.4" step="0.2" value="1.25" />
+          <input type="range" class="book-slider" aria-label="Fluid density ρ" data-param-key="airDensity" min="0.6" max="2.4" step="0.2" value="1.25" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

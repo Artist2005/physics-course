@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 8.1 . Internal energy U and gas expansion work A under temperature changes</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,21 +337,21 @@
             <span class="param-title">Absolute temperature T</span>
             <span class="param-readout" id="readout-temperature">300 K</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="temperature" min="150" max="600" step="25" value="300" />
+          <input type="range" class="book-slider" aria-label="Absolute temperature T" data-param-key="temperature" min="150" max="600" step="25" value="300" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">External piston pressure P</span>
             <span class="param-readout" id="readout-pistonLoad">1.5 atm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pistonLoad" min="0.8" max="3" step="0.2" value="1.5" />
+          <input type="range" class="book-slider" aria-label="External piston pressure P" data-param-key="pistonLoad" min="0.8" max="3" step="0.2" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Model particle count N</span>
             <span class="param-readout" id="readout-particleCount">45 mol</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="particleCount" min="20" max="70" step="5" value="45" />
+          <input type="range" class="book-slider" aria-label="Model particle count N" data-param-key="particleCount" min="20" max="70" step="5" value="45" />
         </div>
       </div>
 </div>
@@ -450,6 +450,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

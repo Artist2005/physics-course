@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 17.1 . Exchange between gravitational potential energy and kinetic energy between perihelion and aphelion</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Orbital eccentricity e</span>
             <span class="param-readout" id="readout-eccentricity">0.45</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="eccentricity" min="0" max="0.75" step="0.05" value="0.45" />
+          <input type="range" class="book-slider" aria-label="Orbital eccentricity e" data-param-key="eccentricity" min="0" max="0.75" step="0.05" value="0.45" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Semi-major axis a</span>
             <span class="param-readout" id="readout-semiMajorA">4.4 AU</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="semiMajorA" min="3" max="5.6" step="0.2" value="4.4" />
+          <input type="range" class="book-slider" aria-label="Semi-major axis a" data-param-key="semiMajorA" min="3" max="5.6" step="0.2" value="4.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Central star mass M</span>
             <span class="param-readout" id="readout-starMass">1.5 M☉</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="starMass" min="0.8" max="2.5" step="0.1" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Central star mass M" data-param-key="starMass" min="0.8" max="2.5" step="0.1" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Planet mass m</span>
             <span class="param-readout" id="readout-planetMass">1 M⊕</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="planetMass" min="0.5" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Planet mass m" data-param-key="planetMass" min="0.5" max="2.5" step="0.25" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

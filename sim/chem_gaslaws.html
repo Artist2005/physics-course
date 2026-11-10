@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-4.1 . Graduated gas cylinder with movable piston, pressure gauge, and thermostat for gases of different molar mass (H₂, O₂, CO₂)</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Amount of gas substance ν</span>
             <span class="param-readout" id="readout-molesNu">1 mol</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="molesNu" min="0.5" max="2.5" step="0.25" value="1" />
+          <input type="range" class="book-slider" aria-label="Amount of gas substance ν" data-param-key="molesNu" min="0.5" max="2.5" step="0.25" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Absolute temperature T</span>
             <span class="param-readout" id="readout-tempK">273.15 K</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="200" max="500" step="10" value="273.15" />
+          <input type="range" class="book-slider" aria-label="Absolute temperature T" data-param-key="tempK" min="200" max="500" step="10" value="273.15" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">External pressure P</span>
             <span class="param-readout" id="readout-pressKpa">101.3 kPa</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pressKpa" min="50" max="200" step="5" value="101.3" />
+          <input type="range" class="book-slider" aria-label="External pressure P" data-param-key="pressKpa" min="50" max="200" step="5" value="101.3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Gas molar mass M (2=H₂, 32=O₂, 44=CO₂)</span>
             <span class="param-readout" id="readout-molarMass">32 g/mol</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="molarMass" min="2" max="44" step="2" value="32" />
+          <input type="range" class="book-slider" aria-label="Gas molar mass M (2=H₂, 32=O₂, 44=CO₂)" data-param-key="molarMass" min="2" max="44" step="2" value="32" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

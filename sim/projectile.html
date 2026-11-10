@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 4.1 . Balance of kinetic and potential energy along the parabolic trajectory</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,35 +337,35 @@
             <span class="param-title">Initial velocity v₀</span>
             <span class="param-readout" id="readout-v0">11.5 m/s</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="v0" min="6" max="15" step="0.5" value="11.5" />
+          <input type="range" class="book-slider" aria-label="Initial velocity v₀" data-param-key="v0" min="6" max="15" step="0.5" value="11.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Launch angle θ</span>
             <span class="param-readout" id="readout-angle">45 °</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="angle" min="15" max="80" step="1" value="45" />
+          <input type="range" class="book-slider" aria-label="Launch angle θ" data-param-key="angle" min="15" max="80" step="1" value="45" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Initial height h₀</span>
             <span class="param-readout" id="readout-h0">1.2 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="h0" min="0.2" max="4.5" step="0.2" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Initial height h₀" data-param-key="h0" min="0.2" max="4.5" step="0.2" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Air drag coeff. c_d</span>
             <span class="param-readout" id="readout-drag">0 kg/m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="drag" min="0" max="0.15" step="0.01" value="0" />
+          <input type="range" class="book-slider" aria-label="Air drag coeff. c_d" data-param-key="drag" min="0" max="0.15" step="0.01" value="0" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Projectile mass m</span>
             <span class="param-readout" id="readout-mass">1.5 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mass" min="0.5" max="5" step="0.5" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Projectile mass m" data-param-key="mass" min="0.5" max="5" step="0.5" value="1.5" />
         </div>
       </div>
 </div>
@@ -464,6 +464,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

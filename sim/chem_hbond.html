@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-12.1 . 3D tetrahedral O–H···O hydrogen-bond network in crystalline hexagonal ice Iₕ and its partial collapse upon melting into liquid water</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Medium temperature t (phase transition at 0 °C)</span>
             <span class="param-readout" id="readout-tempC">-5 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="-25" max="60" step="1" value="-5" />
+          <input type="range" class="book-slider" aria-label="Medium temperature t (phase transition at 0 °C)" data-param-key="tempC" min="-25" max="60" step="1" value="-5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Hydrogen bond energy E_HB (O–H···O)</span>
             <span class="param-readout" id="readout-hBondStrength">21 kJ/mol</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="hBondStrength" min="10" max="30" step="1" value="21" />
+          <input type="range" class="book-slider" aria-label="Hydrogen bond energy E_HB (O–H···O)" data-param-key="hBondStrength" min="10" max="30" step="1" value="21" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">External pressure P (hexagonal cage compression)</span>
             <span class="param-readout" id="readout-pressureMPa">0.1 MPa</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pressureMPa" min="0.1" max="200" step="10" value="0.1" />
+          <input type="range" class="book-slider" aria-label="External pressure P (hexagonal cage compression)" data-param-key="pressureMPa" min="0.1" max="200" step="10" value="0.1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Water molecular dipole moment μ(H₂O)</span>
             <span class="param-readout" id="readout-dipoleD">1.85 D</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="dipoleD" min="1" max="2.5" step="0.05" value="1.85" />
+          <input type="range" class="book-slider" aria-label="Water molecular dipole moment μ(H₂O)" data-param-key="dipoleD" min="1" max="2.5" step="0.05" value="1.85" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

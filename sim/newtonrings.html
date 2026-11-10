@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 32.1 . Plano-convex lens of radius R on a flat optical glass plate: central dark spot and concentric Newton's rings</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Wavelength λ</span>
             <span class="param-readout" id="readout-lambdaNm">550 nm</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="lambdaNm" min="420" max="680" step="10" value="550" />
+          <input type="range" class="book-slider" aria-label="Wavelength λ" data-param-key="lambdaNm" min="420" max="680" step="10" value="550" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Lens curvature radius R</span>
             <span class="param-readout" id="readout-lensRadiusR">2.5 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="lensRadiusR" min="1" max="5" step="0.25" value="2.5" />
+          <input type="range" class="book-slider" aria-label="Lens curvature radius R" data-param-key="lensRadiusR" min="1" max="5" step="0.25" value="2.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Gap refractive index n</span>
             <span class="param-readout" id="readout-gapIndexN">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="gapIndexN" min="1" max="1.5" step="0.05" value="1" />
+          <input type="range" class="book-slider" aria-label="Gap refractive index n" data-param-key="gapIndexN" min="1" max="1.5" step="0.05" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Measured ring order m</span>
             <span class="param-readout" id="readout-ringOrderM">3</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="ringOrderM" min="1" max="6" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Measured ring order m" data-param-key="ringOrderM" min="1" max="6" step="1" value="3" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-1. 3D-модель еукаріотичної клітини у розрізі: подвійна ядерна оболонка з хроматином і ядерцем, шорстка та гладка ЕПС, диктіосоми Гольджі, мітохондрії, лізосоми та везикулярний транспорт.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Радіус еукаріотичної клітини R (межа S/V = 3/R)</span>
             <span class="param-readout" id="readout-cellRadiusUm">15 мкм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="cellRadiusUm" min="8" max="30" step="1" value="15" />
+          <input type="range" class="book-slider" aria-label="Радіус еукаріотичної клітини R (межа S/V = 3/R)" data-param-key="cellRadiusUm" min="8" max="30" step="1" value="15" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Фокус органели (1: Усі, 2: Ядро+ЕПС, 3: Гольджі+лізосоми, 4: Мітохондрії)</span>
             <span class="param-readout" id="readout-organelleFocus">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="organelleFocus" min="1" max="4" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Фокус органели (1: Усі, 2: Ядро+ЕПС, 3: Гольджі+лізосоми, 4: Мітохондрії)" data-param-key="organelleFocus" min="1" max="4" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Інтенсивність клітинного метаболізму та дихання</span>
             <span class="param-readout" id="readout-metabolicRate">1 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="metabolicRate" min="0.4" max="2.5" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Інтенсивність клітинного метаболізму та дихання" data-param-key="metabolicRate" min="0.4" max="2.5" step="0.1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Швидкість кінезинового везикулярного транспорту v_вез</span>
             <span class="param-readout" id="readout-vesicleSpeed">1.2 мкм/с</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="vesicleSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Швидкість кінезинового везикулярного транспорту v_вез" data-param-key="vesicleSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 10.1 . Інтенсивність світла у вибраній точці екрана залежно від різниці ходу Δd</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Довжина хвилі світла λ</span>
             <span class="param-readout" id="readout-wavelength">520 нм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="wavelength" min="400" max="700" step="15" value="520" />
+          <input type="range" class="book-slider" aria-label="Довжина хвилі світла λ" data-param-key="wavelength" min="400" max="700" step="15" value="520" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Відстань між щілинами d</span>
             <span class="param-readout" id="readout-slitD">2.2 мм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="slitD" min="1" max="3.6" step="0.2" value="2.2" />
+          <input type="range" class="book-slider" aria-label="Відстань між щілинами d" data-param-key="slitD" min="1" max="3.6" step="0.2" value="2.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">База до екрана L</span>
             <span class="param-readout" id="readout-screenL">6 м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="screenL" min="4.5" max="7.5" step="0.5" value="6" />
+          <input type="range" class="book-slider" aria-label="База до екрана L" data-param-key="screenL" min="4.5" max="7.5" step="0.5" value="6" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Точка спостереження на екрані z</span>
             <span class="param-readout" id="readout-probeZ">0.8 мм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="probeZ" min="-3.2" max="3.2" step="0.1" value="0.8" />
+          <input type="range" class="book-slider" aria-label="Точка спостереження на екрані z" data-param-key="probeZ" min="-3.2" max="3.2" step="0.1" value="0.8" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

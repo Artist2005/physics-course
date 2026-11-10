@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-11.1 . Повна 18-колонкова 3D-таблиця Д. І. Менделєєва з усіма 118 елементами (включно з d-елементами, лантаноїдами 4f та актиноїдами 5f) і багатооболонкова 3D-модель атома Бора, Слейтера (n = 1..7)</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Порядковий номер елемента Z (усі 118 елементів)</span>
             <span class="param-readout" id="readout-atomicZ">26</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="atomicZ" min="1" max="118" step="1" value="26" />
+          <input type="range" class="book-slider" aria-label="Порядковий номер елемента Z (усі 118 елементів)" data-param-key="atomicZ" min="1" max="118" step="1" value="26" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Номер періоду n (1–7, електронні шари)</span>
             <span class="param-readout" id="readout-periodN">4</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="periodN" min="1" max="7" step="1" value="4" />
+          <input type="range" class="book-slider" aria-label="Номер періоду n (1–7, електронні шари)" data-param-key="periodN" min="1" max="7" step="1" value="4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Номер групи IUPAC (1–18: s-, d-, p-блоки)</span>
             <span class="param-readout" id="readout-groupG">8</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="groupG" min="1" max="18" step="1" value="8" />
+          <input type="range" class="book-slider" aria-label="Номер групи IUPAC (1–18: s-, d-, p-блоки)" data-param-key="groupG" min="1" max="18" step="1" value="8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Рельєф 3D-матриці (1=Радіус r_ат, 2=Енергія I₁, 3=Електронег. χ)</span>
             <span class="param-readout" id="readout-propMode">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="propMode" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Рельєф 3D-матриці (1=Радіус r_ат, 2=Енергія I₁, 3=Електронег. χ)" data-param-key="propMode" min="1" max="3" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

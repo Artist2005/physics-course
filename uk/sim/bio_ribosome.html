@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-5. Трансляційний комплекс рибосоми (мала та велика субодиниці): стрічка мРНК з кодонами (AUG, UUC, GGA, UAA), сайти A (аміноацильний), P (пептидильний), E (вихід) і ріст поліпептидного ланцюга.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Швидкість транслокації рибосоми v_риб (кодонів за секунду)</span>
             <span class="param-readout" id="readout-riboSpeed">1.2 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="riboSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Швидкість транслокації рибосоми v_риб (кодонів за секунду)" data-param-key="riboSpeed" min="0.4" max="2.5" step="0.1" value="1.2" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Довжина цільового поліпептидного ланцюга N_аа</span>
             <span class="param-readout" id="readout-proteinLenAa">100 амінок.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="proteinLenAa" min="20" max="200" step="10" value="100" />
+          <input type="range" class="book-slider" aria-label="Довжина цільового поліпептидного ланцюга N_аа" data-param-key="proteinLenAa" min="20" max="200" step="10" value="100" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація іонів Mg²⁺ (стабілізація субодиниць 40S+60S / 30S+50S)</span>
             <span class="param-readout" id="readout-mgConcMm">2.5 мМ</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mgConcMm" min="0.5" max="5" step="0.5" value="2.5" />
+          <input type="range" class="book-slider" aria-label="Концентрація іонів Mg²⁺ (стабілізація субодиниць 40S+60S / 30S+50S)" data-param-key="mgConcMm" min="0.5" max="5" step="0.5" value="2.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Тип кодону в сайті A (1: Норма UUC-Phe, 2: Синонімічна UUU, 3: Місенс UAC-Tyr)</span>
             <span class="param-readout" id="readout-mutationMode">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mutationMode" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Тип кодону в сайті A (1: Норма UUC-Phe, 2: Синонімічна UUU, 3: Місенс UAC-Tyr)" data-param-key="mutationMode" min="1" max="3" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

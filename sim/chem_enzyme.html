@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-28.1 . 3D enzyme globule E with a complementary active-site pocket: reversible formation of the ES complex, saturation rate v([S]), and competitive inhibition by inhibitor I</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Substrate concentration [S]</span>
             <span class="param-readout" id="readout-substrateS">4 mmol/L</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="substrateS" min="0.25" max="12" step="0.25" value="4" />
+          <input type="range" class="book-slider" aria-label="Substrate concentration [S]" data-param-key="substrateS" min="0.25" max="12" step="0.25" value="4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Michaelis constant K_M (inverse affinity)</span>
             <span class="param-readout" id="readout-kmVal">1.5 mmol/L</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="kmVal" min="0.5" max="5" step="0.25" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Michaelis constant K_M (inverse affinity)" data-param-key="kmVal" min="0.5" max="5" step="0.25" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Catalytic turnover number k_cat (Vₘax)</span>
             <span class="param-readout" id="readout-kCat">8 s⁻¹</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="kCat" min="2" max="14" step="0.5" value="8" />
+          <input type="range" class="book-slider" aria-label="Catalytic turnover number k_cat (Vₘax)" data-param-key="kCat" min="2" max="14" step="0.5" value="8" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Competitive inhibitor concentration [I]</span>
             <span class="param-readout" id="readout-inhibitorI">0 mmol/L</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="inhibitorI" min="0" max="6" step="0.5" value="0" />
+          <input type="range" class="book-slider" aria-label="Competitive inhibitor concentration [I]" data-param-key="inhibitorI" min="0" max="6" step="0.5" value="0" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

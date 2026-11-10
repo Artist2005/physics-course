@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Б-11. Четвертинна структура гемоглобіну (4 субодиниці α₁, α₂, β₁, β₂ з порфіриновими гемами Fe²⁺) у потоці еритроцитів і сигмоїдна крива насичення киснем Y(pO₂) порівняно з міоглобіном.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Парціальний тиск кисню pO₂ (40, венозна кров тканин, 100, альвеоли легень)</span>
             <span class="param-readout" id="readout-po2MmHg">40 мм рт.ст.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="po2MmHg" min="10" max="110" step="5" value="40" />
+          <input type="range" class="book-slider" aria-label="Парціальний тиск кисню pO₂ (40, венозна кров тканин, 100, альвеоли легень)" data-param-key="po2MmHg" min="10" max="110" step="5" value="40" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">pH крові (ефект Бора: 7.40, норма, 7.15, ацидоз працюючого м’яза)</span>
             <span class="param-readout" id="readout-bloodPh">7.4 од. pH</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bloodPh" min="7" max="7.6" step="0.05" value="7.4" />
+          <input type="range" class="book-slider" aria-label="pH крові (ефект Бора: 7.40, норма, 7.15, ацидоз працюючого м’яза)" data-param-key="bloodPh" min="7" max="7.6" step="0.05" value="7.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура крові t (гіпертермія зсуває криву праворуч)</span>
             <span class="param-readout" id="readout-tempC">37 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="35" max="41" step="1" value="37" />
+          <input type="range" class="book-slider" aria-label="Температура крові t (гіпертермія зсуває криву праворуч)" data-param-key="tempC" min="35" max="41" step="1" value="37" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Рівень 2,3-бісфосфогліцерату (2,3-БФГ) в еритроцитах (високогірна адаптація)</span>
             <span class="param-readout" id="readout-bpgLevel">1 ум.од.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bpgLevel" min="0.5" max="2" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Рівень 2,3-бісфосфогліцерату (2,3-БФГ) в еритроцитах (високогірна адаптація)" data-param-key="bpgLevel" min="0.5" max="2" step="0.1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

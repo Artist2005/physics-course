@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-5.1 . Реакційна камера з активними зіткненнями A + B → AB, поверхнею платинового каталізатора та 3D-профілем енергії активації Eₐ</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Початкова енергія активації Eₐ (без каталізатора)</span>
             <span class="param-readout" id="readout-eaBarrier">65 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="eaBarrier" min="35" max="90" step="5" value="65" />
+          <input type="range" class="book-slider" aria-label="Початкова енергія активації Eₐ (без каталізатора)" data-param-key="eaBarrier" min="35" max="90" step="5" value="65" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Зниження бар’єра каталізатором ΔE_кат (0=без кат.)</span>
             <span class="param-readout" id="readout-catDrop">0 кДж/моль</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="catDrop" min="0" max="35" step="5" value="0" />
+          <input type="range" class="book-slider" aria-label="Зниження бар’єра каталізатором ΔE_кат (0=без кат.)" data-param-key="catDrop" min="0" max="35" step="5" value="0" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Температура реакційної суміші T</span>
             <span class="param-readout" id="readout-tempK">350 К</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempK" min="280" max="550" step="10" value="350" />
+          <input type="range" class="book-slider" aria-label="Температура реакційної суміші T" data-param-key="tempK" min="280" max="550" step="10" value="350" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Концентрація реагентів C(A) = C(B)</span>
             <span class="param-readout" id="readout-concReact">1.2 моль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="concReact" min="0.5" max="2.5" step="0.25" value="1.2" />
+          <input type="range" class="book-slider" aria-label="Концентрація реагентів C(A) = C(B)" data-param-key="concReact" min="0.5" max="2.5" step="0.25" value="1.2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. C-13.1 . Insulated laboratory calorimeter with digital thermometer and stirrer alongside a 3D Hess’s Law enthalpy level diagram</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Reaction (1=HCl+NaOH exo, 2=NH₄NO₃ endo, 3=Mg+2HCl strong exo)</span>
             <span class="param-readout" id="readout-rxnType">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="rxnType" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Reaction (1=HCl+NaOH exo, 2=NH₄NO₃ endo, 3=Mg+2HCl strong exo)" data-param-key="rxnType" min="1" max="3" step="1" value="1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Reactant molar amount ν</span>
             <span class="param-readout" id="readout-molesNu">0.1 mol</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="molesNu" min="0.02" max="0.25" step="0.01" value="0.1" />
+          <input type="range" class="book-slider" aria-label="Reactant molar amount ν" data-param-key="molesNu" min="0.02" max="0.25" step="0.01" value="0.1" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Calorimeter aqueous solution mass m</span>
             <span class="param-readout" id="readout-waterMass">200 g</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="waterMass" min="100" max="400" step="25" value="200" />
+          <input type="range" class="book-slider" aria-label="Calorimeter aqueous solution mass m" data-param-key="waterMass" min="100" max="400" step="25" value="200" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Calorimeter vessel heat capacity C_cal</span>
             <span class="param-readout" id="readout-calConst">45 J/K</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="calConst" min="10" max="120" step="5" value="45" />
+          <input type="range" class="book-slider" aria-label="Calorimeter vessel heat capacity C_cal" data-param-key="calConst" min="10" max="120" step="5" value="45" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

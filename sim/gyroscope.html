@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. 18.1 . Partition between translational Eₜrans = ½mv² and rotational Eᵣot = ½Iω² energy</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Inertia factor β = I/(mR²)</span>
             <span class="param-readout" id="readout-betaFactor">0.5</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="betaFactor" min="0.2" max="1" step="0.1" value="0.5" />
+          <input type="range" class="book-slider" aria-label="Inertia factor β = I/(mR²)" data-param-key="betaFactor" min="0.2" max="1" step="0.1" value="0.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Incline angle α</span>
             <span class="param-readout" id="readout-angle">26 °</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="angle" min="14" max="40" step="2" value="26" />
+          <input type="range" class="book-slider" aria-label="Incline angle α" data-param-key="angle" min="14" max="40" step="2" value="26" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Rolling body radius R</span>
             <span class="param-readout" id="readout-radius">0.65 m</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="radius" min="0.45" max="0.9" step="0.05" value="0.65" />
+          <input type="range" class="book-slider" aria-label="Rolling body radius R" data-param-key="radius" min="0.45" max="0.9" step="0.05" value="0.65" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Body mass m</span>
             <span class="param-readout" id="readout-mass">2 kg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="mass" min="1" max="4" step="0.5" value="2" />
+          <input type="range" class="book-slider" aria-label="Body mass m" data-param-key="mass" min="1" max="4" step="0.5" value="2" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

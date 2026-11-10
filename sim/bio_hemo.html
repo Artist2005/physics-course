@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Real-time energy balance oscillogram"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Fig. B-11. Quaternary structure of hemoglobin (4 α₁, α₂, β₁, β₂ subunits with Fe²⁺ porphyrin hemes) and the sigmoidal O₂ dissociation curve Y(pO₂) compared with hyperbolic myoglobin.</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Oxygen partial pressure pO₂ (40=venous tissue, 100=alveolar lung)</span>
             <span class="param-readout" id="readout-po2MmHg">40 mmHg</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="po2MmHg" min="10" max="110" step="5" value="40" />
+          <input type="range" class="book-slider" aria-label="Oxygen partial pressure pO₂ (40=venous tissue, 100=alveolar lung)" data-param-key="po2MmHg" min="10" max="110" step="5" value="40" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Blood pH (Bohr effect: 7.40=normal, 7.15=exercising acidosis)</span>
             <span class="param-readout" id="readout-bloodPh">7.4 pH units</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bloodPh" min="7" max="7.6" step="0.05" value="7.4" />
+          <input type="range" class="book-slider" aria-label="Blood pH (Bohr effect: 7.40=normal, 7.15=exercising acidosis)" data-param-key="bloodPh" min="7" max="7.6" step="0.05" value="7.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Blood temperature t (hyperthermia shifts curve right)</span>
             <span class="param-readout" id="readout-tempC">37 °C</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tempC" min="35" max="41" step="1" value="37" />
+          <input type="range" class="book-slider" aria-label="Blood temperature t (hyperthermia shifts curve right)" data-param-key="tempC" min="35" max="41" step="1" value="37" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Erythrocyte 2,3-BPG level (high-altitude adaptation)</span>
             <span class="param-readout" id="readout-bpgLevel">1 rel.</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="bpgLevel" min="0.5" max="2" step="0.1" value="1" />
+          <input type="range" class="book-slider" aria-label="Erythrocyte 2,3-BPG level (high-altitude adaptation)" data-param-key="bpgLevel" min="0.5" max="2" step="0.1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110d"></script>
+  <script defer src="../assets/app.js?v=20261110e"></script>
 </body>
 </html>

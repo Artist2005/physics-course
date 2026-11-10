@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. 19.1 . Перехід кінетичної енергії руху струни в потенціальну енергію пружної деформації двічі за період</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Номер гармоніки (число пучностей) n</span>
             <span class="param-readout" id="readout-harmonicN">3</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="harmonicN" min="1" max="6" step="1" value="3" />
+          <input type="range" class="book-slider" aria-label="Номер гармоніки (число пучностей) n" data-param-key="harmonicN" min="1" max="6" step="1" value="3" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Сила натягу струни T</span>
             <span class="param-readout" id="readout-tension">45 Н</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="tension" min="15" max="90" step="5" value="45" />
+          <input type="range" class="book-slider" aria-label="Сила натягу струни T" data-param-key="tension" min="15" max="90" step="5" value="45" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Лінійна густина струни μ</span>
             <span class="param-readout" id="readout-linearMu">1.5 г/м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="linearMu" min="0.5" max="3.5" step="0.25" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Лінійна густина струни μ" data-param-key="linearMu" min="0.5" max="3.5" step="0.25" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Амплітуда пучності A</span>
             <span class="param-readout" id="readout-amplitude">1.1 м</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="amplitude" min="0.4" max="1.6" step="0.1" value="1.1" />
+          <input type="range" class="book-slider" aria-label="Амплітуда пучності A" data-param-key="amplitude" min="0.4" max="1.6" step="0.1" value="1.1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

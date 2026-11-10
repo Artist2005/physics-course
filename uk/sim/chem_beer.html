@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110d" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110e" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -302,7 +302,7 @@
         </div>
       </div>
 
-      <canvas id="chart-canvas" width="335" height="82"></canvas>
+      <canvas id="chart-canvas" width="335" height="82" role="img" aria-label="Осцилограма балансу енергії в реальному часі"></canvas>
       <div id="figure-caption-text" class="figure-caption-bottom">Рис. Х-17.1 . Оптична лава спектрофотометра: дифракційний монохроматор λ, кварцова кювета змінного оптичного шляху l та фотодетектор пропускання T = I/I₀</div>
 
       <div id="telemetry-grid" class="measurements-table"></div>
@@ -337,28 +337,28 @@
             <span class="param-title">Молярна концентрація хромофора C</span>
             <span class="param-readout" id="readout-concentrationC">0.4 ммоль/л</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="concentrationC" min="0.05" max="1" step="0.05" value="0.4" />
+          <input type="range" class="book-slider" aria-label="Молярна концентрація хромофора C" data-param-key="concentrationC" min="0.05" max="1" step="0.05" value="0.4" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Товщина шару розчину (оптичний шлях кювети l)</span>
             <span class="param-readout" id="readout-pathLengthL">1.5 см</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="pathLengthL" min="0.5" max="3" step="0.25" value="1.5" />
+          <input type="range" class="book-slider" aria-label="Товщина шару розчину (оптичний шлях кювети l)" data-param-key="pathLengthL" min="0.5" max="3" step="0.25" value="1.5" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Довжина хвилі монохроматора λ</span>
             <span class="param-readout" id="readout-wavelengthNm">525 нм</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="wavelengthNm" min="400" max="700" step="5" value="525" />
+          <input type="range" class="book-slider" aria-label="Довжина хвилі монохроматора λ" data-param-key="wavelengthNm" min="400" max="700" step="5" value="525" />
         </div>
         <div class="param-control">
           <div class="param-header">
             <span class="param-title">Розчин (1=KMnO₄ 525 нм, 2=CuSO₄ 650 нм, 3=K₂Cr₂O₇ 450 нм)</span>
             <span class="param-readout" id="readout-soluteType">1</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="soluteType" min="1" max="3" step="1" value="1" />
+          <input type="range" class="book-slider" aria-label="Розчин (1=KMnO₄ 525 нм, 2=CuSO₄ 650 нм, 3=K₂Cr₂O₇ 450 нм)" data-param-key="soluteType" min="1" max="3" step="1" value="1" />
         </div>
       </div>
 </div>
@@ -457,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110d"></script>
+  <script defer src="../../assets/app.js?v=20261110e"></script>
 </body>
 </html>

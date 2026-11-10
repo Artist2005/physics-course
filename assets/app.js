@@ -2152,7 +2152,7 @@
         ]
       },
 
-      brewster: {
+      malus: {
         secSym: '§ 21.',
         shortTitle: 'Поляризація світла: кут Брюстера і закон Малюса',
         category: 'optics',
@@ -4502,7 +4502,7 @@
         ]
       },
 
-      chem_arrhenius: {
+      chem_orders: {
         discipline: 'chemistry',
         secSym: '§ Х-27',
         secTag: 'ХІМІЯ · РОЗДІЛ ІІ · § Х-27. ПОРЯДКИ ХІМІЧНИХ РЕАКЦІЙ ТА ПЕРІОД НАПІВПЕРЕТВОРЕННЯ',
@@ -8384,7 +8384,8 @@
         const v2 = 300000 / n2;
         const lambda2 = p.wavelength / n2;
 
-        updateEnergyUI(transPct, reflPct, 0, 100, [
+        const phaseDelayRad = Math.abs(p.n2 - p.n1) * 2 * Math.PI;
+        updateEnergyUI(transPct, reflPct, phaseDelayRad, 100, [
           { label: 'Кут заломлення β', val: `${THREE.MathUtils.radToDeg(beta).toFixed(1)}°` },
           { label: 'Швидкість фронту v₂', val: `${(v2 / 1000).toFixed(0)} тис. км/с` },
           { label: 'Довжина хвилі λ₂', val: `${lambda2.toFixed(0)} нм` },
@@ -8829,7 +8830,8 @@
         const nViol = p.n0 + (p.cauchyB * 0.25) / (0.405 * 0.405);
         const deltaThetaDeg = THREE.MathUtils.radToDeg(redDirOut.angleTo(violDirOut));
 
-        updateEnergyUI(nRed * 30, nViol * 30, 0, 110, [
+        const reflLossPct = 200 * Math.pow((p.n0 - 1) / (p.n0 + 1), 2);
+        updateEnergyUI(nRed * 30, nViol * 30, reflLossPct, 110, [
           { label: 'n(черв, 680 нм)', val: nRed.toFixed(3) },
           { label: 'n(фіол, 405 нм)', val: nViol.toFixed(3) },
           { label: 'Кутова ширина Δδ', val: `${deltaThetaDeg.toFixed(1)}°` },
@@ -10443,7 +10445,7 @@
         const angMomL = p.planetMass * hAng;
         const periodT = (2 * Math.PI * Math.pow(a, 1.5)) / Math.sqrt(mu);
 
-        updateEnergyUI(ek, ugMag * 0.5, 0, 18, [
+        updateEnergyUI(ek, ugMag * 0.5, angMomL, 18, [
           { label: 'Радіус-вектор r', val: `${r.toFixed(2)} а.о.` },
           { label: 'Орбітальна швидкість v', val: `${(speed * 10).toFixed(1)} км/с` },
           { label: 'Сила тяжіння F_g', val: `${fgMag.toFixed(2)} Н` },
@@ -11735,7 +11737,7 @@
           uiState.showLabels
         );
 
-        updateEnergyUI(iOut, 0, iAbsorbed, Math.max(1, p.incidentI0), [
+        updateEnergyUI(iOut, p.incidentI0, iAbsorbed, Math.max(1, p.incidentI0), [
           { label: 'Інтенсивність I(θ)', val: `${iOut.toFixed(1)} Вт/м²` },
           { label: 'Коефіцієнт cos²θ', val: `${(cosTheta * cosTheta * 100).toFixed(1)} %` },
           { label: 'Кут Брюстера θ_B', val: `${brewsterDeg.toFixed(1)}°` },
@@ -13996,7 +13998,7 @@
           uiState.showLabels
         );
 
-        updateEnergyUI(0, workJ, 0, Math.max(1, workJ), [
+        updateEnergyUI(workJ, workJ, 0, Math.max(1, workJ), [
           { label: 'Механічна напруга σ = F/S', val: `${sigmaMPa.toFixed(1)} МПа` },
           { label: 'Відносне видовження ε', val: `${(strain * 100).toFixed(3)} %` },
           { label: 'Абсолютне видовження Δl', val: `${dlMm.toFixed(2)} мм` },
@@ -14825,7 +14827,7 @@
           uiState.showLabels
         );
 
-        updateEnergyUI(38, 62, 0, 100, [
+        updateEnergyUI(38, 62, Math.PI, 100, [
           { label: `Радіус темного кільця r_${m}`, val: `${rDarkMm.toFixed(2)} мм` },
           { label: `Радіус світлого кільця r_${m}`, val: `${rBrightMm.toFixed(2)} мм` },
           { label: 'Товщина прошарку d(r_m)', val: `${airGapUm.toFixed(2)} мкм` },
@@ -17442,7 +17444,7 @@
           uiState.showLabels
         );
 
-        updateEnergyUI(ePrimeKev, kElectronKev, 0, Math.max(1, e0Kev), [
+        updateEnergyUI(ePrimeKev, kElectronKev, dLambda, Math.max(1, e0Kev), [
           { label: 'Зсув Комптона Δλ', val: `${dLambda.toFixed(2)} пм` },
           { label: 'Розсіяна довжина λ′', val: `${lambdaPrime.toFixed(2)} пм` },
           { label: 'Енергія кванта E_γ′', val: `${ePrimeKev.toFixed(1)} кеВ` },
@@ -31610,7 +31612,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Wavefront crest intensity I₀', unit: 'u.' }
         ]
       },
-      brewster: {
+      malus: {
         secTag: 'Section § 21 · Transverse Light Waves · Malus\'s Law & Brewster\'s Angle',
         shortTitle: 'Polarization: Brewster\'s Angle & Malus\'s Law',
         subtitle: 'Transmission of a linearly polarized light wavefront through a polarizer and rotatable analyzer',
@@ -33592,7 +33594,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           { label: 'Thermal heat exchange power Q', unit: 'kJ' }
         ]
       },
-      chem_arrhenius: {
+      chem_orders: {
         secTag: 'Section § C-27 · Chemical Kinetics · Reaction Orders (0, 1, 2) & Half-Life t₁/₂',
         shortTitle: 'Reaction Orders (0, 1, 2) & Half-Life t₁/₂',
         subtitle: 'Integrated rate laws of zero, first, and second order reactions and scaling of half-life t₁/₂',
@@ -36075,7 +36077,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         eduLevelUni: 'University',
         eduLevelSchoolTip: 'School mode with everyday examples and hints',
         eduLevelUniTip: 'University mode with full derivations and telemetry',
-        analogyCardTitle: 'Everyday example',
+        analogyCardTitle: 'Physical model and application',
+        classroomBtn: 'Classroom mode',
+        classroomBtnTip: 'Projector-friendly classroom view without ads or footers',
+        tierAll: 'All levels (106)',
+        tierCore: 'Core curriculum',
+        tierAdv: 'Advanced level',
+        tierBadgeCore: 'Core',
+        tierBadgeAdv: 'Advanced',
         hintBtnLabel: 'Hint',
         hintBtnActive: 'Hide hint',
         hintBoxPrefix: '',
@@ -36108,7 +36117,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         discBiologyFull: 'Biology & Biophysics',
         discBiologySub: 'Cell organelles, DNA, CRISPR, neuron, optics, physiology',
         discBiologyTip: 'Biology & Biophysics (20 experiments)',
-        shareBtn: 'Share link',
+        shareBtn: 'Link with params',
         shareTip: 'Copy link with current slider values',
         shareCopied: 'Copied',
         pinChartBtn: 'Pin curve',
@@ -36224,7 +36233,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         eduLevelUni: 'ВНЗ',
         eduLevelSchoolTip: 'Шкільний режим з прикладами і підказками',
         eduLevelUniTip: 'Університетський режим з повними викладками і телеметрією',
-        analogyCardTitle: 'Приклад із життя',
+        analogyCardTitle: 'Фізична модель і застосування',
+        classroomBtn: 'Режим класу',
+        classroomBtnTip: 'Режим для уроку та проєктора без реклами й службових блоків',
+        tierAll: 'Усі рівні (106)',
+        tierCore: 'Шкільний мінімум',
+        tierAdv: 'Поглиблений рівень',
+        tierBadgeCore: 'Шкільний мінімум',
+        tierBadgeAdv: 'Поглиблений',
         hintBtnLabel: 'Підказка',
         hintBtnActive: 'Сховати',
         hintBoxPrefix: '',
@@ -36257,7 +36273,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         discBiologyFull: 'Біологія та біофізика',
         discBiologySub: 'Клітина, ДНК, CRISPR, нейрон, оптика ока, фізіологія',
         discBiologyTip: '3D-практикум з біології та біофізики (20 дослідів)',
-        shareBtn: 'Поділитися',
+        shareBtn: 'Посилання з параметрами',
         shareTip: 'Скопіювати посилання з поточними параметрами',
         shareCopied: 'Скопійовано',
         pinChartBtn: 'Еталон',
@@ -36543,7 +36559,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           'The ratio $M = v_s / c_s$ is the **Mach number**. As $M \\to 1$, forward wavefronts pile up constructively into a shock front (sonic boom and Mach cone with half-angle $\\sin\\mu = 1/M$). Doppler shifts are foundational to Doppler ultrasound imaging, weather radar, and cosmological redshift measurements.'
         ]
       },
-      brewster: {
+      malus: {
         uk: [
           'Оскільки світло є **поперечною електромагнітною хвилею** ($\\vec{E} \\perp \\vec{k}$), вектор електричного поля $\\vec{E}$ може мати певну орієнтацію в площині, перпендикулярній до променя. Природне світло є неполяризованим (хаотична суперпозиція всіх азимутів коливань $\\vec{E}$). Лінійний поляризатор пропускає лише складову електричного поля, паралельну його осі пропускання.',
           'Якщо на аналізатор падає лінійно поляризована хвиля з амплітудою $E_0$ та інтенсивністю $I_0 \\propto E_0^2$, а кут між площиною поляризації променя та віссю аналізатора дорівнює $\\theta$, то крізь аналізатор проходить проєкція амплітуди $E = E_0\\cos\\theta$. Оскільки інтенсивність світла пропорційна квадрату амплітуди поля, отримуємо **закон Малюса**: $I(\\theta) = I_0\\cos^2\\theta$. При схрещених поляризаторах ($\\theta = 90^\\circ$) настає повне гасіння світла ($I = 0$).',
@@ -37167,7 +37183,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           'The liquid–vapor boundary terminates at the **critical point** $(T_c, P_c)$; beyond this point the meniscus vanishes and the substance forms a **supercritical fluid** combining liquid-like solvating density with gas-like diffusivity.'
         ]
       },
-      chem_arrhenius: {
+      chem_orders: {
         uk: [
           '**Кінетичний порядок реакції $n$** у диференціальному законі діючих мас $v = -\\frac{d[A]}{dt} = k[A]^n$ показує, як миттєва швидкість перетворення реагенту залежить від його поточної молярної концентрації $[A](t)$, і визначає закон зміни концентрації в часі та формулу **періоду напівперетворення $t_{1/2}$**.',
           '1) **Нульовий порядок ($n=0$)**, характерний для гетерогенного та ферментативного каталізу при повному насиченні поверхні каталізатора: швидкість стала $v = k$, концентрація спадає лінійно $[A](t) = [A]_0 - kt$, а час напівперетворення прямо пропорційний початковій концентрації: $t_{1/2} = \\frac{[A]_0}{2k}$.',
@@ -37582,854 +37598,983 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     // ============================================================================
     const EDU_META = {
       collision: {
-        gradeUk: '9 клас',
-        gradeEn: 'Grade 9',
-        analogyUk: 'Уяви дві більярдні кулі або зіткнення вагонів на залізниці. Навіть якщо кулі м’які (як пластилін) і нагріваються при ударі, їхній спільний «розгін» (імпульс $m\\vec{v}$) нікуди не зникає, бо ззовні їх ніхто не штовхав!',
-        analogyEn: 'Think of two billiard balls or train cars coupling on a track. Even if the spheres are soft like clay and warm up on impact, their combined forward push (linear momentum $m\\vec{v}$) never vanishes because no outside force pushed them!',
-        hintUk: 'Подумай: під час удару кулі тиснуть лише одна на одну (внутрішні сили $\\vec{F}_{12} = -\\vec{F}_{21}$). Чи змінюють внутрішні сили загальний імпульс системи, і куди дівається частина механічної енергії при непружному ударі?',
-        hintEn: 'Ask yourself: during impact, the spheres push only on each other (internal forces $\\vec{F}_{12} = -\\vec{F}_{21}$). Can internal forces change total momentum, and where does lost kinetic energy go when $e < 1$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9 клас",
+        gradeEn: "Core Curriculum · Grade 9",
+        analogyUk: "Зіткнення більярдних куль або залізничних вагонів наочно ілюструє закон збереження імпульсу в ізольованій системі. Навіть під час непружного зіткнення з перетворенням частини механічної енергії на тепло сумарний вектор імпульсу $m\\vec{v}$ системи залишається незмінним за відсутності зовнішніх сил.",
+        analogyEn: "This system functions as two billiard balls or train cars coupling on a track. Even if the spheres are soft like clay and warm up on impact, their combined forward push (linear momentum $m\\vec{v}$) never vanishes because no outside force pushed them.",
+        hintUk: "Подумай: під час удару кулі тиснуть лише одна на одну (внутрішні сили $\\vec{F}_{12} = -\\vec{F}_{21}$). Чи змінюють внутрішні сили загальний імпульс системи, і куди дівається частина механічної енергії при непружному ударі?",
+        hintEn: "Ask yourself: during impact, the spheres push only on each other (internal forces $\\vec{F}_{12} = -\\vec{F}_{21}$). Can internal forces change total momentum, and where does lost kinetic energy go when $e < 1$?"
       },
       incline: {
-        gradeUk: '7–9 клас',
-        gradeEn: 'Grade 7–9',
-        analogyUk: 'Це як з’їжджати з гірки на санчатах або ковзати книжкою по нахиленому столу. Що крутіша гірка (більший кут $\\alpha$), то сильніше земне тяжіння тягне тебе вниз і слабше притискає до поверхні!',
-        analogyEn: 'Picture sledding down a snowy hill or sliding a book down a tilted desk. The steeper the slope (larger angle $\\alpha$), the harder gravity pulls you downhill and the less it presses you into the surface!',
-        hintUk: 'Порівняй складову сили тяжіння вздовж схилу $mg\\sin\\alpha$, яка тягне брусок униз, із максимальною силою тертя $\\mu mg\\cos\\alpha$, яка його утримує.',
-        hintEn: 'Compare the downhill gravity component $mg\\sin\\alpha$ against the maximum friction force $\\mu mg\\cos\\alpha$ holding the block back.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 7–9 клас",
+        gradeEn: "Core Curriculum · Grade 7–9",
+        analogyUk: "Під час руху тіла похилою площиною сила тяжіння розкладається на поздовжню складову $mg\\sin\\alpha$ та нормальну складову $mg\\cos\\alpha$. Зі збільшенням кута нахилу $\\alpha$ скочувальна сила зростає, а сила нормального тиску на опору зменшується.",
+        analogyEn: "In a physical model of sledding down a snowy hill or sliding a book down a tilted desk. The steeper the slope (larger angle $\\alpha$), the harder gravity pulls you downhill and the less it presses you into the surface.",
+        hintUk: "Порівняй складову сили тяжіння вздовж схилу $mg\\sin\\alpha$, яка тягне брусок униз, із максимальною силою тертя $\\mu mg\\cos\\alpha$, яка його утримує.",
+        hintEn: "Compare the downhill gravity component $mg\\sin\\alpha$ against the maximum friction force $\\mu mg\\cos\\alpha$ holding the block back."
       },
       pendulum: {
-        gradeUk: '9–10 клас',
-        gradeEn: 'Grade 9–10',
-        analogyUk: 'Згадай гойдалку в парку або старовинний годинник із маятником! Чи сяде на гойдалку легка дитина, чи дорослий, час одного гойдання залежить лише від довжини тросів $L$, а не від маси людини.',
-        analogyEn: 'Think of a playground swing or a grandfather clock! Whether a child or an adult sits on the swing, the time of one back-and-forth swing depends only on the rope length $L$, not on the person’s mass.',
-        hintUk: 'Подивись на формулу Гюйгенса $T = 2\\pi\\sqrt{L/g}$: чи є в ній маса тягарця $m$, і як зміниться корінь $\\sqrt{L}$, якщо довжину нитки $L$ збільшити?',
-        hintEn: 'Look at Huygens’ formula $T = 2\\pi\\sqrt{L/g}$: does the bob mass $m$ appear in it, and how does $\\sqrt{L}$ change when length $L$ increases?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас",
+        gradeEn: "Core Curriculum · Grade 9–10",
+        analogyUk: "У маятниковому годиннику або підвісних коливальних системах період малих коливань визначається виключно довжиною підвісу $L$ та прискоренням вільного падіння $g$, не залежачи від маси вантажу.",
+        analogyEn: "This system functions as a playground swing or a grandfather clock. Whether a child or an adult sits on the swing, the time of one back-and-forth swing depends only on the rope length $L$, not on the person’s mass.",
+        hintUk: "Подивись на формулу Гюйгенса $T = 2\\pi\\sqrt{L/g}$: чи є в ній маса тягарця $m$, і як зміниться корінь $\\sqrt{L}$, якщо довжину нитки $L$ збільшити?",
+        hintEn: "Look at Huygens’ formula $T = 2\\pi\\sqrt{L/g}$: does the bob mass $m$ appear in it, and how does $\\sqrt{L}$ change when length $L$ increases?"
       },
       projectile: {
-        gradeUk: '9–10 клас',
-        gradeEn: 'Grade 9–10',
-        analogyUk: 'Коли ти кидаєш баскетбольний м’яч у кільце або пускаєш струмінь води зі шланга, у вакуумі ідеальний кут для найдальшого польоту, $45^\\circ$. Але в реальному повітрі вітер і опір середовища гальмують м’яч, скорочуючи дальність!',
-        analogyEn: 'When throwing a basketball or spraying water from a garden hose, $45^\\circ$ gives the longest range in vacuum. In real air, aerodynamic drag slows the ball down and bends its path steeper at the end!',
-        hintUk: 'Порівняй пунктирну параболу (у вакуумі) та суцільну криву (в повітрі): куди переходить кінетична енергія ядра, коли діє сила опору повітря $\\vec{F}_{\\text{оп}} = -k\\vec{v}$?',
-        hintEn: 'Compare the dashed vacuum parabola with the solid trajectory in air: what happens to the projectile’s mechanical energy and horizontal range when air drag acts against $\\vec{v}$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас",
+        gradeEn: "Core Curriculum · Grade 9–10",
+        analogyUk: "Під час руху тіла, кинутого під кутом до горизонту, максимальна дальність польоту у вакуумі досягається за кута кидання $45^\\circ$. У реальному повітряному середовищі аеродинамічний опір зменшує швидкість тіла та скорочує горизонтальну дальність.",
+        analogyEn: "When throwing a basketball or spraying water from a garden hose, $45^\\circ$ gives the longest range in vacuum. In real air, aerodynamic drag slows the ball down and bends its path steeper at the end.",
+        hintUk: "Порівняй пунктирну параболу (у вакуумі) та суцільну криву (в повітрі): куди переходить кінетична енергія ядра, коли діє сила опору повітря $\\vec{F}_{\\text{оп}} = -k\\vec{v}$?",
+        hintEn: "Compare the dashed vacuum parabola with the solid trajectory in air: what happens to the projectile’s mechanical energy and horizontal range when air drag acts against $\\vec{v}$?"
       },
       cradle: {
-        gradeUk: '9 клас',
-        gradeEn: 'Grade 9',
-        analogyUk: 'Знаменита настільна іграшка з кульками! Відхиляєш одну кульку ліворуч, і після клацання рівно одна кулька відлітає праворуч. Чому не дві з половинною швидкістю? Бо мають одночасно зберегтися і імпульс, і кінетична енергія!',
-        analogyEn: 'The famous desk toy! Pull back one steel ball on the left, and after the click, exactly one ball flies out on the right. Why not two balls at half speed? Because both momentum AND kinetic energy must be conserved simultaneously!',
-        hintUk: 'Якби після удару однієї кулі зі швидкістю $v$ відлетіли дві кулі зі швидкістю $v/2$, імпульс би зберігся ($mv = 2m(v/2)$), але порахуй сумарну кінетичну енергію $\\frac{1}{2}mv^2$!',
-        hintEn: 'If one ball of speed $v$ launched two balls at speed $v/2$, momentum would match ($mv = 2m(v/2)$), but calculate the kinetic energy $\\frac{1}{2}mv^2$, would it match?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9 клас",
+        gradeEn: "Core Curriculum · Grade 9",
+        analogyUk: "У колисці Ньютона відхилення однієї крайньої кулі спричиняє відлітання рівно однієї кулі з протилежного краю з тією самою швидкістю, оскільки при пружному ударі одночасно виконуються закони збереження імпульсу та кінетичної енергії.",
+        analogyEn: "The famous desk toy. Pull back one steel ball on the left, and after the click, exactly one ball flies out on the right. Why not two balls at half speed? Because both momentum AND kinetic energy must be conserved simultaneously.",
+        hintUk: "Якби після удару однієї кулі зі швидкістю $v$ відлетіли дві кулі зі швидкістю $v/2$, імпульс би зберігся ($mv = 2m(v/2)$), але порахуй сумарну кінетичну енергію $\\frac{1}{2}mv^2$.",
+        hintEn: "If one ball of speed $v$ launched two balls at speed $v/2$, momentum would match ($mv = 2m(v/2)$), but calculate the kinetic energy $\\frac{1}{2}mv^2$, would it match?"
       },
       centripetal: {
-        gradeUk: '9–10 клас',
-        gradeEn: 'Grade 9–10',
-        analogyUk: 'Коли автомобіль різко входить у поворот або ти крутиш камінець на мотузці, здається, ніби щось виштовхує його назовні. Насправді тіло просто хоче летіти прямо за інерцією, а нитка чи шини повертають його до центра кола!',
-        analogyEn: 'When a car takes a sharp turn or you whirl a stone on a string, you feel pulled outward. In reality, the stone simply wants to fly straight by inertia, while the string pulls it inward toward the center!',
-        hintUk: 'Куди напрямлена рівнодійна сила (натяг нитки) для тіла, що рухається рівномірно по колу, і як зміниться $F_n = m\\omega^2 R$ зі зростанням кутової швидкості $\\omega$?',
-        hintEn: 'In which direction does the net force (string tension) point during uniform circular motion, and how does $F_n = m\\omega^2 R$ scale with angular speed $\\omega$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас",
+        gradeEn: "Core Curriculum · Grade 9–10",
+        analogyUk: "Під час руху автомобіля по заокругленню дороги або обертання тягарця на нитці тіло зберігає тенденцію до прямолінійного руху за інерцією, тоді як сила тертя шин або натяг нитки створює доцентрове прискорення, спрямоване до центра кола.",
+        analogyEn: "When a car takes a sharp turn or you whirl a stone on a string, you feel pulled outward. In reality, the stone simply wants to fly straight by inertia, while the string pulls it inward toward the center.",
+        hintUk: "Куди напрямлена рівнодійна сила (натяг нитки) для тіла, що рухається рівномірно по колу, і як зміниться $F_n = m\\omega^2 R$ зі зростанням кутової швидкості $\\omega$?",
+        hintEn: "In which direction does the net force (string tension) point during uniform circular motion, and how does $F_n = m\\omega^2 R$ scale with angular speed $\\omega$?"
       },
       archimedes: {
-        gradeUk: '7 клас',
-        gradeEn: 'Grade 7',
-        analogyUk: 'Чому величезний сталевий корабель або дерев’яний корковий поплавок тримається на воді, а маленький камінець тоне? Вода знизу тисне сильніше, ніж зверху, і виштовхує тіло з силою, що дорівнює вазі витісненої ним води!',
-        analogyEn: 'Why does a massive steel ship or cork float while a small pebble sinks? Water pushes harder on the bottom of an object than on the top, buoying it upward with a force equal to the weight of the displaced water!',
-        hintUk: 'Порівняй густину тіла $\\rho_{\\text{тіла}}$ з густиною рідини $\\rho_{\\text{рід}}$: за якої умови виштовхувальна сила Архімеда $F_A$ врівноважує силу тяжіння $mg$?',
-        hintEn: 'Compare the body density $\\rho_{\\text{body}}$ with the fluid density $\\rho_{\\text{fluid}}$: when does Archimedes’ buoyant force $F_A$ balance gravity $mg$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 7 клас",
+        gradeEn: "Core Curriculum · Grade 7",
+        analogyUk: "Плавання сталевих суден визначається співвідношенням середньої густини корпусу та густини рідини: різниця гідростатичного тиску на нижню і верхню грані зануреного тіла створює виштовхувальну силу Архімеда, рівну вазі витісненої рідини.",
+        analogyEn: "Why does a massive steel ship or cork float while a small pebble sinks? Water pushes harder on the bottom of an object than on the top, buoying it upward with a force equal to the weight of the displaced water.",
+        hintUk: "Порівняй густину тіла $\\rho_{\\text{тіла}}$ з густиною рідини $\\rho_{\\text{рід}}$: за якої умови виштовхувальна сила Архімеда $F_A$ врівноважує силу тяжіння $mg$?",
+        hintEn: "Compare the body density $\\rho_{\\text{body}}$ with the fluid density $\\rho_{\\text{fluid}}$: when does Archimedes’ buoyant force $F_A$ balance gravity $mg$?"
       },
       gas: {
-        gradeUk: '10 клас',
-        gradeEn: 'Grade 10',
-        analogyUk: 'Уяви рій невидимих пружних м’ячиків у накачаній велосипедній шині або повітряній кульці. Якщо нагріти кульку на сонці або стиснути насосом, молекули б’ються об стінки частіше й сильніше, це і є тиск газу!',
-        analogyEn: 'Imagine billions of tiny super-balls bouncing inside a bicycle tire or party balloon. Heat the balloon or squeeze it smaller, and the molecules slam into the walls faster and more often, that is gas pressure!',
-        hintUk: 'За рівнянням Менделєєва–Клапейрона $P \\propto T / V$: що станеться з тиском $P$ і швидкістю молекул при підвищенні температури $T$ або зменшенні об’єму $V$?',
-        hintEn: 'From the ideal gas law $P \\propto T / V$: how do pressure $P$ and molecular speeds change when temperature $T$ rises or volume $V$ shrinks?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10 клас",
+        gradeEn: "Core Curriculum · Grade 10",
+        analogyUk: "У закритому резервуарі або пневматичній шині макроскопічний тиск газу є результатом сумарної передачі імпульсу під час численних пружних зіткнень молекул зі стінками посудини; підвищення температури або зменшення об’єму збільшує частоту й інтенсивність ударів.",
+        analogyEn: "Consider billions of tiny super-balls bouncing inside a bicycle tire or party balloon. Heat the balloon or squeeze it smaller, and the molecules slam into the walls faster and more often, that is gas pressure.",
+        hintUk: "За рівнянням Менделєєва–Клапейрона $P \\propto T / V$: що станеться з тиском $P$ і швидкістю молекул при підвищенні температури $T$ або зменшенні об’єму $V$?",
+        hintEn: "From the ideal gas law $P \\propto T / V$: how do pressure $P$ and molecular speeds change when temperature $T$ rises or volume $V$ shrinks?"
       },
       wavefront: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Кинь камінець у воду перед вузьким проходом між камінням: хвиля проходить крізь щілину і знову розходиться півколом! А коли шеренга маршируючих солдатів виходить з асфальту на пісок під кутом, вона повертає, так само заломлюється світло!',
-        analogyEn: 'Drop a pebble in a pond near a narrow gap: the ripple squeezes through and spreads out in circles again! And just as a marching band turns when stepping from pavement onto sand at an angle, light bends when entering glass!',
-        hintUk: 'Коли світлова хвиля переходить у оптично густіше середовище ($n_2 > n_1$), її швидкість $v = c/n$ зменшується. Як при цьому змінюється кут заломлення $\\theta_2$ відносно нормалі?',
-        hintEn: 'When a light wave enters a denser medium ($n_2 > n_1$), its phase speed $v = c/n$ drops. Does the refracted ray bend toward or away from the normal?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "У двоколісній осі візка, що викочується під кутом із гладкого асфальту на пухкий пісок, першим гальмує те колесо, яке раніше перетинає межу поділу середовищ. Поки друге колесо ще рухається з вищою швидкістю $v_1$, вісь повертається до нормалі. За тим самим геометричним механізмом плоский хвильовий фронт змінює напрямок поширення на межі середовищ із різними показниками заломлення $n_1$ та $n_2$.",
+        analogyEn: "When a two-wheeled axle rolls obliquely from smooth pavement onto soft sand, the wheel that crosses the boundary first slows down while the second wheel continues briefly at speed $v_1$, pivoting the axle toward the normal. By the same geometric mechanism, an oblique planar wavefront bends toward the normal upon entering an optically denser medium ($n_2 > n_1$).",
+        hintUk: "Коли світлова хвиля переходить у оптично густіше середовище ($n_2 > n_1$), її швидкість $v = c/n$ зменшується. Як при цьому змінюється кут заломлення $\\theta_2$ відносно нормалі?",
+        hintEn: "When a light wave enters a denser medium ($n_2 > n_1$), its phase speed $v = c/n$ drops. Does the refracted ray bend toward or away from the normal?"
       },
       interference: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Два камінці, кинуті у ставок поруч, створюють хвилі, які перетинаються: де гребінь зустрічає гребінь, вода здіймається вдвічі вище, а де гребінь зустрічає западину, поверхня стає гладенькою! Для світла це дає чергування яскравих і темних смуг.',
-        analogyEn: 'Two pebbles dropped side by side in a pond create overlapping ripples: where crest meets crest, waves double up; where crest meets trough, they cancel out! With light, this creates bright and dark stripes on a screen.',
-        hintUk: 'Подивись на формулу ширини інтерференційної смуги $\\Delta y = \\frac{\\lambda L}{d}$: у чисельнику чи знаменнику стоїть відстань між щілинами $d$?',
-        hintEn: 'Check Young’s fringe-spacing formula $\\Delta y = \\frac{\\lambda L}{d}$: is slit separation $d$ in the numerator or the denominator?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 11 клас",
+        gradeEn: "Core Curriculum · Grade 11",
+        analogyUk: "Два когерентні точкові джерела на поверхні рідини або дві вузькі щілини в досліді Юнга формують інтерференційну картину: де гребінь зустрічає гребінь, вода здіймається вдвічі вище, а де гребінь зустрічає западину, поверхня стає гладенькою. Для світла це дає чергування яскравих і темних смуг.",
+        analogyEn: "Two pebbles dropped side by side in a pond create overlapping ripples: where crest meets crest, waves double up; where crest meets trough, they cancel out. With light, this creates bright and dark stripes on a screen.",
+        hintUk: "Подивись на формулу ширини інтерференційної смуги $\\Delta y = \\frac{\\lambda L}{d}$: у чисельнику чи знаменнику стоїть відстань між щілинами $d$?",
+        hintEn: "Check Young’s fringe-spacing formula $\\Delta y = \\frac{\\lambda L}{d}$: is slit separation $d$ in the numerator or the denominator?"
       },
       dispersion: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Веселка після дощу або райдужні відблиски від скляної люстри! Біле сонячне світло насправді ховає в собі всі кольори веселки. У склі фіолетові хвилі пригальмовують сильніше за червоні, тому повертають крутіше і віялом розкладаються у спектр.',
-        analogyEn: 'A rainbow after rain or colorful sparkles from a crystal prism! White sunlight hides all rainbow colors inside. In glass, violet waves slow down more than red ones, so they bend more sharply and fan out into a spectrum.',
-        hintUk: 'Які хвилі мають меншу довжину $\\lambda$ і більший показник заломлення $n(\\lambda)$ у склі, червоні чи фіолетові, і який промінь відхиляється призмою найсильніше?',
-        hintEn: 'Which color has the shorter wavelength $\\lambda$ and higher refractive index $n(\\lambda)$ in glass, red or violet, and therefore bends the most?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Утворення атмосферної веселки та спектральне розкладання світла в призмі зумовлені явищем дисперсії: біле поліхроматичне світло є суперпозицією хвиль різної довжини. У склі фіолетові хвилі пригальмовують сильніше за червоні, тому повертають крутіше і віялом розкладаються у спектр.",
+        analogyEn: "A rainbow after rain or colorful sparkles from a crystal prism. White sunlight hides all rainbow colors inside. In glass, violet waves slow down more than red ones, so they bend more sharply and fan out into a spectrum.",
+        hintUk: "Які хвилі мають меншу довжину $\\lambda$ і більший показник заломлення $n(\\lambda)$ у склі, червоні чи фіолетові, і який промінь відхиляється призмою найсильніше?",
+        hintEn: "Which color has the shorter wavelength $\\lambda$ and higher refractive index $n(\\lambda)$ in glass, red or violet, and therefore bends the most?"
       },
       emwave: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Світло ліхтарика, сигнал Wi-Fi, радіо та рентген, це все електромагнітні хвилі! Їм не потрібне повітря чи вода, щоб летіти крізь космічний вакуум: змінне електричне поле $\\vec{E}$ породжує магнітне $\\vec{B}$, а магнітне, знову електричне.',
-        analogyEn: 'Flashlight beams, Wi-Fi signals, radio, and X-rays are all electromagnetic waves! They need no air or water to cross empty space: a changing electric field $\\vec{E}$ generates a magnetic field $\\vec{B}$, which in turn regenerates $\\vec{E}$.',
-        hintUk: 'Як орієнтовані вектори $\\vec{E}$ та $\\vec{B}$ відносно один одного та напрямку поширення хвилі $\\vec{c}$, і чи збігаються їхні фази у вакуумі?',
-        hintEn: 'How are vectors $\\vec{E}$ and $\\vec{B}$ oriented relative to each other and to propagation vector $\\vec{c}$, and do they oscillate in phase in vacuum?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 11 клас",
+        gradeEn: "Core Curriculum · Grade 11",
+        analogyUk: "Видиме світло, радіосигнали та рентгенівське випромінювання є поперечними електромагнітними хвилями, які поширюються у вакуумі без потреби в матеріальному середовищі: змінне електричне поле $\\vec{E}$ породжує магнітне $\\vec{B}$, а магнітне, знову електричне.",
+        analogyEn: "Flashlight beams, Wi-Fi signals, radio, and X-rays are all electromagnetic waves. They need no air or water to cross empty space: a changing electric field $\\vec{E}$ generates a magnetic field $\\vec{B}$, which in turn regenerates $\\vec{E}$.",
+        hintUk: "Як орієнтовані вектори $\\vec{E}$ та $\\vec{B}$ відносно один одного та напрямку поширення хвилі $\\vec{c}$, і чи збігаються їхні фази у вакуумі?",
+        hintEn: "How are vectors $\\vec{E}$ and $\\vec{B}$ oriented relative to each other and to propagation vector $\\vec{c}$, and do they oscillate in phase in vacuum?"
       },
       bernoulli: {
-        gradeUk: '10 клас',
-        gradeEn: 'Grade 10',
-        analogyUk: 'Коли затискаєш пальцем кінчик садового шланга, вода у вузькому отворі б’є значно швидше! І парадокс: саме там, де потік мчить найшвидше, його тиск на стінки труби падає. Завдяки цьому ефекту крило літака створює підйомну силу!',
-        analogyEn: 'Put your thumb over the end of a garden hose and water shoots out much faster! Remarkably, right where the fluid speeds up in a narrow throat, its side pressure drops, the very principle that helps airplane wings generate lift!',
-        hintUk: 'У вузькому перерізі труби швидкість потоку $v_2$ зростає ($A_1 v_1 = A_2 v_2$). Що тоді має статися зі статичним тиском $P_2$, щоб сума $P + \\frac{1}{2}\\rho v^2$ залишилася сталою?',
-        hintEn: 'In the narrow constriction, flow speed $v_2$ increases ($A_1 v_1 = A_2 v_2$). What must happen to static pressure $P_2$ if $P + \\frac{1}{2}\\rho v^2 = \\text{const}$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10 клас",
+        gradeEn: "Core Curriculum · Grade 10",
+        analogyUk: "У звуженому перерізі труби Вентурі або сопла швидкість потоку нестисливої рідини зростає за рівнянням неперервності, тоді як статичний тиск на стінки зменшується згідно із законом Бернуллі. Цей самий принцип лежить в основі роботи пульверизаторів і аеродинамічних профілів.",
+        analogyEn: "Put your thumb over the end of a garden hose and water shoots out much faster. Remarkably, right where the fluid speeds up in a narrow throat, its side pressure drops, the very principle that helps airplane wings generate lift.",
+        hintUk: "У вузькому перерізі труби швидкість потоку $v_2$ зростає ($A_1 v_1 = A_2 v_2$). Що тоді має статися зі статичним тиском $P_2$, щоб сума $P + \\frac{1}{2}\\rho v^2$ залишилася сталою?",
+        hintEn: "In the narrow constriction, flow speed $v_2$ increases ($A_1 v_1 = A_2 v_2$). What must happen to static pressure $P_2$ if $P + \\frac{1}{2}\\rho v^2 = \\text{const}$?"
       },
       lens: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Збільшувальне скло (лупа), об’єктив камери смартфона та кришталик нашого ока працюють однаково: лінза посередині товща, тому пригальмовує центральну частину світлової хвилі і перетворює плоский фронт на кулястий, що збігається у фокусі!',
-        analogyEn: 'A magnifying glass, smartphone camera lens, and the lens in your eye all work the same way: thicker glass in the center delays the middle of the light wave, curving a flat wavefront into a sphere that converges at the focus!',
-        hintUk: 'Згідно з формулою тонкої лінзи $\\frac{1}{F} = \\frac{1}{d} + \\frac{1}{f}$: якщо оптична сила лінзи $D = 1/F$ зростає (фокусна відстань $F$ зменшується), куди зміщується фокус, ближче до лінзи чи далі?',
-        hintEn: 'By the thin-lens equation $\\frac{1}{F} = \\frac{1}{d} + \\frac{1}{f}$: when optical power $D = 1/F$ increases, does the focal point move closer to the lens or farther away?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Збільшувальне скло (лупа), об’єктив камери смартфона та кришталик нашого ока працюють однаково: лінза посередині товща, тому пригальмовує центральну частину світлової хвилі і перетворює плоский фронт на кулястий, що збігається у фокусі.",
+        analogyEn: "A magnifying glass, smartphone camera lens, and the lens in your eye all work the same way: thicker glass in the center delays the middle of the light wave, curving a flat wavefront into a sphere that converges at the focus.",
+        hintUk: "Згідно з формулою тонкої лінзи $\\frac{1}{F} = \\frac{1}{d} + \\frac{1}{f}$: якщо оптична сила лінзи $D = 1/F$ зростає (фокусна відстань $F$ зменшується), куди зміщується фокус, ближче до лінзи чи далі?",
+        hintEn: "By the thin-lens equation $\\frac{1}{F} = \\frac{1}{d} + \\frac{1}{f}$: when optical power $D = 1/F$ increases, does the focal point move closer to the lens or farther away?"
       },
       lorentz: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Магнітне поле Землі працює як невидимий щит: воно закручує заряджені частинки сонячного вітру у спіралі вздовж магнітних ліній до полюсів, де вони світяться як полярне сяйво! Магніт повертає частинку, але ніколи не змінює модуль її швидкості.',
-        analogyEn: 'Earth’s magnetic field acts as an invisible shield: it twists charged solar-wind particles into spirals toward the poles, creating the glowing aurora! A magnetic field steers a particle sideways without ever changing its speed.',
-        hintUk: 'Сила Лоренца $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$ завжди перпендикулярна до швидкості $\\vec{v}$. Чи може сила, перпендикулярна до переміщення, виконувати роботу й змінювати кінетичну енергію?',
-        hintEn: 'The Lorentz force $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$ is always perpendicular to velocity $\\vec{v}$. Can a force perpendicular to motion do work or change kinetic energy?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 11 клас",
+        gradeEn: "Core Curriculum · Grade 11",
+        analogyUk: "Магнітне поле Землі працює як невидимий щит: воно закручує заряджені частинки сонячного вітру у спіралі вздовж магнітних ліній до полюсів, де вони світяться як полярне сяйво. Магніт повертає частинку, але ніколи не змінює модуль її швидкості.",
+        analogyEn: "Earth’s magnetic field acts as an invisible shield: it twists charged solar-wind particles into spirals toward the poles, creating the glowing aurora. A magnetic field steers a particle sideways without ever changing its speed.",
+        hintUk: "Сила Лоренца $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$ завжди перпендикулярна до швидкості $\\vec{v}$. Чи може сила, перпендикулярна до переміщення, виконувати роботу й змінювати кінетичну енергію?",
+        hintEn: "The Lorentz force $\\vec{F}_L = q[\\vec{v} \\times \\vec{B}]$ is always perpendicular to velocity $\\vec{v}$. Can a force perpendicular to motion do work or change kinetic energy?"
       },
       faraday: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Динамовтулка на велосипеді, бездротова зарядка телефона та величезні турбіни електростанцій: коли магніт рухається крізь котушку, в дроті народжується струм! Але щойно магніт зупиниться, струм миттєво зникає, бо важлива лише зміна поля.',
-        analogyEn: 'A bicycle dynamo, wireless phone charger, and power-plant turbines: moving a magnet through a coil creates electric current! Stop the magnet and the current vanishes instantly, only a changing magnetic flux induces voltage.',
-        hintUk: 'За правилом Ленца індукційний струм у котушці завжди протидіє причині, яка його породила (гальмує падіння магніту), а його сила пропорційна швидкості зміни потоку $|\\Delta\\Phi / \\Delta t|$.',
-        hintEn: 'By Lenz’s law, the induced current opposes the motion that causes it (braking the magnet), and the EMF scales with the rate of flux change $|d\\Phi/dt|$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Динамовтулка на велосипеді, бездротова зарядка телефона та величезні турбіни електростанцій: коли магніт рухається крізь котушку, в дроті народжується струм. Але щойно магніт зупиниться, струм миттєво зникає, бо важлива лише зміна поля.",
+        analogyEn: "A bicycle dynamo, wireless phone charger, and power-plant turbines: moving a magnet through a coil creates electric current. Stop the magnet and the current vanishes instantly, only a changing magnetic flux induces voltage.",
+        hintUk: "За правилом Ленца індукційний струм у котушці завжди протидіє причині, яка його породила (гальмує падіння магніту), а його сила пропорційна швидкості зміни потоку $|\\Delta\\Phi / \\Delta t|$.",
+        hintEn: "By Lenz’s law, the induced current opposes the motion that causes it (braking the magnet), and the EMF scales with the rate of flux change $|d\\Phi/dt|$."
       },
       kepler: {
-        gradeUk: '10–11 клас',
-        gradeEn: 'Grade 10–11',
-        analogyUk: 'Як фігурист на льоду, що притискає руки до грудей і починає крутитися значно швидше, комета чи планета розганяється до максимуму, коли підлітає найближче до Сонця (у перигелії), і сповільнюється на дальній дузі орбіти!',
-        analogyEn: 'Just like an ice skater spinning faster when pulling their arms in, a comet or planet speeds up dramatically when swinging closest to the Sun (perihelion) and slows down far away (aphelion)!',
-        hintUk: 'За ІІ законом Кеплера (збереження моменту імпульсу $r \\cdot v_\\perp = \\text{const}$): де швидкість планети максимальна, у найближчій точці до зорі (перигелії) чи у найвіддаленішій (афелії)?',
-        hintEn: 'By Kepler’s second law (angular momentum conservation $r \\cdot v_\\perp = \\text{const}$): is orbital speed highest at perihelion (closest to the star) or aphelion (farthest)?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас",
+        gradeEn: "Core Curriculum · Grade 10–11",
+        analogyUk: "Внаслідок збереження орбітального моменту імпульсу $L = mvr\\sin\\theta$ планета або комета досягає максимальної лінійної швидкості в перигелії на мінімальній відстані від центрального світила і сповільнюється в афелії.",
+        analogyEn: "Just like an ice skater spinning faster when pulling their arms in, a comet or planet speeds up dramatically when swinging closest to the Sun (perihelion) and slows down far away (aphelion).",
+        hintUk: "За ІІ законом Кеплера (збереження моменту імпульсу $r \\cdot v_\\perp = \\text{const}$): де швидкість планети максимальна, у найближчій точці до зорі (перигелії) чи у найвіддаленішій (афелії)?",
+        hintEn: "By Kepler’s second law (angular momentum conservation $r \\cdot v_\\perp = \\text{const}$): is orbital speed highest at perihelion (closest to the star) or aphelion (farthest)?"
       },
       gyroscope: {
-        gradeUk: '10–11 клас · ВНЗ',
-        gradeEn: 'Grade 10–11 · Uni',
-        analogyUk: 'Влаштуй перегони з гірки між суцільною кулею (більярдною) та порожнистим обручем або кільцем скотчу! Куля завжди виграє: у обруча вся маса розташована далеко від центра на ободі, тому йому набагато важче розкручуватися.',
-        analogyEn: 'Race a solid marble against a hollow ring (like a roll of tape) down a ramp! The solid sphere always wins regardless of weight because the ring’s mass sits far out on the rim, taking more energy just to spin up.',
-        hintUk: 'Порівняй коефіцієнт інерції $\\beta = I/(mR^2)$: у кого він менший, у суцільної кулі ($\\beta = 0.4$) чи в тонкого обруча ($\\beta = 1.0$), і хто тому отримує більше лінійне прискорення $a = \\frac{g\\sin\\alpha}{1+\\beta}$?',
-        hintEn: 'Compare the rotational inertia factor $\\beta = I/(mR^2)$: is it smaller for a solid sphere ($0.4$) or a hoop ($1.0$), and which one gets the higher linear acceleration $a = \\frac{g\\sin\\alpha}{1+\\beta}$?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Під час скочування суцільної кулі та тонкостінного обруча з однакової похилої площини суцільна куля набирає більшого лінійного прискорення, оскільки її момент інерції ($I = \\frac{2}{5}mR^2$) менший, ніж у обруча ($I = mR^2$), де вся маса зосереджена на периферії.",
+        analogyEn: "Comparing a solid marble against a hollow ring (like a roll of tape) down a ramp. The solid sphere always wins regardless of weight because the ring’s mass sits far out on the rim, taking more energy just to spin up.",
+        hintUk: "Порівняй коефіцієнт інерції $\\beta = I/(mR^2)$: у кого він менший, у суцільної кулі ($\\beta = 0.4$) чи в тонкого обруча ($\\beta = 1.0$), і хто тому отримує більше лінійне прискорення $a = \\frac{g\\sin\\alpha}{1+\\beta}$?",
+        hintEn: "Compare the rotational inertia factor $\\beta = I/(mR^2)$: is it smaller for a solid sphere ($0.4$) or a hoop ($1.0$), and which one gets the higher linear acceleration $a = \\frac{g\\sin\\alpha}{1+\\beta}$?"
       },
       standingwave: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Смикаєш гітарну струну або крутиш скакалку разом із другом: хвиля біжить до закріпленого кінця, відбивається назад і накладається сама на себе. Виникають нерухомі точки («вузли») і місця максимального розмаху («пучності»), так звучать усі музичні інструменти!',
-        analogyEn: 'Pluck a guitar string or shake a jump rope with a friend: the wave reflects off the fixed end and overlaps itself, locking into stationary nodes (quiet points) and antinodes (wildly vibrating loops), the secret behind all musical instruments!',
-        hintUk: 'Скільки півхвиль $\\lambda/2$ вкладається на довжині струни $L$ для $n$-ї гармоніки ($L = n\\frac{\\lambda}{2}$), і скільки пучностей при цьому утворюється?',
-        hintEn: 'How many half-wavelengths $\\lambda/2$ fit along string length $L$ for harmonic mode $n$ ($L = n\\lambda/2$), and how does frequency $f_n$ scale with $n$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "У закріпленій на кінцях струні акустичного резонатора біжуча хвиля відбивається від опор і накладається на зустрічну хвилю тієї самої частоти. Виникають нерухомі точки («вузли») і місця максимального розмаху («пучності»), так звучать усі музичні інструменти.",
+        analogyEn: "In a stretched guitar string or shake a jump rope with a friend: the wave reflects off the fixed end and overlaps itself, locking into stationary nodes (quiet points) and antinodes (wildly vibrating loops), the secret behind all musical instruments.",
+        hintUk: "Скільки півхвиль $\\lambda/2$ вкладається на довжині струни $L$ для $n$-ї гармоніки ($L = n\\frac{\\lambda}{2}$), і скільки пучностей при цьому утворюється?",
+        hintEn: "How many half-wavelengths $\\lambda/2$ fit along string length $L$ for harmonic mode $n$ ($L = n\\lambda/2$), and how does frequency $f_n$ scale with $n$?"
       },
       doppler: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Чув, як машина швидкої допомоги або гоночний болід проїжджає повз тебе: «ІІІ-і-і, УУУ-у-у»? Коли сирена мчить на тебе, вона «наздоганяє» власні звукові хвилі й стискає їх (звук вищий), а позаду хвилі розтягуються (звук стає низьким)!',
-        analogyEn: 'Ever heard an ambulance siren or race car pass by with a classic “NEEEE-YOWWW” pitch drop? Moving forward, the siren crowds its own sound waves together (higher pitch); behind it, the waves stretch out (lower pitch)!',
-        hintUk: 'Що відбувається з довжиною хвилі $\\lambda_{\\text{перед}} = \\lambda_0(1 - v_s/v)$ та частотою $f$ попереду рухомого джерела порівняно з областю позаду нього?',
-        hintEn: 'What happens to the wavelength $\\lambda_{\\text{front}} = \\lambda_0(1 - v_s/v)$ and observed frequency $f$ in front of the moving source compared to behind it?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Під час руху джерела звуку відносно нерухомого приймача хвильові гребені попереду джерела ущільнюються, підвищуючи реєстровану частоту, а позаду джерела розріджуються, знижуючи частоту. На ефекті Доплера ґрунтуються радари швидкості та ультразвукова доплерографія кровотоку.",
+        analogyEn: "As an ambulance siren or race car pass by with a classic “NEEEE-YOWWW” pitch drop? Moving forward, the siren crowds its own sound waves together (higher pitch); behind it, the waves stretch out (lower pitch).",
+        hintUk: "Що відбувається з довжиною хвилі $\\lambda_{\\text{перед}} = \\lambda_0(1 - v_s/v)$ та частотою $f$ попереду рухомого джерела порівняно з областю позаду нього?",
+        hintEn: "What happens to the wavelength $\\lambda_{\\text{front}} = \\lambda_0(1 - v_s/v)$ and observed frequency $f$ in front of the moving source compared to behind it?"
       },
-      brewster: {
-        gradeUk: '11 клас · ВНЗ',
-        gradeEn: 'Grade 11 · Uni',
-        analogyUk: 'Чому поляризаційні окуляри рибалок та водіїв магічно прибирають сліпучі сонячні відблиски з води та мокрого асфальту? Бо при відбиванні під особливим «кутом Брюстера» відблиск стає повністю плоскополяризованим, і фільтр окулярів легко його блокує!',
-        analogyEn: 'Why do polarized sunglasses magically erase blinding glare off water and wet roads? Because light reflecting at Brewster’s angle becomes 100% horizontally polarized, allowing a vertical polarizing filter to block the glare completely!',
-        hintUk: 'За законом Брюстера $\\tan\\theta_B = n_2/n_1$: який кут утворюють між собою відбитий і заломлений промені, коли $p$-поляризована хвиля перестає відбиватися?',
-        hintEn: 'At Brewster’s angle ($\\tan\\theta_B = n_2/n_1$), what angle do the reflected and refracted rays make with each other ($\\theta_B + \\theta_2$)?'
+      malus: {
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Відбите від горизонтальної діелектричної поверхні (води або скла) світло за кута падіння Брюстера стає повністю лінійно поляризованим паралельно площині межі поділу. Поляризаційний аналізатор із вертикальною віссю пропускання гасить цей відблиск відповідно до закону Малюса $I = I_0\\cos^2\\theta$.",
+        analogyEn: "Why do polarized sunglasses magically erase blinding glare off water and wet roads? Because light reflecting at Brewster’s angle becomes 100% horizontally polarized, allowing a vertical polarizing filter to block the glare completely.",
+        hintUk: "За законом Брюстера $\\tan\\theta_B = n_2/n_1$: який кут утворюють між собою відбитий і заломлений промені, коли $p$-поляризована хвиля перестає відбиватися?",
+        hintEn: "At Brewster’s angle ($\\tan\\theta_B = n_2/n_1$), what angle do the reflected and refracted rays make with each other ($\\theta_B + \\theta_2$)?"
       },
       diffraction: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Звук легко огинає ріг будинку, бо звукові хвилі довгі. Світло теж огинає перешкоди! Якщо пропустити лазерний промінь крізь дуже вузьку щілину, замість вузької цятки ми побачимо широку смугу з бічними кільцями: що вужча щілина, то ширше розлітається світло!',
-        analogyEn: 'If you shine a laser through a tiny slit between two razor blades, instead of a narrower dot you get a wider central streak with side fringes! Paradoxically, squeezing the slit narrower makes the diffraction pattern spread out wider!',
-        hintUk: 'Подивись на умову першого дифракційного мінімуму $\\sin\\theta_1 = \\lambda / a$: як зміниться кутова ширина центрального максимуму, якщо ширину щілини $a$ зменшувати?',
-        hintEn: 'Look at the first diffraction minimum condition $\\sin\\theta_1 = \\lambda / a$: if slit width $a$ decreases, does angle $\\theta_1$ grow wider or narrower?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 11 клас",
+        gradeEn: "Core Curriculum · Grade 11",
+        analogyUk: "Звук легко огинає ріг будинку, бо звукові хвилі довгі. Світло теж огинає перешкоди. Якщо пропустити лазерний промінь крізь дуже вузьку щілину, замість вузької цятки ми побачимо широку смугу з бічними кільцями: що вужча щілина, то ширше розлітається світло.",
+        analogyEn: "If you shine a laser through a tiny slit between two razor blades, instead of a narrower dot you get a wider central streak with side fringes. Paradoxically, squeezing the slit narrower makes the diffraction pattern spread out wider.",
+        hintUk: "Подивись на умову першого дифракційного мінімуму $\\sin\\theta_1 = \\lambda / a$: як зміниться кутова ширина центрального максимуму, якщо ширину щілини $a$ зменшувати?",
+        hintEn: "Look at the first diffraction minimum condition $\\sin\\theta_1 = \\lambda / a$: if slit width $a$ decreases, does angle $\\theta_1$ grow wider or narrower?"
       },
       carnot: {
-        gradeUk: '10 клас',
-        gradeEn: 'Grade 10',
-        analogyUk: 'Двигун автомобіля, ракети чи теплової електростанції працює завдяки різниці температур, як водяне колесо крутиться завдяки перепаду висоти води. Жоден двигун не може перетворити 100% тепла на роботу: частина тепла неминуче віддається холодильнику (радіатору)!',
-        analogyEn: 'A car engine or power plant runs on a temperature difference, just like a waterwheel runs on a height drop. No engine can convert 100% of heat into work, some heat must always be exhausted to the cold radiator!',
-        hintUk: 'За теоремою Карно $\\eta = 1 - T_C / T_H$: як підвищити максимальний теоретичний ККД теплової машини, зменшувати чи збільшувати відношення $T_H / T_C$?',
-        hintEn: 'From Carnot’s efficiency formula $\\eta = 1 - T_C / T_H$: how does raising hot reservoir temperature $T_H$ (or lowering $T_C$) affect efficiency $\\eta$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10 клас",
+        gradeEn: "Core Curriculum · Grade 10",
+        analogyUk: "Двигун автомобіля, ракети чи теплової електростанції працює завдяки різниці температур, як водяне колесо крутиться завдяки перепаду висоти води. Жоден двигун не може перетворити 100% тепла на роботу: частина тепла неминуче віддається холодильнику (радіатору).",
+        analogyEn: "A car engine or power plant runs on a temperature difference, just like a waterwheel runs on a height drop. No engine can convert 100% of heat into work, some heat must always be exhausted to the cold radiator.",
+        hintUk: "За теоремою Карно $\\eta = 1 - T_C / T_H$: як підвищити максимальний теоретичний ККД теплової машини, зменшувати чи збільшувати відношення $T_H / T_C$?",
+        hintEn: "From Carnot’s efficiency formula $\\eta = 1 - T_C / T_H$: how does raising hot reservoir temperature $T_H$ (or lowering $T_C$) affect efficiency $\\eta$?"
       },
       viscosity: {
-        gradeUk: '10 клас · ВНЗ',
-        gradeEn: 'Grade 10 · Uni',
-        analogyUk: 'Упусти металеву кульку в банку з густим медом або гліцерином: вона розганяється лише першу мить, а далі пливе вниз із напрочуд постійною швидкістю! Так само парашутист або дощова крапля в повітрі досягає граничної швидкості, коли опір середовища врівноважує тяжіння.',
-        analogyEn: 'Drop a steel marble into a jar of thick honey: it accelerates only briefly and then glides down at a steady constant speed! Skydivers and raindrops reach this same terminal velocity when fluid drag balances gravity minus buoyancy.',
-        hintUk: 'Коли сила в’язкого тертя Стокса $F_S = 6\\pi\\eta r v$ зрівнюється з результуючою силою тяжіння й Архімеда, чому дорівнює прискорення кульки $a$ і як далі рухається тіло?',
-        hintEn: 'Once Stokes’ viscous drag $F_S = 6\\pi\\eta r v$ balances net gravity minus buoyancy, what is the sphere’s acceleration $a$, and how does its velocity behave afterward?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Під час осідання сферичної кульки у в’язкій рідині (гліцерині або мастилі) швидкість зростає лише до моменту, коли сила в’язкого тертя Стокса разом із силою Архімеда врівноважує силу тяжіння, після чого встановлюється стала гранична швидкість седиментації. Так само парашутист або дощова крапля в повітрі досягає граничної швидкості, коли опір середовища врівноважує тяжіння.",
+        analogyEn: "When a steel marble into a jar of thick honey: it accelerates only briefly and then glides down at a steady constant speed. Skydivers and raindrops reach this same terminal velocity when fluid drag balances gravity minus buoyancy.",
+        hintUk: "Коли сила в’язкого тертя Стокса $F_S = 6\\pi\\eta r v$ зрівнюється з результуючою силою тяжіння й Архімеда, чому дорівнює прискорення кульки $a$ і як далі рухається тіло?",
+        hintEn: "Once Stokes’ viscous drag $F_S = 6\\pi\\eta r v$ balances net gravity minus buoyancy, what is the sphere’s acceleration $a$, and how does its velocity behave afterward?"
       },
       coulomb: {
-        gradeUk: '8–10 клас',
-        gradeEn: 'Grade 8–10',
-        analogyUk: 'Потри повітряну кульку об вовняний светр, і вона притягне дрібні клаптики паперу або волосся! Однойменні заряди відштовхуються, різнойменні, притягуються, а невидимі силові лінії електричного поля показують шлях, яким побіжить пробний позитивний заряд.',
-        analogyEn: 'Rub a balloon on a wool sweater and it attracts bits of paper! Like charges repel and opposite charges attract, while electric field lines map the invisible highways along which a positive test charge gets pushed.',
-        hintUk: 'За законом Кулона $F \\propto |q_1 q_2| / r^2$: у скільки разів зміниться сила взаємодії зарядів, якщо відстань $r$ між ними зменшити вдвічі?',
-        hintEn: 'By Coulomb’s inverse-square law $F \\propto |q_1 q_2| / r^2$: how does the electrostatic force change when the distance $r$ between charges is halved?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–10 клас",
+        gradeEn: "Core Curriculum · Grade 8–10",
+        analogyUk: "Під час трибоелектризації діелектриків виникають нескомпенсовані електричні заряди, взаємодія яких підпорядковується закону Кулона. Однойменні заряди відштовхуються, різнойменні, притягуються, а невидимі силові лінії електричного поля показують шлях, яким побіжить пробний позитивний заряд.",
+        analogyEn: "Rubbing a balloon on a wool sweater and it attracts bits of paper. Like charges repel and opposite charges attract, while electric field lines map the invisible highways along which a positive test charge gets pushed.",
+        hintUk: "За законом Кулона $F \\propto |q_1 q_2| / r^2$: у скільки разів зміниться сила взаємодії зарядів, якщо відстань $r$ між ними зменшити вдвічі?",
+        hintEn: "By Coulomb’s inverse-square law $F \\propto |q_1 q_2| / r^2$: how does the electrostatic force change when the distance $r$ between charges is halved?"
       },
       rlccircuit: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Коливальний контур у радіоприймачі або смартфоні, це електричний брат звичайного маятника! Заряд на конденсаторі, як піднятий угору тягарець (потенціальна енергія $E_C$), а струм у котушці, як розігнаний тягарець унизу (магнітна «кінетична» енергія $E_L$).',
-        analogyEn: 'An RLC circuit in a radio tuner or smartphone is the electrical twin of a swinging pendulum! Charge stored on the capacitor acts like height (potential energy $E_C$), while current in the inductor acts like motion (magnetic energy $E_L$).',
-        hintUk: 'За формулою Томсона $T = 2\\pi\\sqrt{LC}$ і за рахунок опору резистора $R$: куди поступово переходить електромагнітна енергія контуру при загасаючих коливаннях?',
-        hintEn: 'According to Thomson’s formula $T = 2\\pi\\sqrt{LC}$ and Joule heating $I^2 R$: what happens to oscillation amplitude and total electromagnetic energy when resistance $R > 0$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 11 клас",
+        gradeEn: "Core Curriculum · Grade 11",
+        analogyUk: "Коливальний контур у радіоприймачі або смартфоні, це електричний брат звичайного маятника. Заряд на конденсаторі, як піднятий угору тягарець (потенціальна енергія $E_C$), а струм у котушці, як розігнаний тягарець унизу (магнітна «кінетична» енергія $E_L$).",
+        analogyEn: "An RLC circuit in a radio tuner or smartphone is the electrical twin of a swinging pendulum. Charge stored on the capacitor acts like height (potential energy $E_C$), while current in the inductor acts like motion (magnetic energy $E_L$).",
+        hintUk: "За формулою Томсона $T = 2\\pi\\sqrt{LC}$ і за рахунок опору резистора $R$: куди поступово переходить електромагнітна енергія контуру при загасаючих коливаннях?",
+        hintEn: "According to Thomson’s formula $T = 2\\pi\\sqrt{LC}$ and Joule heating $I^2 R$: what happens to oscillation amplitude and total electromagnetic energy when resistance $R > 0$?"
       },
       atwood: {
-        gradeUk: '9–10 клас',
-        gradeEn: 'Grade 9–10',
-        analogyUk: 'Саме так працює ліфт із противагою у багатоповерхівці! Оскільки два вантажі $m_1$ і $m_2$ зв’язані одним тросом через блок, рушійна сила залежить лише від різниці їхніх мас $(m_1 - m_2)g$, тому система рухається плавно й повільно, дуже зручно для точних вимірювань!',
-        analogyEn: 'This is exactly how an elevator with a counterweight works! Because masses $m_1$ and $m_2$ hang on opposite ends of the same cable, only their weight difference $(m_1 - m_2)g$ drives the motion, slowing gravity down to a gentle pace.',
-        hintUk: 'Рушійна сила системи дорівнює $(m_1 - m_2)g$, але прискорювати доводиться сумарну масу обох тіл і блока ($m_1 + m_2 + I/R^2$). Чи буде прискорення $a$ меншим за $g$?',
-        hintEn: 'The net driving force is $(m_1 - m_2)g$, while the total accelerated inertia is $m_1 + m_2 + I/R^2$. How does acceleration $a$ behave when $m_1$ and $m_2$ are close in value?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас",
+        gradeEn: "Core Curriculum · Grade 9–10",
+        analogyUk: "Класичним інженерним втіленням машини Атвуда є підйомник із противагою. Оскільки два вантажі $m_1$ і $m_2$ зв’язані одним тросом через блок, рушійна сила залежить лише від різниці їхніх мас $(m_1 - m_2)g$, тому система рухається плавно й повільно, дуже зручно для точних вимірювань.",
+        analogyEn: "This is exactly how an elevator with a counterweight works. Because masses $m_1$ and $m_2$ hang on opposite ends of the same cable, only their weight difference $(m_1 - m_2)g$ drives the motion, slowing gravity down to a gentle pace.",
+        hintUk: "Рушійна сила системи дорівнює $(m_1 - m_2)g$, але прискорювати доводиться сумарну масу обох тіл і блока ($m_1 + m_2 + I/R^2$). Чи буде прискорення $a$ меншим за $g$?",
+        hintEn: "The net driving force is $(m_1 - m_2)g$, while the total accelerated inertia is $m_1 + m_2 + I/R^2$. How does acceleration $a$ behave when $m_1$ and $m_2$ are close in value?"
       },
       coriolis: {
-        gradeUk: '10–11 клас · ВНЗ',
-        gradeEn: 'Grade 10–11 · Uni',
-        analogyUk: 'Спробуй прокотити м’яч по прямій лінії другу, сидячи на дитячій каруселі, що крутиться: для вас на каруселі м’яч дивовижно зверне вбік! Через обертання Землі ця сама сила Коріоліса закручує величезні циклони й урагани та підмиває праві береги річок у Північній півкулі.',
-        analogyEn: 'Try rolling a ball straight across a spinning playground merry-go-round: to riders on the platform, the ball mysteriously curves sideways! On our rotating Earth, this Coriolis force swirls hurricanes and slowly rotates Foucault’s pendulum.',
-        hintUk: 'У Північній півкулі вектор кутової швидкості Землі напрямлений угору вздовж осі світу. У який бік (праворуч чи ліворуч за ходом руху) сила Коріоліса $\\vec{F}_C = -2m[\\vec{\\Omega}\\times\\vec{v}]$ відхиляє тіло?',
-        hintEn: 'In the Northern Hemisphere, in which direction (right or left relative to velocity $\\vec{v}$) does the Coriolis force $\\vec{F}_C = -2m[\\vec{\\Omega}\\times\\vec{v}]$ deflect a moving body?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "У системі відліку, що обертається, тіло під час руху вздовж радіуса зазнає бічного відхилення під дією інерційної сили Коріоліса. Через обертання Землі ця сама сила Коріоліса закручує величезні циклони й урагани та підмиває праві береги річок у Північній півкулі.",
+        analogyEn: "When rolling a ball straight across a spinning playground merry-go-round: to riders on the platform, the ball mysteriously curves sideways. On our rotating Earth, this Coriolis force swirls hurricanes and slowly rotates Foucault’s pendulum.",
+        hintUk: "У Північній півкулі вектор кутової швидкості Землі напрямлений угору вздовж осі світу. У який бік (праворуч чи ліворуч за ходом руху) сила Коріоліса $\\vec{F}_C = -2m[\\vec{\\Omega}\\times\\vec{v}]$ відхиляє тіло?",
+        hintEn: "In the Northern Hemisphere, in which direction (right or left relative to velocity $\\vec{v}$) does the Coriolis force $\\vec{F}_C = -2m[\\vec{\\Omega}\\times\\vec{v}]$ deflect a moving body?"
       },
       hooke: {
-        gradeUk: '7–10 клас',
-        gradeEn: 'Grade 7–10',
-        analogyUk: 'Коли ти розтягуєш еспандер, пружину динамометра або коли сталевий трос мосту тримає важкі авто, метал трохи видовжується. Поки навантаження помірне, видовження $\\Delta L$ прямо пропорційне силі, як чесна лінійка!',
-        analogyEn: 'When you pull a spring scale, stretch a rubber band, or load a suspension-bridge steel cable, the material stretches slightly. Within the elastic limit, elongation $\\Delta L$ grows in exact proportion to the pulling force!',
-        hintUk: 'За законом Гука $\\Delta L = \\frac{F L_0}{E A}$: якщо збільшити площу поперечного перерізу стрижня $A$ або модуль Юнга матеріалу $E$, видовження $\\Delta L$ збільшиться чи зменшиться?',
-        hintEn: 'From Hooke’s law $\\Delta L = \\frac{F L_0}{E A}$: if cross-sectional area $A$ or Young’s modulus $E$ increases, does elongation $\\Delta L$ increase or decrease?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 7–10 клас",
+        gradeEn: "Core Curriculum · Grade 7–10",
+        analogyUk: "У межах пружної деформації сталевих тросів, балок та динамометричних пружин механічна напруга $\\sigma = F/S$ прямо пропорційна відносному видовженню $\\varepsilon = \\Delta l / l_0$ згідно із законом Гука.",
+        analogyEn: "When you pull a spring scale, stretch a rubber band, or load a suspension-bridge steel cable, the material stretches slightly. Within the elastic limit, elongation $\\Delta L$ grows in exact proportion to the pulling force.",
+        hintUk: "За законом Гука $\\Delta L = \\frac{F L_0}{E A}$: якщо збільшити площу поперечного перерізу стрижня $A$ або модуль Юнга матеріалу $E$, видовження $\\Delta L$ збільшиться чи зменшиться?",
+        hintEn: "From Hooke’s law $\\Delta L = \\frac{F L_0}{E A}$: if cross-sectional area $A$ or Young’s modulus $E$ increases, does elongation $\\Delta L$ increase or decrease?"
       },
       torricelli: {
-        gradeUk: '7–10 клас',
-        gradeEn: 'Grade 7–10',
-        analogyUk: 'Якщо зробити маленький отвір унизу високої пластикової пляшки з водою, струмінь вилітає з такою самою швидкістю, яку мала б крапля, вільно впавши з рівня поверхні води! Що вищий стовп води над отвором, то сильніше б’є фонтан.',
-        analogyEn: 'Poke a small hole near the bottom of a tall water bottle: the water jet shoots out at the exact same speed a droplet would reach if dropped freely from the top water surface! Higher water level means higher pressure and a faster jet.',
-        hintUk: 'За формулою Торрічеллі швидкість витікання струменя $v = \\sqrt{2gh}$ визначається висотою стовпа рідини $h$ над отвором і не залежить від густини ідеальної рідини.',
-        hintEn: 'By Torricelli’s theorem $v = \\sqrt{2gh}$, efflux speed depends on depth $h$ below the free surface, how does jet speed change as water depth $h$ increases?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 7–10 клас",
+        gradeEn: "Core Curriculum · Grade 7–10",
+        analogyUk: "Якщо зробити маленький отвір унизу високої пластикової пляшки з водою, струмінь вилітає з такою самою швидкістю, яку мала б крапля, вільно впавши з рівня поверхні води. Що вищий стовп води над отвором, то сильніше б’є фонтан.",
+        analogyEn: "Poke a small hole near the bottom of a tall water bottle: the water jet shoots out at the exact same speed a droplet would reach if dropped freely from the top water surface. Higher water level means higher pressure and a faster jet.",
+        hintUk: "За формулою Торрічеллі швидкість витікання струменя $v = \\sqrt{2gh}$ визначається висотою стовпа рідини $h$ над отвором і не залежить від густини ідеальної рідини.",
+        hintEn: "By Torricelli’s theorem $v = \\sqrt{2gh}$, efflux speed depends on depth $h$ below the free surface, how does jet speed change as water depth $h$ increases?"
       },
       maxwell: {
-        gradeUk: '10–11 клас · ВНЗ',
-        gradeEn: 'Grade 10–11 · Uni',
-        analogyUk: 'Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю ($\\sim 500\\text{ м/с}$!), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей!',
-        analogyEn: 'Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed ($\\sim 500\\text{ m/s}$!), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward!',
-        hintUk: 'Коли температура газу $T$ зростає або молярна маса $M$ зменшується, куди зміщується максимум кривої розподілу Максвелла ($v_p = \\sqrt{2RT/M}$) і як змінюється його висота?',
-        hintEn: 'When gas temperature $T$ rises (or molar mass $M$ decreases), how does the peak of the Maxwell speed distribution ($v_p = \\sqrt{2RT/M}$) shift?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю ($\\sim 500\\text{ м/с}$. ), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей.",
+        analogyEn: "Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed ($\\sim 500\\text{ m/s}$. ), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward.",
+        hintUk: "Коли температура газу $T$ зростає або молярна маса $M$ зменшується, куди зміщується максимум кривої розподілу Максвелла ($v_p = \\sqrt{2RT/M}$) і як змінюється його висота?",
+        hintEn: "When gas temperature $T$ rises (or molar mass $M$ decreases), how does the peak of the Maxwell speed distribution ($v_p = \\sqrt{2RT/M}$) shift?"
       },
       newtonrings: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Бачив райдужні кільця на мильній бульбашці або тонкій плівці бензину на калюжі? Коли опукла лінза лежить на плоскому склі, між ними є тонесенький клин повітря. Промінь, відбитий від верхньої і нижньої межі цього прошарку, інтерферує сам із собою, малюючи концентричні кільця!',
-        analogyEn: 'Ever noticed rainbow rings on a soap bubble or an oil slick on a puddle? Between a curved lens and a flat glass plate lies a microscopic wedge of air; light reflecting off the top and bottom of this air gap interferes to paint bullseye rings!',
-        hintUk: 'У самій точці дотику лінзи і пластинки товщина повітряного прошарку $h = 0$, але при відбиванні від оптично густішого скла хвиля втрачає півхвилі $\\lambda/2$ (зсув фази $\\pi$). Тому в центрі картини у відбитому світлі завжди темна пляма!',
-        hintEn: 'At the center contact point ($h = 0$), reflection off the denser lower glass adds a $\\pi$ phase flip ($\\lambda/2$ path shift). Does that make the central spot bright or dark in reflected light?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · 11 клас",
+        gradeEn: "Advanced Level · AP / University · Grade 11",
+        analogyUk: "Інтерференція світла в тонких клиноподібних плівках використовується для високоточного контролю оптичних поверхонь: Коли опукла лінза лежить на плоскому склі, між ними є тонесенький клин повітря. Промінь, відбитий від верхньої і нижньої межі цього прошарку, інтерферує сам із собою, малюючи концентричні кільця.",
+        analogyEn: "Ever noticed rainbow rings on a soap bubble or an oil slick on a puddle? Between a curved lens and a flat glass plate lies a microscopic wedge of air; light reflecting off the top and bottom of this air gap interferes to paint bullseye rings.",
+        hintUk: "У самій точці дотику лінзи і пластинки товщина повітряного прошарку $h = 0$, але при відбиванні від оптично густішого скла хвиля втрачає півхвилі $\\lambda/2$ (зсув фази $\\pi$). Тому в центрі картини у відбитому світлі завжди темна пляма.",
+        hintEn: "At the center contact point ($h = 0$), reflection off the denser lower glass adds a $\\pi$ phase flip ($\\lambda/2$ path shift). Does that make the central spot bright or dark in reflected light?"
       },
       photoelectric: {
-        gradeUk: '11 клас',
-        gradeEn: 'Grade 11',
-        analogyUk: 'Сонячні батареї, датчик освітлення в телефоні та автоматичні двері в супермаркеті працюють завдяки фотоефекту! Світло летить порціями, фотонами, немов більярдні кулі: навіть мільйон слабких червоних кульок не виб’є електрон, а один енергійний синій чи УФ-фотон вибиває його миттєво!',
-        analogyEn: 'Solar panels, smartphone light sensors, and automatic supermarket doors all rely on the photoelectric effect! Light arrives as individual photon bullets: a flood of weak red photons cannot dislodge an electron, whereas a single energetic UV photon knocks it out instantly!',
-        hintUk: 'За рівнянням Ейнштейна $E_{k,\\max} = h\\nu - W$: від чого залежить максимальна кінетична енергія вирваних електронів, від яскравості (інтенсивності) світла чи лише від його частоти $\\nu$ (довжини хвилі $\\lambda$)?',
-        hintEn: 'By Einstein’s equation $E_{k,\\max} = h\\nu - W$: does the maximum kinetic energy of emitted photoelectrons depend on light intensity or on light frequency $\\nu$ (wavelength $\\lambda$)?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 11 клас",
+        gradeEn: "Core Curriculum · Grade 11",
+        analogyUk: "Сонячні батареї, датчик освітлення в телефоні та автоматичні двері в супермаркеті працюють завдяки фотоефекту. Світло летить порціями, фотонами, немов більярдні кулі: навіть мільйон слабких червоних кульок не виб’є електрон, а один енергійний синій чи УФ-фотон вибиває його миттєво.",
+        analogyEn: "Solar panels, smartphone light sensors, and automatic supermarket doors all rely on the photoelectric effect. Light arrives as individual photon bullets: a flood of weak red photons cannot dislodge an electron, whereas a single energetic UV photon knocks it out instantly.",
+        hintUk: "За рівнянням Ейнштейна $E_{k,\\max} = h\\nu - W$: від чого залежить максимальна кінетична енергія вирваних електронів, від яскравості (інтенсивності) світла чи лише від його частоти $\\nu$ (довжини хвилі $\\lambda$)?",
+        hintEn: "By Einstein’s equation $E_{k,\\max} = h\\nu - W$: does the maximum kinetic energy of emitted photoelectrons depend on light intensity or on light frequency $\\nu$ (wavelength $\\lambda$)?"
       },
       rutherford: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Уяви, що ти стріляєш артилерійським снарядом у аркуш цигаркового паперу, і раптом один снаряд із тисячі відскакує прямо назад у тебе! Саме так здивувався Резерфорд, коли альфа-частинки відскочили від золотої фольги: це довело, що в центрі атома є крихітне й надважке ядро!',
-        analogyEn: 'Imagine firing artillery shells at tissue paper and seeing one shell out of thousands bounce straight back at you! That was Rutherford’s shock when alpha particles rebounded from gold foil, proving that nearly all of an atom’s mass sits in a tiny dense nucleus!',
-        hintUk: 'Як залежить кут кулонівського розсіювання $\\theta$ альфа-частинки від прицільної відстані $b$ (наскільки близько до ядра пролітає частинка)?',
-        hintEn: 'How does the Coulomb scattering angle $\\theta$ depend on the impact parameter $b$ (how closely the alpha particle aims at the nucleus)?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "У класичному експерименті Ернеста Резерфорда переважна більшість $\\alpha$-частинок проходила крізь тонку золоту фольгу майже без відхилення, проте мала частка частинок розсіювалася на кути понад $90^\\circ$, що довело зосередження всього позитивного заряду і маси атома в надщільному ядрі.",
+        analogyEn: "Consider firing artillery shells at tissue paper and seeing one shell out of thousands bounce straight back at you. That was Rutherford’s shock when alpha particles rebounded from gold foil, proving that nearly all of an atom’s mass sits in a tiny dense nucleus.",
+        hintUk: "Як залежить кут кулонівського розсіювання $\\theta$ альфа-частинки від прицільної відстані $b$ (наскільки близько до ядра пролітає частинка)?",
+        hintEn: "How does the Coulomb scattering angle $\\theta$ depend on the impact parameter $b$ (how closely the alpha particle aims at the nucleus)?"
       },
       ampere: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Два дроти зі струмом поводяться як живі магніти навіть без жодного заліза! Якщо струми в них біжать в один бік, дроти дружно притягуються, а якщо назустріч один одному, відштовхуються. Саме через цей дослід Ампера визначають одиницю сили струму, 1 Ампер!',
-        analogyEn: 'Two current-carrying wires act like magnets without a single piece of iron! When currents flow in the same direction, the wires pull together; when currents flow in opposite directions, they push apart.',
-        hintUk: 'За законом Ампера $F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$: як взаємодіють два паралельні провідники, якщо струми в них течуть в одному напрямку, і як, якщо в протилежних?',
-        hintEn: 'By Ampère’s force law $F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$: do parallel wires attract or repel when their currents flow in the same direction?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Два дроти зі струмом поводяться як живі магніти навіть без жодного заліза. Якщо струми в них біжать в один бік, дроти дружно притягуються, а якщо назустріч один одному, відштовхуються. Саме через цей дослід Ампера визначають одиницю сили струму, 1 Ампер.",
+        analogyEn: "Two current-carrying wires act like magnets without a single piece of iron. When currents flow in the same direction, the wires pull together; when currents flow in opposite directions, they push apart.",
+        hintUk: "За законом Ампера $F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$: як взаємодіють два паралельні провідники, якщо струми в них течуть в одному напрямку, і як, якщо в протилежних?",
+        hintEn: "By Ampère’s force law $F = \\frac{\\mu_0 I_1 I_2 L}{2\\pi d}$: do parallel wires attract or repel when their currents flow in the same direction?"
       },
       hall: {
-        gradeUk: '11 клас · ВНЗ',
-        gradeEn: 'Grade 11 · Uni',
-        analogyUk: 'Як телефон знає, що ти відкрив магнітний чохол, а електровелосипед вимірює оберти колеса? Всередині стоїть крихітний датчик Холла! Коли крізь пластинку зі струмом проходить магнітне поле, сила Лоренца притискає електрони до одного бічного краю, створюючи там поперечну напругу.',
-        analogyEn: 'How does a laptop know its lid is closed, or an e-bike measure wheel speed? Inside sits a tiny Hall sensor! When a magnetic field pierces a current strip, the Lorentz force shoves electrons to one side edge, creating a measurable transverse voltage.',
-        hintUk: 'Коли бічне електричне поле Холла $\\vec{E}_H$ врівноважує магнітну силу Лоренца ($q E_H = q v_d B$), як напруга Холла $U_H = \\frac{I B}{n e d}$ залежить від індукції поля $B$ та струму $I$?',
-        hintEn: 'When the transverse Hall electric field balances the magnetic Lorentz force ($q E_H = q v_d B$), how does Hall voltage $U_H = \\frac{I B}{n e d}$ scale with current $I$ and magnetic field $B$?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Напівпровідникові датчики Холла широко застосовуються в безщіткових електродвигунах, автомобільних системах запалювання та магнітних вимикачах: Коли крізь пластинку зі струмом проходить магнітне поле, сила Лоренца притискає електрони до одного бічного краю, створюючи там поперечну напругу.",
+        analogyEn: "How does a laptop know its lid is closed, or an e-bike measure wheel speed? Inside sits a tiny Hall sensor. When a magnetic field pierces a current strip, the Lorentz force shoves electrons to one side edge, creating a measurable transverse voltage.",
+        hintUk: "Коли бічне електричне поле Холла $\\vec{E}_H$ врівноважує магнітну силу Лоренца ($q E_H = q v_d B$), як напруга Холла $U_H = \\frac{I B}{n e d}$ залежить від індукції поля $B$ та струму $I$?",
+        hintEn: "When the transverse Hall electric field balances the magnetic Lorentz force ($q E_H = q v_d B$), how does Hall voltage $U_H = \\frac{I B}{n e d}$ scale with current $I$ and magnetic field $B$?"
       },
       coupled: {
-        gradeUk: '11 клас · ВНЗ',
-        gradeEn: 'Grade 11 · Uni',
-        analogyUk: 'Повісь дві однакові гойдалки на спільну гнучку перекладину або з’єднай два маятники легкою пружинкою! Відштовхни лише перший маятник, і через кілька секунд він повністю зупиниться, передавши всю свою енергію другому, а потім енергія так само повернеться назад!',
-        analogyEn: 'Hang two identical swings from a flexible beam or link two pendulums with a light spring! Push only the first pendulum: within seconds it comes to a dead stop after handing 100% of its energy to the second, and then the energy flows right back!',
-        hintUk: 'Битися між двома зв’язаними маятниками виникають через додавання двох нормальних мод із частотами $\\omega_1$ та $\\omega_2$. Як зміниться частота перекачування енергії $\\omega_{\\text{бит}} = \\omega_2 - \\omega_1$, якщо збільшити жорсткість пружини $k_c$?',
-        hintEn: 'Energy beats arise from the difference between symmetric and antisymmetric normal-mode frequencies ($\\omega_{\\text{beat}} = \\omega_2 - \\omega_1$). What happens to the energy transfer speed when spring stiffness $k_c$ increases?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "У системі двох однакових маятників, з’єднаних пружною зв’язкою, збудження одного маятника спричиняє періодичне перетікання енергії між осциляторами у формі биття за рахунок суперпозиції синфазної та протифазної нормальних мод.",
+        analogyEn: "When two identical swings from a flexible beam or link two pendulums with a light spring. Push only the first pendulum: within seconds it comes to a dead stop after handing 100% of its energy to the second, and then the energy flows right back.",
+        hintUk: "Битися між двома зв’язаними маятниками виникають через додавання двох нормальних мод із частотами $\\omega_1$ та $\\omega_2$. Як зміниться частота перекачування енергії $\\omega_{\\text{бит}} = \\omega_2 - \\omega_1$, якщо збільшити жорсткість пружини $k_c$?",
+        hintEn: "Energy beats arise from the difference between symmetric and antisymmetric normal-mode frequencies ($\\omega_{\\text{beat}} = \\omega_2 - \\omega_1$). What happens to the energy transfer speed when spring stiffness $k_c$ increases?"
       },
       precession: {
-        gradeUk: '10–11 клас · ВНЗ',
-        gradeEn: 'Grade 10–11 · Uni',
-        analogyUk: 'Чому дитяча дзиґа (юла) або колесо велосипеда на ходу не падає на бік, хоча земне тяжіння тягне його вниз? Замість падіння вісь швидко розкрученої дзиґи плавно описує коло в горизонтальній площині, це дивовижне явище називається гіроскопічною прецесією!',
-        analogyEn: 'Why doesn’t a spinning toy top or a moving bicycle wheel tip over even when tilted? Instead of falling down under gravity, the axle of a fast-spinning gyroscope sweeps smoothly around in a horizontal circle, gyroscopic precession!',
-        hintUk: 'Подивись на формулу кутової швидкості прецесії $\\Omega_p = \\frac{mgd}{I\\omega_s}$: де стоїть власна кутова швидкість обертання маховика $\\omega_s$, у чисельнику чи в знаменнику?',
-        hintEn: 'Look at the precession formula $\\Omega_p = \\frac{mgd}{I\\omega_s}$: if the flywheel spins faster (larger $\\omega_s$), does the precession rate $\\Omega_p$ become faster or slower?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Швидко розкручений ротор гірокомпаса або маховика зберігає стійкість у полі тяжіння завдяки великому власному моменту імпульсу $\\vec{L} = I\\vec{\\omega}$: Замість падіння вісь швидко розкрученої дзиґи плавно описує коло в горизонтальній площині, це дивовижне явище називається гіроскопічною прецесією.",
+        analogyEn: "Why doesn’t a spinning toy top or a moving bicycle wheel tip over even when tilted? Instead of falling down under gravity, the axle of a fast-spinning gyroscope sweeps smoothly around in a horizontal circle, gyroscopic precession.",
+        hintUk: "Подивись на формулу кутової швидкості прецесії $\\Omega_p = \\frac{mgd}{I\\omega_s}$: де стоїть власна кутова швидкість обертання маховика $\\omega_s$, у чисельнику чи в знаменнику?",
+        hintEn: "Look at the precession formula $\\Omega_p = \\frac{mgd}{I\\omega_s}$: if the flywheel spins faster (larger $\\omega_s$), does the precession rate $\\Omega_p$ become faster or slower?"
       },
       magnus: {
-        gradeUk: '10 клас',
-        gradeEn: 'Grade 10',
-        analogyUk: 'Бачив у футболі знаменитий «сухий лист» або кручений удар зі штрафного, коли м’яч у польоті огинає стінку гравців по дузі? Обертаючись, м’яч з одного боку пришвидшує зустрічне повітря, а з іншого, гальмує. Через різницю тисків Бернуллі виникає бічна сила Магнуса!',
-        analogyEn: 'Ever seen a soccer player bend a free kick around a defensive wall or a baseball pitcher throw a curveball? A spinning ball drags air faster on one side than the other; by Bernoulli’s principle, the pressure difference pushes the ball sideways!',
-        hintUk: 'З якого боку обертового циліндра тиск повітря нижчий (і туди відхиляється м’яч), де лінійна швидкість поверхні збігається з потоком чи де вона напрямлена назустріч потоку?',
-        hintEn: 'On which side of the spinning sphere is air speed higher and pressure lower, where the surface spins with the airflow or against it?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · 10 клас",
+        gradeEn: "Advanced Level · AP / University · Grade 10",
+        analogyUk: "Під час обтікання тіла, що одночасно поступально рухається і обертається в потоці повітря або рідини, виникає поперечна підйомна сила Магнуса: Обертаючись, м’яч з одного боку пришвидшує зустрічне повітря, а з іншого, гальмує. Через різницю тисків Бернуллі виникає бічна сила Магнуса.",
+        analogyEn: "In a soccer player bend a free kick around a defensive wall or a baseball pitcher throw a curveball? A spinning ball drags air faster on one side than the other; by Bernoulli’s principle, the pressure difference pushes the ball sideways.",
+        hintUk: "З якого боку обертового циліндра тиск повітря нижчий (і туди відхиляється м’яч), де лінійна швидкість поверхні збігається з потоком чи де вона напрямлена назустріч потоку?",
+        hintEn: "On which side of the spinning sphere is air speed higher and pressure lower, where the surface spins with the airflow or against it?"
       },
       capillary: {
-        gradeUk: '10 клас',
-        gradeEn: 'Grade 10',
-        analogyUk: 'Як паперова серветка миттєво вбирає пролитий чай, а високі дерева піднімають воду від коріння до самої верхівки? У тоненьких капілярних трубочках молекули води чіпляються за стінки і поверхневий натяг, немов натягнута батутна плівка, підтягує стовпчик води вгору проти гравітації!',
-        analogyEn: 'How does a paper towel soak up spilled tea, or a tall tree draw water to its leaves? Inside hair-thin capillary tubes, water clings to the walls and surface tension pulls the liquid column upward against gravity!',
-        hintUk: 'За формулою Жюрена $h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$: як зміниться висота підйому рідини $h$, якщо радіус капілярної трубки $r$ зменшити?',
-        hintEn: 'By Jurin’s law $h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$: how does capillary rise height $h$ change when tube radius $r$ becomes narrower?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · 10 клас",
+        gradeEn: "Advanced Level · AP / University · Grade 10",
+        analogyUk: "Підняття вологи в пористих ґрунтах, деревних судинах (ксилемі) та лабораторних капілярах зумовлене додатковим тиском Лапласа під увігнутим меніском: У тоненьких капілярних трубочках молекули води чіпляються за стінки і поверхневий натяг, немов натягнута батутна плівка, підтягує стовпчик води вгору проти гравітації.",
+        analogyEn: "How does a paper towel soak up spilled tea, or a tall tree draw water to its leaves? Inside hair-thin capillary tubes, water clings to the walls and surface tension pulls the liquid column upward against gravity.",
+        hintUk: "За формулою Жюрена $h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$: як зміниться висота підйому рідини $h$, якщо радіус капілярної трубки $r$ зменшити?",
+        hintEn: "By Jurin’s law $h = \\frac{2\\sigma\\cos\\theta}{\\rho g r}$: how does capillary rise height $h$ change when tube radius $r$ becomes narrower?"
       },
       brownian: {
-        gradeUk: '8–10 клас',
-        gradeEn: 'Grade 8–10',
-        analogyUk: 'Якщо подивитися в мікроскоп на крихітну пилинку або краплинку молока у воді, вона безперервно смикається й танцює зигзагами! Це тому, що невидимі молекули води щомиті бомбардують пилинку з різних боків нерівномірно, прямий візуальний доказ існування теплового руху молекул!',
-        analogyEn: 'Look through a microscope at a tiny pollen grain in water and you’ll see it jittering and dancing endlessly! Invisible water molecules bombard the grain unevenly from all sides, direct visual proof that atoms and molecules are in constant thermal motion!',
-        hintUk: 'За формулою Ейнштейна–Смолуховського $\\langle r^2 \\rangle = 2dDt$, де $D = \\frac{k_B T}{6\\pi\\eta a}$: як змінюється інтенсивність броунівського блукання при підвищенні температури $T$ або зменшенні розміру частинки $a$?',
-        hintEn: 'From the Einstein–Smoluchowski relation $\\langle r^2 \\rangle = 2dDt$ with $D = \\frac{k_B T}{6\\pi\\eta a}$: how does thermal jittering change when temperature $T$ increases or particle radius $a$ decreases?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · 8–10 клас",
+        gradeEn: "Advanced Level · AP / University · Grade 8–10",
+        analogyUk: "Мікроскопічні колоїдні частинки або пилкове зерно, завислі у рідині, здійснюють неперервний хаотичний броунівський рух. Це тому, що невидимі молекули води щомиті бомбардують пилинку з різних боків нерівномірно, прямий візуальний доказ існування теплового руху молекул.",
+        analogyEn: "Look through a microscope at a tiny pollen grain in water and you’ll see it jittering and dancing endlessly. Invisible water molecules bombard the grain unevenly from all sides, direct visual proof that atoms and molecules are in constant thermal motion.",
+        hintUk: "За формулою Ейнштейна–Смолуховського $\\langle r^2 \\rangle = 2dDt$, де $D = \\frac{k_B T}{6\\pi\\eta a}$: як змінюється інтенсивність броунівського блукання при підвищенні температури $T$ або зменшенні розміру частинки $a$?",
+        hintEn: "From the Einstein–Smoluchowski relation $\\langle r^2 \\rangle = 2dDt$ with $D = \\frac{k_B T}{6\\pi\\eta a}$: how does thermal jittering change when temperature $T$ increases or particle radius $a$ decreases?"
       },
       michelson: {
-        gradeUk: '11 клас · ВНЗ',
-        gradeEn: 'Grade 11 · Uni',
-        analogyUk: 'Найточніша «лінійка» у Всесвіті! Лазерний промінь ділиться навпіл, біжить двома перпендикулярними коридорами до дзеркал і повертається назад. Якщо одне дзеркало зсунеться хоча б на частку мікрона (половину довжини світлової хвилі!), кільця на екрані одразу змістяться. Так обсерваторія LIGO зловила гравітаційні хвилі!',
-        analogyEn: 'The most precise ruler in the Universe! A laser beam splits in two, races down perpendicular arms to mirrors, and recombines. Shift one mirror by just half a wavelength of light and the bullseye fringes shift by a full ring, how LIGO detects gravitational waves!',
-        hintUk: 'Оскільки промінь проходить плече інтерферометра двічі (туди й назад), зміщення дзеркала на $\\Delta d$ змінює різницю ходу на $\\Delta = 2\\Delta d$. На яку відстань треба зсунути дзеркало для зсуву картини рівно на 1 смугу ($\\Delta = \\lambda$)?',
-        hintEn: 'Because light travels to the movable mirror and back, shifting the mirror by $\\Delta d$ changes the optical path by $\\Delta = 2\\Delta d$. What mirror shift $\\Delta d$ produces a shift of 1 full fringe ($\\Delta = \\lambda$)?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Інтерферометр Майкельсона є еталонним оптичним приладом для вимірювання переміщень порядку частки довжини світлової хвилі. Лазерний промінь ділиться навпіл, біжить двома перпендикулярними коридорами до дзеркал і повертається назад. Якщо одне дзеркало зсунеться хоча б на частку мікрона (половину довжини світлової хвилі. ), кільця на екрані одразу змістяться. Так обсерваторія LIGO зловила гравітаційні хвилі.",
+        analogyEn: "The most precise ruler in the Universe. A laser beam splits in two, races down perpendicular arms to mirrors, and recombines. Shift one mirror by just half a wavelength of light and the bullseye fringes shift by a full ring, how LIGO detects gravitational waves.",
+        hintUk: "Оскільки промінь проходить плече інтерферометра двічі (туди й назад), зміщення дзеркала на $\\Delta d$ змінює різницю ходу на $\\Delta = 2\\Delta d$. На яку відстань треба зсунути дзеркало для зсуву картини рівно на 1 смугу ($\\Delta = \\lambda$)?",
+        hintEn: "Because light travels to the movable mirror and back, shifting the mirror by $\\Delta d$ changes the optical path by $\\Delta = 2\\Delta d$. What mirror shift $\\Delta d$ produces a shift of 1 full fringe ($\\Delta = \\lambda$)?"
       },
       compton: {
-        gradeUk: '11 клас · ВНЗ',
-        gradeEn: 'Grade 11 · Uni',
-        analogyUk: 'Квантовий більярд! Коли високоенергетичний рентгенівський фотон налітає на електрон, він штовхає його точнісінько як пружна більярдна куля. Віддавши частину своєї енергії електрону віддачі, відскочений фотон втрачає частоту, тобто його довжина хвилі $\\lambda\'$ стає більшою!',
-        analogyEn: 'Quantum billiards! When an X-ray photon collides with an electron, it bounces off just like a billiard ball. Because the recoiling electron carries away kinetic energy, the scattered photon loses energy and emerges with a longer wavelength $\\lambda\' > \\lambda_0$!',
-        hintUk: 'За формулою Комптона $\\Delta\\lambda = \\lambda\' - \\lambda_0 = \\lambda_C(1 - \\cos\\theta)$: при якому куті розсіювання $\\theta$ збільшення довжини хвилі фотона та енергія електрона віддачі є максимальними?',
-        hintEn: 'From Compton’s formula $\\Delta\\lambda = \\lambda_C(1 - \\cos\\theta)$: how does the scattered wavelength $\\lambda\'$ compare to $\\lambda_0$, and at what angle $\\theta$ is the shift largest?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Ефект Комптона є прямим експериментальним підтвердженням корпускулярних властивостей електромагнітного випромінювання. Коли високоенергетичний рентгенівський фотон налітає на електрон, він штовхає його точнісінько як пружна більярдна куля. Віддавши частину своєї енергії електрону віддачі, відскочений фотон втрачає частоту, тобто його довжина хвилі $\\lambda'$ стає більшою.",
+        analogyEn: "Quantum billiards. When an X-ray photon collides with an electron, it bounces off just like a billiard ball. Because the recoiling electron carries away kinetic energy, the scattered photon loses energy and emerges with a longer wavelength $\\lambda' > \\lambda_0$.",
+        hintUk: "За формулою Комптона $\\Delta\\lambda = \\lambda' - \\lambda_0 = \\lambda_C(1 - \\cos\\theta)$: при якому куті розсіювання $\\theta$ збільшення довжини хвилі фотона та енергія електрона віддачі є максимальними?",
+        hintEn: "From Compton’s formula $\\Delta\\lambda = \\lambda_C(1 - \\cos\\theta)$: how does the scattered wavelength $\\lambda'$ compare to $\\lambda_0$, and at what angle $\\theta$ is the shift largest?"
       },
       bohr: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Електрон в атомі схожий на людину на сходах: він може стояти лише на сходинках $n = 1, 2, 3\\dots$, але ніколи, в повітрі між ними! Чому? Бо електрон, це водночас хвиля, і орбіта стійка лише тоді, коли вздовж кола вкладається ціле число його хвиль де Бройля. Стрибаючи на нижчу сходинку, атом випускає спалах світла (фотон)!',
-        analogyEn: 'An electron in an atom is like a person on a staircase: it can stand on steps $n = 1, 2, 3\\dots$, never in mid-air between them! Why? Because the electron is a matter wave that must wrap around the orbit in a whole number of wavelengths $2\\pi r_n = n\\lambda_B$. Jumping down a step emits a photon of light!',
-        hintUk: 'Скільки повних довжин хвиль де Бройля $\\lambda_B = h/(m_e v)$ має вкластися вздовж кола стаціонарної орбіти з квантовим числом $n$, щоб стояча хвиля не загасила сама себе?',
-        hintEn: 'How many full de Broglie wavelengths $\\lambda_B$ must fit around the circumference $2\\pi r_n$ of the $n$-th stationary Bohr orbit?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Електрон в атомі схожий на людину на сходах: він може стояти лише на сходинках $n = 1, 2, 3\\dots$, але ніколи, в повітрі між ними. Чому? Бо електрон, це водночас хвиля, і орбіта стійка лише тоді, коли вздовж кола вкладається ціле число його хвиль де Бройля. Стрибаючи на нижчу сходинку, атом випускає спалах світла (фотон).",
+        analogyEn: "An electron in an atom is like a person on a staircase: it can stand on steps $n = 1, 2, 3\\dots$, never in mid-air between them. Why? Because the electron is a matter wave that must wrap around the orbit in a whole number of wavelengths $2\\pi r_n = n\\lambda_B$. Jumping down a step emits a photon of light.",
+        hintUk: "Скільки повних довжин хвиль де Бройля $\\lambda_B = h/(m_e v)$ має вкластися вздовж кола стаціонарної орбіти з квантовим числом $n$, щоб стояча хвиля не загасила сама себе?",
+        hintEn: "How many full de Broglie wavelengths $\\lambda_B$ must fit around the circumference $2\\pi r_n$ of the $n$-th stationary Bohr orbit?"
       },
       biot: {
-        gradeUk: '11 клас · ВНЗ',
-        gradeEn: 'Grade 11 · Uni',
-        analogyUk: 'Одна котушка зі струмом дає сильне магнітне поле лише в самому центрі, а далі воно швидко слабшає. Але якщо поставити дві однакові котушки на відстані, що точно дорівнює їхньому радіусу ($d = R$), спад поля від першої котушки ідеально компенсується підйомом від другої, утворюється рівний «стіл» однорідного поля!',
-        analogyEn: 'A single current loop creates a magnetic field that drops off quickly away from its center. Place two identical coils apart by a distance equal to their radius ($d = R$), and their fields blend into a remarkably flat plateau of uniform magnetic field right between them!',
-        hintUk: 'За якого співвідношення між відстанню між котушками $d$ та їхнім радіусом $R$ друга похідна магнітного поля в центрі $\\frac{d^2 B}{dx^2}\\big|_{x=0}$ перетворюється на нуль (умова Гельмгольца)?',
-        hintEn: 'At what coil separation $d$ relative to coil radius $R$ does the second derivative $\\frac{d^2 B}{dx^2}\\big|_{x=0}$ vanish, creating the flattest uniform magnetic field?'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Одна котушка зі струмом дає сильне магнітне поле лише в самому центрі, а далі воно швидко слабшає. Але якщо поставити дві однакові котушки на відстані, що точно дорівнює їхньому радіусу ($d = R$), спад поля від першої котушки ідеально компенсується підйомом від другої, утворюється рівний «стіл» однорідного поля.",
+        analogyEn: "A single current loop creates a magnetic field that drops off quickly away from its center. Place two identical coils apart by a distance equal to their radius ($d = R$), and their fields blend into a remarkably flat plateau of uniform magnetic field right between them.",
+        hintUk: "За якого співвідношення між відстанню між котушками $d$ та їхнім радіусом $R$ друга похідна магнітного поля в центрі $\\frac{d^2 B}{dx^2}\\big|_{x=0}$ перетворюється на нуль (умова Гельмгольца)?",
+        hintEn: "At what coil separation $d$ relative to coil radius $R$ does the second derivative $\\frac{d^2 B}{dx^2}\\big|_{x=0}$ vanish, creating the flattest uniform magnetic field?"
       },
       transformer: {
-        gradeUk: '9–11 клас',
-        gradeEn: 'Grade 9–11',
-        analogyUk: 'Зарядний блок твого смартфона чи ноутбука і гудіння трансформаторної підстанції у дворі, це робота трансформатора! Змінний струм у першій котушці створює пульсуючий магнітний потік у сталевому осерді, який без жодного дотику дротів наводить напругу в другій котушці: більше витків, вища напруга!',
-        analogyEn: 'Your phone charger and neighborhood power-grid substations both rely on transformers! Alternating current in the primary coil sends a pulsing magnetic flux through the steel core, inducing voltage in the secondary coil without the wires ever touching: more turns mean higher voltage!',
-        hintUk: 'За формулою трансформатора $\\frac{U_2}{U_1} = \\frac{N_2}{N_1}$ та законом збереження енергії $U_2 I_2 \\approx U_1 I_1$: якщо вторинна обмотка має більше витків ($N_2 > N_1$), то напруга $U_2$ підвищується, а що при цьому відбувається з силою струму $I_2$?',
-        hintEn: 'From the turns ratio $\\frac{U_2}{U_1} = \\frac{N_2}{N_1}$ and power conservation $U_2 I_2 \\approx U_1 I_1$: when $N_2 > N_1$ steps voltage up, what happens to secondary current $I_2$?'
-      }      ,
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Зарядний блок твого смартфона чи ноутбука і гудіння трансформаторної підстанції у дворі, це робота трансформатора. Змінний струм у першій котушці створює пульсуючий магнітний потік у сталевому осерді, який без жодного дотику дротів наводить напругу в другій котушці: більше витків, вища напруга.",
+        analogyEn: "Your phone charger and neighborhood power-grid substations both rely on transformers. Alternating current in the primary coil sends a pulsing magnetic flux through the steel core, inducing voltage in the secondary coil without the wires ever touching: more turns mean higher voltage.",
+        hintUk: "За формулою трансформатора $\\frac{U_2}{U_1} = \\frac{N_2}{N_1}$ та законом збереження енергії $U_2 I_2 \\approx U_1 I_1$: якщо вторинна обмотка має більше витків ($N_2 > N_1$), то напруга $U_2$ підвищується, а що при цьому відбувається з силою струму $I_2$?",
+        hintEn: "From the turns ratio $\\frac{U_2}{U_1} = \\frac{N_2}{N_1}$ and power conservation $U_2 I_2 \\approx U_1 I_1$: when $N_2 > N_1$ steps voltage up, what happens to secondary current $I_2$?"
+      },
       chem_orbitals: {
-        gradeUk: '8–11 клас · Хімія',
-        gradeEn: 'Grade 8–11 · Chemistry',
-        analogyUk: 'Уяви лопаті вентилятора, що обертаються на величезній швидкості: ти не бачиш окремої лопаті в конкретній точці, а бачиш напівпрозору розмиту «хмару», де вона буває найчастіше. Саме так електрон в атомі утворює тривимірну квантову хмару ймовірності $|\\psi|^2$: кулясту $s$-хмару, гантельку $p$-хмари або чотирипелюсткову квітку $d$-орбіталі!',
-        analogyEn: 'Imagine fast-spinning fan blades: instead of seeing a blade at one spot, you see a blurred cloud where it spends the most time. Likewise, an electron forms a 3D probability cloud $|\\psi|^2$: a sphere for $s$, a figure-eight dumbbell for $p$, or a four-leaf clover for $d$!',
-        hintUk: 'Зверни увагу на побічне квантове число $l$: при $l=0$ ($s$) кутових вузлів немає і хмара сферична; при $l=1$ ($p$) з’являється $1$ вузлова площина (дві пелюстки гантелі); при $l=2$ ($d$), $2$ вузлові площини. А загальна кількість усіх вузлових поверхонь завжди дорівнює $n - 1$.',
-        hintEn: 'Look at the azimuthal quantum number $l$: $l=0$ ($s$) has $0$ angular nodes (sphere), $l=1$ ($p$) has $1$ nodal plane (dumbbell), and $l=2$ ($d$) has $2$ nodal surfaces (cloverleaf). Total nodes always equal $n - 1$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–11 клас",
+        gradeEn: "Core Curriculum · Grade 8–11",
+        analogyUk: "У квантово-механічній моделі атома точкова траєкторія електрона замінюється тривимірним розподілом густини ймовірності $|\\psi|^2$. Саме так електрон в атомі утворює тривимірну квантову хмару ймовірності $|\\psi|^2$: кулясту $s$-хмару, гантельку $p$-хмари або чотирипелюсткову квітку $d$-орбіталі.",
+        analogyEn: "Consider fast-spinning fan blades: instead of seeing a blade at one spot, you see a blurred cloud where it spends the most time. Likewise, an electron forms a 3D probability cloud $|\\psi|^2$: a sphere for $s$, a figure-eight dumbbell for $p$, or a four-leaf clover for $d$.",
+        hintUk: "Зверни увагу на побічне квантове число $l$: при $l=0$ ($s$) кутових вузлів немає і хмара сферична; при $l=1$ ($p$) з’являється $1$ вузлова площина (дві пелюстки гантелі); при $l=2$ ($d$), $2$ вузлові площини. А загальна кількість усіх вузлових поверхонь завжди дорівнює $n - 1$.",
+        hintEn: "Look at the azimuthal quantum number $l$: $l=0$ ($s$) has $0$ angular nodes (sphere), $l=1$ ($p$) has $1$ nodal plane (dumbbell), and $l=2$ ($d$) has $2$ nodal surfaces (cloverleaf). Total nodes always equal $n - 1$."
       },
       chem_vsepr: {
-        gradeUk: '9–11 клас · Хімія',
-        gradeEn: 'Grade 9–11 · Chemistry',
-        analogyUk: 'Уяви, що ти зв’язав за хвостики $2$, $3$ або $4$ надуті повітряні кульки: вони самі відштовхнуться одна від одної так, щоб зайняти максимально далекі кути у просторі ($180^\\circ$, $120^\\circ$ або тетраедр $109.5^\\circ$)! А неподілена електронна пара $E$, це ніби більша й ширша кулька, яка сильніше стискає сусідні зв’язки.',
-        analogyEn: 'Tie $2$, $3$, or $4$ inflated balloons together at their knots: they naturally push each other apart into a line ($180^\\circ$), a flat triangle ($120^\\circ$), or a 3D tetrahedron ($109.5^\\circ$)! A lone electron pair $E$ acts like an extra-bulky balloon that squeezes the neighboring bonds even closer.',
-        hintUk: 'У симетричному метані $\\text{CH}_4$ ($n=4, m=0$) усі $4$ електронні пари однакові, тому кут дорівнює $109.5^\\circ$. Коли ж ми замінюємо атоми на неподілені електронні пари $E$ (в $\\text{NH}_3$ та $\\text{H}_2\\text{O}$), чи сильніше відштовхують сусідів об’ємні хмари вільних пар $E$, зменшуючи кут між зв’язками?',
-        hintEn: 'In symmetric methane $\\text{CH}_4$ ($n=4, m=0$), all four domains are identical ($109.5^\\circ$). When lone pairs $E$ replace bonding pairs (as in $\\text{NH}_3$ and $\\text{H}_2\\text{O}$), their wider electron clouds repel bonding pairs more strongly, compressing the bond angle.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО",
+        gradeEn: "Advanced Level · AP / University",
+        analogyUk: "Модель відштовхування електронних пар валентної оболонки (ГЕПВО) можна зіставити із системою пружних сфер, закріплених у спільній вершині: $2$, $3$ або $4$ надуті повітряні кульки: вони самі відштовхнуться одна від одної так, щоб зайняти максимально далекі кути у просторі ($180^\\circ$, $120^\\circ$ або тетраедр $109.5^\\circ$). А неподілена електронна пара $E$, це ніби більша й ширша кулька, яка сильніше стискає сусідні зв’язки.",
+        analogyEn: "Tie $2$, $3$, or $4$ inflated balloons together at their knots: they naturally push each other apart into a line ($180^\\circ$), a flat triangle ($120^\\circ$), or a 3D tetrahedron ($109.5^\\circ$). A lone electron pair $E$ acts like an extra-bulky balloon that squeezes the neighboring bonds even closer.",
+        hintUk: "У симетричному метані $\\text{CH}_4$ ($n=4, m=0$) усі $4$ електронні пари однакові, тому кут дорівнює $109.5^\\circ$. Коли ж ми замінюємо атоми на неподілені електронні пари $E$ (в $\\text{NH}_3$ та $\\text{H}_2\\text{O}$), чи сильніше відштовхують сусідів об’ємні хмари вільних пар $E$, зменшуючи кут між зв’язками?",
+        hintEn: "In symmetric methane $\\text{CH}_4$ ($n=4, m=0$), all four domains are identical ($109.5^\\circ$). When lone pairs $E$ replace bonding pairs (as in $\\text{NH}_3$ and $\\text{H}_2\\text{O}$), their wider electron clouds repel bonding pairs more strongly, compressing the bond angle."
       },
       chem_lattice: {
-        gradeUk: '8–11 клас · Хімія',
-        gradeEn: 'Grade 8–11 · Chemistry',
-        analogyUk: 'Кухонна сіль $\\text{NaCl}$ на твоїй кухні складається з ідеальних мікроскопічних кубиків, бо її катіони $\\text{Na}^+$ та аніони $\\text{Cl}^-$ вишикувані у тривимірну шахівницю! А в алмазі кожен атом Карбону тримає сусідів чотирма надміцними ковалентними «руками» під кутом $109.5^\\circ$, тому алмаз ріже навіть скло й сталь.',
-        analogyEn: 'Table salt $\\text{NaCl}$ forms tiny cubes because $\\text{Na}^+$ and $\\text{Cl}^-$ ions alternate in a 3D checkerboard! In diamond, every carbon atom locks onto four neighbors in a rigid 3D tetrahedral network, making diamond the hardest natural material.',
-        hintUk: 'Поглянь на формулу енергії ґратки Борна, Ланде $U_0 \\propto \\frac{|z_+ z_-|}{r_0}$: як зміниться сила кулонівського притягання у кристалі, якщо заряди йонів зростуть удвічі (наприклад, перехід від $\\text{Na}^+\\text{Cl}^-$ до $\\text{Mg}^{2+}\\text{O}^{2-}$), а відстань між центрами йонів $r_0$ зменшиться?',
-        hintEn: 'Look at the Born–Landé lattice energy relation $U_0 \\propto \\frac{|z_+ z_-|}{r_0}$: what happens to electrostatic attraction when ionic charges double (e.g. from $\\text{Na}^+\\text{Cl}^-$ to $\\text{Mg}^{2+}\\text{O}^{2-}$) and interionic distance $r_0$ decreases?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–11 клас",
+        gradeEn: "Core Curriculum · Grade 8–11",
+        analogyUk: "Кухонна сіль $\\text{NaCl}$ на твоїй кухні складається з ідеальних мікроскопічних кубиків, бо її катіони $\\text{Na}^+$ та аніони $\\text{Cl}^-$ вишикувані у тривимірну шахівницю. А в алмазі кожен атом Карбону тримає сусідів чотирма надміцними ковалентними «руками» під кутом $109.5^\\circ$, тому алмаз ріже навіть скло й сталь.",
+        analogyEn: "Table salt $\\text{NaCl}$ forms tiny cubes because $\\text{Na}^+$ and $\\text{Cl}^-$ ions alternate in a 3D checkerboard. In diamond, every carbon atom locks onto four neighbors in a rigid 3D tetrahedral network, making diamond the hardest natural material.",
+        hintUk: "Поглянь на формулу енергії ґратки Борна, Ланде $U_0 \\propto \\frac{|z_+ z_-|}{r_0}$: як зміниться сила кулонівського притягання у кристалі, якщо заряди йонів зростуть удвічі (наприклад, перехід від $\\text{Na}^+\\text{Cl}^-$ до $\\text{Mg}^{2+}\\text{O}^{2-}$), а відстань між центрами йонів $r_0$ зменшиться?",
+        hintEn: "Look at the Born–Landé lattice energy relation $U_0 \\propto \\frac{|z_+ z_-|}{r_0}$: what happens to electrostatic attraction when ionic charges double (e.g. from $\\text{Na}^+\\text{Cl}^-$ to $\\text{Mg}^{2+}\\text{O}^{2-}$) and interionic distance $r_0$ decreases?"
       },
       chem_gaslaws: {
-        gradeUk: '8–10 клас · Хімія',
-        gradeEn: 'Grade 8–10 · Chemistry',
-        analogyUk: 'Хоч молекула вуглекислого газу $\\text{CO}_2$ у $22$ рази важча за молекулу легкого водню $\\text{H}_2$, за законом Авогадро один моль будь-якого з цих газів надує повітряну кульку до абсолютно однакового об’єму ($22.4\\text{ л}$ за н.у.)! Бо легкі молекули рухаються швидше й б’ють у стінки частіше, а важкі, повільніше, проте сильніше.',
-        analogyEn: 'Even though a $\\text{CO}_2$ molecule is $22$ times heavier than an $\\text{H}_2$ molecule, Avogadro’s law guarantees that $1\\text{ mol}$ of either gas inflates a balloon to the exact same volume ($22.4\\text{ L}$ at STP)! Lighter molecules hit the walls more often, while heavier ones hit harder per impact.',
-        hintUk: 'За рівнянням Менделєєва, Клапейрона $V = \\frac{\\nu R T}{P}$ молярний об’єм ідеального газу не залежить від молярної маси $M$. А як зміниться густина газу $\\rho = \\frac{P M}{R T}$, якщо взяти газ із більшою молярною масою $M$?',
-        hintEn: 'From $V = \\frac{\\nu R T}{P}$, ideal gas volume is independent of molar mass $M$. Meanwhile, how does gas density $\\rho = \\frac{P M}{R T}$ scale with molar mass $M$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–10 клас",
+        gradeEn: "Core Curriculum · Grade 8–10",
+        analogyUk: "Хоч молекула вуглекислого газу $\\text{CO}_2$ у $22$ рази важча за молекулу легкого водню $\\text{H}_2$, за законом Авогадро один моль будь-якого з цих газів надує повітряну кульку до абсолютно однакового об’єму ($22.4\\text{ л}$ за н.у.). Бо легкі молекули рухаються швидше й б’ють у стінки частіше, а важкі, повільніше, проте сильніше.",
+        analogyEn: "Even though a $\\text{CO}_2$ molecule is $22$ times heavier than an $\\text{H}_2$ molecule, Avogadro’s law guarantees that $1\\text{ mol}$ of either gas inflates a balloon to the exact same volume ($22.4\\text{ L}$ at STP). Lighter molecules hit the walls more often, while heavier ones hit harder per impact.",
+        hintUk: "За рівнянням Менделєєва, Клапейрона $V = \\frac{\\nu R T}{P}$ молярний об’єм ідеального газу не залежить від молярної маси $M$. А як зміниться густина газу $\\rho = \\frac{P M}{R T}$, якщо взяти газ із більшою молярною масою $M$?",
+        hintEn: "From $V = \\frac{\\nu R T}{P}$, ideal gas volume is independent of molar mass $M$. Meanwhile, how does gas density $\\rho = \\frac{P M}{R T}$ scale with molar mass $M$?"
       },
       chem_kinetics: {
-        gradeUk: '9–11 клас · Хімія',
-        gradeEn: 'Grade 9–11 · Chemistry',
-        analogyUk: 'Енергія активації $E_a$ схожа на високий гірський перевал між двома долинами (реагентами і продуктами): щоб перебратися на інший бік, молекулам треба розігнатися до достатньої швидкості. А каталізатор, це готовий гірський тунель крізь скелю: висота підйому значно менша, тож потік машин-молекул зростає у тисячі разів!',
-        analogyEn: 'Activation energy $E_a$ is like a high mountain pass between two valleys (reactants and products). A catalyst bores a direct tunnel through the mountain: the climb is much lower, allowing exponentially more molecules to cross per second while the valley elevations ($\\Delta H$) stay the same!',
-        hintUk: 'За законом Арреніуса $k = A e^{-E_a / (RT)}$ каталізатор знижує висоту активаційного бар’єра $E_a$ на величину $\\Delta E_a$, але чи змінює він різницю рівнів енергії між вихідними речовинами і продуктами ($\\Delta H$)?',
-        hintEn: 'By the Arrhenius law $k = A e^{-E_a / (RT)}$, a catalyst lowers the activation barrier $E_a$ by $\\Delta E_a$. Does tunneling through the barrier change the initial or final energy levels ($\\Delta H$)?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Енергія активації $E_a$ схожа на високий гірський перевал між двома долинами (реагентами і продуктами): щоб перебратися на інший бік, молекулам треба розігнатися до достатньої швидкості. А каталізатор, це готовий гірський тунель крізь скелю: висота підйому значно менша, тож потік машин-молекул зростає у тисячі разів.",
+        analogyEn: "Activation energy $E_a$ is like a high mountain pass between two valleys (reactants and products). A catalyst bores a direct tunnel through the mountain: the climb is much lower, allowing exponentially more molecules to cross per second while the valley elevations ($\\Delta H$) stay the same.",
+        hintUk: "За законом Арреніуса $k = A e^{-E_a / (RT)}$ каталізатор знижує висоту активаційного бар’єра $E_a$ на величину $\\Delta E_a$, але чи змінює він різницю рівнів енергії між вихідними речовинами і продуктами ($\\Delta H$)?",
+        hintEn: "By the Arrhenius law $k = A e^{-E_a / (RT)}$, a catalyst lowers the activation barrier $E_a$ by $\\Delta E_a$. Does tunneling through the barrier change the initial or final energy levels ($\\Delta H$)?"
       },
       chem_equilibrium: {
-        gradeUk: '9–11 клас · Хімія',
-        gradeEn: 'Grade 9–11 · Chemistry',
-        analogyUk: 'Принцип Ле Шательє працює як розумний термостат або пружина: якщо ти намагаєшся нагріти рівноважну систему, вона запускає ендотермічний процес, який поглинає зайве тепло; а якщо стискаєш газ поршнем, система ховає частину молекул у димери ($2\\text{NO}_2 \\to \\text{N}_2\\text{O}_4$), щоб зменшити тиск!',
-        analogyEn: 'Le Chatelier’s principle acts like a smart thermostat: heat the equilibrium mixture and it shifts toward the heat-absorbing endothermic reaction; compress the gas and it pairs molecules up ($2\\text{NO}_2 \\to \\text{N}_2\\text{O}_4$) to relieve the pressure!',
-        hintUk: 'Дисоціація $\\text{N}_2\\text{O}_4 \\rightleftharpoons 2\\text{NO}_2$ відбувається з поглинанням тепла ($\\Delta H > 0$) і збільшенням кількості молекул газу вдвічі ($1\\text{ моль} \\to 2\\text{ моль}$). Які умови ($T$ та $P$) сприятимуть утворенню бурого газу $\\text{NO}_2$?',
-        hintEn: 'Since $\\text{N}_2\\text{O}_4 \\rightleftharpoons 2\\text{NO}_2$ is endothermic ($\\Delta H > 0$) and doubles the number of gas molecules ($1\\text{ mol} \\to 2\\text{ mol}$), what combination of temperature $T$ and pressure $P$ maximizes brown $\\text{NO}_2$ yield?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Принцип Ле Шательє працює як розумний термостат або пружина: якщо ти намагаєшся нагріти рівноважну систему, вона запускає ендотермічний процес, який поглинає зайве тепло; а якщо стискаєш газ поршнем, система ховає частину молекул у димери ($2\\text{NO}_2 \\to \\text{N}_2\\text{O}_4$), щоб зменшити тиск.",
+        analogyEn: "Le Chatelier’s principle acts like a smart thermostat: heat the equilibrium mixture and it shifts toward the heat-absorbing endothermic reaction; compress the gas and it pairs molecules up ($2\\text{NO}_2 \\to \\text{N}_2\\text{O}_4$) to relieve the pressure.",
+        hintUk: "Дисоціація $\\text{N}_2\\text{O}_4 \\rightleftharpoons 2\\text{NO}_2$ відбувається з поглинанням тепла ($\\Delta H > 0$) і збільшенням кількості молекул газу вдвічі ($1\\text{ моль} \\to 2\\text{ моль}$). Які умови ($T$ та $P$) сприятимуть утворенню бурого газу $\\text{NO}_2$?",
+        hintEn: "Since $\\text{N}_2\\text{O}_4 \\rightleftharpoons 2\\text{NO}_2$ is endothermic ($\\Delta H > 0$) and doubles the number of gas molecules ($1\\text{ mol} \\to 2\\text{ mol}$), what combination of temperature $T$ and pressure $P$ maximizes brown $\\text{NO}_2$ yield?"
       },
       chem_titration: {
-        gradeUk: '8–11 клас · Хімія',
-        gradeEn: 'Grade 8–11 · Chemistry',
-        analogyUk: 'Титрування, це хімічний детектив із точністю до однієї краплі! Поки в колбі є хоч трохи вільної кислоти $\\text{HCl}$, розчин залишається прозорим як вода, але щойно остання молекула кислоти нейтралізується лугом $\\text{NaOH}$ у точці еквівалентності, лише одна зайва крапля миттєво забарвлює всю колбу в яскраво-малиновий колір фенолфталеїну!',
-        analogyEn: 'Titration is chemical detective work accurate to a single drop! As long as free acid $\\text{HCl}$ remains in the flask, the solution stays crystal clear, but the moment the last $\\text{H}^+$ ion is neutralized at the equivalence point, a single extra drop of $\\text{NaOH}$ turns the entire flask vivid magenta!',
-        hintUk: 'У точці еквівалентності кількість речовини доданого лугу зрівнюється з початковою кількістю кислоти: $C_b V_{\\text{екв}} = C_a V_a$. Чому дорівнює $\\text{pH}$ розчину солі сильного лугу й сильної кислоти ($\\text{NaCl}$) у чистій воді за $25\\,^\\circ\\text{C}$?',
-        hintEn: 'At the equivalence point, moles of added base equal initial moles of acid: $C_b V_{\\text{eq}} = C_a V_a$. What is the exact $\\text{pH}$ of a neutral $\\text{NaCl}$ solution at $25\\,^\\circ\\text{C}$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–11 клас",
+        gradeEn: "Core Curriculum · Grade 8–11",
+        analogyUk: "Титрування, це хімічний детектив із точністю до однієї краплі. Поки в колбі є хоч трохи вільної кислоти $\\text{HCl}$, розчин залишається прозорим як вода, але щойно остання молекула кислоти нейтралізується лугом $\\text{NaOH}$ у точці еквівалентності, лише одна зайва крапля миттєво забарвлює всю колбу в яскраво-малиновий колір фенолфталеїну.",
+        analogyEn: "Titration is chemical detective work accurate to a single drop. As long as free acid $\\text{HCl}$ remains in the flask, the solution stays crystal clear, but the moment the last $\\text{H}^+$ ion is neutralized at the equivalence point, a single extra drop of $\\text{NaOH}$ turns the entire flask vivid magenta.",
+        hintUk: "У точці еквівалентності кількість речовини доданого лугу зрівнюється з початковою кількістю кислоти: $C_b V_{\\text{екв}} = C_a V_a$. Чому дорівнює $\\text{pH}$ розчину солі сильного лугу й сильної кислоти ($\\text{NaCl}$) у чистій воді за $25\\,^\\circ\\text{C}$?",
+        hintEn: "At the equivalence point, moles of added base equal initial moles of acid: $C_b V_{\\text{eq}} = C_a V_a$. What is the exact $\\text{pH}$ of a neutral $\\text{NaCl}$ solution at $25\\,^\\circ\\text{C}$?"
       },
       chem_galvanic: {
-        gradeUk: '9–11 клас · Хімія',
-        gradeEn: 'Grade 9–11 · Chemistry',
-        analogyUk: 'Гальванічний елемент Даніеля–Якобі, це прадідусь кожного акумулятора у твоєму смартфоні чи електромобілі! Активніший цинк $\\text{Zn}$ охоче віддає свої електрони менш активній міді $\\text{Cu}^{2+}$, але оскільки ми розділили їх у два стакани, електрони змушені бігти зовнішнім дротом і живити вольтметр чи лампочку.',
-        analogyEn: 'The Daniell cell is the direct ancestor of every smartphone and EV battery! More reactive zinc $\\text{Zn}$ eagerly gives up electrons to $\\text{Cu}^{2+}$ ions, and because the two half-reactions are separated into two beakers, those electrons must travel through the external wire to do electrical work.',
-        hintUk: 'Порівняй стандартні потенціали: $E^\\circ(\\text{Zn}^{2+}/\\text{Zn}) = -0.76\\text{ В} < E^\\circ(\\text{Cu}^{2+}/\\text{Cu}) = +0.34\\text{ В}$. Який метал окиснюється (анод), куди течуть електрони і чому дорівнює різниця потенціалів $E^\\circ_{\\text{ел}} = E^\\circ_{\\text{катод}} - E^\\circ_{\\text{анод}}$?',
-        hintEn: 'Compare standard potentials: $E^\\circ(\\text{Zn}^{2+}/\\text{Zn}) = -0.76\\text{ V} < E^\\circ(\\text{Cu}^{2+}/\\text{Cu}) = +0.34\\text{ V}$. Which metal oxidizes as the anode, which way do electrons flow, and what is $E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}}$?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Гальванічний елемент Даніеля–Якобі, це прадідусь кожного акумулятора у твоєму смартфоні чи електромобілі. Активніший цинк $\\text{Zn}$ охоче віддає свої електрони менш активній міді $\\text{Cu}^{2+}$, але оскільки ми розділили їх у два стакани, електрони змушені бігти зовнішнім дротом і живити вольтметр чи лампочку.",
+        analogyEn: "The Daniell cell is the direct ancestor of every smartphone and EV battery. More reactive zinc $\\text{Zn}$ eagerly gives up electrons to $\\text{Cu}^{2+}$ ions, and because the two half-reactions are separated into two beakers, those electrons must travel through the external wire to do electrical work.",
+        hintUk: "Порівняй стандартні потенціали: $E^\\circ(\\text{Zn}^{2+}/\\text{Zn}) = -0.76\\text{ В} < E^\\circ(\\text{Cu}^{2+}/\\text{Cu}) = +0.34\\text{ В}$. Який метал окиснюється (анод), куди течуть електрони і чому дорівнює різниця потенціалів $E^\\circ_{\\text{ел}} = E^\\circ_{\\text{катод}} - E^\\circ_{\\text{анод}}$?",
+        hintEn: "Compare standard potentials: $E^\\circ(\\text{Zn}^{2+}/\\text{Zn}) = -0.76\\text{ V} < E^\\circ(\\text{Cu}^{2+}/\\text{Cu}) = +0.34\\text{ V}$. Which metal oxidizes as the anode, which way do electrons flow, and what is $E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}}$?"
       },
       chem_electrolysis: {
-        gradeUk: '9–11 клас · Хімія',
-        gradeEn: 'Grade 9–11 · Chemistry',
-        analogyUk: 'Якщо гальванічний елемент сам виробляє струм, то електроліз працює навпаки: ми підключаємо зовнішнє джерело живлення і силоміць змушуємо блакитні йони міді $\\text{Cu}^{2+}$ осідати блискучим шаром чистого металу на катоді! Саме так роблять позолоту прикрас, хромування деталей авто та очищують мідь для електропроводки.',
-        analogyEn: 'While a battery generates current from a spontaneous reaction, electrolysis uses an external power supply to drive a reaction in reverse, plating dissolved blue $\\text{Cu}^{2+}$ ions as shiny metallic copper onto the cathode! This is how jewelry is gold-plated and industrial copper is refined.',
-        hintUk: 'За першим і другим законами Фарадея $m = \\frac{M \\cdot I \\cdot t}{z \\cdot F}$: як зміниться маса виділеної на катоді міді $m(\\text{Cu})$, якщо силу струму $I$ або час електролізу $t$ збільшити вдвічі?',
-        hintEn: 'By Faraday’s law of electrolysis $m = \\frac{M \\cdot I \\cdot t}{z \\cdot F}$, how does the mass of copper deposited on the cathode scale when current $I$ or time $t$ is doubled?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас",
+        gradeEn: "Core Curriculum · Grade 9–11",
+        analogyUk: "Якщо гальванічний елемент сам виробляє струм, то електроліз працює навпаки: ми підключаємо зовнішнє джерело живлення і силоміць змушуємо блакитні йони міді $\\text{Cu}^{2+}$ осідати блискучим шаром чистого металу на катоді. Саме так роблять позолоту прикрас, хромування деталей авто та очищують мідь для електропроводки.",
+        analogyEn: "While a battery generates current from a spontaneous reaction, electrolysis uses an external power supply to drive a reaction in reverse, plating dissolved blue $\\text{Cu}^{2+}$ ions as shiny metallic copper onto the cathode. This is how jewelry is gold-plated and industrial copper is refined.",
+        hintUk: "За першим і другим законами Фарадея $m = \\frac{M \\cdot I \\cdot t}{z \\cdot F}$: як зміниться маса виділеної на катоді міді $m(\\text{Cu})$, якщо силу струму $I$ або час електролізу $t$ збільшити вдвічі?",
+        hintEn: "By Faraday’s law of electrolysis $m = \\frac{M \\cdot I \\cdot t}{z \\cdot F}$, how does the mass of copper deposited on the cathode scale when current $I$ or time $t$ is doubled?"
       },
       chem_organic: {
-        gradeUk: '9–11 клас · Органічна хімія',
-        gradeEn: 'Grade 9–11 · Organic Chemistry',
-        analogyUk: 'Уяви три способи з’єднання атомів Карбону: в етані $\\text{C}_2\\text{H}_6$ два тетраедри крутяться на одинарній осі $\\sigma$-зв’язку як колеса на осі; в етилені $\\text{C}_2\\text{H}_4$ подвійний $(\\sigma+\\pi)$-зв’язок жорстко фіксує молекулу в одній площині; а в бензені $\\text{C}_6\\text{H}_6$ шість електронів утворюють спільне «електронне кільце» зверху і знизу шестикутника!',
-        analogyEn: 'Picture three ways carbon atoms bond: in ethane $\\text{C}_2\\text{H}_6$, two tetrahedra spin freely around a single $\\sigma$-bond axle; in ethene $\\text{C}_2\\text{H}_4$, the double $(\\sigma+\\pi)$ bond locks the molecule flat; and in benzene $\\text{C}_6\\text{H}_6$, six $\\pi$-electrons merge into two continuous donut-shaped clouds above and below the hexagonal ring!',
-        hintUk: 'У бензені $\\text{C}_6\\text{H}_6$ шість $p_z$-електронів рівномірно делокалізовані по всьому шестикутному циклу ($sp^2$-гібридизація, кут $120^\\circ$). Чи чередуються в реальній молекулі бензену короткі й довгі зв’язки, чи всі $6$ зв’язків $\\text{C–C}$ вирівняні до $1.40\\text{ Å}$?',
-        hintEn: 'In benzene $\\text{C}_6\\text{H}_6$, six $2p_z$ electrons are delocalized uniformly around the $sp^2$ hexagonal ring ($120^\\circ$). Do bond lengths alternate, or are all six $\\text{C–C}$ bonds equalized to $1.40\\text{ Å}$ (bond order $1.5$)?'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Органічна хімія",
+        gradeEn: "Core Curriculum · Grade 9–11 · Organic Chemistry",
+        analogyUk: "Геометрія та реакційна здатність вуглеводнів визначаються типом гібридизації атомів Карбону: в етані $\\text{C}_2\\text{H}_6$ два тетраедри крутяться на одинарній осі $\\sigma$-зв’язку як колеса на осі; в етилені $\\text{C}_2\\text{H}_4$ подвійний $(\\sigma+\\pi)$-зв’язок жорстко фіксує молекулу в одній площині; а в бензені $\\text{C}_6\\text{H}_6$ шість електронів утворюють спільне «електронне кільце» зверху і знизу шестикутника.",
+        analogyEn: "In a physical model of three ways carbon atoms bond: in ethane $\\text{C}_2\\text{H}_6$, two tetrahedra spin freely around a single $\\sigma$-bond axle; in ethene $\\text{C}_2\\text{H}_4$, the double $(\\sigma+\\pi)$ bond locks the molecule flat; and in benzene $\\text{C}_6\\text{H}_6$, six $\\pi$-electrons merge into two continuous donut-shaped clouds above and below the hexagonal ring.",
+        hintUk: "У бензені $\\text{C}_6\\text{H}_6$ шість $p_z$-електронів рівномірно делокалізовані по всьому шестикутному циклу ($sp^2$-гібридизація, кут $120^\\circ$). Чи чередуються в реальній молекулі бензену короткі й довгі зв’язки, чи всі $6$ зв’язків $\\text{C–C}$ вирівняні до $1.40\\text{ Å}$?",
+        hintEn: "In benzene $\\text{C}_6\\text{H}_6$, six $2p_z$ electrons are delocalized uniformly around the $sp^2$ hexagonal ring ($120^\\circ$). Do bond lengths alternate, or are all six $\\text{C–C}$ bonds equalized to $1.40\\text{ Å}$ (bond order $1.5$)?"
       },
       chem_periodic: {
-        gradeUk: '8–11 клас · Періодичний закон',
-        gradeEn: 'Grade 8–11 · Periodic Trends',
-        analogyUk: 'Рух зліва направо по періоду схожий на посилення магніту в центрі при незмінній кількості кілець навколо нього: що більший ефективний заряд ядра $Z_{\\text{eff}}$, то сильніше ядро притягує і стискає електронну оболонку (радіус атома зменшується, а відірвати електрон стає важче)!',
-        analogyEn: 'Moving left to right across a period is like strengthening a central magnet while keeping the same shell ring: higher effective nuclear charge $Z_{\\text{eff}}$ pulls the shell inward (smaller atomic radius) and holds electrons more tightly (higher ionization energy)!',
-        hintUk: 'Уздовж одного періоду число електронних шарів $n$ стале, але зростає ефективний заряд ядра $Z_{\\text{eff}} = Z - \\sigma$, тому атомний радіус $r_{\\text{ат}}$ зменшується, а енергія йонізації $I_1$ та електронегативність $\\chi$ зростають.',
-        hintEn: 'Across a period, shell number $n$ is constant while effective nuclear charge $Z_{\\text{eff}} = Z - \\sigma$ increases, shrinking atomic radius $r_{\\text{at}}$ and raising ionization energy $I_1$ and electronegativity $\\chi$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–11 клас · Періодичний закон",
+        gradeEn: "Core Curriculum · Grade 8–11 · Periodic Trends",
+        analogyUk: "Рух зліва направо по періоду схожий на посилення магніту в центрі при незмінній кількості кілець навколо нього: що більший ефективний заряд ядра $Z_{\\text{eff}}$, то сильніше ядро притягує і стискає електронну оболонку (радіус атома зменшується, а відірвати електрон стає важче).",
+        analogyEn: "Moving left to right across a period is like strengthening a central magnet while keeping the same shell ring: higher effective nuclear charge $Z_{\\text{eff}}$ pulls the shell inward (smaller atomic radius) and holds electrons more tightly (higher ionization energy).",
+        hintUk: "Уздовж одного періоду число електронних шарів $n$ стале, але зростає ефективний заряд ядра $Z_{\\text{eff}} = Z - \\sigma$, тому атомний радіус $r_{\\text{ат}}$ зменшується, а енергія йонізації $I_1$ та електронегативність $\\chi$ зростають.",
+        hintEn: "Across a period, shell number $n$ is constant while effective nuclear charge $Z_{\\text{eff}} = Z - \\sigma$ increases, shrinking atomic radius $r_{\\text{at}}$ and raising ionization energy $I_1$ and electronegativity $\\chi$."
       },
       chem_hbond: {
-        gradeUk: '9–10 клас · Водневий зв’язок',
-        gradeEn: 'Grade 9–10 · Hydrogen Bonding',
-        analogyUk: 'У рідкій воді молекули $\\text{H}_2\\text{O}$ рухаються мов люди в щільному натовпі, а під час замерзання в лід кожна молекула простягає чотири «прямі руки» (водневі зв’язки) до сусідів, утворюючи просторі шестикутні стільники з порожнечами всередині, тому лід легший за воду і не тоне!',
-        analogyEn: 'In liquid water molecules crowd closely together, but upon freezing into ice $I_h$ each $\\text{H}_2\\text{O}$ extends four rigid tetrahedral arms (hydrogen bonds) to form open hexagonal honeycombs with empty channels, making ice less dense than liquid water!',
-        hintUk: 'У кристалі льоду $I_h$ чотири спрямовані водневі зв’язки $\\text{O–H}\\cdots\\text{O}$ фіксують молекули у відкритому гексагональному каркасі з порожнинами ($\\rho = 0.917\\text{ г/см}^3$); під час плавлення частина каркасу руйнується і густина води зростає до $1.000\\text{ г/см}^3$ при $+4\\,^\\circ\\text{C}$.',
-        hintEn: 'In ice $I_h$, four directional $\\text{O–H}\\cdots\\text{O}$ hydrogen bonds form an open hexagonal lattice with voids ($\\rho = 0.917\\text{ g/cm}^3$); melting partially collapses these voids, increasing density to $1.000\\text{ g/cm}^3$ at $+4\\,^\\circ\\text{C}$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас · Водневий зв’язок",
+        gradeEn: "Core Curriculum · Grade 9–10 · Hydrogen Bonding",
+        analogyUk: "У рідкій воді молекули $\\text{H}_2\\text{O}$ рухаються мов люди в щільному натовпі, а під час замерзання в лід кожна молекула простягає чотири «прямі руки» (водневі зв’язки) до сусідів, утворюючи просторі шестикутні стільники з порожнечами всередині, тому лід легший за воду і не тоне.",
+        analogyEn: "In liquid water molecules crowd closely together, but upon freezing into ice $I_h$ each $\\text{H}_2\\text{O}$ extends four rigid tetrahedral arms (hydrogen bonds) to form open hexagonal honeycombs with empty channels, making ice less dense than liquid water.",
+        hintUk: "У кристалі льоду $I_h$ чотири спрямовані водневі зв’язки $\\text{O–H}\\cdots\\text{O}$ фіксують молекули у відкритому гексагональному каркасі з порожнинами ($\\rho = 0.917\\text{ г/см}^3$); під час плавлення частина каркасу руйнується і густина води зростає до $1.000\\text{ г/см}^3$ при $+4\\,^\\circ\\text{C}$.",
+        hintEn: "In ice $I_h$, four directional $\\text{O–H}\\cdots\\text{O}$ hydrogen bonds form an open hexagonal lattice with voids ($\\rho = 0.917\\text{ g/cm}^3$); melting partially collapses these voids, increasing density to $1.000\\text{ g/cm}^3$ at $+4\\,^\\circ\\text{C}$."
       },
       chem_calorimetry: {
-        gradeUk: '9–11 клас · Термохімія',
-        gradeEn: 'Grade 9–11 · Thermochemistry',
-        analogyUk: 'Хімічна грілка для рук виділяє тепло у довкілля під час екзотермічної реакції ($\\Delta H < 0$, температура зростає), а медичний охолоджувальний пакет із нітратом амонію миттєво стає крижаним під час ендотермічного розчинення ($\\Delta H > 0$, тепло забирається з води)!',
-        analogyEn: 'A chemical hand-warmer releases heat in an exothermic reaction ($\\Delta H < 0$, temperature rises), whereas an instant cold-pack containing ammonium nitrate absorbs heat from water during endothermic dissolution ($\\Delta H > 0$, temperature drops)!',
-        hintUk: 'Якщо температура розчину в калориметрі зростає ($\\Delta T > 0$), то реакція виділяє теплоту $Q > 0$ у розчин, тобто є екзотермічною, а власна ентальпія хімічної системи зменшується: $\\Delta H = -Q/\\nu < 0$.',
-        hintEn: 'If the calorimeter temperature rises ($\\Delta T > 0$), the reaction releases heat $Q > 0$ into the solution (exothermic), meaning the chemical system’s enthalpy decreases: $\\Delta H = -Q/\\nu < 0$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Термохімія",
+        gradeEn: "Core Curriculum · Grade 9–11 · Thermochemistry",
+        analogyUk: "Хімічна грілка для рук виділяє тепло у довкілля під час екзотермічної реакції ($\\Delta H < 0$, температура зростає), а медичний охолоджувальний пакет із нітратом амонію миттєво стає крижаним під час ендотермічного розчинення ($\\Delta H > 0$, тепло забирається з води).",
+        analogyEn: "A chemical hand-warmer releases heat in an exothermic reaction ($\\Delta H < 0$, temperature rises), whereas an instant cold-pack containing ammonium nitrate absorbs heat from water during endothermic dissolution ($\\Delta H > 0$, temperature drops).",
+        hintUk: "Якщо температура розчину в калориметрі зростає ($\\Delta T > 0$), то реакція виділяє теплоту $Q > 0$ у розчин, тобто є екзотермічною, а власна ентальпія хімічної системи зменшується: $\\Delta H = -Q/\\nu < 0$.",
+        hintEn: "If the calorimeter temperature rises ($\\Delta T > 0$), the reaction releases heat $Q > 0$ into the solution (exothermic), meaning the chemical system’s enthalpy decreases: $\\Delta H = -Q/\\nu < 0$."
       },
       chem_osmosis: {
-        gradeUk: '9–11 клас · Розчини та осмос',
-        gradeEn: 'Grade 9–11 · Osmotic Pressure',
-        analogyUk: 'Якщо посипати свіжі огірки сіллю, вони швидко пускають сік: молекули води самі переходять крізь клітинні мембрани туди, де вища концентрація йонів солі. А якщо тиснути на солону воду поршнем сильніше за осмотичний тиск $\\Pi$, отримаємо прісну воду (зворотний осмос у побутових фільтрах)!',
-        analogyEn: 'Sprinkling salt on cucumbers draws water out across cell membranes toward higher ion concentration (osmosis). Pushing back on saltwater with pressure $P_{\\text{ext}} > \\Pi$ forces pure water out, reverse osmosis filtration!',
-        hintUk: 'Осмотичний тиск $\\Pi = iCRT$ прямо пропорційний загальній концентрації частинок: кухонна сіль $\\text{NaCl}$ дисоціює на $2$ йони ($i \\approx 2$), тому створює вдвічі більший тиск $\\Pi$, ніж неелектроліт глюкоза ($i = 1$).',
-        hintEn: 'Osmotic pressure $\\Pi = iCRT$ scales with total particle concentration: $\\text{NaCl}$ dissociates into $2$ ions ($i \\approx 2$), generating twice the osmotic pressure of non-electrolyte glucose ($i = 1$).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Розчини та осмос",
+        gradeEn: "Core Curriculum · Grade 9–11 · Osmotic Pressure",
+        analogyUk: "Якщо посипати свіжі огірки сіллю, вони швидко пускають сік: молекули води самі переходять крізь клітинні мембрани туди, де вища концентрація йонів солі. А якщо тиснути на солону воду поршнем сильніше за осмотичний тиск $\\Pi$, отримаємо прісну воду (зворотний осмос у побутових фільтрах).",
+        analogyEn: "Sprinkling salt on cucumbers draws water out across cell membranes toward higher ion concentration (osmosis). Pushing back on saltwater with pressure $P_{\\text{ext}} > \\Pi$ forces pure water out, reverse osmosis filtration.",
+        hintUk: "Осмотичний тиск $\\Pi = iCRT$ прямо пропорційний загальній концентрації частинок: кухонна сіль $\\text{NaCl}$ дисоціює на $2$ йони ($i \\approx 2$), тому створює вдвічі більший тиск $\\Pi$, ніж неелектроліт глюкоза ($i = 1$).",
+        hintEn: "Osmotic pressure $\\Pi = iCRT$ scales with total particle concentration: $\\text{NaCl}$ dissociates into $2$ ions ($i \\approx 2$), generating twice the osmotic pressure of non-electrolyte glucose ($i = 1$)."
       },
       chem_buffer: {
-        gradeUk: '10–11 клас · Буферні системи',
-        gradeEn: 'Grade 10–11 · Buffer Solutions',
-        analogyUk: 'Буферний розчин працює як пружинний амортизатор автомобіля на вибоїнах: у чистій воді одна крапля кислоти обвалює $\\text{pH}$ із $7$ до $2$, а в буфері запас солі $\\text{A}^-$ і кислоти $\\text{HA}$ м’яко поглинає удар як кислоти, так і лугу, тримаючи $\\text{pH}$ майже незмінним (саме так кров людини тримає $\\text{pH } 7.40$)!',
-        analogyEn: 'A buffer acts like a shock absorber: one drop of strong acid plunges pure water from $\\text{pH } 7$ to $2$, whereas the conjugate pair $\\text{HA} / \\text{A}^-$ absorbs added $\\text{H}^+$ or $\\text{OH}^-$ and keeps $\\text{pH}$ rock-steady (just as blood maintains $\\text{pH } 7.40$)!',
-        hintUk: 'За рівнянням Гендерсона–Гассельбаха $\\text{pH} = \\text{p}K_a + \\lg([\\text{A}^-]/[\\text{HA}])$. Максимальна буферна ємність досягається при рівних концентраціях компонентів $[\\text{HA}] = [\\text{A}^-]$, де $\\lg(1) = 0$ і $\\text{pH} = \\text{p}K_a$.',
-        hintEn: 'By the Henderson–Hasselbalch equation $\\text{pH} = \\text{p}K_a + \\lg([\\text{A}^-]/[\\text{HA}])$, maximum buffer capacity occurs when $[\\text{HA}] = [\\text{A}^-]$, where $\\lg(1) = 0$ and $\\text{pH} = \\text{p}K_a$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Буферні системи",
+        gradeEn: "Advanced Level · AP / University · Buffer Solutions",
+        analogyUk: "Буферний розчин працює як пружинний амортизатор автомобіля на вибоїнах: у чистій воді одна крапля кислоти обвалює $\\text{pH}$ із $7$ до $2$, а в буфері запас солі $\\text{A}^-$ і кислоти $\\text{HA}$ м’яко поглинає удар як кислоти, так і лугу, тримаючи $\\text{pH}$ майже незмінним (саме так кров людини тримає $\\text{pH } 7.40$).",
+        analogyEn: "A buffer acts like a shock absorber: one drop of strong acid plunges pure water from $\\text{pH } 7$ to $2$, whereas the conjugate pair $\\text{HA} / \\text{A}^-$ absorbs added $\\text{H}^+$ or $\\text{OH}^-$ and keeps $\\text{pH}$ rock-steady (just as blood maintains $\\text{pH } 7.40$).",
+        hintUk: "За рівнянням Гендерсона–Гассельбаха $\\text{pH} = \\text{p}K_a + \\lg([\\text{A}^-]/[\\text{HA}])$. Максимальна буферна ємність досягається при рівних концентраціях компонентів $[\\text{HA}] = [\\text{A}^-]$, де $\\lg(1) = 0$ і $\\text{pH} = \\text{p}K_a$.",
+        hintEn: "By the Henderson–Hasselbalch equation $\\text{pH} = \\text{p}K_a + \\lg([\\text{A}^-]/[\\text{HA}])$, maximum buffer capacity occurs when $[\\text{HA}] = [\\text{A}^-]$, where $\\lg(1) = 0$ and $\\text{pH} = \\text{p}K_a$."
       },
       chem_ksp: {
-        gradeUk: '9–11 клас · Добуток розчинності',
-        gradeEn: 'Grade 9–11 · Solubility Product',
-        analogyUk: 'Знаменитий хімічний дослід «Золотий дощ»: гарячий розчин $\\text{PbI}_2$ є абсолютно прозорим, але варто йому охолонути, у всьому об’ємі колби починають кружляти тисячі золотистих шестикутних сніжинок плюмбум(ІІ) йодиду, бо йонний добуток перевищує межу розчинності $K_{sp}$!',
-        analogyEn: 'In the famous "Golden Rain" experiment, a hot clear solution of $\\text{PbI}_2$ nucleates thousands of glittering golden hexagonal platelets upon cooling because the ionic product $Q_{sp}$ exceeds $K_{sp}(T)$!',
-        hintUk: 'Осад випадає при перевищенні добутку розчинності: $Q_{sp} = [\\text{Pb}^{2+}][\\text{I}^-]^2 > K_{sp}$. Додавання надлишку спільного йона $\\text{I}^-$ ($\\text{KI}$) зміщує рівновагу вбік твердої фази й різко знижує розчинність $\\text{PbI}_2$.',
-        hintEn: 'Precipitation occurs when $Q_{sp} = [\\text{Pb}^{2+}][\\text{I}^-]^2 > K_{sp}$. Adding excess common ion $\\text{I}^-$ ($\\text{KI}$) shifts equilibrium toward solid $\\text{PbI}_2\\downarrow$ and sharply reduces solubility.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Добуток розчинності",
+        gradeEn: "Core Curriculum · Grade 9–11 · Solubility Product",
+        analogyUk: "Знаменитий хімічний дослід «Золотий дощ»: гарячий розчин $\\text{PbI}_2$ є абсолютно прозорим, але варто йому охолонути, у всьому об’ємі колби починають кружляти тисячі золотистих шестикутних сніжинок плюмбум(ІІ) йодиду, бо йонний добуток перевищує межу розчинності $K_{sp}$.",
+        analogyEn: "In the famous \"Golden Rain\" experiment, a hot clear solution of $\\text{PbI}_2$ nucleates thousands of glittering golden hexagonal platelets upon cooling because the ionic product $Q_{sp}$ exceeds $K_{sp}(T)$.",
+        hintUk: "Осад випадає при перевищенні добутку розчинності: $Q_{sp} = [\\text{Pb}^{2+}][\\text{I}^-]^2 > K_{sp}$. Додавання надлишку спільного йона $\\text{I}^-$ ($\\text{KI}$) зміщує рівновагу вбік твердої фази й різко знижує розчинність $\\text{PbI}_2$.",
+        hintEn: "Precipitation occurs when $Q_{sp} = [\\text{Pb}^{2+}][\\text{I}^-]^2 > K_{sp}$. Adding excess common ion $\\text{I}^-$ ($\\text{KI}$) shifts equilibrium toward solid $\\text{PbI}_2\\downarrow$ and sharply reduces solubility."
       },
       chem_beer: {
-        gradeUk: '10–11 клас · Спектрофотометрія',
-        gradeEn: 'Grade 10–11 · Beer–Lambert Law',
-        analogyUk: 'Якщо дивитися на лампу крізь склянку чаю або розчин марганцівки ($\\text{KMnO}_4$), то що міцніший чай (концентрація $C$) або ширша склянка (шлях світла $l$), то темнішим здається промінь на виході. Саме так спектрофотометр миттєво визначає концентрацію речовини за поглинанням світла!',
-        analogyEn: 'Looking at a light through a glass of tea or purple $\\text{KMnO}_4$, the darker the brew (concentration $C$) or wider the glass (path length $l$), the dimmer the transmitted beam. A spectrophotometer uses $A = \\varepsilon l C$ to measure concentration from light absorption!',
-        hintUk: 'За законом Бугера–Ламберта–Бера оптична густина $A = \\varepsilon l C$ зростає лінійно зі збільшенням концентрації $C$ або товщини кювети $l$, а інтенсивність пройденого світла $T = I/I_0 = 10^{-A}$ спадає експоненційно.',
-        hintEn: 'By the Beer–Lambert law, optical absorbance $A = \\varepsilon l C$ increases linearly with concentration $C$ or path length $l$, while transmittance $T = I/I_0 = 10^{-A}$ decreases exponentially.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Спектрофотометрія",
+        gradeEn: "Advanced Level · AP / University · Beer–Lambert Law",
+        analogyUk: "Якщо дивитися на лампу крізь склянку чаю або розчин марганцівки ($\\text{KMnO}_4$), то що міцніший чай (концентрація $C$) або ширша склянка (шлях світла $l$), то темнішим здається промінь на виході. Саме так спектрофотометр миттєво визначає концентрацію речовини за поглинанням світла.",
+        analogyEn: "Looking at a light through a glass of tea or purple $\\text{KMnO}_4$, the darker the brew (concentration $C$) or wider the glass (path length $l$), the dimmer the transmitted beam. A spectrophotometer uses $A = \\varepsilon l C$ to measure concentration from light absorption.",
+        hintUk: "За законом Бугера–Ламберта–Бера оптична густина $A = \\varepsilon l C$ зростає лінійно зі збільшенням концентрації $C$ або товщини кювети $l$, а інтенсивність пройденого світла $T = I/I_0 = 10^{-A}$ спадає експоненційно.",
+        hintEn: "By the Beer–Lambert law, optical absorbance $A = \\varepsilon l C$ increases linearly with concentration $C$ or path length $l$, while transmittance $T = I/I_0 = 10^{-A}$ decreases exponentially."
       },
       chem_fuelcell: {
-        gradeUk: '9–11 клас · Воднева енергетика',
-        gradeEn: 'Grade 9–11 · Hydrogen Fuel Cell',
-        analogyUk: 'Водневий паливний елемент, це «електрохімічна батарейка, яка ніколи не сідає», доки в неї подають водень $\\text{H}_2$ і кисень $\\text{O}_2$: мембрана пропускає протони $\\text{H}^+$ напряму, а електрони $e^-$ змушені бігти по дротах і крутити електродвигун автомобіля чи космічного корабля, залишаючи на виході лише чисту воду $\\text{H}_2\\text{O}$!',
-        analogyEn: 'A hydrogen fuel cell is an electrochemical generator: the polymer membrane passes protons $\\text{H}^+$ directly while forcing electrons $e^-$ through the external motor to power hydrogen cars and spacecraft, with pure water $\\text{H}_2\\text{O}$ as the only exhaust!',
-        hintUk: 'На аноді водень окиснюється на платині ($2\\text{H}_2 \\to 4\\text{H}^+ + 4e^-$), протони $\\text{H}^+$ проходять крізь мембрану до катода, а електрони $e^-$ виконують роботу в зовнішньому колі, утворюючи з $\\text{O}_2$ чисту воду.',
-        hintEn: 'At the anode $\\text{H}_2$ oxidizes on $\\text{Pt}$ ($2\\text{H}_2 \\to 4\\text{H}^+ + 4e^-$); $\\text{H}^+$ migrates through the membrane while $e^-$ flows through the external load to form pure $\\text{H}_2\\text{O}$ with $\\text{O}_2$ at the cathode.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Воднева енергетика",
+        gradeEn: "Core Curriculum · Grade 9–11 · Hydrogen Fuel Cell",
+        analogyUk: "Водневий паливний елемент, це «електрохімічна батарейка, яка ніколи не сідає», доки в неї подають водень $\\text{H}_2$ і кисень $\\text{O}_2$: мембрана пропускає протони $\\text{H}^+$ напряму, а електрони $e^-$ змушені бігти по дротах і крутити електродвигун автомобіля чи космічного корабля, залишаючи на виході лише чисту воду $\\text{H}_2\\text{O}$.",
+        analogyEn: "A hydrogen fuel cell is an electrochemical generator: the polymer membrane passes protons $\\text{H}^+$ directly while forcing electrons $e^-$ through the external motor to power hydrogen cars and spacecraft, with pure water $\\text{H}_2\\text{O}$ as the only exhaust.",
+        hintUk: "На аноді водень окиснюється на платині ($2\\text{H}_2 \\to 4\\text{H}^+ + 4e^-$), протони $\\text{H}^+$ проходять крізь мембрану до катода, а електрони $e^-$ виконують роботу в зовнішньому колі, утворюючи з $\\text{O}_2$ чисту воду.",
+        hintEn: "At the anode $\\text{H}_2$ oxidizes on $\\text{Pt}$ ($2\\text{H}_2 \\to 4\\text{H}^+ + 4e^-$); $\\text{H}^+$ migrates through the membrane while $e^-$ flows through the external load to form pure $\\text{H}_2\\text{O}$ with $\\text{O}_2$ at the cathode."
       },
       chem_isomerism: {
-        gradeUk: '10–11 клас · Стереохімія',
-        gradeEn: 'Grade 10–11 · Stereochemistry',
-        analogyUk: 'Ваші ліва і права долоні складаються з однакових пальців, але ви не можете одягнути ліву рукавичку на праву руку! Так само оптичні $(R)$- і $(S)$-енантіомери навколо хірального атома $\\text{C}^*$ є дзеркальними близнюками і повертають площину поляризованого світла в протилежні боки.',
-        analogyEn: 'Your left and right hands have identical fingers, yet a left glove will not fit your right hand! Likewise, chiral $(R)$- and $(S)$-enantiomers around an asymmetric carbon $\\text{C}^*$ are non-superimposable mirror images that rotate polarized light in opposite directions.',
-        hintUk: 'У транс-ізомері ($E$) диполі зв’язків спрямовані протилежно і компенсуються ($\\mu = 0$), а хіральні $(R)$- і $(S)$-енантіомери з $4$ різними замісниками біля $\\text{C}^*$ є несумісними дзеркальними відображеннями.',
-        hintEn: 'In the *trans* ($E$) isomer opposing bond dipoles cancel ($\\mu = 0$), whereas chiral $(R)$- and $(S)$-enantiomers with $4$ different groups on $\\text{C}^*$ are non-superimposable mirror images.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Стереохімія",
+        gradeEn: "Core Curriculum · Grade 10–11 · Stereochemistry",
+        analogyUk: "Ваші ліва і права долоні складаються з однакових пальців, але ви не можете одягнути ліву рукавичку на праву руку. Так само оптичні $(R)$- і $(S)$-енантіомери навколо хірального атома $\\text{C}^*$ є дзеркальними близнюками і повертають площину поляризованого світла в протилежні боки.",
+        analogyEn: "Your left and right hands have identical fingers, yet a left glove will not fit your right hand. Likewise, chiral $(R)$- and $(S)$-enantiomers around an asymmetric carbon $\\text{C}^*$ are non-superimposable mirror images that rotate polarized light in opposite directions.",
+        hintUk: "У транс-ізомері ($E$) диполі зв’язків спрямовані протилежно і компенсуються ($\\mu = 0$), а хіральні $(R)$- і $(S)$-енантіомери з $4$ різними замісниками біля $\\text{C}^*$ є несумісними дзеркальними відображеннями.",
+        hintEn: "In the *trans* ($E$) isomer opposing bond dipoles cancel ($\\mu = 0$), whereas chiral $(R)$- and $(S)$-enantiomers with $4$ different groups on $\\text{C}^*$ are non-superimposable mirror images."
       },
       chem_polymer: {
-        gradeUk: '9–11 клас · Полімери та пластмаси',
-        gradeEn: 'Grade 9–11 · Polymerization',
-        analogyUk: 'Мономери етилену $\\text{CH}_2{=}\\text{CH}_2$ тримають себе «двома руками» (подвійний зв’язок $\\sigma + \\pi$). Коли підбігає радикал-ініціатор, кожна молекула розмикає одну руку ($\\pi$-зв’язок) і бере за руку сусіда, вибудовуючи довгий міцний ланцюжок поліетилену з тисяч ланок!',
-        analogyEn: 'Ethylene monomers $\\text{CH}_2{=}\\text{CH}_2$ hold onto themselves with two hands (a double bond $\\sigma + \\pi$). Triggered by a radical initiator, each monomer opens its weaker $\\pi$-bond to clasp hands with its neighbor, zipping thousands of units into a long polyethylene chain!',
-        hintUk: 'Під час полімеризації етилену менш міцний $\\pi$-зв’язок розривається з утворенням нових одинарних $\\sigma$-зв’язків $\\text{C–C}$ у ланцюгу, а гібридизація Карбону переходить із плоскої $sp^2$ ($120^\\circ$) у тетраедричну $sp^3$ ($109.5^\\circ$).',
-        hintEn: 'During ethylene polymerization, the weaker $\\pi$-bond cleaves to form new single $\\text{C–C}$ $\\sigma$-bonds in the polymer chain, shifting carbon hybridization from planar $sp^2$ ($120^\\circ$) to tetrahedral $sp^3$ ($109.5^\\circ$).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Полімери та пластмаси",
+        gradeEn: "Core Curriculum · Grade 9–11 · Polymerization",
+        analogyUk: "Мономери етилену $\\text{CH}_2{=}\\text{CH}_2$ тримають себе «двома руками» (подвійний зв’язок $\\sigma + \\pi$). Коли підбігає радикал-ініціатор, кожна молекула розмикає одну руку ($\\pi$-зв’язок) і бере за руку сусіда, вибудовуючи довгий міцний ланцюжок поліетилену з тисяч ланок.",
+        analogyEn: "Ethylene monomers $\\text{CH}_2{=}\\text{CH}_2$ hold onto themselves with two hands (a double bond $\\sigma + \\pi$). Triggered by a radical initiator, each monomer opens its weaker $\\pi$-bond to clasp hands with its neighbor, zipping thousands of units into a long polyethylene chain.",
+        hintUk: "Під час полімеризації етилену менш міцний $\\pi$-зв’язок розривається з утворенням нових одинарних $\\sigma$-зв’язків $\\text{C–C}$ у ланцюгу, а гібридизація Карбону переходить із плоскої $sp^2$ ($120^\\circ$) у тетраедричну $sp^3$ ($109.5^\\circ$).",
+        hintEn: "During ethylene polymerization, the weaker $\\pi$-bond cleaves to form new single $\\text{C–C}$ $\\sigma$-bonds in the polymer chain, shifting carbon hybridization from planar $sp^2$ ($120^\\circ$) to tetrahedral $sp^3$ ($109.5^\\circ$)."
       },
       chem_mo: {
-        gradeUk: '10–11 клас · Квантова хімія',
-        gradeEn: 'Grade 10–11 · Quantum Chemistry',
-        analogyUk: 'Уяви дві хвилі на воді: коли гребінь накладається на гребінь, хвиля посилюється між ядрами й скріплює атоми (зв’язуюча орбіталь $\\sigma, \\pi$). А коли гребінь гасить западину, посередині виникає вузол тиші, який розштовхує ядра (розпушуюча орбіталь $\\sigma^*, \\pi^*$).',
-        analogyEn: 'Picture two water waves meeting: crest-on-crest builds electron density between the nuclei to glue the atoms together (bonding MO $\\sigma, \\pi$), whereas crest-on-trough cancels out at a nodal plane and pushes the nuclei apart (antibonding MO $\\sigma^*, \\pi^*$).',
-        hintUk: 'Порахуй порядок зв’язку $B = \\frac{1}{2}(N_b - N_a)$ і згадай правило Гунда для двох останніх електронів кисню $\\text{O}_2$ на вироджених $\\pi^*_{2p}$-орбіталях.',
-        hintEn: 'Calculate bond order $B = \\frac{1}{2}(N_b - N_a)$ and apply Hund’s rule to the last two electrons of $\\text{O}_2$ in the degenerate $\\pi^*_{2p}$ orbitals.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Квантова хімія",
+        gradeEn: "Advanced Level · AP / University · Quantum Chemistry",
+        analogyUk: "Лінійна комбінація атомних орбіталей (ЛКАО) під час утворення ковалентного зв’язку підпорядковується принципу інтерференції хвильових функцій: коли гребінь накладається на гребінь, хвиля посилюється між ядрами й скріплює атоми (зв’язуюча орбіталь $\\sigma, \\pi$). А коли гребінь гасить западину, посередині виникає вузол тиші, який розштовхує ядра (розпушуюча орбіталь $\\sigma^*, \\pi^*$).",
+        analogyEn: "In a physical model of two water waves meeting: crest-on-crest builds electron density between the nuclei to glue the atoms together (bonding MO $\\sigma, \\pi$), whereas crest-on-trough cancels out at a nodal plane and pushes the nuclei apart (antibonding MO $\\sigma^*, \\pi^*$).",
+        hintUk: "Порахуй порядок зв’язку $B = \\frac{1}{2}(N_b - N_a)$ і згадай правило Гунда для двох останніх електронів кисню $\\text{O}_2$ на вироджених $\\pi^*_{2p}$-орбіталях.",
+        hintEn: "Calculate bond order $B = \\frac{1}{2}(N_b - N_a)$ and apply Hund’s rule to the last two electrons of $\\text{O}_2$ in the degenerate $\\pi^*_{2p}$ orbitals."
       },
       chem_allotropes: {
-        gradeUk: '9–11 клас · Алотропія Карбону та нанотехнології',
-        gradeEn: 'Grade 9–11 · Carbon Allotropes & Nanotech',
-        analogyUk: 'Графен, це ніби ідеальна бджолина стільника з атомів Карбону завтовшки в один атом, по якій вільні $\\pi$-електрони мчать без опору. Якщо згорнути цей аркуш у трубочку, отримаєш нанотрубку, а якщо додати $12$ п’ятикутників, футбольний м’яч фулерену $\\text{C}_{60}$!',
-        analogyEn: 'Graphene is a one-atom-thick honeycomb sheet where $\\pi$-electrons race like massless particles. Roll that sheet into a cylinder to get a carbon nanotube, or stitch in $12$ pentagons to close it into a $\\text{C}_{60}$ soccer-ball cage!',
-        hintUk: 'Кожен $sp^2$-атом Карбону віддає четвертий $2p_z$-електрон у спільну провідну $\\pi$-зону, а за теоремою Ейлера замкнений фулерен $\\text{C}_{60}$ містить $12$ п’ятикутників і $20$ шестикутників.',
-        hintEn: 'Each $sp^2$ carbon contributes one $2p_z$ electron to the delocalized $\\pi$-band, and by Euler’s theorem $\\text{C}_{60}$ has $12$ pentagons and $20$ hexagons.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Алотропія Карбону та нанотехнології",
+        gradeEn: "Core Curriculum · Grade 9–11 · Carbon Allotropes & Nanotech",
+        analogyUk: "Графен, це ніби ідеальна бджолина стільника з атомів Карбону завтовшки в один атом, по якій вільні $\\pi$-електрони мчать без опору. Якщо згорнути цей аркуш у трубочку, отримаєш нанотрубку, а якщо додати $12$ п’ятикутників, футбольний м’яч фулерену $\\text{C}_{60}$.",
+        analogyEn: "Graphene is a one-atom-thick honeycomb sheet where $\\pi$-electrons race like massless particles. Roll that sheet into a cylinder to get a carbon nanotube, or stitch in $12$ pentagons to close it into a $\\text{C}_{60}$ soccer-ball cage.",
+        hintUk: "Кожен $sp^2$-атом Карбону віддає четвертий $2p_z$-електрон у спільну провідну $\\pi$-зону, а за теоремою Ейлера замкнений фулерен $\\text{C}_{60}$ містить $12$ п’ятикутників і $20$ шестикутників.",
+        hintEn: "Each $sp^2$ carbon contributes one $2p_z$ electron to the delocalized $\\pi$-band, and by Euler’s theorem $\\text{C}_{60}$ has $12$ pentagons and $20$ hexagons."
       },
       chem_complex: {
-        gradeUk: '11 клас · Комплексні сполуки',
-        gradeEn: 'Grade 11 · Coordination Chemistry',
-        analogyUk: 'Шість лігандів навколо іона металу діють як шість точкових прожекторів уздовж осей $x, y, z$: тим $d$-орбіталям, які дивляться прямо на ліганди ($e_g$), стає «тісно» й їхня енергія підскакує, а тим, що сховані між осями ($t_{2g}$),, просторо й вигідно!',
-        analogyEn: 'Six octahedral ligands along the $x, y, z$ axes act like bumper cars: $d$-orbitals pointing straight at the ligands ($e_g$) get pushed up in energy, while orbitals tucked between the axes ($t_{2g}$) sit lower in energy by $\\Delta_o$!',
-        hintUk: 'В октаедричному полі $d$-орбіталі розщеплюються на нижній триплет $t_{2g}$ та верхній дублет $e_g$, а сильні ліганди ($\\Delta_o > P$) спарюють електрони в низькоспіновий стан.',
-        hintEn: 'In an octahedral field, $d$-orbitals split into a lower $t_{2g}$ triplet and upper $e_g$ doublet; strong-field ligands ($\\Delta_o > P$) create a low-spin state.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Комплексні сполуки",
+        gradeEn: "Advanced Level · AP / University · Coordination Chemistry",
+        analogyUk: "Шість лігандів навколо іона металу діють як шість точкових прожекторів уздовж осей $x, y, z$: тим $d$-орбіталям, які дивляться прямо на ліганди ($e_g$), стає «тісно» й їхня енергія підскакує, а тим, що сховані між осями ($t_{2g}$),, просторо й вигідно.",
+        analogyEn: "Six octahedral ligands along the $x, y, z$ axes act like bumper cars: $d$-orbitals pointing straight at the ligands ($e_g$) get pushed up in energy, while orbitals tucked between the axes ($t_{2g}$) sit lower in energy by $\\Delta_o$.",
+        hintUk: "В октаедричному полі $d$-орбіталі розщеплюються на нижній триплет $t_{2g}$ та верхній дублет $e_g$, а сильні ліганди ($\\Delta_o > P$) спарюють електрони в низькоспіновий стан.",
+        hintEn: "In an octahedral field, $d$-orbitals split into a lower $t_{2g}$ triplet and upper $e_g$ doublet; strong-field ligands ($\\Delta_o > P$) create a low-spin state."
       },
       chem_bornhaber: {
-        gradeUk: '10–11 клас · Термохімія кристалів',
-        gradeEn: 'Grade 10–11 · Crystal Thermochemistry',
-        analogyUk: 'Щоб побудувати міцний цегляний будинок ($\\text{NaCl}$), спочатку треба витратити зусилля, щоб розібрати старі матеріали на окремі цеглини (сублімація, дисоціація, іонізація), але коли різнойменні йони $\\text{Na}^+$ і $\\text{Cl}^-$ нарешті злітаються в кристал, виділяється лавина енергії $U_{\\text{ґр}}$!',
-        analogyEn: 'Building an ionic crystal is like climbing a small hill to jump into a deep canyon: you invest energy to vaporize and ionize the elements, then get a massive exothermic payoff $U_{\\text{lat}}$ when $\\text{Na}^+$ and $\\text{Cl}^-$ snap into a 3D lattice!',
-        hintUk: 'За законом Гесса тепловий ефект утворення солі $\\Delta H_f^\\circ$ дорівнює алгебраїчній сумі всіх стадій циклу Борна–Габера включно з $-U_{\\text{ґр}}$.',
-        hintEn: 'By Hess’s law, the enthalpy of formation $\\Delta H_f^\\circ$ equals the sum of sublimation, dissociation, ionization, electron affinity, and $-U_{\\text{lat}}$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Термохімія кристалів",
+        gradeEn: "Advanced Level · AP / University · Crystal Thermochemistry",
+        analogyUk: "Щоб побудувати міцний цегляний будинок ($\\text{NaCl}$), спочатку треба витратити зусилля, щоб розібрати старі матеріали на окремі цеглини (сублімація, дисоціація, іонізація), але коли різнойменні йони $\\text{Na}^+$ і $\\text{Cl}^-$ нарешті злітаються в кристал, виділяється лавина енергії $U_{\\text{ґр}}$.",
+        analogyEn: "Building an ionic crystal is like climbing a small hill to jump into a deep canyon: you invest energy to vaporize and ionize the elements, then get a massive exothermic payoff $U_{\\text{lat}}$ when $\\text{Na}^+$ and $\\text{Cl}^-$ snap into a 3D lattice.",
+        hintUk: "За законом Гесса тепловий ефект утворення солі $\\Delta H_f^\\circ$ дорівнює алгебраїчній сумі всіх стадій циклу Борна–Габера включно з $-U_{\\text{ґр}}$.",
+        hintEn: "By Hess’s law, the enthalpy of formation $\\Delta H_f^\\circ$ equals the sum of sublimation, dissociation, ionization, electron affinity, and $-U_{\\text{lat}}$."
       },
       chem_dipole: {
-        gradeUk: '8–10 клас · Полярність молекул',
-        gradeEn: 'Grade 8–10 · Molecular Polarity',
-        analogyUk: 'Уяви перетягування каната! У лінійній молекулі $\\text{CO}_2$ ($180^\\circ$) два атоми Оксигену тягнуть електрони з однаковою силою в протилежні боки, і нічия ($\\mu = 0$). А у зігнутій молекулі води ($104.5^\\circ$) обидва канати тягнуть під кутом угору, створюючи потужний електричний диполь!',
-        analogyEn: 'Think of a tug-of-war! In linear $\\text{CO}_2$ ($180^\\circ$), two oxygen atoms pull electrons equally in opposite directions so the vectors cancel ($\\mu = 0$). In bent water ($104.5^\\circ$), both pulls angle toward oxygen, creating a strong net dipole!',
-        hintUk: 'Дипольний момент молекули є векторною сумою $\\vec{\\mu}_{\\text{мол}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$, тому при $\\theta = 180^\\circ$ рівні за модулем диполі зв’язків взаємно компенсуються.',
-        hintEn: 'Molecular dipole moment is the vector sum $\\vec{\\mu}_{\\text{net}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$; at $\\theta = 180^\\circ$ the two opposing bond dipoles cancel to zero.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–10 клас · Полярність молекул",
+        gradeEn: "Core Curriculum · Grade 8–10 · Molecular Polarity",
+        analogyUk: "Полярність багатоатомної молекули визначається векторною сумою дипольних моментів окремих хімічних зв’язків. У лінійній молекулі $\\text{CO}_2$ ($180^\\circ$) два атоми Оксигену тягнуть електрони з однаковою силою в протилежні боки, і нічия ($\\mu = 0$). А у зігнутій молекулі води ($104.5^\\circ$) обидва канати тягнуть під кутом угору, створюючи потужний електричний диполь.",
+        analogyEn: "This system functions as a tug-of-war. In linear $\\text{CO}_2$ ($180^\\circ$), two oxygen atoms pull electrons equally in opposite directions so the vectors cancel ($\\mu = 0$). In bent water ($104.5^\\circ$), both pulls angle toward oxygen, creating a strong net dipole.",
+        hintUk: "Дипольний момент молекули є векторною сумою $\\vec{\\mu}_{\\text{мол}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$, тому при $\\theta = 180^\\circ$ рівні за модулем диполі зв’язків взаємно компенсуються.",
+        hintEn: "Molecular dipole moment is the vector sum $\\vec{\\mu}_{\\text{net}} = \\vec{\\mu}_1 + \\vec{\\mu}_2$; at $\\theta = 180^\\circ$ the two opposing bond dipoles cancel to zero."
       },
       chem_phase: {
-        gradeUk: '10–11 клас · Фазові рівноваги',
-        gradeEn: 'Grade 10–11 · Phase Equilibria',
-        analogyUk: 'Чому ковзани так легко ковзають по льоду, а «сухий лід» $\\text{CO}_2$ димить у кімнаті без жодної калюжі? Бо лід під тиском леза трохи плавиться (крива плавлення води нахилена вліво!), а для $\\text{CO}_2$ потрійна точка лежить аж при $5.1\\text{ атм}$, тому при $1\\text{ атм}$ він одразу перетворюється на газ!',
-        analogyEn: 'Why do ice skates glide on a thin water film while dry ice ($\\text{CO}_2$) smokes without melting into a puddle? Because water expands on freezing ($dP/dT < 0$), and $\\text{CO}_2$’s triple point ($5.11\\text{ atm}$) lies above atmospheric pressure!',
-        hintUk: 'У потрійній точці співіснують усі $3$ фази, вище критичної точки утворюється надкритичний флюїд, а для води $\\Delta V_{\\text{пл}} < 0 \\Rightarrow dP/dT < 0$.',
-        hintEn: 'At the triple point all $3$ phases coexist, above the critical point a supercritical fluid forms, and for water $\\Delta V_{\\text{fus}} < 0 \\Rightarrow dP/dT < 0$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Фазові рівноваги",
+        gradeEn: "Advanced Level · AP / University · Phase Equilibria",
+        analogyUk: "Чому ковзани так легко ковзають по льоду, а «сухий лід» $\\text{CO}_2$ димить у кімнаті без жодної калюжі? Бо лід під тиском леза трохи плавиться (крива плавлення води нахилена вліво. ), а для $\\text{CO}_2$ потрійна точка лежить аж при $5.1\\text{ атм}$, тому при $1\\text{ атм}$ він одразу перетворюється на газ.",
+        analogyEn: "Why do ice skates glide on a thin water film while dry ice ($\\text{CO}_2$) smokes without melting into a puddle? Because water expands on freezing ($dP/dT < 0$), and $\\text{CO}_2$’s triple point ($5.11\\text{ atm}$) lies above atmospheric pressure.",
+        hintUk: "У потрійній точці співіснують усі $3$ фази, вище критичної точки утворюється надкритичний флюїд, а для води $\\Delta V_{\\text{пл}} < 0 \\Rightarrow dP/dT < 0$.",
+        hintEn: "At the triple point all $3$ phases coexist, above the critical point a supercritical fluid forms, and for water $\\Delta V_{\\text{fus}} < 0 \\Rightarrow dP/dT < 0$."
       },
-      chem_arrhenius: {
-        gradeUk: '10–11 клас · Кінетичні рівняння',
-        gradeEn: 'Grade 10–11 · Rate Laws & Half-Life',
-        analogyUk: 'Реакція 0-го порядку, як черга перед одним турнікетом метро: що більше людей $[A]_0$, то довше чекати половині черги. Реакція 1-го порядку, як радіоактивний розпад: половина атомів завжди розпадається за однаковий час $t_{1/2} = \\frac{\\ln 2}{k}$. А в 2-му порядку частинкам треба знайти пару, тому коли їх стає мало, пошук пари сповільнюється!',
-        analogyEn: '0th-order is like a single tollbooth line ($t_{1/2} \\propto [A]_0$); 1st-order is like radioactive decay where half Always vanishes in a fixed time $t_{1/2} = \\frac{\\ln 2}{k}$; 2nd-order requires partner collisions, so as molecules thin out, finding a partner takes much longer ($t_{1/2} \\propto 1/[A]_0$)!',
-        hintUk: 'Для 1-го порядку $t_{1/2} = \\frac{\\ln 2}{k}$ не залежить від $[A]_0$, для 0-го $t_{1/2} = \\frac{[A]_0}{2k}$, а для 2-го $t_{1/2} = \\frac{1}{k[A]_0}$.',
-        hintEn: 'For 1st order $t_{1/2} = \\frac{\\ln 2}{k}$ is independent of $[A]_0$, for 0th order $t_{1/2} = \\frac{[A]_0}{2k}$, and for 2nd order $t_{1/2} = \\frac{1}{k[A]_0}$.'
+      chem_orders: {
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Кінетичні рівняння",
+        gradeEn: "Advanced Level · AP / University · Rate Laws & Half-Life",
+        analogyUk: "Реакція 0-го порядку, як черга перед одним турнікетом метро: що більше людей $[A]_0$, то довше чекати половині черги. Реакція 1-го порядку, як радіоактивний розпад: половина атомів завжди розпадається за однаковий час $t_{1/2} = \\frac{\\ln 2}{k}$. А в 2-му порядку частинкам треба знайти пару, тому коли їх стає мало, пошук пари сповільнюється.",
+        analogyEn: "0th-order is like a single tollbooth line ($t_{1/2} \\propto [A]_0$); 1st-order is like radioactive decay where half Always vanishes in a fixed time $t_{1/2} = \\frac{\\ln 2}{k}$; 2nd-order requires partner collisions, so as molecules thin out, finding a partner takes much longer ($t_{1/2} \\propto 1/[A]_0$).",
+        hintUk: "Для 1-го порядку $t_{1/2} = \\frac{\\ln 2}{k}$ не залежить від $[A]_0$, для 0-го $t_{1/2} = \\frac{[A]_0}{2k}$, а для 2-го $t_{1/2} = \\frac{1}{k[A]_0}$.",
+        hintEn: "For 1st order $t_{1/2} = \\frac{\\ln 2}{k}$ is independent of $[A]_0$, for 0th order $t_{1/2} = \\frac{[A]_0}{2k}$, and for 2nd order $t_{1/2} = \\frac{1}{k[A]_0}$."
       },
       chem_enzyme: {
-        gradeUk: '10–11 клас · Біохімія та ферменти',
-        gradeEn: 'Grade 10–11 · Enzyme Kinetics',
-        analogyUk: 'Фермент, це майстер-ключник із замковою щілиною (активним центром), а субстрат, ключ. Коли ключів дуже багато, усі майстри зайняті роботою і швидкість досягає стелі $V_{\\max}$. А конкурентний інгібітор, це «фальшивий ключ», який тимчасово застрягає в замку й заважає справжнім ключам!',
-        analogyEn: 'An enzyme active site is a lock and the substrate is the key. When keys flood the room, every lock is busy working at top speed $V_{\\max}$. A competitive inhibitor is a decoy key that jams the lock, requiring more real keys (higher $K_M^{\\text{app}}$) to reach $V_{\\max}$!',
-        hintUk: 'При насиченні активних центрів ($[S] \\gg K_M$) швидкість прямує до $V_{\\max} = k_{\\text{cat}}[E]_0$, а конкурентний інгібітор збільшує $K_M^{\\text{app}}$ без зміни $V_{\\max}$.',
-        hintEn: 'When active sites saturate ($[S] \\gg K_M$), velocity plateaus at $V_{\\max} = k_{\\text{cat}}[E]_0$; competitive inhibition increases $K_M^{\\text{app}}$ without changing $V_{\\max}$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Біохімія та ферменти",
+        gradeEn: "Advanced Level · AP / University · Enzyme Kinetics",
+        analogyUk: "Фермент, це майстер-ключник із замковою щілиною (активним центром), а субстрат, ключ. Коли ключів дуже багато, усі майстри зайняті роботою і швидкість досягає стелі $V_{\\max}$. А конкурентний інгібітор, це «фальшивий ключ», який тимчасово застрягає в замку й заважає справжнім ключам.",
+        analogyEn: "An enzyme active site is a lock and the substrate is the key. When keys flood the room, every lock is busy working at top speed $V_{\\max}$. A competitive inhibitor is a decoy key that jams the lock, requiring more real keys (higher $K_M^{\\text{app}}$) to reach $V_{\\max}$.",
+        hintUk: "При насиченні активних центрів ($[S] \\gg K_M$) швидкість прямує до $V_{\\max} = k_{\\text{cat}}[E]_0$, а конкурентний інгібітор збільшує $K_M^{\\text{app}}$ без зміни $V_{\\max}$.",
+        hintEn: "When active sites saturate ($[S] \\gg K_M$), velocity plateaus at $V_{\\max} = k_{\\text{cat}}[E]_0$; competitive inhibition increases $K_M^{\\text{app}}$ without changing $V_{\\max}$."
       },
       chem_gibbs: {
-        gradeUk: '10–11 клас · Хімічна термодинаміка',
-        gradeEn: 'Grade 10–11 · Chemical Thermodynamics',
-        analogyUk: 'У природі все прагне або скотитися з гірки вниз (виділити тепло, $\\Delta H < 0$), або розбігтися в творчий безлад (збільшити ентропію, $\\Delta S > 0$). Формула Гіббса $\\Delta G = \\Delta H - T\\Delta S$, це головний суддя: якщо на дворі спекотно (висока $T$), перемагає прагнення до безладу $T\\Delta S$!',
-        analogyEn: 'Nature loves rolling downhill in energy ($\\Delta H < 0$) and spreading out into disorder ($\\Delta S > 0$). Gibbs free energy $\\Delta G = \\Delta H - T\\Delta S$ is the referee: at high temperature $T$, the entropy term $T\\Delta S$ wins and drives endothermic reactions forward!',
-        hintUk: 'Ендотермічна реакція ($\\Delta H > 0$) стає самочинною ($\\Delta G < 0$) лише за додатного приросту ентропії ($\\Delta S > 0$) та температури вище $T^* = \\Delta H / \\Delta S$.',
-        hintEn: 'An endothermic reaction ($\\Delta H > 0$) is spontaneous ($\\Delta G < 0$) when $\\Delta S > 0$ and temperature exceeds $T^* = \\Delta H / \\Delta S$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Хімічна термодинаміка",
+        gradeEn: "Advanced Level · AP / University · Chemical Thermodynamics",
+        analogyUk: "У природі все прагне або скотитися з гірки вниз (виділити тепло, $\\Delta H < 0$), або розбігтися в творчий безлад (збільшити ентропію, $\\Delta S > 0$). Формула Гіббса $\\Delta G = \\Delta H - T\\Delta S$, це головний суддя: якщо на дворі спекотно (висока $T$), перемагає прагнення до безладу $T\\Delta S$.",
+        analogyEn: "Nature loves rolling downhill in energy ($\\Delta H < 0$) and spreading out into disorder ($\\Delta S > 0$). Gibbs free energy $\\Delta G = \\Delta H - T\\Delta S$ is the referee: at high temperature $T$, the entropy term $T\\Delta S$ wins and drives endothermic reactions forward.",
+        hintUk: "Ендотермічна реакція ($\\Delta H > 0$) стає самочинною ($\\Delta G < 0$) лише за додатного приросту ентропії ($\\Delta S > 0$) та температури вище $T^* = \\Delta H / \\Delta S$.",
+        hintEn: "An endothermic reaction ($\\Delta H > 0$) is spontaneous ($\\Delta G < 0$) when $\\Delta S > 0$ and temperature exceeds $T^* = \\Delta H / \\Delta S$."
       },
       chem_haber: {
-        gradeUk: '9–11 клас · Хімічна технологія',
-        gradeEn: 'Grade 9–11 · Industrial Chemistry',
-        analogyUk: 'Молекула азоту $\\text{N}\\equiv\\text{N}$ скріплена потрійним зв’язком міцніше за сейф! На холоді вона взагалі не реагує з воднем, а при сильній спеці аміак $\\text{NH}_3$ сам розпадається назад. Тому Габер і Бош знайшли золоту середину: $450\\,^\\circ\\text{C}$, тиск $200\\text{ атм}$ і залізний каталізатор!',
-        analogyEn: 'Dinitrogen $\\text{N}\\equiv\\text{N}$ is locked by a triple bond: too cold and nothing reacts, too hot and exothermic $\\text{NH}_3$ decomposes back! Haber and Bosch solved the dilemma with high pressure ($200\\text{ atm}$), $450\\,^\\circ\\text{C}$, and a porous iron catalyst.',
-        hintUk: 'Високий тиск зміщує рівновагу вбік меншого числа молів газу ($4 \\to 2$), а температура $450\\,^\\circ\\text{C}$ і $\\text{Fe}$-каталізатор забезпечують достатню швидкість розриву $\\text{N}\\equiv\\text{N}$.',
-        hintEn: 'High pressure favors fewer gas moles ($4 \\to 2$), while $450\\,^\\circ\\text{C}$ and an $\\text{Fe}$ catalyst provide kinetic speed to cleave $\\text{N}\\equiv\\text{N}$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Хімічна технологія",
+        gradeEn: "Core Curriculum · Grade 9–11 · Industrial Chemistry",
+        analogyUk: "Молекула азоту $\\text{N}\\equiv\\text{N}$ скріплена потрійним зв’язком міцніше за сейф. На холоді вона взагалі не реагує з воднем, а при сильній спеці аміак $\\text{NH}_3$ сам розпадається назад. Тому Габер і Бош знайшли золоту середину: $450\\,^\\circ\\text{C}$, тиск $200\\text{ атм}$ і залізний каталізатор.",
+        analogyEn: "Dinitrogen $\\text{N}\\equiv\\text{N}$ is locked by a triple bond: too cold and nothing reacts, too hot and exothermic $\\text{NH}_3$ decomposes back. Haber and Bosch solved the dilemma with high pressure ($200\\text{ atm}$), $450\\,^\\circ\\text{C}$, and a porous iron catalyst.",
+        hintUk: "Високий тиск зміщує рівновагу вбік меншого числа молів газу ($4 \\to 2$), а температура $450\\,^\\circ\\text{C}$ і $\\text{Fe}$-каталізатор забезпечують достатню швидкість розриву $\\text{N}\\equiv\\text{N}$.",
+        hintEn: "High pressure favors fewer gas moles ($4 \\to 2$), while $450\\,^\\circ\\text{C}$ and an $\\text{Fe}$ catalyst provide kinetic speed to cleave $\\text{N}\\equiv\\text{N}$."
       },
       chem_raoult: {
-        gradeUk: '9–11 клас · Властивості розчинів',
-        gradeEn: 'Grade 9–11 · Colligative Properties',
-        analogyUk: 'Уяви, що молекули води хочуть вилетіти з каструлі в пару або вишикуватися в кристал льоду, але розчинені іони солі стоять біля поверхні й «тримають їх за поли». Тому солоній воді важче закипіти (кипить вище $100\\,^\\circ\\text{C}$) і важче замерзнути (лід на дорозі тане навіть у мороз)!',
-        analogyEn: 'Dissolved salt ions act like friendly blockers at the liquid surface, making it harder for water molecules to escape into vapor or lock into ice. That’s why salted water boils above $100\\,^\\circ\\text{C}$ and melts road ice below $0\\,^\\circ\\text{C}$!',
-        hintUk: 'За законом Рауля нелетка речовина знижує тиск насиченої пари розчинника ($\\Delta P = \\chi_2 P_0^\\circ$), підвищуючи $T_{\\text{кип}}$ на $i K_b m$ і знижуючи $T_{\\text{зам}}$ на $i K_f m$.',
-        hintEn: 'By Raoult’s law, a non-volatile solute lowers vapor pressure ($\\Delta P = \\chi_2 P_0^\\circ$), raising $T_b$ by $i K_b m$ and depressing $T_f$ by $i K_f m$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Властивості розчинів",
+        gradeEn: "Advanced Level · AP / University · Colligative Properties",
+        analogyUk: "Присутність нелеткої розчиненої речовини знижує хімічний потенціал і тиск насиченої пари розчинника над поверхнею розчину згідно із законом Рауля. Тому солоній воді важче закипіти (кипить вище $100\\,^\\circ\\text{C}$) і важче замерзнути (лід на дорозі тане навіть у мороз).",
+        analogyEn: "Dissolved salt ions act like friendly blockers at the liquid surface, making it harder for water molecules to escape into vapor or lock into ice. That’s why salted water boils above $100\\,^\\circ\\text{C}$ and melts road ice below $0\\,^\\circ\\text{C}$.",
+        hintUk: "За законом Рауля нелетка речовина знижує тиск насиченої пари розчинника ($\\Delta P = \\chi_2 P_0^\\circ$), підвищуючи $T_{\\text{кип}}$ на $i K_b m$ і знижуючи $T_{\\text{зам}}$ на $i K_f m$.",
+        hintEn: "By Raoult’s law, a non-volatile solute lowers vapor pressure ($\\Delta P = \\chi_2 P_0^\\circ$), raising $T_b$ by $i K_b m$ and depressing $T_f$ by $i K_f m$."
       },
       chem_chromatography: {
-        gradeUk: '8–11 клас · Методи розділення сумішей',
-        gradeEn: 'Grade 8–11 · Separation Science',
-        analogyUk: 'Уяви забіг туристів крізь вулицю з магазинами (полярний силікагель). Ті, хто не любить шопінг (неполярний каротин), біжать разом із потоком до самого фінішу ($R_f \\approx 0.9$), а ті, хто зупиняється біля кожної вітрини (полярний хлорофіл $b$), відстають на старті ($R_f \\approx 0.25$)!',
-        analogyEn: 'Picture runners jogging down a street lined with shops (polar silica gel). Non-polar carotene ignores the shops and sprints with the solvent front ($R_f \\approx 0.9$), while polar chlorophyll $b$ stops to hydrogen-bond at every shop window ($R_f \\approx 0.25$)!',
-        hintUk: 'Полярний силікагель сильніше утримує полярні молекули (менший $R_f$), тоді як неполярні компоненти рухаються разом з елюентом (більший $R_f = z_i / z_f$).',
-        hintEn: 'Polar silica gel strongly adsorbs polar molecules (lower $R_f$), whereas non-polar molecules travel rapidly with the mobile eluent (higher $R_f = z_i / z_f$).'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Методи розділення сумішей",
+        gradeEn: "Advanced Level · AP / University · Separation Science",
+        analogyUk: "Розділення суміші речовин у хроматографічній колонці з полярним сорбентом (силікагелем) базується на різній спорідненості компонентів до стаціонарної та рухомої фаз. Ті, хто не любить шопінг (неполярний каротин), біжать разом із потоком до самого фінішу ($R_f \\approx 0.9$), а ті, хто зупиняється біля кожної вітрини (полярний хлорофіл $b$), відстають на старті ($R_f \\approx 0.25$).",
+        analogyEn: "In a physical model of runners jogging down a street lined with shops (polar silica gel). Non-polar carotene ignores the shops and sprints with the solvent front ($R_f \\approx 0.9$), while polar chlorophyll $b$ stops to hydrogen-bond at every shop window ($R_f \\approx 0.25$).",
+        hintUk: "Полярний силікагель сильніше утримує полярні молекули (менший $R_f$), тоді як неполярні компоненти рухаються разом з елюентом (більший $R_f = z_i / z_f$).",
+        hintEn: "Polar silica gel strongly adsorbs polar molecules (lower $R_f$), whereas non-polar molecules travel rapidly with the mobile eluent (higher $R_f = z_i / z_f$)."
       },
       chem_adsorption: {
-        gradeUk: '9–11 клас · Поверхневі явища',
-        gradeEn: 'Grade 9–11 · Surface Chemistry',
-        analogyUk: 'Поверхня активованого вугілля у протигазі або фільтрі для води, це парковка з обмеженою кількістю місць. Спочатку газові «автомобілі» легко знаходять вільні місця ($\\theta \\approx KP$), але коли всі місця зайняті в один шар, парковка заповнена на $100\\%$ ($\\theta \\to 1$)!',
-        analogyEn: 'An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily ($\\theta \\approx KP$), but once every spot is taken in a monolayer, coverage hits a ceiling ($\\theta \\to 1$)!',
-        hintUk: 'Кількість активних центрів поверхні обмежена моношаром ($\\theta \\to 1$), а оскільки адсорбція екзотермічна ($\\Delta H_{\\text{адс}} < 0$), нагрівання посилює десорбцію.',
-        hintEn: 'Surface sites saturate at a monolayer ($\\theta \\to 1$), and because adsorption is exothermic ($\\Delta H_{\\text{ads}} < 0$), heating promotes desorption.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Поверхневі явища",
+        gradeEn: "Advanced Level · AP / University · Surface Chemistry",
+        analogyUk: "Поверхня активованого вугілля у протигазі або фільтрі для води, це парковка з обмеженою кількістю місць. Спочатку газові «автомобілі» легко знаходять вільні місця ($\\theta \\approx KP$), але коли всі місця зайняті в один шар, парковка заповнена на $100\\%$ ($\\theta \\to 1$).",
+        analogyEn: "An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily ($\\theta \\approx KP$), but once every spot is taken in a monolayer, coverage hits a ceiling ($\\theta \\to 1$).",
+        hintUk: "Кількість активних центрів поверхні обмежена моношаром ($\\theta \\to 1$), а оскільки адсорбція екзотермічна ($\\Delta H_{\\text{адс}} < 0$), нагрівання посилює десорбцію.",
+        hintEn: "Surface sites saturate at a monolayer ($\\theta \\to 1$), and because adsorption is exothermic ($\\Delta H_{\\text{ads}} < 0$), heating promotes desorption."
       },
       chem_colloids: {
-        gradeUk: '9–11 клас · Дисперсні та колоїдні системи',
-        gradeEn: 'Grade 9–11 · Colloid & Interface Science',
-        analogyUk: 'Промінь сонця у чистій кімнаті невидимий збоку, але варто піднятися пилу чи туману, і промінь яскраво світиться! Це конус Тіндаля на наночастинках золю. А щоб ці частинки злиплися (коагулювали), тризарядний іон $\\text{Al}^{3+}$ діє у $3^6 = 729$ разів сильніше за однозарядний $\\text{Na}^+$!',
-        analogyEn: 'A laser beam is invisible from the side in pure water, but in a colloidal sol it glows like a lightsaber, the Tyndall cone! To make those charged micelles clump together, a trivalent $\\text{Al}^{3+}$ ion is $3^6 = 729$ times more potent than $\\text{Na}^+$!',
-        hintUk: 'Колоїдні міцели розсіюють світло в конус Тіндаля ($I \\propto d^6/\\lambda^4$), а поріг коагуляції за правилом Шульце–Гарді спадає як $1/z^6$.',
-        hintEn: 'Colloidal micelles scatter light into a Tyndall cone ($I \\propto d^6/\\lambda^4$), and critical coagulation concentration scales as $1/z^6$ (Schulze–Hardy rule).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Дисперсні та колоїдні системи",
+        gradeEn: "Core Curriculum · Grade 9–11 · Colloid & Interface Science",
+        analogyUk: "Промінь сонця у чистій кімнаті невидимий збоку, але варто піднятися пилу чи туману, і промінь яскраво світиться. Це конус Тіндаля на наночастинках золю. А щоб ці частинки злиплися (коагулювали), тризарядний іон $\\text{Al}^{3+}$ діє у $3^6 = 729$ разів сильніше за однозарядний $\\text{Na}^+$.",
+        analogyEn: "A laser beam is invisible from the side in pure water, but in a colloidal sol it glows like a lightsaber, the Tyndall cone. To make those charged micelles clump together, a trivalent $\\text{Al}^{3+}$ ion is $3^6 = 729$ times more potent than $\\text{Na}^+$.",
+        hintUk: "Колоїдні міцели розсіюють світло в конус Тіндаля ($I \\propto d^6/\\lambda^4$), а поріг коагуляції за правилом Шульце–Гарді спадає як $1/z^6$.",
+        hintEn: "Colloidal micelles scatter light into a Tyndall cone ($I \\propto d^6/\\lambda^4$), and critical coagulation concentration scales as $1/z^6$ (Schulze–Hardy rule)."
       },
       chem_hydrolysis: {
-        gradeUk: '9–11 клас · Гідроліз солей у розчинах',
-        gradeEn: 'Grade 9–11 · Salt Hydrolysis',
-        analogyUk: 'У солі завжди перемагає «сильніший з батьків»! Харчова сода чи ацетат натрію утворені сильною основою $\\text{NaOH}$ і слабкою кислотою, тому в розчині перемагає луг ($\\text{pH} > 7$). А нашатир $\\text{NH}_4\\text{Cl}$ утворений сильною кислотою $\\text{HCl}$ і слабкою основою, тому розчин стає кислим ($\\text{pH} < 7$)!',
-        analogyEn: 'In a salt solution, the stronger parent wins! Sodium acetate comes from strong base $\\text{NaOH}$ + weak acid, so its solution is basic ($\\text{pH} > 7$). Ammonium chloride comes from strong acid $\\text{HCl}$ + weak base, so its solution is acidic ($\\text{pH} < 7$)!',
-        hintUk: 'Гідролізу піддається йон слабкого електроліту: $\\text{CH}_3\\text{COO}^-$ зв’язує $\\text{H}^+$ і звільняє $\\text{OH}^-$ ($\\text{pH} > 7$), а $\\text{NH}_4^+$ віддає протон воді ($\\text{pH} < 7$).',
-        hintEn: 'The weak-electrolyte ion hydrolyzes water: $\\text{CH}_3\\text{COO}^-$ generates $\\text{OH}^-$ ($\\text{pH} > 7$), whereas $\\text{NH}_4^+$ generates $\\text{H}_3\\text{O}^+$ ($\\text{pH} < 7$).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Гідроліз солей у розчинах",
+        gradeEn: "Core Curriculum · Grade 9–11 · Salt Hydrolysis",
+        analogyUk: "У солі завжди перемагає «сильніший з батьків». Харчова сода чи ацетат натрію утворені сильною основою $\\text{NaOH}$ і слабкою кислотою, тому в розчині перемагає луг ($\\text{pH} > 7$). А нашатир $\\text{NH}_4\\text{Cl}$ утворений сильною кислотою $\\text{HCl}$ і слабкою основою, тому розчин стає кислим ($\\text{pH} < 7$).",
+        analogyEn: "In a salt solution, the stronger parent wins. Sodium acetate comes from strong base $\\text{NaOH}$ + weak acid, so its solution is basic ($\\text{pH} > 7$). Ammonium chloride comes from strong acid $\\text{HCl}$ + weak base, so its solution is acidic ($\\text{pH} < 7$).",
+        hintUk: "Гідролізу піддається йон слабкого електроліту: $\\text{CH}_3\\text{COO}^-$ зв’язує $\\text{H}^+$ і звільняє $\\text{OH}^-$ ($\\text{pH} > 7$), а $\\text{NH}_4^+$ віддає протон воді ($\\text{pH} < 7$).",
+        hintEn: "The weak-electrolyte ion hydrolyzes water: $\\text{CH}_3\\text{COO}^-$ generates $\\text{OH}^-$ ($\\text{pH} > 7$), whereas $\\text{NH}_4^+$ generates $\\text{H}_3\\text{O}^+$ ($\\text{pH} < 7$)."
       },
       chem_corrosion: {
-        gradeUk: '9–11 клас · Корозія та захист металів',
-        gradeEn: 'Grade 9–11 · Corrosion & Protection',
-        analogyUk: 'Цинк для заліза, справжній лицар-охоронець! Оскільки цинк активніший за залізо, при подряпині оцинкованого даху чи корпусу корабля цинк бере удар на себе (віддає електрони і розчиняється), не даючи залізу іржавіти. А от мідь чи олово, навпаки, змушують залізо іржавіти за двох!',
-        analogyEn: 'Zinc is a bodyguard for steel! Because zinc has a more negative potential ($-0.76\\text{ V}$) than iron ($-0.44\\text{ V}$), a zinc anode sacrifices itself by feeding electrons to the steel hull. Copper ($+0.34\\text{ V}$), by contrast, forces iron to rust faster!',
-        hintUk: 'У гальванічній парі окиснюється (стає анодом) більш активний метал з нижчим потенціалом $E^\\circ$: у парі $\\text{Fe/Zn}$ руйнується цинк, а в парі $\\text{Fe/Cu}$, залізо.',
-        hintEn: 'In a galvanic couple, the metal with the more negative $E^\\circ$ acts as the anode: $\\text{Zn}$ sacrifices itself to protect $\\text{Fe}$, whereas $\\text{Cu}$ makes $\\text{Fe}$ the corroding anode.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Корозія та захист металів",
+        gradeEn: "Core Curriculum · Grade 9–11 · Corrosion & Protection",
+        analogyUk: "Цинк для заліза, справжній лицар-охоронець. Оскільки цинк активніший за залізо, при подряпині оцинкованого даху чи корпусу корабля цинк бере удар на себе (віддає електрони і розчиняється), не даючи залізу іржавіти. А от мідь чи олово, навпаки, змушують залізо іржавіти за двох.",
+        analogyEn: "Zinc is a bodyguard for steel. Because zinc has a more negative potential ($-0.76\\text{ V}$) than iron ($-0.44\\text{ V}$), a zinc anode sacrifices itself by feeding electrons to the steel hull. Copper ($+0.34\\text{ V}$), by contrast, forces iron to rust faster.",
+        hintUk: "У гальванічній парі окиснюється (стає анодом) більш активний метал з нижчим потенціалом $E^\\circ$: у парі $\\text{Fe/Zn}$ руйнується цинк, а в парі $\\text{Fe/Cu}$, залізо.",
+        hintEn: "In a galvanic couple, the metal with the more negative $E^\\circ$ acts as the anode: $\\text{Zn}$ sacrifices itself to protect $\\text{Fe}$, whereas $\\text{Cu}$ makes $\\text{Fe}$ the corroding anode."
       },
       chem_liion: {
-        gradeUk: '9–11 клас · Сучасні хімічні джерела струму',
-        gradeEn: 'Grade 9–11 · Lithium-Ion Batteries',
-        analogyUk: 'Літій-іонний акумулятор смартфона чи електромобіля, це «крісло-гойдалка» або два багатоповерхові готелі (графіт і $\\text{CoO}_2$). Під час зарядки іони $\\text{Li}^+$ заселяються між поверхами графіту, а коли ти граєш на телефоні (розряд), вони переїжджають крізь мембрану в готель $\\text{CoO}_2$, віддаючи струм $3.7\\text{ В}$!',
-        analogyEn: 'A Li-ion battery works like two apartment buildings (layered graphite and $\\text{CoO}_2$): charging checks $\\text{Li}^+$ guests into the graphite floors, and discharging shuttles them across the separator into $\\text{CoO}_2$ while electrons power your phone at $3.7\\text{ V}$!',
-        hintUk: 'Під час розряду катіони $\\text{Li}^+$ деінтеркалюють із шарів графітового анода $\\text{Li}_x\\text{C}_6$ і вбудовуються в катод $\\text{Li}_{1-x}\\text{CoO}_2$.',
-        hintEn: 'During discharge, $\\text{Li}^+$ ions de-intercalate from the layered graphite anode ($\\text{Li}_x\\text{C}_6$) and intercalate into the $\\text{Li}_{1-x}\\text{CoO}_2$ cathode.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Сучасні хімічні джерела струму",
+        gradeEn: "Advanced Level · AP / University · Lithium-Ion Batteries",
+        analogyUk: "Літій-іонний акумулятор смартфона чи електромобіля, це «крісло-гойдалка» або два багатоповерхові готелі (графіт і $\\text{CoO}_2$). Під час зарядки іони $\\text{Li}^+$ заселяються між поверхами графіту, а коли ти граєш на телефоні (розряд), вони переїжджають крізь мембрану в готель $\\text{CoO}_2$, віддаючи струм $3.7\\text{ В}$.",
+        analogyEn: "A Li-ion battery works like two apartment buildings (layered graphite and $\\text{CoO}_2$): charging checks $\\text{Li}^+$ guests into the graphite floors, and discharging shuttles them across the separator into $\\text{CoO}_2$ while electrons power your phone at $3.7\\text{ V}$.",
+        hintUk: "Під час розряду катіони $\\text{Li}^+$ деінтеркалюють із шарів графітового анода $\\text{Li}_x\\text{C}_6$ і вбудовуються в катод $\\text{Li}_{1-x}\\text{CoO}_2$.",
+        hintEn: "During discharge, $\\text{Li}^+$ ions de-intercalate from the layered graphite anode ($\\text{Li}_x\\text{C}_6$) and intercalate into the $\\text{Li}_{1-x}\\text{CoO}_2$ cathode."
       },
       chem_sn2: {
-        gradeUk: '10–11 клас · Механізми органічних реакцій',
-        gradeEn: 'Grade 10–11 · Organic Reaction Mechanisms',
-        analogyUk: 'Уяви, що ти йдеш проти сильного вітру з парасолькою, і раптом порив вітру ззаду вивертає купол парасольки навиворіт! Саме так гідроксид-іон $\\text{HO}^-$ атакує молекулу $\\text{CH}_3\\text{Br}$ з тилу ($180^\\circ$), виштовхуючи бромід $\\text{Br}^-$ і вивертаючи три зв’язки $\\text{C–H}$ (інверсія Вальдена)!',
-        analogyEn: 'Picture an umbrella flipping inside-out in a strong gust of wind! In an $\\text{S}_{\\text{N}}2$ reaction, $\\text{HO}^-$ attacks carbon from the backside ($180^\\circ$), kicking out $\\text{Br}^-$ and inverting the three $\\text{C–H}$ bonds through a planar transition state (Walden inversion)!',
-        hintUk: 'Тильна атака нуклеофілу під кутом $180^\\circ$ проходить через плоский пентакоординований перехідний стан $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ з повною інверсією конфігурації.',
-        hintEn: 'Backside attack at $180^\\circ$ proceeds through a planar pentacoordinate transition state $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ with $100\\%$ Walden inversion.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Механізми органічних реакцій",
+        gradeEn: "Advanced Level · AP / University · Organic Reaction Mechanisms",
+        analogyUk: "Бімолекулярне нуклеофільне заміщення ($S_N2$) відбувається в одну стадію через узгоджений тригонально-біпірамідальний перехідний стан. Саме так гідроксид-іон $\\text{HO}^-$ атакує молекулу $\\text{CH}_3\\text{Br}$ з тилу ($180^\\circ$), виштовхуючи бромід $\\text{Br}^-$ і вивертаючи три зв’язки $\\text{C–H}$ (інверсія Вальдена).",
+        analogyEn: "In a physical model of an umbrella flipping inside-out in a strong gust of wind. In an $\\text{S}_{\\text{N}}2$ reaction, $\\text{HO}^-$ attacks carbon from the backside ($180^\\circ$), kicking out $\\text{Br}^-$ and inverting the three $\\text{C–H}$ bonds through a planar transition state (Walden inversion).",
+        hintUk: "Тильна атака нуклеофілу під кутом $180^\\circ$ проходить через плоский пентакоординований перехідний стан $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ з повною інверсією конфігурації.",
+        hintEn: "Backside attack at $180^\\circ$ proceeds through a planar pentacoordinate transition state $[\\text{HO}\\cdots\\text{CH}_3\\cdots\\text{Br}]^\\ddagger$ with $100\\%$ Walden inversion."
       },
       chem_ester: {
-        gradeUk: '10–11 клас · Естери та мічені атоми',
-        gradeEn: 'Grade 10–11 · Esters & Isotopic Tracers',
-        analogyUk: 'Звідки береться фруктовий аромат груші чи ананаса? Це естери, які народжуються зі спирту й кислоти! А щоб дізнатися, хто з них віддає атом Оксигену у воду, хіміки «пофарбували» Оксиген спирту важким ізотопом $^{18}\\text{O}$, і вся мітка залишилась усередині запашного естеру!',
-        analogyEn: 'Where do fruity pear and pineapple aromas come from? Esters made from an acid and an alcohol! By tagging the alcohol oxygen with heavy $^{18}\\text{O}$, chemists proved that the acid loses $\\text{–OH}$ while the $^{18}\\text{O}$ stays locked inside the fragrant ester!',
-        hintUk: 'Карбонова кислота відщеплює групу $\\text{–OH}$, а спирт, лише протон $\\text{–H}$, тому ізотоп $^{18}\\text{O}$ спирту повністю переходить в естер ($\\eta_{\\text{рівн}} = 66.7\\%$ при $1:1$ та $K_{eq}=4$).',
-        hintEn: 'The carboxylic acid loses $\\text{–OH}$ while the alcohol loses $\\text{–H}$, so the alcohol’s $^{18}\\text{O}$ label stays in the ester ($\\eta_{\\text{eq}} = 66.7\\%$ at $1:1$ with $K_{eq}=4$).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Естери та мічені атоми",
+        gradeEn: "Core Curriculum · Grade 10–11 · Esters & Isotopic Tracers",
+        analogyUk: "Звідки береться фруктовий аромат груші чи ананаса? Це естери, які народжуються зі спирту й кислоти. А щоб дізнатися, хто з них віддає атом Оксигену у воду, хіміки «пофарбували» Оксиген спирту важким ізотопом $^{18}\\text{O}$, і вся мітка залишилась усередині запашного естеру.",
+        analogyEn: "Where do fruity pear and pineapple aromas come from? Esters made from an acid and an alcohol. By tagging the alcohol oxygen with heavy $^{18}\\text{O}$, chemists proved that the acid loses $\\text{–OH}$ while the $^{18}\\text{O}$ stays locked inside the fragrant ester.",
+        hintUk: "Карбонова кислота відщеплює групу $\\text{–OH}$, а спирт, лише протон $\\text{–H}$, тому ізотоп $^{18}\\text{O}$ спирту повністю переходить в естер ($\\eta_{\\text{рівн}} = 66.7\\%$ при $1:1$ та $K_{eq}=4$).",
+        hintEn: "The carboxylic acid loses $\\text{–OH}$ while the alcohol loses $\\text{–H}$, so the alcohol’s $^{18}\\text{O}$ label stays in the ester ($\\eta_{\\text{eq}} = 66.7\\%$ at $1:1$ with $K_{eq}=4$)."
       },
       chem_biopol: {
-        gradeUk: '10–11 клас · Біохімія: Білки та ДНК',
-        gradeEn: 'Grade 10–11 · Biochemistry: Proteins & DNA',
-        analogyUk: 'Подвійна спіраль ДНК схожа на гвинтові сходи або застібку-блискавку, де сходинки тримаються на водневих «магнітах»: пара $\\text{A=T}$ тримається двома зв’язками, а пара $\\text{G}\\equiv\\text{C}$, трьома! Тому ділянки ДНК, багаті на $\\text{G}\\equiv\\text{C}$, витримують значно вищу температуру без розплітання.',
-        analogyEn: 'The DNA double helix is a twisted ladder whose rungs are held together by hydrogen-bond "magnets": $\\text{A=T}$ pairs have $2$ H-bonds while $\\text{G}\\equiv\\text{C}$ pairs have $3$ H-bonds! That extra bond makes $\\text{GC}$-rich DNA much harder to melt apart by heat.',
-        hintUk: 'За правилом Чаргаффа пара $\\text{A=T}$ утворює $2$ водневі зв’язки, а пара $\\text{G}\\equiv\\text{C}$, $3$ водневі зв’язки, тому температура плавлення $T_m$ зростає з часткою $\\text{GC}$.',
-        hintEn: 'Watson–Crick $\\text{A=T}$ pairs form $2$ H-bonds whereas $\\text{G}\\equiv\\text{C}$ pairs form $3$ H-bonds, raising the melting temperature $T_m$ with $\\%\\text{GC}$.'
-      }      ,
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Біохімія: Білки та ДНК",
+        gradeEn: "Advanced Level · AP / University · Biochemistry: Proteins & DNA",
+        analogyUk: "Подвійна спіраль ДНК схожа на гвинтові сходи або застібку-блискавку, де сходинки тримаються на водневих «магнітах»: пара $\\text{A=T}$ тримається двома зв’язками, а пара $\\text{G}\\equiv\\text{C}$, трьома. Тому ділянки ДНК, багаті на $\\text{G}\\equiv\\text{C}$, витримують значно вищу температуру без розплітання.",
+        analogyEn: "The DNA double helix is a twisted ladder whose rungs are held together by hydrogen-bond \"magnets\": $\\text{A=T}$ pairs have $2$ H-bonds while $\\text{G}\\equiv\\text{C}$ pairs have $3$ H-bonds. That extra bond makes $\\text{GC}$-rich DNA much harder to melt apart by heat.",
+        hintUk: "За правилом Чаргаффа пара $\\text{A=T}$ утворює $2$ водневі зв’язки, а пара $\\text{G}\\equiv\\text{C}$, $3$ водневі зв’язки, тому температура плавлення $T_m$ зростає з часткою $\\text{GC}$.",
+        hintEn: "Watson–Crick $\\text{A=T}$ pairs form $2$ H-bonds whereas $\\text{G}\\equiv\\text{C}$ pairs form $3$ H-bonds, raising the melting temperature $T_m$ with $\\%\\text{GC}$."
+      },
       bio_eukaryote: {
-        gradeUk: '9–10 клас · Цитологія: будова клітини',
-        gradeEn: 'Grade 9–10 · Cytology: Cell Structure',
-        analogyUk: 'Уяви клітину як високотехнологічний мегаполіс: ядро, це головний архів із кресленнями ДНК, мітохондрії, електростанції, що виробляють «енергетичну валюту» АТФ, ЕПС і апарат Гольджі, фабрики та поштовий термінал пакування білків, а лізосоми, завод переробки відходів! Коли місто росте, об’єм квартир ($V \\propto R^3$) росте швидше за довжину міської стіни ($S \\propto R^2$), тому без внутрішніх магістралей і фабрик велика клітина задихнулася б.',
-        analogyEn: 'Think of a eukaryotic cell as a bustling metropolis: the nucleus is City Hall storing DNA blueprints, mitochondria are power plants minting ATP energy currency, the ER and Golgi are factories and shipping depots, and lysosomes are recycling centers! As radius $R$ grows, volume ($R^3$) outpaces outer wall area ($R^2$), so internal membranes are essential.',
-        hintUk: 'Для кулі радіуса $R$ відношення площі до об’єму дорівнює $S/V = 3/R$: при збільшенні $R$ удвічі питома площа зовнішньої мембрани падає вдвічі, тому клітина розвиває внутрішні мембрани ЕПС і крист.',
-        hintEn: 'For a sphere of radius $R$, the surface-to-volume ratio is $S/V = 3/R$: doubling $R$ halves relative surface area, requiring internal ER and cristae membranes.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас · Цитологія: будова клітини",
+        gradeEn: "Core Curriculum · Grade 9–10 · Cytology: Cell Structure",
+        analogyUk: "Еукаріотична клітина функціонує як компартменталізована біохімічна система: ядро, це головний архів із кресленнями ДНК, мітохондрії, електростанції, що виробляють «енергетичну валюту» АТФ, ЕПС і апарат Гольджі, фабрики та поштовий термінал пакування білків, а лізосоми, завод переробки відходів. Коли місто росте, об’єм квартир ($V \\propto R^3$) росте швидше за довжину міської стіни ($S \\propto R^2$), тому без внутрішніх магістралей і фабрик велика клітина задихнулася б.",
+        analogyEn: "This system functions as a eukaryotic cell as a bustling metropolis: the nucleus is City Hall storing DNA blueprints, mitochondria are power plants minting ATP energy currency, the ER and Golgi are factories and shipping depots, and lysosomes are recycling centers. As radius $R$ grows, volume ($R^3$) outpaces outer wall area ($R^2$), so internal membranes are essential.",
+        hintUk: "Для кулі радіуса $R$ відношення площі до об’єму дорівнює $S/V = 3/R$: при збільшенні $R$ удвічі питома площа зовнішньої мембрани падає вдвічі, тому клітина розвиває внутрішні мембрани ЕПС і крист.",
+        hintEn: "For a sphere of radius $R$, the surface-to-volume ratio is $S/V = 3/R$: doubling $R$ halves relative surface area, requiring internal ER and cristae membranes."
       },
       bio_mitochondria: {
-        gradeUk: '10–11 клас · Біоенергетика та АТФ-синтаза',
-        gradeEn: 'Grade 10–11 · Bioenergetics & ATP Synthase',
-        analogyUk: 'Внутрішня мембрана мітохондрії працює як гребля гідроелектростанції! Дихальні комплекси I–IV, наче насоси, закачують протони $\\text{H}^+$ у «верхнє водосховище» (міжмембранний простір), а АТФ-синтаза, це справжня нано-турбіна, яка крутиться від потоку протонів і штампує молекули АТФ. Якщо ж відкрити обвідний шлюз (білок бурого жиру термогенін UCP1), вода піде в обхід турбіни, зігріваючи організм теплом!',
-        analogyEn: 'The inner mitochondrial membrane works like a hydroelectric dam! Respiratory complexes pump $\\text{H}^+$ protons into an upper reservoir, and $\\text{F}_0\\text{F}_1$-ATP synthase is a rotary nano-turbine spinning as protons rush back to mint ATP. Opening a bypass spillway (uncoupling protein UCP1 in brown fat) lets protons leak without spinning the turbine, generating pure body heat!',
-        hintUk: 'При шунтуванні мембрани протонофором або білком UCP1 протонний градієнт $\\Delta p$ падає, синтез АТФ зменшується, а енергія окиснення НАДН переходить у тепло.',
-        hintEn: 'When protonophores or UCP1 shunt protons across the membrane, $\\Delta p$ drops, ATP synthesis decreases, and redox energy is released as heat.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Біоенергетика та АТФ-синтаза",
+        gradeEn: "Core Curriculum · Grade 10–11 · Bioenergetics & ATP Synthase",
+        analogyUk: "Внутрішня мембрана мітохондрії працює як гребля гідроелектростанції. Дихальні комплекси I–IV, наче насоси, закачують протони $\\text{H}^+$ у «верхнє водосховище» (міжмембранний простір), а АТФ-синтаза, це справжня нано-турбіна, яка крутиться від потоку протонів і штампує молекули АТФ. Якщо ж відкрити обвідний шлюз (білок бурого жиру термогенін UCP1), вода піде в обхід турбіни, зігріваючи організм теплом.",
+        analogyEn: "The inner mitochondrial membrane works like a hydroelectric dam. Respiratory complexes pump $\\text{H}^+$ protons into an upper reservoir, and $\\text{F}_0\\text{F}_1$-ATP synthase is a rotary nano-turbine spinning as protons rush back to mint ATP. Opening a bypass spillway (uncoupling protein UCP1 in brown fat) lets protons leak without spinning the turbine, generating pure body heat.",
+        hintUk: "При шунтуванні мембрани протонофором або білком UCP1 протонний градієнт $\\Delta p$ падає, синтез АТФ зменшується, а енергія окиснення НАДН переходить у тепло.",
+        hintEn: "When protonophores or UCP1 shunt protons across the membrane, $\\Delta p$ drops, ATP synthesis decreases, and redox energy is released as heat."
       },
       bio_mitosis: {
-        gradeUk: '9–10 клас · Мітоз і клітинний цикл',
-        gradeEn: 'Grade 9–10 · Mitosis & Cell Cycle',
-        analogyUk: 'Перед поділом клітина в $S$-періоді робить ксерокопію кожної книги-хромосоми і скріплює оригінал із копією білковою скріпкою (когезином) у формі літери X ($2n4c$). У метафазі всі книги викладають рівно по центру столу, а в анафазі скріпки розрізають і нитки веретена розтягують по одному примірнику кожної книги у дві нові кімнати ($2n2c$)!',
-        analogyEn: 'Before mitosis, the cell photocopies every chromosome book during S-phase and staples the twin copies together into an X-shape ($2n4c$). In metaphase they line up along the equator, and in anaphase the staple is cut so spindle fibers pull one complete set ($2n2c$) to each daughter pole!',
-        hintUk: 'У метафазі кожна з $2n$ хромосом містить $2$ сестринські хроматиди ($2n4c$), а в анафазі після розділення центромер біля кожного полюса опиняється повноцінний диплоїдний набір $2n2c$.',
-        hintEn: 'At metaphase the cell is $2n4c$ (two sister chromatids per chromosome); in anaphase, separated chromatids form a $2n2c$ diploid set at each pole.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–10 клас · Мітоз і клітинний цикл",
+        gradeEn: "Core Curriculum · Grade 9–10 · Mitosis & Cell Cycle",
+        analogyUk: "Перед поділом клітина в $S$-періоді робить ксерокопію кожної книги-хромосоми і скріплює оригінал із копією білковою скріпкою (когезином) у формі літери X ($2n4c$). У метафазі всі книги викладають рівно по центру столу, а в анафазі скріпки розрізають і нитки веретена розтягують по одному примірнику кожної книги у дві нові кімнати ($2n2c$).",
+        analogyEn: "Before mitosis, the cell photocopies every chromosome book during S-phase and staples the twin copies together into an X-shape ($2n4c$). In metaphase they line up along the equator, and in anaphase the staple is cut so spindle fibers pull one complete set ($2n2c$) to each daughter pole.",
+        hintUk: "У метафазі кожна з $2n$ хромосом містить $2$ сестринські хроматиди ($2n4c$), а в анафазі після розділення центромер біля кожного полюса опиняється повноцінний диплоїдний набір $2n2c$.",
+        hintEn: "At metaphase the cell is $2n4c$ (two sister chromatids per chromosome); in anaphase, separated chromatids form a $2n2c$ diploid set at each pole."
       },
       bio_replication: {
-        gradeUk: '10–11 клас · Реплікація ДНК',
-        gradeEn: 'Grade 10–11 · DNA Replication',
-        analogyUk: 'Уяви дорожню бригаду (ДНК-полімеразу), яка вміє класти асфальт лише вперед (у напрямку $5\'\\to 3\'$). На одній смузі (ведучий ланцюг) вона їде слідом за бульдозером-геліказою без зупинки. А на зустрічній смузі (відстаючий ланцюг) їй доводиться щоразу проїжджати вперед і класти короткі ділянки назад (фрагменти Оказакі), які потім зшиває лігаза!',
-        analogyEn: 'Imagine a paving crew (DNA polymerase) that can only lay asphalt in one direction ($5\'\\to 3\'$). On the leading lane it follows the helicase bulldozer continuously, while on the antiparallel lagging lane it must repeatedly hop ahead and pave short backward sections (Okazaki fragments) stitched together by DNA ligase!',
-        hintUk: 'Обидва дочірні ланцюги синтезуються в напрямку $5\'\\to 3\'$ (ведучий безперервно, відстаючий фрагментами Оказакі), а після $k=2$ поколінь у досліді Мезельсона–Сталя частка гібридних молекул становить $2/2^2 = 50\\%$.',
-        hintEn: 'Both strands grow $5\'\\to 3\'$ (leading continuously, lagging via Okazaki fragments), and after $k=2$ generations the hybrid $^{15}\\text{N}/^{14}\\text{N}$ fraction is $2/2^2 = 50\\%$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Реплікація ДНК",
+        gradeEn: "Core Curriculum · Grade 10–11 · DNA Replication",
+        analogyUk: "Фермент ДНК-полімераза здатний приєднувати нуклеотиди виключно до вільного $3'$-OH кінця у напрямку $5'\\to 3'$. На одній смузі (ведучий ланцюг) вона їде слідом за бульдозером-геліказою без зупинки. А на зустрічній смузі (відстаючий ланцюг) їй доводиться щоразу проїжджати вперед і класти короткі ділянки назад (фрагменти Оказакі), які потім зшиває лігаза.",
+        analogyEn: "Consider a paving crew (DNA polymerase) that can only lay asphalt in one direction ($5'\\to 3'$). On the leading lane it follows the helicase bulldozer continuously, while on the antiparallel lagging lane it must repeatedly hop ahead and pave short backward sections (Okazaki fragments) stitched together by DNA ligase.",
+        hintUk: "Обидва дочірні ланцюги синтезуються в напрямку $5'\\to 3'$ (ведучий безперервно, відстаючий фрагментами Оказакі), а після $k=2$ поколінь у досліді Мезельсона–Сталя частка гібридних молекул становить $2/2^2 = 50\\%$.",
+        hintEn: "Both strands grow $5'\\to 3'$ (leading continuously, lagging via Okazaki fragments), and after $k=2$ generations the hybrid $^{15}\\text{N}/^{14}\\text{N}$ fraction is $2/2^2 = 50\\%$."
       },
       bio_ribosome: {
-        gradeUk: '10–11 клас · Генетичний код і трансляція',
-        gradeEn: 'Grade 10–11 · Genetic Code & Translation',
-        analogyUk: 'Рибосома, це 3D-принтер білків, який читає перфострічку мРНК по три літери за крок (триплетний кодон). Молекули тРНК працюють як кур’єри: знизу вони звіряють трилітерний код (антикодон), а зверху приносять потрібну амінокислоту. Коли ж принтер натрапляє на знак «КІНЕЦЬ» (стоп-кодон UAA, UAG чи UGA), амінокислота не додається і готовий білок відпускається!',
-        analogyEn: 'The ribosome is a molecular 3D printer reading an mRNA tape three letters at a time (a triplet codon). tRNA couriers match their anticodon to each triplet and add an amino acid until the ribosome hits a STOP codon (UAA, UAG, UGA), which adds no amino acid and releases the finished protein!',
-        hintUk: 'Кожна з $N_{\\text{аа}}$ амінокислот кодується $3$ нуклеотидами плюс $3$ нуклеотиди стоп-кодону ($3N_{\\text{аа}}+3 = 303$ для $100$ амінокислот), а витрата енергії становить $4N_{\\text{аа}} = 400$ макроергів АТФ/ГТФ.',
-        hintEn: 'Encoding $N_{\\text{aa}}$ amino acids plus one stop codon requires $3N_{\\text{aa}}+3$ nucleotides ($303\\text{ nt}$ for $100\\text{ aa}$) and $\\approx 4N_{\\text{aa}} = 400$ ATP/GTP equivalents.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Генетичний код і трансляція",
+        gradeEn: "Core Curriculum · Grade 10–11 · Genetic Code & Translation",
+        analogyUk: "Рибосома, це 3D-принтер білків, який читає перфострічку мРНК по три літери за крок (триплетний кодон). Молекули тРНК працюють як кур’єри: знизу вони звіряють трилітерний код (антикодон), а зверху приносять потрібну амінокислоту. Коли ж принтер натрапляє на знак «КІНЕЦЬ» (стоп-кодон UAA, UAG чи UGA), амінокислота не додається і готовий білок відпускається.",
+        analogyEn: "The ribosome is a molecular 3D printer reading an mRNA tape three letters at a time (a triplet codon). tRNA couriers match their anticodon to each triplet and add an amino acid until the ribosome hits a STOP codon (UAA, UAG, UGA), which adds no amino acid and releases the finished protein.",
+        hintUk: "Кожна з $N_{\\text{аа}}$ амінокислот кодується $3$ нуклеотидами плюс $3$ нуклеотиди стоп-кодону ($3N_{\\text{аа}}+3 = 303$ для $100$ амінокислот), а витрата енергії становить $4N_{\\text{аа}} = 400$ макроергів АТФ/ГТФ.",
+        hintEn: "Encoding $N_{\\text{aa}}$ amino acids plus one stop codon requires $3N_{\\text{aa}}+3$ nucleotides ($303\\text{ nt}$ for $100\\text{ aa}$) and $\\approx 4N_{\\text{aa}} = 400$ ATP/GTP equivalents."
       },
       bio_mendel: {
-        gradeUk: '9–11 клас · Генетика Менделя та популяцій',
-        gradeEn: 'Grade 9–11 · Mendelian & Population Genetics',
-        analogyUk: 'Якщо в мішку лежить $60\\%$ синіх кульок ($p=0.6$) і $40\\%$ жовтих ($q=0.4$), і ми навмання витягуємо пару кульок, то шанс витягнути дві сині становить $p^2 = 0.36$, дві жовті, $q^2 = 0.16$, а різнокольорову пару (синю+жовту або жовту+синю), $2pq = 0.48$! Саме так працює закон Гарді–Вайнберга для генів у популяції.',
-        analogyEn: 'If a bag holds $60\\%$ blue marbles ($p=0.6$) and $40\\%$ yellow marbles ($q=0.4$), drawing two at random gives two blue with probability $p^2 = 0.36$, two yellow with $q^2 = 0.16$, and a mixed pair in two ways with $2pq = 0.48$! That binomial law is Hardy–Weinberg equilibrium.',
-        hintUk: 'З умови $q^2 = 0.16$ знаходимо $q = \\sqrt{0.16} = 0.40$, звідки $p = 1 - 0.40 = 0.60$, а частка гетерозигот $Aa$ дорівнює $2pq = 2 \\cdot 0.60 \\cdot 0.40 = 0.48$ ($48\\%$).',
-        hintEn: 'From $q^2 = 0.16$ we get $q = \\sqrt{0.16} = 0.40$, so $p = 1 - 0.40 = 0.60$ and heterozygous carriers $2pq = 2(0.60)(0.40) = 0.48$ ($48\\%$).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Генетика Менделя та популяцій",
+        gradeEn: "Core Curriculum · Grade 9–11 · Mendelian & Population Genetics",
+        analogyUk: "Якщо в мішку лежить $60\\%$ синіх кульок ($p=0.6$) і $40\\%$ жовтих ($q=0.4$), і ми навмання витягуємо пару кульок, то шанс витягнути дві сині становить $p^2 = 0.36$, дві жовті, $q^2 = 0.16$, а різнокольорову пару (синю+жовту або жовту+синю), $2pq = 0.48$. Саме так працює закон Гарді–Вайнберга для генів у популяції.",
+        analogyEn: "If a bag holds $60\\%$ blue marbles ($p=0.6$) and $40\\%$ yellow marbles ($q=0.4$), drawing two at random gives two blue with probability $p^2 = 0.36$, two yellow with $q^2 = 0.16$, and a mixed pair in two ways with $2pq = 0.48$. That binomial law is Hardy–Weinberg equilibrium.",
+        hintUk: "З умови $q^2 = 0.16$ знаходимо $q = \\sqrt{0.16} = 0.40$, звідки $p = 1 - 0.40 = 0.60$, а частка гетерозигот $Aa$ дорівнює $2pq = 2 \\cdot 0.60 \\cdot 0.40 = 0.48$ ($48\\%$).",
+        hintEn: "From $q^2 = 0.16$ we get $q = \\sqrt{0.16} = 0.40$, so $p = 1 - 0.40 = 0.60$ and heterozygous carriers $2pq = 2(0.60)(0.40) = 0.48$ ($48\\%$)."
       },
       bio_membrane: {
-        gradeUk: '10–11 клас · Біофізика мембран',
-        gradeEn: 'Grade 10–11 · Membrane Biophysics',
-        analogyUk: 'Натрій-калієвий насос працює як турнікет-шлюз на вході в клуб, який за кожну витрачену монетку АТФ виставляє на вулицю $3$ відвідувачів у помаранчевих куртках ($\\text{Na}^+$) і впускає всередину лише $2$ у зелених ($\text{K}^+$). Оскільки позитивних зарядів виходить більше, а калій ще й просочується назад через «канали витоку», всередині клітини підтримується негативний заряд $-70\\text{ мВ}$!',
-        analogyEn: 'The $\\text{Na}^+/\\text{K}^+$ pump acts like a revolving door that spends $1\\,\\text{ATP}$ coin to eject $3\\,\\text{Na}^+$ ions outside while letting only $2\\,\\text{K}^+$ ions inside. Coupled with outward $\\text{K}^+$ diffusion through open leak channels, this keeps the cell interior negatively charged at $-70\\text{ mV}$!',
-        hintUk: 'За 1 молекулу АТФ насос виводить $3\\,\\text{Na}^+$ назовні і вводить $2\\,\\text{K}^+$ усередину, а у стані спокою проникність мембрани для $\\text{K}^+$ значно перевищує проникність для $\\text{Na}^+$.',
-        hintEn: 'Per ATP hydrolyzed, the pump exports $3\\,\\text{Na}^+$ and imports $2\\,\\text{K}^+$, while resting permeability is dominated by $\\text{K}^+$ leak channels ($P_{\\text{K}} \\gg P_{\\text{Na}}$).'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Біофізика мембран",
+        gradeEn: "Core Curriculum · Grade 10–11 · Membrane Biophysics",
+        analogyUk: "Натрій-калієвий насос працює як турнікет-шлюз на вході в клуб, який за кожну витрачену монетку АТФ виставляє на вулицю $3$ відвідувачів у помаранчевих куртках ($\\text{Na}^+$) і впускає всередину лише $2$ у зелених ($ ext{K}^+$). Оскільки позитивних зарядів виходить більше, а калій ще й просочується назад через «канали витоку», всередині клітини підтримується негативний заряд $-70\\text{ мВ}$.",
+        analogyEn: "The $\\text{Na}^+/\\text{K}^+$ pump acts like a revolving door that spends $1\\,\\text{ATP}$ coin to eject $3\\,\\text{Na}^+$ ions outside while letting only $2\\,\\text{K}^+$ ions inside. Coupled with outward $\\text{K}^+$ diffusion through open leak channels, this keeps the cell interior negatively charged at $-70\\text{ mV}$.",
+        hintUk: "За 1 молекулу АТФ насос виводить $3\\,\\text{Na}^+$ назовні і вводить $2\\,\\text{K}^+$ усередину, а у стані спокою проникність мембрани для $\\text{K}^+$ значно перевищує проникність для $\\text{Na}^+$.",
+        hintEn: "Per ATP hydrolyzed, the pump exports $3\\,\\text{Na}^+$ and imports $2\\,\\text{K}^+$, while resting permeability is dominated by $\\text{K}^+$ leak channels ($P_{\\text{K}} \\gg P_{\\text{Na}}$)."
       },
       bio_neuron: {
-        gradeUk: '10–11 клас · Нейрон і потенціал дії',
-        gradeEn: 'Grade 10–11 · Neuron Action Potential',
-        analogyUk: 'Безмієліновий аксон схожий на бікфордів шнур, де вогник біжить послідовно міліметр за міліметром. А мієлінізований аксон укритий ізоляцією, і відкриті лише маленькі віконця — перехвати Ранв’є: електричний імпульс, наче кенгуру, перестрибує з одного перехвату на інший (сальтаторно) у десятки разів швидше!',
-        analogyEn: 'An unmyelinated axon burns slowly like a continuous fuse, whereas a myelinated axon is wrapped in insulation with small gaps (nodes of Ranvier) so the electrical spike leaps kangaroo-style from node to node (saltatory conduction) ten times faster!',
-        hintUk: 'Деполяризація зумовлена входом $\\text{Na}^+$, реполяризація, виходом $\\text{K}^+$, а мієлінова оболонка зменшує ємність і витік, забезпечуючи сальтаторне проведення між перехватами Ранв’є.',
-        hintEn: 'Depolarization is driven by $\\text{Na}^+$ influx, repolarization by $\\text{K}^+$ efflux, and myelin enables rapid saltatory conduction between nodes of Ranvier.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 10–11 клас · Нейрон і потенціал дії",
+        gradeEn: "Core Curriculum · Grade 10–11 · Neuron Action Potential",
+        analogyUk: "Безмієліновий аксон схожий на бікфордів шнур, де вогник біжить послідовно міліметр за міліметром. А мієлінізований аксон укритий ізоляцією, і відкриті лише маленькі віконця — перехвати Ранв’є: електричний імпульс, наче кенгуру, перестрибує з одного перехвату на інший (сальтаторно) у десятки разів швидше.",
+        analogyEn: "An unmyelinated axon burns slowly like a continuous fuse, whereas a myelinated axon is wrapped in insulation with small gaps (nodes of Ranvier) so the electrical spike leaps kangaroo-style from node to node (saltatory conduction) ten times faster.",
+        hintUk: "Деполяризація зумовлена входом $\\text{Na}^+$, реполяризація, виходом $\\text{K}^+$, а мієлінова оболонка зменшує ємність і витік, забезпечуючи сальтаторне проведення між перехватами Ранв’є.",
+        hintEn: "Depolarization is driven by $\\text{Na}^+$ influx, repolarization by $\\text{K}^+$ efflux, and myelin enables rapid saltatory conduction between nodes of Ranvier."
       },
       bio_sarcomere: {
-        gradeUk: '9–11 клас · Біомеханіка м’язів',
-        gradeEn: 'Grade 9–11 · Muscle Biomechanics',
-        analogyUk: 'Уяви команду веслярів у човні (міозинові голівки), які підтягують себе вздовж двох канатів (ниток актину). Самі весла й канати не стають коротшими, але стінки човна (Z-диски) зближуються! І що легший вантаж за кормою ($F \\to 0$), то швидше веслярі можуть гребти ($v \\to v_{\\max}$ за законом Гілла).',
-        analogyEn: 'Picture a crew of rowers (myosin heads) pulling along two ropes (actin filaments). Neither the oars nor the ropes shrink, yet the boat walls (Z-discs) are drawn together! And the lighter the towed load ($F \\to 0$), the faster they pull ($v \\to v_{\\max}$ by Hill’s law).',
-        hintUk: 'За рівнянням Гілла максимальна швидкість $v_{\\max}$ досягається без навантаження ($F=0$), максимальна сила $F_0$ — при $v=0$, а при перерозтягненні саркомера зменшується зона перекриття ниток актину й міозину.',
-        hintEn: 'By Hill’s equation, $v_{\\max}$ occurs at zero load ($F=0$), isometric force $F_0$ at $v=0$, and overstretching reduces actin–myosin cross-bridge overlap.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Біомеханіка м’язів",
+        gradeEn: "Advanced Level · AP / University · Muscle Biomechanics",
+        analogyUk: "Згідно з моделлю ковзних ниток Гакслі скорочення м’язового волокна відбувається за рахунок циклічного зчеплення міозинових голівок з актиновими філаментами. Самі весла й канати не стають коротшими, але стінки човна (Z-диски) зближуються. І що легший вантаж за кормою ($F \\to 0$), то швидше веслярі можуть гребти ($v \\to v_{\\max}$ за законом Гілла).",
+        analogyEn: "In a physical model of a crew of rowers (myosin heads) pulling along two ropes (actin filaments). Neither the oars nor the ropes shrink, yet the boat walls (Z-discs) are drawn together. And the lighter the towed load ($F \\to 0$), the faster they pull ($v \\to v_{\\max}$ by Hill’s law).",
+        hintUk: "За рівнянням Гілла максимальна швидкість $v_{\\max}$ досягається без навантаження ($F=0$), максимальна сила $F_0$ — при $v=0$, а при перерозтягненні саркомера зменшується зона перекриття ниток актину й міозину.",
+        hintEn: "By Hill’s equation, $v_{\\max}$ occurs at zero load ($F=0$), isometric force $F_0$ at $v=0$, and overstretching reduces actin–myosin cross-bridge overlap."
       },
       bio_photosynthesis: {
-        gradeUk: '9–11 клас · Фотосинтез і цикл Кальвіна',
-        gradeEn: 'Grade 9–11 · Photosynthesis & Calvin Cycle',
-        analogyUk: 'Хлоропласт працює у дві зміни: «сонячна панель» тилакоїда ловить червоні й сині промені світла, розщеплює воду (випускаючи кисень $\\text{O}_2$, яким ми дихаємо!) і заряджає батарейки АТФ та $\\text{НАДФ}\\cdot\\text{H}$. А в стромі «цукровий завод» циклу Кальвіна витрачає рівно $18$ батарейок АТФ і $12$ $\\text{НАДФ}\\cdot\\text{H}$, щоб зібрати з $6$ молекул $\\text{CO}_2$ одну солодку молекулу глюкози!',
-        analogyEn: 'A chloroplast runs a two-stage factory: thylakoid solar panels capture red and blue photons, split water (releasing the $\\text{O}_2$ we breathe!), and charge $\\text{ATP}$ and $\\text{NADPH}$ batteries. Then the Calvin cycle sugar mill spends $18\\,\\text{ATP}$ and $12\\,\\text{NADPH}$ to assemble $6\\,\\text{CO}_2$ into one glucose molecule!',
-        hintUk: 'Увесь вільний кисень $\\text{O}_2$ утворюється при фотолізі води у фотосистемі ІІ, а на синтез 1 молекули глюкози з $6\\,\\text{CO}_2$ цикл Кальвіна витрачає $18\\,\\text{АТФ}$ та $12\\,\\text{НАДФ}\\cdot\\text{H}$.',
-        hintEn: 'All evolved $\\text{O}_2$ comes from water photolysis at PSII, and fixing $6\\,\\text{CO}_2$ into 1 glucose in the Calvin cycle consumes $18\\,\\text{ATP}$ and $12\\,\\text{NADPH}$.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Фотосинтез і цикл Кальвіна",
+        gradeEn: "Core Curriculum · Grade 9–11 · Photosynthesis & Calvin Cycle",
+        analogyUk: "Хлоропласт працює у дві зміни: «сонячна панель» тилакоїда ловить червоні й сині промені світла, розщеплює воду (випускаючи кисень $\\text{O}_2$, яким ми дихаємо. ) і заряджає батарейки АТФ та $\\text{НАДФ}\\cdot\\text{H}$. А в стромі «цукровий завод» циклу Кальвіна витрачає рівно $18$ батарейок АТФ і $12$ $\\text{НАДФ}\\cdot\\text{H}$, щоб зібрати з $6$ молекул $\\text{CO}_2$ одну солодку молекулу глюкози.",
+        analogyEn: "A chloroplast runs a two-stage factory: thylakoid solar panels capture red and blue photons, split water (releasing the $\\text{O}_2$ we breathe. ), and charge $\\text{ATP}$ and $\\text{NADPH}$ batteries. Then the Calvin cycle sugar mill spends $18\\,\\text{ATP}$ and $12\\,\\text{NADPH}$ to assemble $6\\,\\text{CO}_2$ into one glucose molecule.",
+        hintUk: "Увесь вільний кисень $\\text{O}_2$ утворюється при фотолізі води у фотосистемі ІІ, а на синтез 1 молекули глюкози з $6\\,\\text{CO}_2$ цикл Кальвіна витрачає $18\\,\\text{АТФ}$ та $12\\,\\text{НАДФ}\\cdot\\text{H}$.",
+        hintEn: "All evolved $\\text{O}_2$ comes from water photolysis at PSII, and fixing $6\\,\\text{CO}_2$ into 1 glucose in the Calvin cycle consumes $18\\,\\text{ATP}$ and $12\\,\\text{NADPH}$."
       },
       bio_hemo: {
-        gradeUk: '10–11 клас · Дихання та ефект Бора',
-        gradeEn: 'Grade 10–11 · Respiration & Bohr Effect',
-        analogyUk: 'Гемоглобін, це розумний чотиримісний «кисневий таксі-фургон» ($4$ геми $\\text{Fe}^{2+}$). Щойно в легенях сідає перший пасажир $\\text{O}_2$, двері для решти трьох відчиняються значно ширше (кооперативність!). А коли фургон приїжджає у м’яз, що важко працює і виділяє кислоту ($\text{H}^+$) та $\\text{CO}_2$, ці сигнали (ефект Бора) змушують гемоглобін миттєво висадити пасажирів $\\text{O}_2$ саме там, де вони найпотрібніші!',
-        analogyEn: 'Hemoglobin is a smart four-seat oxygen taxi ($4\\,\\text{Fe}^{2+}$ hemes). Once the first $\\text{O}_2$ passenger boards in the lungs, the remaining doors swing wide open (cooperativity!). When the taxi reaches an exercising muscle rich in $\\text{H}^+$ and $\\text{CO}_2$, the Bohr effect prompts it to unload $\\text{O}_2$ right where it is needed most!',
-        hintUk: 'Зниження $\\text{pH}$ і ріст $\\text{CO}_2$ стабілізують дезокси-форму (T-стан), збільшуючи $P_{50}$ і зсуваючи криву праворуч, що посилює віддачу кисню тканинам.',
-        hintEn: 'Lower $\\text{pH}$ and higher $\\text{CO}_2$ stabilize the T-state, raising $P_{50}$ (rightward shift) and enhancing $\\text{O}_2$ release to active tissues.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Дихання та ефект Бора",
+        gradeEn: "Advanced Level · AP / University · Respiration & Bohr Effect",
+        analogyUk: "Гемоглобін, це розумний чотиримісний «кисневий таксі-фургон» ($4$ геми $\\text{Fe}^{2+}$). Щойно в легенях сідає перший пасажир $\\text{O}_2$, двері для решти трьох відчиняються значно ширше (кооперативність. ). А коли фургон приїжджає у м’яз, що важко працює і виділяє кислоту ($ ext{H}^+$) та $\\text{CO}_2$, ці сигнали (ефект Бора) змушують гемоглобін миттєво висадити пасажирів $\\text{O}_2$ саме там, де вони найпотрібніші.",
+        analogyEn: "Hemoglobin is a smart four-seat oxygen taxi ($4\\,\\text{Fe}^{2+}$ hemes). Once the first $\\text{O}_2$ passenger boards in the lungs, the remaining doors swing wide open (cooperativity. ). When the taxi reaches an exercising muscle rich in $\\text{H}^+$ and $\\text{CO}_2$, the Bohr effect prompts it to unload $\\text{O}_2$ right where it is needed most.",
+        hintUk: "Зниження $\\text{pH}$ і ріст $\\text{CO}_2$ стабілізують дезокси-форму (T-стан), збільшуючи $P_{50}$ і зсуваючи криву праворуч, що посилює віддачу кисню тканинам.",
+        hintEn: "Lower $\\text{pH}$ and higher $\\text{CO}_2$ stabilize the T-state, raising $P_{50}$ (rightward shift) and enhancing $\\text{O}_2$ release to active tissues."
       },
       bio_lotka: {
-        gradeUk: '11 клас · Екологія: модель Лотки–Вольтерри',
-        gradeEn: 'Grade 11 · Ecology: Lotka–Volterra Model',
-        analogyUk: 'Уяви зайців і рисей у тайзі: коли зайців стає багато, рисям легко полювати і їхня популяція починає стрімко рости із запізненням на чверть циклу. Але коли рисей стає забагато, чисельність зайців падає, за нею скорочується і кількість рисей, і природна хвиля запускається знову навколо точки рівноваги $(x^*, y^*)$!',
-        analogyEn: 'Picture snowshoe hares and lynx in the boreal forest: a boom in hares provides abundant food so lynx numbers surge a quarter-cycle later. Overpredation then drives hare numbers down, causing a subsequent lynx decline that lets hares recover in an endless ecological wave around $(x^*, y^*)$!',
-        hintUk: 'Стаціонарна точка рівноваги дорівнює $x^* = \\gamma/\\delta$ та $y^* = \\alpha/\\beta$, а максимуми чисельності хижаків завжди запізнюються приблизно на чверть періоду відносно максимумів жертв.',
-        hintEn: 'Equilibrium occurs at $x^* = \\gamma/\\delta$ and $y^* = \\alpha/\\beta$, with predator population peaks lagging behind prey peaks by one-quarter period.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Екологія: модель Лотки–Вольтерри",
+        gradeEn: "Advanced Level · AP / University · Ecology: Lotka–Volterra Model",
+        analogyUk: "Динаміка трофічної системи «хижак — жертва» в екології описується фазовими коливаннями моделі Лотки–Вольтерри: коли зайців стає багато, рисям легко полювати і їхня популяція починає стрімко рости із запізненням на чверть циклу. Але коли рисей стає забагато, чисельність зайців падає, за нею скорочується і кількість рисей, і природна хвиля запускається знову навколо точки рівноваги $(x^*, y^*)$.",
+        analogyEn: "In a physical model of snowshoe hares and lynx in the boreal forest: a boom in hares provides abundant food so lynx numbers surge a quarter-cycle later. Overpredation then drives hare numbers down, causing a subsequent lynx decline that lets hares recover in an endless ecological wave around $(x^*, y^*)$.",
+        hintUk: "Стаціонарна точка рівноваги дорівнює $x^* = \\gamma/\\delta$ та $y^* = \\alpha/\\beta$, а максимуми чисельності хижаків завжди запізнюються приблизно на чверть періоду відносно максимумів жертв.",
+        hintEn: "Equilibrium occurs at $x^* = \\gamma/\\delta$ and $y^* = \\alpha/\\beta$, with predator population peaks lagging behind prey peaks by one-quarter period."
       },
       bio_meiosis: {
-        gradeUk: '9–11 клас · Мейоз і кросинговер',
-        gradeEn: 'Grade 9–11 · Meiosis & Crossing-Over',
-        analogyUk: 'Уяви дві колоди карт одного набору, синю (від тата) і червону (від мами). У профазі І мейозу ці колоди прикладають одна до одної (кон’югація) і обмінюють частину карт на однакових позиціях (кросинговер у хіазмах)! Завдяки цьому кожна з чотирьох гамет ($1n1c$) отримує неповторну комбінацію генів.',
-        analogyEn: 'Imagine two matching decks of cards, one blue (paternal) and one red (maternal). In Prophase I of meiosis, the two decks pair up card-for-card (synapsis) and swap matching sections at crossover points (chiasmata), dealing four haploid gametes ($1n1c$) with unique gene combinations!',
-        hintUk: 'За законом Томаса Моргана відстань $1\\text{ сМ}$ дорівнює $1\\%$ кросинговеру (тобто при $d = 18\\text{ сМ}$ частка рекомбінантних гамет становить $18\\%$), а два поділи мейозу дають $4$ гаплоїдні клітини з набором $1n1c$.',
-        hintEn: 'By Morgan’s law, $1\\text{ cM}$ equals $1\\%$ recombination ($18\\%$ recombinant gametes at $d = 18\\text{ cM}$), and two meiotic divisions produce $4$ haploid $1n1c$ cells.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 9–11 клас · Мейоз і кросинговер",
+        gradeEn: "Core Curriculum · Grade 9–11 · Meiosis & Crossing-Over",
+        analogyUk: "Генетична рекомбінація під час мейозу забезпечує комбінативну мінливість нащадків. У профазі І мейозу ці колоди прикладають одна до одної (кон’югація) і обмінюють частину карт на однакових позиціях (кросинговер у хіазмах). Завдяки цьому кожна з чотирьох гамет ($1n1c$) отримує неповторну комбінацію генів.",
+        analogyEn: "Consider two matching decks of cards, one blue (paternal) and one red (maternal). In Prophase I of meiosis, the two decks pair up card-for-card (synapsis) and swap matching sections at crossover points (chiasmata), dealing four haploid gametes ($1n1c$) with unique gene combinations.",
+        hintUk: "За законом Томаса Моргана відстань $1\\text{ сМ}$ дорівнює $1\\%$ кросинговеру (тобто при $d = 18\\text{ сМ}$ частка рекомбінантних гамет становить $18\\%$), а два поділи мейозу дають $4$ гаплоїдні клітини з набором $1n1c$.",
+        hintEn: "By Morgan’s law, $1\\text{ cM}$ equals $1\\%$ recombination ($18\\%$ recombinant gametes at $d = 18\\text{ cM}$), and two meiotic divisions produce $4$ haploid $1n1c$ cells."
       },
       bio_eye: {
-        gradeUk: '8–11 клас · Біофізика зору та оптика ока',
-        gradeEn: 'Grade 8–11 · Biophysics of Vision',
-        analogyUk: 'Наше око працює як жива фотокамера з автофокусом! Замість висування об’єктива вперед-назад спеціальний циліарний м’яз змінює опуклість еластичного кришталика. А якщо очне яблуко трохи довше за норму (короткозорість), картинка фокусується перед сітківкою, і розсіювальна лінза окулярів ($D < 0$) повертає фокус точно на місце!',
-        analogyEn: 'Your eye is a living camera with autofocus! Instead of sliding a glass lens back and forth, the ciliary muscle reshapes the flexible crystalline lens. In a nearsighted (elongated) eye, rays focus in front of the retina, so a diverging lens ($D < 0$) pushes the focal plane back onto the retina!',
-        hintUk: 'У короткозорому оці промені від далеких предметів сходяться перед сітківкою, тому для перенесення фокуса назад на сітківку потрібна розсіювальна лінза з від’ємною оптичною силою ($D < 0$).',
-        hintEn: 'In a myopic eye, distant rays converge in front of the retina; a diverging lens with negative optical power ($D < 0$) shifts the focal point back onto the retina.'
+        tier: "core",
+        gradeUk: "Шкільний мінімум · 8–11 клас · Біофізика зору та оптика ока",
+        gradeEn: "Core Curriculum · Grade 8–11 · Biophysics of Vision",
+        analogyUk: "Наше око працює як жива фотокамера з автофокусом. Замість висування об’єктива вперед-назад спеціальний циліарний м’яз змінює опуклість еластичного кришталика. А якщо очне яблуко трохи довше за норму (короткозорість), картинка фокусується перед сітківкою, і розсіювальна лінза окулярів ($D < 0$) повертає фокус точно на місце.",
+        analogyEn: "Your eye is a living camera with autofocus. Instead of sliding a glass lens back and forth, the ciliary muscle reshapes the flexible crystalline lens. In a nearsighted (elongated) eye, rays focus in front of the retina, so a diverging lens ($D < 0$) pushes the focal plane back onto the retina.",
+        hintUk: "У короткозорому оці промені від далеких предметів сходяться перед сітківкою, тому для перенесення фокуса назад на сітківку потрібна розсіювальна лінза з від’ємною оптичною силою ($D < 0$).",
+        hintEn: "In a myopic eye, distant rays converge in front of the retina; a diverging lens with negative optical power ($D < 0$) shifts the focal point back onto the retina."
       },
       bio_synapse: {
-        gradeUk: '10–11 клас · Нейробіологія: хімічний синапс',
-        gradeEn: 'Grade 10–11 · Neurobiology: Chemical Synapse',
-        analogyUk: 'Електричний імпульс біжить по аксону як по дроту, але між двома нейронами є вузька водна протока (синаптична щілина $20\\text{ нм}$). Коли імпульс прибуває на пристань, вхід йонів кальцію $\\text{Ca}^{2+}$ спускає на воду сотні «поштових катерів» (везикул із медіатором), які перепливають щілину і відмикають натрієві ворота на протилежному березі!',
-        analogyEn: 'An action potential races down the axon like electricity along a wire, but between neurons lies a $20\\text{ nm}$ canyon (the synaptic cleft). At the terminal dock, incoming $\\text{Ca}^{2+}$ ions launch vesicle “ferryboats” packed with neurotransmitter across the cleft to unlock $\\text{Na}^+$ receptor gates on the far shore!',
-        hintUk: 'Злиття везикул (екзоцитоз) запускається входом йонів $\\text{Ca}^{2+}$ у пресинаптичну терміналь, а збуджувальний медіатор відкриває катіонні $\\text{Na}^+$-канали, викликаючи деполяризацію (ЗПСП).',
-        hintEn: 'Vesicle exocytosis is triggered by presynaptic $\\text{Ca}^{2+}$ influx, and excitatory neurotransmitter binding opens postsynaptic $\\text{Na}^+$ channels to produce a depolarizing EPSP.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Нейробіологія: хімічний синапс",
+        gradeEn: "Advanced Level · AP / University · Neurobiology: Chemical Synapse",
+        analogyUk: "Електричний імпульс біжить по аксону як по дроту, але між двома нейронами є вузька водна протока (синаптична щілина $20\\text{ нм}$). Коли імпульс прибуває на пристань, вхід йонів кальцію $\\text{Ca}^{2+}$ спускає на воду сотні «поштових катерів» (везикул із медіатором), які перепливають щілину і відмикають натрієві ворота на протилежному березі.",
+        analogyEn: "An action potential races down the axon like electricity along a wire, but between neurons lies a $20\\text{ nm}$ canyon (the synaptic cleft). At the terminal dock, incoming $\\text{Ca}^{2+}$ ions launch vesicle “ferryboats” packed with neurotransmitter across the cleft to unlock $\\text{Na}^+$ receptor gates on the far shore.",
+        hintUk: "Злиття везикул (екзоцитоз) запускається входом йонів $\\text{Ca}^{2+}$ у пресинаптичну терміналь, а збуджувальний медіатор відкриває катіонні $\\text{Na}^+$-канали, викликаючи деполяризацію (ЗПСП).",
+        hintEn: "Vesicle exocytosis is triggered by presynaptic $\\text{Ca}^{2+}$ influx, and excitatory neurotransmitter binding opens postsynaptic $\\text{Na}^+$ channels to produce a depolarizing EPSP."
       },
       bio_pcr: {
-        gradeUk: '10–11 клас · Біотехнологія: ПЛР-діагностика',
-        gradeEn: 'Grade 10–11 · Biotechnology: PCR',
-        analogyUk: 'ПЛР, це молекулярний ксерокс для ДНК із геометричною прогресією! На кожному температурному циклі ($95\\,^\\circ\\text{C} \\to 58\\,^\\circ\\text{C} \\to 72\\,^\\circ\\text{C}$) термостійка *Taq*-полімераза з гарячих гейзерів подвоює вибрану сторінку ДНК: $1 \\to 2 \\to 4 \\to 8...$, тож уже за $20$ циклів з однієї молекули отримуємо понад мільйон копій ($2^{20}$)!',
-        analogyEn: 'PCR is a molecular photocopier for DNA! In every thermal cycle ($95\\,^\\circ\\text{C} \\to 58\\,^\\circ\\text{C} \\to 72\\,^\\circ\\text{C}$), heat-proof *Taq* polymerase from Yellowstone hot springs doubles the target DNA segment ($1 \\to 2 \\to 4 \\to 8...$), turning 1 molecule into $2^{20} = 1{,}048{,}576$ copies in just 20 cycles!',
-        hintUk: 'Термостабільна *Taq*-полімераза не руйнується при $95\\,^\\circ\\text{C}$, а кількість копій ДНК за $n$ циклів зростає за законом $N = N_0 \\cdot 2^n$ ($2^{20} = 1\\,048\\,576$).',
-        hintEn: 'Thermostable *Taq* polymerase survives $95\\,^\\circ\\text{C}$ denaturation, and DNA copy number amplifies exponentially as $N = N_0 \\cdot 2^n$ ($2^{20} = 1{,}048{,}576$).'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Біотехнологія: ПЛР-діагностика",
+        gradeEn: "Advanced Level · AP / University · Biotechnology: PCR",
+        analogyUk: "ПЛР, це молекулярний ксерокс для ДНК із геометричною прогресією. На кожному температурному циклі ($95\\,^\\circ\\text{C} \\to 58\\,^\\circ\\text{C} \\to 72\\,^\\circ\\text{C}$) термостійка *Taq*-полімераза з гарячих гейзерів подвоює вибрану сторінку ДНК: $1 \\to 2 \\to 4 \\to 8..$, тож уже за $20$ циклів з однієї молекули отримуємо понад мільйон копій ($2^{20}$).",
+        analogyEn: "PCR is a molecular photocopier for DNA. In every thermal cycle ($95\\,^\\circ\\text{C} \\to 58\\,^\\circ\\text{C} \\to 72\\,^\\circ\\text{C}$), heat-proof *Taq* polymerase from Yellowstone hot springs doubles the target DNA segment ($1 \\to 2 \\to 4 \\to 8..$), turning 1 molecule into $2^{20} = 1{,}048{,}576$ copies in just 20 cycles.",
+        hintUk: "Термостабільна *Taq*-полімераза не руйнується при $95\\,^\\circ\\text{C}$, а кількість копій ДНК за $n$ циклів зростає за законом $N = N_0 \\cdot 2^n$ ($2^{20} = 1\\,048\\,576$).",
+        hintEn: "Thermostable *Taq* polymerase survives $95\\,^\\circ\\text{C}$ denaturation, and DNA copy number amplifies exponentially as $N = N_0 \\cdot 2^n$ ($2^{20} = 1{,}048{,}576$)."
       },
       bio_crispr: {
-        gradeUk: '10–11 клас · Генна інженерія: CRISPR–Cas9',
-        gradeEn: 'Grade 10–11 · Genome Editing: CRISPR–Cas9',
-        analogyUk: 'Комплекс CRISPR–Cas9 працює як текстовий редактор «Знайти і замінити» для живої клітини! Гідова РНК несе точну адресу з $20$ літер, але перед тим як розкрити книгу ДНК, білок Cas9 перевіряє трилітерний «пароль доступу» PAM ($5\'\\text{-NGG-}3\'$), після чого робить ювелірний розріз обох ниток ДНК.',
-        analogyEn: 'CRISPR–Cas9 is a molecular “Find and Replace” tool for living DNA! The guide RNA holds a 20-letter search address, but before unzipping the double helix, Cas9 checks for a 3-letter security tag called PAM ($5\'\\text{-NGG-}3\'$), then snips both strands for precision repair.',
-        hintUk: 'Білок Cas9 обов’язково розпізнає мотив PAM ($5\'\\text{-NGG-}3\'$) перед утворенням R-петлі sgRNA–ДНК, а за наявності донорної матриці клітина здійснює точну гомологічну репарацію (HDR).',
-        hintEn: 'Cas9 must first recognize the $5\'\\text{-NGG-}3\'$ PAM motif before unwinding DNA for sgRNA pairing, and a donor template enables precise Homology-Directed Repair (HDR).'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Генна інженерія: CRISPR–Cas9",
+        gradeEn: "Advanced Level · AP / University · Genome Editing: CRISPR–Cas9",
+        analogyUk: "Комплекс CRISPR–Cas9 працює як текстовий редактор «Знайти і замінити» для живої клітини. Гідова РНК несе точну адресу з $20$ літер, але перед тим як розкрити книгу ДНК, білок Cas9 перевіряє трилітерний «пароль доступу» PAM ($5'\\text{-NGG-}3'$), після чого робить ювелірний розріз обох ниток ДНК.",
+        analogyEn: "CRISPR–Cas9 is a molecular “Find and Replace” tool for living DNA. The guide RNA holds a 20-letter search address, but before unzipping the double helix, Cas9 checks for a 3-letter security tag called PAM ($5'\\text{-NGG-}3'$), then snips both strands for precision repair.",
+        hintUk: "Білок Cas9 обов’язково розпізнає мотив PAM ($5'\\text{-NGG-}3'$) перед утворенням R-петлі sgRNA–ДНК, а за наявності донорної матриці клітина здійснює точну гомологічну репарацію (HDR).",
+        hintEn: "Cas9 must first recognize the $5'\\text{-NGG-}3'$ PAM motif before unwinding DNA for sgRNA pairing, and a donor template enables precise Homology-Directed Repair (HDR)."
       },
       bio_phage: {
-        gradeUk: '9–11 клас · Вірусологія та дослід Герші–Чейз',
-        gradeEn: 'Grade 9–11 · Virology & Hershey–Chase',
-        analogyUk: 'Бактеріофаг Т4 виглядає і працює як космічний місячний модуль із пружинним шприцом! Він сідає шістьма ніжками-фібрилами на поверхню бактерії, скорочує чохол і під тиском $50\\text{ атм}$ (у $25$ разів більшим, ніж у шині авто!) впорскує всередину лише нитку ДНК, залишаючи білковий скафандр зовні.',
-        analogyEn: 'Bacteriophage T4 looks and acts like a lunar lander equipped with a high-pressure syringe! Landing on six tail fibers, it contracts its sheath and injects its DNA genome pressurized to $50\\text{ atm}$ into the bacterium while leaving its empty protein shell outside.',
-        hintUk: 'В експерименті Герші та Чейз у цитоплазму бактерій проникла лише мічена радіоактивним фосфором $^{32}\\text{P}$ ДНК, а мічена сіркою $^{35}\\text{S}$ білкова оболонка залишилася назовні.',
-        hintEn: 'In the Hershey–Chase experiment, only $^{32}\\text{P}$-labeled viral DNA entered the host bacteria while $^{35}\\text{S}$-labeled protein coats remained outside.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Вірусологія та дослід Герші–Чейз",
+        gradeEn: "Advanced Level · AP / University · Virology & Hershey–Chase",
+        analogyUk: "Бактеріофаг Т4 виглядає і працює як космічний місячний модуль із пружинним шприцом. Він сідає шістьма ніжками-фібрилами на поверхню бактерії, скорочує чохол і під тиском $50\\text{ атм}$ (у $25$ разів більшим, ніж у шині авто. ) впорскує всередину лише нитку ДНК, залишаючи білковий скафандр зовні.",
+        analogyEn: "Bacteriophage T4 looks and acts like a lunar lander equipped with a high-pressure syringe. Landing on six tail fibers, it contracts its sheath and injects its DNA genome pressurized to $50\\text{ atm}$ into the bacterium while leaving its empty protein shell outside.",
+        hintUk: "В експерименті Герші та Чейз у цитоплазму бактерій проникла лише мічена радіоактивним фосфором $^{32}\\text{P}$ ДНК, а мічена сіркою $^{35}\\text{S}$ білкова оболонка залишилася назовні.",
+        hintEn: "In the Hershey–Chase experiment, only $^{32}\\text{P}$-labeled viral DNA entered the host bacteria while $^{35}\\text{S}$-labeled protein coats remained outside."
       },
       bio_hemodynamics: {
-        gradeUk: '9–11 клас · Фізіологія кровообігу (закон Пуазейля)',
-        gradeEn: 'Grade 9–11 · Hemodynamics (Poiseuille Law)',
-        analogyUk: 'Спробуй пити густий коктейль через широку трубочку і через вдвічі вужчу: здається, що буде лише вдвічі важче, але насправді потік падає аж у $2^4 = 16$ разів! Саме тому навіть невелике розширення чи звуження наших артеріол миттєво перенаправляє кров до м’язів або мозку.',
-        analogyEn: 'Sipping a thick shake through a straw of half the radius doesn’t just cut flow in half, it slashes flow $2^4 = 16$ times! That fourth-power Hagen–Poiseuille law explains why tiny changes in arteriole radius dramatically control blood supply.',
-        hintUk: 'За законом Гагена–Пуазейля $Q \\propto R^4$: при зменшенні радіуса судини $R$ у $2$ рази об’ємна швидкість кровотоку зменшується у $2^4 = 16$ разів.',
-        hintEn: 'By the Hagen–Poiseuille law $Q \\propto R^4$: halving the vessel radius $R$ reduces volumetric blood flow by a factor of $2^4 = 16$.'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Фізіологія кровообігу (закон Пуазейля)",
+        gradeEn: "Advanced Level · AP / University · Hemodynamics (Poiseuille Law)",
+        analogyUk: "Згідно із законом Гагена–Пуазейля ламінарний об’ємний потік в’язкої рідини в циліндричній трубці пропорційний четвертому степеню радіуса ($Q \\propto R^4$): зменшення радіуса судини вдвічі знижує кровотік у $2^4 = 16$ разів. Саме тому навіть невелике розширення чи звуження наших артеріол миттєво перенаправляє кров до м’язів або мозку.",
+        analogyEn: "Sipping a thick shake through a straw of half the radius doesn’t just cut flow in half, it slashes flow $2^4 = 16$ times. That fourth-power Hagen–Poiseuille law explains why tiny changes in arteriole radius dramatically control blood supply.",
+        hintUk: "За законом Гагена–Пуазейля $Q \\propto R^4$: при зменшенні радіуса судини $R$ у $2$ рази об’ємна швидкість кровотоку зменшується у $2^4 = 16$ разів.",
+        hintEn: "By the Hagen–Poiseuille law $Q \\propto R^4$: halving the vessel radius $R$ reduces volumetric blood flow by a factor of $2^4 = 16$."
       },
       bio_electrophoresis: {
-        gradeUk: '10–11 клас · Молекулярна біологія: гель-електрофорез',
-        gradeEn: 'Grade 10–11 · DNA Gel Electrophoresis',
-        analogyUk: 'Уяви густий ліс (агарозний гель), крізь який до плюсового магніту (анода) біжать негативно заряджені ланцюжки ДНК. Короткі ланцюжки легко пробігають між деревами далеко вперед, а довгі постійно чіпляються за гілки й просуваються повільно, шикуючись за довжиною як на лінійці!',
-        analogyEn: 'Picture a dense forest (agarose gel) through which negatively charged DNA chains are pulled toward the positive anode ($+$). Short DNA fragments dart quickly between the trees, while long chains get tangled and lag behind, sorting themselves neatly by length!',
-        hintUk: 'Фосфатні групи ($-\\text{PO}_4^-$) надають ДНК негативного заряду, тому вона рухається до анода ($+$), а найкоротші фрагменти долають пори гелю найшвидше ($d = d_0 - k\\lg L$).',
-        hintEn: 'Negatively charged phosphate groups ($-\\text{PO}_4^-$) drive DNA toward the positive anode ($+$), with shorter fragments migrating fastest through the agarose sieve ($d = d_0 - k\\lg L$).'
+        tier: "advanced",
+        gradeUk: "Поглиблений рівень · Профільний / ЗВО · Молекулярна біологія: гель-електрофорез",
+        gradeEn: "Advanced Level · AP / University · DNA Gel Electrophoresis",
+        analogyUk: "Агарозний або поліакриламідний гель працює як молекулярне сито в однорідному електричному полі. Короткі ланцюжки легко пробігають між деревами далеко вперед, а довгі постійно чіпляються за гілки й просуваються повільно, шикуючись за довжиною як на лінійці.",
+        analogyEn: "In a physical model of a dense forest (agarose gel) through which negatively charged DNA chains are pulled toward the positive anode ($+$). Short DNA fragments dart quickly between the trees, while long chains get tangled and lag behind, sorting themselves neatly by length.",
+        hintUk: "Фосфатні групи ($-\\text{PO}_4^-$) надають ДНК негативного заряду, тому вона рухається до анода ($+$), а найкоротші фрагменти долають пори гелю найшвидше ($d = d_0 - k\\lg L$).",
+        hintEn: "Negatively charged phosphate groups ($-\\text{PO}_4^-$) drive DNA toward the positive anode ($+$), with shorter fragments migrating fastest through the agarose sieve ($d = d_0 - k\\lg L$)."
       }
     };
+
+
+    const SCENE_URL_ALIASES = {
+      brewster: 'malus',
+      chem_arrhenius: 'chem_orders'
+    };
+    function resolveCanonicalSceneKey(rawKey) {
+      if (!rawKey) return rawKey;
+      return SCENE_URL_ALIASES[rawKey] || rawKey;
+    }
+    [SCENE_CONFIGS, SCENE_EN, SCENE_UK, THEORY_NOTES, EDU_META, sceneParams].forEach(obj => {
+      if (!obj) return;
+      Object.entries(SCENE_URL_ALIASES).forEach(([oldKey, newKey]) => {
+        if (!Object.prototype.hasOwnProperty.call(obj, oldKey)) {
+          Object.defineProperty(obj, oldKey, {
+            enumerable: false,
+            configurable: true,
+            get() { return this[newKey]; },
+            set(v) { this[newKey] = v; }
+          });
+        }
+      });
+    });
 
     const BOOK_SVG_ICON = `<svg class="theory-book-svg" viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5C2.5 3.95 2.95 3.5 3.5 3.5H7.8C9.15 3.5 10 4.25 10 5.5V16.2C10 15.35 9.25 14.8 8.2 14.8H3.5C2.95 14.8 2.5 14.35 2.5 13.8V4.5Z"/><path d="M17.5 4.5C17.5 3.95 17.05 3.5 16.5 3.5H12.2C10.85 3.5 10 4.25 10 5.5V16.2C10 15.35 10.75 14.8 11.8 14.8H16.5C17.05 14.8 17.5 14.35 17.5 13.8V4.5Z"/></svg>`;
 
@@ -38485,6 +38630,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       biology: 'bio_eukaryote'
     };
     let currentDropdownFilter = 'all';
+    let currentDropdownTier = 'all';
 
     function getDisciplineOfScene(key) {
       const d = SCENE_CONFIGS[key] && SCENE_CONFIGS[key].discipline;
@@ -38820,9 +38966,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const analogyTxt = langKey === 'uk' ? (meta.analogyUk || '') : (meta.analogyEn || '');
       const titles = [t.theorySec1Title, t.theorySec2Title, t.theorySec3Title];
 
+      const tierClass = meta.tier === 'advanced' ? 'tier-advanced' : 'tier-core';
       const gradeHtml = gradeTag ? `
         <div class="theory-meta-bar">
-          <span class="theory-grade-pill">${gradeTag}</span>
+          <span class="theory-grade-pill ${tierClass}">${gradeTag}</span>
         </div>
       ` : '';
 
@@ -38877,7 +39024,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         </div>
       ` : '';
 
-      return gradeHtml + notesHtml + derivationHtml + hintHtml + paramsRefHtml + analogyHtml + formulaHtml;
+      return gradeHtml + notesHtml + paramsRefHtml + analogyHtml + formulaHtml;
     }
 
     function shareCurrentExperimentState() {
@@ -38891,6 +39038,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           params.set(s.key, String(p[s.key]));
         }
       });
+      if (document.body.classList.contains('classroom-mode')) {
+        params.set('mode', 'classroom');
+      }
       const qs = params.toString();
       const baseHref = getExperimentHref(key, uiState.lang);
       const relUrl = qs ? `${baseHref}${baseHref.includes('?') ? '&' : '?'}${qs}` : baseHref;
@@ -39485,9 +39635,29 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
       }
 
-      // 5. Живий пошук у випадному меню дослідів (#exp-dropdown-menu)
+      // 5. Живий пошук та фільтр рівня (Шкільний мінімум / Поглиблений рівень) у випадному меню дослідів (#exp-dropdown-menu)
       const dropdownMenu = document.getElementById('exp-dropdown-menu');
       const filterBar = dropdownMenu ? dropdownMenu.querySelector('.dropdown-filter-bar') : null;
+      if (dropdownMenu && filterBar && !document.getElementById('dropdown-tier-bar')) {
+        const tierBar = document.createElement('div');
+        tierBar.id = 'dropdown-tier-bar';
+        tierBar.className = 'dropdown-tier-bar';
+        tierBar.innerHTML = `
+          <button type="button" id="tier-btn-all" class="tier-pill-btn active" data-tier="all">${t.tierAll}</button>
+          <button type="button" id="tier-btn-core" class="tier-pill-btn" data-tier="core">${t.tierCore}</button>
+          <button type="button" id="tier-btn-advanced" class="tier-pill-btn" data-tier="advanced">${t.tierAdv}</button>
+        `;
+        dropdownMenu.insertBefore(tierBar, filterBar);
+        tierBar.querySelectorAll('.tier-pill-btn').forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.stopPropagation();
+            tierBar.querySelectorAll('.tier-pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentDropdownTier = btn.dataset.tier || 'all';
+            renderDropdownMenu();
+          });
+        });
+      }
       if (dropdownMenu && filterBar && !document.getElementById('dropdown-search-input')) {
         const searchWrap = document.createElement('div');
         searchWrap.className = 'dropdown-search-wrap';
@@ -39549,13 +39719,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             if (!link) return;
             const href = link.getAttribute('href') || '';
             const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?$/i);
-            if (m && SCENE_CONFIGS[m[2]]) {
+            const canonLinkScene = resolveCanonicalSceneKey(m && m[2]);
+            if (canonLinkScene && SCENE_CONFIGS[canonLinkScene]) {
               e.preventDefault();
               const targetLang = m[1] ? 'uk' : 'en';
               if (targetLang !== uiState.lang) {
                 applyLanguage(targetLang);
               }
-              loadScene(m[2], true);
+              loadScene(canonLinkScene, true);
             }
           });
         }
@@ -39592,25 +39763,43 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         rightPage.appendChild(footer);
       }
 
-      // 7. Панель швидких пресетів (#lab-presets-bar)
-      const staleShareBtn = document.getElementById('btn-share-state');
-      if (staleShareBtn) staleShareBtn.remove();
+      // 7. Панель швидких пресетів (#lab-presets-bar) + кнопка посилання з параметрами (#btn-share-state)
       const slidersContainer = document.getElementById('sliders-container');
-      if (slidersContainer && slidersContainer.parentElement && !document.getElementById('lab-presets-bar')) {
-        const presetsBar = document.createElement('div');
-        presetsBar.id = 'lab-presets-bar';
-        presetsBar.className = 'lab-presets-bar';
-        presetsBar.innerHTML = `
-          <button type="button" id="btn-preset-min" class="preset-chip-btn" data-preset="min" title="${t.presetMinTip}">${t.presetMin}</button>
-          <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="${t.presetStdTip}">${t.presetStd}</button>
-          <button type="button" id="btn-preset-max" class="preset-chip-btn" data-preset="max" title="${t.presetMaxTip}">${t.presetMax}</button>
-        `;
-        slidersContainer.parentElement.insertBefore(presetsBar, slidersContainer);
+      if (slidersContainer && slidersContainer.parentElement) {
+        let presetsBar = document.getElementById('lab-presets-bar');
+        if (!presetsBar) {
+          presetsBar = document.createElement('div');
+          presetsBar.id = 'lab-presets-bar';
+          presetsBar.className = 'lab-presets-bar';
+          presetsBar.innerHTML = `
+            <button type="button" id="btn-preset-min" class="preset-chip-btn" data-preset="min" title="${t.presetMinTip}">${t.presetMin}</button>
+            <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="${t.presetStdTip}">${t.presetStd}</button>
+            <button type="button" id="btn-preset-max" class="preset-chip-btn" data-preset="max" title="${t.presetMaxTip}">${t.presetMax}</button>
+            <button type="button" id="btn-share-state" class="btn-share-state" title="${t.shareTip}">${t.shareBtn}</button>
+          `;
+          slidersContainer.parentElement.insertBefore(presetsBar, slidersContainer);
+        } else if (!document.getElementById('btn-share-state')) {
+          const shareBtn = document.createElement('button');
+          shareBtn.type = 'button';
+          shareBtn.id = 'btn-share-state';
+          shareBtn.className = 'btn-share-state';
+          shareBtn.title = t.shareTip;
+          shareBtn.textContent = t.shareBtn;
+          presetsBar.appendChild(shareBtn);
+        }
         presetsBar.querySelectorAll('.preset-chip-btn').forEach(chip => {
-          chip.addEventListener('click', () => {
-            applyLabPreset(chip.dataset.preset);
-          });
+          if (!chip.dataset.bound) {
+            chip.dataset.bound = '1';
+            chip.addEventListener('click', () => {
+              applyLabPreset(chip.dataset.preset);
+            });
+          }
         });
+        const shareBtnEl = document.getElementById('btn-share-state');
+        if (shareBtnEl && !shareBtnEl.dataset.bound) {
+          shareBtnEl.dataset.bound = '1';
+          shareBtnEl.addEventListener('click', shareCurrentExperimentState);
+        }
       }
 
       // 8. Кнопка фіксації еталонної кривої на осцилограмі (#btn-pin-chart)
@@ -39762,9 +39951,40 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         });
       }
 
-      // 10. Лічильник опанованих дослідів у верхній панелі (#edu-progress-pill)
+      // 10. Кнопка «Режим класу» (#btn-classroom-mode) та лічильник опанованих дослідів (#edu-progress-pill)
       const headerRight = document.querySelector('.header-right');
       const langSwitcher = headerRight ? headerRight.querySelector('.lang-switcher') : null;
+      if (headerRight) {
+        let classBtn = document.getElementById('btn-classroom-mode');
+        if (!classBtn) {
+          classBtn = document.createElement('button');
+          classBtn.type = 'button';
+          classBtn.id = 'btn-classroom-mode';
+          classBtn.className = 'btn-classroom-mode';
+          classBtn.title = t.classroomBtnTip;
+          classBtn.textContent = t.classroomBtn;
+          if (langSwitcher) {
+            headerRight.insertBefore(classBtn, langSwitcher);
+          } else {
+            headerRight.appendChild(classBtn);
+          }
+        }
+        if (!classBtn.dataset.bound) {
+          classBtn.dataset.bound = '1';
+          classBtn.addEventListener('click', () => {
+            const active = document.body.classList.toggle('classroom-mode');
+            uiState.classroomMode = active;
+            classBtn.classList.toggle('active', active);
+            classBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+            const curT = tUI();
+            classBtn.textContent = active ? `✓ ${curT.classroomBtn}` : curT.classroomBtn;
+            requestAnimationFrame(() => {
+              fitMathContainers();
+              window.dispatchEvent(new Event('resize'));
+            });
+          });
+        }
+      }
       if (headerRight && !document.getElementById('edu-progress-pill')) {
         const progPill = document.createElement('button');
         progPill.type = 'button';
@@ -39944,8 +40164,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           rightPage.insertBefore(eqSec, rightPage.firstChild);
         }
         if (adRight && !adAlreadyInitialized && adRight.parentElement !== rightPage) {
-          if (typeof paramSec.insertAdjacentElement === 'function') {
-            paramSec.insertAdjacentElement('afterend', adRight);
+          const guideEl = document.getElementById('platform-editorial-guide') || document.getElementById('curriculum-catalog-details') || document.getElementById('site-legal-footer');
+          if (guideEl && guideEl.parentElement === rightPage) {
+            rightPage.insertBefore(adRight, guideEl);
           } else {
             rightPage.appendChild(adRight);
           }
@@ -40200,9 +40421,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       setTxt('sim-time-readout', `t = ${uiState.simTime.toFixed(2)} ${t.secUnit}`);
 
-      if (uiState.selectedOption !== null) {
-        setTxt('chosen-option-summary', `${t.optionPrefix} ${t.letters[uiState.selectedOption]}`);
+      const summaryIdx = uiState.selectedOption !== null ? uiState.selectedOption : 1;
+      setTxt('chosen-option-summary', `${t.optionPrefix} ${t.letters[summaryIdx] || t.letters[0]}`);
+      const shareBtnEl = document.getElementById('btn-share-state');
+      if (shareBtnEl && !shareBtnEl.classList.contains('copied')) {
+        shareBtnEl.textContent = t.shareBtn;
+        shareBtnEl.title = t.shareTip;
       }
+      const classBtnEl = document.getElementById('btn-classroom-mode');
+      if (classBtnEl) {
+        const isCls = document.body.classList.contains('classroom-mode');
+        classBtnEl.textContent = isCls ? `✓ ${t.classroomBtn}` : t.classroomBtn;
+        classBtnEl.title = t.classroomBtnTip;
+      }
+      setTxt('tier-btn-all', t.tierAll);
+      setTxt('tier-btn-core', t.tierCore);
+      setTxt('tier-btn-advanced', t.tierAdv);
 
       activeVectorArrows.forEach(arrow => arrow.refreshLanguage());
       activeBioCalloutPins.forEach(pin => pin.refreshLanguage());
@@ -40243,8 +40477,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function formatMetricBarSlot(rawVal, rawLabel, sceneKey, isEn) {
       const lbl = String(rawLabel || '');
       let val = Number.isFinite(rawVal) ? rawVal : 0;
+      const canonKey = resolveCanonicalSceneKey(sceneKey);
 
-      // Unscale values where label indicates a visual multiplier like (×10), (×7), (×100)
       const multMatch = lbl.match(/\(×\s*(\d+(?:\.\d+)?)\s*([a-zA-Zа-яА-ЯіїєґІЇЄҐ%°]*)\)/);
       let explicitMultUnit = '';
       if (multMatch) {
@@ -40253,23 +40487,546 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         explicitMultUnit = (multMatch[2] || '').trim();
       }
 
-      if (sceneKey === 'bio_mendel' || sceneKey === 'bio_hemo') {
+      // Scene-specific exact unit mappings
+      if (canonKey === 'wavefront') {
+        if (/фазов|затрим|phase|delay/i.test(lbl)) {
+          const u = isEn ? 'rad' : 'рад';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
         return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
       }
-      if (sceneKey === 'bio_lotka') {
+      if (canonKey === 'interference' || canonKey === 'dispersion') {
+        if (canonKey === 'dispersion' && !/відбит|refl/i.test(lbl)) {
+          const nVal = val / 30;
+          return { text: `n = ${nVal.toFixed(3)}`, unit: 'n', isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'bernoulli') {
+        const u = isEn ? 'kPa' : 'кПа';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'torricelli') {
+        const u = isEn ? 'kPa' : 'кПа';
+        return { text: `${(val / 1000).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'lens') {
+        if (/оптична сила|optical power|\bD\b/i.test(lbl)) {
+          const u = isEn ? 'dpt' : 'дптр';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/фазов|затрим|phase|delay/i.test(lbl)) {
+          const u = isEn ? 'rad' : 'рад';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'W/m²' : 'Вт/м²';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'faraday') {
+        if (/потужність|power/i.test(lbl)) {
+          const u = isEn ? 'W' : 'Вт';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'J' : 'Дж';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'kepler') {
+        if (/момент імпульсу|angular momentum|\bL\b/i.test(lbl)) {
+          const u = isEn ? 'kg·m²/s' : 'кг·м²/с';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'J' : 'Дж';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'doppler') {
+        const u = isEn ? 'Hz' : 'Гц';
+        return { text: `${val.toFixed(0)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'malus') {
+        const u = isEn ? 'W/m²' : 'Вт/м²';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'diffraction') {
+        if (/ширина|width|Δx/i.test(lbl)) {
+          const u = isEn ? 'mm' : 'мм';
+          return { text: `${(val / 2.2).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'coulomb') {
+        if (/сила|force|F_C/i.test(lbl)) {
+          const u = isEn ? 'mN' : 'мН';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'J' : 'Дж';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'maxwell') {
+        if (/частка|fraction/i.test(lbl)) {
+          return { text: `${(val * 10).toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        const u = isEn ? 'eV' : 'еВ';
+        return { text: `${val.toFixed(3)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'newtonrings') {
+        if (/зсув|shift|λ\/2/i.test(lbl)) {
+          const u = isEn ? 'rad' : 'рад';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'rutherford') {
+        const u = isEn ? 'MeV' : 'МеВ';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: true };
+      }
+      if (canonKey === 'michelson') {
+        const u = isEn ? 'mW' : 'мВт';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'compton') {
+        if (/Δλ|зсув|shift/i.test(lbl)) {
+          const u = isEn ? 'pm' : 'пм';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'keV' : 'кеВ';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'biot') {
+        if (/індукція|field B|B\(0\)/i.test(lbl)) {
+          const u = isEn ? 'mT' : 'мТл';
+          return { text: `${(val / 2.5).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/неоднорідн|inhomog|δB/i.test(lbl)) {
+          return { text: `${(val / 0.3).toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        const u = isEn ? 'J' : 'Дж';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'transformer') {
+        if (/енергія|energy|W_Φ/i.test(lbl)) {
+          const u = isEn ? 'J' : 'Дж';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'W' : 'Вт';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'photoelectric' || canonKey === 'bohr' || canonKey === 'chem_orbitals' || canonKey === 'chem_mo') {
+        const uEv = isEn ? 'eV' : 'еВ';
+        return { text: `${val.toFixed(2)} ${uEv}`, unit: uEv, isEnergy: true };
+      }
+
+      // Chemistry scene-specific formatting
+      if (canonKey === 'chem_vsepr') {
+        if (/диполь|dipole|\bμ\b/i.test(lbl)) {
+          return { text: `${val.toFixed(2)} D`, unit: 'D', isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${(val * 20).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_lattice' || canonKey === 'chem_bornhaber' || canonKey === 'chem_gibbs') {
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: true };
+      }
+      if (canonKey === 'chem_gaslaws') {
+        if (/кількість речовини|amount|moles|\bν\b/i.test(lbl)) {
+          const u = isEn ? 'mol' : 'моль';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ' : 'кДж';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_kinetics') {
+        if (/прискорення|acceleration|\(×\)/i.test(lbl)) {
+          return { text: `×${val.toFixed(1)}`, unit: '×', isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        const vKj = /бар’єр|barrier|E_a/i.test(lbl) ? (val * 20) : (val * 1.66);
+        return { text: `${vKj.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_equilibrium') {
+        if (/константа|constant|K_p/i.test(lbl)) {
+          const u = isEn ? 'atm' : 'атм';
+          return { text: `${(val / 0.6).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${((val / 3) * 100).toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'chem_titration') {
+        if (/теплота|heat|\bQ\b/i.test(lbl)) {
+          const u = isEn ? 'kJ/mol' : 'кДж/моль';
+          return { text: `${(val * 10).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const phVal = val > 14.5 ? (val / 7) : (val / 0.4);
+        return { text: `${Math.min(14, Math.max(0, phVal)).toFixed(2)}`, unit: 'pH', isEnergy: false };
+      }
+      if (canonKey === 'chem_galvanic') {
+        if (/ЕРС|EMF|\bE\b/i.test(lbl)) {
+          const u = isEn ? 'V' : 'В';
+          return { text: `${(val / 2).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/ΔG|вільна енергія|free energy/i.test(lbl)) {
+          const u = isEn ? 'kJ/mol' : 'кДж/моль';
+          return { text: `${(val * 100).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'A' : 'А';
+        return { text: `${(val / 1.5).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_electrolysis') {
+        if (/маса|mass|\bm\b/i.test(lbl)) {
+          const u = isEn ? 'g' : 'г';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ' : 'кДж';
+        return { text: `${(val / 0.15).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_organic') {
+        if (/струм|current/i.test(lbl)) {
+          const u = isEn ? 'μA' : 'мкА';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${(val * 50).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_periodic') {
+        if (/йонізац|ioniz|I₁/i.test(lbl)) {
+          const u = isEn ? 'eV' : 'еВ';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/радіус|radius|r_ат|r_at/i.test(lbl)) {
+          const u = isEn ? 'pm' : 'пм';
+          return { text: `${(val * 100).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${val.toFixed(2)} e`, unit: 'e', isEnergy: false };
+      }
+      if (canonKey === 'chem_hbond') {
+        if (/густина|density|\bρ\b/i.test(lbl)) {
+          const u = isEn ? 'g/cm³' : 'г/см³';
+          return { text: `${val.toFixed(3)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_calorimetry') {
+        if (/ΔT|температур/i.test(lbl)) {
+          const u = isEn ? 'K' : 'К';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/ΔH|ентальпія|enthalpy/i.test(lbl)) {
+          const u = isEn ? 'kJ/mol' : 'кДж/моль';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ' : 'кДж';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_osmosis') {
+        if (/Δh|стовп|column/i.test(lbl)) {
+          const u = isEn ? 'm' : 'м';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'atm' : 'атм';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_buffer') {
+        if (/ємність|capacity|\bβ\b/i.test(lbl)) {
+          const u = isEn ? 'mol/(L·pH)' : 'моль/(л·pH)';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `pH ${val.toFixed(2)}`, unit: 'pH', isEnergy: false };
+      }
+      if (canonKey === 'chem_ksp') {
+        if (/lg|індекс|index/i.test(lbl)) {
+          return { text: `${val.toFixed(2)}`, unit: '', isEnergy: false };
+        }
+        if (/розчинність|solubility|\bS\b/i.test(lbl)) {
+          const u = isEn ? 'mmol/L' : 'ммоль/л';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'mmol' : 'ммоль';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_beer') {
+        if (/абсорбція|absorbance|\bA\b/i.test(lbl)) {
+          return { text: `A = ${val.toFixed(2)}`, unit: 'A', isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'chem_fuelcell') {
+        if (/напруга|voltage|\bU\b/i.test(lbl)) {
+          const u = isEn ? 'V' : 'В';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/потужність|power|P_пит/i.test(lbl)) {
+          const u = isEn ? 'W/cm²' : 'Вт/см²';
+          return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'chem_isomerism') {
+        if (/диполь|dipole|\bμ\b/i.test(lbl)) {
+          return { text: `${val.toFixed(2)} D`, unit: 'D', isEnergy: false };
+        }
+        if (/кут|angle|\|α\|/i.test(lbl)) {
+          return { text: `${val.toFixed(1)}°`, unit: '°', isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_polymer') {
+        if (/M_n|маса|mass/i.test(lbl)) {
+          const u = isEn ? 'kg/mol' : 'кг/моль';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/радіус|radius|R_g/i.test(lbl)) {
+          return { text: `${val.toFixed(1)} Å`, unit: 'Å', isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_allotropes') {
+        if (/струм|current|\bI\b/i.test(lbl)) {
+          const u = isEn ? 'μA' : 'мкА';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/відстань|distance/i.test(lbl)) {
+          const u = isEn ? 'nm' : 'нм';
+          return { text: `${(val / 10).toFixed(3)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'GPa' : 'ГПа';
+        return { text: `${val.toFixed(0)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_complex') {
+        if (/магнітн|magnetic|μ_eff/i.test(lbl)) {
+          return { text: `${(val / 30).toFixed(2)} μ_B`, unit: 'μ_B', isEnergy: false };
+        }
+        if (/довжина хвилі|wavelength|λ_max/i.test(lbl)) {
+          const u = isEn ? 'nm' : 'нм';
+          return { text: `${(val * 5).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_dipole') {
+        if (/іонност|ionicity|%/i.test(lbl)) {
+          return { text: `${(val / 0.3).toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        return { text: `${(val / 10).toFixed(2)} D`, unit: 'D', isEnergy: false };
+      }
+      if (canonKey === 'chem_phase') {
+        if (/температур|temperature|\bT\b/i.test(lbl)) {
+          const u = isEn ? 'K' : 'К';
+          return { text: `${(val * 5).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/тиск|pressure|\bP\b/i.test(lbl)) {
+          const u = isEn ? 'atm' : 'атм';
+          return { text: `${(val / 1.2).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${(val / 1.5).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_orders') {
+        if (/швидкість|rate|\bv\b/i.test(lbl)) {
+          const u = isEn ? 'mol/(L·s)' : 'моль/(л·с)';
+          return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'mol/L' : 'моль/л';
+        return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_enzyme') {
+        if (/частка|fraction|\[ES\]/i.test(lbl)) {
+          return { text: `${(val * 5).toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        const u = isEn ? 'mM/s' : 'мМ/с';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_haber') {
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'chem_raoult') {
+        if (/ΔT|кріоскоп|freezing/i.test(lbl)) {
+          const u = isEn ? 'K' : 'К';
+          return { text: `${(val / 2).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kPa' : 'кПа';
+        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_chromatography') {
+        return { text: `R_f = ${(val / 100).toFixed(2)}`, unit: 'R_f', isEnergy: false };
+      }
+      if (canonKey === 'chem_adsorption') {
+        if (/теплота|heat|\bQ\b/i.test(lbl)) {
+          const u = isEn ? 'kJ/mol' : 'кДж/моль';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'chem_colloids') {
+        if (/мВ|mV|ζ|zeta/i.test(lbl)) {
+          const u = isEn ? 'mV' : 'мВ';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/коагуляц|coagul|%/i.test(lbl)) {
+          return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        const u = isEn ? 'a.u.' : 'ум.од.';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_hydrolysis') {
+        if (/\bpH\b/i.test(lbl)) {
+          return { text: `pH ${val.toFixed(2)}`, unit: 'pH', isEnergy: false };
+        }
+        if (/‰|ступінь|degree/i.test(lbl)) {
+          return { text: `${(val / 100).toFixed(2)} ‰`, unit: '‰', isEnergy: false };
+        }
+        const u = isEn ? 'mmol/L' : 'ммоль/л';
+        return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_corrosion') {
+        if (/ЕРС|EMF|ΔE/i.test(lbl)) {
+          const u = isEn ? 'V' : 'В';
+          return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/струм|current|j_кор/i.test(lbl)) {
+          const u = isEn ? 'mA/cm²' : 'мА/см²';
+          return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'mS/cm' : 'мСм/см';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_liion') {
+        if (/напруга|voltage|\bU\b/i.test(lbl)) {
+          const u = isEn ? 'V' : 'В';
+          return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/SoC|заряд|%/i.test(lbl)) {
+          return { text: `${(val * 2.5).toFixed(0)} %`, unit: '%', isEnergy: false };
+        }
+        const u = isEn ? 'W' : 'Вт';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_sn2') {
+        if (/інверс|invers|%/i.test(lbl)) {
+          return { text: `${val.toFixed(0)} %`, unit: '%', isEnergy: false };
+        }
+        if (/швидкість|rate|\bv\b/i.test(lbl)) {
+          const u = isEn ? 'mol/(L·s)' : 'моль/(л·с)';
+          return { text: `${(val / 20).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_ester') {
+        if (/вихід|yield|%/i.test(lbl)) {
+          return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+        }
+        if (/K_c|константа|constant/i.test(lbl)) {
+          return { text: `K_c = ${val.toFixed(2)}`, unit: 'K_c', isEnergy: false };
+        }
+        const u = isEn ? 'mM/s' : 'мМ/с';
+        return { text: `${(val / 10).toFixed(2)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'chem_biopol') {
+        if (/N_HB|водневі|hydrogen/i.test(lbl)) {
+          const u = isEn ? 'bonds' : 'зв.';
+          return { text: `${val.toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/T_m|°C|температур/i.test(lbl)) {
+          return { text: `${val.toFixed(1)} °C`, unit: '°C', isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+
+      // Biology scene-specific formatting
+      if (canonKey === 'bio_eukaryote') {
+        if (/АТФ|ATP/i.test(lbl)) {
+          const u = isEn ? 'mM/s' : 'мМ/с';
+          return { text: `${(val / 10).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/білк|protein/i.test(lbl)) {
+          const u = isEn ? 'a.u.' : 'ум.од.';
+          return { text: `${(val / 10).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'bio_mitochondria') {
+        if (/мВ|mV|Δp/i.test(lbl)) {
+          const u = isEn ? 'mV' : 'мВ';
+          return { text: `${(val * 2.5).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/АТФ|ATP/i.test(lbl)) {
+          const u = isEn ? 'mol/mol' : 'моль/моль';
+          return { text: `${(val / 2).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'bio_mitosis') {
+        if (/натяг|tension|F_/i.test(lbl)) {
+          const u = isEn ? 'pN' : 'пН';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/деформац|stretch|центромер/i.test(lbl)) {
+          const u = isEn ? 'nm' : 'нм';
+          return { text: `${(val * 2).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'bio_replication') {
+        if (/швидкість|rate|v_пол/i.test(lbl)) {
+          const u = isEn ? 'nt/s' : 'н./с';
+          return { text: `${(val * 10).toFixed(0)} ${u}`, unit: u, isEnergy: false };
+        }
+        if (/торсійн|torsion/i.test(lbl)) {
+          const u = isEn ? 'pN·nm' : 'пН·нм';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'bio_ribosome') {
+        if (/елонгац|elongat/i.test(lbl)) {
+          const u = isEn ? 'aa/s' : 'ак/с';
+          return { text: `${(val / 3).toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'bio_membrane' || canonKey === 'bio_photosynthesis') {
+        const u = isEn ? 'kJ/mol' : 'кДж/моль';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: true };
+      }
+      if (canonKey === 'bio_neuron') {
+        if (/АТФаз|ATPase|\bQ\b/i.test(lbl)) {
+          const u = isEn ? 'kJ/mol' : 'кДж/моль';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'pA' : 'пА';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'bio_sarcomere') {
+        if (/АТФ|ATP|\bQ\b/i.test(lbl)) {
+          const u = isEn ? 'kJ/mol' : 'кДж/моль';
+          return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+        }
+        const u = isEn ? 'pN' : 'пН';
+        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
+      }
+      if (canonKey === 'bio_mendel' || canonKey === 'bio_hemo') {
+        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
+      }
+      if (canonKey === 'bio_lotka') {
         if (/дисипац|dissip|10%/i.test(lbl)) {
           return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
         }
         return { text: `${val.toFixed(0)} ${isEn ? 'ind.' : 'особ.'}`, unit: isEn ? 'ind.' : 'особ.', isEnergy: false };
       }
-      if (sceneKey === 'bio_meiosis') {
+      if (canonKey === 'bio_meiosis') {
         if (/пН|pN/i.test(lbl)) {
           const u = isEn ? 'pN' : 'пН';
           return { text: `${(val / 2).toFixed(1)} ${u}`, unit: u, isEnergy: false };
         }
         return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
       }
-      if (sceneKey === 'bio_eye') {
+      if (canonKey === 'bio_eye') {
         if (/мм|mm|Δf/i.test(lbl)) {
           const u = isEn ? 'mm' : 'мм';
           return { text: `${(val / 20).toFixed(2)} ${u}`, unit: u, isEnergy: false };
@@ -40278,7 +41035,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const dVal = /акомод|accom/i.test(lbl) ? (val / 3) : val;
         return { text: `${dVal.toFixed(1)} ${u}`, unit: u, isEnergy: false };
       }
-      if (sceneKey === 'bio_synapse') {
+      if (canonKey === 'bio_synapse') {
         if (/везикул|vesicle|m\b/i.test(lbl)) {
           const u = isEn ? 'ves.' : 'вез.';
           return { text: `${(val / 2).toFixed(1)} ${u}`, unit: u, isEnergy: false };
@@ -40290,7 +41047,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const u = isEn ? 'a.u.' : 'ум.од.';
         return { text: `${(val / 25).toFixed(2)} ${u}`, unit: u, isEnergy: false };
       }
-      if (sceneKey === 'bio_pcr') {
+      if (canonKey === 'bio_pcr') {
         if (/°C/.test(lbl)) {
           return { text: `${val.toFixed(0)} °C`, unit: '°C', isEnergy: false };
         }
@@ -40299,18 +41056,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
       }
-      if (sceneKey === 'bio_crispr') {
+      if (canonKey === 'bio_crispr') {
         const vPct = /стабільн|stabil/i.test(lbl) ? (val / 1.5) : val;
         return { text: `${vPct.toFixed(1)} %`, unit: '%', isEnergy: false };
       }
-      if (sceneKey === 'bio_phage') {
+      if (canonKey === 'bio_phage') {
         if (/атм|atm/i.test(lbl)) {
           const u = isEn ? 'atm' : 'атм';
           return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
         }
         return { text: `${val.toFixed(0)} %`, unit: '%', isEnergy: false };
       }
-      if (sceneKey === 'bio_hemodynamics') {
+      if (canonKey === 'bio_hemodynamics') {
         if (/мл\/с|mL\/s/i.test(lbl)) {
           const u = isEn ? 'mL/s' : 'мл/с';
           return { text: `${(val * 5).toFixed(1)} ${u}`, unit: u, isEnergy: false };
@@ -40322,78 +41079,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const u = isEn ? 'a.u.' : 'ум.од.';
         return { text: `${(val / 5).toFixed(2)} ${u}`, unit: u, isEnergy: false };
       }
-      if (sceneKey === 'bio_electrophoresis') {
+      if (canonKey === 'bio_electrophoresis') {
         const u = isEn ? 'mm' : 'мм';
         return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (sceneKey === 'photoelectric' || sceneKey === 'bohr' || sceneKey === 'compton' || sceneKey === 'chem_orbitals') {
-        if (/Δλ|зсув|shift/i.test(lbl)) {
-          return { text: `${val.toFixed(2)} ${isEn ? 'pm' : 'пм'}`, unit: isEn ? 'pm' : 'пм', isEnergy: false };
-        }
-        const uEv = isEn ? 'eV' : 'еВ';
-        return { text: `${val.toFixed(2)} ${uEv}`, unit: uEv, isEnergy: true };
       }
 
       if (explicitMultUnit) {
         return { text: `${val.toFixed(2)} ${explicitMultUnit}`.trim(), unit: explicitMultUnit, isEnergy: false };
-      }
-      if (/\(%\)|%|частка.*%|вихід.*%|ступінь.*%|інверсії|коагуляції|заряду.*SoC|нативної спіралі|гетерозигот/i.test(lbl)) {
-        return { text: `${val.toFixed(1)} %`, unit: '%', isEnergy: false };
-      }
-      if (/\(‰\)|‰/.test(lbl)) {
-        return { text: `${val.toFixed(2)} ‰`, unit: '‰', isEnergy: false };
-      }
-      if (/\bpH\b/i.test(lbl)) {
-        const phVal = (sceneKey === 'chem_titration' && val > 14.5) ? (val / 7) : ((val > 14.5) ? (val / 10) : val);
-        return { text: `${phVal.toFixed(2)}`, unit: '', isEnergy: false };
-      }
-      if (/\bR_f\b|Індекс lg|Абсорбція A|Absorbance|Ступінь іонності|Хвильовий зсув|Фазовий зсув/i.test(lbl)) {
-        return { text: `${val.toFixed(2)}`, unit: '', isEnergy: false };
-      }
-      if (/\(мВ\)|\(mV\)|ζ-потенціал|Zeta/i.test(lbl)) {
-        const u = isEn ? 'mV' : 'мВ';
-        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/\(В\)|\(V\)|Напруга|ЕРС|Voltage|EMF/i.test(lbl)) {
-        const u = isEn ? 'V' : 'В';
-        const vScaled = val > 25 ? val / 10 : val;
-        return { text: `${vScaled.toFixed(2)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/\(кПа\)|\(kPa\)|Тиск|Pressure|напір/i.test(lbl)) {
-        const u = isEn ? 'kPa' : 'кПа';
-        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/\(°C\)|°C/i.test(lbl)) {
-        return { text: `${val.toFixed(1)} °C`, unit: '°C', isEnergy: false };
-      }
-      if (/\(К\)|\(K\)|ΔT/i.test(lbl)) {
-        const u = isEn ? 'K' : 'К';
-        return { text: `${val.toFixed(2)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/Дебаях|Debye|Диполь μ|Dipole/i.test(lbl)) {
-        return { text: `${val.toFixed(2)} D`, unit: 'D', isEnergy: false };
-      }
-      if (/кДж\/моль|kJ\/mol|Ентальпія|Enthalpy|ΔH|ΔG|Δ_o|ЕСКП|CFSE|Енергія стабілізації|Енергія розщеплення|Потенціальна енергія уздовж|Potential Barrier/i.test(lbl)) {
-        const u = isEn ? 'kJ/mol' : 'кДж/моль';
-        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: true };
-      }
-      if (/концентрація|Concentration|\[A\]|\[P\]|\[NO₂\]|\[N₂O₄\]|Розчинність S/i.test(lbl)) {
-        const u = isEn ? 'mol/L' : 'моль/л';
-        const cScaled = val > 10 ? val / 10 : val;
-        return { text: `${cScaled.toFixed(2)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/швидкість реакції|Rate v|v₀|V_max|v_синт|v_реакц/i.test(lbl)) {
-        const u = isEn ? 'mol/(L·s)' : 'моль/(л·с)';
-        const rScaled = val > 10 ? val / 10 : val;
-        return { text: `${rScaled.toFixed(2)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/Частота|Frequency f/i.test(lbl)) {
-        const u = isEn ? 'Hz' : 'Гц';
-        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
-      }
-      if (/Інтенсив|Intensity|Тіндаля|Tyndall|потік T|потік R|Flux/i.test(lbl)) {
-        const u = isEn ? 'rel.' : 'відн.';
-        return { text: `${val.toFixed(1)} ${u}`, unit: u, isEnergy: false };
       }
 
       const uJ = tUI().jouleUnit;
@@ -40404,7 +41096,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       lastEnergyUIArgs = [ek, ep, q, maxRefEnergy, telemetryItems];
       const t = tUI();
       const isEn = uiState.lang === 'en';
-      const sceneKey = uiState.activeScene;
+      const sceneKey = resolveCanonicalSceneKey(uiState.activeScene);
       const cfg = SCENE_CONFIGS[sceneKey] || {};
 
       const s0 = formatMetricBarSlot(ek, cfg.ekLabel, sceneKey, isEn);
@@ -40421,6 +41113,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (sceneKey === 'bio_mendel') {
         if (titleEl) titleEl.textContent = isEn ? 'Genotype ratio' : 'Співвідношення генотипів';
         if (totEl) totEl.textContent = 'p² + 2pq + q² = 100%';
+      } else if (sceneKey === 'wavefront' || sceneKey === 'interference' || sceneKey === 'newtonrings') {
+        if (titleEl) titleEl.textContent = isEn ? 'Key indicators' : 'Ключові показники';
+        if (totEl) totEl.textContent = 'T + R = 100%';
       } else if (s0.isEnergy && s1.isEnergy && s2.isEnergy && s0.unit === s1.unit && s1.unit === s2.unit) {
         if (titleEl) titleEl.textContent = t.energyBalanceTitle;
         if (totEl) totEl.textContent = `E = ${tot.toFixed(1)} ${s0.unit}`;
@@ -40919,6 +41614,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (!isGlobalSearch && currentDropdownFilter !== 'all' && cfg.category !== currentDropdownFilter) return;
 
         const meta = EDU_META[key] || {};
+        const itemTier = meta.tier === 'advanced' ? 'advanced' : 'core';
+        if (!isGlobalSearch && currentDropdownTier !== 'all' && itemTier !== currentDropdownTier) return;
         const gradeTag = uiState.lang === 'uk' ? (meta.gradeUk || '') : (meta.gradeEn || '');
         if (dropdownSearchQuery) {
           const haystack = `${key} ${cfg.secSym} ${cfg.shortTitle} ${cfg.subtitle} ${cfg.title} ${cfg.badge} ${gradeTag}`.toLowerCase();
@@ -40950,7 +41647,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               <span class="exp-item-sub">${cfg.subtitle}</span>
             </span>
           </span>
-          <span class="exp-item-badge ${cfg.category === 'optics' ? 'optics' : ''}">${cfg.badge}</span>
+          <span class="exp-item-right-badges">
+            <span class="exp-item-tier ${itemTier === 'advanced' ? 'tier-advanced' : 'tier-core'}">${itemTier === 'advanced' ? t.tierBadgeAdv : t.tierBadgeCore}</span>
+            <span class="exp-item-badge ${cfg.category === 'optics' ? 'optics' : ''}">${cfg.badge}</span>
+          </span>
         `;
         item.addEventListener('click', e => {
           if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
@@ -41279,7 +41979,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       syncCurriculumCatalogUI();
     }
 
-    function loadScene(sceneKey, pushHistory = false) {
+    function loadScene(rawSceneKey, pushHistory = false) {
+      const sceneKey = resolveCanonicalSceneKey(rawSceneKey);
+      const tForSummary = tUI();
+      const chosenEl = document.getElementById('chosen-option-summary');
+      if (chosenEl) chosenEl.textContent = `${tForSummary.optionPrefix} ${tForSummary.letters[1] || tForSummary.letters[0]}`;
       const sceneDisc = getDisciplineOfScene(sceneKey);
       lastSceneByDiscipline[sceneDisc] = sceneKey;
       if (uiState.discipline !== sceneDisc) {
@@ -41394,7 +42098,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       else if (sceneKey === 'gyroscope') activeSim = new RollingInertiaSimulation();
       else if (sceneKey === 'standingwave') activeSim = new StandingWaveSimulation();
       else if (sceneKey === 'doppler') activeSim = new DopplerWavefrontSimulation();
-      else if (sceneKey === 'brewster') activeSim = new BrewsterPolarizationSimulation();
+      else if ((sceneKey === 'malus' || sceneKey === 'brewster')) activeSim = new BrewsterPolarizationSimulation();
       else if (sceneKey === 'diffraction') activeSim = new SingleSlitDiffractionSimulation();
       else if (sceneKey === 'carnot') activeSim = new CarnotEngineSimulation();
       else if (sceneKey === 'viscosity') activeSim = new StokesViscositySimulation();
@@ -41446,7 +42150,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       else if (sceneKey === 'chem_bornhaber') activeSim = new ChemBornHaberCycleSimulation();
       else if (sceneKey === 'chem_dipole') activeSim = new ChemDipolePolaritySimulation();
       else if (sceneKey === 'chem_phase') activeSim = new ChemPhaseDiagramSimulation();
-      else if (sceneKey === 'chem_arrhenius') activeSim = new ChemReactionOrdersSimulation();
+      else if ((sceneKey === 'chem_orders' || sceneKey === 'chem_arrhenius')) activeSim = new ChemReactionOrdersSimulation();
       else if (sceneKey === 'chem_enzyme') activeSim = new ChemEnzymeKineticsSimulation();
       else if (sceneKey === 'chem_gibbs') activeSim = new ChemGibbsFreeEnergySimulation();
       else if (sceneKey === 'chem_haber') activeSim = new ChemHaberBoschSimulation();
@@ -42679,7 +43383,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       gyroscope: { h: 'radius', v: 'angle', clickCycle: 'betaFactor' },
       standingwave: { h: 'tension', v: 'amplitude', clickCycle: 'harmonicN' },
       doppler: { h: 'machRatio', v: 'emitFreq' },
-      brewster: { h: 'analyzerAngle', v: 'refractiveN' },
+      malus: { h: 'analyzerAngle', v: 'refractiveN' },
       diffraction: { h: 'slitWidth', v: 'wavelength', clickCycle: 'orderM' },
       carnot: { h: 'rpmSpeed', v: 'tempHot', leftV: 'tempHot', rightV: 'tempCold' },
       viscosity: { h: 'radiusR', v: 'viscosityEta' },
@@ -42733,7 +43437,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       chem_bornhaber: { h: 'sublH', v: 'latticeU', leftV: 'ionizI1', rightV: 'dissHalfD' },
       chem_dipole: { h: 'deltaChi', v: 'bondAngleDeg', leftV: 'bondLenA', rightV: 'extFieldE' },
       chem_phase: { h: 'tempK', v: 'pressAtm', rightV: 'heatInputQ', clickCycle: 'substanceType' },
-      chem_arrhenius: { h: 'elapsedTimeT', v: 'initConcA0', rightV: 'rateConstK', clickCycle: 'rxnOrder' },
+      chem_orders: { h: 'elapsedTimeT', v: 'initConcA0', rightV: 'rateConstK', clickCycle: 'rxnOrder' },
       chem_enzyme: { h: 'substrateS', v: 'kmVal', leftV: 'kCat', rightV: 'inhibitorI' },
       chem_gibbs: { h: 'deltaH', v: 'tempK', leftV: 'deltaS', rightV: 'pressureP' },
       chem_haber: { h: 'pressAtm', v: 'tempC', rightV: 'ratioH2N2', clickCycle: 'feCatalyst' },
@@ -43124,7 +43828,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       ? queryLang
       : (window.__INITIAL_LANG__ || (pathMatch && pathMatch[1] ? 'uk' : (isUkRoot ? 'uk' : 'en')));
 
-    const candidateScene = querySim || window.__INITIAL_SCENE__ || (pathMatch && pathMatch[2]) || 'wavefront';
+    if (urlParams.get('mode') === 'classroom') {
+      document.body.classList.add('classroom-mode');
+      uiState.classroomMode = true;
+    }
+    const rawCandidateScene = querySim || window.__INITIAL_SCENE__ || (pathMatch && pathMatch[2]) || 'wavefront';
+    const candidateScene = resolveCanonicalSceneKey(rawCandidateScene);
     const initialScene = SCENE_CONFIGS[candidateScene] ? candidateScene : 'wavefront';
 
     window.addEventListener('popstate', e => {

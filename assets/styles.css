@@ -3450,3 +3450,143 @@
         display: none !important;
       }
     }
+
+    /* ==========================================================================
+       CURRICULUM TIERS (CORE VS ADVANCED), CLASSROOM MODE & PARAMETER SHARING
+       ========================================================================== */
+    .theory-grade-pill.tier-core {
+      background: rgba(22, 101, 52, 0.1);
+      border-color: rgba(22, 101, 52, 0.35);
+      color: #14532d;
+    }
+
+    .theory-grade-pill.tier-advanced {
+      background: rgba(29, 78, 216, 0.1);
+      border-color: rgba(29, 78, 216, 0.35);
+      color: #1e3a8a;
+    }
+
+    .dropdown-tier-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 6px 12px 6px;
+      border-bottom: 1px solid var(--rule-light);
+      background: rgba(240, 237, 230, 0.45);
+    }
+
+    .tier-pill-btn {
+      padding: 3px 9px;
+      border-radius: 3px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .tier-pill-btn:hover {
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+
+    .tier-pill-btn.active {
+      background: var(--ink-primary);
+      border-color: var(--ink-primary);
+      color: #faf9f5;
+    }
+
+    .exp-item-right-badges {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .exp-item-tier {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .exp-item-tier.tier-core {
+      background: rgba(22, 101, 52, 0.09);
+      border-color: rgba(22, 101, 52, 0.28);
+      color: #14532d;
+    }
+
+    .exp-item-tier.tier-advanced {
+      background: rgba(29, 78, 216, 0.09);
+      border-color: rgba(29, 78, 216, 0.28);
+      color: #1e3a8a;
+    }
+
+    .btn-classroom-mode {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 3px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.14s ease;
+    }
+
+    .btn-classroom-mode:hover {
+      border-color: var(--ink-primary);
+      background: #ffffff;
+    }
+
+    .btn-classroom-mode.active {
+      background: #14532d;
+      border-color: #14532d;
+      color: #faf9f5;
+    }
+
+    @media (max-width: 960px) {
+      .btn-classroom-mode {
+        padding: 0 7px;
+        font-size: 10.5px;
+      }
+    }
+
+    .ad-sidebar-card {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--rule-dark);
+      opacity: 0.92;
+    }
+
+    body.classroom-mode .ad-sidebar-card,
+    body.classroom-mode #ad-viewport-banner,
+    body.classroom-mode #cookie-consent-banner,
+    body.classroom-mode #header-legal-links,
+    body.classroom-mode #platform-editorial-guide,
+    body.classroom-mode #curriculum-catalog-details,
+    body.classroom-mode #site-legal-footer {
+      display: none !important;
+    }
+
+    body.classroom-mode .param-readout,
+    body.classroom-mode .meas-num {
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    body.classroom-mode .question-statement {
+      font-size: 15.5px;
+    }

@@ -154,6 +154,51 @@
     html[data-lang-view="uk"] .lang-divider {
       display: none !important;
     }
+
+    .h1-en {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 0 0 18px;
+      padding: 0;
+      border: none;
+    }
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-page);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .cookie-consent-banner.hidden { display: none !important; }
+    .cookie-consent-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-cookie-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-cookie-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
   </style>
   <script>
     (function() {
@@ -335,7 +380,7 @@
     <hr class="lang-divider" />
 
     <div class="doc-meta" lang="en">Interactive 3D Science Textbook · physics.sheua.com</div>
-    <h1 lang="en">About the Project &amp; Contact Information</h1>
+    <h2 class="h1-en" lang="en">About the Project &amp; Contact Information</h2>
     <p lang="en"><strong>3D Physics, Chemistry &amp; Biology Lab (physics.sheua.com)</strong> is an open-access bilingual interactive 3D textbook and virtual laboratory designed for secondary school students, university undergraduates, and science educators.</p>
 
     <h2 lang="en">Curriculum Overview (106 Interactive 3D Simulations)</h2>
@@ -469,5 +514,24 @@
     <span>© 2026 physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)</span>
     <span><a href="/about.html">Про проєкт</a> · <a href="/privacy.html">Політика конфіденційності</a> · <a href="/terms.html">Умови використання</a></span>
   </footer>
+
+  <aside id="cookie-consent-banner" class="cookie-consent-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>
+      Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" class="btn-cookie-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;this.closest('#cookie-consent-banner').classList.add('hidden')">Лише необхідні · Essential only</button>
+      <button type="button" class="btn-cookie-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}this.closest('#cookie-consent-banner').classList.add('hidden')">Прийняти · Accept</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>

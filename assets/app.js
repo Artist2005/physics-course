@@ -39845,31 +39845,38 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
       }
 
-      if (!document.getElementById('cookie-consent-banner')) {
-        let savedConsent = null;
-        try { savedConsent = localStorage.getItem('sheua_cookie_consent'); } catch (e) {}
-        if (savedConsent === 'essential') {
-          window.adsbygoogle = window.adsbygoogle || [];
-          window.adsbygoogle.requestNonPersonalizedAds = 1;
+      let savedConsent = null;
+      try { savedConsent = localStorage.getItem('sheua_cookie_consent'); } catch (e) {}
+      if (savedConsent === 'essential') {
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.requestNonPersonalizedAds = 1;
+      }
+      let banner = document.getElementById('cookie-consent-banner');
+      if (!banner && !savedConsent && !window.googlefc) {
+        banner = document.createElement('aside');
+        banner.id = 'cookie-consent-banner';
+        banner.className = 'cookie-consent-banner';
+        banner.setAttribute('role', 'region');
+        banner.setAttribute('aria-label', 'Cookie and privacy notice');
+        banner.innerHTML = `
+          <div id="ui-cookie-consent-text" class="cookie-consent-text">
+            ${uiState.lang === 'uk'
+              ? `Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="${rootHrefPrefix}privacy.html">Політики конфіденційності</a>.`
+              : `This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="${rootHrefPrefix}privacy.html">Privacy Policy</a>.`}
+          </div>
+          <div class="cookie-consent-actions">
+            <button type="button" id="btn-cookie-essential" class="btn-cookie-essential">${uiState.lang === 'uk' ? 'Лише необхідні' : 'Essential only'}</button>
+            <button type="button" id="btn-cookie-accept" class="btn-cookie-accept">${uiState.lang === 'uk' ? 'Прийняти' : 'Accept'}</button>
+          </div>
+        `;
+        document.body.appendChild(banner);
+      }
+      if (banner) {
+        if (savedConsent || window.googlefc) {
+          banner.classList.add('hidden');
         }
-        if (!savedConsent && !window.googlefc) {
-          const banner = document.createElement('aside');
-          banner.id = 'cookie-consent-banner';
-          banner.className = 'cookie-consent-banner';
-          banner.setAttribute('role', 'region');
-          banner.setAttribute('aria-label', 'Cookie and privacy notice');
-          banner.innerHTML = `
-            <div id="ui-cookie-consent-text" class="cookie-consent-text">
-              ${uiState.lang === 'uk'
-                ? `Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="${rootHrefPrefix}privacy.html">Політики конфіденційності</a>.`
-                : `This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="${rootHrefPrefix}privacy.html">Privacy Policy</a>.`}
-            </div>
-            <div class="cookie-consent-actions">
-              <button type="button" id="btn-cookie-essential" class="btn-cookie-essential">${uiState.lang === 'uk' ? 'Лише необхідні' : 'Essential only'}</button>
-              <button type="button" id="btn-cookie-accept" class="btn-cookie-accept">${uiState.lang === 'uk' ? 'Прийняти' : 'Accept'}</button>
-            </div>
-          `;
-          document.body.appendChild(banner);
+        if (!banner.dataset.wired) {
+          banner.dataset.wired = '1';
           banner.querySelector('#btn-cookie-accept')?.addEventListener('click', () => {
             try { localStorage.setItem('sheua_cookie_consent', 'accepted'); } catch (e) {}
             banner.classList.add('hidden');
@@ -41035,8 +41042,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       client: 'ca-pub-2903108049371777', // Ваш Publisher ID
       slots: {
         topBanner: '6817539766',         // ID рекламного блоку верхнього та мобільного банера (Baner)
-        leftSidebar: '4173783296',       // ID рекламного блоку лівої панелі (Sidebar)
-        rightSidebar: '4173783296'       // ID рекламного блоку правої панелі (Sidebar)
+        leftSidebar: '6817539766',       // ID рекламного блоку лівої панелі (Baner 6817539766)
+        rightSidebar: '4173783296'       // ID рекламного блоку правої панелі (Sidebar 4173783296)
       }
     };
 

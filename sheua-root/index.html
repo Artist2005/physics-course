@@ -132,7 +132,7 @@
       border-radius: 2px;
       margin-bottom: 12px;
     }
-    h1 {
+    h1, .hero-h1 {
       font-size: clamp(26px, 3.6vw, 36px);
       line-height: 1.2;
       margin-bottom: 12px;
@@ -316,7 +316,7 @@
         setLang(saved || 'both');
         var consent = null;
         try { consent = localStorage.getItem('sheua_cookie_consent'); } catch (e) {}
-        var cb = document.getElementById('hub-cookie-banner');
+        var cb = document.getElementById('cookie-consent-banner');
         if (consent && cb) cb.classList.add('hidden');
       });
     })();
@@ -368,7 +368,7 @@
 
     <section class="hero-sheet" data-lang="en" lang="en">
       <span class="badge">SHEUA.COM · OPEN-ACCESS 3D SCIENCE TEXTBOOK &amp; VIRTUAL LAB</span>
-      <h1>Interactive 3D Physics, Chemistry &amp; Biology Virtual Laboratory (106 Simulations)</h1>
+      <h2 class="hero-h1">Interactive 3D Physics, Chemistry &amp; Biology Virtual Laboratory (106 Simulations)</h2>
       <p class="lead">The <strong>sheua.com</strong> educational portal and its interactive laboratory at <strong>physics.sheua.com</strong> provide 106 real-time WebGL 3D simulations, live formula calculators, theoretical derivations, and printable laboratory worksheets for secondary schools and universities.</p>
       <div class="cta-grid">
         <a class="cta-card" href="https://physics.sheua.com/">
@@ -391,6 +391,25 @@
         </a>
       </div>
     </section>
+
+
+    <div style="margin-top: 20px; background: var(--bg-card); border: 1px solid var(--rule-dark); padding: 12px 16px; text-align: center;" role="complementary" aria-label="Sponsored">
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); margin-bottom: 6px; display: flex; justify-content: space-between;">
+        <span>Реклама · Advertisement</span>
+        <span>AD · RESPONSIVE</span>
+      </div>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2903108049371777"
+           data-ad-slot="6817539766"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        window.addEventListener('load', function() {
+          try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        });
+      </script>
+    </div>
 
     <article class="article-sheet" data-lang="uk">
       <h2>Методика триступеневого віртуального експерименту та довідник фундаментальних законів</h2>
@@ -708,11 +727,11 @@
     </div>
   </footer>
 
-  <aside id="hub-cookie-banner" class="cookie-banner" role="region" aria-label="Cookie notice">
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Cookie notice">
     <div>Цей освітній портал використовує файли cookie та <code>localStorage</code> для збереження налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
     <div class="cookie-actions">
-      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}document.getElementById('hub-cookie-banner').classList.add('hidden');">Лише необхідні</button>
-      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('hub-cookie-banner').classList.add('hidden');">Прийняти</button>
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
     </div>
   </aside>
 </body>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -75,10 +75,10 @@
     <div class="header-left">
 
       <div class="chapter-nav-group">
-        <button id="btn-prev-chapter" class="chapter-step-btn" title="Previous chapter">‹</button>
+        <button type="button" id="btn-prev-chapter" class="chapter-step-btn" title="Previous chapter" aria-label="Попередній параграф">‹</button>
 
         <div id="exp-dropdown-wrapper" class="exp-dropdown-wrapper">
-          <button id="exp-dropdown-trigger" class="exp-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <button type="button" id="exp-dropdown-trigger" class="exp-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
             <span class="trigger-text-wrap">
               <span id="trigger-sec-sym" class="trigger-sec-sym">§ Х-20</span>
               <span id="trigger-title" class="trigger-title">Хімія полімерів: радикальна полімеризація етилену та ріст ланцюга</span>
@@ -91,17 +91,17 @@
 
           <div id="exp-dropdown-menu" class="exp-dropdown-menu" role="listbox" aria-label="Select physics experiment">
             <div class="dropdown-filter-bar">
-              <button class="filter-pill-btn active" data-filter="all" id="filter-btn-all">Усі з хімії (40)</button>
-              <button class="filter-pill-btn" data-filter="chem_struct" id="filter-btn-optics">Будова речовини (10)</button>
-              <button class="filter-pill-btn" data-filter="chem_kinetics" id="filter-btn-mechanics">Гази, термохімія і кінетика (9)</button>
-              <button class="filter-pill-btn" data-filter="chem_solutions" id="filter-btn-thermo">Розчини, pH та аналіз (10)</button>
-              <button class="filter-pill-btn" data-filter="chem_electro_org" id="filter-btn-electro">Електрохімія й органіка (11)</button>
+              <button type="button" class="filter-pill-btn active" data-filter="all" id="filter-btn-all">Усі з хімії (40)</button>
+              <button type="button" class="filter-pill-btn" data-filter="chem_struct" id="filter-btn-optics">Будова речовини (10)</button>
+              <button type="button" class="filter-pill-btn" data-filter="chem_kinetics" id="filter-btn-mechanics">Гази, термохімія і кінетика (9)</button>
+              <button type="button" class="filter-pill-btn" data-filter="chem_solutions" id="filter-btn-thermo">Розчини, pH та аналіз (10)</button>
+              <button type="button" class="filter-pill-btn" data-filter="chem_electro_org" id="filter-btn-electro">Електрохімія й органіка (11)</button>
             </div>
             <div id="dropdown-items-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
           </div>
         </div>
 
-        <button id="btn-next-chapter" class="chapter-step-btn" title="Next chapter">›</button>
+        <button type="button" id="btn-next-chapter" class="chapter-step-btn" title="Next chapter" aria-label="Наступний параграф">›</button>
       </div>
     </div>
 
@@ -119,8 +119,8 @@
         <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
       </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
-        <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
-        <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
+        <button type="button" id="lang-en" class="lang-btn" title="English (Default)" aria-label="English language">EN</button>
+        <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова" aria-label="Українська мова">УКР</button>
       </div>
     </div>
   </header>
@@ -129,18 +129,18 @@
   <nav class="viewport-cam-dock" aria-label="Camera projection views">
     <span class="cam-dock-label">Камера</span>
     <div class="view-projections">
-      <button class="proj-btn active" id="cam-iso" title="Isometric 3D projection">Ізометрія</button>
-      <button class="proj-btn" id="cam-front" title="Front elevation view">Фронт</button>
-      <button class="proj-btn" id="cam-top" title="Top plan view">План</button>
-      <button class="proj-btn" id="cam-side" title="Side profile view">Профіль</button>
-      <button class="proj-btn" id="cam-macro" title="Close-up focus on interaction zone">Макро</button>
-      <button class="proj-btn" id="cam-orbit" title="Smooth 360° orbital rotation">Огляд 360°</button>
+      <button type="button" class="proj-btn active" id="cam-iso" title="Isometric 3D projection">Ізометрія</button>
+      <button type="button" class="proj-btn" id="cam-front" title="Front elevation view">Фронт</button>
+      <button type="button" class="proj-btn" id="cam-top" title="Top plan view">План</button>
+      <button type="button" class="proj-btn" id="cam-side" title="Side profile view">Профіль</button>
+      <button type="button" class="proj-btn" id="cam-macro" title="Close-up focus on interaction zone">Макро</button>
+      <button type="button" class="proj-btn" id="cam-orbit" title="Smooth 360° orbital rotation">Огляд 360°</button>
     </div>
   </nav>
 
   <!-- Кнопки згортання/розгортання бічних панелей -->
-  <button id="btn-toggle-left" class="panel-collapse-btn panel-collapse-left" title="Toggle Left Panel">‹</button>
-  <button id="btn-toggle-right" class="panel-collapse-btn panel-collapse-right" title="Toggle Right Panel">›</button>
+  <button type="button" id="btn-toggle-left" class="panel-collapse-btn panel-collapse-left" title="Toggle Left Panel" aria-label="Згорнути або розгорнути ліву панель">‹</button>
+  <button type="button" id="btn-toggle-right" class="panel-collapse-btn panel-collapse-right" title="Toggle Right Panel" aria-label="Згорнути або розгорнути праву панель">›</button>
 
   <!-- 3. Ліва сторінка підручника: Параграф, Керування дослідом, Задача, Доведення та Діаграма -->
   <aside id="left-sidebar" class="book-page-left">
@@ -199,19 +199,19 @@
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
     <div id="action-stage" class="experiment-controls visible">
-      <button id="btn-primary-cta" class="btn-oxford-primary">Запустити дослід</button>
+      <button type="button" id="btn-primary-cta" class="btn-oxford-primary">Запустити дослід</button>
 
       <div class="secondary-bar">
         <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-          <button id="btn-pause-toggle" class="btn-paper-secondary" style="display: none;">Пауза</button>
-          <button id="btn-step" class="btn-paper-secondary" title="Integration step +0.02 s">Крок +0.02 с</button>
-          <button id="btn-reset" class="btn-paper-secondary">Скинути</button>
+          <button type="button" id="btn-pause-toggle" class="btn-paper-secondary" style="display: none;">Пауза</button>
+          <button type="button" id="btn-step" class="btn-paper-secondary" title="Integration step +0.02 s">Крок +0.02 с</button>
+          <button type="button" id="btn-reset" class="btn-paper-secondary">Скинути</button>
         </div>
 
         <div id="ui-speed-group" class="speed-group" title="Time scale">
-          <button class="speed-opt" data-speed="0.25">0.25×</button>
-          <button class="speed-opt" data-speed="0.5">0.5×</button>
-          <button class="speed-opt active" data-speed="1">1×</button>
+          <button type="button" class="speed-opt" data-speed="0.25" aria-label="Швидкість симуляції 0.25x">0.25×</button>
+          <button type="button" class="speed-opt" data-speed="0.5" aria-label="Швидкість симуляції 0.5x">0.5×</button>
+          <button type="button" class="speed-opt active" data-speed="1" aria-label="Швидкість симуляції 1x">1×</button>
         </div>
       </div>
     </div>
@@ -220,13 +220,13 @@
     <div id="predict-section" class="problem-box">
       <div id="ui-problem-label" class="problem-label">Питання</div>
       <div id="question-text" class="problem-question">Що відбувається з хімічними зв’язками та станом гібридизації атомів Карбону під час радикальної полімеризації етилену n CH₂=CH₂ → (-CH₂–CH₂-)ₙ?</div>
-      <div id="options-container" class="options-list"><button class="book-option-btn"><span class="option-letter">А</span><span style="min-width:0;overflow-wrap:break-word;">Менш міцний π-зв’язок кожної молекули мономеру CH₂=CH₂ розривається з утворенням нових одинарних σ-зв’язків C–C у макроланцюгу, а гібридизація Карбону переходить із плоскої sp² (120^°) у тетраедричну sp³ (109.5^°)</span></button><button class="book-option-btn"><span class="option-letter">Б</span><span style="min-width:0;overflow-wrap:break-word;">Утворюються потрійні зв’язки C≡C з виділенням молекул води (реакція поліконденсації)</span></button><button class="book-option-btn"><span class="option-letter">В</span><span style="min-width:0;overflow-wrap:break-word;">Полімеризація етилену є сильно ендотермічною, бо σ-зв’язок слабший за π-зв’язок</span></button></div>
+      <div id="options-container" class="options-list"><button type="button" class="book-option-btn"><span class="option-letter">А</span><span style="min-width:0;overflow-wrap:break-word;">Менш міцний π-зв’язок кожної молекули мономеру CH₂=CH₂ розривається з утворенням нових одинарних σ-зв’язків C–C у макроланцюгу, а гібридизація Карбону переходить із плоскої sp² (120^°) у тетраедричну sp³ (109.5^°)</span></button><button type="button" class="book-option-btn"><span class="option-letter">Б</span><span style="min-width:0;overflow-wrap:break-word;">Утворюються потрійні зв’язки C≡C з виділенням молекул води (реакція поліконденсації)</span></button><button type="button" class="book-option-btn"><span class="option-letter">В</span><span style="min-width:0;overflow-wrap:break-word;">Полімеризація етилену є сильно ендотермічною, бо σ-зв’язок слабший за π-зв’язок</span></button></div>
     </div>
 
     <!-- Згорнутий стан обраної відповіді під час Кроків ІІ та ІІІ -->
     <div id="collapsed-prediction" class="collapsed-hypothesis">
       <span><span id="ui-your-answer">Ваша відповідь</span> <strong id="chosen-option-summary">Option B</strong></span>
-      <button id="btn-change-prediction" class="text-link-btn">Змінити</button>
+      <button type="button" id="btn-change-prediction" class="text-link-btn">Змінити</button>
     </div>
 
     <!-- Крок ІІІ: Доведення та аналіз результату з KaTeX-формулами -->
@@ -257,7 +257,7 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-2903108049371777"
-             data-ad-slot="4173783296"
+             data-ad-slot="6817539766"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
 </div>
@@ -327,7 +327,7 @@
     <div class="journal-section">
       <div class="section-heading-row">
         <span id="ui-params-heading">Параметри</span>
-        <button id="btn-preset-default" class="text-link-btn">Скинути</button>
+        <button type="button" id="btn-preset-default" class="text-link-btn">Скинути</button>
       </div>
       <div id="sliders-container" style="display: flex; flex-direction: column; gap: 12px;">
         <div class="param-control">
@@ -444,8 +444,17 @@
       <div id="ui-footer-copy" class="site-legal-copy">© 2026 physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)</div>
     </footer>
   </aside>
+  <aside id="cookie-consent-banner" class="cookie-consent-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div id="ui-cookie-consent-text" class="cookie-consent-text">
+      Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" id="btn-cookie-essential" class="btn-cookie-essential">Лише необхідні</button>
+      <button type="button" id="btn-cookie-accept" class="btn-cookie-accept">Прийняти</button>
+    </div>
+  </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110b"></script>
+  <script defer src="../../assets/app.js?v=20261110c"></script>
 </body>
 </html>

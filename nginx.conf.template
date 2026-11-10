@@ -27,6 +27,7 @@ server {
     # Security headers
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
 
     # Cloud Run health check endpoint
     location = /healthz {
@@ -38,13 +39,29 @@ server {
     # Cache shared JS/CSS bundles and icons
     location ~* \.(css|js|svg|ico|png|jpg|jpeg|webp)$ {
         expires 7d;
-        add_header Cache-Control "public, max-age=604800";
+        add_header Cache-Control "public, max-age=604800" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+        add_header X-Frame-Options "SAMEORIGIN" always;
         try_files $uri =404;
+    }
+
+    error_page 404 /404.html;
+
+    location = /404.html {
+        internal;
+        add_header Cache-Control "no-cache" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+        add_header X-Frame-Options "SAMEORIGIN" always;
     }
 
     # Serve HTML pages & clean URLs (/sim/archimedes or /sim/archimedes.html)
     location / {
-        add_header Cache-Control "no-cache";
-        try_files $uri $uri.html $uri/ /index.html;
+        add_header Cache-Control "no-cache" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        try_files $uri $uri.html $uri/ =404;
     }
 }

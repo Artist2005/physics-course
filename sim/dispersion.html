@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -75,10 +75,10 @@
     <div class="header-left">
 
       <div class="chapter-nav-group">
-        <button id="btn-prev-chapter" class="chapter-step-btn" title="Previous chapter">‹</button>
+        <button type="button" id="btn-prev-chapter" class="chapter-step-btn" title="Previous chapter" aria-label="Previous chapter">‹</button>
 
         <div id="exp-dropdown-wrapper" class="exp-dropdown-wrapper">
-          <button id="exp-dropdown-trigger" class="exp-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <button type="button" id="exp-dropdown-trigger" class="exp-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
             <span class="trigger-text-wrap">
               <span id="trigger-sec-sym" class="trigger-sec-sym">§ 11.</span>
               <span id="trigger-title" class="trigger-title">Light Dispersion in a Prism</span>
@@ -91,17 +91,17 @@
 
           <div id="exp-dropdown-menu" class="exp-dropdown-menu" role="listbox" aria-label="Select physics experiment">
             <div class="dropdown-filter-bar">
-              <button class="filter-pill-btn active" data-filter="all" id="filter-btn-all">All experiments (46)</button>
-              <button class="filter-pill-btn" data-filter="optics" id="filter-btn-optics">Optics and waves (14)</button>
-              <button class="filter-pill-btn" data-filter="mechanics" id="filter-btn-mechanics">Mechanics (15)</button>
-              <button class="filter-pill-btn" data-filter="thermo" id="filter-btn-thermo">Fluids and heat (9)</button>
-              <button class="filter-pill-btn" data-filter="electro" id="filter-btn-electro">Electromagnetism (8)</button>
+              <button type="button" class="filter-pill-btn active" data-filter="all" id="filter-btn-all">All experiments (46)</button>
+              <button type="button" class="filter-pill-btn" data-filter="optics" id="filter-btn-optics">Optics and waves (14)</button>
+              <button type="button" class="filter-pill-btn" data-filter="mechanics" id="filter-btn-mechanics">Mechanics (15)</button>
+              <button type="button" class="filter-pill-btn" data-filter="thermo" id="filter-btn-thermo">Fluids and heat (9)</button>
+              <button type="button" class="filter-pill-btn" data-filter="electro" id="filter-btn-electro">Electromagnetism (8)</button>
             </div>
             <div id="dropdown-items-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
           </div>
         </div>
 
-        <button id="btn-next-chapter" class="chapter-step-btn" title="Next chapter">›</button>
+        <button type="button" id="btn-next-chapter" class="chapter-step-btn" title="Next chapter" aria-label="Next chapter">›</button>
       </div>
     </div>
 
@@ -119,8 +119,8 @@
         <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
       </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
-        <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
-        <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
+        <button type="button" id="lang-en" class="lang-btn active" title="English (Default)" aria-label="English language">EN</button>
+        <button type="button" id="lang-uk" class="lang-btn" title="Українська мова" aria-label="Українська мова">УКР</button>
       </div>
     </div>
   </header>
@@ -129,18 +129,18 @@
   <nav class="viewport-cam-dock" aria-label="Camera projection views">
     <span class="cam-dock-label">Camera</span>
     <div class="view-projections">
-      <button class="proj-btn active" id="cam-iso" title="Isometric 3D projection">Isometric</button>
-      <button class="proj-btn" id="cam-front" title="Front elevation view">Front</button>
-      <button class="proj-btn" id="cam-top" title="Top plan view">Top</button>
-      <button class="proj-btn" id="cam-side" title="Side profile view">Side</button>
-      <button class="proj-btn" id="cam-macro" title="Close-up focus on interaction zone">Close-up</button>
-      <button class="proj-btn" id="cam-orbit" title="Smooth 360° orbital rotation">360° orbit</button>
+      <button type="button" class="proj-btn active" id="cam-iso" title="Isometric 3D projection">Isometric</button>
+      <button type="button" class="proj-btn" id="cam-front" title="Front elevation view">Front</button>
+      <button type="button" class="proj-btn" id="cam-top" title="Top plan view">Top</button>
+      <button type="button" class="proj-btn" id="cam-side" title="Side profile view">Side</button>
+      <button type="button" class="proj-btn" id="cam-macro" title="Close-up focus on interaction zone">Close-up</button>
+      <button type="button" class="proj-btn" id="cam-orbit" title="Smooth 360° orbital rotation">360° orbit</button>
     </div>
   </nav>
 
   <!-- Кнопки згортання/розгортання бічних панелей -->
-  <button id="btn-toggle-left" class="panel-collapse-btn panel-collapse-left" title="Toggle Left Panel">‹</button>
-  <button id="btn-toggle-right" class="panel-collapse-btn panel-collapse-right" title="Toggle Right Panel">›</button>
+  <button type="button" id="btn-toggle-left" class="panel-collapse-btn panel-collapse-left" title="Toggle Left Panel" aria-label="Toggle left panel">‹</button>
+  <button type="button" id="btn-toggle-right" class="panel-collapse-btn panel-collapse-right" title="Toggle Right Panel" aria-label="Toggle right panel">›</button>
 
   <!-- 3. Ліва сторінка підручника: Параграф, Керування дослідом, Задача, Доведення та Діаграма -->
   <aside id="left-sidebar" class="book-page-left">
@@ -199,19 +199,19 @@
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
     <div id="action-stage" class="experiment-controls visible">
-      <button id="btn-primary-cta" class="btn-oxford-primary">Run experiment</button>
+      <button type="button" id="btn-primary-cta" class="btn-oxford-primary">Run experiment</button>
 
       <div class="secondary-bar">
         <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-          <button id="btn-pause-toggle" class="btn-paper-secondary" style="display: none;">Pause</button>
-          <button id="btn-step" class="btn-paper-secondary" title="Integration step +0.02 s">Step +0.02 s</button>
-          <button id="btn-reset" class="btn-paper-secondary">Reset</button>
+          <button type="button" id="btn-pause-toggle" class="btn-paper-secondary" style="display: none;">Pause</button>
+          <button type="button" id="btn-step" class="btn-paper-secondary" title="Integration step +0.02 s">Step +0.02 s</button>
+          <button type="button" id="btn-reset" class="btn-paper-secondary">Reset</button>
         </div>
 
         <div id="ui-speed-group" class="speed-group" title="Time scale">
-          <button class="speed-opt" data-speed="0.25">0.25×</button>
-          <button class="speed-opt" data-speed="0.5">0.5×</button>
-          <button class="speed-opt active" data-speed="1">1×</button>
+          <button type="button" class="speed-opt" data-speed="0.25" aria-label="Simulation speed 0.25x">0.25×</button>
+          <button type="button" class="speed-opt" data-speed="0.5" aria-label="Simulation speed 0.5x">0.5×</button>
+          <button type="button" class="speed-opt active" data-speed="1" aria-label="Simulation speed 1x">1×</button>
         </div>
       </div>
     </div>
@@ -220,13 +220,13 @@
     <div id="predict-section" class="problem-box">
       <div id="ui-problem-label" class="problem-label">Question</div>
       <div id="question-text" class="problem-question">A white light beam passes through a triangular glass prism. Rays of which color are refracted through the largest deviation angle δ and why?</div>
-      <div id="options-container" class="options-list"><button class="book-option-btn"><span class="option-letter">A</span><span style="min-width:0;overflow-wrap:break-word;">Red rays (λ ≈ 680 nm), because they have the longest wavelength</span></button><button class="book-option-btn"><span class="option-letter">B</span><span style="min-width:0;overflow-wrap:break-word;">Violet rays (λ ≈ 410 nm), because glass has a higher refractive index at shorter wavelengths (nᵥiol &gt; nᵣed) and the lowest wavefront speed</span></button><button class="book-option-btn"><span class="option-letter">C</span><span style="min-width:0;overflow-wrap:break-word;">All colors refract at the exact same angle</span></button></div>
+      <div id="options-container" class="options-list"><button type="button" class="book-option-btn"><span class="option-letter">A</span><span style="min-width:0;overflow-wrap:break-word;">Red rays (λ ≈ 680 nm), because they have the longest wavelength</span></button><button type="button" class="book-option-btn"><span class="option-letter">B</span><span style="min-width:0;overflow-wrap:break-word;">Violet rays (λ ≈ 410 nm), because glass has a higher refractive index at shorter wavelengths (nᵥiol &gt; nᵣed) and the lowest wavefront speed</span></button><button type="button" class="book-option-btn"><span class="option-letter">C</span><span style="min-width:0;overflow-wrap:break-word;">All colors refract at the exact same angle</span></button></div>
     </div>
 
     <!-- Згорнутий стан обраної відповіді під час Кроків ІІ та ІІІ -->
     <div id="collapsed-prediction" class="collapsed-hypothesis">
       <span><span id="ui-your-answer">Selected answer</span> <strong id="chosen-option-summary">Option B</strong></span>
-      <button id="btn-change-prediction" class="text-link-btn">Change</button>
+      <button type="button" id="btn-change-prediction" class="text-link-btn">Change</button>
     </div>
 
     <!-- Крок ІІІ: Доведення та аналіз результату з KaTeX-формулами -->
@@ -257,7 +257,7 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-2903108049371777"
-             data-ad-slot="4173783296"
+             data-ad-slot="6817539766"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
 </div>
@@ -327,7 +327,7 @@
     <div class="journal-section">
       <div class="section-heading-row">
         <span id="ui-params-heading">Parameters</span>
-        <button id="btn-preset-default" class="text-link-btn">Reset defaults</button>
+        <button type="button" id="btn-preset-default" class="text-link-btn">Reset defaults</button>
       </div>
       <div id="sliders-container" style="display: flex; flex-direction: column; gap: 12px;">
         <div class="param-control">
@@ -444,8 +444,17 @@
       <div id="ui-footer-copy" class="site-legal-copy">© 2026 physics.sheua.com · Interactive 3D Science Lab (106 Simulations)</div>
     </footer>
   </aside>
+  <aside id="cookie-consent-banner" class="cookie-consent-banner" role="region" aria-label="Cookie and privacy notice">
+    <div id="ui-cookie-consent-text" class="cookie-consent-text">
+      This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="/privacy.html">Privacy Policy</a>.
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" id="btn-cookie-essential" class="btn-cookie-essential">Essential only</button>
+      <button type="button" id="btn-cookie-accept" class="btn-cookie-accept">Accept</button>
+    </div>
+  </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110b"></script>
+  <script defer src="../assets/app.js?v=20261110c"></script>
 </body>
 </html>

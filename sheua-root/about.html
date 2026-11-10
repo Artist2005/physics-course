@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Про проєкт і контакти · About &amp; Contact · 3D Science Lab (physics.sheua.com)</title>
+  <meta name="description" content="Про освітню платформу physics.sheua.com: 106 інтерактивних 3D-симуляцій та підручник з фізики, хімії, біології і біофізики українською та англійською мовами." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://sheua.com/about.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-page: #faf9f5;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #71717a;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --font-sans: "Google Sans", "Google Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: "Google Sans", "Google Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", "Google Sans", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      padding: 0 16px 48px;
+    }
+    .top-bar {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand-link {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+    }
+    .nav-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .nav-links a:hover { color: var(--ink-primary); }
+    main {
+      max-width: 860px;
+      margin: 28px auto 0;
+      background: var(--bg-page);
+      border: 1px solid var(--rule-dark);
+      padding: 32px 28px;
+    }
+    .doc-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      margin: 24px 0 10px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule-light);
+    }
+    p, li {
+      font-size: 14.5px;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    a { color: var(--accent-crimson); }
+    .lang-divider {
+      margin: 36px 0;
+      border: none;
+      border-top: 2px solid var(--rule-dark);
+    }
+    footer {
+      max-width: 860px;
+      margin: 24px auto 0;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .legal-lang-switch {
+      display: inline-flex;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--bg-page);
+    }
+    .legal-lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 9px;
+      cursor: pointer;
+    }
+    .legal-lang-btn + .legal-lang-btn {
+      border-left: 1px solid var(--rule-dark);
+    }
+    .legal-lang-btn.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+    }
+    html[data-lang-view="en"] main > :not([lang="en"]):not(.lang-divider),
+    html[data-lang-view="en"] .lang-divider {
+      display: none !important;
+    }
+    html[data-lang-view="uk"] main > [lang="en"],
+    html[data-lang-view="uk"] .lang-divider {
+      display: none !important;
+    }
+  </style>
+  <script>
+    (function() {
+      function setDocLang(mode) {
+        document.documentElement.setAttribute('data-lang-view', mode);
+        document.documentElement.lang = mode === 'en' ? 'en' : 'uk';
+        document.querySelectorAll('.legal-lang-btn').forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-lang-mode') === mode);
+        });
+        try { localStorage.setItem('sheua_legal_lang', mode); } catch (e) {}
+      }
+      window.__setLegalLang = setDocLang;
+      document.addEventListener('DOMContentLoaded', function() {
+        var params = new URLSearchParams(window.location.search);
+        var qLang = params.get('lang');
+        var saved = null;
+        try { saved = localStorage.getItem('sheua_legal_lang'); } catch (e) {}
+        var fromEnRef = document.referrer && /\/sim\//.test(document.referrer) && !/\/uk\//.test(document.referrer);
+        var initial = (qLang === 'en' || qLang === 'uk' || qLang === 'both')
+          ? qLang
+          : (saved || (fromEnRef ? 'en' : 'both'));
+        setDocLang(initial);
+      });
+    })();
+  </script>
+</head>
+<body>
+  <header class="top-bar">
+    <a class="brand-link" href="https://physics.sheua.com/uk/">3D Лабораторія Фізики, Хімії та Біології</a>
+    <nav class="nav-links" aria-label="Навігація сайту">
+      <a href="https://physics.sheua.com/uk/">На головну (УКР)</a>
+      <a href="/">Home (EN)</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+      <div class="legal-lang-switch" role="group" aria-label="Language view">
+        <button type="button" class="legal-lang-btn" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
+        <button type="button" class="legal-lang-btn" data-lang-mode="en" onclick="window.__setLegalLang('en')">EN</button>
+        <button type="button" class="legal-lang-btn active" data-lang-mode="both" onclick="window.__setLegalLang('both')">УКР + EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="doc-meta">Освітня платформа природничих наук · physics.sheua.com</div>
+    <h1>Про проєкт та контакти редакції</h1>
+    <p><strong>3D Лабораторія Фізики, Хімії та Біології (physics.sheua.com)</strong> є двомовним інтерактивним тривимірним підручником і віртуальним практикумом, створеним для наочного вивчення фундаментальних законів природи у школах, ліцеях та університетах.</p>
+
+    <h2>Структура курсу (106 інтерактивних 3D-дослідів)</h2>
+    <ul>
+      <li><strong>Фізика (46 симуляцій):</strong> класична механіка, закони збереження імпульсу й енергії, гідродинаміка, молекулярно-кінетична теорія і термодинаміка, хвильова та геометрична оптика, електромагнетизм, атомна і квантова фізика.</li>
+      <li><strong>Хімія (40 симуляцій):</strong> квантові s-, p-, d-орбіталі, гібридизація і геометрія молекул ГЕПВО, кристалічні ґратки, хімічна кінетика, рівновага Ле Шательє, кислотно-основне титрування, буферні розчини, гальванічні елементи, електроліз та органічні механізми реакцій.</li>
+      <li><strong>Біологія та біофізика (20 симуляцій):</strong> будова еукаріотичної клітини, хеміосмотичний синтез АТФ у мітохондрії, мітоз і мейоз із кросинговером, реплікація ДНК, ПЛР, редагування геному CRISPR-Cas9, гель-електрофорез, бактеріофаг Т4, рибосомна трансляція, популяційна генетика Гарді-Вайнберга, мембранний насос, потенціал дії нейрона, хімічний синапс, оптика ока людини, скорочення саркомера, гемодинаміка Пуазейля, фотосинтез, кооперативність гемоглобіну та екологічна модель Лотки-Вольтерри.</li>
+    </ul>
+
+    <h2>Методика навчання</h2>
+    <p>Кожен параграф побудований за триступеневим дослідницьким циклом: спочатку учень формулює гіпотезу, відповідаючи на проблемне запитання, далі перевіряє її в інтерактивній тривимірній установці зі змінними параметрами, векторами сил і живою осцилограмою, і наприкінці отримує строге математичне виведення з підстановкою власних чисел у формули KaTeX.</p>
+
+    
+    <h2>Повний покажчик 106 параграфів курсу (Українською)</h2>
+    <p>Нижче наведено прямі посилання на всі 106 віртуальних лабораторних робіт і теоретичних параграфів практикуму:</p>
+    <ul>
+      <li><a href="https://physics.sheua.com/uk/sim/collision">§ 1. Закон збереження імпульсу</a> · Пружне та непружне зіткнення куль, обмін імпульсами</li>
+      <li><a href="https://physics.sheua.com/uk/sim/incline">§ 2. Рух тіла по похилій площині</a> · Розклад сили тяжіння, реакція опори N та кут тертя</li>
+      <li><a href="https://physics.sheua.com/uk/sim/pendulum">§ 3. Математичний та пружинний маятники</a> · Порівняння періодів T = 2π√(L/g) та T = 2π√(m/k)</li>
+      <li><a href="https://physics.sheua.com/uk/sim/projectile">§ 4. Рух тіла, кинутого під кутом до горизонту</a> · Парабола у вакуумі та балістична крива з опором повітря</li>
+      <li><a href="https://physics.sheua.com/uk/sim/cradle">§ 5. Колиска Ньютона</a> · Передача імпульсу та енергії ланцюжком сталевих куль</li>
+      <li><a href="https://physics.sheua.com/uk/sim/centripetal">§ 6. Доцентрове прискорення та рух на повороті</a> · Доцентрове прискорення a = ω²R та умова зриву в занос</li>
+      <li><a href="https://physics.sheua.com/uk/sim/archimedes">§ 7. Закон Архімеда та умови плавання тіл</a> · Виштовхувальна сила F_A = ρgV та умова плавання біля ватерлінії</li>
+      <li><a href="https://physics.sheua.com/uk/sim/gas">§ 8. Ідеальний газ під поршнем (Рівняння Менделєєва–Клапейрона)</a> · Рівняння Менделєєва–Клапейрона PV = νRT та тепловий рух молекул</li>
+      <li><a href="https://physics.sheua.com/uk/sim/wavefront">§ 9. Світловий фронт і принцип Гюйгенса–Френеля</a> · Вторинні сферичні хвилі Гюйгенса та заломлення плоского фронту світла</li>
+      <li><a href="https://physics.sheua.com/uk/sim/interference">§ 10. Інтерференція світлових фронтів (Дослід Юнга)</a> · Накладання двох сферичних світлових фронтів, максимуми та мінімуми</li>
+      <li><a href="https://physics.sheua.com/uk/sim/dispersion">§ 11. Дисперсія світла та утворення спектра у призмі</a> · Залежність показника заломлення n(λ) від довжини хвилі та розклад спектра</li>
+      <li><a href="https://physics.sheua.com/uk/sim/emwave">§ 12. Електромагнітна світлова хвиля (E, B та вектор Пойнтінга)</a> · Взаємно перпендикулярні поля E ⊥ B, фазовий фронт та поляризація світла</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bernoulli">§ 13. Рівняння Бернуллі та ефект Вентурі</a> · Зв’язок швидкості потоку рідини та статичного тиску у трубі змінного перерізу</li>
+      <li><a href="https://physics.sheua.com/uk/sim/lens">§ 14. Збиральна лінза та фокусування світлового фронту</a> · Перетворення плоского світлового фронту на сферичний збіжний фронт у лінзі</li>
+      <li><a href="https://physics.sheua.com/uk/sim/lorentz">§ 15. Сила Лоренца та циклотронна спіраль у 3D</a> · Рух зарядженої частинки по гвинтовій лінії (спіралі) в однорідному полі B</li>
+      <li><a href="https://physics.sheua.com/uk/sim/faraday">§ 16. Закон Фарадея та правило Ленца у 3D</a> · Генерація індукційного струму в котушці під час руху магніту та правило Ленца</li>
+      <li><a href="https://physics.sheua.com/uk/sim/kepler">§ 17. Еліптична орбіта та ІІ закон Кеплера</a> · Рух планети по еліптичній орбіті, секторна швидкість та обмін енергій у гравітаційному полі</li>
+      <li><a href="https://physics.sheua.com/uk/sim/gyroscope">§ 18. Момент інерції та енергія кочення</a> · Змагання суцільного циліндра та порожнистого обруча на похилій площині без проковзування</li>
+      <li><a href="https://physics.sheua.com/uk/sim/standingwave">§ 19. Стоячі хвилі та обертони струни у 3D</a> · Власні моди коливань закріпленої струни, вузли й пучності та залежність частоти від натягу</li>
+      <li><a href="https://physics.sheua.com/uk/sim/doppler">§ 20. Ефект Доплера та деформація хвильового фронту</a> · Стиснення сферичних хвильових фронтів попереду рухомого джерела, зміщення частоти та конус Маха</li>
+      <li><a href="https://physics.sheua.com/uk/sim/brewster">§ 21. Поляризація світлового фронту та закон Малюса</a> · Проходження лінійно поляризованого світлового фронту крізь поляризатор та обертовий аналізатор</li>
+      <li><a href="https://physics.sheua.com/uk/sim/diffraction">§ 22. Дифракція світлового фронту на вузькій щілині</a> · Огинання світловим фронтом країв вузької щілини, зони Гюйгенса та центральний дифракційний максимум</li>
+      <li><a href="https://physics.sheua.com/uk/sim/carnot">§ 23. Ідеальна теплова машина та цикл Карно у 3D</a> · Перетворення теплоти нагрівника Q₁ на механічну роботу поршня A та передача Q₂ холодильнику</li>
+      <li><a href="https://physics.sheua.com/uk/sim/viscosity">§ 24. Рух кулі у в’язкій рідині (Закон Стокса)</a> · Падіння кульки у в’язкому маслі, сила в’язкого тертя Стокса та встановлення усталеної швидкості</li>
+      <li><a href="https://physics.sheua.com/uk/sim/coulomb">§ 25. Закон Кулона та 3D-поле електричного диполя</a> · Силові лінії напруженості E двох точкових зарядів, закон Кулона та рух пробного заряду</li>
+      <li><a href="https://physics.sheua.com/uk/sim/rlccircuit">§ 26. Електромагнітні коливання в контурі LC / RLC</a> · Вільні електромагнітні коливання між конденсатором C та котушкою індуктивності L, формула Томпсона</li>
+      <li><a href="https://physics.sheua.com/uk/sim/atwood">§ 27. Машина Атвуда: прискорення та натяг нитки</a> · Рух зв’язаних тіл на невагомій нитці через масивний блок з моментом інерції I</li>
+      <li><a href="https://physics.sheua.com/uk/sim/coriolis">§ 28. Сила Коріоліса та траєкторія на диску, що обертається</a> · Відхилення траєкторії тіла в системі відліку, що обертається з кутовою швидкістю ω</li>
+      <li><a href="https://physics.sheua.com/uk/sim/hooke">§ 29. Механічна напруга та модуль Юнга при розтягу</a> · Механічна напруга σ, відносне видовження ε та модуль пружності Юнга E при розтягу стрижня</li>
+      <li><a href="https://physics.sheua.com/uk/sim/torricelli">§ 30. Формула Торрічеллі: витікання рідини з резервуара</a> · Швидкість витікання ідеальної рідини з малого отвору під дією гідростатичного напору h</li>
+      <li><a href="https://physics.sheua.com/uk/sim/maxwell">§ 31. Розподіл Максвелла та характерні швидкості газу</a> · Статистичний закон розподілу молекул ідеального газу за модулями швидкостей та характерні швидкості</li>
+      <li><a href="https://physics.sheua.com/uk/sim/newtonrings">§ 32. Кільця Ньютона: інтерференція на повітряному прошарку</a> · Смуги рівної товщини в клиноподібному повітряному прошарку між плоско-опуклою лінзою та скляною пластиною</li>
+      <li><a href="https://physics.sheua.com/uk/sim/photoelectric">§ 33. Зовнішній фотоефект та рівняння Ейнштейна</a> · Виривання фотоелектронів квантами світла hν, робота виходу A_вих, червона межа та затримуючий потенціал U_з</li>
+      <li><a href="https://physics.sheua.com/uk/sim/rutherford">§ 34. Дослід Резерфорда: розсіяння α-частинок ядром</a> · Гіперболічні траєкторії α-частинок у кулонівському полі важкого атомного ядра +Ze та прицільний параметр b</li>
+      <li><a href="https://physics.sheua.com/uk/sim/ampere">§ 35. Взаємодія паралельних струмів та сила Ампера</a> · Магнітна взаємодія двох паралельних провідників зі струмами I₁ та I₂ та еталон сили струму 1 Ампер</li>
+      <li><a href="https://physics.sheua.com/uk/sim/hall">§ 36. Ефект Холла та поперечна ЕРС у магнітному полі</a> · Виникнення поперечної різниці потенціалів U_H у пластинці зі струмом, вміщеній у перпендикулярне магнітне поле B</li>
+      <li><a href="https://physics.sheua.com/uk/sim/coupled">§ 37. Зв’язані маятники: нормальні моди та явище биття</a> · Періодичне перетікання механічної енергії між двома маятниками, з’єднаними пружною пружиною</li>
+      <li><a href="https://physics.sheua.com/uk/sim/precession">§ 38. Гіроскопічна прецесія важкої симетричної дзиґи</a> · Прецесія вектора власного моменту імпульсу L навколо вертикалі під дією моменту сили тяжіння M = [r × mg]</li>
+      <li><a href="https://physics.sheua.com/uk/sim/magnus">§ 39. Ефект Магнуса та підіймальна сила обертового циліндра</a> · Виникнення поперечної підіймальної сили F_M при обтіканні обертового циліндра потоком внаслідок циркуляції швидкості Γ</li>
+      <li><a href="https://physics.sheua.com/uk/sim/capillary">§ 40. Поверхневий натяг, меніск та капілярні явища</a> · Додатковий лапласівський тиск ΔP = 2σ cos θ / r під увігнутим або опуклим меніском та рівноважна висота стовпчика h</li>
+      <li><a href="https://physics.sheua.com/uk/sim/brownian">§ 41. Броунівський рух та дифузія Ейнштейна–Смолуховського</a> · Хаотична траєкторія завислої мікрочастинки під ударами молекул рідини та лінійне зростання середнього квадрата зміщення ⟨r²⟩ = 6Dt</li>
+      <li><a href="https://physics.sheua.com/uk/sim/michelson">§ 42. Інтерферометр Майкельсона та фазовий зсув променів</a> · Поділ когерентного лазерного пучка напівпрозорим дзеркалом на два ортогональні плеча L₁, L₂ та зміщення кілець при зсуві Δd</li>
+      <li><a href="https://physics.sheua.com/uk/sim/compton">§ 43. Ефект Комптона та релятивістський імпульс фотона</a> · Пружне зіткнення рентгенівського фотона з вільним електроном, збільшення довжини хвилі Δλ = λ_C (1 − cos θ) та імпульс віддачі</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bohr">§ 44. Модель атома Бора, хвилі де Бройля та спектральні серії</a> · Квантування моменту імпульсу Lₙ = nℏ, стоячі хвилі де Бройля 2πrₙ = nλ_дБ та випромінювання спектральних ліній Рідберга</li>
+      <li><a href="https://physics.sheua.com/uk/sim/biot">§ 45. Закон Біо–Савара–Лапласа та котушки Гельмгольца</a> · Розрахунок магнітної індукції B(x) на осі колових витків зі струмом та створення високооднорідного поля між котушками Гельмгольца</li>
+      <li><a href="https://physics.sheua.com/uk/sim/transformer">§ 46. Трансформатор змінного струму та взаємна індукція</a> · Взаємна електромагнітна індукція через спільний змінний магнітний потік Φ(t) в осерді та коефіцієнт трансформації U₂/U₁ = N₂/N₁</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_orbitals">§ Х-1 Будова електронних оболонок атома та 3D-орбіталі (s, p, d)</a> · Хвильова функція Шредінгера |ψ|², квантові числа n, l та вузлові поверхні</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_vsepr">§ Х-2 Гібридизація орбіталей і просторова геометрія молекул (ГЕПВО)</a> · Лінійна sp (180°), тригональна sp² (120°), тетраедрична sp³ (109.5°) і неподілені пари</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_lattice">§ Х-3 Йонна кристалічна ґратка та енергія зв’язку кристала (NaCl)</a> · Елементарна комірка кам’яної солі, стала Маделунга, енергія ґратки та теплові коливання</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_gaslaws">§ Х-4 Закон Авогадро, молярний об’єм газу та рівняння Менделєєва–Клапейрона</a> · Молярний об’єм газу Vₘ = 22.4 л/моль (н.у.), кількість речовини ν та рівняння PV = νRT</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_kinetics">§ Х-5 Швидкість хімічної реакції, енергія активації та каталіз</a> · Теорія активних зіткнень, рівняння Арреніуса k = A·exp(−Eₐ/RT) та дія каталізатора</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_equilibrium">§ Х-6 Хімічна рівновага та принцип Ле Шательє (система N₂O₄ ⇄ 2NO₂)</a> · Динамічна рівновага димеризації, константа Kₚ та зміщення під дією T і P</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_titration">§ Х-7 Кислотно-основне титрування, водневий показник pH та індикатори</a> · Крива нейтралізації HCl + NaOH → NaCl + H₂O, точка еквівалентності та стрибок pH</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_galvanic">§ Х-8 Гальванічний елемент Даніеля–Якобі та електродні потенціали</a> · Анодне окиснення Zn⁰ → Zn²⁺ + 2e⁻, катодне відновлення Cu²⁺ + 2e⁻ → Cu⁰ і сольовий місток</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_electrolysis">§ Х-9 Електроліз водного розчину електроліту та закони Фарадея</a> · Катодне осадження міді, анодне виділення кисню O₂↑ та маса m = (M·I·t)/(z·F)</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_organic">§ Х-10 Будова молекули бензену C₆H₆, ароматичність та делокалізація π-зв’язку</a> · Правильний плоский шестикутник Кекуле, sp²-каркас (120°) і єдина 6π-електронна хмара Гюккеля</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_periodic">§ Х-11 Періодична система Д. І. Менделєєва (118 елементів): радіус r_ат, енергія йонізації I₁ та χ</a> · Повна 3D-таблиця всіх 118 хімічних елементів (періоди 1–7, групи 1–18, s-, p-, d-, f-блоки: лантаноїди та актиноїди), радіус атома r_ат, енергія йонізації I₁ та електронегативність χ</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_hbond">§ Х-12 Водневий зв’язок, гексагональна ґратка льоду Iₕ та аномалія густини води</a> · Тетраедрична сітка водневих зв’язків O–H···O у кристалі гексагонального льоду Iₕ (ρ = 0.917 г/см³) та максимум густини води при +4 °C</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_calorimetry">§ Х-13 Термохімія, закон Гесса та калориметричне визначення ентальпії реакції ΔH</a> · Вимірювання теплового ефекту екзо- та ендотермічних реакцій у калориметрі Q = (m·c + C_кал)ΔT = −ν·ΔH та діаграма закону Гесса</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_osmosis">§ Х-14 Осмотичний тиск розчину (закон Вант-Гоффа Π = iCRT) та напівпроникна мембрана</a> · Однобічна дифузія води крізь напівпроникну мембрану в U-подібному осмометрі, ізотонічний коефіцієнт i та опріснення зворотним осмосом</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_buffer">§ Х-15 Буферні розчини, рівняння Гендерсона–Гассельбаха та буферна ємність</a> · Порівняння стабільності pH ацетатного буфера (CH₃COOH + CH₃COONa) та чистої води при додаванні сильної кислоти HCl або лугу NaOH</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_ksp">§ Х-16 Добуток розчинності Kₛp, реакція «Золотий дощ» (PbI₂↓) та ефект спільного йона</a> · Кристалізація золотистих гексагональних лусочок плюмбум(ІІ) йодиду PbI₂↓ за умови Qₛp &gt; Kₛp(T) та ефект спільного йона I⁻</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_beer">§ Х-17 Оптична спектрофотометрія та закон Бугера–Ламберта–Бера (A = ε·l·C)</a> · Поглинання монохроматичного променя забарвленим розчином у кварцовій кюветі, оптична густина A = ε(λ)lC та пропускання T = 10⁻ᴬ</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_fuelcell">§ Х-18 Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC)</a> · Пряме електрохімічне перетворення енергії реакції 2H₂ + O₂ → 2H₂O в електричний струм крізь протонно-обмінну мембрану з Pt-каталізатором</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_isomerism">§ Х-19 Стереохімія: геометрична (цис-транс, Z/E) та оптична хіральна ізомерія (R/S)</a> · Порівняння дипольної полярності геометричних цис/транс-ізомерів алкенів і обертання площини поляризації світла хіральними R/S-енантіомерами</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_polymer">§ Х-20 Радикальна полімеризація етилену та ріст макромолекулярного ланцюга поліетилену</a> · Ланцюгова полімеризація n CH₂=CH₂ → (–CH₂–CH₂–)ₙ, перехід гібридизації sp² → sp³, молекулярна маса Mₙ та радіус клубка R_g</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_mo">§ Х-21 Метод молекулярних орбіталей (МО ЛКАО) та парамагнетизм кисню</a> · Зв’язувальні σ, π та розпушувальні σ*, π* орбіталі, порядок зв’язку і парамагнетизм O₂</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_allotropes">§ Х-22 Алотропні модифікації та наноструктури Карбону: Графен, Нанотрубка і Фулерен C₆₀</a> · Фулерен C₆₀, вуглецева нанотрубка та графеновий лист: sp²-делокалізація і геометрія</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_complex">§ Х-23 Координаційні сполуки Вернера та теорія кристалічного поля (розщеплення d-орбіталей)</a> · Октаедричний комплекс [ML₆]ⁿ⁺, розщеплення t₂g / e_g (Δₒ), спектрохімічний ряд і колір</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_bornhaber">§ Х-24 Круговий термодинамічний цикл Борна–Габера для йонних кристалів</a> · Термодинамічний баланс сублімації, дисоціації, йонізації, спорідненості до електрона та U_ґрат</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_dipole">§ Х-25 Полярність хімічного зв’язку, електричний дипольний момент та орієнтаційна поляризація</a> · Часткові заряди δ⁺/δ⁻, векторна сума диполів зв’язків і орієнтація молекули в полі E</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_phase">§ Х-26 Фазові діаграми речовини (P–T), потрійна точка та надкритичний стан (H₂O і CO₂)</a> · Рівняння Клапейрона–Клаузіуса, сублімація CO₂ («сухий лід») і надкритичний стан</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_arrhenius">§ Х-27 Кінетичні рівняння нульового, першого та другого порядків і період напівперетворення t₁/₂</a> · Інтегральні кінетичні рівняння нульового, першого та другого порядків і період напіврозпаду</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_enzyme">§ Х-28 Ферментативний каталіз: рівняння Міхаеліса–Ментен та конкурентне інгібування</a> · Комплекс фермент–субстрат ES, модель «ключ–замок», Vₘax, K_M та конкурентне інгібування</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_gibbs">§ Х-29 Вільна енергія Гіббса (ΔG = ΔH − TΔS), ентропія та термодинамічний критерій напрямку реакції</a> · Конкуренція ентальпійного ΔH і ентропійного TΔS факторів, температура інверсії T_рівн = ΔH/ΔS</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_haber">§ Х-30 Синтез аміаку Габера–Боша та гетерогенний каталіз на поверхні заліза</a> · Компроміс між кінетикою та рівновагою: високий тиск P, оптимальна температура 450 °C і Fe-каталізатор</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_raoult">§ Х-31 Колігативні властивості розчинів: Закон Рауля, ебуліоскопія (ΔT_кип) та кріоскопія (ΔT_зам)</a> · Зниження тиску насиченої пари ΔP = x₂P₀, підвищення T_кип і зниження T_зам розчинів</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_chromatography">§ Х-32 Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f</a> · Розподіл між нерухомою (сорбент SiO₂) і рухомою (елюент) фазами та розділення пігментів</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_adsorption">§ Х-33 Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра</a> · Мономолекулярний шар на активних центрах, ступінь заповнення θ = KP/(1 + KP) і десорбція</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_colloids">§ Х-34 Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція</a> · Будова міцели золю, подвійний електричний шар (ζ-потенціал), ефект Тіндаля і правило Шульце–Гарді</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_hydrolysis">§ Х-35 Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища</a> · Константа K_г = K_w / Kₐ, ступінь гідролізу h = √(K_г/C) та реакція середовища розчинів солей</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_corrosion">§ Х-36 Електрохімічна корозія заліза з кисневою деполяризацією та катодний протекторний захист</a> · Мікрогальванічні пари Fe–Cu (руйнування заліза) та Fe–Zn / Fe–Mg (жертовний анод-протектор)</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_liion">§ Х-37 Літій-іонний акумулятор (LiCoO₂ || C₆): оборотна інтеркаляція іонів Li⁺ (Нобелівська премія, 2019)</a> · Шаруватий катод LiCoO₂ та графітовий анод LiC₆: цикл «гойдалки» розряджання / заряджання і напруга 3.7 В</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_sn2">§ Х-38 Бімолекулярне нуклеофільне заміщення (S_N2): перехідний стан та інверсія конфігурації Вальдена</a> · Тилова атака нуклеофіла OH⁻ під кутом 180°, тригонально-біпірамідальний перехідний стан і вивертання конфігурації</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_ester">§ Х-39 Реакція естерифікації Фішера та доведення її механізму методом мічених атомів (¹⁸O)</a> · Синтез етилетаноату CH₃COOH + C₂H₅¹⁸OH ⇄ CH₃CO¹⁸OC₂H₅ + H₂O, константа рівноваги K_c = 4</li>
+      <li><a href="https://physics.sheua.com/uk/sim/chem_biopol">§ Х-40 Структура біополімерів: плоский пептидний зв’язок, α-спіраль білка та подвійна спіраль ДНК</a> · Пептидна група –CO–NH–, водневі зв’язки в α-спіралі Полінга і комплементарні пари A=T, G≡C у ДНК</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_eukaryote">§ Б-01 Еукаріотична клітина: компартменталізація органел і геометрична межа S/V</a> · Ядро, мітохондрії, ЕПС, апарат Гольджі, лізосоми та відношення площі до об’єму S/V = 3/R</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_mitochondria">§ Б-02 Хеміосмотична теорія Мітчелла: протонна рушійна сила Δp і синтез АТФ</a> · Дихальний ланцюг (комплекси I–IV), протонний градієнт Δp і роторний мотор F₀F₁-АТФ-синтази</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_mitosis">§ Б-03 Мітотичний поділ клітини: динаміка мікротрубочок веретена та збереження плоїдності</a> · Профаза, метафазна пластинка, анафазне розходження сестринських хроматид і телофаза (2n → 2n)</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_replication">§ Б-04 Напівконсервативна реплікація ДНК: реплікативна вилка Мезельсона–Сталя</a> · Геліказа, ДНК-полімераза III, синтез 5′→3′, ведучий ланцюг і фрагменти Оказакі відстаючого ланцюга</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_ribosome">§ Б-05 Експресія генів і трансляція: декодування мРНК рибосомою та синтез поліпептиду</a> · Центральна догма ДНК → мРНК → Білок, триплетний генетичний код, сайти A–P–E рибосоми та тРНК</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_mendel">§ Б-06 Генетика Менделя та закон Гарді–Вайнберга: динаміка частот генотипів у популяції</a> · Решітка Пеннета, розщеплення 3:1 і 9:3:3:1 та популяційна рівновага частот алелів p² + 2pq + q² = 1</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_membrane">§ Б-07 Біофізика плазматичної мембрани: електрогенний Na⁺/K⁺-насос і потенціал спокою</a> · Рідинно-мозаїчна модель Сінгера–Ніколсона, активний транспорт 3Na⁺/2K⁺ і рівняння Нернста</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_neuron">§ Б-08 Потенціал дії нейрона: поширення нервового імпульсу та сальтаторне проведення</a> · Модель Ходжкіна–Хакслі, деполяризація Na⁺, реполяризація K⁺, мієлінова оболонка та перехвати Ранв’є</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_sarcomere">§ Б-09 Біофізика м’язового скорочення: модель ковзних ниток саркомера та рівняння Гілла</a> · Ковзання ниток актину й міозину (Гакслі), роль Ca²⁺ і тропоміозину та гіпербола сили–швидкості Гілла</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_photosynthesis">§ Б-10 Фотосинтез у хлоропласті: Z-схема електронного транспорту та фіксація CO₂ у циклі Кальвіна</a> · Світлова фаза на мембрані тилакоїда (ФС ІІ, фотоліз води, ФС І) та цикл Кальвіна в стромі</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_hemo">§ Б-11 Транспорт кисню гемоглобіном: алостерична кооперативність (T ↔ R) і ефект Бора</a> · Тетрамер α₂β₂ з 4 гемами Fe²⁺, кооперативна сигмоїда Гілла (n ≈ 2.8), міоглобін і зсув кривої Бора</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_lotka">§ Б-12 Динаміка екосистем: автоколивання «хижак–жертва» Лотки–Вольтерри та трофічні рівні</a> · Диференціальні рівняння «хижак–жертва», фазовий портрет, хвилі популяцій і піраміда Ліндемана (10%)</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_meiosis">§ Б-13 Мейотичний поділ клітини: синапсис бівалентів, кросинговер і комбінативна мінливість</a> · Кон’югація гомологів у профазі І, хіазми, обмін ділянками хроматид і гаплоїдні гамети (1n1c)</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_eye">§ Б-14 Біофізика зору: оптична сила ока, акомодація кришталика та корекція аметропій лінзами</a> · Заломлення світла в рогівці й кришталику, рефлекс акомодації, короткозорість (міопія) та далекозорість</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_synapse">§ Б-15 Хімічний синапс: кальцій-залежний екзоцитоз медіатора та постсинаптичні рецептори</a> · Вхід йонів Ca²⁺, SNARE-екзоцитоз синаптичних везикул, дифузія крізь щілину та потенціал ЗПСП / ГПСП</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_pcr">§ Б-16 Полімеразна ланцюгова реакція (ПЛР): температурні цикли та експоненційна ампліфікація ДНК</a> · Термоциклер: денатурація (95 °C), відпал праймерів (58 °C), синтез Taq-полімеразою (72 °C) та ріст 2ⁿ</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_crispr">§ Б-17 Система CRISPR–Cas9: програмоване розпізнавання мішені ДНК та високоточне редагування генів</a> · Розпізнавання мотиву PAM (5′-NGG-3′), R-петля гідової sgRNA, нуклеазні домени HNH/RuvC і репарація ДНК</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_phage">§ Б-18 Будова і цикл бактеріофага Т4: біомеханічний шприц та ін’єкція вірусної ДНК у бактерію</a> · Ікосаедричний капсид, рецепторні хвостові нитки, скорочення чохла та впорскування геному у клітину</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_hemodynamics">§ Б-19 Біофізика кровообігу: ламінарний потік еритроцитів і закон Гагена–Пуазейля для судин (Q ∝ R⁴)</a> · Параболічний профіль швидкості еритроцитів, залежність кровотоку Q ∝ R⁴, в’язкість крові та стеноз судини</li>
+      <li><a href="https://physics.sheua.com/uk/sim/bio_electrophoresis">§ Б-20 Гель-електрофорез ДНК: розділення рестрикційних фрагментів у полімерній сітці за молекулярною масою</a> · Міграція поліаніонів ДНК до анода (+), молекулярне сито агарозного гелю та логарифмічна шкала довжин</li>
+    </ul>
+
+    <h2>Контактна інформація</h2>
+    <p>Маєте пропозиції щодо нових лабораторних робіт, помітили неточність або бажаєте співпрацювати? Зв'яжіться з нами:</p>
+    <ul>
+      <li>Електронна пошта редакції: <a href="mailto:contact@sheua.com">contact@sheua.com</a></li>
+      <li>Вебсайт: <a href="https://physics.sheua.com">https://physics.sheua.com</a></li>
+      <li>Українська версія практикуму: <a href="https://physics.sheua.com/uk/">https://physics.sheua.com/uk/</a></li>
+    </ul>
+
+    <hr class="lang-divider" />
+
+    <div class="doc-meta" lang="en">Interactive 3D Science Textbook · physics.sheua.com</div>
+    <h1 lang="en">About the Project &amp; Contact Information</h1>
+    <p lang="en"><strong>3D Physics, Chemistry &amp; Biology Lab (physics.sheua.com)</strong> is an open-access bilingual interactive 3D textbook and virtual laboratory designed for secondary school students, university undergraduates, and science educators.</p>
+
+    <h2 lang="en">Curriculum Overview (106 Interactive 3D Simulations)</h2>
+    <ul lang="en">
+      <li><strong>Physics (46 Experiments):</strong> Classical mechanics, conservation laws, fluid dynamics, thermodynamics, wave and geometric optics, electromagnetism, and quantum physics.</li>
+      <li><strong>Chemistry (40 Experiments):</strong> Atomic and molecular orbitals, VSEPR geometry, crystal lattices, chemical kinetics, Le Chatelier equilibrium, pH titration, buffers, electrochemistry, and organic reaction mechanisms.</li>
+      <li><strong>Biology &amp; Biophysics (20 Experiments):</strong> Eukaryotic cell organelles, mitochondrial ATP synthase, mitosis, meiosis and crossing-over, DNA replication, PCR thermal cycling, CRISPR-Cas9 gene editing, gel electrophoresis, bacteriophage T4, ribosomal translation, Hardy-Weinberg genetics, membrane ion pumps, Hodgkin-Huxley action potentials, chemical synapse neurotransmission, human eye optics, muscle sarcomere mechanics, Poiseuille hemodynamics, photosynthesis, hemoglobin cooperativity, and Lotka-Volterra ecology.</li>
+    </ul>
+
+    
+    <h2 lang="en">Complete Directory of 106 Textbook Chapters (English)</h2>
+    <p lang="en">Direct links to all 106 interactive 3D simulations and theoretical chapters:</p>
+    <ul lang="en">
+      <li><a href="https://physics.sheua.com/sim/collision">§ 1. Conservation of Linear Momentum</a> · Elastic &amp; inelastic collision of spheres, momentum exchange</li>
+      <li><a href="https://physics.sheua.com/sim/incline">§ 2. Motion of a Body on an Inclined Plane</a> · Resolution of gravity, normal force N, and friction angle</li>
+      <li><a href="https://physics.sheua.com/sim/pendulum">§ 3. Simple &amp; Spring Pendulums</a> · Comparison of periods T = 2π√(L/g) and T = 2π√(m/k)</li>
+      <li><a href="https://physics.sheua.com/sim/projectile">§ 4. Projectile Launched at an Angle to the Horizontal</a> · Vacuum parabola vs. ballistic trajectory with air drag</li>
+      <li><a href="https://physics.sheua.com/sim/cradle">§ 5. Newton's Cradle</a> · Transmission of momentum and energy through a chain of steel spheres</li>
+      <li><a href="https://physics.sheua.com/sim/centripetal">§ 6. Centripetal Acceleration &amp; Turning Dynamics</a> · Centripetal acceleration a = ω²R and radial skidding threshold</li>
+      <li><a href="https://physics.sheua.com/sim/archimedes">§ 7. Archimedes' Principle &amp; Flotation Conditions</a> · Buoyant force F_A = ρgV and equilibrium at the waterline</li>
+      <li><a href="https://physics.sheua.com/sim/gas">§ 8. Ideal Gas Under a Piston (Ideal Gas Law)</a> · Ideal gas law PV = νRT and thermal motion of molecules</li>
+      <li><a href="https://physics.sheua.com/sim/wavefront">§ 9. Light Wavefront &amp; Huygens–Fresnel Principle</a> · Huygens' secondary spherical wavelets and plane wavefront refraction</li>
+      <li><a href="https://physics.sheua.com/sim/interference">§ 10. Interference of Light Wavefronts (Young's Double-Slit)</a> · Superposition of two spherical light wavefronts, maxima &amp; minima</li>
+      <li><a href="https://physics.sheua.com/sim/dispersion">§ 11. Dispersion of Light &amp; Spectrum Formation in a Prism</a> · Wavelength dependence of refractive index n(λ) and spectral splitting</li>
+      <li><a href="https://physics.sheua.com/sim/emwave">§ 12. Electromagnetic Light Wave (E, B &amp; Poynting Vector)</a> · Mutually perpendicular fields E ⊥ B, phase wavefront, and light polarization</li>
+      <li><a href="https://physics.sheua.com/sim/bernoulli">§ 13. Bernoulli's Equation &amp; Venturi Effect</a> · Relation between flow speed and static pressure in a variable-cross-section pipe</li>
+      <li><a href="https://physics.sheua.com/sim/lens">§ 14. Converging Lens &amp; Light Wavefront Focusing</a> · Transformation of a plane light wavefront into a converging spherical wavefront</li>
+      <li><a href="https://physics.sheua.com/sim/lorentz">§ 15. Lorentz Force &amp; 3D Cyclotron Helix</a> · Helical trajectory of a charged particle in a uniform magnetic field B</li>
+      <li><a href="https://physics.sheua.com/sim/faraday">§ 16. Faraday's Law &amp; Lenz's Rule in 3D</a> · Generation of induced current in a coil by a moving magnet &amp; Lenz's rule</li>
+      <li><a href="https://physics.sheua.com/sim/kepler">§ 17. Elliptical Orbit &amp; Kepler's Second Law</a> · Elliptical planetary orbit, equal-area sweep rate &amp; orbital energy exchange</li>
+      <li><a href="https://physics.sheua.com/sim/gyroscope">§ 18. Moment of Inertia &amp; Rolling Kinetic Energy</a> · Race between a solid cylinder and a hollow hoop rolling without slipping</li>
+      <li><a href="https://physics.sheua.com/sim/standingwave">§ 19. Standing Waves &amp; String Overtones in 3D</a> · Normal modes of a fixed string, nodes &amp; antinodes, and frequency vs. tension</li>
+      <li><a href="https://physics.sheua.com/sim/doppler">§ 20. Doppler Effect &amp; Wavefront Deformation</a> · Compression of wavefront crests ahead of a moving source, frequency shift &amp; Mach cone</li>
+      <li><a href="https://physics.sheua.com/sim/brewster">§ 21. Light Wavefront Polarization &amp; Malus's Law</a> · Transmission of a linearly polarized light wavefront through a polarizer and rotatable analyzer</li>
+      <li><a href="https://physics.sheua.com/sim/diffraction">§ 22. Single-Slit Wavefront Diffraction in 3D</a> · Wavefront spreading through a narrow slit, Huygens wavelets &amp; sinc²(β) intensity profile</li>
+      <li><a href="https://physics.sheua.com/sim/carnot">§ 23. Ideal Heat Engine &amp; Carnot Cycle in 3D</a> · Conversion of heater heat Q₁ into mechanical piston work A and heat rejection Q₂ to the cold sink</li>
+      <li><a href="https://physics.sheua.com/sim/viscosity">§ 24. Motion of a Sphere in a Viscous Fluid (Stokes' Law)</a> · Sphere falling through viscous oil, Stokes drag force &amp; approach to terminal velocity</li>
+      <li><a href="https://physics.sheua.com/sim/coulomb">§ 25. Coulomb's Law &amp; 3D Electric Dipole Field</a> · 3D electric field lines of two point charges, Coulomb force &amp; test charge motion</li>
+      <li><a href="https://physics.sheua.com/sim/rlccircuit">§ 26. Electromagnetic Oscillations in an LC / RLC Circuit</a> · Free electromagnetic oscillations between capacitor C and inductor coil L, Thomson period</li>
+      <li><a href="https://physics.sheua.com/sim/atwood">§ 27. Atwood's Machine: Dynamics of Connected Masses &amp; Pulley Inertia</a> · Motion of two masses on a thread over a pulley with moment of inertia, thread tension</li>
+      <li><a href="https://physics.sheua.com/sim/coriolis">§ 28. Coriolis Force &amp; Motion in a Rotating Reference Frame</a> · Trajectory deflection of a body moving on a rotating platform, inertial forces</li>
+      <li><a href="https://physics.sheua.com/sim/hooke">§ 29. Hooke's Law in Differential Form &amp; Young's Modulus</a> · Elastic uniaxial tension of a rod, mechanical stress σ, strain ε, and Poisson necking</li>
+      <li><a href="https://physics.sheua.com/sim/torricelli">§ 30. Torricelli's Theorem &amp; Hydrodynamic Efflux of a Liquid Jet</a> · Efflux speed v = √(2gh) from a vessel orifice and parabolic jet range X = 2√(h·y₀)</li>
+      <li><a href="https://physics.sheua.com/sim/maxwell">§ 31. Maxwell's Law of Molecular Speed Distribution in an Ideal Gas</a> · Statistical distribution f(v), most probable speed vₚ, mean ⟨v⟩, and RMS speed vᵣms</li>
+      <li><a href="https://physics.sheua.com/sim/newtonrings">§ 32. Newton's Rings: Interference in a Thin Air Wedge &amp; Half-Wave Phase Shift</a> · Concentric interference rings in the air wedge between a plano-convex lens and flat glass plate</li>
+      <li><a href="https://physics.sheua.com/sim/photoelectric">§ 33. External Photoelectric Effect: Einstein's Equation &amp; Stopping Potential</a> · Quantum emission of photoelectrons, work function A_w, red limit λₘax, and stopping voltage Uₛtop</li>
+      <li><a href="https://physics.sheua.com/sim/rutherford">§ 34. Rutherford's Gold Foil Experiment &amp; Planetary Model of the Atom</a> · Hyperbolic trajectories in the Coulomb field of a heavy nucleus, impact parameter b, and scattering angle θ</li>
+      <li><a href="https://physics.sheua.com/sim/ampere">§ 35. Magnetic Interaction of Parallel Currents &amp; Definition of the Ampere</a> · Magnetic interaction of two parallel conductors carrying currents I₁ and I₂, attraction vs. repulsion</li>
+      <li><a href="https://physics.sheua.com/sim/hall">§ 36. The Hall Effect: Transverse Potential Difference &amp; Carrier Sign Determination</a> · Lorentz deflection of charge carriers in a slab with current I in magnetic field B, n-type vs. p-type</li>
+      <li><a href="https://physics.sheua.com/sim/coupled">§ 37. Coupled Pendulums: Normal Modes &amp; Energy Beats</a> · Periodic exchange of mechanical energy between two pendulums coupled by a spring</li>
+      <li><a href="https://physics.sheua.com/sim/precession">§ 38. Gyroscopic Precession of a Heavy Symmetric Top</a> · Precession of spin angular momentum L around the vertical axis under gravitational torque M = [r × mg]</li>
+      <li><a href="https://physics.sheua.com/sim/magnus">§ 39. Magnus Effect &amp; Lift Force on a Rotating Cylinder</a> · Transverse lift force F_M on a rotating cylinder in a uniform flow due to velocity circulation Γ</li>
+      <li><a href="https://physics.sheua.com/sim/capillary">§ 40. Surface Tension, Meniscus Curvature &amp; Capillary Action</a> · Laplace pressure jump ΔP = 2σ cos θ / r under a concave or convex meniscus and equilibrium column height h</li>
+      <li><a href="https://physics.sheua.com/sim/brownian">§ 41. Brownian Motion &amp; Einstein–Smoluchowski Diffusion</a> · Random walk trajectory of a suspended microparticle under molecular impacts and linear growth of mean-square displacement ⟨r²⟩ = 6Dt</li>
+      <li><a href="https://physics.sheua.com/sim/michelson">§ 42. Michelson Interferometer &amp; Phase Shift of Beams</a> · Division of a coherent laser beam by a beam splitter into two orthogonal arms L₁, L₂ and fringe shift under mirror displacement Δd</li>
+      <li><a href="https://physics.sheua.com/sim/compton">§ 43. Compton Scattering &amp; Relativistic Photon Momentum</a> · Elastic collision of an X-ray photon with a free electron, wavelength shift Δλ = λ_C (1 − cos θ), and recoil momentum</li>
+      <li><a href="https://physics.sheua.com/sim/bohr">§ 44. Bohr Atom Model, de Broglie Standing Waves &amp; Spectral Series</a> · Quantization of angular momentum Lₙ = nℏ, de Broglie standing waves 2πrₙ = nλ_dB, and Rydberg spectral transitions</li>
+      <li><a href="https://physics.sheua.com/sim/biot">§ 45. Biot–Savart Law &amp; Uniform Field of Helmholtz Coils</a> · Axial magnetic induction B(x) of circular current loops and generation of a uniform field plateau between Helmholtz coils</li>
+      <li><a href="https://physics.sheua.com/sim/transformer">§ 46. AC Transformer &amp; Mutual Electromagnetic Induction</a> · Mutual electromagnetic induction via shared alternating magnetic flux Φ(t) in a ferromagnetic core and turns ratio U₂/U₁ = N₂/N₁</li>
+      <li><a href="https://physics.sheua.com/sim/chem_orbitals">§ C-1 Atomic Electron Shells &amp; 3D Quantum Orbitals (s, p, d)</a> · Schrödinger wavefunction |ψ|², quantum numbers n, l &amp; nodal surfaces</li>
+      <li><a href="https://physics.sheua.com/sim/chem_vsepr">§ C-2 Orbital Hybridization &amp; 3D Molecular Geometry (VSEPR)</a> · Linear sp (180°), trigonal planar sp² (120°), tetrahedral sp³ (109.5°) &amp; lone pairs</li>
+      <li><a href="https://physics.sheua.com/sim/chem_lattice">§ C-3 Ionic Crystal Lattice &amp; Lattice Energy (NaCl)</a> · Rock-salt unit cell, Madelung constant, lattice energy &amp; thermal phonons</li>
+      <li><a href="https://physics.sheua.com/sim/chem_gaslaws">§ C-4 Avogadro’s Law, Molar Volume &amp; the Ideal Gas Equation</a> · Molar volume Vₘ = 22.4 L/mol (STP), amount of substance ν &amp; PV = νRT</li>
+      <li><a href="https://physics.sheua.com/sim/chem_kinetics">§ C-5 Chemical Reaction Rate, Activation Energy &amp; Catalysis</a> · Active molecular collisions, Arrhenius equation k = A·exp(−Eₐ/RT) &amp; catalytic pathway</li>
+      <li><a href="https://physics.sheua.com/sim/chem_equilibrium">§ C-6 Chemical Equilibrium &amp; Le Chatelier’s Principle (N₂O₄ ⇄ 2NO₂)</a> · Dynamic equilibrium N₂O₄ ⇄ 2NO₂, equilibrium constant Kₚ &amp; shifts under T and P</li>
+      <li><a href="https://physics.sheua.com/sim/chem_titration">§ C-7 Acid–Base Titration, pH Curve &amp; Visual Indicators</a> · Neutralization curve HCl + NaOH → NaCl + H₂O, equivalence point &amp; steep pH jump</li>
+      <li><a href="https://physics.sheua.com/sim/chem_galvanic">§ C-8 Daniell–Jacobi Galvanic Cell &amp; Electrode Potentials</a> · Anodic oxidation Zn⁰ → Zn²⁺ + 2e⁻, cathodic reduction Cu²⁺ + 2e⁻ → Cu⁰ &amp; salt bridge</li>
+      <li><a href="https://physics.sheua.com/sim/chem_electrolysis">§ C-9 Electrolytic Cell &amp; Faraday’s Laws of Electrolysis</a> · Cathodic copper plating, anodic O₂↑ evolution &amp; mass law m = (M·I·t)/(z·F)</li>
+      <li><a href="https://physics.sheua.com/sim/chem_organic">§ C-10 Benzene Structure C₆H₆, Aromaticity &amp; Delocalized π-Bonding</a> · Planar hexagonal σ-ring (120°), delocalized 6π electron torus &amp; resonance stabilization</li>
+      <li><a href="https://physics.sheua.com/sim/chem_periodic">§ C-11 Periodic Table of Elements (118 Elements): Atomic Radius rₐt, Ionization I₁ &amp; χ</a> · Complete 3D Periodic Table of all 118 chemical elements (Periods 1–7, Groups 1–18, s-, p-, d-, and f-blocks: Lanthanides &amp; Actinides), atomic radius rₐt, ionization energy I₁ &amp; electronegativity χ</li>
+      <li><a href="https://physics.sheua.com/sim/chem_hbond">§ C-12 Hydrogen Bonding, Hexagonal Ice Iₕ Lattice &amp; Density Anomaly of Water</a> · Tetrahedral O–H···O hydrogen-bond cage in hexagonal ice Iₕ (ρ = 0.917 g/cm³) and maximum density of liquid water at +4 °C</li>
+      <li><a href="https://physics.sheua.com/sim/chem_calorimetry">§ C-13 Thermochemistry, Hess’s Law &amp; Calorimetric Enthalpy Determination ΔH</a> · Measuring heat effects of exo- and endothermic reactions Q = (m·c + C_cal)ΔT = −ν·ΔH and Hess’s Law enthalpy diagram</li>
+      <li><a href="https://physics.sheua.com/sim/chem_osmosis">§ C-14 Osmotic Pressure (van ’t Hoff’s Law Π = iCRT) &amp; Semipermeable Membrane</a> · Selective solvent diffusion across a semipermeable membrane in a U-tube osmometer, van ’t Hoff factor i, and reverse osmosis desalination</li>
+      <li><a href="https://physics.sheua.com/sim/chem_buffer">§ C-15 Buffer Solutions, Henderson–Hasselbalch Equation &amp; Buffer Capacity</a> · Comparing pH stability of an acetate buffer (CH₃COOH + CH₃COONa) against unbuffered water upon addition of strong acid HCl or base NaOH</li>
+      <li><a href="https://physics.sheua.com/sim/chem_ksp">§ C-16 Solubility Product Kₛp, Golden Rain Precipitation (PbI₂↓) &amp; Common-Ion Effect</a> · Crystallization of shimmering golden hexagonal PbI₂↓ platelets when Qₛp &gt; Kₛp(T) and solubility suppression by excess I⁻ ions</li>
+      <li><a href="https://physics.sheua.com/sim/chem_beer">§ C-17 Optical Spectrophotometry &amp; the Beer–Lambert Law (A = ε·l·C)</a> · Monochromatic light attenuation through a colored solution in a quartz cuvette, optical absorbance A = ε(λ)lC, and transmittance T = 10⁻ᴬ</li>
+      <li><a href="https://physics.sheua.com/sim/chem_fuelcell">§ C-18 Hydrogen–Oxygen Proton-Exchange Membrane Fuel Cell (PEMFC)</a> · Direct electrochemical conversion of 2H₂ + O₂ → 2H₂O into electrical power across a proton-exchange membrane with Pt catalyst electrodes</li>
+      <li><a href="https://physics.sheua.com/sim/chem_isomerism">§ C-19 Stereochemistry: Geometric (cis–trans, Z/E) &amp; Chiral Optical Isomerism (R/S)</a> · Comparing dipole polarity of cis/trans alkene isomers and optical rotation of plane-polarized light by chiral R/S-enantiomers</li>
+      <li><a href="https://physics.sheua.com/sim/chem_polymer">§ C-20 Radical Polymerization of Ethylene &amp; Polyethylene Chain Growth</a> · Chain-growth polymerization n CH₂=CH₂ → (–CH₂–CH₂–)ₙ, sp² → sp³ hybridization shift, molar mass Mₙ, and coil radius R_g</li>
+      <li><a href="https://physics.sheua.com/sim/chem_mo">§ C-21 Molecular Orbitals (LCAO–MO): Bonding σ/π, Antibonding σ*/π* &amp; Bond Order</a> · Wavefunction interference (ψ_A ± ψ_B), bonding σ/π &amp; antibonding σ*/π* orbitals, bond order, and paramagnetism of O₂</li>
+      <li><a href="https://physics.sheua.com/sim/chem_allotropes">§ C-22 Carbon Nanostructures &amp; Allotropes: Buckminsterfullerene C₆₀, Nanotubes &amp; Graphene</a> · sp² π-electron delocalization, Euler’s polyhedron theorem (12 pentagons + 20 hexagons), and nanotube chirality</li>
+      <li><a href="https://physics.sheua.com/sim/chem_complex">§ C-23 Coordination Complexes &amp; Crystal Field Theory (d-Orbital Splitting Δₒ)</a> · Octahedral [ML₆]ⁿ⁺ vs. tetrahedral [ML₄]ⁿ⁺ complexes, t₂g / e_g splitting (Δₒ), spectrochemical series, and color</li>
+      <li><a href="https://physics.sheua.com/sim/chem_bornhaber">§ C-24 Born–Haber Thermodynamic Cycle &amp; Ionic Lattice Energy U_L</a> · Thermodynamic balance of sublimation, dissociation, ionization, electron affinity, and ionic lattice energy Uₗat</li>
+      <li><a href="https://physics.sheua.com/sim/chem_dipole">§ C-25 Electronegativity, Bond Polarity &amp; Molecular Dipole Moment Vector μ</a> · Partial charges δ⁺/δ⁻, vector addition of bond dipoles, and molecular torque in an electric field E</li>
+      <li><a href="https://physics.sheua.com/sim/chem_phase">§ C-26 Phase Diagrams P–T, Triple Point, Critical Point &amp; Supercritical Fluid</a> · Clausius–Clapeyron equation, dry ice CO₂ sublimation, triple point, and supercritical state</li>
+      <li><a href="https://physics.sheua.com/sim/chem_arrhenius">§ C-27 Reaction Orders (0th, 1st &amp; 2nd Order), Rate Laws &amp; Half-Life t₁/₂</a> · Integrated rate laws of zero, first, and second order reactions and scaling of half-life t₁/₂</li>
+      <li><a href="https://physics.sheua.com/sim/chem_enzyme">§ C-28 Enzyme Catalysis, Michaelis–Menten Kinetics &amp; Active-Site Inhibition</a> · Enzyme–substrate complex ES, lock-and-key active site, Vₘax, K_M, and competitive inhibition</li>
+      <li><a href="https://physics.sheua.com/sim/chem_gibbs">§ C-29 Gibbs Free Energy ΔG = ΔH − TΔS, Entropy &amp; Reaction Spontaneity</a> · Competition between enthalpy ΔH and entropy TΔS, inversion temperature T* = ΔH/ΔS, and equilibrium K</li>
+      <li><a href="https://physics.sheua.com/sim/chem_haber">§ C-30 Industrial Ammonia Synthesis (Haber–Bosch Process): N₂ + 3H₂ ⇄ 2NH₃</a> · Thermodynamic yield vs. kinetic rate trade-off at high pressure P, 450 °C, and promoted Fe catalyst</li>
+      <li><a href="https://physics.sheua.com/sim/chem_raoult">§ C-31 Raoult’s Law &amp; Colligative Properties: Ebullioscopy ΔT_b &amp; Cryoscopy ΔT_f</a> · Chapter XXXI. Vapor Pressure Lowering ΔP = χ₂P°, Boiling Point Elevation &amp; Freezing Point Depression</li>
+      <li><a href="https://physics.sheua.com/sim/chem_chromatography">§ C-32 Chromatography (TLC &amp; Column): Partition Coefficient K_d &amp; Retention Factor R_f</a> · Chapter XXXII. Stationary Silica Gel vs. Mobile Eluent Phase &amp; Mixture Separation of Plant Pigments</li>
+      <li><a href="https://physics.sheua.com/sim/chem_adsorption">§ C-33 Surface Adsorption &amp; the Langmuir Isotherm: θ = K·P / (1 + K·P)</a> · Chapter XXXIII. Dynamic Adsorption–Desorption Equilibrium on Activated Carbon &amp; Monolayer Saturation</li>
+      <li><a href="https://physics.sheua.com/sim/chem_colloids">§ C-34 Colloidal Systems, Micelle Structure, Tyndall Cone &amp; Schulze–Hardy Coagulation</a> · Chapter XXXIV. Rayleigh Light Scattering (I ∝ d⁶/λ⁴), Zeta Potential ζ &amp; Coagulation by Multivalent Ions (z⁶)</li>
+      <li><a href="https://physics.sheua.com/sim/chem_hydrolysis">§ C-35 Salt Hydrolysis in Aqueous Solution: Kₕ = K_w / Kₐ, Degree h &amp; Medium pH</a> · Chapter XXXV. Proton Exchange of Weak-Acid Anions (CH₃COO⁻, CO₃²⁻) &amp; Weak-Base Cations (NH₄⁺, Al³⁺)</li>
+      <li><a href="https://physics.sheua.com/sim/chem_corrosion">§ C-36 Electrochemical Corrosion of Metals &amp; Sacrificial Anode Cathodic Protection</a> · Chapter XXXVI. Microgalvanic Cells (Fe | Zn vs. Fe | Cu), Oxygen Depolarization &amp; Rust Formation</li>
+      <li><a href="https://physics.sheua.com/sim/chem_liion">§ C-37 Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂</a> · Chapter XXXVII. Li⁺ Intercalation Between Graphite Layers &amp; Transition-Metal Oxide Octahedra at 3.7 V</li>
+      <li><a href="https://physics.sheua.com/sim/chem_sn2">§ C-38 Bimolecular Nucleophilic Substitution (S_N2) &amp; Walden Inversion of Configuration</a> · Chapter XXXVIII. Backside Attack HO⁻ + CH₃Br → [HO···CH₃···Br]‡ → CH₃OH + Br⁻ &amp; Pentacoordinate Transition State</li>
+      <li><a href="https://physics.sheua.com/sim/chem_ester">§ C-39 Fischer Esterification &amp; Isotopic ¹⁸O Tracer: R–COOH + R′–¹⁸OH ⇄ R–CO–¹⁸OR′ + H₂O</a> · Chapter XXXIX. Acid-Catalyzed Acyl Substitution, Equilibrium Constant Kₑq ≈ 4.0 &amp; Dean–Stark Water Removal</li>
+      <li><a href="https://physics.sheua.com/sim/chem_biopol">§ C-40 Biopolymers: Peptide Bond Planarity, Protein α-Helix &amp; DNA Double Helix (A=T, G≡C)</a> · Chapter XL. Pauling–Corey α-Helix (3.6 res/turn) vs. Watson–Crick B-DNA, Chargaff’s Rules &amp; Melting Tₘ</li>
+      <li><a href="https://physics.sheua.com/sim/bio_eukaryote">§ B-01 Eukaryotic Cell Architecture: Organelle Compartmentalization &amp; S/V Scaling Limit</a> · Nucleus, Mitochondria, Rough/Smooth ER, Golgi Apparatus, Lysosomes &amp; Surface-to-Volume Ratio S/V = 3/R</li>
+      <li><a href="https://physics.sheua.com/sim/bio_mitochondria">§ B-02 Mitchell’s Chemiosmotic Theory: Proton-Motive Force Δp &amp; Rotary ATP Synthesis</a> · Electron Transport Chain (Complexes I–IV), Proton-Motive Force Δp &amp; Rotary F₀F₁-ATP Synthase</li>
+      <li><a href="https://physics.sheua.com/sim/bio_mitosis">§ B-03 Mitotic Cell Division: Spindle Microtubule Mechanics &amp; Ploidy Conservation</a> · Prophase, Metaphase Plate, Anaphase Sister Chromatid Separation &amp; Telophase (2n → 2n)</li>
+      <li><a href="https://physics.sheua.com/sim/bio_replication">§ B-04 Semiconservative DNA Replication: Replication Fork Mechanics &amp; Meselson–Stahl Experiment</a> · Helicase, DNA Polymerase III, 5′→3′ Synthesis, Continuous Leading Strand &amp; Lagging Okazaki Fragments</li>
+      <li><a href="https://physics.sheua.com/sim/bio_ribosome">§ B-05 Gene Expression &amp; Translation: Ribosomal mRNA Decoding &amp; Polypeptide Elongation</a> · Central Dogma DNA → mRNA → Protein, Triplet Genetic Code, Ribosomal A–P–E Sites &amp; tRNA Decoding</li>
+      <li><a href="https://physics.sheua.com/sim/bio_mendel">§ B-06 Mendelian Genetics &amp; Hardy–Weinberg Equilibrium: Genotype Frequency Dynamics</a> · Punnett Square, 3:1 &amp; 9:3:3:1 Segregation Ratios &amp; Population Allele Equilibrium p² + 2pq + q² = 1</li>
+      <li><a href="https://physics.sheua.com/sim/bio_membrane">§ B-07 Plasma Membrane Biophysics: Electrogenic Na⁺/K⁺-ATPase Pump &amp; Resting Potential</a> · Singer–Nicolson Fluid Mosaic Model, Active 3Na⁺/2K⁺ Transport &amp; Nernst–Goldman Potential</li>
+      <li><a href="https://physics.sheua.com/sim/bio_neuron">§ B-08 Action Potential Propagation: Hodgkin–Huxley Spike &amp; Saltatory Conduction</a> · Hodgkin–Huxley Model, Na⁺ Depolarization, K⁺ Repolarization, Myelin Sheath &amp; Nodes of Ranvier</li>
+      <li><a href="https://physics.sheua.com/sim/bio_sarcomere">§ B-09 Biomechanics of Muscle Contraction: Sliding Filament Sarcomere &amp; Hill’s Equation</a> · Huxley Sliding Filaments (Actin &amp; Myosin), Ca²⁺-Troponin Gating &amp; Hill’s Force–Velocity Hyperbola</li>
+      <li><a href="https://physics.sheua.com/sim/bio_photosynthesis">§ B-10 Chloroplast Photosynthesis: Z-Scheme Electron Transport &amp; Calvin Cycle CO₂ Fixation</a> · Thylakoid Light Reactions (PSII, Water Photolysis, PSI) &amp; Stroma Calvin Cycle (RuBisCO)</li>
+      <li><a href="https://physics.sheua.com/sim/bio_hemo">§ B-11 Oxygen Transport by Hemoglobin: Allosteric Cooperativity (T ↔ R) &amp; the Bohr Effect</a> · α₂β₂ Tetramer with 4 Fe²⁺ Hemes, Cooperative Hill Sigmoid (n ≈ 2.8), Myoglobin &amp; Bohr Shift</li>
+      <li><a href="https://physics.sheua.com/sim/bio_lotka">§ B-12 Ecosystem Dynamics: Lotka–Volterra Predator–Prey Oscillations &amp; Trophic Energy Transfer</a> · Predator–Prey Differential Equations, Phase-Space Attractor, Population Waves &amp; Lindeman’s 10% Pyramid</li>
+      <li><a href="https://physics.sheua.com/sim/bio_meiosis">§ B-13 Meiotic Cell Division: Bivalent Synapsis, Crossing-Over &amp; Combinatorial Diversity</a> · Prophase I Synapsis, Bivalents, Chiasmata, Homologous Recombination &amp; Haploid Gametes (1n1c)</li>
+      <li><a href="https://physics.sheua.com/sim/bio_eye">§ B-14 Biophysics of Vision: Optical Power of the Eye, Lens Accommodation &amp; Spectacle Correction</a> · Corneal &amp; Crystalline Lens Refraction, Ciliary Accommodation Reflex, Myopia &amp; Hyperopia Correction</li>
+      <li><a href="https://physics.sheua.com/sim/bio_synapse">§ B-15 Chemical Synapse: Calcium-Triggered Vesicle Exocytosis &amp; Postsynaptic Ionotropic Receptors</a> · Voltage-Gated Ca²⁺ Influx, SNARE Vesicle Exocytosis, Synaptic Cleft Diffusion &amp; EPSP / IPSP Potentials</li>
+      <li><a href="https://physics.sheua.com/sim/bio_pcr">§ B-16 Polymerase Chain Reaction (PCR): Thermal Cycling &amp; Exponential DNA Amplification</a> · Thermal Cycler: Denaturation (95 °C), Primer Annealing (58 °C), Taq Extension (72 °C) &amp; 2ⁿ Amplification</li>
+      <li><a href="https://physics.sheua.com/sim/bio_crispr">§ B-17 CRISPR–Cas9 System: Programmable Target DNA Recognition &amp; Precision Genome Editing</a> · PAM Motif Recognition (5′-NGG-3′), Guide sgRNA R-Loop, HNH/RuvC Nuclease Domains &amp; HDR Repair</li>
+      <li><a href="https://physics.sheua.com/sim/bio_phage">§ B-18 Bacteriophage T4 Structure &amp; Lytic Cycle: Biomechanical Syringe &amp; Viral DNA Injection</a> · Icosahedral Capsid, Tail Fiber Receptor Binding, Contractile Sheath &amp; High-Pressure Genome Injection</li>
+      <li><a href="https://physics.sheua.com/sim/bio_hemodynamics">§ B-19 Cardiovascular Biophysics: Laminar Blood Flow &amp; Hagen–Poiseuille Fourth-Power Law (Q ∝ R⁴)</a> · Parabolic Erythrocyte Velocity Profile, Fourth-Power Radius Law (Q ∝ R⁴), Viscosity &amp; Stenosis</li>
+      <li><a href="https://physics.sheua.com/sim/bio_electrophoresis">§ B-20 DNA Gel Electrophoresis: Size-Dependent Separation of Restriction Fragments in a Polymer Matrix</a> · Polyanion Migration to Anode (+), Agarose Molecular Sieving &amp; Logarithmic Base-Pair Calibration</li>
+    </ul>
+
+    <h2 lang="en">Contact Us</h2>
+    <p lang="en">For curriculum feedback, bug reports, academic partnerships, or press inquiries, please reach out to our editorial team:</p>
+    <ul lang="en">
+      <li>Email: <a href="mailto:contact@sheua.com">contact@sheua.com</a></li>
+      <li>Website: <a href="https://physics.sheua.com">https://physics.sheua.com</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    <span>© 2026 physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)</span>
+    <span><a href="/about.html">Про проєкт</a> · <a href="/privacy.html">Політика конфіденційності</a> · <a href="/terms.html">Умови використання</a></span>
+  </footer>
+</body>
+</html>

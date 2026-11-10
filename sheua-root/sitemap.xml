@@ -1,0 +1,1972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+    <loc>https://sheua.com/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/about.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/privacy.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sheua.com/terms.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://physics.sheua.com/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/about.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/privacy.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/terms.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/collision</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/collision"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/collision"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/collision"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/collision</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/collision"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/collision"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/collision"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/incline</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/incline"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/incline"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/incline"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/incline</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/incline"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/incline"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/incline"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/pendulum</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/pendulum"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/pendulum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/pendulum"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/pendulum</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/pendulum"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/pendulum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/pendulum"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/projectile</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/projectile"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/projectile"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/projectile"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/projectile</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/projectile"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/projectile"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/projectile"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/cradle</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/cradle"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/cradle"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/cradle"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/cradle</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/cradle"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/cradle"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/cradle"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/centripetal</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/centripetal"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/centripetal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/centripetal"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/centripetal</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/centripetal"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/centripetal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/centripetal"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/archimedes</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/archimedes"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/archimedes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/archimedes"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/archimedes</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/archimedes"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/archimedes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/archimedes"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/gas</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/gas"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/gas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/gas"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/gas</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/gas"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/gas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/gas"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/wavefront</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/wavefront"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/wavefront"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/wavefront"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/wavefront</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/wavefront"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/wavefront"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/wavefront"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/interference</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/interference"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/interference"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/interference"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/interference</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/interference"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/interference"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/interference"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/dispersion</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/dispersion"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/dispersion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/dispersion"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/dispersion</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/dispersion"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/dispersion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/dispersion"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/emwave</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/emwave"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/emwave"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/emwave"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/emwave</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/emwave"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/emwave"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/emwave"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bernoulli</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bernoulli"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bernoulli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bernoulli"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bernoulli</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bernoulli"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bernoulli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bernoulli"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/lens</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/lens"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/lens"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/lens"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/lens</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/lens"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/lens"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/lens"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/lorentz</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/lorentz"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/lorentz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/lorentz"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/lorentz</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/lorentz"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/lorentz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/lorentz"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/faraday</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/faraday"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/faraday"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/faraday"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/faraday</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/faraday"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/faraday"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/faraday"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/kepler</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/kepler"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/kepler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/kepler"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/kepler</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/kepler"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/kepler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/kepler"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/gyroscope</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/gyroscope"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/gyroscope"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/gyroscope"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/gyroscope</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/gyroscope"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/gyroscope"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/gyroscope"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/standingwave</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/standingwave"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/standingwave"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/standingwave"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/standingwave</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/standingwave"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/standingwave"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/standingwave"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/doppler</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/doppler"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/doppler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/doppler"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/doppler</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/doppler"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/doppler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/doppler"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/brewster</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/brewster"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/brewster"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/brewster"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/brewster</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/brewster"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/brewster"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/brewster"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/diffraction</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/diffraction"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/diffraction"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/diffraction"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/diffraction</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/diffraction"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/diffraction"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/diffraction"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/carnot</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/carnot"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/carnot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/carnot"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/carnot</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/carnot"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/carnot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/carnot"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/viscosity</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/viscosity"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/viscosity"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/viscosity"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/viscosity</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/viscosity"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/viscosity"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/viscosity"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/coulomb</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/coulomb"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/coulomb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/coulomb"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/coulomb</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/coulomb"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/coulomb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/coulomb"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/rlccircuit</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/rlccircuit"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/rlccircuit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/rlccircuit"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/rlccircuit</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/rlccircuit"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/rlccircuit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/rlccircuit"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/atwood</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/atwood"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/atwood"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/atwood"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/atwood</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/atwood"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/atwood"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/atwood"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/coriolis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/coriolis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/coriolis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/coriolis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/coriolis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/coriolis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/coriolis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/coriolis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/hooke</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/hooke"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/hooke"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/hooke"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/hooke</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/hooke"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/hooke"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/hooke"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/torricelli</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/torricelli"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/torricelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/torricelli"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/torricelli</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/torricelli"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/torricelli"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/torricelli"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/maxwell</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/maxwell"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/maxwell"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/maxwell"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/maxwell</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/maxwell"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/maxwell"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/maxwell"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/newtonrings</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/newtonrings"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/newtonrings"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/newtonrings"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/newtonrings</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/newtonrings"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/newtonrings"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/newtonrings"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/photoelectric</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/photoelectric"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/photoelectric"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/photoelectric"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/photoelectric</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/photoelectric"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/photoelectric"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/photoelectric"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/rutherford</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/rutherford"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/rutherford"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/rutherford"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/rutherford</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/rutherford"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/rutherford"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/rutherford"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/ampere</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/ampere"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/ampere"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/ampere"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/ampere</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/ampere"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/ampere"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/ampere"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/hall</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/hall"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/hall"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/hall"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/hall</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/hall"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/hall"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/hall"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/coupled</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/coupled"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/coupled"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/coupled"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/coupled</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/coupled"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/coupled"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/coupled"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/precession</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/precession"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/precession"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/precession"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/precession</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/precession"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/precession"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/precession"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/magnus</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/magnus"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/magnus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/magnus"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/magnus</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/magnus"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/magnus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/magnus"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/capillary</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/capillary"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/capillary"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/capillary"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/capillary</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/capillary"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/capillary"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/capillary"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/brownian</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/brownian"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/brownian"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/brownian"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/brownian</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/brownian"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/brownian"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/brownian"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/michelson</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/michelson"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/michelson"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/michelson"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/michelson</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/michelson"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/michelson"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/michelson"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/compton</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/compton"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/compton"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/compton"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/compton</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/compton"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/compton"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/compton"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bohr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bohr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bohr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bohr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bohr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bohr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bohr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bohr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/biot</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/biot"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/biot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/biot"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/biot</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/biot"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/biot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/biot"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/transformer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/transformer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/transformer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/transformer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/transformer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/transformer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/transformer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/transformer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_orbitals</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_orbitals"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_orbitals"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_orbitals"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_orbitals</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_orbitals"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_orbitals"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_orbitals"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_vsepr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_vsepr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_vsepr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_vsepr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_vsepr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_vsepr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_vsepr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_vsepr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_lattice</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_lattice"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_lattice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_lattice"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_lattice</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_lattice"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_lattice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_lattice"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_gaslaws</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_gaslaws"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_gaslaws"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_gaslaws"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_gaslaws</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_gaslaws"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_gaslaws"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_gaslaws"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_kinetics</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_kinetics"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_kinetics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_kinetics"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_kinetics</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_kinetics"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_kinetics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_kinetics"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_equilibrium</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_equilibrium"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_equilibrium"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_equilibrium"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_equilibrium</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_equilibrium"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_equilibrium"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_equilibrium"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_titration</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_titration"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_titration"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_titration"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_titration</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_titration"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_titration"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_titration"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_galvanic</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_galvanic"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_galvanic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_galvanic"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_galvanic</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_galvanic"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_galvanic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_galvanic"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_electrolysis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_electrolysis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_electrolysis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_electrolysis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_electrolysis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_electrolysis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_electrolysis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_electrolysis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_organic</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_organic"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_organic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_organic"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_organic</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_organic"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_organic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_organic"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_periodic</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_periodic"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_periodic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_periodic"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_periodic</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_periodic"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_periodic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_periodic"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_hbond</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_hbond"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_hbond"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_hbond"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_hbond</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_hbond"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_hbond"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_hbond"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_calorimetry</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_calorimetry"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_calorimetry"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_calorimetry"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_calorimetry</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_calorimetry"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_calorimetry"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_calorimetry"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_osmosis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_osmosis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_osmosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_osmosis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_osmosis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_osmosis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_osmosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_osmosis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_buffer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_buffer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_buffer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_buffer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_buffer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_buffer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_buffer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_buffer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_ksp</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_ksp"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_ksp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_ksp"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_ksp</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_ksp"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_ksp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_ksp"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_beer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_beer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_beer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_beer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_beer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_beer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_beer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_beer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_fuelcell</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_fuelcell"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_fuelcell"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_fuelcell"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_fuelcell</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_fuelcell"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_fuelcell"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_fuelcell"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_isomerism</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_isomerism"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_isomerism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_isomerism"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_isomerism</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_isomerism"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_isomerism"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_isomerism"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_polymer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_polymer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_polymer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_polymer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_polymer</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_polymer"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_polymer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_polymer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_mo</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_mo"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_mo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_mo"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_mo</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_mo"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_mo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_mo"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_allotropes</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_allotropes"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_allotropes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_allotropes"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_allotropes</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_allotropes"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_allotropes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_allotropes"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_complex</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_complex"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_complex"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_complex"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_complex</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_complex"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_complex"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_complex"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_bornhaber</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_bornhaber"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_bornhaber"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_bornhaber"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_bornhaber</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_bornhaber"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_bornhaber"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_bornhaber"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_dipole</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_dipole"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_dipole"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_dipole"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_dipole</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_dipole"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_dipole"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_dipole"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_phase</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_phase"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_phase"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_phase"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_phase</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_phase"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_phase"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_phase"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_arrhenius</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_arrhenius"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_arrhenius"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_arrhenius"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_arrhenius</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_arrhenius"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_arrhenius"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_arrhenius"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_enzyme</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_enzyme"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_enzyme"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_enzyme"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_enzyme</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_enzyme"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_enzyme"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_enzyme"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_gibbs</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_gibbs"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_gibbs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_gibbs"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_gibbs</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_gibbs"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_gibbs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_gibbs"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_haber</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_haber"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_haber"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_haber"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_haber</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_haber"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_haber"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_haber"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_raoult</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_raoult"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_raoult"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_raoult"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_raoult</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_raoult"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_raoult"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_raoult"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_chromatography</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_chromatography"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_chromatography"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_chromatography"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_chromatography</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_chromatography"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_chromatography"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_chromatography"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_adsorption</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_adsorption"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_adsorption"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_adsorption"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_adsorption</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_adsorption"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_adsorption"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_adsorption"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_colloids</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_colloids"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_colloids"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_colloids"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_colloids</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_colloids"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_colloids"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_colloids"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_hydrolysis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_hydrolysis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_hydrolysis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_hydrolysis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_hydrolysis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_hydrolysis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_hydrolysis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_hydrolysis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_corrosion</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_corrosion"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_corrosion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_corrosion"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_corrosion</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_corrosion"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_corrosion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_corrosion"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_liion</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_liion"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_liion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_liion"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_liion</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_liion"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_liion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_liion"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_sn2</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_sn2"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_sn2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_sn2"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_sn2</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_sn2"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_sn2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_sn2"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_ester</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_ester"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_ester"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_ester"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_ester</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_ester"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_ester"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_ester"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/chem_biopol</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_biopol"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_biopol"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_biopol"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/chem_biopol</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/chem_biopol"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/chem_biopol"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/chem_biopol"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_eukaryote</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_eukaryote"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_eukaryote"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_eukaryote"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_eukaryote</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_eukaryote"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_eukaryote"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_eukaryote"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_mitochondria</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_mitochondria"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_mitochondria"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_mitochondria"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_mitochondria</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_mitochondria"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_mitochondria"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_mitochondria"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_mitosis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_mitosis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_mitosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_mitosis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_mitosis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_mitosis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_mitosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_mitosis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_replication</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_replication"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_replication"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_replication"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_replication</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_replication"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_replication"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_replication"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_ribosome</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_ribosome"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_ribosome"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_ribosome"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_ribosome</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_ribosome"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_ribosome"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_ribosome"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_mendel</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_mendel"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_mendel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_mendel"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_mendel</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_mendel"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_mendel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_mendel"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_membrane</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_membrane"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_membrane"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_membrane"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_membrane</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_membrane"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_membrane"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_membrane"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_neuron</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_neuron"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_neuron"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_neuron"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_neuron</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_neuron"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_neuron"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_neuron"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_sarcomere</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_sarcomere"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_sarcomere"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_sarcomere"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_sarcomere</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_sarcomere"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_sarcomere"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_sarcomere"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_photosynthesis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_photosynthesis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_photosynthesis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_photosynthesis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_photosynthesis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_photosynthesis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_photosynthesis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_photosynthesis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_hemo</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_hemo"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_hemo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_hemo"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_hemo</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_hemo"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_hemo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_hemo"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_lotka</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_lotka"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_lotka"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_lotka"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_lotka</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_lotka"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_lotka"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_lotka"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_meiosis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_meiosis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_meiosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_meiosis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_meiosis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_meiosis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_meiosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_meiosis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_eye</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_eye"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_eye"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_eye"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_eye</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_eye"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_eye"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_eye"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_synapse</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_synapse"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_synapse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_synapse"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_synapse</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_synapse"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_synapse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_synapse"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_pcr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_pcr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_pcr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_pcr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_pcr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_pcr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_pcr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_pcr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_crispr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_crispr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_crispr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_crispr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_crispr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_crispr"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_crispr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_crispr"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_phage</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_phage"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_phage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_phage"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_phage</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_phage"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_phage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_phage"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_hemodynamics</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_hemodynamics"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_hemodynamics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_hemodynamics"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_hemodynamics</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_hemodynamics"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_hemodynamics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_hemodynamics"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/sim/bio_electrophoresis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_electrophoresis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_electrophoresis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_electrophoresis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://physics.sheua.com/uk/sim/bio_electrophoresis</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://physics.sheua.com/sim/bio_electrophoresis"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://physics.sheua.com/uk/sim/bio_electrophoresis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://physics.sheua.com/sim/bio_electrophoresis"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

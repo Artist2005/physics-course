@@ -2949,3 +2949,337 @@
     #chart-canvas {
       cursor: crosshair;
     }
+
+    /* Interactive Formula Calculator: Copy Solution, Click-to-edit Chips & Answer Verifier */
+    .live-calc-header-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-copy-calc {
+      padding: 2px 7px;
+      border-radius: 3px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.14s ease;
+      white-space: nowrap;
+    }
+
+    .btn-copy-calc:hover {
+      border-color: var(--ink-primary);
+      background: #ffffff;
+    }
+
+    .btn-copy-calc.copied {
+      border-color: var(--fig-green);
+      background: rgba(22, 101, 52, 0.1);
+      color: var(--fig-green);
+    }
+
+    .live-calc-box .math-chip {
+      cursor: pointer;
+      transition: border-color 0.14s ease, background 0.14s ease;
+    }
+
+    .live-calc-box .math-chip:hover {
+      border-color: var(--accent-brass);
+      background: #ffffff;
+    }
+
+    .live-calc-verify-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--rule-dark);
+    }
+
+    .live-calc-user-input {
+      flex: 1 1 110px;
+      min-width: 0;
+      height: 26px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      outline: none;
+    }
+
+    .live-calc-user-input:focus {
+      border-color: var(--ink-primary);
+    }
+
+    .btn-verify-calc {
+      height: 26px;
+      padding: 0 9px;
+      border-radius: 3px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-verify-calc:hover {
+      background: #27272a;
+    }
+
+    .live-calc-verify-msg {
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      line-height: 1.35;
+      padding: 4px 7px;
+      border-radius: 3px;
+      display: none;
+    }
+
+    .live-calc-verify-msg.visible {
+      display: block;
+    }
+
+    .live-calc-verify-msg.ok {
+      background: rgba(22, 101, 52, 0.1);
+      border: 1px solid rgba(22, 101, 52, 0.35);
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    .live-calc-verify-msg.warn {
+      background: rgba(180, 83, 9, 0.1);
+      border: 1px solid rgba(180, 83, 9, 0.35);
+      color: #78350f;
+    }
+
+    /* Mobile AdSense slot inside mobile-interactive-slot */
+    .mobile-interactive-slot .ad-sidebar-card {
+      margin: 4px 0 0;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule-light);
+    }
+
+    /* Printable / Exportable Laboratory Report Modal */
+    .lab-report-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      background: rgba(24, 24, 27, 0.62);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 14px;
+      overflow-y: auto;
+    }
+
+    .lab-report-modal-backdrop.open {
+      display: flex;
+    }
+
+    .lab-report-sheet {
+      width: 100%;
+      max-width: 860px;
+      background: #faf9f5;
+      color: #18181b;
+      border: 1px solid #18181b;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+      padding: 24px 28px 28px;
+      font-family: var(--font-sans);
+    }
+
+    .lab-report-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #18181b;
+    }
+
+    .lab-report-toolbar-left {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .lab-report-toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .btn-report-action {
+      padding: 6px 12px;
+      border-radius: 3px;
+      border: 1px solid #18181b;
+      background: #ffffff;
+      color: #18181b;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-report-action.primary {
+      background: #18181b;
+      color: #faf9f5;
+    }
+
+    .btn-report-action:hover {
+      opacity: 0.9;
+    }
+
+    .lab-report-header-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule-dark);
+    }
+
+    .lab-report-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 4px 0 6px;
+    }
+
+    .lab-report-meta {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+    }
+
+    .lab-report-student-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 210px;
+    }
+
+    .lab-report-student-box label {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+
+    .lab-report-student-input {
+      padding: 5px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: #18181b;
+    }
+
+    .lab-report-two-col {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .lab-report-card {
+      border: 1px solid var(--rule-dark);
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 3px;
+    }
+
+    .lab-report-card-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .lab-report-snap-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--rule-light);
+      margin-bottom: 8px;
+    }
+
+    .lab-report-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .lab-report-table th,
+    .lab-report-table td {
+      padding: 5px 6px;
+      border-bottom: 1px solid var(--rule-light);
+      text-align: left;
+    }
+
+    .lab-report-table td:last-child {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    @media (max-width: 720px) {
+      .lab-report-header-grid,
+      .lab-report-two-col {
+        grid-template-columns: 1fr;
+      }
+      .lab-report-sheet {
+        padding: 16px 14px;
+      }
+    }
+
+    @media print {
+      body > *:not(#lab-report-modal) {
+        display: none !important;
+      }
+      html, body {
+        background: #ffffff !important;
+        height: auto !important;
+        overflow: visible !important;
+      }
+      #lab-report-modal {
+        position: static !important;
+        display: block !important;
+        background: none !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+      .lab-report-sheet {
+        max-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .lab-report-toolbar {
+        display: none !important;
+      }
+    }

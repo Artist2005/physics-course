@@ -8,6 +8,10 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://physics.sheua.com/terms.html" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -116,7 +120,64 @@
       justify-content: space-between;
       gap: 10px;
     }
+
+    .legal-lang-switch {
+      display: inline-flex;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--bg-page);
+    }
+    .legal-lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 9px;
+      cursor: pointer;
+    }
+    .legal-lang-btn + .legal-lang-btn {
+      border-left: 1px solid var(--rule-dark);
+    }
+    .legal-lang-btn.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+    }
+    html[data-lang-view="en"] main > :not([lang="en"]):not(.lang-divider),
+    html[data-lang-view="en"] .lang-divider {
+      display: none !important;
+    }
+    html[data-lang-view="uk"] main > [lang="en"],
+    html[data-lang-view="uk"] .lang-divider {
+      display: none !important;
+    }
   </style>
+  <script>
+    (function() {
+      function setDocLang(mode) {
+        document.documentElement.setAttribute('data-lang-view', mode);
+        document.documentElement.lang = mode === 'en' ? 'en' : 'uk';
+        document.querySelectorAll('.legal-lang-btn').forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-lang-mode') === mode);
+        });
+        try { localStorage.setItem('sheua_legal_lang', mode); } catch (e) {}
+      }
+      window.__setLegalLang = setDocLang;
+      document.addEventListener('DOMContentLoaded', function() {
+        var params = new URLSearchParams(window.location.search);
+        var qLang = params.get('lang');
+        var saved = null;
+        try { saved = localStorage.getItem('sheua_legal_lang'); } catch (e) {}
+        var fromEnRef = document.referrer && /\/sim\//.test(document.referrer) && !/\/uk\//.test(document.referrer);
+        var initial = (qLang === 'en' || qLang === 'uk' || qLang === 'both')
+          ? qLang
+          : (saved || (fromEnRef ? 'en' : 'both'));
+        setDocLang(initial);
+      });
+    })();
+  </script>
 </head>
 <body>
   <header class="top-bar">
@@ -127,6 +188,11 @@
       <a href="/about.html">Про проєкт і контакти</a>
       <a href="/privacy.html">Політика конфіденційності</a>
       <a href="/terms.html">Умови використання</a>
+      <div class="legal-lang-switch" role="group" aria-label="Language view">
+        <button type="button" class="legal-lang-btn" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
+        <button type="button" class="legal-lang-btn" data-lang-mode="en" onclick="window.__setLegalLang('en')">EN</button>
+        <button type="button" class="legal-lang-btn active" data-lang-mode="both" onclick="window.__setLegalLang('both')">УКР + EN</button>
+      </div>
     </nav>
   </header>
 

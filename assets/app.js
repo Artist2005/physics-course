@@ -38967,8 +38967,251 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         btnRight.classList.toggle('collapsed', targetHide);
         btnRight.textContent = targetHide ? '‹' : '›';
       }
+      if (targetHide) {
+        if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      } else {
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
       syncPresentationModeUI();
       if (!targetHide) requestAnimationFrame(fitMathContainers);
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        const leftEl = document.getElementById('left-sidebar');
+        const rightEl = document.getElementById('right-sidebar');
+        if (leftEl && rightEl && leftEl.classList.contains('panel-hidden') && rightEl.classList.contains('panel-hidden')) {
+          togglePresentationMode();
+        }
+      }
+    });
+
+    function buildFormattedStepByStepSolution() {
+      const isUk = uiState.lang === 'uk';
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      const p = sceneParams[key] || {};
+      const givenList = (cfg.sliders || [])
+        .map(s => `${s.label}: ${p[s.key]}${s.unit ? ' ' + s.unit : ''}`)
+        .join('\n  • ');
+      const formulaClean = stripHtmlAndMath(cfg.formulaLatex || cfg.referenceLatex || '');
+      const calcClean = cfg.liveLatexFn ? stripHtmlAndMath(cfg.liveLatexFn(p)) : '';
+      const siteOrigin = window.location.protocol.startsWith('http') ? window.location.origin : 'https://physics.sheua.com';
+      const pageUrl = `${siteOrigin}${isUk ? '/uk' : ''}/sim/${key}`;
+
+      if (isUk) {
+        return [
+          `${cfg.secSym || ''} ${cfg.title || ''}`.trim(),
+          `Дано:\n  • ${givenList}`,
+          `Робоча формула:\n  ${formulaClean}`,
+          `Підстановка та результат:\n  ${calcClean}`,
+          `Джерело 3D-лабораторії: ${pageUrl}`
+        ].join('\n\n');
+      }
+      return [
+        `${cfg.secSym || ''} ${cfg.title || ''}`.trim(),
+        `Given:\n  • ${givenList}`,
+        `Governing Formula:\n  ${formulaClean}`,
+        `Substituted Calculation & Result:\n  ${calcClean}`,
+        `3D Science Lab URL: ${pageUrl}`
+      ].join('\n\n');
+    }
+
+    function verifyStudentCalculationInput() {
+      const inp = document.getElementById('live-calc-user-input');
+      const msgEl = document.getElementById('live-calc-verify-msg');
+      if (!inp || !msgEl) return;
+      const isUk = uiState.lang === 'uk';
+      const rawStr = String(inp.value || '').trim().replace(',', '.');
+      const userNum = parseFloat(rawStr);
+      if (!rawStr || Number.isNaN(userNum)) {
+        msgEl.className = 'live-calc-verify-msg visible warn';
+        msgEl.textContent = isUk
+          ? 'Введіть числове значення для перевірки розрахунку.'
+          : 'Enter a numeric value to check against the formula.';
+        return;
+      }
+
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      const p = sceneParams[key] || {};
+      const liveStr = cfg.liveLatexFn ? stripHtmlAndMath(cfg.liveLatexFn(p)) : '';
+      const numMatches = (liveStr.match(/-?\d+(?:\.\d+)?/g) || []).map(Number).filter(Number.isFinite);
+
+      let matchedTarget = null;
+      for (const target of numMatches) {
+        const diff = Math.abs(userNum - target);
+        const tol = Math.max(0.05, Math.abs(target) * 0.025);
+        if (diff <= tol) {
+          matchedTarget = target;
+          break;
+        }
+      }
+
+      if (matchedTarget !== null) {
+        msgEl.className = 'live-calc-verify-msg visible ok';
+        msgEl.textContent = isUk
+          ? `✓ Вірно. Ваш результат (${userNum}) збігається з розрахунком за формулою: ${liveStr}`
+          : `✓ Correct. Your value (${userNum}) matches the formula calculation: ${liveStr}`;
+        markExperimentMastered(key);
+      } else {
+        msgEl.className = 'live-calc-verify-msg visible warn';
+        msgEl.textContent = isUk
+          ? `Розбіжність із поточними параметрами. За формулою очікується: ${liveStr}`
+          : `Does not match current parameters. Expected from formula: ${liveStr}`;
+      }
+    }
+
+    function openLabReportModal() {
+      const isUk = uiState.lang === 'uk';
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      const p = sceneParams[key] || {};
+      const meta = EDU_META[key] || {};
+      const gradeTag = isUk ? (meta.gradeUk || '') : (meta.gradeEn || '');
+
+      let modal = document.getElementById('lab-report-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'lab-report-modal';
+        modal.className = 'lab-report-modal-backdrop';
+        modal.addEventListener('click', e => {
+          if (e.target === modal) modal.classList.remove('open');
+        });
+        document.body.appendChild(modal);
+      }
+
+      if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+      }
+      const snapDataUrl = (renderer && renderer.domElement && renderer.domElement.toDataURL)
+        ? renderer.domElement.toDataURL('image/png')
+        : '';
+      const chartDataUrl = (chartCanvas && chartCanvas.toDataURL)
+        ? chartCanvas.toDataURL('image/png')
+        : '';
+
+      const paramsRowsHtml = (cfg.sliders || [])
+        .map(s => `<tr><td>${s.label}</td><td>${p[s.key]}${s.unit ? ' ' + s.unit : ''}</td></tr>`)
+        .join('');
+
+      const telemetryCells = Array.from(document.querySelectorAll('#telemetry-grid .meas-cell'));
+      const telemetryRowsHtml = telemetryCells
+        .map(cell => {
+          const n = cell.querySelector('.meas-name')?.textContent || '';
+          const v = cell.querySelector('.meas-num')?.textContent || '';
+          return `<tr><td>${n}</td><td>${v}</td></tr>`;
+        })
+        .join('');
+
+      const ekLbl = document.getElementById('ek-label')?.textContent || '';
+      const ekVal = document.getElementById('ek-val')?.textContent || '';
+      const epLbl = document.getElementById('ep-label')?.textContent || '';
+      const epVal = document.getElementById('ep-val')?.textContent || '';
+      const qLbl = document.getElementById('q-label')?.textContent || '';
+      const qVal = document.getElementById('q-val')?.textContent || '';
+
+      const energyRowsHtml = `
+        <tr><td>${ekLbl}</td><td>${ekVal}</td></tr>
+        <tr><td>${epLbl}</td><td>${epVal}</td></tr>
+        <tr><td>${qLbl}</td><td>${qVal}</td></tr>
+      `;
+
+      const dateStr = new Date().toLocaleDateString(isUk ? 'uk-UA' : 'en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      const chosenIdx = uiState.selectedOption !== null ? uiState.selectedOption : cfg.correctIndex;
+      const chosenText = (cfg.options && cfg.options[chosenIdx]) ? formatTextbookProse(cfg.options[chosenIdx]) : '';
+
+      modal.innerHTML = `
+        <div class="lab-report-sheet" role="dialog" aria-modal="true" aria-label="${isUk ? 'Лабораторний звіт' : 'Laboratory Report'}">
+          <div class="lab-report-toolbar">
+            <span class="lab-report-toolbar-left">${isUk ? 'Офіційний бланк лабораторної роботи · physics.sheua.com' : 'Official Laboratory Worksheet · physics.sheua.com'}</span>
+            <div class="lab-report-toolbar-actions">
+              <button type="button" id="btn-report-print" class="btn-report-action primary">${isUk ? 'Друкувати / Зберегти PDF' : 'Print / Save PDF'}</button>
+              <button type="button" id="btn-report-copy" class="btn-report-action">${isUk ? 'Скопіювати текст' : 'Copy text'}</button>
+              <button type="button" id="btn-report-close" class="btn-report-action">${isUk ? 'Закрити ✕' : 'Close ✕'}</button>
+            </div>
+          </div>
+
+          <div class="lab-report-header-grid">
+            <div>
+              <div class="lab-report-meta">${cfg.secTag || cfg.secSym || ''} ${gradeTag ? '· ' + gradeTag : ''} · ${dateStr}</div>
+              <h2 class="lab-report-title">${cfg.secSym || ''} ${cfg.title || ''}</h2>
+              <div class="lab-report-meta">${cfg.subtitle || ''}</div>
+            </div>
+            <div class="lab-report-student-box">
+              <label for="lab-report-student-name">${isUk ? 'ПІБ учня / студента та клас (група):' : 'Student Name & Class / Group:'}</label>
+              <input type="text" id="lab-report-student-name" class="lab-report-student-input" placeholder="${isUk ? 'Введіть ім’я та клас...' : 'Enter name and class...'}" />
+            </div>
+          </div>
+
+          <div class="lab-report-two-col">
+            <div class="lab-report-card">
+              <div class="lab-report-card-title">${isUk ? '1. Тривимірна схема установки та осцилограма' : '1. 3D Apparatus & Energy Oscillogram'}</div>
+              ${snapDataUrl ? `<img class="lab-report-snap-img" src="${snapDataUrl}" alt="3D Apparatus" />` : ''}
+              ${chartDataUrl ? `<img class="lab-report-snap-img" src="${chartDataUrl}" alt="Oscillogram" style="max-height:92px;object-fit:contain;background:#faf9f5;" />` : ''}
+              <div class="lab-report-meta">${cfg.figCaption || ''}</div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="lab-report-card">
+                <div class="lab-report-card-title">${isUk ? '2. Вхідні параметри досліду' : '2. Experimental Parameters'}</div>
+                <table class="lab-report-table">
+                  <tbody>${paramsRowsHtml}</tbody>
+                </table>
+              </div>
+
+              <div class="lab-report-card">
+                <div class="lab-report-card-title">${isUk ? '3. Виміряні величини та баланс' : '3. Measured Telemetry & Balance'}</div>
+                <table class="lab-report-table">
+                  <tbody>${energyRowsHtml}${telemetryRowsHtml}</tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="lab-report-card" style="margin-bottom:14px;">
+            <div class="lab-report-card-title">${isUk ? '4. Робочі рівняння та підстановка чисел' : '4. Governing Equations & Substituted Calculation'}</div>
+            <div style="margin-bottom:8px;">${renderStackedMath(cfg.referenceLatex || cfg.formulaLatex)}</div>
+            <div style="padding-top:6px;border-top:1px dashed #d6d3cd;">${cfg.liveLatexFn ? renderLiveMathChips(cfg.liveLatexFn(p)) : ''}</div>
+          </div>
+
+          <div class="lab-report-card">
+            <div class="lab-report-card-title">${isUk ? '5. Контрольне запитання та висновок' : '5. Control Question & Theoretical Conclusion'}</div>
+            <p style="font-size:13px;font-weight:600;margin-bottom:6px;">${formatTextbookProse(cfg.question || '')}</p>
+            <p style="font-size:12.5px;color:#14532d;margin-bottom:8px;"><strong>${isUk ? 'Відповідь:' : 'Answer:'}</strong> ${chosenText}</p>
+            <div style="font-size:12.5px;line-height:1.55;color:#3f3f46;">${formatStructuredProse(cfg.explanation || '')}</div>
+          </div>
+        </div>
+      `;
+
+      modal.classList.add('open');
+      modal.querySelector('#btn-report-close')?.addEventListener('click', () => {
+        modal.classList.remove('open');
+      });
+      modal.querySelector('#btn-report-print')?.addEventListener('click', () => {
+        window.print();
+      });
+      modal.querySelector('#btn-report-copy')?.addEventListener('click', e => {
+        const btn = e.currentTarget;
+        const txt = buildFormattedStepByStepSolution();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).catch(() => {});
+        }
+        btn.textContent = isUk ? '✓ Скопійовано' : '✓ Copied';
+        setTimeout(() => {
+          btn.textContent = isUk ? 'Скопіювати текст' : 'Copy text';
+        }, 1800);
+      });
+      requestAnimationFrame(fitMathContainers);
     }
 
     function captureLabSnapshotPng() {
@@ -39396,6 +39639,94 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         camProjections.appendChild(snapBtn);
       }
 
+      // 9b. Кнопка формування та друку лабораторного звіту (#btn-lab-report) у панелі керування дослідом
+      const resetBtnEl = document.getElementById('btn-reset');
+      if (resetBtnEl && resetBtnEl.parentElement && !document.getElementById('btn-lab-report')) {
+        const repBtn = document.createElement('button');
+        repBtn.type = 'button';
+        repBtn.id = 'btn-lab-report';
+        repBtn.className = 'btn-paper-secondary';
+        repBtn.textContent = uiState.lang === 'uk' ? 'Лаб. звіт' : 'Lab report';
+        repBtn.title = uiState.lang === 'uk' ? 'Відкрити готовий бланк лабораторної роботи для друку або PDF' : 'Open printable laboratory report worksheet (PDF)';
+        repBtn.addEventListener('click', openLabReportModal);
+        resetBtnEl.parentElement.appendChild(repBtn);
+      }
+
+      // 9c. Розширення калькулятора формул: копіювання покрокового розв'язку (#btn-copy-calc), клік по формулі та перевірка власної відповіді (#live-calc-verify-bar)
+      const liveCalcWrap = document.querySelector('.live-calc-wrap');
+      const liveCalcHeader = liveCalcWrap ? liveCalcWrap.querySelector('.live-calc-header') : null;
+      const liveCalcBox = document.getElementById('reference-live-calc');
+      if (liveCalcHeader && !document.getElementById('btn-copy-calc')) {
+        const hintEl = document.getElementById('ui-live-calc-hint');
+        const actionsWrap = document.createElement('div');
+        actionsWrap.className = 'live-calc-header-actions';
+        if (hintEl) actionsWrap.appendChild(hintEl);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.id = 'btn-copy-calc';
+        copyBtn.className = 'btn-copy-calc';
+        copyBtn.textContent = uiState.lang === 'uk' ? 'Скопіювати розв’язок' : 'Copy solution';
+        copyBtn.title = uiState.lang === 'uk' ? 'Скопіювати умову, формулу та підстановку чисел' : 'Copy given parameters, formula, and substituted solution';
+        copyBtn.addEventListener('click', () => {
+          const text = buildFormattedStepByStepSolution();
+          const showDone = () => {
+            copyBtn.classList.add('copied');
+            copyBtn.textContent = uiState.lang === 'uk' ? '✓ Скопійовано' : '✓ Copied';
+            clearTimeout(copyBtn._timer);
+            copyBtn._timer = setTimeout(() => {
+              copyBtn.classList.remove('copied');
+              copyBtn.textContent = uiState.lang === 'uk' ? 'Скопіювати розв’язок' : 'Copy solution';
+            }, 1800);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(showDone).catch(showDone);
+          } else {
+            showDone();
+          }
+        });
+        actionsWrap.appendChild(copyBtn);
+        liveCalcHeader.appendChild(actionsWrap);
+      }
+
+      if (liveCalcBox && !liveCalcBox.dataset.chipBound) {
+        liveCalcBox.dataset.chipBound = '1';
+        liveCalcBox.addEventListener('click', e => {
+          const chip = e.target.closest('.math-chip');
+          if (!chip) return;
+          const allChips = Array.from(liveCalcBox.querySelectorAll('.math-chip'));
+          const chipIdx = Math.max(0, allChips.indexOf(chip));
+          const readouts = Array.from(document.querySelectorAll('#sliders-container .param-readout'));
+          const targetReadout = readouts[chipIdx % Math.max(1, readouts.length)];
+          if (targetReadout) {
+            targetReadout.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            targetReadout.click();
+          }
+        });
+      }
+
+      if (liveCalcWrap && !document.getElementById('live-calc-verify-bar')) {
+        const verifyBar = document.createElement('div');
+        verifyBar.id = 'live-calc-verify-bar';
+        verifyBar.className = 'live-calc-verify-bar';
+        verifyBar.innerHTML = `
+          <input type="text" inputmode="decimal" id="live-calc-user-input" class="live-calc-user-input" placeholder="${uiState.lang === 'uk' ? 'Перевір свій розрахунок (число)...' : 'Check your calculated value...'}" autocomplete="off" />
+          <button type="button" id="btn-verify-calc" class="btn-verify-calc">${uiState.lang === 'uk' ? 'Перевірити' : 'Check'}</button>
+          <div id="live-calc-verify-msg" class="live-calc-verify-msg" aria-live="polite"></div>
+        `;
+        liveCalcWrap.appendChild(verifyBar);
+        const inp = verifyBar.querySelector('#live-calc-user-input');
+        const btn = verifyBar.querySelector('#btn-verify-calc');
+        btn.addEventListener('click', verifyStudentCalculationInput);
+        inp.addEventListener('keydown', e => {
+          e.stopPropagation();
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            verifyStudentCalculationInput();
+          }
+        });
+      }
+
       // 10. Лічильник опанованих дослідів у верхній панелі (#edu-progress-pill)
       const headerRight = document.querySelector('.header-right');
       const langSwitcher = headerRight ? headerRight.querySelector('.lang-switcher') : null;
@@ -39436,7 +39767,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         syncEduProgressUI();
       }
 
-      // 11. Адаптивний мобільний слот: перенесення повзунків та калькулятора формул одразу під кнопку запуску на телефонах (<= 820px)
+      // 11. Адаптивний мобільний слот: перенесення повзунків, калькулятора формул та рекламного слота у видиму зону на телефонах (<= 820px)
       syncMobileLayoutSlot();
     }
 
@@ -39450,6 +39781,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const slidersBox = document.getElementById('sliders-container');
       const eqSec = document.getElementById('journal-sec-equations') || (refBox ? refBox.closest('.journal-section') : null);
       const paramSec = document.getElementById('journal-sec-params') || (slidersBox ? slidersBox.closest('.journal-section') : null);
+      const adRight = document.getElementById('ad-slot-right');
       if (eqSec && !eqSec.id) eqSec.id = 'journal-sec-equations';
       if (paramSec && !paramSec.id) paramSec.id = 'journal-sec-params';
       if (!eqSec || !paramSec) return;
@@ -39470,12 +39802,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (eqSec.parentElement !== mobileSlot) {
           mobileSlot.appendChild(eqSec);
         }
+        if (adRight && adRight.parentElement !== mobileSlot) {
+          mobileSlot.appendChild(adRight);
+        }
       } else {
         if (paramSec.parentElement !== rightPage) {
           rightPage.insertBefore(paramSec, rightPage.firstChild);
         }
         if (eqSec.parentElement !== rightPage) {
           rightPage.insertBefore(eqSec, rightPage.firstChild);
+        }
+        if (adRight && adRight.parentElement !== rightPage) {
+          if (typeof paramSec.insertAdjacentElement === 'function') {
+            paramSec.insertAdjacentElement('afterend', adRight);
+          } else {
+            rightPage.appendChild(adRight);
+          }
         }
       }
     }
@@ -39607,6 +39949,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
+      setTxt('btn-lab-report', uiState.lang === 'uk' ? 'Лаб. звіт' : 'Lab report');
+      setTxt('btn-copy-calc', uiState.lang === 'uk' ? 'Скопіювати розв’язок' : 'Copy solution');
+      setTxt('btn-verify-calc', uiState.lang === 'uk' ? 'Перевірити' : 'Check');
+      const calcInp = document.getElementById('live-calc-user-input');
+      if (calcInp) {
+        calcInp.placeholder = uiState.lang === 'uk' ? 'Перевір свій розрахунок (число)...' : 'Check your calculated value...';
+      }
       syncPinChartBtnUI();
       setTxt('cam-present', t.camPresent);
       setTxt('cam-pin-mobile', mobileCanvasPinned ? t.camPinnedMobile : t.camPinMobile);
@@ -40086,6 +40435,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         document.getElementById('explain-live-katex').innerHTML = liveHtml;
         const refLiveEl = document.getElementById('reference-live-calc');
         if (refLiveEl) refLiveEl.innerHTML = liveHtml;
+      }
+      const verifyMsgEl = document.getElementById('live-calc-verify-msg');
+      if (verifyMsgEl) {
+        verifyMsgEl.className = 'live-calc-verify-msg';
+        verifyMsgEl.textContent = '';
       }
       requestAnimationFrame(fitMathContainers);
     }
@@ -40677,6 +41031,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
            .replace(/_([0-9])/g, (_, d) => SUB_DIGITS[d] || d)
            .replace(/\^\{([0-9+-]+)\}/g, (_, d) => d.split('').map(c => SUP_DIGITS[c] || c).join(''))
            .replace(/\^([0-9+-])/g, (_, d) => SUP_DIGITS[d] || d)
+           .replace(/\^\s*°/g, '°')
+           .replace(/\\(?:quad|qquad)\b/g, ' ')
            .replace(/\\[,;!]/g, ' ')
            .replace(/\\(?:left|right)\b/g, '')
            .replace(/[{}]/g, '')

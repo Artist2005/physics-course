@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110c" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -59,6 +59,8 @@
       }
     }
   </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js" />
   <script>
     window.__ROOT_PREFIX__ = '../';
     window.__INITIAL_LANG__ = 'en';
@@ -191,7 +193,7 @@
             <div class="theory-analogy-body">Try rolling a ball straight across a spinning playground merry-go-round: to riders on the platform, the ball mysteriously curves sideways! On our rotating Earth, this Coriolis force swirls hurricanes and slowly rotates Foucault’s pendulum.</div>
           </div>
           <div class="theory-note-formula">
-            <code>F_Cor = -2m≤ft[ω×v_rel], ≤ft|F_Cor| = 2m ω v_relsinα ; F_cf = m ω²r, Ω_Foucault = ω_oplus sinφ</code>
+            <code>F_Cor = -2m≤ft[ω×v_rel], ≤ft|F_Cor| = 2m ω v_rel sin α ; F_cf = m ω²r, Ω_Foucault = ω_oplus sin φ</code>
           </div>
         </div>
       </div>
@@ -314,7 +316,7 @@
         <span id="ui-ref-heading-left">Equations</span>
         <span id="ui-ref-heading-right"></span>
       </div>
-      <div id="reference-formula-box" class="laws-reference-box"><code>F_Cor = -2m≤ft[ω×vᵣel ], ≤ft|F_Cor | = 2m ω vᵣelsin α ; F_cf = m ω²r, Ω_Foucault = ω_oplus sin φ</code></div>
+      <div id="reference-formula-box" class="laws-reference-box"><code>F_Cor = -2m≤ft[ω×vᵣel ], ≤ft|F_Cor | = 2m ω vᵣel sin  α ; F_cf = m ω²r, Ω_Foucault = ω_oplus sin φ</code></div>
       <div class="live-calc-wrap">
         <div class="live-calc-header">
           <span id="ui-live-calc-title">Formula calculator</span>
@@ -455,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110c"></script>
+  <script defer src="../assets/app.js?v=20261110d"></script>
 </body>
 </html>

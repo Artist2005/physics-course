@@ -1,6 +1,8 @@
 (async () => {
-    const THREE = await import('three');
-    const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+    const [THREE, { OrbitControls }] = await Promise.all([
+      import('three'),
+      import('three/addons/controls/OrbitControls.js')
+    ]);
 
     // ============================================================================
     // 0. РЕНДЕРИНГ МАТЕМАТИЧНИХ ФОРМУЛ (KaTeX) БЕЗ ВИХОДУ ЗА РАМКИ

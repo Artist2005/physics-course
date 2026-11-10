@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110c" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -59,6 +59,8 @@
       }
     }
   </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js" />
   <script>
     window.__ROOT_PREFIX__ = '../';
     window.__INITIAL_LANG__ = 'en';
@@ -168,19 +170,19 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In a cylindrical capillary tube of inner radius r, the spherical meniscus of radius of curvature R_m = (r)/(cosθ) sustains a pressure jump across the interface given by the Young–Laplace equation: Δ p = (2σ)/(R_m) = (2σcosθ)/(r).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In a cylindrical capillary tube of inner radius r, the spherical meniscus of radius of curvature R_m = (r)/(cos θ) sustains a pressure jump across the interface given by the Young–Laplace equation: Δ p = (2σ)/(R_m) = (2σcos θ)/(r).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Equating this Laplace capillary suction to the hydrostatic pressure ρ g h of the liquid column yields Jurin’s Law: h = (2σcosθ)/(ρ g r) (positive rise for θ 90°). Because h ∝ 1/r, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Equating this Laplace capillary suction to the hydrostatic pressure ρ g h of the liquid column yields Jurin’s Law: h = (2σcos θ)/(ρ g r) (positive rise for θ 90°). Because h ∝ 1/r, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Jurin's formula h = (2σcosθ)/(ρ g r), the sign of h is governed by cosθ. For wetting liquids (θ 0), the concave meniscus pulls the column upward (h &gt; 0), whereas for non-wetting liquids (θ &gt; 90°, cosθ &lt; 0), the convex meniscus depresses the column downward (h &lt; 0).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">By Jurin's formula h = (2σcos θ)/(ρ g r), the sign of h is governed by cos θ. For wetting liquids (θ 0), the concave meniscus pulls the column upward (h &gt; 0), whereas for non-wetting liquids (θ &gt; 90°, cos θ &lt; 0), the convex meniscus depresses the column downward (h &lt; 0).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Methodological calculation guide</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Jurin’s law h = (2σcosθ)/(ρ g r): how does capillary rise height h change when tube radius r becomes narrower?</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">By Jurin’s law h = (2σcos θ)/(ρ g r): how does capillary rise height h change when tube radius r becomes narrower?</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Experimental parameters and SI units</div>
@@ -191,7 +193,7 @@
             <div class="theory-analogy-body">How does a paper towel soak up spilled tea, or a tall tree draw water to its leaves? Inside hair-thin capillary tubes, water clings to the walls and surface tension pulls the liquid column upward against gravity!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ P_Lap = (2σ cosθ)/(r) = ρ g h ; h = (2σ cosθ)/(ρ g r)</code>
+            <code>Δ P_Lap = (2σ cos θ)/(r) = ρ g h ; h = (2σ cos θ)/(ρ g r)</code>
           </div>
         </div>
       </div>
@@ -455,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110c"></script>
+  <script defer src="../assets/app.js?v=20261110d"></script>
 </body>
 </html>

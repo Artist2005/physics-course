@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110c" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110d" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -59,6 +59,8 @@
       }
     }
   </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js" />
   <script>
     window.__ROOT_PREFIX__ = '../';
     window.__INITIAL_LANG__ = 'en';
@@ -191,7 +193,7 @@
             <div class="theory-analogy-body">An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily (θ ≈ KP), but once every spot is taken in a monolayer, coverage hits a ceiling (θ → 1)!</div>
           </div>
           <div class="theory-note-formula">
-            <code>θ = (K P)/(1 + K P), K(T) = K₀exp ≤ft(fracQ_adsRT), r_ads = k_a P(1-θ) = k_dθ</code>
+            <code>θ = (K P)/(1 + K P), K(T) = K₀ exp ≤ft(fracQ_adsRT), r_ads = k_a P(1-θ) = k_dθ</code>
           </div>
         </div>
       </div>
@@ -314,7 +316,7 @@
         <span id="ui-ref-heading-left">Equations</span>
         <span id="ui-ref-heading-right"></span>
       </div>
-      <div id="reference-formula-box" class="laws-reference-box"><code>θ = (K P)/(1 + K P), K(T) = K₀exp ≤ft((Qₐds)/(RT) ), rₐds = kₐ P(1-θ) = k_dθ</code></div>
+      <div id="reference-formula-box" class="laws-reference-box"><code>θ = (K P)/(1 + K P), K(T) = K₀ exp ≤ft((Qₐds)/(RT) ), rₐds = kₐ P(1-θ) = k_dθ</code></div>
       <div class="live-calc-wrap">
         <div class="live-calc-header">
           <span id="ui-live-calc-title">Formula calculator</span>
@@ -455,6 +457,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110c"></script>
+  <script defer src="../assets/app.js?v=20261110d"></script>
 </body>
 </html>

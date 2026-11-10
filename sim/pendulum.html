@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–10</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Simple harmonic motion arises whenever a restoring force is proportional to the displacement from equilibrium: Fₓ = -kx. In a simple gravity pendulum, the restoring force is the tangential component of weight F_τ = -mgsin θ ≈ -(mg)/(L)s (for small angles θ ≪ 1 rad), whereas in a spring-mass oscillator it is Hooke’s elastic force F = -ky.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Simple harmonic motion arises whenever a restoring force is proportional to the displacement from equilibrium: F_x = -kx. In a simple gravity pendulum, the restoring force is the tangential component of weight F_τ = -mgsinθ ≈ -(mg)/(L)s (for small angles θ ll 1 rad), whereas in a spring-mass oscillator it is Hooke’s elastic force F = -ky.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The damped oscillator obeys x + 2βx + ω₀² x = 0. For the simple pendulum, the natural angular frequency ω₀ = √(g/L) and Huygens’ period T₀ = 2π√(L/g) depend solely on string length L and gravity g (isochronism). Conversely, for the spring pendulum, ω₀ = √(k/m) and T₀ = 2π√(m/k) depend on mass m and stiffness k, remaining independent of gravity.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The damped oscillator obeys ddotx + 2βdotx + ω₀² x = 0. For the simple pendulum, the natural angular frequency ω₀ = √(g/L) and Huygens’ period T₀ = 2π√(L/g) depend solely on string length L and gravity g (isochronism). Conversely, for the spring pendulum, ω₀ = √(k/m) and T₀ = 2π√(m/k) depend on mass m and stiffness k, remaining independent of gravity.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Twice during every oscillation period, energy converts completely between potential energy Eₚ at the turning points and kinetic energy Eₖ at equilibrium. With damping (β &gt; 0), the amplitude decays exponentially as A(t) = A₀ e⁻β t, transferring mechanical energy into thermal dissipation Q.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Twice during every oscillation period, energy converts completely between potential energy E_p at the turning points and kinetic energy E_k at equilibrium. With damping (β &gt; 0), the amplitude decays exponentially as A(t) = A₀ e^-β t, transferring mechanical energy into thermal dissipation Q.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">For a simple pendulum, both the gravitational restoring force and inertia are proportional to mass m, so T_pend = 2π√(L/g) is independent of mass! In contrast, Hooke's restoring force F = -kx in a spring does not depend on mass, so quadrupling m doubles the period T_spr = 2π√(m/k).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Look at Huygens’ formula T = 2π√(L/g): does the bob mass m appear in it, and how does √(L) change when length L increases?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>String length L</strong>: 1.8 … 4.8 m, standard value 3.5 m</li><li><strong>Initial amplitude θ₀</strong>: 10 … 75 °, standard value 35 °</li><li><strong>Bob mass m</strong>: 0.5 … 5 kg, standard value 2 kg</li><li><strong>Spring stiffness k</strong>: 5 … 35 N/m, standard value 14 N/m</li><li><strong>Damping coeff. γ</strong>: 0 … 0.25 s⁻¹, standard value 0.02 s⁻¹</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Think of a playground swing or a grandfather clock! Whether a child or an adult sits on the swing, the time of one back-and-forth swing depends only on the rope length L, not on the person’s mass.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Tₚend = 2π√((L)/(g)), Tₛpr = 2π√((m)/(k)) ; E = (mv²)/(2) + mgL(1-cos θ) = const</code>
+            <code>T_pend = 2π√((L)/(g)), T_spr = 2π√((m)/(k)) ; E = (mv²)/(2) + mgL(1-cosθ) = const</code>
           </div>
         </div>
       </div>
@@ -399,7 +416,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -425,6 +453,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

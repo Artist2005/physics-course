@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Із збереження моменту імпульсу безпосередньо випливає ІІ закон Кеплера (закон площ): площа сектора dS = (1)/(2)|[r × dr]|, яку замітає радіус-вектор планети за час dt, росте з постійною секторною швидкістю (dS)/(dt) = (L)/(2m) = const. Траєкторією зв’язаного руху (E &lt; 0) є еліпс r(θ) = (a(1 - e²))/(1 + ecos θ) із великою піввіссю a та ексцентриситетом e ∈ [0, 1), у фокусі якого розташоване Сонце.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Із збереження моменту імпульсу безпосередньо випливає ІІ закон Кеплера (закон площ): площа сектора dS = (1)/(2)|[r × dr]|, яку замітає радіус-вектор планети за час dt, росте з постійною секторною швидкістю (dS)/(dt) = (L)/(2m) = const. Траєкторією зв’язаного руху (E &lt; 0) є еліпс r(θ) = (a(1 - e²))/(1 + ecosθ) із великою піввіссю a та ексцентриситетом e ∈ [0, 1), у фокусі якого розташоване Сонце.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">У перигелії (найближчій до Сонця точці, rₘin = a(1 - e)) гравітаційна потенціальна енергія Eₚ = -(GMm)/(r) є мінімальною, а орбітальна швидкість, максимальною: vₚ = √((GM)/(a)(1+e)/(1-e)). В афелії (rₘax = a(1 + e)) швидкість спадає до vₐ = √((GM)/(a)(1-e)/(1+e)), так що виконується співвідношення vₚ / vₐ = (1 + e)/(1 - e).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">У перигелії (найближчій до Сонця точці, r_min = a(1 - e)) гравітаційна потенціальна енергія E_p = -(GMm)/(r) є мінімальною, а орбітальна швидкість, максимальною: v_p = √((GM)/(a)(1+e)/(1-e)). В афелії (r_max = a(1 + e)) швидкість спадає до v_a = √((GM)/(a)(1-e)/(1+e)), так що виконується співвідношення v_p / v_a = (1 + e)/(1 - e).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Гравітаційна сила F_g є центральною (її момент відносно зорі дорівнює нулю), тому момент імпульсу планети L = m v r sinα зберігається. Звідси випливає другий закон Кеплера: секторна швидкість dS/dt = L/(2m) є сталою. У перигелії відстань мінімальна r_p = a(1-e), тому швидкість максимальна; в афелії r_a = a(1+e) швидкість найменша.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За ІІ законом Кеплера (збереження моменту імпульсу r · v_⊥ = const): де швидкість планети максимальна, у найближчій точці до зорі (перигелії) чи у найвіддаленішій (афелії)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Ексцентриситет орбіти e</strong>: 0 … 0.75, типове значення 0.45</li><li><strong>Велика піввісь орбіти a</strong>: 3 … 5.6 а.о., типове значення 4.4 а.о.</li><li><strong>Маса центральної зорі M</strong>: 0.8 … 2.5 M☉, типове значення 1.5 M☉</li><li><strong>Маса планети m</strong>: 0.5 … 2.5 M⊕, типове значення 1 M⊕</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Як фігурист на льоду, що притискає руки до грудей і починає крутитися значно швидше, комета чи планета розганяється до максимуму, коли підлітає найближче до Сонця (у перигелії), і сповільнюється на дальній дузі орбіти!</div>
           </div>
           <div class="theory-note-formula">
-            <code>r(θ) = (a(1 - e²))/(1 + ecos θ), (dS)/(dt) = (L)/(2m) = const ; v² = GM≤ft((2)/(r) - (1)/(a) ), T² = (4π²)/(GM)a³</code>
+            <code>r(θ) = (a(1 - e²))/(1 + ecosθ), (dS)/(dt) = (L)/(2m) = const ; v² = GM≤ft((2)/(r) - (1)/(a)), T² = (4π²)/(GM)a³</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

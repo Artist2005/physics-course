@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,11 +168,23 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Для заліза стандартний потенціал становить E^°(Fe²⁺/Fe) = -0.44 В. У разі контакту заліза з міддю (E^° = +0.34 В) або оловом (луджена жерсть, E^° = -0.14 В) залізо виступає анодом і в разі подряпини покриття іржавіє в рази швидше (Fe²⁺ → Fe(OH)₃↓ → Fe₂O₃· nH₂O).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Для заліза стандартний потенціал становить E°(Fe²⁺/Fe) = -0.44 В. У разі контакту заліза з міддю (E° = +0.34 В) або оловом (луджена жерсть, E° = -0.14 В) залізо виступає анодом і в разі подряпини покриття іржавіє в рази швидше (Fe²⁺ → Fe(OH)₃downarrow → Fe₂O₃· nH₂O).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Натомість при оцинкуванні або приєднанні протектора з цинку чи магнію (E^°_Zn = -0.76 В &lt; -0.44 В) анодом стає саме цинк (Zn → Zn²⁺ + 2e⁻). Він жертвує собою, віддаючи електрони сталевому корпусу корабля чи трубопроводу (катоду), і повністю блокує корозію заліза навіть за наявності глибоких подряпин (протекторний катодний захист).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Натомість при оцинкуванні або приєднанні протектора з цинку чи магнію (E°_Zn = -0.76 В &lt; -0.44 В) анодом стає саме цинк (Zn → Zn²⁺ + 2e⁻). Він жертвує собою, віддаючи електрони сталевому корпусу корабля чи трубопроводу (катоду), і повністю блокує корозію заліза навіть за наявності глибоких подряпин (протекторний катодний захист).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Електрохімічна корозія виникає при контакті двох металів із різними стандартними електродними потенціалами в середовищі електроліту. Метал із меншим (більш від’ємним) потенціалом E° завжди стає анодом (-) і окиснюється (розчиняється), віддаючи електрони металу з більшим потенціалом, катоду (+), на поверхні якого відбувається відновлення окисника (у нейтральній воді, киснева деполяризація O₂ + 2H₂O + 4e⁻ → 4OH⁻). Тому при пошкодженні лудженого заліза (вкритого оловом Sn, E° = -0.14 В) або контакті з міддю (+0.34 В) залізо (-0.44 В) є анодом і швидко іржавіє. Натомість при контакті з цинком (-0.76 В) або магнієм (-2.37 В) залізо стає катодом: руйнується лише жертовний анод (протекторний захист), а сталь залишається неушкодженою навіть на відкритих подряпинах.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">У гальванічній парі окиснюється (стає анодом) більш активний метал з нижчим потенціалом E°: у парі Fe/Zn руйнується цинк, а в парі Fe/Cu, залізо.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Контактний метал у парі зі сталлю Fe (1: Cu, 2: Sn, 3: Zn-протектор, 4: Mg-протектор)</strong>: 1 … 4, типове значення 1</li><li><strong>Солоність електроліту [NaCl] (електропровідність води)</strong>: 0.05 … 1.5 моль/л, типове значення 0.5 моль/л</li><li><strong>Концентрація розчиненого кисню [O₂] (деполяризатор)</strong>: 1 … 12 мг/л, типове значення 8 мг/л</li><li><strong>Кислотність середовища pH (при pH &lt; 4, воднева деполяризація)</strong>: 3 … 10, типове значення 7</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

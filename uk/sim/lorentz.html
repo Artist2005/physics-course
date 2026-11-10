@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Якщо швидкість v утворює кут α з вектором B, рух розкладається на два незалежні рухи: рівномірний поступальний рух уздовж ліній поля зі швидкістю v_∥ = vcos α = const та рівномірне обертання в перпендикулярній площині зі швидкістю v_⊥ = vsin α. Доцентрове прискорення забезпечується силою Лоренца: (mv_⊥²)/(R) = |q|v_⊥ B, звідки ларморівський (циклотронний) радіус R = (mvsin α)/(|q|B).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Якщо швидкість v утворює кут α з вектором B, рух розкладається на два незалежні рухи: рівномірний поступальний рух уздовж ліній поля зі швидкістю v_∥ = vcosα = const та рівномірне обертання в перпендикулярній площині зі швидкістю v_⊥ = vsinα. Доцентрове прискорення забезпечується силою Лоренца: (mv_⊥²)/(R) = |q|v_⊥ B, звідки ларморівський (циклотронний) радіус R = (mvsinα)/(|q|B).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Суперпозиція обертання та поздовжнього дрейфу утворює в 3D-просторі гвинтову лінію (спіраль). Період одного оберту T = (2π R)/(v_⊥) = (2π m)/(|q|B) та циклотронна частота ω_c = (|q|B)/(m) (у нерелятивістській границі) не залежать від швидкості частинки, а крок спіралі дорівнює h = v_∥ T = (2π m vcos α)/(|q|B). На цьому принципі працюють циклотрони, мас-спектрометри та магнітні пастки плазми.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Суперпозиція обертання та поздовжнього дрейфу утворює в 3D-просторі гвинтову лінію (спіраль). Період одного оберту T = (2π R)/(v_⊥) = (2π m)/(|q|B) та циклотронна частота ω_c = (|q|B)/(m) (у нерелятивістській границі) не залежать від швидкості частинки, а крок спіралі дорівнює h = v_∥ T = (2π m vcosα)/(|q|B). На цьому принципі працюють циклотрони, мас-спектрометри та магнітні пастки плазми.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Сила Лоренца F_L = q[v×B] у кожній точці перпендикулярна до вектора швидкості v, тому її елементарна робота дорівнює нулю (dA = F_L· dr = 0), а модуль швидкості та кінетична енергія E_k = const залишаються незмінними. Поперечна складова швидкості v_⊥ = vsinα зумовлює обертання по колу радіуса R = (mvsinα)/(|q|B), а поздовжня складова v_∥ = vcosα рівномірно переносить частинку вздовж поля B, утворюючи 3D-спіраль.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Сила Лоренца F_L = q[v × B] завжди перпендикулярна до швидкості v. Чи може сила, перпендикулярна до переміщення, виконувати роботу й змінювати кінетичну енергію?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Магнітна індукція поля B</strong>: 0.6 … 3 Тл, типове значення 1.5 Тл</li><li><strong>Початкова швидкість частинки v₀</strong>: 2 … 6.5 м/с, типове значення 4.2 м/с</li><li><strong>Кут вльоту до ліній поля α</strong>: 25 … 90 °, типове значення 68 °</li><li><strong>Питомий заряд частинки |q|/m</strong>: 0.8 … 3.2 Кл/кг, типове значення 1.8 Кл/кг</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Магнітне поле Землі працює як невидимий щит: воно закручує заряджені частинки сонячного вітру у спіралі вздовж магнітних ліній до полюсів, де вони світяться як полярне сяйво! Магніт повертає частинку, але ніколи не змінює модуль її швидкості.</div>
           </div>
           <div class="theory-note-formula">
-            <code>F_L = q[v×B], F_L = |q| v B sin α ; R = (m v_⊥)/(|q| B) = (m v sin α)/(|q| B), T = (2π m)/(|q| B), h = v_∥ T</code>
+            <code>F_L = q[v×B], F_L = |q| v B sinα ; R = (m v_⊥)/(|q| B) = (m v sinα)/(|q| B), T = (2π m)/(|q| B), h = v_∥ T</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

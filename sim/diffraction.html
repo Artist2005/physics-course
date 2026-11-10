@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In the far-field (Fraunhofer diffraction) at angle θ, the path difference between wavelets from the two slit edges is Δ = asin θ. Dividing the slit into 2m equal zones shows that destructive cancellation occurs at diffraction minima asin θ = ± mλ (m = 1, 2, 3, …). Integrating across the continuous aperture gives the intensity profile I(θ) = I₀ ≤ft((sin β)/(β) )², where β = (π asin θ)/(λ).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In the far-field (Fraunhofer diffraction) at angle θ, the path difference between wavelets from the two slit edges is Δ = asinθ. Dividing the slit into 2m equal zones shows that destructive cancellation occurs at diffraction minima asinθ = ± mλ (m = 1, 2, 3, …). Integrating across the continuous aperture gives the intensity profile I(θ) = I₀ ≤ft((sinβ)/(β))², where β = (π asinθ)/(λ).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Over 84% of the diffracted light power is concentrated in the central bright maximum bounded by sin θ₁ = ± (λ)/(a), with screen width W = (2λ L)/(a). This reveals a fundamental wave reciprocity: narrowing the slit a causes the diffracted beam on the screen to spread wider!</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Over 84% of the diffracted light power is concentrated in the central bright maximum bounded by sinθ₁ = ± (λ)/(a), with screen width W = (2λ L)/(a). This reveals a fundamental wave reciprocity: narrowing the slit a causes the diffracted beam on the screen to spread wider!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By the Huygens–Fresnel principle, secondary coherent wavelets across the slit interfere destructively at angles where bsinθ = ± mλ. The half-width of the central maximum is set by the first minimum (m=1): y₁ ≈ (λ L)/(b). Narrowing the slit b increases diffraction spreading and broadens the central peak Δ y = (2λ L)/(b)!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Look at the first diffraction minimum condition sinθ₁ = λ / a: if slit width a decreases, does angle θ₁ grow wider or narrower?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Diffraction slit width b</strong>: 1.2 … 4.5 μm, standard value 2.2 μm</li><li><strong>Light wavelength λ</strong>: 400 … 700 nm, standard value 550 nm</li><li><strong>Screen distance L</strong>: 3 … 6.5 m, standard value 4.5 m</li><li><strong>Diffraction minimum order m</strong>: 1 … 3, standard value 1</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">If you shine a laser through a tiny slit between two razor blades, instead of a narrower dot you get a wider central streak with side fringes! Paradoxically, squeezing the slit narrower makes the diffraction pattern spread out wider!</div>
           </div>
           <div class="theory-note-formula">
-            <code>b sin θₘin = ± m λ (m = 1, 2, 3, …) ; I(θ) = I₀ ≤ft((sin β)/(β) )², β = (π b sin θ)/(λ), Δ y_central = (2λ L)/(b)</code>
+            <code>b sinθ_min = ± m λ (m = 1, 2, 3, …) ; I(θ) = I₀ ≤ft((sinβ)/(β))², β = (π b sinθ)/(λ), Δ y_central = (2λ L)/(b)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">At rest, tropomyosin sterically blocks myosin-binding sites on actin. Action-potential-triggered Ca²⁺ release from the sarcoplasmic reticulum binds troponin C, shifting tropomyosin and initiating the ATP-driven cross-bridge power-stroke cycle (attachment → power stroke releasing ADP+Pᵢ → rigor detachment upon fresh ATP binding → cocking via ATP hydrolysis).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">At rest, tropomyosin sterically blocks myosin-binding sites on actin. Action-potential-triggered Ca²⁺ release from the sarcoplasmic reticulum binds troponin C, shifting tropomyosin and initiating the ATP-driven cross-bridge power-stroke cycle (attachment → power stroke releasing ADP+P_i → rigor detachment upon fresh ATP binding → cocking via ATP hydrolysis).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Macroscopic mechanics obey A. V. Hill’s force–velocity hyperbola (1938): (F + a)(v + b) = (F₀ + a)b, or v(F) = b (F₀ - F)/(F + a). Shortening velocity peaks at vₘax = b F₀ / a when unloaded (F = 0), tension peaks at F₀ under isometric load (v = 0) at optimal filament overlap, and mechanical power P = Fv maximizes near F ≈ 0.31 F₀.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Macroscopic mechanics obey A. V. Hill’s force–velocity hyperbola (1938): (F + a)(v + b) = (F₀ + a)b, or v(F) = b (F₀ - F)/(F + a). Shortening velocity peaks at v_max = b F₀ / a when unloaded (F = 0), tension peaks at F₀ under isometric load (v = 0) at optimal filament overlap, and mechanical power P = Fv maximizes near F ≈ 0.31 F₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the Huxley sliding-filament mechanism, Ca²⁺ binding to troponin C shifts tropomyosin, exposing myosin-binding sites on actin. Myosin heads hydrolyze ATP and execute power strokes that pull thin filaments toward the M-line without changing filament lengths. Optimal sarcomere length (L₀ ≈ 2.0–2.2 μm) maximizes cross-bridge overlap; overstretching eliminates overlap and reduces F₀. Hill’s equation (F + a)(v + b) = (F₀ + a)b shows that v = v_max = b F₀ / a when F = 0, v = 0 when F = F₀ (isometric contraction), and mechanical power P = Fv peaks near F ≈ 0.31 F₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Hill’s equation, v_max occurs at zero load (F=0), isometric force F₀ at v=0, and overstretching reduces actin–myosin cross-bridge overlap.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Sarcoplasmic Ca²⁺ concentration (troponin C activation)</strong>: 0.2 … 5 μM, standard value 2.5 μM</li><li><strong>Initial sarcomere length L_sarc (optimal overlap 2.0–2.2 μm)</strong>: 1.5 … 3.2 μm, standard value 2.1 μm</li><li><strong>Relative external load F / F₀ (0=unloaded, 1=isometric)</strong>: 0 … 1 F₀, standard value 0.3 F₀</li><li><strong>ATP availability for myosin cross-bridge cycling</strong>: 0.4 … 2.5 rel., standard value 1.5 rel.</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Picture a crew of rowers (myosin heads) pulling along two ropes (actin filaments). Neither the oars nor the ropes shrink, yet the boat walls (Z-discs) are drawn together! And the lighter the towed load (F → 0), the faster they pull (v → vₘax by Hill’s law).</div>
+            <div class="theory-analogy-body">Picture a crew of rowers (myosin heads) pulling along two ropes (actin filaments). Neither the oars nor the ropes shrink, yet the boat walls (Z-discs) are drawn together! And the lighter the towed load (F → 0), the faster they pull (v → v_max by Hill’s law).</div>
           </div>
           <div class="theory-note-formula">
-            <code>(F + a)(v + b) = (F₀ + a)b ⇒ v(F) = b (F₀ - F)/(F + a), Pₘech = F· v(F)</code>
+            <code>(F + a)(v + b) = (F₀ + a)b ⇒ v(F) = b (F₀ - F)/(F + a), P_mech = F· v(F)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

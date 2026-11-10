@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас · Хімія</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Гальванічний елемент Даніеля, Якобі перетворює хімічну енергію спонтанної окисно-відновної реакції Zn(тв) + Cu²⁺(р-н) → Zn²⁺(р-н) + Cu(тв) безпосередньо в електричну енергію за рахунок просторового розділення напівреакцій. На аноді (негативний полюс у гальванічному елементі) активніший метал цинк окиснюється й переходить у розчин: Zn⁰ - 2e⁻ → Zn²⁺ (E^° = -0.76 В). Вивільнені електрони рухаються зовнішнім металевим дротом до катода (позитивний полюс), де катіони міді відновлюються й осідають на пластині: Cu²⁺ + 2e⁻ → Cu⁰ (E^° = +0.34 В).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Гальванічний елемент Даніеля, Якобі перетворює хімічну енергію спонтанної окисно-відновної реакції Zn(тв) + Cu²⁺(р-н) → Zn²⁺(р-н) + Cu(тв) безпосередньо в електричну енергію за рахунок просторового розділення напівреакцій. На аноді (негативний полюс у гальванічному елементі) активніший метал цинк окиснюється й переходить у розчин: Zn⁰ - 2e⁻ → Zn²⁺ (E° = -0.76 В). Вивільнені електрони рухаються зовнішнім металевим дротом до катода (позитивний полюс), де катіони міді відновлюються й осідають на пластині: Cu²⁺ + 2e⁻ → Cu⁰ (E° = +0.34 В).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Електрорушійна сила (ЕРС) елемента за довільних молярних концентрацій електролітів визначається рівнянням Нернста: E_ел = E^°_ел - (RT)/(zF)ln ([Zn²⁺])/([Cu²⁺]), де стандартна ЕРС дорівнює E^°_ел = E^°_катод - E^°_анод = +0.34 - (-0.76) = 1.10 В, а z = 2, кількість електронів в елементарному акті. Максимальна корисна електрична робота дорівнює спаду енергії Гіббса: W_ел,max = -Δ G = z F E_ел.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Електрорушійна сила (ЕРС) елемента за довільних молярних концентрацій електролітів визначається рівнянням Нернста: E_ел = E°_ел - (RT)/(zF)lnfrac[Zn²⁺][Cu²⁺], де стандартна ЕРС дорівнює E°_ел = E°_катод - E°_анод = +0.34 - (-0.76) = 1.10 В, а z = 2, кількість електронів в елементарному акті. Максимальна корисна електрична робота дорівнює спаду енергії Гіббса: W_ел,max = -Δ G = z F E_ел.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Ключову роль відіграє сольовий місток (U-подібна трубка з розчином KCl або KNO₃ в агар-агарі): без нього в анодному стакані миттєво накопичився б надлишковий позитивний заряд йонів Zn²⁺, а в катодному, надлишковий негативний заряд аніонів SO₄²⁻, і потік електронів припинився б за мікросекунди. Міграція аніонів до анода та катіонів до катода підтримує електронейтральність обох напівелементів.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Цинк має значно нижчий стандартний електродний потенціал (E°_Zn²⁺/Zn = -0.76 В), ніж мідь (E°_Cu²⁺/Cu = +0.34 В). Тому на цинковому аноді відбувається окиснення Zn⁰ → Zn²⁺ + 2e⁻, а на мідному катоді, відновлення Cu²⁺ + 2e⁻ → Cu⁰. За рівнянням Нернста підвищення концентрації [Cu²⁺] та зниження [Zn²⁺] збільшує ЕРС елемента E.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Порівняй стандартні потенціали: E°(Zn²⁺/Zn) = -0.76 В &lt; E°(Cu²⁺/Cu) = +0.34 В. Який метал окиснюється (анод), куди течуть електрони і чому дорівнює різниця потенціалів E°_ел = E°_катод - E°_анод?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Концентрація католіту [Cu²⁺] (розчин CuSO₄)</strong>: 0.05 … 2 моль/л, типове значення 1 моль/л</li><li><strong>Концентрація аноліту [Zn²⁺] (розчин ZnSO₄)</strong>: 0.05 … 2 моль/л, типове значення 1 моль/л</li><li><strong>Абсолютна температура комірки T</strong>: 273 … 353 К, типове значення 298 К</li><li><strong>Провідність навантаження (інтенсивність розряду)</strong>: 0.4 … 2 ×, типове значення 1 ×</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Гальванічний елемент Даніеля–Якобі, це прадідусь кожного акумулятора у твоєму смартфоні чи електромобілі! Активніший цинк Zn охоче віддає свої електрони менш активній міді Cu²⁺, але оскільки ми розділили їх у два стакани, електрони змушені бігти зовнішнім дротом і живити вольтметр чи лампочку.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Анод (-): Zn⁰ → Zn²⁺ + 2e⁻, &amp; Катод (+): Cu²⁺ + 2e⁻ → Cu⁰ ; E = E^° - (RT)/(2F)ln ([Zn²⁺])/([Cu²⁺]), &amp; E^° = E^°_Cu - E^°_Zn = +1.10 В</code>
+            <code>Анод (-): Zn⁰ → Zn^2+ + 2e⁻, Катод (+): Cu^2+ + 2e⁻ → Cu⁰ ; E = E° - (RT)/(2F)lnfrac[Zn²⁺][Cu²⁺], E° = E°_Cu - E°_Zn = +1.10 В</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

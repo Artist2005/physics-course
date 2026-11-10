@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 8–11 · Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The acidity or basicity of an aqueous solution is quantified by its pH value: pH = -log ₁₀[H₃O⁺]. Due to water autoionization (2H₂O ⇄ H₃O⁺ + OH⁻), the ion-product constant of water at 25 ^°C is K_w = [H⁺][OH⁻] = 10⁻¹⁴ M², giving pH + pOH = 14. Solutions with pH 7 basic (alkaline).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The acidity or basicity of an aqueous solution is quantified by its pH value: pH = -log₁₀[H₃O⁺]. Due to water autoionization (2H₂O ⇄ H₃O⁺ + OH⁻), the ion-product constant of water at 25 °C is K_w = [H⁺][OH⁻] = 10⁻¹⁴ M², giving pH + pOH = 14. Solutions with pH 7 basic (alkaline).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In an acid-base titration of a strong monoprotic acid (HCl) with a strong base (NaOH), hydronium and hydroxide ions neutralize via H⁺ + OH⁻ → H₂O (Δ H = -57.3 kJ/mol). The equivalence point occurs at titrant volume Vₑq = (Cₐ Vₐ)/(C_b), where n(H⁺) = n(OH⁻). Because pH is logarithmic, adding a single drop of base (± 0.05 mL) at Vₑq produces a steep vertical titration jump spanning pH ≈ 4 to 10.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In an acid-base titration of a strong monoprotic acid (HCl) with a strong base (NaOH), hydronium and hydroxide ions neutralize via H⁺ + OH⁻ → H₂O (Δ H = -57.3 kJ/mol). The equivalence point occurs at titrant volume V_eq = (C_a V_a)/(C_b), where n(H⁺) = n(OH⁻). Because pH is logarithmic, adding a single drop of base (± 0.05 mL) at V_eq produces a steep vertical titration jump spanning pH ≈ 4 to 10.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Acid-base indicators are weak organic acids or bases whose conjugate forms HInd and Ind⁻ exhibit distinct colors. Phenolphthalein is colorless in acidic and neutral media (pH &lt; 8.2) and transitions sharply to a vivid magenta-pink within pH ∈ [8.2, 10.0], falling right inside the steep equivalence jump.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">During strong-acid / strong-base titration, before equivalence (V 9.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">At the equivalence point, moles of added base equal initial moles of acid: C_b V_eq = C_a V_a. What is the exact pH of a neutral NaCl solution at 25 °C?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Added titrant volume V(NaOH) from burette</strong>: 0 … 40 mL, standard value 18 mL</li><li><strong>Initial acid concentration C(HCl) (V₀ = 25 mL)</strong>: 0.05 … 0.15 mol/L, standard value 0.1 mol/L</li><li><strong>Titrant base concentration C(NaOH)</strong>: 0.05 … 0.15 mol/L, standard value 0.1 mol/L</li><li><strong>Indicator (1=Phenolphthalein, 2=Bromothymol, 3=Methyl orange)</strong>: 1 … 3, standard value 1</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Titration is chemical detective work accurate to a single drop! As long as free acid HCl remains in the flask, the solution stays crystal clear, but the moment the last H⁺ ion is neutralized at the equivalence point, a single extra drop of NaOH turns the entire flask vivid magenta!</div>
           </div>
           <div class="theory-note-formula">
-            <code>H⁺ + OH⁻ &amp;longrightarrow H₂O, K_w = [H⁺][OH⁻] = 10⁻¹⁴ ; pH = -lg [H⁺], Cₐ Vₐ = C_b V_b,eq</code>
+            <code>H⁺ + OH⁻ longrightarrow H₂O, K_w = [H⁺][OH⁻] = 10⁻¹⁴ ; pH = -lg[H⁺], C_a V_a = C_b V_b,eq</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

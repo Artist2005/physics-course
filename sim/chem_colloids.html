@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Colloid &amp; Interface Science</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Colloidal sols contain dispersed nanoparticles or micelles ranging from 1 to 100 nm in diameter. Unlike true solutions (&lt; 1 nm), colloids scatter an incident light beam into a visible Tyndall cone via Rayleigh scattering (Iₛcat ∝ N d⁶ / λ⁴).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Colloidal sols contain dispersed nanoparticles or micelles ranging from 1 to 100 nm in diameter. Unlike true solutions (&lt; 1 nm), colloids scatter an incident light beam into a visible Tyndall cone via Rayleigh scattering (I_scat ∝ N d⁶ / λ⁴).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
@@ -169,12 +174,24 @@
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Adding an electrolyte compresses the double layer and triggers coagulation (flocculation). According to the Schulze–Hardy rule, the critical coagulation concentration (CCC) drops inversely with the sixth power of the counter-ion charge: CCC ∝ z⁻⁶ (Na⁺ : Ca²⁺ : Al³⁺ = 1 : 64⁻¹ : 729⁻¹).</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Colloidal micelles (1–100 nm, such as gold sol or Fe(OH)₃ sol) are stabilized against van der Waals attraction by electrostatic repulsion of their electrical double layers, characterized by the zeta potential ζ. When a laser beam passes through the sol, particles scatter light with Rayleigh intensity I_scat ∝ (N d⁶)/(λ⁴), forming a glowing Tyndall cone. Adding an electrolyte compresses the diffuse double layer; by the Schulze–Hardy rule (derived from DLVO theory), the critical coagulation concentration drops as CCC ∝ (1)/(z⁶) (Na⁺ : Ca²⁺ : Al³⁺ ≈ 1 : 64 : 729).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Colloidal micelles scatter light into a Tyndall cone (I ∝ d⁶/λ⁴), and critical coagulation concentration scales as 1/z⁶ (Schulze–Hardy rule).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Colloidal micelle core diameter d</strong>: 2 … 80 nm, standard value 35 nm</li><li><strong>Coagulating electrolyte concentration C</strong>: 0 … 15 mmol/L, standard value 2 mmol/L</li><li><strong>Coagulating counter-ion charge z (1=Na⁺, 2=Ca²⁺, 3=Al³⁺)</strong>: 1 … 3, standard value 1</li><li><strong>Laser beam wavelength λ</strong>: 405 … 650 nm, standard value 532 nm</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">A laser beam is invisible from the side in pure water, but in a colloidal sol it glows like a lightsaber, the Tyndall cone! To make those charged micelles clump together, a trivalent Al³⁺ ion is 3⁶ = 729 times more potent than Na⁺!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Iₛcat ∝ I₀(N d⁶)/(λ⁴), ζ = (σ κ⁻¹)/(εε₀), CCC ∝ (1)/(z⁶)</code>
+            <code>I_scat ∝ I₀(N d⁶)/(λ⁴), ζ = fracσ κ⁻¹εε₀, CCC ∝ (1)/(z⁶)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

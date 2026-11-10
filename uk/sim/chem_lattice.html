@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Енергія йонної ґратки описується рівнянням Борна, Ланде: U₀ = -(N_A M |z₊ z₋| e²)/(4πε₀ r₀)≤ft(1 - (1)/(n_B) ), де M, константа Маделунга, що враховує геометрію підсумовування притягання і відштовхування всіх сусідніх шарів йонів (M = 1.7476 для NaCl), r₀, рівноважна відстань між центрами катіона й аніона, а n_B ≈ 8–12, показник квантово-механічного відштовхування заповнених електронних оболонок.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Енергія йонної ґратки описується рівнянням Борна, Ланде: U₀ = -(N_A M |z_+ z_-| e²)/(4πε₀ r₀)≤ft(1 - (1)/(n_B)), де M, константа Маделунга, що враховує геометрію підсумовування притягання і відштовхування всіх сусідніх шарів йонів (M = 1.7476 для NaCl), r₀, рівноважна відстань між центрами катіона й аніона, а n_B ≈ 8–12, показник квантово-механічного відштовхування заповнених електронних оболонок.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">При підвищенні абсолютної температури T зростає середньоквадратична амплітуда теплових коливань вузлів langle u²rangle ∝ (k_B T)/(k_зв). За критерієм плавлення Ліндемана, коли амплітуда теплових зміщень сягає критичної частки (≈ 10–15%) міжатомної відстані r₀, кристалічна ґратка втрачає стійкість і речовина плавиться. Тому кристали з малими багатозарядними йонами (MgO, Al₂O₃) та алмаз мають надвисокі температури плавлення.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">При підвищенні абсолютної температури T зростає середньоквадратична амплітуда теплових коливань вузлів langle u²rangle ∝ frack_B Tk_зв. За критерієм плавлення Ліндемана, коли амплітуда теплових зміщень сягає критичної частки (≈ 10–15%) міжатомної відстані r₀, кристалічна ґратка втрачає стійкість і речовина плавиться. Тому кристали з малими багатозарядними йонами (MgO, Al₂O₃) та алмаз мають надвисокі температури плавлення.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Згідно з рівнянням Борна–Ланде енергія йонної кристалічної ґратки прямо пропорційна добутку зарядів катіона й аніона z⁺ z⁻ і обернено пропорційна сумі їхніх йонних радіусів r₀ = r_+ + r_-. Саме тому перехід від однозарядних йонів Na⁺Cl⁻ (U_ґр ≈ 787 кДж/моль, T_пл = 801 °C) до двозарядних Mg²⁺O²⁻ підвищує енергію ґратки майже вчетверо (3790 кДж/моль, T_пл = 2852 °C).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Поглянь на формулу енергії ґратки Борна, Ланде U₀ ∝ (|z_+ z_-|)/(r₀): як зміниться сила кулонівського притягання у кристалі, якщо заряди йонів зростуть удвічі (наприклад, перехід від Na⁺Cl⁻ до Mg²⁺O²⁻), а відстань між центрами йонів r₀ зменшиться?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Міжйонна відстань r₀ (сума радіусів r₊ + r₋)</strong>: 2.1 … 3.5 Å, типове значення 2.82 Å</li><li><strong>Модуль заряду йонів |z±| (1=NaCl, 2=MgO)</strong>: 1 … 2 e, типове значення 1 e</li><li><strong>Абсолютна температура кристала T</strong>: 100 … 1000 К, типове значення 300 К</li><li><strong>Показник відштовхування Борна n</strong>: 6 … 12, типове значення 9</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
-            <div class="theory-analogy-body">Кухонна сіль NaCl на твоїй кухні складається з ідеальних мікроскопічних кубиків, бо її катіони Na⁺ та аніони Cl⁻ вишикувані у тривимірну шахівницю! А в алмазі кожен атом Карбону тримає сусідів чотирма надміцними ковалентними «руками» під кутом 109.5^°, тому алмаз ріже навіть скло й сталь.</div>
+            <div class="theory-analogy-body">Кухонна сіль NaCl на твоїй кухні складається з ідеальних мікроскопічних кубиків, бо її катіони Na⁺ та аніони Cl⁻ вишикувані у тривимірну шахівницю! А в алмазі кожен атом Карбону тримає сусідів чотирма надміцними ковалентними «руками» під кутом 109.5°, тому алмаз ріже навіть скло й сталь.</div>
           </div>
           <div class="theory-note-formula">
-            <code>U_ґр = -(N_A M z⁺ z⁻ e²)/(4πε₀ r₀)≤ft(1 - (1)/(n) ) ; M(NaCl) = 1.7476, КЧ(Na⁺) = КЧ(Cl⁻) = 6</code>
+            <code>U_ґр = -(N_A M z⁺ z⁻ e²)/(4πε₀ r₀)≤ft(1 - (1)/(n)) ; M(NaCl) = 1.7476, КЧ(Na⁺) = КЧ(Cl⁻) = 6</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

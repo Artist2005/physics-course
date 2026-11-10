@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10–11 · Biotechnology: PCR</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Polymerase Chain Reaction (PCR, Kary Mullis, 1983) exponentially amplifies a defined DNA segment *in vitro* through automated thermal cycling. Each cycle comprises three steps: 1) Denaturation (94..96 ^°C) to melt duplex DNA into single strands; 2) Annealing (54..62 ^°C) to hybridize forward and reverse oligonucleotide primers to 3' flanking sequences; and 3) Extension (72 ^°C) to synthesize complementary 5'→ 3' strands.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The Polymerase Chain Reaction (PCR, Kary Mullis, 1983) exponentially amplifies a defined DNA segment *in vitro* through automated thermal cycling. Each cycle comprises three steps: 1) Denaturation (94..96 °C) to melt duplex DNA into single strands; 2) Annealing (54..62 °C) to hybridize forward and reverse oligonucleotide primers to 3' flanking sequences; and 3) Extension (72 °C) to synthesize complementary 5'→ 3' strands.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">PCR relies on thermostable Taq DNA polymerase from the thermophilic bacterium *Thermus aquaticus*, which survives repeated 95 ^°C denaturation steps and catalyzes rapid dNTP incorporation at 72 ^°C in the presence of Mg²⁺ ions.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">PCR relies on thermostable Taq DNA polymerase from the thermophilic bacterium *Thermus aquaticus*, which survives repeated 95 °C denaturation steps and catalyzes rapid dNTP incorporation at 72 °C in the presence of Mg²⁺ ions.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because newly synthesized strands serve as templates in subsequent cycles, target copy number grows exponentially as N(n) = N₀ · (1 + E)^n (yielding N = N₀ · 2^n for ideal efficiency E = 1, or 2²⁰ ≈ 1.05× 10⁶-fold amplification in 20 cycles). In real-time quantitative PCR (qPCR), the threshold cycle Cₜ scales inversely with lg N₀.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Because newly synthesized strands serve as templates in subsequent cycles, target copy number grows exponentially as N(n) = N₀ · (1 + E)^n (yielding N = N₀ · 2^n for ideal efficiency E = 1, or 2²⁰ ≈ 1.05× 10⁶-fold amplification in 20 cycles). In real-time quantitative PCR (qPCR), the threshold cycle C_t scales inversely with lg N₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Conventional mesophilic DNA polymerases irreversibly denature above 65..70 °C. Taq polymerase, isolated from the hot-spring extremophile *Thermus aquaticus*, withstands repeated heating to 95 °C (where hydrogen bonds melt to separate double-stranded DNA) and exhibits optimal catalytic activity at 72 °C. During annealing (54..62 °C), forward and reverse oligonucleotide primers hybridize to flanking 3' template regions. Because every newly synthesized strand serves as a template in the next cycle, copy number amplifies exponentially as N(n) = N₀ · (1 + E)^n (for E = 1, N = N₀ · 2^n, producing over a million copies in 20 cycles and over a billion in 30 cycles).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Thermostable *Taq* polymerase survives 95 °C denaturation, and DNA copy number amplifies exponentially as N = N₀ · 2^n (2²⁰ = 1,048,576).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Completed PCR amplification cycles n</strong>: 1 … 30 cycles, standard value 20 cycles</li><li><strong>Thermal cycle stage (1: Denaturation 95 °C, 2: Annealing 58 °C, 3: Extension 72 °C)</strong>: 1 … 3 stage, standard value 3 stage</li><li><strong>Initial template DNA molecules N₀</strong>: 1 … 100 templates, standard value 10 templates</li><li><strong>Per-cycle amplification efficiency E (1.00 = ideal doubling 2ⁿ)</strong>: 0.7 … 1, standard value 0.98</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">PCR is a molecular photocopier for DNA! In every thermal cycle (95 ^°C → 58 ^°C → 72 ^°C), heat-proof *Taq* polymerase from Yellowstone hot springs doubles the target DNA segment (1 → 2 → 4 → 8...), turning 1 molecule into 2²⁰ = 1,048,576 copies in just 20 cycles!</div>
+            <div class="theory-analogy-body">PCR is a molecular photocopier for DNA! In every thermal cycle (95 °C → 58 °C → 72 °C), heat-proof *Taq* polymerase from Yellowstone hot springs doubles the target DNA segment (1 → 2 → 4 → 8...), turning 1 molecule into 2²⁰ = 1,048,576 copies in just 20 cycles!</div>
           </div>
           <div class="theory-note-formula">
-            <code>N(n) = N₀ · (1 + E)^n xrightarrowE=1 N₀ · 2^n, T_cycle: 95 ^°C → 58 ^°C → 72 ^°C</code>
+            <code>N(n) = N₀ · (1 + E)^n xrightarrowE=1 N₀ · 2^n, T_cycle: 95 °C → 58 °C → 72 °C</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In classical electrodynamics, an orbiting electron undergoing centripetal acceleration aₙ = v²/r would radiate away its energy and spiral into the nucleus within sim 10⁻¹¹ s. In 1913, Niels Bohr resolved this instability by postulating that electrons occupy discrete stationary orbits with quantized angular momentum Lₙ = mₑ vₙ rₙ = nℏ (n = 1, 2, 3, …) that do not radiate.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In classical electrodynamics, an orbiting electron undergoing centripetal acceleration a_n = v²/r would radiate away its energy and spiral into the nucleus within ∼ 10⁻¹¹ s. In 1913, Niels Bohr resolved this instability by postulating that electrons occupy discrete stationary orbits with quantized angular momentum L_n = m_e v_n r_n = nℏ (n = 1, 2, 3, …) that do not radiate.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In 1924, Louis de Broglie explained Bohr’s quantization rule geometrically: a stationary orbit is stable if and only if its circumference 2π rₙ accommodates an integer number n of electron de Broglie wavelengths λ_B = (h)/(mₑ vₙ), forming a closed standing matter wave 2π rₙ = nλ_B! Allowed hydrogen radii scale as rₙ = n² a₀ (a₀ = 0.0529 nm) and energy levels follow Eₙ = -(13.6 eV)/(n²).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In 1924, Louis de Broglie explained Bohr’s quantization rule geometrically: a stationary orbit is stable if and only if its circumference 2π r_n accommodates an integer number n of electron de Broglie wavelengths λ_B = (h)/(m_e v_n), forming a closed standing matter wave 2π r_n = nλ_B! Allowed hydrogen radii scale as r_n = n² a₀ (a₀ = 0.0529 nm) and energy levels follow E_n = -(13.6 eV)/(n²).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">A photon is emitted or absorbed only during a quantum jump nᵢ → n_f: hν = |Eₙᵢ - Eₙ_f|, yielding the Rydberg spectral formula (1)/(λ) = R_H ≤ft|(1)/(n_f²) - (1)/(nᵢ²) | (R_H = 1.097× 10⁷ m⁻¹) across the Lyman (n_f = 1, UV), Balmer (n_f = 2, visible), and Paschen (n_f = 3, IR) series.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">A photon is emitted or absorbed only during a quantum jump n_i → n_f: hν = |E_n_i - E_n_f|, yielding the Rydberg spectral formula (1)/(λ) = R_H ≤ft|(1)/(n_f²) - (1)/(n_i²)| (R_H = 1.097× 10⁷ m⁻¹) across the Lyman (n_f = 1, UV), Balmer (n_f = 2, visible), and Paschen (n_f = 3, IR) series.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Substituting the de Broglie wavelength λ_dB = (h)/(m_e v_n) into the circular standing-wave condition 2π r_n = nλ_dB directly yields Bohr's quantization rule m_e v_n r_n = n(h)/(2π) = nℏ. Jumping from n_i to n_f emits a photon of energy hν = E_n_i - E_n_f.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">How many full de Broglie wavelengths λ_B must fit around the circumference 2π r_n of the n-th stationary Bohr orbit?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Initial quantum level n_i</strong>: 2 … 4, standard value 3</li><li><strong>Final quantum level n_f</strong>: 1 … 3, standard value 2</li><li><strong>de Broglie standing-wave amplitude</strong>: 0.1 … 0.45 rel., standard value 0.25 rel.</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">An electron in an atom is like a person on a staircase: it can stand on steps n = 1, 2, 3…, never in mid-air between them! Why? Because the electron is a matter wave that must wrap around the orbit in a whole number of wavelengths 2π rₙ = nλ_B. Jumping down a step emits a photon of light!</div>
+            <div class="theory-analogy-body">An electron in an atom is like a person on a staircase: it can stand on steps n = 1, 2, 3…, never in mid-air between them! Why? Because the electron is a matter wave that must wrap around the orbit in a whole number of wavelengths 2π r_n = nλ_B. Jumping down a step emits a photon of light!</div>
           </div>
           <div class="theory-note-formula">
-            <code>mₑ vₙ rₙ = nℏ Longleftrightarrow 2π rₙ = nλ_dB, Eₙ = -(13.6 eV)/(n²) ; hν = Eₙᵢ - Eₙ_f = 13.6 eV≤ft((1)/(n_f²) - (1)/(nᵢ²) )</code>
+            <code>m_e v_n r_n = nℏ Longleftrightarrow 2π r_n = nλ_dB, E_n = -(13.6 eV)/(n²) ; hν = E_n_i - E_n_f = 13.6 eV≤ft((1)/(n_f²) - (1)/(n_i²))</code>
           </div>
         </div>
       </div>
@@ -385,7 +402,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -411,6 +439,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

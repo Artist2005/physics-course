@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">11 клас · Комплексні сполуки</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Координаційні (комплексні) сполуки складаються з центрального катіона перехідного металу M^n+ (комплексоутворювача з незаповненою d-оболонкою) та оточуючих його лігандів L, які надають неподілені електронні пари для утворення координаційних зв’язків M←L за донорно-акцепторним механізмом.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Координаційні (комплексні) сполуки складаються з центрального катіона перехідного металу M^n+ (комплексоутворювача з незаповненою d-оболонкою) та оточуючих його лігандів L, які надають неподілені електронні пари для утворення координаційних зв’язків M≤ftarrowL за донорно-акцепторним механізмом.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією кристалічного поля (ТКП) Бете і Ван Флека, в октаедричному комплексі [ML₆]^n+ шість лігандів на осях ± x, ± y, ± z сильніше відштовхують осьові орбіталі дублету e_g (d_z², dₓ²-y², енергія +0.6Δₒ) і слабше, міжосьові орбіталі триплету t₂g (dₓy, dₓz, d_yz, енергія -0.4Δₒ). Величина розщеплення Δₒ зростає в спектрохімічному ряді лігандів: I⁻ &lt; Br⁻ &lt; Cl⁻ &lt; F⁻ &lt; H₂O &lt; NH₃ &lt; en &lt; CN⁻ &lt; CO.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією кристалічного поля (ТКП) Бете і Ван Флека, в октаедричному комплексі [ML₆]^n+ шість лігандів на осях ± x, ± y, ± z сильніше відштовхують осьові орбіталі дублету e_g (d_z², d_x²-y², енергія +0.6Δ_o) і слабше, міжосьові орбіталі триплету t_2g (d_xy, d_xz, d_yz, енергія -0.4Δ_o). Величина розщеплення Δ_o зростає в спектрохімічному ряді лігандів: I⁻ &lt; Br⁻ &lt; Cl⁻ &lt; F⁻ &lt; H₂O &lt; NH₃ &lt; en &lt; CN⁻ &lt; CO.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Для конфігурацій d⁴… d⁷ виникає конкуренція між Δₒ та енергією спарювання електронів P: ліганди слабкого поля (Δₒ P), низькоспіновий. Поглинання видимого кванта hν = hc / λₐbs = Δₒ переводить електрон з t₂g на e_g (d–d перехід), забарвлюючи розчин у доповнювальний колір.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Для конфігурацій d⁴… d⁷ виникає конкуренція між Δ_o та енергією спарювання електронів P: ліганди слабкого поля (Δ_o P), низькоспіновий. Поглинання видимого кванта hν = hc / λ_abs = Δ_o переводить електрон з t_2g на e_g (d–d перехід), забарвлюючи розчин у доповнювальний колір.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією кристалічного поля (ТКП), в октаедричному полі шести лігандів (КЧ = 6) дві орбіталі e_g (d_z², d_x²-y²), частки яких спрямовані безпосередньо назустріч неподіленим електронним парам лігандів, зазнають сильного електростатичного відштовхування й підвищують енергію на +0.6Δ_o, тоді як три орбіталі t_2g (d_xy, d_xz, d_yz), розташовані між осями, знижують енергію на -0.4Δ_o. У спектрохімічному ряді (I⁻ P): усі 6 d-електронів Fe²⁺ спарюються на рівні t_2g⁶ (низькоспіновий діамагнітний гексаціаноферат [Fe(CN)₆]⁴⁻), а поглинання зміщується у фіолетову область (λ = hc/Δ_o downarrow).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">В октаедричному полі d-орбіталі розщеплюються на нижній триплет t_2g та верхній дублет e_g, а сильні ліганди (Δ_o &gt; P) спарюють електрони в низькоспіновий стан.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кількість d-електронів центрального катіона Mⁿ⁺ (d¹ … d⁹)</strong>: 1 … 9 e⁻, типове значення 6 e⁻</li><li><strong>Сила поля лігандів Δ_o (спектрохімічний ряд: Cl⁻ → H₂O → NH₃ → CN⁻)</strong>: 130 … 320 кДж/моль, типове значення 210 кДж/моль</li><li><strong>Довжина координаційного зв’язку метал–ліганд r(M←:L)</strong>: 1.75 … 2.45 Å, типове значення 2 Å</li><li><strong>Геометрія комплексу (1: Октаедр [ML₆], 2: Тетраедр [ML₄])</strong>: 1 … 2, типове значення 1</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
-            <div class="theory-analogy-body">Шість лігандів навколо іона металу діють як шість точкових прожекторів уздовж осей x, y, z: тим d-орбіталям, які дивляться прямо на ліганди (e_g), стає «тісно» й їхня енергія підскакує, а тим, що сховані між осями (t₂g),, просторо й вигідно!</div>
+            <div class="theory-analogy-body">Шість лігандів навколо іона металу діють як шість точкових прожекторів уздовж осей x, y, z: тим d-орбіталям, які дивляться прямо на ліганди (e_g), стає «тісно» й їхня енергія підскакує, а тим, що сховані між осями (t_2g),, просторо й вигідно!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δₒ = E(e_g) - E(t₂g) = (h c N_A)/(λ_погл), ЕСКП = -0.4 n(t₂g)Δₒ + 0.6 n(e_g)Δₒ</code>
+            <code>Δ_o = E(e_g) - E(t_2g) = frach c N_Aλ_погл, ЕСКП = -0.4 n(t_2g)Δ_o + 0.6 n(e_g)Δ_o</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

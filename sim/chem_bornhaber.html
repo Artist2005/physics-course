@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10–11 · Crystal Thermochemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Born–Haber cycle applies Hess’s Law to relate the standard enthalpy of formation Δ H_f^° of an ionic solid MX(s) to its lattice energy Uₗat by constructing a closed thermodynamic path through gaseous atoms and ions.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The Born–Haber cycle applies Hess’s Law to relate the standard enthalpy of formation Δ H_f° of an ionic solid MX(s) to its lattice energy U_lat by constructing a closed thermodynamic path through gaseous atoms and ions.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Converting standard elements into gaseous ions requires endothermic sublimation (Δ Hₛub), bond dissociation ((1)/(2)D_X₂), and ionization (I₁), partially offset by the exothermic electron affinity (Eₑa) of the nonmetal.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Converting standard elements into gaseous ions requires endothermic sublimation (Δ H_sub), bond dissociation ((1)/(2)D_X₂), and ionization (I₁), partially offset by the exothermic electron affinity (E_ea) of the nonmetal.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The overall formation of the salt is strongly exothermic because condensing gaseous ions into a 3D crystal lattice releases a massive lattice enthalpy Uₗat = Δ Hₛub + (1)/(2)D_X₂ + I₁ + Eₑa - Δ H_f^°, which scales with ionic charges and inverse interionic distance according to the Born–Landé equation.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The overall formation of the salt is strongly exothermic because condensing gaseous ions into a 3D crystal lattice releases a massive lattice enthalpy U_lat = Δ H_sub + (1)/(2)D_X₂ + I₁ + E_ea - Δ H_f°, which scales with ionic charges and inverse interionic distance according to the Born–Landé equation.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because gaseous ions (M⁺(g) + X⁻(g)) cannot be weighed into a calorimeter under standard conditions, Born and Haber applied Hess’s Law to construct a closed thermodynamic cycle: Δ H_f° = Δ H_sub + (1)/(2)D(X₂) + I₁(M) + E_ea(X) - U_lat. The endothermic steps of atomization and ionization are more than compensated by the huge exothermic electrostatic attraction when gaseous ions condense into the 3D crystal lattice (U_lat ∝ (N_A A z⁺ z⁻ e²)/(4πε₀ r₀)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Hess’s law, the enthalpy of formation Δ H_f° equals the sum of sublimation, dissociation, ionization, electron affinity, and -U_lat.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Metal sublimation enthalpy ΔH_sub(M)</strong>: 75 … 180 kJ/mol, standard value 108 kJ/mol</li><li><strong>Halogen dissociation enthalpy ½D(X₂)</strong>: 75 … 160 kJ/mol, standard value 121 kJ/mol</li><li><strong>Metal first ionization energy I₁(M → M⁺)</strong>: 375 … 600 kJ/mol, standard value 496 kJ/mol</li><li><strong>Crystal lattice energy U_lat(M⁺ + X⁻ → MX)</strong>: 650 … 1050 kJ/mol, standard value 787 kJ/mol</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Building an ionic crystal is like climbing a small hill to jump into a deep canyon: you invest energy to vaporize and ionize the elements, then get a massive exothermic payoff Uₗat when Na⁺ and Cl⁻ snap into a 3D lattice!</div>
+            <div class="theory-analogy-body">Building an ionic crystal is like climbing a small hill to jump into a deep canyon: you invest energy to vaporize and ionize the elements, then get a massive exothermic payoff U_lat when Na⁺ and Cl⁻ snap into a 3D lattice!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ H_f^°(MX) = Δ Hₛub + (1)/(2)D(X₂) + I₁(M) + Eₑa(X) - Uₗat ; Uₗat = (N_A M z⁺ z⁻ e²)/(4πε₀ r₀)≤ft(1 - (1)/(n) )</code>
+            <code>Δ H_f°(MX) = Δ H_sub + tfrac12D(X₂) + I₁(M) + E_ea(X) - U_lat ; U_lat = (N_A M z⁺ z⁻ e²)/(4πε₀ r₀)≤ft(1 - (1)/(n))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

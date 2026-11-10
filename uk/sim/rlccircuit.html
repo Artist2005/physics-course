@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">11 клас</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коливальний контур RLC, що складається з конденсатора ємністю C, котушки індуктивності L та активного опору R, є повною електродинамічною аналогією механічного пружинного маятника з тертям. Роль координати зміщення x відіграє заряд на обкладках конденсатора q(t), роль швидкості x, сила струму I(t) = q, роль маси m, індуктивність L («інерція» струму через ЕРС самоіндукції ℰₛ = -LI), а роль жорсткості k, обернена ємність 1/C.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Коливальний контур RLC, що складається з конденсатора ємністю C, котушки індуктивності L та активного опору R, є повною електродинамічною аналогією механічного пружинного маятника з тертям. Роль координати зміщення x відіграє заряд на обкладках конденсатора q(t), роль швидкості dotx, сила струму I(t) = dotq, роль маси m, індуктивність L («інерція» струму через ЕРС самоіндукції ℰ_s = -LdotI), а роль жорсткості k, обернена ємність 1/C.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">За другим правилом Кірхгофа U_L + U_R + U_C = 0, що дає диференціальне рівняння вільних коливань: Lq + Rq + (1)/(C)q = 0. За відсутності опору (R = 0) у контурі відбуваються незатухаючі гармонічні коливання з власною частотою ω₀ = (1)/(√(LC)) і періодом, який визначається формулою Томсона (Кельвіна): T₀ = 2π√(LC).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">За другим правилом Кірхгофа U_L + U_R + U_C = 0, що дає диференціальне рівняння вільних коливань: Lddotq + Rdotq + (1)/(C)q = 0. За відсутності опору (R = 0) у контурі відбуваються незатухаючі гармонічні коливання з власною частотою ω₀ = frac1√(LC) і періодом, який визначається формулою Томсона (Кельвіна): T₀ = 2π√(LC).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Чотири рази за період відбувається взаємне перетворення енергії електричного поля конденсатора W_E = (q²)/(2C) = (1)/(2)CU² на енергію магнітного поля котушки W_B = (1)/(2)LI². Струм I(t) випереджає заряд q(t) за фазою на π/2: коли конденсатор повністю розряджений (q = 0), струм і магнітне поле в котушці досягають максимуму. При R &gt; 0 енергія поступово розсіюється як джоулеве тепло P = I² R з коефіцієнтом загасання β = (R)/(2L).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли заряд на обкладках конденсатора спадає до нуля (q = 0, W_E = 0), за законом збереження енергії вся початкова електрична енергія (1)/(2)CU₀² переходить у магнітне поле котушки (1)/(2)LI_max². Струм у цей момент є максимальним і завдяки самоіндукції продовжує текти, перезаряджаючи конденсатор протилежним знаком з періодом Томпсона T = 2π√(LC).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За формулою Томсона T = 2π√(LC) і за рахунок опору резистора R: куди поступово переходить електромагнітна енергія контуру при загасаючих коливаннях?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Індуктивність котушки L</strong>: 0.8 … 4 Гн, типове значення 2 Гн</li><li><strong>Електроємність конденсатора C</strong>: 0.8 … 4 мФ, типове значення 2 мФ</li><li><strong>Активний опір контуру R (згасання)</strong>: 0 … 0.5 Ом, типове значення 0.05 Ом</li><li><strong>Початкова напруга на конденсаторі U₀</strong>: 2 … 8 В, типове значення 5 В</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Коливальний контур у радіоприймачі або смартфоні, це електричний брат звичайного маятника! Заряд на конденсаторі, як піднятий угору тягарець (потенціальна енергія E_C), а струм у котушці, як розігнаний тягарець унизу (магнітна «кінетична» енергія E_L).</div>
           </div>
           <div class="theory-note-formula">
-            <code>T = 2π√(LC), ω₀ = (1)/(√(LC)) (формула Томпсона) ; W = W_E + W_B = (q²)/(2C) + (L I²)/(2), q(t) = q₀ e⁻γ tcos (ω t)</code>
+            <code>T = 2π√(LC), ω₀ = frac1√(LC) (формула Томпсона) ; W = W_E + W_B = (q²)/(2C) + (L I²)/(2), q(t) = q₀ e^-γ tcos(ω t)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

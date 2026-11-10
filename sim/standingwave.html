@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A standing wave forms from the superposition of two coherent counter-propagating waves of equal amplitude and frequency on a string of length L fixed at both ends: y(x,t) = y₊(x - vt) + y₋(x + vt) = Asin (kx)cos (ω t). Unlike a traveling wave, a standing wave does not transport net energy along the string; instead, kinetic and potential energy oscillate locally within each half-wavelength loop.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">A standing wave forms from the superposition of two coherent counter-propagating waves of equal amplitude and frequency on a string of length L fixed at both ends: y(x,t) = y_+(x - vt) + y_-(x + vt) = Asin(kx)cos(ω t). Unlike a traveling wave, a standing wave does not transport net energy along the string; instead, kinetic and potential energy oscillate locally within each half-wavelength loop.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Boundary conditions y(0,t) = y(L,t) = 0 quantize the allowed wavelengths so that an integer number of half-waves fits along L: L = n(λₙ)/(2) (n = 1, 2, 3, …). With transverse wave speed v = √(T/μ) set by tension T and linear mass density μ, the natural frequencies form a discrete harmonic series: fₙ = (n)/(2L)√((T)/(μ)) = n f₁.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Boundary conditions y(0,t) = y(L,t) = 0 quantize the allowed wavelengths so that an integer number of half-waves fits along L: L = n(λ_n)/(2) (n = 1, 2, 3, …). With transverse wave speed v = √(T/μ) set by tension T and linear mass density μ, the natural frequencies form a discrete harmonic series: f_n = (n)/(2L)√((T)/(μ)) = n f₁.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Mode n = 1 is the fundamental frequency, while n ≥ 2 are overtones (harmonics) featuring n + 1 stationary nodes and n vibrating antinodes. This boundary-value quantization supports musical acoustics and provides the classical wave analogy for quantized electron states in quantum mechanics.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">For a string fixed at both ends, standing waves satisfy L = n(λ_n)/(2), so the harmonic number n equals the number of antinodes (with n+1 total nodes including both endpoints). Since wave speed is v = √(T/μ), quadrupling tension T doubles the phase speed and doubles the natural frequency f_n = (n)/(2L)√((T)/(μ)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">How many half-wavelengths λ/2 fit along string length L for harmonic mode n (L = nλ/2), and how does frequency f_n scale with n?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Harmonic mode (antinodes) n</strong>: 1 … 6, standard value 3</li><li><strong>String tension T</strong>: 15 … 90 N, standard value 45 N</li><li><strong>Linear mass density μ</strong>: 0.5 … 3.5 g/m, standard value 1.5 g/m</li><li><strong>Antinode amplitude A</strong>: 0.4 … 1.6 m, standard value 1.1 m</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Pluck a guitar string or shake a jump rope with a friend: the wave reflects off the fixed end and overlaps itself, locking into stationary nodes (quiet points) and antinodes (wildly vibrating loops), the secret behind all musical instruments!</div>
           </div>
           <div class="theory-note-formula">
-            <code>y(x,t) = 2A sin ≤ft((nπ x)/(L) )cos (ωₙ t), λₙ = (2L)/(n) ; v = √((T)/(μ)), fₙ = (n)/(2L)√((T)/(μ)) (n = 1, 2, 3, …)</code>
+            <code>y(x,t) = 2A sin≤ft((nπ x)/(L))cos(ω_n t), λ_n = (2L)/(n) ; v = √((T)/(μ)), f_n = (n)/(2L)√((T)/(μ)) (n = 1, 2, 3, …)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

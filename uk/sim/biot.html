@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">11 клас · ВНЗ</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">За законом Біо–Савара–Лапласа, кожен нескінченно малий елемент провідника dl зі струмом I створює в точці з радіус-вектором r елементарну індукцію магнітного поля dB = (μ₀ I)/(4π)([dl × r])/(r³). Якщо проінтегрувати цей вираз уздовж колового витка радіуса R з N витками для точки на осі симетрії Ox на відстані x від центра, поперечні складові взаємно компенсуються, а осьова індукція становить B₁(x) = (μ₀ N I R²)/(2(R² + x²)³/2).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">За законом Біо–Савара–Лапласа, кожен нескінченно малий елемент провідника dl зі струмом I створює в точці з радіус-вектором r елементарну індукцію магнітного поля dB = (μ₀ I)/(4π)([dl × r])/(r³). Якщо проінтегрувати цей вираз уздовж колового витка радіуса R з N витками для точки на осі симетрії Ox на відстані x від центра, поперечні складові взаємно компенсуються, а осьова індукція становить B₁(x) = fracμ₀ N I R²2(R² + x²)^3/2.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">У середній точці між котушками (x = 0) перша похідна (dB)/(dx) |₀ = 0 за симетрією зникає при будь-якому d. Якщо ж обрати відстань Гельмгольца d = R (відстань між котушками точно дорівнює їхньому радіусу!), то в центрі системи одночасно перетворюються на нуль і друга (d² B)/(dx²) |₀ = 0, і третя похідні поля! Завдяки цьому між котушками утворюється широке плато однорідного поля з індукцією B(0) = ≤ft((4)/(5) )^ 3/2(μ₀ N I)/(R) ≈ 0.7155(μ₀ N I)/(R).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">У середній точці між котушками (x = 0) перша похідна (dB)/(dx)big|₀ = 0 за симетрією зникає при будь-якому d. Якщо ж обрати відстань Гельмгольца d = R (відстань між котушками точно дорівнює їхньому радіусу!), то в центрі системи одночасно перетворюються на нуль і друга (d² B)/(dx²)big|₀ = 0, і третя похідні поля! Завдяки цьому між котушками утворюється широке плато однорідного поля з індукцією B(0) = ≤ft((4)/(5))^ 3/2(μ₀ N I)/(R) ≈ 0.7155(μ₀ N I)/(R).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Для одного колового витка B(x) = fracμ₀ NIR²2(R²+x²)^3/2 точка перегину графіка (де (d²B)/(dx²) = 0) лежить на відстані x = ± R/2. Тому при розташуванні двох котушок на відстані d = R кривина спадання поля однієї котушки в центрі точно компенсується другою.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За якого співвідношення між відстанню між котушками d та їхнім радіусом R друга похідна магнітного поля в центрі (d² B)/(dx²)big|_x=0 перетворюється на нуль (умова Гельмгольца)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Сила струму в обмотках I</strong>: 1 … 10 А, типове значення 5 А</li><li><strong>Радіус котушок R</strong>: 1.2 … 2.4 дм, типове значення 1.8 дм</li><li><strong>Відношення відстані до радіуса d/R (1.0 = Гельмгольц)</strong>: 0.5 … 2, типове значення 1</li><li><strong>Кількість витків у кожній котушці N</strong>: 10 … 40, типове значення 20</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Одна котушка зі струмом дає сильне магнітне поле лише в самому центрі, а далі воно швидко слабшає. Але якщо поставити дві однакові котушки на відстані, що точно дорівнює їхньому радіусу (d = R), спад поля від першої котушки ідеально компенсується підйомом від другої, утворюється рівний «стіл» однорідного поля!</div>
           </div>
           <div class="theory-note-formula">
-            <code>dB = (μ₀ I)/(4π)([dl × r])/(r³), B_витка(x) = (μ₀ N I R²)/(2(R² + x²)³/2) ; B_Гельм(0) = ≤ft((4)/(5) )³/2(μ₀ N I)/(R) (при d = R)</code>
+            <code>dB = (μ₀ I)/(4π)([dl × r])/(r³), B_витка(x) = fracμ₀ N I R²2(R² + x²)^3/2 ; B_Гельм(0) = ≤ft((4)/(5))^3/2(μ₀ N I)/(R) (при d = R)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,11 +168,23 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">На внутрішній мембрані виникає електрохімічний протонний градієнт Δμ_H⁺ або протонна рушійна сила (proton-motive force) Δ p = (Δμ_H⁺)/(F) = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 (pH_матр - pH_МП) мВ, де Δψ ≈ 150–180 мВ, електрична різниця потенціалів (матрикс заряджений негативно), а ΔpH ≈ 0.5–1.0, градієнт кислотності.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">На внутрішній мембрані виникає електрохімічний протонний градієнт Δtildeμ_H⁺ або протонна рушійна сила (proton-motive force) Δ p = fracΔtildeμ_H⁺F = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 (pH_матр - pH_МП) мВ, де Δψ ≈ 150–180 мВ, електрична різниця потенціалів (матрикс заряджений негативно), а ΔpH ≈ 0.5–1.0, градієнт кислотності.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Зворотний потік протонів за градієнтом через мембранний c-ротор F₀F₁-АТФ-синтази обертає асиметричну центральну γ-субодиницю зі швидкістю понад 100 об/с. Кожен поворот на 120^° послідовно переводить три каталітичні β-субодиниці голівки F₁ між конформаціями O (відкрита), L (вільна) та T (щільна, де відбувається конденсація АДФ + Ф_н → АТФ), синтезуючи 3 молекули АТФ за повний оберт. Білок бурого жиру термогенін (UCP1) або хімічні протонофори шунтують мембрану, переводячи енергію Δ p безпосередньо у тепло.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Зворотний потік протонів за градієнтом через мембранний c-ротор F₀F₁-АТФ-синтази обертає асиметричну центральну γ-субодиницю зі швидкістю понад 100 об/с. Кожен поворот на 120° послідовно переводить три каталітичні β-субодиниці голівки F₁ між конформаціями O (відкрита), L (вільна) та T (щільна, де відбувається конденсація АДФ + Ф_н → АТФ), синтезуючи 3 молекули АТФ за повний оберт. Білок бурого жиру термогенін (UCP1) або хімічні протонофори шунтують мембрану, переводячи енергію Δ p безпосередньо у тепло.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Дихальні комплекси I, III та IV викачують протони H⁺ з матриксу у міжмембранний простір, створюючи протонну рушійну силу Δ p = Δψ - 61.5 ΔpH ≈ 180–220 мВ (де ΔpH = pH_МП - pH_матр &lt; 0). У нормі повернення H⁺ за градієнтом крізь канал F₀ обертає γ-субодиницю у каталітичній голівці F₁, синтезуючи 3 молекули АТФ за один повний оберт. Протонофори або білок UCP1 шунтують мембрану: протони повертаються в матрикс в обхід АТФ-синтази, Δ p падає, синтез АТФ гальмується, а вільна енергія окиснення НАДН кількісно переходить у тепло Q.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">При шунтуванні мембрани протонофором або білком UCP1 протонний градієнт Δ p падає, синтез АТФ зменшується, а енергія окиснення НАДН переходить у тепло.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Потік донорів електронів (НАДН / ФАДH₂) у дихальний ланцюг</strong>: 0.4 … 2.5 ум.од., типове значення 1.2 ум.од.</li><li><strong>Мембранний електричний потенціал кристи Δψ</strong>: 80 … 190 мВ, типове значення 150 мВ</li><li><strong>Трансмембранний градієнт кислотності ΔpH (pH_матр − pH_МП)</strong>: 0.2 … 1.5 од. pH, типове значення 0.8 од. pH</li><li><strong>Протонний витік / роз’єднувач термогенін UCP1 (0, норма, 1, шунт)</strong>: 0 … 0.9, типове значення 0.05</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Трансформатор, це електромагнітний статичний апарат, призначений для підвищення або зниження напруги змінного струму без зміни його частоти f за допомогою явища взаємної електромагнітної індукції. Первинна обмотка з числом витків N₁ та вторинна обмотка з числом витків N₂ насаджені на спільне замкнене феромагнітне осердя з високою магнітною проникністю (μ sim 10³–10⁴), яке концентрує змінний магнітний потік Φ(t) = Φₘsin (2π f t) так, що він пронизує кожен виток обох котушок.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Трансформатор, це електромагнітний статичний апарат, призначений для підвищення або зниження напруги змінного струму без зміни його частоти f за допомогою явища взаємної електромагнітної індукції. Первинна обмотка з числом витків N₁ та вторинна обмотка з числом витків N₂ насаджені на спільне замкнене феромагнітне осердя з високою магнітною проникністю (μ ∼ 10³–10⁴), яке концентрує змінний магнітний потік Φ(t) = Φ_msin(2π f t) так, що він пронизує кожен виток обох котушок.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
@@ -168,6 +173,18 @@
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Згідно із законом збереження енергії, потужність на виході дорівнює вхідній потужності, помноженій на ККД η (який у силових трансформаторах досягає 95–99% завдяки шихтованому осердю з тонких пластин електротехнічної сталі, що пригнічує вихрові струми Фуко): P₂ = η P₁ ⇒ U₂ I₂ = η U₁ I₁. Отже, у скільки разів трансформатор підвищує напругу, у стільки ж разів він зменшує силу струму: (I₂)/(I₁) = η(N₁)/(N₂). Саме це дозволяє передавати електроенергію в ЛЕП при високих напругах (110–750 кВ) із мінімальними тепловими втратами в дротах P_втр = I² R_лінії ∝ 1/U²!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Робота трансформатора ґрунтується на законі електромагнітної індукції Фарадея: кожен виток охоплює спільний магнітний потік осердя Φ(t) = Φ₀ sin(ω t), у якому наводиться ЕРС e(t) = -(dΦ)/(dt). Відношення діючих напруг дорівнює відношенню чисел витків (U₂)/(U₁) = (N₂)/(N₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За формулою трансформатора (U₂)/(U₁) = (N₂)/(N₁) та законом збереження енергії U₂ I₂ ≈ U₁ I₁: якщо вторинна обмотка має більше витків (N₂ &gt; N₁), то напруга U₂ підвищується, а що при цьому відбувається з силою струму I₂?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Діюча первинна напруга U₁</strong>: 50 … 220 В, типове значення 110 В</li><li><strong>Число витків первинної обмотки N₁</strong>: 10 … 50, типове значення 20</li><li><strong>Число витків вторинної обмотки N₂</strong>: 10 … 80, типове значення 40</li><li><strong>Частота змінного струму f (масштабована)</strong>: 1 … 5 Гц, типове значення 2 Гц</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

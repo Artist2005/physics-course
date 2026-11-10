@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Electrostatic fields obey the superposition principle: at any point in space, the net electric field vector is E = ∑ᵢ (1)/(4πε₀)(qᵢ)/(rᵢ³)rᵢ and the scalar potential is the algebraic sum φ = ∑ᵢ (1)/(4πε₀)(qᵢ)/(rᵢ). The electrostatic potential energy of the pair is Wₚ = (k q₁ q₂)/(r) (positive for like charges, negative for opposite charges).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Electrostatic fields obey the superposition principle: at any point in space, the net electric field vector is E = ∑_i (1)/(4πε₀)(q_i)/(r_i³)r_i and the scalar potential is the algebraic sum φ = ∑_i (1)/(4πε₀)(q_i)/(r_i). The electrostatic potential energy of the pair is W_p = (k q₁ q₂)/(r) (positive for like charges, negative for opposite charges).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Two opposite charges +q and -q separated by distance d form an electric dipole with dipole moment p = qd. Field lines originate on positive charges, terminate on negative charges, never cross, and are everywhere orthogonal to equipotential surfaces (E = -∇φ).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Coulomb's Law, electrostatic force is inversely proportional to the square of distance: F = k(|q₁ q₂|)/(d²), so halving d quadruples the force. At the midpoint between +q₁ and -|q₂|, both E₁ (away from +q₁) and E₂ (toward -|q₂|) point in the same direction (from + to -), reinforcing each other by superposition!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Coulomb’s inverse-square law F ∝ |q₁ q₂| / r²: how does the electrostatic force change when the distance r between charges is halved?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Left point charge q₁ (+)</strong>: 1 … 4.5 μC, standard value 2.5 μC</li><li><strong>Right point charge q₂ (−)</strong>: -4.5 … -1 μC, standard value -2.5 μC</li><li><strong>Charge separation d</strong>: 2.8 … 6.4 m, standard value 4.4 m</li><li><strong>Test charge q₀</strong>: 0.5 … 2.5 μC, standard value 1 μC</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Rub a balloon on a wool sweater and it attracts bits of paper! Like charges repel and opposite charges attract, while electric field lines map the invisible highways along which a positive test charge gets pushed.</div>
           </div>
           <div class="theory-note-formula">
-            <code>F_Coulomb = (1)/(4πε₀)(|q₁ q₂|)/(r²), E(r) = E₁(r) + E₂(r) ; φ(r) = k≤ft((q₁)/(r₁) + (q₂)/(r₂) ), F₀ = q₀ E</code>
+            <code>F_Coulomb = (1)/(4πε₀)(|q₁ q₂|)/(r²), E(r) = E₁(r) + E₂(r) ; φ(r) = k≤ft((q₁)/(r₁) + (q₂)/(r₂)), F₀ = q₀ E</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

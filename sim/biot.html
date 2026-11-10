@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 11 · Uni</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">By the Biot–Savart Law, a current element I dl produces a magnetic field dB = (μ₀ I)/(4π)([dl × r])/(r³). Integrating around a circular coil of radius R and N turns at axial distance x cancels all radial components and yields the axial field B₁(x) = (μ₀ N I R²)/(2(R² + x²)³/2).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">By the Biot–Savart Law, a current element I dl produces a magnetic field dB = (μ₀ I)/(4π)([dl × r])/(r³). Integrating around a circular coil of radius R and N turns at axial distance x cancels all radial components and yields the axial field B₁(x) = fracμ₀ N I R²2(R² + x²)^3/2.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">At the midpoint x = 0, symmetry guarantees (dB)/(dx) |₀ = 0 for any separation d. Setting the separation equal to the coil radius (Helmholtz condition d = R) places the inflection points of the two coils directly at x = 0, making both (d² B)/(dx²) |₀ = 0 and (d³ B)/(dx³) |₀ = 0 vanish simultaneously! This creates a flat plateau of uniform field B(0) = ≤ft((4)/(5) )^ 3/2(μ₀ N I)/(R) ≈ 0.7155(μ₀ N I)/(R).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">At the midpoint x = 0, symmetry guarantees (dB)/(dx)big|₀ = 0 for any separation d. Setting the separation equal to the coil radius (Helmholtz condition d = R) places the inflection points of the two coils directly at x = 0, making both (d² B)/(dx²)big|₀ = 0 and (d³ B)/(dx³)big|₀ = 0 vanish simultaneously! This creates a flat plateau of uniform field B(0) = ≤ft((4)/(5))^ 3/2(μ₀ N I)/(R) ≈ 0.7155(μ₀ N I)/(R).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">For a single circular loop B(x) = fracμ₀ NIR²2(R²+x²)^3/2, the inflection points where (d²B)/(dx²) = 0 lie at x = ± R/2. Placing two identical coils at separation d = R positions both inflection points at the midpoint, cancelling both first and second derivatives of B(x).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">At what coil separation d relative to coil radius R does the second derivative (d² B)/(dx²)big|_x=0 vanish, creating the flattest uniform magnetic field?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Coil winding current I</strong>: 1 … 10 A, standard value 5 A</li><li><strong>Coil radius R</strong>: 1.2 … 2.4 dm, standard value 1.8 dm</li><li><strong>Separation-to-radius ratio d/R (1.0 = Helmholtz)</strong>: 0.5 … 2, standard value 1</li><li><strong>Turns per coil N</strong>: 10 … 40, standard value 20</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">A single current loop creates a magnetic field that drops off quickly away from its center. Place two identical coils apart by a distance equal to their radius (d = R), and their fields blend into a remarkably flat plateau of uniform magnetic field right between them!</div>
           </div>
           <div class="theory-note-formula">
-            <code>dB = (μ₀ I)/(4π)([dl × r])/(r³), Bₗoop(x) = (μ₀ N I R²)/(2(R² + x²)³/2) ; B_Helm(0) = ≤ft((4)/(5) )³/2(μ₀ N I)/(R) (at d = R)</code>
+            <code>dB = (μ₀ I)/(4π)([dl × r])/(r³), B_loop(x) = fracμ₀ N I R²2(R² + x²)^3/2 ; B_Helm(0) = ≤ft((4)/(5))^3/2(μ₀ N I)/(R) (at d = R)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

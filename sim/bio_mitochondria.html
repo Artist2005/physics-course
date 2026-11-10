@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">This establishes an electrochemical proton gradient quantified by the proton-motive force Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 (pHₘatrix - pH_IMS) mV, combining the membrane electrical potential (Δψ ≈ 150–180 mV, matrix negative) and the transmembrane pH difference.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">This establishes an electrochemical proton gradient quantified by the proton-motive force Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 (pH_matrix - pH_IMS) mV, combining the membrane electrical potential (Δψ ≈ 150–180 mV, matrix negative) and the transmembrane pH difference.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Downhill proton return through the F₀ c-ring drives mechanical rotation of the central γ-stalk inside the F₁ catalytic hexamer (Paul Boyer’s binding-change mechanism), synthesizing 3 ATP molecules per 360^° revolution. Uncoupling proteins (UCP1 / thermogenin) create a proton leak bypassing F₀F₁, dissipating Δ p directly as heat.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Downhill proton return through the F₀ c-ring drives mechanical rotation of the central γ-stalk inside the F₁ catalytic hexamer (Paul Boyer’s binding-change mechanism), synthesizing 3 ATP molecules per 360° revolution. Uncoupling proteins (UCP1 / thermogenin) create a proton leak bypassing F₀F₁, dissipating Δ p directly as heat.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Respiratory Complexes I, III, and IV pump H⁺ from the matrix into the intermembrane space, building a proton-motive force Δ p = Δψ + 61.5 (pH_matrix - pH_IMS) ≈ 180–220 mV. Normally, H⁺ reentry through the F₀ c-ring rotates the central γ-stalk inside the F₁ head, synthesizing 3 ATP per revolution. Protonophores or UCP1 create a proton shunt across the membrane: Δ p diminishes, ATP phosphorylation falls, and respiratory redox energy is quantitatively converted into thermal energy Q.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">When protonophores or UCP1 shunt protons across the membrane, Δ p drops, ATP synthesis decreases, and redox energy is released as heat.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Electron donor flux (NADH / FADH₂) into respiratory chain</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Inner membrane electrical potential Δψ</strong>: 80 … 190 mV, standard value 150 mV</li><li><strong>Transmembrane pH gradient ΔpH (pH_matrix − pH_IMS)</strong>: 0.2 … 1.5 pH units, standard value 0.8 pH units</li><li><strong>Proton leak / uncoupler UCP1 (0=coupled, 1=shunted)</strong>: 0 … 0.9, standard value 0.05</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">The inner mitochondrial membrane works like a hydroelectric dam! Respiratory complexes pump H⁺ protons into an upper reservoir, and F₀F₁-ATP synthase is a rotary nano-turbine spinning as protons rush back to mint ATP. Opening a bypass spillway (uncoupling protein UCP1 in brown fat) lets protons leak without spinning the turbine, generating pure body heat!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 ΔpHₘat-IMS (mV), Δ G_ATP ≤ n_H⁺ F Δ p</code>
+            <code>Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 ΔpH_mat-IMS (mV), Δ G_ATP ≤ n_H⁺ F Δ p</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

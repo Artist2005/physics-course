@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 11 · Coordination Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In Crystal Field Theory (CFT), electrostatic repulsion from six octahedral ligands along the ± x, ± y, ± z axes lifts the five-fold degeneracy of metal d-orbitals into a lower t₂g triplet (dₓy, dₓz, d_yz at -0.4Δₒ) and an upper e_g doublet (d_z², dₓ²-y² at +0.6Δₒ). In a tetrahedral field [ML₄]^n+, the splitting is inverted and smaller (Δₜ ≈ (4)/(9)Δₒ).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In Crystal Field Theory (CFT), electrostatic repulsion from six octahedral ligands along the ± x, ± y, ± z axes lifts the five-fold degeneracy of metal d-orbitals into a lower t_2g triplet (d_xy, d_xz, d_yz at -0.4Δ_o) and an upper e_g doublet (d_z², d_x²-y² at +0.6Δ_o). In a tetrahedral field [ML₄]^n+, the splitting is inverted and smaller (Δ_t ≈ (4)/(9)Δ_o).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The splitting parameter Δₒ increases across the spectrochemical series: I⁻ P) force spin pairing into low-spin states.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The splitting parameter Δ_o increases across the spectrochemical series: I⁻ P) force spin pairing into low-spin states.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Absorption of a visible photon matching Δₒ = hc / λₐbs promotes an electron from t₂g to e_g (d–d transition), imparting vivid complementary colors to transition-metal complexes.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Absorption of a visible photon matching Δ_o = hc / λ_abs promotes an electron from t_2g to e_g (d–d transition), imparting vivid complementary colors to transition-metal complexes.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In an octahedral complex [ML₆]^n+, ligand lone pairs approach directly along the coordinate axes, strongly repelling the axial e_g orbitals (d_z², d_x²-y²) and raising their energy by +0.6Δ_o, while the inter-axial t_2g orbitals (d_xy, d_xz, d_yz) are stabilized by -0.4Δ_o. When a strong-field ligand (such as CN⁻ or CO) makes Δ_o exceed the spin-pairing energy P, electrons pair up in the lower t_2g level (low-spin state). Photons of wavelength λ_abs = hc / Δ_o promote an electron across the gap (d–d transition), giving the solution its complementary color.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">In an octahedral field, d-orbitals split into a lower t_2g triplet and upper e_g doublet; strong-field ligands (Δ_o &gt; P) create a low-spin state.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Central metal dⁿ electron count (d¹ … d⁹)</strong>: 1 … 9 e⁻, standard value 6 e⁻</li><li><strong>Ligand field splitting Δ_o (spectrochemical series: Cl⁻ → H₂O → NH₃ → CN⁻)</strong>: 130 … 320 kJ/mol, standard value 210 kJ/mol</li><li><strong>Metal–ligand coordinate bond length d(M←L)</strong>: 1.75 … 2.45 Å, standard value 2 Å</li><li><strong>Coordination geometry (1=Octahedron [ML₆], 2=Tetrahedron [ML₄])</strong>: 1 … 2, standard value 1</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Six octahedral ligands along the x, y, z axes act like bumper cars: d-orbitals pointing straight at the ligands (e_g) get pushed up in energy, while orbitals tucked between the axes (t₂g) sit lower in energy by Δₒ!</div>
+            <div class="theory-analogy-body">Six octahedral ligands along the x, y, z axes act like bumper cars: d-orbitals pointing straight at the ligands (e_g) get pushed up in energy, while orbitals tucked between the axes (t_2g) sit lower in energy by Δ_o!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δₒ = E(e_g) - E(t₂g) = (h c N_A)/(λₐbs) ; CFSE = (-0.4 nₜ₂g + 0.6 nₑ_g )Δₒ</code>
+            <code>Δ_o = E(e_g) - E(t_2g) = frach c N_Aλ_abs ; CFSE = bigl(-0.4 n_t_2g + 0.6 n_e_gbigr)Δ_o</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -2008,10 +2008,9 @@
       }
 
       .theory-drawer-box.open {
-        max-height: 260px;
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        padding-right: 6px;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
       }
     }
 
@@ -3280,6 +3279,174 @@
         padding: 0 !important;
       }
       .lab-report-toolbar {
+        display: none !important;
+      }
+    }
+
+    /* ==========================================================================
+       GOOGLE ADSENSE MODERATION & PUBLISHER POLICY COMPLIANCE ENHANCEMENTS
+       ========================================================================== */
+    .header-legal-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 6px;
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+    }
+
+    .header-legal-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-decoration-color: var(--rule-dark);
+      text-underline-offset: 2px;
+      transition: color 0.14s ease, text-decoration-color 0.14s ease;
+    }
+
+    .header-legal-links a:hover {
+      color: var(--ink-primary);
+      text-decoration-color: var(--ink-primary);
+    }
+
+    @media (max-width: 1180px) {
+      .header-legal-links {
+        display: none;
+      }
+    }
+
+    .theory-params-list {
+      margin: 4px 0 0;
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-family: var(--font-sans);
+      font-size: 12.8px;
+      line-height: 1.5;
+      color: var(--ink-primary);
+    }
+
+    .theory-params-list li {
+      overflow-wrap: break-word;
+    }
+
+    .platform-editorial-guide {
+      margin-top: 18px;
+      padding: 12px 12px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: rgba(240, 237, 230, 0.55);
+      font-family: var(--font-sans);
+      font-size: 12.2px;
+      line-height: 1.55;
+      color: var(--ink-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .platform-editorial-guide h2 {
+      font-family: var(--font-serif);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .platform-editorial-guide p {
+      margin: 0;
+      color: var(--ink-secondary);
+    }
+
+    .platform-editorial-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      padding-top: 4px;
+      border-top: 1px solid var(--rule-light);
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    .platform-editorial-links a {
+      color: var(--ink-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .cookie-consent-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-page);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.48;
+      color: var(--ink-primary);
+    }
+
+    .cookie-consent-banner.hidden {
+      display: none !important;
+    }
+
+    .cookie-consent-text {
+      color: var(--ink-secondary);
+    }
+
+    .cookie-consent-text a {
+      color: var(--ink-primary);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .cookie-consent-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .btn-cookie-accept {
+      padding: 5px 12px;
+      border-radius: 3px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-cookie-essential {
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    @media print {
+      .cookie-consent-banner {
         display: none !important;
       }
     }

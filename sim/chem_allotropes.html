@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In graphene, the π valence band and π^* conduction band meet at massless Dirac cones (E_g = 0). Rolling graphene along chiral vector (n,m) produces a single-walled carbon nanotube of diameter d = (a√(3))/(π)√(n²+nm+m²), which is metallic when (n-m) is divisible by 3 and semiconducting otherwise.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In graphene, the π valence band and π^* conduction band meet at massless Dirac cones (E_g = 0). Rolling graphene along chiral vector (n,m) produces a single-walled carbon nanotube of diameter d = fraca√(3)π√(n²+nm+m²), which is metallic when (n-m) is divisible by 3 and semiconducting otherwise.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">By Euler’s polyhedron theorem (V - E + F = 2), any closed cage of trivalent carbon atoms built from pentagons and hexagons must contain exactly 12 pentagons. Truncated icosahedral buckminsterfullerene C₆₀ (V=60, E=90, F=32) comprises 12 pentagons and 20 hexagons.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In graphene, carbon nanotubes (CNTs), and fullerenes, carbon atoms are predominantly sp²-hybridized: three σ-bonds form a honeycomb lattice while the fourth 2p_z electron enters a delocalized π-system. By Euler’s polyhedron theorem (V - E + F = 2), closing a hexagonal sheet into a sphere requires exactly 12 pentagons; in C₆₀ (V=60, E=90, F=32) there are 12 pentagons and 20 hexagons. For (n,0) zigzag nanotubes, the tube is metallic when n is a multiple of 3.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Each sp² carbon contributes one 2p_z electron to the delocalized π-band, and by Euler’s theorem C₆₀ has 12 pentagons and 20 hexagons.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Carbon nanostructure (1=Graphene 2D, 2=Nanotube CNT, 3=Fullerene C₆₀)</strong>: 1 … 3, standard value 3</li><li><strong>Nanotube chirality index n in (n, 0)</strong>: 4 … 10, standard value 6</li><li><strong>Applied bias voltage U (π-electron drift)</strong>: 0 … 4 V, standard value 1.5 V</li><li><strong>Lattice temperature T (phonon vibrations)</strong>: 100 … 900 K, standard value 300 K</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Graphene is a one-atom-thick honeycomb sheet where π-electrons race like massless particles. Roll that sheet into a cylinder to get a carbon nanotube, or stitch in 12 pentagons to close it into a C₆₀ soccer-ball cage!</div>
           </div>
           <div class="theory-note-formula">
-            <code>V - E + F = 2 ⇒ Nₚent = 12 (C₆₀: V=60, E=90, F=32) ; d_CNT = (a√(3))/(π)√(n² + nm + m²)</code>
+            <code>V - E + F = 2 ⇒ N_pent = 12 (C₆₀: V=60, E=90, F=32) ; d_CNT = fraca√(3)π√(n² + nm + m²)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

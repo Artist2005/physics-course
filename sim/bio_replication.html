@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -169,12 +174,24 @@
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Consequently, the antiparallel duplex imposes asymmetric synthesis: the leading strand elongates continuously toward the advancing fork on the 3' → 5' template, whereas the lagging strand is synthesized discontinuously away from the fork as short Okazaki fragments initiated by RNA primers, processed by DNA Polymerase I, and sealed by DNA ligase.</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because DNA polymerase catalyzes nucleophilic attack of the primer 3'-OH on the incoming dNTP α-phosphate, chain elongation proceeds strictly 5'→ 3'. On the 3'→ 5' template, the leading strand follows helicase continuously. On the antiparallel 5'→ 3' template, polymerase must move away from the fork, synthesizing short Okazaki fragments from RNA primers that are subsequently sealed by DNA ligase. By semiconservative replication of a heavy ¹⁵N/¹⁵N duplex in ¹⁴N medium, after k generations exactly 2 out of 2^k duplexes are ¹⁵N/¹⁴N hybrids (2/4 = 50% at k=2) and 2^k - 2 are light ¹⁴N/¹⁴N.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Both strands grow 5'→ 3' (leading continuously, lagging via Okazaki fragments), and after k=2 generations the hybrid ¹⁵N/¹⁴N fraction is 2/2² = 50%.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Helicase unwinding replication fork speed v_hel</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Template G≡C base-pair content (3 H-bonds per pair)</strong>: 20 … 80 %, standard value 50 %</li><li><strong>Okazaki fragment length on lagging strand</strong>: 2 … 5 seg., standard value 3 seg.</li><li><strong>Replication generation k in Meselson–Stahl (¹⁵N → ¹⁴N)</strong>: 1 … 4 gen., standard value 2 gen.</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Imagine a paving crew (DNA polymerase) that can only lay asphalt in one direction (5'→ 3'). On the leading lane it follows the helicase bulldozer continuously, while on the antiparallel lagging lane it must repeatedly hop ahead and pave short backward sections (Okazaki fragments) stitched together by DNA ligase!</div>
           </div>
           <div class="theory-note-formula">
-            <code>dNTP + DNAₙ xrightarrowDNA Pol DNAₙ+1 + PPᵢ, fₕybrid(k) = (2)/(2^k) = 2¹-k</code>
+            <code>dNTP + DNA_n xrightarrowDNA Pol DNA_n+1 + PP_i, f_hybrid(k) = (2)/(2^k) = 2^1-k</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Angular momentum conservation directly implies Kepler’s Second Law (Law of Equal Areas): the areal velocity swept out by the radius vector is constant throughout the orbit, (dS)/(dt) = (L)/(2m) = const. Every bound orbit (E &lt; 0) traces an ellipse r(θ) = (a(1 - e²))/(1 + ecos θ) of semi-major axis a and eccentricity e ∈ [0, 1) with the Sun at one focus.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Angular momentum conservation directly implies Kepler’s Second Law (Law of Equal Areas): the areal velocity swept out by the radius vector is constant throughout the orbit, (dS)/(dt) = (L)/(2m) = const. Every bound orbit (E &lt; 0) traces an ellipse r(θ) = (a(1 - e²))/(1 + ecosθ) of semi-major axis a and eccentricity e ∈ [0, 1) with the Sun at one focus.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">At perihelion (rₘin = a(1 - e)), gravitational potential energy Eₚ = -(GMm)/(r) is lowest and orbital speed peaks at vₚ = √((GM)/(a)(1+e)/(1-e)). At aphelion (rₘax = a(1 + e)), speed drops to vₐ = √((GM)/(a)(1-e)/(1+e)), satisfying the exact ratio vₚ / vₐ = (1 + e)/(1 - e).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">At perihelion (r_min = a(1 - e)), gravitational potential energy E_p = -(GMm)/(r) is lowest and orbital speed peaks at v_p = √((GM)/(a)(1+e)/(1-e)). At aphelion (r_max = a(1 + e)), speed drops to v_a = √((GM)/(a)(1-e)/(1+e)), satisfying the exact ratio v_p / v_a = (1 + e)/(1 - e).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because gravity F_g is a central force (zero torque about the star), the planet's angular momentum L = m v r sinα is conserved. This yields Kepler's Second Law: the areal velocity dS/dt = L/(2m) is constant. At perihelion r_p = a(1-e) is smallest so speed is greatest; at aphelion r_a = a(1+e) speed is lowest.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Kepler’s second law (angular momentum conservation r · v_⊥ = const): is orbital speed highest at perihelion (closest to the star) or aphelion (farthest)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Orbital eccentricity e</strong>: 0 … 0.75, standard value 0.45</li><li><strong>Semi-major axis a</strong>: 3 … 5.6 AU, standard value 4.4 AU</li><li><strong>Central star mass M</strong>: 0.8 … 2.5 M☉, standard value 1.5 M☉</li><li><strong>Planet mass m</strong>: 0.5 … 2.5 M⊕, standard value 1 M⊕</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Just like an ice skater spinning faster when pulling their arms in, a comet or planet speeds up dramatically when swinging closest to the Sun (perihelion) and slows down far away (aphelion)!</div>
           </div>
           <div class="theory-note-formula">
-            <code>r(θ) = (a(1 - e²))/(1 + ecos θ), (dS)/(dt) = (L)/(2m) = const ; v² = GM≤ft((2)/(r) - (1)/(a) ), T² = (4π²)/(GM)a³</code>
+            <code>r(θ) = (a(1 - e²))/(1 + ecosθ), (dS)/(dt) = (L)/(2m) = const ; v² = GM≤ft((2)/(r) - (1)/(a)), T² = (4π²)/(GM)a³</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

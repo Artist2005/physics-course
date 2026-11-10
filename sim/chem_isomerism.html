@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Geometric isomerism in alkenes (e.g., 1,2-dichloroethene CHCl=CHCl) arises because the lateral π-bond locks rotation around the C=C axis (barrier ≈ 268 kJ/mol). In the cis (Z) isomer, both electronegative chlorine atoms lie on the same side of the double bond, producing a net molecular dipole μₙet = 1.90 D. In the trans (E) isomer, the C–Cl dipoles point antiparallel and cancel identically (μₙet = 0 D).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Geometric isomerism in alkenes (e.g., 1,2-dichloroethene CHCl=CHCl) arises because the lateral π-bond locks rotation around the C=C axis (barrier ≈ 268 kJ/mol). In the cis (Z) isomer, both electronegative chlorine atoms lie on the same side of the double bond, producing a net molecular dipole μ_net = 1.90 D. In the trans (E) isomer, the C–Cl dipoles point antiparallel and cancel identically (μ_net = 0 D).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Optical isomerism (chirality) occurs when a tetrahedral sp³ carbon atom **C^* (chiral stereocenter)** is bonded to four different substituents (e.g., lactic acid CH₃–C^*H(OH)–COOH). The resulting (R)- and (S)-enantiomers are non-superimposable mirror images that rotate plane-polarized light by equal and opposite angles according to Biot’s law: α = [α]_D²⁰· l· c.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">The rigid C=C double bond (σ + π, rotation barrier 268 kJ/mol) locks substituents in place: bond dipoles add in the *cis* (Z) isomer (μ = 1.90 D) and cancel in the *trans* (E) isomer (μ = 0 D). Optical isomerism arises when a tetrahedral carbon C^* bears four different groups: mirror-image (R)- and (S)-enantiomers rotate polarized light by +α and -α.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the *trans* (E) isomer opposing bond dipoles cancel (μ = 0), whereas chiral (R)- and (S)-enantiomers with 4 different groups on C^* are non-superimposable mirror images.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Stereoisomer (1=cis-Z, 2=trans-E, 3=R-enantiomer, 4=S-enantiomer)</strong>: 1 … 4, standard value 1</li><li><strong>Polarimeter solution concentration c</strong>: 0.1 … 1 g/mL, standard value 0.5 g/mL</li><li><strong>Polarimeter tube length l</strong>: 0.5 … 3 dm, standard value 2 dm</li><li><strong>3D molecular model rotation speed ω</strong>: 0 … 2 rad/s, standard value 0.8 rad/s</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Your left and right hands have identical fingers, yet a left glove will not fit your right hand! Likewise, chiral (R)- and (S)-enantiomers around an asymmetric carbon C^* are non-superimposable mirror images that rotate polarized light in opposite directions.</div>
           </div>
           <div class="theory-note-formula">
-            <code>μ_cis (Z) = 2μ_mathrmC-Clcos 30^° = 1.90 D &gt; 0, μₜrans (E) = 0 D (dipole cancellation) ; α_R/S = ± [α]_D²⁰· l· c (Biot’s law for chiral stereocenter C^*)</code>
+            <code>μ_cis (Z) = 2μ_C-Clcos 30° = 1.90 D &gt; 0, μ_trans (E) = 0 D (dipole cancellation) ; α_R/S = ± [α]_D²⁰· l· c (Biot’s law for chiral stereocenter C^*)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

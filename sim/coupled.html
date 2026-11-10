@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,15 +164,27 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 11 · Uni</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Two identical pendulums of mass m and length L coupled by a horizontal spring of stiffness k form a canonical two-degree-of-freedom coupled oscillator: mx₁ = -(mg)/(L)x₁ - k(x₁ - x₂) and mx₂ = -(mg)/(L)x₂ - k(x₂ - x₁).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Two identical pendulums of mass m and length L coupled by a horizontal spring of stiffness k form a canonical two-degree-of-freedom coupled oscillator: mddotx₁ = -(mg)/(L)x₁ - k(x₁ - x₂) and mddotx₂ = -(mg)/(L)x₂ - k(x₂ - x₁).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Transforming to normal coordinates q₊ = x₁ + x₂ and q₋ = x₁ - x₂ diagonalizes the equations into two independent normal modes: 1) the in-phase symmetric mode (x₁ = x₂), where the coupling spring remains unstretched and ω₁ = √((g)/(L)); 2) the out-of-phase antisymmetric mode (x₁ = -x₂), where the spring stretches by 2x₁ and raises the frequency to ω₂ = √((g)/(L) + (2k)/(m)).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Transforming to normal coordinates q_+ = x₁ + x₂ and q_- = x₁ - x₂ diagonalizes the equations into two independent normal modes: 1) the in-phase symmetric mode (x₁ = x₂), where the coupling spring remains unstretched and ω₁ = √((g)/(L)); 2) the out-of-phase antisymmetric mode (x₁ = -x₂), where the spring stretches by 2x₁ and raises the frequency to ω₂ = √((g)/(L) + (2k)/(m)).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Displacing only pendulum 1 at t = 0 excites an equal superposition of both normal modes: x₁(t) = Acos ≤ft((ω₂ - ω₁)/(2)t )cos (ωt) and x₂(t) = Asin ≤ft((ω₂ - ω₁)/(2)t )sin (ωt). This produces energy beats: with beat period T_beat = (2π)/(ω₂ - ω₁), pendulum 1 comes to a complete halt while transferring 100% of its energy to pendulum 2, and then back again!</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Displacing only pendulum 1 at t = 0 excites an equal superposition of both normal modes: x₁(t) = Acos ≤ft((ω₂ - ω₁)/(2)t)cos(barωt) and x₂(t) = Asin ≤ft((ω₂ - ω₁)/(2)t)sin(barωt). This produces energy beats: with beat period T_beat = (2π)/(ω₂ - ω₁), pendulum 1 comes to a complete halt while transferring 100% of its energy to pendulum 2, and then back again!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">The symmetric (in-phase) mode oscillates at ω₁ = √(g/L) (spring unstretched), while the antisymmetric (out-of-phase) mode oscillates at ω₂ = √(g/L + 2κ/m). Increasing spring stiffness κ increases the frequency difference Δω = ω₂ - ω₁, shortening the beat period T_b = 2π / Δω.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Energy beats arise from the difference between symmetric and antisymmetric normal-mode frequencies (ω_beat = ω₂ - ω₁). What happens to the energy transfer speed when spring stiffness k_c increases?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Pendulum suspension length L</strong>: 1.6 … 3.6 m, standard value 2.6 m</li><li><strong>Coupling spring stiffness κ</strong>: 0.4 … 5 N/m, standard value 1.8 N/m</li><li><strong>Mass of each bob m</strong>: 0.8 … 3 kg, standard value 1.5 kg</li><li><strong>Mode (0 = beats, 1 = in-phase, −1 = anti-phase)</strong>: -1 … 1, standard value 0</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

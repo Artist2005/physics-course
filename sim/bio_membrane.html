@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10–11 · Membrane Biophysics</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In the Singer–Nicolson fluid mosaic model, the plasma membrane is a 5 nm-thick amphipathic phospholipid bilayer whose hydrophobic core acts as an electrical capacitor (Cₘ ≈ 1.0 μF/cm²) impermeable to hydrated ions.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In the Singer–Nicolson fluid mosaic model, the plasma membrane is a 5 nm-thick amphipathic phospholipid bilayer whose hydrophobic core acts as an electrical capacitor (C_m ≈ 1.0 μF/cm²) impermeable to hydrated ions.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Steep transmembrane ion gradients ([K⁺]ᵢ ≈ 140 mM, [Na⁺]ᵢ ≈ 12 mM inside vs. [K⁺]ₒ ≈ 4.5 mM, [Na⁺]ₒ ≈ 145 mM outside) are maintained by the electrogenic Na⁺/K⁺-ATPase pump, which hydrolyzes 1 ATP per E₁ ≤ftrightarrow E₂ cycle to extrude 3 Na⁺ outward and import 2 K⁺ inward.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Steep transmembrane ion gradients ([K⁺]_i ≈ 140 mM, [Na⁺]_i ≈ 12 mM inside vs. [K⁺]_o ≈ 4.5 mM, [Na⁺]_o ≈ 145 mM outside) are maintained by the electrogenic Na⁺/K⁺-ATPase pump, which hydrolyzes 1 ATP per E₁ ≤ftrightarrow E₂ cycle to extrude 3 Na⁺ outward and import 2 K⁺ inward.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because resting membrane permeability is dominated by open potassium leak channels (P_K ≫ P_Na), outward K⁺ diffusion leaves the cytosol electrically negative near the Nernst potential E_K = (RT)/(zF)ln ([K⁺]ₒ)/([K⁺]ᵢ) ≈ -90 mV, refined by the Goldman–Hodgkin–Katz equation to Vₘ ≈ -70 mV.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Because resting membrane permeability is dominated by open potassium leak channels (P_K gg P_Na), outward K⁺ diffusion leaves the cytosol electrically negative near the Nernst potential E_K = (RT)/(zF)ln([K⁺]_o)/([K⁺]_i) ≈ -90 mV, refined by the Goldman–Hodgkin–Katz equation to V_m ≈ -70 mV.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Each conformational cycle of Na⁺/K⁺-ATPase hydrolyzes one ATP molecule to pump 3 Na⁺ ions out of the cell and 2 K⁺ ions into the cytosol. This maintains high intracellular potassium ([K⁺]_i ≈ 140 mM vs. [K⁺]_o ≈ 4.5 mM) and high extracellular sodium ([Na⁺]_o ≈ 145 mM vs. [Na⁺]_i ≈ 12 mM). Because open K⁺ leak channels dominate resting permeability (P_K gg P_Na), K⁺ diffuses outward down its concentration gradient, leaving net negative charge inside near E_K ≈ -90 mV (V_m ≈ -70 mV by the Goldman–Hodgkin–Katz equation).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Per ATP hydrolyzed, the pump exports 3 Na⁺ and imports 2 K⁺, while resting permeability is dominated by K⁺ leak channels (P_K gg P_Na).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Na⁺/K⁺-ATPase pump activity (ATP turnover rate)</strong>: 0.4 … 2.5 rel., standard value 1.4 rel.</li><li><strong>Extracellular potassium concentration [K⁺]_out (normal 4.5 mM)</strong>: 2 … 15 mM, standard value 4.5 mM</li><li><strong>Intracellular sodium concentration [Na⁺]_in</strong>: 5 … 30 mM, standard value 12 mM</li><li><strong>Relative permeability ratio P_Na / P_K in Goldman equation</strong>: 0.01 … 0.2, standard value 0.04</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">The Na⁺/K⁺ pump acts like a revolving door that spends 1 ATP coin to eject 3 Na⁺ ions outside while letting only 2 K⁺ ions inside. Coupled with outward K⁺ diffusion through open leak channels, this keeps the cell interior negatively charged at -70 mV!</div>
           </div>
           <div class="theory-note-formula">
-            <code>E_K = (RT)/(zF)ln ([K⁺]ₒut)/([K⁺]ᵢn), Vₘ = (RT)/(F)ln (P_K[K⁺]ₒ + P_Na[Na⁺]ₒ)/(P_K[K⁺]ᵢ + P_Na[Na⁺]ᵢ)</code>
+            <code>E_K = (RT)/(zF)lnfrac[K⁺]_out[K⁺]_in, V_m = (RT)/(F)lnfracP_K[K⁺]_o + P_Na[Na⁺]_oP_K[K⁺]_i + P_Na[Na⁺]_i</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

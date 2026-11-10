@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Daniell galvanic cell converts the chemical free energy of the spontaneous redox reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) directly into electrical work by spatially separating the half-reactions. At the anode (negative terminal), zinc metal undergoes oxidation and dissolves: Zn⁰ - 2e⁻ → Zn²⁺ (E^° = -0.76 V). Electrons travel through the external circuit to the cathode (positive terminal), where copper ions are reduced and plate out: Cu²⁺ + 2e⁻ → Cu⁰ (E^° = +0.34 V).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The Daniell galvanic cell converts the chemical free energy of the spontaneous redox reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) directly into electrical work by spatially separating the half-reactions. At the anode (negative terminal), zinc metal undergoes oxidation and dissolves: Zn⁰ - 2e⁻ → Zn²⁺ (E° = -0.76 V). Electrons travel through the external circuit to the cathode (positive terminal), where copper ions are reduced and plate out: Cu²⁺ + 2e⁻ → Cu⁰ (E° = +0.34 V).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The cell electromotive force (EMF) at arbitrary ion concentrations is governed by the Nernst equation: E_cell = E^°_cell - (RT)/(zF)ln ([Zn²⁺])/([Cu²⁺]), where E^°_cell = E^°_cathode - E^°ₐnode = +0.34 - (-0.76) = 1.10 V and z = 2. The maximum electrical work equals the decrease in Gibbs free energy: Wₑlec,max = -Δ G = z F E_cell.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The cell electromotive force (EMF) at arbitrary ion concentrations is governed by the Nernst equation: E_cell = E°_cell - (RT)/(zF)lnfrac[Zn²⁺][Cu²⁺], where E°_cell = E°_cathode - E°_anode = +0.34 - (-0.76) = 1.10 V and z = 2. The maximum electrical work equals the decrease in Gibbs free energy: W_elec,max = -Δ G = z F E_cell.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">The salt bridge (a U-tube filled with KCl or KNO₃ gel) is essential to close the internal circuit: without it, excess Zn²⁺ charge in the anode half-cell and uncompensated SO₄²⁻ anions in the cathode half-cell would build an opposing liquid-junction potential that halts electron flow within microseconds.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Zinc has a more negative standard reduction potential (E° = -0.76 V) than copper (E° = +0.34 V). Oxidation occurs at the zinc anode (Zn⁰ → Zn²⁺ + 2e⁻) and reduction at the copper cathode (Cu²⁺ + 2e⁻ → Cu⁰). By the Nernst equation, higher [Cu²⁺] and lower [Zn²⁺] increase cell EMF E.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Compare standard potentials: E°(Zn²⁺/Zn) = -0.76 V &lt; E°(Cu²⁺/Cu) = +0.34 V. Which metal oxidizes as the anode, which way do electrons flow, and what is E°_cell = E°_cathode - E°_anode?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Catholyte concentration [Cu²⁺] (CuSO₄)</strong>: 0.05 … 2 mol/L, standard value 1 mol/L</li><li><strong>Anolyte concentration [Zn²⁺] (ZnSO₄)</strong>: 0.05 … 2 mol/L, standard value 1 mol/L</li><li><strong>Cell temperature T</strong>: 273 … 353 K, standard value 298 K</li><li><strong>External load conductance (discharge rate)</strong>: 0.4 … 2 ×, standard value 1 ×</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">The Daniell cell is the direct ancestor of every smartphone and EV battery! More reactive zinc Zn eagerly gives up electrons to Cu²⁺ ions, and because the two half-reactions are separated into two beakers, those electrons must travel through the external wire to do electrical work.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Anode (-): Zn⁰ → Zn²⁺ + 2e⁻, &amp; Cathode (+): Cu²⁺ + 2e⁻ → Cu⁰ ; E = E^° - (RT)/(2F)ln ([Zn²⁺])/([Cu²⁺]), &amp; E^° = E^°_Cu - E^°_Zn = +1.10 V</code>
+            <code>Anode (-): Zn⁰ → Zn^2+ + 2e⁻, Cathode (+): Cu^2+ + 2e⁻ → Cu⁰ ; E = E° - (RT)/(2F)lnfrac[Zn²⁺][Cu²⁺], E° = E°_Cu - E°_Zn = +1.10 V</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

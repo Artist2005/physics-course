@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">10–11 клас · ВНЗ</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Хоча середня кінетична енергія молекул газу однозначно задається температурою T, унаслідок безперервних випадкових зіткнень окремі молекули мають найрізноманітніші швидкості, від майже нульових до надзвукових. У 1859 році Джеймс Клерк Максвелл вивів фундаментальну функцію густини ймовірності модулів швидкостей молекул у стані термодинамічної рівноваги: f(v) = 4π ≤ft((M)/(2π R T) )^ 3/2 v² exp ≤ft(-(M v²)/(2 R T) ).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Хоча середня кінетична енергія молекул газу однозначно задається температурою T, унаслідок безперервних випадкових зіткнень окремі молекули мають найрізноманітніші швидкості, від майже нульових до надзвукових. У 1859 році Джеймс Клерк Максвелл вивів фундаментальну функцію густини ймовірності модулів швидкостей молекул у стані термодинамічної рівноваги: f(v) = 4π ≤ft((M)/(2π R T))^ 3/2 v² exp ≤ft(-(M v²)/(2 R T)).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Структура розподілу Максвелла визначається конкуренцією двох множників: параболічного множника v² (об’єм сферичного шару 4π v² dv у просторі швидкостей, через який частка зовсім повільних молекул прямує до нуля) та експоненціального больцманівського множника exp ≤ft(-(εₖ)/(k_B T) ), що обмежує ймовірність великих енергій.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Структура розподілу Максвелла визначається конкуренцією двох множників: параболічного множника v² (об’єм сферичного шару 4π v² dv у просторі швидкостей, через який частка зовсім повільних молекул прямує до нуля) та експоненціального больцманівського множника exp ≤ft(-(ε_k)/(k_B T)), що обмежує ймовірність великих енергій.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Розподіл характеризується трьома строго впорядкованими характерними швидкостями (v_імов &lt; langle v rangle &lt; v_кв): 1) найбільш імовірна швидкість (максимум купола df/dv = 0) v_імов = √((2RT)/(M)); 2) середня арифметична швидкість langle v rangle = √((8RT)/(π M)) ≈ 1.128 v_імов; 3) середня квадратична швидкість (що визначає тиск і внутрішню енергію газу) v_кв = √((3RT)/(M)) ≈ 1.225 v_імов. При нагріванні або зменшенні молярної маси M (перехід від Xe до He) крива зміщується праворуч і розширюється за умови нормування ∫₀^∞ f(v) dv = 1.</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки умова нормування ∫₀^∞ f(v) dv = 1 зберігає площу під графіком незмінною, при нагріванні газу найбільш імовірна швидкість v_p = √(2RT/M) зростає, крива розширюється праворуч, а її пікове значення f(v_p) ∝ 1/√(T) відповідно зменшується.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли температура газу T зростає або молярна маса M зменшується, куди зміщується максимум кривої розподілу Максвелла (v_p = √(2RT/M)) і як змінюється його висота?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Абсолютна температура газу T</strong>: 150 … 900 К, типове значення 350 К</li><li><strong>Молярна маса газу M (4=He, 28=N₂, 44=CO₂)</strong>: 4 … 64 г/моль, типове значення 28 г/моль</li><li><strong>Число візуалізованих молекул N</strong>: 40 … 140 шт., типове значення 90 шт.</li><li><strong>Поріг активації v_пор / v_p</strong>: 0.8 … 2, типове значення 1.2</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
-            <div class="theory-analogy-body">Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю (sim 500 м/с!), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей!</div>
+            <div class="theory-analogy-body">Молекули повітря в кімнаті схожі на натовп людей на жвавій площі: хтось зупинився на мить після зіткнення, більшість рухається із середньою швидкістю (∼ 500 м/с!), а окремі «спринтери» летять удвічі швидше. При нагріванні весь цей розподіл зсувається до більших швидкостей!</div>
           </div>
           <div class="theory-note-formula">
-            <code>f(v) = 4π≤ft((M)/(2π RT) )³/2 v² exp ≤ft(-(Mv²)/(2RT) ) ; vₚ = √((2RT)/(M)) &lt; langle vrangle = √((8RT)/(π M)) &lt; v_кв = √((3RT)/(M))</code>
+            <code>f(v) = 4π≤ft((M)/(2π RT))^3/2 v² exp ≤ft(-(Mv²)/(2RT)) ; v_p = √((2RT)/(M)) &lt; langle vrangle = √((8RT)/(π M)) &lt; v_кв = √((3RT)/(M))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

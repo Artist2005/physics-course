@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The net polarity of a polyatomic molecule is the vector sum of its individual bond dipoles: μₙet = ∑ᵢ μᵢ. For a triatomic AB₂ molecule with bond angle θ, μₙet = 2μ_bondcos (θ/2).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The net polarity of a polyatomic molecule is the vector sum of its individual bond dipoles: μ_net = ∑_i μ_i. For a triatomic AB₂ molecule with bond angle θ, μ_net = 2μ_bondcos(θ/2).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Consequently, bent H₂O (θ = 104.5^°) has a large permanent dipole (1.85 D) and experiences an aligning torque τ = μ×E in an external electric field, whereas linear CO₂ (θ = 180^°) has μₙet = 0 because its two polar C=O vectors cancel.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Consequently, bent H₂O (θ = 104.5°) has a large permanent dipole (1.85 D) and experiences an aligning torque τ = μ×E in an external electric field, whereas linear CO₂ (θ = 180°) has μ_net = 0 because its two polar C=O vectors cancel.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">A difference in Pauling electronegativity Δχ = |χ_A - χ_B| shifts shared electron density toward the more electronegative atom, creating partial charges ±δ q and a bond dipole vector μ_bond = δ q · d (1 D = 3.336× 10⁻³⁰ C·m). For a symmetrical triatomic molecule AB₂ with bond angle θ, vector addition gives μ_net = 2μ_bondcos(θ/2). When θ = 180° (CO₂, BeCl₂), the two equal and opposite bond dipoles cancel (μ_net = 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Molecular dipole moment is the vector sum μ_net = μ₁ + μ₂; at θ = 180° the two opposing bond dipoles cancel to zero.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Pauling electronegativity difference Δχ = |χ_B − χ_A|</strong>: 0 … 2.5, standard value 1.24</li><li><strong>Valence bond angle θ (105° = H₂O, 180° = CO₂)</strong>: 90 … 180 °, standard value 105 °</li><li><strong>Interatomic bond length l(A–B)</strong>: 0.9 … 1.8 Å, standard value 0.96 Å</li><li><strong>External electric field strength E</strong>: 0 … 5 kV/cm, standard value 2 kV/cm</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Think of a tug-of-war! In linear CO₂ (180^°), two oxygen atoms pull electrons equally in opposite directions so the vectors cancel (μ = 0). In bent water (104.5^°), both pulls angle toward oxygen, creating a strong net dipole!</div>
+            <div class="theory-analogy-body">Think of a tug-of-war! In linear CO₂ (180°), two oxygen atoms pull electrons equally in opposite directions so the vectors cancel (μ = 0). In bent water (104.5°), both pulls angle toward oxygen, creating a strong net dipole!</div>
           </div>
           <div class="theory-note-formula">
-            <code>μ = ∑ᵢ qᵢ rᵢ, μₙet(AB₂) = 2μ₀cos (θ)/(2) ; τ = μ × E</code>
+            <code>μ = ∑_i q_i r_i, μ_net(AB₂) = 2μ₀cos(θ)/(2) ; τ = μ × E</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

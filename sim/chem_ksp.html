@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Solubility Product</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In a saturated solution of a sparingly soluble salt such as lead(II) iodide PbI₂, a heterogeneous equilibrium exists between the solid crystal lattice and dissolved ions: PbI₂(s) ⇄ Pb²⁺(aq) + 2I⁻(aq). Its equilibrium constant is the solubility product: Kₛp = [Pb²⁺][I⁻]² (8.5× 10⁻⁹ at 25 ^°C).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In a saturated solution of a sparingly soluble salt such as lead(II) iodide PbI₂, a heterogeneous equilibrium exists between the solid crystal lattice and dissolved ions: PbI₂(s) ⇄ Pb²⁺(aq) + 2I⁻(aq). Its equilibrium constant is the solubility product: K_sp = [Pb²⁺][I⁻]² (8.5× 10⁻⁹ at 25 °C).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Precipitation occurs whenever the reaction quotient (ionic product) exceeds Kₛp: Qₛp = [Pb²⁺][I⁻]² &gt; Kₛp(T). Because Kₛp of PbI₂ increases steeply with temperature, heating dissolves the precipitate while slow cooling nucleates shimmering hexagonal golden platelets, the classic &quot;Golden Rain&quot; demonstration.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Precipitation occurs whenever the reaction quotient (ionic product) exceeds K_sp: Q_sp = [Pb²⁺][I⁻]² &gt; K_sp(T). Because K_sp of PbI₂ increases steeply with temperature, heating dissolves the precipitate while slow cooling nucleates shimmering hexagonal golden platelets, the classic "Golden Rain" demonstration.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Adding a soluble salt containing a shared ion (such as KI) triggers the common-ion effect: by Le Chatelier’s principle, excess [I⁻] drives the equilibrium toward solid PbI₂↓, suppressing lead solubility from S₀ = sqrt[3]Kₛp/4 down to S = Kₛp/[I⁻]².</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Adding a soluble salt containing a shared ion (such as KI) triggers the common-ion effect: by Le Chatelier’s principle, excess [I⁻] drives the equilibrium toward solid PbI₂downarrow, suppressing lead solubility from S₀ = sqrt[3]K_sp/4 down to S = K_sp/[I⁻]².</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In a saturated solution of sparingly soluble PbI₂(s) ⇄ Pb²⁺ + 2I⁻, the equilibrium constant is K_sp = [Pb²⁺][I⁻]². When Q_sp &gt; K_sp, supersaturation drives crystallization of golden PbI₂ platelets. By Le Chatelier’s principle, adding common ion I⁻ suppresses lead solubility to S = K_sp/[I⁻]².</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Precipitation occurs when Q_sp = [Pb²⁺][I⁻]² &gt; K_sp. Adding excess common ion I⁻ (KI) shifts equilibrium toward solid PbI₂downarrow and sharply reduces solubility.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Initial lead cation concentration [Pb²⁺]₀</strong>: 0.001 … 0.015 mol/L, standard value 0.005 mol/L</li><li><strong>Initial iodide concentration [I⁻]₀</strong>: 0.002 … 0.025 mol/L, standard value 0.01 mol/L</li><li><strong>Solution temperature t (heating dissolves precipitate)</strong>: 15 … 85 °C, standard value 25 °C</li><li><strong>Added common-ion salt KI (common-ion effect)</strong>: 0 … 0.03 mol/L, standard value 0 mol/L</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">In the famous &quot;Golden Rain&quot; experiment, a hot clear solution of PbI₂ nucleates thousands of glittering golden hexagonal platelets upon cooling because the ionic product Qₛp exceeds Kₛp(T)!</div>
+            <div class="theory-analogy-body">In the famous "Golden Rain" experiment, a hot clear solution of PbI₂ nucleates thousands of glittering golden hexagonal platelets upon cooling because the ionic product Q_sp exceeds K_sp(T)!</div>
           </div>
           <div class="theory-note-formula">
-            <code>PbI₂(s) &amp;⇄ Pb²⁺(aq) + 2I⁻(aq), Kₛp(T) = [Pb²⁺]ₛat[I⁻]ₛat² ; Qₛp = [Pb²⁺]₀[I⁻]₀² &gt; Kₛp(T) ⇒ precipitate PbI₂ ↓, S(Pb²⁺) = (Kₛp)/([I⁻]²)</code>
+            <code>PbI₂(s) ⇄ Pb^2+(aq) + 2I⁻(aq), K_sp(T) = [Pb²⁺]_sat[I⁻]_sat² ; Q_sp = [Pb²⁺]₀[I⁻]₀² &gt; K_sp(T) ⇒ precipitate PbI₂ downarrow, S(Pb²⁺) = fracK_sp[I⁻]²</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

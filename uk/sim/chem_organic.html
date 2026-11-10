@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас · Органічна хімія</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Унікальне різноманіття органічних сполук зумовлене здатністю атома Карбону (1s² 2s² 2p²) перебувати у трьох станах гібридизації валентних орбіталей, що безпосередньо визначає тривимірну геометрію карбонового скелета. В алканах (наприклад, етан C₂H₆) атоми Карбону мають sp³-гібридизацію: чотири гібридні орбіталі спрямовані до вершин тетраедра під кутом 109.5^°, утворюючи одинарні σ-зв’язки довжиною 1.54 Å, навколо яких можливе вільне обертання конформацій (загальмована є енергетично вигіднішою за затінену на ≈ 12 кДж/моль).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Унікальне різноманіття органічних сполук зумовлене здатністю атома Карбону (1s² 2s² 2p²) перебувати у трьох станах гібридизації валентних орбіталей, що безпосередньо визначає тривимірну геометрію карбонового скелета. В алканах (наприклад, етан C₂H₆) атоми Карбону мають sp³-гібридизацію: чотири гібридні орбіталі спрямовані до вершин тетраедра під кутом 109.5°, утворюючи одинарні σ-зв’язки довжиною 1.54 Å, навколо яких можливе вільне обертання конформацій (загальмована є енергетично вигіднішою за затінену на ≈ 12 кДж/моль).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">В алкенах (етені / етилені C₂H₄) кожен атом Карбону перебуває у стані sp²-гібридизації (плоский трикутник, кут 120^°). Подвійний зв’язок C=C (1.34 Å) складається з одного міцного осьового σ-зв’язку та одного бічного π-зв’язку, утвореного перекриванням негібридизованих 2p_z-орбіталей перпендикулярно площині молекули, що блокує вільне обертання і зумовлює цис-транс (Z/E) ізомерію.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">В алкенах (етені / етилені C₂H₄) кожен атом Карбону перебуває у стані sp²-гібридизації (плоский трикутник, кут 120°). Подвійний зв’язок C=C (1.34 Å) складається з одного міцного осьового σ-зв’язку та одного бічного π-зв’язку, утвореного перекриванням негібридизованих 2p_z-орбіталей перпендикулярно площині молекули, що блокує вільне обертання і зумовлює цис-транс (Z/E) ізомерію.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">У молекулі бензену C₆H₆ (модель Кекуле, Полінга, Гюккеля) шість sp²-гібридизованих атомів Карбону утворюють ідеальний плоский правильний шестикутник. Шість негібридизованих 2p_z-електронів перекриваються по всьому периметру кільця, утворюючи єдину делокалізовану π-електронну систему з двома тороїдальними хмарами над і під площиною циклу (правило ароматичності Гюккеля 4n+2 = 6). Унаслідок цього всі шість зв’язків C–C у бензені є абсолютно рівноцінними з проміжною довжиною 1.40 Å (порядок зв’язку 1.5), а енергія резонансної стабілізації становить 150 кДж/моль.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Кожен атом Карбону в бензені C₆H₆ перебуває у стані sp²-гібридизації (плоский правильний шестикутник із кутами 120°). Шість перпендикулярних до площини кільця 2p_z-електронів утворюють замкнену ароматичну оболонку (4n+2 = 6 при n=1). Через делокалізацію порядок кожного зв’язку C–C становить 1.5, довжина вирівнюється до 1.40 Å, а молекула отримує термодинамічний виграш енергії делокалізації (резонансу) E_рез ≈ 150 кДж/моль.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">У бензені C₆H₆ шість p_z-електронів рівномірно делокалізовані по всьому шестикутному циклу (sp²-гібридизація, кут 120°). Чи чередуються в реальній молекулі бензену короткі й довгі зв’язки, чи всі 6 зв’язків C–C вирівняні до 1.40 Å?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Ступінь π-делокалізації (0=гіпотетичний трієн Кекуле, 1=бензен)</strong>: 0 … 1, типове значення 1</li><li><strong>Зовнішнє магнітне поле B₀ (індукція кільцевого π-струму)</strong>: 0 … 3 Тл, типове значення 1.5 Тл</li><li><strong>Кут нахилу площини ароматичного кільця C₆H₆</strong>: 0 … 45 °, типове значення 18 °</li><li><strong>Інтенсивність валентних коливань кільця</strong>: 0 … 1 ×, типове значення 0.4 ×</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Уяви три способи з’єднання атомів Карбону: в етані C₂H₆ два тетраедри крутяться на одинарній осі σ-зв’язку як колеса на осі; в етилені C₂H₄ подвійний (σ+π)-зв’язок жорстко фіксує молекулу в одній площині; а в бензені C₆H₆ шість електронів утворюють спільне «електронне кільце» зверху і знизу шестикутника!</div>
           </div>
           <div class="theory-note-formula">
-            <code>N_π = 4n + 2 = 6 (n = 1), d(mathrmC-C) = 1.397 AA, ∠CCC = 120^° ; E_рез(C₆H₆) = 3 Δ H_гідр(mathrmC=C) - Δ H_гідр(C₆H₆) ≈ 150 кДж/моль</code>
+            <code>N_π = 4n + 2 = 6 (n = 1), d(C-C) = 1.397 AA, angleCCC = 120° ; E_рез(C₆H₆) = 3 Δ H_гідр(C=C) - Δ H_гідр(C₆H₆) ≈ 150 кДж/моль</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

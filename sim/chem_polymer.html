@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Polymerization</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Chain-growth polymerization is the sequential addition of unsaturated monomer molecules M (such as ethylene CH₂=CH₂) to an active propagating center, forming a long macromolecular polymer chain (-CH₂–CH₂-)ₙ (polyethylene) without eliminating any small byproduct molecules.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Chain-growth polymerization is the sequential addition of unsaturated monomer molecules M (such as ethylene CH₂=CH₂) to an active propagating center, forming a long macromolecular polymer chain (-CH₂–CH₂-)_n (polyethylene) without eliminating any small byproduct molecules.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Free-radical polymerization proceeds through three kinetic stages: 1) Initiation, homolytic cleavage of an initiator I₂ → 2R^bullet and attack on the first monomer R^bullet + CH₂=CH₂ → R–CH₂–CH₂^bullet; 2) Propagation, rapid sequential monomer addition to the active radical tip at rate vₚ = kₚ [M][R^bullet] ∝ [M]√([I₂]); 3) Termination via radical combination or disproportionation.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Free-radical polymerization proceeds through three kinetic stages: 1) Initiation, homolytic cleavage of an initiator I₂ → 2R^bullet and attack on the first monomer R^bullet + CH₂=CH₂ → R–CH₂–CH₂^bullet; 2) Propagation, rapid sequential monomer addition to the active radical tip at rate v_p = k_p [M][R^bullet] ∝ [M]√([I₂]); 3) Termination via radical combination or disproportionation.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In each propagation step, a weaker monomer π-bond (268 kJ/mol, planar sp² carbon, 1.34 Å) converts into a stronger backbone C–C σ-bond (348 kJ/mol, tetrahedral sp³ carbon, 109.5^°, 1.54 Å), making polymerization strongly exothermic (Δ Hₚoly ≈ -93 kJ/mol). The degree of polymerization n governs the molar mass Mₙ = n M₀ and the statistical coil radius of gyration R_g ∝ l₀√(n).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In each propagation step, a weaker monomer π-bond (268 kJ/mol, planar sp² carbon, 1.34 Å) converts into a stronger backbone C–C σ-bond (348 kJ/mol, tetrahedral sp³ carbon, 109.5°, 1.54 Å), making polymerization strongly exothermic (Δ H_poly ≈ -93 kJ/mol). The degree of polymerization n governs the molar mass M_n = n M₀ and the statistical coil radius of gyration R_g ∝ l₀√(n).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">During radical chain polymerization, each weaker monomer π-bond (E_π ≈ 268 kJ/mol) converts into a stronger backbone C–C single σ-bond (E_σ ≈ 348 kJ/mol). Carbon atoms transition from planar sp² (120°, 1.34 Å) to tetrahedral sp³ (109.5°, 1.54 Å), releasing Δ H ≈ -93 kJ/mol of heat per monomer unit.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">During ethylene polymerization, the weaker π-bond cleaves to form new single C–C σ-bonds in the polymer chain, shifting carbon hybridization from planar sp² (120°) to tetrahedral sp³ (109.5°).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Degree of polymerization n (–CH₂–CH₂– repeat units)</strong>: 4 … 18 units, standard value 10 units</li><li><strong>Radical initiator concentration [I₂]</strong>: 0.5 … 5 mmol/L, standard value 2 mmol/L</li><li><strong>Ethylene monomer concentration [CH₂=CH₂]</strong>: 0.5 … 3 mol/L, standard value 1.5 mol/L</li><li><strong>Polymerization reactor temperature T</strong>: 300 … 420 K, standard value 350 K</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Ethylene monomers CH₂=CH₂ hold onto themselves with two hands (a double bond σ + π). Triggered by a radical initiator, each monomer opens its weaker π-bond to clasp hands with its neighbor, zipping thousands of units into a long polyethylene chain!</div>
           </div>
           <div class="theory-note-formula">
-            <code>n mathrmCH₂=CH₂ (sp², 120^°) &amp;xrightarrowR^bullet mathrm(-CH₂-CH₂-)ₙ (sp³, 109.5^°), Δ Hₚoly ≈ -93 kJ/mol ; Mₙ = n· M₀ = 28.05 n g/mol, R_g ≈ l₀√((2n C_∞)/(6))</code>
+            <code>n CH₂=CH₂ (sp², 120°) xrightarrowR^bullet (-CH₂-CH₂-)_n (sp³, 109.5°), Δ H_poly ≈ -93 kJ/mol ; M_n = n· M₀ = 28.05 n g/mol, R_g ≈ l₀√((2n C_∞)/(6))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">11 клас</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією Джеймса Клерка Максвелла (1865 р.), змінне у часі магнітне поле породжує вихрове електричне поле (∇ × E = -(∂ B)/(∂ t)), а змінне електричне поле (струм зміщення) породжує вихрове магнітне поле (∇ × B = μ₀ε₀ (∂ E)/(∂ t)). Внаслідок цього взаємного перетворення у просторі поширюється самопідтримувана поперечна електромагнітна хвиля зі швидкістю світла c = (1)/(√(ε₀μ₀)) ≈ 3× 10⁸ м/с.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією Джеймса Клерка Максвелла (1865 р.), змінне у часі магнітне поле породжує вихрове електричне поле (∇ × E = -(∂ B)/(∂ t)), а змінне електричне поле (струм зміщення) породжує вихрове магнітне поле (∇ × B = μ₀ε₀ (∂ E)/(∂ t)). Внаслідок цього взаємного перетворення у просторі поширюється самопідтримувана поперечна електромагнітна хвиля зі швидкістю світла c = frac1√(ε₀μ₀) ≈ 3× 10⁸ м/с.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У плоскій біжучій хвилі вектори напруженості електричного поля E(x,t) = E₀sin (kx - ω t) та індукції магнітного поля B(x,t) = B₀sin (kx - ω t) коливаються строго в одній фазі (синфазно), взаємно перпендикулярні (E ⊥ B) та перпендикулярні до напрямку поширення хвилі k, утворюючи праву трійку векторів. У вакуумі їхні амплітуди пов’язані співвідношенням E₀ = c B₀.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">У плоскій біжучій хвилі вектори напруженості електричного поля E(x,t) = E₀sin(kx - ω t) та індукції магнітного поля B(x,t) = B₀sin(kx - ω t) коливаються строго в одній фазі (синфазно), взаємно перпендикулярні (E ⊥ B) та перпендикулярні до напрямку поширення хвилі k, утворюючи праву трійку векторів. У вакуумі їхні амплітуди пов’язані співвідношенням E₀ = c B₀.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Густина потоку електромагнітної енергії (потужність, що переноситься хвилею через одиницю площі) описується вектором Умова–Пойнтінга S = (1)/(μ₀)[E × B], а об’ємні густини енергії електричного w_E = (1)/(2)ε₀ E² та магнітного w_B = (B²)/(2μ₀) полів у кожній точці хвилі точно рівні між собою (w_E = w_B).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">З рівнянь Максвелла випливає, що світлова хвиля є строго поперечною: вектори E та B завжди лежать у площині хвильового фронту (E⊥k, B⊥k), перпендикулярні один до одного (E⊥B) і досягають максимумів та нулів одночасно (у фазі). Векторний добуток S = (1)/(μ₀)[E×B] визначає напрямок і густину потоку світлової енергії.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Як орієнтовані вектори E та B відносно один одного та напрямку поширення хвилі c, і чи збігаються їхні фази у вакуумі?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Довжина хвилі між фронтами λ</strong>: 1.8 … 4.8 м, типове значення 3.2 м</li><li><strong>Амплітуда поля E₀</strong>: 0.8 … 2.2 В/м, типове значення 1.6 В/м</li><li><strong>Показник заломлення середовища n</strong>: 1 … 2.2, типове значення 1</li><li><strong>Еліптичність поляризації ε</strong>: 0 … 1, типове значення 0</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Світло ліхтарика, сигнал Wi-Fi, радіо та рентген, це все електромагнітні хвилі! Їм не потрібне повітря чи вода, щоб летіти крізь космічний вакуум: змінне електричне поле E породжує магнітне B, а магнітне, знову електричне.</div>
           </div>
           <div class="theory-note-formula">
-            <code>E(x,t) = E₀sin (kx - ω t), B(x,t) = B₀sin (kx - ω t) ; S = (1)/(μ₀)[E×B], c = (1)/(√(ε₀μ₀)), E⊥B⊥k</code>
+            <code>E(x,t) = E₀sin(kx - ω t), B(x,t) = B₀sin(kx - ω t) ; S = (1)/(μ₀)[E×B], c = frac1√(ε₀μ₀), E⊥B⊥k</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

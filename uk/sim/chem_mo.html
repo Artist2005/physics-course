@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Конструктивна інтерференція (ψ₊ = (ψ_A + ψ_B)/(√(2(1+S)))) концентрує електронну густину в між’ядерному просторі, екрануючи кулонівське відштовхування ядер і знижуючи енергію на величину резонансного інтеграла |β|, утворюється зв’язуюча МО (σ_g, πᵤ). Деструктивна інтерференція (ψ₋ = (ψ_A - ψ_B)/(√(2(1-S)))) створює вузлову площину (ψ = 0) посередині між ядрами й підвищує енергію, утворюється розпушуюча МО (σᵤ^*, π_g^*).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Конструктивна інтерференція (ψ_+ = fracψ_A + ψ_B√(2(1+S))) концентрує електронну густину в між’ядерному просторі, екрануючи кулонівське відштовхування ядер і знижуючи енергію на величину резонансного інтеграла |β|, утворюється зв’язуюча МО (σ_g, π_u). Деструктивна інтерференція (ψ_- = fracψ_A - ψ_B√(2(1-S))) створює вузлову площину (ψ = 0) посередині між ядрами й підвищує енергію, утворюється розпушуюча МО (σ_u^*, π_g^*).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Кратність (порядок) хімічного зв’язку дорівнює піврізниці чисел електронів на зв’язуючих та розпушуючих орбіталях: B = (N_b - Nₐ)/(2). Саме ММО пояснив парамагнетизм кисню O₂ (B = (8-4)/(2) = 2): два останні валентні електрони за правилом Гунда розміщуються по одному з паралельними спінами на двох вироджених розпушуючих орбіталях π₂p,x^* та π₂p,y^* (μₛ = √(2(2+2)) μ_B = 2.83 μ_B).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Кратність (порядок) хімічного зв’язку дорівнює піврізниці чисел електронів на зв’язуючих та розпушуючих орбіталях: B = (N_b - N_a)/(2). Саме ММО пояснив парамагнетизм кисню O₂ (B = (8-4)/(2) = 2): два останні валентні електрони за правилом Гунда розміщуються по одному з паралельними спінами на двох вироджених розпушуючих орбіталях π_2p,x^* та π_2p,y^* (μ_s = √(2(2+2)) μ_B = 2.83 μ_B).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Класична теорія валентних зв’язків зображує молекулу O₂ з усіма спареними електронами, що не пояснює її парамагнетизм. У методі молекулярних орбіталей (МО ЛКАО) з 12 валентних електронів двох атомів Оксигену (2s² 2p⁴) 8 електронів заповнюють зв’язувальні орбіталі (σ_2s², σ_2p_z², π_2p_x², π_2p_y²), а 4 електрони, розпушувальні (σ^*_2s² та дві вироджені π^*_2p_x¹, π^*_2p_y¹). За правилом Гунда два останні електрони займають різні π^*-орбіталі з паралельними спінами (n = 2 неспарені електрони, μ = √(8) μ_B ≈ 2.83 μ_B), а порядок зв’язку становить ПЗ = (8 - 4)/2 = 2.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Порахуй порядок зв’язку B = (1)/(2)(N_b - N_a) і згадай правило Гунда для двох останніх електронів кисню O₂ на вироджених π^*_2p-орбіталях.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Двоатомна частинка (1: H₂, 2: He₂⁺, 3: N₂, 4: O₂, 5: F₂)</strong>: 1 … 5, типове значення 4</li><li><strong>Між’ядерна відстань R між центрами A та B</strong>: 0.7 … 2.2 Å, типове значення 1.21 Å</li><li><strong>Показана 3D-хмара МО (1: σ зв’яз., 2: σ* розп., 3: π зв’яз., 4: π* розп.)</strong>: 1 … 4, типове значення 1</li><li><strong>Резонансний інтеграл перекривання |β|</strong>: 1 … 4.5 еВ, типове значення 2.5 еВ</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Уяви дві хвилі на воді: коли гребінь накладається на гребінь, хвиля посилюється між ядрами й скріплює атоми (зв’язуюча орбіталь σ, π). А коли гребінь гасить западину, посередині виникає вузол тиші, який розштовхує ядра (розпушуюча орбіталь σ^*, π^*).</div>
           </div>
           <div class="theory-note-formula">
-            <code>ПЗ = (N_зв - N_розп)/(2), ψ_± = c₁φ_A ± c₂φ_B, μ_магн = √(n(n+2)) μ_B</code>
+            <code>ПЗ = fracN_зв - N_розп2, ψ_± = c₁φ_A ± c₂φ_B, μ_магн = √(n(n+2)) μ_B</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

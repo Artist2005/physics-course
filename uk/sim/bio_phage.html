@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -168,6 +173,18 @@
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Саме на бактеріофагах у 1952 р. Алфред Герші та Марта Чейз виконали історичний експеримент із радіоактивними ізотопами: ДНК фагів мітили фосфором ³²P, а білкову оболонку, сіркою ³⁵S. Після зараження бактерій і збивання пустих оболонок у блендері виявилося, що всередину клітини проникає виключно ³²P-ДНК, програмуючи синтез сотень нових фагів.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Бактеріофаг Т4 є облігатним внутрішньоклітинним паразитом бактерій *Escherichia coli*, що складається з ікосаедричної білкової головки (капсиду), де під величезним тиском P ≈ 40..60 атм упакована дволанцюгова ДНК (approx 169 тис. п.н.), та складного хвостового відростка. Коли довгі хвостові фібрили розпізнають ліпополісахаридні рецептори клітинної стінки, базальна пластинка змінює конформацію, білковий чохол скорочується більш ніж удвічі, а внутрішній порожнистий стрижень (за участі ферменту лізоциму) проколює оболонку бактерії. Під дією внутрішнього тиску вірусна ДНК впорскується в цитоплазму. В експерименті Герші та Чейз (1952) весь радіоактивний фосфор ³²P (ДНК) виявився всередині бактерій і передався нащадкам фагів, а сірка ³⁵S (білковий капсид) залишилася у надосадовій рідині після струшування, що стало прямим доказом генетичної ролі ДНК.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">В експерименті Герші та Чейз у цитоплазму бактерій проникла лише мічена радіоактивним фосфором ³²P ДНК, а мічена сіркою ³⁵S білкова оболонка залишилася назовні.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Стадія інфекції (1: Адсорбція, 2: Прокол оболонки, 3: Ін’єкція ДНК, 4: Збирання фагів)</strong>: 1 … 4 етап, типове значення 3 етап</li><li><strong>Початковий внутрішній тиск упаковки ДНК у капсиді фага P₀</strong>: 20 … 65 атм, типове значення 50 атм</li><li><strong>Щільність рецепторів LPS на поверхні клітинної стінки бактерії</strong>: 20 … 100 %, типове значення 80 %</li><li><strong>Урожайність літичного циклу (кількість нових віріонів з 1 клітини)</strong>: 50 … 250 фагів, типове значення 150 фагів</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

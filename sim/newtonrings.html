@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 11</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Newton’s rings are equal-thickness interference fringes formed in the thin air film trapped between a plano-convex lens of large curvature radius R ≫ r and an optical flat. At radial distance r from the contact point, the air-gap thickness follows from (R - d)² + r² = R² as d(r) ≈ (r²)/(2R).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Newton’s rings are equal-thickness interference fringes formed in the thin air film trapped between a plano-convex lens of large curvature radius R gg r and an optical flat. At radial distance r from the contact point, the air-gap thickness follows from (R - d)² + r² = R² as d(r) ≈ (r²)/(2R).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">At the central point of contact (r = 0, d = 0), the λ/2 phase reversal leaves the two reflected rays exactly out of phase, producing a central dark spot in reflected light! Dark ring radii satisfy r_dark,m = √(mλ R) and bright ring radii satisfy r_bright,m = √((m - (1)/(2))λ R).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">At the central point of contact (r = 0, d = 0), the λ/2 phase reversal leaves the two reflected rays exactly out of phase, producing a central dark spot in reflected light! Dark ring radii satisfy r_dark,m = √(mλ R) and bright ring radii satisfy r_bright,m = sqrt(m - tfrac12)λ R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Interference occurs between waves reflected from the upper boundary of the air gap (glass → air, no phase change) and the lower boundary (air → glass plate, reflection from an optically denser medium with phase shift Δφ = π, equivalent to λ/2). Thus the optical path difference is Δ = 2nd + λ/2. At the center of contact (d = 0), Δ = λ/2, yielding destructive interference (central dark spot)! The radii of dark rings in reflected light are r_m = √(mλ R / n).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">At the center contact point (h = 0), reflection off the denser lower glass adds a π phase flip (λ/2 path shift). Does that make the central spot bright or dark in reflected light?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Wavelength λ</strong>: 420 … 680 nm, standard value 550 nm</li><li><strong>Lens curvature radius R</strong>: 1 … 5 m, standard value 2.5 m</li><li><strong>Gap refractive index n</strong>: 1 … 1.5, standard value 1</li><li><strong>Measured ring order m</strong>: 1 … 6, standard value 3</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Ever noticed rainbow rings on a soap bubble or an oil slick on a puddle? Between a curved lens and a flat glass plate lies a microscopic wedge of air; light reflecting off the top and bottom of this air gap interferes to paint bullseye rings!</div>
           </div>
           <div class="theory-note-formula">
-            <code>d(r) &amp;≈ (r²)/(2R), Δ = 2 n d(r) + (λ)/(2) ; rₘ,dark = √((m λ R)/(n)), rₘ,bright = √(((m - (1)/(2)) λ R)/(n))</code>
+            <code>d(r) ≈ (r²)/(2R), Δ = 2 n d(r) + (λ)/(2) ; r_m,dark = √((m λ R)/(n)), r_m,bright = sqrtfrac(m - tfrac12) λ Rn</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

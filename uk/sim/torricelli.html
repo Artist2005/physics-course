@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Строге доведення формули Торрічеллі випливає з рівняння Бернуллі, записаного для лінії течії від вільної поверхні резервуара (переріз S₁, висота H, атмосферний тиск p₀) до вихідного сопла (переріз S₂ ≪ S₁, висота y = H - h, де струмінь у повітрі також перебуває під атмосферним тиском p₀): p₀ + ρ g H + (1)/(2)ρ v₁² = p₀ + ρ g (H - h) + (1)/(2)ρ v₂². Оскільки при S₂ ≪ S₁ швидкість опускання рівня v₁ = v₂(S₂/S₁) ≈ 0, густина рідини ρ скорочується і ми отримуємо v₂ = √(2gh).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Строге доведення формули Торрічеллі випливає з рівняння Бернуллі, записаного для лінії течії від вільної поверхні резервуара (переріз S₁, висота H, атмосферний тиск p₀) до вихідного сопла (переріз S₂ ll S₁, висота y = H - h, де струмінь у повітрі також перебуває під атмосферним тиском p₀): p₀ + ρ g H + (1)/(2)ρ v₁² = p₀ + ρ g (H - h) + (1)/(2)ρ v₂². Оскільки при S₂ ll S₁ швидкість опускання рівня v₁ = v₂(S₂/S₁) ≈ 0, густина рідини ρ скорочується і ми отримуємо v₂ = √(2gh).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Виходячи горизонтально з сопла на висоті y = H - h від основи зі швидкістю v = √(2gh), струмінь падає за час t = √(2(H - h)/g) і б’є на горизонтальну відстань L(h) = v t = 2√(h(H - h)). Ця функція симетрична відносно заміни h ≤ftrightarrow H - h і досягає абсолютного максимуму Lₘax = H рівно посередині висоти стовпа рідини (h = H/2).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Виходячи горизонтально з сопла на висоті y = H - h від основи зі швидкістю v = √(2gh), струмінь падає за час t = √(2(H - h)/g) і б’є на горизонтальну відстань L(h) = v t = 2√(h(H - h)). Ця функція симетрична відносно заміни h ≤ftrightarrow H - h і досягає абсолютного максимуму L_max = H рівно посередині висоти стовпа рідини (h = H/2).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Швидкість витікання на глибині h за формулою Торрічеллі дорівнює v = √(2gh), а час падіння струменя з висоти (H - h) до рівня дна становить t = √(2(H - h)/g). Горизонтальна дальність x = vt = 2√(h(H - h)) є симетричною відносно h та (H - h) і досягає максимуму x_max = H рівно посередині резервуара при h = H/2.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За формулою Торрічеллі швидкість витікання струменя v = √(2gh) визначається висотою стовпа рідини h над отвором і не залежить від густини ідеальної рідини.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Рівень води в башті H</strong>: 2.6 … 5 м, типове значення 4.4 м</li><li><strong>Глибина досліджуваного сопла h</strong>: 0.4 … 4.2 м, типове значення 2.2 м</li><li><strong>Коефіцієнт швидкості сопла φ</strong>: 0.8 … 1, типове значення 0.98</li><li><strong>Густина рідини ρ</strong>: 0.8 … 1.8 г/см³, типове значення 1 г/см³</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Якщо зробити маленький отвір унизу високої пластикової пляшки з водою, струмінь вилітає з такою самою швидкістю, яку мала б крапля, вільно впавши з рівня поверхні води! Що вищий стовп води над отвором, то сильніше б’є фонтан.</div>
           </div>
           <div class="theory-note-formula">
-            <code>v = √(2gh), t_пад = √((2(H - h))/(g)) ; x(h) = v t_пад = 2√(h(H - h)), xₘax = H ≤ft(при h = (H)/(2) )</code>
+            <code>v = √(2gh), t_пад = √((2(H - h))/(g)) ; x(h) = v t_пад = 2√(h(H - h)), x_max = H ≤ft(при h = (H)/(2))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

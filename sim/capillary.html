@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Molecules at a liquid–gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy Eₛ = σ S characterized by surface tension σ (N/m). When liquid–solid adhesion exceeds liquid–liquid cohesion (wetting, contact angle θ 90^°, such as mercury in glass), the meniscus is convex.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Molecules at a liquid–gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy E_s = σ S characterized by surface tension σ (N/m). When liquid–solid adhesion exceeds liquid–liquid cohesion (wetting, contact angle θ 90°, such as mercury in glass), the meniscus is convex.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In a cylindrical capillary tube of inner radius r, the spherical meniscus of radius of curvature Rₘ = (r)/(cos θ) sustains a pressure jump across the interface given by the Young–Laplace equation: Δ p = (2σ)/(Rₘ) = (2σcos θ)/(r).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In a cylindrical capillary tube of inner radius r, the spherical meniscus of radius of curvature R_m = (r)/(cosθ) sustains a pressure jump across the interface given by the Young–Laplace equation: Δ p = (2σ)/(R_m) = (2σcosθ)/(r).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Equating this Laplace capillary suction to the hydrostatic pressure ρ g h of the liquid column yields Jurin’s Law: h = (2σcos θ)/(ρ g r) (positive rise for θ 90^°). Because h ∝ 1/r, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Equating this Laplace capillary suction to the hydrostatic pressure ρ g h of the liquid column yields Jurin’s Law: h = (2σcosθ)/(ρ g r) (positive rise for θ 90°). Because h ∝ 1/r, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Jurin's formula h = (2σcosθ)/(ρ g r), the sign of h is governed by cosθ. For wetting liquids (θ 0), the concave meniscus pulls the column upward (h &gt; 0), whereas for non-wetting liquids (θ &gt; 90°, cosθ &lt; 0), the convex meniscus depresses the column downward (h &lt; 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Jurin’s law h = (2σcosθ)/(ρ g r): how does capillary rise height h change when tube radius r becomes narrower?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Surface tension coefficient σ</strong>: 25 … 120 mN/m, standard value 72.8 mN/m</li><li><strong>Contact wetting angle θ</strong>: 0 … 140 °, standard value 20 °</li><li><strong>Inner capillary radius r</strong>: 0.3 … 1.5 mm, standard value 0.6 mm</li><li><strong>Liquid density ρ</strong>: 0.7 … 2.5 g/cm³, standard value 1 g/cm³</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">How does a paper towel soak up spilled tea, or a tall tree draw water to its leaves? Inside hair-thin capillary tubes, water clings to the walls and surface tension pulls the liquid column upward against gravity!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ P_Lap = (2σ cos θ)/(r) = ρ g h ; h = (2σ cos θ)/(ρ g r)</code>
+            <code>Δ P_Lap = (2σ cosθ)/(r) = ρ g h ; h = (2σ cosθ)/(ρ g r)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

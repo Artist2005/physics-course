@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">У класичній електродинаміці електрон, що обертається навколо ядра з доцентровим прискоренням aₙ = v²/r, мав би безперервно випромінювати електромагнітні хвилі, втратити енергію за sim 10⁻¹¹ с і впасти на ядро. Щоб розв’язати цю кризу, Нільс Бор у 1913 році сформулював квантові постулати: атом може перебувати лише у дискретних стаціонарних станах із моментами імпульсу Lₙ = mₑ vₙ rₙ = nℏ (n = 1, 2, 3, …), у яких електрон не випромінює.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">У класичній електродинаміці електрон, що обертається навколо ядра з доцентровим прискоренням a_n = v²/r, мав би безперервно випромінювати електромагнітні хвилі, втратити енергію за ∼ 10⁻¹¹ с і впасти на ядро. Щоб розв’язати цю кризу, Нільс Бор у 1913 році сформулював квантові постулати: атом може перебувати лише у дискретних стаціонарних станах із моментами імпульсу L_n = m_e v_n r_n = nℏ (n = 1, 2, 3, …), у яких електрон не випромінює.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У 1924 році Луї де Бройль розкрив глибокий хвильовий зміст правила квантування Бора: електрон має довжину хвилі де Бройля λ_B = (h)/(mₑ vₙ), і стаціонарна орбіта стійка лише тоді, коли вздовж її кола 2π rₙ вкладається ціле число n стоячих хвиль де Бройля: 2π rₙ = nλ_B (інакше хвиля гасить сама себе внаслідок інтерференції!). Радіуси дозволених орбіт атома водню ростуть квадратично rₙ = n² a₀ (a₀ = 0.0529 нм, борівський радіус), а рівні енергії квантуються як Eₙ = -(13.6 еВ)/(n²).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">У 1924 році Луї де Бройль розкрив глибокий хвильовий зміст правила квантування Бора: електрон має довжину хвилі де Бройля λ_B = (h)/(m_e v_n), і стаціонарна орбіта стійка лише тоді, коли вздовж її кола 2π r_n вкладається ціле число n стоячих хвиль де Бройля: 2π r_n = nλ_B (інакше хвиля гасить сама себе внаслідок інтерференції!). Радіуси дозволених орбіт атома водню ростуть квадратично r_n = n² a₀ (a₀ = 0.0529 нм, борівський радіус), а рівні енергії квантуються як E_n = -(13.6 еВ)/(n²).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Випромінювання або поглинання кванта світла відбувається лише під час стрибка електрона між двома орбітами nᵢ → n_f: hν = |Eₙᵢ - Eₙ_f|, що дає спектральну формулу Рідберга: (1)/(λ) = R_H ≤ft|(1)/(n_f²) - (1)/(nᵢ²) | (R_H = 1.097× 10⁷ м⁻¹), яка з високою точністю пояснює ультрафіолетову серію Лаймана (n_f = 1), видиму серію Бальмера (n_f = 2) та інфрачервону серію Пашена (n_f = 3).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Випромінювання або поглинання кванта світла відбувається лише під час стрибка електрона між двома орбітами n_i → n_f: hν = |E_n_i - E_n_f|, що дає спектральну формулу Рідберга: (1)/(λ) = R_H ≤ft|(1)/(n_f²) - (1)/(n_i²)| (R_H = 1.097× 10⁷ м⁻¹), яка з високою точністю пояснює ультрафіолетову серію Лаймана (n_f = 1), видиму серію Бальмера (n_f = 2) та інфрачервону серію Пашена (n_f = 3).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Підставивши довжину хвилі де Бройля λ_дБ = (h)/(m_e v_n) в умову замкненої стоячої хвилі на колі 2π r_n = nλ_дБ, одразу отримуємо правило квантування Бора m_e v_n r_n = n(h)/(2π) = nℏ. При переході з вищого рівня n_i на нижчий n_f випромінюється фотон з енергією hν = E_n_i - E_n_f.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Скільки повних довжин хвиль де Бройля λ_B = h/(m_e v) має вкластися вздовж кола стаціонарної орбіти з квантовим числом n, щоб стояча хвиля не загасила сама себе?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Початковий квантовий рівень n_i</strong>: 2 … 4, типове значення 3</li><li><strong>Кінцевий квантовий рівень n_f</strong>: 1 … 3, типове значення 2</li><li><strong>Амплітуда стоячої хвилі де Бройля</strong>: 0.1 … 0.45 відн., типове значення 0.25 відн.</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Електрон в атомі схожий на людину на сходах: він може стояти лише на сходинках n = 1, 2, 3…, але ніколи, в повітрі між ними! Чому? Бо електрон, це водночас хвиля, і орбіта стійка лише тоді, коли вздовж кола вкладається ціле число його хвиль де Бройля. Стрибаючи на нижчу сходинку, атом випускає спалах світла (фотон)!</div>
           </div>
           <div class="theory-note-formula">
-            <code>mₑ vₙ rₙ = nℏ Longleftrightarrow 2π rₙ = nλ_дБ, Eₙ = -(13.6 еВ)/(n²) ; hν = Eₙᵢ - Eₙ_f = 13.6 еВ≤ft((1)/(n_f²) - (1)/(nᵢ²) )</code>
+            <code>m_e v_n r_n = nℏ Longleftrightarrow 2π r_n = nλ_дБ, E_n = -(13.6 еВ)/(n²) ; hν = E_n_i - E_n_f = 13.6 еВ≤ft((1)/(n_f²) - (1)/(n_i²))</code>
           </div>
         </div>
       </div>
@@ -385,7 +402,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -411,6 +439,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

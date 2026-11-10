@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Застосування методу квазістаціонарних концентрацій Бріггса–Голдейна (d[ES]/dt = 0) дає класичне рівняння Міхаеліса–Ментен: v = (Vₘax[S])/(K_M + [S]), де Vₘax = k_cat[E]₀, гранична швидкість при повному насиченні всіх активних центрів ферменту, а константа Міхаеліса K_M = (k₋₁ + k_cat)/(k₁) чисельно дорівнює концентрації субстрату, за якої v = (1)/(2)Vₘax (що менша K_M, то вища спорідненість ферменту до субстрату).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Застосування методу квазістаціонарних концентрацій Бріггса–Голдейна (d[ES]/dt = 0) дає класичне рівняння Міхаеліса–Ментен: v = fracV_max[S]K_M + [S], де V_max = k_cat[E]₀, гранична швидкість при повному насиченні всіх активних центрів ферменту, а константа Міхаеліса K_M = frack₋₁ + k_catk₁ чисельно дорівнює концентрації субстрату, за якої v = (1)/(2)V_max (що менша K_M, то вища спорідненість ферменту до субстрату).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Конкурентний інгібітор I має просторову будову, подібну до субстрату, і оборотно конкурує з ним за активний центр (E + I ⇄ EI). Це збільшує уявну константу Міхаеліса в α = 1 + [I]/K_I разів (K_M^app = α K_M), але за великого надлишку субстрату ([S] ≫ K_M^app) субстрат витісняє інгібітор, тому максимальна швидкість Vₘax не змінюється.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Конкурентний інгібітор I має просторову будову, подібну до субстрату, і оборотно конкурує з ним за активний центр (E + I ⇄ EI). Це збільшує уявну константу Міхаеліса в α = 1 + [I]/K_I разів (K_M^app = α K_M), але за великого надлишку субстрату ([S] gg K_M^app) субстрат витісняє інгібітор, тому максимальна швидкість V_max не змінюється.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">За моделлю Леонори Міхаеліс і Мод Ментен (1913) фермент E оборотно зв’язує субстрат S в активному центрі з утворенням комплексу ES: v₀ = fracV_max[S]K_M + [S], де константа Міхаеліса K_M = frack₋₁ + k_catk₁ чисельно дорівнює концентрації субстрату, при якій швидкість становить рівно половину максимальної (v₀ = 0.5 V_max). При малих [S] ll K_M реакція має перший порядок (v₀ ≈ fracV_maxK_M[S]), а при великих [S] gg K_M настає насичення всіх активних центрів (v₀ ≈ V_max, нульовий порядок). Конкурентний інгібітор I, структурно схожий на субстрат, конкурує за той самий активний центр (E + I ⇄ EI), підвищуючи K_M^еф = K_M(1 + [I]/K_i), проте великий надлишок субстрату здатен повністю витіснити інгібітор і досягти тієї ж границі V_max.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">При насиченні активних центрів ([S] gg K_M) швидкість прямує до V_max = k_cat[E]₀, а конкурентний інгібітор збільшує K_M^app без зміни V_max.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Концентрація субстрату в розчині [S]</strong>: 0.25 … 12 ммоль/л, типове значення 4 ммоль/л</li><li><strong>Константа Міхаеліса K_M (спорідненість центру: менша K_M = міцніше)</strong>: 0.5 … 5 ммоль/л, типове значення 1.5 ммоль/л</li><li><strong>Каталітичне число обертів ферменту k_cat (V_max)</strong>: 2 … 14 с⁻¹, типове значення 8 с⁻¹</li><li><strong>Концентрація конкурентного інгібітора [I]</strong>: 0 … 6 ммоль/л, типове значення 0 ммоль/л</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
-            <div class="theory-analogy-body">Фермент, це майстер-ключник із замковою щілиною (активним центром), а субстрат, ключ. Коли ключів дуже багато, усі майстри зайняті роботою і швидкість досягає стелі Vₘax. А конкурентний інгібітор, це «фальшивий ключ», який тимчасово застрягає в замку й заважає справжнім ключам!</div>
+            <div class="theory-analogy-body">Фермент, це майстер-ключник із замковою щілиною (активним центром), а субстрат, ключ. Коли ключів дуже багато, усі майстри зайняті роботою і швидкість досягає стелі V_max. А конкурентний інгібітор, це «фальшивий ключ», який тимчасово застрягає в замку й заважає справжнім ключам!</div>
           </div>
           <div class="theory-note-formula">
-            <code>E + S undersetk₋₁oversetk₁⇄ ES oversetk_catlongrightarrow E + P, v₀ = (Vₘax[S])/(K_M≤ft(1 + ([I])/(Kᵢ) ) + [S])</code>
+            <code>E + S undersetk₋₁oversetk₁⇄ ES oversetk_catlongrightarrow E + P, v₀ = fracV_max[S]K_M≤ft(1 + ([I])/(K_i)) + [S]</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

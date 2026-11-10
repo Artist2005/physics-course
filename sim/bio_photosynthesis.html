@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Photosynthesis &amp; Calvin Cycle</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Photosynthesis in chloroplasts comprises the light-dependent reactions on thylakoid membranes and the Calvin–Benson carbon-fixation cycle in the stroma. Chlorophylls a and b absorb strongly in the blue (430–450 nm) and red (660–680 nm) spectral bands while reflecting green light (sim 540 nm).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Photosynthesis in chloroplasts comprises the light-dependent reactions on thylakoid membranes and the Calvin–Benson carbon-fixation cycle in the stroma. Chlorophylls a and b absorb strongly in the blue (430–450 nm) and red (660–680 nm) spectral bands while reflecting green light (∼ 540 nm).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Along the non-cyclic Z-scheme, photon absorption excites Photosystem II (P680), which extracts electrons from water at the Mn₄CaO₅ oxygen-evolving complex (water photolysis: 2H₂O xrightarrow4hν O₂↑ + 4H⁺ + 4e⁻, the sole source of evolved O₂). Electrons pass through plastoquinone and cytochrome b₆f (building a lumenal H⁺ gradient for CF₀CF₁-ATP synthase) to Photosystem I (P700), which reduces NADP⁺ to NADPH.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Along the non-cyclic Z-scheme, photon absorption excites Photosystem II (P680), which extracts electrons from water at the Mn₄CaO₅ oxygen-evolving complex (water photolysis: 2H₂O xrightarrow4hν O₂uparrow + 4H⁺ + 4e⁻, the sole source of evolved O₂). Electrons pass through plastoquinone and cytochrome b₆f (building a lumenal H⁺ gradient for CF₀CF₁-ATP synthase) to Photosystem I (P700), which reduces NADP⁺ to NADPH.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">In the stroma, RuBisCO catalyzes CO₂ carboxylation of ribulose-1,5-bisphosphate. Synthesizing 1 molecule of glucose (C₆H₁₂O₆) from 6 CO₂ in the Calvin cycle consumes 18 ATP and 12 NADPH.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Isotopic tracer experiments with H₂¹⁸O proved that all photosynthetic O₂ comes from water splitting at the Mn₄CaO₅ oxygen-evolving complex of Photosystem II (P680): 2H₂O xrightarrow4hν O₂uparrow + 4H⁺ + 4e⁻. Electrons travel via plastoquinone, cytochrome b₆f, and plastocyanin to Photosystem I (P700) to reduce NADP⁺ to NADPH, while the lumen-to-stroma proton gradient drives CF₀CF₁-ATP synthase. In the stroma, fixing each CO₂ molecule in the Calvin–Benson cycle requires 3 ATP and 2 NADPH, totaling 18 ATP and 12 NADPH per molecule of glucose ( extC₆H₁₂O₆).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">All evolved O₂ comes from water photolysis at PSII, and fixing 6 CO₂ into 1 glucose in the Calvin cycle consumes 18 ATP and 12 NADPH.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Photosynthetically active irradiance PAR I</strong>: 50 … 1800 μmol/(m²·s), standard value 800 μmol/(m²·s)</li><li><strong>Ambient carbon dioxide concentration [CO₂]</strong>: 100 … 1000 ppm, standard value 420 ppm</li><li><strong>Illumination wavelength λ (chlorophyll peaks at 440 nm 670 nm)</strong>: 420 … 700 nm, standard value 660 nm</li><li><strong>Leaf temperature t (RuBisCO optimum ~25 °C)</strong>: 10 … 40 °C, standard value 25 °C</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">A chloroplast runs a two-stage factory: thylakoid solar panels capture red and blue photons, split water (releasing the O₂ we breathe!), and charge ATP and NADPH batteries. Then the Calvin cycle sugar mill spends 18 ATP and 12 NADPH to assemble 6 CO₂ into one glucose molecule!</div>
           </div>
           <div class="theory-note-formula">
-            <code>6 CO₂ + 12 H₂O^* xrightarrowhν C₆H₁₂O₆ + 6 O₂^* ↑ + 6 H₂O (18 ATP + 12 NADPH)</code>
+            <code>6 CO₂ + 12 H₂O^* xrightarrowhν C₆H₁₂O₆ + 6 O₂^* uparrow + 6 H₂O (18 ATP + 12 NADPH)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

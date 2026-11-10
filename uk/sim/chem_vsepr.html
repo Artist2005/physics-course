@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас · Хімія</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Модель відштовхування електронних пар валентної оболонки (ГЕПВО / VSEPR, Гіллеспі, Найхолм) пояснює просторову архітектуру ковалентних молекул AXₙEₘ. Електронні пари валентного рівня центрального атома A (як зв’язуючі пари X, так і неподілені пари E) через кулонівське відштовхування та принцип Паулі розташовуються на максимальній кутовій відстані одна від одної на сфері навколо ядра.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Модель відштовхування електронних пар валентної оболонки (ГЕПВО / VSEPR, Гіллеспі, Найхолм) пояснює просторову архітектуру ковалентних молекул AX_nE_m. Електронні пари валентного рівня центрального атома A (як зв’язуючі пари X, так і неподілені пари E) через кулонівське відштовхування та принцип Паулі розташовуються на максимальній кутовій відстані одна від одної на сфері навколо ядра.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Повне стеричне число S = n + m визначає базову геометрію електронних хмар: S = 2, лінійна (180^°, sp-гібридизація, наприклад CO₂), S = 3, тригонально-пласка (120^°, sp², BF₃), S = 4, тетраедрична (109.5^°, sp³, CH₄). Оскільки неподілена електронна пара E притягується лише одним ядром, її хмара займає більший кутовий об’єм: відштовхування спадає у ряду E–E &gt; E–X &gt; X–X. Тому в аміаку NH₃ (AX₃E₁) кут стискається до 107.3^°, а у воді H₂O (AX₂E₂), до 104.5^°.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Повне стеричне число S = n + m визначає базову геометрію електронних хмар: S = 2, лінійна (180°, sp-гібридизація, наприклад CO₂), S = 3, тригонально-пласка (120°, sp², BF₃), S = 4, тетраедрична (109.5°, sp³, CH₄). Оскільки неподілена електронна пара E притягується лише одним ядром, її хмара займає більший кутовий об’єм: відштовхування спадає у ряду E–E &gt; E–X &gt; X–X. Тому в аміаку NH₃ (AX₃E₁) кут стискається до 107.3°, а у воді H₂O (AX₂E₂), до 104.5°.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Електрична полярність молекули визначається векторною сумою дипольних моментів окремих зв’язків μ_сум = ∑ᵢ=1^n μᵢ. У симетричних молекулах без вільних пар (AX₂, AX₃, AX₄) вектори диполів взаємно компенсуються (|μ_сум| = 0, молекула неполярна), тоді як наявність неподілених пар E порушує центральну симетрію і створює значний власний дипольний момент (наприклад, μ(H₂O) = 1.85 Д).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Електрична полярність молекули визначається векторною сумою дипольних моментів окремих зв’язків μ_сум = ∑_i=1^n μ_i. У симетричних молекулах без вільних пар (AX₂, AX₃, AX₄) вектори диполів взаємно компенсуються (|μ_сум| = 0, молекула неполярна), тоді як наявність неподілених пар E порушує центральну симетрію і створює значний власний дипольний момент (наприклад, μ(H₂O) = 1.85 Д).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">За моделлю ГЕПВО (VSEPR) у CH₄, NH₃ та H₂O стеричне число центрального атома становить SN = 4 (sp³-гібридизація). Проте неподілена електронна пара (E) локалізована ближче до центрального ядра, ніж зв’язувальна пара (X), тому сильніше стискає валентні кути між хімічними зв’язками: 109.5° → 107.3° → 104.5°.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">У симетричному метані CH₄ (n=4, m=0) усі 4 електронні пари однакові, тому кут дорівнює 109.5°. Коли ж ми замінюємо атоми на неподілені електронні пари E (в NH₃ та H₂O), чи сильніше відштовхують сусідів об’ємні хмари вільних пар E, зменшуючи кут між зв’язками?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Тип молекули (1=BeCl₂, 2=BF₃, 3=CH₄, 4=NH₃, 5=H₂O)</strong>: 1 … 5, типове значення 3</li><li><strong>Між’ядерна довжина зв’язку d(A–X)</strong>: 1.1 … 2 Å, типове значення 1.5 Å</li><li><strong>Різниця електронегативностей Δχ</strong>: 0.4 … 1.8, типове значення 1</li><li><strong>Амплітуда валентно-деформаційних коливань</strong>: 0 … 1 ×, типове значення 0.3 ×</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
-            <div class="theory-analogy-body">Уяви, що ти зв’язав за хвостики 2, 3 або 4 надуті повітряні кульки: вони самі відштовхнуться одна від одної так, щоб зайняти максимально далекі кути у просторі (180^°, 120^° або тетраедр 109.5^°)! А неподілена електронна пара E, це ніби більша й ширша кулька, яка сильніше стискає сусідні зв’язки.</div>
+            <div class="theory-analogy-body">Уяви, що ти зв’язав за хвостики 2, 3 або 4 надуті повітряні кульки: вони самі відштовхнуться одна від одної так, щоб зайняти максимально далекі кути у просторі (180°, 120° або тетраедр 109.5°)! А неподілена електронна пара E, це ніби більша й ширша кулька, яка сильніше стискає сусідні зв’язки.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Стеричне число SN = N_σ + N_непод. пар ; θ(sp) = 180^°, θ(sp²) = 120^°, θ(sp³) = 109.47^°</code>
+            <code>Стеричне число SN = N_σ + N_непод. пар ; θ(sp) = 180°, θ(sp²) = 120°, θ(sp³) = 109.47°</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

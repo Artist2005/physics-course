@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">11 клас</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Кільця Ньютона, класичний приклад інтерференції світла «рівної товщини», що виникає при відбиванні монохроматичного пучка від тонкого повітряного клина між плоскою скляною пластиною та опуклою сферичною лінзою великого радіуса кривини R ≫ r. На відстані r від точки дотику товщина повітряного прошарку за теоремою Піфагора (R - d)² + r² = R² становить d(r) ≈ (r²)/(2R).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Кільця Ньютона, класичний приклад інтерференції світла «рівної товщини», що виникає при відбиванні монохроматичного пучка від тонкого повітряного клина між плоскою скляною пластиною та опуклою сферичною лінзою великого радіуса кривини R gg r. На відстані r від точки дотику товщина повітряного прошарку за теоремою Піфагора (R - d)² + r² = R² становить d(r) ≈ (r²)/(2R).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">У точці дотику лінзи і пластини (r = 0, d = 0) різниця ходу становить Δ = (λ)/(2) (протифаза!), тому в центрі кілець Ньютона у відбитому світлі завжди спостерігається темна пляма! Радіуси m-х темних кілець (Δ = (2m + 1)(λ)/(2)) дорівнюють r_темн,m = √(mλ R), а світлих кілець, r_світл,m = √((m - (1)/(2))λ R).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">У точці дотику лінзи і пластини (r = 0, d = 0) різниця ходу становить Δ = (λ)/(2) (протифаза!), тому в центрі кілець Ньютона у відбитому світлі завжди спостерігається темна пляма! Радіуси m-х темних кілець (Δ = (2m + 1)(λ)/(2)) дорівнюють r_темн,m = √(mλ R), а світлих кілець, r_світл,m = sqrt(m - tfrac12)λ R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Промінь 1 відбивається від межі «лінза → прошарок повітря» (від оптично менш густого середовища) без зміни фази. Промінь 2 відбивається від нижньої межі «повітря → скляна пластина» (від оптично густішого середовища) зі стрибком фази на π (втрата півхвилі λ/2). При d = 0 оптична різниця ходу дорівнює Δ = λ/2, що дає протифазне гасіння, центральну темну пляму.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">У самій точці дотику лінзи і пластинки товщина повітряного прошарку h = 0, але при відбиванні від оптично густішого скла хвиля втрачає півхвилі λ/2 (зсув фази π). Тому в центрі картини у відбитому світлі завжди темна пляма!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Довжина світлової хвилі λ</strong>: 420 … 680 нм, типове значення 550 нм</li><li><strong>Радіус кривизни лінзи R</strong>: 1 … 5 м, типове значення 2.5 м</li><li><strong>Показник заломлення прошарку n₀</strong>: 1 … 1.5, типове значення 1</li><li><strong>Порядок вимірюваного кільця m</strong>: 1 … 6, типове значення 3</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Бачив райдужні кільця на мильній бульбашці або тонкій плівці бензину на калюжі? Коли опукла лінза лежить на плоскому склі, між ними є тонесенький клин повітря. Промінь, відбитий від верхньої і нижньої межі цього прошарку, інтерферує сам із собою, малюючи концентричні кільця!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ = 2 d(r) n₀ + (λ)/(2), d(r) ≈ (r²)/(2R) ; rₘ^темн = √((mλ R)/(n₀)) (m = 0,1,2…), rₘ^світл = √(((m - (1)/(2))λ R)/(n₀))</code>
+            <code>Δ = 2 d(r) n₀ + (λ)/(2), d(r) ≈ (r²)/(2R) ; r_m^темн = √((mλ R)/(n₀)) (m = 0,1,2…), r_m^світл = sqrtfrac(m - (1)/(2))λ Rn₀</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

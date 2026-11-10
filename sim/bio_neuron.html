@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">When a stimulus depolarizes the membrane from rest (-70 mV) past threshold (≈ -55 mV), voltage-gated Na⁺ channels rapidly open (m-gates), driving an inward Na⁺ current that reverses membrane polarity to +35 mV (overshoot). Within sim 1 ms, Na⁺ channels inactivate (h-gates close, creating the absolute refractory period) and delayed-rectifier K⁺ channels open (n-gates), driving K⁺ efflux to repolarize the membrane.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">When a stimulus depolarizes the membrane from rest (-70 mV) past threshold (≈ -55 mV), voltage-gated Na⁺ channels rapidly open (m-gates), driving an inward Na⁺ current that reverses membrane polarity to +35 mV (overshoot). Within ∼ 1 ms, Na⁺ channels inactivate (h-gates close, creating the absolute refractory period) and delayed-rectifier K⁺ channels open (n-gates), driving K⁺ efflux to repolarize the membrane.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In unmyelinated axons, conduction is continuous and slow (v ∝ √(d)). In myelinated axons, insulating myelin sheaths lower membrane capacitance cₘ and increase transverse resistance rₘ, enlarging the electrotonic length constant λ = √(rₘ/rᵢ) so action potentials leap rapidly from node to node of Ranvier (saltatory conduction up to 100 m/s).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">In unmyelinated axons, conduction is continuous and slow (v ∝ √(d)). In myelinated axons, insulating myelin sheaths lower membrane capacitance c_m and increase transverse resistance r_m, enlarging the electrotonic length constant λ = √(r_m/r_i) so action potentials leap rapidly from node to node of Ranvier (saltatory conduction up to 100 m/s).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the Hodgkin–Huxley model, a suprathreshold stimulus (V_m &gt; -55 mV) triggers rapid opening of voltage-gated Na⁺ channels. Inward Na⁺ current drives V_m toward E_Na (+35 mV overshoot). Voltage-gated Na⁺ channels then inactivate (h-gate closes) while delayed-rectifier K⁺ channels open, allowing K⁺ efflux to repolarize and briefly hyperpolarize the membrane. Myelin wraps the internodal axon in a thick dielectric sheath that lowers capacitance c_m and raises transverse resistance r_m, increasing the electrotonic length constant λ = √(r_m/r_i) so local circuit currents rapidly trigger the next node of Ranvier (saltatory conduction).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Depolarization is driven by Na⁺ influx, repolarization by K⁺ efflux, and myelin enables rapid saltatory conduction between nodes of Ranvier.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Depolarizing stimulus ratio I_stim / I_threshold (≥1.0 fires spike)</strong>: 0.4 … 2.5 I_th, standard value 1.5 I_th</li><li><strong>Axon fiber type (1=Unmyelinated continuous, 2=Myelinated saltatory)</strong>: 1 … 2, standard value 2</li><li><strong>Axon cylinder diameter d_axon</strong>: 2 … 20 μm, standard value 10 μm</li><li><strong>Voltage-gated Na⁺ channel density at nodes of Ranvier</strong>: 0.6 … 1.8 rel., standard value 1.2 rel.</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">An unmyelinated axon burns slowly like a continuous fuse, whereas a myelinated axon is wrapped in insulation with small gaps (nodes of Ranvier) so the electrical spike leaps kangaroo-style from node to node (saltatory conduction) ten times faster!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Cₘ(dVₘ)/(dt) = Iₛtim - g_Nam³h(Vₘ - E_Na) - g_Kn⁴(Vₘ - E_K) - g_L(Vₘ - E_L)</code>
+            <code>C_m(dV_m)/(dt) = I_stim - g_Nam³h(V_m - E_Na) - g_Kn⁴(V_m - E_K) - g_L(V_m - E_L)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

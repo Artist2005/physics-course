@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -168,6 +173,18 @@
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Коли всі 20 нуклеотидів (особливо «seed»-регіон біля PAM) збігаються без помилок, активуються два нуклеазні домени: HNH розрізає цільовий ланцюг, а RuvC, нецільовий ланцюг за 3 п.н. від PAM, утворюючи дволанцюговий розрив (DSB). Клітина відновлює розрив або шляхом NHEJ (швидке зшивання з мікроінсерціями/делеціями для нокауту гена), або шляхом HDR (високоточне вбудовування нової послідовності з донорної ДНК-матриці).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Механізм дії системи CRISPR–Cas9 (Нобелівська премія 2020 р., Е. Шарпантьє та Дж. Даудна) відбувається у три етапи: 1) Сканування PAM: білок Cas9 ковзає вздовж геномної ДНК у пошуках короткого мотиву **PAM (Protospacer Adjacent Motif, для *SpCas9* це 5'-NGG-3'). Без PAM фермент не розплітає ДНК навіть за повної комплементарності РНК; 2) Утворення R-петлі: знайшовши PAM, Cas9 локально розплітає спіраль, і 20-нуклеотидний спейсер гідової sgRNA спарюється з цільовим ланцюгом ДНК за правилом Чаргаффа; 3) Дволанцюговий розріз (DSB) і репарація: домен HNH розрізає цільовий ланцюг, а домен RuvC, нецільовий ланцюг на відстані 3 п.н. від PAM. Далі клітина виправляє розрив або шляхом NHEJ (негомологічне з’єднання кінців для вимкнення гена, нокауту), або шляхом HDR** (гомологічно-спрямована репарація за донорною ДНК-матрицею для точної заміни мутації).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Білок Cas9 обов’язково розпізнає мотив PAM (5'-NGG-3') перед утворенням R-петлі sgRNA–ДНК, а за наявності донорної матриці клітина здійснює точну гомологічну репарацію (HDR).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кількість некомплементарних помилок між sgRNA та ДНК (0, ідеальний збіг 20/20)</strong>: 0 … 6 помилок, типове значення 0 помилок</li><li><strong>Наявність мотиву PAM 5′-NGG-3′ поруч із мішенню (1: є PAM, 0: мутація PAM)</strong>: 0 … 1 PAM, типове значення 1 PAM</li><li><strong>Доступність донорної ДНК-матриці для гомологічної репарації HDR</strong>: 0 … 100 %, типове значення 65 %</li><li><strong>Концентрація рибонуклеопротеїнового комплексу Cas9–sgRNA</strong>: 10 … 100 нМ, типове значення 50 нМ</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

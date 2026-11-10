@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The nucleophile attacks the electrophilic carbon from the backside (180^° opposite the leaving group) to overlap with the antibonding σ^*_C–X orbital. At the saddle point (ξ = 0.50), the system passes through a planar trigonal-bipyramidal pentacoordinate transition state [HO^δ-⋯CH₃⋯Br^δ-]^ddagger with no intermediate.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The nucleophile attacks the electrophilic carbon from the backside (180° opposite the leaving group) to overlap with the antibonding σ^*_C–X orbital. At the saddle point (ξ = 0.50), the system passes through a planar trigonal-bipyramidal pentacoordinate transition state [HO^δ-·sCH₃·sBr^δ-]^ddagger with no intermediate.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Departure of the leaving group flips the three substituents to the opposite side like an umbrella in a gale, resulting in 100% stereospecific Walden inversion of configuration ((R) → (S) at a chiral center).</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the concerted S_N2 mechanism (*Substitution Nucleophilic Bimolecular*), the rate law is second-order: v = k₂[R–X][Nu⁻]. The incoming nucleophile (HO⁻) approaches at 180° to the C–Br bond (backside attack) to maximize overlap with the empty σ^*_C–Br orbital and minimize steric/electrostatic repulsion. At the energy maximum (ξ = 0.50), the carbon atom is sp²-hybridized in a planar pentacoordinate transition state [HO^δ-·sCH₃·sBr^δ-]^ddagger. As Br⁻ departs, the three substituents invert their tetrahedral umbrella (Walden inversion, (R) → (S)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Backside attack at 180° proceeds through a planar pentacoordinate transition state [HO·sCH₃·sBr]^ddagger with 100% Walden inversion.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Reaction coordinate ξ (0=Reactants, 0.5=TS‡, 1=Products)</strong>: 0 … 1, standard value 0.5</li><li><strong>Substrate concentration [CH₃Br]</strong>: 0.25 … 2.5 mol/L, standard value 1 mol/L</li><li><strong>Nucleophile concentration [OH⁻]</strong>: 0.25 … 2.5 mol/L, standard value 1.5 mol/L</li><li><strong>Activation energy barrier E_a‡</strong>: 45 … 110 kJ/mol, standard value 75 kJ/mol</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Picture an umbrella flipping inside-out in a strong gust of wind! In an S_N2 reaction, HO⁻ attacks carbon from the backside (180^°), kicking out Br⁻ and inverting the three C–H bonds through a planar transition state (Walden inversion)!</div>
+            <div class="theory-analogy-body">Picture an umbrella flipping inside-out in a strong gust of wind! In an S_N2 reaction, HO⁻ attacks carbon from the backside (180°), kicking out Br⁻ and inverting the three C–H bonds through a planar transition state (Walden inversion)!</div>
           </div>
           <div class="theory-note-formula">
-            <code>v = k₂[mathrmR-X][Nu⁻], HO⁻ + CH₃Br → [HO^δ- ⋯ CH₃⋯ Br^δ-]^ddagger → HOCH₃ + Br⁻</code>
+            <code>v = k₂[R-X][Nu⁻], HO⁻ + CH₃Br → [HO^δ- ·s CH₃·s Br^δ-]^ddagger → HOCH₃ + Br⁻</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

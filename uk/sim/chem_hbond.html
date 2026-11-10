@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–10 клас · Водневий зв’язок</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Водневий зв’язок (O–H⋯O), це специфічна міжмолекулярна взаємодія між частково позитивно зарядженим атомом Гідрогену (δ⁺), ковалентно зв’язаним із сильно електронегативним атомом (O, N, F), та неподіленою електронною парою сусіднього електронегативного атома (δ⁻). У воді енергія водневого зв’язку становить E_HB ≈ 21 кДж/моль, що є проміжною величиною між слабкими силами Ван-дер-Ваальса (2–5 кДж/моль) та міцним ковалентним зв’язком O–H (463 кДж/моль).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Водневий зв’язок (O–H·sO), це специфічна міжмолекулярна взаємодія між частково позитивно зарядженим атомом Гідрогену (δ⁺), ковалентно зв’язаним із сильно електронегативним атомом (O, N, F), та неподіленою електронною парою сусіднього електронегативного атома (δ⁻). У воді енергія водневого зв’язку становить E_HB ≈ 21 кДж/моль, що є проміжною величиною між слабкими силами Ван-дер-Ваальса (2–5 кДж/моль) та міцним ковалентним зв’язком O–H (463 кДж/моль).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки кожна молекула H₂O має два донорні атоми H і дві акцепторні неподілені пари на атомі O (sp³-гібридизація), у кристалі звичайного гексагонального льоду Iₕ кожна молекула утворює рівно 4 спрямовані водневі зв’язки під тетраедричним кутом 109.5^°. Це формує ажурний тривимірний каркас із шестичленних кілець і широких порожнистих каналів, через що густина льоду (0.917 г/см³) є на 8.3% меншою за густину рідкої води.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки кожна молекула H₂O має два донорні атоми H і дві акцепторні неподілені пари на атомі O (sp³-гібридизація), у кристалі звичайного гексагонального льоду I_h кожна молекула утворює рівно 4 спрямовані водневі зв’язки під тетраедричним кутом 109.5°. Це формує ажурний тривимірний каркас із шестичленних кілець і широких порожнистих каналів, через що густина льоду (0.917 г/см³) є на 8.3% меншою за густину рідкої води.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Під час плавлення льоду при 0 ^°C розривається близько 15% водневих зв’язків, гексагональні порожнини частково заповнюються вільними молекулами H₂O, і густина зростає, досягаючи абсолютного максимуму ρₘax = 1.000 г/см³ при +4 ^°C. Завдяки цій аномалії водойми взимку замерзають зверху, зберігаючи життя у глибинних шарах води.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Під час плавлення льоду при 0 °C розривається близько 15% водневих зв’язків, гексагональні порожнини частково заповнюються вільними молекулами H₂O, і густина зростає, досягаючи абсолютного максимуму ρ_max = 1.000 г/см³ при +4 °C. Завдяки цій аномалії водойми взимку замерзають зверху, зберігаючи життя у глибинних шарах води.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Атом Оксигену в молекулі H₂O має два полярні ковалентні зв’язки O–H та дві неподілені електронні пари (sp³-гібридизація). У кристалі льоду I_h кожна молекула утворює рівно 4 спрямовані водневі зв’язки під кутом 109.5°, формуючи пухкі шестичленні канали з великим вільним об’ємом (ρ = 0.917 г/см³). Під час плавлення при 0 °C руйнується близько 15% водневих зв’язків, каркас частково осідає і густина води зростає до максимуму 1.000 г/см³ при +4 °C.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">У кристалі льоду I_h чотири спрямовані водневі зв’язки O–H·sO фіксують молекули у відкритому гексагональному каркасі з порожнинами (ρ = 0.917 г/см³); під час плавлення частина каркасу руйнується і густина води зростає до 1.000 г/см³ при +4 °C.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Температура середовища t (фазовий перехід при 0 °C)</strong>: -25 … 60 °C, типове значення -5 °C</li><li><strong>Енергія водневого зв’язку E_HB (O–H···O)</strong>: 10 … 30 кДж/моль, типове значення 21 кДж/моль</li><li><strong>Зовнішній тиск P (стиск гексагональних порожнин)</strong>: 0.1 … 200 МПа, типове значення 0.1 МПа</li><li><strong>Дипольний момент молекули води μ(H₂O)</strong>: 1 … 2.5 Д, типове значення 1.85 Д</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">У рідкій воді молекули H₂O рухаються мов люди в щільному натовпі, а під час замерзання в лід кожна молекула простягає чотири «прямі руки» (водневі зв’язки) до сусідів, утворюючи просторі шестикутні стільники з порожнечами всередині, тому лід легший за воду і не тоне!</div>
           </div>
           <div class="theory-note-formula">
-            <code>mathrmO-H^δ+⋯ :O^δ-: &amp; E_HB ≈ 21 кДж/моль, d(O⋯ O) ≈ 2.76 AA, КЧ(лід Iₕ) = 4 ; ρ(лід Iₕ, 0^°C) = 0.917 г/см³ &lt; ρₘax(вода, +4^°C) = 1.000 г/см³</code>
+            <code>O-H^δ+·s :O^δ-: E_HB ≈ 21 кДж/моль, d(O·s O) ≈ 2.76 AA, КЧ(лід I_h) = 4 ; ρ(лід I_h, 0°C) = 0.917 г/см³ &lt; ρ_max(вода, +4°C) = 1.000 г/см³</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

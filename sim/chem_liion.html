@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Lithium-Ion Batteries</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A rechargeable Lithium-Ion Battery stores energy via reversible intercalation (&quot;rocking-chair&quot; shuttle) of Li⁺ ions between two layered host crystals separated by a microporous separator in a non-aqueous organic electrolyte.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">A rechargeable Lithium-Ion Battery stores energy via reversible intercalation ("rocking-chair" shuttle) of Li⁺ ions between two layered host crystals separated by a microporous separator in a non-aqueous organic electrolyte.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The negative electrode consists of graphene sheets in graphite (LiₓC₆) (E^° ≈ -3.0 V), while the positive electrode is a layered transition-metal oxide such as Li₁-xCoO₂ (E^° ≈ +0.7 V), delivering a cell voltage of 3.6–4.2 V.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The negative electrode consists of graphene sheets in graphite (Li_xC₆) (E° ≈ -3.0 V), while the positive electrode is a layered transition-metal oxide such as Li_1-xCoO₂ (E° ≈ +0.7 V), delivering a cell voltage of 3.6–4.2 V.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">During discharge, Li⁺ ions de-intercalate from the graphite anode (LiₓC₆ → C₆ + xLi⁺ + xe⁻) and intercalate into the CoO₂ cathode while electrons power the external load; during charging, an external voltage reverses both ion and electron flows.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">During discharge, Li⁺ ions de-intercalate from the graphite anode (Li_xC₆ → C₆ + xLi⁺ + xe⁻) and intercalate into the CoO₂ cathode while electrons power the external load; during charging, an external voltage reverses both ion and electron flows.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">A Li-ion cell operates via topotactic intercalation of Li⁺ ions between two layered host lattices separated by a porous polymer separator in a non-aqueous electrolyte (LiPF₆ in EC/DMC): Anode (-): graphene sheets of graphite Li_xC₆ (E° ≈ -3.0 V); Cathode (+): layered cobalt oxide Li_1-xCoO₂ (E° ≈ +0.7 V). During discharge (mode=1), Li⁺ ions migrate from graphite through the separator into CoO₂ while electrons power the external load at U ≈ 3.6–4.2 V. During charging (mode=2), an external charger drives Li⁺ back into the graphite layers.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">During discharge, Li⁺ ions de-intercalate from the layered graphite anode (Li_xC₆) and intercalate into the Li_1-xCoO₂ cathode.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Operating mode (1 = Discharge to load, 2 = Charge)</strong>: 1 … 2, standard value 1</li><li><strong>State of Charge SoC (x in Li_xC₆)</strong>: 10 … 95 %, standard value 75 %</li><li><strong>C-rate current I</strong>: 0.5 … 4 C, standard value 1.5 C</li><li><strong>Cell temperature t</strong>: 0 … 50 °C, standard value 25 °C</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">A Li-ion battery works like two apartment buildings (layered graphite and CoO₂): charging checks Li⁺ guests into the graphite floors, and discharging shuttles them across the separator into CoO₂ while electrons power your phone at 3.7 V!</div>
           </div>
           <div class="theory-note-formula">
-            <code>LiₓC₆ + Li₁-xCoO₂ ⇄ C₆ + LiCoO₂, E_cell ≈ 3.7 V</code>
+            <code>Li_xC₆ + Li_1-xCoO₂ ⇄ C₆ + LiCoO₂, E_cell ≈ 3.7 V</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

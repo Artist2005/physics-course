@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Reversible chemical reactions proceed simultaneously in both forward and reverse directions. For the dinitrogen tetroxide / nitrogen dioxide system N₂O₄(g, colorless) ⇄ 2NO₂(g, brown) (Δ H^° = +57.2 kJ/mol), the law of mass action gives forward dissociation rate r_fwd = k₁[N₂O₄] and reverse dimerization rate rᵣev = k₂[NO₂]². Dynamic chemical equilibrium is reached when r_fwd = rᵣev &gt; 0: macroscopic concentrations remain constant while molecular interconversion continues unabated.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Reversible chemical reactions proceed simultaneously in both forward and reverse directions. For the dinitrogen tetroxide / nitrogen dioxide system N₂O₄(g, colorless) ⇄ 2NO₂(g, brown) (Δ H° = +57.2 kJ/mol), the law of mass action gives forward dissociation rate r_fwd = k₁[N₂O₄] and reverse dimerization rate r_rev = k₂[NO₂]². Dynamic chemical equilibrium is reached when r_fwd = r_rev &gt; 0: macroscopic concentrations remain constant while molecular interconversion continues unabated.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The ratio of rate constants defines the equilibrium constant K_c(T) = (k₁)/(k₂) = ([NO₂]²)/([N₂O₄]), whose temperature dependence follows the Van ’t Hoff equation: (dln K)/(dT) = (Δ H^°)/(RT²). Because dissociation of N₂O₄ is endothermic (Δ H^° &gt; 0), heating increases K_c(T) and shifts equilibrium toward brown paramagnetic NO₂ gas.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The ratio of rate constants defines the equilibrium constant K_c(T) = (k₁)/(k₂) = ([NO₂]²)/([N₂O₄]), whose temperature dependence follows the Van ’t Hoff equation: (dln K)/(dT) = (Δ H°)/(RT²). Because dissociation of N₂O₄ is endothermic (Δ H° &gt; 0), heating increases K_c(T) and shifts equilibrium toward brown paramagnetic NO₂ gas.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Le Chatelier’s principle states that when an equilibrium system is subjected to an external perturbation (change in T, P, or concentration), the system shifts in the direction that counteracts the perturbation. Since 1 mol of N₂O₄ gas produces 2 mol of NO₂ gas, increasing total pressure P shifts equilibrium to the left (toward fewer gas moles, lightening the mixture).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Le Chatelier’s principle, heating shifts the equilibrium in the endothermic direction (Δ H = +57.2 kJ/mol &gt; 0), increasing K_p(T) via the van ’t Hoff equation. Lowering total pressure P favors the side with more gas molecules (2NO₂), increasing the dissociation degree α = √((K_p)/(K_p + 4P)) and deepening the brown color.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Since N₂O₄ ⇄ 2NO₂ is endothermic (Δ H &gt; 0) and doubles the number of gas molecules (1 mol → 2 mol), what combination of temperature T and pressure P maximizes brown NO₂ yield?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Thermostat temperature T (273 K = ice, 373 K = boiling)</strong>: 260 … 390 K, standard value 315 K</li><li><strong>Total system pressure P</strong>: 0.25 … 4 atm, standard value 1 atm</li><li><strong>Initial N₂O₄ amount ν₀</strong>: 0.5 … 2 mol, standard value 1 mol</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Le Chatelier’s principle acts like a smart thermostat: heat the equilibrium mixture and it shifts toward the heat-absorbing endothermic reaction; compress the gas and it pairs molecules up (2NO₂ → N₂O₄) to relieve the pressure!</div>
           </div>
           <div class="theory-note-formula">
-            <code>N₂O₄ (colorless) &amp;⇄ 2 NO₂ (brown), Δ H^° = +57.2 kJ/mol ; Kₚ(T) = (P_NO₂²)/(P_N₂O₄) = (4α²)/(1 - α²) Pₜot</code>
+            <code>N₂O₄ (colorless) ⇄ 2 NO₂ (brown), Δ H° = +57.2 kJ/mol ; K_p(T) = fracP_NO₂²P_N₂O₄ = (4α²)/(1 - α²) P_tot</code>
           </div>
         </div>
       </div>
@@ -385,7 +402,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -411,6 +439,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

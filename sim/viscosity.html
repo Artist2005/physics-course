@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10 · Uni</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">When a rigid sphere of radius r and density ρₛ settles through a viscous fluid of density ρ_f at low Reynolds number (Re = (2ρ_f v r)/(η) ≪ 1), the flow remains smooth and laminar (creeping flow). Internal fluid friction arises from momentum diffusion across adjacent shearing fluid layers.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">When a rigid sphere of radius r and density ρ_s settles through a viscous fluid of density ρ_f at low Reynolds number (Re = (2ρ_f v r)/(η) ll 1), the flow remains smooth and laminar (creeping flow). Internal fluid friction arises from momentum diffusion across adjacent shearing fluid layers.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">By solving the linearized Navier–Stokes equations around a sphere, George Gabriel Stokes (1851) derived Stokes’ Law for viscous drag: F_d = -6π η r v, where η is the dynamic viscosity (in Pa·s). Vertical motion is governed by m(dv)/(dt) = (ρₛ - ρ_f)(4)/(3)π r³ g - 6π η r v.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">By solving the linearized Navier–Stokes equations around a sphere, George Gabriel Stokes (1851) derived Stokes’ Law for viscous drag: F_d = -6π η r v, where η is the dynamic viscosity (in Pa·s). Vertical motion is governed by m(dv)/(dt) = (ρ_s - ρ_f)(4)/(3)π r³ g - 6π η r v.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">As the sphere accelerates from rest, viscous drag F_d ∝ v grows until it exactly balances net gravity minus buoyancy (F_g = F_A + F_d). Acceleration then vanishes and the sphere descends at constant terminal velocity vₜerm = (2 r² g (ρₛ - ρ_f))/(9η), scaling as r². This relationship supports falling-sphere viscometry and Millikan’s oil-drop experiment.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">As the sphere accelerates from rest, viscous drag F_d ∝ v grows until it exactly balances net gravity minus buoyancy (F_g = F_A + F_d). Acceleration then vanishes and the sphere descends at constant terminal velocity v_term = (2 r² g (ρ_s - ρ_f))/(9η), scaling as r². This relationship supports falling-sphere viscometry and Millikan’s oil-drop experiment.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Three vertical forces act on the sphere: gravity F_g = (4)/(3)π r³ ρ_s g downward, buoyancy F_A = (4)/(3)π r³ ρ_f g upward, and Stokes viscous drag F_c = 6πη r v upward. At terminal velocity F_g - F_A = F_c, giving Stokes' formula: v_term = frac2 r² g (ρ_s - ρ_f)9η. Thus v_term scales as r²!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Once Stokes’ viscous drag F_S = 6πη r v balances net gravity minus buoyancy, what is the sphere’s acceleration a, and how does its velocity behave afterward?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Sphere radius r</strong>: 0.25 … 0.65 cm, standard value 0.42 cm</li><li><strong>Fluid dynamic viscosity η</strong>: 0.4 … 2.8 Pa·s, standard value 1.2 Pa·s</li><li><strong>Sphere density ρ_sphere</strong>: 1500 … 4000 kg/m³, standard value 2600 kg/m³</li><li><strong>Viscous fluid density ρ_fluid</strong>: 700 … 1250 kg/m³, standard value 950 kg/m³</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Drop a steel marble into a jar of thick honey: it accelerates only briefly and then glides down at a steady constant speed! Skydivers and raindrops reach this same terminal velocity when fluid drag balances gravity minus buoyancy.</div>
           </div>
           <div class="theory-note-formula">
-            <code>F_Stokes = 6π η r v, m(dv)/(dt) = mg - F_A - 6πη r v ; vₜerm = (2 r² g (ρₛphere - ρ_fluid))/(9η)</code>
+            <code>F_Stokes = 6π η r v, m(dv)/(dt) = mg - F_A - 6πη r v ; v_term = frac2 r² g (ρ_sphere - ρ_fluid)9η</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

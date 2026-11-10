@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Discovered by Michael Faraday in 1831, electromagnetic induction generates an electromotive force (induced EMF ℰᵢ) around a closed conducting loop whenever the magnetic flux Φ = ∫ B· dS threading the loop changes with time.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Discovered by Michael Faraday in 1831, electromagnetic induction generates an electromotive force (induced EMF ℰ_i) around a closed conducting loop whenever the magnetic flux Φ = ∫ B· dS threading the loop changes with time.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Faraday’s Law for an N-turn coil, ℰᵢ = -N(dΦ)/(dt), driving an induced current Iᵢ = (ℰᵢ)/(R) through resistance R. The minus sign encodes Lenz’s Law: the induced current always circulates in a direction whose own magnetic field Bᵢnd opposes the flux change ΔΦ that produced it.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">By Faraday’s Law for an N-turn coil, ℰ_i = -N(dΦ)/(dt), driving an induced current I_i = fracℰ_iR through resistance R. The minus sign encodes Lenz’s Law: the induced current always circulates in a direction whose own magnetic field B_ind opposes the flux change ΔΦ that produced it.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Thus, plunging a magnet toward the coil ((dΦ)/(dt) &gt; 0) induces a repulsive pole that brakes the magnet; pulling it away ((dΦ)/(dt) &lt; 0) induces an attractive pole; and holding the magnet stationary inside ((dΦ)/(dt) = 0) yields zero current. Mechanical work done against Lenz’s braking force converts directly into Joule electrical power P = Iᵢ² R.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Thus, plunging a magnet toward the coil ((dΦ)/(dt) &gt; 0) induces a repulsive pole that brakes the magnet; pulling it away ((dΦ)/(dt) &lt; 0) induces an attractive pole; and holding the magnet stationary inside ((dΦ)/(dt) = 0) yields zero current. Mechanical work done against Lenz’s braking force converts directly into Joule electrical power P = I_i² R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Faraday's law, an induced current arises only when the magnetic flux Φ_B through the coil turns changes over time (dΦ_B/dt ≠ 0). Higher magnet oscillation frequency ω and turn count N produce a larger induced EMF ℰ_i. The minus sign expresses Lenz's rule: the induced current generates its own magnetic field B_ind that repels the approaching magnet and attracts the receding magnet.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Lenz’s law, the induced current opposes the motion that causes it (braking the magnet), and the EMF scales with the rate of flux change |dΦ/dt|.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Coil turn count N</strong>: 4 … 20, standard value 12</li><li><strong>Magnet field B₀</strong>: 0.6 … 2.5 T, standard value 1.6 T</li><li><strong>Magnet oscillation freq. ω</strong>: 0.8 … 4 rad/s, standard value 2.2 rad/s</li><li><strong>Circuit resistance R</strong>: 1 … 5 Ω, standard value 2 Ω</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">A bicycle dynamo, wireless phone charger, and power-plant turbines: moving a magnet through a coil creates electric current! Stop the magnet and the current vanishes instantly, only a changing magnetic flux induces voltage.</div>
           </div>
           <div class="theory-note-formula">
-            <code>ℰᵢ = -N (dΦ_B)/(dt), Φ_B = B S cos θ ; Iᵢ = (ℰᵢ)/(R), F_brake sim (N² B² S² v)/(R)</code>
+            <code>ℰ_i = -N (dΦ_B)/(dt), Φ_B = B S cosθ ; I_i = fracℰ_iR, F_brake ∼ (N² B² S² v)/(R)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

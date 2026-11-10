@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Archimedes’ principle, the buoyant force equals the weight of the displaced fluid: F_A = ρ_fluid g Vₛub. Vertical motion of a body of total volume V and density ρ_body is governed by the interplay between weight mg = ρ_body g V, buoyancy F_A, and fluid drag.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">By Archimedes’ principle, the buoyant force equals the weight of the displaced fluid: F_A = ρ_fluid g V_sub. Vertical motion of a body of total volume V and density ρ_body is governed by the interplay between weight mg = ρ_body g V, buoyancy F_A, and fluid drag.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Three regimes emerge from the density ratio: 1) if ρ_body ρ_fluid, it sinks to the bottom with apparent weight Wₐpp = (ρ_body - ρ_fluid)gV.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Three regimes emerge from the density ratio: 1) if ρ_body ρ_fluid, it sinks to the bottom with apparent weight W_app = (ρ_body - ρ_fluid)gV.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In static equilibrium of a floating body, gravity is balanced by the Archimedes buoyant force: ρ_body g V₀ = ρ_fluid g V_sub. Hence the submerged fraction is V_sub/V₀ = ρ_body/ρ_fluid = 600/1000 = 0.6 (60%). If ρ_body &gt; ρ_fluid, the body sinks.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Compare the body density ρ_body with the fluid density ρ_fluid: when does Archimedes’ buoyant force F_A balance gravity mg?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Body density ρ_body</strong>: 200 … 1800 kg/m³, standard value 600 kg/m³</li><li><strong>Fluid density ρ_fluid</strong>: 700 … 2000 kg/m³, standard value 1000 kg/m³</li><li><strong>Cube side length a</strong>: 0.8 … 1.6 m, standard value 1 m</li><li><strong>Fluid viscosity η</strong>: 0.1 … 1.2 Pa·s, standard value 0.35 Pa·s</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Why does a massive steel ship or cork float while a small pebble sinks? Water pushes harder on the bottom of an object than on the top, buoying it upward with a force equal to the weight of the displaced water!</div>
           </div>
           <div class="theory-note-formula">
-            <code>F_A = ρ_fluid g Vₛub, F_g = ρ_body g V₀ ; (Vₛub)/(V₀) = (ρ_body)/(ρ_fluid) (for ρ_body ≤ ρ_fluid)</code>
+            <code>F_A = ρ_fluid g V_sub, F_g = ρ_body g V₀ ; fracV_subV₀ = fracρ_bodyρ_fluid (for ρ_body ≤ ρ_fluid)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

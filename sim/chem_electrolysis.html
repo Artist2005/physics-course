@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">During electrolysis of aqueous CuSO₄ with inert graphite or platinum electrodes, Cu²⁺ ions are preferentially reduced at the cathode (E^° = +0.34 V): Cu²⁺ + 2e⁻ → Cu⁰↓. At the inert anode, oxygenated SO₄²⁻ anions resist oxidation, so water molecules are oxidized instead, evolving oxygen gas bubbles: 2H₂O - 4e⁻ → O₂↑ + 4H⁺.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">During electrolysis of aqueous CuSO₄ with inert graphite or platinum electrodes, Cu²⁺ ions are preferentially reduced at the cathode (E° = +0.34 V): Cu²⁺ + 2e⁻ → Cu⁰downarrow. At the inert anode, oxygenated SO₄²⁻ anions resist oxidation, so water molecules are oxidized instead, evolving oxygen gas bubbles: 2H₂O - 4e⁻ → O₂uparrow + 4H⁺.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Quantitative electrode yields obey Faraday’s combined law of electrolysis: m = (M· I· t)/(z· F), where Q = I· t is total passed charge, z is the electron stoichiometry per ion, and F = e N_A ≈ 96 485 C/mol is Faraday’s constant (the charge of one mole of electrons).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Faraday’s combined law of electrolysis, passing 1 F = 96 485 C of charge deposits exactly 1 mol of equivalents (ν = (I t)/(z F)). For aqueous CuSO₄ (z = 2), metallic copper plates onto the cathode while water oxidizes at the inert anode to evolve oxygen gas O₂uparrow (z = 4).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Faraday’s law of electrolysis m = (M · I · t)/(z · F), how does the mass of copper deposited on the cathode scale when current I or time t is doubled?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Direct electrolysis current I</strong>: 1 … 10 A, standard value 5 A</li><li><strong>Electrolysis duration t</strong>: 5 … 30 min, standard value 15 min</li><li><strong>Cation charge number z (1=Ag⁺, 2=Cu²⁺, 3=Au³⁺)</strong>: 1 … 3, standard value 2</li><li><strong>DC power supply voltage U</strong>: 2 … 8 V, standard value 4.5 V</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">While a battery generates current from a spontaneous reaction, electrolysis uses an external power supply to drive a reaction in reverse, plating dissolved blue Cu²⁺ ions as shiny metallic copper onto the cathode! This is how jewelry is gold-plated and industrial copper is refined.</div>
           </div>
           <div class="theory-note-formula">
-            <code>m = kₑ I t = (M)/(z F) I t, F = e N_A ≈ 96 485 C/mol ; Cathode (-): Cu²⁺ + 2e⁻ → Cu⁰, &amp; Anode (+): 2H₂O - 4e⁻ → O₂ ↑ + 4H⁺</code>
+            <code>m = k_e I t = (M)/(z F) I t, F = e N_A ≈ 96 485 C/mol ; Cathode (-): Cu^2+ + 2e⁻ → Cu⁰, Anode (+): 2H₂O - 4e⁻ → O₂ uparrow + 4H⁺</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

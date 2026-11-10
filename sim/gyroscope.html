@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10–11 · Uni</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">When an axisymmetric rigid body of mass m and radius R rolls without slipping (v = ω R) down an incline, König’s theorem states that its total kinetic energy is the sum of translational kinetic energy Eₜrans = (1)/(2)mv² and rotational kinetic energy Eᵣot = (1)/(2)Iω².</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">When an axisymmetric rigid body of mass m and radius R rolls without slipping (v = ω R) down an incline, König’s theorem states that its total kinetic energy is the sum of translational kinetic energy E_trans = (1)/(2)mv² and rotational kinetic energy E_rot = (1)/(2)Iω².</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Expressing the moment of inertia via the dimensionless shape factor β = (I)/(mR²) (β = 0.4 for a solid sphere, β = 0.5 for a solid cylinder/disk, β = 1.0 for a thin hoop) gives Eₖ = (1)/(2)mv²(1 + β). Conservation of energy mgh = (1)/(2)mv²(1 + β) yields the linear downhill acceleration a = (gsin α)/(1 + β).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Expressing the moment of inertia via the dimensionless shape factor β = (I)/(mR²) (β = 0.4 for a solid sphere, β = 0.5 for a solid cylinder/disk, β = 1.0 for a thin hoop) gives E_k = (1)/(2)mv²(1 + β). Conservation of energy mgh = (1)/(2)mv²(1 + β) yields the linear downhill acceleration a = (gsinα)/(1 + β).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Remarkably, the rolling acceleration a is completely independent of total mass m and radius R, depending only on the mass distribution factor β! Because a thin hoop (β = 1.0) diverts 50% of its energy into rotation whereas a solid disk (β = 0.5) diverts only 33.3%, the solid disk or sphere always beats the hoop to the bottom.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By conservation of energy mgh = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)mv²(1 + β), where β = I/(mR²). The linear acceleration down the slope is a = (gsinα)/(1 + β). Since a solid cylinder has β = 0.5 (a = (2)/(3)gsinα) while a thin hoop has β = 1.0 (a = (1)/(2)gsinα), the solid disk always beats the hoop regardless of mass or radius!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Compare the rotational inertia factor β = I/(mR²): is it smaller for a solid sphere (0.4) or a hoop (1.0), and which one gets the higher linear acceleration a = (gsinα)/(1+β)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Inertia factor β = I/(mR²)</strong>: 0.2 … 1, standard value 0.5</li><li><strong>Incline angle α</strong>: 14 … 40 °, standard value 26 °</li><li><strong>Rolling body radius R</strong>: 0.45 … 0.9 m, standard value 0.65 m</li><li><strong>Body mass m</strong>: 1 … 4 kg, standard value 2 kg</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Race a solid marble against a hollow ring (like a roll of tape) down a ramp! The solid sphere always wins regardless of weight because the ring’s mass sits far out on the rim, taking more energy just to spin up.</div>
           </div>
           <div class="theory-note-formula">
-            <code>I = β m R², Eₖ = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) ; a = (gsin α)/(1 + β), βₛphere = 0.4, β_cyl = 0.5, βₕoop = 1.0</code>
+            <code>I = β m R², E_k = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) ; a = (gsinα)/(1 + β), β_sphere = 0.4, β_cyl = 0.5, β_hoop = 1.0</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

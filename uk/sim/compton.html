@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Комптон розрахував процес як пружне релятивістське зіткнення корпускули-фотона з енергією E₀ = (hc)/(λ₀) та імпульсом p₀ = (h)/(λ₀) із майже вільним нерухомим електроном (енергія спокою mₑ c² ≈ 511 кеВ). Із релятивістських законів збереження енергії E₀ + mₑ c² = E' + √(pₑ² c² + mₑ² c⁴) та векторного імпульсу p₀ = p' + pₑ випливає знаменита формула Комптона: Δλ = λ' - λ₀ = λ_C (1 - cos θ).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Комптон розрахував процес як пружне релятивістське зіткнення корпускули-фотона з енергією E₀ = (hc)/(λ₀) та імпульсом p₀ = (h)/(λ₀) із майже вільним нерухомим електроном (енергія спокою m_e c² ≈ 511 кеВ). Із релятивістських законів збереження енергії E₀ + m_e c² = E' + √(p_e² c² + m_e² c⁴) та векторного імпульсу p₀ = p' + p_e випливає знаменита формула Комптона: Δλ = λ' - λ₀ = λ_C (1 - cosθ).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Фундаментальна константа λ_C = (h)/(mₑ c) ≈ 2.426 пм (2.426× 10⁻¹² м) називається комптонівською довжиною хвилі електрона. При розсіянні назад (θ = 180^°, cos θ = -1) фотон передає електрону віддачі максимальну частку своєї енергії, а його довжина хвилі зростає на подвійну комптонівську величину Δλₘax = 2λ_C ≈ 4.85 пм. Дослід Комптона став вирішальним доказом того, що фотон переносить не лише квант енергії hν, а й реальний механічний імпульс p = ℏk.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Фундаментальна константа λ_C = (h)/(m_e c) ≈ 2.426 пм (2.426× 10⁻¹² м) називається комптонівською довжиною хвилі електрона. При розсіянні назад (θ = 180°, cosθ = -1) фотон передає електрону віддачі максимальну частку своєї енергії, а його довжина хвилі зростає на подвійну комптонівську величину Δλ_max = 2λ_C ≈ 4.85 пм. Дослід Комптона став вирішальним доказом того, що фотон переносить не лише квант енергії hν, а й реальний механічний імпульс p = ℏk.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки Δλ = λ_C(1 - cosθ), де λ_C = (h)/(m_e c) = 2.426 пм, функція 1 - cosθ набуває найбільшого значення 2 при лобовому відбитті фотона назад (θ = 180°). При цьому електрон отримує максимальну кінетичну енергію віддачі.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За формулою Комптона Δλ = λ' - λ₀ = λ_C(1 - cosθ): при якому куті розсіювання θ збільшення довжини хвилі фотона та енергія електрона віддачі є максимальними?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Початкова довжина хвилі рентгену λ₀</strong>: 2 … 12 пм, типове значення 5 пм</li><li><strong>Кут розсіяння фотона θ</strong>: 15 … 180 °, типове значення 90 °</li><li><strong>Частота зіткнень у мішені</strong>: 0.8 … 2.4 Гц, типове значення 1.4 Гц</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Квантовий більярд! Коли високоенергетичний рентгенівський фотон налітає на електрон, він штовхає його точнісінько як пружна більярдна куля. Віддавши частину своєї енергії електрону віддачі, відскочений фотон втрачає частоту, тобто його довжина хвилі λ' стає більшою!</div>
           </div>
           <div class="theory-note-formula">
-            <code>p_γ = p_γ' + pₑ, hν + mₑ c² = hν' + Eₑ ; Δλ = λ' - λ₀ = λ_C (1 - cos θ), λ_C = (h)/(mₑ c) ≈ 2.43 пм</code>
+            <code>p_γ = p_γ' + p_e, hν + m_e c² = hν' + E_e ; Δλ = λ' - λ₀ = λ_C (1 - cosθ), λ_C = (h)/(m_e c) ≈ 2.43 пм</code>
           </div>
         </div>
       </div>
@@ -385,7 +402,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -411,6 +439,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

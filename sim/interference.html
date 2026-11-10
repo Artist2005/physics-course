@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">At position x on a screen at distance L ≫ d, the two waves arrive with path difference Δ = r₂ - r₁ = dsin θ ≈ d(x)/(L) and phase difference Δφ = (2π)/(λ)Δ. Superposition redistributes energy into fringes of intensity I(x) = 4I₀ cos ² ≤ft((π d · x)/(λ L) ): constructive maxima (Δ = mλ) reach 4I₀, while destructive minima (Δ = (m + (1)/(2))λ) cancel to zero (I = 0).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">At position x on a screen at distance L gg d, the two waves arrive with path difference Δ = r₂ - r₁ = dsinθ ≈ d(x)/(L) and phase difference Δφ = (2π)/(λ)Δ. Superposition redistributes energy into fringes of intensity I(x) = 4I₀ cos² ≤ft((π d · x)/(λ L)): constructive maxima (Δ = mλ) reach 4I₀, while destructive minima (Δ = (m + tfrac12)λ) cancel to zero (I = 0).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">The fringe spacing between adjacent bright bands is Δ x = (λ L)/(d). Increasing wavelength λ (shifting from violet toward red light) widens the interference fringes, whereas increasing slit separation d packs the fringes closer together.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">When the path difference equals an odd number of half-wavelengths Δ d = (m + (1)/(2))λ, the phase difference is Δφ = π, 3π, … At this point, the crest of the wavefront from the first slit overlaps the trough from the second slit, resulting in destructive interference (I = 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Check Young’s fringe-spacing formula Δ y = (λ L)/(d): is slit separation d in the numerator or the denominator?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Light wavelength λ</strong>: 400 … 700 nm, standard value 520 nm</li><li><strong>Slit separation d</strong>: 1 … 3.6 mm, standard value 2.2 mm</li><li><strong>Distance to screen L</strong>: 4.5 … 7.5 m, standard value 6 m</li><li><strong>Observation point on screen z</strong>: -3.2 … 3.2 mm, standard value 0.8 mm</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Two pebbles dropped side by side in a pond create overlapping ripples: where crest meets crest, waves double up; where crest meets trough, they cancel out! With light, this creates bright and dark stripes on a screen.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ d = |r₂ - r₁| ≈ (d· z)/(L), Δφ = (2π)/(λ)Δ d ; I(z) = 4 I₀ cos ² ≤ft((π d z)/(λ L) ), Δ z_fr = (λ L)/(d)</code>
+            <code>Δ d = |r₂ - r₁| ≈ (d· z)/(L), Δφ = (2π)/(λ)Δ d ; I(z) = 4 I₀ cos² ≤ft((π d z)/(λ L)), Δ z_fr = (λ L)/(d)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

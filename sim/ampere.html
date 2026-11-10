@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -169,12 +174,24 @@
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Evaluating the double cross product I₂ × (I₁ × r₁₂) proves that parallel currents in the same direction attract, whereas antiparallel currents repel! Historically, this exact configuration defined the SI base unit of electric current, the Ampere (2× 10⁻⁷ N/m at d = 1 m).</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">By the Biot–Savart Law, current I₁ creates a circular magnetic field B₁ = (μ₀ I₁)/(2π d) at the location of the second conductor. Current I₂ in this field experiences the Ampère force F₁₂ = I₂[l×B₁] of magnitude (F)/(l) = (μ₀ I₁ I₂)/(2π d). By the right-hand and left-hand rules, parallel currents (uparrowuparrow) attract, whereas antiparallel currents (uparrowdownarrow) repel. Doubling both I₁ and I₂ multiplies the product I₁ I₂, and thus the force, by 4!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Ampère’s force law F = (μ₀ I₁ I₂ L)/(2π d): do parallel wires attract or repel when their currents flow in the same direction?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Left busbar current I₁</strong>: 5 … 30 A, standard value 15 A</li><li><strong>Right busbar current I₂</strong>: 5 … 30 A, standard value 15 A</li><li><strong>Conductor separation d</strong>: 1.2 … 3.4 cm, standard value 2 cm</li><li><strong>Mode (+1 parallel ↑↑, −1 antiparallel ↑↓)</strong>: -1 … 1, standard value 1</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">Two current-carrying wires act like magnets without a single piece of iron! When currents flow in the same direction, the wires pull together; when currents flow in opposite directions, they push apart.</div>
           </div>
           <div class="theory-note-formula">
-            <code>B₁(d) = (μ₀ I₁)/(2π d), F₁₂ = I₂≤ft[l×B₁ ] ; (F)/(l) = (μ₀ I₁ I₂)/(2π d), (μ₀)/(2π) = 2× 10⁻⁷ N/A²</code>
+            <code>B₁(d) = (μ₀ I₁)/(2π d), F₁₂ = I₂≤ft[l×B₁] ; (F)/(l) = (μ₀ I₁ I₂)/(2π d), (μ₀)/(2π) = 2× 10⁻⁷ N/A²</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

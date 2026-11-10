@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -169,12 +174,24 @@
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">The rRNA ribozyme of the large subunit’s peptidyl transferase center catalyzes peptide bond formation (–CO–NH–), transferring the polypeptide onto the A-site residue. Elongation factor EF-G then hydrolyzes GTP to translocate the ribosome by exactly one codon (3 nt) along mRNA in the 5' → 3' direction, consuming ≈ 4 high-energy phosphate equivalents per amino acid.</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">The genetic code is triplet and non-overlapping: every 3 consecutive mRNA nucleotides specify one amino acid (starting with AUG for methionine). Translation termination is triggered by a stop codon (UAA, UAG, UGA) recognized by release factors (RF) rather than a tRNA. Thus, a polypeptide of N_aa residues requires N_nt = 3 N_aa + 3 coding nucleotides (303 nt for 100 aa). Incorporating each residue consumes 2 high-energy bonds during aminoacyl-tRNA charging (ATP → AMP + PP_i) plus 2 GTP molecules on the ribosome (EF-Tu and EF-G), totaling 4 N_aa = 400 ATP/GTP equivalents.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Encoding N_aa amino acids plus one stop codon requires 3N_aa+3 nucleotides (303 nt for 100 aa) and ≈ 4N_aa = 400 ATP/GTP equivalents.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Ribosome translocation speed v_rib (codons/s)</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Target polypeptide chain length N_aa</strong>: 20 … 200 aa, standard value 100 aa</li><li><strong>Mg²⁺ concentration (40S+60S / 30S+50S subunit stabilization)</strong>: 0.5 … 5 mM, standard value 2.5 mM</li><li><strong>Codon state in A-site (1=Wild-type UUC-Phe, 2=Silent UUU, 3=Missense UAC-Tyr)</strong>: 1 … 3, standard value 1</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">The ribosome is a molecular 3D printer reading an mRNA tape three letters at a time (a triplet codon). tRNA couriers match their anticodon to each triplet and add an amino acid until the ribosome hits a STOP codon (UAA, UAG, UGA), which adds no amino acid and releases the finished protein!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Nₙt, mRNA = 3 Nₐa + 3ₛtop, Eₜransl ≈ 4 Nₐa ATP/GTP eq., Mₚrotein ≈ 110 Nₐa Da</code>
+            <code>N_nt, mRNA = 3 N_aa + 3_stop, E_transl ≈ 4 N_aa ATP/GTP eq., M_protein ≈ 110 N_aa Da</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

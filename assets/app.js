@@ -38836,13 +38836,42 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         </div>
       ` : '';
 
+      const derivationTxt = (cfg && cfg.explanation) ? cfg.explanation : '';
+      const derivationHtml = derivationTxt ? `
+        <div class="theory-note-block">
+          <div class="theory-note-subtitle">${langKey === 'uk' ? 'Теоретичне виведення та аналіз закону' : 'Theoretical derivation and analysis'}</div>
+          <div class="theory-note-body">${formatStructuredProse(derivationTxt)}</div>
+        </div>
+      ` : '';
+
+      const hintTxt = langKey === 'uk' ? (meta.hintUk || '') : (meta.hintEn || '');
+      const hintHtml = hintTxt ? `
+        <div class="theory-note-block">
+          <div class="theory-note-subtitle">${langKey === 'uk' ? 'Методична вказівка до розрахунку' : 'Methodological calculation guide'}</div>
+          <div class="theory-note-body"><p class="theory-note-para">${formatTextbookProse(hintTxt)}</p></div>
+        </div>
+      ` : '';
+
+      const slidersList = (cfg && Array.isArray(cfg.sliders)) ? cfg.sliders : [];
+      const paramsRefHtml = slidersList.length > 0 ? `
+        <div class="theory-note-block">
+          <div class="theory-note-subtitle">${langKey === 'uk' ? 'Фізичні параметри установки та одиниці СІ' : 'Experimental parameters and SI units'}</div>
+          <ul class="theory-params-list">${slidersList.map(s => {
+            const defV = (cfg.defaults && cfg.defaults[s.key] !== undefined) ? cfg.defaults[s.key] : s.min;
+            const unitSuffix = s.unit ? ' ' + s.unit : '';
+            const defLabel = langKey === 'uk' ? 'типове значення' : 'standard value';
+            return `<li><strong>${formatTextbookProse(s.label)}</strong>: ${s.min} … ${s.max}${unitSuffix}, ${defLabel} ${defV}${unitSuffix}</li>`;
+          }).join('')}</ul>
+        </div>
+      ` : '';
+
       const formulaHtml = (cfg && cfg.referenceLatex) ? `
         <div class="theory-note-formula">
           ${renderStackedMath(cfg.referenceLatex)}
         </div>
       ` : '';
 
-      return gradeHtml + notesHtml + analogyHtml + formulaHtml;
+      return gradeHtml + notesHtml + derivationHtml + hintHtml + paramsRefHtml + analogyHtml + formulaHtml;
     }
 
     function shareCurrentExperimentState() {
@@ -39767,6 +39796,93 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         syncEduProgressUI();
       }
 
+      const rootHrefPrefix = window.location.protocol.startsWith('http')
+        ? '/'
+        : (/(?:^|\/)uk\/sim\//i.test(window.location.pathname) ? '../../' : (/(?:^|\/)(?:sim|uk)\//i.test(window.location.pathname) ? '../' : ''));
+
+      if (headerRight && !document.getElementById('header-legal-links')) {
+        const hdrLinks = document.createElement('nav');
+        hdrLinks.id = 'header-legal-links';
+        hdrLinks.className = 'header-legal-links';
+        hdrLinks.setAttribute('aria-label', 'Site information');
+        hdrLinks.innerHTML = `
+          <a id="ui-hdr-about" href="${rootHrefPrefix}about.html">${uiState.lang === 'uk' ? 'Про проєкт' : 'About'}</a>
+          <span aria-hidden="true">·</span>
+          <a id="ui-hdr-privacy" href="${rootHrefPrefix}privacy.html">${uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy'}</a>
+        `;
+        if (langSwitcher) {
+          headerRight.insertBefore(hdrLinks, langSwitcher);
+        } else {
+          headerRight.appendChild(hdrLinks);
+        }
+      }
+
+      if (rightPage && !document.getElementById('platform-editorial-guide')) {
+        const guideCard = document.createElement('section');
+        guideCard.id = 'platform-editorial-guide';
+        guideCard.className = 'platform-editorial-guide';
+        guideCard.innerHTML = `
+          <h2 id="ui-editorial-title">${uiState.lang === 'uk' ? 'Про відкритий 3D-практикум природничих наук' : 'About the Open-Access 3D Science Laboratory'}</h2>
+          <p id="ui-editorial-p1">${uiState.lang === 'uk'
+            ? 'Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.'
+            : 'The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.'}</p>
+          <p id="ui-editorial-p2">${uiState.lang === 'uk'
+            ? 'Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.'
+            : 'Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.'}</p>
+          <div class="platform-editorial-links">
+            <a id="ui-editorial-about" href="${rootHrefPrefix}about.html">${t.footerAbout}</a>
+            <span aria-hidden="true">·</span>
+            <a id="ui-editorial-privacy" href="${rootHrefPrefix}privacy.html">${t.footerPrivacy}</a>
+            <span aria-hidden="true">·</span>
+            <a id="ui-editorial-terms" href="${rootHrefPrefix}terms.html">${t.footerTerms}</a>
+          </div>
+        `;
+        const catDetails = document.getElementById('curriculum-catalog-details');
+        if (catDetails && catDetails.parentElement === rightPage) {
+          rightPage.insertBefore(guideCard, catDetails);
+        } else {
+          rightPage.appendChild(guideCard);
+        }
+      }
+
+      if (!document.getElementById('cookie-consent-banner')) {
+        let savedConsent = null;
+        try { savedConsent = localStorage.getItem('sheua_cookie_consent'); } catch (e) {}
+        if (savedConsent === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        if (!savedConsent && !window.googlefc) {
+          const banner = document.createElement('aside');
+          banner.id = 'cookie-consent-banner';
+          banner.className = 'cookie-consent-banner';
+          banner.setAttribute('role', 'region');
+          banner.setAttribute('aria-label', 'Cookie and privacy notice');
+          banner.innerHTML = `
+            <div id="ui-cookie-consent-text" class="cookie-consent-text">
+              ${uiState.lang === 'uk'
+                ? `Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="${rootHrefPrefix}privacy.html">Політики конфіденційності</a>.`
+                : `This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="${rootHrefPrefix}privacy.html">Privacy Policy</a>.`}
+            </div>
+            <div class="cookie-consent-actions">
+              <button type="button" id="btn-cookie-essential" class="btn-cookie-essential">${uiState.lang === 'uk' ? 'Лише необхідні' : 'Essential only'}</button>
+              <button type="button" id="btn-cookie-accept" class="btn-cookie-accept">${uiState.lang === 'uk' ? 'Прийняти' : 'Accept'}</button>
+            </div>
+          `;
+          document.body.appendChild(banner);
+          banner.querySelector('#btn-cookie-accept')?.addEventListener('click', () => {
+            try { localStorage.setItem('sheua_cookie_consent', 'accepted'); } catch (e) {}
+            banner.classList.add('hidden');
+          });
+          banner.querySelector('#btn-cookie-essential')?.addEventListener('click', () => {
+            try { localStorage.setItem('sheua_cookie_consent', 'essential'); } catch (e) {}
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.requestNonPersonalizedAds = 1;
+            banner.classList.add('hidden');
+          });
+        }
+      }
+
       // 11. Адаптивний мобільний слот: перенесення повзунків, калькулятора формул та рекламного слота у видиму зону на телефонах (<= 820px)
       syncMobileLayoutSlot();
     }
@@ -39782,6 +39898,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const eqSec = document.getElementById('journal-sec-equations') || (refBox ? refBox.closest('.journal-section') : null);
       const paramSec = document.getElementById('journal-sec-params') || (slidersBox ? slidersBox.closest('.journal-section') : null);
       const adRight = document.getElementById('ad-slot-right');
+      const rightIns = adRight ? adRight.querySelector('ins.adsbygoogle') : null;
+      const adAlreadyInitialized = Boolean(rightIns && rightIns.getAttribute('data-adsbygoogle-status'));
       if (eqSec && !eqSec.id) eqSec.id = 'journal-sec-equations';
       if (paramSec && !paramSec.id) paramSec.id = 'journal-sec-params';
       if (!eqSec || !paramSec) return;
@@ -39802,7 +39920,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (eqSec.parentElement !== mobileSlot) {
           mobileSlot.appendChild(eqSec);
         }
-        if (adRight && adRight.parentElement !== mobileSlot) {
+        if (adRight && !adAlreadyInitialized && adRight.parentElement !== mobileSlot) {
           mobileSlot.appendChild(adRight);
         }
       } else {
@@ -39812,7 +39930,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (eqSec.parentElement !== rightPage) {
           rightPage.insertBefore(eqSec, rightPage.firstChild);
         }
-        if (adRight && adRight.parentElement !== rightPage) {
+        if (adRight && !adAlreadyInitialized && adRight.parentElement !== rightPage) {
           if (typeof paramSec.insertAdjacentElement === 'function') {
             paramSec.insertAdjacentElement('afterend', adRight);
           } else {
@@ -39965,6 +40083,29 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-footer-privacy', t.footerPrivacy);
       setTxt('ui-footer-terms', t.footerTerms);
       setTxt('ui-footer-copy', t.footerCopy);
+      setTxt('ui-hdr-about', uiState.lang === 'uk' ? 'Про проєкт' : 'About');
+      setTxt('ui-hdr-privacy', uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy');
+      setTxt('ui-editorial-title', uiState.lang === 'uk' ? 'Про відкритий 3D-практикум природничих наук' : 'About the Open-Access 3D Science Laboratory');
+      setTxt('ui-editorial-p1', uiState.lang === 'uk'
+        ? 'Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.'
+        : 'The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.');
+      setTxt('ui-editorial-p2', uiState.lang === 'uk'
+        ? 'Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.'
+        : 'Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.');
+      setTxt('ui-editorial-about', t.footerAbout);
+      setTxt('ui-editorial-privacy', t.footerPrivacy);
+      setTxt('ui-editorial-terms', t.footerTerms);
+      setTxt('btn-cookie-essential', uiState.lang === 'uk' ? 'Лише необхідні' : 'Essential only');
+      setTxt('btn-cookie-accept', uiState.lang === 'uk' ? 'Прийняти' : 'Accept');
+      const cookieTxtEl = document.getElementById('ui-cookie-consent-text');
+      if (cookieTxtEl) {
+        const rPref = window.location.protocol.startsWith('http')
+          ? '/'
+          : (/(?:^|\/)uk\/sim\//i.test(window.location.pathname) ? '../../' : (/(?:^|\/)(?:sim|uk)\//i.test(window.location.pathname) ? '../' : ''));
+        cookieTxtEl.innerHTML = uiState.lang === 'uk'
+          ? `Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="${rPref}privacy.html">Політики конфіденційності</a>.`
+          : `This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="${rPref}privacy.html">Privacy Policy</a>.`;
+      }
       setTxt('ui-brand-title', t.brandTitle);
       setTxt('ui-disc-physics', t.discPhysics);
       setTxt('ui-disc-chemistry', t.discChemistry);
@@ -41006,6 +41147,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       '\\implies': '⇒', '\\Rightarrow': '⇒', '\\to': '→', '\\rightarrow': '→',
       '\\rightleftharpoons': '⇄', '\\leftrightarrows': '⇄', '\\equiv': '≡',
       '\\perp': '⊥', '\\parallel': '∥', '\\circ': '°', '\\degree': '°',
+      '\\sum': '∑', '\\int': '∫', '\\oint': '∮', '\\in': '∈', '\\sim': '∼',
       '\\ell': 'l', '\\hbar': 'ℏ', '\\mathcal{E}': 'ℰ', '\\ldots': '…', '\\dots': '…'
     };
 
@@ -41016,7 +41158,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       let s = String(str || '')
         .replace(/<[^>]+>/g, '')
         .replace(/\*\*([^*]+)\*\*/g, '$1')
-        .replace(/\$([^$]+)\$/g, '$1');
+        .replace(/\$([^$]+)\$/g, '$1')
+        .replace(/\\(?:begin|end)\{[^}]*\}/g, ' ')
+        .replace(/&=/g, '=')
+        .replace(/&/g, ' ');
       s = s.replace(/\\text\{([^}]*)\}/g, '$1')
            .replace(/\\mathrm\{([^}]*)\}/g, '$1')
            .replace(/\\mathbf\{([^}]*)\}/g, '$1')

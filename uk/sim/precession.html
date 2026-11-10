@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Масивний ротор, розкручений із великою кутовою швидкістю ωₛ, має потужний власний момент імпульсу L = Iωₛ, спрямований уздовж осі симетрії дзиґи. Сила тяжіння mg, прикладена в центрі мас на відстані l від точки опори O, створює відносно O момент сили M = [r × mg] модулем M = mglsin θ, який за правилом правого гвинта перпендикулярний до вертикальної площини нахилу осі (тобто горизонтальний і ортогональний до L!).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Масивний ротор, розкручений із великою кутовою швидкістю ω_s, має потужний власний момент імпульсу L = Iω_s, спрямований уздовж осі симетрії дзиґи. Сила тяжіння mg, прикладена в центрі мас на відстані l від точки опори O, створює відносно O момент сили M = [r × mg] модулем M = mglsinθ, який за правилом правого гвинта перпендикулярний до вертикальної площини нахилу осі (тобто горизонтальний і ортогональний до L!).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки приріст dL = M dt перпендикулярний до самого вектора L, він не змінює його довжину, а лише повертає кінець вектора L по горизонтальному колу радіуса Lsin θ. Кутова швидкість цієї регулярної гіроскопічної прецесії дорівнює Ωₚ = (M)/(Lsin θ) = (mgl)/(Iωₛ): що швидше крутиться ротор ωₛ, то повільніше і стабільніше прецесує гіроскоп!</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки приріст dL = M dt перпендикулярний до самого вектора L, він не змінює його довжину, а лише повертає кінець вектора L по горизонтальному колу радіуса Lsinθ. Кутова швидкість цієї регулярної гіроскопічної прецесії дорівнює Ω_p = (M)/(Lsinθ) = (mgl)/(Iω_s): що швидше крутиться ротор ω_s, то повільніше і стабільніше прецесує гіроскоп!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">З рівняння моментів dL = Lsinθ Ω_прец dt = mgdsinθ dt випливає формула Ω_прец = (mgd)/(Iω). Отже, чим більший власний момент імпульсу L = Iω, тим повільніше прецесує вісь ротора.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Подивись на формулу кутової швидкості прецесії Ω_p = (mgd)/(Iω_s): де стоїть власна кутова швидкість обертання маховика ω_s, у чисельнику чи в знаменнику?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Власна кутова швидкість ротора ω</strong>: 15 … 70 рад/с, типове значення 35 рад/с</li><li><strong>Маса маховика гіроскопа m</strong>: 1 … 3.5 кг, типове значення 2 кг</li><li><strong>Плече центру мас відносно опори d</strong>: 0.6 … 2 м, типове значення 1.2 м</li><li><strong>Кут нутації (нахилу осі) θ</strong>: 15 … 55 °, типове значення 32 °</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Чому дитяча дзиґа (юла) або колесо велосипеда на ходу не падає на бік, хоча земне тяжіння тягне його вниз? Замість падіння вісь швидко розкрученої дзиґи плавно описує коло в горизонтальній площині, це дивовижне явище називається гіроскопічною прецесією!</div>
           </div>
           <div class="theory-note-formula">
-            <code>(dL)/(dt) = M = [r × mg], L = Iω ; Ω_прец = (m g d)/(I ω) = (M)/(L sin θ)</code>
+            <code>(dL)/(dt) = M = [r × mg], L = Iω ; Ω_прец = (m g d)/(I ω) = (M)/(L sinθ)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

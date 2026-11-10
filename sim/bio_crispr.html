@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10–11 · Genome Editing: CRISPR–Cas9</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Derived from bacterial adaptive immunity against bacteriophages, the CRISPR–Cas9 system (Emmanuelle Charpentier &amp; Jennifer Doudna, 2020 Nobel Prize) is a programmable RNA-guided genome editing platform. The active complex pairs the Cas9 endonuclease with a single-guide RNA (sgRNA) carrying a 20-nucleotide target-specific spacer.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Derived from bacterial adaptive immunity against bacteriophages, the CRISPR–Cas9 system (Emmanuelle Charpentier Jennifer Doudna, 2020 Nobel Prize) is a programmable RNA-guided genome editing platform. The active complex pairs the Cas9 endonuclease with a single-guide RNA (sgRNA) carrying a 20-nucleotide target-specific spacer.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
@@ -168,6 +173,18 @@
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Full complementarity across the 20-nt spacer allosterically activates two catalytic nuclease domains: HNH cleaves the target strand paired to sgRNA, while RuvC cleaves the displaced non-target strand 3 bp upstream of PAM, creating a blunt double-strand break (DSB). Host repair proceeds via NHEJ (generating indel knockouts) or Homology-Directed Repair (HDR) using an exogenous donor template for precise sequence replacement.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Programmable genome editing by CRISPR–Cas9 (2020 Nobel Prize, E. Charpentier J. Doudna) proceeds in three stages: 1) PAM Scanning: Cas9 scans duplex DNA for a **Protospacer Adjacent Motif (5'-NGG-3' for *SpCas9*). Without a valid PAM, Cas9 will not unwind the helix even if the 20-nt target is identical; 2) R-Loop Formation: PAM binding triggers local DNA melting so the 20-nt spacer of the sgRNA base-pairs with the complementary target strand; 3) Double-Strand Break (DSB) Repair: the HNH domain cleaves the target strand while the RuvC domain cleaves the non-target strand 3 bp upstream of PAM. Cellular machinery then repairs the break via error-prone NHEJ (for gene knockout) or high-fidelity HDR** (using a homologous donor DNA template for precision gene correction).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Cas9 must first recognize the 5'-NGG-3' PAM motif before unwinding DNA for sgRNA pairing, and a donor template enables precise Homology-Directed Repair (HDR).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Guide RNA–DNA mismatches N_mm (0 = perfect 20/20 complementarity)</strong>: 0 … 6 mismatches, standard value 0 mismatches</li><li><strong>Presence of 5′-NGG-3′ PAM motif adjacent to target (1: intact, 0: mutated)</strong>: 0 … 1 PAM, standard value 1 PAM</li><li><strong>Homologous donor DNA template availability for HDR repair</strong>: 0 … 100 %, standard value 65 %</li><li><strong>Cas9–sgRNA ribonucleoprotein concentration</strong>: 10 … 100 nM, standard value 50 nM</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

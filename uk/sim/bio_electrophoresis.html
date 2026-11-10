@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -169,12 +174,24 @@
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Розділення за розміром відбувається завдяки тривимірній сітці полісахариду агарози, яка працює як молекулярне сито: короткі фрагменти ДНК легко проходять крізь пори й мігрують швидко, а довгі фрагменти зазнають сильного тертя об волокна гелю. Пройдена відстань d лінійно спадає з десятковим логарифмом довжини фрагмента: d(L) = d₀ - klg L, що дозволяє точно визначити розмір невідомого фрагмента за калібрувальною «драбинкою» маркерів (DNA Ladder).</p></div>
           </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">У нейтральному та слабколужному буфері (TAE/TBE, pH 8.0) кожна фосфодіефірна ланка дволанцюгової ДНК несе негативний заряд за рахунок дисоціації фосфатних груп -PO₄⁻ (q ∝ L, де L, довжина в парах нуклеотидів). У вільному розчині відношення заряду до маси q/m стале для будь-якої довжини ДНК, тому всі молекули рухалися б однаково. Проте агарозний гель утворює тривимірну полімерну сітку («молекулярне сито»): короткі фрагменти ДНК (наприклад, 100..300 п.н.) легко прослизають крізь пори й мігрують до позитивного анода (+) швидко, а довгі фрагменти (1500..3000 п.н.) гальмуються волокнами гелю. Відстань міграції d обернено пропорційна десятковому логарифму довжини фрагмента: d = a - blg L.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Фосфатні групи (-PO₄⁻) надають ДНК негативного заряду, тому вона рухається до анода (+), а найкоротші фрагменти долають пори гелю найшвидше (d = d₀ - klg L).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Напруга джерела постійного струму на електродах камери U</strong>: 50 … 160 В, типове значення 110 В</li><li><strong>Концентрація агарозного гелю C_агар (густота полімерного сита)</strong>: 0.6 … 2.2 %, типове значення 1.2 %</li><li><strong>Тривалість електрофоретичного розділення t</strong>: 10 … 55 хв, типове значення 35 хв</li><li><strong>Зразок у доріжці №3 (1: Інтактна плазміда, 2: EcoRI 2 смуги, 3: ПЛР-алелі)</strong>: 1 … 3 зразок, типове значення 2 зразок</li></ul>
+          </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Уяви густий ліс (агарозний гель), крізь який до плюсового магніту (анода) біжать негативно заряджені ланцюжки ДНК. Короткі ланцюжки легко пробігають між деревами далеко вперед, а довгі постійно чіпляються за гілки й просуваються повільно, шикуючись за довжиною як на лінійці!</div>
           </div>
           <div class="theory-note-formula">
-            <code>v_мігр = μ(L, C_агар)· E, d(L) = d₀ - klg (L [п.н.]), ДНК^N- longrightarrow Анод (+)</code>
+            <code>v_мігр = μ(L, C_агар)· E, d(L) = d₀ - klg(L [п.н.]), ДНК^N- longrightarrow Анод (+)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

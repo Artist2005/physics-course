@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–10</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Projectile motion launched at angle α with initial speed v₀ illustrates Galileo’s principle of independence of motions. In vacuum (k = 0), no horizontal force acts along Ox, keeping vₓ = v₀cos α = const, while along the vertical axis Oy gravity produces constant downward acceleration a_y = -g.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Projectile motion launched at angle α with initial speed v₀ illustrates Galileo’s principle of independence of motions. In vacuum (k = 0), no horizontal force acts along Ox, keeping v_x = v₀cosα = const, while along the vertical axis Oy gravity produces constant downward acceleration a_y = -g.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Eliminating time t = (x)/(v₀cos α) from x(t) = v₀cos α · t and y(t) = v₀sin α · t - (1)/(2)gt² yields the parabolic trajectory equation: y(x) = xtan α - (gx²)/(2v₀²cos ²α). The time of flight is t_flight = (2v₀sin α)/(g), the apex height is H = (v₀²sin ²α)/(2g), and the horizontal range L = (v₀²sin (2α))/(g) peaks at α = 45^°.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Eliminating time t = (x)/(v₀cosα) from x(t) = v₀cosα · t and y(t) = v₀sinα · t - (1)/(2)gt² yields the parabolic trajectory equation: y(x) = xtanα - (gx²)/(2v₀²cos²α). The time of flight is t_flight = (2v₀sinα)/(g), the apex height is H = (v₀²sin²α)/(2g), and the horizontal range L = (v₀²sin(2α))/(g) peaks at α = 45°.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">When linear aerodynamic drag (F_d = -kv) is introduced, horizontal velocity decays exponentially as vₓ(t) = v₀xe⁻(k/m)t, the descending branch becomes steeper than the ascending branch (Tartaglia’s ballistic curve), and the optimal launch angle for maximum range shifts below 45^°.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">When linear aerodynamic drag (F_d = -kv) is introduced, horizontal velocity decays exponentially as v_x(t) = v_0xe^-(k/m)t, the descending branch becomes steeper than the ascending branch (Tartaglia’s ballistic curve), and the optimal launch angle for maximum range shifts below 45°.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">At the vertex of the parabola only the vertical velocity component vanishes (v_y = 0), while the horizontal component v_x = v₀cosθ remains constant. Therefore, the minimum kinetic energy at the apex is E_k,min = (1)/(2)m(v₀cosθ)² = E_k0cos²θ.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Compare the dashed vacuum parabola with the solid trajectory in air: what happens to the projectile’s mechanical energy and horizontal range when air drag acts against v?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Initial velocity v₀</strong>: 6 … 15 m/s, standard value 11.5 m/s</li><li><strong>Launch angle θ</strong>: 15 … 80 °, standard value 45 °</li><li><strong>Initial height h₀</strong>: 0.2 … 4.5 m, standard value 1.2 m</li><li><strong>Air drag coeff. c_d</strong>: 0 … 0.15 kg/m, standard value 0 kg/m</li><li><strong>Projectile mass m</strong>: 0.5 … 5 kg, standard value 1.5 kg</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">When throwing a basketball or spraying water from a garden hose, 45^° gives the longest range in vacuum. In real air, aerodynamic drag slows the ball down and bends its path steeper at the end!</div>
+            <div class="theory-analogy-body">When throwing a basketball or spraying water from a garden hose, 45° gives the longest range in vacuum. In real air, aerodynamic drag slows the ball down and bends its path steeper at the end!</div>
           </div>
           <div class="theory-note-formula">
-            <code>x(t) = v₀cos θ· t, y(t) = h₀ + v₀sin θ· t - (gt²)/(2) ; Hₘax = h₀ + (v₀²sin ²θ)/(2g), L = (v₀²sin 2θ)/(g)</code>
+            <code>x(t) = v₀cosθ· t, y(t) = h₀ + v₀sinθ· t - (gt²)/(2) ; H_max = h₀ + (v₀²sin²θ)/(2g), L = (v₀²sin 2θ)/(g)</code>
           </div>
         </div>
       </div>
@@ -399,7 +416,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -425,6 +453,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

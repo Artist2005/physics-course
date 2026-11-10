@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,7 +164,7 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас · Воднева енергетика</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC), це електрохімічний генератор, який безпосередньо перетворює хімічну енергію окиснення водню киснем (2H₂ + O₂ → 2H₂O, Δ H^° = -285.8 кДж/моль, Δ G^° = -237.1 кДж/моль) в електричну енергію без проміжного спалювання та механічних турбін. Завдяки цьому теоретичний термодинамічний ККД паливного елемента становить ηₘax = (Δ G^°)/(Δ H^°) ≈ 83%, що значно перевищує межу циклу Карно для теплових двигунів.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC), це електрохімічний генератор, який безпосередньо перетворює хімічну енергію окиснення водню киснем (2H₂ + O₂ → 2H₂O, Δ H° = -285.8 кДж/моль, Δ G° = -237.1 кДж/моль) в електричну енергію без проміжного спалювання та механічних турбін. Завдяки цьому теоретичний термодинамічний ККД паливного елемента становить η_max = (Δ G°)/(Δ H°) ≈ 83%, що значно перевищує межу циклу Карно для теплових двигунів.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Термодинамічна ЕРС комірки зростає з тиском газів за рівнянням Нернста: E_Нернст = 1.229 + (RT)/(4F)ln (P_H₂² P_O₂). Під навантаженням робоча напруга U(j) = E_Нернст - η_акт(j) - j R_мембр дещо знижується через активаційну перенапругу Тафеля на електродах та омічний опір мембрани.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Термодинамічна ЕРС комірки зростає з тиском газів за рівнянням Нернста: E_Нернст = 1.229 + (RT)/(4F)ln(P_H₂² P_O₂). Під навантаженням робоча напруга U(j) = E_Нернст - η_акт(j) - j R_мембр дещо знижується через активаційну перенапругу Тафеля на електродах та омічний опір мембрани.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">У паливному елементі PEMFC окиснення водню та відновлення кисню просторово розділені полімерною мембраною (Nafion). На аноді за участю Pt-каталізатора відбувається окиснення: 2H₂ → 4H⁺ + 4e⁻. Мембрана проводить протони H⁺ до катода, але не пропускає електрони, змушуючи їх виконувати корисну роботу в зовнішньому колі. На катоді утворюється чиста вода: O₂ + 4H⁺ + 4e⁻ → 2H₂O (E° = 1.23 В).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">На аноді водень окиснюється на платині (2H₂ → 4H⁺ + 4e⁻), протони H⁺ проходять крізь мембрану до катода, а електрони e⁻ виконують роботу в зовнішньому колі, утворюючи з O₂ чисту воду.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Парціальний тиск водню на аноді P(H₂)</strong>: 0.5 … 5 атм, типове значення 2 атм</li><li><strong>Парціальний тиск кисню на катоді P(O₂)</strong>: 0.2 … 3 атм, типове значення 1 атм</li><li><strong>Густина робочого струму навантаження j</strong>: 0.1 … 2 А/см², типове значення 0.8 А/см²</li><li><strong>Активність платинового каталізатора Pt</strong>: 0.5 … 2 ×, типове значення 1 ×</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Водневий паливний елемент, це «електрохімічна батарейка, яка ніколи не сідає», доки в неї подають водень H₂ і кисень O₂: мембрана пропускає протони H⁺ напряму, а електрони e⁻ змушені бігти по дротах і крутити електродвигун автомобіля чи космічного корабля, залишаючи на виході лише чисту воду H₂O!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Анод (-): &amp; 2H₂ xrightarrowPt 4H⁺ + 4e⁻, Катод (+): O₂ + 4H⁺ + 4e⁻ xrightarrowPt 2H₂O ; E_Нернст = E^° + (RT)/(4F)ln ≤ft(P_H₂² P_O₂ ), E^° = 1.229 В, ηₘax = (Δ G^°)/(Δ H^°) ≈ 83%</code>
+            <code>Анод (-): 2H₂ xrightarrowPt 4H⁺ + 4e⁻, Катод (+): O₂ + 4H⁺ + 4e⁻ xrightarrowPt 2H₂O ; E_Нернст = E° + (RT)/(4F)ln ≤ft(P_H₂² P_O₂), E° = 1.229 В, η_max = (Δ G°)/(Δ H°) ≈ 83%</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

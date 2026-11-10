@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Valence Shell Electron Pair Repulsion (VSEPR) model (Gillespie–Nyholm) predicts the 3D geometry of covalent molecules AXₙEₘ. Electron domains in the valence shell of central atom A, both bonding pairs (X) and lone pairs (E), orient themselves to minimize Pauli and Coulomb repulsion by maximizing their angular separation.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The Valence Shell Electron Pair Repulsion (VSEPR) model (Gillespie–Nyholm) predicts the 3D geometry of covalent molecules AX_nE_m. Electron domains in the valence shell of central atom A, both bonding pairs (X) and lone pairs (E), orient themselves to minimize Pauli and Coulomb repulsion by maximizing their angular separation.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The steric number S = n + m dictates the electron-domain geometry: S = 2 linear (180^°, sp hybridization, e.g. CO₂), S = 3 trigonal planar (120^°, sp², BF₃), and S = 4 tetrahedral (109.5^°, sp³, CH₄). Because a lone pair E is localized near a single nucleus rather than stretched between two nuclei, it occupies a wider angular domain: repulsion follows E–E &gt; E–X &gt; X–X. Consequently, the bond angle contracts to 107.3^° in NH₃ (AX₃E₁) and 104.5^° in H₂O (AX₂E₂).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The steric number S = n + m dictates the electron-domain geometry: S = 2 linear (180°, sp hybridization, e.g. CO₂), S = 3 trigonal planar (120°, sp², BF₃), and S = 4 tetrahedral (109.5°, sp³, CH₄). Because a lone pair E is localized near a single nucleus rather than stretched between two nuclei, it occupies a wider angular domain: repulsion follows E–E &gt; E–X &gt; X–X. Consequently, the bond angle contracts to 107.3° in NH₃ (AX₃E₁) and 104.5° in H₂O (AX₂E₂).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Molecular polarity is governed by the vector sum of individual bond dipoles μₙet = ∑ᵢ=1^n μᵢ. In symmetric geometries without lone pairs (AX₂, AX₃, AX₄), identical bond dipoles cancel out (|μₙet| = 0, nonpolar molecule), whereas lone pairs break inversion symmetry and yield a strong permanent dipole moment (such as μ(H₂O) = 1.85 D).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Molecular polarity is governed by the vector sum of individual bond dipoles μ_net = ∑_i=1^n μ_i. In symmetric geometries without lone pairs (AX₂, AX₃, AX₄), identical bond dipoles cancel out (|μ_net| = 0, nonpolar molecule), whereas lone pairs break inversion symmetry and yield a strong permanent dipole moment (such as μ(H₂O) = 1.85 D).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In VSEPR theory, CH₄, NH₃, and H₂O all share steric number SN = 4 (sp³ hybridization). However, a lone pair (E) sits closer to the central nucleus than a shared bonding pair (X), compressing the bond angles progressively from 109.5° → 107.3° → 104.5°.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">In symmetric methane CH₄ (n=4, m=0), all four domains are identical (109.5°). When lone pairs E replace bonding pairs (as in NH₃ and H₂O), their wider electron clouds repel bonding pairs more strongly, compressing the bond angle.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Molecule type (1=BeCl₂, 2=BF₃, 3=CH₄, 4=NH₃, 5=H₂O)</strong>: 1 … 5, standard value 3</li><li><strong>Internuclear bond length d(A–X)</strong>: 1.1 … 2 Å, standard value 1.5 Å</li><li><strong>Electronegativity difference Δχ</strong>: 0.4 … 1.8, standard value 1</li><li><strong>Thermal vibrational amplitude</strong>: 0 … 1 ×, standard value 0.3 ×</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Tie 2, 3, or 4 inflated balloons together at their knots: they naturally push each other apart into a line (180^°), a flat triangle (120^°), or a 3D tetrahedron (109.5^°)! A lone electron pair E acts like an extra-bulky balloon that squeezes the neighboring bonds even closer.</div>
+            <div class="theory-analogy-body">Tie 2, 3, or 4 inflated balloons together at their knots: they naturally push each other apart into a line (180°), a flat triangle (120°), or a 3D tetrahedron (109.5°)! A lone electron pair E acts like an extra-bulky balloon that squeezes the neighboring bonds even closer.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Steric number SN = N_σ + Nₗone pairs ; θ(sp) = 180^°, θ(sp²) = 120^°, θ(sp³) = 109.47^°</code>
+            <code>Steric number SN = N_σ + N_lone pairs ; θ(sp) = 180°, θ(sp²) = 120°, θ(sp³) = 109.47°</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

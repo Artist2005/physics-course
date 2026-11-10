@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 11 · Uni</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Invented by Albert A. Michelson in 1881, the Michelson interferometer splits a coherent monochromatic light beam of wavelength λ at a 45^° beam splitter (BS) into two orthogonal arms of lengths L₁ and L₂. After reflecting off mirrors M₁ (micrometer-adjustable) and M₂ (fixed), the beams recombine at BS and interfere on the detector screen.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Invented by Albert A. Michelson in 1881, the Michelson interferometer splits a coherent monochromatic light beam of wavelength λ at a 45° beam splitter (BS) into two orthogonal arms of lengths L₁ and L₂. After reflecting off mirrors M₁ (micrometer-adjustable) and M₂ (fixed), the beams recombine at BS and interfere on the detector screen.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because light traverses arm 1 twice (out and back), translating mirror M₁ by distance Δ d changes the round-trip optical path length by Δ = 2Δ d, introducing a phase shift Δφ = (4π Δ d)/(λ). Central fringe intensity varies as I(Δ d) = Iₘaxcos ² ≤ft((2π Δ d)/(λ) ).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Because light traverses arm 1 twice (out and back), translating mirror M₁ by distance Δ d changes the round-trip optical path length by Δ = 2Δ d, introducing a phase shift Δφ = (4π Δ d)/(λ). Central fringe intensity varies as I(Δ d) = I_maxcos² ≤ft((2π Δ d)/(λ)).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
             <div class="theory-note-body"><p class="theory-note-para">Consequently, moving mirror M₁ by just a quarter-wavelength (Δ d = λ/4) flips a bright maximum into a dark minimum, and every Δ d = λ/2 shifts the pattern by one full fringe (N = (2Δ d)/(λ)). This design powered the historic 1887 Michelson–Morley experiment and forms the optical core of the LIGO gravitational-wave observatories.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the arm with movable mirror M₁, the light beam travels from the beam splitter to the mirror and back again. Moving the mirror by Δ d therefore changes the round-trip optical path difference by Δ = 2Δ d. Shifting by one full fringe requires 2Δ d = λ, or Δ d = λ/2.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because light travels to the movable mirror and back, shifting the mirror by Δ d changes the optical path by Δ = 2Δ d. What mirror shift Δ d produces a shift of 1 full fringe (Δ = λ)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Laser wavelength λ</strong>: 420 … 680 nm, standard value 550 nm</li><li><strong>Micrometer mirror displacement Δd</strong>: 0 … 700 nm, standard value 0 nm</li><li><strong>Laser beam power P₀</strong>: 2 … 10 mW, standard value 5 mW</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">The most precise ruler in the Universe! A laser beam splits in two, races down perpendicular arms to mirrors, and recombines. Shift one mirror by just half a wavelength of light and the bullseye fringes shift by a full ring, how LIGO detects gravitational waves!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Δ = 2 Δ d, Δφ = (2π)/(λ)(2 Δ d) ; I(Δ d) = 4 I₀ cos ² ≤ft((2π Δ d)/(λ) ), Δ m = (2 Δ d)/(λ)</code>
+            <code>Δ = 2 Δ d, Δφ = (2π)/(λ)(2 Δ d) ; I(Δ d) = 4 I₀ cos² ≤ft((2π Δ d)/(λ)), Δ m = (2 Δ d)/(λ)</code>
           </div>
         </div>
       </div>
@@ -385,7 +402,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -411,6 +439,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Вздовж безмієлінового волокна імпульс поширюється безперервно зі швидкістю v ∝ √(d_акс) (0.5–2 м/с). У мієлінізованих нервових волокнах хребетних клітини Шванна (або олігодендроцити) огортають аксон багатошаровою ліпідною ізоляцією, яка зменшує погонну ємність cₘ і багаторазово підвищує поперечний опір rₘ. Завдяки великій кабелюній сталій довжини λ = √(rₘ/rᵢ) локальний струм миттєво збуджує наступний перехват Ранв’є, забезпечуючи сальтаторне (стрибкоподібне) проведення зі швидкістю до 60–120 м/с та величезною економією АТФ.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Вздовж безмієлінового волокна імпульс поширюється безперервно зі швидкістю v ∝ sqrtd_акс (0.5–2 м/с). У мієлінізованих нервових волокнах хребетних клітини Шванна (або олігодендроцити) огортають аксон багатошаровою ліпідною ізоляцією, яка зменшує погонну ємність c_m і багаторазово підвищує поперечний опір r_m. Завдяки великій кабелюній сталій довжини λ = √(r_m/r_i) локальний струм миттєво збуджує наступний перехват Ранв’є, забезпечуючи сальтаторне (стрибкоподібне) проведення зі швидкістю до 60–120 м/с та величезною економією АТФ.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">За теорією Ходжкіна–Хакслі, коли стимул зміщує потенціал мембрани вище порога (≈ -55 мВ), стрімко відкриваються потенціалзалежні Na⁺-канали. Потік Na⁺ всередину аксона перезаряджає мембрану до +30…+40 мВ (фаза деполяризації та овершуту). Далі Na⁺-канали інактивуються, а повільніші потенціалзалежні K⁺-канали відкриваються, виводячи K⁺ назовні та повертаючи потенціал до -70 мВ (реполяризація та слідова гіперполяризація). Мієлінова оболонка є багатошаровим діелектриком: вона різко підвищує поперечний опір мембрани r_m і зменшує її ємність c_m, тому локальні струми миттєво досягають сусіднього перехвату Ранв’є (сальтаторне проведення зі швидкістю до 100 м/с).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Деполяризація зумовлена входом Na⁺, реполяризація, виходом K⁺, а мієлінова оболонка зменшує ємність і витік, забезпечуючи сальтаторне проведення між перехватами Ранв’є.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Відносна сила деполяризуючого стимулу I_стим / I_поріг (≥1.0, спайк)</strong>: 0.4 … 2.5 I_пор, типове значення 1.5 I_пор</li><li><strong>Тип волокна (1: Безмієліновий аксон, 2: Мієлінізований, сальтаторно)</strong>: 1 … 2, типове значення 2</li><li><strong>Діаметр осьового циліндра аксона d_акс</strong>: 2 … 20 мкм, типове значення 10 мкм</li><li><strong>Густина потенціалзалежних Na⁺-каналів у перехватах Ранв’є</strong>: 0.6 … 1.8 ум.од., типове значення 1.2 ум.од.</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Безмієліновий аксон схожий на бікфордів шнур, де вогник біжить послідовно міліметр за міліметром. А мієлінізований аксон укритий ізоляцією, і відкриті лише маленькі віконця, перехвати Ранв’є: електричний імпульс, наче кенгуру, перестрибує з одного перехвату на інший (сальтаторно) у десятки разів швидше!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Cₘ(dVₘ)/(dt) = I_стим - g_Nam³h(Vₘ - E_Na) - g_Kn⁴(Vₘ - E_K) - g_L(Vₘ - E_L)</code>
+            <code>C_m(dV_m)/(dt) = I_стим - g_Nam³h(V_m - E_Na) - g_Kn⁴(V_m - E_K) - g_L(V_m - E_L)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

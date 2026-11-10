@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Surface Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Adsorption is the accumulation of gas or solute molecules (adsorbate) onto the surface of a solid (adsorbent, such as activated carbon or a metal catalyst). Because gas molecules lose translational freedom upon binding (Δ Sₐds &lt; 0), spontaneous adsorption is universally exothermic (Δ Hₐds = -Qₐds &lt; 0).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Adsorption is the accumulation of gas or solute molecules (adsorbate) onto the surface of a solid (adsorbent, such as activated carbon or a metal catalyst). Because gas molecules lose translational freedom upon binding (Δ S_ads &lt; 0), spontaneous adsorption is universally exothermic (Δ H_ads = -Q_ads &lt; 0).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Langmuir’s monolayer model assumes a fixed number of equivalent surface sites. Equating the rate of adsorption on vacant sites kₐ P(1-θ) to the rate of desorption from occupied sites k_dθ yields the Langmuir isotherm: θ(P) = (K P)/(1 + K P), where K = kₐ / k_d.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Langmuir’s monolayer model assumes a fixed number of equivalent surface sites. Equating the rate of adsorption on vacant sites k_a P(1-θ) to the rate of desorption from occupied sites k_dθ yields the Langmuir isotherm: θ(P) = (K P)/(1 + K P), where K = k_a / k_d.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">At low pressures (KP ≪ 1), fractional coverage rises linearly (θ ≈ KP, Henry’s regime); at high pressures (KP ≫ 1), the surface saturates at a complete monolayer (θ → 1). Raising temperature T decreases K(T) and drives thermal desorption.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">At low pressures (KP ll 1), fractional coverage rises linearly (θ ≈ KP, Henry’s regime); at high pressures (KP gg 1), the surface saturates at a complete monolayer (θ → 1). Raising temperature T decreases K(T) and drives thermal desorption.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Irving Langmuir modeled a crystal or activated-carbon surface as an array of N₀ equivalent adsorption sites. Dynamic equilibrium is reached when the adsorption rate equals the desorption rate: k_a P (1 - θ) = k_d θ, yielding the Langmuir Isotherm θ = (K P)/(1 + K P) where K = k_a / k_d = K₀ e^Q_ads / (RT). Because gas adsorption reduces translational entropy (Δ S_ads &lt; 0), spontaneous adsorption is always exothermic (Δ H_ads = -Q_ads &lt; 0), so heating shifts equilibrium toward desorption.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Surface sites saturate at a monolayer (θ → 1), and because adsorption is exothermic (Δ H_ads &lt; 0), heating promotes desorption.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Adsorbate gas pressure P</strong>: 0.2 … 6 atm, standard value 2 atm</li><li><strong>Surface temperature T</strong>: 250 … 450 K, standard value 300 K</li><li><strong>Adsorption affinity constant K₀ (at 300 K)</strong>: 0.3 … 3 atm⁻¹, standard value 1.2 atm⁻¹</li><li><strong>Heat of adsorption Q_ads = −ΔH_ads</strong>: 15 … 45 kJ/mol, standard value 25 kJ/mol</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
             <div class="theory-analogy-body">An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily (θ ≈ KP), but once every spot is taken in a monolayer, coverage hits a ceiling (θ → 1)!</div>
           </div>
           <div class="theory-note-formula">
-            <code>θ = (K P)/(1 + K P), K(T) = K₀exp ≤ft((Qₐds)/(RT) ), rₐds = kₐ P(1-θ) = k_dθ</code>
+            <code>θ = (K P)/(1 + K P), K(T) = K₀exp ≤ft(fracQ_adsRT), r_ads = k_a P(1-θ) = k_dθ</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

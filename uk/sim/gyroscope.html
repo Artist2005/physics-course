@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Момент інерції тіла зручно записати через безрозмірний коефіцієнт розподілу маси β = (I)/(mR²): для суцільної кулі β = 0.4, для суцільного диска чи циліндра β = 0.5, а для тонкостінного обруча (труби), де вся маса віддалена на край обода, β = 1.0. Тоді закон збереження енергії має вигляд mgh = (1)/(2)mv²(1 + β), а лінійне прискорення центра мас уздовж схилу дорівнює a = (gsin α)/(1 + β).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Момент інерції тіла зручно записати через безрозмірний коефіцієнт розподілу маси β = (I)/(mR²): для суцільної кулі β = 0.4, для суцільного диска чи циліндра β = 0.5, а для тонкостінного обруча (труби), де вся маса віддалена на край обода, β = 1.0. Тоді закон збереження енергії має вигляд mgh = (1)/(2)mv²(1 + β), а лінійне прискорення центра мас уздовж схилу дорівнює a = (gsinα)/(1 + β).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">Зверніть увагу на фундаментальний результат: прискорення кочення a не залежить ані від маси m, ані від радіуса R, а визначається виключно геометрією розподілу маси β! Оскільки в обруча β = 1.0 рівно половина (50%) потенціальної енергії витрачається на розкручування обода, а в суцільного диска (β = 0.5), лише третина (33.3%), суцільний диск або куля завжди перемагають обруч у перегонах по схилу.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">За законом збереження енергії mgh = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)mv²(1 + β), де β = I/(mR²). Звідси лінійне прискорення осі тіла дорівнює a = (gsinα)/(1 + β). Оскільки для суцільного циліндра β = 0.5 (a = (2)/(3)gsinα), а для тонкого обруча β = 1.0 (a = (1)/(2)gsinα), суцільний циліндр або куля завжди випереджають обруч незалежно від маси та радіуса!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Порівняй коефіцієнт інерції β = I/(mR²): у кого він менший, у суцільної кулі (β = 0.4) чи в тонкого обруча (β = 1.0), і хто тому отримує більше лінійне прискорення a = (gsinα)/(1+β)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Коефіцієнт інерції β = I/(mR²)</strong>: 0.2 … 1, типове значення 0.5</li><li><strong>Кут нахилу площини α</strong>: 14 … 40 °, типове значення 26 °</li><li><strong>Радіус тіла кочення R</strong>: 0.45 … 0.9 м, типове значення 0.65 м</li><li><strong>Маса тіла m</strong>: 1 … 4 кг, типове значення 2 кг</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Влаштуй перегони з гірки між суцільною кулею (більярдною) та порожнистим обручем або кільцем скотчу! Куля завжди виграє: у обруча вся маса розташована далеко від центра на ободі, тому йому набагато важче розкручуватися.</div>
           </div>
           <div class="theory-note-formula">
-            <code>I = β m R², Eₖ = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) ; a = (gsin α)/(1 + β), β_куля = 0.4, β_цил = 0.5, β_обруч = 1.0</code>
+            <code>I = β m R², E_k = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) ; a = (gsinα)/(1 + β), β_куля = 0.4, β_цил = 0.5, β_обруч = 1.0</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

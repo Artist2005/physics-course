@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -163,18 +168,30 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Кількісною мірою полярності зв’язку є вектор дипольного моменту μ_зв = δ q · d (у хімії напрямлений від +δ до -δ, одиниця, Дебай: 1 Д = 3.336× 10⁻³⁰ Кл·м). Проте полярність усієї багатоатомної молекули визначається векторною сумою дипольних моментів усіх її зв’язків: μ_мол = ∑ᵢ μᵢ.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Кількісною мірою полярності зв’язку є вектор дипольного моменту μ_зв = δ q · d (у хімії напрямлений від +δ до -δ, одиниця, Дебай: 1 Д = 3.336× 10⁻³⁰ Кл·м). Проте полярність усієї багатоатомної молекули визначається векторною сумою дипольних моментів усіх її зв’язків: μ_мол = ∑_i μ_i.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Для симетричної триатомної молекули AB₂ з валентним кутом θ модуль сумарного диполя становить μ_мол = 2μ_звcos (θ/2). Тому кутова молекула води H₂O (θ = 104.5^°) є сильно полярною (μ = 1.85 Д) і орієнтується вздовж зовнішнього електричного поля E під дією моменту сил τ = μ×E, тоді як лінійна молекула CO₂ (θ = 180^°) має μ_мол = 0.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Для симетричної триатомної молекули AB₂ з валентним кутом θ модуль сумарного диполя становить μ_мол = 2μ_звcos(θ/2). Тому кутова молекула води H₂O (θ = 104.5°) є сильно полярною (μ = 1.85 Д) і орієнтується вздовж зовнішнього електричного поля E під дією моменту сил τ = μ×E, тоді як лінійна молекула CO₂ (θ = 180°) має μ_мол = 0.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Дипольний момент окремого полярного зв’язку μ₀ = δ e · l є векторною величиною (у хімії вектор спрямовують від δ⁺ до δ⁻; 1 Дебай (Д) = 3.336× 10⁻³⁰ Кл·м). Для триатомної молекули AB₂ результуючий дипольний момент дорівнює геометричній сумі двох векторів під валентним кутом θ: μ_сум = 2μ₀cos(θ/2). У лінійній молекулі CO₂ (sp-гібридизація, θ = 180°) диполі μ₁ + μ₂ = 0, тому μ_сум = 0 Д. У кутовій молекулі H₂O (θ = 104.5°) складові вздовж бісектриси додаються: μ_сум = 2 × 1.51 Д × cos(52.25°) = 1.85 Д, і в зовнішньому полі E на молекулу діє обертальний момент M = [μ×E].</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Дипольний момент молекули є векторною сумою μ_мол = μ₁ + μ₂, тому при θ = 180° рівні за модулем диполі зв’язків взаємно компенсуються.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Різниця електронегативностей зв’язку Δχ = |χ_B − χ_A|</strong>: 0 … 2.5, типове значення 1.24</li><li><strong>Валентний кут між зв’язками θ (105° = H₂O, 180° = CO₂)</strong>: 90 … 180 °, типове значення 105 °</li><li><strong>Довжина ковалентного зв’язку l(A–B)</strong>: 0.9 … 1.8 Å, типове значення 0.96 Å</li><li><strong>Напруженість зовнішнього електричного поля E</strong>: 0 … 5 кВ/см, типове значення 2 кВ/см</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
-            <div class="theory-analogy-body">Уяви перетягування каната! У лінійній молекулі CO₂ (180^°) два атоми Оксигену тягнуть електрони з однаковою силою в протилежні боки, і нічия (μ = 0). А у зігнутій молекулі води (104.5^°) обидва канати тягнуть під кутом угору, створюючи потужний електричний диполь!</div>
+            <div class="theory-analogy-body">Уяви перетягування каната! У лінійній молекулі CO₂ (180°) два атоми Оксигену тягнуть електрони з однаковою силою в протилежні боки, і нічия (μ = 0). А у зігнутій молекулі води (104.5°) обидва канати тягнуть під кутом угору, створюючи потужний електричний диполь!</div>
           </div>
           <div class="theory-note-formula">
-            <code>μ = ∑ᵢ qᵢ rᵢ, μ_сум(AB₂) = 2μ₀cos (θ)/(2), M = [μ × E]</code>
+            <code>μ = ∑_i q_i r_i, μ_сум(AB₂) = 2μ₀cos(θ)/(2), M = [μ × E]</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

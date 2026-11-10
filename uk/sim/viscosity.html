@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">10 клас · ВНЗ</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коли тверда сферична кулька радіусом r і густиною ρₛ опускається у в’язкій рідині густиною ρ_f за малих чисел Рейнольдса (Re = (2ρ_f v r)/(η) ≪ 1), обтікання є плавним і ламінарним (без відриву вихорів). Причиною внутрішнього тертя рідини є перенесення імпульсу між сусідніми шарами, що рухаються з різними швидкостями.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли тверда сферична кулька радіусом r і густиною ρ_s опускається у в’язкій рідині густиною ρ_f за малих чисел Рейнольдса (Re = (2ρ_f v r)/(η) ll 1), обтікання є плавним і ламінарним (без відриву вихорів). Причиною внутрішнього тертя рідини є перенесення імпульсу між сусідніми шарами, що рухаються з різними швидкостями.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Джордж Габріель Стокс (1851 р.), розв’язавши рівняння гідродинаміки Нав’є, Стокса для повільного обтікання сфери, вивів формулу сили в’язкого опору (закон Стокса): F_c = -6π η r v, де η, динамічна в’язкість рідини (у Па·с). Рівняння руху кульки вздовж вертикалі має вигляд m(dv)/(dt) = (ρₛ - ρ_f)(4)/(3)π r³ g - 6π η r v.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Джордж Габріель Стокс (1851 р.), розв’язавши рівняння гідродинаміки Нав’є, Стокса для повільного обтікання сфери, вивів формулу сили в’язкого опору (закон Стокса): F_c = -6π η r v, де η, динамічна в’язкість рідини (у Па·с). Рівняння руху кульки вздовж вертикалі має вигляд m(dv)/(dt) = (ρ_s - ρ_f)(4)/(3)π r³ g - 6π η r v.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">На початку падіння (v ≈ 0) кулька прискорюється, але зі зростанням швидкості сила Стокса F_c ∝ v лінійно збільшується, поки повністю не зрівноважить ефективну вагу кульки у рідині (F_тяж = F_A + F_c). Після цього прискорення стає нульовим і встановлюється гранична (термінальна) швидкість осідання: v_терм = (2 r² g (ρₛ - ρ_f))/(9η). Цей метод лежить в основі віскозиметра Стокса та знаменитого досліду Міллікена з вимірювання заряду електрона.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">На початку падіння (v ≈ 0) кулька прискорюється, але зі зростанням швидкості сила Стокса F_c ∝ v лінійно збільшується, поки повністю не зрівноважить ефективну вагу кульки у рідині (F_тяж = F_A + F_c). Після цього прискорення стає нульовим і встановлюється гранична (термінальна) швидкість осідання: v_терм = (2 r² g (ρ_s - ρ_f))/(9η). Цей метод лежить в основі віскозиметра Стокса та знаменитого досліду Міллікена з вимірювання заряду електрона.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">На кульку в рідині діють три сили: тяжіння F_g = (4)/(3)π r³ ρ_т g вниз, сила Архімеда F_A = (4)/(3)π r³ ρ_р g вгору та сила в’язкого опору Стокса F_c = 6πη r v вгору. В усталеному режимі F_g - F_A = F_c, звідки формула Стокса для граничної швидкості: v_уст = frac2 r² g (ρ_т - ρ_р)9η. Отже, v_уст пропорційна квадрату радіуса r² і обернено пропорційна в’язкості η.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли сила в’язкого тертя Стокса F_S = 6πη r v зрівнюється з результуючою силою тяжіння й Архімеда, чому дорівнює прискорення кульки a і як далі рухається тіло?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Радіус кульки r</strong>: 0.25 … 0.65 см, типове значення 0.42 см</li><li><strong>Динамічна в’язкість рідини η</strong>: 0.4 … 2.8 Па·с, типове значення 1.2 Па·с</li><li><strong>Густина матеріалу кулі ρ_тіла</strong>: 1500 … 4000 кг/м³, типове значення 2600 кг/м³</li><li><strong>Густина в’язкої рідини ρ_рід</strong>: 700 … 1250 кг/м³, типове значення 950 кг/м³</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Упусти металеву кульку в банку з густим медом або гліцерином: вона розганяється лише першу мить, а далі пливе вниз із напрочуд постійною швидкістю! Так само парашутист або дощова крапля в повітрі досягає граничної швидкості, коли опір середовища врівноважує тяжіння.</div>
           </div>
           <div class="theory-note-formula">
-            <code>F_Стокса = 6π η r v, m(dv)/(dt) = mg - F_A - 6πη r v ; v_уст = (2 r² g (ρ_тіла - ρ_рід))/(9η)</code>
+            <code>F_Стокса = 6π η r v, m(dv)/(dt) = mg - F_A - 6πη r v ; v_уст = frac2 r² g (ρ_тіла - ρ_рід)9η</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

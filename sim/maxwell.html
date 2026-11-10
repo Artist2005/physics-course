@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 10–11 · Uni</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Although temperature T fixes the mean kinetic energy of an ideal gas, incessant molecular collisions spread individual molecular speeds across a wide spectrum. In 1859, James Clerk Maxwell derived the equilibrium speed probability density function: f(v) = 4π ≤ft((M)/(2π R T) )^ 3/2 v² exp ≤ft(-(M v²)/(2 R T) ).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Although temperature T fixes the mean kinetic energy of an ideal gas, incessant molecular collisions spread individual molecular speeds across a wide spectrum. In 1859, James Clerk Maxwell derived the equilibrium speed probability density function: f(v) = 4π ≤ft((M)/(2π R T))^ 3/2 v² exp ≤ft(-(M v²)/(2 R T)).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The shape of the Maxwell–Boltzmann curve arises from the product of the phase-space shell volume factor 4π v² (which suppresses f(v) → 0 as v → 0) and the Boltzmann exponential factor exp ≤ft(-(Mv²)/(2RT) ) (which suppresses high-energy tails).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The shape of the Maxwell–Boltzmann curve arises from the product of the phase-space shell volume factor 4π v² (which suppresses f(v) → 0 as v → 0) and the Boltzmann exponential factor exp ≤ft(-(Mv²)/(2RT)) (which suppresses high-energy tails).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Three characteristic speeds obey the invariant ordering vₚ &lt; langle v rangle &lt; vᵣms: 1) most probable speed (peak of f(v)) vₚ = √((2RT)/(M)); 2) mean speed langle v rangle = √((8RT)/(π M)) ≈ 1.128 vₚ; and 3) root-mean-square speed vᵣms = √((3RT)/(M)) ≈ 1.225 vₚ. Raising temperature T or choosing a lighter gas M shifts the peak rightward and lowers its height while preserving total probability ∫₀^∞ f(v) dv = 1.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Three characteristic speeds obey the invariant ordering v_p &lt; langle v rangle &lt; v_rms: 1) most probable speed (peak of f(v)) v_p = √((2RT)/(M)); 2) mean speed langle v rangle = √((8RT)/(π M)) ≈ 1.128 v_p; and 3) root-mean-square speed v_rms = √((3RT)/(M)) ≈ 1.225 v_p. Raising temperature T or choosing a lighter gas M shifts the peak rightward and lowers its height while preserving total probability ∫₀^∞ f(v) dv = 1.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In Maxwell's distribution f(v) = 4π≤ft((M)/(2π RT))^3/2 v² e^-(Mv²)/(2RT), all three characteristic speeds scale as √(T/M): most probable v_p = √(2RT/M), mean langle vrangle = √(8RT/(π M)), and root-mean-square v_rms = √(3RT/M). Since the normalization integral ∫₀^∞ f(v) dv = 1 is conserved, shifting the peak to higher speeds (v_p ∝ √(T)) causes the curve to broaden and lower its peak height (f(v_p) ∝ 1/v_p), while exponentially increasing the fraction of fast molecules in the high-energy tail!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">When gas temperature T rises (or molar mass M decreases), how does the peak of the Maxwell speed distribution (v_p = √(2RT/M)) shift?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Gas temperature T</strong>: 150 … 900 K, standard value 350 K</li><li><strong>Gas molar mass M (4=He, 28=N₂, 44=CO₂)</strong>: 4 … 64 g/mol, standard value 28 g/mol</li><li><strong>Visualized molecules N</strong>: 40 … 140 pcs, standard value 90 pcs</li><li><strong>Activation threshold v_thr / v_p</strong>: 0.8 … 2, standard value 1.2</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed (sim 500 m/s!), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward!</div>
+            <div class="theory-analogy-body">Air molecules in a room behave like a bustling crowd: a few are nearly stopped after a collision, most cruise around an average speed (∼ 500 m/s!), and a few sprinters fly much faster. Heating the gas shifts the entire speed curve upward!</div>
           </div>
           <div class="theory-note-formula">
-            <code>f(v) = 4π≤ft((M)/(2π R T) )³/2 v² exp ≤ft(-(M v²)/(2 R T) ) ; vₚ = √((2RT)/(M)) &lt; langle vrangle = √((8RT)/(π M)) &lt; vᵣms = √((3RT)/(M))</code>
+            <code>f(v) = 4π≤ft((M)/(2π R T))^3/2 v² exp ≤ft(-(M v²)/(2 R T)) ; v_p = √((2RT)/(M)) &lt; langle vrangle = √((8RT)/(π M)) &lt; v_rms = √((3RT)/(M))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

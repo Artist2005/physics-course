@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">10–11 клас · Біофізика мембран</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">За рідинно-мозаїчною моделлю Сінгера–Ніколсона, основу біологічних мембран становить подвійний шар (бішар) амфіфільних фосфоліпідів товщиною d ≈ 5 нм: полярні гідрофільні голівки звернені до водної фази, а неполярні вуглеводневі хвости утворюють гідрофобний діелектричний бар’єр із питомою електричною ємністю Cₘ ≈ 1.0 мкФ/см², непроникний для гідратованих іонів.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">За рідинно-мозаїчною моделлю Сінгера–Ніколсона, основу біологічних мембран становить подвійний шар (бішар) амфіфільних фосфоліпідів товщиною d ≈ 5 нм: полярні гідрофільні голівки звернені до водної фази, а неполярні вуглеводневі хвости утворюють гідрофобний діелектричний бар’єр із питомою електричною ємністю C_m ≈ 1.0 мкФ/см², непроникний для гідратованих іонів.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Асиметричний розподіл іонів між цитоплазмою ([K⁺]ᵢ ≈ 140 мМ, [Na⁺]ᵢ ≈ 12 мМ) та позаклітинним середовищем ([K⁺]ₒ ≈ 4.5 мМ, [Na⁺]ₒ ≈ 145 мМ) створюється первинним активним транспортом, інтегральним білком Na⁺/K⁺-АТФазою, який за кожен цикл гідролізу 1 молекули АТФ (перехід конформацій E₁ ≤ftrightarrow E₂) викачує 3 іони Na⁺ назовні та закачує 2 іони K⁺ всередину клітини.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Асиметричний розподіл іонів між цитоплазмою ([K⁺]_i ≈ 140 мМ, [Na⁺]_i ≈ 12 мМ) та позаклітинним середовищем ([K⁺]_o ≈ 4.5 мМ, [Na⁺]_o ≈ 145 мМ) створюється первинним активним транспортом, інтегральним білком Na⁺/K⁺-АТФазою, який за кожен цикл гідролізу 1 молекули АТФ (перехід конформацій E₁ ≤ftrightarrow E₂) викачує 3 іони Na⁺ назовні та закачує 2 іони K⁺ всередину клітини.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки у стані спокою в мембрані відкриті переважно калієві канали витоку (P_K ≫ P_Na), іони K⁺ дифундують із клітини за градієнтом концентрації, заряджаючи внутрішню поверхню мембрани негативно. Рівноважний потенціал для одного іона описується рівнянням Нернста E_K = (RT)/(zF)ln ([K⁺]ₒ)/([K⁺]ᵢ) ≈ -90 мВ, а реальний потенціал спокою з урахуванням малого вхідного витоку Na⁺, рівнянням Гольдмана–Ходжкіна–Катца: Vₘ = (RT)/(F)ln (P_K[K⁺]ₒ + P_Na[Na⁺]ₒ)/(P_K[K⁺]ᵢ + P_Na[Na⁺]ᵢ) ≈ -70 мВ.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки у стані спокою в мембрані відкриті переважно калієві канали витоку (P_K gg P_Na), іони K⁺ дифундують із клітини за градієнтом концентрації, заряджаючи внутрішню поверхню мембрани негативно. Рівноважний потенціал для одного іона описується рівнянням Нернста E_K = (RT)/(zF)ln([K⁺]_o)/([K⁺]_i) ≈ -90 мВ, а реальний потенціал спокою з урахуванням малого вхідного витоку Na⁺, рівнянням Гольдмана–Ходжкіна–Катца: V_m = (RT)/(F)lnfracP_K[K⁺]_o + P_Na[Na⁺]_oP_K[K⁺]_i + P_Na[Na⁺]_i ≈ -70 мВ.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Кожен цикл роботи Na⁺/K⁺-АТФази використовує енергію гідролізу однієї молекули АТФ для виведення 3 іонів Na⁺ у позаклітинне середовище та закачування 2 іонів K⁺ у цитоплазму. Завдяки цьому всередині клітини підтримується висока концентрація калію ([K⁺]_i ≈ 140 мМ проти [K⁺]_o ≈ 4–5 мМ), а ззовні, висока концентрація натрію ([Na⁺]_o ≈ 145 мМ проти [Na⁺]_i ≈ 12 мМ). Оскільки у стані спокою в мембрані відкриті переважно калієві канали витоку (P_K gg P_Na), іони K⁺ дифундують назовні за градієнтом концентрації, заряджаючи внутрішню поверхню мембрани негативно майже до рівня потенціалу Нернста E_K ≈ -90 мВ (з урахуванням невеликого витоку Na⁺ за рівнянням Гольдмана–Ходжкіна–Катца V_m ≈ -70 мВ).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За 1 молекулу АТФ насос виводить 3 Na⁺ назовні і вводить 2 K⁺ усередину, а у стані спокою проникність мембрани для K⁺ значно перевищує проникність для Na⁺.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Активність Na⁺/K⁺-АТФази (швидкість розщеплення АТФ)</strong>: 0.4 … 2.5 ум.од., типове значення 1.4 ум.од.</li><li><strong>Позаклітинна концентрація калію [K⁺]_out (норма 4.5 мМ)</strong>: 2 … 15 мМ, типове значення 4.5 мМ</li><li><strong>Внутрішньоклітинна концентрація натрію [Na⁺]_in</strong>: 5 … 30 мМ, типове значення 12 мМ</li><li><strong>Відносна проникність мембрани P_Na / P_K у рівнянні Гольдмана</strong>: 0.01 … 0.2, типове значення 0.04</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Натрій-калієвий насос працює як турнікет-шлюз на вході в клуб, який за кожну витрачену монетку АТФ виставляє на вулицю 3 відвідувачів у помаранчевих куртках (Na⁺) і впускає всередину лише 2 у зелених ( extK⁺). Оскільки позитивних зарядів виходить більше, а калій ще й просочується назад через «канали витоку», всередині клітини підтримується негативний заряд -70 мВ!</div>
           </div>
           <div class="theory-note-formula">
-            <code>E_K = (RT)/(zF)ln ([K⁺]ₒut)/([K⁺]ᵢn), Vₘ = (RT)/(F)ln (P_K[K⁺]ₒ + P_Na[Na⁺]ₒ)/(P_K[K⁺]ᵢ + P_Na[Na⁺]ᵢ)</code>
+            <code>E_K = (RT)/(zF)lnfrac[K⁺]_out[K⁺]_in, V_m = (RT)/(F)lnfracP_K[K⁺]_o + P_Na[Na⁺]_oP_K[K⁺]_i + P_Na[Na⁺]_i</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

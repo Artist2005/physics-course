@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">Grade 9–11 · Chemistry</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">According to collision theory and Eyring–Polanyi transition-state theory, only a small fraction of molecular collisions between reactants A and B result in chemical transformation. To stretch and cleave existing bonds and reach the transition-state activated complex [A⋯ B]^ddagger, colliding particles must possess proper steric orientation and relative kinetic energy exceeding the activation energy barrier Eₐ.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">According to collision theory and Eyring–Polanyi transition-state theory, only a small fraction of molecular collisions between reactants A and B result in chemical transformation. To stretch and cleave existing bonds and reach the transition-state activated complex [A·s B]^ddagger, colliding particles must possess proper steric orientation and relative kinetic energy exceeding the activation energy barrier E_a.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The temperature and barrier dependence of the rate constant is governed by the Arrhenius equation: k(T) = A exp ≤ft(-(Eₐ)/(RT) ), where the Boltzmann factor f = e⁻Eₐ / (RT) represents the fraction of collisions with energy ≥ Eₐ. Because Eₐ and T appear in the exponent, a modest temperature rise (Van ’t Hoff’s rule) or barrier reduction triggers an exponential surge in reaction rate.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">The temperature and barrier dependence of the rate constant is governed by the Arrhenius equation: k(T) = A exp ≤ft(-(E_a)/(RT)), where the Boltzmann factor f = e^-E_a / (RT) represents the fraction of collisions with energy ≥ E_a. Because E_a and T appear in the exponent, a modest temperature rise (Van ’t Hoff’s rule) or barrier reduction triggers an exponential surge in reaction rate.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">A catalyst participates in intermediate elementary steps, providing an alternative reaction pathway with a lower activation barrier Eₐ,cat = Eₐ - Δ Eₐ before regenerating at the end of the cycle. a catalyst does not alter the thermodynamic enthalpy of reaction Δ H = Eₚrod - Eᵣeact or the equilibrium constant K_c, as it lowers the forward and reverse barriers by the exact same amount.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">A catalyst participates in intermediate elementary steps, providing an alternative reaction pathway with a lower activation barrier E_a,cat = E_a - Δ E_a before regenerating at the end of the cycle. a catalyst does not alter the thermodynamic enthalpy of reaction Δ H = E_prod - E_react or the equilibrium constant K_c, as it lowers the forward and reverse barriers by the exact same amount.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the Arrhenius rate law k = A₀ e^-E_a/(RT), the rate constant depends exponentially on the activation barrier. A catalyst forms transient intermediates that lower the barrier from E_a to E_a - Δ E_cat, dramatically increasing the Boltzmann fraction of reactive collisions while leaving Δ H and chemical equilibrium unchanged.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">By the Arrhenius law k = A e^-E_a / (RT), a catalyst lowers the activation barrier E_a by Δ E_a. Does tunneling through the barrier change the initial or final energy levels (Δ H)?</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Uncatalyzed activation energy E_a</strong>: 35 … 90 kJ/mol, standard value 65 kJ/mol</li><li><strong>Catalytic barrier reduction ΔE_cat (0=none)</strong>: 0 … 35 kJ/mol, standard value 0 kJ/mol</li><li><strong>Reaction mixture temperature T</strong>: 280 … 550 K, standard value 350 K</li><li><strong>Reactant concentration C(A) = C(B)</strong>: 0.5 … 2.5 mol/L, standard value 1.2 mol/L</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Activation energy Eₐ is like a high mountain pass between two valleys (reactants and products). A catalyst bores a direct tunnel through the mountain: the climb is much lower, allowing exponentially more molecules to cross per second while the valley elevations (Δ H) stay the same!</div>
+            <div class="theory-analogy-body">Activation energy E_a is like a high mountain pass between two valleys (reactants and products). A catalyst bores a direct tunnel through the mountain: the climb is much lower, allowing exponentially more molecules to cross per second while the valley elevations (Δ H) stay the same!</div>
           </div>
           <div class="theory-note-formula">
-            <code>v = k(T)· [A][B], k(T) = A₀ exp ≤ft(-(Eₐ)/(RT) ) ; ln (k₂)/(k₁) = (Eₐ)/(R)≤ft((1)/(T₁) - (1)/(T₂) )</code>
+            <code>v = k(T)· [A][B], k(T) = A₀ exp ≤ft(-(E_a)/(RT)) ; ln(k₂)/(k₁) = (E_a)/(R)≤ft((1)/(T₁) - (1)/(T₂))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

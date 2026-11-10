@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">Доведення</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">Про проєкт</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Конфіденційність</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn active" title="Українська мова">УКР</button>
@@ -159,22 +164,34 @@
         <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill">9–11 клас · Фізіологія кровообігу (закон Пуазейля)</span></div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Гемодинаміка вивчає закони руху крові по судинному руслу під дією градієнта тиску Δ P = P₁ - P₂, створюваного скороченнями шлуночків серця. У більшості судин (крім висхідної аорти під час піку систоли) течія крові є ламінарною (число Рейнольдса Re = (2ρ v R)/(η) &lt; 2000): шари крові ковзають один відносно одного без перемішування, утворюючи параболічний профіль швидкості v(r) = vₘax(1 - r²/R²).</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Гемодинаміка вивчає закони руху крові по судинному руслу під дією градієнта тиску Δ P = P₁ - P₂, створюваного скороченнями шлуночків серця. У більшості судин (крім висхідної аорти під час піку систоли) течія крові є ламінарною (число Рейнольдса Re = (2ρ v R)/(η) &lt; 2000): шари крові ковзають один відносно одного без перемішування, утворюючи параболічний профіль швидкості v(r) = v_max(1 - r²/R²).</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Інтегрування параболічного профілю за площею перерізу судини дає фундаментальний закон Гагена–Пуазейля: об’ємна швидкість кровотоку Q = (π Δ P R⁴)/(8η L) = (Δ P)/(R_гідр). Оскільки гідравлічний опір судини R_гідр = (8η L)/(π R⁴) обернено пропорційний четвертому степеню радіуса, саме тонус гладеньких м’язів дрібних артеріол («кранів судинної системи») є головним регулятором артеріального тиску та кровопостачання органів.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">Інтегрування параболічного профілю за площею перерізу судини дає фундаментальний закон Гагена–Пуазейля: об’ємна швидкість кровотоку Q = (π Δ P R⁴)/(8η L) = fracΔ PR_гідр. Оскільки гідравлічний опір судини R_гідр = (8η L)/(π R⁴) обернено пропорційний четвертому степеню радіуса, саме тонус гладеньких м’язів дрібних артеріол («кранів судинної системи») є головним регулятором артеріального тиску та кровопостачання органів.</p></div>
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Вимірювання і застосування</div>
             <div class="theory-note-body"><p class="theory-note-para">В’язкість цільної крові η у 3..5 разів перевищує в’язкість води і експоненційно зростає зі збільшенням гематокриту (Ht), об’ємної частки еритроцитів (у нормі 40..48%). При патологічному звуженні судини атеросклеротичною бляшкою (стенозі) зменшення радіуса просвіту вдвічі знижує об’ємний кровотік у 2⁴ = 16 разів і спричиняє локальне прискорення струменя з переходом у турбулентність.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Теоретичне виведення та аналіз закону</div>
+            <div class="theory-note-body"><p class="theory-note-para">Ламінарний рух в’язкої рідини (крові) у кровоносній судині має параболічний профіль швидкостей v(r) = (Δ P)/(4η L)(R² - r²): шар плазми безпосередньо біля ендотеліальної стінки (r = R) нерухомий, а на осі судини (r = 0) швидкість максимальна (v_max = (Δ P R²)/(4η L)), причому еритроцити концентруються в осьовому потоці (ефект Фареуса–Лінквіста). Інтегрування швидкості за перерізом дає закон Гагена–Пуазейля: Q = (π Δ P R⁴)/(8η L) = fracΔ PR_гідр. Надзвичайна чутливість кровотоку до радіуса (Q ∝ R⁴) є фундаментальним принципом фізіології: скорочення гладеньких м’язів артеріол лише на 16% знижує кровотік удвічі, а звуження просвіту вдвічі (R → R/2) зменшує кровопостачання органа у 2⁴ = 16 разів.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Методична вказівка до розрахунку</div>
+            <div class="theory-note-body"><p class="theory-note-para">За законом Гагена–Пуазейля Q ∝ R⁴: при зменшенні радіуса судини R у 2 рази об’ємна швидкість кровотоку зменшується у 2⁴ = 16 разів.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Внутрішній радіус кровоносної судини R (закон Пуазейля Q ∝ R⁴)</strong>: 1 … 3 мм, типове значення 2 мм</li><li><strong>Артеріо-венозний перепад тиску вздовж ділянки судини ΔP</strong>: 15 … 80 мм рт.ст., типове значення 40 мм рт.ст.</li><li><strong>Гематокрит Ht (об’ємна частка еритроцитів, що визначає в’язкість η)</strong>: 25 … 65 %, типове значення 45 %</li><li><strong>Коефіцієнт локального судинного опору (1.0, чиста судина, 2.5, стеноз)</strong>: 1 … 2.5 разів, типове значення 1 разів</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Приклад із життя</div>
             <div class="theory-analogy-body">Спробуй пити густий коктейль через широку трубочку і через вдвічі вужчу: здається, що буде лише вдвічі важче, але насправді потік падає аж у 2⁴ = 16 разів! Саме тому навіть невелике розширення чи звуження наших артеріол миттєво перенаправляє кров до м’язів або мозку.</div>
           </div>
           <div class="theory-note-formula">
-            <code>Q = (π Δ P R⁴)/(8 η L), R_гідр = (8 η L)/(π R⁴), v(r) = vₘax≤ft(1 - (r²)/(R²) )</code>
+            <code>Q = (π Δ P R⁴)/(8 η L), R_гідр = (8 η L)/(π R⁴), v(r) = v_max≤ft(1 - (r²)/(R²))</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Реакція / Натяг / Тиск</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
+      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
+      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Політика конфіденційності</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261110a"></script>
+  <script defer src="../../assets/app.js?v=20261110b"></script>
 </body>
 </html>

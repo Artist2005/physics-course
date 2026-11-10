@@ -44,10 +44,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <!-- Google AdSense: вкажіть ваш ідентифікатор видавця ca-pub-XXXXXXXXXXXXXXXX для автоматичного завантаження банерів -->
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-2903108049371777';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261110a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261110b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -112,7 +113,11 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb">3. Proof</span>
       </div>
-
+            <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
+        <a id="ui-hdr-about" href="/about.html">About</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-hdr-privacy" href="/privacy.html">Privacy</a>
+      </nav>
       <div class="lang-switcher" role="group" aria-label="Language selector">
         <button type="button" id="lang-en" class="lang-btn active" title="English (Default)">EN</button>
         <button type="button" id="lang-uk" class="lang-btn" title="Українська мова">УКР</button>
@@ -167,14 +172,26 @@
           </div>
           <div class="theory-note-block">
             <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">When an external pressure exceeding the osmotic pressure is applied to the solution side (Pₑxt &gt; Π), water is forced backward out of the concentrated brine into the pure water chamber, the principle of reverse osmosis (RO) used worldwide for seawater desalination.</p></div>
+            <div class="theory-note-body"><p class="theory-note-para">When an external pressure exceeding the osmotic pressure is applied to the solution side (P_ext &gt; Π), water is forced backward out of the concentrated brine into the pure water chamber, the principle of reverse osmosis (RO) used worldwide for seawater desalination.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Theoretical derivation and analysis</div>
+            <div class="theory-note-body"><p class="theory-note-para">Osmotic pressure depends on the total concentration of kinetically independent solute particles (colligative property). Non-electrolyte glucose does not dissociate (i = 1), whereas strong electrolyte NaCl dissociates into two ions (Na⁺ and Cl⁻, i ≈ 2), doubling its effective osmolarity iC and osmotic pressure Π = iCRT.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Methodological calculation guide</div>
+            <div class="theory-note-body"><p class="theory-note-para">Osmotic pressure Π = iCRT scales with total particle concentration: NaCl dissociates into 2 ions (i ≈ 2), generating twice the osmotic pressure of non-electrolyte glucose (i = 1).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Solute molar concentration C (right arm)</strong>: 0.05 … 0.5 mol/L, standard value 0.2 mol/L</li><li><strong>van ’t Hoff factor i (1=glucose, 2=NaCl, 3=CaCl₂)</strong>: 1 … 3, standard value 2</li><li><strong>Absolute solution temperature T</strong>: 273 … 353 K, standard value 298 K</li><li><strong>External piston pressure P_ext (reverse osmosis if P &gt; Π)</strong>: 0 … 30 atm, standard value 0 atm</li></ul>
           </div>
           <div class="theory-analogy-card">
             <div class="theory-analogy-title">Everyday example</div>
-            <div class="theory-analogy-body">Sprinkling salt on cucumbers draws water out across cell membranes toward higher ion concentration (osmosis). Pushing back on saltwater with pressure Pₑxt &gt; Π forces pure water out, reverse osmosis filtration!</div>
+            <div class="theory-analogy-body">Sprinkling salt on cucumbers draws water out across cell membranes toward higher ion concentration (osmosis). Pushing back on saltwater with pressure P_ext &gt; Π forces pure water out, reverse osmosis filtration!</div>
           </div>
           <div class="theory-note-formula">
-            <code>Π = i C R T = ρ g Δ h, i = 1 + α(k - 1) ; Pₑxt &amp; Π ⇒ reverse osmosis (desalination)</code>
+            <code>Π = i C R T = ρ g Δ h, i = 1 + α(k - 1) ; P_ext Π ⇒ reverse osmosis (desalination)</code>
           </div>
         </div>
       </div>
@@ -392,7 +409,18 @@
         <div class="legend-entry" id="ui-legend-n"><span class="legend-bar" style="background:#b45309;"></span> Normal / Tension / Pressure</div>
       </div>
     </div>
-  
+        <section id="platform-editorial-guide" class="platform-editorial-guide">
+      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
+      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
+      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <div class="platform-editorial-links">
+        <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-privacy" href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
     <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
       <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
@@ -418,6 +446,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261110a"></script>
+  <script defer src="../assets/app.js?v=20261110b"></script>
 </body>
 </html>

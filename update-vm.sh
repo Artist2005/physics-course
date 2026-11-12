@@ -69,6 +69,15 @@ for path in set(confs):
     # Ensure error_page 404 /404.html is present before location /
     if 'error_page 404 /404.html;' not in txt:
         txt = txt.replace('location / {', 'error_page 404 /404.html;\n\n    location / {', 1)
+    # Ensure 301 canonical redirects for legacy URLs
+    if 'rewrite ^/sim/brewster' not in txt and 'physics-course' in txt:
+        redirects = (
+            '    rewrite ^/sim/brewster(\\.html)?$ /sim/malus permanent;\n'
+            '    rewrite ^/uk/sim/brewster(\\.html)?$ /uk/sim/malus permanent;\n'
+            '    rewrite ^/sim/chem_arrhenius(\\.html)?$ /sim/chem_kinetics permanent;\n'
+            '    rewrite ^/uk/sim/chem_arrhenius(\\.html)?$ /uk/sim/chem_kinetics permanent;\n\n    '
+        )
+        txt = txt.replace('location / {', redirects + 'location / {', 1)
     # Ensure security headers are inside location / so add_header Cache-Control doesn't strip them
     if 'X-Content-Type-Options' not in txt.split('location / {')[-1]:
         txt = txt.replace(

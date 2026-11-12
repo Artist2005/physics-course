@@ -3587,6 +3587,36 @@
       font-weight: 700;
     }
 
-    body.classroom-mode .question-statement {
+    body.classroom-mode .question-statement,
+    body.classroom-mode .problem-question {
       font-size: 15.5px;
+    }
+
+    .btn-share-state {
+      grid-column: 1 / -1;
+      padding: 5px 8px;
+      border-radius: 2px;
+      border: 1px dashed var(--rule-dark);
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.14s ease;
+    }
+
+    .btn-share-state:hover {
+      border-style: solid;
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+      background: #ffffff;
+    }
+
+    .btn-share-state.copied {
+      border-style: solid;
+      border-color: #14532d;
+      background: #14532d;
+      color: #faf9f5;
     }

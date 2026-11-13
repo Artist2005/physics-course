@@ -7,8 +7,6 @@ HUB_ROOT="/var/www/sheua-hub"
 DOMAIN_FILE="${WEB_ROOT}/.domain"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-sudo -v
-
 echo "=== [1/5] Отримання останніх змін із Git (гілка: ${BRANCH}) ==="
 if [ -d "${SRC_DIR}/.git" ]; then
   sudo chown -R "$(id -u):$(id -g)" "${SRC_DIR}" || true

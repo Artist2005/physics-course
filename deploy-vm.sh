@@ -47,7 +47,7 @@ if [ "${DOMAIN}" != "_" ]; then
 fi
 
 CACHE_VER="$(date +%s)"
-sudo find "${WEB_ROOT}" -name "*.html" -exec sed -i -E "s|assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?|assets/\1?v=${CACHE_VER}|g" {} +
+sudo find "${WEB_ROOT}" -name "*.html" -exec sed -i -E "s#assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?#assets/\1?v=${CACHE_VER}#g" {} +
 
 if [ -d "/etc/nginx/sites-available" ]; then
   if [ -f "${NGINX_AVAILABLE}" ] && grep -q "managed by Certbot" "${NGINX_AVAILABLE}"; then

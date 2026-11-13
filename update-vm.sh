@@ -7,9 +7,11 @@ HUB_ROOT="/var/www/sheua-hub"
 DOMAIN_FILE="${WEB_ROOT}/.domain"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+sudo -v
+
 echo "=== [1/5] Отримання останніх змін із Git (гілка: ${BRANCH}) ==="
 if [ -d "${SRC_DIR}/.git" ]; then
-  sudo chown -R "$(id -u):$(id -g)" "${SRC_DIR}/.git" || true
+  sudo chown -R "$(id -u):$(id -g)" "${SRC_DIR}" || true
 fi
 git config --global --add safe.directory "${SRC_DIR}" || true
 sudo git config --system --add safe.directory "${SRC_DIR}" 2>/dev/null || true
@@ -25,12 +27,12 @@ fi
 
 echo "=== [2/5] Оновлення файлів 3D-лабораторії у ${WEB_ROOT} ==="
 sudo mkdir -p "${WEB_ROOT}"
-if [ "${SRC_DIR}" != "${WEB_ROOT}" ]; then
-  sudo cp -a "${SRC_DIR}/index.html" "${SRC_DIR}/404.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${WEB_ROOT}/"
+if [ "$(realpath "${SRC_DIR}")" != "$(realpath "${WEB_ROOT}")" ]; then
+  sudo cp -a "${SRC_DIR}/index.html" "${SRC_DIR}/404.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${SRC_DIR}/sheua-root" "${WEB_ROOT}/"
 fi
 
 CACHE_VER="$(date +%s)"
-sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec sed -i -E "s|assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?|assets/\1?v=${CACHE_VER}|g" {} +
+sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec sed -i -E "s#assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?#assets/\1?v=${CACHE_VER}#g" {} +
 
 WEB_OWNER=""
 if id "www-data" >/dev/null 2>&1; then
@@ -47,7 +49,7 @@ sudo find "${WEB_ROOT}" -mindepth 1 -maxdepth 1 ! -name ".git" -exec chmod -R u=
 
 echo "=== [3/5] Оновлення кореневого порталу sheua.com із папки sheua-root ==="
 if [ -d "${SRC_DIR}/sheua-root" ]; then
-  mapfile -t HUB_DIRS < <(sudo python3 - "${HUB_ROOT}" << 'PYHUB'
+  HUB_LIST="$(sudo python3 - "${HUB_ROOT}" << 'PYHUB'
 import glob, re, sys
 
 roots = [sys.argv[1]]
@@ -73,26 +75,31 @@ for p in sorted(set(confs)):
 for r in roots:
     print(r)
 PYHUB
-  )
+  )"
 
-  for TARGET_HUB in "${HUB_DIRS[@]}"; do
+  SRC_SHEUA_REAL="$(realpath "${SRC_DIR}/sheua-root")"
+  while IFS= read -r TARGET_HUB; do
     [ -z "${TARGET_HUB}" ] && continue
     sudo mkdir -p "${TARGET_HUB}"
-    sudo cp -a "${SRC_DIR}/sheua-root/." "${TARGET_HUB}/"
+    if [ "$(realpath "${TARGET_HUB}")" != "${SRC_SHEUA_REAL}" ]; then
+      sudo cp -a "${SRC_DIR}/sheua-root/." "${TARGET_HUB}/"
+    fi
     if [ -n "${WEB_OWNER}" ]; then
       sudo chown -R "${WEB_OWNER}" "${TARGET_HUB}"
     fi
     sudo chmod -R u=rwX,go=rX "${TARGET_HUB}"
     echo "Оновлено кореневий домен sheua.com у ${TARGET_HUB}"
-  done
+  done <<< "${HUB_LIST}"
 fi
 
 echo "=== [4/5] Оновлення правил ads.txt, редиректів та 404 у Nginx ==="
 sudo python3 - << 'PYEOF'
-import glob, re
+import glob, re, subprocess
 
 confs = glob.glob('/etc/nginx/sites-available/*') + glob.glob('/etc/nginx/conf.d/*.conf')
 for path in sorted(set(confs)):
+    if path.endswith('.bak'):
+        continue
     try:
         with open(path, 'r', encoding='utf-8') as f:
             txt = f.read()
@@ -139,15 +146,6 @@ for path in sorted(set(confs)):
         )
         txt = txt.replace('location / {', ads_block + 'location / {', 1)
 
-    # Canonicalize www.sheua.com -> https://sheua.com on root hub server block
-    if 'www.sheua.com' in txt and 'physics.sheua.com' not in txt and 'if ($host = www.sheua.com)' not in txt and 'location / {' in txt:
-        www_redirect = (
-            'if ($host = www.sheua.com) {\n'
-            '        return 301 https://sheua.com$request_uri;\n'
-            '    }\n\n    '
-        )
-        txt = txt.replace('location / {', www_redirect + 'location / {', 1)
-
     # Ensure security headers inside location /
     if 'location / {' in txt and 'X-Content-Type-Options' not in txt.split('location / {')[-1]:
         txt = txt.replace(
@@ -158,7 +156,13 @@ for path in sorted(set(confs)):
     if txt != orig:
         with open(path, 'w', encoding='utf-8') as f:
             f.write(txt)
-        print(f'Updated Nginx config: {path}')
+        chk = subprocess.run(['nginx', '-t'], capture_output=True)
+        if chk.returncode != 0:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(orig)
+            print(f'Skipped Nginx patch for {path} (kept existing valid config)')
+        else:
+            print(f'Updated Nginx config: {path}')
 PYEOF
 
 sudo nginx -t

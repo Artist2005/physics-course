@@ -14,7 +14,7 @@ fi
 
 echo "=== [2/4] Розгортаємо головний портал ${ROOT_DOMAIN} у ${HUB_DIR} з папки sheua-root ==="
 sudo mkdir -p "${HUB_DIR}"
-sudo cp -r "${PHYSICS_DIR}/sheua-root/"* "${HUB_DIR}/"
+sudo cp -a "${PHYSICS_DIR}/sheua-root/." "${HUB_DIR}/"
 sudo chown -R www-data:www-data "${HUB_DIR}"
 sudo chmod -R 755 "${HUB_DIR}"
 
@@ -41,6 +41,17 @@ server {
     gzip_types text/plain text/css text/html text/javascript text/xml application/javascript application/json application/ld+json application/xml image/svg+xml;
 
     error_page 404 /404.html;
+
+    if (\$host = www.${ROOT_DOMAIN}) {
+        return 301 https://${ROOT_DOMAIN}\$request_uri;
+    }
+
+    location = /ads.txt {
+        default_type text/plain;
+        add_header Cache-Control "public, max-age=3600" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        try_files /ads.txt =404;
+    }
 
     location = /404.html {
         internal;

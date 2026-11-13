@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHEUA.COM · Open-Access Science Textbook &amp; Interactive 3D Physics, Chemistry and Biology Lab</title>
+  <meta name="description" content="Open-access educational platform SHEUA.COM: theoretical textbook, SI physical constants reference, worked problems, and 106 real-time 3D simulations in Physics (46), Chemistry (40), and Biology &amp; Biophysics (20)." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/en/" />
+  <link rel="alternate" hreflang="en" href="https://sheua.com/en/" />
+  <link rel="alternate" hreflang="uk" href="https://sheua.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://sheua.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="SHEUA.COM · Open-Access Science Textbook &amp; 3D Virtual Laboratory (106 Simulations)" />
+  <meta property="og:description" content="Interactive 3D science laboratory and reference compendium covering classical mechanics, thermodynamics, optics, electromagnetism, quantum chemistry, and biophysics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/en/" />
+  <meta property="og:site_name" content="SHEUA.COM · 3D Science Lab" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SHEUA.COM · Open-Access 3D Science Textbook &amp; Virtual Lab" />
+  <meta name="twitter:description" content="106 real-time WebGL 3D simulations, live formula calculators, theoretical derivations, and printable lab worksheets." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SHEUA.COM · Open-Access 3D Science Textbook & Virtual Laboratory",
+    "url": "https://sheua.com/en/",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "SHEUA 3D Science Lab",
+      "url": "https://sheua.com/",
+      "email": "contact@sheua.com"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/en/">SHEUA.COM · 3D Science Lab</a>
+    <nav class="nav-bar" aria-label="Main navigation">
+      <a href="/en/" class="active">Overview</a>
+      <a href="https://physics.sheua.com/">3D Lab (106 Sims)</a>
+      <a href="/about.html?lang=en">About &amp; Contact</a>
+      <a href="/privacy.html?lang=en">Privacy Policy</a>
+      <a href="/terms.html?lang=en">Terms of Use</a>
+      <a class="lang-pill" href="/" title="Українська версія">УКР</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero-sheet">
+      <span class="badge">SHEUA.COM · OPEN-ACCESS 3D SCIENCE TEXTBOOK &amp; VIRTUAL LAB</span>
+      <h1>Interactive 3D Physics, Chemistry &amp; Biology Virtual Laboratory and Reference Textbook</h1>
+      <p class="lead">The <strong>sheua.com</strong> educational platform and its laboratory environment at <strong>physics.sheua.com</strong> provide free, registration-free access to 106 real-time WebGL 3D simulations, step-by-step formula calculators, analytical derivations, and printable laboratory worksheets for secondary schools and universities.</p>
+
+      <div class="cta-grid">
+        <a class="cta-card" href="https://physics.sheua.com/">
+          <span class="card-kicker">physics.sheua.com · Physics (46 Experiments)</span>
+          <div class="card-title">3D General Physics Virtual Laboratory</div>
+          <p class="card-desc">Classical mechanics, momentum and energy conservation, Bernoulli hydrodynamics, Carnot thermodynamics, wave and geometric optics, electromagnetism, and atomic physics.</p>
+          <span class="card-link-hint">Open 3D Physics Lab →</span>
+        </a>
+        <a class="cta-card" href="https://physics.sheua.com/sim/chem_orbitals">
+          <span class="card-kicker">physics.sheua.com · Chemistry (40 Experiments)</span>
+          <div class="card-title">3D General, Physical &amp; Organic Chemistry Lab</div>
+          <p class="card-desc">Quantum s, p, d orbitals, VSEPR molecular geometry, ionic crystal lattices, Arrhenius kinetics, Le Chatelier equilibrium, acid-base titration, buffers, and electrochemistry.</p>
+          <span class="card-link-hint">Open 3D Chemistry Lab →</span>
+        </a>
+        <a class="cta-card" href="https://physics.sheua.com/sim/bio_eukaryote">
+          <span class="card-kicker">physics.sheua.com · Biology (20 Experiments)</span>
+          <div class="card-title">3D Cell Biology, Genetics &amp; Biophysics Lab</div>
+          <p class="card-desc">Eukaryotic organelles, chemiosmotic ATP synthase, mitosis and meiosis, DNA replication, PCR, CRISPR-Cas9 genome editing, Hodgkin-Huxley neuron spikes, and hemodynamics.</p>
+          <span class="card-link-hint">Open 3D Biology Lab →</span>
+        </a>
+      </div>
+    </section>
+
+    <article class="article-sheet">
+      <h2>Compendium of fundamental governing equations in SI units</h2>
+      <p>Every simulation chapter implements exact numerical integration of the governing differential and algebraic equations summarized below, allowing students and instructors to compare analytical predictions directly against live 3D telemetry:</p>
+
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Discipline</th>
+              <th>Physical, Chemical or Biophysical Law</th>
+              <th>Governing Mathematical Equation</th>
+              <th>Key Variables &amp; SI Units</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Classical Mechanics</td>
+              <td>Conservation of Momentum &amp; Inelastic Loss</td>
+              <td><code>m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂, &nbsp; ΔQ = ½μ·Δv²(1 − e²)</code></td>
+              <td>Mass <code>m</code> (kg), velocity <code>v</code> (m/s), restitution <code>e</code></td>
+            </tr>
+            <tr>
+              <td>Rotational Dynamics</td>
+              <td>Rolling Kinetic Energy &amp; Gyroscopic Precession</td>
+              <td><code>E_k = ½mv² + ½Iω², &nbsp; Ω_p = mgl / (I_s ω_s)</code></td>
+              <td>Moment of inertia <code>I</code> (kg·m²), spin rate <code>ω_s</code> (rad/s)</td>
+            </tr>
+            <tr>
+              <td>Fluid Mechanics</td>
+              <td>Bernoulli's Principle, Torricelli's Law &amp; Stokes Drag</td>
+              <td><code>P + ½ρv² + ρgy = const, &nbsp; v = √(2gh), &nbsp; F_d = 6πηrv</code></td>
+              <td>Static pressure <code>P</code> (Pa), density <code>ρ</code> (kg/m³), viscosity <code>η</code> (Pa·s)</td>
+            </tr>
+            <tr>
+              <td>Thermodynamics</td>
+              <td>Ideal Gas Equation, RMS Speed &amp; Carnot Efficiency</td>
+              <td><code>PV = νRT, &nbsp; v_rms = √(3RT/M), &nbsp; η = 1 − T_C/T_H</code></td>
+              <td>Absolute temperature <code>T</code> (K), molar amount <code>ν</code> (mol)</td>
+            </tr>
+            <tr>
+              <td>Wave Optics</td>
+              <td>Snell's Law, Young's Double-Slit &amp; Malus's Law</td>
+              <td><code>n₁ sin α = n₂ sin γ, &nbsp; Δy = λL/d, &nbsp; I = I₀ cos² θ</code></td>
+              <td>Refractive index <code>n</code>, wavelength <code>λ</code> (nm)</td>
+            </tr>
+            <tr>
+              <td>Electromagnetism</td>
+              <td>Lorentz Force, Faraday Induction &amp; RLC Resonance</td>
+              <td><code>F_L = |q|vB sin α, &nbsp; ℰ = −N dΦ/dt, &nbsp; ω₀ = 1/√(LC)</code></td>
+              <td>Magnetic field <code>B</code> (T), inductance <code>L</code> (H), capacitance <code>C</code> (F)</td>
+            </tr>
+            <tr>
+              <td>Quantum Physics</td>
+              <td>Photoelectric Equation, Compton Shift &amp; Bohr Levels</td>
+              <td><code>hc/λ = φ + eU_s, &nbsp; Δλ = λ_C(1 − cos θ), &nbsp; E_n = −13.6/n² eV</code></td>
+              <td>Planck constant <code>h</code> (J·s), stopping voltage <code>U_s</code> (V)</td>
+            </tr>
+            <tr>
+              <td>Physical Chemistry</td>
+              <td>Gibbs Free Energy, Arrhenius Kinetics &amp; Buffer pH</td>
+              <td><code>ΔG = ΔH − TΔS = −RT ln K, &nbsp; k = A e^{−E_a/RT}, &nbsp; pH = pK_a + lg([A⁻]/[HA])</code></td>
+              <td>Activation energy <code>E_a</code> (kJ/mol), equilibrium constant <code>K</code></td>
+            </tr>
+            <tr>
+              <td>Electrochemistry</td>
+              <td>Nernst Potential &amp; Faraday's Law of Electrolysis</td>
+              <td><code>E = E° + (RT/zF) ln([Ox]/[Red]), &nbsp; m = (M·I·t) / (z·F)</code></td>
+              <td>Faraday constant <code>F = 96 485 C/mol</code>, current <code>I</code> (A)</td>
+            </tr>
+            <tr>
+              <td>Biophysics</td>
+              <td>Nernst Membrane Potential &amp; Hagen-Poiseuille Flow</td>
+              <td><code>V_m = (RT/zF) ln([C]_o/[C]_i), &nbsp; Q = (πΔP·R⁴) / (8ηL)</code></td>
+              <td>Vessel radius <code>R</code> (mm), volumetric blood flow <code>Q</code> (m³/s)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Three-stage scientific inquiry architecture</h2>
+      <p>Each of the 106 chapters guides learners through a structured three-stage experimental workflow designed for independent study and projector-based classroom instruction:</p>
+      <ol>
+        <li><strong>Predictive hypothesis.</strong> Before running the apparatus, students analyze a conceptual or quantitative problem and commit to a testable physical hypothesis.</li>
+        <li><strong>Quantitative 3D experimentation.</strong> Learners vary physical parameters across core school and advanced university regimes, inspect real-time 3D force, velocity, field, and dipole vectors, and record live energy oscillograms.</li>
+        <li><strong>Analytical proof and lab report.</strong> The live KaTeX formula calculator substitutes the active slider values directly into the governing equations, solves inverse problems, shares exact parameter URLs for homework, and exports a clean printable laboratory report.</li>
+      </ol>
+
+      <h2>Curriculum organization and difficulty tiers</h2>
+      <p>To support differentiated instruction across secondary school curricula such as Grades 8 to 11, GCSE, AP, and IB alongside introductory university courses, every simulation in the dropdown registry belongs to one of two curriculum tiers. The <strong>Core Curriculum</strong> tier covers foundational laws of mechanics, hydrostatics, ideal gases, geometric optics, atomic structure, acid-base pH, cell organelles, and Mendelian genetics. The <strong>Advanced Level</strong> tier covers gyroscopic precession, Michelson interferometry, Compton scattering, molecular orbital theory, Born-Haber cycles, Hodgkin-Huxley electrophysiology, and CRISPR-Cas9 gene editing.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Open-Access 3D Science Lab · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/en/">Home (EN)</a>
+      <a href="/">Український підручник</a>
+      <a href="/about.html?lang=en">About &amp; Contact</a>
+      <a href="/privacy.html?lang=en">Privacy Policy</a>
+      <a href="/terms.html?lang=en">Terms of Use</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Cookie notice">
+    <div>This educational site uses cookies and <code>localStorage</code> to save study preferences and serve Google AdSense ads in accordance with our <a href="/privacy.html?lang=en">Privacy Policy</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Essential only</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Accept</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang-view="uk">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
   <style>
     :root {
       --bg-paper: #f4f2ed;
@@ -225,9 +224,7 @@
         var saved = null;
         try { saved = localStorage.getItem('sheua_legal_lang'); } catch (e) {}
         var fromEnRef = document.referrer && /\/sim\//.test(document.referrer) && !/\/uk\//.test(document.referrer);
-        var initial = (qLang === 'en' || qLang === 'uk' || qLang === 'both')
-          ? qLang
-          : (saved || (fromEnRef ? 'en' : 'both'));
+        var initial = (qLang === 'en' || qLang === 'uk') ? qLang : ((saved === 'en' || saved === 'uk') ? saved : (fromEnRef ? 'en' : 'uk'));
         setDocLang(initial);
       });
     })();
@@ -235,23 +232,23 @@
 </head>
 <body>
   <header class="top-bar">
-    <a class="brand-link" href="https://physics.sheua.com/uk/">3D Лабораторія Фізики, Хімії та Біології</a>
+    <a class="brand-link" href="/">SHEUA.COM · Природничі науки</a>
     <nav class="nav-links" aria-label="Навігація сайту">
-      <a href="https://physics.sheua.com/uk/">На головну (УКР)</a>
-      <a href="/">Home (EN)</a>
+      <a href="/">Підручник (УКР)</a>
+      <a href="/en/">Overview (EN)</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія</a>
       <a href="/about.html">Про проєкт і контакти</a>
       <a href="/privacy.html">Політика конфіденційності</a>
       <a href="/terms.html">Умови використання</a>
       <div class="legal-lang-switch" role="group" aria-label="Language view">
-        <button type="button" class="legal-lang-btn" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
+        <button type="button" class="legal-lang-btn active" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
         <button type="button" class="legal-lang-btn" data-lang-mode="en" onclick="window.__setLegalLang('en')">EN</button>
-        <button type="button" class="legal-lang-btn active" data-lang-mode="both" onclick="window.__setLegalLang('both')">УКР + EN</button>
       </div>
     </nav>
   </header>
 
   <main>
-    <div class="doc-meta">Останнє оновлення: 9 листопада 2026 р. · Домен: physics.sheua.com</div>
+    <div class="doc-meta">Останнє оновлення: 9 листопада 2026 р. · Домени: sheua.com та physics.sheua.com</div>
     <h1>Політика конфіденційності та файлів cookie</h1>
     <p>Ця Політика конфіденційності пояснює, як освітня вебплатформа інтерактивних тривимірних симуляцій з фізики, хімії та біології <strong>physics.sheua.com</strong> обробляє технічні дані відвідувачів, використовує локальне сховище браузера та взаємодіє з рекламним сервісом Google AdSense.</p>
 
@@ -279,7 +276,7 @@
 
     <hr class="lang-divider" />
 
-    <div class="doc-meta" lang="en">Last updated: November 9, 2026 · Domain: physics.sheua.com</div>
+    <div class="doc-meta" lang="en">Last updated: November 9, 2026 · Domains: sheua.com &amp; physics.sheua.com</div>
     <h2 class="h1-en" lang="en">Privacy Policy &amp; Cookie Disclosure</h2>
     <p lang="en">This Privacy Policy explains how the interactive 3D Physics, Chemistry, and Biology educational platform at <strong>physics.sheua.com</strong> handles technical visitor data, browser storage, and Google AdSense advertising cookies.</p>
 
@@ -304,7 +301,7 @@
   </main>
 
   <footer>
-    <span>© 2026 physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)</span>
+    <span>© 2026 sheua.com &amp; physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)</span>
     <span><a href="/about.html">Про проєкт</a> · <a href="/privacy.html">Політика конфіденційності</a> · <a href="/terms.html">Умови використання</a></span>
   </footer>
 

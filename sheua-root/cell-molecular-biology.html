@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розділ VI. Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9 · SHEUA.COM</title>
+  <meta name="description" content="Геометричне обмеження площі до о'му клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/cell-molecular-biology.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Розділ VI. Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9 · SHEUA.COM" />
+  <meta property="og:description" content="Геометричне обмеження площі до о'му клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/cell-molecular-biology.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Розділ VI. Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9 · SHEUA.COM" />
+  <meta name="twitter:description" content="Геометричне обмеження площі до о'му клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ VI. Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9","description":"Геометричне обмеження площі до о'му клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9.","url":"https://sheua.com/cell-molecular-biology.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум роз'зування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/about.html">Про проєкт</a>
+      <a href="/privacy.html">Конфіденційність</a>
+      <a class="lang-pill" href="/en/" title="English edition">EN</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>Розділ VI</span></div>
+      <span class="badge">РОЗДІЛ VI · ТЕОРЕТИЧНИЙ ДОВІДНИК ТА ЗАДАЧНИК</span>
+      <h1>Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9</h1>
+      <p class="lead">Сучасна молекулярна біологія описує живу клітину як високоорганізовану термодинамічну й інформаційну машину, де перетворення вільної енергії протонного градієнта забезпечує точне копіювання, репарацію та експресію генетичного коду.</p>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>1. Масштабування клітинних розмірів та хеміосмотична біоенергетика</h2>
+      <p>Максимальний лінійний розмір метаболічно активної клітини обмежений фундаментальним геометричним співвідношенням площі плазматичної мембрани до внутрішнього о'му цитоплазми. Для сферичної клітини радіусом <code>R</code> площа поверхні зростає як <code>S = 4πR²</code>, а о'м збільшується кубічно як <code>V = (4/3)πR³</code>, тому питома поверхня спадає за гіперболою <code>S / V = 3 / R</code>. Перехід еукаріотів до лінійних розмірів <code>10-100 мкм</code> став можливим завдяки внутрішній мембранній компартменталізації (ендоплазматична сітка, комплекс Гольджі, лізосоми, кристи мітохондрій і тилакоїди хлоропластів) та активному везикулярному транспорту вздовж цитоскелета.</p>
+      <p>За хеміосмотичною теорією Пітера Мітчелла перенесення електронів дихальним ланцюгом внутрішньої мембрани мітохондрії (від <code>NADH</code> і <code>FADH₂</code> до молекулярного кисню <code>O₂</code>) або фотосистемами тилакоїда супроводжується транслокацією протонів <code>H⁺</code> проти електрохімічного градієнта. Це генерує протонну рушійну силу <code>Δp</code>, яка складається з електричного мембранного потенціалу <code>Δψ</code> та осмотичного градієнта <code>ΔpH</code>:</p>
+      <p class="formula-block"><code>Δp = Δψ − (2.303 RT / F) ΔpH ≈ Δψ − 61.5 мВ · ΔpH &nbsp; (при 37 °C)</code></p>
+      <p>Зворотний потік протонів крізь канал роторного комплексу <code>F₀F₁</code>-АТФ-синтази обертає <code>c</code>-кільце й центральний <code>γ</code>-субодиничний вал, викликаючи циклічні конформаційні переходи каталітичних центрів <code>β</code>-субодиниць, які фосфорилюють <code>АДФ + Ф_н → АТФ</code>.</p>
+
+      <h2>2. Реплікація ДНК, експресія генів та методи молекулярної біотехнології</h2>
+      <p>Подвійна правозакручена спіраль B-ДНК Уотсона-Кріка складається з двох антипаралельних полінуклеотидних ланцюгів (<code>5'→3'</code> та <code>3'→5'</code>), стабілізованих стекінг-взаємодіями та водневими з'зками комплементарних пар основ за правилами Чаргаффа: двох водневих з'зків у парі <code>A = T</code> і трьох у термічно стійкішій парі <code>G ≡ C</code>. Під час напівконсервативної реплікації геліказа розплітає подвійну спіраль, а ДНК-полімераза синтезує нові ланцюги виключно в напрямку <code>5'→3'</code>: безперервно на ведучому ланцюзі та фрагментами Оказакі на відстаючому ланцюзі, які зшиваються ДНК-лігазою.</p>
+      <p>У біотехнології ферментативна реплікація відтворена in vitro в методі полімеразної ланцюгової реакції (ПЛР). Кожен цикл термоциклера включає денатурацію матриці (<code>94-95 °C</code>), комплементарний відпал олігонуклеотидних праймерів (<code>55-62 °C</code>) та елонгацію термостабільною <code>Taq</code>-полімеразою (<code>72 °C</code>), забезпечуючи експоненціальне накопичення цільового амплікона <code>N(n) = N₀ · (1 + E)^n</code>, що в ідеальному режимі (<code>E = 1</code>) дає <code>N₀ · 2^n</code> копій. Для адресного редагування геному ендонуклеаза <code>Cas9</code> у комплексі з гідовою <code>sgRNA</code> сканує дволанцюгову ДНК на наявність протоспейсерного мотиву <code>PAM (5'-NGG-3')</code>, формує R-петлю довжиною 20 нуклеотидів і вносить точний дволанцюговий розрив за допомогою нуклеазних доменів <code>HNH</code> та <code>RuvC</code>.</p>
+
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Молекулярно-генетичний процес</th>
+              <th>Матриця і напрямок синтезу</th>
+              <th>Ключові ферменти та білкові комплекси</th>
+              <th>Біологічний або діагностичний результат</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Напівконсервативна реплікація</td>
+              <td>Обидва ланцюги ДНК, синтез <code>5'→3'</code></td>
+              <td>Геліказа, праймаза, ДНК-полімераза III/δ, лігаза</td>
+              <td>Подвоєння геному <code>2n2c → 2n4c</code> у S-фазі</td>
+            </tr>
+            <tr>
+              <td>Транскрипція та процесинг</td>
+              <td>Матричний ланцюг ДНК <code>3'→5'</code>, РНК <code>5'→3'</code></td>
+              <td>РНК-полімераза II, сплайсосома</td>
+              <td>Синтез зрілої мРНК, тРНК та рРНК</td>
+            </tr>
+            <tr>
+              <td>Рибосомна трансляція</td>
+              <td>Зчитування кодонів мРНК <code>5'→3'</code>, білок <code>N→C</code></td>
+              <td>Рибосома 80S/70S (сайти A, P, E), аміноацил-тРНК</td>
+              <td>Синтез поліпептидного ланцюга за триплетним кодом</td>
+            </tr>
+            <tr>
+              <td>Полімеразна ланцюгова реакція</td>
+              <td>Ділянка ДНК між двома праймерами</td>
+              <td>Термостабільна <code>Taq</code>- або <code>Pfu</code>-полімераза</td>
+              <td>Ампліфікація в <code>2^n</code> разів за 25-35 циклів</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>3. Поділ клітини та популяційна рівновага Гарді-Вайнберга</h2>
+      <p>Мітотичний поділ соматичних клітин зберігає диплоїдний набір хромосом (<code>2n → 2n</code>) завдяки розділенню сестринських хроматид в анафазі, тоді як два послідовні поділи мейозу зменшують плоїдність удвічі (<code>2n4c → 1n1c</code>) і генерують комбінативну мінливість через кросинговер гомологів у профазі І та незалежне розходження бівалентів у анафазі І. У великій панміктичній популяції за відсутності добору, мутацій, міграцій та дрейфу генів частоти домінантного алеля <code>p</code> і рецесивного алеля <code>q</code> (<code>p + q = 1</code>) залишаються сталими з покоління в покоління, а частоти генотипів підпорядковуються біному Гарді-Вайнберга: <code>p²(AA) + 2pq(Aa) + q²(aa) = 1</code>.</p>
+
+      <h2>4. Приклади роз'зування розрахункових задач</h2>
+
+      <div class="worked-problem">
+        <h3>Задача 1. Частота гетерозиготних носіїв аутосомно-рецесивної ознаки в популяції</h3>
+        <p>У рівноважній людській популяції спадкове аутосомно-рецесивне захворювання (генотип <code>aa</code>) трапляється з частотою <code>1</code> випадок на <code>2500</code> новонароджених. Визначте частоти рецесивного й домінантного алелів та частку здорових гетерозиготних носіїв <code>Aa</code> серед населення.</p>
+        <p><strong>Роз'зання.</strong> За законом Гарді-Вайнберга частота рецесивних гомозигот дорівнює <code>q² = 1 / 2500 = 0.0004</code>, звідки частота рецесивного алеля становить <code>q = √0.0004 = 0.020</code> (2.0 %). Частота домінантного алеля дорівнює <code>p = 1 − q = 1 − 0.020 = 0.980</code> (98.0 %). Частота гетерозиготних носіїв у популяції обчислюється як <code>2pq = 2 · 0.980 · 0.020 = 0.0392</code>, тобто <code>3.92 %</code> (приблизно 1 із кожних 25-26 осіб є безсимптомним носієм алеля).</p>
+        <p><strong>Відповідь.</strong> <code>q = 0.020</code>, <code>p = 0.980</code>, частка гетерозигот <code>2pq = 3.92 %</code>.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 2. Кількісна оцінка чутливості ПЛР при реальній ефективності циклу</h3>
+        <p>У реакційну пробірку для кількісної ПЛР внесено <code>N₀ = 150</code> молекул матричної ДНК. Реальна середня ефективність подвоєння в кожному циклі становить <code>E = 0.92</code> (92 %). Скільки молекул цільового амплікона утвориться після завершення <code>n = 30</code> температурних циклів?</p>
+        <p><strong>Роз'зання.</strong> За формулою реальної ампліфікації <code>N(30) = N₀ · (1 + E)^30 = 150 · (1.92)^30</code>. Прологарифмуємо вираз: <code>lg N = lg 150 + 30 · lg 1.92 = 2.1761 + 30 · 0.2833 = 2.1761 + 8.4990 = 10.6751</code>. Звідси <code>N(30) = 10^{10.6751} ≈ 4.73 × 10¹⁰</code> молекул ДНК.</p>
+        <p><strong>Відповідь.</strong> <code>N ≈ 4.73 × 10¹⁰</code> копій ДНК.</p>
+      </div>
+    
+
+      <section class="lab-links-box" aria-label="По'зані тривимірні лабораторні роботи">
+        <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
+        <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
+        <div class="lab-links-grid">
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_eukaryote">§ Б-01. Компартменталізація еукаріотичної клітини →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_mitochondria">§ Б-02. Протонна рушійна сила і АТФ-синтаза →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_replication">§ Б-04. Напівконсервативна реплікація ДНК →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_mendel">§ Б-06. Закон Гарді-Вайнберга у популяції →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_pcr">§ Б-16. Полімеразна ланцюгова реакція (ПЛР) →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_crispr">§ Б-17. Редагування геному системою CRISPR-Cas9 →</a>
+        </div>
+      </section>
+
+      
+      <nav class="chapter-pager" aria-label="Навігація між розділами підручника">
+        <div><a href="/chemical-kinetics-equilibrium.html">← Розділ V: Фізична хімія, кінетика та електрохімія</a></div>
+        <div><a href="/biophysics-physiology.html">Розділ VII: Біофізика живих систем →</a></div>
+      </nav>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Головна</a>
+      <a href="/si-constants-handbook.html">Довідник СІ</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

@@ -3564,13 +3564,6 @@
       }
     }
 
-    .ad-sidebar-card {
-      margin-top: 22px;
-      padding-top: 14px;
-      border-top: 1px dashed var(--rule-dark);
-      opacity: 0.92;
-    }
-
     body.classroom-mode .ad-sidebar-card,
     body.classroom-mode #ad-viewport-banner,
     body.classroom-mode #cookie-consent-banner,

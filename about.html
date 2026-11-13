@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang-view="uk">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -225,9 +225,7 @@
         var saved = null;
         try { saved = localStorage.getItem('sheua_legal_lang'); } catch (e) {}
         var fromEnRef = document.referrer && /\/sim\//.test(document.referrer) && !/\/uk\//.test(document.referrer);
-        var initial = (qLang === 'en' || qLang === 'uk' || qLang === 'both')
-          ? qLang
-          : (saved || (fromEnRef ? 'en' : 'both'));
+        var initial = (qLang === 'en' || qLang === 'uk') ? qLang : ((saved === 'en' || saved === 'uk') ? saved : (fromEnRef ? 'en' : 'uk'));
         setDocLang(initial);
       });
     })();
@@ -243,9 +241,8 @@
       <a href="/privacy.html">Політика конфіденційності</a>
       <a href="/terms.html">Умови використання</a>
       <div class="legal-lang-switch" role="group" aria-label="Language view">
-        <button type="button" class="legal-lang-btn" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
+        <button type="button" class="legal-lang-btn active" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
         <button type="button" class="legal-lang-btn" data-lang-mode="en" onclick="window.__setLegalLang('en')">EN</button>
-        <button type="button" class="legal-lang-btn active" data-lang-mode="both" onclick="window.__setLegalLang('both')">УКР + EN</button>
       </div>
     </nav>
   </header>

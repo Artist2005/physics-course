@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розділ V. Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста · SHEUA.COM</title>
+  <meta name="description" content="Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/chemical-kinetics-equilibrium.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Розділ V. Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста · SHEUA.COM" />
+  <meta property="og:description" content="Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/chemical-kinetics-equilibrium.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Розділ V. Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста · SHEUA.COM" />
+  <meta name="twitter:description" content="Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ V. Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста","description":"Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея.","url":"https://sheua.com/chemical-kinetics-equilibrium.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум роз'зування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/about.html">Про проєкт</a>
+      <a href="/privacy.html">Конфіденційність</a>
+      <a class="lang-pill" href="/en/" title="English edition">EN</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>Розділ V</span></div>
+      <span class="badge">РОЗДІЛ V · ТЕОРЕТИЧНИЙ ДОВІДНИК ТА ЗАДАЧНИК</span>
+      <h1>Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста</h1>
+      <p class="lead">Фізична хімія відповідає на два центральні запитання хімічної науки: у якому напрямку процес може перебігати самочинно з погляду термодинаміки і з якою реальною швидкістю система наближається до рівноваги за даних температури, тиску та присутності каталізатора.</p>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>1. Хімічна термодинаміка: закон Гесса, вільна енергія Гіббса та константа рівноваги</h2>
+      <p>Згідно із законом Гесса тепловий ефект хімічної реакції при сталому тиску дорівнює зміні ентальпії системи <code>ΔH = ∑ νᵢ ΔH°_f(прод) − ∑ νⱼ ΔH°_f(реаг)</code> і не залежить від проміжних стадій перетворення. Проте сам знак <code>ΔH</code> ще не визначає можливості самочинного перебігу реакції в ізобарно-ізотермічних умовах (<code>P, T = const</code>), оскільки необхідно врахувати зміну ентропії <code>ΔS</code>. Універсальним критерієм напрямку хімічного процесу є зміна вільної енергії Гіббса:</p>
+      <p class="formula-block"><code>ΔG = ΔH − TΔS, &nbsp;&nbsp; ΔG° = −RT ln K</code></p>
+      <p>Реакція відбувається самочинно в прямому напрямку при <code>ΔG &lt; 0</code>, досягає стану динамічної хімічної рівноваги при <code>ΔG = 0</code> і є термодинамічно забороненою в прямому напрямку при <code>ΔG &gt; 0</code>. Коли <code>ΔH</code> і <code>ΔS</code> мають однаковий знак, напрямок реакції змінюється при проходженні через характеристичну температуру інверсії <code>T_рівн = ΔH / ΔS</code>. Відповідно до принципу Ле Шательє-Брауна підвищення температури зміщує рівновагу в бік ендотермічного процесу (<code>ΔH &gt; 0</code>), а підвищення загального тиску зміщує газофазну систему в бік меншої сумарної кількості молів газу.</p>
+
+      <h2>2. Хімічна кінетика: порядки реакцій, період напівперетворення та рівняння Арреніуса</h2>
+      <p>Швидкість гомогенної елементарної стадії за законом діючих мас пропорційна добутку молярних концентрацій реагентів у степенях їхніх кінетичних порядків: <code>v = −d[A] / dt = k[A]^n</code>. Інтегрування диференціального рівняння для нульового (<code>n = 0</code>, насичений гетерогенний каталіз), першого (<code>n = 1</code>, мономолекулярний розпад) та другого (<code>n = 2</code>, бімолекулярні зіткнення) порядків виявляє якісно різну залежність періоду напівперетворення <code>t_{1/2}</code> від початкової концентрації <code>[A]₀</code>.</p>
+
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Кінетичний порядок <code>n</code></th>
+              <th>Диференціальне рівняння</th>
+              <th>Інтегральний закон <code>[A](t)</code></th>
+              <th>Період напівперетворення <code>t_{1/2}</code></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Нульовий (<code>n = 0</code>)</td>
+              <td><code>−d[A]/dt = k</code></td>
+              <td><code>[A](t) = [A]₀ − kt</code></td>
+              <td><code>t_{1/2} = [A]₀ / (2k)</code></td>
+            </tr>
+            <tr>
+              <td>Перший (<code>n = 1</code>)</td>
+              <td><code>−d[A]/dt = k[A]</code></td>
+              <td><code>[A](t) = [A]₀ exp(−kt)</code></td>
+              <td><code>t_{1/2} = ln 2 / k ≈ 0.693 / k</code></td>
+            </tr>
+            <tr>
+              <td>Другий (<code>n = 2</code>)</td>
+              <td><code>−d[A]/dt = k[A]²</code></td>
+              <td><code>1/[A](t) = 1/[A]₀ + kt</code></td>
+              <td><code>t_{1/2} = 1 / (k[A]₀)</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Експоненціальне зростання константи швидкості з температурою описується рівнянням Арреніуса <code>k(T) = A · exp(−E_a / RT)</code>, де <code>E_a</code> позначає енергію активації перехідного комплексу, а <code>A</code> враховує частоту та просторову орієнтацію зіткнень. Введення гомогенного чи гетерогенного каталізатора спрямовує реакцію новим маршрутом зі зниженим ба'ром <code>E'_a &lt; E_a</code>, прискорюючи одночасно пряму й зворотну стадії без зміни рівноважної константи <code>K</code>.</p>
+
+      <h2>3. Протолітична рівновага, буферні розчини та електрохімічні системи</h2>
+      <p>У розведених водних розчинах при <code>25 °C</code> іонний добуток води становить <code>K_w = [H⁺][OH⁻] = 1.0 × 10⁻¹⁴</code>, а водневий показник визначається як <code>pH = −lg a(H⁺) ≈ −lg[H⁺]</code>. Буферні системи зі слабкої кислоти <code>HA</code> та її спряженої солі <code>A⁻</code> підтримують стабільне значення <code>pH</code> під час розведення або додавання невеликих порцій сильних кислот і лугів згідно з рівнянням Гендерсона-Гассельбаха: <code>pH = pK_a + lg([A⁻] / [HA])</code>.</p>
+      <p>В електрохімічних колах просторове розділення напівреакцій окиснення на аноді та відновлення на катоді перетворює вільну енергію реакції <code>ΔG = −zFℰ</code> безпосередньо в електричну роботу. Рівноважний електродний потенціал залежить від активностей окисненої й відновленої форм за рівнянням Нернста <code>E = E° + [RT / (zF)] ln([Ox] / [Red])</code>, а при примусовому проходженні постійного струму силою <code>I</code> крізь електролізер маса виділеної на електроді речовини підпорядковується о'днаному закону Фарадея <code>m = (M · I · t) / (z · F)</code>, де стала Фарадея дорівнює <code>F = 96485.3 Кл/моль</code>.</p>
+
+      <h2>4. Приклади роз'зування розрахункових задач</h2>
+
+      <div class="worked-problem">
+        <h3>Задача 1. Зміна pH ацетатного буферного розчину при додаванні сильної кислоти</h3>
+        <p>До <code>1.00 л</code> ацетатного буферного розчину, який містить <code>0.20 моль</code> етанової кислоти <code>CH₃COOH</code> (<code>pK_a = 4.76</code>) та <code>0.20 моль</code> натрій етаноату <code>CH₃COONa</code>, додали <code>0.020 моль</code> газоподібного хлороводню <code>HCl</code> без помітної зміни о'му. Обчисліть початковий і кінцевий <code>pH</code> буфера та порівняйте зі зміною <code>pH</code> при додаванні тієї самої порції <code>HCl</code> до <code>1.00 л</code> чистої води.</p>
+        <p><strong>Роз'зання.</strong> Оскільки початкові концентрації компонентів рівні (<code>[A⁻]₀ = [HA]₀ = 0.20 моль/л</code>), початковий показник становить <code>pH₀ = 4.76 + lg(0.20 / 0.20) = 4.76</code>. Сильна кислота кількісно протонує ацетат-іони: <code>CH₃COO⁻ + H⁺ → CH₃COOH</code>, тому нові рівноважні кількості дорівнюють <code>[A⁻] = 0.20 − 0.02 = 0.18 моль/л</code> та <code>[HA] = 0.20 + 0.02 = 0.22 моль/л</code>. За рівнянням Гендерсона-Гассельбаха <code>pH = 4.76 + lg(0.18 / 0.22) = 4.76 + lg(0.818) = 4.76 − 0.087 ≈ 4.67</code> (зсув становить лише <code>ΔpH = −0.09</code>). У чистій воді (<code>pH₀ = 7.00</code>) додавання <code>0.020 моль/л HCl</code> знижує показник до <code>pH = −lg(0.020) = 1.70</code>, тобто на <code>5.30</code> одиниці.</p>
+        <p><strong>Відповідь.</strong> у буфері <code>pH</code> змінюється з <code>4.76</code> до <code>4.67</code>; у чистій воді з <code>7.00</code> до <code>1.70</code>.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 2. ЕРС гальванічного елемента Даніеля-Якобі при нерівноважних концентраціях</h3>
+        <p>Обчисліть електрорушійну силу елемента <code>Zn | ZnSO₄ (0.010 М) || CuSO₄ (1.00 М) | Cu</code> при температурі <code>T = 298.15 К</code>, якщо стандартні електродні потенціали становлять <code>E°(Zn²⁺/Zn) = −0.763 В</code> та <code>E°(Cu²⁺/Cu) = +0.340 В</code>.</p>
+        <p><strong>Роз'зання.</strong> Стандартна ЕРС елемента з двохелектронним переходом (<code>z = 2</code>) дорівнює <code>ℰ° = E°_кат − E°_анод = 0.340 − (−0.763) = 1.103 В</code>. При <code>298.15 К</code> коефіцієнт перед десятковим логарифмом у рівнянні Нернста становить <code>(2.3026 RT) / F = 0.05916 В</code>. Для сумарної реакції <code>Zn + Cu²⁺ → Zn²⁺ + Cu</code> реакційна частка дорівнює <code>Q = [Zn²⁺] / [Cu²⁺] = 0.010 / 1.00 = 10⁻²</code>. Підставляємо у рівняння Нернста: <code>ℰ = ℰ° − (0.05916 / 2) lg Q = 1.103 − 0.02958 · (−2) = 1.103 + 0.059 = 1.162 В</code>.</p>
+        <p><strong>Відповідь.</strong> <code>ℰ = 1.162 В</code>.</p>
+      </div>
+    
+
+      <section class="lab-links-box" aria-label="По'зані тривимірні лабораторні роботи">
+        <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
+        <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
+        <div class="lab-links-grid">
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_kinetics">§ Х-5. Рівняння Арреніуса та енергія активації →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_equilibrium">§ Х-6. Хімічна рівновага і принцип Ле Шательє →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_titration">§ Х-7. Кислотно-основне титрування та крива pH →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_galvanic">§ Х-8. Гальванічний елемент Даніеля-Якобі →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_buffer">§ Х-15. Буферні розчини та ємність буфера →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_orders">§ Х-27. Кінетичні порядки реакцій та період t₁/₂ →</a>
+        </div>
+      </section>
+
+      
+      <nav class="chapter-pager" aria-label="Навігація між розділами підручника">
+        <div><a href="/quantum-chemistry-bonding.html">← Розділ IV: Квантова хімія та будова речовини</a></div>
+        <div><a href="/cell-molecular-biology.html">Розділ VI: Молекулярна біологія клітини і генетика →</a></div>
+      </nav>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Головна</a>
+      <a href="/si-constants-handbook.html">Довідник СІ</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

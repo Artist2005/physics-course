@@ -40440,8 +40440,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setAria('.viewport-cam-dock', isUk ? 'Проєкції камери' : 'Camera projection views');
       setAria('#btn-toggle-left', isUk ? 'Згорнути або розгорнути ліву панель' : 'Toggle Left Panel');
       setAria('#btn-toggle-right', isUk ? 'Згорнути або розгорнути праву панель' : 'Toggle Right Panel');
-      setAria('#ad-slot-left', isUk ? 'Рекламний блок лівої панелі' : 'Sidebar Sponsor Slot');
-      setAria('#ad-slot-right', isUk ? 'Рекламний блок правої панелі' : 'Right Sidebar Ad Slot');
+      setAria('#ad-slot-left', isUk ? 'Реклама' : 'Advertisement');
+      setAria('#ad-slot-right', isUk ? 'Реклама' : 'Advertisement');
 
       syncDisciplineHeaderAndFilters();
       syncCurriculumCatalogUI();
@@ -41824,7 +41824,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         leftIns.setAttribute('data-ad-client', configuredClient);
         leftIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.leftSidebar);
         leftIns.setAttribute('data-ad-format', 'auto');
-        leftIns.setAttribute('data-full-width-responsive', 'true');
+        leftIns.setAttribute('data-full-width-responsive', 'false');
       }
       const rightIns = document.querySelector('#ad-slot-right ins.adsbygoogle');
       if (rightIns && isRealClient && ADSENSE_CONFIG.slots.rightSidebar) {
@@ -41833,7 +41833,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         rightIns.setAttribute('data-ad-client', configuredClient);
         rightIns.setAttribute('data-ad-slot', ADSENSE_CONFIG.slots.rightSidebar);
         rightIns.setAttribute('data-ad-format', 'auto');
-        rightIns.setAttribute('data-full-width-responsive', 'true');
+        rightIns.setAttribute('data-full-width-responsive', 'false');
       }
 
       const pushVisibleAdSlots = () => {

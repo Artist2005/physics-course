@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розділ I. Класична механіка: закони збереження імпульсу й енергії та динаміка обертання · SHEUA.COM</title>
+  <meta name="description" content="Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і роз'зані задачі в системі СІ." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/mechanics-conservation.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Розділ I. Класична механіка: закони збереження імпульсу й енергії та динаміка обертання · SHEUA.COM" />
+  <meta property="og:description" content="Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і роз'зані задачі в системі СІ." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/mechanics-conservation.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Розділ I. Класична механіка: закони збереження імпульсу й енергії та динаміка обертання · SHEUA.COM" />
+  <meta name="twitter:description" content="Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і роз'зані задачі в системі СІ." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ I. Класична механіка: закони збереження імпульсу й енергії та динаміка обертання","description":"Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і роз'зані задачі в системі СІ.","url":"https://sheua.com/mechanics-conservation.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум роз'зування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/about.html">Про проєкт</a>
+      <a href="/privacy.html">Конфіденційність</a>
+      <a class="lang-pill" href="/en/" title="English edition">EN</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>Розділ I</span></div>
+      <span class="badge">РОЗДІЛ I · ТЕОРЕТИЧНИЙ ДОВІДНИК ТА ЗАДАЧНИК</span>
+      <h1>Класична механіка: закони збереження імпульсу й енергії та динаміка обертання</h1>
+      <p class="lead">Фундаментальні інтеграли руху дозволяють визначати швидкості, траєкторії та енергетичні втрати механічних систем без інтегрування нелінійних сил під час короткочасних взаємодій. У цьому розділі подано строге виведення законів збереження імпульсу, повної механічної енергії та моменту імпульсу з розрахунковими прикладами.</p>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>1. Імпульс механічної системи та теорема про рух центра мас</h2>
+      <p>Для системи з <code>N</code> матеріальних точок масами <code>mᵢ</code> та миттєвими швидкостями <code>vᵢ</code> в інерціальній системі відліку сумарний вектор імпульсу визначається геометричною сумою <code>P = ∑ mᵢvᵢ = M·v_c</code>, де <code>M = ∑ mᵢ</code> становить повну масу системи, а <code>v_c</code> описує швидкість її центра мас. Згідно з другим і третім законами Ньютона внутрішні сили взаємодії між частинками попарно рівні за модулем і протилежні за напрямком: <code>Fᵢₖ = −Fₖᵢ</code>. Після додавання рівнянь руху всіх точок внутрішні сили взаємно знищуються, залишаючи диференціальний закон зміни імпульсу: <code>dP / dt = F_зовн</code>.</p>
+      <p>Якщо векторна сума всіх зовнішніх сил дорівнює нулю або її проєкція на вибрану вісь зникає (<code>F_зовн,x = 0</code>), відповідна компонента повного імпульсу залишається незмінною в часі: <code>P_x = const</code>. Це твердження справедливе навіть тоді, коли всередині системи діють дисипативні сили сухого чи 'зкого тертя, відбувається пластична деформація або хімічний вибух. Механічна енергія при цьому може переходити у внутрішню теплову енергію, проте швидкість центра мас замкненої системи не змінюється.</p>
+
+      <h2>2. Центральний удар двох куль і коефіцієнт відновлення Ньютона</h2>
+      <p>Розглянемо прямий центральний удар двох однорідних куль масами <code>m₁</code> та <code>m₂</code>, які до контакту рухаються вздовж осі <code>Ox</code> зі швидкостями <code>v₁</code> і <code>v₂</code>. Ступінь пружності матеріалу під час деформації кількісно характеризується безрозмірним коефіцієнтом відновлення <code>e = |u₂ − u₁| / |v₁ − v₂|</code>, де <code>u₁</code> та <code>u₂</code> позначають проєкції швидкостей після розльоту, причому <code>0 ≤ e ≤ 1</code>. Поєднання збереження імпульсу <code>m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂</code> зі співвідношенням Ньютона дає загальні аналітичні формули кінцевих швидкостей:</p>
+      <p class="formula-block"><code>u₁ = [m₁v₁ + m₂v₂ − e·m₂(v₁ − v₂)] / (m₁ + m₂), &nbsp;&nbsp; u₂ = [m₁v₁ + m₂v₂ + e·m₁(v₁ − v₂)] / (m₁ + m₂)</code></p>
+      <p>При абсолютно пружному зіткненні (<code>e = 1</code>) кінетична енергія системи повністю відновлюється після фази пружного стиснення. Якщо ж кулі мають однакову масу (<code>m₁ = m₂</code>) і зазнають абсолютно пружного центрального удару, формули спрощуються до повного обміну швидкостями: <code>u₁ = v₂</code> та <code>u₂ = v₁</code>. Саме цей граничний режим спостерігається в ланцюжку сталевих куль колиски Ньютона.</p>
+      <p>При абсолютно непружному ударі (<code>e = 0</code>) тіла після контакту рухаються як єдине ціле зі спільною швидкістю центра мас <code>u = (m₁v₁ + m₂v₂) / (m₁ + m₂)</code>. Частина початкової кінетичної енергії необоротно перетворюється на теплоту деформації <code>ΔQ</code>, величина якої визначається через зведену масу <code>μ = m₁m₂ / (m₁ + m₂)</code> та відносну швидкість зближення:</p>
+      <p class="formula-block"><code>ΔQ = E_k0 − E_k = ½ · [m₁m₂ / (m₁ + m₂)] · (v₁ − v₂)² · (1 − e²)</code></p>
+
+      <h2>3. Робота консервативних сил, потенціальна енергія та рух по похилій площині</h2>
+      <p>Консервативними називають сили, елементарна робота яких не залежить від форми траєкторії і визначається лише початковим та кінцевим положеннями тіла. До них належать однорідна сила тяжіння (<code>E_p = mgh</code>), гравітаційне притягання Ньютона (<code>E_p = −GMm / r</code>), кулонівська електростатична взаємодія та сила пружності Гука (<code>E_p = ½kx²</code>). За наявності неконсервативної сили ковзного тертя <code>F_тер = μ_к N</code> зміна повної механічної енергії дорівнює роботі дисипативних сил: <code>(E_k2 + E_p2) − (E_k1 + E_p1) = −F_тер · s</code>.</p>
+      <p>Для бруска масою <code>m</code> на похилій площині з кутом нахилу <code>α</code> нормальна реакція опори становить <code>N = mg cos α</code>, а скочувальна складова сили тяжіння дорівнює <code>F_∥ = mg sin α</code>. Тіло залишається у стані спокою за умови <code>tg α ≤ μ_сп</code>. Якщо кут перевищує критичний кут тертя <code>α_кр = arctg μ</code>, брусок рухається вниз із постійним прискоренням <code>a = g(sin α − μ cos α)</code>.</p>
+
+      <h2>4. Динаміка обертального руху твердого тіла та момент інерції</h2>
+      <p>Коли абсолютно тверде тіло котиться по поверхні без проковзування, між лінійною швидкістю його осі <code>v</code> та кутовою швидкістю обертання <code>ω</code> виконується кінематичний з'зок <code>v = ωR</code>. За теоремою Кеніга повна кінетична енергія тіла складається з енергії поступального руху центра мас та енергії обертання навколо осі, що проходить через центр мас:</p>
+      <p class="formula-block"><code>E_k = ½mv² + ½Iω² = ½mv²(1 + β), &nbsp;&nbsp; де β = I / (mR²)</code></p>
+      <p>Безрозмірний геометричний коефіцієнт <code>β</code> визначає розподіл маси відносно осі обертання. Чим більша частка маси зосереджена на периферії тіла, тим більша частина потенціальної енергії <code>mgh</code> витрачається на розкручування і тим меншим виявляється лінійне прискорення скочування з похилої площини <code>a = g sin α / (1 + β)</code>.</p>
+
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Геометрична форма однорідного тіла</th>
+              <th>Момент інерції <code>I</code> відносно осі симетрії</th>
+              <th>Коефіцієнт <code>β = I/(mR²)</code></th>
+              <th>Прискорення кочення <code>a</code> без проковзування</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Матеріальна точка або брусок без тертя</td>
+              <td><code>0</code></td>
+              <td><code>0</code></td>
+              <td><code>g sin α</code></td>
+            </tr>
+            <tr>
+              <td>Суцільна однорідна куля</td>
+              <td><code>(2/5) mR²</code></td>
+              <td><code>0.40</code></td>
+              <td><code>(5/7) g sin α ≈ 0.714 g sin α</code></td>
+            </tr>
+            <tr>
+              <td>Суцільний круговий циліндр або диск</td>
+              <td><code>(1/2) mR²</code></td>
+              <td><code>0.50</code></td>
+              <td><code>(2/3) g sin α ≈ 0.667 g sin α</code></td>
+            </tr>
+            <tr>
+              <td>Тонкостінна порожниста сфера</td>
+              <td><code>(2/3) mR²</code></td>
+              <td><code>0.67</code></td>
+              <td><code>(3/5) g sin α = 0.600 g sin α</code></td>
+            </tr>
+            <tr>
+              <td>Тонкостінний обруч або труба</td>
+              <td><code>mR²</code></td>
+              <td><code>1.00</code></td>
+              <td><code>(1/2) g sin α = 0.500 g sin α</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>5. Момент імпульсу та гіроскопічна прецесія</h2>
+      <p>Вектор моменту імпульсу точки відносно полюса визначається векторним добутком <code>L = [r × p]</code>, а його швидкість зміни дорівнює головному моменту зовнішніх сил: <code>dL / dt = M_зовн</code>. Для швидко обертової симетричної дзиґи з власним моментом імпульсу <code>L = I_s ω_s</code>, вісь якої нахилена під кутом <code>θ</code> до вертикалі й закріплена на відстані <code>l</code> від центра мас, момент сили тяжіння <code>M = mgl sin θ</code> спрямований горизонтально й перпендикулярно до вектора <code>L</code>. Оскільки вектор приросту <code>dL = M dt</code> ортогональний до самого <code>L</code>, модуль моменту імпульсу не змінюється, а вісь гіроскопа описує конус навколо вертикалі з кутовою швидкістю прецесії <code>Ω_пр = mgl / (I_s ω_s)</code>.</p>
+
+      <h2>6. Приклади роз'зування розрахункових задач</h2>
+
+      <div class="worked-problem">
+        <h3>Задача 1. Втрата механічної енергії при частково пружному зіткненні</h3>
+        <p>Сталева куля масою <code>m₁ = 0.60 кг</code>, що рухається горизонтально зі швидкістю <code>v₁ = 4.0 м/с</code>, наздоганяє кулю масою <code>m₂ = 0.40 кг</code>, яка рухається в тому самому напрямку зі швидкістю <code>v₂ = 1.5 м/с</code>. Коефіцієнт відновлення під час удару дорівнює <code>e = 0.80</code>. Визначте швидкості обох куль після удару та кількість виділеної теплоти <code>ΔQ</code>.</p>
+        <p><strong>Роз'зання.</strong> Обчислюємо повний імпульс системи до зіткнення: <code>P = 0.60 · 4.0 + 0.40 · 1.5 = 2.40 + 0.60 = 3.00 кг·м/с</code>. Відносна швидкість зближення становить <code>v₁ − v₂ = 2.5 м/с</code>, а повна маса <code>m₁ + m₂ = 1.00 кг</code>. Підставляємо числові значення у формули швидкостей після удару: <code>u₁ = [3.00 − 0.80 · 0.40 · 2.5] / 1.00 = 3.00 − 0.80 = 2.20 м/с</code>; <code>u₂ = [3.00 + 0.80 · 0.60 · 2.5] / 1.00 = 3.00 + 1.20 = 4.20 м/с</code>. Зведена маса дорівнює <code>μ = (0.60 · 0.40) / 1.00 = 0.24 кг</code>. Виділена теплота деформації: <code>ΔQ = 0.5 · 0.24 · (2.5)² · (1 − 0.80²) = 0.12 · 6.25 · 0.36 = 0.27 Дж</code>.</p>
+        <p><strong>Відповідь.</strong> <code>u₁ = 2.20 м/с</code>, <code>u₂ = 4.20 м/с</code>, <code>ΔQ = 0.27 Дж</code>.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 2. Машина Атвуда з урахуванням інерції блока</h3>
+        <p>Через однорідний циліндричний блок масою <code>M = 0.80 кг</code> перекинуто нерозтяжну невагому нитку, до кінців якої підвішено вантажі масами <code>m₁ = 1.50 кг</code> та <code>m₂ = 1.10 кг</code>. Тертя в осі блока відсутнє. Знайдіть прискорення вантажів і сили натягу обох віток нитки (<code>g = 9.81 м/с²</code>).</p>
+        <p><strong>Роз'зання.</strong> Запишемо рівняння другого закону Ньютона для обох вантажів та рівняння моментів для суцільного циліндричного блока з моментом інерції <code>I = ½MR²</code>: <code>m₁g − T₁ = m₁a</code>, <code>T₂ − m₂g = m₂a</code>, <code>(T₁ − T₂)R = Ia / R = ½Ma</code>. Додаючи три рівняння, отримуємо загальну формулу прискорення: <code>a = (m₁ − m₂)g / (m₁ + m₂ + ½M)</code>. Підстановка чисел дає <code>a = (1.50 − 1.10) · 9.81 / (1.50 + 1.10 + 0.40) = 3.924 / 3.00 = 1.31 м/с²</code>. Сили натягу лівої та правої віток становлять <code>T₁ = m₁(g − a) = 1.50 · (9.81 − 1.31) = 12.75 Н</code> та <code>T₂ = m₂(g + a) = 1.10 · (9.81 + 1.31) = 12.23 Н</code>.</p>
+        <p><strong>Відповідь.</strong> <code>a = 1.31 м/с²</code>, <code>T₁ = 12.75 Н</code>, <code>T₂ = 12.23 Н</code>.</p>
+      </div>
+    
+
+      <section class="lab-links-box" aria-label="По'зані тривимірні лабораторні роботи">
+        <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
+        <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
+        <div class="lab-links-grid">
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/collision">§ 1. Пружне та непружне зіткнення куль →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/incline">§ 2. Динаміка тіла на похилій площині →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/pendulum">§ 3. Математичний і пружинний маятники →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/gyroscope">§ 18. Момент інерції та енергія кочення →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/atwood">§ 27. Машина Атвуда з масивним блоком →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/precession">§ 38. Гіроскопічна прецесія симетричної дзиґи →</a>
+        </div>
+      </section>
+
+      
+      <nav class="chapter-pager" aria-label="Навігація між розділами підручника">
+        <div><a href="/">← На головну сторінку підручника</a></div>
+        <div><a href="/thermodynamics-fluids.html">Розділ II: Механіка рідин і газів та молекулярна термодинаміка →</a></div>
+      </nav>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Головна</a>
+      <a href="/si-constants-handbook.html">Довідник СІ</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

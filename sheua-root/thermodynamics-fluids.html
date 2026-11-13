@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розділ II. Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно · SHEUA.COM</title>
+  <meta name="description" content="Гідростатика й гідродинаміка ідеальної та 'зкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/thermodynamics-fluids.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Розділ II. Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно · SHEUA.COM" />
+  <meta property="og:description" content="Гідростатика й гідродинаміка ідеальної та 'зкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/thermodynamics-fluids.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Розділ II. Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно · SHEUA.COM" />
+  <meta name="twitter:description" content="Гідростатика й гідродинаміка ідеальної та 'зкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ II. Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно","description":"Гідростатика й гідродинаміка ідеальної та 'зкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин.","url":"https://sheua.com/thermodynamics-fluids.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум роз'зування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/about.html">Про проєкт</a>
+      <a href="/privacy.html">Конфіденційність</a>
+      <a class="lang-pill" href="/en/" title="English edition">EN</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>Розділ II</span></div>
+      <span class="badge">РОЗДІЛ II · ТЕОРЕТИЧНИЙ ДОВІДНИК ТА ЗАДАЧНИК</span>
+      <h1>Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно</h1>
+      <p class="lead">Макроскопічні параметри рідин і газів, зокрема статичний тиск, 'зкість, температура та ентропія, є наслідком колективного руху й міжмолекулярної взаємодії величезної кількості частинок. Розділ поєднує класичну гідродинаміку суцільного середовища зі статистичною фізикою Максвелла та законами термодинаміки.</p>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>1. Гідростатичний тиск, закон Архімеда та капілярні явища</h2>
+      <p>У нерухомій нестисливій рідині густиною <code>ρ_р</code> тиск на глибині <code>h</code> зростає за лінійним законом <code>P(h) = P₀ + ρ_р gh</code>, де <code>P₀</code> позначає зовнішній атмосферний тиск на вільній поверхні. Різниця сил гідростатичного тиску на нижню та верхню грані зануреного тіла створює вертикальну виштовхувальну силу Архімеда <code>F_A = ρ_р g V_зан</code>, де <code>V_зан</code> дорівнює о'му витісненої рідини. Суцільне однорідне тіло густиною <code>ρ_т &lt; ρ_р</code> спливає до стану статичної рівноваги біля ватерлінії, при якій частка зануреного о'му дорівнює відношенню густин: <code>V_зан / V = ρ_т / ρ_р</code>.</p>
+      <p>На межі поділу рідини, газу й твердої стінки діють сили поверхневого натягу з питомою поверхневою енергією <code>σ</code> (Н/м). Викривлення поверхні рідини в тонкому циліндричному капілярі радіусом <code>r</code> породжує додатковий тиск Лапласа <code>ΔP = 2σ cos θ / r</code>, де <code>θ</code> є крайовим кутом змочування. При повному або частковому змочуванні (<code>θ &lt; 90°</code>) увігнутий меніск втягує стовпчик рідини на висоту Жюрена <code>h = 2σ cos θ / (ρ_р gr)</code>.</p>
+
+      <h2>2. Рівняння нерозривності потоку, закон Бернуллі та 'зке обтікання Стокса</h2>
+      <p>Для стаціонарної ламінарної течії ідеальної нестисливої рідини о'мна витрата крізь довільний поперечний переріз труби залишається сталою: <code>Q_V = S₁v₁ = S₂v₂ = const</code>. Застосування теореми про зміну механічної енергії до виділеного елемента трубки течії приводить до інтеграла Бернуллі: сума статичного тиску <code>P</code>, динамічного напору <code>½ρv²</code> та нівелірного гідростатичного тиску <code>ρgy</code> зберігається вздовж лінії течії:</p>
+      <p class="formula-block"><code>P + ½ρv² + ρgy = const</code></p>
+      <p>У звуженій горловині горизонтальної труби Вентурі швидкість потоку зростає обернено пропорційно до площі перерізу, тому статичний тиск у вузькому перерізі падає на величину <code>ΔP = ½ρ(v₂² − v₁²)</code>. Окремим наслідком рівняння Бернуллі є формула Торрічеллі для швидкості витікання струменя з малого отвору у відкритому широкому резервуарі на глибині <code>h</code> нижче рівня рідини: <code>v = √(2gh)</code>.</p>
+      <p>У реальних 'зких середовищах за малих чисел Рейнольдса (<code>Re = ρvd / η ≪ 1</code>) куля радіусом <code>r</code>, що рухається зі швидкістю <code>v</code> у рідині з динамічною 'зкістю <code>η</code> (Па·с), зазнає лінійної сили опору Стокса <code>F_c = 6πηrv</code>. Під час вертикального осідання кульки густиною <code>ρ_т</code> вага зрівноважується сумою сили Архімеда та опору Стокса, після чого встановлюється стала гранична швидкість <code>v_уст = 2r²g(ρ_т − ρ_р) / (9η)</code>.</p>
+
+      <h2>3. Молекулярно-кінетична теорія ідеального газу та розподіл Максвелла</h2>
+      <p>Основне рівняння молекулярно-кінетичної теорії по'зує тиск розрідженого газу з концентрацією молекул <code>n = N / V</code> і середньою кінетичною енергією їхнього поступального теплового руху: <code>P = (1/3)nm₀⟨v²⟩ = nk_BT</code>, де <code>k_B = 1.380649 × 10⁻²³ Дж/К</code> позначає сталу Больцмана. Перехід до кількості речовини <code>ν = m / M</code> та універсальної газової сталої <code>R = N_A k_B = 8.3145 Дж/(моль·К)</code> дає рівняння стану Менделєєва-Клапейрона <code>PV = νRT</code>.</p>
+      <p>У стані термодинамічної рівноваги модулі швидкостей молекул молярної маси <code>M</code> розподілені за статистичним законом Максвелла, якому відповідають три характерні швидкості теплового руху: найімовірніша <code>v_p = √(2RT / M)</code>, середня арифметична <code>⟨v⟩ = √(8RT / πM)</code> та середньоквадратична <code>v_кв = √(3RT / M)</code>, між якими завжди виконується нерівність <code>v_p &lt; ⟨v⟩ &lt; v_кв</code>.</p>
+
+      <h2>4. Перший і другий закони термодинаміки та цикл Карно</h2>
+      <p>Внутрішня енергія ідеального газу з числом ступенів вільності молекули <code>i</code> (<code>i = 3</code> для одноатомних, <code>i = 5</code> для жорстких двоатомних і <code>i = 6</code> для багатоатомних нелінійних молекул) визначається виключно абсолютною температурою: <code>U = (i/2)νRT</code>. Перший закон термодинаміки стверджує, що підведена до газу кількість теплоти <code>δQ</code> витрачається на приріст внутрішньої енергії <code>dU</code> та виконання газом макроскопічної роботи <code>δA = P dV</code>.</p>
+
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Ізопроцес в ідеальному газі (<code>ν = const</code>)</th>
+              <th>Інваріант стану</th>
+              <th>Робота газу <code>A</code></th>
+              <th>Перший закон термодинаміки</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ізохорний процес</td>
+              <td><code>V = const, P / T = const</code></td>
+              <td><code>0</code></td>
+              <td><code>Q = ΔU = (i/2)νRΔT</code></td>
+            </tr>
+            <tr>
+              <td>Ізобарний процес</td>
+              <td><code>P = const, V / T = const</code></td>
+              <td><code>P(V₂ − V₁) = νRΔT</code></td>
+              <td><code>Q = [(i + 2)/2]νRΔT</code></td>
+            </tr>
+            <tr>
+              <td>Ізотермічний процес</td>
+              <td><code>T = const, PV = const</code></td>
+              <td><code>νRT ln(V₂ / V₁)</code></td>
+              <td><code>ΔU = 0, Q = A</code></td>
+            </tr>
+            <tr>
+              <td>Адіабатний процес (<code>γ = (i+2)/i</code>)</td>
+              <td><code>δQ = 0, PV^γ = const</code></td>
+              <td><code>−ΔU = (P₁V₁ − P₂V₂) / (γ − 1)</code></td>
+              <td><code>A = −ΔU</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Згідно з теоремою Карно з-поміж усіх циклічних теплових машин, які працюють між нагрівником з абсолютною температурою <code>T₁</code> та холодильником з температурою <code>T₂ &lt; T₁</code>, максимальний термічний коефіцієнт корисної дії має оборотний цикл із двох ізотерм і двох адіабат: <code>η_max = (Q₁ − Q₂) / Q₁ = (T₁ − T₂) / T₁ = 1 − T₂ / T₁</code>.</p>
+
+      <h2>5. Приклади роз'зування розрахункових задач</h2>
+
+      <div class="worked-problem">
+        <h3>Задача 1. Перепад статичного тиску в горизонтальному витратомірі Вентурі</h3>
+        <p>Горизонтальним трубопроводом тече вода густиною <code>ρ = 1000 кг/м³</code>. Діаметр широкої ділянки труби дорівнює <code>d₁ = 60 мм</code>, а діаметр звуженої горловини становить <code>d₂ = 30 мм</code>. У широкому перерізі швидкість потоку дорівнює <code>v₁ = 1.20 м/с</code>, а манометричний тиск становить <code>P₁ = 140 кПа</code>. Визначте швидкість і тиск води у вузькій горловині.</p>
+        <p><strong>Роз'зання.</strong> За рівнянням нерозривності <code>v₂ = v₁(S₁ / S₂) = v₁(d₁ / d₂)² = 1.20 · (60 / 30)² = 1.20 · 4 = 4.80 м/с</code>. Із рівняння Бернуллі для горизонтальної осі <code>y₁ = y₂</code> знаходимо тиск у горловині: <code>P₂ = P₁ − ½ρ(v₂² − v₁²) = 140000 − 500 · (23.04 − 1.44) = 140000 − 500 · 21.60 = 140000 − 10800 = 129200 Па = 129.2 кПа</code>.</p>
+        <p><strong>Відповідь.</strong> <code>v₂ = 4.80 м/с</code>, <code>P₂ = 129.2 кПа</code>.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 2. Робота та теплообмін ідеальної машини Карно</h3>
+        <p>Ідеальна теплова машина працює за оборотним циклом Карно між нагрівником із температурою <code>t₁ = 227 °C</code> та холодильником із температурою <code>t₂ = 27 °C</code>. За один цикл робоче тіло виконує корисну механічну роботу <code>A = 16.0 кДж</code>. Обчисліть термічний ККД циклу, кількість теплоти <code>Q₁</code>, отриману від нагрівника, і теплоту <code>Q₂</code>, передану холодильнику.</p>
+        <p><strong>Роз'зання.</strong> Переводимо температури у шкалу Кельвіна: <code>T₁ = 227 + 273 = 500 К</code>, <code>T₂ = 27 + 273 = 300 К</code>. Коефіцієнт корисної дії дорівнює <code>η = (500 − 300) / 500 = 0.40</code> (40 %). З означення <code>η = A / Q₁</code> отримуємо підведену теплоту <code>Q₁ = 16.0 / 0.40 = 40.0 кДж</code>. Кількість теплоти, віддана холодильнику за цикл, становить <code>Q₂ = Q₁ − A = 40.0 − 16.0 = 24.0 кДж</code>.</p>
+        <p><strong>Відповідь.</strong> <code>η = 40 %</code>, <code>Q₁ = 40.0 кДж</code>, <code>Q₂ = 24.0 кДж</code>.</p>
+      </div>
+    
+
+      <section class="lab-links-box" aria-label="По'зані тривимірні лабораторні роботи">
+        <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
+        <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
+        <div class="lab-links-grid">
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/archimedes">§ 7. Закон Архімеда та плавання тіл →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/gas">§ 8. Ідеальний газ під поршнем →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bernoulli">§ 13. Рівняння Бернуллі та труба Вентурі →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/carnot">§ 23. Ідеальна теплова машина і цикл Карно →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/viscosity">§ 24. Закон Стокса у 'зкій рідині →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/maxwell">§ 31. Розподіл молекул Максвелла за швидкостями →</a>
+        </div>
+      </section>
+
+      
+      <nav class="chapter-pager" aria-label="Навігація між розділами підручника">
+        <div><a href="/mechanics-conservation.html">← Розділ I: Класична механіка</a></div>
+        <div><a href="/optics-electromagnetism.html">Розділ III: Хвильова оптика, електромагнетизм і квантова фізика →</a></div>
+      </nav>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Головна</a>
+      <a href="/si-constants-handbook.html">Довідник СІ</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

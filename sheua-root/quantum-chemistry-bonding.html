@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розділ IV. Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки · SHEUA.COM</title>
+  <meta name="description" content="Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний закон, модель відштовхування електронних пар ГЕПВО, метод молекулярних орбіталей МО ЛКАО та енергія йонних кристалів." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/quantum-chemistry-bonding.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Розділ IV. Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки · SHEUA.COM" />
+  <meta property="og:description" content="Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний закон, модель відштовхування електронних пар ГЕПВО, метод молекулярних орбіталей МО ЛКАО та енергія йонних кристалів." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/quantum-chemistry-bonding.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Розділ IV. Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки · SHEUA.COM" />
+  <meta name="twitter:description" content="Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний закон, модель відштовхування електронних пар ГЕПВО, метод молекулярних орбіталей МО ЛКАО та енергія йонних кристалів." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-2903108049371777" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2903108049371777" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ IV. Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки","description":"Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний закон, модель відштовхування електронних пар ГЕПВО, метод молекулярних орбіталей МО ЛКАО та енергія йонних кристалів.","url":"https://sheua.com/quantum-chemistry-bonding.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум роз'зування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/about.html">Про проєкт</a>
+      <a href="/privacy.html">Конфіденційність</a>
+      <a class="lang-pill" href="/en/" title="English edition">EN</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>Розділ IV</span></div>
+      <span class="badge">РОЗДІЛ IV · ТЕОРЕТИЧНИЙ ДОВІДНИК ТА ЗАДАЧНИК</span>
+      <h1>Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки</h1>
+      <p class="lead">Просторова будова молекул, валентні кути, дипольна полярність і міцність кристалів безпосередньо визначаються хвильовою природою електрона в атомі. У цьому розділі систематизовано квантово-механічні принципи будови електронних оболонок та основні моделі хімічного з'зку.</p>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>1. Хвильова функція Шредінгера, квантові числа та правила заповнення оболонок</h2>
+      <p>У квантовій механіці стан електрона в кулонівському полі ядра описується стаціонарною хвильовою функцією <code>ψ_{n,l,m_l}(r, θ, φ)</code>, квадрат модуля якої <code>|ψ|²</code> визначає о'мну густину ймовірності перебування електрона в заданій точці простору. Кожна атомна орбіталь однозначно задається трьома цілочисловими квантовими числами: головним <code>n = 1, 2, 3, ...</code> (визначає енергетичний рівень і загальне число вузлових поверхонь <code>n − 1</code>), орбітальним <code>l = 0, 1, ..., n − 1</code> (визначає форму хмари: <code>s, p, d, f</code> та кількість кутових вузлових площин <code>l</code>) і магнітним <code>m_l = −l, ..., +l</code> (задає орієнтацію орбіталі в просторі). Четверте, спінове квантове число <code>m_s = ±½</code> визначає власний момент імпульсу електрона.</p>
+      <p>Електронна конфігурація основного стану багатоелектронного атома підпорядковується трьом фундаментальним принципам: принципу заборони Паулі (на одній атомній орбіталі можуть перебувати не більше двох електронів із протилежними спінами), правилу мінімуму суми Клечковського <code>(n + l)</code> та правилу максимальної мультиплетності Гунда в межах виродженого підрівня. Закономірна періодичність заповнення зовнішніх валентних оболонок зумовлює монотонне зменшення атомного радіуса <code>r_ат</code> і зростання першої енергії йонізації <code>I₁</code> та електронегативності <code>χ</code> зліва направо вздовж періодів таблиці Д. І. Менделєєва.</p>
+
+      <h2>2. Ковалентний з'зок, гібридизація орбіталей та геометрія молекул за моделлю ГЕПВО</h2>
+      <p>Під час утворення хімічних з'зків центральний атом переходить у валентний стан зі змішуванням близьких за енергією <code>s</code>-, <code>p</code>- та <code>d</code>-орбіталей у еквівалентні гібридні орбіталі. Просторове розташування з'зків визначається моделлю відштовхування електронних пар валентної оболонки Гіллеспі-Найхолма (ГЕПВО / VSEPR): загальне стеричне число <code>SN = m + E</code> дорівнює сумі числа з'заних лігандів <code>m</code> та числа неподілених електронних пар <code>E</code> центрального атома. Оскільки неподілена електронна пара локалізована ближче до ядра центрального атома, ніж з'зувальна пара між двома ядрами, виконується ряд електростатичного відштовхування <code>ЕП-ЕП &gt; ЕП-ЗП &gt; ЗП-ЗП</code>, що закономірно стискає валентні кути.</p>
+
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Тип моделі <code>AX_mE_n</code></th>
+              <th>Гібридизація центрального атома</th>
+              <th>Геометрична форма молекули</th>
+              <th>Валентний кут і класичний приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>AX₂E₀</code></td>
+              <td><code>sp</code></td>
+              <td>Лінійна</td>
+              <td><code>180°</code> (<code>BeCl₂, CO₂, C₂H₂</code>)</td>
+            </tr>
+            <tr>
+              <td><code>AX₃E₀</code></td>
+              <td><code>sp²</code></td>
+              <td>Тригонально-планарна</td>
+              <td><code>120°</code> (<code>BF₃, SO₃, C₂H₄</code>)</td>
+            </tr>
+            <tr>
+              <td><code>AX₂E₁</code></td>
+              <td><code>sp²</code></td>
+              <td>Кутова (зігнута)</td>
+              <td><code>&lt; 120°</code> (<code>SO₂ ≈ 119°</code>)</td>
+            </tr>
+            <tr>
+              <td><code>AX₄E₀</code></td>
+              <td><code>sp³</code></td>
+              <td>Правильний тетраедр</td>
+              <td><code>109.47°</code> (<code>CH₄, CCl₄, NH₄⁺</code>)</td>
+            </tr>
+            <tr>
+              <td><code>AX₃E₁</code></td>
+              <td><code>sp³</code></td>
+              <td>Тригональна піраміда</td>
+              <td><code>107.3°</code> (<code>NH₃</code>)</td>
+            </tr>
+            <tr>
+              <td><code>AX₂E₂</code></td>
+              <td><code>sp³</code></td>
+              <td>Кутова</td>
+              <td><code>104.5°</code> (<code>H₂O</code>)</td>
+            </tr>
+            <tr>
+              <td><code>AX₆E₀</code></td>
+              <td><code>sp³d²</code></td>
+              <td>Правильний октаедр</td>
+              <td><code>90° / 180°</code> (<code>SF₆, [Fe(CN)₆]⁴⁻</code>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>3. Метод молекулярних орбіталей (МО ЛКАО) та енергія йонної кристалічної ґратки</h2>
+      <p>У методі МО ЛКАО лінійна комбінація двох атомних хвильових функцій <code>ψ_A ± ψ_B</code> утворює низькоенергетичну з'зувальну молекулярну орбіталь (<code>σ</code> або <code>π</code>) з підвищеною електронною густиною між ядрами та високоенергетичну розпушувальну орбіталь (<code>σ*</code> або <code>π*</code>) із вузловою площиною посередині з'зку. Кратність (порядок) з'зку обчислюється як піврізниця чисел з'зувальних і розпушувальних електронів: <code>BO = ½(N_зв − N_розп)</code>. Саме метод МО ЛКАО пояснює парамагнетизм молекули кисню <code>O₂</code>, у якій два неспарені електрони займають дві вироджені розпушувальні орбіталі <code>π*_{2px}</code> та <code>π*_{2py}</code> за правилом Гунда, забезпечуючи порядок з'зку <code>BO = ½(8 − 4) = 2</code>.</p>
+      <p>Для типових йонних кристалів типу ка'ної солі <code>NaCl</code> із координаційним числом <code>6 : 6</code> енергія кристалічної ґратки описується рівнянням Борна-Ланде через сталу Маделунга <code>A_M = 1.74756</code>, а експериментально визначається з термохімічного циклу Борна-Габера через ентальпію утворення кристала <code>ΔH°_f</code>, ентальпію сублімації металу, енергію дисоціації неметалу, енергію йонізації катіона та спорідненість до електрона аніона.</p>
+
+      <h2>4. Приклади роз'зування розрахункових задач</h2>
+
+      <div class="worked-problem">
+        <h3>Задача 1. Обчислення енергії кристалічної ґратки хлориду калію за циклом Борна-Габера</h3>
+        <p>За довідниковими термохімічними даними стандартна ентальпія утворення кристалічного <code>KCl(тв)</code> становить <code>ΔH°_f = −436.7 кДж/моль</code>, ентальпія сублімації калію <code>ΔH°_субл(K) = +89.2 кДж/моль</code>, перша енергія йонізації калію <code>I₁(K) = +418.8 кДж/моль</code>, енергія дисоціації з'зку в молекулі хлору <code>D(Cl₂) = +242.6 кДж/моль</code>, а спорідненість атома хлору до електрона <code>E_ea(Cl) = −348.6 кДж/моль</code>. Знайдіть енергію кристалічної ґратки <code>U_ґрат</code> для <code>KCl</code>.</p>
+        <p><strong>Роз'зання.</strong> За законом Гесса сума ентальпій усіх стадій кругового циклу Борна-Габера дорівнює стандартній ентальпії утворення кристала з простих речовин: <code>ΔH°_f = ΔH°_субл(K) + ½D(Cl₂) + I₁(K) + E_ea(Cl) − U_ґрат</code>, де <code>U_ґрат &gt; 0</code> визначається як енергія розриву одного моля кристала на вільні газоподібні іони <code>K⁺(г) + Cl⁻(г)</code>. Підставляємо числові дані: <code>U_ґрат = 89.2 + 0.5 · 242.6 + 418.8 − 348.6 − (−436.7) = 89.2 + 121.3 + 418.8 − 348.6 + 436.7 = 717.4 кДж/моль</code>.</p>
+        <p><strong>Відповідь.</strong> <code>U_ґрат(KCl) = 717.4 кДж/моль</code>.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 2. Порівняння кратності з'зку та магнітних властивостей у ряді O₂⁺, O₂, O₂⁻</h3>
+        <p>Користуючись схемою валентних молекулярних орбіталей двоатомних гомоядерних частинок другого періоду, визначте порядок хімічного з'зку <code>BO</code> та напрямок зміни довжини з'зку в ряді молекулярних частинок <code>O₂⁺ → O₂ → O₂⁻</code>.</p>
+        <p><strong>Роз'зання.</strong> Нейтральна молекула <code>O₂</code> має 12 валентних електронів: вісім із них розміщені на з'зувальних МО (<code>σ_{2s}² σ_{2pz}² π_{2px}² π_{2py}²</code>), а чотири на розпушувальних (<code>σ*_{2s}² π*_{2px}¹ π*_{2py}¹</code>), тому <code>BO(O₂) = ½(8 − 4) = 2.0</code>. Відрив одного електрона з розпушувальної орбіталі при утворенні діоксигенілу <code>O₂⁺</code> підвищує кратність до <code>BO(O₂⁺) = ½(8 − 3) = 2.5</code>. Приєднання додаткового електрона на <code>π*</code>-орбіталь у супероксид-йоні <code>O₂⁻</code> знижує порядок з'зку до <code>BO(O₂⁻) = ½(8 − 5) = 1.5</code>. Оскільки зі зменшенням кратності з'зку рівноважна мі'дерна відстань зростає, довжина з'зку збільшується в порядку <code>d(O₂⁺) &lt; d(O₂) &lt; d(O₂⁻)</code>, причому всі три частинки мають неспарені електрони й залишаються парамагнітними.</p>
+        <p><strong>Відповідь.</strong> <code>BO(O₂⁺) = 2.5</code>, <code>BO(O₂) = 2.0</code>, <code>BO(O₂⁻) = 1.5</code>; довжина з'зку монотонно зростає від <code>O₂⁺</code> до <code>O₂⁻</code>.</p>
+      </div>
+    
+
+      <section class="lab-links-box" aria-label="По'зані тривимірні лабораторні роботи">
+        <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
+        <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
+        <div class="lab-links-grid">
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_orbitals">§ Х-1. Тривимірні атомні орбіталі s, p, d →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_vsepr">§ Х-2. Гібридизація орбіталей та модель ГЕПВО →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_lattice">§ Х-3. Йонна кристалічна ґратка NaCl →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_periodic">§ Х-11. Періодична система всіх 118 елементів →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_mo">§ Х-21. Метод молекулярних орбіталей МО ЛКАО →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_bornhaber">§ Х-24. Термодинамічний цикл Борна-Габера →</a>
+        </div>
+      </section>
+
+      
+      <nav class="chapter-pager" aria-label="Навігація між розділами підручника">
+        <div><a href="/optics-electromagnetism.html">← Розділ III: Хвильова оптика, електромагнетизм і квантова фізика</a></div>
+        <div><a href="/chemical-kinetics-equilibrium.html">Розділ V: Фізична хімія, кінетика та електрохімія →</a></div>
+      </nav>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Головна</a>
+      <a href="/si-constants-handbook.html">Довідник СІ</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

@@ -46,6 +46,21 @@ server {
         return 301 https://${ROOT_DOMAIN}\$request_uri;
     }
 
+    # BEGIN SHEUA SEO REDIRECTS
+    rewrite ^/sim/brewster(\.html)?\$ https://${SUBDOMAIN}/sim/malus permanent;
+    rewrite ^/uk/sim/brewster(\.html)?\$ https://${SUBDOMAIN}/uk/sim/malus permanent;
+    rewrite ^/sim/chem_arrhenius(\.html)?\$ https://${SUBDOMAIN}/sim/chem_orders permanent;
+    rewrite ^/uk/sim/chem_arrhenius(\.html)?\$ https://${SUBDOMAIN}/uk/sim/chem_orders permanent;
+    rewrite ^/sim/([^/.?]+)\.html\$ https://${SUBDOMAIN}/sim/\$1 permanent;
+    rewrite ^/sim/([^/.?]+)\$ https://${SUBDOMAIN}/sim/\$1 permanent;
+    rewrite ^/uk/sim/([^/.?]+)\.html\$ https://${SUBDOMAIN}/uk/sim/\$1 permanent;
+    rewrite ^/uk/sim/([^/.?]+)\$ https://${SUBDOMAIN}/uk/sim/\$1 permanent;
+    rewrite ^/uk(/index\.html|/)?\$ https://${SUBDOMAIN}/uk/ permanent;
+    if (\$request_uri ~ ^/(en/)?index\.html(\?.*)?\$) {
+        return 301 https://${ROOT_DOMAIN}/\$1\$is_args\$args;
+    }
+    # END SHEUA SEO REDIRECTS
+
     location = /ads.txt {
         default_type text/plain;
         add_header Cache-Control "public, max-age=3600" always;

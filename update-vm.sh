@@ -90,14 +90,63 @@ PYHUB
   done <<< "${HUB_LIST}"
 fi
 
-echo "=== [4/5] Оновлення правил ads.txt, редиректів та 404 у Nginx ==="
+echo "=== [4/5] Оновлення 301-редиректів, ads.txt та 404 у Nginx ==="
 sudo python3 - << 'PYEOF'
 import glob, re, subprocess
 
-confs = glob.glob('/etc/nginx/sites-available/*') + glob.glob('/etc/nginx/conf.d/*.conf')
-for path in sorted(set(confs)):
-    if path.endswith('.bak'):
-        continue
+HUB_REDIRECTS = """    # BEGIN SHEUA SEO REDIRECTS
+    if ($host = www.sheua.com) {
+        return 301 https://sheua.com$request_uri;
+    }
+    rewrite ^/sim/brewster(\\.html)?$ https://physics.sheua.com/sim/malus permanent;
+    rewrite ^/uk/sim/brewster(\\.html)?$ https://physics.sheua.com/uk/sim/malus permanent;
+    rewrite ^/sim/chem_arrhenius(\\.html)?$ https://physics.sheua.com/sim/chem_orders permanent;
+    rewrite ^/uk/sim/chem_arrhenius(\\.html)?$ https://physics.sheua.com/uk/sim/chem_orders permanent;
+    rewrite ^/sim/([^/.?]+)\\.html$ https://physics.sheua.com/sim/$1 permanent;
+    rewrite ^/sim/([^/.?]+)$ https://physics.sheua.com/sim/$1 permanent;
+    rewrite ^/uk/sim/([^/.?]+)\\.html$ https://physics.sheua.com/uk/sim/$1 permanent;
+    rewrite ^/uk/sim/([^/.?]+)$ https://physics.sheua.com/uk/sim/$1 permanent;
+    rewrite ^/uk(/index\\.html|/)?$ https://physics.sheua.com/uk/ permanent;
+    if ($request_uri ~ ^/(en/)?index\\.html(\\?.*)?$) {
+        return 301 https://sheua.com/$1$is_args$args;
+    }
+    # END SHEUA SEO REDIRECTS
+
+"""
+
+LAB_REDIRECTS = """    # BEGIN SHEUA SEO REDIRECTS
+    rewrite ^/sim/brewster(\\.html)?$ https://physics.sheua.com/sim/malus permanent;
+    rewrite ^/uk/sim/brewster(\\.html)?$ https://physics.sheua.com/uk/sim/malus permanent;
+    rewrite ^/sim/chem_arrhenius(\\.html)?$ https://physics.sheua.com/sim/chem_orders permanent;
+    rewrite ^/uk/sim/chem_arrhenius(\\.html)?$ https://physics.sheua.com/uk/sim/chem_orders permanent;
+    if ($request_uri ~ ^/(uk/)?sim/([^/.?]+)\\.html(\\?.*)?$) {
+        return 301 https://physics.sheua.com/$1sim/$2$is_args$args;
+    }
+    if ($request_uri ~ ^/(uk/)?index\\.html(\\?.*)?$) {
+        return 301 https://physics.sheua.com/$1$is_args$args;
+    }
+    # END SHEUA SEO REDIRECTS
+
+"""
+
+ADS_BLOCK = """    location = /ads.txt {
+        default_type text/plain;
+        add_header Cache-Control "public, max-age=3600" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        try_files /ads.txt =404;
+    }
+
+"""
+
+confs = (
+    glob.glob('/etc/nginx/sites-enabled/*')
+    + glob.glob('/etc/nginx/sites-available/*')
+    + glob.glob('/etc/nginx/conf.d/*.conf')
+)
+import os
+real_confs = sorted(set(os.path.realpath(p) for p in confs if os.path.isfile(p) and not p.endswith('.bak')))
+
+for path in real_confs:
     try:
         with open(path, 'r', encoding='utf-8') as f:
             txt = f.read()
@@ -107,58 +156,73 @@ for path in sorted(set(confs)):
         continue
     orig = txt
 
-    # Fix Soft-404 fallback /index.html -> =404
-    txt = re.sub(
-        r'try_files\s+\$uri\s+\$uri\.html\s+\$uri/\s+/index\.html\s*;',
-        'try_files $uri $uri.html $uri/ =404;',
-        txt
-    )
+    parts = re.split(r'(?=\bserver\s*\{)', txt)
+    new_parts = []
+    for block in parts:
+        if not block.lstrip().startswith('server'):
+            new_parts.append(block)
+            continue
 
-    # Ensure error_page 404 /404.html is present before location /
-    if 'error_page 404 /404.html;' not in txt and 'location / {' in txt:
-        txt = txt.replace('location / {', 'error_page 404 /404.html;\n\n    location / {', 1)
-
-    # Fix chem_arrhenius canonical 301 target to chem_orders
-    txt = txt.replace('/sim/chem_arrhenius(\\.html)?$ /sim/chem_kinetics permanent;', '/sim/chem_arrhenius(\\.html)?$ /sim/chem_orders permanent;')
-    txt = txt.replace('/uk/sim/chem_arrhenius(\\.html)?$ /uk/sim/chem_kinetics permanent;', '/uk/sim/chem_arrhenius(\\.html)?$ /uk/sim/chem_orders permanent;')
-
-    # Ensure 301 canonical redirects for legacy URLs on physics.sheua.com
-    if 'rewrite ^/sim/brewster' not in txt and 'physics-course' in txt and 'location / {' in txt:
-        redirects = (
-            '    rewrite ^/sim/brewster(\\.html)?$ /sim/malus permanent;\n'
-            '    rewrite ^/uk/sim/brewster(\\.html)?$ /uk/sim/malus permanent;\n'
-            '    rewrite ^/sim/chem_arrhenius(\\.html)?$ /sim/chem_orders permanent;\n'
-            '    rewrite ^/uk/sim/chem_arrhenius(\\.html)?$ /uk/sim/chem_orders permanent;\n\n    '
+        # Upgrade Certbot HTTP www.sheua.com redirect to single-hop canonical sheua.com
+        block = re.sub(
+            r'(if\s*\(\$host\s*=\s*www\.sheua\.com\)\s*\{\s*return\s+301\s+https://)\$host(\$request_uri;\s*\})',
+            r'\1sheua.com\2',
+            block
         )
-        txt = txt.replace('location / {', redirects + 'location / {', 1)
 
-    # Ensure explicit location = /ads.txt block
-    if 'location = /ads.txt' not in txt and 'location / {' in txt:
-        ads_block = (
-            'location = /ads.txt {\n'
-            '        default_type text/plain;\n'
-            '        add_header Cache-Control "public, max-age=3600" always;\n'
-            '        add_header X-Content-Type-Options "nosniff" always;\n'
-            '        try_files /ads.txt =404;\n'
-            '    }\n\n    '
-        )
-        txt = txt.replace('location / {', ads_block + 'location / {', 1)
+        if 'location / {' not in block:
+            new_parts.append(block)
+            continue
 
-    # Ensure security headers inside location /
-    if 'location / {' in txt and 'X-Content-Type-Options' not in txt.split('location / {')[-1]:
-        txt = txt.replace(
+        sn = ' '.join(re.findall(r'server_name\s+([^;]+);', block))
+        is_lab = ('physics.sheua.com' in sn) or ('/var/www/physics-course' in block and 'sheua-root' not in block)
+        is_hub = ('sheua.com' in sn and 'physics.sheua.com' not in sn) and not is_lab
+
+        # Fix Soft-404 fallback /index.html -> =404
+        block = re.sub(
+            r'try_files\s+\$uri\s+\$uri\.html\s+\$uri/\s+/index\.html\s*;',
             'try_files $uri $uri.html $uri/ =404;',
-            'add_header Cache-Control "no-cache" always;\n        add_header X-Content-Type-Options "nosniff" always;\n        add_header Referrer-Policy "strict-origin-when-cross-origin" always;\n        add_header X-Frame-Options "SAMEORIGIN" always;\n        try_files $uri $uri.html $uri/ =404;'
+            block
         )
 
-    if txt != orig:
+        # Remove old managed redirect blocks and legacy standalone rewrites before inserting fresh block
+        block = re.sub(r'\s*# BEGIN SHEUA SEO REDIRECTS[\s\S]*?# END SHEUA SEO REDIRECTS\s*\n?', '\n', block)
+        block = re.sub(r'^\s*#\s*301 редиректи[^\n]*\n', '', block, flags=re.M)
+        block = re.sub(r'^\s*rewrite\s+\^/(?:uk/)?sim/(?:brewster|chem_arrhenius)[^\n]*\n', '', block, flags=re.M)
+
+        def insert_before_loc(b, snippet):
+            return re.sub(r'^[ \t]*location\s+/\s*\{', lambda m: snippet + m.group(0), b, count=1, flags=re.M)
+
+        if 'error_page 404 /404.html;' not in block:
+            block = insert_before_loc(block, '    error_page 404 /404.html;\n\n')
+
+        if 'location = /ads.txt' not in block:
+            block = insert_before_loc(block, ADS_BLOCK)
+
+        if is_hub:
+            # Remove any duplicate standalone www redirect outside managed block
+            block = re.sub(r'\s*if\s*\(\$host\s*=\s*www\.sheua\.com\)\s*\{\s*return\s+301\s+https://sheua\.com\$request_uri;\s*\}\s*\n?', '\n', block)
+            block = insert_before_loc(block, HUB_REDIRECTS)
+        elif is_lab:
+            block = insert_before_loc(block, LAB_REDIRECTS)
+
+        if 'X-Content-Type-Options' not in block.split('location / {')[-1]:
+            block = block.replace(
+                'try_files $uri $uri.html $uri/ =404;',
+                'add_header Cache-Control "no-cache" always;\n        add_header X-Content-Type-Options "nosniff" always;\n        add_header Referrer-Policy "strict-origin-when-cross-origin" always;\n        add_header X-Frame-Options "SAMEORIGIN" always;\n        try_files $uri $uri.html $uri/ =404;'
+            )
+
+        new_parts.append(block)
+
+    new_txt = ''.join(new_parts)
+    if new_txt != orig:
         with open(path, 'w', encoding='utf-8') as f:
-            f.write(txt)
-        chk = subprocess.run(['nginx', '-t'], capture_output=True)
+            f.write(new_txt)
+        chk = subprocess.run(['nginx', '-t'], capture_output=True, text=True)
         if chk.returncode != 0:
             with open(path, 'w', encoding='utf-8') as f:
                 f.write(orig)
-            print(f'Skipped Nginx patch for {path} (kept existing valid config)')
+            print(f'WARNING: Reverted Nginx patch for {path}: {chk.stderr}')
         else:
             print(f'Updated Nginx config: {path}')
 PYEOF
@@ -166,15 +230,25 @@ PYEOF
 sudo nginx -t
 sudo systemctl reload nginx
 
-echo "=== [5/5] Перевірка доступності ads.txt та нових розділів sheua.com ==="
+echo "=== [5/5] Перевірка доступності ads.txt, нових розділів та 301-редиректів ==="
 for CHECK_URL in \
   "https://sheua.com/" \
   "https://sheua.com/ads.txt" \
   "https://sheua.com/mechanics-conservation.html" \
-  "https://sheua.com/si-constants-handbook.html" \
-  "https://physics.sheua.com/ads.txt"; do
-  STATUS="$(curl -ksIL --max-time 8 -o /dev/null -w '%{http_code}' "${CHECK_URL}" || echo 'ERR')"
+  "https://physics.sheua.com/ads.txt" \
+  "https://physics.sheua.com/sim/collision"; do
+  STATUS="$(curl -ksI --max-time 8 -o /dev/null -w '%{http_code}' "${CHECK_URL}" || echo 'ERR')"
   echo "  ${STATUS}  ${CHECK_URL}"
+done
+
+for REDIR_URL in \
+  "https://www.sheua.com/" \
+  "https://sheua.com/sim/collision" \
+  "https://sheua.com/uk/sim/collision" \
+  "https://sheua.com/uk/" \
+  "https://physics.sheua.com/sim/collision.html"; do
+  CODE_LOC="$(curl -ksI --max-time 8 -o /dev/null -w '%{http_code} -> %{redirect_url}' "${REDIR_URL}" || echo 'ERR')"
+  echo "  ${CODE_LOC}  (${REDIR_URL})"
 done
 
 echo "Готово! Обидва домени sheua.com та physics.sheua.com успішно оновлено."

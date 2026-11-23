@@ -528,12 +528,39 @@
       border-color: var(--ink-primary);
       color: var(--accent-crimson);
     }
+    .skip-link {
+      position: fixed;
+      top: -60px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      background: #18181b;
+      color: #faf9f5;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .skip-link:focus { top: 12px; }
+    :where(a, button, input, select, textarea, summary):focus-visible {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
     @media (max-width: 640px) {
       .hero-sheet, .article-sheet { padding: 20px 16px; }
+      .hub-pill, .share-chip, .nmt-opt-btn, .lang-pill { min-height: 44px; display: inline-flex; align-items: center; }
     }
 </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <a class="brand" href="https://sheua.com/en/">SHEUA.COM · 3D Science Lab</a>
     <nav class="nav-bar" aria-label="Main navigation">
@@ -547,7 +574,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="main-content" class="container">
     <section class="hero-sheet">
       <span class="badge">SHEUA.COM · OPEN-ACCESS 3D SCIENCE TEXTBOOK &amp; VIRTUAL LAB</span>
       <h1>Interactive 3D Physics, Chemistry &amp; Biology Virtual Laboratory and Reference Textbook</h1>

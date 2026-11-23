@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261123a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261123b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -69,6 +69,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#left-sidebar">Перейти до основного змісту</a>
   <!-- 1. 3D-Ілюстрація на весь екран -->
   <div id="canvas-container"></div>
 
@@ -91,7 +92,7 @@
             </span>
           </button>
 
-          <div id="exp-dropdown-menu" class="exp-dropdown-menu" role="listbox" aria-label="Вибір симуляції">
+          <div id="exp-dropdown-menu" class="exp-dropdown-menu" role="region" aria-label="Вибір симуляції">
             <div id="dropdown-tier-bar" class="dropdown-tier-bar">
               <button type="button" class="tier-pill-btn active" data-tier="all" id="tier-btn-all">Усі рівні (106)</button>
               <button type="button" class="tier-pill-btn" data-tier="core" id="tier-btn-core">Шкільний мінімум</button>
@@ -104,7 +105,7 @@
               <button type="button" class="filter-pill-btn" data-filter="thermo" id="filter-btn-thermo">Рідини та МКТ (9)</button>
               <button type="button" class="filter-pill-btn" data-filter="electro" id="filter-btn-electro">Електромагнетизм (8)</button>
             </div>
-            <div id="dropdown-items-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            <div id="dropdown-items-list" role="listbox" aria-label="Список симуляцій" style="display: flex; flex-direction: column; gap: 6px;"></div>
           </div>
         </div>
 
@@ -114,11 +115,11 @@
 
     <div class="header-right">
       <div class="phase-breadcrumbs" title="Натисніть на етап, щоб перемкнути режим">
-        <span id="crumb-predict" class="phase-crumb current">Гіпотеза</span>
+        <span id="crumb-predict" class="phase-crumb current" role="button" tabindex="0">Гіпотеза</span>
         <span>→</span>
-        <span id="crumb-test" class="phase-crumb">Дослід</span>
+        <span id="crumb-test" class="phase-crumb" role="button" tabindex="0">Дослід</span>
         <span>→</span>
-        <span id="crumb-explain" class="phase-crumb">Доведення</span>
+        <span id="crumb-explain" class="phase-crumb" role="button" tabindex="0">Доведення</span>
       </div>
             <button type="button" id="btn-classroom-mode" class="btn-classroom-mode" title="Режим для уроку та проєктора без реклами й службових блоків">Режим класу</button>
       <nav id="header-legal-links" class="header-legal-links" aria-label="Інформація про сайт">
@@ -153,7 +154,7 @@
   <button type="button" id="btn-toggle-right" class="panel-collapse-btn panel-collapse-right" title="Згорнути / розгорнути праву панель" aria-label="Згорнути або розгорнути праву панель">›</button>
 
   <!-- 3. Ліва сторінка підручника: Параграф, Керування дослідом, Задача, Доведення та Діаграма -->
-  <aside id="left-sidebar" class="book-page-left">
+  <main id="left-sidebar" class="book-page-left">
     <div class="chapter-header">
       <div class="chapter-meta">
         <span id="chapter-section-tag">Параграф § 28 · Неінерціальні системи відліку</span>
@@ -320,7 +321,7 @@
              data-full-width-responsive="false"></ins>
       </div>
     </div>
-  </aside>
+  </main>
 
   <!-- 4. Права сторінка: Довідник формул параграфа та Лабораторна установка -->
   <aside id="right-sidebar" class="book-page-right">
@@ -475,6 +476,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261123a"></script>
+  <script defer src="../../assets/app.js?v=20261123b"></script>
 </body>
 </html>

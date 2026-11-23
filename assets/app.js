@@ -41741,9 +41741,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     if (mobLangUk) mobLangUk.addEventListener('click', () => applyLanguage('uk'));
 
     // Інтерактивні хлібні крихти етапів та кнопки згортання бічних панелей
-    document.getElementById('crumb-predict').addEventListener('click', () => transitionToPhase('predict'));
-    document.getElementById('crumb-test').addEventListener('click', () => transitionToPhase('test'));
-    document.getElementById('crumb-explain').addEventListener('click', () => transitionToPhase('explain'));
+    [['crumb-predict', 'predict'], ['crumb-test', 'test'], ['crumb-explain', 'explain']].forEach(([cid, phase]) => {
+      const el = document.getElementById(cid);
+      if (!el) return;
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.addEventListener('click', () => transitionToPhase(phase));
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          transitionToPhase(phase);
+        }
+      });
+    });
 
     const leftSidebarEl = document.getElementById('left-sidebar');
     const rightSidebarEl = document.getElementById('right-sidebar');

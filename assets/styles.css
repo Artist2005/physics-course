@@ -7,7 +7,7 @@
       --ink-primary: #18181b;
       --ink-secondary: #3f3f46;
       --ink-muted: #52525b;
-      --ink-faint: #a1a1aa;
+      --ink-faint: #57534e;
 
       --rule-dark: #d6d3cd;
       --rule-light: #e6e3dd;
@@ -3717,4 +3717,57 @@
     .messenger-share-link:hover {
       border-color: var(--ink-primary);
       color: var(--accent-crimson);
+    }
+
+    /* WCAG 2.1 AA Accessibility: skip link, visible keyboard focus, reduced motion, and mobile touch targets */
+    .skip-link {
+      position: fixed;
+      top: -60px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      background: #18181b;
+      color: #faf9f5;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    :where(a, button, input, select, textarea, summary, [tabindex="0"]):focus-visible {
+      outline: 2px solid #1d4ed8 !important;
+      outline-offset: 2px !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (pointer: coarse), (max-width: 768px) {
+      .chapter-step-btn,
+      .lang-btn,
+      .proj-btn,
+      .preset-chip-btn,
+      .btn-classroom-mode,
+      .messenger-share-link,
+      .related-hub-pill {
+        min-height: 40px;
+        min-width: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }

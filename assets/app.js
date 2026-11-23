@@ -38837,6 +38837,128 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const m = href.match(/(?:^|\/)(?:uk\/)?sim\/([a-z0-9_]+)(?:\.html)?$/i);
         a.classList.toggle('active-catalog-link', Boolean(m && m[1] === activeKey));
       });
+      syncRelatedClusterUI();
+    }
+
+    const QUANTUM_CHEM_SCENES = new Set([
+      'chem_orbitals', 'chem_vsepr', 'chem_lattice', 'chem_organic', 'chem_periodic',
+      'chem_hbond', 'chem_isomerism', 'chem_polymer', 'chem_mo', 'chem_allotropes',
+      'chem_complex', 'chem_bornhaber', 'chem_dipole', 'chem_sn2', 'chem_ester', 'chem_biopol'
+    ]);
+    const BIOPHYS_SCENES = new Set([
+      'bio_membrane', 'bio_neuron', 'bio_sarcomere', 'bio_hemo', 'bio_eye', 'bio_synapse', 'bio_hemodynamics'
+    ]);
+
+    function getSheuaTextbookChapter(sceneKey) {
+      if (sceneKey.startsWith('chem_')) {
+        return QUANTUM_CHEM_SCENES.has(sceneKey)
+          ? { slug: 'quantum-chemistry-bonding.html', titleUk: 'Підручник: Квантова хімія і зв\'язок' }
+          : { slug: 'chemical-kinetics-equilibrium.html', titleUk: 'Підручник: Хімічна кінетика, pH і рівновага' };
+      }
+      if (sceneKey.startsWith('bio_')) {
+        return BIOPHYS_SCENES.has(sceneKey)
+          ? { slug: 'biophysics-physiology.html', titleUk: 'Підручник: Біофізика мембран і судин' }
+          : { slug: 'cell-molecular-biology.html', titleUk: 'Підручник: Клітинна біологія, ДНК і ПЛР' };
+      }
+      const cat = (SCENE_CONFIGS[sceneKey] && SCENE_CONFIGS[sceneKey].cat) || 'mechanics';
+      if (cat === 'thermo') {
+        return { slug: 'thermodynamics-fluids.html', titleUk: 'Підручник: Гідродинаміка і термодинаміка' };
+      }
+      if (cat === 'optics' || cat === 'electro') {
+        return { slug: 'optics-electromagnetism.html', titleUk: 'Підручник: Оптика, електродинаміка і кванти' };
+      }
+      return { slug: 'mechanics-conservation.html', titleUk: 'Підручник: Механіка і закони збереження' };
+    }
+
+    function getRelatedSceneKeys(sceneKey, count = 4) {
+      const allKeys = Object.keys(SCENE_CONFIGS);
+      const discKeys = allKeys.filter(k => {
+        if (sceneKey.startsWith('chem_')) return k.startsWith('chem_');
+        if (sceneKey.startsWith('bio_')) return k.startsWith('bio_');
+        return !k.startsWith('chem_') && !k.startsWith('bio_');
+      });
+      const baseCat = SCENE_CONFIGS[sceneKey] && SCENE_CONFIGS[sceneKey].cat;
+      const sameCat = baseCat ? discKeys.filter(k => k !== sceneKey && SCENE_CONFIGS[k].cat === baseCat) : [];
+      const pool = sameCat.length >= count ? sameCat : discKeys.filter(k => k !== sceneKey);
+      const idx = Math.max(0, discKeys.indexOf(sceneKey));
+      const picked = [];
+      for (let i = 0; i < pool.length && picked.length < count; i++) {
+        picked.push(pool[(idx + i) % pool.length]);
+      }
+      return picked;
+    }
+
+    function syncRelatedClusterUI() {
+      const rightPage = document.getElementById('right-sidebar');
+      if (!rightPage) return;
+      let box = document.getElementById('related-cluster-section');
+      if (!box) {
+        box = document.createElement('section');
+        box.id = 'related-cluster-section';
+        box.className = 'related-cluster-section';
+        const guide = document.getElementById('platform-editorial-guide');
+        if (guide && guide.parentElement === rightPage) {
+          rightPage.insertBefore(box, guide);
+        } else {
+          rightPage.appendChild(box);
+        }
+      }
+      if (!box.dataset.spaBound) {
+        box.dataset.spaBound = '1';
+        box.addEventListener('click', e => {
+          const link = e.target.closest('a[href]');
+          if (!link) return;
+          const href = link.getAttribute('href') || '';
+          if (href.startsWith('http') && !href.includes(window.location.host || 'physics.sheua.com')) return;
+          const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?$/i);
+          const canonLinkScene = resolveCanonicalSceneKey(m && m[2]);
+          if (canonLinkScene && SCENE_CONFIGS[canonLinkScene]) {
+            e.preventDefault();
+            const targetLang = m[1] ? 'uk' : 'en';
+            if (targetLang !== uiState.lang) applyLanguage(targetLang);
+            loadScene(canonLinkScene, true);
+          }
+        });
+      }
+
+      const isUk = uiState.lang === 'uk';
+      const targetLang = isUk ? 'uk' : 'en';
+      const dict = isUk ? SCENE_UK : SCENE_EN;
+      const key = resolveCanonicalSceneKey(uiState.activeScene);
+      const relatedKeys = getRelatedSceneKeys(key, 4);
+      const relatedItemsHtml = relatedKeys.map(rk => {
+        const item = dict[rk] || SCENE_CONFIGS[rk];
+        const href = getExperimentHref(rk, targetLang);
+        const cleanT = stripHtmlAndMath(item.title || rk);
+        return `<li><a href="${href}">${cleanT} →</a></li>`;
+      }).join('');
+
+      const chInfo = getSheuaTextbookChapter(key);
+      const hubsHtml = isUk
+        ? `<a class="related-hub-pill" href="https://sheua.com/${chInfo.slug}">${chInfo.titleUk}</a>` +
+          `<a class="related-hub-pill" href="https://sheua.com/nmt-trener.html">Тренажер НМТ</a>` +
+          `<a class="related-hub-pill" href="https://sheua.com/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>` +
+          `<a class="related-hub-pill" href="https://sheua.com/kalkuliatory.html">Калькулятори СІ</a>`
+        : `<a class="related-hub-pill" href="https://sheua.com/en/">SHEUA.COM · Governing Equations &amp; Textbook</a>` +
+          `<a class="related-hub-pill" href="https://sheua.com/si-constants-handbook.html">SI Constants Reference</a>`;
+
+      const curCfg = dict[key] || SCENE_CONFIGS[key];
+      const shareUrl = `https://physics.sheua.com${isUk ? '/uk' : ''}/sim/${key}`;
+      const shareText = stripHtmlAndMath(curCfg ? curCfg.title : key);
+      const encUrl = encodeURIComponent(shareUrl);
+      const encTxt = encodeURIComponent(shareText);
+
+      box.innerHTML =
+        `<h2 class="related-cluster-title">${isUk ? 'Пов\'язані 3D-досліди та підручник' : 'Related 3D simulations & textbook'}</h2>` +
+        `<ul class="related-sims-list">${relatedItemsHtml}</ul>` +
+        `<div class="related-hubs-row">${hubsHtml}</div>` +
+        `<div class="messenger-share-row">` +
+          `<span>${isUk ? 'Поділитися з класом' : 'Share with class'}</span>` +
+          `<span class="messenger-share-btns">` +
+            `<a class="messenger-share-link" href="https://t.me/share/url?url=${encUrl}&amp;text=${encTxt}" target="_blank" rel="noopener noreferrer">Telegram</a>` +
+            `<a class="messenger-share-link" href="viber://forward?text=${encTxt}%20${encUrl}">Viber</a>` +
+          `</span>` +
+        `</div>`;
     }
 
     function switchDiscipline(targetDisc) {
@@ -40041,6 +40163,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         hdrLinks.className = 'header-legal-links';
         hdrLinks.setAttribute('aria-label', 'Site information');
         hdrLinks.innerHTML = `
+          <a id="ui-hdr-textbook" href="${uiState.lang === 'uk' ? 'https://sheua.com/' : 'https://sheua.com/en/'}">${uiState.lang === 'uk' ? 'Підручник' : 'Textbook'}</a>
+          <span aria-hidden="true">·</span>
           <a id="ui-hdr-about" href="${rootHrefPrefix}about.html">${uiState.lang === 'uk' ? 'Про проєкт' : 'About'}</a>
           <span aria-hidden="true">·</span>
           <a id="ui-hdr-privacy" href="${rootHrefPrefix}privacy.html">${uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy'}</a>
@@ -40049,6 +40173,19 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           headerRight.insertBefore(hdrLinks, langSwitcher);
         } else {
           headerRight.appendChild(hdrLinks);
+        }
+      } else {
+        const hdrLinksExisting = document.getElementById('header-legal-links');
+        if (hdrLinksExisting && !document.getElementById('ui-hdr-textbook')) {
+          const tbA = document.createElement('a');
+          tbA.id = 'ui-hdr-textbook';
+          tbA.href = uiState.lang === 'uk' ? 'https://sheua.com/' : 'https://sheua.com/en/';
+          tbA.textContent = uiState.lang === 'uk' ? 'Підручник' : 'Textbook';
+          const sep = document.createElement('span');
+          sep.setAttribute('aria-hidden', 'true');
+          sep.textContent = '·';
+          hdrLinksExisting.insertBefore(sep, hdrLinksExisting.firstChild);
+          hdrLinksExisting.insertBefore(tbA, sep);
         }
       }
 
@@ -40331,6 +40468,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-footer-privacy', t.footerPrivacy);
       setTxt('ui-footer-terms', t.footerTerms);
       setTxt('ui-footer-copy', t.footerCopy);
+      const tbHdrEl = document.getElementById('ui-hdr-textbook');
+      if (tbHdrEl) {
+        tbHdrEl.textContent = uiState.lang === 'uk' ? 'Підручник' : 'Textbook';
+        tbHdrEl.setAttribute('href', uiState.lang === 'uk' ? 'https://sheua.com/' : 'https://sheua.com/en/');
+      }
       setTxt('ui-hdr-about', uiState.lang === 'uk' ? 'Про проєкт' : 'About');
       setTxt('ui-hdr-privacy', uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy');
       setTxt('ui-editorial-title', uiState.lang === 'uk' ? 'Про відкритий 3D-практикум природничих наук' : 'About the Open-Access 3D Science Laboratory');
@@ -41899,11 +42041,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function stripHtmlAndMath(str) {
       let s = String(str || '')
         .replace(/<[^>]+>/g, '')
+        .replace(/&amp;/gi, '\x01')
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;/gi, "'")
         .replace(/\*\*([^*]+)\*\*/g, '$1')
         .replace(/\$([^$]+)\$/g, '$1')
         .replace(/\\(?:begin|end)\{[^}]*\}/g, ' ')
         .replace(/&=/g, '=')
         .replace(/&/g, ' ')
+        .replace(/\x01/g, '&')
         .replace(/\\(?:left|right|big|Big|bigg|Bigg)\b/g, '')
         .replace(/\\(max|min|const)\b/g, '$1');
       for (const [k, v] of Object.entries(GREEK_LATEX_MAP).sort((a, b) => b[0].length - a[0].length)) {
@@ -41951,25 +42099,82 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       return (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[,;:\s]+$/, '') + '…';
     }
 
+    const DANGLING_STOP_RE = /(?:\s+(?:і|й|та|або|в|у|на|з|із|до|від|при|за|між|під|над|для|що|як|про|без|через|після|vs\.?|and|or|of|in|on|to|for|with|by|at|from|into|between|under|over|a|an|the|&))+$/i;
+
+    function trimDanglingWords(txt) {
+      return String(txt || '').replace(/[,;:\s(-]+$/, '').replace(DANGLING_STOP_RE, '').replace(/[,;:\s(-]+$/, '');
+    }
+
+    function buildSmartSeoTitle(rawTitle, isUk) {
+      let base = stripHtmlAndMath(rawTitle || '').replace(/^§\s*[A-ZА-ЯІЇЄҐa-zа-яіїєґ0-9.-]+\s*/, '').trim();
+      if (!base) base = isUk ? '3D-лабораторія природничих наук' : '3D Science Laboratory';
+      if (isUk) {
+        if (base.length <= 34) return `${base}: формула, 3D-дослід і калькулятор`;
+        if (base.length <= 44) return `${base} · 3D-симуляція і формули`;
+        if (base.length <= 55) return `${base} · 3D-дослід`;
+        const colonIdx = base.indexOf(':');
+        if (colonIdx >= 18 && colonIdx <= 46) return `${base.slice(0, colonIdx)} · 3D-симуляція і формули`;
+        const cut = base.slice(0, 52);
+        const sp = cut.lastIndexOf(' ');
+        return `${trimDanglingWords(sp > 30 ? cut.slice(0, sp) : cut)} · 3D-дослід`;
+      }
+      if (base.length <= 34) return `${base}: 3D Simulation & Calculator`;
+      if (base.length <= 44) return `${base} · 3D Lab & Calculator`;
+      if (base.length <= 54) return `${base} · 3D Simulation`;
+      const colonIdx = base.indexOf(':');
+      if (colonIdx >= 18 && colonIdx <= 44) return `${base.slice(0, colonIdx)} · 3D Lab & Calculator`;
+      const cut = base.slice(0, 52);
+      const sp = cut.lastIndexOf(' ');
+      return `${trimDanglingWords(sp > 28 ? cut.slice(0, sp) : cut)} · 3D Lab`;
+    }
+
+    function buildSmartSeoDesc(subtitle, epigraph, isUk) {
+      const cta = isUk
+        ? '3D-симуляція онлайн, калькулятор у СІ та тест.'
+        : 'Interactive 3D simulation, live SI calculator, and quiz.';
+      const sub = stripHtmlAndMath(subtitle || '').replace(/[.!?]+$/, '').trim();
+      const ep = stripHtmlAndMath(epigraph || '').trim();
+      const maxBody = 158 - cta.length - 2;
+      let body = sub ? `${sub}. ${ep}` : ep;
+      body = body.replace(/\s+/g, ' ').trim();
+      if (body.length > maxBody) {
+        if (sub && sub.length >= 42 && sub.length <= maxBody) {
+          body = `${trimDanglingWords(sub)}.`;
+        } else {
+          const cut = body.slice(0, maxBody - 1);
+          const sentEnd = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('; '));
+          if (sentEnd >= 45) {
+            body = `${trimDanglingWords(cut.slice(0, sentEnd))}.`;
+          } else {
+            const sp = cut.lastIndexOf(' ');
+            body = `${trimDanglingWords(sp > 45 ? cut.slice(0, sp) : cut)}.`;
+          }
+        }
+      } else if (body && !/[.!?]$/.test(body)) {
+        body += '.';
+      }
+      return `${body} ${cta}`.trim();
+    }
+
     function syncPageSeoAndUrl(pushHistory = false) {
-      const cfg = SCENE_CONFIGS[uiState.activeScene];
-      const t = tUI();
-      if (!cfg) return;
       const isUk = uiState.lang === 'uk';
+      const dictCfg = (isUk ? SCENE_UK[uiState.activeScene] : SCENE_EN[uiState.activeScene]) || SCENE_CONFIGS[uiState.activeScene];
+      const cfg = SCENE_CONFIGS[uiState.activeScene];
+      if (!cfg || !dictCfg) return;
       const isRootPath = /^\/(?:uk\/?)?(?:index\.html)?$/i.test(window.location.pathname) && !window.location.search.includes('sim=');
       const keepRootMeta = !pushHistory && isRootPath;
 
       const pageTitle = keepRootMeta
         ? (isUk
-          ? '3D Лабораторія Фізики, Хімії та Біології: 106 інтерактивних 3D-симуляцій і віртуальний практикум'
-          : '3D Physics, Chemistry & Biology Lab: 106 Interactive 3D Simulations & Virtual Textbook')
-        : `${cfg.secSym} ${cfg.title} · ${isUk ? '3D Лабораторія Фізики, Хімії та Біології' : '3D Physics, Chemistry & Biology Lab'}`;
+          ? '3D Лабораторія з фізики, хімії та біології: 106 онлайн-симуляцій і калькулятори'
+          : '3D Physics, Chemistry & Biology Virtual Lab: 106 Interactive Simulations')
+        : buildSmartSeoTitle(dictCfg.title, isUk);
 
       const pageDesc = keepRootMeta
         ? (isUk
-          ? 'Безкоштовна інтерактивна 3D-лабораторія та підручник: 46 симуляцій з фізики, 40 з хімії та 20 з біології і біофізики. Механіка, оптика, орбіталі, кінетика, клітина, ДНК і нейрон.'
-          : 'Free interactive 3D science laboratory and textbook with 46 Physics, 40 Chemistry, and 20 Biology & Biophysics simulations. Explore mechanics, optics, orbitals, cells, DNA, and neurons.')
-        : truncateAtWord(`${cfg.subtitle ? cfg.subtitle + '. ' : ''}${cfg.epigraph} ${cfg.question}`, 162);
+          ? 'Безкоштовна віртуальна 3D-лабораторія для 7-11 класів, НМТ та університетів: 46 симуляцій з фізики, 40 з хімії та 20 з біології, живі калькулятори формул СІ і тести.'
+          : 'Free interactive 3D virtual lab with 46 Physics, 40 Chemistry, and 20 Biology & Biophysics simulations, live SI formula calculators, quizzes, and printable lab reports.')
+        : buildSmartSeoDesc(dictCfg.subtitle, dictCfg.epigraph, isUk);
 
       document.title = pageTitle;
 

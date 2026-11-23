@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ V. Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста","description":"Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея.","url":"https://sheua.com/chemical-kinetics-equilibrium.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум роз'зування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Розділ V. Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста","description":"Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея.","url":"https://sheua.com/chemical-kinetics-equilibrium.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"Старша школа, ліцей та бакалаврат університету","learningResourceType":"Теоретичний розділ підручника та практикум розв'язування задач","isPartOf":{"@type":"WebSite","name":"SHEUA.COM · Освітня платформа природничих наук","url":"https://sheua.com/"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}}</script>
   <style>
     :root {
       --bg-paper: #f4f2ed;
@@ -382,6 +382,134 @@
       border-radius: 3px;
       cursor: pointer;
     }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
     @media (max-width: 640px) {
       .hero-sheet, .article-sheet { padding: 20px 16px; }
     }
@@ -393,10 +521,11 @@
     <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
     <nav class="nav-bar" aria-label="Головна навігація">
       <a href="/">Підручник</a>
+      <a href="/nmt-trener.html">Тренажер НМТ</a>
+      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
+      <a href="/kalkuliatory.html">Калькулятори СІ</a>
       <a href="/si-constants-handbook.html">Сталі СІ</a>
       <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
-      <a href="/about.html">Про проєкт</a>
-      <a href="/privacy.html">Конфіденційність</a>
       <a class="lang-pill" href="/en/" title="English edition">EN</a>
     </nav>
   </header>
@@ -451,30 +580,30 @@
         </table>
       </div>
 
-      <p>Експоненціальне зростання константи швидкості з температурою описується рівнянням Арреніуса <code>k(T) = A · exp(−E_a / RT)</code>, де <code>E_a</code> позначає енергію активації перехідного комплексу, а <code>A</code> враховує частоту та просторову орієнтацію зіткнень. Введення гомогенного чи гетерогенного каталізатора спрямовує реакцію новим маршрутом зі зниженим ба'ром <code>E'_a &lt; E_a</code>, прискорюючи одночасно пряму й зворотну стадії без зміни рівноважної константи <code>K</code>.</p>
+      <p>Експоненціальне зростання константи швидкості з температурою описується рівнянням Арреніуса <code>k(T) = A · exp(−E_a / RT)</code>, де <code>E_a</code> позначає енергію активації перехідного комплексу, а <code>A</code> враховує частоту та просторову орієнтацію зіткнень. Введення гомогенного чи гетерогенного каталізатора спрямовує реакцію новим маршрутом зі зниженим бар'єром <code>E'_a &lt; E_a</code>, прискорюючи одночасно пряму й зворотну стадії без зміни рівноважної константи <code>K</code>.</p>
 
       <h2>3. Протолітична рівновага, буферні розчини та електрохімічні системи</h2>
       <p>У розведених водних розчинах при <code>25 °C</code> іонний добуток води становить <code>K_w = [H⁺][OH⁻] = 1.0 × 10⁻¹⁴</code>, а водневий показник визначається як <code>pH = −lg a(H⁺) ≈ −lg[H⁺]</code>. Буферні системи зі слабкої кислоти <code>HA</code> та її спряженої солі <code>A⁻</code> підтримують стабільне значення <code>pH</code> під час розведення або додавання невеликих порцій сильних кислот і лугів згідно з рівнянням Гендерсона-Гассельбаха: <code>pH = pK_a + lg([A⁻] / [HA])</code>.</p>
-      <p>В електрохімічних колах просторове розділення напівреакцій окиснення на аноді та відновлення на катоді перетворює вільну енергію реакції <code>ΔG = −zFℰ</code> безпосередньо в електричну роботу. Рівноважний електродний потенціал залежить від активностей окисненої й відновленої форм за рівнянням Нернста <code>E = E° + [RT / (zF)] ln([Ox] / [Red])</code>, а при примусовому проходженні постійного струму силою <code>I</code> крізь електролізер маса виділеної на електроді речовини підпорядковується о'днаному закону Фарадея <code>m = (M · I · t) / (z · F)</code>, де стала Фарадея дорівнює <code>F = 96485.3 Кл/моль</code>.</p>
+      <p>В електрохімічних колах просторове розділення напівреакцій окиснення на аноді та відновлення на катоді перетворює вільну енергію реакції <code>ΔG = −zFℰ</code> безпосередньо в електричну роботу. Рівноважний електродний потенціал залежить від активностей окисненої й відновленої форм за рівнянням Нернста <code>E = E° + [RT / (zF)] ln([Ox] / [Red])</code>, а при примусовому проходженні постійного струму силою <code>I</code> крізь електролізер маса виділеної на електроді речовини підпорядковується об'єднаному закону Фарадея <code>m = (M · I · t) / (z · F)</code>, де стала Фарадея дорівнює <code>F = 96485.3 Кл/моль</code>.</p>
 
-      <h2>4. Приклади роз'зування розрахункових задач</h2>
+      <h2>4. Приклади розв'язування розрахункових задач</h2>
 
       <div class="worked-problem">
         <h3>Задача 1. Зміна pH ацетатного буферного розчину при додаванні сильної кислоти</h3>
-        <p>До <code>1.00 л</code> ацетатного буферного розчину, який містить <code>0.20 моль</code> етанової кислоти <code>CH₃COOH</code> (<code>pK_a = 4.76</code>) та <code>0.20 моль</code> натрій етаноату <code>CH₃COONa</code>, додали <code>0.020 моль</code> газоподібного хлороводню <code>HCl</code> без помітної зміни о'му. Обчисліть початковий і кінцевий <code>pH</code> буфера та порівняйте зі зміною <code>pH</code> при додаванні тієї самої порції <code>HCl</code> до <code>1.00 л</code> чистої води.</p>
-        <p><strong>Роз'зання.</strong> Оскільки початкові концентрації компонентів рівні (<code>[A⁻]₀ = [HA]₀ = 0.20 моль/л</code>), початковий показник становить <code>pH₀ = 4.76 + lg(0.20 / 0.20) = 4.76</code>. Сильна кислота кількісно протонує ацетат-іони: <code>CH₃COO⁻ + H⁺ → CH₃COOH</code>, тому нові рівноважні кількості дорівнюють <code>[A⁻] = 0.20 − 0.02 = 0.18 моль/л</code> та <code>[HA] = 0.20 + 0.02 = 0.22 моль/л</code>. За рівнянням Гендерсона-Гассельбаха <code>pH = 4.76 + lg(0.18 / 0.22) = 4.76 + lg(0.818) = 4.76 − 0.087 ≈ 4.67</code> (зсув становить лише <code>ΔpH = −0.09</code>). У чистій воді (<code>pH₀ = 7.00</code>) додавання <code>0.020 моль/л HCl</code> знижує показник до <code>pH = −lg(0.020) = 1.70</code>, тобто на <code>5.30</code> одиниці.</p>
+        <p>До <code>1.00 л</code> ацетатного буферного розчину, який містить <code>0.20 моль</code> етанової кислоти <code>CH₃COOH</code> (<code>pK_a = 4.76</code>) та <code>0.20 моль</code> натрій етаноату <code>CH₃COONa</code>, додали <code>0.020 моль</code> газоподібного хлороводню <code>HCl</code> без помітної зміни об'єму. Обчисліть початковий і кінцевий <code>pH</code> буфера та порівняйте зі зміною <code>pH</code> при додаванні тієї самої порції <code>HCl</code> до <code>1.00 л</code> чистої води.</p>
+        <p><strong>Розв'язання.</strong> Оскільки початкові концентрації компонентів рівні (<code>[A⁻]₀ = [HA]₀ = 0.20 моль/л</code>), початковий показник становить <code>pH₀ = 4.76 + lg(0.20 / 0.20) = 4.76</code>. Сильна кислота кількісно протонує ацетат-іони: <code>CH₃COO⁻ + H⁺ → CH₃COOH</code>, тому нові рівноважні кількості дорівнюють <code>[A⁻] = 0.20 − 0.02 = 0.18 моль/л</code> та <code>[HA] = 0.20 + 0.02 = 0.22 моль/л</code>. За рівнянням Гендерсона-Гассельбаха <code>pH = 4.76 + lg(0.18 / 0.22) = 4.76 + lg(0.818) = 4.76 − 0.087 ≈ 4.67</code> (зсув становить лише <code>ΔpH = −0.09</code>). У чистій воді (<code>pH₀ = 7.00</code>) додавання <code>0.020 моль/л HCl</code> знижує показник до <code>pH = −lg(0.020) = 1.70</code>, тобто на <code>5.30</code> одиниці.</p>
         <p><strong>Відповідь.</strong> у буфері <code>pH</code> змінюється з <code>4.76</code> до <code>4.67</code>; у чистій воді з <code>7.00</code> до <code>1.70</code>.</p>
       </div>
 
       <div class="worked-problem">
         <h3>Задача 2. ЕРС гальванічного елемента Даніеля-Якобі при нерівноважних концентраціях</h3>
         <p>Обчисліть електрорушійну силу елемента <code>Zn | ZnSO₄ (0.010 М) || CuSO₄ (1.00 М) | Cu</code> при температурі <code>T = 298.15 К</code>, якщо стандартні електродні потенціали становлять <code>E°(Zn²⁺/Zn) = −0.763 В</code> та <code>E°(Cu²⁺/Cu) = +0.340 В</code>.</p>
-        <p><strong>Роз'зання.</strong> Стандартна ЕРС елемента з двохелектронним переходом (<code>z = 2</code>) дорівнює <code>ℰ° = E°_кат − E°_анод = 0.340 − (−0.763) = 1.103 В</code>. При <code>298.15 К</code> коефіцієнт перед десятковим логарифмом у рівнянні Нернста становить <code>(2.3026 RT) / F = 0.05916 В</code>. Для сумарної реакції <code>Zn + Cu²⁺ → Zn²⁺ + Cu</code> реакційна частка дорівнює <code>Q = [Zn²⁺] / [Cu²⁺] = 0.010 / 1.00 = 10⁻²</code>. Підставляємо у рівняння Нернста: <code>ℰ = ℰ° − (0.05916 / 2) lg Q = 1.103 − 0.02958 · (−2) = 1.103 + 0.059 = 1.162 В</code>.</p>
+        <p><strong>Розв'язання.</strong> Стандартна ЕРС елемента з двохелектронним переходом (<code>z = 2</code>) дорівнює <code>ℰ° = E°_кат − E°_анод = 0.340 − (−0.763) = 1.103 В</code>. При <code>298.15 К</code> коефіцієнт перед десятковим логарифмом у рівнянні Нернста становить <code>(2.3026 RT) / F = 0.05916 В</code>. Для сумарної реакції <code>Zn + Cu²⁺ → Zn²⁺ + Cu</code> реакційна частка дорівнює <code>Q = [Zn²⁺] / [Cu²⁺] = 0.010 / 1.00 = 10⁻²</code>. Підставляємо у рівняння Нернста: <code>ℰ = ℰ° − (0.05916 / 2) lg Q = 1.103 − 0.02958 · (−2) = 1.103 + 0.059 = 1.162 В</code>.</p>
         <p><strong>Відповідь.</strong> <code>ℰ = 1.162 В</code>.</p>
       </div>
     
 
-      <section class="lab-links-box" aria-label="По'зані тривимірні лабораторні роботи">
+      <section class="lab-links-box" aria-label="Пов'язані тривимірні лабораторні роботи">
         <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
         <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
         <div class="lab-links-grid">
@@ -488,6 +617,15 @@
       </section>
 
       
+      <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
+        <span><strong>Надіслати учням або колегам.</strong></span>
+        <div class="share-strip-actions">
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fchemical-kinetics-equilibrium.html&amp;text=%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%20V.%20%D0%A4%D1%96%D0%B7%D0%B8%D1%87%D0%BD%D0%B0%20%D1%85%D1%96%D0%BC%D1%96%D1%8F%2C%20%D0%BA%D1%96%D0%BD%D0%B5%D1%82%D0%B8%D0%BA%D0%B0%20%D1%82%D0%B0%20%D0%B5%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D1%85%D1%96%D0%BC%D1%96%D1%8F%3A%20%D0%B2%D1%96%D0%BB%D1%8C%D0%BD%D0%B0%20%D0%B5%D0%BD%D0%B5%D1%80%D0%B3%D1%96%D1%8F%20%D0%93%D1%96%D0%B1%D0%B1%D1%81%D0%B0%2C%20%D1%80%D1%96%D0%B2%D0%BD%D0%BE%D0%B2%D0%B0%D0%B3%D0%B0%2C%20pH%20%D1%96%20%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BD%D0%BD%D1%8F%20%D0%9D%D0%B5%D1%80%D0%BD%D1%81%D1%82%D0%B0" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="share-chip" href="viber://forward?text=%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%20V.%20%D0%A4%D1%96%D0%B7%D0%B8%D1%87%D0%BD%D0%B0%20%D1%85%D1%96%D0%BC%D1%96%D1%8F%2C%20%D0%BA%D1%96%D0%BD%D0%B5%D1%82%D0%B8%D0%BA%D0%B0%20%D1%82%D0%B0%20%D0%B5%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D1%85%D1%96%D0%BC%D1%96%D1%8F%3A%20%D0%B2%D1%96%D0%BB%D1%8C%D0%BD%D0%B0%20%D0%B5%D0%BD%D0%B5%D1%80%D0%B3%D1%96%D1%8F%20%D0%93%D1%96%D0%B1%D0%B1%D1%81%D0%B0%2C%20%D1%80%D1%96%D0%B2%D0%BD%D0%BE%D0%B2%D0%B0%D0%B3%D0%B0%2C%20pH%20%D1%96%20%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BD%D0%BD%D1%8F%20%D0%9D%D0%B5%D1%80%D0%BD%D1%81%D1%82%D0%B0%20https%3A%2F%2Fsheua.com%2Fchemical-kinetics-equilibrium.html">Viber</a>
+          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/chemical-kinetics-equilibrium.html');}catch(e){}b.textContent='Скопійовано';setTimeout(function(){b.textContent='Скопіювати адресу';},1800);">Скопіювати адресу</button>
+        </div>
+      </div>
+      
       <nav class="chapter-pager" aria-label="Навігація між розділами підручника">
         <div><a href="/quantum-chemistry-bonding.html">← Розділ IV: Квантова хімія та будова речовини</a></div>
         <div><a href="/cell-molecular-biology.html">Розділ VI: Молекулярна біологія клітини і генетика →</a></div>
@@ -499,6 +637,9 @@
     <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
     <div class="footer-links">
       <a href="/">Головна</a>
+      <a href="/nmt-trener.html">Тренажер НМТ</a>
+      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
+      <a href="/kalkuliatory.html">Калькулятори формул</a>
       <a href="/si-constants-handbook.html">Довідник СІ</a>
       <a href="/about.html">Про проєкт і контакти</a>
       <a href="/privacy.html">Політика конфіденційності</a>

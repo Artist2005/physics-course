@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SHEUA.COM · Відкритий підручник природничих наук та 3D-лабораторія фізики, хімії і біології</title>
-  <meta name="description" content="Освітня платформа SHEUA.COM: теоретичний підручник із роз'заними задачами з фізики, хімії та біофізики, довідник фізичних сталих СІ та 106 інтерактивних 3D-симуляцій." />
+  <meta name="description" content="Освітня платформа SHEUA.COM: теоретичний підручник із розв'язаними задачами з фізики, хімії та біофізики, довідник фізичних сталих СІ та 106 інтерактивних 3D-симуляцій." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <link rel="canonical" href="https://sheua.com/" />
   <link rel="alternate" hreflang="uk" href="https://sheua.com/" />
@@ -13,7 +13,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
   <meta property="og:title" content="SHEUA.COM · Підручник природничих наук та 3D-лабораторія (106 симуляцій)" />
-  <meta property="og:description" content="Відкритий науково-освітній портал: 8 оглядових розділів із роз'заними задачами, довідник констант СІ та 106 тривимірних лабораторних робіт з фізики, хімії і біології." />
+  <meta property="og:description" content="Відкритий науково-освітній портал: 8 оглядових розділів із розв'язаними задачами, довідник констант СІ та 106 тривимірних лабораторних робіт з фізики, хімії і біології." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="uk_UA" />
   <meta property="og:locale:alternate" content="en_US" />
@@ -22,7 +22,7 @@
   <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SHEUA.COM · Підручник природничих наук та 3D-лабораторія" />
-  <meta name="twitter:description" content="Теоретичні конспекти, роз'зані задачі в системі СІ та 106 інтерактивних 3D-симуляцій з фізики, хімії та біології." />
+  <meta name="twitter:description" content="Теоретичні конспекти, розв'язані задачі в системі СІ та 106 інтерактивних 3D-симуляцій з фізики, хімії та біології." />
   <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
   <meta name="google-adsense-account" content="ca-pub-7543476344104123" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -409,6 +409,134 @@
       border-radius: 3px;
       cursor: pointer;
     }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
     @media (max-width: 640px) {
       .hero-sheet, .article-sheet { padding: 20px 16px; }
     }
@@ -420,10 +548,11 @@
     <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
     <nav class="nav-bar" aria-label="Головна навігація">
       <a href="/" class="active">Підручник</a>
+      <a href="/nmt-trener.html">Тренажер НМТ</a>
+      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
+      <a href="/kalkuliatory.html">Калькулятори СІ</a>
       <a href="/si-constants-handbook.html">Сталі СІ</a>
       <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
-      <a href="/about.html">Про проєкт</a>
-      <a href="/privacy.html">Конфіденційність</a>
       <a class="lang-pill" href="/en/" title="English edition">EN</a>
     </nav>
   </header>
@@ -432,7 +561,7 @@
     <section class="hero-sheet">
       <span class="badge">SHEUA.COM · ВІДКРИТИЙ НАУКОВО-ОСВІТНІЙ ПОРТАЛ</span>
       <h1>Відкритий підручник природничих наук та інтерактивна 3D-лабораторія з фізики, хімії і біології</h1>
-      <p class="lead">Освітня платформа <strong>sheua.com</strong> поєднує систематизований теоретичний підручник із прикладами роз'зування задач у системі СІ та інтерактивний лабораторний комплекс <strong>physics.sheua.com</strong> на 106 тривимірних експериментів у реальному часі. Усі матеріали відкриті безкоштовно та без реєстрації для учнів ліцеїв, студентів і викладачів.</p>
+      <p class="lead">Освітня платформа <strong>sheua.com</strong> поєднує систематизований теоретичний підручник із прикладами розв'язування задач у системі СІ та інтерактивний лабораторний комплекс <strong>physics.sheua.com</strong> на 106 тривимірних експериментів у реальному часі. Усі матеріали відкриті безкоштовно та без реєстрації для учнів ліцеїв, студентів і викладачів.</p>
 
       <div class="cta-grid">
         <a class="cta-card" href="https://physics.sheua.com/uk/">
@@ -457,20 +586,43 @@
     </section>
 
     <article class="article-sheet">
-      <h2>Теоретичні розділи підручника та практикум роз'зування задач</h2>
+      <h2>Інтерактивні тренажери, шкільні лабораторні роботи та калькулятори СІ</h2>
+      <p>Для щоденної підготовки до уроків у 7-11 класах, домашніх розрахунків та іспитів НМТ скористайтеся трьома спеціалізованими онлайн-інструментами:</p>
+      <div class="cta-grid">
+        <a class="cta-card" href="/nmt-trener.html">
+          <span class="card-kicker">Підготовка до НМТ · Тести і формули</span>
+          <div class="card-title">Онлайн-тренажер НМТ з фізики, хімії та біології</div>
+          <p class="card-desc">15 типових тестових завдань із миттєвою перевіркою, аналітичним поясненням за формулами СІ, зведеною таблицею обов'язкових формул та переходом у 3D-дослід.</p>
+          <span class="card-link-hint">Запустити тренажер НМТ →</span>
+        </a>
+        <a class="cta-card" href="/laboratorni-7-11-klas.html">
+          <span class="card-kicker">Шкільна програма · 7, 8, 9, 10, 11 класи</span>
+          <div class="card-title">Віртуальні лабораторні роботи за класами</div>
+          <p class="card-desc">Зручний покажчик віртуальних лабораторних робіт за класами з робочими рівняннями, режимом класу для проєктора та друкованими бланками звітів.</p>
+          <span class="card-link-hint">Обрати клас і лабораторну роботу →</span>
+        </a>
+        <a class="cta-card" href="/kalkuliatory.html">
+          <span class="card-kicker">Інженерні розрахунки · 8 модулів</span>
+          <div class="card-title">Онлайн-калькулятори формул у системі СІ</div>
+          <p class="card-desc">Миттєвий розрахунок зіткнення тіл, тонкої лінзи, ідеального газу, періоду маятника, сили Кулона, ККД циклу Карно, pH буфера та електролізу Фарадея.</p>
+          <span class="card-link-hint">Відкрити калькулятори формул →</span>
+        </a>
+      </div>
+
+      <h2>Теоретичні розділи підручника та практикум розв'язування задач</h2>
       <p>Кожен розділ містить строге математичне виведення основних законів, межі застосовності фізичних і хімічних моделей, зведені довідникові таблиці та детальний розбір типових розрахункових задач із перевіркою розмірностей у системі СІ:</p>
       <div class="chapters-grid">
         
         <a class="chapter-card" href="/mechanics-conservation.html">
           <span class="card-kicker">Розділ I · Теоретичний розділ і задачі</span>
           <div class="card-title">Класична механіка: закони збереження імпульсу й енергії та динаміка обертання</div>
-          <p class="card-desc">Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і роз'зані задачі в системі СІ.</p>
+          <p class="card-desc">Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і розв'язані задачі в системі СІ.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
         <a class="chapter-card" href="/thermodynamics-fluids.html">
           <span class="card-kicker">Розділ II · Теоретичний розділ і задачі</span>
           <div class="card-title">Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно</div>
-          <p class="card-desc">Гідростатика й гідродинаміка ідеальної та 'зкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин.</p>
+          <p class="card-desc">Гідростатика й гідродинаміка ідеальної та в'язкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
         <a class="chapter-card" href="/optics-electromagnetism.html">
@@ -494,7 +646,7 @@
         <a class="chapter-card" href="/cell-molecular-biology.html">
           <span class="card-kicker">Розділ VI · Теоретичний розділ і задачі</span>
           <div class="card-title">Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9</div>
-          <p class="card-desc">Геометричне обмеження площі до о'му клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9.</p>
+          <p class="card-desc">Геометричне обмеження площі до об'єму клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
         <a class="chapter-card" href="/biophysics-physiology.html">
@@ -543,7 +695,7 @@
               <td><a href="/thermodynamics-fluids.html">Гідродинаміка</a></td>
               <td>Рівняння Бернуллі, формула Торрічеллі та закон Стокса</td>
               <td><code>P + ½ρv² + ρgy = const, &nbsp; v = √(2gh), &nbsp; F_c = 6πηrv</code></td>
-              <td>Тиск <code>P</code> (Па), густина <code>ρ</code> (кг/м³), 'зкість <code>η</code> (Па·с)</td>
+              <td>Тиск <code>P</code> (Па), густина <code>ρ</code> (кг/м³), в'язкість <code>η</code> (Па·с)</td>
             </tr>
             <tr>
               <td><a href="/thermodynamics-fluids.html">Термодинаміка і МКТ</a></td>
@@ -571,7 +723,7 @@
             </tr>
             <tr>
               <td><a href="/quantum-chemistry-bonding.html">Квантова хімія</a></td>
-              <td>Порядок з'зку МО ЛКАО та цикл Борна-Габера</td>
+              <td>Порядок зв'язку МО ЛКАО та цикл Борна-Габера</td>
               <td><code>BO = ½(N_зв − N_розп), &nbsp; ΔH°_f = ΔH_ат + I₁ + E_ea − U_ґрат</code></td>
               <td>Енергія ґратки <code>U_ґрат</code> (кДж/моль), валентні кути ГЕПВО</td>
             </tr>
@@ -583,7 +735,7 @@
             </tr>
             <tr>
               <td><a href="/chemical-kinetics-equilibrium.html">Електрохімія</a></td>
-              <td>Рівняння Нернста та о'днаний закон електролізу Фарадея</td>
+              <td>Рівняння Нернста та об'єднаний закон електролізу Фарадея</td>
               <td><code>E = E° + (RT/zF) ln([Ox]/[Red]), &nbsp; m = (M·I·t) / (z·F)</code></td>
               <td>Стала Фарадея <code>F = 96 485 Кл/моль</code>, сила струму <code>I</code> (А)</td>
             </tr>
@@ -595,9 +747,9 @@
             </tr>
             <tr>
               <td><a href="/biophysics-physiology.html">Біофізика і фізіологія</a></td>
-              <td>Потенціал Нернста, рівняння 'за Гілла та закон Гагена-Пуазейля</td>
+              <td>Потенціал Нернста, рівняння м'яза Гілла та закон Гагена-Пуазейля</td>
               <td><code>E_i = (RT/zF) ln([C]_o/[C]_i), &nbsp; Q = (πΔP·R⁴) / (8ηL)</code></td>
-              <td>Внутрішній радіус судини <code>R</code> (мм), о'мний кровотік <code>Q</code> (м³/с)</td>
+              <td>Внутрішній радіус судини <code>R</code> (мм), об'ємний кровотік <code>Q</code> (м³/с)</td>
             </tr>
           </tbody>
         </table>
@@ -610,6 +762,15 @@
         <li>Експериментальна перевірка у тривимірному просторі WebGL із керуванням параметрами через пресети мінімальних, стандартних і максимальних значень, спостереженням живих векторів сил, швидкостей та енергетичної осцилограми.</li>
         <li>Аналітичне доведення результату в інтерактивному калькуляторі формул із прямою підстановкою обраних чисел, режимом класу для проєктора та генерацією друкованого протоколу лабораторної роботи.</li>
       </ol>
+      
+      <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
+        <span><strong>Надіслати учням або колегам.</strong></span>
+        <div class="share-strip-actions">
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2F&amp;text=SHEUA.COM%20%C2%B7%20%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%B9%20%D0%BF%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA%20%D1%96%203D-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D1%8F%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="share-chip" href="viber://forward?text=SHEUA.COM%20%C2%B7%20%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%B9%20%D0%BF%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA%20%D1%96%203D-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D1%8F%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20https%3A%2F%2Fsheua.com%2F">Viber</a>
+          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/');}catch(e){}b.textContent='Скопійовано';setTimeout(function(){b.textContent='Скопіювати адресу';},1800);">Скопіювати адресу</button>
+        </div>
+      </div>
     </article>
   </main>
 
@@ -618,6 +779,9 @@
     <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
     <div class="footer-links">
       <a href="/">Головна</a>
+      <a href="/nmt-trener.html">Тренажер НМТ</a>
+      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
+      <a href="/kalkuliatory.html">Калькулятори формул</a>
       <a href="/si-constants-handbook.html">Довідник СІ</a>
       <a href="/about.html">Про проєкт і контакти</a>
       <a href="/privacy.html">Політика конфіденційності</a>

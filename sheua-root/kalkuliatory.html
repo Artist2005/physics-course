@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Онлайн-калькулятори формул з фізики та хімії з покроковим розрахунком у системі СІ · SHEUA.COM</title>
+  <meta name="description" content="Безкоштовні онлайн-калькулятори з фізики та хімії: зіткнення куль, тонка лінза, ідеальний газ PV=νRT, період маятника, закон Кулона, цикл Карно, pH буфера та електроліз Фарадея." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/kalkuliatory.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Онлайн-калькулятори формул з фізики та хімії з покроковим розрахунком у системі СІ · SHEUA.COM" />
+  <meta property="og:description" content="Безкоштовні онлайн-калькулятори з фізики та хімії: зіткнення куль, тонка лінза, ідеальний газ PV=νRT, період маятника, закон Кулона, цикл Карно, pH буфера та електроліз Фарадея." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/kalkuliatory.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Онлайн-калькулятори формул з фізики та хімії з покроковим розрахунком у системі СІ · SHEUA.COM" />
+  <meta name="twitter:description" content="Безкоштовні онлайн-калькулятори з фізики та хімії: зіткнення куль, тонка лінза, ідеальний газ PV=νRT, період маятника, закон Кулона, цикл Карно, pH буфера та електроліз Фарадея." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-7543476344104123" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SHEUA.COM","item":"https://sheua.com/"},{"@type":"ListItem","position":2,"name":"Онлайн-калькулятори формул з фізики та хімії з покроковим розрахунком у системі СІ","item":"https://sheua.com/kalkuliatory.html"}]},{"@type":"LearningResource","name":"Онлайн-калькулятори формул з фізики та хімії з покроковим розрахунком у системі СІ","description":"Безкоштовні онлайн-калькулятори з фізики та хімії: зіткнення куль, тонка лінза, ідеальний газ PV=νRT, період маятника, закон Кулона, цикл Карно, pH буфера та електроліз Фарадея.","url":"https://sheua.com/kalkuliatory.html","inLanguage":"uk","isAccessibleForFree":true,"educationalLevel":"7-11 класи, підготовка до НМТ та 1 курс університету","publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"}},{"@type":"WebApplication","name":"Онлайн-калькулятори з фізики та хімії SHEUA.COM","applicationCategory":"EducationalApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"UAH"}}]}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/nmt-trener.html">Тренажер НМТ</a>
+      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
+      <a href="/kalkuliatory.html" class="active">Калькулятори СІ</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a class="lang-pill" href="/en/" title="English edition">EN</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>ОНЛАЙН-КАЛЬКУЛЯТОРИ У СИСТЕМІ СІ</span></div>
+      <span class="badge">ОНЛАЙН-КАЛЬКУЛЯТОРИ У СИСТЕМІ СІ</span>
+      <h1>Онлайн-калькулятори формул з фізики та хімії з покроковим розрахунком у системі СІ</h1>
+      <p class="lead">Вісім інженерно-навчальних калькуляторів виконують миттєвий розрахунок у системі одиниць СІ з прямою підстановкою введених чисел у робочу формулу. Після обчислення ви можете в один клік відкрити відповідну тривимірну лабораторну установку й візуально перевірити розрахований режим.</p>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>Інтерактивні розрахункові модулі</h2>
+      <p>Змінюйте будь-яке числове поле нижче: результат і підстановка у формулу перераховуються миттєво без перезавантаження сторінки.</p>
+
+      <div class="calc-cards-grid">
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Механіка · Закон збереження імпульсу</div>
+          <h3>1. Калькулятор центрального удару двох куль</h3>
+          <div class="calc-inputs-row">
+            <label>m₁, кг <input type="number" id="c1-m1" value="2" step="0.5" min="0.1" /></label>
+            <label>m₂, кг <input type="number" id="c1-m2" value="4" step="0.5" min="0.1" /></label>
+            <label>v₁, м/с <input type="number" id="c1-v1" value="6" step="0.5" /></label>
+            <label>v₂, м/с <input type="number" id="c1-v2" value="0" step="0.5" /></label>
+            <label>Пружність e (0…1) <input type="number" id="c1-e" value="1" step="0.1" min="0" max="1" /></label>
+          </div>
+          <div class="formula-block"><code id="c1-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/collision">Візуалізувати це зіткнення у 3D-лабораторії →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Геометрична оптика · Формула Гаусса</div>
+          <h3>2. Калькулятор тонкої лінзи та лінійного збільшення</h3>
+          <div class="calc-inputs-row">
+            <label>Фокус F, м <input type="number" id="c2-f" value="0.20" step="0.05" /></label>
+            <label>Відстань предмета d, м <input type="number" id="c2-d" value="0.30" step="0.05" min="0.02" /></label>
+          </div>
+          <div class="formula-block"><code id="c2-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/lens">Побудувати хід променів у 3D-лінзі →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Молекулярна фізика · Рівняння Менделєєва-Клапейрона</div>
+          <h3>3. Калькулятор тиску ідеального газу та швидкості молекул</h3>
+          <div class="calc-inputs-row">
+            <label>Кількість ν, моль <input type="number" id="c3-n" value="2" step="0.5" min="0.05" /></label>
+            <label>Температура T, К <input type="number" id="c3-t" value="300" step="10" min="10" /></label>
+            <label>Об'єм V, л <input type="number" id="c3-v" value="24.9" step="1" min="0.1" /></label>
+            <label>Молярна маса M, г/моль <input type="number" id="c3-m" value="28" step="1" min="1" /></label>
+          </div>
+          <div class="formula-block"><code id="c3-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/gas">Відкрити 3D-циліндр з ідеальним газом →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Механічні коливання · Формула Гюйгенса</div>
+          <h3>4. Калькулятор періоду і частоти математичного маятника</h3>
+          <div class="calc-inputs-row">
+            <label>Довжина підвісу L, м <input type="number" id="c4-l" value="1.00" step="0.1" min="0.05" /></label>
+            <label>Прискорення g, м/с² <input type="number" id="c4-g" value="9.81" step="0.1" min="0.5" /></label>
+          </div>
+          <div class="formula-block"><code id="c4-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/pendulum">Запустити 3D-маятник у реальному часі →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Електростатика · Взаємодія точкових зарядів</div>
+          <h3>5. Калькулятор сили закону Кулона у вакуумі</h3>
+          <div class="calc-inputs-row">
+            <label>Заряд q₁, мкКл <input type="number" id="c5-q1" value="4" step="1" /></label>
+            <label>Заряд q₂, мкКл <input type="number" id="c5-q2" value="-2" step="1" /></label>
+            <label>Відстань r, м <input type="number" id="c5-r" value="0.30" step="0.05" min="0.01" /></label>
+          </div>
+          <div class="formula-block"><code id="c5-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/coulomb">Переглянути 3D-силові лінії закону Кулона →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Термодинаміка · Теплові двигуни</div>
+          <h3>6. Калькулятор ККД ідеальної теплової машини Карно</h3>
+          <div class="calc-inputs-row">
+            <label>Нагрівник T₁, К <input type="number" id="c6-t1" value="500" step="20" min="50" /></label>
+            <label>Холодильник T₂, К <input type="number" id="c6-t2" value="300" step="20" min="10" /></label>
+            <label>Теплота Q₁, кДж <input type="number" id="c6-q1" value="10" step="1" min="0.1" /></label>
+          </div>
+          <div class="formula-block"><code id="c6-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/carnot">Дослідити цикл Карно на 3D-діаграмі →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Аналітична хімія · Кислотно-основна рівновага</div>
+          <h3>7. Калькулятор pH буферного розчину Гендерсона-Гассельбаха</h3>
+          <div class="calc-inputs-row">
+            <label>Показник pK_a кислоти <input type="number" id="c7-pka" value="4.76" step="0.05" /></label>
+            <label>[Сіль A⁻], моль/л <input type="number" id="c7-salt" value="0.20" step="0.05" min="0.001" /></label>
+            <label>[Кислота HA], моль/л <input type="number" id="c7-acid" value="0.10" step="0.05" min="0.001" /></label>
+          </div>
+          <div class="formula-block"><code id="c7-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/chem_buffer">Перевірити буферну ємність у 3D-досліді →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Електрохімія · Об'єднаний закон Фарадея</div>
+          <h3>8. Калькулятор маси виділеної речовини під час електролізу</h3>
+          <div class="calc-inputs-row">
+            <label>Молярна маса M, г/моль <input type="number" id="c8-m" value="63.55" step="0.5" min="1" /></label>
+            <label>Сила струму I, А <input type="number" id="c8-i" value="5" step="0.5" min="0.1" /></label>
+            <label>Час t, хв <input type="number" id="c8-t" value="30" step="5" min="1" /></label>
+            <label>Число електронів z <input type="number" id="c8-z" value="2" step="1" min="1" max="8" /></label>
+          </div>
+          <div class="formula-block"><code id="c8-out"></code></div>
+          <p><a href="https://physics.sheua.com/uk/sim/chem_electrolysis">Запустити 3D-ванну електролізу →</a></p>
+        </section>
+      </div>
+
+      <h2>Правила переведення позасистемних одиниць у систему СІ перед розрахунком</h2>
+      <p>Більшість помилок у шкільних та університетських розрахункових задачах виникає через підстановку несумісних кратних і частинних одиниць у базові формули. Перед ручним розрахунком обов'язково приводьте вхідні величини до основних одиниць Міжнародної системи СІ:</p>
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Фізична або хімічна величина</th>
+              <th>Типова позасистемна одиниця в умові</th>
+              <th>Правило переведення в основну одиницю СІ</th>
+              <th>Приклад у формулі</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Абсолютна температура газу <code>T</code></td>
+              <td>Градуси Цельсія, <code>°C</code></td>
+              <td>Додайте <code>273.15</code> для отримання кельвінів: <code>T = t + 273.15 К</code></td>
+              <td><code>27 °C = 300.15 К</code> у рівнянні <code>PV = νRT</code> та ККД Карно</td>
+            </tr>
+            <tr>
+              <td>Об'єм газу або розчину <code>V</code></td>
+              <td>Літри <code>л</code> або мілілітри <code>мл</code></td>
+              <td><code>1 л = 10⁻³ м³</code>, <code>1 мл = 1 см³ = 10⁻⁶ м³</code></td>
+              <td><code>24.9 л = 0.0249 м³</code> при обчисленні тиску в паскалях</td>
+            </tr>
+            <tr>
+              <td>Молярна маса речовини <code>M</code></td>
+              <td>Грами на моль, <code>г/моль</code></td>
+              <td>Поділіть на <code>1000</code> для кілограмів на моль: <code>1 г/моль = 10⁻³ кг/моль</code></td>
+              <td>Азот N₂: <code>M = 28 г/моль = 0.028 кг/моль</code> у формулі <code>v_кв = √(3RT/M)</code></td>
+            </tr>
+            <tr>
+              <td>Електричний заряд <code>q</code></td>
+              <td>Мікрокулони <code>мкКл</code> або нанокулони <code>нКл</code></td>
+              <td><code>1 мкКл = 10⁻⁶ Кл</code>, <code>1 нКл = 10⁻⁹ Кл</code></td>
+              <td><code>4 мкКл = 4·10⁻⁶ Кл</code> у законі Кулона <code>F = k|q₁q₂|/r²</code></td>
+            </tr>
+            <tr>
+              <td>Час проходження струму <code>t</code></td>
+              <td>Хвилини <code>хв</code> або години <code>год</code></td>
+              <td><code>1 хв = 60 с</code>, <code>1 год = 3600 с</code>, бо <code>1 Кл = 1 А · 1 с</code></td>
+              <td><code>30 хв = 1800 с</code> в об'єднаному законі Фарадея</td>
+            </tr>
+            <tr>
+              <td>Оптична сила та фокус лінзи <code>D, F</code></td>
+              <td>Сантиметри <code>см</code></td>
+              <td>Переведіть фокусну відстань у метри: <code>1 дптр = 1 м⁻¹</code></td>
+              <td>Збиральна лінза <code>F = 20 см = 0.20 м</code> має <code>D = +5.0 дптр</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Межі застосовності розрахункових моделей</h2>
+      <p>Формули пружного та непружного удару точні для центрального зіткнення куль, коли лінія удару проходить через центри мас обох тіл, а імпульсом зовнішніх сил тертя під час короткого контакту можна знехтувати. Рівняння тонкої лінзи Гаусса справедливе в параксіальному наближенні для променів, нахилених під малими кутами до головної оптичної осі; для розсіювальної лінзи фокусну відстань <code>F</code> вводять зі знаком мінус. Буферне рівняння Гендерсона-Гассельбаха дає високу точність у робочому інтервалі концентрацій <code>0.01…1.0 моль/л</code>, коли співвідношення солі до кислоти лежить у межах від <code>0.1</code> до <code>10</code>.</p>
+
+      <script>
+      (function(){
+        function val(id, fallback) {
+          var el = document.getElementById(id);
+          var n = el ? parseFloat(el.value) : NaN;
+          return isFinite(n) ? n : fallback;
+        }
+        function setTxt(id, txt) {
+          var el = document.getElementById(id);
+          if (el) el.textContent = txt;
+        }
+        function recalcAll() {
+          var m1 = Math.max(0.01, val('c1-m1', 2)), m2 = Math.max(0.01, val('c1-m2', 4));
+          var v1 = val('c1-v1', 6), v2 = val('c1-v2', 0);
+          var e = Math.min(1, Math.max(0, val('c1-e', 1)));
+          var u1 = ((m1 - e * m2) * v1 + (1 + e) * m2 * v2) / (m1 + m2);
+          var u2 = ((m2 - e * m1) * v2 + (1 + e) * m1 * v1) / (m1 + m2);
+          var mu = (m1 * m2) / (m1 + m2);
+          var dq = 0.5 * mu * Math.pow(v1 - v2, 2) * (1 - e * e);
+          setTxt('c1-out', 'u₁ = ' + u1.toFixed(2) + ' м/с,  u₂ = ' + u2.toFixed(2) + ' м/с,  втрати тепла ΔQ = ' + dq.toFixed(2) + ' Дж');
+
+          var F = val('c2-f', 0.2), d = Math.max(0.005, val('c2-d', 0.3));
+          if (Math.abs(F) < 1e-4) F = 0.01;
+          var D = 1 / F;
+          var invf = (1 / F) - (1 / d);
+          if (Math.abs(invf) < 1e-5) {
+            setTxt('c2-out', 'D = ' + D.toFixed(2) + ' дптр · Предмет у фокусі, промені після лінзи йдуть паралельно (f → ∞)');
+          } else {
+            var fImg = 1 / invf;
+            var mag = Math.abs(fImg / d);
+            var kind = fImg > 0 ? 'дійсне зображення' : 'уявне зображення';
+            setTxt('c2-out', 'Оптична сила D = ' + D.toFixed(2) + ' дптр,  f = ' + fImg.toFixed(3) + ' м (' + kind + '),  збільшення Γ = ' + mag.toFixed(2) + '×');
+          }
+
+          var nu = Math.max(0.001, val('c3-n', 2)), T = Math.max(1, val('c3-t', 300));
+          var V_L = Math.max(0.01, val('c3-v', 24.9)), M_g = Math.max(1, val('c3-m', 28));
+          var P_kPa = (nu * 8.31446 * T) / V_L;
+          var vrms = Math.sqrt((3 * 8.31446 * T) / (M_g / 1000));
+          setTxt('c3-out', 'Тиск P = ' + P_kPa.toFixed(2) + ' кПа (' + (P_kPa / 101.325).toFixed(2) + ' атм),  v_кв = ' + vrms.toFixed(0) + ' м/с');
+
+          var L = Math.max(0.01, val('c4-l', 1)), g = Math.max(0.1, val('c4-g', 9.81));
+          var per = 2 * Math.PI * Math.sqrt(L / g);
+          setTxt('c4-out', 'Період T = ' + per.toFixed(3) + ' с,  частота ν = ' + (1 / per).toFixed(3) + ' Гц,  ω = ' + (2 * Math.PI / per).toFixed(2) + ' рад/с');
+
+          var q1 = val('c5-q1', 4) * 1e-6, q2 = val('c5-q2', -2) * 1e-6, r = Math.max(0.005, val('c5-r', 0.3));
+          var Fc = 8.98755e9 * Math.abs(q1 * q2) / (r * r);
+          var mode = (q1 * q2 < 0) ? 'притягання' : (q1 * q2 > 0 ? 'відштовхування' : 'нульова взаємодія');
+          setTxt('c5-out', 'Сила Кулона F = ' + Fc.toFixed(3) + ' Н (' + mode + ')');
+
+          var T1 = Math.max(2, val('c6-t1', 500)), T2 = Math.max(1, val('c6-t2', 300)), Q1 = Math.max(0, val('c6-q1', 10));
+          if (T2 >= T1) {
+            setTxt('c6-out', 'Температура нагрівника T₁ має перевищувати температуру холодильника T₂ (T₁ > T₂)');
+          } else {
+            var eta = 1 - (T2 / T1);
+            setTxt('c6-out', 'ККД Карно η = ' + (eta * 100).toFixed(1) + ' %,  корисна робота A = ' + (eta * Q1).toFixed(2) + ' кДж,  передано холодильнику Q₂ = ' + ((1 - eta) * Q1).toFixed(2) + ' кДж');
+          }
+
+          var pka = val('c7-pka', 4.76), salt = Math.max(1e-6, val('c7-salt', 0.2)), acid = Math.max(1e-6, val('c7-acid', 0.1));
+          var ph = pka + (Math.log(salt / acid) / Math.LN10);
+          setTxt('c7-out', 'Водневий показник буфера pH = ' + ph.toFixed(2) + ',  pOH = ' + (14 - ph).toFixed(2));
+
+          var M_el = Math.max(0.5, val('c8-m', 63.55)), I_a = Math.max(0, val('c8-i', 5)), t_min = Math.max(0, val('c8-t', 30)), z = Math.max(1, Math.round(val('c8-z', 2)));
+          var charge = I_a * t_min * 60;
+          var mass = (M_el * charge) / (z * 96485.33);
+          setTxt('c8-out', 'Перенесений заряд Q = ' + charge.toFixed(0) + ' Кл,  маса виділеної речовини m = ' + mass.toFixed(3) + ' г');
+        }
+
+        Array.prototype.forEach.call(document.querySelectorAll('.calc-widget input'), function(inp) {
+          inp.addEventListener('input', recalcAll);
+        });
+        recalcAll();
+      })();
+      </script>
+    
+
+      <section class="lab-links-box" aria-label="Швидкі переходи до лабораторії">
+        <h2>Пов'язані розділи та 3D-експерименти</h2>
+        <div class="lab-links-grid">
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/collision">§ 1. 3D-дослід зіткнення куль →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/lens">§ 14. 3D-дослід тонкої лінзи →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_buffer">§ Х-15. 3D-буферні розчини і pH →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_electrolysis">§ Х-9. 3D-електроліз Фарадея →</a>
+        </div>
+      </section>
+
+      
+      <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
+        <span><strong>Надіслати учням або колегам.</strong></span>
+        <div class="share-strip-actions">
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fkalkuliatory.html&amp;text=%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D1%83%D0%BB%20%D0%B7%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%20%D1%82%D0%B0%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D0%B7%20%D0%BF%D0%BE%D0%BA%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D0%B8%D0%BC%20%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%85%D1%83%D0%BD%D0%BA%D0%BE%D0%BC%20%D1%83%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%96%20%D0%A1%D0%86" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="share-chip" href="viber://forward?text=%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D1%83%D0%BB%20%D0%B7%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%20%D1%82%D0%B0%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D0%B7%20%D0%BF%D0%BE%D0%BA%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D0%B8%D0%BC%20%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%85%D1%83%D0%BD%D0%BA%D0%BE%D0%BC%20%D1%83%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%96%20%D0%A1%D0%86%20https%3A%2F%2Fsheua.com%2Fkalkuliatory.html">Viber</a>
+          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/kalkuliatory.html');}catch(e){}b.textContent='Скопійовано';setTimeout(function(){b.textContent='Скопіювати адресу';},1800);">Скопіювати адресу</button>
+        </div>
+      </div>
+      <nav class="chapter-pager" aria-label="Навігація порталу">
+        <div><a href="/">← На головну сторінку підручника</a></div>
+        <div><a href="https://physics.sheua.com/uk/">Відкрити всі 106 симуляцій у 3D-лабораторії →</a></div>
+      </nav>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Відкритий підручник і 3D-лабораторія · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Головна</a>
+      <a href="/nmt-trener.html">Тренажер НМТ</a>
+      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
+      <a href="/kalkuliatory.html">Калькулятори формул</a>
+      <a href="/si-constants-handbook.html">Довідник СІ</a>
+      <a href="/about.html">Про проєкт і контакти</a>
+      <a href="/privacy.html">Політика конфіденційності</a>
+      <a href="/terms.html">Умови використання</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

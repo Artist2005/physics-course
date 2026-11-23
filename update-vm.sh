@@ -234,6 +234,9 @@ echo "=== [5/5] Перевірка доступності ads.txt, нових р
 for CHECK_URL in \
   "https://sheua.com/" \
   "https://sheua.com/ads.txt" \
+  "https://sheua.com/nmt-trener.html" \
+  "https://sheua.com/laboratorni-7-11-klas.html" \
+  "https://sheua.com/kalkuliatory.html" \
   "https://sheua.com/mechanics-conservation.html" \
   "https://physics.sheua.com/ads.txt" \
   "https://physics.sheua.com/sim/collision"; do

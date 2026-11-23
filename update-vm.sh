@@ -32,6 +32,10 @@ fi
 CACHE_VER="$(date +%s)"
 sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec sed -i -E "s#assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?#assets/\1?v=${CACHE_VER}#g" {} +
 
+if command -v gzip >/dev/null 2>&1; then
+  sudo gzip -9 -k -f "${WEB_ROOT}/assets/app.js" "${WEB_ROOT}/assets/styles.css" "${WEB_ROOT}/sitemap.xml" || true
+fi
+
 WEB_OWNER=""
 if id "www-data" >/dev/null 2>&1; then
   WEB_OWNER="www-data:www-data"
@@ -212,6 +216,17 @@ for path in real_confs:
                 'add_header Cache-Control "no-cache" always;\n        add_header X-Content-Type-Options "nosniff" always;\n        add_header Referrer-Policy "strict-origin-when-cross-origin" always;\n        add_header X-Frame-Options "SAMEORIGIN" always;\n        try_files $uri $uri.html $uri/ =404;'
             )
 
+        # Enable gzip_static on; for pre-compressed .gz assets
+        if 'gzip on;' in block and 'gzip_static on;' not in block:
+            block = block.replace('gzip on;', 'gzip on;\n    gzip_static on;', 1)
+
+        # Add HSTS (Strict-Transport-Security) inside HTTPS blocks
+        if 'ssl_certificate' in block and 'Strict-Transport-Security' not in block:
+            block = block.replace(
+                'add_header X-Content-Type-Options "nosniff" always;',
+                'add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;\n        add_header X-Content-Type-Options "nosniff" always;'
+            )
+
         new_parts.append(block)
 
     new_txt = ''.join(new_parts)
@@ -237,6 +252,7 @@ for CHECK_URL in \
   "https://sheua.com/nmt-trener.html" \
   "https://sheua.com/laboratorni-7-11-klas.html" \
   "https://sheua.com/kalkuliatory.html" \
+  "https://sheua.com/en/calculators.html" \
   "https://sheua.com/mechanics-conservation.html" \
   "https://physics.sheua.com/ads.txt" \
   "https://physics.sheua.com/sim/collision"; do

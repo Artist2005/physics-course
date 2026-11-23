@@ -42041,17 +42041,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function stripHtmlAndMath(str) {
       let s = String(str || '')
         .replace(/<[^>]+>/g, '')
-        .replace(/&amp;/gi, '\x01')
+        .replace(/&amp;/gi, '&')
         .replace(/&lt;/gi, '<')
         .replace(/&gt;/gi, '>')
         .replace(/&quot;/gi, '"')
         .replace(/&#39;/gi, "'")
         .replace(/\*\*([^*]+)\*\*/g, '$1')
-        .replace(/\$([^$]+)\$/g, '$1')
+        .replace(/\$([^$]+)\$/g, (_, m) => m.replace(/&=/g, '=').replace(/&/g, ' '))
         .replace(/\\(?:begin|end)\{[^}]*\}/g, ' ')
         .replace(/&=/g, '=')
-        .replace(/&/g, ' ')
-        .replace(/\x01/g, '&')
         .replace(/\\(?:left|right|big|Big|bigg|Bigg)\b/g, '')
         .replace(/\\(max|min|const)\b/g, '$1');
       for (const [k, v] of Object.entries(GREEK_LATEX_MAP).sort((a, b) => b[0].length - a[0].length)) {
@@ -42109,23 +42107,26 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       let base = stripHtmlAndMath(rawTitle || '').replace(/^§\s*[A-ZА-ЯІЇЄҐa-zа-яіїєґ0-9.-]+\s*/, '').trim();
       if (!base) base = isUk ? '3D-лабораторія природничих наук' : '3D Science Laboratory';
       if (isUk) {
-        if (base.length <= 34) return `${base}: формула, 3D-дослід і калькулятор`;
-        if (base.length <= 44) return `${base} · 3D-симуляція і формули`;
-        if (base.length <= 55) return `${base} · 3D-дослід`;
+        if (base.length <= 29) return `${base}: формула, 3D-дослід і калькулятор`;
+        if (base.length <= 39) return `${base} · 3D-симуляція і формули`;
+        if (base.length <= 51) return `${base} · 3D-дослід`;
         const colonIdx = base.indexOf(':');
-        if (colonIdx >= 18 && colonIdx <= 46) return `${base.slice(0, colonIdx)} · 3D-симуляція і формули`;
-        const cut = base.slice(0, 52);
+        if (colonIdx >= 16 && colonIdx <= 39) return `${trimDanglingWords(base.slice(0, colonIdx))} · 3D-симуляція і формули`;
+        if (colonIdx >= 16 && colonIdx <= 51) return `${trimDanglingWords(base.slice(0, colonIdx))} · 3D-дослід`;
+        const cut = base.slice(0, 50);
         const sp = cut.lastIndexOf(' ');
-        return `${trimDanglingWords(sp > 30 ? cut.slice(0, sp) : cut)} · 3D-дослід`;
+        return `${trimDanglingWords(sp > 28 ? cut.slice(0, sp) : cut)} · 3D-дослід`;
       }
-      if (base.length <= 34) return `${base}: 3D Simulation & Calculator`;
-      if (base.length <= 44) return `${base} · 3D Lab & Calculator`;
-      if (base.length <= 54) return `${base} · 3D Simulation`;
+      if (base.length <= 30) return `${base}: 3D Simulation & Calculator`;
+      if (base.length <= 40) return `${base} · 3D Lab & Calculator`;
+      if (base.length <= 47) return `${base} · 3D Simulation`;
+      if (base.length <= 54) return `${base} · 3D Lab`;
       const colonIdx = base.indexOf(':');
-      if (colonIdx >= 18 && colonIdx <= 44) return `${base.slice(0, colonIdx)} · 3D Lab & Calculator`;
+      if (colonIdx >= 16 && colonIdx <= 40) return `${trimDanglingWords(base.slice(0, colonIdx))} · 3D Lab & Calculator`;
+      if (colonIdx >= 16 && colonIdx <= 53) return `${trimDanglingWords(base.slice(0, colonIdx))} · 3D Lab`;
       const cut = base.slice(0, 52);
       const sp = cut.lastIndexOf(' ');
-      return `${trimDanglingWords(sp > 28 ? cut.slice(0, sp) : cut)} · 3D Lab`;
+      return `${trimDanglingWords(sp > 26 ? cut.slice(0, sp) : cut)} · 3D Lab`;
     }
 
     function buildSmartSeoDesc(subtitle, epigraph, isUk) {
@@ -42166,8 +42167,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       const pageTitle = keepRootMeta
         ? (isUk
-          ? '3D Лабораторія з фізики, хімії та біології: 106 онлайн-симуляцій і калькулятори'
-          : '3D Physics, Chemistry & Biology Virtual Lab: 106 Interactive Simulations')
+          ? '3D Лабораторія фізики, хімії та біології: 106 симуляцій'
+          : '3D Physics, Chemistry & Biology Lab: 106 Virtual Sims')
         : buildSmartSeoTitle(dictCfg.title, isUk);
 
       const pageDesc = keepRootMeta

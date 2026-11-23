@@ -34,6 +34,7 @@ server {
     charset utf-8;
 
     gzip on;
+    gzip_static on;
     gzip_vary on;
     gzip_proxied any;
     gzip_comp_level 6;

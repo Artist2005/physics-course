@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physics &amp; Chemistry SI Formula Calculators · SHEUA.COM</title>
+  <meta name="description" content="Free interactive physics and chemistry formula calculators in SI units: elastic collision, thin lens, ideal gas PV=nRT, pendulum, Coulomb force, Carnot efficiency, buffer pH, and Faraday electrolysis." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/en/calculators.html" />
+  <link rel="alternate" hreflang="en" href="https://sheua.com/en/calculators.html" />
+  <link rel="alternate" hreflang="uk" href="https://sheua.com/kalkuliatory.html" />
+  <link rel="alternate" hreflang="x-default" href="https://sheua.com/kalkuliatory.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Physics &amp; Chemistry SI Formula Calculators · SHEUA.COM" />
+  <meta property="og:description" content="Eight interactive SI physics and chemistry calculators with instant numerical substitution and 3D lab verification." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/en/calculators.html" />
+  <meta property="og:site_name" content="SHEUA.COM · 3D Science Lab" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Physics &amp; Chemistry SI Formula Calculators · SHEUA.COM" />
+  <meta name="twitter:description" content="Eight interactive SI calculators for collisions, thin lenses, ideal gases, pendulums, Coulomb force, Carnot cycles, buffer pH, and electrolysis." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-7543476344104123" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"SHEUA.COM SI Physics & Chemistry Calculators","url":"https://sheua.com/en/calculators.html","applicationCategory":"EducationalApplication","operatingSystem":"All","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SHEUA.COM (EN)","item":"https://sheua.com/en/"},{"@type":"ListItem","position":2,"name":"SI Formula Calculators","item":"https://sheua.com/en/calculators.html"}]}]}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+    }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/en/">SHEUA.COM · 3D Science Lab</a>
+    <nav class="nav-bar" aria-label="Main navigation">
+      <a href="/en/">Overview</a>
+      <a href="/en/calculators.html" class="active">SI Calculators</a>
+      <a href="https://physics.sheua.com/">3D Lab (106 Sims)</a>
+      <a href="/about.html?lang=en">About &amp; Contact</a>
+      <a href="/privacy.html?lang=en">Privacy Policy</a>
+      <a class="lang-pill" href="/kalkuliatory.html" title="Українська версія">УКР</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/en/">SHEUA.COM</a> / <span>SI FORMULA CALCULATORS</span></div>
+      <span class="badge">INTERACTIVE SI CALCULATORS FOR AP, IB, GCSE &amp; UNIVERSITY</span>
+      <h1>Online Physics &amp; Chemistry Formula Calculators in SI Units</h1>
+      <p class="lead">Use these eight real-time calculation modules to solve textbook and exam problems in Mechanics, Optics, Thermodynamics, Electrostatics, Acid-Base Equilibria, and Electrochemistry. Every calculator links directly to the matching 3D apparatus on <strong>physics.sheua.com</strong> for visual verification.</p>
+    </section>
+
+    <article class="article-sheet">
+      <h2>Interactive calculation modules</h2>
+      <p>Adjust any input value below to recalculate the SI outputs immediately without reloading the page.</p>
+      <div class="calc-cards-grid">
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Mechanics · Conservation of Momentum</div>
+          <h3>1. Elastic and inelastic collision calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Mass m₁, kg <input type="number" id="e1-m1" value="2" step="0.5" min="0.1" /></label>
+            <label>Mass m₂, kg <input type="number" id="e1-m2" value="4" step="0.5" min="0.1" /></label>
+            <label>Velocity v₁, m/s <input type="number" id="e1-v1" value="6" step="0.5" /></label>
+            <label>Velocity v₂, m/s <input type="number" id="e1-v2" value="0" step="0.5" /></label>
+            <label>Restitution e <input type="number" id="e1-e" value="1" step="0.1" min="0" max="1" /></label>
+          </div>
+          <div class="formula-block"><code id="e1-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/collision">Open 3D Collision Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Geometric Optics · Gaussian Lens Formula</div>
+          <h3>2. Thin lens focal length and magnification calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Focal length F, m <input type="number" id="e2-f" value="0.20" step="0.05" /></label>
+            <label>Object distance d, m <input type="number" id="e2-d" value="0.30" step="0.05" min="0.02" /></label>
+          </div>
+          <div class="formula-block"><code id="e2-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/lens">Open 3D Converging Lens Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Thermodynamics · Ideal Gas Law</div>
+          <h3>3. Ideal gas pressure and RMS molecular speed calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Amount n, mol <input type="number" id="e3-n" value="2" step="0.5" min="0.05" /></label>
+            <label>Temperature T, K <input type="number" id="e3-t" value="300" step="10" min="10" /></label>
+            <label>Volume V, L <input type="number" id="e3-v" value="24.9" step="1" min="0.1" /></label>
+            <label>Molar mass M, g/mol <input type="number" id="e3-m" value="28" step="1" min="1" /></label>
+          </div>
+          <div class="formula-block"><code id="e3-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/gas">Open 3D Ideal Gas Piston Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Oscillations · Simple Pendulum</div>
+          <h3>4. Simple pendulum period and frequency calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Length L, m <input type="number" id="e4-l" value="1.00" step="0.1" min="0.05" /></label>
+            <label>Gravity g, m/s² <input type="number" id="e4-g" value="9.81" step="0.1" min="0.5" /></label>
+          </div>
+          <div class="formula-block"><code id="e4-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/pendulum">Open 3D Pendulum Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Electrostatics · Coulomb Law</div>
+          <h3>5. Electrostatic Coulomb force calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Charge q₁, µC <input type="number" id="e5-q1" value="4" step="1" /></label>
+            <label>Charge q₂, µC <input type="number" id="e5-q2" value="-2" step="1" /></label>
+            <label>Distance r, m <input type="number" id="e5-r" value="0.30" step="0.05" min="0.01" /></label>
+          </div>
+          <div class="formula-block"><code id="e5-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/coulomb">Open 3D Coulomb Dipole Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Heat Engines · Carnot Cycle</div>
+          <h3>6. Carnot thermal efficiency and net work calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Hot reservoir T_H, K <input type="number" id="e6-t1" value="500" step="20" min="50" /></label>
+            <label>Cold reservoir T_C, K <input type="number" id="e6-t2" value="300" step="20" min="10" /></label>
+            <label>Heat input Q_H, kJ <input type="number" id="e6-q1" value="10" step="1" min="0.1" /></label>
+          </div>
+          <div class="formula-block"><code id="e6-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/carnot">Open 3D Carnot Engine Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Analytical Chemistry · Henderson-Hasselbalch</div>
+          <h3>7. Buffer solution pH calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Acid pK_a <input type="number" id="e7-pka" value="4.76" step="0.05" /></label>
+            <label>Conjugate base [A⁻], M <input type="number" id="e7-salt" value="0.20" step="0.05" min="0.001" /></label>
+            <label>Weak acid [HA], M <input type="number" id="e7-acid" value="0.10" step="0.05" min="0.001" /></label>
+          </div>
+          <div class="formula-block"><code id="e7-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/chem_buffer">Open 3D Buffer Capacity Simulation →</a></p>
+        </section>
+
+        <section class="worked-problem calc-widget">
+          <div class="card-kicker">Electrochemistry · Faraday Law</div>
+          <h3>8. Electrolysis deposited mass calculator</h3>
+          <div class="calc-inputs-row">
+            <label>Molar mass M, g/mol <input type="number" id="e8-m" value="63.55" step="0.5" min="1" /></label>
+            <label>Current I, A <input type="number" id="e8-i" value="5" step="0.5" min="0.1" /></label>
+            <label>Time t, min <input type="number" id="e8-t" value="30" step="5" min="1" /></label>
+            <label>Electrons z <input type="number" id="e8-z" value="2" step="1" min="1" max="8" /></label>
+          </div>
+          <div class="formula-block"><code id="e8-out"></code></div>
+          <p><a href="https://physics.sheua.com/sim/chem_electrolysis">Open 3D Electrolysis Cell Simulation →</a></p>
+        </section>
+      </div>
+
+      <h2>SI unit conversion checklist for science exams</h2>
+      <p>Before substituting numerical values from AP, IB, GCSE, or university problem sets into governing equations, convert all non-SI prefixes into coherent base SI units:</p>
+      <div class="table-scroll">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Quantity</th>
+              <th>Common exam unit</th>
+              <th>Exact SI conversion rule</th>
+              <th>Primary equation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Absolute temperature <code>T</code></td>
+              <td>Degrees Celsius <code>°C</code></td>
+              <td>Add <code>273.15</code> to obtain kelvins: <code>T = t + 273.15 K</code></td>
+              <td><code>PV = nRT</code>, <code>η = 1 - T_C / T_H</code></td>
+            </tr>
+            <tr>
+              <td>Gas volume <code>V</code></td>
+              <td>Liters <code>L</code> or milliliters <code>mL</code></td>
+              <td><code>1 L = 10⁻³ m³</code>, <code>1 mL = 10⁻⁶ m³</code></td>
+              <td><code>P = nRT / V</code> in pascals</td>
+            </tr>
+            <tr>
+              <td>Molar mass <code>M</code></td>
+              <td>Grams per mole <code>g/mol</code></td>
+              <td>Divide by <code>1000</code> for <code>kg/mol</code></td>
+              <td><code>v_rms = √(3RT / M)</code></td>
+            </tr>
+            <tr>
+              <td>Electric charge <code>q</code></td>
+              <td>Microcoulombs <code>µC</code></td>
+              <td><code>1 µC = 10⁻⁶ C</code>, <code>1 nC = 10⁻⁹ C</code></td>
+              <td><code>F = k |q₁q₂| / r²</code></td>
+            </tr>
+            <tr>
+              <td>Electrolysis duration <code>t</code></td>
+              <td>Minutes <code>min</code> or hours <code>h</code></td>
+              <td><code>1 min = 60 s</code>, <code>1 h = 3600 s</code></td>
+              <td><code>m = M·I·t / (z·F)</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Physical model validity limits</h2>
+      <p>The momentum collision equations apply to head-on one-dimensional impacts where external friction impulse during contact is negligible compared with internal normal forces. The Gaussian thin-lens equation holds in the paraxial approximation for rays close to the optical axis, with negative focal length representing a diverging lens. The Henderson-Hasselbalch relation provides accurate pH predictions across moderate buffer concentrations between <code>0.01 M</code> and <code>1.0 M</code> whenever the conjugate base-to-acid ratio stays within a factor of ten.</p>
+
+      
+      <div class="share-strip" role="region" aria-label="Share material">
+        <span><strong>Share with students or colleagues.</strong></span>
+        <div class="share-strip-actions">
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fen%2Fcalculators.html&amp;text=Online%20Physics%20%26%20Chemistry%20SI%20Formula%20Calculators%20%C2%B7%20SHEUA.COM" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="share-chip" href="viber://forward?text=Online%20Physics%20%26%20Chemistry%20SI%20Formula%20Calculators%20%C2%B7%20SHEUA.COM%20https%3A%2F%2Fsheua.com%2Fen%2Fcalculators.html">Viber</a>
+          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/en/calculators.html');}catch(e){}b.textContent='Copied';setTimeout(function(){b.textContent='Copy link';},1800);">Copy link</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Open-Access 3D Science Lab · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/en/">Home (EN)</a>
+      <a href="/en/calculators.html">SI Calculators</a>
+      <a href="/">Український підручник</a>
+      <a href="/about.html?lang=en">About &amp; Contact</a>
+      <a href="/privacy.html?lang=en">Privacy Policy</a>
+      <a href="/terms.html?lang=en">Terms of Use</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Cookie notice">
+    <div>This educational site uses cookies and <code>localStorage</code> to save study preferences and serve Google AdSense ads in accordance with our <a href="/privacy.html?lang=en">Privacy Policy</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Essential only</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Accept</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+  (function(){
+    function v(id, d){ var el=document.getElementById(id); var n=el?parseFloat(el.value):NaN; return isFinite(n)?n:d; }
+    function o(id, t){ var el=document.getElementById(id); if(el) el.textContent=t; }
+    function run(){
+      var m1=Math.max(0.01,v('e1-m1',2)), m2=Math.max(0.01,v('e1-m2',4)), v1=v('e1-v1',6), v2=v('e1-v2',0), e=Math.min(1,Math.max(0,v('e1-e',1)));
+      var u1=((m1-e*m2)*v1+(1+e)*m2*v2)/(m1+m2), u2=((m2-e*m1)*v2+(1+e)*m1*v1)/(m1+m2);
+      var dq=0.5*((m1*m2)/(m1+m2))*Math.pow(v1-v2,2)*(1-e*e);
+      o('e1-out','u₁ = '+u1.toFixed(2)+' m/s,  u₂ = '+u2.toFixed(2)+' m/s,  heat loss ΔQ = '+dq.toFixed(2)+' J');
+
+      var F=v('e2-f',0.2), d=Math.max(0.005,v('e2-d',0.3)); if(Math.abs(F)<1e-4) F=0.01;
+      var invf=1/F-1/d;
+      if(Math.abs(invf)<1e-5) o('e2-out','Power D = '+(1/F).toFixed(2)+' D · Object at focal point (parallel rays, f → ∞)');
+      else { var fi=1/invf; o('e2-out','Power D = '+(1/F).toFixed(2)+' D,  f = '+fi.toFixed(3)+' m ('+(fi>0?'real image':'virtual image')+'),  magnification Γ = '+Math.abs(fi/d).toFixed(2)+'×'); }
+
+      var n=Math.max(0.001,v('e3-n',2)), T=Math.max(1,v('e3-t',300)), V=Math.max(0.01,v('e3-v',24.9)), M=Math.max(1,v('e3-m',28));
+      var P=(n*8.31446*T)/V, vrms=Math.sqrt((3*8.31446*T)/(M/1000));
+      o('e3-out','Pressure P = '+P.toFixed(2)+' kPa ('+(P/101.325).toFixed(2)+' atm),  v_rms = '+vrms.toFixed(0)+' m/s');
+
+      var L=Math.max(0.01,v('e4-l',1)), g=Math.max(0.1,v('e4-g',9.81)), per=2*Math.PI*Math.sqrt(L/g);
+      o('e4-out','Period T = '+per.toFixed(3)+' s,  frequency f = '+(1/per).toFixed(3)+' Hz,  ω = '+(2*Math.PI/per).toFixed(2)+' rad/s');
+
+      var q1=v('e5-q1',4)*1e-6, q2=v('e5-q2',-2)*1e-6, r=Math.max(0.005,v('e5-r',0.3));
+      var Fc=8.98755e9*Math.abs(q1*q2)/(r*r);
+      o('e5-out','Coulomb force F = '+Fc.toFixed(3)+' N ('+(q1*q2<0?'attractive':(q1*q2>0?'repulsive':'zero'))+')');
+
+      var T1=Math.max(2,v('e6-t1',500)), T2=Math.max(1,v('e6-t2',300)), Q1=Math.max(0,v('e6-q1',10));
+      if(T2>=T1) o('e6-out','Hot reservoir temperature T_H must exceed cold reservoir temperature T_C');
+      else { var eta=1-T2/T1; o('e6-out','Efficiency η = '+(eta*100).toFixed(1)+' %,  net work W = '+(eta*Q1).toFixed(2)+' kJ,  rejected heat Q_C = '+((1-eta)*Q1).toFixed(2)+' kJ'); }
+
+      var pka=v('e7-pka',4.76), s=Math.max(1e-6,v('e7-salt',0.2)), a=Math.max(1e-6,v('e7-acid',0.1));
+      var ph=pka+Math.log(s/a)/Math.LN10;
+      o('e7-out','Buffer pH = '+ph.toFixed(2)+',  pOH = '+(14-ph).toFixed(2));
+
+      var Me=Math.max(0.5,v('e8-m',63.55)), Ia=Math.max(0,v('e8-i',5)), tm=Math.max(0,v('e8-t',30)), z=Math.max(1,Math.round(v('e8-z',2)));
+      var Q=Ia*tm*60, mass=(Me*Q)/(z*96485.33);
+      o('e8-out','Charge Q = '+Q.toFixed(0)+' C,  deposited mass m = '+mass.toFixed(3)+' g');
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.calc-widget input'), function(i){ i.addEventListener('input', run); });
+    run();
+  })();
+  </script>
+</body>
+</html>

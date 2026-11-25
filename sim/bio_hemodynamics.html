@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125a" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -94,9 +94,9 @@
 
           <div id="exp-dropdown-menu" class="exp-dropdown-menu" role="region" aria-label="Select simulation">
             <div id="dropdown-tier-bar" class="dropdown-tier-bar">
-              <button type="button" class="tier-pill-btn active" data-tier="all" id="tier-btn-all">All levels (106)</button>
-              <button type="button" class="tier-pill-btn" data-tier="core" id="tier-btn-core">Core curriculum</button>
-              <button type="button" class="tier-pill-btn" data-tier="advanced" id="tier-btn-advanced">Advanced level</button>
+              <button type="button" class="tier-pill-btn active" data-tier="all" id="tier-btn-all">All · 106</button>
+              <button type="button" class="tier-pill-btn" data-tier="core" id="tier-btn-core">Core</button>
+              <button type="button" class="tier-pill-btn" data-tier="advanced" id="tier-btn-advanced">Advanced</button>
             </div>
             <div class="dropdown-filter-bar">
               <button type="button" class="filter-pill-btn active" data-filter="all" id="filter-btn-all">All biology (20)</button>
@@ -115,13 +115,13 @@
 
     <div class="header-right">
       <div class="phase-breadcrumbs" title="Click any stage to switch view">
-        <span id="crumb-predict" class="phase-crumb current" role="button" tabindex="0">1. Hypothesis</span>
+        <span id="crumb-predict" class="phase-crumb current" role="button" tabindex="0">Hypothesis</span>
         <span>→</span>
-        <span id="crumb-test" class="phase-crumb" role="button" tabindex="0">2. Experiment</span>
+        <span id="crumb-test" class="phase-crumb" role="button" tabindex="0">Experiment</span>
         <span>→</span>
-        <span id="crumb-explain" class="phase-crumb" role="button" tabindex="0">3. Proof</span>
+        <span id="crumb-explain" class="phase-crumb" role="button" tabindex="0">Proof</span>
       </div>
-            <button type="button" id="btn-classroom-mode" class="btn-classroom-mode" title="Projector-friendly classroom view without ads or footers">Classroom mode</button>
+            <button type="button" id="btn-classroom-mode" class="btn-classroom-mode" title="Projector-friendly classroom view without ads or footers">Class</button>
       <nav id="header-legal-links" class="header-legal-links" aria-label="Site information">
         <a id="ui-hdr-textbook" href="https://sheua.com/en/">Textbook</a>
         <span aria-hidden="true">·</span>
@@ -140,12 +140,12 @@
   <nav class="viewport-cam-dock" aria-label="Camera projection views">
     <span class="cam-dock-label">Camera</span>
     <div class="view-projections">
-      <button type="button" class="proj-btn active" id="cam-iso" title="Isometric 3D projection">Isometric</button>
+      <button type="button" class="proj-btn active" id="cam-iso" title="Isometric 3D projection">3D</button>
       <button type="button" class="proj-btn" id="cam-front" title="Front elevation view">Front</button>
       <button type="button" class="proj-btn" id="cam-top" title="Top plan view">Top</button>
       <button type="button" class="proj-btn" id="cam-side" title="Side profile view">Side</button>
-      <button type="button" class="proj-btn" id="cam-macro" title="Close-up focus on interaction zone">Close-up</button>
-      <button type="button" class="proj-btn" id="cam-orbit" title="Smooth 360° orbital rotation">360° orbit</button>
+      <button type="button" class="proj-btn" id="cam-macro" title="Close-up focus on interaction zone">Zoom</button>
+      <button type="button" class="proj-btn" id="cam-orbit" title="Smooth 360° orbital rotation">360°</button>
     </div>
   </nav>
 
@@ -202,12 +202,12 @@
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
     <div id="action-stage" class="experiment-controls visible">
-      <button type="button" id="btn-primary-cta" class="btn-oxford-primary">Run experiment</button>
+      <button type="button" id="btn-primary-cta" class="btn-oxford-primary">Run</button>
 
       <div class="secondary-bar">
         <div style="display: flex; gap: 5px; flex-wrap: wrap;">
           <button type="button" id="btn-pause-toggle" class="btn-paper-secondary" style="display: none;">Pause</button>
-          <button type="button" id="btn-step" class="btn-paper-secondary" title="Integration step +0.02 s">Step +0.02 s</button>
+          <button type="button" id="btn-step" class="btn-paper-secondary" title="Integration step +0.02 s">+0.02 s</button>
           <button type="button" id="btn-reset" class="btn-paper-secondary">Reset</button>
         </div>
 
@@ -341,8 +341,8 @@
       <div id="reference-formula-box" class="laws-reference-box"><code>Q = (π Δ P R⁴)/(8 η L), R_hyd = (8 η L)/(π R⁴), v(r) = vₘₐₓ(1 - (r²)/(R²))</code></div>
       <div class="live-calc-wrap">
         <div class="live-calc-header">
-          <span id="ui-live-calc-title">Formula calculator</span>
-          <span id="ui-live-calc-hint" class="live-calc-hint">Click any value below to type</span>
+          <span id="ui-live-calc-title">Calculator</span>
+          <span id="ui-live-calc-hint" class="live-calc-hint">click value</span>
         </div>
         <div id="reference-live-calc" class="live-calc-box"><code>R = 2.0 mm, Δ P = 40 mmHg, Ht = 45% ⇒ Q = 128.6 mL/s, vₘₐₓ = 158.8 cm/s</code></div>
       </div>
@@ -355,9 +355,9 @@
       </div>
       <div id="lab-presets-bar" class="lab-presets-bar">
         <button type="button" id="btn-preset-min" class="preset-chip-btn" data-preset="min" title="Low parameter values">Min</button>
-        <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="Default textbook values">Standard</button>
+        <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="Default textbook values">Std</button>
         <button type="button" id="btn-preset-max" class="preset-chip-btn" data-preset="max" title="High parameter values">Max</button>
-        <button type="button" id="btn-share-state" class="btn-share-state" title="Copy link with current slider values">Link with params</button>
+        <button type="button" id="btn-share-state" class="btn-share-state" title="Copy link with current slider values">Share</button>
       </div>
       <div id="sliders-container" style="display: flex; flex-direction: column; gap: 12px;">
         <div class="param-control">
@@ -398,19 +398,19 @@
 
       <div class="drawing-toggles">
         <label class="toggle-line">
-          <span id="ui-toggle-vectors">Biophysical flux and force vectors</span>
+          <span id="ui-toggle-vectors">Flux vectors</span>
           <input type="checkbox" id="chk-vectors" class="book-switch" checked />
         </label>
         <label class="toggle-line">
-          <span id="ui-toggle-labels">Organelle callout pins and labels</span>
+          <span id="ui-toggle-labels">Organelle pins</span>
           <input type="checkbox" id="chk-labels" class="book-switch" checked />
         </label>
         <label class="toggle-line">
-          <span id="ui-toggle-trails">Membrane guides and axes</span>
+          <span id="ui-toggle-trails">Membranes &amp; axes</span>
           <input type="checkbox" id="chk-trails" class="book-switch" checked />
         </label>
         <label class="toggle-line">
-          <span id="ui-toggle-particles">Ions, ATP molecules, and particles</span>
+          <span id="ui-toggle-particles">Ions, ATP &amp; particles</span>
           <input type="checkbox" id="chk-particles" class="book-switch" checked />
         </label>
       </div>
@@ -437,11 +437,11 @@
              data-full-width-responsive="false"></ins>
       </div>
     </div>
-    <section id="related-cluster-section" class="related-cluster-section"><h2 class="related-cluster-title">Related 3D simulations &amp; textbook</h2><ul class="related-sims-list"><li><a href="/sim/bio_electrophoresis">DNA Gel Electrophoresis: Size-Dependent Separation of Restriction Fragments in a Polymer Matrix →</a></li><li><a href="/sim/bio_eukaryote">Eukaryotic Cell Architecture: Organelle Compartmentalization &amp; S/V Scaling Limit →</a></li><li><a href="/sim/bio_mitochondria">Mitchell's Chemiosmotic Theory: Proton-Motive Force Δp &amp; Rotary ATP Synthesis →</a></li><li><a href="/sim/bio_mitosis">Mitotic Cell Division: Spindle Microtubule Mechanics &amp; Ploidy Conservation →</a></li></ul><div class="related-hubs-row"><a class="related-hub-pill" href="https://sheua.com/en/">SHEUA.COM · Textbook Overview</a><a class="related-hub-pill" href="https://sheua.com/en/exam-practice.html">AP, IB &amp; GCSE Exam Quiz</a><a class="related-hub-pill" href="https://sheua.com/en/calculators.html">SI Calculators</a></div><div class="messenger-share-row"><span>Share with class</span><span class="messenger-share-btns"><a class="messenger-share-link" href="https://t.me/share/url?url=https%3A%2F%2Fphysics.sheua.com%2Fsim%2Fbio_hemodynamics&amp;text=Cardiovascular%20Biophysics%3A%20Laminar%20Blood%20Flow%20%26%20Hagen-Poiseuille%20Fourth-Power%20Law%20(Q%20%E2%88%9D%20R%E2%81%B4)" target="_blank" rel="noopener noreferrer">Telegram</a><a class="messenger-share-link" href="viber://forward?text=Cardiovascular%20Biophysics%3A%20Laminar%20Blood%20Flow%20%26%20Hagen-Poiseuille%20Fourth-Power%20Law%20(Q%20%E2%88%9D%20R%E2%81%B4)%20https%3A%2F%2Fphysics.sheua.com%2Fsim%2Fbio_hemodynamics">Viber</a></span></div></section>
+    <section id="related-cluster-section" class="related-cluster-section"><h2 class="related-cluster-title">Related 3D labs</h2><ul class="related-sims-list"><li><a href="/sim/bio_electrophoresis">DNA Gel Electrophoresis: Size-Dependent Separation of Restriction Fragments in a Polymer Matrix →</a></li><li><a href="/sim/bio_eukaryote">Eukaryotic Cell Architecture: Organelle Compartmentalization &amp; S/V Scaling Limit →</a></li><li><a href="/sim/bio_mitochondria">Mitchell's Chemiosmotic Theory: Proton-Motive Force Δp &amp; Rotary ATP Synthesis →</a></li><li><a href="/sim/bio_mitosis">Mitotic Cell Division: Spindle Microtubule Mechanics &amp; Ploidy Conservation →</a></li></ul><div class="related-hubs-row"><a class="related-hub-pill" data-hub="book" href="https://sheua.com/en/">Textbook</a><a class="related-hub-pill" data-hub="quiz" href="https://sheua.com/en/exam-practice.html">Exam Quiz</a><a class="related-hub-pill" data-hub="calc" href="https://sheua.com/en/calculators.html">Calculators</a></div><div class="messenger-share-row"><span>Share</span><span class="messenger-share-btns"><a class="messenger-share-link" href="https://t.me/share/url?url=https%3A%2F%2Fphysics.sheua.com%2Fsim%2Fbio_hemodynamics&amp;text=Cardiovascular%20Biophysics%3A%20Laminar%20Blood%20Flow%20%26%20Hagen-Poiseuille%20Fourth-Power%20Law%20(Q%20%E2%88%9D%20R%E2%81%B4)" target="_blank" rel="noopener noreferrer">Telegram</a><a class="messenger-share-link" href="viber://forward?text=Cardiovascular%20Biophysics%3A%20Laminar%20Blood%20Flow%20%26%20Hagen-Poiseuille%20Fourth-Power%20Law%20(Q%20%E2%88%9D%20R%E2%81%B4)%20https%3A%2F%2Fphysics.sheua.com%2Fsim%2Fbio_hemodynamics">Viber</a></span></div></section>
     <section id="platform-editorial-guide" class="platform-editorial-guide">
-      <h2 id="ui-editorial-title">About the Open-Access 3D Science Laboratory</h2>
-      <p id="ui-editorial-p1">The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.</p>
-      <p id="ui-editorial-p2">Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.</p>
+      <h2 id="ui-editorial-title">3D Science Virtual Lab</h2>
+      <p id="ui-editorial-p1">106 real-time 3D simulations in SI units: 46 Physics, 40 Chemistry, and 20 Biology &amp; Biophysics.</p>
+      <p id="ui-editorial-p2">Live vectors, energy oscillograms, formula calculator, and printable lab report.</p>
       <div class="platform-editorial-links">
         <a id="ui-editorial-about" href="/about.html">About &amp; Contact</a>
         <span aria-hidden="true">·</span>
@@ -450,8 +450,8 @@
         <a id="ui-editorial-terms" href="/terms.html">Terms of Use</a>
       </div>
     </section>
-    <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
-      <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Full Curriculum Index (106 Simulations)</summary>
+    <details id="curriculum-catalog-details" class="curriculum-catalog-details">
+      <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">All 106 labs</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="en" aria-label="All 106 Interactive 3D Physics, Chemistry and Biology Experiments">
         
     <h2>Interactive 3D Physics Simulations (46 Experiments)</h2>
@@ -484,6 +484,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125a"></script>
+  <script defer src="../assets/app.js?v=20261125b"></script>
 </body>
 </html>

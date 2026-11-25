@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125a" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -94,9 +94,9 @@
 
           <div id="exp-dropdown-menu" class="exp-dropdown-menu" role="region" aria-label="Вибір симуляції">
             <div id="dropdown-tier-bar" class="dropdown-tier-bar">
-              <button type="button" class="tier-pill-btn active" data-tier="all" id="tier-btn-all">Усі рівні (106)</button>
-              <button type="button" class="tier-pill-btn" data-tier="core" id="tier-btn-core">Шкільний мінімум</button>
-              <button type="button" class="tier-pill-btn" data-tier="advanced" id="tier-btn-advanced">Поглиблений рівень</button>
+              <button type="button" class="tier-pill-btn active" data-tier="all" id="tier-btn-all">Усі · 106</button>
+              <button type="button" class="tier-pill-btn" data-tier="core" id="tier-btn-core">База</button>
+              <button type="button" class="tier-pill-btn" data-tier="advanced" id="tier-btn-advanced">Поглиблений</button>
             </div>
             <div class="dropdown-filter-bar">
               <button type="button" class="filter-pill-btn active" data-filter="all" id="filter-btn-all">Усі з хімії (40)</button>
@@ -121,7 +121,7 @@
         <span>→</span>
         <span id="crumb-explain" class="phase-crumb" role="button" tabindex="0">Доведення</span>
       </div>
-            <button type="button" id="btn-classroom-mode" class="btn-classroom-mode" title="Режим для уроку та проєктора без реклами й службових блоків">Режим класу</button>
+            <button type="button" id="btn-classroom-mode" class="btn-classroom-mode" title="Режим для уроку та проєктора без реклами й службових блоків">Клас</button>
       <nav id="header-legal-links" class="header-legal-links" aria-label="Інформація про сайт">
         <a id="ui-hdr-textbook" href="https://sheua.com/">Підручник</a>
         <span aria-hidden="true">·</span>
@@ -140,12 +140,12 @@
   <nav class="viewport-cam-dock" aria-label="Проєкції камери">
     <span class="cam-dock-label">Камера</span>
     <div class="view-projections">
-      <button type="button" class="proj-btn active" id="cam-iso" title="Ізометрична 3D-проєкція">Ізометрія</button>
+      <button type="button" class="proj-btn active" id="cam-iso" title="Ізометрична 3D-проєкція">3D</button>
       <button type="button" class="proj-btn" id="cam-front" title="Вигляд спереду (фронтальний)">Фронт</button>
       <button type="button" class="proj-btn" id="cam-top" title="Вигляд зверху (план)">План</button>
-      <button type="button" class="proj-btn" id="cam-side" title="Вигляд збоку (профіль)">Профіль</button>
-      <button type="button" class="proj-btn" id="cam-macro" title="Макрофокус на робочій зоні">Макро</button>
-      <button type="button" class="proj-btn" id="cam-orbit" title="Плавне кругове обертання 360°">Огляд 360°</button>
+      <button type="button" class="proj-btn" id="cam-side" title="Вигляд збоку (профіль)">Бік</button>
+      <button type="button" class="proj-btn" id="cam-macro" title="Макрофокус на робочій зоні">Зум</button>
+      <button type="button" class="proj-btn" id="cam-orbit" title="Плавне кругове обертання 360°">360°</button>
     </div>
   </nav>
 
@@ -164,7 +164,7 @@
       <p id="scene-epigraph" class="chapter-epigraph">Спряжена кислотно-основна пара HA / A⁻ поглинає як додані протони H⁺, так і гідроксид-іони OH⁻, надійно утримуючи водневий показник pH.</p>
       <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
         <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Теоретичний конспект</span>
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
         </span>
         <span class="theory-book-right">
           <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
@@ -202,12 +202,12 @@
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
     <div id="action-stage" class="experiment-controls visible">
-      <button type="button" id="btn-primary-cta" class="btn-oxford-primary">Запустити дослід</button>
+      <button type="button" id="btn-primary-cta" class="btn-oxford-primary">Старт</button>
 
       <div class="secondary-bar">
         <div style="display: flex; gap: 5px; flex-wrap: wrap;">
           <button type="button" id="btn-pause-toggle" class="btn-paper-secondary" style="display: none;">Пауза</button>
-          <button type="button" id="btn-step" class="btn-paper-secondary" title="Крок чисельного інтегрування +0.02 с">Крок +0.02 с</button>
+          <button type="button" id="btn-step" class="btn-paper-secondary" title="Крок чисельного інтегрування +0.02 с">+0.02 с</button>
           <button type="button" id="btn-reset" class="btn-paper-secondary">Скинути</button>
         </div>
 
@@ -341,8 +341,8 @@
       <div id="reference-formula-box" class="laws-reference-box"><code>pH = pK_a + lg (([A⁻])/([HA])), β = (dn)/(dpH) = 2.303 ([HA][A⁻])/([HA] + [A⁻]) +H⁺: &amp; A⁻ + H⁺ → HA, +OH⁻: HA + OH⁻ → A⁻ + H₂O</code></div>
       <div class="live-calc-wrap">
         <div class="live-calc-header">
-          <span id="ui-live-calc-title">Калькулятор за формулою</span>
-          <span id="ui-live-calc-hint" class="live-calc-hint">Натисніть на число нижче для вводу</span>
+          <span id="ui-live-calc-title">Калькулятор</span>
+          <span id="ui-live-calc-hint" class="live-calc-hint">клік по числу</span>
         </div>
         <div id="reference-live-calc" class="live-calc-box"><code>pH_буф = 4.76 + lg ((0.20)/(0.20)) = 4.76, pH_води ≈ 7.00</code></div>
       </div>
@@ -354,10 +354,10 @@
         <button type="button" id="btn-preset-default" class="text-link-btn">Скинути</button>
       </div>
       <div id="lab-presets-bar" class="lab-presets-bar">
-        <button type="button" id="btn-preset-min" class="preset-chip-btn" data-preset="min" title="Мінімальні значення параметрів">Мінімум</button>
-        <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="Стандартні значення параметрів">Стандарт</button>
-        <button type="button" id="btn-preset-max" class="preset-chip-btn" data-preset="max" title="Максимальні значення параметрів">Максимум</button>
-        <button type="button" id="btn-share-state" class="btn-share-state" title="Скопіювати посилання з поточними параметрами">Посилання з параметрами</button>
+        <button type="button" id="btn-preset-min" class="preset-chip-btn" data-preset="min" title="Мінімальні значення параметрів">Мін</button>
+        <button type="button" id="btn-preset-std" class="preset-chip-btn active" data-preset="std" title="Стандартні значення параметрів">Норма</button>
+        <button type="button" id="btn-preset-max" class="preset-chip-btn" data-preset="max" title="Максимальні значення параметрів">Макс</button>
+        <button type="button" id="btn-share-state" class="btn-share-state" title="Скопіювати посилання з поточними параметрами">Лінк</button>
       </div>
       <div id="sliders-container" style="display: flex; flex-direction: column; gap: 12px;">
         <div class="param-control">
@@ -393,24 +393,24 @@
 
     <div class="journal-section">
       <div class="section-heading-row">
-        <span id="ui-diagram-heading">Позначення на сцені</span>
+        <span id="ui-diagram-heading">Шари сцени</span>
       </div>
 
       <div class="drawing-toggles">
         <label class="toggle-line">
-          <span id="ui-toggle-vectors">Вектори диполів, потоків і сил</span>
+          <span id="ui-toggle-vectors">Диполі і потоки</span>
           <input type="checkbox" id="chk-vectors" class="book-switch" checked />
         </label>
         <label class="toggle-line">
-          <span id="ui-toggle-labels">Підписи векторів та орбіталей</span>
+          <span id="ui-toggle-labels">Підписи орбіталей</span>
           <input type="checkbox" id="chk-labels" class="book-switch" checked />
         </label>
         <label class="toggle-line">
-          <span id="ui-toggle-trails">Хімічні зв’язки та координатні лінії</span>
+          <span id="ui-toggle-trails">Зв'язки та осі</span>
           <input type="checkbox" id="chk-trails" class="book-switch" checked />
         </label>
         <label class="toggle-line">
-          <span id="ui-toggle-particles">Молекули, йони та електронні хмари</span>
+          <span id="ui-toggle-particles">Молекули і хмари</span>
           <input type="checkbox" id="chk-particles" class="book-switch" checked />
         </label>
       </div>
@@ -437,11 +437,11 @@
              data-full-width-responsive="false"></ins>
       </div>
     </div>
-    <section id="related-cluster-section" class="related-cluster-section"><h2 class="related-cluster-title">Пов'язані 3D-досліди та підручник</h2><ul class="related-sims-list"><li><a href="/uk/sim/chem_chromatography">Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f →</a></li><li><a href="/uk/sim/chem_adsorption">Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра →</a></li><li><a href="/uk/sim/chem_colloids">Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція →</a></li><li><a href="/uk/sim/chem_hydrolysis">Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища →</a></li></ul><div class="related-hubs-row"><a class="related-hub-pill" href="https://sheua.com/chemical-kinetics-equilibrium.html">Підручник: Хімічна кінетика, pH і рівновага</a><a class="related-hub-pill" href="https://sheua.com/nmt-trener.html">Тренажер НМТ</a><a class="related-hub-pill" href="https://sheua.com/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a><a class="related-hub-pill" href="https://sheua.com/kalkuliatory.html">Калькулятори СІ</a></div><div class="messenger-share-row"><span>Поділитися з класом</span><span class="messenger-share-btns"><a class="messenger-share-link" href="https://t.me/share/url?url=https%3A%2F%2Fphysics.sheua.com%2Fuk%2Fsim%2Fchem_buffer&amp;text=%D0%91%D1%83%D1%84%D0%B5%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B7%D1%87%D0%B8%D0%BD%D0%B8%2C%20%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BD%D0%BD%D1%8F%20%D0%93%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0-%D0%93%D0%B0%D1%81%D1%81%D0%B5%D0%BB%D1%8C%D0%B1%D0%B0%D1%85%D0%B0%20%D1%82%D0%B0%20%D0%B1%D1%83%D1%84%D0%B5%D1%80%D0%BD%D0%B0%20%D1%94%D0%BC%D0%BD%D1%96%D1%81%D1%82%D1%8C" target="_blank" rel="noopener noreferrer">Telegram</a><a class="messenger-share-link" href="viber://forward?text=%D0%91%D1%83%D1%84%D0%B5%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B7%D1%87%D0%B8%D0%BD%D0%B8%2C%20%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BD%D0%BD%D1%8F%20%D0%93%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0-%D0%93%D0%B0%D1%81%D1%81%D0%B5%D0%BB%D1%8C%D0%B1%D0%B0%D1%85%D0%B0%20%D1%82%D0%B0%20%D0%B1%D1%83%D1%84%D0%B5%D1%80%D0%BD%D0%B0%20%D1%94%D0%BC%D0%BD%D1%96%D1%81%D1%82%D1%8C%20https%3A%2F%2Fphysics.sheua.com%2Fuk%2Fsim%2Fchem_buffer">Viber</a></span></div></section>
+    <section id="related-cluster-section" class="related-cluster-section"><h2 class="related-cluster-title">Схожі 3D-досліди</h2><ul class="related-sims-list"><li><a href="/uk/sim/chem_chromatography">Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f →</a></li><li><a href="/uk/sim/chem_adsorption">Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра →</a></li><li><a href="/uk/sim/chem_colloids">Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція →</a></li><li><a href="/uk/sim/chem_hydrolysis">Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища →</a></li></ul><div class="related-hubs-row"><a class="related-hub-pill" data-hub="book" href="https://sheua.com/chemical-kinetics-equilibrium.html">Підручник</a><a class="related-hub-pill" data-hub="quiz" href="https://sheua.com/nmt-trener.html">НМТ</a><a class="related-hub-pill" data-hub="labs" href="https://sheua.com/laboratorni-7-11-klas.html">7-11 клас</a><a class="related-hub-pill" data-hub="calc" href="https://sheua.com/kalkuliatory.html">Калькулятори</a></div><div class="messenger-share-row"><span>Поділитись</span><span class="messenger-share-btns"><a class="messenger-share-link" href="https://t.me/share/url?url=https%3A%2F%2Fphysics.sheua.com%2Fuk%2Fsim%2Fchem_buffer&amp;text=%D0%91%D1%83%D1%84%D0%B5%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B7%D1%87%D0%B8%D0%BD%D0%B8%2C%20%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BD%D0%BD%D1%8F%20%D0%93%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0-%D0%93%D0%B0%D1%81%D1%81%D0%B5%D0%BB%D1%8C%D0%B1%D0%B0%D1%85%D0%B0%20%D1%82%D0%B0%20%D0%B1%D1%83%D1%84%D0%B5%D1%80%D0%BD%D0%B0%20%D1%94%D0%BC%D0%BD%D1%96%D1%81%D1%82%D1%8C" target="_blank" rel="noopener noreferrer">Telegram</a><a class="messenger-share-link" href="viber://forward?text=%D0%91%D1%83%D1%84%D0%B5%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B7%D1%87%D0%B8%D0%BD%D0%B8%2C%20%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BD%D0%BD%D1%8F%20%D0%93%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0-%D0%93%D0%B0%D1%81%D1%81%D0%B5%D0%BB%D1%8C%D0%B1%D0%B0%D1%85%D0%B0%20%D1%82%D0%B0%20%D0%B1%D1%83%D1%84%D0%B5%D1%80%D0%BD%D0%B0%20%D1%94%D0%BC%D0%BD%D1%96%D1%81%D1%82%D1%8C%20https%3A%2F%2Fphysics.sheua.com%2Fuk%2Fsim%2Fchem_buffer">Viber</a></span></div></section>
     <section id="platform-editorial-guide" class="platform-editorial-guide">
-      <h2 id="ui-editorial-title">Про відкритий 3D-практикум природничих наук</h2>
-      <p id="ui-editorial-p1">Освітня платформа physics.sheua.com об’єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.</p>
-      <p id="ui-editorial-p2">Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.</p>
+      <h2 id="ui-editorial-title">3D-лабораторія природничих наук</h2>
+      <p id="ui-editorial-p1">106 тривимірних симуляцій у системі СІ: 46 із фізики, 40 із хімії та 20 із біології й біофізики.</p>
+      <p id="ui-editorial-p2">Живі вектори, осцилограми енергії, калькулятор формул і друк звіту.</p>
       <div class="platform-editorial-links">
         <a id="ui-editorial-about" href="/about.html">Про проєкт і контакти</a>
         <span aria-hidden="true">·</span>
@@ -450,8 +450,8 @@
         <a id="ui-editorial-terms" href="/terms.html">Умови використання</a>
       </div>
     </section>
-    <details id="curriculum-catalog-details" class="curriculum-catalog-details" open>
-      <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Каталог усіх 106 дослідів курсу</summary>
+    <details id="curriculum-catalog-details" class="curriculum-catalog-details">
+      <summary id="ui-curriculum-summary" class="curriculum-catalog-summary">Усі 106 дослідів</summary>
       <nav id="seo-experiment-links" class="sr-only-seo-nav" data-rendered-lang="uk" aria-label="Усі 106 інтерактивних 3D-дослідів з фізики, хімії та біології">
         
     <h2>Інтерактивні 3D-симуляції з фізики (46 дослідів)</h2>
@@ -484,6 +484,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125a"></script>
+  <script defer src="../../assets/app.js?v=20261125b"></script>
 </body>
 </html>

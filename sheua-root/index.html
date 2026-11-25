@@ -752,20 +752,75 @@
       color: var(--ink-muted);
     }
     .copy-formula-btn {
-      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      padding: 0;
       border: 1px solid var(--rule-dark);
-      border-radius: 2px;
+      border-radius: 3px;
       background: var(--bg-paper);
       color: var(--ink-secondary);
-      font-family: var(--font-sans);
-      font-size: 11.5px;
-      font-weight: 600;
       cursor: pointer;
       margin-left: 6px;
       vertical-align: middle;
     }
     .copy-formula-btn:hover {
       border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .copy-formula-btn.copied {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      background: #dcfce7;
+    }
+    .svg-ico {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      vertical-align: -2px;
+    }
+    .hub-pill, .btn-primary-link, .share-chip, .lab-link-chip, .nav-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+    .card-icon-badge svg { width: 17px; height: 17px; }
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
       color: var(--ink-primary);
     }
     .inquiry-stepper {
@@ -783,7 +838,8 @@
     .inquiry-panel.hidden { display: none; }
     @media (max-width: 640px) {
       .sandbox-box { padding: 14px 12px; }
-      .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+      .copy-formula-btn { width: 40px; height: 40px; }
+      .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
 
@@ -899,42 +955,58 @@
   
   <a class="skip-link" href="#main-content">Перейти до основного змісту</a>
   <header class="site-header">
-    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <a class="brand" href="https://sheua.com/" style="display:inline-flex;align-items:center;gap:7px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>SHEUA.COM</span></a>
     <nav class="nav-bar" aria-label="Головна навігація">
-      <a href="/" class="active">Підручник</a>
-      <a href="/nmt-trener.html">Тренажер НМТ</a>
-      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
-      <a href="/kalkuliatory.html">Калькулятори СІ</a>
-      <a href="/si-constants-handbook.html">Сталі СІ</a>
-      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/" class="active"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Підручник</span></a>
+      <a href="/nmt-trener.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>НМТ</span></a>
+      <a href="/laboratorni-7-11-klas.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>7-11 клас</span></a>
+      <a href="/kalkuliatory.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>Калькулятори</span></a>
+      <a href="/si-constants-handbook.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h6"/><path d="M9 15h6"/><path d="M12 7v10"/></svg><span>Сталі СІ</span></a>
+      <a href="https://physics.sheua.com/uk/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D-лаб · 106</span></a>
       <a class="lang-pill" href="/en/" title="English edition">EN</a>
     </nav>
   </header>
 
   <main id="main-content" class="container">
     <section class="hero-sheet">
-      <span class="badge">SHEUA.COM · ВІДКРИТИЙ НАУКОВО-ОСВІТНІЙ ПОРТАЛ</span>
-      <h1>Відкритий підручник природничих наук та інтерактивна 3D-лабораторія з фізики, хімії і біології</h1>
-      <p class="lead">Освітня платформа <strong>sheua.com</strong> поєднує систематизований теоретичний підручник із прикладами розв'язування задач у системі СІ та інтерактивний лабораторний комплекс <strong>physics.sheua.com</strong> на 106 тривимірних експериментів у реальному часі. Усі матеріали відкриті безкоштовно та без реєстрації для учнів ліцеїв, студентів і викладачів.</p>
+      <span class="badge">SHEUA.COM · НАУКОВО-ОСВІТНЯ ПЛАТФОРМА</span>
+      <h1>Підручник природничих наук та інтерактивна 3D-лабораторія</h1>
+      <p class="lead">Теоретичний довідник із розв'язаними задачами у СІ та лабораторний комплекс <strong>physics.sheua.com</strong> для шкіл і університетів.</p>
+
+      <div class="kpi-strip">
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>106 3D-симуляцій</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>8 розділів теорії</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>8 калькуляторів СІ</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Без реєстрації</span></span>
+      </div>
 
       <div class="cta-grid">
         <a class="cta-card" href="https://physics.sheua.com/uk/">
-          <span class="card-kicker">physics.sheua.com · Фізика (46 робіт)</span>
-          <div class="card-title">Тривимірний практикум із загальної фізики</div>
-          <p class="card-desc">Механіка і закони збереження, гідродинаміка Бернуллі, молекулярна фізика і цикл Карно, хвильова та геометрична оптика, електродинаміка і квантова фізика атома.</p>
-          <span class="card-link-hint">Відкрити 3D-лабораторію фізики →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">46 робіт</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg></span>
+          </div>
+          <div class="card-title">Фізика</div>
+          <p class="card-desc">Механіка, гідродинаміка Бернуллі, термодинаміка Карно, хвильова оптика, електродинаміка і кванти.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>У 3D-лабораторію →</span></span>
         </a>
         <a class="cta-card" href="https://physics.sheua.com/uk/sim/chem_orbitals">
-          <span class="card-kicker">physics.sheua.com · Хімія (40 робіт)</span>
-          <div class="card-title">Тривимірний практикум із загальної та фізичної хімії</div>
-          <p class="card-desc">Квантові орбіталі s, p, d, гібридизація ГЕПВО, йонні ґратки, хімічна кінетика, рівновага Ле Шательє, титрування, буферні системи, гальванічні елементи й органічні механізми.</p>
-          <span class="card-link-hint">Відкрити 3D-лабораторію хімії →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">40 робіт</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg></span>
+          </div>
+          <div class="card-title">Хімія</div>
+          <p class="card-desc">Орбіталі s, p, d, гібридизація ГЕПВО, кристали, кінетика, рівновага, титрування pH та електрохімія.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>У 3D-лабораторію →</span></span>
         </a>
         <a class="cta-card" href="https://physics.sheua.com/uk/sim/bio_eukaryote">
-          <span class="card-kicker">physics.sheua.com · Біологія (20 робіт)</span>
-          <div class="card-title">Тривимірний практикум із біології та біофізики</div>
-          <p class="card-desc">Органели еукаріотичної клітини, АТФ-синтаза мітохондрії, мітоз і мейоз, реплікація ДНК, ПЛР, редагування геному CRISPR-Cas9, потенціал дії нейрона та гемодинаміка судин.</p>
-          <span class="card-link-hint">Відкрити 3D-лабораторію біології →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">20 робіт</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg></span>
+          </div>
+          <div class="card-title">Біологія і біофізика</div>
+          <p class="card-desc">Органели клітини, АТФ-синтаза, мітоз, мейоз, реплікація ДНК, ПЛР, CRISPR-Cas9, нейрон і судини.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>У 3D-лабораторію →</span></span>
         </a>
       </div>
 
@@ -942,13 +1014,13 @@
       <div class="sandbox-box" id="live-sandbox" role="region" aria-label="Інтерактивний лабораторний стенд">
         <div class="sandbox-header">
           <div>
-            <span class="card-kicker">ЖИВИЙ СТЕНД НА ГОЛОВНІЙ · СПРОБУЙТЕ В ДІЇ</span>
-            <h2 style="margin:2px 0 0;padding:0;border:none;font-size:19px;">Дослідіть зіткнення тіл, тиск ідеального газу та імпульс нейрона</h2>
+            <span class="card-kicker">ЖИВИЙ СТЕНД</span>
+            <h2 style="margin:2px 0 0;padding:0;border:none;font-size:18.5px;">Моделі в реальному часі</h2>
           </div>
           <div class="sandbox-tabs">
-            <button type="button" class="hub-pill active" data-sbx-mode="phys" aria-pressed="true">Фізика: Зіткнення</button>
-            <button type="button" class="hub-pill" data-sbx-mode="chem" aria-pressed="false">Хімія: Газ PV = νRT</button>
-            <button type="button" class="hub-pill" data-sbx-mode="bio" aria-pressed="false">Біофізика: Нейрон</button>
+            <button type="button" class="hub-pill active" data-sbx-mode="phys" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Зіткнення</span></button>
+            <button type="button" class="hub-pill" data-sbx-mode="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Газ PV = νRT</span></button>
+            <button type="button" class="hub-pill" data-sbx-mode="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"/></svg><span>Нейрон</span></button>
           </div>
         </div>
 
@@ -961,9 +1033,9 @@
         <div class="sandbox-telemetry">
           <div id="sbx-metrics" class="telemetry-metrics" aria-live="polite"></div>
           <div class="sandbox-actions">
-            <button type="button" id="sbx-trigger-btn" class="hub-pill">Запустити знову</button>
-            <button type="button" id="sbx-pause-btn" class="hub-pill">Пауза</button>
-            <a id="sbx-open-3d" class="btn-primary-link" href="https://physics.sheua.com/uk/sim/collision">Відкрити повну 3D-установку →</a>
+            <button type="button" id="sbx-trigger-btn" class="hub-pill" title="Перезапустити дослід" aria-label="Перезапустити дослід"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+            <button type="button" id="sbx-pause-btn" class="hub-pill" title="Пауза або продовження" aria-label="Пауза або продовження"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+            <a id="sbx-open-3d" class="btn-primary-link" href="https://physics.sheua.com/uk/sim/collision"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>У 3D →</span></a>
           </div>
         </div>
       </div>
@@ -971,22 +1043,21 @@
 
     <article class="article-sheet">
       
-      <h2>Інтерактивний навігатор усіма 106 3D-експериментами</h2>
-      <p>Відфільтруйте каталог за предметом або складністю, введіть назву теми у поле пошуку чи відкрийте випадкову тривимірну установку:</p>
+      <h2>Каталог 106 3D-дослідів</h2>
 
       <div class="explorer-toolbar" id="cat-disc-bar">
-        <button type="button" class="hub-pill active" data-cat-disc="all" aria-pressed="true">Усі · 106</button>
-        <button type="button" class="hub-pill" data-cat-disc="phys" aria-pressed="false">Фізика · 46</button>
-        <button type="button" class="hub-pill" data-cat-disc="chem" aria-pressed="false">Хімія · 40</button>
-        <button type="button" class="hub-pill" data-cat-disc="bio" aria-pressed="false">Біологія · 20</button>
-        <button type="button" class="hub-pill" data-cat-tier="core" id="cat-tier-core" aria-pressed="false">Шкільна база</button>
-        <button type="button" class="hub-pill" data-cat-tier="adv" id="cat-tier-adv" aria-pressed="false">Поглиблений рівень</button>
+        <button type="button" class="hub-pill active" data-cat-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Усі · 106</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Фізика · 46</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Хімія · 40</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Біологія · 20</span></button>
+        <button type="button" class="hub-pill" data-cat-tier="core" id="cat-tier-core" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>База</span></button>
+        <button type="button" class="hub-pill" data-cat-tier="adv" id="cat-tier-adv" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Поглиблений</span></button>
       </div>
 
       <div class="explorer-search-row">
         <label for="cat-search-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Пошук серед 106 3D-симуляцій</label>
-        <input type="search" id="cat-search-input" class="filter-input" placeholder="Пошук серед 106 робіт: маятник, лінза, Карно, орбіталі, титрування, ПЛР, нейрон..." />
-        <button type="button" id="cat-random-btn" class="hub-pill">Випадковий 3D-дослід</button>
+        <input type="search" id="cat-search-input" class="filter-input" placeholder="Маятник, лінза, Карно, орбіталі, титрування, ПЛР, нейрон..." />
+        <button type="button" id="cat-random-btn" class="hub-pill" title="Випадковий 3D-дослід"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Випадковий</span></button>
       </div>
 
       <div id="cat-cards-grid" class="sim-catalog-grid">
@@ -1054,116 +1125,145 @@
       </div>
 
       <div class="catalog-footer-row">
-        <span id="cat-count-status">Показано 12 із 106 інтерактивних 3D-симуляцій</span>
-        <button type="button" id="cat-toggle-all-btn" class="hub-pill">Показати всі 106 експериментів</button>
+        <span id="cat-count-status">12 із 106</span>
+        <button type="button" id="cat-toggle-all-btn" class="hub-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Усі 106</span></button>
       </div>
 
       
-      <h2>Бліц-самоперевірка знань із фізики, хімії та біології</h2>
-      <p>Розв'яжіть три короткі розрахункові задачі з миттєвою перевіркою за формулами СІ або завантажте наступну трійку завдань:</p>
+      <h2>Бліц-перевірка знань</h2>
 
       <div class="hub-filter-row">
-        <button type="button" id="qq-next-set-btn" class="hub-pill">Нова трійка задач</button>
-        <a class="hub-pill" style="text-decoration:none;" href="/nmt-trener.html">Повний тренажер НМТ на 15 задач →</a>
-        <div class="score-pill" id="qq-score-pill" aria-live="polite">Результат: 0 / 3</div>
+        <button type="button" id="qq-next-set-btn" class="hub-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Ще 3 задачі</span></button>
+        <a class="hub-pill" style="text-decoration:none;" href="/nmt-trener.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Усі 15 задач НМТ →</span></a>
+        <div class="score-pill" id="qq-score-pill" aria-live="polite">0 / 3</div>
       </div>
 
       <div id="qq-cards-wrap"></div>
 
-      <h2>Інтерактивні тренажери, шкільні лабораторні роботи та калькулятори СІ</h2>
-      <p>Для щоденної підготовки до уроків у 7-11 класах, домашніх розрахунків та іспитів НМТ скористайтеся трьома спеціалізованими онлайн-інструментами:</p>
+      <h2>Тренажери, шкільні роботи та калькулятори</h2>
       <div class="cta-grid">
         <a class="cta-card" href="/nmt-trener.html">
-          <span class="card-kicker">Підготовка до НМТ · Тести і формули</span>
-          <div class="card-title">Онлайн-тренажер НМТ з фізики, хімії та біології</div>
-          <p class="card-desc">15 типових тестових завдань із миттєвою перевіркою, аналітичним поясненням за формулами СІ, зведеною таблицею обов'язкових формул та переходом у 3D-дослід.</p>
-          <span class="card-link-hint">Запустити тренажер НМТ →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">15 завдань + таймер</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          </div>
+          <div class="card-title">Тренажер НМТ</div>
+          <p class="card-desc">Тести з фізики, хімії та біології з миттєвим розбором у СІ та переходом у 3D-дослід.</p>
+          <span class="card-link-hint">Запустити →</span>
         </a>
         <a class="cta-card" href="/laboratorni-7-11-klas.html">
-          <span class="card-kicker">Шкільна програма · 7, 8, 9, 10, 11 класи</span>
-          <div class="card-title">Віртуальні лабораторні роботи за класами</div>
-          <p class="card-desc">Зручний покажчик віртуальних лабораторних робіт за класами з робочими рівняннями, режимом класу для проєктора та друкованими бланками звітів.</p>
-          <span class="card-link-hint">Обрати клас і лабораторну роботу →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">7-11 класи та ЗВО</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg></span>
+          </div>
+          <div class="card-title">Лабораторні за класами</div>
+          <p class="card-desc">Покажчик віртуальних робіт із фільтром класів, режимом проєктора та друком звітів.</p>
+          <span class="card-link-hint">Обрати клас →</span>
         </a>
         <a class="cta-card" href="/kalkuliatory.html">
-          <span class="card-kicker">Інженерні розрахунки · 8 модулів</span>
-          <div class="card-title">Онлайн-калькулятори формул у системі СІ</div>
-          <p class="card-desc">Миттєвий розрахунок зіткнення тіл, тонкої лінзи, ідеального газу, періоду маятника, сили Кулона, ККД циклу Карно, pH буфера та електролізу Фарадея.</p>
-          <span class="card-link-hint">Відкрити калькулятори формул →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">8 модулів СІ</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg></span>
+          </div>
+          <div class="card-title">Калькулятори формул</div>
+          <p class="card-desc">Зіткнення куль, лінза, ідеальний газ, маятник, закон Кулона, Карно, pH буфера й електроліз.</p>
+          <span class="card-link-hint">Розрахувати →</span>
         </a>
       </div>
 
-      <h2>Теоретичні розділи підручника та практикум розв'язування задач</h2>
-      <p>Кожен розділ містить строге математичне виведення основних законів, межі застосовності фізичних і хімічних моделей, зведені довідникові таблиці та детальний розбір типових розрахункових задач із перевіркою розмірностей у системі СІ:</p>
+      <h2>Розділи теоретичного підручника</h2>
       <div class="hub-filter-row">
-        <button type="button" class="hub-pill active" data-ch-filter="all" aria-pressed="true">Усі розділи · 8</button>
-        <button type="button" class="hub-pill" data-ch-filter="phys" aria-pressed="false">Фізика · 3</button>
-        <button type="button" class="hub-pill" data-ch-filter="chem" aria-pressed="false">Хімія · 2</button>
-        <button type="button" class="hub-pill" data-ch-filter="bio" aria-pressed="false">Біологія та СІ · 3</button>
-        <span id="home-mastery-pill" class="score-pill">Засвоєно розділів: 0 / 8</span>
+        <button type="button" class="hub-pill active" data-ch-filter="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Усі · 8</span></button>
+        <button type="button" class="hub-pill" data-ch-filter="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Фізика · 3</span></button>
+        <button type="button" class="hub-pill" data-ch-filter="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Хімія · 2</span></button>
+        <button type="button" class="hub-pill" data-ch-filter="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Біологія і СІ · 3</span></button>
+        <span id="home-mastery-pill" class="score-pill">0 / 8</span>
       </div>
       <div class="chapters-grid">
         
         <a class="chapter-card" data-ch-disc="phys" data-ch-slug="mechanics-conservation.html" href="/mechanics-conservation.html">
-          <span class="card-kicker">Розділ I · Теоретичний розділ і задачі</span>
-          <div class="card-title">Класична механіка: закони збереження імпульсу й енергії та динаміка обертання</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ I</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg></span>
+          </div>
+          <div class="card-title">Класична механіка</div>
           <p class="card-desc">Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і розв'язані задачі в системі СІ.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="phys" data-ch-slug="thermodynamics-fluids.html" href="/thermodynamics-fluids.html">
-          <span class="card-kicker">Розділ II · Теоретичний розділ і задачі</span>
-          <div class="card-title">Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ II</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg></span>
+          </div>
+          <div class="card-title">Механіка рідин і газів та молекулярна термодинаміка</div>
           <p class="card-desc">Гідростатика й гідродинаміка ідеальної та в'язкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="phys" data-ch-slug="optics-electromagnetism.html" href="/optics-electromagnetism.html">
-          <span class="card-kicker">Розділ III · Теоретичний розділ і задачі</span>
-          <div class="card-title">Хвильова оптика, електромагнетизм і квантова фізика: поля, хвилі та будова атома</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ III</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg></span>
+          </div>
+          <div class="card-title">Хвильова оптика, електромагнетизм і квантова фізика</div>
           <p class="card-desc">Принцип Гюйгенса-Френеля, інтерференція Юнга, дифракція на щілині, закон Малюса, сила Лоренца, електромагнітна індукція Фарадея, фотоефект Ейнштейна, ефект Комптона і постулати Бора.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="chem" data-ch-slug="quantum-chemistry-bonding.html" href="/quantum-chemistry-bonding.html">
-          <span class="card-kicker">Розділ IV · Теоретичний розділ і задачі</span>
-          <div class="card-title">Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ IV</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg></span>
+          </div>
+          <div class="card-title">Квантова хімія та будова речовини</div>
           <p class="card-desc">Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний закон, модель відштовхування електронних пар ГЕПВО, метод молекулярних орбіталей МО ЛКАО та енергія йонних кристалів.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="chem" data-ch-slug="chemical-kinetics-equilibrium.html" href="/chemical-kinetics-equilibrium.html">
-          <span class="card-kicker">Розділ V · Теоретичний розділ і задачі</span>
-          <div class="card-title">Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ V</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg></span>
+          </div>
+          <div class="card-title">Фізична хімія, кінетика та електрохімія</div>
           <p class="card-desc">Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="bio" data-ch-slug="cell-molecular-biology.html" href="/cell-molecular-biology.html">
-          <span class="card-kicker">Розділ VI · Теоретичний розділ і задачі</span>
-          <div class="card-title">Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ VI</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg></span>
+          </div>
+          <div class="card-title">Молекулярна біологія клітини і генетика</div>
           <p class="card-desc">Геометричне обмеження площі до об'єму клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="bio" data-ch-slug="biophysics-physiology.html" href="/biophysics-physiology.html">
-          <span class="card-kicker">Розділ VII · Теоретичний розділ і задачі</span>
-          <div class="card-title">Біофізика живих систем: мембранний потенціал, імпульс нейрона, оптика ока та гемодинаміка</div>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ VII</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg></span>
+          </div>
+          <div class="card-title">Біофізика живих систем</div>
           <p class="card-desc">Рівняння Нернста та Гольдмана-Ходжкіна-Каца для мембранного потенціалу, потенціал дії нейрона, синаптична передача, біомеханіка саркомера Гілла, рефракція ока і закон Гагена-Пуазейля.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
         <a class="chapter-card" data-ch-disc="bio" data-ch-slug="si-constants-handbook.html" href="/si-constants-handbook.html">
-          <span class="card-kicker">Розділ VIII · Теоретичний розділ і задачі</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">Розділ VIII</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h6"/><path d="M9 15h6"/><path d="M12 7v10"/></svg></span>
+          </div>
           <div class="card-title">Довідник фізичних сталих CODATA, одиниць системи СІ та похибок лабораторних вимірювань</div>
           <p class="card-desc">Точні значення фундаментальних фізико-хімічних констант у сучасній редакції Міжнародної системи одиниць СІ, похідні одиниці, десяткові префікси та методика оцінювання похибок вимірювань.</p>
-          <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Читати →</span></span>
         </a>
       </div>
 
-      <h2>Зведений довідник розрахункових рівнянь курсу</h2>
-      <p>Скористайтеся фільтром дисциплін або полем пошуку, щоб знайти потрібне рівняння та скопіювати його в один клік:</p>
+      <h2>Довідник базових рівнянь курсу</h2>
       <div class="hub-filter-row">
-        <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true">Усі рівняння · 12</button>
-        <button type="button" class="hub-pill" data-law-disc="phys" aria-pressed="false">Фізика</button>
-        <button type="button" class="hub-pill" data-law-disc="chem" aria-pressed="false">Хімія</button>
-        <button type="button" class="hub-pill" data-law-disc="bio" aria-pressed="false">Біологія і біофізика</button>
+        <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Усі · 12</span></button>
+        <button type="button" class="hub-pill" data-law-disc="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Фізика</span></button>
+        <button type="button" class="hub-pill" data-law-disc="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Хімія</span></button>
+        <button type="button" class="hub-pill" data-law-disc="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Біологія</span></button>
       </div>
-      <label for="law-filter" style="display:block;font-size:13px;font-weight:600;margin-bottom:4px;color:var(--ink-primary);">Пошук за назвою закону, розділом або символом величини</label>
-      <input type="search" id="law-filter" class="filter-input" placeholder="Наприклад: Бернуллі, Нернст, Комптон, pH, Пуазейль..." />
+      <label for="law-filter" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Пошук за назвою закону або символом</label>
+      <input type="search" id="law-filter" class="filter-input" placeholder="Пошук закону або величини: Бернуллі, Нернст, Комптон, pH, Пуазейль..." />
 
       <div class="table-scroll">
         <table class="ref-table" id="laws-table">
@@ -1253,32 +1353,30 @@
       </div>
 
       
-      <h2>Методика триступеневого дослідницького практикуму</h2>
-      <p>Кожна зі 106 лабораторних робіт на піддомені <strong>physics.sheua.com</strong> веде учня через три послідовні етапи наукового дослідження. Перемикніть кроки нижче на прикладі скочування тіл із похилої площини:</p>
+      <h2>Три етапи кожної 3D-лабораторної роботи</h2>
 
       <div class="inquiry-stepper">
         <div class="hub-filter-row" style="margin-top:0;">
-          <button type="button" class="hub-pill active" data-inq-step="1" aria-pressed="true">Крок 1. Кількісна гіпотеза</button>
-          <button type="button" class="hub-pill" data-inq-step="2" aria-pressed="false">Крок 2. 3D-експеримент</button>
-          <button type="button" class="hub-pill" data-inq-step="3" aria-pressed="false">Крок 3. Доведення у СІ</button>
+          <button type="button" class="hub-pill active" data-inq-step="1" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>1. Гіпотеза</span></button>
+          <button type="button" class="hub-pill" data-inq-step="2" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>2. Дослід</span></button>
+          <button type="button" class="hub-pill" data-inq-step="3" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>3. Формула СІ</span></button>
         </div>
 
         <div class="inquiry-panel" data-inq-panel="1">
-          <h3>Формулювання передбачення до запуску приладу</h3>
-          <p>Суцільний циліндр і тонкостінне кільце однакової маси та радіуса одночасно починають котитися без проковзування з вершини похилої площини. Яке тіло дістанеться основи першим?</p>
+          <h3>Яке тіло швидше скотиться з похилої площини без проковзування?</h3>
+          <p>Суцільний циліндр і тонке кільце однакової маси та радіуса стартують одночасно з вершини схилу:</p>
           <div class="nmt-opts-grid" id="inq-predict-opts">
-            <button type="button" class="nmt-opt-btn" data-inq-ans="correct">Суцільний циліндр фінішує швидше</button>
-            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Тонкостінне кільце фінішує швидше</button>
-            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Обидва тіла прибудуть одночасно</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="correct">Суцільний циліндр</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Тонкостінне кільце</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Одночасно</button>
           </div>
           <p id="inq-predict-feedback" style="margin-top:10px;margin-bottom:0;font-weight:600;display:none;"></p>
         </div>
 
         <div class="inquiry-panel hidden" data-inq-panel="2">
-          <h3>Перевірка в інтерактивній установці зі змінним кутом нахилу</h3>
-          <p>Змініть кут нахилу площини <code>α</code> та порівняйте лінійні прискорення центрів мас суцільного циліндра і тонкостінного кільця за g = 9.81 м/с²:</p>
+          <h3>Порівняння прискорень при зміні кута схилу</h3>
           <label class="sandbox-slider-lbl" for="inq-angle-slider" style="max-width:340px;">
-            <span class="sandbox-slider-top"><span>Кут нахилу площини α</span><code id="inq-angle-val">30°</code></span>
+            <span class="sandbox-slider-top"><span>Кут нахилу α</span><code id="inq-angle-val">30°</code></span>
             <input type="range" id="inq-angle-slider" min="10" max="60" step="1" value="30" />
           </label>
           <div class="formula-block" id="inq-step2-readout" style="margin-bottom:0;">
@@ -1287,21 +1385,20 @@
         </div>
 
         <div class="inquiry-panel hidden" data-inq-panel="3">
-          <h3>Аналітичне виведення через момент інерції</h3>
-          <p>Під час кочення без проковзування потенціальна енергія <code>mgh</code> розподіляється між поступальним рухом <code>½mv²</code> та обертанням <code>½Iω²</code>. Для суцільного циліндра безрозмірний коефіцієнт моменту інерції становить <code>β = I/(mR²) = 0.5</code>, а для кільця <code>β = 1.0</code>:</p>
+          <h3>Розподіл енергії між поступальним рухом і обертанням</h3>
           <div class="formula-block">
             <code>a = g sin α / (1 + β)  ⇒  a_циліндр = (2/3) g sin α,   a_кільце = (1/2) g sin α</code>
           </div>
-          <p style="margin-bottom:0;">Результат не залежить ні від маси <code>m</code>, ні від радіуса <code>R</code>. Перевірити це в повному тривимірному досліді з векторами сил і друкованим протоколом можна у роботі <a href="https://physics.sheua.com/uk/sim/incline">Похила площина та кочення тіл →</a></p>
+          <p style="margin-bottom:0;">Для циліндра <code>β = 0.5</code>, для кільця <code>β = 1.0</code>, маса і радіус скорочуються. <a href="https://physics.sheua.com/uk/sim/incline">Відкрити 3D-схил →</a></p>
         </div>
       </div>
       
       <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
-        <span><strong>Надіслати учням або колегам.</strong></span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><strong>Поділитись</strong></span>
         <div class="share-strip-actions">
-          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2F&amp;text=SHEUA.COM%20%C2%B7%20%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%B9%20%D0%BF%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA%20%D1%96%203D-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D1%8F%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a class="share-chip" href="viber://forward?text=SHEUA.COM%20%C2%B7%20%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%B9%20%D0%BF%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA%20%D1%96%203D-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D1%8F%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20https%3A%2F%2Fsheua.com%2F">Viber</a>
-          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/');}catch(e){}b.textContent='Скопійовано';setTimeout(function(){b.textContent='Скопіювати адресу';},1800);">Скопіювати адресу</button>
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2F&amp;text=SHEUA.COM%20%C2%B7%20%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%B9%20%D0%BF%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA%20%D1%96%203D-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D1%8F%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97" target="_blank" rel="noopener noreferrer"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Telegram</span></a>
+          <a class="share-chip" href="viber://forward?text=SHEUA.COM%20%C2%B7%20%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%B9%20%D0%BF%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA%20%D1%96%203D-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D1%8F%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20https%3A%2F%2Fsheua.com%2F"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg><span>Viber</span></a>
+          <button type="button" class="share-chip" title="Скопіювати посилання" aria-label="Скопіювати посилання" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/');}catch(e){}b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>';setTimeout(function(){b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7&quot;/><path d=&quot;M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7&quot;/></svg>';},1600);"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg></button>
         </div>
       </div>
     </article>
@@ -1346,7 +1443,7 @@
     (function(){
       var CATALOG = [{"k":"collision","d":"phys","t":"core","g":"9 клас","n":"Закон збереження імпульсу","s":"Пружне та непружне зіткнення куль, обмін імпульсами"},{"k":"incline","d":"phys","t":"core","g":"7-9 клас","n":"Рух тіла по похилій площині","s":"Розклад сили тяжіння, реакція опори N та кут тертя"},{"k":"pendulum","d":"phys","t":"core","g":"9-10 клас","n":"Математичний та пружинний маятники","s":"Порівняння періодів T = 2π√(L/g) та T = 2π√(m/k)"},{"k":"projectile","d":"phys","t":"core","g":"9-10 клас","n":"Рух тіла, кинутого під кутом до горизонту","s":"Парабола у вакуумі та балістична крива з опором повітря"},{"k":"cradle","d":"phys","t":"core","g":"9 клас","n":"Колиска Ньютона","s":"Передача імпульсу та енергії ланцюжком сталевих куль"},{"k":"centripetal","d":"phys","t":"core","g":"9-10 клас","n":"Доцентрове прискорення та рух на повороті","s":"Доцентрове прискорення a = ω²R та умова зриву в занос"},{"k":"archimedes","d":"phys","t":"core","g":"7 клас","n":"Закон Архімеда та умови плавання тіл","s":"Виштовхувальна сила F_A = ρgV та умова плавання біля ватерлінії"},{"k":"gas","d":"phys","t":"core","g":"10 клас","n":"Ідеальний газ під поршнем (Рівняння Менделєєва-Клапейрона)","s":"Рівняння Менделєєва-Клапейрона PV = νRT та тепловий рух молекул"},{"k":"wavefront","d":"phys","t":"core","g":"9-11 клас","n":"Світловий фронт і принцип Гюйгенса-Френеля","s":"Вторинні сферичні хвилі Гюйгенса та заломлення плоского фронту світла"},{"k":"interference","d":"phys","t":"core","g":"11 клас","n":"Інтерференція світлових фронтів (Дослід Юнга)","s":"Накладання двох сферичних світлових фронтів, максимуми та мінімуми"},{"k":"dispersion","d":"phys","t":"core","g":"9-11 клас","n":"Дисперсія світла та утворення спектра у призмі","s":"Залежність показника заломлення n(λ) від довжини хвилі та розклад спектра"},{"k":"emwave","d":"phys","t":"core","g":"11 клас","n":"Електромагнітна світлова хвиля (E, B та вектор Пойнтінга)","s":"Взаємно перпендикулярні поля E ⊥ B, фазовий фронт та поляризація світла"},{"k":"bernoulli","d":"phys","t":"core","g":"10 клас","n":"Рівняння Бернуллі та ефект Вентурі","s":"Зв'язок швидкості потоку рідини та статичного тиску у трубі змінного перерізу"},{"k":"lens","d":"phys","t":"core","g":"9-11 клас","n":"Збиральна лінза та фокусування світлового фронту","s":"Перетворення плоского світлового фронту на сферичний збіжний фронт у лінзі"},{"k":"lorentz","d":"phys","t":"core","g":"11 клас","n":"Сила Лоренца та циклотронна спіраль у 3D","s":"Рух зарядженої частинки по гвинтовій лінії (спіралі) в однорідному полі B"},{"k":"faraday","d":"phys","t":"core","g":"9-11 клас","n":"Закон Фарадея та правило Ленца у 3D","s":"Генерація індукційного струму в котушці під час руху магніту та правило Ленца"},{"k":"kepler","d":"phys","t":"core","g":"10-11 клас","n":"Еліптична орбіта та ІІ закон Кеплера","s":"Рух планети по еліптичній орбіті, секторна швидкість та обмін енергій у гравітаційному полі"},{"k":"gyroscope","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Момент інерції та енергія кочення","s":"Змагання суцільного циліндра та порожнистого обруча на похилій площині без проковзування"},{"k":"standingwave","d":"phys","t":"core","g":"9-11 клас","n":"Стоячі хвилі та обертони струни у 3D","s":"Власні моди коливань закріпленої струни, вузли й пучності та залежність частоти від натягу"},{"k":"doppler","d":"phys","t":"core","g":"9-11 клас","n":"Ефект Доплера та деформація хвильового фронту","s":"Стиснення сферичних хвильових фронтів попереду рухомого джерела, зміщення частоти та конус Маха"},{"k":"malus","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Поляризація світлового фронту та закон Малюса","s":"Проходження лінійно поляризованого світлового фронту крізь поляризатор та обертовий аналізатор"},{"k":"diffraction","d":"phys","t":"core","g":"11 клас","n":"Дифракція світлового фронту на вузькій щілині","s":"Огинання світловим фронтом країв вузької щілини, зони Гюйгенса та центральний дифракційний максимум"},{"k":"carnot","d":"phys","t":"core","g":"10 клас","n":"Ідеальна теплова машина та цикл Карно у 3D","s":"Перетворення теплоти нагрівника Q₁ на механічну роботу поршня A та передача Q₂ холодильнику"},{"k":"viscosity","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Рух кулі у в'язкій рідині (Закон Стокса)","s":"Падіння кульки у в'язкому маслі, сила в'язкого тертя Стокса та встановлення усталеної швидкості"},{"k":"coulomb","d":"phys","t":"core","g":"8-10 клас","n":"Закон Кулона та 3D-поле електричного диполя","s":"Силові лінії напруженості E двох точкових зарядів, закон Кулона та рух пробного заряду"},{"k":"rlccircuit","d":"phys","t":"core","g":"11 клас","n":"Електромагнітні коливання в контурі LC / RLC","s":"Вільні електромагнітні коливання між конденсатором C та котушкою індуктивності L, формула Томпсона"},{"k":"atwood","d":"phys","t":"core","g":"9-10 клас","n":"Машина Атвуда: прискорення та натяг нитки","s":"Рух зв'язаних тіл на невагомій нитці через масивний блок з моментом інерції I"},{"k":"coriolis","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Сила Коріоліса та траєкторія на диску, що обертається","s":"Відхилення траєкторії тіла в системі відліку, що обертається з кутовою швидкістю ω"},{"k":"hooke","d":"phys","t":"core","g":"7-10 клас","n":"Механічна напруга та модуль Юнга при розтягу","s":"Механічна напруга σ, відносне видовження ε та модуль пружності Юнга E при розтягу стрижня"},{"k":"torricelli","d":"phys","t":"core","g":"7-10 клас","n":"Формула Торрічеллі: витікання рідини з резервуара","s":"Швидкість витікання ідеальної рідини з малого отвору під дією гідростатичного напору h"},{"k":"maxwell","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Розподіл Максвелла та характерні швидкості газу","s":"Статистичний закон розподілу молекул ідеального газу за модулями швидкостей та характерні швидкості"},{"k":"newtonrings","d":"phys","t":"core","g":"Профільний / ЗВО · 11 клас","n":"Кільця Ньютона: інтерференція на повітряному прошарку","s":"Смуги рівної товщини в клиноподібному повітряному прошарку між плоско-опуклою лінзою та скляною пластиною"},{"k":"photoelectric","d":"phys","t":"core","g":"11 клас","n":"Зовнішній фотоефект та рівняння Ейнштейна","s":"Виривання фотоелектронів квантами світла hν, робота виходу A_вих, червона межа та затримуючий потенціал U_з"},{"k":"rutherford","d":"phys","t":"core","g":"9-11 клас","n":"Дослід Резерфорда: розсіяння α-частинок ядром","s":"Гіперболічні траєкторії α-частинок у кулонівському полі важкого атомного ядра +Ze та прицільний параметр b"},{"k":"ampere","d":"phys","t":"core","g":"9-11 клас","n":"Взаємодія паралельних струмів та сила Ампера","s":"Магнітна взаємодія двох паралельних провідників зі струмами I₁ та I₂ та еталон сили струму 1 Ампер"},{"k":"hall","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Ефект Холла та поперечна ЕРС у магнітному полі","s":"Виникнення поперечної різниці потенціалів U_H у пластинці зі струмом, вміщеній у перпендикулярне магнітне поле B"},{"k":"coupled","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Зв'язані маятники: нормальні моди та явище биття","s":"Періодичне перетікання механічної енергії між двома маятниками, з'єднаними пружною пружиною"},{"k":"precession","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Гіроскопічна прецесія важкої симетричної дзиґи","s":"Прецесія вектора власного моменту імпульсу L навколо вертикалі під дією моменту сили тяжіння M = [r × mg]"},{"k":"magnus","d":"phys","t":"core","g":"Профільний / ЗВО · 10 клас","n":"Ефект Магнуса та підіймальна сила обертового циліндра","s":"Виникнення поперечної підіймальної сили F_M при обтіканні обертового циліндра потоком внаслідок циркуляції швидкості Γ"},{"k":"capillary","d":"phys","t":"core","g":"Профільний / ЗВО · 10 клас","n":"Поверхневий натяг, меніск та капілярні явища","s":"Додатковий лапласівський тиск ΔP = 2σ cos θ / r під увігнутим або опуклим меніском та рівноважна висота стовпчика h"},{"k":"brownian","d":"phys","t":"core","g":"Профільний / ЗВО · 8-10 клас","n":"Броунівський рух та дифузія Ейнштейна-Смолуховського","s":"Хаотична траєкторія завислої мікрочастинки під ударами молекул рідини та лінійне зростання середнього квадрата зміщення ⟨r²⟩ = 6Dt"},{"k":"michelson","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Інтерферометр Майкельсона та фазовий зсув променів","s":"Поділ когерентного лазерного пучка напівпрозорим дзеркалом на два ортогональні плеча L₁, L₂ та зміщення кілець при зсуві Δd"},{"k":"compton","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Ефект Комптона та релятивістський імпульс фотона","s":"Пружне зіткнення рентгенівського фотона з вільним електроном, збільшення довжини хвилі Δλ = λ_C (1 − cos θ) та імпульс віддачі"},{"k":"bohr","d":"phys","t":"core","g":"9-11 клас","n":"Модель атома Бора, хвилі де Бройля та спектральні серії","s":"Квантування моменту імпульсу L_n = nℏ, стоячі хвилі де Бройля 2πr_n = nλ_дБ та випромінювання спектральних ліній Рідберга"},{"k":"biot","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Закон Біо-Савара-Лапласа та котушки Гельмгольца","s":"Розрахунок магнітної індукції B(x) на осі колових витків зі струмом та створення високооднорідного поля між котушками Гельмгольца"},{"k":"transformer","d":"phys","t":"core","g":"9-11 клас","n":"Трансформатор змінного струму та взаємна індукція","s":"Взаємна електромагнітна індукція через спільний змінний магнітний потік Φ(t) в осерді та коефіцієнт трансформації U₂/U₁ = N₂/N₁"},{"k":"chem_orbitals","d":"chem","t":"core","g":"8-11 клас","n":"Будова електронних оболонок атома та 3D-орбіталі (s, p, d)","s":"Хвильова функція Шредінгера |ψ|², квантові числа n, l та вузлові поверхні"},{"k":"chem_vsepr","d":"chem","t":"core","g":"Профільний / ЗВО","n":"Гібридизація орбіталей і просторова геометрія молекул (ГЕПВО)","s":"Лінійна sp (180°), тригональна sp² (120°), тетраедрична sp³ (109.5°) і неподілені пари"},{"k":"chem_lattice","d":"chem","t":"core","g":"8-11 клас","n":"Йонна кристалічна ґратка та енергія зв'язку кристала (NaCl)","s":"Елементарна комірка кам'яної солі, стала Маделунга, енергія ґратки та теплові коливання"},{"k":"chem_gaslaws","d":"chem","t":"core","g":"8-10 клас","n":"Закон Авогадро, молярний об'єм газу та рівняння Менделєєва-Клапейрона","s":"Молярний об'єм газу V_m = 22.4 л/моль (н.у.), кількість речовини ν та рівняння PV = νRT"},{"k":"chem_kinetics","d":"chem","t":"core","g":"9-11 клас","n":"Швидкість хімічної реакції, енергія активації та каталіз","s":"Теорія активних зіткнень, рівняння Арреніуса k = A·exp(−E_a/RT) та дія каталізатора"},{"k":"chem_equilibrium","d":"chem","t":"core","g":"9-11 клас","n":"Хімічна рівновага та принцип Ле Шательє (система N₂O₄ ⇄ 2NO₂)","s":"Динамічна рівновага димеризації, константа K_p та зміщення під дією T і P"},{"k":"chem_titration","d":"chem","t":"core","g":"8-11 клас","n":"Кислотно-основне титрування, водневий показник pH та індикатори","s":"Крива нейтралізації HCl + NaOH → NaCl + H₂O, точка еквівалентності та стрибок pH"},{"k":"chem_galvanic","d":"chem","t":"core","g":"9-11 клас","n":"Гальванічний елемент Даніеля-Якобі та електродні потенціали","s":"Анодне окиснення Zn⁰ → Zn²⁺ + 2e⁻, катодне відновлення Cu²⁺ + 2e⁻ → Cu⁰ і сольовий місток"},{"k":"chem_electrolysis","d":"chem","t":"core","g":"9-11 клас","n":"Електроліз водного розчину електроліту та закони Фарадея","s":"Катодне осадження міді, анодне виділення кисню O₂↑ та маса m = (M·I·t)/(z·F)"},{"k":"chem_organic","d":"chem","t":"core","g":"9-11 клас · Органічна хімія","n":"Будова молекули бензену C₆H₆, ароматичність та делокалізація π-зв'язку","s":"Правильний плоский шестикутник Кекуле, sp²-каркас (120°) і єдина 6π-електронна хмара Гюккеля"},{"k":"chem_periodic","d":"chem","t":"core","g":"8-11 клас · Періодичний закон","n":"Періодична система Д. І. Менделєєва (118 елементів): радіус r_ат, енергія йонізації I₁ та χ","s":"Повна 3D-таблиця всіх 118 хімічних елементів (періоди 1-7, групи 1-18, s-, p-, d-, f-блоки: лантаноїди та актиноїди), радіус атома r_ат, енергія йонізації I₁ та електронегативність χ"},{"k":"chem_hbond","d":"chem","t":"core","g":"9-10 клас · Водневий зв'язок","n":"Водневий зв'язок, гексагональна ґратка льоду Iₕ та аномалія густини води","s":"Тетраедрична сітка водневих зв'язків O-H···O у кристалі гексагонального льоду Iₕ (ρ = 0.917 г/см³) та максимум густини води при +4 °C"},{"k":"chem_calorimetry","d":"chem","t":"core","g":"9-11 клас · Термохімія","n":"Термохімія, закон Гесса та калориметричне визначення ентальпії реакції ΔH","s":"Вимірювання теплового ефекту екзо- та ендотермічних реакцій у калориметрі Q = (m·c + C_кал)ΔT = −ν·ΔH та діаграма закону Гесса"},{"k":"chem_osmosis","d":"chem","t":"core","g":"9-11 клас · Розчини та осмос","n":"Осмотичний тиск розчину (закон Вант-Гоффа Π = iCRT) та напівпроникна мембрана","s":"Однобічна дифузія води крізь напівпроникну мембрану в U-подібному осмометрі, ізотонічний коефіцієнт i та опріснення зворотним осмосом"},{"k":"chem_buffer","d":"chem","t":"core","g":"Профільний / ЗВО · Буферні системи","n":"Буферні розчини, рівняння Гендерсона-Гассельбаха та буферна ємність","s":"Порівняння стабільності pH ацетатного буфера (CH₃COOH + CH₃COONa) та чистої води при додаванні сильної кислоти HCl або лугу NaOH"},{"k":"chem_ksp","d":"chem","t":"core","g":"9-11 клас · Добуток розчинності","n":"Добуток розчинності K_sp, реакція «Золотий дощ» (PbI₂↓) та ефект спільного йона","s":"Кристалізація золотистих гексагональних лусочок плюмбум(ІІ) йодиду PbI₂↓ за умови Q_sp > K_sp(T) та ефект спільного йона I⁻"},{"k":"chem_beer","d":"chem","t":"core","g":"Профільний / ЗВО · Спектрофотометрія","n":"Оптична спектрофотометрія та закон Бугера-Ламберта-Бера (A = ε·l·C)","s":"Поглинання монохроматичного променя забарвленим розчином у кварцовій кюветі, оптична густина A = ε(λ)lC та пропускання T = 10⁻ᴬ"},{"k":"chem_fuelcell","d":"chem","t":"core","g":"9-11 клас · Воднева енергетика","n":"Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC)","s":"Пряме електрохімічне перетворення енергії реакції 2H₂ + O₂ → 2H₂O в електричний струм крізь протонно-обмінну мембрану з Pt-каталізатором"},{"k":"chem_isomerism","d":"chem","t":"core","g":"10-11 клас · Стереохімія","n":"Стереохімія: геометрична (цис-транс, Z/E) та оптична хіральна ізомерія (R/S)","s":"Порівняння дипольної полярності геометричних цис/транс-ізомерів алкенів і обертання площини поляризації світла хіральними R/S-енантіомерами"},{"k":"chem_polymer","d":"chem","t":"core","g":"9-11 клас · Полімери та пластмаси","n":"Радикальна полімеризація етилену та ріст макромолекулярного ланцюга поліетилену","s":"Ланцюгова полімеризація n CH₂=CH₂ → (-CH₂-CH₂-)_n, перехід гібридизації sp² → sp³, молекулярна маса M_n та радіус клубка R_g"},{"k":"chem_mo","d":"chem","t":"core","g":"Профільний / ЗВО · Квантова хімія","n":"Метод молекулярних орбіталей (МО ЛКАО) та парамагнетизм кисню","s":"Зв'язувальні σ, π та розпушувальні σ*, π* орбіталі, порядок зв'язку і парамагнетизм O₂"},{"k":"chem_allotropes","d":"chem","t":"core","g":"9-11 клас · Алотропія Карбону та нанотехнології","n":"Алотропні модифікації та наноструктури Карбону: Графен, Нанотрубка і Фулерен C₆₀","s":"Фулерен C₆₀, вуглецева нанотрубка та графеновий лист: sp²-делокалізація і геометрія"},{"k":"chem_complex","d":"chem","t":"core","g":"Профільний / ЗВО · Комплексні сполуки","n":"Координаційні сполуки Вернера та теорія кристалічного поля (розщеплення d-орбіталей)","s":"Октаедричний комплекс [ML₆]ⁿ⁺, розщеплення t₂g / e_g (Δ_o), спектрохімічний ряд і колір"},{"k":"chem_bornhaber","d":"chem","t":"core","g":"Профільний / ЗВО · Термохімія кристалів","n":"Круговий термодинамічний цикл Борна-Габера для йонних кристалів","s":"Термодинамічний баланс сублімації, дисоціації, йонізації, спорідненості до електрона та U_ґрат"},{"k":"chem_dipole","d":"chem","t":"core","g":"8-10 клас · Полярність молекул","n":"Полярність хімічного зв'язку, електричний дипольний момент та орієнтаційна поляризація","s":"Часткові заряди δ⁺/δ⁻, векторна сума диполів зв'язків і орієнтація молекули в полі E"},{"k":"chem_phase","d":"chem","t":"core","g":"Профільний / ЗВО · Фазові рівноваги","n":"Фазові діаграми речовини (P-T), потрійна точка та надкритичний стан (H₂O і CO₂)","s":"Рівняння Клапейрона-Клаузіуса, сублімація CO₂ («сухий лід») і надкритичний стан"},{"k":"chem_orders","d":"chem","t":"core","g":"Профільний / ЗВО · Кінетичні рівняння","n":"Кінетичні рівняння нульового, першого та другого порядків і період напівперетворення t₁/₂","s":"Інтегральні кінетичні рівняння нульового, першого та другого порядків і період напіврозпаду"},{"k":"chem_enzyme","d":"chem","t":"core","g":"Профільний / ЗВО · Біохімія та ферменти","n":"Ферментативний каталіз: рівняння Міхаеліса-Ментен та конкурентне інгібування","s":"Комплекс фермент-субстрат ES, модель «ключ-замок», V_max, K_M та конкурентне інгібування"},{"k":"chem_gibbs","d":"chem","t":"core","g":"Профільний / ЗВО · Хімічна термодинаміка","n":"Вільна енергія Гіббса (ΔG = ΔH − TΔS), ентропія та термодинамічний критерій напрямку реакції","s":"Конкуренція ентальпійного ΔH і ентропійного TΔS факторів, температура інверсії T_рівн = ΔH/ΔS"},{"k":"chem_haber","d":"chem","t":"core","g":"9-11 клас · Хімічна технологія","n":"Синтез аміаку Габера-Боша та гетерогенний каталіз на поверхні заліза","s":"Компроміс між кінетикою та рівновагою: високий тиск P, оптимальна температура 450 °C і Fe-каталізатор"},{"k":"chem_raoult","d":"chem","t":"core","g":"Профільний / ЗВО · Властивості розчинів","n":"Колігативні властивості розчинів: Закон Рауля, ебуліоскопія (ΔT_кип) та кріоскопія (ΔT_зам)","s":"Зниження тиску насиченої пари ΔP = x₂P₀, підвищення T_кип і зниження T_зам розчинів"},{"k":"chem_chromatography","d":"chem","t":"core","g":"Профільний / ЗВО · Методи розділення сумішей","n":"Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f","s":"Розподіл між нерухомою (сорбент SiO₂) і рухомою (елюент) фазами та розділення пігментів"},{"k":"chem_adsorption","d":"chem","t":"core","g":"Профільний / ЗВО · Поверхневі явища","n":"Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра","s":"Мономолекулярний шар на активних центрах, ступінь заповнення θ = KP/(1 + KP) і десорбція"},{"k":"chem_colloids","d":"chem","t":"core","g":"9-11 клас · Дисперсні та колоїдні системи","n":"Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція","s":"Будова міцели золю, подвійний електричний шар (ζ-потенціал), ефект Тіндаля і правило Шульце-Гарді"},{"k":"chem_hydrolysis","d":"chem","t":"core","g":"9-11 клас · Гідроліз солей у розчинах","n":"Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища","s":"Константа K_г = K_w / K_a, ступінь гідролізу h = √(K_г/C) та реакція середовища розчинів солей"},{"k":"chem_corrosion","d":"chem","t":"core","g":"9-11 клас · Корозія та захист металів","n":"Електрохімічна корозія заліза з кисневою деполяризацією та катодний протекторний захист","s":"Мікрогальванічні пари Fe-Cu (руйнування заліза) та Fe-Zn / Fe-Mg (жертовний анод-протектор)"},{"k":"chem_liion","d":"chem","t":"core","g":"Профільний / ЗВО · Сучасні хімічні джерела струму","n":"Літій-іонний акумулятор (LiCoO₂ || C₆): оборотна інтеркаляція іонів Li⁺ (Нобелівська премія, 2019)","s":"Шаруватий катод LiCoO₂ та графітовий анод LiC₆: цикл «гойдалки» розряджання / заряджання і напруга 3.7 В"},{"k":"chem_sn2","d":"chem","t":"core","g":"Профільний / ЗВО · Механізми органічних реакцій","n":"Бімолекулярне нуклеофільне заміщення (S_N2): перехідний стан та інверсія конфігурації Вальдена","s":"Тилова атака нуклеофіла OH⁻ під кутом 180°, тригонально-біпірамідальний перехідний стан і вивертання конфігурації"},{"k":"chem_ester","d":"chem","t":"core","g":"10-11 клас · Естери та мічені атоми","n":"Реакція естерифікації Фішера та доведення її механізму методом мічених атомів (¹⁸O)","s":"Синтез етилетаноату CH₃COOH + C₂H₅¹⁸OH ⇄ CH₃CO¹⁸OC₂H₅ + H₂O, константа рівноваги K_c = 4"},{"k":"chem_biopol","d":"chem","t":"core","g":"Профільний / ЗВО · Біохімія: Білки та ДНК","n":"Структура біополімерів: плоский пептидний зв'язок, α-спіраль білка та подвійна спіраль ДНК","s":"Пептидна група -CO-NH-, водневі зв'язки в α-спіралі Полінга і комплементарні пари A=T, G≡C у ДНК"},{"k":"bio_eukaryote","d":"bio","t":"core","g":"9-10 клас · Цитологія: будова клітини","n":"Еукаріотична клітина: компартменталізація органел і геометрична межа S/V","s":"Ядро, мітохондрії, ЕПС, апарат Гольджі, лізосоми та відношення площі до об'єму S/V = 3/R"},{"k":"bio_mitochondria","d":"bio","t":"core","g":"10-11 клас · Біоенергетика та АТФ-синтаза","n":"Хеміосмотична теорія Мітчелла: протонна рушійна сила Δp і синтез АТФ","s":"Дихальний ланцюг (комплекси I-IV), протонний градієнт Δp і роторний мотор F₀F₁-АТФ-синтази"},{"k":"bio_mitosis","d":"bio","t":"core","g":"9-10 клас · Мітоз і клітинний цикл","n":"Мітотичний поділ клітини: динаміка мікротрубочок веретена та збереження плоїдності","s":"Профаза, метафазна пластинка, анафазне розходження сестринських хроматид і телофаза (2n → 2n)"},{"k":"bio_replication","d":"bio","t":"core","g":"10-11 клас · Реплікація ДНК","n":"Напівконсервативна реплікація ДНК: реплікативна вилка Мезельсона-Сталя","s":"Геліказа, ДНК-полімераза III, синтез 5′→3′, ведучий ланцюг і фрагменти Оказакі відстаючого ланцюга"},{"k":"bio_ribosome","d":"bio","t":"core","g":"10-11 клас · Генетичний код і трансляція","n":"Експресія генів і трансляція: декодування мРНК рибосомою та синтез поліпептиду","s":"Центральна догма ДНК → мРНК → Білок, триплетний генетичний код, сайти A-P-E рибосоми та тРНК"},{"k":"bio_mendel","d":"bio","t":"core","g":"9-11 клас · Генетика Менделя та популяцій","n":"Генетика Менделя та закон Гарді-Вайнберга: динаміка частот генотипів у популяції","s":"Решітка Пеннета, розщеплення 3:1 і 9:3:3:1 та популяційна рівновага частот алелів p² + 2pq + q² = 1"},{"k":"bio_membrane","d":"bio","t":"core","g":"10-11 клас · Біофізика мембран","n":"Біофізика плазматичної мембрани: електрогенний Na⁺/K⁺-насос і потенціал спокою","s":"Рідинно-мозаїчна модель Сінгера-Ніколсона, активний транспорт 3Na⁺/2K⁺ і рівняння Нернста"},{"k":"bio_neuron","d":"bio","t":"core","g":"10-11 клас · Нейрон і потенціал дії","n":"Потенціал дії нейрона: поширення нервового імпульсу та сальтаторне проведення","s":"Модель Ходжкіна-Хакслі, деполяризація Na⁺, реполяризація K⁺, мієлінова оболонка та перехвати Ранв'є"},{"k":"bio_sarcomere","d":"bio","t":"core","g":"Профільний / ЗВО · Біомеханіка м'язів","n":"Біофізика м'язового скорочення: модель ковзних ниток саркомера та рівняння Гілла","s":"Ковзання ниток актину й міозину (Гакслі), роль Ca²⁺ і тропоміозину та гіпербола сили-швидкості Гілла"},{"k":"bio_photosynthesis","d":"bio","t":"core","g":"9-11 клас · Фотосинтез і цикл Кальвіна","n":"Фотосинтез у хлоропласті: Z-схема електронного транспорту та фіксація CO₂ у циклі Кальвіна","s":"Світлова фаза на мембрані тилакоїда (ФС ІІ, фотоліз води, ФС І) та цикл Кальвіна в стромі"},{"k":"bio_hemo","d":"bio","t":"core","g":"Профільний / ЗВО · Дихання та ефект Бора","n":"Транспорт кисню гемоглобіном: алостерична кооперативність (T ↔ R) і ефект Бора","s":"Тетрамер α₂β₂ з 4 гемами Fe²⁺, кооперативна сигмоїда Гілла (n ≈ 2.8), міоглобін і зсув кривої Бора"},{"k":"bio_lotka","d":"bio","t":"core","g":"Профільний / ЗВО · Екологія: модель Лотки-Вольтерри","n":"Динаміка екосистем: автоколивання «хижак-жертва» Лотки-Вольтерри та трофічні рівні","s":"Диференціальні рівняння «хижак-жертва», фазовий портрет, хвилі популяцій і піраміда Ліндемана (10%)"},{"k":"bio_meiosis","d":"bio","t":"core","g":"9-11 клас · Мейоз і кросинговер","n":"Мейотичний поділ клітини: синапсис бівалентів, кросинговер і комбінативна мінливість","s":"Кон'югація гомологів у профазі І, хіазми, обмін ділянками хроматид і гаплоїдні гамети (1n1c)"},{"k":"bio_eye","d":"bio","t":"core","g":"8-11 клас · Біофізика зору та оптика ока","n":"Біофізика зору: оптична сила ока, акомодація кришталика та корекція аметропій лінзами","s":"Заломлення світла в рогівці й кришталику, рефлекс акомодації, короткозорість (міопія) та далекозорість"},{"k":"bio_synapse","d":"bio","t":"core","g":"Профільний / ЗВО · Нейробіологія: хімічний синапс","n":"Хімічний синапс: кальцій-залежний екзоцитоз медіатора та постсинаптичні рецептори","s":"Вхід йонів Ca²⁺, SNARE-екзоцитоз синаптичних везикул, дифузія крізь щілину та потенціал ЗПСП / ГПСП"},{"k":"bio_pcr","d":"bio","t":"core","g":"Профільний / ЗВО · Біотехнологія: ПЛР-діагностика","n":"Полімеразна ланцюгова реакція (ПЛР): температурні цикли та експоненційна ампліфікація ДНК","s":"Термоциклер: денатурація (95 °C), відпал праймерів (58 °C), синтез Taq-полімеразою (72 °C) та ріст 2ⁿ"},{"k":"bio_crispr","d":"bio","t":"core","g":"Профільний / ЗВО · Генна інженерія: CRISPR-Cas9","n":"Система CRISPR-Cas9: програмоване розпізнавання мішені ДНК та високоточне редагування генів","s":"Розпізнавання мотиву PAM (5′-NGG-3′), R-петля гідової sgRNA, нуклеазні домени HNH/RuvC і репарація ДНК"},{"k":"bio_phage","d":"bio","t":"core","g":"Профільний / ЗВО · Вірусологія та дослід Герші-Чейз","n":"Будова і цикл бактеріофага Т4: біомеханічний шприц та ін'єкція вірусної ДНК у бактерію","s":"Ікосаедричний капсид, рецепторні хвостові нитки, скорочення чохла та впорскування геному у клітину"},{"k":"bio_hemodynamics","d":"bio","t":"core","g":"Профільний / ЗВО · Фізіологія кровообігу (закон Пуазейля)","n":"Біофізика кровообігу: ламінарний потік еритроцитів і закон Гагена-Пуазейля для судин ($Q \\propto R^4$)","s":"Параболічний профіль швидкості еритроцитів, залежність кровотоку Q ∝ R⁴, в'язкість крові та стеноз судини"},{"k":"bio_electrophoresis","d":"bio","t":"core","g":"Профільний / ЗВО · Молекулярна біологія: гель-електрофорез","n":"Гель-електрофорез ДНК: розділення рестрикційних фрагментів у полімерній сітці за молекулярною масою","s":"Міграція поліаніонів ДНК до анода (+), молекулярне сито агарозного гелю та логарифмічна шкала довжин"}];
       var QUIZ_POOL = [{"disc":"Фізика · Імпульс","q":"Візок масою 2 кг рухається зі швидкістю 6 м/с і абсолютно непружно зчіплюється з нерухомим візком масою 4 кг. Якою буде їхня спільна швидкість після удару?","opts":["1.5 м/с","2.0 м/с","3.0 м/с","4.0 м/с"],"ans":1,"exp":"За законом збереження імпульсу u = m₁v₁ / (m₁ + m₂) = (2 · 6) / (2 + 4) = 2.0 м/с.","sim":"https://physics.sheua.com/uk/sim/collision","simTitle":"3D-дослід зіткнення куль"},{"disc":"Хімія · Газові закони","q":"Ідеальний газ за сталого об'єму нагріли від 300 К до 600 К. Як зміняться тиск газу P та середня квадратична швидкість молекул v_кв?","opts":["P зросте у 2 рази, v_кв у √2 раза","І P, і v_кв зростуть у 2 рази","P зросте у 4 рази, v_кв у 2 рази","P не зміниться, v_кв зросте у √2 раза"],"ans":0,"exp":"За законом Шарля P пропорційний T, тому тиск подвоїться. Швидкість v_кв = √(3RT/M) пропорційна √T, отже зросте у √2 ≈ 1.41 раза.","sim":"https://physics.sheua.com/uk/sim/chem_gaslaws","simTitle":"3D-модель газових законів"},{"disc":"Біологія · Гемодинаміка","q":"За законом Гагена-Пуазейля внутрішній радіус артеріоли R зменшився у 2 рази за незмінного перепаду тиску ΔP. У скільки разів зменшиться об'ємний кровотік Q?","opts":["У 2 рази","У 4 рази","У 8 разів","У 16 разів"],"ans":3,"exp":"Об'ємна витрата в'язкої рідини Q = πΔP·R⁴ / (8ηL) пропорційна четвертому степеню радіуса: (1/2)⁴ = 1/16.","sim":"https://physics.sheua.com/uk/sim/bio_hemodynamics","simTitle":"3D-гемодинаміка судини"},{"disc":"Фізика · Термодинаміка","q":"Теплова машина Карно працює між нагрівником 600 К та холодильником 300 К. Чому дорівнює її максимальний теоретичний ККД?","opts":["25%","50%","75%","100%"],"ans":1,"exp":"ККД ідеального циклу Карно η = 1 − T₂ / T₁ = 1 − 300 / 600 = 0.50, або 50%.","sim":"https://physics.sheua.com/uk/sim/carnot","simTitle":"3D-цикл Карно"},{"disc":"Хімія · Розчини і pH","q":"Ацетатний буфер містить однакові молярні концентрації CH₃COOH та CH₃COONa (pK_a = 4.76). Чому дорівнює pH цього розчину?","opts":["2.38","4.76","7.00","9.24"],"ans":1,"exp":"За рівнянням Гендерсона-Гассельбаха pH = pK_a + lg([A⁻]/[HA]). Оскільки [A⁻] = [HA], lg(1) = 0 і pH = 4.76.","sim":"https://physics.sheua.com/uk/sim/chem_buffer","simTitle":"3D-симуляція буферних розчинів"},{"disc":"Біологія · Молекулярна генетика","q":"У реакцію ПЛР ввели 10 копій матричної ДНК і провели 6 повних циклів за 100% ефективності подвоєння. Скільки копій утвориться?","opts":["60 копій","320 копій","640 копій","1280 копій"],"ans":2,"exp":"Кількість амплифікованих молекул ДНК зростає експоненційно: N = N₀ · 2ⁿ = 10 · 2⁶ = 10 · 64 = 640 копій.","sim":"https://physics.sheua.com/uk/sim/bio_pcr","simTitle":"3D-ампліфікація ПЛР"},{"disc":"Фізика · Хвильова оптика","q":"Кут між площиною поляризації світла та віссю аналізатора дорівнює 60°. Яка частка початкової інтенсивності I₀ проходить крізь аналізатор?","opts":["0.25 I₀","0.50 I₀","0.75 I₀","0.87 I₀"],"ans":0,"exp":"За законом Малюса I = I₀ cos² θ. Оскільки cos 60° = 0.5, інтенсивність на виході становить 0.5² I₀ = 0.25 I₀.","sim":"https://physics.sheua.com/uk/sim/malus","simTitle":"3D-поляризація світла"},{"disc":"Хімія · Електроліз","q":"Скільки електронів потрібно передати на катоді для відновлення 1 моль катіонів Cu²⁺ до металічної міді Cu⁰?","opts":["0.5 моль e⁻","1 моль e⁻","2 моль e⁻","4 моль e⁻"],"ans":2,"exp":"Напівреакція на катоді Cu²⁺ + 2e⁻ → Cu⁰ потребує z = 2 моль електронів (заряд 2F ≈ 192 970 Кл) на кожен моль міді.","sim":"https://physics.sheua.com/uk/sim/chem_electrolysis","simTitle":"3D-електроліз Фарадея"},{"disc":"Біофізика · Нейрон","q":"Який потік іонів спричиняє стрімку фазу деполяризації мембрани нейрона вище порога −55 мВ під час генерації потенціалу дії?","opts":["Вхід катіонів Na⁺ у клітину","Вихід катіонів K⁺ із клітини","Вхід аніонів Cl⁻ у клітину","Зупинка синтезу АТФ у ядрі"],"ans":0,"exp":"Відкриття потенціалзалежних Na⁺-каналів викликає лавиноподібний вхід Na⁺ за електрохімічним градієнтом, зміщуючи мембранний потенціал до +35...+40 мВ.","sim":"https://physics.sheua.com/uk/sim/bio_neuron","simTitle":"3D-потенціал дії нейрона"}];
-      var TXT = {"lang":"uk","simBase":"https://physics.sheua.com/uk/sim/","discMap":{"phys":"Фізика","chem":"Хімія","bio":"Біологія"},"replayPhys":"Зіткнути знову","replayChem":"Оновити ансамбль","replayBio":"Подати імпульс","pause":"Пауза","resume":"Продовжити","openPhys":"Відкрити 3D-зіткнення куль →","openChem":"Відкрити 3D-газові закони →","openBio":"Відкрити 3D-імпульс нейрона →","showing":"Показано {a} із {b} відібраних 3D-симуляцій","showAll":"Показати всі {n} дослідів","collapse":"Згорнути до 12 карток","noMatch":"За цим запитом симуляцій не знайдено. Спробуйте скинути фільтр.","score":"Результат: {c} / {t}","correctPrefix":"Правильно. ","wrongPrefix":"Перевірте за формулою. ","copyBtn":"Копіювати","copiedBtn":"Скопійовано","inqOk":"Правильно. У суцільного циліндра момент інерції менший (I = ½mR² проти mR² у кільця), тому менша частка енергії йде на обертання і лінійне прискорення більше.","inqErr":"Порівняйте моменти інерції: у кільця вся маса віддалена від осі (I = mR²), а у суцільного циліндра I = ½mR², тому циліндр розганяється швидше.","inqFmt":"α = {a}°: a_циліндр = {c} м/с², a_кільце = {h} м/с²","sliders":{"phys":[{"key":"m1","label":"Маса кулі m₁","unit":"кг","min":0.5,"max":5,"step":0.5,"val":2},{"key":"m2","label":"Маса кулі m₂","unit":"кг","min":0.5,"max":5,"step":0.5,"val":1.2},{"key":"v1","label":"Початкова v₁","unit":"м/с","min":1,"max":9,"step":0.5,"val":5},{"key":"e","label":"Відновлення e","unit":"","min":0,"max":1,"step":0.05,"val":0.85}],"chem":[{"key":"T","label":"Температура T","unit":"К","min":150,"max":900,"step":10,"val":300},{"key":"V","label":"Об'єм газу V","unit":"л","min":6,"max":28,"step":1,"val":14},{"key":"nu","label":"Кількість речовини ν","unit":"моль","min":0.5,"max":3,"step":0.25,"val":1}],"bio":[{"key":"Istim","label":"Струм стимулу I_ст","unit":"мкА/см²","min":2,"max":24,"step":1,"val":14},{"key":"Ko","label":"Зовнішній [K⁺]_o","unit":"ммоль/л","min":2.5,"max":14,"step":0.5,"val":4.5},{"key":"gNa","label":"Провідність g_Na","unit":"мСм/см²","min":50,"max":160,"step":5,"val":120}]},"canvasLabels":{"cm":"ЦМ","ek":"Енергія E_k","dq":"Втрати ΔQ","piston":"Поршень","gauge":"Тиск P","thresh":"Поріг −55 мВ","spike":"Потенціал дії","sub":"Підпороговий спад","stim":"Стимул"}};
+      var TXT = {"lang":"uk","simBase":"https://physics.sheua.com/uk/sim/","discMap":{"phys":"Фізика","chem":"Хімія","bio":"Біологія"},"replayPhys":"Зіткнути знову","replayChem":"Оновити ансамбль","replayBio":"Подати імпульс","pause":"Пауза","resume":"Продовжити","openPhys":"У 3D →","openChem":"У 3D →","openBio":"У 3D →","showing":"{a} із {b}","showAll":"Усі {n}","collapse":"Згорнути · 12","noMatch":"Нічого не знайдено.","score":"{c} / {t}","correctPrefix":"Правильно. ","wrongPrefix":"Перевірте формулу. ","copyBtn":"Скопіювати формулу","copiedBtn":"Скопійовано","icoPlay":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg>","icoPause":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>","icoReplay":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 3-6.7L3 8\"/><polyline points=\"3 3 3 8 8 8\"/></svg>","icoCube":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2 3 7v10l9 5 9-5V7l-9-5Z\"/><path d=\"m3 7 9 5 9-5\"/><path d=\"M12 12v10\"/></svg>","icoList":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"8\" y1=\"6\" x2=\"21\" y2=\"6\"/><line x1=\"8\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"8\" y1=\"18\" x2=\"21\" y2=\"18\"/><line x1=\"3\" y1=\"6\" x2=\"3.01\" y2=\"6\"/><line x1=\"3\" y1=\"12\" x2=\"3.01\" y2=\"12\"/><line x1=\"3\" y1=\"18\" x2=\"3.01\" y2=\"18\"/></svg>","icoCopy":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>","icoCheck":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"20 6 9 17 4 12\"/></svg>","inqOk":"Правильно. У суцільного циліндра момент інерції менший (I = ½mR² проти mR² у кільця), тому менша частка енергії йде на обертання і лінійне прискорення більше.","inqErr":"Порівняйте моменти інерції: у кільця вся маса віддалена від осі (I = mR²), а у суцільного циліндра I = ½mR², тому циліндр розганяється швидше.","inqFmt":"α = {a}°: a_циліндр = {c} м/с², a_кільце = {h} м/с²","sliders":{"phys":[{"key":"m1","label":"Маса кулі m₁","unit":"кг","min":0.5,"max":5,"step":0.5,"val":2},{"key":"m2","label":"Маса кулі m₂","unit":"кг","min":0.5,"max":5,"step":0.5,"val":1.2},{"key":"v1","label":"Початкова v₁","unit":"м/с","min":1,"max":9,"step":0.5,"val":5},{"key":"e","label":"Відновлення e","unit":"","min":0,"max":1,"step":0.05,"val":0.85}],"chem":[{"key":"T","label":"Температура T","unit":"К","min":150,"max":900,"step":10,"val":300},{"key":"V","label":"Об'єм газу V","unit":"л","min":6,"max":28,"step":1,"val":14},{"key":"nu","label":"Кількість речовини ν","unit":"моль","min":0.5,"max":3,"step":0.25,"val":1}],"bio":[{"key":"Istim","label":"Струм стимулу I_ст","unit":"мкА/см²","min":2,"max":24,"step":1,"val":14},{"key":"Ko","label":"Зовнішній [K⁺]_o","unit":"ммоль/л","min":2.5,"max":14,"step":0.5,"val":4.5},{"key":"gNa","label":"Провідність g_Na","unit":"мСм/см²","min":50,"max":160,"step":5,"val":120}]},"canvasLabels":{"cm":"ЦМ","ek":"Енергія E_k","dq":"Втрати ΔQ","piston":"Поршень","gauge":"Тиск P","thresh":"Поріг −55 мВ","spike":"Потенціал дії","sub":"Підпороговий спад","stim":"Стимул"}};
 
       /* 1. LIVE INTERACTIVE CANVAS SANDBOX */
       var canvas = document.getElementById('home-sim-canvas');
@@ -1477,9 +1574,11 @@
             'u₂ = ' + u2.toFixed(2) + uMs,
             'ΔQ = ' + dq.toFixed(1) + uJ
           ];
-          triggerBtn.textContent = TXT.replayPhys;
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayPhys;
+          triggerBtn.setAttribute('aria-label', TXT.replayPhys);
           open3dLink.href = TXT.simBase + 'collision';
-          open3dLink.textContent = TXT.openPhys;
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openPhys + '</span>';
         } else if (sbx.mode === 'chem') {
           var c = sbx.params.chem;
           var P = (c.nu * 8.31446 * c.T) / c.V;
@@ -1488,9 +1587,11 @@
           items = TXT.lang === 'en'
             ? ['P = ' + P.toFixed(1) + ' kPa', 'v_rms(N₂) = ' + Math.round(vrms) + ' m/s', '⟨E_k⟩ = ' + ek.toFixed(2) + ' zJ']
             : ['P = ' + P.toFixed(1) + ' кПа', 'v_кв(N₂) = ' + Math.round(vrms) + ' м/с', '⟨E_k⟩ = ' + ek.toFixed(2) + ' зДж'];
-          triggerBtn.textContent = TXT.replayChem;
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayChem;
+          triggerBtn.setAttribute('aria-label', TXT.replayChem);
           open3dLink.href = TXT.simBase + 'chem_gaslaws';
-          open3dLink.textContent = TXT.openChem;
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openChem + '</span>';
         } else {
           var b = sbx.params.bio;
           var vRest = 26.7 * Math.log((b.Ko + 0.04 * 145 + 4.5) / (140 + 0.6 + 49.5));
@@ -1499,9 +1600,11 @@
           items = TXT.lang === 'en'
             ? ['V_rest = ' + vRest.toFixed(1) + ' mV', 'V_peak = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' mV', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub]
             : ['V_спок = ' + vRest.toFixed(1) + ' мВ', 'V_пік = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' мВ', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub];
-          triggerBtn.textContent = TXT.replayBio;
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayBio;
+          triggerBtn.setAttribute('aria-label', TXT.replayBio);
           open3dLink.href = TXT.simBase + 'bio_neuron';
-          open3dLink.textContent = TXT.openBio;
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openBio + '</span>';
         }
         metricsWrap.innerHTML = '';
         items.forEach(function(tx) {
@@ -1509,7 +1612,9 @@
           sp.textContent = tx;
           metricsWrap.appendChild(sp);
         });
-        pauseBtn.textContent = sbx.paused ? TXT.resume : TXT.pause;
+        pauseBtn.innerHTML = sbx.paused ? TXT.icoPlay : TXT.icoPause;
+        pauseBtn.title = sbx.paused ? TXT.resume : TXT.pause;
+        pauseBtn.setAttribute('aria-label', sbx.paused ? TXT.resume : TXT.pause);
       }
 
       function bioWaveVoltage(tMs, b) {
@@ -1986,9 +2091,10 @@
             catToggleAll.style.display = 'none';
           } else {
             catToggleAll.style.display = '';
-            catToggleAll.textContent = catState.expanded
+            var lblTxt = catState.expanded
               ? TXT.collapse
               : TXT.showAll.replace('{n}', String(list.length));
+            catToggleAll.innerHTML = TXT.icoList + '<span>' + lblTxt + '</span>';
           }
         }
       }
@@ -2187,7 +2293,7 @@
           }
         });
         var mp = document.getElementById('home-mastery-pill');
-        if (mp) mp.textContent = 'Засвоєно розділів: ' + doneTotal + ' / 8';
+        if (mp) mp.textContent = doneTotal + ' / 8';
       } catch (e) {}
 
       /* 5. EQUATIONS TABLE FILTER + ONE-CLICK FORMULA COPY */
@@ -2214,11 +2320,17 @@
           var btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'copy-formula-btn';
-          btn.textContent = TXT.copyBtn;
+          btn.title = TXT.copyBtn;
+          btn.setAttribute('aria-label', TXT.copyBtn);
+          btn.innerHTML = TXT.icoCopy;
           btn.addEventListener('click', function() {
             try { navigator.clipboard.writeText(formulaText); } catch (e) {}
-            btn.textContent = TXT.copiedBtn;
-            setTimeout(function() { btn.textContent = TXT.copyBtn; }, 1400);
+            btn.classList.add('copied');
+            btn.innerHTML = TXT.icoCheck;
+            setTimeout(function() {
+              btn.classList.remove('copied');
+              btn.innerHTML = TXT.icoCopy;
+            }, 1400);
           });
           row.cells[2].appendChild(btn);
         });

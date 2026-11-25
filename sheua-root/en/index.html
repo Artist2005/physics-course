@@ -743,20 +743,75 @@
       color: var(--ink-muted);
     }
     .copy-formula-btn {
-      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      padding: 0;
       border: 1px solid var(--rule-dark);
-      border-radius: 2px;
+      border-radius: 3px;
       background: var(--bg-paper);
       color: var(--ink-secondary);
-      font-family: var(--font-sans);
-      font-size: 11.5px;
-      font-weight: 600;
       cursor: pointer;
       margin-left: 6px;
       vertical-align: middle;
     }
     .copy-formula-btn:hover {
       border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .copy-formula-btn.copied {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      background: #dcfce7;
+    }
+    .svg-ico {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      vertical-align: -2px;
+    }
+    .hub-pill, .btn-primary-link, .share-chip, .lab-link-chip, .nav-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+    .card-icon-badge svg { width: 17px; height: 17px; }
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
       color: var(--ink-primary);
     }
     .inquiry-stepper {
@@ -774,7 +829,8 @@
     .inquiry-panel.hidden { display: none; }
     @media (max-width: 640px) {
       .sandbox-box { padding: 14px 12px; }
-      .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+      .copy-formula-btn { width: 40px; height: 40px; }
+      .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
 
@@ -889,43 +945,57 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
-    <a class="brand" href="https://sheua.com/en/">SHEUA.COM · 3D Science Lab</a>
+    <a class="brand" href="https://sheua.com/en/" style="display:inline-flex;align-items:center;gap:7px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>SHEUA.COM</span></a>
     <nav class="nav-bar" aria-label="Main navigation">
-      <a href="/en/" class="active">Overview</a>
-      <a href="/en/exam-practice.html">Exam Quiz &amp; Labs</a>
-      <a href="/en/calculators.html">SI Calculators</a>
-      <a href="https://physics.sheua.com/">3D Lab (106 Sims)</a>
-      <a href="/about.html?lang=en">About &amp; Contact</a>
-      <a href="/privacy.html?lang=en">Privacy Policy</a>
-      <a href="/terms.html?lang=en">Terms of Use</a>
+      <a href="/en/" class="active"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Overview</span></a>
+      <a href="/en/exam-practice.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Exam Quiz</span></a>
+      <a href="/en/calculators.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>Calculators</span></a>
+      <a href="https://physics.sheua.com/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D Lab · 106</span></a>
+      <a href="/about.html?lang=en">About</a>
       <a class="lang-pill" href="/" title="Українська версія">УКР</a>
     </nav>
   </header>
 
   <main id="main-content" class="container">
     <section class="hero-sheet">
-      <span class="badge">SHEUA.COM · OPEN-ACCESS 3D SCIENCE TEXTBOOK &amp; VIRTUAL LAB</span>
-      <h1>Interactive 3D Physics, Chemistry &amp; Biology Virtual Laboratory and Reference Textbook</h1>
-      <p class="lead">The <strong>sheua.com</strong> educational platform and its laboratory environment at <strong>physics.sheua.com</strong> provide free, registration-free access to 106 real-time WebGL 3D simulations, step-by-step formula calculators, analytical derivations, and printable laboratory worksheets for secondary schools and universities.</p>
+      <span class="badge">SHEUA.COM · OPEN 3D SCIENCE PLATFORM</span>
+      <h1>3D Physics, Chemistry &amp; Biology Virtual Lab and Textbook</h1>
+      <p class="lead">Analytical derivations, SI calculators, and 106 real-time WebGL experiments at <strong>physics.sheua.com</strong> for schools and universities.</p>
+
+      <div class="kpi-strip">
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>106 3D simulations</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>AP / IB / GCSE quiz</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>8 SI calculators</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>No sign-up</span></span>
+      </div>
 
       <div class="cta-grid">
         <a class="cta-card" href="https://physics.sheua.com/">
-          <span class="card-kicker">physics.sheua.com · Physics (46 Experiments)</span>
-          <div class="card-title">3D General Physics Virtual Laboratory</div>
-          <p class="card-desc">Classical mechanics, momentum and energy conservation, Bernoulli hydrodynamics, Carnot thermodynamics, wave and geometric optics, electromagnetism, and atomic physics.</p>
-          <span class="card-link-hint">Open 3D Physics Lab →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">46 experiments</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg></span>
+          </div>
+          <div class="card-title">Physics</div>
+          <p class="card-desc">Mechanics, Bernoulli fluids, Carnot heat engines, wave and geometric optics, electromagnetism, and quantum atoms.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Open 3D Lab →</span></span>
         </a>
         <a class="cta-card" href="https://physics.sheua.com/sim/chem_orbitals">
-          <span class="card-kicker">physics.sheua.com · Chemistry (40 Experiments)</span>
-          <div class="card-title">3D General, Physical &amp; Organic Chemistry Lab</div>
-          <p class="card-desc">Quantum s, p, d orbitals, VSEPR molecular geometry, ionic crystal lattices, Arrhenius kinetics, Le Chatelier equilibrium, acid-base titration, buffers, and electrochemistry.</p>
-          <span class="card-link-hint">Open 3D Chemistry Lab →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">40 experiments</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg></span>
+          </div>
+          <div class="card-title">Chemistry</div>
+          <p class="card-desc">Quantum orbitals, VSEPR geometry, crystal lattices, Arrhenius kinetics, Le Chatelier, titration, buffers, and galvanic cells.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Open 3D Lab →</span></span>
         </a>
         <a class="cta-card" href="https://physics.sheua.com/sim/bio_eukaryote">
-          <span class="card-kicker">physics.sheua.com · Biology (20 Experiments)</span>
-          <div class="card-title">3D Cell Biology, Genetics &amp; Biophysics Lab</div>
-          <p class="card-desc">Eukaryotic organelles, chemiosmotic ATP synthase, mitosis and meiosis, DNA replication, PCR, CRISPR-Cas9 genome editing, Hodgkin-Huxley neuron spikes, and hemodynamics.</p>
-          <span class="card-link-hint">Open 3D Biology Lab →</span>
+          <div class="card-icon-row">
+            <span class="card-kicker">20 experiments</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg></span>
+          </div>
+          <div class="card-title">Biology &amp; Biophysics</div>
+          <p class="card-desc">Cell organelles, ATP synthase, mitosis, meiosis, DNA replication, PCR, CRISPR-Cas9, neuron spikes, and hemodynamics.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Open 3D Lab →</span></span>
         </a>
       </div>
 
@@ -933,13 +1003,13 @@
       <div class="sandbox-box" id="live-sandbox" role="region" aria-label="Interactive live science sandbox">
         <div class="sandbox-header">
           <div>
-            <span class="card-kicker">LIVE INTERACTIVE BENCH · TRY RIGHT HERE</span>
-            <h2 style="margin:2px 0 0;padding:0;border:none;font-size:19px;">Test real-time physics, chemistry, and biophysics models</h2>
+            <span class="card-kicker">LIVE BENCH</span>
+            <h2 style="margin:2px 0 0;padding:0;border:none;font-size:18.5px;">Real-time models in SI units</h2>
           </div>
           <div class="sandbox-tabs">
-            <button type="button" class="hub-pill active" data-sbx-mode="phys" aria-pressed="true">Physics: Collision</button>
-            <button type="button" class="hub-pill" data-sbx-mode="chem" aria-pressed="false">Chemistry: PV = νRT</button>
-            <button type="button" class="hub-pill" data-sbx-mode="bio" aria-pressed="false">Biophysics: Neuron Spike</button>
+            <button type="button" class="hub-pill active" data-sbx-mode="phys" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Collision</span></button>
+            <button type="button" class="hub-pill" data-sbx-mode="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>PV = νRT</span></button>
+            <button type="button" class="hub-pill" data-sbx-mode="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"/></svg><span>Neuron</span></button>
           </div>
         </div>
 
@@ -952,9 +1022,9 @@
         <div class="sandbox-telemetry">
           <div id="sbx-metrics" class="telemetry-metrics" aria-live="polite"></div>
           <div class="sandbox-actions">
-            <button type="button" id="sbx-trigger-btn" class="hub-pill">Replay</button>
-            <button type="button" id="sbx-pause-btn" class="hub-pill">Pause</button>
-            <a id="sbx-open-3d" class="btn-primary-link" href="https://physics.sheua.com/sim/collision">Open full 3D apparatus →</a>
+            <button type="button" id="sbx-trigger-btn" class="hub-pill" title="Restart simulation" aria-label="Restart simulation"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+            <button type="button" id="sbx-pause-btn" class="hub-pill" title="Pause or resume" aria-label="Pause or resume"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+            <a id="sbx-open-3d" class="btn-primary-link" href="https://physics.sheua.com/sim/collision"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D Lab →</span></a>
           </div>
         </div>
       </div>
@@ -962,22 +1032,21 @@
 
     <article class="article-sheet">
       
-      <h2>Interactive navigator across all 106 3D experiments</h2>
-      <p>Filter the laboratory registry by discipline or curriculum tier, search any physical law or biological mechanism, or launch a random 3D experiment:</p>
+      <h2>All 106 3D experiments</h2>
 
       <div class="explorer-toolbar" id="cat-disc-bar">
-        <button type="button" class="hub-pill active" data-cat-disc="all" aria-pressed="true">All · 106</button>
-        <button type="button" class="hub-pill" data-cat-disc="phys" aria-pressed="false">Physics · 46</button>
-        <button type="button" class="hub-pill" data-cat-disc="chem" aria-pressed="false">Chemistry · 40</button>
-        <button type="button" class="hub-pill" data-cat-disc="bio" aria-pressed="false">Biology · 20</button>
-        <button type="button" class="hub-pill" data-cat-tier="core" id="cat-tier-core" aria-pressed="false">Core School</button>
-        <button type="button" class="hub-pill" data-cat-tier="adv" id="cat-tier-adv" aria-pressed="false">Advanced</button>
+        <button type="button" class="hub-pill active" data-cat-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>All · 106</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Physics · 46</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Chemistry · 40</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Biology · 20</span></button>
+        <button type="button" class="hub-pill" data-cat-tier="core" id="cat-tier-core" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>Core</span></button>
+        <button type="button" class="hub-pill" data-cat-tier="adv" id="cat-tier-adv" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Advanced</span></button>
       </div>
 
       <div class="explorer-search-row">
         <label for="cat-search-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Search 106 3D simulations</label>
-        <input type="search" id="cat-search-input" class="filter-input" placeholder="Search 106 labs: pendulum, Carnot, lens, orbitals, titration, PCR, neuron..." />
-        <button type="button" id="cat-random-btn" class="hub-pill">Random 3D experiment</button>
+        <input type="search" id="cat-search-input" class="filter-input" placeholder="Pendulum, Carnot, lens, orbitals, titration, PCR, neuron..." />
+        <button type="button" id="cat-random-btn" class="hub-pill" title="Pick random 3D experiment"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Random</span></button>
       </div>
 
       <div id="cat-cards-grid" class="sim-catalog-grid">
@@ -1045,32 +1114,30 @@
       </div>
 
       <div class="catalog-footer-row">
-        <span id="cat-count-status">Showing 12 of 106 interactive 3D simulations</span>
-        <button type="button" id="cat-toggle-all-btn" class="hub-pill">Show all 106 experiments</button>
+        <span id="cat-count-status">12 / 106</span>
+        <button type="button" id="cat-toggle-all-btn" class="hub-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>All 106</span></button>
       </div>
 
       
-      <h2>Quick diagnostic check across physics, chemistry, and biology</h2>
-      <p>Solve three quantitative checkpoint problems with instant SI verification, or load a fresh trio of questions:</p>
+      <h2>Quick diagnostic check</h2>
 
       <div class="hub-filter-row">
-        <button type="button" id="qq-next-set-btn" class="hub-pill">Load another 3 questions</button>
-        <a class="hub-pill" style="text-decoration:none;" href="/en/exam-practice.html">Full 15-question exam quiz →</a>
-        <div class="score-pill" id="qq-score-pill" aria-live="polite">Score: 0 / 3</div>
+        <button type="button" id="qq-next-set-btn" class="hub-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Next 3</span></button>
+        <a class="hub-pill" style="text-decoration:none;" href="/en/exam-practice.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Full 15-item quiz →</span></a>
+        <div class="score-pill" id="qq-score-pill" aria-live="polite">0 / 3</div>
       </div>
 
       <div id="qq-cards-wrap"></div>
 
-      <h2>Compendium of fundamental governing equations in SI units</h2>
-      <p>Filter by discipline or search any law below to compare analytical formulas against live 3D telemetry and copy equations in one click:</p>
+      <h2>Core governing equations in SI units</h2>
       <div class="hub-filter-row">
-        <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true">All equations · 10</button>
-        <button type="button" class="hub-pill" data-law-disc="phys" aria-pressed="false">Physics</button>
-        <button type="button" class="hub-pill" data-law-disc="chem" aria-pressed="false">Chemistry</button>
-        <button type="button" class="hub-pill" data-law-disc="bio" aria-pressed="false">Biophysics</button>
+        <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>All · 10</span></button>
+        <button type="button" class="hub-pill" data-law-disc="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Physics</span></button>
+        <button type="button" class="hub-pill" data-law-disc="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Chemistry</span></button>
+        <button type="button" class="hub-pill" data-law-disc="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Biophysics</span></button>
       </div>
-      <label for="law-filter" style="display:block;font-size:13px;font-weight:600;margin-bottom:4px;color:var(--ink-primary);">Filter by law name, discipline, or SI symbol</label>
-      <input type="search" id="law-filter" class="filter-input" placeholder="For example: Bernoulli, Nernst, Compton, Carnot, Poiseuille..." />
+      <label for="law-filter" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Filter by law name or SI symbol</label>
+      <input type="search" id="law-filter" class="filter-input" placeholder="Search equation: Bernoulli, Nernst, Compton, Carnot, Poiseuille..." />
 
       <div class="table-scroll">
         <table class="ref-table" id="laws-table">
@@ -1148,30 +1215,28 @@
       </div>
 
       
-      <h2>Three-stage scientific inquiry workflow in action</h2>
-      <p>Every simulation chapter at <strong>physics.sheua.com</strong> guides learners through three experimental phases. Switch through the steps below using rolling bodies on an inclined plane as an example:</p>
+      <h2>Three inquiry stages in every 3D experiment</h2>
 
       <div class="inquiry-stepper">
         <div class="hub-filter-row" style="margin-top:0;">
-          <button type="button" class="hub-pill active" data-inq-step="1" aria-pressed="true">Step 1. Quantitative hypothesis</button>
-          <button type="button" class="hub-pill" data-inq-step="2" aria-pressed="false">Step 2. 3D experimentation</button>
-          <button type="button" class="hub-pill" data-inq-step="3" aria-pressed="false">Step 3. Analytical SI proof</button>
+          <button type="button" class="hub-pill active" data-inq-step="1" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>1. Hypothesis</span></button>
+          <button type="button" class="hub-pill" data-inq-step="2" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>2. 3D Test</span></button>
+          <button type="button" class="hub-pill" data-inq-step="3" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>3. SI Proof</span></button>
         </div>
 
         <div class="inquiry-panel" data-inq-panel="1">
-          <h3>Commit to a testable prediction before running the apparatus</h3>
-          <p>A solid cylinder and a thin hoop of identical mass and radius start rolling without slipping from rest at the top of an incline. Which body reaches the bottom first?</p>
+          <h3>Which rolling body reaches the bottom of the ramp first?</h3>
+          <p>A solid cylinder and a thin hoop of equal mass and radius start from rest without slipping:</p>
           <div class="nmt-opts-grid" id="inq-predict-opts">
-            <button type="button" class="nmt-opt-btn" data-inq-ans="correct">The solid cylinder arrives first</button>
-            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">The thin hoop arrives first</button>
-            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Both arrive at the exact same instant</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="correct">Solid cylinder</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Thin hoop</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Same time</button>
           </div>
           <p id="inq-predict-feedback" style="margin-top:10px;margin-bottom:0;font-weight:600;display:none;"></p>
         </div>
 
         <div class="inquiry-panel hidden" data-inq-panel="2">
-          <h3>Vary incline angle and compare center-of-mass accelerations</h3>
-          <p>Adjust ramp angle <code>α</code> below to compare linear acceleration for a solid cylinder versus a thin hoop at g = 9.81 m/s²:</p>
+          <h3>Linear acceleration versus ramp angle</h3>
           <label class="sandbox-slider-lbl" for="inq-angle-slider" style="max-width:340px;">
             <span class="sandbox-slider-top"><span>Ramp angle α</span><code id="inq-angle-val">30°</code></span>
             <input type="range" id="inq-angle-slider" min="10" max="60" step="1" value="30" />
@@ -1182,12 +1247,11 @@
         </div>
 
         <div class="inquiry-panel hidden" data-inq-panel="3">
-          <h3>Analytical derivation from rotational inertia</h3>
-          <p>Gravitational potential energy <code>mgh</code> splits between translational kinetic energy <code>½mv²</code> and rotational energy <code>½Iω²</code>. A solid cylinder has inertia factor <code>β = I/(mR²) = 0.5</code> while a thin hoop has <code>β = 1.0</code>:</p>
+          <h3>Rotational inertia derivation</h3>
           <div class="formula-block">
             <code>a = g sin α / (1 + β)  ⇒  a_cylinder = (2/3) g sin α,   a_hoop = (1/2) g sin α</code>
           </div>
-          <p style="margin-bottom:0;">Neither mass <code>m</code> nor radius <code>R</code> affects the outcome. Explore the full 3D vector apparatus and export a printable lab worksheet in <a href="https://physics.sheua.com/sim/incline">Inclined Plane Dynamics →</a></p>
+          <p style="margin-bottom:0;">Cylinder inertia factor <code>β = 0.5</code> versus hoop <code>β = 1.0</code>, independent of mass and radius. <a href="https://physics.sheua.com/sim/incline">Open 3D Incline →</a></p>
         </div>
       </div>
 
@@ -1195,11 +1259,11 @@
       <p>To support differentiated instruction across secondary school curricula such as Grades 8 to 11, GCSE, AP, and IB alongside introductory university courses, every simulation in the dropdown registry belongs to one of two curriculum tiers. The <strong>Core Curriculum</strong> tier covers foundational laws of mechanics, hydrostatics, ideal gases, geometric optics, atomic structure, acid-base pH, cell organelles, and Mendelian genetics. The <strong>Advanced Level</strong> tier covers gyroscopic precession, Michelson interferometry, Compton scattering, molecular orbital theory, Born-Haber cycles, Hodgkin-Huxley electrophysiology, and CRISPR-Cas9 gene editing.</p>
       
       <div class="share-strip" role="region" aria-label="Share material">
-        <span><strong>Share with students or colleagues.</strong></span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><strong>Share</strong></span>
         <div class="share-strip-actions">
-          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fen%2F&amp;text=SHEUA.COM%20%C2%B7%20Open-Access%203D%20Science%20Lab" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a class="share-chip" href="viber://forward?text=SHEUA.COM%20%C2%B7%20Open-Access%203D%20Science%20Lab%20https%3A%2F%2Fsheua.com%2Fen%2F">Viber</a>
-          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/en/');}catch(e){}b.textContent='Copied';setTimeout(function(){b.textContent='Copy link';},1800);">Copy link</button>
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fen%2F&amp;text=SHEUA.COM%20%C2%B7%20Open-Access%203D%20Science%20Lab" target="_blank" rel="noopener noreferrer"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Telegram</span></a>
+          <a class="share-chip" href="viber://forward?text=SHEUA.COM%20%C2%B7%20Open-Access%203D%20Science%20Lab%20https%3A%2F%2Fsheua.com%2Fen%2F"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg><span>Viber</span></a>
+          <button type="button" class="share-chip" title="Copy page link" aria-label="Copy page link" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/en/');}catch(e){}b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>';setTimeout(function(){b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7&quot;/><path d=&quot;M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7&quot;/></svg>';},1600);"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg></button>
         </div>
       </div>
     </article>
@@ -1242,7 +1306,7 @@
     (function(){
       var CATALOG = [{"k":"collision","d":"phys","t":"core","g":"Grade 9","n":"Conservation of Linear Momentum","s":"Elastic & inelastic collision of spheres, momentum exchange"},{"k":"incline","d":"phys","t":"core","g":"Grade 7-9","n":"Motion of a Body on an Inclined Plane","s":"Resolution of gravity, normal force N, and friction angle"},{"k":"pendulum","d":"phys","t":"core","g":"Grade 9-10","n":"Simple & Spring Pendulums","s":"Comparison of periods T = 2π√(L/g) and T = 2π√(m/k)"},{"k":"projectile","d":"phys","t":"core","g":"Grade 9-10","n":"Projectile Launched at an Angle to the Horizontal","s":"Vacuum parabola vs. ballistic trajectory with air drag"},{"k":"cradle","d":"phys","t":"core","g":"Grade 9","n":"Newton's Cradle","s":"Transmission of momentum and energy through a chain of steel spheres"},{"k":"centripetal","d":"phys","t":"core","g":"Grade 9-10","n":"Centripetal Acceleration & Turning Dynamics","s":"Centripetal acceleration a = ω²R and radial skidding threshold"},{"k":"archimedes","d":"phys","t":"core","g":"Grade 7","n":"Archimedes' Principle & Flotation Conditions","s":"Buoyant force F_A = ρgV and equilibrium at the waterline"},{"k":"gas","d":"phys","t":"core","g":"Grade 10","n":"Ideal Gas Under a Piston (Ideal Gas Law)","s":"Ideal gas law PV = νRT and thermal motion of molecules"},{"k":"wavefront","d":"phys","t":"core","g":"Grade 9-11","n":"Light Wavefront & Huygens-Fresnel Principle","s":"Huygens' secondary spherical wavelets and plane wavefront refraction"},{"k":"interference","d":"phys","t":"core","g":"Grade 11","n":"Interference of Light Wavefronts (Young's Double-Slit)","s":"Superposition of two spherical light wavefronts, maxima & minima"},{"k":"dispersion","d":"phys","t":"core","g":"Grade 9-11","n":"Dispersion of Light & Spectrum Formation in a Prism","s":"Wavelength dependence of refractive index n(λ) and spectral splitting"},{"k":"emwave","d":"phys","t":"core","g":"Grade 11","n":"Electromagnetic Light Wave (E, B & Poynting Vector)","s":"Mutually perpendicular fields E ⊥ B, phase wavefront, and light polarization"},{"k":"bernoulli","d":"phys","t":"core","g":"Grade 10","n":"Bernoulli's Equation & Venturi Effect","s":"Relation between flow speed and static pressure in a variable-cross-section pipe"},{"k":"lens","d":"phys","t":"core","g":"Grade 9-11","n":"Converging Lens & Light Wavefront Focusing","s":"Transformation of a plane light wavefront into a converging spherical wavefront"},{"k":"lorentz","d":"phys","t":"core","g":"Grade 11","n":"Lorentz Force & 3D Cyclotron Helix","s":"Helical trajectory of a charged particle in a uniform magnetic field B"},{"k":"faraday","d":"phys","t":"core","g":"Grade 9-11","n":"Faraday's Law & Lenz's Rule in 3D","s":"Generation of induced current in a coil by a moving magnet & Lenz's rule"},{"k":"kepler","d":"phys","t":"core","g":"Grade 10-11","n":"Elliptical Orbit & Kepler's Second Law","s":"Elliptical planetary orbit, equal-area sweep rate & orbital energy exchange"},{"k":"gyroscope","d":"phys","t":"core","g":"AP / University","n":"Moment of Inertia & Rolling Kinetic Energy","s":"Race between a solid cylinder and a hollow hoop rolling without slipping"},{"k":"standingwave","d":"phys","t":"core","g":"Grade 9-11","n":"Standing Waves & String Overtones in 3D","s":"Normal modes of a fixed string, nodes & antinodes, and frequency vs. tension"},{"k":"doppler","d":"phys","t":"core","g":"Grade 9-11","n":"Doppler Effect & Wavefront Deformation","s":"Compression of wavefront crests ahead of a moving source, frequency shift & Mach cone"},{"k":"malus","d":"phys","t":"core","g":"AP / University","n":"Light Wavefront Polarization & Malus's Law","s":"Transmission of a linearly polarized light wavefront through a polarizer and rotatable analyzer"},{"k":"diffraction","d":"phys","t":"core","g":"Grade 11","n":"Single-Slit Wavefront Diffraction in 3D","s":"Wavefront spreading through a narrow slit, Huygens wavelets & sinc²(β) intensity profile"},{"k":"carnot","d":"phys","t":"core","g":"Grade 10","n":"Ideal Heat Engine & Carnot Cycle in 3D","s":"Conversion of heater heat Q₁ into mechanical piston work A and heat rejection Q₂ to the cold sink"},{"k":"viscosity","d":"phys","t":"core","g":"AP / University","n":"Motion of a Sphere in a Viscous Fluid (Stokes' Law)","s":"Sphere falling through viscous oil, Stokes drag force & approach to terminal velocity"},{"k":"coulomb","d":"phys","t":"core","g":"Grade 8-10","n":"Coulomb's Law & 3D Electric Dipole Field","s":"3D electric field lines of two point charges, Coulomb force & test charge motion"},{"k":"rlccircuit","d":"phys","t":"core","g":"Grade 11","n":"Electromagnetic Oscillations in an LC / RLC Circuit","s":"Free electromagnetic oscillations between capacitor C and inductor coil L, Thomson period"},{"k":"atwood","d":"phys","t":"core","g":"Grade 9-10","n":"Atwood's Machine: Dynamics of Connected Masses & Pulley Inertia","s":"Motion of two masses on a thread over a pulley with moment of inertia, thread tension"},{"k":"coriolis","d":"phys","t":"core","g":"AP / University","n":"Coriolis Force & Motion in a Rotating Reference Frame","s":"Trajectory deflection of a body moving on a rotating platform, inertial forces"},{"k":"hooke","d":"phys","t":"core","g":"Grade 7-10","n":"Hooke's Law in Differential Form & Young's Modulus","s":"Elastic uniaxial tension of a rod, mechanical stress σ, strain ε, and Poisson necking"},{"k":"torricelli","d":"phys","t":"core","g":"Grade 7-10","n":"Torricelli's Theorem & Hydrodynamic Efflux of a Liquid Jet","s":"Efflux speed v = √(2gh) from a vessel orifice and parabolic jet range X = 2√(h·y₀)"},{"k":"maxwell","d":"phys","t":"core","g":"AP / University","n":"Maxwell's Law of Molecular Speed Distribution in an Ideal Gas","s":"Statistical distribution f(v), most probable speed v_p, mean ⟨v⟩, and RMS speed v_rms"},{"k":"newtonrings","d":"phys","t":"core","g":"AP / University · Grade 11","n":"Newton's Rings: Interference in a Thin Air Wedge & Half-Wave Phase Shift","s":"Concentric interference rings in the air wedge between a plano-convex lens and flat glass plate"},{"k":"photoelectric","d":"phys","t":"core","g":"Grade 11","n":"External Photoelectric Effect: Einstein's Equation & Stopping Potential","s":"Quantum emission of photoelectrons, work function A_w, red limit λ_max, and stopping voltage U_stop"},{"k":"rutherford","d":"phys","t":"core","g":"Grade 9-11","n":"Rutherford's Gold Foil Experiment & Planetary Model of the Atom","s":"Hyperbolic trajectories in the Coulomb field of a heavy nucleus, impact parameter b, and scattering angle θ"},{"k":"ampere","d":"phys","t":"core","g":"Grade 9-11","n":"Magnetic Interaction of Parallel Currents & Definition of the Ampere","s":"Magnetic interaction of two parallel conductors carrying currents I₁ and I₂, attraction vs. repulsion"},{"k":"hall","d":"phys","t":"core","g":"AP / University","n":"The Hall Effect: Transverse Potential Difference & Carrier Sign Determination","s":"Lorentz deflection of charge carriers in a slab with current I in magnetic field B, n-type vs. p-type"},{"k":"coupled","d":"phys","t":"core","g":"AP / University","n":"Coupled Pendulums: Normal Modes & Energy Beats","s":"Periodic exchange of mechanical energy between two pendulums coupled by a spring"},{"k":"precession","d":"phys","t":"core","g":"AP / University","n":"Gyroscopic Precession of a Heavy Symmetric Top","s":"Precession of spin angular momentum L around the vertical axis under gravitational torque M = [r × mg]"},{"k":"magnus","d":"phys","t":"core","g":"AP / University · Grade 10","n":"Magnus Effect & Lift Force on a Rotating Cylinder","s":"Transverse lift force F_M on a rotating cylinder in a uniform flow due to velocity circulation Γ"},{"k":"capillary","d":"phys","t":"core","g":"AP / University · Grade 10","n":"Surface Tension, Meniscus Curvature & Capillary Action","s":"Laplace pressure jump ΔP = 2σ cos θ / r under a concave or convex meniscus and equilibrium column height h"},{"k":"brownian","d":"phys","t":"core","g":"AP / University · Grade 8-10","n":"Brownian Motion & Einstein-Smoluchowski Diffusion","s":"Random walk trajectory of a suspended microparticle under molecular impacts and linear growth of mean-square displacement ⟨r²⟩ = 6Dt"},{"k":"michelson","d":"phys","t":"core","g":"AP / University","n":"Michelson Interferometer & Phase Shift of Beams","s":"Division of a coherent laser beam by a beam splitter into two orthogonal arms L₁, L₂ and fringe shift under mirror displacement Δd"},{"k":"compton","d":"phys","t":"core","g":"AP / University","n":"Compton Scattering & Relativistic Photon Momentum","s":"Elastic collision of an X-ray photon with a free electron, wavelength shift Δλ = λ_C (1 − cos θ), and recoil momentum"},{"k":"bohr","d":"phys","t":"core","g":"Grade 9-11","n":"Bohr Atom Model, de Broglie Standing Waves & Spectral Series","s":"Quantization of angular momentum L_n = nℏ, de Broglie standing waves 2πr_n = nλ_dB, and Rydberg spectral transitions"},{"k":"biot","d":"phys","t":"core","g":"AP / University","n":"Biot-Savart Law & Uniform Field of Helmholtz Coils","s":"Axial magnetic induction B(x) of circular current loops and generation of a uniform field plateau between Helmholtz coils"},{"k":"transformer","d":"phys","t":"core","g":"Grade 9-11","n":"AC Transformer & Mutual Electromagnetic Induction","s":"Mutual electromagnetic induction via shared alternating magnetic flux Φ(t) in a ferromagnetic core and turns ratio U₂/U₁ = N₂/N₁"},{"k":"chem_orbitals","d":"chem","t":"core","g":"Grade 8-11","n":"Atomic Electron Shells & 3D Quantum Orbitals (s, p, d)","s":"Schrödinger wavefunction |ψ|², quantum numbers n, l & nodal surfaces"},{"k":"chem_vsepr","d":"chem","t":"core","g":"AP / University","n":"Orbital Hybridization & 3D Molecular Geometry (VSEPR)","s":"Linear sp (180°), trigonal planar sp² (120°), tetrahedral sp³ (109.5°) & lone pairs"},{"k":"chem_lattice","d":"chem","t":"core","g":"Grade 8-11","n":"Ionic Crystal Lattice & Lattice Energy (NaCl)","s":"Rock-salt unit cell, Madelung constant, lattice energy & thermal phonons"},{"k":"chem_gaslaws","d":"chem","t":"core","g":"Grade 8-10","n":"Avogadro's Law, Molar Volume & the Ideal Gas Equation","s":"Molar volume V_m = 22.4 L/mol (STP), amount of substance ν & PV = νRT"},{"k":"chem_kinetics","d":"chem","t":"core","g":"Grade 9-11","n":"Chemical Reaction Rate, Activation Energy & Catalysis","s":"Active molecular collisions, Arrhenius equation k = A·exp(−E_a/RT) & catalytic pathway"},{"k":"chem_equilibrium","d":"chem","t":"core","g":"Grade 9-11","n":"Chemical Equilibrium & Le Chatelier's Principle (N₂O₄ ⇄ 2NO₂)","s":"Dynamic equilibrium N₂O₄ ⇄ 2NO₂, equilibrium constant K_p & shifts under T and P"},{"k":"chem_titration","d":"chem","t":"core","g":"Grade 8-11","n":"Acid-Base Titration, pH Curve & Visual Indicators","s":"Neutralization curve HCl + NaOH → NaCl + H₂O, equivalence point & steep pH jump"},{"k":"chem_galvanic","d":"chem","t":"core","g":"Grade 9-11","n":"Daniell-Jacobi Galvanic Cell & Electrode Potentials","s":"Anodic oxidation Zn⁰ → Zn²⁺ + 2e⁻, cathodic reduction Cu²⁺ + 2e⁻ → Cu⁰ & salt bridge"},{"k":"chem_electrolysis","d":"chem","t":"core","g":"Grade 9-11","n":"Electrolytic Cell & Faraday's Laws of Electrolysis","s":"Cathodic copper plating, anodic O₂↑ evolution & mass law m = (M·I·t)/(z·F)"},{"k":"chem_organic","d":"chem","t":"core","g":"Grade 9-11 · Organic Chemistry","n":"Benzene Structure C₆H₆, Aromaticity & Delocalized π-Bonding","s":"Planar hexagonal σ-ring (120°), delocalized 6π electron torus & resonance stabilization"},{"k":"chem_periodic","d":"chem","t":"core","g":"Grade 8-11 · Periodic Trends","n":"Periodic Table of Elements (118 Elements): Atomic Radius r_at, Ionization I₁ & χ","s":"Complete 3D Periodic Table of all 118 chemical elements (Periods 1-7, Groups 1-18, s-, p-, d-, and f-blocks: Lanthanides & Actinides), atomic radius r_at, ionization energy I₁ & electronegativity χ"},{"k":"chem_hbond","d":"chem","t":"core","g":"Grade 9-10 · Hydrogen Bonding","n":"Hydrogen Bonding, Hexagonal Ice Iₕ Lattice & Density Anomaly of Water","s":"Tetrahedral O-H···O hydrogen-bond cage in hexagonal ice Iₕ (ρ = 0.917 g/cm³) and maximum density of liquid water at +4 °C"},{"k":"chem_calorimetry","d":"chem","t":"core","g":"Grade 9-11 · Thermochemistry","n":"Thermochemistry, Hess's Law & Calorimetric Enthalpy Determination ΔH","s":"Measuring heat effects of exo- and endothermic reactions Q = (m·c + C_cal)ΔT = −ν·ΔH and Hess's Law enthalpy diagram"},{"k":"chem_osmosis","d":"chem","t":"core","g":"Grade 9-11 · Osmotic Pressure","n":"Osmotic Pressure (van 't Hoff's Law Π = iCRT) & Semipermeable Membrane","s":"Selective solvent diffusion across a semipermeable membrane in a U-tube osmometer, van 't Hoff factor i, and reverse osmosis desalination"},{"k":"chem_buffer","d":"chem","t":"core","g":"AP / University · Buffer Solutions","n":"Buffer Solutions, Henderson-Hasselbalch Equation & Buffer Capacity","s":"Comparing pH stability of an acetate buffer (CH₃COOH + CH₃COONa) against unbuffered water upon addition of strong acid HCl or base NaOH"},{"k":"chem_ksp","d":"chem","t":"core","g":"Grade 9-11 · Solubility Product","n":"Solubility Product K_sp, Golden Rain Precipitation (PbI₂↓) & Common-Ion Effect","s":"Crystallization of shimmering golden hexagonal PbI₂↓ platelets when Q_sp > K_sp(T) and solubility suppression by excess I⁻ ions"},{"k":"chem_beer","d":"chem","t":"core","g":"AP / University · Beer-Lambert Law","n":"Optical Spectrophotometry & the Beer-Lambert Law (A = ε·l·C)","s":"Monochromatic light attenuation through a colored solution in a quartz cuvette, optical absorbance A = ε(λ)lC, and transmittance T = 10⁻ᴬ"},{"k":"chem_fuelcell","d":"chem","t":"core","g":"Grade 9-11 · Hydrogen Fuel Cell","n":"Hydrogen-Oxygen Proton-Exchange Membrane Fuel Cell (PEMFC)","s":"Direct electrochemical conversion of 2H₂ + O₂ → 2H₂O into electrical power across a proton-exchange membrane with Pt catalyst electrodes"},{"k":"chem_isomerism","d":"chem","t":"core","g":"Grade 10-11 · Stereochemistry","n":"Stereochemistry: Geometric (cis-trans, Z/E) & Chiral Optical Isomerism (R/S)","s":"Comparing dipole polarity of cis/trans alkene isomers and optical rotation of plane-polarized light by chiral R/S-enantiomers"},{"k":"chem_polymer","d":"chem","t":"core","g":"Grade 9-11 · Polymerization","n":"Radical Polymerization of Ethylene & Polyethylene Chain Growth","s":"Chain-growth polymerization n CH₂=CH₂ → (-CH₂-CH₂-)_n, sp² → sp³ hybridization shift, molar mass M_n, and coil radius R_g"},{"k":"chem_mo","d":"chem","t":"core","g":"AP / University · Quantum Chemistry","n":"Molecular Orbitals (LCAO-MO): Bonding σ/π, Antibonding σ*/π* & Bond Order","s":"Wavefunction interference (ψ_A ± ψ_B), bonding σ/π & antibonding σ*/π* orbitals, bond order, and paramagnetism of O₂"},{"k":"chem_allotropes","d":"chem","t":"core","g":"Grade 9-11 · Carbon Allotropes & Nanotech","n":"Carbon Nanostructures & Allotropes: Buckminsterfullerene C₆₀, Nanotubes & Graphene","s":"sp² π-electron delocalization, Euler's polyhedron theorem (12 pentagons + 20 hexagons), and nanotube chirality"},{"k":"chem_complex","d":"chem","t":"core","g":"AP / University · Coordination Chemistry","n":"Coordination Complexes & Crystal Field Theory (d-Orbital Splitting Δ_o)","s":"Octahedral [ML₆]ⁿ⁺ vs. tetrahedral [ML₄]ⁿ⁺ complexes, t₂g / e_g splitting (Δ_o), spectrochemical series, and color"},{"k":"chem_bornhaber","d":"chem","t":"core","g":"AP / University · Crystal Thermochemistry","n":"Born-Haber Thermodynamic Cycle & Ionic Lattice Energy U_L","s":"Thermodynamic balance of sublimation, dissociation, ionization, electron affinity, and ionic lattice energy U_lat"},{"k":"chem_dipole","d":"chem","t":"core","g":"Grade 8-10 · Molecular Polarity","n":"Electronegativity, Bond Polarity & Molecular Dipole Moment Vector μ","s":"Partial charges δ⁺/δ⁻, vector addition of bond dipoles, and molecular torque in an electric field E"},{"k":"chem_phase","d":"chem","t":"core","g":"AP / University · Phase Equilibria","n":"Phase Diagrams P-T, Triple Point, Critical Point & Supercritical Fluid","s":"Clausius-Clapeyron equation, dry ice CO₂ sublimation, triple point, and supercritical state"},{"k":"chem_orders","d":"chem","t":"core","g":"AP / University · Rate Laws & Half-Life","n":"Reaction Orders (0th, 1st & 2nd Order), Rate Laws & Half-Life t₁/₂","s":"Integrated rate laws of zero, first, and second order reactions and scaling of half-life t₁/₂"},{"k":"chem_enzyme","d":"chem","t":"core","g":"AP / University · Enzyme Kinetics","n":"Enzyme Catalysis, Michaelis-Menten Kinetics & Active-Site Inhibition","s":"Enzyme-substrate complex ES, lock-and-key active site, V_max, K_M, and competitive inhibition"},{"k":"chem_gibbs","d":"chem","t":"core","g":"AP / University · Chemical Thermodynamics","n":"Gibbs Free Energy ΔG = ΔH − TΔS, Entropy & Reaction Spontaneity","s":"Competition between enthalpy ΔH and entropy TΔS, inversion temperature T* = ΔH/ΔS, and equilibrium K"},{"k":"chem_haber","d":"chem","t":"core","g":"Grade 9-11 · Industrial Chemistry","n":"Industrial Ammonia Synthesis (Haber-Bosch Process): N₂ + 3H₂ ⇄ 2NH₃","s":"Thermodynamic yield vs. kinetic rate trade-off at high pressure P, 450 °C, and promoted Fe catalyst"},{"k":"chem_raoult","d":"chem","t":"core","g":"AP / University · Colligative Properties","n":"Raoult's Law & Colligative Properties: Ebullioscopy ΔT_b & Cryoscopy ΔT_f","s":"Chapter XXXI. Vapor Pressure Lowering ΔP = χ₂P°, Boiling Point Elevation & Freezing Point Depression"},{"k":"chem_chromatography","d":"chem","t":"core","g":"AP / University · Separation Science","n":"Chromatography (TLC & Column): Partition Coefficient K_d & Retention Factor R_f","s":"Chapter XXXII. Stationary Silica Gel vs. Mobile Eluent Phase & Mixture Separation of Plant Pigments"},{"k":"chem_adsorption","d":"chem","t":"core","g":"AP / University · Surface Chemistry","n":"Surface Adsorption & the Langmuir Isotherm: θ = K·P / (1 + K·P)","s":"Chapter XXXIII. Dynamic Adsorption-Desorption Equilibrium on Activated Carbon & Monolayer Saturation"},{"k":"chem_colloids","d":"chem","t":"core","g":"Grade 9-11 · Colloid & Interface Science","n":"Colloidal Systems, Micelle Structure, Tyndall Cone & Schulze-Hardy Coagulation","s":"Chapter XXXIV. Rayleigh Light Scattering (I ∝ d⁶/λ⁴), Zeta Potential ζ & Coagulation by Multivalent Ions (z⁶)"},{"k":"chem_hydrolysis","d":"chem","t":"core","g":"Grade 9-11 · Salt Hydrolysis","n":"Salt Hydrolysis in Aqueous Solution: K_h = K_w / K_a, Degree h & Medium pH","s":"Chapter XXXV. Proton Exchange of Weak-Acid Anions (CH₃COO⁻, CO₃²⁻) & Weak-Base Cations (NH₄⁺, Al³⁺)"},{"k":"chem_corrosion","d":"chem","t":"core","g":"Grade 9-11 · Corrosion & Protection","n":"Electrochemical Corrosion of Metals & Sacrificial Anode Cathodic Protection","s":"Chapter XXXVI. Microgalvanic Cells (Fe | Zn vs. Fe | Cu), Oxygen Depolarization & Rust Formation"},{"k":"chem_liion","d":"chem","t":"core","g":"AP / University · Lithium-Ion Batteries","n":"Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂","s":"Chapter XXXVII. Li⁺ Intercalation Between Graphite Layers & Transition-Metal Oxide Octahedra at 3.7 V"},{"k":"chem_sn2","d":"chem","t":"core","g":"AP / University · Organic Reaction Mechanisms","n":"Bimolecular Nucleophilic Substitution (S_N2) & Walden Inversion of Configuration","s":"Chapter XXXVIII. Backside Attack HO⁻ + CH₃Br → [HO···CH₃···Br]‡ → CH₃OH + Br⁻ & Pentacoordinate Transition State"},{"k":"chem_ester","d":"chem","t":"core","g":"Grade 10-11 · Esters & Isotopic Tracers","n":"Fischer Esterification & Isotopic ¹⁸O Tracer: R-COOH + R′-¹⁸OH ⇄ R-CO-¹⁸OR′ + H₂O","s":"Chapter XXXIX. Acid-Catalyzed Acyl Substitution, Equilibrium Constant K_eq ≈ 4.0 & Dean-Stark Water Removal"},{"k":"chem_biopol","d":"chem","t":"core","g":"AP / University · Biochemistry: Proteins & DNA","n":"Biopolymers: Peptide Bond Planarity, Protein α-Helix & DNA Double Helix (A=T, G≡C)","s":"Chapter XL. Pauling-Corey α-Helix (3.6 res/turn) vs. Watson-Crick B-DNA, Chargaff's Rules & Melting T_m"},{"k":"bio_eukaryote","d":"bio","t":"core","g":"Grade 9-10 · Cytology: Cell Structure","n":"Eukaryotic Cell Architecture: Organelle Compartmentalization & S/V Scaling Limit","s":"Nucleus, Mitochondria, Rough/Smooth ER, Golgi Apparatus, Lysosomes & Surface-to-Volume Ratio S/V = 3/R"},{"k":"bio_mitochondria","d":"bio","t":"core","g":"Grade 10-11 · Bioenergetics & ATP Synthase","n":"Mitchell's Chemiosmotic Theory: Proton-Motive Force Δp & Rotary ATP Synthesis","s":"Electron Transport Chain (Complexes I-IV), Proton-Motive Force Δp & Rotary F₀F₁-ATP Synthase"},{"k":"bio_mitosis","d":"bio","t":"core","g":"Grade 9-10 · Mitosis & Cell Cycle","n":"Mitotic Cell Division: Spindle Microtubule Mechanics & Ploidy Conservation","s":"Prophase, Metaphase Plate, Anaphase Sister Chromatid Separation & Telophase (2n → 2n)"},{"k":"bio_replication","d":"bio","t":"core","g":"Grade 10-11 · DNA Replication","n":"Semiconservative DNA Replication: Replication Fork Mechanics & Meselson-Stahl Experiment","s":"Helicase, DNA Polymerase III, 5′→3′ Synthesis, Continuous Leading Strand & Lagging Okazaki Fragments"},{"k":"bio_ribosome","d":"bio","t":"core","g":"Grade 10-11 · Genetic Code & Translation","n":"Gene Expression & Translation: Ribosomal mRNA Decoding & Polypeptide Elongation","s":"Central Dogma DNA → mRNA → Protein, Triplet Genetic Code, Ribosomal A-P-E Sites & tRNA Decoding"},{"k":"bio_mendel","d":"bio","t":"core","g":"Grade 9-11 · Mendelian & Population Genetics","n":"Mendelian Genetics & Hardy-Weinberg Equilibrium: Genotype Frequency Dynamics","s":"Punnett Square, 3:1 & 9:3:3:1 Segregation Ratios & Population Allele Equilibrium p² + 2pq + q² = 1"},{"k":"bio_membrane","d":"bio","t":"core","g":"Grade 10-11 · Membrane Biophysics","n":"Plasma Membrane Biophysics: Electrogenic Na⁺/K⁺-ATPase Pump & Resting Potential","s":"Singer-Nicolson Fluid Mosaic Model, Active 3Na⁺/2K⁺ Transport & Nernst-Goldman Potential"},{"k":"bio_neuron","d":"bio","t":"core","g":"Grade 10-11 · Neuron Action Potential","n":"Action Potential Propagation: Hodgkin-Huxley Spike & Saltatory Conduction","s":"Hodgkin-Huxley Model, Na⁺ Depolarization, K⁺ Repolarization, Myelin Sheath & Nodes of Ranvier"},{"k":"bio_sarcomere","d":"bio","t":"core","g":"AP / University · Muscle Biomechanics","n":"Biomechanics of Muscle Contraction: Sliding Filament Sarcomere & Hill's Equation","s":"Huxley Sliding Filaments (Actin & Myosin), Ca²⁺-Troponin Gating & Hill's Force-Velocity Hyperbola"},{"k":"bio_photosynthesis","d":"bio","t":"core","g":"Grade 9-11 · Photosynthesis & Calvin Cycle","n":"Chloroplast Photosynthesis: Z-Scheme Electron Transport & Calvin Cycle CO₂ Fixation","s":"Thylakoid Light Reactions (PSII, Water Photolysis, PSI) & Stroma Calvin Cycle (RuBisCO)"},{"k":"bio_hemo","d":"bio","t":"core","g":"AP / University · Respiration & Bohr Effect","n":"Oxygen Transport by Hemoglobin: Allosteric Cooperativity (T ↔ R) & the Bohr Effect","s":"α₂β₂ Tetramer with 4 Fe²⁺ Hemes, Cooperative Hill Sigmoid (n ≈ 2.8), Myoglobin & Bohr Shift"},{"k":"bio_lotka","d":"bio","t":"core","g":"AP / University · Ecology: Lotka-Volterra Model","n":"Ecosystem Dynamics: Lotka-Volterra Predator-Prey Oscillations & Trophic Energy Transfer","s":"Predator-Prey Differential Equations, Phase-Space Attractor, Population Waves & Lindeman's 10% Pyramid"},{"k":"bio_meiosis","d":"bio","t":"core","g":"Grade 9-11 · Meiosis & Crossing-Over","n":"Meiotic Cell Division: Bivalent Synapsis, Crossing-Over & Combinatorial Diversity","s":"Prophase I Synapsis, Bivalents, Chiasmata, Homologous Recombination & Haploid Gametes (1n1c)"},{"k":"bio_eye","d":"bio","t":"core","g":"Grade 8-11 · Biophysics of Vision","n":"Biophysics of Vision: Optical Power of the Eye, Lens Accommodation & Spectacle Correction","s":"Corneal & Crystalline Lens Refraction, Ciliary Accommodation Reflex, Myopia & Hyperopia Correction"},{"k":"bio_synapse","d":"bio","t":"core","g":"AP / University · Neurobiology: Chemical Synapse","n":"Chemical Synapse: Calcium-Triggered Vesicle Exocytosis & Postsynaptic Ionotropic Receptors","s":"Voltage-Gated Ca²⁺ Influx, SNARE Vesicle Exocytosis, Synaptic Cleft Diffusion & EPSP / IPSP Potentials"},{"k":"bio_pcr","d":"bio","t":"core","g":"AP / University · Biotechnology: PCR","n":"Polymerase Chain Reaction (PCR): Thermal Cycling & Exponential DNA Amplification","s":"Thermal Cycler: Denaturation (95 °C), Primer Annealing (58 °C), Taq Extension (72 °C) & 2ⁿ Amplification"},{"k":"bio_crispr","d":"bio","t":"core","g":"AP / University · Genome Editing: CRISPR-Cas9","n":"CRISPR-Cas9 System: Programmable Target DNA Recognition & Precision Genome Editing","s":"PAM Motif Recognition (5′-NGG-3′), Guide sgRNA R-Loop, HNH/RuvC Nuclease Domains & HDR Repair"},{"k":"bio_phage","d":"bio","t":"core","g":"AP / University · Virology & Hershey-Chase","n":"Bacteriophage T4 Structure & Lytic Cycle: Biomechanical Syringe & Viral DNA Injection","s":"Icosahedral Capsid, Tail Fiber Receptor Binding, Contractile Sheath & High-Pressure Genome Injection"},{"k":"bio_hemodynamics","d":"bio","t":"core","g":"AP / University · Hemodynamics (Poiseuille Law)","n":"Cardiovascular Biophysics: Laminar Blood Flow & Hagen-Poiseuille Fourth-Power Law ($Q \\propto R^4$)","s":"Parabolic Erythrocyte Velocity Profile, Fourth-Power Radius Law (Q ∝ R⁴), Viscosity & Stenosis"},{"k":"bio_electrophoresis","d":"bio","t":"core","g":"AP / University · DNA Gel Electrophoresis","n":"DNA Gel Electrophoresis: Size-Dependent Separation of Restriction Fragments in a Polymer Matrix","s":"Polyanion Migration to Anode (+), Agarose Molecular Sieving & Logarithmic Base-Pair Calibration"}];
       var QUIZ_POOL = [{"disc":"Physics · Momentum","q":"A 2 kg cart moving at 6 m/s couples completely inelastically with a stationary 4 kg cart on a frictionless track. What is their final speed?","opts":["1.5 m/s","2.0 m/s","3.0 m/s","4.0 m/s"],"ans":1,"exp":"By conservation of linear momentum, u = m₁v₁ / (m₁ + m₂) = (2 · 6) / (2 + 4) = 2.0 m/s.","sim":"https://physics.sheua.com/sim/collision","simTitle":"Open 3D Collision Lab"},{"disc":"Chemistry · Gas Laws","q":"An ideal gas in a rigid container is heated from 300 K to 600 K. How do pressure P and root-mean-square molecular speed v_rms change?","opts":["P doubles and v_rms increases by √2","Both P and v_rms double","P quadruples and v_rms doubles","P stays constant and v_rms increases by √2"],"ans":0,"exp":"At constant volume P is proportional to T so pressure doubles, whereas v_rms = √(3RT/M) scales with √T and increases by √2 ≈ 1.41.","sim":"https://physics.sheua.com/sim/chem_gaslaws","simTitle":"Open 3D Gas Laws Lab"},{"disc":"Biophysics · Hemodynamics","q":"According to the Hagen-Poiseuille law, if an arteriole's inner radius R decreases by half at constant pressure drop ΔP, volumetric flow Q drops by a factor of:","opts":["2","4","8","16"],"ans":3,"exp":"Laminar flow Q = πΔP·R⁴ / (8ηL) scales with the fourth power of vessel radius: (1/2)⁴ = 1/16.","sim":"https://physics.sheua.com/sim/bio_hemodynamics","simTitle":"Open 3D Hemodynamics Lab"},{"disc":"Physics · Thermodynamics","q":"A reversible Carnot heat engine operates between a 600 K hot reservoir and a 300 K cold sink. What is its maximum thermal efficiency?","opts":["25%","50%","75%","100%"],"ans":1,"exp":"Carnot efficiency is η = 1 − T_C / T_H = 1 − 300 / 600 = 0.50, or 50%.","sim":"https://physics.sheua.com/sim/carnot","simTitle":"Open 3D Carnot Cycle Lab"},{"disc":"Chemistry · Buffers & pH","q":"An acetate buffer contains equal molar concentrations of CH₃COOH and CH₃COONa (pK_a = 4.76). What is the pH of the solution?","opts":["2.38","4.76","7.00","9.24"],"ans":1,"exp":"By the Henderson-Hasselbalch equation pH = pK_a + log₁₀([A⁻]/[HA]). Since [A⁻] = [HA], log₁₀(1) = 0 and pH = 4.76.","sim":"https://physics.sheua.com/sim/chem_buffer","simTitle":"Open 3D Buffer Lab"},{"disc":"Biology · Molecular Genetics","q":"Starting with 10 template DNA molecules, how many copies are produced after 6 ideal PCR cycles at 100% amplification efficiency?","opts":["60 copies","320 copies","640 copies","1280 copies"],"ans":2,"exp":"PCR amplification grows exponentially as N = N₀ · 2ⁿ = 10 · 2⁶ = 10 · 64 = 640 copies.","sim":"https://physics.sheua.com/sim/bio_pcr","simTitle":"Open 3D PCR Lab"}];
-      var TXT = {"lang":"en","simBase":"https://physics.sheua.com/sim/","discMap":{"phys":"Physics","chem":"Chemistry","bio":"Biology"},"replayPhys":"Collide again","replayChem":"Thermalize gas","replayBio":"Fire stimulus","pause":"Pause","resume":"Resume","openPhys":"Open 3D Collision Lab →","openChem":"Open 3D Gas Laws Lab →","openBio":"Open 3D Neuron Lab →","showing":"Showing {a} of {b} matching 3D simulations","showAll":"Show all {n} matching experiments","collapse":"Show compact list · 12","noMatch":"No simulations matched your query. Try clearing filters.","score":"Score: {c} / {t}","correctPrefix":"Correct. ","wrongPrefix":"Check the formula. ","copyBtn":"Copy","copiedBtn":"Copied","inqOk":"Correct. The solid cylinder concentrates more mass near its axis (I = ½mR²), so less energy goes into spin and 2/3 of g sin α drives forward acceleration.","inqErr":"Compare rotational inertia: a hoop has I = mR² whereas a solid cylinder has I = ½mR², so the solid cylinder accelerates faster down the ramp.","inqFmt":"α = {a}°: a_cylinder = {c} m/s², a_hoop = {h} m/s²","sliders":{"phys":[{"key":"m1","label":"Mass m₁","unit":"kg","min":0.5,"max":5,"step":0.5,"val":2},{"key":"m2","label":"Mass m₂","unit":"kg","min":0.5,"max":5,"step":0.5,"val":1.2},{"key":"v1","label":"Initial v₁","unit":"m/s","min":1,"max":9,"step":0.5,"val":5},{"key":"e","label":"Restitution e","unit":"","min":0,"max":1,"step":0.05,"val":0.85}],"chem":[{"key":"T","label":"Temperature T","unit":"K","min":150,"max":900,"step":10,"val":300},{"key":"V","label":"Volume V","unit":"L","min":6,"max":28,"step":1,"val":14},{"key":"nu","label":"Amount ν","unit":"mol","min":0.5,"max":3,"step":0.25,"val":1}],"bio":[{"key":"Istim","label":"Stimulus I_st","unit":"µA/cm²","min":2,"max":24,"step":1,"val":14},{"key":"Ko","label":"Extracellular [K⁺]_o","unit":"mM","min":2.5,"max":14,"step":0.5,"val":4.5},{"key":"gNa","label":"Na⁺ conductance g_Na","unit":"mS/cm²","min":50,"max":160,"step":5,"val":120}]},"canvasLabels":{"cm":"CM","ek":"Kinetic E_k","dq":"Heat loss ΔQ","piston":"Piston","gauge":"Pressure P","thresh":"Threshold −55 mV","spike":"All-or-none spike","sub":"Subthreshold decay","stim":"Stimulus"}};
+      var TXT = {"lang":"en","simBase":"https://physics.sheua.com/sim/","discMap":{"phys":"Physics","chem":"Chemistry","bio":"Biology"},"replayPhys":"Collide again","replayChem":"Thermalize gas","replayBio":"Fire stimulus","pause":"Pause","resume":"Resume","openPhys":"3D Lab →","openChem":"3D Lab →","openBio":"3D Lab →","showing":"{a} / {b}","showAll":"All {n}","collapse":"Compact · 12","noMatch":"No matching simulations.","score":"{c} / {t}","correctPrefix":"Correct. ","wrongPrefix":"Formula check. ","copyBtn":"Copy formula","copiedBtn":"Copied","icoPlay":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg>","icoPause":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>","icoReplay":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 3-6.7L3 8\"/><polyline points=\"3 3 3 8 8 8\"/></svg>","icoCube":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2 3 7v10l9 5 9-5V7l-9-5Z\"/><path d=\"m3 7 9 5 9-5\"/><path d=\"M12 12v10\"/></svg>","icoList":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"8\" y1=\"6\" x2=\"21\" y2=\"6\"/><line x1=\"8\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"8\" y1=\"18\" x2=\"21\" y2=\"18\"/><line x1=\"3\" y1=\"6\" x2=\"3.01\" y2=\"6\"/><line x1=\"3\" y1=\"12\" x2=\"3.01\" y2=\"12\"/><line x1=\"3\" y1=\"18\" x2=\"3.01\" y2=\"18\"/></svg>","icoCopy":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>","icoCheck":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"20 6 9 17 4 12\"/></svg>","inqOk":"Correct. The solid cylinder concentrates more mass near its axis (I = ½mR²), so less energy goes into spin and 2/3 of g sin α drives forward acceleration.","inqErr":"Compare rotational inertia: a hoop has I = mR² whereas a solid cylinder has I = ½mR², so the solid cylinder accelerates faster down the ramp.","inqFmt":"α = {a}°: a_cylinder = {c} m/s², a_hoop = {h} m/s²","sliders":{"phys":[{"key":"m1","label":"Mass m₁","unit":"kg","min":0.5,"max":5,"step":0.5,"val":2},{"key":"m2","label":"Mass m₂","unit":"kg","min":0.5,"max":5,"step":0.5,"val":1.2},{"key":"v1","label":"Initial v₁","unit":"m/s","min":1,"max":9,"step":0.5,"val":5},{"key":"e","label":"Restitution e","unit":"","min":0,"max":1,"step":0.05,"val":0.85}],"chem":[{"key":"T","label":"Temperature T","unit":"K","min":150,"max":900,"step":10,"val":300},{"key":"V","label":"Volume V","unit":"L","min":6,"max":28,"step":1,"val":14},{"key":"nu","label":"Amount ν","unit":"mol","min":0.5,"max":3,"step":0.25,"val":1}],"bio":[{"key":"Istim","label":"Stimulus I_st","unit":"µA/cm²","min":2,"max":24,"step":1,"val":14},{"key":"Ko","label":"Extracellular [K⁺]_o","unit":"mM","min":2.5,"max":14,"step":0.5,"val":4.5},{"key":"gNa","label":"Na⁺ conductance g_Na","unit":"mS/cm²","min":50,"max":160,"step":5,"val":120}]},"canvasLabels":{"cm":"CM","ek":"Kinetic E_k","dq":"Heat loss ΔQ","piston":"Piston","gauge":"Pressure P","thresh":"Threshold −55 mV","spike":"All-or-none spike","sub":"Subthreshold decay","stim":"Stimulus"}};
 
       /* 1. LIVE INTERACTIVE CANVAS SANDBOX */
       var canvas = document.getElementById('home-sim-canvas');
@@ -1373,9 +1437,11 @@
             'u₂ = ' + u2.toFixed(2) + uMs,
             'ΔQ = ' + dq.toFixed(1) + uJ
           ];
-          triggerBtn.textContent = TXT.replayPhys;
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayPhys;
+          triggerBtn.setAttribute('aria-label', TXT.replayPhys);
           open3dLink.href = TXT.simBase + 'collision';
-          open3dLink.textContent = TXT.openPhys;
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openPhys + '</span>';
         } else if (sbx.mode === 'chem') {
           var c = sbx.params.chem;
           var P = (c.nu * 8.31446 * c.T) / c.V;
@@ -1384,9 +1450,11 @@
           items = TXT.lang === 'en'
             ? ['P = ' + P.toFixed(1) + ' kPa', 'v_rms(N₂) = ' + Math.round(vrms) + ' m/s', '⟨E_k⟩ = ' + ek.toFixed(2) + ' zJ']
             : ['P = ' + P.toFixed(1) + ' кПа', 'v_кв(N₂) = ' + Math.round(vrms) + ' м/с', '⟨E_k⟩ = ' + ek.toFixed(2) + ' зДж'];
-          triggerBtn.textContent = TXT.replayChem;
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayChem;
+          triggerBtn.setAttribute('aria-label', TXT.replayChem);
           open3dLink.href = TXT.simBase + 'chem_gaslaws';
-          open3dLink.textContent = TXT.openChem;
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openChem + '</span>';
         } else {
           var b = sbx.params.bio;
           var vRest = 26.7 * Math.log((b.Ko + 0.04 * 145 + 4.5) / (140 + 0.6 + 49.5));
@@ -1395,9 +1463,11 @@
           items = TXT.lang === 'en'
             ? ['V_rest = ' + vRest.toFixed(1) + ' mV', 'V_peak = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' mV', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub]
             : ['V_спок = ' + vRest.toFixed(1) + ' мВ', 'V_пік = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' мВ', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub];
-          triggerBtn.textContent = TXT.replayBio;
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayBio;
+          triggerBtn.setAttribute('aria-label', TXT.replayBio);
           open3dLink.href = TXT.simBase + 'bio_neuron';
-          open3dLink.textContent = TXT.openBio;
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openBio + '</span>';
         }
         metricsWrap.innerHTML = '';
         items.forEach(function(tx) {
@@ -1405,7 +1475,9 @@
           sp.textContent = tx;
           metricsWrap.appendChild(sp);
         });
-        pauseBtn.textContent = sbx.paused ? TXT.resume : TXT.pause;
+        pauseBtn.innerHTML = sbx.paused ? TXT.icoPlay : TXT.icoPause;
+        pauseBtn.title = sbx.paused ? TXT.resume : TXT.pause;
+        pauseBtn.setAttribute('aria-label', sbx.paused ? TXT.resume : TXT.pause);
       }
 
       function bioWaveVoltage(tMs, b) {
@@ -1882,9 +1954,10 @@
             catToggleAll.style.display = 'none';
           } else {
             catToggleAll.style.display = '';
-            catToggleAll.textContent = catState.expanded
+            var lblTxt = catState.expanded
               ? TXT.collapse
               : TXT.showAll.replace('{n}', String(list.length));
+            catToggleAll.innerHTML = TXT.icoList + '<span>' + lblTxt + '</span>';
           }
         }
       }
@@ -2083,7 +2156,7 @@
           }
         });
         var mp = document.getElementById('home-mastery-pill');
-        if (mp) mp.textContent = 'Засвоєно розділів: ' + doneTotal + ' / 8';
+        if (mp) mp.textContent = doneTotal + ' / 8';
       } catch (e) {}
 
       /* 5. EQUATIONS TABLE FILTER + ONE-CLICK FORMULA COPY */
@@ -2110,11 +2183,17 @@
           var btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'copy-formula-btn';
-          btn.textContent = TXT.copyBtn;
+          btn.title = TXT.copyBtn;
+          btn.setAttribute('aria-label', TXT.copyBtn);
+          btn.innerHTML = TXT.icoCopy;
           btn.addEventListener('click', function() {
             try { navigator.clipboard.writeText(formulaText); } catch (e) {}
-            btn.textContent = TXT.copiedBtn;
-            setTimeout(function() { btn.textContent = TXT.copyBtn; }, 1400);
+            btn.classList.add('copied');
+            btn.innerHTML = TXT.icoCheck;
+            setTimeout(function() {
+              btn.classList.remove('copied');
+              btn.innerHTML = TXT.icoCopy;
+            }, 1400);
           });
           row.cells[2].appendChild(btn);
         });

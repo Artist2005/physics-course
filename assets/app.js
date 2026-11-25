@@ -36029,24 +36029,24 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         filterMechanics: 'Mechanics (15)',
         filterThermo: 'Fluids and heat (9)',
         filterElectro: 'Electromagnetism (8)',
-        crumbPredict: '1. Hypothesis',
-        crumbTest: '2. Experiment',
-        crumbExplain: '3. Proof',
-        camIso: 'Isometric',
+        crumbPredict: 'Hypothesis',
+        crumbTest: 'Experiment',
+        crumbExplain: 'Proof',
+        camIso: '3D',
         camFront: 'Front',
         camTop: 'Top',
         camSide: 'Side',
-        camMacro: 'Close-up',
-        camOrbit: '360° orbit',
+        camMacro: 'Zoom',
+        camOrbit: '360°',
         problemLabel: 'Question',
-        yourAnswer: 'Selected answer',
+        yourAnswer: 'Selected',
         changeBtn: 'Change',
-        runExp: 'Run experiment',
-        continueExp: 'Resume experiment',
-        repeatExp: 'Run again',
+        runExp: 'Run',
+        continueExp: 'Resume',
+        repeatExp: 'Replay',
         pauseBtn: 'Pause',
         resumeBtn: 'Resume',
-        stepBtn: 'Step +0.02 s',
+        stepBtn: '+0.02 s',
         resetBtn: 'Reset',
         verdictCorrect: 'Your prediction matches the experiment.',
         verdictIncorrect: 'The experiment shows a different result. See the derivation below.',
@@ -36058,10 +36058,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         paramsHeading: 'Parameters',
         presetDefault: 'Reset defaults',
         diagramHeading: 'Overlays',
-        toggleVectors: 'Force and velocity vectors',
-        toggleLabels: 'Vector labels',
-        toggleTrails: 'Trajectories and guides',
-        toggleParticles: 'Wavefronts and particles',
+        toggleVectors: 'Vectors',
+        toggleLabels: 'Labels',
+        toggleTrails: 'Trajectories',
+        toggleParticles: 'Wavefronts',
         legendV: '<span class="legend-bar" style="background:#166534;"></span> Velocity ($\\vec{v}$)',
         legendP: '<span class="legend-bar" style="background:#1d4ed8;"></span> Momentum / projections',
         legendMg: '<span class="legend-bar" style="background:#b91c1c;"></span> Gravity ($m\\vec{g}$)',
@@ -36082,23 +36082,23 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         eduLevelSchoolTip: 'School mode with everyday examples and hints',
         eduLevelUniTip: 'University mode with full derivations and telemetry',
         analogyCardTitle: 'Physical model and application',
-        classroomBtn: 'Classroom mode',
+        classroomBtn: 'Class',
         classroomBtnTip: 'Projector-friendly classroom view without ads or footers',
-        tierAll: 'All levels (106)',
-        tierCore: 'Core curriculum',
-        tierAdv: 'Advanced level',
+        tierAll: 'All · 106',
+        tierCore: 'Core',
+        tierAdv: 'Advanced',
         tierBadgeCore: 'Core',
         tierBadgeAdv: 'Advanced',
         hintBtnLabel: 'Hint',
-        hintBtnActive: 'Hide hint',
+        hintBtnActive: 'Hide',
         hintBoxPrefix: '',
         observeBannerText: '',
-        observeRevealBtn: 'Show derivation',
+        observeRevealBtn: 'Proof',
         nextLessonPrefix: 'Next',
         nextLessonBtnPrefix: 'Next',
         presetModeLabel: 'Presets',
         presetMin: 'Min',
-        presetStd: 'Standard',
+        presetStd: 'Std',
         presetMax: 'Max',
         presetMinTip: 'Low parameter values',
         presetStdTip: 'Default textbook values',
@@ -36121,7 +36121,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         discBiologyFull: 'Biology & Biophysics',
         discBiologySub: 'Cell organelles, DNA, CRISPR, neuron, optics, physiology',
         discBiologyTip: 'Biology & Biophysics (20 experiments)',
-        shareBtn: 'Link with params',
+        shareBtn: 'Share',
         shareTip: 'Copy link with current slider values',
         shareCopied: 'Copied',
         pinChartBtn: 'Pin curve',
@@ -36160,7 +36160,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         footerPrivacy: 'Privacy Policy',
         footerTerms: 'Terms of Use',
         footerCopy: '© 2026 physics.sheua.com · Interactive 3D Science Lab (106 Simulations)',
-        curriculumSummary: 'Full Curriculum Index (106 Simulations)'
+        curriculumSummary: 'All 106 labs'
       },
       uk: {
         docTitle: 'Курс загальної фізики · Інтерактивний 3D-підручник',
@@ -36188,21 +36188,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         crumbPredict: 'Гіпотеза',
         crumbTest: 'Дослід',
         crumbExplain: 'Доведення',
-        camIso: 'Ізометрія',
+        camIso: '3D',
         camFront: 'Фронт',
         camTop: 'План',
-        camSide: 'Профіль',
-        camMacro: 'Макро',
-        camOrbit: 'Огляд 360°',
+        camSide: 'Бік',
+        camMacro: 'Зум',
+        camOrbit: '360°',
         problemLabel: 'Питання',
-        yourAnswer: 'Ваша відповідь',
+        yourAnswer: 'Відповідь',
         changeBtn: 'Змінити',
-        runExp: 'Запустити дослід',
-        continueExp: 'Продовжити дослід',
-        repeatExp: 'Повторити дослід',
+        runExp: 'Старт',
+        continueExp: 'Далі',
+        repeatExp: 'Ще раз',
         pauseBtn: 'Пауза',
-        resumeBtn: 'Продовжити',
-        stepBtn: 'Крок +0.02 с',
+        resumeBtn: 'Далі',
+        stepBtn: '+0.02 с',
         resetBtn: 'Скинути',
         verdictCorrect: 'Дослід підтвердив вашу відповідь.',
         verdictIncorrect: 'Дослід дав інший результат. Нижче наведено доведення.',
@@ -36213,11 +36213,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         refHeadingRight: '',
         paramsHeading: 'Параметри',
         presetDefault: 'Скинути',
-        diagramHeading: 'Позначення на сцені',
-        toggleVectors: 'Вектори сил і швидкостей',
-        toggleLabels: 'Підписи векторів',
-        toggleTrails: 'Траєкторії та лінії',
-        toggleParticles: 'Хвильові фронти і частинки',
+        diagramHeading: 'Шари сцени',
+        toggleVectors: 'Вектори',
+        toggleLabels: 'Підписи',
+        toggleTrails: 'Траєкторії',
+        toggleParticles: 'Хвилі і частинки',
         legendV: '<span class="legend-bar" style="background:#166534;"></span> Швидкість ($\\vec{v}$)',
         legendP: '<span class="legend-bar" style="background:#1d4ed8;"></span> Імпульс / проєкції',
         legendMg: '<span class="legend-bar" style="background:#b91c1c;"></span> Сила тяжіння ($m\\vec{g}$)',
@@ -36226,7 +36226,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         optionPrefix: 'Варіант',
         secUnit: 'с',
         jouleUnit: 'Дж',
-        theoryBtnTitle: 'Теоретичний конспект',
+        theoryBtnTitle: 'Конспект',
         theoryBtnShort: 'Теорія',
         theoryExpandHint: 'Читати',
         theoryCollapseHint: 'Згорнути',
@@ -36238,24 +36238,24 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         eduLevelSchoolTip: 'Шкільний режим з прикладами і підказками',
         eduLevelUniTip: 'Університетський режим з повними викладками і телеметрією',
         analogyCardTitle: 'Фізична модель і застосування',
-        classroomBtn: 'Режим класу',
+        classroomBtn: 'Клас',
         classroomBtnTip: 'Режим для уроку та проєктора без реклами й службових блоків',
-        tierAll: 'Усі рівні (106)',
-        tierCore: 'Шкільний мінімум',
-        tierAdv: 'Поглиблений рівень',
+        tierAll: 'Усі · 106',
+        tierCore: 'База',
+        tierAdv: 'Поглиблений',
         tierBadgeCore: 'Шкільний мінімум',
         tierBadgeAdv: 'Поглиблений',
         hintBtnLabel: 'Підказка',
         hintBtnActive: 'Сховати',
         hintBoxPrefix: '',
         observeBannerText: '',
-        observeRevealBtn: 'Показати доведення',
+        observeRevealBtn: 'Доведення',
         nextLessonPrefix: 'Далі',
         nextLessonBtnPrefix: 'Далі',
         presetModeLabel: 'Режими',
-        presetMin: 'Мінімум',
-        presetStd: 'Стандарт',
-        presetMax: 'Максимум',
+        presetMin: 'Мін',
+        presetStd: 'Норма',
+        presetMax: 'Макс',
         presetMinTip: 'Мінімальні значення параметрів',
         presetStdTip: 'Стандартні значення параметрів',
         presetMaxTip: 'Максимальні значення параметрів',
@@ -36277,7 +36277,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         discBiologyFull: 'Біологія та біофізика',
         discBiologySub: 'Клітина, ДНК, CRISPR, нейрон, оптика ока, фізіологія',
         discBiologyTip: '3D-практикум з біології та біофізики (20 дослідів)',
-        shareBtn: 'Посилання з параметрами',
+        shareBtn: 'Лінк',
         shareTip: 'Скопіювати посилання з поточними параметрами',
         shareCopied: 'Скопійовано',
         pinChartBtn: 'Еталон',
@@ -36315,7 +36315,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         footerPrivacy: 'Політика конфіденційності',
         footerTerms: 'Умови використання',
         footerCopy: '© 2026 physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)',
-        curriculumSummary: 'Каталог усіх 106 дослідів курсу'
+        curriculumSummary: 'Усі 106 дослідів'
       }
     };
 
@@ -38940,13 +38940,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       const chInfo = getSheuaTextbookChapter(key);
       const hubsHtml = isUk
-        ? `<a class="related-hub-pill" href="https://sheua.com/${chInfo.slug}">${chInfo.titleUk}</a>` +
-          `<a class="related-hub-pill" href="https://sheua.com/nmt-trener.html">Тренажер НМТ</a>` +
-          `<a class="related-hub-pill" href="https://sheua.com/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>` +
-          `<a class="related-hub-pill" href="https://sheua.com/kalkuliatory.html">Калькулятори СІ</a>`
-        : `<a class="related-hub-pill" href="https://sheua.com/en/">SHEUA.COM · Textbook Overview</a>` +
-          `<a class="related-hub-pill" href="https://sheua.com/en/exam-practice.html">AP, IB &amp; GCSE Exam Quiz</a>` +
-          `<a class="related-hub-pill" href="https://sheua.com/en/calculators.html">SI Calculators</a>`;
+        ? `<a class="related-hub-pill" data-hub="book" href="https://sheua.com/${chInfo.slug}">Підручник</a>` +
+          `<a class="related-hub-pill" data-hub="quiz" href="https://sheua.com/nmt-trener.html">НМТ</a>` +
+          `<a class="related-hub-pill" data-hub="labs" href="https://sheua.com/laboratorni-7-11-klas.html">7-11 клас</a>` +
+          `<a class="related-hub-pill" data-hub="calc" href="https://sheua.com/kalkuliatory.html">Калькулятори</a>`
+        : `<a class="related-hub-pill" data-hub="book" href="https://sheua.com/en/">Textbook</a>` +
+          `<a class="related-hub-pill" data-hub="quiz" href="https://sheua.com/en/exam-practice.html">Exam Quiz</a>` +
+          `<a class="related-hub-pill" data-hub="calc" href="https://sheua.com/en/calculators.html">Calculators</a>`;
 
       const curCfg = dict[key] || SCENE_CONFIGS[key];
       const shareUrl = `https://physics.sheua.com${isUk ? '/uk' : ''}/sim/${key}`;
@@ -38955,11 +38955,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const encTxt = encodeURIComponent(shareText);
 
       box.innerHTML =
-        `<h2 class="related-cluster-title">${isUk ? 'Пов\'язані 3D-досліди та підручник' : 'Related 3D simulations & textbook'}</h2>` +
+        `<h2 class="related-cluster-title">${isUk ? 'Схожі 3D-досліди' : 'Related 3D labs'}</h2>` +
         `<ul class="related-sims-list">${relatedItemsHtml}</ul>` +
         `<div class="related-hubs-row">${hubsHtml}</div>` +
         `<div class="messenger-share-row">` +
-          `<span>${isUk ? 'Поділитися з класом' : 'Share with class'}</span>` +
+          `<span>${isUk ? 'Поділитись' : 'Share'}</span>` +
           `<span class="messenger-share-btns">` +
             `<a class="messenger-share-link" href="https://t.me/share/url?url=${encUrl}&amp;text=${encTxt}" target="_blank" rel="noopener noreferrer">Telegram</a>` +
             `<a class="messenger-share-link" href="viber://forward?text=${encTxt}%20${encUrl}">Viber</a>` +
@@ -40445,8 +40445,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-energy-balance-title', t.energyBalanceTitle);
       setTxt('ui-ref-heading-left', t.refHeadingLeft);
       setTxt('ui-ref-heading-right', t.refHeadingRight);
-      setTxt('ui-live-calc-title', uiState.lang === 'uk' ? 'Калькулятор за формулою' : 'Formula calculator');
-      setTxt('ui-live-calc-hint', uiState.lang === 'uk' ? 'Натисніть на число нижче для вводу' : 'Click any value below to type');
+      setTxt('ui-live-calc-title', uiState.lang === 'uk' ? 'Калькулятор' : 'Calculator');
+      setTxt('ui-live-calc-hint', uiState.lang === 'uk' ? 'клік по числу' : 'click value');
       setTxt('ui-params-heading', t.paramsHeading);
       setTxt('btn-preset-default', t.presetDefault);
       setTxt('ui-diagram-heading', t.diagramHeading);
@@ -40481,13 +40481,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
       setTxt('ui-hdr-about', uiState.lang === 'uk' ? 'Про проєкт' : 'About');
       setTxt('ui-hdr-privacy', uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy');
-      setTxt('ui-editorial-title', uiState.lang === 'uk' ? 'Про відкритий 3D-практикум природничих наук' : 'About the Open-Access 3D Science Laboratory');
+      setTxt('ui-editorial-title', uiState.lang === 'uk' ? '3D-лабораторія природничих наук' : '3D Science Virtual Lab');
       setTxt('ui-editorial-p1', uiState.lang === 'uk'
-        ? 'Освітня платформа physics.sheua.com об\'єднує 106 інтерактивних тривимірних симуляцій і теоретичних параграфів: 46 із курсу загальної фізики, 40 із загальної, фізичної та органічної хімії та 20 із клітинної біології, генетики й біофізики.'
-        : 'The physics.sheua.com educational platform provides 106 interactive 3D simulations and textbook chapters: 46 in general physics, 40 in physical, inorganic, and organic chemistry, and 20 in cell biology, genetics, and biophysics.');
+        ? '106 тривимірних симуляцій у системі СІ: 46 із фізики, 40 із хімії та 20 із біології й біофізики.'
+        : '106 real-time 3D simulations in SI units: 46 Physics, 40 Chemistry, and 20 Biology & Biophysics.');
       setTxt('ui-editorial-p2', uiState.lang === 'uk'
-        ? 'Кожна лабораторна робота містить тривимірну установку в реальному часі, осцилограму балансу енергії, покроковий калькулятор за робочими формулами, контрольне тестове завдання та готовий бланк звіту для друку.'
-        : 'Every chapter combines a real-time 3D apparatus, live energy oscillogram, interactive formula calculator with step-by-step substitution, practice question, and printable laboratory report worksheet.');
+        ? 'Живі вектори, осцилограми енергії, калькулятор формул і друк звіту.'
+        : 'Live vectors, energy oscillograms, formula calculator, and printable lab report.');
       setTxt('ui-editorial-about', t.footerAbout);
       setTxt('ui-editorial-privacy', t.footerPrivacy);
       setTxt('ui-editorial-terms', t.footerTerms);

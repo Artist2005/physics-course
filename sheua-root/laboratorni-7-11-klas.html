@@ -725,20 +725,75 @@
       color: var(--ink-muted);
     }
     .copy-formula-btn {
-      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      padding: 0;
       border: 1px solid var(--rule-dark);
-      border-radius: 2px;
+      border-radius: 3px;
       background: var(--bg-paper);
       color: var(--ink-secondary);
-      font-family: var(--font-sans);
-      font-size: 11.5px;
-      font-weight: 600;
       cursor: pointer;
       margin-left: 6px;
       vertical-align: middle;
     }
     .copy-formula-btn:hover {
       border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .copy-formula-btn.copied {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      background: #dcfce7;
+    }
+    .svg-ico {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      vertical-align: -2px;
+    }
+    .hub-pill, .btn-primary-link, .share-chip, .lab-link-chip, .nav-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+    .card-icon-badge svg { width: 17px; height: 17px; }
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
       color: var(--ink-primary);
     }
     .inquiry-stepper {
@@ -756,7 +811,8 @@
     .inquiry-panel.hidden { display: none; }
     @media (max-width: 640px) {
       .sandbox-box { padding: 14px 12px; }
-      .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+      .copy-formula-btn { width: 40px; height: 40px; }
+      .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
 
@@ -872,14 +928,14 @@
   
   <a class="skip-link" href="#main-content">Перейти до основного змісту</a>
   <header class="site-header">
-    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <a class="brand" href="https://sheua.com/" style="display:inline-flex;align-items:center;gap:7px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>SHEUA.COM</span></a>
     <nav class="nav-bar" aria-label="Головна навігація">
-      <a href="/">Підручник</a>
-      <a href="/nmt-trener.html">Тренажер НМТ</a>
-      <a href="/laboratorni-7-11-klas.html" class="active">Лабораторні 7-11 клас</a>
-      <a href="/kalkuliatory.html">Калькулятори СІ</a>
-      <a href="/si-constants-handbook.html">Сталі СІ</a>
-      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Підручник</span></a>
+      <a href="/nmt-trener.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>НМТ</span></a>
+      <a href="/laboratorni-7-11-klas.html" class="active"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>7-11 клас</span></a>
+      <a href="/kalkuliatory.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>Калькулятори</span></a>
+      <a href="/si-constants-handbook.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h6"/><path d="M9 15h6"/><path d="M12 7v10"/></svg><span>Сталі СІ</span></a>
+      <a href="https://physics.sheua.com/uk/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D-лаб · 106</span></a>
       <a class="lang-pill" href="/en/" title="English edition">EN</a>
     </nav>
   </header>
@@ -893,25 +949,24 @@
 
     <article class="article-sheet">
       
-      <h2>Вибір лабораторної роботи за класом і предметом</h2>
-      <p>Відфільтруйте перелік за класом або назвою теми, щоб миттєво перейти до потрібної віртуальної установки з живими вимірюваннями в системі СІ:</p>
+      <h2>Лабораторні роботи за класом і предметом</h2>
 
       <div class="hub-filter-row" role="group" aria-label="Фільтр за класом">
-        <button type="button" class="hub-pill active" data-grade-filter="all">Усі класи</button>
-        <button type="button" class="hub-pill" data-grade-filter="7">7 клас</button>
-        <button type="button" class="hub-pill" data-grade-filter="8">8 клас</button>
-        <button type="button" class="hub-pill" data-grade-filter="9">9 клас</button>
-        <button type="button" class="hub-pill" data-grade-filter="10">10 клас</button>
-        <button type="button" class="hub-pill" data-grade-filter="11">11 клас</button>
-        <button type="button" class="hub-pill" data-grade-filter="uni">Профільний і ЗВО</button>
+        <button type="button" class="hub-pill active" data-grade-filter="all"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>Усі</span></button>
+        <button type="button" class="hub-pill" data-grade-filter="7">7 кл</button>
+        <button type="button" class="hub-pill" data-grade-filter="8">8 кл</button>
+        <button type="button" class="hub-pill" data-grade-filter="9">9 кл</button>
+        <button type="button" class="hub-pill" data-grade-filter="10">10 кл</button>
+        <button type="button" class="hub-pill" data-grade-filter="11">11 кл</button>
+        <button type="button" class="hub-pill" data-grade-filter="uni">ЗВО</button>
       </div>
 
       <div class="hub-filter-row" role="group" aria-label="Фільтр за предметом">
-        <button type="button" class="hub-pill active" data-subj-lab="all">Усі предмети</button>
-        <button type="button" class="hub-pill" data-subj-lab="Фізика">Фізика</button>
-        <button type="button" class="hub-pill" data-subj-lab="Хімія">Хімія</button>
-        <button type="button" class="hub-pill" data-subj-lab="Біологія">Біологія і біофізика</button>
-        <span id="grade-lab-count" class="score-pill">Знайдено робіт: 30</span>
+        <button type="button" class="hub-pill active" data-subj-lab="all"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Усі</span></button>
+        <button type="button" class="hub-pill" data-subj-lab="Фізика"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Фізика</span></button>
+        <button type="button" class="hub-pill" data-subj-lab="Хімія"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Хімія</span></button>
+        <button type="button" class="hub-pill" data-subj-lab="Біологія"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Біологія</span></button>
+        <span id="grade-lab-count" class="score-pill">30</span>
       </div>
 
       <input type="search" id="grade-lab-search" class="filter-input" placeholder="Швидкий пошук теми: Архімед, маятник, лінза, титрування, мітоз, ДНК..." aria-label="Пошук лабораторної роботи" />
@@ -933,224 +988,224 @@
               <td>Фізика</td>
               <td>Визначення виштовхувальної сили Архімеда та умов плавання тіл</td>
               <td><code>F_A = ρ_рід·g·V_зан</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/archimedes">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/archimedes"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="7,9,10">
               <td>7, 9, 10 клас</td>
               <td>Фізика</td>
               <td>Дослідження пружної деформації, закону Гука та модуля Юнга</td>
               <td><code>F_пр = k·Δl, &nbsp; σ = E·ε</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/hooke">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/hooke"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="7,8">
               <td>7, 8 клас</td>
               <td>Хімія</td>
               <td>Періодична система хімічних елементів і будова електронних оболонок</td>
               <td><code>r_ат, &nbsp; I₁, &nbsp; χ, &nbsp; 1s…4d</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_periodic">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_periodic"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="7,9">
               <td>7, 9 клас</td>
               <td>Біологія</td>
               <td>Будова еукаріотичної клітини, органели та відношення площі до об'єму</td>
               <td><code>S / V = 3 / R</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_eukaryote">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_eukaryote"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="8,10">
               <td>8, 10 клас</td>
               <td>Хімія</td>
               <td>Калориметрія, тепловий ефект реакції та перевірка закону Гесса</td>
               <td><code>Q = c·m·ΔT, &nbsp; ΔH_р</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_calorimetry">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_calorimetry"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="8,9">
               <td>8, 9 клас</td>
               <td>Хімія</td>
               <td>Йонна кристалічна ґратка хлориду натрію та полярність зв'язку</td>
               <td><code>U_ґрат, &nbsp; μ = q·l</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_lattice">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_lattice"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="8,11">
               <td>8, 11 клас</td>
               <td>Фізика</td>
               <td>Взаємодія точкових зарядів за законом Кулона та поле диполя</td>
               <td><code>F = k|q₁q₂| / r²</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/coulomb">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/coulomb"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="8,9">
               <td>8, 9 клас</td>
               <td>Біологія</td>
               <td>Біофізика кровообігу та залежність потоку крові від радіуса судини</td>
               <td><code>Q = πΔP·R⁴ / (8ηL)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_hemodynamics">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_hemodynamics"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="8,9,11">
               <td>8, 9, 11 клас</td>
               <td>Біологія</td>
               <td>Оптична система людського ока, акомодація та корекція зору лінзами</td>
               <td><code>D = D₀ + ΔD_ак</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_eye">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_eye"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9">
               <td>9 клас</td>
               <td>Фізика</td>
               <td>Перевірка закону збереження імпульсу під час пружного і непружного ударів</td>
               <td><code>m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/collision">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/collision"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9,10">
               <td>9, 10 клас</td>
               <td>Фізика</td>
               <td>Визначення прискорення тіла на похилій площині з урахуванням сили тертя</td>
               <td><code>a = g(sin α - μ cos α)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/incline">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/incline"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9,10">
               <td>9, 10 клас</td>
               <td>Фізика</td>
               <td>Вимірювання періоду коливань нитяного та пружинного маятників</td>
               <td><code>T = 2π√(L/g)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/pendulum">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/pendulum"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9,11">
               <td>9, 11 клас</td>
               <td>Фізика</td>
               <td>Визначення фокусної відстані та оптичної сили тонкої збиральної лінзи</td>
               <td><code>1/F = 1/d + 1/f</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/lens">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/lens"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9,11">
               <td>9, 11 клас</td>
               <td>Фізика</td>
               <td>Дослідження явища електромагнітної індукції Фарадея та правила Ленца</td>
               <td><code>ℰ_i = -N ΔΦ / Δt</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/faraday">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/faraday"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9">
               <td>9 клас</td>
               <td>Хімія</td>
               <td>Кислотно-основне титрування, водневий показник pH та зміна індикаторів</td>
               <td><code>pH = -lg[H⁺], &nbsp; C₁V₁ = C₂V₂</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_titration">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_titration"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9">
               <td>9 клас</td>
               <td>Хімія</td>
               <td>Швидкість хімічної реакції, вплив температури і каталізатора</td>
               <td><code>k = A·exp(-E_a / RT)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_kinetics">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_kinetics"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9">
               <td>9 клас</td>
               <td>Біологія</td>
               <td>Фази мітотичного та мейотичного поділу клітини, кросинговер</td>
               <td><code>2n → 2n, &nbsp; 2n → n</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_mitosis">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_mitosis"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="9,10">
               <td>9, 10 клас</td>
               <td>Біологія</td>
               <td>Напівконсервативна реплікація ДНК та синтез білка на рибосомі</td>
               <td><code>A=T, G≡C, &nbsp; 5'→3'</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_replication">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_replication"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="10">
               <td>10 клас</td>
               <td>Фізика</td>
               <td>Балістичний рух тіла, кинутого під кутом до горизонту, з опором повітря</td>
               <td><code>L = v₀² sin(2α) / g</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/projectile">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/projectile"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="10">
               <td>10 клас</td>
               <td>Фізика</td>
               <td>Рівняння Бернуллі у трубі Вентурі та витікання рідини за формулою Торрічеллі</td>
               <td><code>P + ½ρv² = const, &nbsp; v = √(2gh)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bernoulli">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bernoulli"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="10">
               <td>10 клас</td>
               <td>Фізика</td>
               <td>Дослідження ізопроцесів в ідеальному газі та розподілу швидкостей Максвелла</td>
               <td><code>PV = νRT, &nbsp; v_кв = √(3RT/M)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/gas">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/gas"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="10">
               <td>10 клас</td>
               <td>Фізика</td>
               <td>Поверхневий натяг рідини, змочування та висота капілярного підняття</td>
               <td><code>h = 2σ cos θ / (ρgr)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/capillary">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/capillary"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="10">
               <td>10 клас</td>
               <td>Хімія</td>
               <td>Реакція естерифікації Фішера, просторова ізомерія та полімеризація етилену</td>
               <td><code>R-COOH + R'OH ⇄ R-COOR' + H₂O</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_ester">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_ester"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="10">
               <td>10 клас</td>
               <td>Біологія</td>
               <td>Фотосинтез у хлоропласті та хеміосмотичний синтез АТФ у мітохондрії</td>
               <td><code>Δp = Δψ - 61.5·ΔpH</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_photosynthesis">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_photosynthesis"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="11">
               <td>11 клас</td>
               <td>Фізика</td>
               <td>Вільні й вимушені електромагнітні коливання в контурі RLC та трансформатор</td>
               <td><code>ω₀ = 1/√(LC), &nbsp; k = N₁/N₂</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/rlccircuit">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/rlccircuit"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="11">
               <td>11 клас</td>
               <td>Фізика</td>
               <td>Інтерференція світла у досліді Юнга, кільця Ньютона та дифракція на щілині</td>
               <td><code>Δy = λL/d, &nbsp; r_m = √(mλR)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/interference">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/interference"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="11">
               <td>11 клас</td>
               <td>Фізика</td>
               <td>Зовнішній фотоефект Ейнштейна, дослід Резерфорда та квантові орбіти Бора</td>
               <td><code>hc/λ = A_вих + eU_з</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/photoelectric">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/photoelectric"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="11">
               <td>11 клас</td>
               <td>Хімія</td>
               <td>Хімічна рівновага Ле Шательє, гідроліз солей, гальванічний елемент і електроліз</td>
               <td><code>E = E° + (RT/zF)ln([Ox]/[Red])</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_equilibrium">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_equilibrium"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="11">
               <td>11 клас</td>
               <td>Біологія</td>
               <td>Закон Гарді-Вайнберга, полімеразна ланцюгова реакція та гель-електрофорез ДНК</td>
               <td><code>p² + 2pq + q² = 1</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_pcr">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_pcr"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="uni">
               <td>Профільний і ЗВО</td>
               <td>Фізика</td>
               <td>Гіроскопічна прецесія, інтерферометр Майкельсона та комптонівське розсіяння</td>
               <td><code>Ω_пр = mgl / (Iω), &nbsp; Δλ = λ_C(1 - cos θ)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/compton">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/compton"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="uni">
               <td>Профільний і ЗВО</td>
               <td>Хімія</td>
               <td>Метод МО ЛКАО, цикл Борна-Габера, теорія кристалічного поля та механізм SN2</td>
               <td><code>BO = ½(N_зв - N_розп)</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/chem_mo">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/chem_mo"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
             <tr data-grades="uni">
               <td>Профільний і ЗВО</td>
               <td>Біофізика</td>
               <td>Потенціал дії Годжкіна-Гакслі, хімічний синапс та редагування геному CRISPR-Cas9</td>
               <td><code>C_m dV/dt = -∑ I_ion</code></td>
-              <td><a href="https://physics.sheua.com/uk/sim/bio_crispr">Відкрити 3D-дослід →</a></td>
+              <td><a href="https://physics.sheua.com/uk/sim/bio_crispr"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D →</span></a></td>
             </tr>
           </tbody>
         </table>
@@ -1171,17 +1226,22 @@
         var countEl = document.getElementById('grade-lab-count');
         var rows = document.querySelectorAll('#grade-labs-table tbody tr');
 
+        var ICO_COPY2 = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>";
+        var ICO_CHECK2 = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"20 6 9 17 4 12\"/></svg>";
         Array.prototype.forEach.call(rows, function(tr) {
           var code = tr.cells[3] && tr.cells[3].querySelector('code');
           if (!code) return;
           var b = document.createElement('button');
           b.type = 'button';
           b.className = 'copy-formula-btn';
-          b.textContent = 'Копіювати';
+          b.title = 'Скопіювати формулу';
+          b.setAttribute('aria-label', 'Скопіювати формулу');
+          b.innerHTML = ICO_COPY2;
           b.addEventListener('click', function() {
             try { navigator.clipboard.writeText(code.textContent.replace(/\s+/g, ' ').trim()); } catch (e) {}
-            b.textContent = 'Скопійовано';
-            setTimeout(function(){ b.textContent = 'Копіювати'; }, 1400);
+            b.classList.add('copied');
+            b.innerHTML = ICO_CHECK2;
+            setTimeout(function(){ b.classList.remove('copied'); b.innerHTML = ICO_COPY2; }, 1400);
           });
           tr.cells[3].appendChild(b);
         });
@@ -1199,7 +1259,7 @@
             tr.style.display = vis ? '' : 'none';
             if (vis) shown++;
           });
-          if (countEl) countEl.textContent = 'Знайдено робіт: ' + shown;
+          if (countEl) countEl.textContent = String(shown);
         }
 
         Array.prototype.forEach.call(document.querySelectorAll('[data-grade-filter]'), function(btn) {
@@ -1229,20 +1289,20 @@
       <section class="lab-links-box" aria-label="Швидкі переходи до лабораторії">
         <h2>Пов'язані розділи та 3D-експерименти</h2>
         <div class="lab-links-grid">
-          <a class="lab-link-chip" href="https://physics.sheua.com/uk/">Повний каталог фізики (46 робіт) →</a>
-          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_orbitals">Повний каталог хімії (40 робіт) →</a>
-          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_eukaryote">Повний каталог біології (20 робіт) →</a>
-          <a class="lab-link-chip" href="/nmt-trener.html">Тренажер завдань НМТ →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Повний каталог фізики (46 робіт) →</span></a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_orbitals"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Повний каталог хімії (40 робіт) →</span></a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_eukaryote"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Повний каталог біології (20 робіт) →</span></a>
+          <a class="lab-link-chip" href="/nmt-trener.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Тренажер завдань НМТ →</span></a>
         </div>
       </section>
 
       
       <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
-        <span><strong>Надіслати учням або колегам.</strong></span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><strong>Поділитись</strong></span>
         <div class="share-strip-actions">
-          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Flaboratorni-7-11-klas.html&amp;text=%D0%92%D1%96%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8%20%D0%B7%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20%D0%B4%D0%BB%D1%8F%207%2C%208%2C%209%2C%2010%20%D1%96%2011%20%D0%BA%D0%BB%D0%B0%D1%81%D1%96%D0%B2%20%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a class="share-chip" href="viber://forward?text=%D0%92%D1%96%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8%20%D0%B7%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20%D0%B4%D0%BB%D1%8F%207%2C%208%2C%209%2C%2010%20%D1%96%2011%20%D0%BA%D0%BB%D0%B0%D1%81%D1%96%D0%B2%20%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD%20https%3A%2F%2Fsheua.com%2Flaboratorni-7-11-klas.html">Viber</a>
-          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/laboratorni-7-11-klas.html');}catch(e){}b.textContent='Скопійовано';setTimeout(function(){b.textContent='Скопіювати адресу';},1800);">Скопіювати адресу</button>
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Flaboratorni-7-11-klas.html&amp;text=%D0%92%D1%96%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8%20%D0%B7%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20%D0%B4%D0%BB%D1%8F%207%2C%208%2C%209%2C%2010%20%D1%96%2011%20%D0%BA%D0%BB%D0%B0%D1%81%D1%96%D0%B2%20%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD" target="_blank" rel="noopener noreferrer"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Telegram</span></a>
+          <a class="share-chip" href="viber://forward?text=%D0%92%D1%96%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D1%96%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8%20%D0%B7%20%D1%84%D1%96%D0%B7%D0%B8%D0%BA%D0%B8%2C%20%D1%85%D1%96%D0%BC%D1%96%D1%97%20%D1%82%D0%B0%20%D0%B1%D1%96%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%97%20%D0%B4%D0%BB%D1%8F%207%2C%208%2C%209%2C%2010%20%D1%96%2011%20%D0%BA%D0%BB%D0%B0%D1%81%D1%96%D0%B2%20%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD%20https%3A%2F%2Fsheua.com%2Flaboratorni-7-11-klas.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg><span>Viber</span></a>
+          <button type="button" class="share-chip" title="Скопіювати посилання" aria-label="Скопіювати посилання" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/laboratorni-7-11-klas.html');}catch(e){}b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>';setTimeout(function(){b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7&quot;/><path d=&quot;M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7&quot;/></svg>';},1600);"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg></button>
         </div>
       </div>
       <nav class="chapter-pager" aria-label="Навігація порталу">

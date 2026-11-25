@@ -725,20 +725,75 @@
       color: var(--ink-muted);
     }
     .copy-formula-btn {
-      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      padding: 0;
       border: 1px solid var(--rule-dark);
-      border-radius: 2px;
+      border-radius: 3px;
       background: var(--bg-paper);
       color: var(--ink-secondary);
-      font-family: var(--font-sans);
-      font-size: 11.5px;
-      font-weight: 600;
       cursor: pointer;
       margin-left: 6px;
       vertical-align: middle;
     }
     .copy-formula-btn:hover {
       border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .copy-formula-btn.copied {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      background: #dcfce7;
+    }
+    .svg-ico {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      vertical-align: -2px;
+    }
+    .hub-pill, .btn-primary-link, .share-chip, .lab-link-chip, .nav-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+    .card-icon-badge svg { width: 17px; height: 17px; }
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
       color: var(--ink-primary);
     }
     .inquiry-stepper {
@@ -756,7 +811,8 @@
     .inquiry-panel.hidden { display: none; }
     @media (max-width: 640px) {
       .sandbox-box { padding: 14px 12px; }
-      .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+      .copy-formula-btn { width: 40px; height: 40px; }
+      .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
 
@@ -873,14 +929,14 @@
   
   <a class="skip-link" href="#main-content">Перейти до основного змісту</a>
   <header class="site-header">
-    <a class="brand" href="https://sheua.com/">SHEUA.COM · Природничі науки</a>
+    <a class="brand" href="https://sheua.com/" style="display:inline-flex;align-items:center;gap:7px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>SHEUA.COM</span></a>
     <nav class="nav-bar" aria-label="Головна навігація">
-      <a href="/">Підручник</a>
-      <a href="/nmt-trener.html">Тренажер НМТ</a>
-      <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
-      <a href="/kalkuliatory.html">Калькулятори СІ</a>
-      <a href="/si-constants-handbook.html" class="active">Сталі СІ</a>
-      <a href="https://physics.sheua.com/uk/">3D-лабораторія (106)</a>
+      <a href="/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Підручник</span></a>
+      <a href="/nmt-trener.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>НМТ</span></a>
+      <a href="/laboratorni-7-11-klas.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>7-11 клас</span></a>
+      <a href="/kalkuliatory.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>Калькулятори</span></a>
+      <a href="/si-constants-handbook.html" class="active"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h6"/><path d="M9 15h6"/><path d="M12 7v10"/></svg><span>Сталі СІ</span></a>
+      <a href="https://physics.sheua.com/uk/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D-лаб · 106</span></a>
       <a class="lang-pill" href="/en/" title="English edition">EN</a>
     </nav>
   </header>
@@ -895,33 +951,32 @@
     <article class="article-sheet">
       <nav class="toc-box" aria-label="Зміст розділу">
         <div class="toc-box-header">
-          <span>ЗМІСТ РОЗДІЛУ</span>
-          <span id="ch-mastery-badge" class="mastery-pill">Прогрес курсу: 0 / 8 розділів</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>ЗМІСТ</span></span>
+          <span id="ch-mastery-badge" class="mastery-pill">0 / 8</span>
         </div>
         <ul id="chapter-toc-list" class="toc-links"></ul>
       </nav>
 
       
-      <h2>Інтерактивний калькулятор похибок вимірювань і конвертер одиниць СІ</h2>
-      <p>Скористайтеся двома вбудованими метрологічними інструментами нижче для автоматичної статистичної обробки лабораторної серії та переведення несистемних одиниць:</p>
+      <h2>Метрологічні калькулятори похибок і одиниць СІ</h2>
       <section class="si-tools-grid" aria-label="Інтерактивні метрологічні калькулятори">
         <div class="si-tool-card">
-          <div class="card-kicker">СТАТИСТИЧНА ОБРОБКА ДАНИХ · БЕССЕЛЬ І СТЬЮДЕНТ</div>
-          <h3>Калькулятор похибки прямих вимірювань</h3>
+          <div class="card-kicker"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg> БЕССЕЛЬ І СТЬЮДЕНТ</div>
+          <h3>Статистична похибка серії</h3>
           <label class="si-field" for="err-series-input">
-            <span>Серія вимірювань x₁, x₂, ..., x_n (через кому або пробіл)</span>
+            <span>Виміри x₁, x₂, ..., x_n</span>
             <input type="text" id="err-series-input" value="2.01, 1.98, 2.02, 2.00, 1.99" />
           </label>
           <div class="calc-inputs-row">
             <label class="si-field" for="err-inst-input" style="margin-bottom:0;">
-              <span>Приладова похибка Δ_прил</span>
+              <span>Приладова Δ_прил</span>
               <input type="number" id="err-inst-input" value="0.01" step="0.001" min="0" />
             </label>
             <label class="si-field" for="err-conf-select" style="margin-bottom:0;">
-              <span>Довірча ймовірність P</span>
+              <span>Довірча P</span>
               <select id="err-conf-select">
-                <option value="95" selected>0.95 (стандартна)</option>
-                <option value="99">0.99 (підвищена)</option>
+                <option value="95" selected>0.95</option>
+                <option value="99">0.99</option>
               </select>
             </label>
           </div>
@@ -929,28 +984,28 @@
         </div>
 
         <div class="si-tool-card">
-          <div class="card-kicker">ПЕРЕВЕДЕННЯ ОДИНИЦЬ · СТАНДАРТ СІ</div>
-          <h3>Швидкий конвертер позасистемних одиниць у СІ</h3>
+          <div class="card-kicker"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h6"/><path d="M9 15h6"/><path d="M12 7v10"/></svg> СТАНДАРТ СІ</div>
+          <h3>Конвертер одиниць у СІ</h3>
           <div class="calc-inputs-row">
             <label class="si-field" for="unit-val-input" style="margin-bottom:0;">
-              <span>Вхідне числове значення</span>
+              <span>Значення</span>
               <input type="number" id="unit-val-input" value="72" step="any" />
             </label>
             <label class="si-field" for="unit-type-select" style="margin-bottom:0;">
-              <span>Величина та одиниця</span>
+              <span>Одиниця</span>
               <select id="unit-type-select">
-                <option value="kmh">км/год → м/с (швидкість)</option>
-                <option value="mmhg">мм рт. ст. → Па (тиск)</option>
-                <option value="atm">атм → Па (тиск)</option>
-                <option value="bar">бар → Па (тиск)</option>
-                <option value="kcal">ккал → Дж (теплота)</option>
-                <option value="kwh">кВт·год → Дж (енергія)</option>
-                <option value="ev">еВ → Дж (енергія частинки)</option>
-                <option value="cel">°C → К (температура)</option>
-                <option value="lit">л → м³ (об'єм)</option>
-                <option value="ml">мл (см³) → м³ (об'єм)</option>
-                <option value="cm2">см² → м² (площа)</option>
-                <option value="gcm3">г/см³ → кг/м³ (густина)</option>
+                <option value="kmh">км/год → м/с</option>
+                <option value="mmhg">мм рт. ст. → Па</option>
+                <option value="atm">атм → Па</option>
+                <option value="bar">бар → Па</option>
+                <option value="kcal">ккал → Дж</option>
+                <option value="kwh">кВт·год → Дж</option>
+                <option value="ev">еВ → Дж</option>
+                <option value="cel">°C → К</option>
+                <option value="lit">л → м³</option>
+                <option value="ml">мл → м³</option>
+                <option value="cm2">см² → м²</option>
+                <option value="gcm3">г/см³ → кг/м³</option>
               </select>
             </label>
           </div>
@@ -1126,32 +1181,30 @@
 
       
       <section id="chapter-checkpoint" aria-label="Контрольна самоперевірка розділу">
-        <h2>Контрольна самоперевірка за матеріалом розділу</h2>
-        <p>Дайте відповідь на три перевірочні запитання, щоб закріпити основні формули розділу та відмітити його як опрацьований:</p>
+        <h2>Самоперевірка за розділом</h2>
         <div class="hub-filter-row">
-          <div class="score-pill" id="ch-quiz-score" style="margin-left:0;" aria-live="polite">Результат розділу: 0 / 3</div>
-          <button type="button" id="ch-quiz-reset" class="hub-pill">Скинути відповіді</button>
+          <div class="score-pill" id="ch-quiz-score" style="margin-left:0;" aria-live="polite">0 / 3</div>
+          <button type="button" id="ch-quiz-reset" class="hub-pill" title="Скинути відповіді" aria-label="Скинути відповіді"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg><span>Скинути</span></button>
         </div>
         <div id="ch-quiz-cards"></div>
       </section>
 
       <section class="lab-links-box" aria-label="Пов'язані тривимірні лабораторні роботи">
-        <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
-        <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
+        <h2>3D-симуляції за темою розділу</h2>
         <div class="lab-links-grid">
-          <a class="lab-link-chip" href="https://physics.sheua.com/uk/">Відкрити 3D-практикум з фізики (46 робіт) →</a>
-          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_orbitals">Відкрити 3D-практикум з хімії (40 робіт) →</a>
-          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_eukaryote">Відкрити 3D-практикум з біології (20 робіт) →</a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Відкрити 3D-практикум з фізики (46 робіт) →</span></a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/chem_orbitals"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Відкрити 3D-практикум з хімії (40 робіт) →</span></a>
+          <a class="lab-link-chip" href="https://physics.sheua.com/uk/sim/bio_eukaryote"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Відкрити 3D-практикум з біології (20 робіт) →</span></a>
         </div>
       </section>
 
       
       <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
-        <span><strong>Надіслати учням або колегам.</strong></span>
+        <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><strong>Поділитись</strong></span>
         <div class="share-strip-actions">
-          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fsi-constants-handbook.html&amp;text=%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%20VIII.%20%D0%94%D0%BE%D0%B2%D1%96%D0%B4%D0%BD%D0%B8%D0%BA%20%D1%84%D1%96%D0%B7%D0%B8%D1%87%D0%BD%D0%B8%D1%85%20%D1%81%D1%82%D0%B0%D0%BB%D0%B8%D1%85%20CODATA%2C%20%D0%BE%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D1%8C%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B8%20%D0%A1%D0%86%20%D1%82%D0%B0%20%D0%BF%D0%BE%D1%85%D0%B8%D0%B1%D0%BE%D0%BA%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B8%D1%85%20%D0%B2%D0%B8%D0%BC%D1%96%D1%80%D1%8E%D0%B2%D0%B0%D0%BD%D1%8C" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a class="share-chip" href="viber://forward?text=%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%20VIII.%20%D0%94%D0%BE%D0%B2%D1%96%D0%B4%D0%BD%D0%B8%D0%BA%20%D1%84%D1%96%D0%B7%D0%B8%D1%87%D0%BD%D0%B8%D1%85%20%D1%81%D1%82%D0%B0%D0%BB%D0%B8%D1%85%20CODATA%2C%20%D0%BE%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D1%8C%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B8%20%D0%A1%D0%86%20%D1%82%D0%B0%20%D0%BF%D0%BE%D1%85%D0%B8%D0%B1%D0%BE%D0%BA%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B8%D1%85%20%D0%B2%D0%B8%D0%BC%D1%96%D1%80%D1%8E%D0%B2%D0%B0%D0%BD%D1%8C%20https%3A%2F%2Fsheua.com%2Fsi-constants-handbook.html">Viber</a>
-          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/si-constants-handbook.html');}catch(e){}b.textContent='Скопійовано';setTimeout(function(){b.textContent='Скопіювати адресу';},1800);">Скопіювати адресу</button>
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fsi-constants-handbook.html&amp;text=%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%20VIII.%20%D0%94%D0%BE%D0%B2%D1%96%D0%B4%D0%BD%D0%B8%D0%BA%20%D1%84%D1%96%D0%B7%D0%B8%D1%87%D0%BD%D0%B8%D1%85%20%D1%81%D1%82%D0%B0%D0%BB%D0%B8%D1%85%20CODATA%2C%20%D0%BE%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D1%8C%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B8%20%D0%A1%D0%86%20%D1%82%D0%B0%20%D0%BF%D0%BE%D1%85%D0%B8%D0%B1%D0%BE%D0%BA%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B8%D1%85%20%D0%B2%D0%B8%D0%BC%D1%96%D1%80%D1%8E%D0%B2%D0%B0%D0%BD%D1%8C" target="_blank" rel="noopener noreferrer"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Telegram</span></a>
+          <a class="share-chip" href="viber://forward?text=%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%20VIII.%20%D0%94%D0%BE%D0%B2%D1%96%D0%B4%D0%BD%D0%B8%D0%BA%20%D1%84%D1%96%D0%B7%D0%B8%D1%87%D0%BD%D0%B8%D1%85%20%D1%81%D1%82%D0%B0%D0%BB%D0%B8%D1%85%20CODATA%2C%20%D0%BE%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D1%8C%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B8%20%D0%A1%D0%86%20%D1%82%D0%B0%20%D0%BF%D0%BE%D1%85%D0%B8%D0%B1%D0%BE%D0%BA%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B8%D1%85%20%D0%B2%D0%B8%D0%BC%D1%96%D1%80%D1%8E%D0%B2%D0%B0%D0%BD%D1%8C%20https%3A%2F%2Fsheua.com%2Fsi-constants-handbook.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg><span>Viber</span></a>
+          <button type="button" class="share-chip" title="Скопіювати посилання" aria-label="Скопіювати посилання" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/si-constants-handbook.html');}catch(e){}b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>';setTimeout(function(){b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7&quot;/><path d=&quot;M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7&quot;/></svg>';},1600);"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg></button>
         </div>
       </div>
       
@@ -1201,6 +1254,9 @@
       var SLUG = "si-constants-handbook.html";
       var WB = null;
       var QUIZ = [{"q":"Який вираз відповідає одиниці електричної напруги (вольту) через основні одиниці Міжнародної системи СІ?","opts":["м²·кг·с⁻³·А⁻¹","м·кг·с⁻²","м²·кг·с⁻²","кг·с⁻²·А⁻¹"],"ans":0,"exp":"Напруга U = P / I = Дж / (Кл) = (м²·кг·с⁻²) / (А·с) = м²·кг·с⁻³·А⁻¹."},{"q":"У формулі g = 4π²L / T² відносна похибка довжини становить 0.4%, а відносна похибка періоду дорівнює 0.6%. Якою є оцінка відносної похибки ε_g?","opts":["0.72%","1.00%","1.26%","1.60%"],"ans":2,"exp":"Період входить у квадраті, тому його відносна похибка множиться на 2: ε_g = √(0.4² + (2·0.6)²) = √(0.16 + 1.44) = √1.60 ≈ 1.26%."},{"q":"Чому дорівнює швидкість 72 км/год після точного переведення в основні одиниці системи СІ?","opts":["12 м/с","20 м/с","25 м/с","259.2 м/с"],"ans":1,"exp":"Поділивши 72 000 м на 3600 с (тобто на коефіцієнт 3.6), одержуємо 72 / 3.6 = 20 м/с."}];
+      var ICO_COPY = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>";
+      var ICO_CHECK = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"20 6 9 17 4 12\"/></svg>";
+      var ICO_EYE = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>";
 
       /* 1. READING PROGRESS BAR + AUTO TABLE OF CONTENTS */
       var progBar = document.getElementById('reading-progress-bar');
@@ -1233,20 +1289,29 @@
       }
 
       /* 2. ONE-CLICK FORMULA COPY ON FORMULA BLOCKS & CODATA TABLE */
-      Array.prototype.forEach.call(document.querySelectorAll('.formula-block'), function(fb) {
-        var code = fb.querySelector('code');
-        if (!code || code.id) return;
+      function attachIconCopy(parent, getText) {
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'copy-formula-btn';
-        btn.textContent = 'Копіювати';
+        btn.title = 'Скопіювати';
+        btn.setAttribute('aria-label', 'Скопіювати');
+        btn.innerHTML = ICO_COPY;
         btn.addEventListener('click', function() {
-          var txt = code.textContent.replace(/\s+/g, ' ').trim();
-          try { navigator.clipboard.writeText(txt); } catch (e) {}
-          btn.textContent = 'Скопійовано';
-          setTimeout(function(){ btn.textContent = 'Копіювати'; }, 1400);
+          try { navigator.clipboard.writeText(getText()); } catch (e) {}
+          btn.classList.add('copied');
+          btn.innerHTML = ICO_CHECK;
+          setTimeout(function(){
+            btn.classList.remove('copied');
+            btn.innerHTML = ICO_COPY;
+          }, 1400);
         });
-        fb.appendChild(btn);
+        parent.appendChild(btn);
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('.formula-block'), function(fb) {
+        var code = fb.querySelector('code');
+        if (!code) return;
+        attachIconCopy(fb, function(){ return code.textContent.replace(/\s+/g, ' ').trim(); });
       });
 
       if (SLUG === 'si-constants-handbook.html') {
@@ -1257,16 +1322,7 @@
             var code = valCell && valCell.querySelector('code');
             if (!code) return;
             var rawVal = code.textContent.trim();
-            var b = document.createElement('button');
-            b.type = 'button';
-            b.className = 'copy-formula-btn';
-            b.textContent = 'Копіювати';
-            b.addEventListener('click', function() {
-              try { navigator.clipboard.writeText(rawVal); } catch (e) {}
-              b.textContent = 'Скопійовано';
-              setTimeout(function(){ b.textContent = 'Копіювати'; }, 1400);
-            });
-            valCell.appendChild(b);
+            attachIconCopy(valCell, function(){ return rawVal; });
           });
         }
       }
@@ -1278,16 +1334,16 @@
         var bar = document.createElement('div');
         bar.className = 'self-study-bar';
         var labelSpan = document.createElement('span');
-        labelSpan.textContent = 'Хочете спершу розв\'язати задачі самостійно без підглядання у відповідь?';
+        labelSpan.textContent = 'Режим самостійного розв\'язання';
         var toggleBtn = document.createElement('button');
         toggleBtn.type = 'button';
         toggleBtn.className = 'hub-pill';
-        toggleBtn.textContent = 'Приховати розв\'язання для самоперевірки';
+        toggleBtn.innerHTML = ICO_EYE + '<span>Сховати розв\'язки</span>';
         var hiddenMode = false;
 
         toggleBtn.addEventListener('click', function() {
           hiddenMode = !hiddenMode;
-          toggleBtn.textContent = hiddenMode ? 'Показати всі розв\'язання' : 'Приховати розв\'язання для самоперевірки';
+          toggleBtn.innerHTML = ICO_EYE + '<span>' + (hiddenMode ? 'Показати розв\'язки' : 'Сховати розв\'язки') + '</span>';
           Array.prototype.forEach.call(wpList, function(wp) {
             var ps = wp.querySelectorAll('p');
             for (var i = 1; i < ps.length; i++) {

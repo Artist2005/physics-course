@@ -37417,7 +37417,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         en: [
           'According to James Clerk Maxwell\'s electrodynamics, a time-varying magnetic field induces a solenoidal electric field ($\\nabla \\times \\vec{E} = -\\frac{\\partial \\vec{B}}{\\partial t}$), while a time-varying electric displacement current generates a magnetic field ($\\nabla \\times \\vec{B} = \\mu_0\\varepsilon_0 \\frac{\\partial \\vec{E}}{\\partial t}$). Together they sustain a self-propagating **transverse electromagnetic wave** traveling at the speed of light $c = \\frac{1}{\\sqrt{\\varepsilon_0\\mu_0}} \\approx 3\\times 10^8\\text{ m/s}$.',
           'In a plane travelling wave, the electric field $\\vec{E}(x,t) = \\vec{E}_0\\sin(kx - \\omega t)$ and magnetic field $\\vec{B}(x,t) = \\vec{B}_0\\sin(kx - \\omega t)$ oscillate **strictly in phase**, are mutually orthogonal ($\\vec{E} \\perp \\vec{B}$), and form a right-handed triad with the wavevector $\\vec{k}$, with amplitudes linked by $E_0 = c B_0$.',
-          'Directional energy flux is given by the **Poynting vector** $\\vec{S} = \\frac{1}{\\mu_0}[\\vec{E} \\times \\vec{B}]$, and the instantaneous electric energy density $w_E = \\frac{1}{2}\\varepsilon_0 E^2$ and magnetic energy density $w_B = \\frac{B^2}{2\\mu_0}$ are equal at every point and instant ($w_E = w_B$).'
+          'Energy flow follows the **Poynting vector** $\\vec{S} = \\frac{1}{\\mu_0}[\\vec{E} \\times \\vec{B}]$. Electric energy density $w_E = \\frac{1}{2}\\varepsilon_0 E^2$ and magnetic energy density $w_B = \\frac{B^2}{2\\mu_0}$ match at every point and instant ($w_E = w_B$). No medium is needed.'
         ]
       },
       bernoulli: {
@@ -37703,7 +37703,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           'Ефект Холла має унікальне значення у фізиці твердого тіла: 1) за величиною $U_H$ безпосередньо вимірюють **концентрацію вільних носіїв заряду $n$**; 2) за полярністю напруги $U_H$ визначають **знак носіїв струму** (електронна провідність $n$-типу чи діркова провідність $p$-типу), бо і негативні електрони ($q = -e$, $\\vec{v}_d$ проти струму), і позитивні дірки ($q = +e$, $\\vec{v}_d$ за струмом) відхиляються силою Лоренца до однієї й тієї самої бічної грані, заряджаючи її протилежними знаками!'
         ],
         en: [
-          'Discovered by Edwin Hall in 1879, the **Hall effect** occurs when a conducting or semiconducting slab of thickness $d$ and width $w$ carrying longitudinal current $I = |q|n v_d w d$ is placed in a perpendicular magnetic field $\\vec{B}$. Charge carriers $q$ drifting at velocity $\\vec{v}_d$ experience a transverse Lorentz force $\\vec{F}_B = q[\\vec{v}_d \\times \\vec{B}]$ that deflects them toward one lateral edge.',
+          'Edwin Hall discovered this effect in 1879. When a conducting or semiconducting slab of thickness $d$ and width $w$ carries current $I = |q|n v_d w d$ across a perpendicular magnetic field $\\vec{B}$, drifting carriers $q$ experience a transverse Lorentz force $\\vec{F}_B = q[\\vec{v}_d \\times \\vec{B}]$ that pushes them to one side edge.',
           'Charge accumulation on the side faces builds up a transverse electrostatic Hall field $\\vec{E}_H$ until electric force balances magnetic deflection ($|q|E_H = |q|v_d B \\implies E_H = v_d B$). The resulting steady-state **Hall voltage** across width $w$ is **$U_H = E_H w = v_d B w = \\frac{I B}{n |q| d} = R_H \\frac{I B}{d}$**, where $R_H = \\frac{1}{nq}$ is the **Hall coefficient**.',
           'The Hall effect is a cornerstone of solid-state physics and sensor engineering: 1) measuring $U_H$ directly reveals the **carrier concentration $n$**; 2) the polarity of $U_H$ unambiguously identifies the **sign of the majority charge carriers** ($n$-type electrons vs. $p$-type holes), since both are deflected to the same side of the slab!'
         ]
@@ -37727,7 +37727,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           'Оскільки приріст $d\\vec{L} = \\vec{M}\\,dt$ перпендикулярний до самого вектора $\\vec{L}$, він не змінює його довжину, а лише повертає кінець вектора $\\vec{L}$ по горизонтальному колу радіуса $L\\sin\\theta$. Кутова швидкість цієї регулярної **гіроскопічної прецесії** дорівнює **$\\Omega_p = \\frac{M}{L\\sin\\theta} = \\frac{mgl}{I\\omega_s}$**: що швидше крутиться ротор $\\omega_s$, то повільніше і стабільніше прецесує гіроскоп!'
         ],
         en: [
-          'Why does a rapidly spinning heavy top tilted at angle $\\theta$ not topple under gravity, instead sweeping its axis around a horizontal circle? The answer lies in the **vector torque-angular-momentum theorem**: the time rate of change of angular momentum equals the external torque vector, $\\frac{d\\vec{L}}{dt} = \\vec{\\tau}$.',
+          'A fast spinning top defies intuition. Tilted at angle $\\theta$, it does not fall; instead, its axis sweeps a steady horizontal circle because external torque equals the vector rate of change of angular momentum, $\\frac{d\\vec{L}}{dt} = \\vec{\\tau}$.',
           'A rotor with moment of inertia $I$ spinning rapidly at $\\omega_s$ carries a large spin angular momentum $\\vec{L} = I\\vec{\\omega}_s$ directed along its symmetry axis. Gravity $m\\vec{g}$ acting at distance $l$ from the pivot $O$ exerts a torque $\\vec{\\tau} = [\\vec{r} \\times m\\vec{g}]$ of magnitude $\\tau = mgl\\sin\\theta$ that points **horizontally and perpendicular to $\\vec{L}$**.',
           'Because the infinitesimal increment $d\\vec{L} = \\vec{\\tau}\\,dt$ is orthogonal to $\\vec{L}$, it rotates the direction of $\\vec{L}$ around the vertical axis without changing its tilt angle $\\theta$. The angular velocity of this **gyroscopic precession** is **$\\Omega_p = \\frac{\\tau}{L\\sin\\theta} = \\frac{mgl}{I\\omega_s}$**: spinning the rotor faster ($\\omega_s \\uparrow$) makes the precession slower and more stable!'
         ]
@@ -37957,7 +37957,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         en: [
           'In modern quantum mechanics, the **Periodic Law** states that the physical and chemical properties of elements vary periodically with their **atomic number $Z$**, driven by the periodic recurrence of outer-shell valence electron configurations ($ns^1 \\dots ns^2 np^6$).',
           'The governing parameter behind atomic radius $r_{\\text{at}}$, first ionization energy $I_1$, and Pauling electronegativity $\\chi$ is **Slater\'s effective nuclear charge** $Z_{\\text{eff}} = Z - \\sigma$, where $\\sigma$ is the shielding constant of core electrons. Moving left to right across a period ($n = \\text{const}$), electrons enter the same principal shell and shield one another poorly ($\\Delta \\sigma \\approx 0.35$), causing $Z_{\\text{eff}}$ to increase by $\\approx 0.65$ per step. Stronger electrostatic attraction pulls the valence shell inward ($r_{\\text{at}} \\downarrow$) while increasing ionization energy $I_1$ and electronegativity $\\chi$.',
-          'Moving down a main group adds new principal electron shells ($n = 1, 2, 3, 4\\dots$), increasing atomic radius $r_{\\text{at}}$ and decreasing $I_1$ and $\\chi$, which explains the increasing metallic reactivity of alkali metals from $\\text{Li}$ to $\\text{K}$ and $\\text{Cs}$.'
+          'Descending a main group adds new electron shells ($n = 1, 2, 3, 4\\dots$). Atomic radius $r_{\\text{at}}$ grows, $I_1$ and $\\chi$ drop, and alkali metal reactivity rises sharply from $\\text{Li}$ through $\\text{K}$ to $\\text{Cs}$.'
         ]
       },
       chem_hbond: {
@@ -38046,12 +38046,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       },
       chem_isomerism: {
         uk: [
-          '**Стереоізомерія (просторова ізомерія)** вивчає молекули, які мають однаковий якісний і кількісний склад та однакову послідовність хімічних зв\'язків, але відрізняються просторовим розташуванням атомів. Виділяють два фундаментальні класи стереоізомерів: **геометричні (цис-транс або $Z/E$) діастереомери** та **оптичні ізомери (енантіомери)**.',
+          'Однакова структурна формула ще не задає форму молекули. **Стереоізомерія** вивчає сполуки з однаковим складом і порядком хімічних зв\'язків, які відрізняються тривимірним розташуванням атомів у просторі та поділяються на **геометричні ($Z/E$) діастереомери** й **оптичні енантіомери**.',
           'Геометрична ізомерія виникає в алкенах (наприклад, $1,2$-дихлороетені $\\text{CHCl=CHCl}$) через наявність жорсткого $\\pi$-зв\'язку, який має високий енергетичний бар\'єр обертання ($\\approx 268\\text{ кДж/моль}$). У **цис-ізомері ($Z$)** обидва атоми Хлору розташовані по один бік подвійного зв\'язку, тому дипольні моменти зв\'язків $\\vec{\\mu}_{\\text{C-Cl}}$ додаються ($\\mu_{\\text{сум}} = 1.90\\text{ Д}$, полярна молекула з вищою температурою кипіння). У **транс-ізомері ($E$)** атоми Хлору спрямовані в протилежні боки і їхні диполі повністю компенсуються ($\\mu_{\\text{сум}} = 0\\text{ Д}$, неполярна молекула).',
           '**Оптична ізомерія (хіральність)** виникає тоді, коли молекула містить асиметричний $sp^3$-гібридизований атом Карбону **$\\text{C}^*$ (хіральний центр)**, зв\'язаний із чотирма різними замісниками (наприклад, молочна кислота $\\text{CH}_3\\text{-C}^*\\text{H(OH)-COOH}$). Два просторові ізомери, **$(R)$- та $(S)$-енантіомери**, відносяться один до одного як предмет і його несумісне дзеркальне відображення (як ліва і права рука). Вони мають однакові скалярні фізичні властивості, але обертають площину поляризованого світла в поляриметрі на рівні за модулем і протилежні за знаком кути за законом Біо: $\\alpha = [\\alpha]_D^{20}\\cdot l\\cdot c$.'
         ],
         en: [
-          '**Stereoisomers** share the exact same molecular formula and bond connectivity but differ in the three-dimensional orientation of their atoms in space. The two primary classes are **geometric (*cis-trans* or $Z/E$) isomers** and **chiral optical isomers (enantiomers)**.',
+          'Connectivity alone does not fix molecular shape. **Stereoisomers** share identical formulas and bond sequences yet arrange their atoms differently in 3D space, splitting into **geometric (*cis-trans* or $Z/E$) isomers** and **chiral optical isomers (enantiomers)**.',
           'Geometric isomerism in alkenes (e.g., $1,2$-dichloroethene $\\text{CHCl=CHCl}$) arises because the lateral $\\pi$-bond locks rotation around the $\\text{C=C}$ axis (barrier $\\approx 268\\text{ kJ/mol}$). In the **cis ($Z$) isomer**, both electronegative chlorine atoms lie on the same side of the double bond, producing a net molecular dipole $\\mu_{\\text{net}} = 1.90\\text{ D}$. In the **trans ($E$) isomer**, the $\\text{C-Cl}$ dipoles point antiparallel and cancel identically ($\\mu_{\\text{net}} = 0\\text{ D}$).',
           '**Optical isomerism (chirality)** occurs when a tetrahedral $sp^3$ carbon atom **$\\text{C}^*$ (chiral stereocenter)** is bonded to four different substituents (e.g., lactic acid $\\text{CH}_3\\text{-C}^*\\text{H(OH)-COOH}$). The resulting **$(R)$- and $(S)$-enantiomers** are non-superimposable mirror images that rotate plane-polarized light by equal and opposite angles according to Biot\'s law: $\\alpha = [\\alpha]_D^{20}\\cdot l\\cdot c$.'
         ]
@@ -38137,7 +38137,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         en: [
           'A single-component **$P\\text{-}T$ phase diagram** maps the stability fields of solid, liquid, and gas separated by coexistence curves governed by the **Clapeyron equation** $\\frac{dP}{dT} = \\frac{\\Delta H_{\\text{tr}}}{T\\,\\Delta V_{\\text{tr}}}$. Because ice is less dense than liquid water ($\\Delta V_{\\text{fus}} < 0$), water\'s melting curve has an anomalous negative slope ($dP/dT < 0$).',
           'By **Gibbs\' Phase Rule** ($f = 3 - \\Phi$), solid, liquid, and vapor coexist exclusively at the invariant **triple point** $(T_t, P_t)$. Because $P_t(\\text{CO}_2) = 5.11\\text{ atm} > 1\\text{ atm}$, solid $\\text{CO}_2$ ("dry ice") sublimes directly into gas at atmospheric pressure.',
-          'The liquid-vapor boundary terminates at the **critical point** $(T_c, P_c)$; beyond this point the meniscus vanishes and the substance forms a **supercritical fluid** combining liquid-like solvating density with gas-like diffusivity.'
+          'The liquid-vapor curve ends abruptly at the **critical point** $(T_c, P_c)$. Past that threshold, the meniscus disappears. The substance enters a **supercritical fluid** state that pairs liquid-like solvating density with gas-like diffusivity and zero surface tension.'
         ]
       },
       chem_orders: {
@@ -38159,7 +38159,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           '**Конкурентний інгібітор $I$** має просторову будову, подібну до субстрату, і оборотно конкурує з ним за активний центр ($E + I \\rightleftharpoons EI$). Це збільшує уявну константу Міхаеліса в $\\alpha = 1 + [I]/K_I$ разів ($K_M^{\\text{app}} = \\alpha K_M$), але за великого надлишку субстрату ($[S] \\gg K_M^{\\text{app}}$) субстрат витісняє інгібітор, тому максимальна швидкість $V_{\\max}$ не змінюється.'
         ],
         en: [
-          '**Enzymes** achieve extraordinary catalytic rate enhancements by binding substrate $S$ within a complementary active-site pocket to form an **enzyme-substrate complex $ES$**: $E + S \\rightleftharpoons ES \\xrightarrow{k_{\\text{cat}}} E + P$.',
+          'Catalysis begins with selective molecular recognition. **Enzymes** accelerate reactions by orders of magnitude when substrate $S$ docks into a complementary active-site pocket to form the **enzyme-substrate complex $ES$**: $E + S \\rightleftharpoons ES \\xrightarrow{k_{\\text{cat}}} E + P$.',
           'Under steady-state conditions ($d[ES]/dt = 0$), reaction velocity obeys the **Michaelis-Menten equation** $v = \\frac{V_{\\max}[S]}{K_M + [S]}$, transitioning from 1st-order ($v \\approx \\frac{V_{\\max}}{K_M}[S]$) at low $[S]$ to 0th-order saturation ($v \\to V_{\\max} = k_{\\text{cat}}[E]_0$) when all active sites are occupied ($[S] \\gg K_M$).',
           'A **competitive inhibitor $I$** competes reversibly for the active site ($E + I \\rightleftharpoons EI$), increasing the apparent Michaelis constant to $K_M^{\\text{app}} = K_M(1 + [I]/K_I)$ while leaving the asymptotic $V_{\\max}$ unchanged.'
         ]
@@ -38183,7 +38183,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           'Тому в промисловості застосовують **компромісний режим**: високий тиск $P = 150\\text{-}300\\text{ атм}$, помірну температуру $t = 420\\text{-}500\\,^\\circ\\text{C}$ та пористий **залізний каталізатор $\\text{Fe}$**, промотований $\\text{K}_2\\text{O}$ та $\\text{Al}_2\\text{O}_3$, на поверхні якого молекули $\\text{N}_2$ та $\\text{H}_2$ дисоціативно хемосорбуються зі зниженням енергії активації.'
         ],
         en: [
-          'The **Haber-Bosch synthesis of ammonia** ($\\text{N}_2\\text{(g)} + 3\\text{H}_2\\text{(g)} \\rightleftharpoons 2\\text{NH}_3\\text{(g)},\\; \\Delta H^\\circ = -92.4\\text{ kJ/mol}$) illustrates the classic industrial trade-off between chemical thermodynamics and reaction kinetics.',
+          'Ammonia synthesis demands a strict engineering balance. In the **Haber-Bosch process** ($\\text{N}_2\\text{(g)} + 3\\text{H}_2\\text{(g)} \\rightleftharpoons 2\\text{NH}_3\\text{(g)},\\; \\Delta H^\\circ = -92.4\\text{ kJ/mol}$), thermodynamic equilibrium yield and reaction rate pull in opposite temperature directions.',
           'Because the forward reaction is **exothermic** and reduces gas mole count from $4$ to $2$, Le Chatelier\'s principle dictates that equilibrium yield $\\eta_{\\text{eq}}(\\text{NH}_3)$ is maximized at **high pressure** and **low temperature**. However, at low temperatures the reaction is kinetically frozen by the immense dissociation energy of the $\\text{N}\\equiv\\text{N}$ triple bond ($945\\text{ kJ/mol}$).',
           'Industrial reactors therefore operate at a **kinetic-thermodynamic compromise** of $400\\text{-}500\\,^\\circ\\text{C}$ and $150\\text{-}300\\text{ atm}$ over a promoted porous **iron ($\\text{Fe}$) catalyst** that lowers the activation barrier via dissociative chemisorption.'
         ]
@@ -38317,7 +38317,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         en: [
           'The **eukaryotic cell** is defined by extensive **membrane compartmentalization**: internal lipid bilayers partition the cytoplasm into specialized organelles with distinct $\\text{pH}$, ionic milieus, and enzyme systems. This enables incompatible pathways, such as polypeptide folding in the **endoplasmic reticulum (ER)** and acid hydrolysis inside **lysosomes** ($\\text{pH} \\approx 4.5\\text{-}5.0$), to operate simultaneously.',
           'A **fundamental biophysical constraint on cell size** arises from geometric scaling: for a sphere of radius $R$, surface area scales quadratically ($S = 4\\pi R^2$) whereas cytoplasmic volume scales cubically ($V = \\frac{4}{3}\\pi R^3$). Thus, the surface-to-volume ratio decreases as $\\frac{S}{V} = \\frac{3}{R}$, and the passive diffusion time scales as $\\tau_{\\text{diff}} \\approx \\frac{R^2}{6D}$.',
-          'To overcome diffusion limits at eukaryotic dimensions ($R \\approx 10\\text{-}50\\;\\mu\\text{m}$), cells amplify internal membrane area (**rough and smooth ER**, **Golgi cisternae**, **mitochondrial cristae**) and employ ATP-driven motor proteins (**kinesin** and **dynein**) to haul cargo vesicles along microtubule tracks.'
+          'Passive diffusion alone is too slow at $R \\approx 10\\text{-}50\\;\\mu\\text{m}$. Eukaryotes therefore fold vast internal membranes (**rough and smooth ER**, **Golgi cisternae**, **mitochondrial cristae**) and run ATP-powered motors (**kinesin** and **dynein**) that haul cargo vesicles along microtubule tracks.'
         ]
       },
       bio_mitochondria: {
@@ -38448,7 +38448,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ],
         en: [
           'The **Lotka-Volterra predator-prey model (1925-1926)** governs the coupled population dynamics of **prey $x(t)$** and **predators $y(t)$** via the nonlinear system $\\frac{dx}{dt} = \\alpha x - \\beta x y$ and $\\frac{dy}{dt} = \\delta x y - \\gamma y$, where $\\alpha$ is prey intrinsic growth rate, $\\beta$ is predation rate, $\\gamma$ is predator mortality, and $\\delta$ is trophic conversion efficiency.',
-          'Setting $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = 0$ yields the non-trivial interior equilibrium point (**Volterra\'s principle**): **$x^* = \\frac{\\gamma}{\\delta}$** and **$y^* = \\frac{\\alpha}{\\beta}$**. Consequently, time-averaged prey abundance is controlled by predator parameters ($\\gamma, \\delta$), while average predator abundance is controlled by prey parameters ($\\alpha, \\beta$).',
+          'Equilibrium occurs where $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = 0$. Solving gives **Volterra\'s principle**: **$x^* = \\frac{\\gamma}{\\delta}$** and **$y^* = \\frac{\\alpha}{\\beta}$**, meaning predator traits ($\\gamma, \\delta$) set the time-averaged prey level while prey traits ($\\alpha, \\beta$) set the average predator count.',
           'The conserved quantity $V(x,y) = \\delta x - \\gamma\\ln x + \\beta y - \\alpha\\ln y = \\text{const}$ confines trajectories to closed orbits around $(x^*, y^*)$ with period $T \\approx \\frac{2\\pi}{\\sqrt{\\alpha\\gamma}}$, in which predator peaks lag behind prey peaks by a quarter cycle ($\\pi/2$). Across trophic levels, **Lindeman\'s 10% ecological efficiency rule** dictates that only $\\sim 10\\%$ of net production is transferred to the next trophic tier.'
         ]
       },
@@ -42102,7 +42102,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           return { text: `×${val.toFixed(1)}`, unit: '×', isEnergy: false };
         }
         const u = isEn ? 'kJ/mol' : 'кДж/моль';
-        const vKj = /бар['’]єр|barrier|E_a/i.test(lbl) ? (val * 20) : (val * 1.66);
+        const vKj = /бар['\u2019]єр|barrier|E_a/i.test(lbl) ? (val * 20) : (val * 1.66);
         return { text: `${vKj.toFixed(1)} ${u}`, unit: u, isEnergy: false };
       }
       if (canonKey === 'chem_equilibrium') {

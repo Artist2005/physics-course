@@ -37,7 +37,11 @@
     .res-chip:hover { border-color: var(--ink-primary); color: var(--accent-crimson); background: var(--bg-inset); }
     .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule-dark); }
     .links a { color: var(--accent-crimson); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: 13.5px; }
+      sub, sup { font-size: 0.75em; line-height: 0; position: relative; vertical-align: baseline; }
+    sub { bottom: -0.22em; }
+    sup { top: -0.38em; }
   </style>
+  <script id="sheua-sub-helper">window.__subH=function(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\bS_N([12])\b/g,'S<sub>N</sub>$1').replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g,function(m,b,d){return /^(chem|bio|sim|sheua|http|https|data|aria)$/i.test(b)?m:(b+'<sub>'+d+'</sub>');});};</script>
 </head>
 <body>
   <a class="skip-link" id="skip-404" href="#main-content">Перейти до основного змісту</a>

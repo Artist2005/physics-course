@@ -152,7 +152,118 @@
       });
     }
 
-    // Замінює інлайн-формули виду $...$ на відрендерений KaTeX HTML та прибирає зайві зірочки
+    const SCI_SKIP_BASES = new Set(['chem', 'bio', 'sim', 'sheua', 'data', 'aria', 'http', 'https']);
+    const SCI_SUB_UNICODE = {
+      '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
+      '+': '₊', '-': '₋', '=': '₌', '(': '₍', ')': '₎',
+      'a': 'ₐ', 'e': 'ₑ', 'h': 'ₕ', 'i': 'ᵢ', 'j': 'ⱼ', 'k': 'ₖ', 'l': 'ₗ', 'm': 'ₘ',
+      'n': 'ₙ', 'o': 'ₒ', 'p': 'ₚ', 'r': 'ᵣ', 's': 'ₛ', 't': 'ₜ', 'u': 'ᵤ', 'v': 'ᵥ', 'x': 'ₓ',
+      'β': 'ᵦ', 'γ': 'ᵧ', 'ρ': 'ᵨ', 'φ': 'ᵩ', 'χ': 'ᵪ'
+    };
+
+    function escapeHtmlBasic(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function subifyEscapedSegment(escapedStr) {
+      let s = String(escapedStr || '');
+      if (!s.includes('_')) return s;
+      s = s.replace(/\bS_N([12])\b/g, 'S<sub>N</sub>$1');
+      s = s.replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_\{([^{}<>]+)\}/g, (m, base, sub) => {
+        if (SCI_SKIP_BASES.has(base.toLowerCase())) return m;
+        return `${base}<sub>${sub}</sub>`;
+      });
+      s = s.replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g, (m, base, sub) => {
+        if (SCI_SKIP_BASES.has(base.toLowerCase())) return m;
+        return `${base}<sub>${sub}</sub>`;
+      });
+      return s;
+    }
+
+    function subifyPlainToHtml(rawStr) {
+      return subifyEscapedSegment(escapeHtmlBasic(rawStr));
+    }
+
+    function plainSubText(rawStr) {
+      let s = String(rawStr || '');
+      if (!s.includes('_')) return s;
+      s = s.replace(/\bS_N([12])\b/g, 'SN$1');
+      s = s.replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_\{([^{}]+)\}/g, (m, base, sub) => {
+        if (SCI_SKIP_BASES.has(base.toLowerCase())) return m;
+        const chars = sub.split('');
+        if (chars.every(c => SCI_SUB_UNICODE[c])) return base + chars.map(c => SCI_SUB_UNICODE[c]).join('');
+        return /^[A-Za-z0-9]+$/.test(sub) && sub.length <= 2 ? `${base}${sub}` : `${base}(${sub})`;
+      });
+      s = s.replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g, (m, base, sub) => {
+        if (SCI_SKIP_BASES.has(base.toLowerCase())) return m;
+        const chars = sub.split('');
+        if (chars.every(c => SCI_SUB_UNICODE[c])) return base + chars.map(c => SCI_SUB_UNICODE[c]).join('');
+        return /^[A-Za-z0-9]+$/.test(sub) && sub.length <= 2 ? `${base}${sub}` : `${base}(${sub})`;
+      });
+      return s;
+    }
+
+    function parseCanvasSubRuns(rawText) {
+      const str = String(rawText || '');
+      if (!str.includes('_')) return [{ t: str, sub: false }];
+      const marked = str
+        .replace(/\bS_N([12])\b/g, 'S\x00N\x01$1')
+        .replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_\{([^{}]+)\}/g, (m, b, d) => SCI_SKIP_BASES.has(b.toLowerCase()) ? m : `${b}\x00${d}\x01`)
+        .replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g, (m, b, d) => SCI_SKIP_BASES.has(b.toLowerCase()) ? m : `${b}\x00${d}\x01`);
+      const runs = [];
+      let idx = 0;
+      while (idx < marked.length) {
+        const sIdx = marked.indexOf('\x00', idx);
+        if (sIdx === -1) {
+          if (idx < marked.length) runs.push({ t: marked.slice(idx), sub: false });
+          break;
+        }
+        if (sIdx > idx) runs.push({ t: marked.slice(idx, sIdx), sub: false });
+        const eIdx = marked.indexOf('\x01', sIdx + 1);
+        if (eIdx === -1) {
+          runs.push({ t: marked.slice(sIdx + 1), sub: true });
+          break;
+        }
+        runs.push({ t: marked.slice(sIdx + 1, eIdx), sub: true });
+        idx = eIdx + 1;
+      }
+      return runs.length ? runs : [{ t: str, sub: false }];
+    }
+
+    function measureCanvasSubText(ctx, rawText, weight, px, family) {
+      const runs = parseCanvasSubRuns(rawText);
+      const subPx = Math.max(9, Math.round(px * 0.72));
+      let total = 0;
+      for (const r of runs) {
+        ctx.font = `${weight} ${r.sub ? subPx : px}px ${family}`;
+        total += ctx.measureText(r.t).width;
+      }
+      return total;
+    }
+
+    function drawCanvasSubText(ctx, rawText, x, y, weight, px, family, align = 'left') {
+      const runs = parseCanvasSubRuns(rawText);
+      const subPx = Math.max(9, Math.round(px * 0.72));
+      const subOffsetY = Math.round(px * 0.22);
+      const prevAlign = ctx.textAlign;
+      let curX = x;
+      if (align === 'center' || align === 'right') {
+        const totW = measureCanvasSubText(ctx, rawText, weight, px, family);
+        curX = align === 'center' ? (x - totW / 2) : (x - totW);
+      }
+      ctx.textAlign = 'left';
+      for (const r of runs) {
+        ctx.font = `${weight} ${r.sub ? subPx : px}px ${family}`;
+        ctx.fillText(r.t, curX, r.sub ? (y + subOffsetY) : y);
+        curX += ctx.measureText(r.t).width;
+      }
+      ctx.textAlign = prevAlign;
+    }
+
+    // Замінює інлайн-формули виду $...$ на відрендерений KaTeX HTML та форматує індекси X_sub
     function formatTextbookProse(textWithMath) {
       if (!textWithMath) return '';
       return textWithMath
@@ -162,7 +273,12 @@
           if (seg.startsWith('$') && seg.endsWith('$')) {
             return renderMathString(seg.slice(1, -1), false);
           }
-          return seg.replace(/\s+—\s+/g, ', ').replace(/!/g, '.');
+          return seg
+            .replace(/\s+—\s+/g, ', ')
+            .replace(/!/g, '.')
+            .split(/(<[^>]+>)/g)
+            .map(part => (part.startsWith('<') ? part : subifyEscapedSegment(part)))
+            .join('');
         })
         .join('');
     }
@@ -859,10 +975,9 @@
 
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      const fontStr = '700 22px "Google Sans Mono", "Google Sans", monospace';
-      ctx.font = fontStr;
+      const fontFamily = '"Google Sans Mono", "Google Sans", monospace';
 
-      const measuredW = Math.ceil(ctx.measureText(symbolText).width);
+      const measuredW = Math.ceil(measureCanvasSubText(ctx, symbolText, '700', 22, fontFamily));
       const padOuter = 6;
       const pillH = 38;
       const pillW = Math.max(38, measuredW + 20);
@@ -889,11 +1004,9 @@
       ctx.fillStyle = borderColor;
       ctx.fillRect(padOuter, padOuter, 5, 5);
 
-      ctx.font = fontStr;
       ctx.fillStyle = '#18181b';
-      ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(symbolText, padOuter + pillW / 2, padOuter + pillH / 2 + 1);
+      drawCanvasSubText(ctx, symbolText, padOuter + pillW / 2, padOuter + pillH / 2 + 1, '700', 22, fontFamily, 'center');
 
       const texture = new THREE.CanvasTexture(canvas);
       texture.colorSpace = THREE.SRGBColorSpace;
@@ -25637,15 +25750,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        const titleFont = '600 18.5px "Google Sans", "Segoe UI", sans-serif';
-        const subFont = '500 14.5px "Google Sans Mono", monospace';
+        const titleFam = '"Google Sans", "Segoe UI", sans-serif';
+        const subFam = '"Google Sans Mono", monospace';
 
-        ctx.font = titleFont;
-        const wTitle = Math.ceil(ctx.measureText(title).width);
+        const wTitle = Math.ceil(measureCanvasSubText(ctx, title, '600', 18.5, titleFam));
         let wSub = 0;
         if (sub) {
-          ctx.font = subFont;
-          wSub = Math.ceil(ctx.measureText(sub).width);
+          wSub = Math.ceil(measureCanvasSubText(ctx, sub, '500', 14.5, subFam));
         }
 
         const padX = 12;
@@ -25674,17 +25785,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         ctx.fillStyle = this.cssColor;
         ctx.fillRect(padOuter, padOuter, 5, 5);
 
-        ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.font = titleFont;
         ctx.fillStyle = '#18181b';
         if (sub) {
-          ctx.fillText(title, padOuter + padX, padOuter + 17);
-          ctx.font = subFont;
+          drawCanvasSubText(ctx, title, padOuter + padX, padOuter + 17, '600', 18.5, titleFam, 'left');
           ctx.fillStyle = '#52525b';
-          ctx.fillText(sub, padOuter + padX, padOuter + 36);
+          drawCanvasSubText(ctx, sub, padOuter + padX, padOuter + 36, '500', 14.5, subFam, 'left');
         } else {
-          ctx.fillText(title, padOuter + padX, padOuter + boxH / 2 + 1);
+          drawCanvasSubText(ctx, title, padOuter + padX, padOuter + boxH / 2 + 1, '600', 18.5, titleFam, 'left');
         }
 
         const tex = new THREE.CanvasTexture(canvas);
@@ -39729,7 +39837,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const locT = (lIdx !== undefined && SCENE_TITLES_5[canonK] && SCENE_TITLES_5[canonK][lIdx]) || item.title;
           const href = getExperimentHref(k, curLang);
           const hreflangAttr = isUk ? ' hreflang="uk"' : '';
-          return `<li><a href="${href}"${hreflangAttr}>${sec} ${locT}</a></li>`;
+          return `<li><a href="${href}"${hreflangAttr}>${sec} ${subifyPlainToHtml(locT)}</a></li>`;
         }).join('');
         seoNav.innerHTML =
           `<h2>${r.catPhys} (${physKeys.length} ${r.expWord})</h2><ul>${renderList(physKeys)}</ul>` +
@@ -39840,8 +39948,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const item = dict[rk] || SCENE_CONFIGS[rk];
         const href = getExperimentHref(rk, uiState.lang);
         const rawTitle = (lIdx !== undefined && SCENE_TITLES_5[rk] && SCENE_TITLES_5[rk][lIdx]) ? SCENE_TITLES_5[rk][lIdx] : (item.title || rk);
-        const cleanT = stripHtmlAndMath(rawTitle);
-        return `<li><a href="${href}">${cleanT} →</a></li>`;
+        return `<li><a href="${href}">${formatTextbookProse(rawTitle)} →</a></li>`;
       }).join('');
 
       const chInfo = getSheuaTextbookChapter(key);
@@ -40306,14 +40413,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         : '';
 
       const paramsRowsHtml = (cfg.sliders || [])
-        .map(s => `<tr><td>${s.label}</td><td>${p[s.key]}${s.unit ? ' ' + s.unit : ''}</td></tr>`)
+        .map(s => `<tr><td>${subifyPlainToHtml(s.label)}</td><td>${subifyPlainToHtml(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`)}</td></tr>`)
         .join('');
 
       const telemetryCells = Array.from(document.querySelectorAll('#telemetry-grid .meas-cell'));
       const telemetryRowsHtml = telemetryCells
         .map(cell => {
-          const n = cell.querySelector('.meas-name')?.textContent || '';
-          const v = cell.querySelector('.meas-num')?.textContent || '';
+          const n = cell.querySelector('.meas-name')?.innerHTML || '';
+          const v = cell.querySelector('.meas-num')?.innerHTML || '';
           return `<tr><td>${n}</td><td>${v}</td></tr>`;
         })
         .join('');
@@ -40326,9 +40433,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const qVal = document.getElementById('q-val')?.textContent || '';
 
       const energyRowsHtml = `
-        <tr><td>${ekLbl}</td><td>${ekVal}</td></tr>
-        <tr><td>${epLbl}</td><td>${epVal}</td></tr>
-        <tr><td>${qLbl}</td><td>${qVal}</td></tr>
+        <tr><td>${document.getElementById('ek-label')?.innerHTML || ''}</td><td>${document.getElementById('ek-val')?.innerHTML || ''}</td></tr>
+        <tr><td>${document.getElementById('ep-label')?.innerHTML || ''}</td><td>${document.getElementById('ep-val')?.innerHTML || ''}</td></tr>
+        <tr><td>${document.getElementById('q-label')?.innerHTML || ''}</td><td>${document.getElementById('q-val')?.innerHTML || ''}</td></tr>
       `;
 
       const dateStr = new Date().toLocaleDateString(r.dateLoc, {
@@ -40358,9 +40465,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
           <div class="lab-report-header-grid">
             <div>
-              <div class="lab-report-meta">${cfg.secTag || cfg.secSym || ''} ${gradeTag ? '· ' + gradeTag : ''} · ${dateStr}</div>
-              <h2 class="lab-report-title">${cfg.secSym || ''} ${cfg.title || ''}</h2>
-              <div class="lab-report-meta">${cfg.subtitle || ''}</div>
+              <div class="lab-report-meta">${subifyPlainToHtml(cfg.secTag || cfg.secSym || '')} ${gradeTag ? '· ' + escapeHtmlBasic(gradeTag) : ''} · ${dateStr}</div>
+              <h2 class="lab-report-title">${subifyPlainToHtml(`${cfg.secSym || ''} ${cfg.title || ''}`)}</h2>
+              <div class="lab-report-meta">${formatTextbookProse(cfg.subtitle || '')}</div>
             </div>
             <div class="lab-report-student-box">
               <label for="lab-report-student-name">${r.studentLbl}</label>
@@ -40427,7 +40534,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           [csvEsc('Meta'), csvEsc(r.csvStud), csvEsc(studentInp ? studentInp.value : '')].join(',')
         ];
         (cfg.sliders || []).forEach(s => {
-          lines.push([csvEsc(r.csvParam), csvEsc(s.label), csvEsc(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`)].join(','));
+          lines.push([csvEsc(r.csvParam), csvEsc(plainSubText(s.label)), csvEsc(plainSubText(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`))].join(','));
         });
         lines.push([csvEsc(r.csvBal), csvEsc(ekLbl), csvEsc(ekVal)].join(','));
         lines.push([csvEsc(r.csvBal), csvEsc(epLbl), csvEsc(epVal)].join(','));
@@ -40496,14 +40603,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       const titleFontPx = Math.max(13, Math.round(barH * 0.34));
       const subFontPx = Math.max(11, Math.round(barH * 0.25));
-      ctx.font = `600 ${titleFontPx}px "Google Sans", sans-serif`;
       ctx.fillStyle = '#faf8f5';
       ctx.textBaseline = 'top';
-      ctx.fillText(`${cfg.secSym || ''} ${cfg.title || ''}`.trim(), 18, h - barH + Math.round(barH * 0.16));
+      drawCanvasSubText(ctx, `${cfg.secSym || ''} ${cfg.title || ''}`.trim(), 18, h - barH + Math.round(barH * 0.16), '600', titleFontPx, '"Google Sans", sans-serif', 'left');
 
-      ctx.font = `500 ${subFontPx}px "Google Sans Mono", monospace`;
       ctx.fillStyle = '#d6d3cd';
-      ctx.fillText(paramSummary, 18, h - barH + Math.round(barH * 0.56));
+      drawCanvasSubText(ctx, paramSummary, 18, h - barH + Math.round(barH * 0.56), '500', subFontPx, '"Google Sans Mono", monospace', 'left');
 
       const link = document.createElement('a');
       link.download = `lab-${key}.png`;
@@ -41818,7 +41923,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const keys = getDisciplineSceneKeys(uiState.discipline);
           const nextKey = keys[(keys.indexOf(uiState.activeScene) + 1) % keys.length];
           const nextCfg = SCENE_CONFIGS[nextKey];
-          nextCta.textContent = `${t.nextLessonPrefix} · ${nextCfg.secSym} ${nextCfg.shortTitle} →`;
+          nextCta.innerHTML = subifyPlainToHtml(`${t.nextLessonPrefix} · ${nextCfg.secSym} ${nextCfg.shortTitle} →`);
         }
       }
 
@@ -42464,9 +42569,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const s1 = formatMetricBarSlot(ep, rawEp, sceneKey, isEn);
       const s2 = formatMetricBarSlot(q, rawQ, sceneKey, isEn);
 
-      document.getElementById('ek-val').textContent = s0.text;
-      document.getElementById('ep-val').textContent = s1.text;
-      document.getElementById('q-val').textContent = s2.text;
+      document.getElementById('ek-val').innerHTML = subifyPlainToHtml(s0.text);
+      document.getElementById('ep-val').innerHTML = subifyPlainToHtml(s1.text);
+      document.getElementById('q-val').innerHTML = subifyPlainToHtml(s2.text);
 
       const tot = ek + ep + q;
       const titleEl = document.getElementById('ui-energy-balance-title');
@@ -42479,10 +42584,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (totEl) totEl.textContent = 'T + R = 100%';
       } else if (s0.isEnergy && s1.isEnergy && s2.isEnergy && s0.unit === s1.unit && s1.unit === s2.unit) {
         if (titleEl) titleEl.textContent = t.energyBalanceTitle;
-        if (totEl) totEl.textContent = `E = ${tot.toFixed(1)} ${s0.unit}`;
+        if (totEl) totEl.innerHTML = subifyPlainToHtml(`E = ${tot.toFixed(1)} ${s0.unit}`);
       } else {
         if (titleEl) titleEl.textContent = t.keyIndicatorsTitle || (isEn ? 'Key indicators' : 'Ключові показники');
-        if (totEl) totEl.textContent = s0.text;
+        if (totEl) totEl.innerHTML = subifyPlainToHtml(s0.text);
       }
 
       const denom = Math.max(maxRefEnergy, tot, 0.01);
@@ -42497,8 +42602,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const val = translateTelemetryVal(item.val);
           return `
         <div class="meas-cell">
-          <span class="meas-name">${lbl}</span>
-          <span class="meas-num">${val}</span>
+          <span class="meas-name">${subifyPlainToHtml(lbl)}</span>
+          <span class="meas-num">${subifyPlainToHtml(val)}</span>
         </div>`;
         })
         .join('');
@@ -42730,7 +42835,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const keys = getDisciplineSceneKeys(uiState.discipline);
           const nextKey = keys[(keys.indexOf(uiState.activeScene) + 1) % keys.length];
           const nextCfg = SCENE_CONFIGS[nextKey];
-          nextCta.textContent = `${t.nextLessonPrefix} · ${nextCfg.secSym} ${nextCfg.shortTitle} →`;
+          nextCta.innerHTML = subifyPlainToHtml(`${t.nextLessonPrefix} · ${nextCfg.secSym} ${nextCfg.shortTitle} →`);
         }
 
         document.getElementById('explain-text').innerHTML = formatStructuredProse(cfg.explanation);
@@ -42772,15 +42877,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const cfg = SCENE_CONFIGS[key];
       const t = tUI();
 
-      document.getElementById('chapter-section-tag').textContent = cfg.secTag ? cfg.secTag.split('·').slice(0, 2).map(s => s.trim()).join(' · ') : cfg.secSym;
-      document.getElementById('scene-title').textContent = cfg.title;
+      document.getElementById('chapter-section-tag').innerHTML = subifyPlainToHtml(cfg.secTag ? cfg.secTag.split('·').slice(0, 2).map(s => s.trim()).join(' · ') : cfg.secSym);
+      document.getElementById('scene-title').innerHTML = formatTextbookProse(cfg.title);
       document.getElementById('scene-epigraph').innerHTML = cfg.epigraph ? formatTextbookProse(cfg.epigraph.replace(/\s+—\s+/g, ', ')) : '';
       document.getElementById('figure-caption-text').innerHTML = cfg.figCaption ? formatTextbookProse(cfg.figCaption.replace(/\s+—\s+/g, ', ')) : '';
 
       const cleanMetricLabel = str => String(str || '').replace(/\s*\(×\s*\d+(?:\.\d+)?\s*([a-zA-Zа-яА-ЯіїєґІЇЄҐ%°]*)\)/g, (_, u) => u ? ` (${u})` : '');
-      document.getElementById('ek-label').textContent = cleanMetricLabel(cfg.ekLabel);
-      document.getElementById('ep-label').textContent = cleanMetricLabel(cfg.epLabel);
-      document.getElementById('q-label').textContent = cleanMetricLabel(cfg.qLabel);
+      document.getElementById('ek-label').innerHTML = subifyPlainToHtml(cleanMetricLabel(cfg.ekLabel));
+      document.getElementById('ep-label').innerHTML = subifyPlainToHtml(cleanMetricLabel(cfg.epLabel));
+      document.getElementById('q-label').innerHTML = subifyPlainToHtml(cleanMetricLabel(cfg.qLabel));
 
       document.getElementById('question-text').innerHTML = formatTextbookProse(cfg.question);
 
@@ -42827,10 +42932,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         item.className = 'param-control';
         item.innerHTML = `
           <div class="param-header">
-            <span class="param-title">${s.label}</span>
-            <span class="param-readout" id="readout-${s.key}">${currentVal}${s.unit ? ' ' + s.unit : ''}</span>
+            <span class="param-title">${formatTextbookProse(s.label)}</span>
+            <span class="param-readout" id="readout-${s.key}">${subifyPlainToHtml(`${currentVal}${s.unit ? ' ' + s.unit : ''}`)}</span>
           </div>
-          <input type="range" class="book-slider" data-param-key="${s.key}" aria-label="${String(s.label || s.key).replace(/"/g, '&quot;')}" min="${effMin}" max="${effMax}" step="${effStep}" value="${currentVal}" />
+          <input type="range" class="book-slider" data-param-key="${s.key}" aria-label="${plainSubText(String(s.label || s.key)).replace(/"/g, '&quot;')}" min="${effMin}" max="${effMax}" step="${effStep}" value="${currentVal}" />
         `;
         slidersContainer.appendChild(item);
 
@@ -42845,7 +42950,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const val = Number(clamped.toFixed(Math.min(4, stepDec)));
           input.value = val;
           sceneParams[key][s.key] = val;
-          readout.textContent = `${val}${s.unit ? ' ' + s.unit : ''}`;
+          readout.innerHTML = subifyPlainToHtml(`${val}${s.unit ? ' ' + s.unit : ''}`);
           updateSliderFill(input);
           updateLiveFormulaSubstitution();
           activePresetMode = 'custom';
@@ -42900,7 +43005,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             if (!Number.isNaN(parsed)) {
               applySliderValue(parsed);
             } else {
-              readout.textContent = `${sceneParams[key][s.key]}${s.unit ? ' ' + s.unit : ''}`;
+              readout.innerHTML = subifyPlainToHtml(`${sceneParams[key][s.key]}${s.unit ? ' ' + s.unit : ''}`);
             }
           };
           inlineInp.addEventListener('keydown', ev => {
@@ -42911,7 +43016,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             } else if (ev.key === 'Escape') {
               ev.preventDefault();
               committed = true;
-              readout.textContent = `${sceneParams[key][s.key]}${s.unit ? ' ' + s.unit : ''}`;
+              readout.innerHTML = subifyPlainToHtml(`${sceneParams[key][s.key]}${s.unit ? ' ' + s.unit : ''}`);
             }
           });
           inlineInp.addEventListener('blur', commit);
@@ -43017,8 +43122,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           <span class="exp-item-left">
             <span class="exp-item-sec">${cfg.secSym}</span>
             <span class="exp-item-info">
-              <span class="exp-item-title">${cfg.shortTitle}${isMastered ? '<span class="exp-item-mastered-mark" title="✓">✓</span>' : ''}</span>
-              <span class="exp-item-sub">${cfg.subtitle}</span>
+              <span class="exp-item-title">${subifyPlainToHtml(cfg.shortTitle)}${isMastered ? '<span class="exp-item-mastered-mark" title="✓">✓</span>' : ''}</span>
+              <span class="exp-item-sub">${formatTextbookProse(cfg.subtitle)}</span>
             </span>
           </span>
           <span class="exp-item-right-badges">
@@ -43051,7 +43156,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const titleEl = document.getElementById('trigger-title');
       const catEl = document.getElementById('trigger-cat-pill');
       if (secEl) secEl.textContent = cfg.secSym;
-      if (titleEl) titleEl.textContent = cfg.shortTitle;
+      if (titleEl) titleEl.innerHTML = subifyPlainToHtml(cfg.shortTitle);
       if (catEl) catEl.textContent = cfg.badge;
 
       renderDropdownMenu();
@@ -43297,7 +43402,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
            .replace(/\s+—\s+/g, ', ')
            .replace(/\s+/g, ' ')
            .trim();
-      return s;
+      if (typeof plainSubText === 'function') return plainSubText(s);
+      return s.replace(/\bS_N([12])\b/g, 'SN$1').replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+)/g, (_, b, d) => {
+        const chars = d.split('');
+        if (chars.every(c => SUB_DIGITS[c])) return b + chars.map(c => SUB_DIGITS[c]).join('');
+        return /^[A-Za-z0-9]+$/.test(d) && d.length <= 2 ? (b + d) : (b + '(' + d + ')');
+      });
     }
 
     function truncateAtWord(str, maxLen = 160) {

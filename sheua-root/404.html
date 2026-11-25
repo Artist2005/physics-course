@@ -82,14 +82,23 @@
       ];
       var inp = document.getElementById('q-404');
       var box = document.getElementById('res-404');
-      if (isEn) {
-        document.documentElement.lang = 'en';
-        document.title = '404 · Page Not Found · SHEUA.COM';
-        document.getElementById('skip-404').textContent = 'Skip to main content';
-        document.getElementById('h1-404').textContent = 'Page not found';
-        document.getElementById('p-404').textContent = 'The requested address was not found. Search below or choose a section to continue.';
-        inp.placeholder = 'Search: calculator, quiz, physics, chemistry, DNA...';
-        inp.setAttribute('aria-label', 'Search portal sections');
+      var HUB_404 = {
+        en: { t: '404 · Page Not Found · SHEUA.COM', sk: 'Skip to main content', h1: 'Page not found', d: 'The requested address was not found. Search below or choose a section to continue.', ph: 'Search: calculator, quiz, physics, chemistry, DNA...' },
+        pl: { t: '404 · Nie znaleziono strony · SHEUA.COM', sk: 'Przejdź do treści', h1: 'Nie znaleziono strony', d: 'Żądany adres nie istnieje. Wyszukaj poniżej lub przejdź do sekcji polskiej /pl/.', ph: 'Szukaj: physics, chemistry, calculator, DNA...' },
+        de: { t: '404 · Seite nicht gefunden · SHEUA.COM', sk: 'Zum Hauptinhalt springen', h1: 'Seite nicht gefunden', d: 'Die angeforderte Adresse wurde nicht gefunden. Suche unten oder öffne das Portal /de/.', ph: 'Suche: physics, chemistry, calculator, DNA...' },
+        es: { t: '404 · Página no encontrada · SHEUA.COM', sk: 'Ir al contenido principal', h1: 'Página no encontrada', d: 'No se encontró la dirección solicitada. Busca abajo o abre el portal /es/.', ph: 'Buscar: physics, chemistry, calculator, DNA...' },
+        fr: { t: '404 · Page introuvable · SHEUA.COM', sk: 'Aller au contenu principal', h1: 'Page introuvable', d: 'L\'adresse demandée est introuvable. Recherchez ci-dessous ou ouvrez le portail /fr/.', ph: 'Rechercher : physics, chemistry, calculator, DNA...' },
+        pt: { t: '404 · Página não encontrada · SHEUA.COM', sk: 'Ir para o conteúdo principal', h1: 'Página não encontrada', d: 'O endereço solicitado não foi encontrado. Pesquise abaixo ou abra o portal /pt/.', ph: 'Pesquisar: physics, chemistry, calculator, DNA...' }
+      };
+      if (isEn && HUB_404[langPath]) {
+        var L4 = HUB_404[langPath];
+        document.documentElement.lang = langPath;
+        document.title = L4.t;
+        document.getElementById('skip-404').textContent = L4.sk;
+        document.getElementById('h1-404').textContent = L4.h1;
+        document.getElementById('p-404').textContent = L4.d;
+        inp.placeholder = L4.ph;
+        inp.setAttribute('aria-label', L4.h1);
       }
       function draw(q) {
         var term = (q || '').trim().toLowerCase();

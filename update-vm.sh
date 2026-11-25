@@ -217,7 +217,7 @@ HUB_REDIRECTS = """    # BEGIN SHEUA SEO REDIRECTS
     rewrite ^/uk/sim/([^/.?]+)\\.html$ https://physics.sheua.com/uk/sim/$1 permanent;
     rewrite ^/uk/sim/([^/.?]+)$ https://physics.sheua.com/uk/sim/$1 permanent;
     rewrite ^/uk(/index\\.html|/)?$ https://physics.sheua.com/uk/ permanent;
-    if ($request_uri ~ ^/(en/)?index\\.html(\\?.*)?$) {
+    if ($request_uri ~ ^/((?:en|pl|de|es|fr|pt)/)?index\\.html(\\?.*)?$) {
         return 301 https://sheua.com/$1$is_args$args;
     }
     # END SHEUA SEO REDIRECTS
@@ -386,6 +386,11 @@ for CHECK_URL in \
   "https://sheua.com/kalkuliatory.html" \
   "https://sheua.com/en/calculators.html" \
   "https://sheua.com/en/exam-practice.html" \
+  "https://sheua.com/pl/" \
+  "https://sheua.com/de/" \
+  "https://sheua.com/es/" \
+  "https://sheua.com/fr/" \
+  "https://sheua.com/pt/" \
   "https://sheua.com/mechanics-conservation.html" \
   "https://physics.sheua.com/ads.txt" \
   "https://physics.sheua.com/sim/collision"; do

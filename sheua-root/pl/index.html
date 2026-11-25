@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHEUA.COM · Wirtualne laboratorium 3D fizyki, chemii i biologii</title>
+  <meta name="description" content="Otwarta platforma edukacyjna SHEUA.COM: wzory w układzie SI, kalkulatory, testy diagnostyczne oraz 106 symulacji 3D z fizyki (46), chemii (40) i biologii (20)." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/pl/" />
+  <link rel="alternate" hreflang="en" href="https://sheua.com/pl/" />
+  <link rel="alternate" hreflang="uk" href="https://sheua.com/" />
+  <link rel="alternate" hreflang="pl" href="https://sheua.com/pl/" />
+  <link rel="alternate" hreflang="de" href="https://sheua.com/de/" />
+  <link rel="alternate" hreflang="es" href="https://sheua.com/es/" />
+  <link rel="alternate" hreflang="fr" href="https://sheua.com/fr/" />
+  <link rel="alternate" hreflang="pt" href="https://sheua.com/pt/" />
+  <link rel="alternate" hreflang="x-default" href="https://sheua.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="SHEUA.COM · Wirtualne laboratorium 3D fizyki, chemii i biologii" />
+  <meta property="og:description" content="Otwarta platforma edukacyjna SHEUA.COM: wzory w układzie SI, kalkulatory, testy diagnostyczne oraz 106 symulacji 3D z fizyki (46), chemii (40) i biologii (20)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/pl/" />
+  <meta property="og:site_name" content="SHEUA.COM · 3D Science Lab" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SHEUA.COM · Wirtualne laboratorium 3D fizyki, chemii i biologii" />
+  <meta name="twitter:description" content="Otwarta platforma edukacyjna SHEUA.COM: wzory w układzie SI, kalkulatory, testy diagnostyczne oraz 106 symulacji 3D z fizyki (46), chemii (40) i biologii (20)." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-7543476344104123" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SHEUA.COM · Open-Access 3D Science Textbook & Virtual Laboratory",
+    "url": "https://sheua.com/pl/",
+    "inLanguage": "pl",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "SHEUA 3D Science Lab",
+      "url": "https://sheua.com/",
+      "email": "contact@sheua.com"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .skip-link {
+      position: fixed;
+      top: -60px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      background: #18181b;
+      color: #faf9f5;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .skip-link:focus { top: 12px; }
+    :where(a, button, input, select, textarea, summary):focus-visible {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+      .hub-pill, .share-chip, .nmt-opt-btn, .lang-pill, .search-nav-btn { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+    .calc-presets-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 8px;
+    }
+    .calc-preset-chip {
+      padding: 3px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .calc-preset-chip:hover, .calc-preset-chip.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .calc-3d-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 13.8px;
+    }
+    .search-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .search-nav-btn:hover {
+      border-color: var(--ink-primary);
+      background: var(--bg-inset);
+    }
+    .search-nav-btn kbd {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 0 4px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+    }
+    .site-search-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      background: rgba(24, 24, 27, 0.48);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 8vh 14px 20px;
+    }
+    .site-search-overlay[hidden] { display: none !important; }
+    .site-search-dialog {
+      width: min(620px, 100%);
+      max-height: 78vh;
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 16px 42px rgba(24, 24, 27, 0.28);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .site-search-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+    }
+    .site-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--ink-primary);
+    }
+    .site-search-close {
+      padding: 4px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .site-search-results {
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .site-search-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 3px;
+      text-decoration: none;
+      color: var(--ink-primary);
+      border: 1px solid transparent;
+    }
+    .site-search-item:hover, .site-search-item.active {
+      background: var(--bg-inset);
+      border-color: var(--rule-dark);
+    }
+    .site-search-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .site-search-sub {
+      display: block;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .site-search-badge {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 2px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-secondary);
+    }
+    .back-to-top-btn {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 90;
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      border: 1px solid var(--ink-primary);
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      box-shadow: 0 4px 14px rgba(24, 24, 27, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease, transform 0.18s ease, background 0.14s ease;
+    }
+    .back-to-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .back-to-top-btn:hover {
+      background: var(--ink-primary);
+      color: #faf9f5;
+    }
+    .quiz-q-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 14px;
+    }
+    .quiz-q-dot {
+      min-width: 30px;
+      height: 28px;
+      padding: 0 6px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .quiz-q-dot:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .quiz-q-dot.ok { background: #dcfce7; border-color: #166534; color: #14532d; }
+    .quiz-q-dot.bad { background: #fee2e2; border-color: #991b1b; color: #7f1d1d; }
+    .lab-done-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    .lab-done-btn:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .lab-done-btn.done { background: #dcfce7; border-color: #166534; color: #166534; }
+
+    .sandbox-box {
+      margin-top: 22px;
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .sandbox-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sandbox-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .sandbox-canvas-wrap {
+      position: relative;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .sandbox-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 880 / 260;
+    }
+    .sandbox-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .sandbox-slider-lbl {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 8px 10px;
+    }
+    .sandbox-slider-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .sandbox-slider-lbl input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-crimson);
+      cursor: pointer;
+    }
+    .sandbox-telemetry {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .telemetry-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12.8px;
+      color: var(--ink-primary);
+    }
+    .telemetry-metrics span {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      padding: 3px 8px;
+    }
+    .sandbox-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 3px;
+      border: 1px solid var(--ink-primary);
+    }
+    .btn-primary-link:hover {
+      background: var(--accent-crimson);
+      border-color: var(--accent-crimson);
+    }
+    .explorer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .explorer-search-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .explorer-search-row .filter-input {
+      margin-bottom: 0;
+      flex: 1 1 260px;
+    }
+    .sim-catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .sim-mini-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 11px 13px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: border-color 0.12s ease, transform 0.12s ease;
+    }
+    .sim-mini-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .sim-mini-card.spotlight {
+      border: 2px solid var(--accent-crimson);
+      background: #fffbeb;
+    }
+    .sim-mini-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .sim-mini-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+    .sim-mini-sub {
+      font-size: 12.6px;
+      color: var(--ink-secondary);
+      line-height: 1.42;
+    }
+    .catalog-footer-row {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .copy-formula-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .copy-formula-btn:hover {
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .copy-formula-btn.copied {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      background: #dcfce7;
+    }
+    .svg-ico {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      vertical-align: -2px;
+    }
+    .hub-pill, .btn-primary-link, .share-chip, .lab-link-chip, .nav-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+    .card-icon-badge svg { width: 17px; height: 17px; }
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .inquiry-stepper {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 16px 18px;
+      margin: 14px 0 18px;
+    }
+    .inquiry-panel {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .inquiry-panel.hidden { display: none; }
+    @media (max-width: 640px) {
+      .sandbox-box { padding: 14px 12px; }
+      .copy-formula-btn { width: 40px; height: 40px; }
+      .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent-crimson);
+      z-index: 120;
+      transition: width 0.08s linear;
+    }
+    .toc-box {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .toc-box-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc-links li { margin: 0; font-size: 13.5px; }
+    .toc-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .toc-links a:hover { color: var(--accent-crimson); }
+    .toc-links a.active {
+      color: var(--ink-primary);
+      font-weight: 700;
+      background: var(--bg-inset);
+      padding: 1px 6px;
+      border-radius: 2px;
+      text-decoration: none;
+    }
+    .mastery-pill {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+    }
+    .mastery-pill.done {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+    }
+    .self-study-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0 14px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 13.5px;
+    }
+    .sol-hidden {
+      display: none !important;
+    }
+    .si-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0 22px;
+    }
+    .si-tool-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .si-tool-card h3 { margin-top: 0; }
+    .si-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+    }
+    .si-field input, .si-field select {
+      padding: 7px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+
+
+    /* BEGIN HUB LANG DD */
+    .hub-lang-dd {
+      position: relative;
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+    .hub-lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 30px;
+      padding: 0 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .hub-lang-btn:hover, .hub-lang-dd.open .hub-lang-btn {
+      background: var(--bg-inset);
+    }
+    .hub-lang-chev {
+      font-size: 10px;
+      transition: transform 0.15s ease;
+    }
+    .hub-lang-dd.open .hub-lang-chev {
+      transform: rotate(180deg);
+    }
+    .hub-lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      z-index: 160;
+      min-width: 176px;
+      padding: 5px;
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 10px 28px rgba(24, 24, 27, 0.2);
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hub-lang-dd.open .hub-lang-menu {
+      display: flex;
+    }
+    .nav-bar a.hub-lang-opt, a.hub-lang-opt {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 6px 9px;
+      border-radius: 3px;
+      text-decoration: none !important;
+      color: var(--ink-secondary) !important;
+      font-family: var(--font-sans);
+      font-size: 12.8px;
+      font-weight: 500 !important;
+    }
+    .nav-bar a.hub-lang-opt:hover, a.hub-lang-opt:hover {
+      background: var(--bg-inset);
+      color: var(--ink-primary) !important;
+    }
+    .nav-bar a.hub-lang-opt.active, a.hub-lang-opt.active {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+      font-weight: 600 !important;
+    }
+    .hub-lang-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      min-width: 30px;
+    }
+    .hub-lang-name { flex: 1; text-align: left; }
+    .hub-lang-chk { opacity: 0; font-size: 11px; }
+    a.hub-lang-opt.active .hub-lang-chk { opacity: 1; }
+    @media (max-width: 640px) {
+      .hub-lang-btn { min-height: 44px; padding: 0 10px; }
+      a.hub-lang-opt { min-height: 40px; }
+    }
+    /* END HUB LANG DD */
+</style>
+</head>
+<body>
+  
+  <a class="skip-link" href="#main-content">Przejdź do głównej treści</a>
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/en/" style="display:inline-flex;align-items:center;gap:7px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>SHEUA.COM</span></a>
+    <nav class="nav-bar" aria-label="Główna nawigacja">
+      <a href="/pl/" class="active"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span>Przegląd</span></a>
+      <a href="#quick-quiz"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Test</span></a>
+      <a href="#si-calculators"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>Kalkulatory SI</span></a>
+      <a href="https://physics.sheua.com/?lang=pl"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Laboratorium 3D · 106</span></a>
+      <a href="/about.html?lang=pl">O projekcie</a>
+      <button type="button" class="search-nav-btn" id="open-site-search" title="Quick site search (/)" aria-label="Quick site search"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Szukaj</span><kbd>/</kbd></button>
+      <div class="hub-lang-dd" id="hub-lang-dd">
+      <button type="button" class="hub-lang-btn" id="hub-lang-trig" aria-haspopup="listbox" aria-expanded="false" aria-controls="hub-lang-menu" aria-label="Wybór języka" title="Wybór języka">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>PL</span>
+        <span class="hub-lang-chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="hub-lang-menu" id="hub-lang-menu" role="listbox" aria-label="Wybór języka">
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="uk" href="/"><span class="hub-lang-code">УКР</span><span class="hub-lang-name">Українська</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="en" href="/en/"><span class="hub-lang-code">EN</span><span class="hub-lang-name">English</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt active" role="option" aria-selected="true" data-lang="pl" href="/pl/"><span class="hub-lang-code">PL</span><span class="hub-lang-name">Polski</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="de" href="/de/"><span class="hub-lang-code">DE</span><span class="hub-lang-name">Deutsch</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="es" href="/es/"><span class="hub-lang-code">ES</span><span class="hub-lang-name">Español</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="fr" href="/fr/"><span class="hub-lang-code">FR</span><span class="hub-lang-name">Français</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="pt" href="/pt/"><span class="hub-lang-code">PT</span><span class="hub-lang-name">Português</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+      </div>
+    </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="hero-sheet">
+      <span class="badge">SHEUA.COM · OTWARTA PLATFORMA NAUKOWA 3D</span>
+      <h1>Wirtualne laboratorium 3D i podręcznik fizyki, chemii oraz biologii</h1>
+      <p class="lead">Wyprowadzenia wzorów, kalkulatory SI oraz 106 interaktywnych doświadczeń WebGL w serwisie <strong>physics.sheua.com</strong> dla szkół i uczelni.</p>
+
+      <div class="kpi-strip">
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>106 symulacji 3D</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Test diagnostyczny</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>Kalkulatory SI</span></span>
+        <span class="kpi-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Bez rejestracji</span></span>
+      </div>
+
+      <div class="cta-grid">
+        <a class="cta-card" href="https://physics.sheua.com/?lang=pl">
+          <div class="card-icon-row">
+            <span class="card-kicker">46 doświadczeń</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg></span>
+          </div>
+          <div class="card-title">Fizyka</div>
+          <p class="card-desc">Mechanika, hydrodynamika Bernoulliego, silniki Carnota, optyka falowa i geometryczna, elektromagnetyzm oraz fizyka kwantowa.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Otwórz laboratorium 3D →</span></span>
+        </a>
+        <a class="cta-card" href="https://physics.sheua.com/sim/chem_orbitals?lang=pl">
+          <div class="card-icon-row">
+            <span class="card-kicker">40 doświadczeń</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg></span>
+          </div>
+          <div class="card-title">Chemia</div>
+          <p class="card-desc">Orbitale kwantowe, geometria VSEPR, sieci krystaliczne, kinetyka, równowaga Le Chateliera, miareczkowanie pH i ogniwa galwaniczne.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Otwórz laboratorium 3D →</span></span>
+        </a>
+        <a class="cta-card" href="https://physics.sheua.com/sim/bio_eukaryote?lang=pl">
+          <div class="card-icon-row">
+            <span class="card-kicker">20 doświadczeń</span>
+            <span class="card-icon-badge"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg></span>
+          </div>
+          <div class="card-title">Biologia i biofizyka</div>
+          <p class="card-desc">Organella komórki, syntaza ATP, mitoza, mejoza, replikacja DNA, PCR, CRISPR-Cas9, potencjał neuronu i hemodynamika.</p>
+          <span class="card-link-hint"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Otwórz laboratorium 3D →</span></span>
+        </a>
+      </div>
+
+      
+      <div class="sandbox-box" id="live-sandbox" role="region" aria-label="Interactive live science sandbox">
+        <div class="sandbox-header">
+          <div>
+            <span class="card-kicker">ŻYWY WARSZTAT</span>
+            <h2 style="margin:2px 0 0;padding:0;border:none;font-size:18.5px;">Modele w czasie rzeczywistym w jednostkach SI</h2>
+          </div>
+          <div class="sandbox-tabs">
+            <button type="button" class="hub-pill active" data-sbx-mode="phys" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Zderzenie</span></button>
+            <button type="button" class="hub-pill" data-sbx-mode="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>PV = nRT</span></button>
+            <button type="button" class="hub-pill" data-sbx-mode="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"/></svg><span>Neuron</span></button>
+          </div>
+        </div>
+
+        <div class="sandbox-canvas-wrap">
+          <canvas id="home-sim-canvas" width="880" height="260" aria-label="Interactive physical simulation canvas"></canvas>
+        </div>
+
+        <div id="sbx-sliders" class="sandbox-controls"></div>
+
+        <div class="sandbox-telemetry">
+          <div id="sbx-metrics" class="telemetry-metrics" aria-live="polite"></div>
+          <div class="sandbox-actions">
+            <button type="button" id="sbx-trigger-btn" class="hub-pill" title="Restart simulation" aria-label="Restart simulation"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+            <button type="button" id="sbx-pause-btn" class="hub-pill" title="Pause or resume" aria-label="Pause or resume"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+            <a id="sbx-open-3d" class="btn-primary-link" href="https://physics.sheua.com/sim/collision?lang=pl"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Lab 3D →</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <article class="article-sheet">
+      
+      <h2>Wszystkie 106 doświadczeń 3D</h2>
+
+      <div class="explorer-toolbar" id="cat-disc-bar">
+        <button type="button" class="hub-pill active" data-cat-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>Wszystkie · 106</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Fizyka · 46</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Chemia · 40</span></button>
+        <button type="button" class="hub-pill" data-cat-disc="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Biologia · 20</span></button>
+        <button type="button" class="hub-pill" data-cat-tier="core" id="cat-tier-core" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg><span>Podstawa</span></button>
+        <button type="button" class="hub-pill" data-cat-tier="adv" id="cat-tier-adv" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Rozszerzony</span></button>
+      </div>
+
+      <div class="explorer-search-row">
+        <label for="cat-search-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Search 106 3D simulations</label>
+        <input type="search" id="cat-search-input" class="filter-input" placeholder="Wahadło, Carnot, soczewka, orbitale, pH, PCR, neuron..." />
+        <button type="button" id="cat-random-btn" class="hub-pill" title="Pick random 3D experiment"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Losuj</span></button>
+      </div>
+
+      <div id="cat-cards-grid" class="sim-catalog-grid">
+        
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/collision?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9</span></div>
+            <div class="sim-mini-title">Zasada zachowania pędu i zderzenia kul</div>
+            <div class="sim-mini-sub">Elastic & inelastic collision of spheres, momentum exchange</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/incline?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 7-9</span></div>
+            <div class="sim-mini-title">Ruch ciała po równi pochyłej</div>
+            <div class="sim-mini-sub">Resolution of gravity, normal force N, and friction angle</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/pendulum?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9-10</span></div>
+            <div class="sim-mini-title">Wahadło matematyczne i sprężynowe</div>
+            <div class="sim-mini-sub">Comparison of periods T = 2π√(L/g) and T = 2π√(m/k)</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/projectile?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9-10</span></div>
+            <div class="sim-mini-title">Rzut ukośny w polu grawitacyjnym</div>
+            <div class="sim-mini-sub">Vacuum parabola vs. ballistic trajectory with air drag</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/cradle?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9</span></div>
+            <div class="sim-mini-title">Kołyska Newtona</div>
+            <div class="sim-mini-sub">Transmission of momentum and energy through a chain of steel spheres</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/centripetal?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9-10</span></div>
+            <div class="sim-mini-title">Przyspieszenie dośrodkowe i ruch po okręgu</div>
+            <div class="sim-mini-sub">Centripetal acceleration a = ω²R and radial skidding threshold</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/archimedes?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 7</span></div>
+            <div class="sim-mini-title">Prawo Archimedesa i pływanie ciał</div>
+            <div class="sim-mini-sub">Buoyant force F_A = ρgV and equilibrium at the waterline</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/gas?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 10</span></div>
+            <div class="sim-mini-title">Gaz doskonały pod tłokiem (PV = nRT)</div>
+            <div class="sim-mini-sub">Ideal gas law PV = νRT and thermal motion of molecules</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/wavefront?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9-11</span></div>
+            <div class="sim-mini-title">Czoło fali i zasada Huygensa-Fresnela</div>
+            <div class="sim-mini-sub">Huygens' secondary spherical wavelets and plane wavefront refraction</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/interference?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 11</span></div>
+            <div class="sim-mini-title">Interferencja światła (doświadczenie Younga)</div>
+            <div class="sim-mini-sub">Superposition of two spherical light wavefronts, maxima & minima</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/dispersion?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 9-11</span></div>
+            <div class="sim-mini-title">Dyspersja światła i widmo w pryzmacie</div>
+            <div class="sim-mini-sub">Wavelength dependence of refractive index n(λ) and spectral splitting</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/sim/emwave?lang=pl">
+            <div class="sim-mini-meta"><span>Fizyka</span><span>Grade 11</span></div>
+            <div class="sim-mini-title">Fala elektromagnetyczna (E, B i wektor Poyntinga)</div>
+            <div class="sim-mini-sub">Mutually perpendicular fields E ⊥ B, phase wavefront, and light polarization</div>
+          </a>
+      </div>
+
+      <div class="catalog-footer-row">
+        <span id="cat-count-status">12 / 106</span>
+        <button type="button" id="cat-toggle-all-btn" class="hub-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>All 106</span></button>
+      </div>
+
+      
+      <h2 id="quick-quiz">Szybki test diagnostyczny</h2>
+
+      <div class="hub-filter-row">
+        <button type="button" id="qq-next-set-btn" class="hub-pill"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg><span>Kolejne 3</span></button>
+        <a class="hub-pill" style="text-decoration:none;" href="/en/exam-practice.html"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Pełny test 15 pytań →</span></a>
+        <div class="score-pill" id="qq-score-pill" aria-live="polite">0 / 3</div>
+      </div>
+
+      <div id="qq-cards-wrap"></div>
+
+      
+      <h2 id="si-calculators">Interaktywne kalkulatory wzorów SI</h2>
+      <p>Zmień wartości wejściowe, aby natychmiast obliczyć wynik w jednostkach SI lub przejść do odpowiedniej symulacji 3D.</p>
+      <div class="si-tools-grid">
+        <div class="si-tool-card">
+          <h3>1. p = m₁v₁ + m₂v₂</h3>
+          <label class="si-field"><span>m₁ (kg)</span><input type="number" id="ic-m1" value="2" min="0.1" step="0.1" /></label>
+          <label class="si-field"><span>v₁ (m/s)</span><input type="number" id="ic-v1" value="6" step="0.5" /></label>
+          <label class="si-field"><span>m₂ (kg)</span><input type="number" id="ic-m2" value="4" min="0.1" step="0.1" /></label>
+          <div class="formula-block" style="margin:8px 0;"><code id="ic-out-col">u_elastic = −2.00 m/s, +4.00 m/s · u_inelastic = +2.00 m/s</code></div>
+          <a class="calc-3d-link" href="https://physics.sheua.com/sim/collision?lang=pl">Lab 3D →</a>
+        </div>
+        <div class="si-tool-card">
+          <h3>2. PV = nRT</h3>
+          <label class="si-field"><span>n (mol)</span><input type="number" id="ic-n" value="1.5" min="0.1" step="0.1" /></label>
+          <label class="si-field"><span>T (K)</span><input type="number" id="ic-T" value="300" min="50" step="10" /></label>
+          <label class="si-field"><span>V (L)</span><input type="number" id="ic-V" value="24.9" min="0.5" step="0.5" /></label>
+          <div class="formula-block" style="margin:8px 0;"><code id="ic-out-gas">P = 150.3 kPa (1.48 atm)</code></div>
+          <a class="calc-3d-link" href="https://physics.sheua.com/sim/chem_gaslaws?lang=pl">Lab 3D →</a>
+        </div>
+        <div class="si-tool-card">
+          <h3>3. 1/F = 1/d + 1/f · pH = −log₁₀[H⁺]</h3>
+          <label class="si-field"><span>F (cm)</span><input type="number" id="ic-F" value="10" step="1" /></label>
+          <label class="si-field"><span>d (cm)</span><input type="number" id="ic-d" value="25" min="1" step="1" /></label>
+          <label class="si-field"><span>[H⁺] (mol/L)</span><input type="number" id="ic-H" value="0.001" min="1e-14" step="0.001" /></label>
+          <div class="formula-block" style="margin:8px 0;"><code id="ic-out-lp">f = 16.7 cm (Γ = 0.67×) · pH = 3.00</code></div>
+          <a class="calc-3d-link" href="https://physics.sheua.com/sim/lens?lang=pl">Lab 3D →</a>
+        </div>
+      </div>
+      <script>
+      (function(){
+        function upd(){
+          var m1=parseFloat(document.getElementById('ic-m1').value)||1, v1=parseFloat(document.getElementById('ic-v1').value)||0, m2=parseFloat(document.getElementById('ic-m2').value)||1;
+          var u1=((m1-m2)*v1)/(m1+m2), u2=(2*m1*v1)/(m1+m2), uIn=(m1*v1)/(m1+m2);
+          document.getElementById('ic-out-col').textContent='u₁ = '+u1.toFixed(2)+' m/s, u₂ = '+u2.toFixed(2)+' m/s · u_inel = '+uIn.toFixed(2)+' m/s';
+          var n=parseFloat(document.getElementById('ic-n').value)||1, T=parseFloat(document.getElementById('ic-T').value)||300, V=Math.max(0.01,parseFloat(document.getElementById('ic-V').value)||1);
+          var P=(n*8.31446*T)/V;
+          document.getElementById('ic-out-gas').textContent='P = '+P.toFixed(1)+' kPa ('+(P/101.325).toFixed(2)+' atm)';
+          var F=parseFloat(document.getElementById('ic-F').value)||10, d=Math.max(0.1,parseFloat(document.getElementById('ic-d').value)||25), H=Math.max(1e-14,parseFloat(document.getElementById('ic-H').value)||1e-7);
+          var inv=(1/F)-(1/d), fStr=Math.abs(inv)<1e-6?'∞':((1/inv).toFixed(1)+' cm (Γ = '+Math.abs((1/inv)/d).toFixed(2)+'×)');
+          var ph=-Math.log10(H);
+          document.getElementById('ic-out-lp').textContent='f = '+fStr+' · pH = '+ph.toFixed(2);
+        }
+        ['ic-m1','ic-v1','ic-m2','ic-n','ic-T','ic-V','ic-F','ic-d','ic-H'].forEach(function(id){
+          var el=document.getElementById(id); if(el) el.addEventListener('input',upd);
+        });
+        upd();
+      })();
+      </script>
+
+      <h2>Kluczowe równania w układzie SI</h2>
+      <div class="hub-filter-row">
+        <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>All · 10</span></button>
+        <button type="button" class="hub-pill" data-law-disc="phys" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Physics</span></button>
+        <button type="button" class="hub-pill" data-law-disc="chem" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Chemistry</span></button>
+        <button type="button" class="hub-pill" data-law-disc="bio" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Biophysics</span></button>
+      </div>
+      <label for="law-filter" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Filter by law name or SI symbol</label>
+      <input type="search" id="law-filter" class="filter-input" placeholder="Search equation: Bernoulli, Nernst, Compton, Carnot, Poiseuille..." />
+
+      <div class="table-scroll">
+        <table class="ref-table" id="laws-table">
+          <thead>
+            <tr>
+              <th>Discipline</th>
+              <th>Physical, Chemical or Biophysical Law</th>
+              <th>Governing Mathematical Equation</th>
+              <th>Key Variables &amp; SI Units</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-law-row="phys">
+              <td>Classical Mechanics</td>
+              <td>Conservation of Momentum &amp; Inelastic Loss</td>
+              <td><code>m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂, &nbsp; ΔQ = ½μ·Δv²(1 − e²)</code></td>
+              <td>Mass <code>m</code> (kg), velocity <code>v</code> (m/s), restitution <code>e</code></td>
+            </tr>
+            <tr data-law-row="phys">
+              <td>Rotational Dynamics</td>
+              <td>Rolling Kinetic Energy &amp; Gyroscopic Precession</td>
+              <td><code>E_k = ½mv² + ½Iω², &nbsp; Ω_p = mgl / (I_s ω_s)</code></td>
+              <td>Moment of inertia <code>I</code> (kg·m²), spin rate <code>ω_s</code> (rad/s)</td>
+            </tr>
+            <tr data-law-row="phys">
+              <td>Fluid Mechanics</td>
+              <td>Bernoulli's Principle, Torricelli's Law &amp; Stokes Drag</td>
+              <td><code>P + ½ρv² + ρgy = const, &nbsp; v = √(2gh), &nbsp; F_d = 6πηrv</code></td>
+              <td>Static pressure <code>P</code> (Pa), density <code>ρ</code> (kg/m³), viscosity <code>η</code> (Pa·s)</td>
+            </tr>
+            <tr data-law-row="phys">
+              <td>Thermodynamics</td>
+              <td>Ideal Gas Equation, RMS Speed &amp; Carnot Efficiency</td>
+              <td><code>PV = νRT, &nbsp; v_rms = √(3RT/M), &nbsp; η = 1 − T_C/T_H</code></td>
+              <td>Absolute temperature <code>T</code> (K), molar amount <code>ν</code> (mol)</td>
+            </tr>
+            <tr data-law-row="phys">
+              <td>Wave Optics</td>
+              <td>Snell's Law, Young's Double-Slit &amp; Malus's Law</td>
+              <td><code>n₁ sin α = n₂ sin γ, &nbsp; Δy = λL/d, &nbsp; I = I₀ cos² θ</code></td>
+              <td>Refractive index <code>n</code>, wavelength <code>λ</code> (nm)</td>
+            </tr>
+            <tr data-law-row="phys">
+              <td>Electromagnetism</td>
+              <td>Lorentz Force, Faraday Induction &amp; RLC Resonance</td>
+              <td><code>F_L = |q|vB sin α, &nbsp; ℰ = −N dΦ/dt, &nbsp; ω₀ = 1/√(LC)</code></td>
+              <td>Magnetic field <code>B</code> (T), inductance <code>L</code> (H), capacitance <code>C</code> (F)</td>
+            </tr>
+            <tr data-law-row="phys">
+              <td>Quantum Physics</td>
+              <td>Photoelectric Equation, Compton Shift &amp; Bohr Levels</td>
+              <td><code>hc/λ = φ + eU_s, &nbsp; Δλ = λ_C(1 − cos θ), &nbsp; E_n = −13.6/n² eV</code></td>
+              <td>Planck constant <code>h</code> (J·s), stopping voltage <code>U_s</code> (V)</td>
+            </tr>
+            <tr data-law-row="chem">
+              <td>Physical Chemistry</td>
+              <td>Gibbs Free Energy, Arrhenius Kinetics &amp; Buffer pH</td>
+              <td><code>ΔG = ΔH − TΔS = −RT ln K, &nbsp; k = A e^{−E_a/RT}, &nbsp; pH = pK_a + lg([A⁻]/[HA])</code></td>
+              <td>Activation energy <code>E_a</code> (kJ/mol), equilibrium constant <code>K</code></td>
+            </tr>
+            <tr data-law-row="chem">
+              <td>Electrochemistry</td>
+              <td>Nernst Potential &amp; Faraday's Law of Electrolysis</td>
+              <td><code>E = E° + (RT/zF) ln([Ox]/[Red]), &nbsp; m = (M·I·t) / (z·F)</code></td>
+              <td>Faraday constant <code>F = 96 485 C/mol</code>, current <code>I</code> (A)</td>
+            </tr>
+            <tr data-law-row="bio">
+              <td>Biophysics</td>
+              <td>Nernst Membrane Potential &amp; Hagen-Poiseuille Flow</td>
+              <td><code>V_m = (RT/zF) ln([C]_o/[C]_i), &nbsp; Q = (πΔP·R⁴) / (8ηL)</code></td>
+              <td>Vessel radius <code>R</code> (mm), volumetric blood flow <code>Q</code> (m³/s)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      
+      <h2>Trzy etapy badawcze w każdym doświadczeniu 3D</h2>
+
+      <div class="inquiry-stepper">
+        <div class="hub-filter-row" style="margin-top:0;">
+          <button type="button" class="hub-pill active" data-inq-step="1" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>1. Hipoteza</span></button>
+          <button type="button" class="hub-pill" data-inq-step="2" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>2. Test 3D</span></button>
+          <button type="button" class="hub-pill" data-inq-step="3" aria-pressed="false"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg><span>3. Dowód SI</span></button>
+        </div>
+
+        <div class="inquiry-panel" data-inq-panel="1">
+          <h3>Which rolling body reaches the bottom of the ramp first?</h3>
+          <p>A solid cylinder and a thin hoop of equal mass and radius start from rest without slipping:</p>
+          <div class="nmt-opts-grid" id="inq-predict-opts">
+            <button type="button" class="nmt-opt-btn" data-inq-ans="correct">Solid cylinder</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Thin hoop</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Same time</button>
+          </div>
+          <p id="inq-predict-feedback" style="margin-top:10px;margin-bottom:0;font-weight:600;display:none;"></p>
+        </div>
+
+        <div class="inquiry-panel hidden" data-inq-panel="2">
+          <h3>Linear acceleration versus ramp angle</h3>
+          <label class="sandbox-slider-lbl" for="inq-angle-slider" style="max-width:340px;">
+            <span class="sandbox-slider-top"><span>Ramp angle α</span><code id="inq-angle-val">30°</code></span>
+            <input type="range" id="inq-angle-slider" min="10" max="60" step="1" value="30" />
+          </label>
+          <div class="formula-block" id="inq-step2-readout" style="margin-bottom:0;">
+            <code>α = 30°: a_cylinder = 3.27 m/s², a_hoop = 2.45 m/s²</code>
+          </div>
+        </div>
+
+        <div class="inquiry-panel hidden" data-inq-panel="3">
+          <h3>Rotational inertia derivation</h3>
+          <div class="formula-block">
+            <code>a = g sin α / (1 + β)  ⇒  a_cylinder = (2/3) g sin α,   a_hoop = (1/2) g sin α</code>
+          </div>
+          <p style="margin-bottom:0;">Cylinder inertia factor <code>β = 0.5</code> versus hoop <code>β = 1.0</code>, independent of mass and radius. <a href="https://physics.sheua.com/sim/incline?lang=pl">Open 3D Incline →</a></p>
+        </div>
+      </div>
+
+      <h2>Struktura programu i poziomy zaawansowania</h2>
+      <p>Każda z 106 symulacji w wykazie należy do poziomu podstawowego (mechanika, hydrostatyka, gaz doskonały, optyka geometryczna, budowa atomu, pH, budowa komórki, genetyka Mendla) lub rozszerzonego (precesja żyroskopu, interferometr Michelsona, zjawisko Comptona, orbitale molekularne, cykl Borna-Habera, potencjał Hodgkina-Huxleya, CRISPR-Cas9).</p>
+      
+      <div class="share-strip" role="region" aria-label="Share material">
+        <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><strong>Udostępnij</strong></span>
+        <div class="share-strip-actions">
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fpl%2F&amp;text=SHEUA.COM%20%C2%B7%20Open-Access%203D%20Science%20Lab" target="_blank" rel="noopener noreferrer"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Telegram</span></a>
+          <a class="share-chip" href="viber://forward?text=SHEUA.COM%20%C2%B7%20Open-Access%203D%20Science%20Lab%20https%3A%2F%2Fsheua.com%2Fpl%2F"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg><span>Viber</span></a>
+          <button type="button" class="share-chip" title="Copy page link" aria-label="Copy page link" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/pl/');}catch(e){}b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>';setTimeout(function(){b.innerHTML='<svg class=&quot;svg-ico&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7&quot;/><path d=&quot;M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7&quot;/></svg>';},1600);"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/></svg></button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Open-Access 3D Science Lab · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/pl/">Przegląd (PL)</a>
+      <a href="/en/exam-practice.html">Exam Quiz &amp; Labs</a>
+      <a href="/en/calculators.html">SI Calculators</a>
+      <a href="/">Український підручник</a>
+      <a href="/about.html?lang=pl">About &amp; Contact</a>
+      <a href="/privacy.html?lang=pl">Privacy Policy</a>
+      <a href="/terms.html?lang=pl">Terms of Use</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Cookie notice">
+    <div>Ta witryna edukacyjna używa plików cookie i <code>localStorage</code> do zapisywania ustawień nauki oraz wyświetlania reklam Google AdSense zgodnie z <a href="/privacy.html?lang=pl">Polityką prywatności</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Tylko niezbędne</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Akceptuj</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+  
+  <button type="button" id="back-to-top-btn" class="back-to-top-btn" title="Back to top" aria-label="Back to top"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+  <div id="site-search-overlay" class="site-search-overlay" role="dialog" aria-modal="true" aria-label="Site search" hidden>
+    <div class="site-search-dialog">
+      <div class="site-search-top">
+        <svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="site-search-input" class="site-search-input" placeholder="Szukaj wśród 106 symulacji 3D, kalkulatorów i praw..." aria-label="Szukaj wśród 106 symulacji 3D, kalkulatorów i praw..." autocomplete="off" />
+        <button type="button" id="site-search-close" class="site-search-close" aria-label="Close search">Esc</button>
+      </div>
+      <div id="site-search-results" class="site-search-results" role="listbox" aria-label="Search results"></div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var ITEMS = [{"t":"Wirtualne laboratorium 3D i podręcznik fizyki, chemii oraz biologii","s":"Otwarta platforma edukacyjna SHEUA.COM: wzory w układzie SI, kalkulatory, testy diagnostyczne oraz 106 symulacji 3D z fizyki (46), chemii (40) i biologii (20).","c":"Portal","u":"/pl/"},{"t":"AP, IB & GCSE Exam Practice Quiz","s":"15 diagnostic questions with 20-min timer and SI derivations","c":"Tool","u":"/en/exam-practice.html"},{"t":"Interaktywne kalkulatory wzorów SI","s":"Collision, thin lens, ideal gas, pendulum, Coulomb, Carnot, pH, Faraday","c":"SI","u":"/pl/#si-calculators"},{"t":"Zasada zachowania pędu i zderzenia kul","s":"Conservation of Linear Momentum · Elastic & inelastic collision of spheres, momentum exchange","c":"3D Phys","u":"https://physics.sheua.com/sim/collision?lang=pl"},{"t":"Ruch ciała po równi pochyłej","s":"Motion of a Body on an Inclined Plane · Resolution of gravity, normal force N, and friction angle","c":"3D Phys","u":"https://physics.sheua.com/sim/incline?lang=pl"},{"t":"Wahadło matematyczne i sprężynowe","s":"Simple & Spring Pendulums · Comparison of periods T = 2π√(L/g) and T = 2π√(m/k)","c":"3D Phys","u":"https://physics.sheua.com/sim/pendulum?lang=pl"},{"t":"Rzut ukośny w polu grawitacyjnym","s":"Projectile Launched at an Angle to the Horizontal · Vacuum parabola vs. ballistic trajectory with air drag","c":"3D Phys","u":"https://physics.sheua.com/sim/projectile?lang=pl"},{"t":"Kołyska Newtona","s":"Newton's Cradle · Transmission of momentum and energy through a chain of steel spheres","c":"3D Phys","u":"https://physics.sheua.com/sim/cradle?lang=pl"},{"t":"Przyspieszenie dośrodkowe i ruch po okręgu","s":"Centripetal Acceleration & Turning Dynamics · Centripetal acceleration a = ω²R and radial skidding threshold","c":"3D Phys","u":"https://physics.sheua.com/sim/centripetal?lang=pl"},{"t":"Prawo Archimedesa i pływanie ciał","s":"Archimedes' Principle & Flotation Conditions · Buoyant force F_A = ρgV and equilibrium at the waterline","c":"3D Phys","u":"https://physics.sheua.com/sim/archimedes?lang=pl"},{"t":"Gaz doskonały pod tłokiem (PV = nRT)","s":"Ideal Gas Under a Piston (Ideal Gas Law) · Ideal gas law PV = νRT and thermal motion of molecules","c":"3D Phys","u":"https://physics.sheua.com/sim/gas?lang=pl"},{"t":"Czoło fali i zasada Huygensa-Fresnela","s":"Light Wavefront & Huygens-Fresnel Principle · Huygens' secondary spherical wavelets and plane wavefront refraction","c":"3D Phys","u":"https://physics.sheua.com/sim/wavefront?lang=pl"},{"t":"Interferencja światła (doświadczenie Younga)","s":"Interference of Light Wavefronts (Young's Double-Slit) · Superposition of two spherical light wavefronts, maxima & minima","c":"3D Phys","u":"https://physics.sheua.com/sim/interference?lang=pl"},{"t":"Dyspersja światła i widmo w pryzmacie","s":"Dispersion of Light & Spectrum Formation in a Prism · Wavelength dependence of refractive index n(λ) and spectral splitting","c":"3D Phys","u":"https://physics.sheua.com/sim/dispersion?lang=pl"},{"t":"Fala elektromagnetyczna (E, B i wektor Poyntinga)","s":"Electromagnetic Light Wave (E, B & Poynting Vector) · Mutually perpendicular fields E ⊥ B, phase wavefront, and light polarizati","c":"3D Phys","u":"https://physics.sheua.com/sim/emwave?lang=pl"},{"t":"Równanie Bernoulliego i zwężka Venturiego","s":"Bernoulli's Equation & Venturi Effect · Relation between flow speed and static pressure in a variable-cross-sectio","c":"3D Phys","u":"https://physics.sheua.com/sim/bernoulli?lang=pl"},{"t":"Soczewka skupiająca i ogniskowanie wiązki","s":"Converging Lens & Light Wavefront Focusing · Transformation of a plane light wavefront into a converging spherical wave","c":"3D Phys","u":"https://physics.sheua.com/sim/lens?lang=pl"},{"t":"Siła Lorentza i spirala cyklotronowa 3D","s":"Lorentz Force & 3D Cyclotron Helix · Helical trajectory of a charged particle in a uniform magnetic field B","c":"3D Phys","u":"https://physics.sheua.com/sim/lorentz?lang=pl"},{"t":"Indukcja Faradaya i reguła Lenza w 3D","s":"Faraday's Law & Lenz's Rule in 3D · Generation of induced current in a coil by a moving magnet & Lenz's rule","c":"3D Phys","u":"https://physics.sheua.com/sim/faraday?lang=pl"},{"t":"Orbita eliptyczna i II prawo Keplera","s":"Elliptical Orbit & Kepler's Second Law · Elliptical planetary orbit, equal-area sweep rate & orbital energy exchang","c":"3D Phys","u":"https://physics.sheua.com/sim/kepler?lang=pl"},{"t":"Moment bezwładności i energia toczenia","s":"Moment of Inertia & Rolling Kinetic Energy · Race between a solid cylinder and a hollow hoop rolling without slipping","c":"3D Phys","u":"https://physics.sheua.com/sim/gyroscope?lang=pl"},{"t":"Fale stojące i harmoniczne struny","s":"Standing Waves & String Overtones in 3D · Normal modes of a fixed string, nodes & antinodes, and frequency vs. tensi","c":"3D Phys","u":"https://physics.sheua.com/sim/standingwave?lang=pl"},{"t":"Efekt Dopplera i deformacja czoła fali","s":"Doppler Effect & Wavefront Deformation · Compression of wavefront crests ahead of a moving source, frequency shift ","c":"3D Phys","u":"https://physics.sheua.com/sim/doppler?lang=pl"},{"t":"Polaryzacja światła i prawo Malusa","s":"Light Wavefront Polarization & Malus's Law · Transmission of a linearly polarized light wavefront through a polarizer a","c":"3D Phys","u":"https://physics.sheua.com/sim/malus?lang=pl"},{"t":"Dyfrakcja światła na pojedynczej szczelinie","s":"Single-Slit Wavefront Diffraction in 3D · Wavefront spreading through a narrow slit, Huygens wavelets & sinc²(β) int","c":"3D Phys","u":"https://physics.sheua.com/sim/diffraction?lang=pl"},{"t":"Silnik cieplny i cykl Carnota w 3D","s":"Ideal Heat Engine & Carnot Cycle in 3D · Conversion of heater heat Q₁ into mechanical piston work A and heat reject","c":"3D Phys","u":"https://physics.sheua.com/sim/carnot?lang=pl"},{"t":"Ruch kulki w cieczy lepkiej (prawo Stokesa)","s":"Motion of a Sphere in a Viscous Fluid (Stokes' Law) · Sphere falling through viscous oil, Stokes drag force & approach to termin","c":"3D Phys","u":"https://physics.sheua.com/sim/viscosity?lang=pl"},{"t":"Prawo Coulomba i pole dipola elektrycznego","s":"Coulomb's Law & 3D Electric Dipole Field · 3D electric field lines of two point charges, Coulomb force & test charge ","c":"3D Phys","u":"https://physics.sheua.com/sim/coulomb?lang=pl"},{"t":"Drgania elektromagnetyczne w obwodzie RLC","s":"Electromagnetic Oscillations in an LC / RLC Circuit · Free electromagnetic oscillations between capacitor C and inductor coil L,","c":"3D Phys","u":"https://physics.sheua.com/sim/rlccircuit?lang=pl"},{"t":"Maszyna Atwooda: przyspieszenie i naciąg nici","s":"Atwood's Machine: Dynamics of Connected Masses & Pulley Inertia · Motion of two masses on a thread over a pulley with moment of inertia, thr","c":"3D Phys","u":"https://physics.sheua.com/sim/atwood?lang=pl"},{"t":"Siła Coriolisa w układzie obracającym się","s":"Coriolis Force & Motion in a Rotating Reference Frame · Trajectory deflection of a body moving on a rotating platform, inertial fo","c":"3D Phys","u":"https://physics.sheua.com/sim/coriolis?lang=pl"},{"t":"Prawo Hooke'a i moduł Younga przy rozciąganiu","s":"Hooke's Law in Differential Form & Young's Modulus · Elastic uniaxial tension of a rod, mechanical stress σ, strain ε, and Pois","c":"3D Phys","u":"https://physics.sheua.com/sim/hooke?lang=pl"},{"t":"Wzór Torricellego i wypływ cieczy ze zbiornika","s":"Torricelli's Theorem & Hydrodynamic Efflux of a Liquid Jet · Efflux speed v = √(2gh) from a vessel orifice and parabolic jet range X = ","c":"3D Phys","u":"https://physics.sheua.com/sim/torricelli?lang=pl"},{"t":"Rozkład prędkości cząsteczek Maxwella","s":"Maxwell's Law of Molecular Speed Distribution in an Ideal Gas · Statistical distribution f(v), most probable speed v_p, mean ⟨v⟩, and RMS ","c":"3D Phys","u":"https://physics.sheua.com/sim/maxwell?lang=pl"},{"t":"Pierścienie Newtona i interferencja w klinie","s":"Newton's Rings: Interference in a Thin Air Wedge & Half-Wave Phase Shift · Concentric interference rings in the air wedge between a plano-convex lens","c":"3D Phys","u":"https://physics.sheua.com/sim/newtonrings?lang=pl"},{"t":"Zjawisko fotoelektryczne i równanie Einsteina","s":"External Photoelectric Effect: Einstein's Equation & Stopping Potential · Quantum emission of photoelectrons, work function A_w, red limit λ_max, an","c":"3D Phys","u":"https://physics.sheua.com/sim/photoelectric?lang=pl"},{"t":"Doświadczenie Rutherforda i rozpraszanie cząstek α","s":"Rutherford's Gold Foil Experiment & Planetary Model of the Atom · Hyperbolic trajectories in the Coulomb field of a heavy nucleus, impact pa","c":"3D Phys","u":"https://physics.sheua.com/sim/rutherford?lang=pl"},{"t":"Oddziaływanie prądów równoległych i siła elektrodynamiczna","s":"Magnetic Interaction of Parallel Currents & Definition of the Ampere · Magnetic interaction of two parallel conductors carrying currents I₁ and I","c":"3D Phys","u":"https://physics.sheua.com/sim/ampere?lang=pl"},{"t":"Zjawisko Halla i napięcie poprzeczne","s":"The Hall Effect: Transverse Potential Difference & Carrier Sign Determination · Lorentz deflection of charge carriers in a slab with current I in magnetic","c":"3D Phys","u":"https://physics.sheua.com/sim/hall?lang=pl"},{"t":"Wahadła sprzężone: mody normalne i dudnienia","s":"Coupled Pendulums: Normal Modes & Energy Beats · Periodic exchange of mechanical energy between two pendulums coupled by a ","c":"3D Phys","u":"https://physics.sheua.com/sim/coupled?lang=pl"},{"t":"Precesja żyroskopowa ciężkiego bąka","s":"Gyroscopic Precession of a Heavy Symmetric Top · Precession of spin angular momentum L around the vertical axis under gravi","c":"3D Phys","u":"https://physics.sheua.com/sim/precession?lang=pl"},{"t":"Efekt Magnusa i siła nośna obracającego się walca","s":"Magnus Effect & Lift Force on a Rotating Cylinder · Transverse lift force F_M on a rotating cylinder in a uniform flow due to ","c":"3D Phys","u":"https://physics.sheua.com/sim/magnus?lang=pl"},{"t":"Napięcie powierzchniowe, menisk i kapilarność","s":"Surface Tension, Meniscus Curvature & Capillary Action · Laplace pressure jump ΔP = 2σ cos θ / r under a concave or convex meniscus","c":"3D Phys","u":"https://physics.sheua.com/sim/capillary?lang=pl"},{"t":"Ruchy Browna i dyfuzja Einsteina-Smoluchowskiego","s":"Brownian Motion & Einstein-Smoluchowski Diffusion · Random walk trajectory of a suspended microparticle under molecular impact","c":"3D Phys","u":"https://physics.sheua.com/sim/brownian?lang=pl"},{"t":"Interferometr Michelsona i przesunięcie fazowe","s":"Michelson Interferometer & Phase Shift of Beams · Division of a coherent laser beam by a beam splitter into two orthogonal a","c":"3D Phys","u":"https://physics.sheua.com/sim/michelson?lang=pl"},{"t":"Zjawisko Comptona i pęd relatywistyczny fotonu","s":"Compton Scattering & Relativistic Photon Momentum · Elastic collision of an X-ray photon with a free electron, wavelength shif","c":"3D Phys","u":"https://physics.sheua.com/sim/compton?lang=pl"},{"t":"Model atomu Bohra, fale de Broglie'a i serie widmowe","s":"Bohr Atom Model, de Broglie Standing Waves & Spectral Series · Quantization of angular momentum L_n = nℏ, de Broglie standing waves 2πr_n","c":"3D Phys","u":"https://physics.sheua.com/sim/bohr?lang=pl"},{"t":"Prawo Biota-Savarta i cewki Helmholtza","s":"Biot-Savart Law & Uniform Field of Helmholtz Coils · Axial magnetic induction B(x) of circular current loops and generation of ","c":"3D Phys","u":"https://physics.sheua.com/sim/biot?lang=pl"},{"t":"Transformator prądu przemiennego i indukcja wzajemna","s":"AC Transformer & Mutual Electromagnetic Induction · Mutual electromagnetic induction via shared alternating magnetic flux Φ(t)","c":"3D Phys","u":"https://physics.sheua.com/sim/transformer?lang=pl"},{"t":"Powłoki elektronowe i orbitale kwantowe 3D (s, p, d)","s":"Atomic Electron Shells & 3D Quantum Orbitals (s, p, d) · Schrödinger wavefunction |ψ|², quantum numbers n, l & nodal surfaces","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_orbitals?lang=pl"},{"t":"Hybrydyzacja orbitali i geometria cząsteczek VSEPR","s":"Orbital Hybridization & 3D Molecular Geometry (VSEPR) · Linear sp (180°), trigonal planar sp² (120°), tetrahedral sp³ (109.5°) & l","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_vsepr?lang=pl"},{"t":"Sieć krystaliczna jonowa i energia sieci NaCl","s":"Ionic Crystal Lattice & Lattice Energy (NaCl) · Rock-salt unit cell, Madelung constant, lattice energy & thermal phonons","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_lattice?lang=pl"},{"t":"Prawo Avogadra i objętość molowa gazu","s":"Avogadro's Law, Molar Volume & the Ideal Gas Equation · Molar volume V_m = 22.4 L/mol (STP), amount of substance ν & PV = νRT","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_gaslaws?lang=pl"},{"t":"Szybkość reakcji chemicznej, energia aktywacji i kataliza","s":"Chemical Reaction Rate, Activation Energy & Catalysis · Active molecular collisions, Arrhenius equation k = A·exp(−E_a/RT) & catal","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_kinetics?lang=pl"},{"t":"Równowaga chemiczna i reguła przekory Le Chateliera","s":"Chemical Equilibrium & Le Chatelier's Principle (N₂O₄ ⇄ 2NO₂) · Dynamic equilibrium N₂O₄ ⇄ 2NO₂, equilibrium constant K_p & shifts under T","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_equilibrium?lang=pl"},{"t":"Miareczkowanie kwasowo-zasadowe, pH i wskaźniki","s":"Acid-Base Titration, pH Curve & Visual Indicators · Neutralization curve HCl + NaOH → NaCl + H₂O, equivalence point & steep pH","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_titration?lang=pl"},{"t":"Ogniwo galwaniczne Daniella i potencjały elektrodowe","s":"Daniell-Jacobi Galvanic Cell & Electrode Potentials · Anodic oxidation Zn⁰ → Zn²⁺ + 2e⁻, cathodic reduction Cu²⁺ + 2e⁻ → Cu⁰ & s","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_galvanic?lang=pl"},{"t":"Elektroliza roztworu i prawa Faradaya","s":"Electrolytic Cell & Faraday's Laws of Electrolysis · Cathodic copper plating, anodic O₂↑ evolution & mass law m = (M·I·t)/(z·F)","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_electrolysis?lang=pl"},{"t":"Budowa benzenu C₆H₆ i delokalizacja wiązań π","s":"Benzene Structure C₆H₆, Aromaticity & Delocalized π-Bonding · Planar hexagonal σ-ring (120°), delocalized 6π electron torus & resonance ","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_organic?lang=pl"},{"t":"Układ okresowy pierwiastków (118): promień, jonizacja i χ","s":"Periodic Table of Elements (118 Elements): Atomic Radius r_at, Ionization I₁ & χ · Complete 3D Periodic Table of all 118 chemical elements (Periods 1-7, Grou","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_periodic?lang=pl"},{"t":"Wiązanie wodorowe, lód heksagonalny i anomalia wody","s":"Hydrogen Bonding, Hexagonal Ice Iₕ Lattice & Density Anomaly of Water · Tetrahedral O-H···O hydrogen-bond cage in hexagonal ice Iₕ (ρ = 0.917 g/cm","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_hbond?lang=pl"},{"t":"Termochemia, prawo Hessa i kalorymetria ΔH","s":"Thermochemistry, Hess's Law & Calorimetric Enthalpy Determination ΔH · Measuring heat effects of exo- and endothermic reactions Q = (m·c + C_cal)","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_calorimetry?lang=pl"},{"t":"Ciśnienie osmotyczne (prawo van 't Hoffa Π = iCRT)","s":"Osmotic Pressure (van 't Hoff's Law Π = iCRT) & Semipermeable Membrane · Selective solvent diffusion across a semipermeable membrane in a U-tube os","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_osmosis?lang=pl"},{"t":"Roztwory buforowe i równanie Hendersona-Hasselbalcha","s":"Buffer Solutions, Henderson-Hasselbalch Equation & Buffer Capacity · Comparing pH stability of an acetate buffer (CH₃COOH + CH₃COONa) against u","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_buffer?lang=pl"},{"t":"Iloczyn rozpuszczalności K_sp i efekt wspólnego jonu","s":"Solubility Product K_sp, Golden Rain Precipitation (PbI₂↓) & Common-Ion Effect · Crystallization of shimmering golden hexagonal PbI₂↓ platelets when Q_sp >","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_ksp?lang=pl"},{"t":"Spektrofotometria i prawo Lamberta-Beera (A = ε·l·C)","s":"Optical Spectrophotometry & the Beer-Lambert Law (A = ε·l·C) · Monochromatic light attenuation through a colored solution in a quartz cuv","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_beer?lang=pl"},{"t":"Wodorowo-tlenowe ogniwo paliwowe PEMFC","s":"Hydrogen-Oxygen Proton-Exchange Membrane Fuel Cell (PEMFC) · Direct electrochemical conversion of 2H₂ + O₂ → 2H₂O into electrical power","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_fuelcell?lang=pl"},{"t":"Stereochemia: izomeria geometryczna Z/E i optyczna R/S","s":"Stereochemistry: Geometric (cis-trans, Z/E) & Chiral Optical Isomerism (R/S) · Comparing dipole polarity of cis/trans alkene isomers and optical rotation","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_isomerism?lang=pl"},{"t":"Polimeryzacja rodnikowa etylenu i wzrost łańcucha","s":"Radical Polymerization of Ethylene & Polyethylene Chain Growth · Chain-growth polymerization n CH₂=CH₂ → (-CH₂-CH₂-)_n, sp² → sp³ hybridiza","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_polymer?lang=pl"},{"t":"Orbitale molekularne LCAO-MO i rząd wiązania","s":"Molecular Orbitals (LCAO-MO): Bonding σ/π, Antibonding σ*/π* & Bond Order · Wavefunction interference (ψ_A ± ψ_B), bonding σ/π & antibonding σ*/π* orb","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_mo?lang=pl"},{"t":"Alotropia węgla: grafen, nanorurka i fuleren C₆₀","s":"Carbon Nanostructures & Allotropes: Buckminsterfullerene C₆₀, Nanotubes & Graphene · sp² π-electron delocalization, Euler's polyhedron theorem (12 pentagons + ","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_allotropes?lang=pl"},{"t":"Związki kompleksowe i teoria pola krystalicznego","s":"Coordination Complexes & Crystal Field Theory (d-Orbital Splitting Δ_o) · Octahedral [ML₆]ⁿ⁺ vs. tetrahedral [ML₄]ⁿ⁺ complexes, t₂g / e_g splitting ","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_complex?lang=pl"},{"t":"Cykl termodynamiczny Borna-Habera kryształów jonowych","s":"Born-Haber Thermodynamic Cycle & Ionic Lattice Energy U_L · Thermodynamic balance of sublimation, dissociation, ionization, electron a","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_bornhaber?lang=pl"},{"t":"Polarność wiązania i moment dipolowy cząsteczki μ","s":"Electronegativity, Bond Polarity & Molecular Dipole Moment Vector μ · Partial charges δ⁺/δ⁻, vector addition of bond dipoles, and molecular torq","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_dipole?lang=pl"},{"t":"Diagramy fazowe P-T, punkt potrójny i stan nadkrytyczny","s":"Phase Diagrams P-T, Triple Point, Critical Point & Supercritical Fluid · Clausius-Clapeyron equation, dry ice CO₂ sublimation, triple point, and su","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_phase?lang=pl"},{"t":"Rzędowość reakcji (0, 1, 2 rząd) i okres półtrwania t₁/₂","s":"Reaction Orders (0th, 1st & 2nd Order), Rate Laws & Half-Life t₁/₂ · Integrated rate laws of zero, first, and second order reactions and scalin","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_orders?lang=pl"},{"t":"Kataliza enzymatyczna i kinetyka Michaelisa-Menten","s":"Enzyme Catalysis, Michaelis-Menten Kinetics & Active-Site Inhibition · Enzyme-substrate complex ES, lock-and-key active site, V_max, K_M, and com","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_enzyme?lang=pl"},{"t":"Energia swobodna Gibbsa ΔG = ΔH − TΔS i samorzutność","s":"Gibbs Free Energy ΔG = ΔH − TΔS, Entropy & Reaction Spontaneity · Competition between enthalpy ΔH and entropy TΔS, inversion temperature T* ","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_gibbs?lang=pl"},{"t":"Synteza amoniaku metodą Habera-Boscha","s":"Industrial Ammonia Synthesis (Haber-Bosch Process): N₂ + 3H₂ ⇄ 2NH₃ · Thermodynamic yield vs. kinetic rate trade-off at high pressure P, 450 °C,","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_haber?lang=pl"},{"t":"Prawo Raoulta, ebulioskopia i krioskopia","s":"Raoult's Law & Colligative Properties: Ebullioscopy ΔT_b & Cryoscopy ΔT_f · Chapter XXXI. Vapor Pressure Lowering ΔP = χ₂P°, Boiling Point Elevation &","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_raoult?lang=pl"},{"t":"Chromatografia cienkowarstwowa i kolumnowa (R_f)","s":"Chromatography (TLC & Column): Partition Coefficient K_d & Retention Factor R_f · Chapter XXXII. Stationary Silica Gel vs. Mobile Eluent Phase & Mixture Sep","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_chromatography?lang=pl"},{"t":"Adsorpcja powierzchniowa i izoterma Langmuira","s":"Surface Adsorption & the Langmuir Isotherm: θ = K·P / (1 + K·P) · Chapter XXXIII. Dynamic Adsorption-Desorption Equilibrium on Activated Car","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_adsorption?lang=pl"},{"t":"Układy koloidalne, efekt Tyndalla i koagulacja","s":"Colloidal Systems, Micelle Structure, Tyndall Cone & Schulze-Hardy Coagulation · Chapter XXXIV. Rayleigh Light Scattering (I ∝ d⁶/λ⁴), Zeta Potential ζ & C","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_colloids?lang=pl"},{"t":"Hydroliza soli w roztworze wodnym i odczyn pH","s":"Salt Hydrolysis in Aqueous Solution: K_h = K_w / K_a, Degree h & Medium pH · Chapter XXXV. Proton Exchange of Weak-Acid Anions (CH₃COO⁻, CO₃²⁻) & Weak-","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_hydrolysis?lang=pl"},{"t":"Korozja elektrochemiczna metali i ochrona katodowa","s":"Electrochemical Corrosion of Metals & Sacrificial Anode Cathodic Protection · Chapter XXXVI. Microgalvanic Cells (Fe | Zn vs. Fe | Cu), Oxygen Depolariz","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_corrosion?lang=pl"},{"t":"Akumulator litowo-jonowy i interkalacja jonów Li⁺","s":"Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂ · Chapter XXXVII. Li⁺ Intercalation Between Graphite Layers & Transition-Met","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_liion?lang=pl"},{"t":"Substytucja nukleofilowa S_N2 i inwersja Waldena","s":"Bimolecular Nucleophilic Substitution (S_N2) & Walden Inversion of Configuration · Chapter XXXVIII. Backside Attack HO⁻ + CH₃Br → [HO···CH₃···Br]‡ → CH₃OH + ","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_sn2?lang=pl"},{"t":"Estryfikacja Fischera i znacznik izotopowy ¹⁸O","s":"Fischer Esterification & Isotopic ¹⁸O Tracer: R-COOH + R′-¹⁸OH ⇄ R-CO-¹⁸OR′ + H₂O · Chapter XXXIX. Acid-Catalyzed Acyl Substitution, Equilibrium Constant K_eq","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_ester?lang=pl"},{"t":"Biopolimery: helisa α białka i podwójna helisa DNA","s":"Biopolymers: Peptide Bond Planarity, Protein α-Helix & DNA Double Helix (A=T, G≡C) · Chapter XL. Pauling-Corey α-Helix (3.6 res/turn) vs. Watson-Crick B-DNA, C","c":"3D Chem","u":"https://physics.sheua.com/sim/chem_biopol?lang=pl"},{"t":"Komórka eukariotyczna: organella i granica S/V","s":"Eukaryotic Cell Architecture: Organelle Compartmentalization & S/V Scaling Limit · Nucleus, Mitochondria, Rough/Smooth ER, Golgi Apparatus, Lysosomes & Surfa","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_eukaryote?lang=pl"},{"t":"Teoria chemiosmotyczna Mitchella i syntaza ATP","s":"Mitchell's Chemiosmotic Theory: Proton-Motive Force Δp & Rotary ATP Synthesis · Electron Transport Chain (Complexes I-IV), Proton-Motive Force Δp & Rotary","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_mitochondria?lang=pl"},{"t":"Podział mitotyczny komórki i wrzeciono kariokinetyczne","s":"Mitotic Cell Division: Spindle Microtubule Mechanics & Ploidy Conservation · Prophase, Metaphase Plate, Anaphase Sister Chromatid Separation & Telophas","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_mitosis?lang=pl"},{"t":"Półzachowawcza replikacja DNA i widełki replikacyjne","s":"Semiconservative DNA Replication: Replication Fork Mechanics & Meselson-Stahl Experiment · Helicase, DNA Polymerase III, 5′→3′ Synthesis, Continuous Leading Strand &","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_replication?lang=pl"},{"t":"Ekspresja genów i translacja mRNA na rybosomie","s":"Gene Expression & Translation: Ribosomal mRNA Decoding & Polypeptide Elongation · Central Dogma DNA → mRNA → Protein, Triplet Genetic Code, Ribosomal A-P-E ","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_ribosome?lang=pl"},{"t":"Genetyka Mendla i równowaga Hardy'ego-Weinberga","s":"Mendelian Genetics & Hardy-Weinberg Equilibrium: Genotype Frequency Dynamics · Punnett Square, 3:1 & 9:3:3:1 Segregation Ratios & Population Allele Equil","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_mendel?lang=pl"},{"t":"Biofizyka błony komórkowej i pompa Na⁺/K⁺-ATPaza","s":"Plasma Membrane Biophysics: Electrogenic Na⁺/K⁺-ATPase Pump & Resting Potential · Singer-Nicolson Fluid Mosaic Model, Active 3Na⁺/2K⁺ Transport & Nernst-Gol","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_membrane?lang=pl"},{"t":"Potencjał czynnościowy neuronu Hodgkina-Huxleya","s":"Action Potential Propagation: Hodgkin-Huxley Spike & Saltatory Conduction · Hodgkin-Huxley Model, Na⁺ Depolarization, K⁺ Repolarization, Myelin Sheath","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_neuron?lang=pl"},{"t":"Biomechanika skurczu mięśnia i sarkomer","s":"Biomechanics of Muscle Contraction: Sliding Filament Sarcomere & Hill's Equation · Huxley Sliding Filaments (Actin & Myosin), Ca²⁺-Troponin Gating & Hill's F","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_sarcomere?lang=pl"},{"t":"Fotosynteza w chloroplaście i cykl Calvina","s":"Chloroplast Photosynthesis: Z-Scheme Electron Transport & Calvin Cycle CO₂ Fixation · Thylakoid Light Reactions (PSII, Water Photolysis, PSI) & Stroma Calvin Cy","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_photosynthesis?lang=pl"},{"t":"Transport tlenu przez hemoglobinę i efekt Bohra","s":"Oxygen Transport by Hemoglobin: Allosteric Cooperativity (T ↔ R) & the Bohr Effect · α₂β₂ Tetramer with 4 Fe²⁺ Hemes, Cooperative Hill Sigmoid (n ≈ 2.8), Myogl","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_hemo?lang=pl"},{"t":"Dynamika ekosystemu: model drapieżnik-ofiara Lotki-Volterry","s":"Ecosystem Dynamics: Lotka-Volterra Predator-Prey Oscillations & Trophic Energy Transfer · Predator-Prey Differential Equations, Phase-Space Attractor, Population Wa","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_lotka?lang=pl"},{"t":"Podział mejotyczny, biwalenty i crossing-over","s":"Meiotic Cell Division: Bivalent Synapsis, Crossing-Over & Combinatorial Diversity · Prophase I Synapsis, Bivalents, Chiasmata, Homologous Recombination & Hapl","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_meiosis?lang=pl"},{"t":"Biofizyka widzenia, akomodacja oka i korekcja wad","s":"Biophysics of Vision: Optical Power of the Eye, Lens Accommodation & Spectacle Correction · Corneal & Crystalline Lens Refraction, Ciliary Accommodation Reflex, Myopi","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_eye?lang=pl"},{"t":"Synapsa chemiczna, egzocytoza i receptory jonotropowe","s":"Chemical Synapse: Calcium-Triggered Vesicle Exocytosis & Postsynaptic Ionotropic Receptors · Voltage-Gated Ca²⁺ Influx, SNARE Vesicle Exocytosis, Synaptic Cleft Diffus","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_synapse?lang=pl"},{"t":"Reakcja łańcuchowa polimerazy (PCR) i amplifikacja DNA","s":"Polymerase Chain Reaction (PCR): Thermal Cycling & Exponential DNA Amplification · Thermal Cycler: Denaturation (95 °C), Primer Annealing (58 °C), Taq Extens","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_pcr?lang=pl"},{"t":"System CRISPR-Cas9 i precyzyjna edycja genomu","s":"CRISPR-Cas9 System: Programmable Target DNA Recognition & Precision Genome Editing · PAM Motif Recognition (5′-NGG-3′), Guide sgRNA R-Loop, HNH/RuvC Nuclease D","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_crispr?lang=pl"},{"t":"Bakteriofag T4 i iniekcja wirusowego DNA","s":"Bacteriophage T4 Structure & Lytic Cycle: Biomechanical Syringe & Viral DNA Injection · Icosahedral Capsid, Tail Fiber Receptor Binding, Contractile Sheath & High","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_phage?lang=pl"},{"t":"Biofizyka krążenia krwi i prawo Hagena-Poiseuille'a","s":"Cardiovascular Biophysics: Laminar Blood Flow & Hagen-Poiseuille Fourth-Power Law ($Q \\propto R^4$) · Parabolic Erythrocyte Velocity Profile, Fourth-Power Radius Law (Q ∝ R⁴), ","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_hemodynamics?lang=pl"},{"t":"Elektroforeza żelowa DNA i rozdział fragmentów","s":"DNA Gel Electrophoresis: Size-Dependent Separation of Restriction Fragments in a Polymer Matrix · Polyanion Migration to Anode (+), Agarose Molecular Sieving & Logarithmic ","c":"3D Bio","u":"https://physics.sheua.com/sim/bio_electrophoresis?lang=pl"}];
+    var overlay = document.getElementById('site-search-overlay');
+    var input = document.getElementById('site-search-input');
+    var resBox = document.getElementById('site-search-results');
+    var openBtn = document.getElementById('open-site-search');
+    var closeBtn = document.getElementById('site-search-close');
+    var topBtn = document.getElementById('back-to-top-btn');
+    var activeIdx = 0;
+    var currentLinks = [];
+
+    function renderList(q) {
+      if (!resBox) return;
+      var term = (q || '').trim().toLowerCase();
+      var matches = [];
+      for (var i = 0; i < ITEMS.length; i++) {
+        var it = ITEMS[i];
+        if (!term || it.t.toLowerCase().indexOf(term) !== -1 || it.s.toLowerCase().indexOf(term) !== -1 || it.c.toLowerCase().indexOf(term) !== -1) {
+          matches.push(it);
+          if (matches.length >= 18) break;
+        }
+      }
+      resBox.innerHTML = '';
+      currentLinks = [];
+      activeIdx = 0;
+      if (!matches.length) {
+        var emp = document.createElement('div');
+        emp.style.padding = '12px 10px';
+        emp.style.fontSize = '13.5px';
+        emp.style.color = 'var(--ink-muted)';
+        emp.textContent = "No matching topics found.";
+        resBox.appendChild(emp);
+        return;
+      }
+      matches.forEach(function(m, idx) {
+        var a = document.createElement('a');
+        a.className = 'site-search-item' + (idx === 0 ? ' active' : '');
+        a.href = m.u;
+        a.setAttribute('role', 'option');
+        var left = document.createElement('div');
+        var tSpan = document.createElement('span');
+        tSpan.className = 'site-search-title';
+        tSpan.textContent = m.t;
+        var sSpan = document.createElement('span');
+        sSpan.className = 'site-search-sub';
+        sSpan.textContent = m.s;
+        left.appendChild(tSpan);
+        left.appendChild(sSpan);
+        var bSpan = document.createElement('span');
+        bSpan.className = 'site-search-badge';
+        bSpan.textContent = m.c;
+        a.appendChild(left);
+        a.appendChild(bSpan);
+        resBox.appendChild(a);
+        currentLinks.push(a);
+      });
+    }
+
+    function openSearch() {
+      if (!overlay || !input) return;
+      overlay.hidden = false;
+      renderList(input.value);
+      requestAnimationFrame(function(){ input.focus(); input.select(); });
+    }
+    function closeSearch() {
+      if (!overlay) return;
+      overlay.hidden = true;
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openSearch);
+    if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSearch();
+      });
+    }
+    if (input) {
+      input.addEventListener('input', function(){ renderList(input.value); });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' && currentLinks.length) {
+          e.preventDefault();
+          currentLinks[activeIdx].classList.remove('active');
+          activeIdx = (activeIdx + 1) % currentLinks.length;
+          currentLinks[activeIdx].classList.add('active');
+          currentLinks[activeIdx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'ArrowUp' && currentLinks.length) {
+          e.preventDefault();
+          currentLinks[activeIdx].classList.remove('active');
+          activeIdx = (activeIdx - 1 + currentLinks.length) % currentLinks.length;
+          currentLinks[activeIdx].classList.add('active');
+          currentLinks[activeIdx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter' && currentLinks[activeIdx]) {
+          e.preventDefault();
+          window.location.href = currentLinks[activeIdx].href;
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeSearch();
+        }
+      });
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openSearch();
+        return;
+      }
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      var tag = (e.target && e.target.tagName) ? e.target.tagName.toUpperCase() : '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target && e.target.isContentEditable)) return;
+      if (e.key === '/') {
+        e.preventDefault();
+        openSearch();
+      } else if (e.key === 'Escape' && overlay && !overlay.hidden) {
+        closeSearch();
+      }
+    });
+
+    if (topBtn) {
+      window.addEventListener('scroll', function() {
+        topBtn.classList.toggle('visible', window.scrollY > 420);
+      }, { passive: true });
+      topBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  })();
+  </script>
+  <script>
+    (function(){
+      var CATALOG = [{"k":"collision","d":"phys","t":"core","g":"Grade 9","n":"Zasada zachowania pędu i zderzenia kul","s":"Elastic & inelastic collision of spheres, momentum exchange","en":"Conservation of Linear Momentum"},{"k":"incline","d":"phys","t":"core","g":"Grade 7-9","n":"Ruch ciała po równi pochyłej","s":"Resolution of gravity, normal force N, and friction angle","en":"Motion of a Body on an Inclined Plane"},{"k":"pendulum","d":"phys","t":"core","g":"Grade 9-10","n":"Wahadło matematyczne i sprężynowe","s":"Comparison of periods T = 2π√(L/g) and T = 2π√(m/k)","en":"Simple & Spring Pendulums"},{"k":"projectile","d":"phys","t":"core","g":"Grade 9-10","n":"Rzut ukośny w polu grawitacyjnym","s":"Vacuum parabola vs. ballistic trajectory with air drag","en":"Projectile Launched at an Angle to the Horizontal"},{"k":"cradle","d":"phys","t":"core","g":"Grade 9","n":"Kołyska Newtona","s":"Transmission of momentum and energy through a chain of steel spheres","en":"Newton's Cradle"},{"k":"centripetal","d":"phys","t":"core","g":"Grade 9-10","n":"Przyspieszenie dośrodkowe i ruch po okręgu","s":"Centripetal acceleration a = ω²R and radial skidding threshold","en":"Centripetal Acceleration & Turning Dynamics"},{"k":"archimedes","d":"phys","t":"core","g":"Grade 7","n":"Prawo Archimedesa i pływanie ciał","s":"Buoyant force F_A = ρgV and equilibrium at the waterline","en":"Archimedes' Principle & Flotation Conditions"},{"k":"gas","d":"phys","t":"core","g":"Grade 10","n":"Gaz doskonały pod tłokiem (PV = nRT)","s":"Ideal gas law PV = νRT and thermal motion of molecules","en":"Ideal Gas Under a Piston (Ideal Gas Law)"},{"k":"wavefront","d":"phys","t":"core","g":"Grade 9-11","n":"Czoło fali i zasada Huygensa-Fresnela","s":"Huygens' secondary spherical wavelets and plane wavefront refraction","en":"Light Wavefront & Huygens-Fresnel Principle"},{"k":"interference","d":"phys","t":"core","g":"Grade 11","n":"Interferencja światła (doświadczenie Younga)","s":"Superposition of two spherical light wavefronts, maxima & minima","en":"Interference of Light Wavefronts (Young's Double-Slit)"},{"k":"dispersion","d":"phys","t":"core","g":"Grade 9-11","n":"Dyspersja światła i widmo w pryzmacie","s":"Wavelength dependence of refractive index n(λ) and spectral splitting","en":"Dispersion of Light & Spectrum Formation in a Prism"},{"k":"emwave","d":"phys","t":"core","g":"Grade 11","n":"Fala elektromagnetyczna (E, B i wektor Poyntinga)","s":"Mutually perpendicular fields E ⊥ B, phase wavefront, and light polarization","en":"Electromagnetic Light Wave (E, B & Poynting Vector)"},{"k":"bernoulli","d":"phys","t":"core","g":"Grade 10","n":"Równanie Bernoulliego i zwężka Venturiego","s":"Relation between flow speed and static pressure in a variable-cross-section pipe","en":"Bernoulli's Equation & Venturi Effect"},{"k":"lens","d":"phys","t":"core","g":"Grade 9-11","n":"Soczewka skupiająca i ogniskowanie wiązki","s":"Transformation of a plane light wavefront into a converging spherical wavefront","en":"Converging Lens & Light Wavefront Focusing"},{"k":"lorentz","d":"phys","t":"core","g":"Grade 11","n":"Siła Lorentza i spirala cyklotronowa 3D","s":"Helical trajectory of a charged particle in a uniform magnetic field B","en":"Lorentz Force & 3D Cyclotron Helix"},{"k":"faraday","d":"phys","t":"core","g":"Grade 9-11","n":"Indukcja Faradaya i reguła Lenza w 3D","s":"Generation of induced current in a coil by a moving magnet & Lenz's rule","en":"Faraday's Law & Lenz's Rule in 3D"},{"k":"kepler","d":"phys","t":"core","g":"Grade 10-11","n":"Orbita eliptyczna i II prawo Keplera","s":"Elliptical planetary orbit, equal-area sweep rate & orbital energy exchange","en":"Elliptical Orbit & Kepler's Second Law"},{"k":"gyroscope","d":"phys","t":"core","g":"AP / University","n":"Moment bezwładności i energia toczenia","s":"Race between a solid cylinder and a hollow hoop rolling without slipping","en":"Moment of Inertia & Rolling Kinetic Energy"},{"k":"standingwave","d":"phys","t":"core","g":"Grade 9-11","n":"Fale stojące i harmoniczne struny","s":"Normal modes of a fixed string, nodes & antinodes, and frequency vs. tension","en":"Standing Waves & String Overtones in 3D"},{"k":"doppler","d":"phys","t":"core","g":"Grade 9-11","n":"Efekt Dopplera i deformacja czoła fali","s":"Compression of wavefront crests ahead of a moving source, frequency shift & Mach cone","en":"Doppler Effect & Wavefront Deformation"},{"k":"malus","d":"phys","t":"core","g":"AP / University","n":"Polaryzacja światła i prawo Malusa","s":"Transmission of a linearly polarized light wavefront through a polarizer and rotatable analyzer","en":"Light Wavefront Polarization & Malus's Law"},{"k":"diffraction","d":"phys","t":"core","g":"Grade 11","n":"Dyfrakcja światła na pojedynczej szczelinie","s":"Wavefront spreading through a narrow slit, Huygens wavelets & sinc²(β) intensity profile","en":"Single-Slit Wavefront Diffraction in 3D"},{"k":"carnot","d":"phys","t":"core","g":"Grade 10","n":"Silnik cieplny i cykl Carnota w 3D","s":"Conversion of heater heat Q₁ into mechanical piston work A and heat rejection Q₂ to the cold sink","en":"Ideal Heat Engine & Carnot Cycle in 3D"},{"k":"viscosity","d":"phys","t":"core","g":"AP / University","n":"Ruch kulki w cieczy lepkiej (prawo Stokesa)","s":"Sphere falling through viscous oil, Stokes drag force & approach to terminal velocity","en":"Motion of a Sphere in a Viscous Fluid (Stokes' Law)"},{"k":"coulomb","d":"phys","t":"core","g":"Grade 8-10","n":"Prawo Coulomba i pole dipola elektrycznego","s":"3D electric field lines of two point charges, Coulomb force & test charge motion","en":"Coulomb's Law & 3D Electric Dipole Field"},{"k":"rlccircuit","d":"phys","t":"core","g":"Grade 11","n":"Drgania elektromagnetyczne w obwodzie RLC","s":"Free electromagnetic oscillations between capacitor C and inductor coil L, Thomson period","en":"Electromagnetic Oscillations in an LC / RLC Circuit"},{"k":"atwood","d":"phys","t":"core","g":"Grade 9-10","n":"Maszyna Atwooda: przyspieszenie i naciąg nici","s":"Motion of two masses on a thread over a pulley with moment of inertia, thread tension","en":"Atwood's Machine: Dynamics of Connected Masses & Pulley Inertia"},{"k":"coriolis","d":"phys","t":"core","g":"AP / University","n":"Siła Coriolisa w układzie obracającym się","s":"Trajectory deflection of a body moving on a rotating platform, inertial forces","en":"Coriolis Force & Motion in a Rotating Reference Frame"},{"k":"hooke","d":"phys","t":"core","g":"Grade 7-10","n":"Prawo Hooke'a i moduł Younga przy rozciąganiu","s":"Elastic uniaxial tension of a rod, mechanical stress σ, strain ε, and Poisson necking","en":"Hooke's Law in Differential Form & Young's Modulus"},{"k":"torricelli","d":"phys","t":"core","g":"Grade 7-10","n":"Wzór Torricellego i wypływ cieczy ze zbiornika","s":"Efflux speed v = √(2gh) from a vessel orifice and parabolic jet range X = 2√(h·y₀)","en":"Torricelli's Theorem & Hydrodynamic Efflux of a Liquid Jet"},{"k":"maxwell","d":"phys","t":"core","g":"AP / University","n":"Rozkład prędkości cząsteczek Maxwella","s":"Statistical distribution f(v), most probable speed v_p, mean ⟨v⟩, and RMS speed v_rms","en":"Maxwell's Law of Molecular Speed Distribution in an Ideal Gas"},{"k":"newtonrings","d":"phys","t":"core","g":"AP / University · Grade 11","n":"Pierścienie Newtona i interferencja w klinie","s":"Concentric interference rings in the air wedge between a plano-convex lens and flat glass plate","en":"Newton's Rings: Interference in a Thin Air Wedge & Half-Wave Phase Shift"},{"k":"photoelectric","d":"phys","t":"core","g":"Grade 11","n":"Zjawisko fotoelektryczne i równanie Einsteina","s":"Quantum emission of photoelectrons, work function A_w, red limit λ_max, and stopping voltage U_stop","en":"External Photoelectric Effect: Einstein's Equation & Stopping Potential"},{"k":"rutherford","d":"phys","t":"core","g":"Grade 9-11","n":"Doświadczenie Rutherforda i rozpraszanie cząstek α","s":"Hyperbolic trajectories in the Coulomb field of a heavy nucleus, impact parameter b, and scattering angle θ","en":"Rutherford's Gold Foil Experiment & Planetary Model of the Atom"},{"k":"ampere","d":"phys","t":"core","g":"Grade 9-11","n":"Oddziaływanie prądów równoległych i siła elektrodynamiczna","s":"Magnetic interaction of two parallel conductors carrying currents I₁ and I₂, attraction vs. repulsion","en":"Magnetic Interaction of Parallel Currents & Definition of the Ampere"},{"k":"hall","d":"phys","t":"core","g":"AP / University","n":"Zjawisko Halla i napięcie poprzeczne","s":"Lorentz deflection of charge carriers in a slab with current I in magnetic field B, n-type vs. p-type","en":"The Hall Effect: Transverse Potential Difference & Carrier Sign Determination"},{"k":"coupled","d":"phys","t":"core","g":"AP / University","n":"Wahadła sprzężone: mody normalne i dudnienia","s":"Periodic exchange of mechanical energy between two pendulums coupled by a spring","en":"Coupled Pendulums: Normal Modes & Energy Beats"},{"k":"precession","d":"phys","t":"core","g":"AP / University","n":"Precesja żyroskopowa ciężkiego bąka","s":"Precession of spin angular momentum L around the vertical axis under gravitational torque M = [r × mg]","en":"Gyroscopic Precession of a Heavy Symmetric Top"},{"k":"magnus","d":"phys","t":"core","g":"AP / University · Grade 10","n":"Efekt Magnusa i siła nośna obracającego się walca","s":"Transverse lift force F_M on a rotating cylinder in a uniform flow due to velocity circulation Γ","en":"Magnus Effect & Lift Force on a Rotating Cylinder"},{"k":"capillary","d":"phys","t":"core","g":"AP / University · Grade 10","n":"Napięcie powierzchniowe, menisk i kapilarność","s":"Laplace pressure jump ΔP = 2σ cos θ / r under a concave or convex meniscus and equilibrium column height h","en":"Surface Tension, Meniscus Curvature & Capillary Action"},{"k":"brownian","d":"phys","t":"core","g":"AP / University · Grade 8-10","n":"Ruchy Browna i dyfuzja Einsteina-Smoluchowskiego","s":"Random walk trajectory of a suspended microparticle under molecular impacts and linear growth of mean-square displacement ⟨r²⟩ = 6Dt","en":"Brownian Motion & Einstein-Smoluchowski Diffusion"},{"k":"michelson","d":"phys","t":"core","g":"AP / University","n":"Interferometr Michelsona i przesunięcie fazowe","s":"Division of a coherent laser beam by a beam splitter into two orthogonal arms L₁, L₂ and fringe shift under mirror displacement Δd","en":"Michelson Interferometer & Phase Shift of Beams"},{"k":"compton","d":"phys","t":"core","g":"AP / University","n":"Zjawisko Comptona i pęd relatywistyczny fotonu","s":"Elastic collision of an X-ray photon with a free electron, wavelength shift Δλ = λ_C (1 − cos θ), and recoil momentum","en":"Compton Scattering & Relativistic Photon Momentum"},{"k":"bohr","d":"phys","t":"core","g":"Grade 9-11","n":"Model atomu Bohra, fale de Broglie'a i serie widmowe","s":"Quantization of angular momentum L_n = nℏ, de Broglie standing waves 2πr_n = nλ_dB, and Rydberg spectral transitions","en":"Bohr Atom Model, de Broglie Standing Waves & Spectral Series"},{"k":"biot","d":"phys","t":"core","g":"AP / University","n":"Prawo Biota-Savarta i cewki Helmholtza","s":"Axial magnetic induction B(x) of circular current loops and generation of a uniform field plateau between Helmholtz coils","en":"Biot-Savart Law & Uniform Field of Helmholtz Coils"},{"k":"transformer","d":"phys","t":"core","g":"Grade 9-11","n":"Transformator prądu przemiennego i indukcja wzajemna","s":"Mutual electromagnetic induction via shared alternating magnetic flux Φ(t) in a ferromagnetic core and turns ratio U₂/U₁ = N₂/N₁","en":"AC Transformer & Mutual Electromagnetic Induction"},{"k":"chem_orbitals","d":"chem","t":"core","g":"Grade 8-11","n":"Powłoki elektronowe i orbitale kwantowe 3D (s, p, d)","s":"Schrödinger wavefunction |ψ|², quantum numbers n, l & nodal surfaces","en":"Atomic Electron Shells & 3D Quantum Orbitals (s, p, d)"},{"k":"chem_vsepr","d":"chem","t":"core","g":"AP / University","n":"Hybrydyzacja orbitali i geometria cząsteczek VSEPR","s":"Linear sp (180°), trigonal planar sp² (120°), tetrahedral sp³ (109.5°) & lone pairs","en":"Orbital Hybridization & 3D Molecular Geometry (VSEPR)"},{"k":"chem_lattice","d":"chem","t":"core","g":"Grade 8-11","n":"Sieć krystaliczna jonowa i energia sieci NaCl","s":"Rock-salt unit cell, Madelung constant, lattice energy & thermal phonons","en":"Ionic Crystal Lattice & Lattice Energy (NaCl)"},{"k":"chem_gaslaws","d":"chem","t":"core","g":"Grade 8-10","n":"Prawo Avogadra i objętość molowa gazu","s":"Molar volume V_m = 22.4 L/mol (STP), amount of substance ν & PV = νRT","en":"Avogadro's Law, Molar Volume & the Ideal Gas Equation"},{"k":"chem_kinetics","d":"chem","t":"core","g":"Grade 9-11","n":"Szybkość reakcji chemicznej, energia aktywacji i kataliza","s":"Active molecular collisions, Arrhenius equation k = A·exp(−E_a/RT) & catalytic pathway","en":"Chemical Reaction Rate, Activation Energy & Catalysis"},{"k":"chem_equilibrium","d":"chem","t":"core","g":"Grade 9-11","n":"Równowaga chemiczna i reguła przekory Le Chateliera","s":"Dynamic equilibrium N₂O₄ ⇄ 2NO₂, equilibrium constant K_p & shifts under T and P","en":"Chemical Equilibrium & Le Chatelier's Principle (N₂O₄ ⇄ 2NO₂)"},{"k":"chem_titration","d":"chem","t":"core","g":"Grade 8-11","n":"Miareczkowanie kwasowo-zasadowe, pH i wskaźniki","s":"Neutralization curve HCl + NaOH → NaCl + H₂O, equivalence point & steep pH jump","en":"Acid-Base Titration, pH Curve & Visual Indicators"},{"k":"chem_galvanic","d":"chem","t":"core","g":"Grade 9-11","n":"Ogniwo galwaniczne Daniella i potencjały elektrodowe","s":"Anodic oxidation Zn⁰ → Zn²⁺ + 2e⁻, cathodic reduction Cu²⁺ + 2e⁻ → Cu⁰ & salt bridge","en":"Daniell-Jacobi Galvanic Cell & Electrode Potentials"},{"k":"chem_electrolysis","d":"chem","t":"core","g":"Grade 9-11","n":"Elektroliza roztworu i prawa Faradaya","s":"Cathodic copper plating, anodic O₂↑ evolution & mass law m = (M·I·t)/(z·F)","en":"Electrolytic Cell & Faraday's Laws of Electrolysis"},{"k":"chem_organic","d":"chem","t":"core","g":"Grade 9-11 · Organic Chemistry","n":"Budowa benzenu C₆H₆ i delokalizacja wiązań π","s":"Planar hexagonal σ-ring (120°), delocalized 6π electron torus & resonance stabilization","en":"Benzene Structure C₆H₆, Aromaticity & Delocalized π-Bonding"},{"k":"chem_periodic","d":"chem","t":"core","g":"Grade 8-11 · Periodic Trends","n":"Układ okresowy pierwiastków (118): promień, jonizacja i χ","s":"Complete 3D Periodic Table of all 118 chemical elements (Periods 1-7, Groups 1-18, s-, p-, d-, and f-blocks: Lanthanides & Actinides), atomic radius r_at, ionization energy I₁ & electronegativity χ","en":"Periodic Table of Elements (118 Elements): Atomic Radius r_at, Ionization I₁ & χ"},{"k":"chem_hbond","d":"chem","t":"core","g":"Grade 9-10 · Hydrogen Bonding","n":"Wiązanie wodorowe, lód heksagonalny i anomalia wody","s":"Tetrahedral O-H···O hydrogen-bond cage in hexagonal ice Iₕ (ρ = 0.917 g/cm³) and maximum density of liquid water at +4 °C","en":"Hydrogen Bonding, Hexagonal Ice Iₕ Lattice & Density Anomaly of Water"},{"k":"chem_calorimetry","d":"chem","t":"core","g":"Grade 9-11 · Thermochemistry","n":"Termochemia, prawo Hessa i kalorymetria ΔH","s":"Measuring heat effects of exo- and endothermic reactions Q = (m·c + C_cal)ΔT = −ν·ΔH and Hess's Law enthalpy diagram","en":"Thermochemistry, Hess's Law & Calorimetric Enthalpy Determination ΔH"},{"k":"chem_osmosis","d":"chem","t":"core","g":"Grade 9-11 · Osmotic Pressure","n":"Ciśnienie osmotyczne (prawo van 't Hoffa Π = iCRT)","s":"Selective solvent diffusion across a semipermeable membrane in a U-tube osmometer, van 't Hoff factor i, and reverse osmosis desalination","en":"Osmotic Pressure (van 't Hoff's Law Π = iCRT) & Semipermeable Membrane"},{"k":"chem_buffer","d":"chem","t":"core","g":"AP / University · Buffer Solutions","n":"Roztwory buforowe i równanie Hendersona-Hasselbalcha","s":"Comparing pH stability of an acetate buffer (CH₃COOH + CH₃COONa) against unbuffered water upon addition of strong acid HCl or base NaOH","en":"Buffer Solutions, Henderson-Hasselbalch Equation & Buffer Capacity"},{"k":"chem_ksp","d":"chem","t":"core","g":"Grade 9-11 · Solubility Product","n":"Iloczyn rozpuszczalności K_sp i efekt wspólnego jonu","s":"Crystallization of shimmering golden hexagonal PbI₂↓ platelets when Q_sp > K_sp(T) and solubility suppression by excess I⁻ ions","en":"Solubility Product K_sp, Golden Rain Precipitation (PbI₂↓) & Common-Ion Effect"},{"k":"chem_beer","d":"chem","t":"core","g":"AP / University · Beer-Lambert Law","n":"Spektrofotometria i prawo Lamberta-Beera (A = ε·l·C)","s":"Monochromatic light attenuation through a colored solution in a quartz cuvette, optical absorbance A = ε(λ)lC, and transmittance T = 10⁻ᴬ","en":"Optical Spectrophotometry & the Beer-Lambert Law (A = ε·l·C)"},{"k":"chem_fuelcell","d":"chem","t":"core","g":"Grade 9-11 · Hydrogen Fuel Cell","n":"Wodorowo-tlenowe ogniwo paliwowe PEMFC","s":"Direct electrochemical conversion of 2H₂ + O₂ → 2H₂O into electrical power across a proton-exchange membrane with Pt catalyst electrodes","en":"Hydrogen-Oxygen Proton-Exchange Membrane Fuel Cell (PEMFC)"},{"k":"chem_isomerism","d":"chem","t":"core","g":"Grade 10-11 · Stereochemistry","n":"Stereochemia: izomeria geometryczna Z/E i optyczna R/S","s":"Comparing dipole polarity of cis/trans alkene isomers and optical rotation of plane-polarized light by chiral R/S-enantiomers","en":"Stereochemistry: Geometric (cis-trans, Z/E) & Chiral Optical Isomerism (R/S)"},{"k":"chem_polymer","d":"chem","t":"core","g":"Grade 9-11 · Polymerization","n":"Polimeryzacja rodnikowa etylenu i wzrost łańcucha","s":"Chain-growth polymerization n CH₂=CH₂ → (-CH₂-CH₂-)_n, sp² → sp³ hybridization shift, molar mass M_n, and coil radius R_g","en":"Radical Polymerization of Ethylene & Polyethylene Chain Growth"},{"k":"chem_mo","d":"chem","t":"core","g":"AP / University · Quantum Chemistry","n":"Orbitale molekularne LCAO-MO i rząd wiązania","s":"Wavefunction interference (ψ_A ± ψ_B), bonding σ/π & antibonding σ*/π* orbitals, bond order, and paramagnetism of O₂","en":"Molecular Orbitals (LCAO-MO): Bonding σ/π, Antibonding σ*/π* & Bond Order"},{"k":"chem_allotropes","d":"chem","t":"core","g":"Grade 9-11 · Carbon Allotropes & Nanotech","n":"Alotropia węgla: grafen, nanorurka i fuleren C₆₀","s":"sp² π-electron delocalization, Euler's polyhedron theorem (12 pentagons + 20 hexagons), and nanotube chirality","en":"Carbon Nanostructures & Allotropes: Buckminsterfullerene C₆₀, Nanotubes & Graphene"},{"k":"chem_complex","d":"chem","t":"core","g":"AP / University · Coordination Chemistry","n":"Związki kompleksowe i teoria pola krystalicznego","s":"Octahedral [ML₆]ⁿ⁺ vs. tetrahedral [ML₄]ⁿ⁺ complexes, t₂g / e_g splitting (Δ_o), spectrochemical series, and color","en":"Coordination Complexes & Crystal Field Theory (d-Orbital Splitting Δ_o)"},{"k":"chem_bornhaber","d":"chem","t":"core","g":"AP / University · Crystal Thermochemistry","n":"Cykl termodynamiczny Borna-Habera kryształów jonowych","s":"Thermodynamic balance of sublimation, dissociation, ionization, electron affinity, and ionic lattice energy U_lat","en":"Born-Haber Thermodynamic Cycle & Ionic Lattice Energy U_L"},{"k":"chem_dipole","d":"chem","t":"core","g":"Grade 8-10 · Molecular Polarity","n":"Polarność wiązania i moment dipolowy cząsteczki μ","s":"Partial charges δ⁺/δ⁻, vector addition of bond dipoles, and molecular torque in an electric field E","en":"Electronegativity, Bond Polarity & Molecular Dipole Moment Vector μ"},{"k":"chem_phase","d":"chem","t":"core","g":"AP / University · Phase Equilibria","n":"Diagramy fazowe P-T, punkt potrójny i stan nadkrytyczny","s":"Clausius-Clapeyron equation, dry ice CO₂ sublimation, triple point, and supercritical state","en":"Phase Diagrams P-T, Triple Point, Critical Point & Supercritical Fluid"},{"k":"chem_orders","d":"chem","t":"core","g":"AP / University · Rate Laws & Half-Life","n":"Rzędowość reakcji (0, 1, 2 rząd) i okres półtrwania t₁/₂","s":"Integrated rate laws of zero, first, and second order reactions and scaling of half-life t₁/₂","en":"Reaction Orders (0th, 1st & 2nd Order), Rate Laws & Half-Life t₁/₂"},{"k":"chem_enzyme","d":"chem","t":"core","g":"AP / University · Enzyme Kinetics","n":"Kataliza enzymatyczna i kinetyka Michaelisa-Menten","s":"Enzyme-substrate complex ES, lock-and-key active site, V_max, K_M, and competitive inhibition","en":"Enzyme Catalysis, Michaelis-Menten Kinetics & Active-Site Inhibition"},{"k":"chem_gibbs","d":"chem","t":"core","g":"AP / University · Chemical Thermodynamics","n":"Energia swobodna Gibbsa ΔG = ΔH − TΔS i samorzutność","s":"Competition between enthalpy ΔH and entropy TΔS, inversion temperature T* = ΔH/ΔS, and equilibrium K","en":"Gibbs Free Energy ΔG = ΔH − TΔS, Entropy & Reaction Spontaneity"},{"k":"chem_haber","d":"chem","t":"core","g":"Grade 9-11 · Industrial Chemistry","n":"Synteza amoniaku metodą Habera-Boscha","s":"Thermodynamic yield vs. kinetic rate trade-off at high pressure P, 450 °C, and promoted Fe catalyst","en":"Industrial Ammonia Synthesis (Haber-Bosch Process): N₂ + 3H₂ ⇄ 2NH₃"},{"k":"chem_raoult","d":"chem","t":"core","g":"AP / University · Colligative Properties","n":"Prawo Raoulta, ebulioskopia i krioskopia","s":"Chapter XXXI. Vapor Pressure Lowering ΔP = χ₂P°, Boiling Point Elevation & Freezing Point Depression","en":"Raoult's Law & Colligative Properties: Ebullioscopy ΔT_b & Cryoscopy ΔT_f"},{"k":"chem_chromatography","d":"chem","t":"core","g":"AP / University · Separation Science","n":"Chromatografia cienkowarstwowa i kolumnowa (R_f)","s":"Chapter XXXII. Stationary Silica Gel vs. Mobile Eluent Phase & Mixture Separation of Plant Pigments","en":"Chromatography (TLC & Column): Partition Coefficient K_d & Retention Factor R_f"},{"k":"chem_adsorption","d":"chem","t":"core","g":"AP / University · Surface Chemistry","n":"Adsorpcja powierzchniowa i izoterma Langmuira","s":"Chapter XXXIII. Dynamic Adsorption-Desorption Equilibrium on Activated Carbon & Monolayer Saturation","en":"Surface Adsorption & the Langmuir Isotherm: θ = K·P / (1 + K·P)"},{"k":"chem_colloids","d":"chem","t":"core","g":"Grade 9-11 · Colloid & Interface Science","n":"Układy koloidalne, efekt Tyndalla i koagulacja","s":"Chapter XXXIV. Rayleigh Light Scattering (I ∝ d⁶/λ⁴), Zeta Potential ζ & Coagulation by Multivalent Ions (z⁶)","en":"Colloidal Systems, Micelle Structure, Tyndall Cone & Schulze-Hardy Coagulation"},{"k":"chem_hydrolysis","d":"chem","t":"core","g":"Grade 9-11 · Salt Hydrolysis","n":"Hydroliza soli w roztworze wodnym i odczyn pH","s":"Chapter XXXV. Proton Exchange of Weak-Acid Anions (CH₃COO⁻, CO₃²⁻) & Weak-Base Cations (NH₄⁺, Al³⁺)","en":"Salt Hydrolysis in Aqueous Solution: K_h = K_w / K_a, Degree h & Medium pH"},{"k":"chem_corrosion","d":"chem","t":"core","g":"Grade 9-11 · Corrosion & Protection","n":"Korozja elektrochemiczna metali i ochrona katodowa","s":"Chapter XXXVI. Microgalvanic Cells (Fe | Zn vs. Fe | Cu), Oxygen Depolarization & Rust Formation","en":"Electrochemical Corrosion of Metals & Sacrificial Anode Cathodic Protection"},{"k":"chem_liion","d":"chem","t":"core","g":"AP / University · Lithium-Ion Batteries","n":"Akumulator litowo-jonowy i interkalacja jonów Li⁺","s":"Chapter XXXVII. Li⁺ Intercalation Between Graphite Layers & Transition-Metal Oxide Octahedra at 3.7 V","en":"Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂"},{"k":"chem_sn2","d":"chem","t":"core","g":"AP / University · Organic Reaction Mechanisms","n":"Substytucja nukleofilowa S_N2 i inwersja Waldena","s":"Chapter XXXVIII. Backside Attack HO⁻ + CH₃Br → [HO···CH₃···Br]‡ → CH₃OH + Br⁻ & Pentacoordinate Transition State","en":"Bimolecular Nucleophilic Substitution (S_N2) & Walden Inversion of Configuration"},{"k":"chem_ester","d":"chem","t":"core","g":"Grade 10-11 · Esters & Isotopic Tracers","n":"Estryfikacja Fischera i znacznik izotopowy ¹⁸O","s":"Chapter XXXIX. Acid-Catalyzed Acyl Substitution, Equilibrium Constant K_eq ≈ 4.0 & Dean-Stark Water Removal","en":"Fischer Esterification & Isotopic ¹⁸O Tracer: R-COOH + R′-¹⁸OH ⇄ R-CO-¹⁸OR′ + H₂O"},{"k":"chem_biopol","d":"chem","t":"core","g":"AP / University · Biochemistry: Proteins & DNA","n":"Biopolimery: helisa α białka i podwójna helisa DNA","s":"Chapter XL. Pauling-Corey α-Helix (3.6 res/turn) vs. Watson-Crick B-DNA, Chargaff's Rules & Melting T_m","en":"Biopolymers: Peptide Bond Planarity, Protein α-Helix & DNA Double Helix (A=T, G≡C)"},{"k":"bio_eukaryote","d":"bio","t":"core","g":"Grade 9-10 · Cytology: Cell Structure","n":"Komórka eukariotyczna: organella i granica S/V","s":"Nucleus, Mitochondria, Rough/Smooth ER, Golgi Apparatus, Lysosomes & Surface-to-Volume Ratio S/V = 3/R","en":"Eukaryotic Cell Architecture: Organelle Compartmentalization & S/V Scaling Limit"},{"k":"bio_mitochondria","d":"bio","t":"core","g":"Grade 10-11 · Bioenergetics & ATP Synthase","n":"Teoria chemiosmotyczna Mitchella i syntaza ATP","s":"Electron Transport Chain (Complexes I-IV), Proton-Motive Force Δp & Rotary F₀F₁-ATP Synthase","en":"Mitchell's Chemiosmotic Theory: Proton-Motive Force Δp & Rotary ATP Synthesis"},{"k":"bio_mitosis","d":"bio","t":"core","g":"Grade 9-10 · Mitosis & Cell Cycle","n":"Podział mitotyczny komórki i wrzeciono kariokinetyczne","s":"Prophase, Metaphase Plate, Anaphase Sister Chromatid Separation & Telophase (2n → 2n)","en":"Mitotic Cell Division: Spindle Microtubule Mechanics & Ploidy Conservation"},{"k":"bio_replication","d":"bio","t":"core","g":"Grade 10-11 · DNA Replication","n":"Półzachowawcza replikacja DNA i widełki replikacyjne","s":"Helicase, DNA Polymerase III, 5′→3′ Synthesis, Continuous Leading Strand & Lagging Okazaki Fragments","en":"Semiconservative DNA Replication: Replication Fork Mechanics & Meselson-Stahl Experiment"},{"k":"bio_ribosome","d":"bio","t":"core","g":"Grade 10-11 · Genetic Code & Translation","n":"Ekspresja genów i translacja mRNA na rybosomie","s":"Central Dogma DNA → mRNA → Protein, Triplet Genetic Code, Ribosomal A-P-E Sites & tRNA Decoding","en":"Gene Expression & Translation: Ribosomal mRNA Decoding & Polypeptide Elongation"},{"k":"bio_mendel","d":"bio","t":"core","g":"Grade 9-11 · Mendelian & Population Genetics","n":"Genetyka Mendla i równowaga Hardy'ego-Weinberga","s":"Punnett Square, 3:1 & 9:3:3:1 Segregation Ratios & Population Allele Equilibrium p² + 2pq + q² = 1","en":"Mendelian Genetics & Hardy-Weinberg Equilibrium: Genotype Frequency Dynamics"},{"k":"bio_membrane","d":"bio","t":"core","g":"Grade 10-11 · Membrane Biophysics","n":"Biofizyka błony komórkowej i pompa Na⁺/K⁺-ATPaza","s":"Singer-Nicolson Fluid Mosaic Model, Active 3Na⁺/2K⁺ Transport & Nernst-Goldman Potential","en":"Plasma Membrane Biophysics: Electrogenic Na⁺/K⁺-ATPase Pump & Resting Potential"},{"k":"bio_neuron","d":"bio","t":"core","g":"Grade 10-11 · Neuron Action Potential","n":"Potencjał czynnościowy neuronu Hodgkina-Huxleya","s":"Hodgkin-Huxley Model, Na⁺ Depolarization, K⁺ Repolarization, Myelin Sheath & Nodes of Ranvier","en":"Action Potential Propagation: Hodgkin-Huxley Spike & Saltatory Conduction"},{"k":"bio_sarcomere","d":"bio","t":"core","g":"AP / University · Muscle Biomechanics","n":"Biomechanika skurczu mięśnia i sarkomer","s":"Huxley Sliding Filaments (Actin & Myosin), Ca²⁺-Troponin Gating & Hill's Force-Velocity Hyperbola","en":"Biomechanics of Muscle Contraction: Sliding Filament Sarcomere & Hill's Equation"},{"k":"bio_photosynthesis","d":"bio","t":"core","g":"Grade 9-11 · Photosynthesis & Calvin Cycle","n":"Fotosynteza w chloroplaście i cykl Calvina","s":"Thylakoid Light Reactions (PSII, Water Photolysis, PSI) & Stroma Calvin Cycle (RuBisCO)","en":"Chloroplast Photosynthesis: Z-Scheme Electron Transport & Calvin Cycle CO₂ Fixation"},{"k":"bio_hemo","d":"bio","t":"core","g":"AP / University · Respiration & Bohr Effect","n":"Transport tlenu przez hemoglobinę i efekt Bohra","s":"α₂β₂ Tetramer with 4 Fe²⁺ Hemes, Cooperative Hill Sigmoid (n ≈ 2.8), Myoglobin & Bohr Shift","en":"Oxygen Transport by Hemoglobin: Allosteric Cooperativity (T ↔ R) & the Bohr Effect"},{"k":"bio_lotka","d":"bio","t":"core","g":"AP / University · Ecology: Lotka-Volterra Model","n":"Dynamika ekosystemu: model drapieżnik-ofiara Lotki-Volterry","s":"Predator-Prey Differential Equations, Phase-Space Attractor, Population Waves & Lindeman's 10% Pyramid","en":"Ecosystem Dynamics: Lotka-Volterra Predator-Prey Oscillations & Trophic Energy Transfer"},{"k":"bio_meiosis","d":"bio","t":"core","g":"Grade 9-11 · Meiosis & Crossing-Over","n":"Podział mejotyczny, biwalenty i crossing-over","s":"Prophase I Synapsis, Bivalents, Chiasmata, Homologous Recombination & Haploid Gametes (1n1c)","en":"Meiotic Cell Division: Bivalent Synapsis, Crossing-Over & Combinatorial Diversity"},{"k":"bio_eye","d":"bio","t":"core","g":"Grade 8-11 · Biophysics of Vision","n":"Biofizyka widzenia, akomodacja oka i korekcja wad","s":"Corneal & Crystalline Lens Refraction, Ciliary Accommodation Reflex, Myopia & Hyperopia Correction","en":"Biophysics of Vision: Optical Power of the Eye, Lens Accommodation & Spectacle Correction"},{"k":"bio_synapse","d":"bio","t":"core","g":"AP / University · Neurobiology: Chemical Synapse","n":"Synapsa chemiczna, egzocytoza i receptory jonotropowe","s":"Voltage-Gated Ca²⁺ Influx, SNARE Vesicle Exocytosis, Synaptic Cleft Diffusion & EPSP / IPSP Potentials","en":"Chemical Synapse: Calcium-Triggered Vesicle Exocytosis & Postsynaptic Ionotropic Receptors"},{"k":"bio_pcr","d":"bio","t":"core","g":"AP / University · Biotechnology: PCR","n":"Reakcja łańcuchowa polimerazy (PCR) i amplifikacja DNA","s":"Thermal Cycler: Denaturation (95 °C), Primer Annealing (58 °C), Taq Extension (72 °C) & 2ⁿ Amplification","en":"Polymerase Chain Reaction (PCR): Thermal Cycling & Exponential DNA Amplification"},{"k":"bio_crispr","d":"bio","t":"core","g":"AP / University · Genome Editing: CRISPR-Cas9","n":"System CRISPR-Cas9 i precyzyjna edycja genomu","s":"PAM Motif Recognition (5′-NGG-3′), Guide sgRNA R-Loop, HNH/RuvC Nuclease Domains & HDR Repair","en":"CRISPR-Cas9 System: Programmable Target DNA Recognition & Precision Genome Editing"},{"k":"bio_phage","d":"bio","t":"core","g":"AP / University · Virology & Hershey-Chase","n":"Bakteriofag T4 i iniekcja wirusowego DNA","s":"Icosahedral Capsid, Tail Fiber Receptor Binding, Contractile Sheath & High-Pressure Genome Injection","en":"Bacteriophage T4 Structure & Lytic Cycle: Biomechanical Syringe & Viral DNA Injection"},{"k":"bio_hemodynamics","d":"bio","t":"core","g":"AP / University · Hemodynamics (Poiseuille Law)","n":"Biofizyka krążenia krwi i prawo Hagena-Poiseuille'a","s":"Parabolic Erythrocyte Velocity Profile, Fourth-Power Radius Law (Q ∝ R⁴), Viscosity & Stenosis","en":"Cardiovascular Biophysics: Laminar Blood Flow & Hagen-Poiseuille Fourth-Power Law ($Q \\propto R^4$)"},{"k":"bio_electrophoresis","d":"bio","t":"core","g":"AP / University · DNA Gel Electrophoresis","n":"Elektroforeza żelowa DNA i rozdział fragmentów","s":"Polyanion Migration to Anode (+), Agarose Molecular Sieving & Logarithmic Base-Pair Calibration","en":"DNA Gel Electrophoresis: Size-Dependent Separation of Restriction Fragments in a Polymer Matrix"}];
+      var QUIZ_POOL = [{"disc":"Physics · Momentum","q":"A 2 kg cart moving at 6 m/s couples completely inelastically with a stationary 4 kg cart on a frictionless track. What is their final speed?","opts":["1.5 m/s","2.0 m/s","3.0 m/s","4.0 m/s"],"ans":1,"exp":"By conservation of linear momentum, u = m₁v₁ / (m₁ + m₂) = (2 · 6) / (2 + 4) = 2.0 m/s.","sim":"https://physics.sheua.com/sim/collision?lang=pl","simTitle":"Open 3D Collision Lab"},{"disc":"Chemistry · Gas Laws","q":"An ideal gas in a rigid container is heated from 300 K to 600 K. How do pressure P and root-mean-square molecular speed v_rms change?","opts":["P doubles and v_rms increases by √2","Both P and v_rms double","P quadruples and v_rms doubles","P stays constant and v_rms increases by √2"],"ans":0,"exp":"At constant volume P is proportional to T so pressure doubles, whereas v_rms = √(3RT/M) scales with √T and increases by √2 ≈ 1.41.","sim":"https://physics.sheua.com/sim/chem_gaslaws?lang=pl","simTitle":"Open 3D Gas Laws Lab"},{"disc":"Biophysics · Hemodynamics","q":"According to the Hagen-Poiseuille law, if an arteriole's inner radius R decreases by half at constant pressure drop ΔP, volumetric flow Q drops by a factor of:","opts":["2","4","8","16"],"ans":3,"exp":"Laminar flow Q = πΔP·R⁴ / (8ηL) scales with the fourth power of vessel radius: (1/2)⁴ = 1/16.","sim":"https://physics.sheua.com/sim/bio_hemodynamics?lang=pl","simTitle":"Open 3D Hemodynamics Lab"},{"disc":"Physics · Thermodynamics","q":"A reversible Carnot heat engine operates between a 600 K hot reservoir and a 300 K cold sink. What is its maximum thermal efficiency?","opts":["25%","50%","75%","100%"],"ans":1,"exp":"Carnot efficiency is η = 1 − T_C / T_H = 1 − 300 / 600 = 0.50, or 50%.","sim":"https://physics.sheua.com/sim/carnot?lang=pl","simTitle":"Open 3D Carnot Cycle Lab"},{"disc":"Chemistry · Buffers & pH","q":"An acetate buffer contains equal molar concentrations of CH₃COOH and CH₃COONa (pK_a = 4.76). What is the pH of the solution?","opts":["2.38","4.76","7.00","9.24"],"ans":1,"exp":"By the Henderson-Hasselbalch equation pH = pK_a + log₁₀([A⁻]/[HA]). Since [A⁻] = [HA], log₁₀(1) = 0 and pH = 4.76.","sim":"https://physics.sheua.com/sim/chem_buffer?lang=pl","simTitle":"Open 3D Buffer Lab"},{"disc":"Biology · Molecular Genetics","q":"Starting with 10 template DNA molecules, how many copies are produced after 6 ideal PCR cycles at 100% amplification efficiency?","opts":["60 copies","320 copies","640 copies","1280 copies"],"ans":2,"exp":"PCR amplification grows exponentially as N = N₀ · 2ⁿ = 10 · 2⁶ = 10 · 64 = 640 copies.","sim":"https://physics.sheua.com/sim/bio_pcr?lang=pl","simTitle":"Open 3D PCR Lab"}];
+      var TXT = {"lang":"en","simBase":"https://physics.sheua.com/sim/","discMap":{"phys":"Fizyka","chem":"Chemia","bio":"Biologia"},"replayPhys":"Powtórz zderzenie","replayChem":"Wymieszaj gaz","replayBio":"Wyzwól impuls","pause":"Pauza","resume":"Wznów","openPhys":"Lab 3D →","openChem":"Lab 3D →","openBio":"Lab 3D →","showing":"{a} / {b}","showAll":"Wszystkie {n}","collapse":"Zwiń · 12","noMatch":"Brak pasujących symulacji.","score":"{c} / {t}","correctPrefix":"Correct. ","wrongPrefix":"Formula check. ","copyBtn":"Kopiuj wzór","copiedBtn":"Copied","icoPlay":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polygon points=\"6 4 20 12 6 20 6 4\"/></svg>","icoPause":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"/></svg>","icoReplay":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 3-6.7L3 8\"/><polyline points=\"3 3 3 8 8 8\"/></svg>","icoCube":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2 3 7v10l9 5 9-5V7l-9-5Z\"/><path d=\"m3 7 9 5 9-5\"/><path d=\"M12 12v10\"/></svg>","icoList":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"8\" y1=\"6\" x2=\"21\" y2=\"6\"/><line x1=\"8\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"8\" y1=\"18\" x2=\"21\" y2=\"18\"/><line x1=\"3\" y1=\"6\" x2=\"3.01\" y2=\"6\"/><line x1=\"3\" y1=\"12\" x2=\"3.01\" y2=\"12\"/><line x1=\"3\" y1=\"18\" x2=\"3.01\" y2=\"18\"/></svg>","icoCopy":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>","icoCheck":"<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"20 6 9 17 4 12\"/></svg>","inqOk":"Correct. The solid cylinder concentrates more mass near its axis (I = ½mR²), so less energy goes into spin and 2/3 of g sin α drives forward acceleration.","inqErr":"Compare rotational inertia: a hoop has I = mR² whereas a solid cylinder has I = ½mR², so the solid cylinder accelerates faster down the ramp.","inqFmt":"α = {a}°: a_cylinder = {c} m/s², a_hoop = {h} m/s²","sliders":{"phys":[{"key":"m1","label":"Mass m₁","unit":"kg","min":0.5,"max":5,"step":0.5,"val":2},{"key":"m2","label":"Mass m₂","unit":"kg","min":0.5,"max":5,"step":0.5,"val":1.2},{"key":"v1","label":"Initial v₁","unit":"m/s","min":1,"max":9,"step":0.5,"val":5},{"key":"e","label":"Restitution e","unit":"","min":0,"max":1,"step":0.05,"val":0.85}],"chem":[{"key":"T","label":"Temperature T","unit":"K","min":150,"max":900,"step":10,"val":300},{"key":"V","label":"Volume V","unit":"L","min":6,"max":28,"step":1,"val":14},{"key":"nu","label":"Amount ν","unit":"mol","min":0.5,"max":3,"step":0.25,"val":1}],"bio":[{"key":"Istim","label":"Stimulus I_st","unit":"µA/cm²","min":2,"max":24,"step":1,"val":14},{"key":"Ko","label":"Extracellular [K⁺]_o","unit":"mM","min":2.5,"max":14,"step":0.5,"val":4.5},{"key":"gNa","label":"Na⁺ conductance g_Na","unit":"mS/cm²","min":50,"max":160,"step":5,"val":120}]},"canvasLabels":{"cm":"ŚM","ek":"Kinetyczna E_k","dq":"Ciepło ΔQ","piston":"Tłok","gauge":"Ciśnienie P","thresh":"Próg −55 mV","spike":"Potencjał iglicowy","sub":"Podprogowy","stim":"Bodziec"}};
+
+      /* 1. LIVE INTERACTIVE CANVAS SANDBOX */
+      var canvas = document.getElementById('home-sim-canvas');
+      var slidersWrap = document.getElementById('sbx-sliders');
+      var metricsWrap = document.getElementById('sbx-metrics');
+      var triggerBtn = document.getElementById('sbx-trigger-btn');
+      var pauseBtn = document.getElementById('sbx-pause-btn');
+      var open3dLink = document.getElementById('sbx-open-3d');
+      var modeBtns = document.querySelectorAll('[data-sbx-mode]');
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var sbx = {
+        mode: 'phys',
+        paused: !!reduceMotion,
+        t: 0,
+        lastTs: 0,
+        params: {
+          phys: { m1: 2.0, m2: 1.2, v1: 5.0, e: 0.85 },
+          chem: { T: 300, V: 14, nu: 1.0 },
+          bio: { Istim: 14, Ko: 4.5, gNa: 120 }
+        },
+        physState: { x1: -3.6, x2: 2.4, vx1: 5.0, vx2: -2.0, hit: false, flash: 0 },
+        particles: [],
+        wallHits: 0
+      };
+
+      function initPhys() {
+        var p = sbx.params.phys;
+        sbx.physState = { x1: -3.8, x2: 2.4, vx1: p.v1, vx2: -2.0, hit: false, flash: 0 };
+        sbx.t = 0;
+      }
+
+      function initChem() {
+        var p = sbx.params.chem;
+        var count = Math.max(8, Math.round(22 * p.nu));
+        var maxX = 110 + (p.V / 28) * 510;
+        var arr = [];
+        var spdBase = Math.sqrt(p.T / 300) * 145;
+        for (var i = 0; i < count; i++) {
+          var ang = (i * 2.39996) + 0.4;
+          var mult = 0.65 + (i % 7) * 0.12;
+          arr.push({
+            x: 68 + ((i * 73) % Math.max(40, Math.floor(maxX - 95))),
+            y: 44 + ((i * 53) % 172),
+            vx: Math.cos(ang) * spdBase * mult,
+            vy: Math.sin(ang) * spdBase * mult,
+            flash: 0
+          });
+        }
+        sbx.particles = arr;
+      }
+
+      function initBio() {
+        sbx.t = reduceMotion ? 5.2 : 0;
+      }
+
+      function syncChemSpeeds() {
+        var p = sbx.params.chem;
+        var count = Math.max(8, Math.round(22 * p.nu));
+        if (sbx.particles.length !== count) { initChem(); return; }
+        var targetRms = Math.sqrt(p.T / 300) * 145;
+        for (var i = 0; i < sbx.particles.length; i++) {
+          var pt = sbx.particles[i];
+          var cur = Math.hypot(pt.vx, pt.vy) || 1;
+          var mult = 0.65 + (i % 7) * 0.12;
+          var s = (targetRms * mult) / cur;
+          pt.vx *= s;
+          pt.vy *= s;
+        }
+      }
+
+      function renderSliders() {
+        if (!slidersWrap) return;
+        slidersWrap.innerHTML = '';
+        var defs = TXT.sliders[sbx.mode];
+        var vals = sbx.params[sbx.mode];
+        defs.forEach(function(d) {
+          var lbl = document.createElement('label');
+          lbl.className = 'sandbox-slider-lbl';
+          var top = document.createElement('span');
+          top.className = 'sandbox-slider-top';
+          var nameSpan = document.createElement('span');
+          nameSpan.textContent = d.label;
+          var valCode = document.createElement('code');
+          valCode.textContent = vals[d.key] + (d.unit ? ' ' + d.unit : '');
+          top.appendChild(nameSpan);
+          top.appendChild(valCode);
+          var inp = document.createElement('input');
+          inp.type = 'range';
+          inp.min = String(d.min);
+          inp.max = String(d.max);
+          inp.step = String(d.step);
+          inp.value = String(vals[d.key]);
+          inp.setAttribute('aria-label', d.label);
+          inp.addEventListener('input', function() {
+            vals[d.key] = parseFloat(inp.value);
+            valCode.textContent = vals[d.key] + (d.unit ? ' ' + d.unit : '');
+            if (sbx.mode === 'phys') initPhys();
+            else if (sbx.mode === 'chem') syncChemSpeeds();
+            else if (sbx.mode === 'bio') sbx.t = 0;
+            updateMetrics();
+            if (sbx.paused) drawFrame();
+          });
+          lbl.appendChild(top);
+          lbl.appendChild(inp);
+          slidersWrap.appendChild(lbl);
+        });
+      }
+
+      function updateMetrics() {
+        if (!metricsWrap) return;
+        var items = [];
+        if (sbx.mode === 'phys') {
+          var p = sbx.params.phys;
+          var v2 = -2.0;
+          var u1 = (p.m1 * p.v1 + p.m2 * v2 - p.m2 * p.e * (p.v1 - v2)) / (p.m1 + p.m2);
+          var u2 = (p.m1 * p.v1 + p.m2 * v2 + p.m1 * p.e * (p.v1 - v2)) / (p.m1 + p.m2);
+          var ptot = p.m1 * p.v1 + p.m2 * v2;
+          var ek0 = 0.5 * p.m1 * p.v1 * p.v1 + 0.5 * p.m2 * v2 * v2;
+          var ek1 = 0.5 * p.m1 * u1 * u1 + 0.5 * p.m2 * u2 * u2;
+          var dq = Math.max(0, ek0 - ek1);
+          var uMs = TXT.lang === 'en' ? ' m/s' : ' м/с';
+          var uMom = TXT.lang === 'en' ? ' kg·m/s' : ' кг·м/с';
+          var uJ = TXT.lang === 'en' ? ' J' : ' Дж';
+          items = [
+            'p = ' + ptot.toFixed(1) + uMom,
+            'u₁ = ' + u1.toFixed(2) + uMs,
+            'u₂ = ' + u2.toFixed(2) + uMs,
+            'ΔQ = ' + dq.toFixed(1) + uJ
+          ];
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayPhys;
+          triggerBtn.setAttribute('aria-label', TXT.replayPhys);
+          open3dLink.href = TXT.simBase + 'collision?lang=pl';
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openPhys + '</span>';
+        } else if (sbx.mode === 'chem') {
+          var c = sbx.params.chem;
+          var P = (c.nu * 8.31446 * c.T) / c.V;
+          var vrms = Math.sqrt(3 * 8.31446 * c.T / 0.028014);
+          var ek = 1.5 * 0.0138065 * c.T;
+          items = TXT.lang === 'en'
+            ? ['P = ' + P.toFixed(1) + ' kPa', 'v_rms(N₂) = ' + Math.round(vrms) + ' m/s', '⟨E_k⟩ = ' + ek.toFixed(2) + ' zJ']
+            : ['P = ' + P.toFixed(1) + ' кПа', 'v_кв(N₂) = ' + Math.round(vrms) + ' м/с', '⟨E_k⟩ = ' + ek.toFixed(2) + ' зДж'];
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayChem;
+          triggerBtn.setAttribute('aria-label', TXT.replayChem);
+          open3dLink.href = TXT.simBase + 'chem_gaslaws?lang=pl';
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openChem + '</span>';
+        } else {
+          var b = sbx.params.bio;
+          var vRest = 26.7 * Math.log((b.Ko + 0.04 * 145 + 4.5) / (140 + 0.6 + 49.5));
+          var fires = (vRest + b.Istim * 1.85) >= -55.0;
+          var vPeak = fires ? (vRest + (61 - vRest) * (b.gNa / (b.gNa + 28))) : (vRest + b.Istim * 1.85);
+          items = TXT.lang === 'en'
+            ? ['V_rest = ' + vRest.toFixed(1) + ' mV', 'V_peak = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' mV', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub]
+            : ['V_спок = ' + vRest.toFixed(1) + ' мВ', 'V_пік = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' мВ', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub];
+          triggerBtn.innerHTML = TXT.icoReplay;
+          triggerBtn.title = TXT.replayBio;
+          triggerBtn.setAttribute('aria-label', TXT.replayBio);
+          open3dLink.href = TXT.simBase + 'bio_neuron?lang=pl';
+          open3dLink.innerHTML = TXT.icoCube + '<span>' + TXT.openBio + '</span>';
+        }
+        metricsWrap.innerHTML = '';
+        items.forEach(function(tx) {
+          var sp = document.createElement('span');
+          sp.textContent = tx;
+          metricsWrap.appendChild(sp);
+        });
+        pauseBtn.innerHTML = sbx.paused ? TXT.icoPlay : TXT.icoPause;
+        pauseBtn.title = sbx.paused ? TXT.resume : TXT.pause;
+        pauseBtn.setAttribute('aria-label', sbx.paused ? TXT.resume : TXT.pause);
+      }
+
+      function bioWaveVoltage(tMs, b) {
+        var vRest = 26.7 * Math.log((b.Ko + 0.04 * 145 + 4.5) / (140 + 0.6 + 49.5));
+        var eK = 26.7 * Math.log(b.Ko / 140);
+        var dv = b.Istim * 1.85;
+        var fires = (vRest + dv) >= -55.0;
+        if (tMs < 1.0) return vRest;
+        if (!fires) {
+          if (tMs <= 1.8) return vRest + dv * (1 - Math.exp(-(tMs - 1.0) / 0.35));
+          var vEnd = vRest + dv * (1 - Math.exp(-0.8 / 0.35));
+          return vRest + (vEnd - vRest) * Math.exp(-(tMs - 1.8) / 0.85);
+        }
+        var vPeak = vRest + (61 - vRest) * (b.gNa / (b.gNa + 28));
+        if (tMs < 1.45) {
+          var p1 = (tMs - 1.0) / 0.45;
+          return vRest + (-55 - vRest) * p1;
+        }
+        if (tMs < 2.15) {
+          var p2 = (tMs - 1.45) / 0.70;
+          var s = p2 * p2 * (3 - 2 * p2);
+          return -55 + (vPeak - (-55)) * s;
+        }
+        if (tMs < 3.65) {
+          var p3 = (tMs - 2.15) / 1.50;
+          var s3 = p3 * p3 * (3 - 2 * p3);
+          var under = Math.max(eK, vRest - 12);
+          return vPeak + (under - vPeak) * s3;
+        }
+        var under2 = Math.max(eK, vRest - 12);
+        return vRest + (under2 - vRest) * Math.exp(-(tMs - 3.65) / 1.25);
+      }
+
+      function drawArrow(ctx, x1, y1, x2, y2, color) {
+        var dx = x2 - x1;
+        if (Math.abs(dx) < 3) return;
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        var dir = dx >= 0 ? 1 : -1;
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - dir * 8, y2 - 4.5);
+        ctx.lineTo(x2 - dir * 8, y2 + 4.5);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawFrame() {
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W = 880, H = 260;
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (canvas.width !== W * dpr || canvas.height !== H * dpr) {
+          canvas.width = W * dpr;
+          canvas.height = H * dpr;
+        }
+        ctx.save();
+        ctx.scale(dpr, dpr);
+        ctx.fillStyle = '#faf9f5';
+        ctx.fillRect(0, 0, W, H);
+
+        if (sbx.mode === 'phys') {
+          var p = sbx.params.phys;
+          var st = sbx.physState;
+          var trackY = 166;
+          ctx.strokeStyle = '#e6e3dd';
+          ctx.lineWidth = 1;
+          for (var gx = 50; gx <= 830; gx += 65) {
+            ctx.beginPath();
+            ctx.moveTo(gx, 32);
+            ctx.lineTo(gx, trackY);
+            ctx.stroke();
+          }
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(36, trackY);
+          ctx.lineTo(844, trackY);
+          ctx.stroke();
+
+          ctx.fillStyle = '#52525b';
+          ctx.font = '11px monospace';
+          ctx.textAlign = 'center';
+          for (var m = -6; m <= 6; m += 2) {
+            var tx = 440 + m * 65;
+            ctx.fillText(m + (TXT.lang === 'en' ? ' m' : ' м'), tx, trackY + 18);
+          }
+
+          var r1 = 15 + 4.8 * Math.cbrt(p.m1);
+          var r2 = 15 + 4.8 * Math.cbrt(p.m2);
+          var cx1 = 440 + st.x1 * 65;
+          var cx2 = 440 + st.x2 * 65;
+          var cy1 = trackY - r1;
+          var cy2 = trackY - r2;
+
+          /* Center of mass */
+          var xcm = (p.m1 * st.x1 + p.m2 * st.x2) / (p.m1 + p.m2);
+          var pxCm = 440 + xcm * 65;
+          ctx.fillStyle = '#166534';
+          ctx.beginPath();
+          ctx.moveTo(pxCm, trackY + 3);
+          ctx.lineTo(pxCm - 6, trackY + 13);
+          ctx.lineTo(pxCm + 6, trackY + 13);
+          ctx.closePath();
+          ctx.fill();
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText(TXT.canvasLabels.cm, pxCm, trackY + 26);
+
+          if (st.flash > 0.02) {
+            var midX = (cx1 + r1 + cx2 - r2) * 0.5;
+            ctx.strokeStyle = 'rgba(153, 27, 27, ' + st.flash.toFixed(2) + ')';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.arc(midX, trackY - Math.min(r1, r2), (1 - st.flash) * 34 + 8, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+
+          /* Sphere 1 */
+          ctx.fillStyle = '#1d4ed8';
+          ctx.beginPath();
+          ctx.arc(cx1, cy1, r1, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#faf9f5';
+          ctx.font = 'bold 12px monospace';
+          ctx.fillText('m₁', cx1, cy1 + 4);
+          drawArrow(ctx, cx1, cy1 - r1 - 12, cx1 + st.vx1 * 11, cy1 - r1 - 12, '#1d4ed8');
+
+          /* Sphere 2 */
+          ctx.fillStyle = '#991b1b';
+          ctx.beginPath();
+          ctx.arc(cx2, cy2, r2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#faf9f5';
+          ctx.fillText('m₂', cx2, cy2 + 4);
+          drawArrow(ctx, cx2, cy2 - r2 - 12, cx2 + st.vx2 * 11, cy2 - r2 - 12, '#991b1b');
+
+          /* Energy bar top-right */
+          var ek0 = 0.5 * p.m1 * p.v1 * p.v1 + 0.5 * p.m2 * 4.0;
+          var ekCur = 0.5 * p.m1 * st.vx1 * st.vx1 + 0.5 * p.m2 * st.vx2 * st.vx2;
+          var ekFrac = ek0 > 0 ? Math.min(1, ekCur / ek0) : 1;
+          ctx.fillStyle = '#efeae0';
+          ctx.fillRect(610, 18, 236, 16);
+          ctx.fillStyle = '#166534';
+          ctx.fillRect(610, 18, 236 * ekFrac, 16);
+          ctx.fillStyle = '#991b1b';
+          ctx.fillRect(610 + 236 * ekFrac, 18, 236 * (1 - ekFrac), 16);
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(610, 18, 236, 16);
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#18181b';
+          ctx.font = '11.5px sans-serif';
+          ctx.fillText(TXT.canvasLabels.ek + ': ' + Math.round(ekFrac * 100) + '%   ' + TXT.canvasLabels.dq + ': ' + Math.round((1 - ekFrac) * 100) + '%', 610, 48);
+
+        } else if (sbx.mode === 'chem') {
+          var c = sbx.params.chem;
+          var leftX = 52, topY = 30, botY = 230;
+          var pisX = 120 + (c.V / 28) * 500;
+          ctx.fillStyle = '#f4f2ed';
+          ctx.fillRect(leftX, topY, pisX - leftX, botY - topY);
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(pisX + 18, topY);
+          ctx.lineTo(leftX, topY);
+          ctx.lineTo(leftX, botY);
+          ctx.lineTo(pisX + 18, botY);
+          ctx.stroke();
+
+          /* Piston head + rod */
+          ctx.fillStyle = '#3f3f46';
+          ctx.fillRect(pisX, topY + 2, 14, botY - topY - 4);
+          ctx.fillStyle = '#d6d3cd';
+          ctx.fillRect(pisX + 14, 122, 68, 16);
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(pisX + 14, 122, 68, 16);
+          ctx.fillStyle = '#18181b';
+          ctx.font = 'bold 11.5px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(TXT.canvasLabels.piston + ' (V = ' + c.V + ' L)', pisX + 18, 114);
+
+          /* Color temperature */
+          var heat = Math.min(1, Math.max(0, (c.T - 150) / 750));
+          var rCol = Math.round(29 + heat * (185 - 29));
+          var gCol = Math.round(78 - heat * 46);
+          var bCol = Math.round(216 - heat * 188);
+          var molColor = 'rgb(' + rCol + ',' + gCol + ',' + bCol + ')';
+
+          for (var i = 0; i < sbx.particles.length; i++) {
+            var pt = sbx.particles[i];
+            ctx.fillStyle = pt.flash > 0 ? '#b45309' : molColor;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 4.6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          /* Pressure bar gauge on right */
+          var P = (c.nu * 8.31446 * c.T) / c.V;
+          var pFrac = Math.min(1, P / 1500);
+          var gx0 = 748, gy0 = 36, gh = 186;
+          ctx.fillStyle = '#efeae0';
+          ctx.fillRect(gx0, gy0, 32, gh);
+          ctx.fillStyle = heat > 0.55 ? '#991b1b' : '#1d4ed8';
+          ctx.fillRect(gx0, gy0 + gh * (1 - pFrac), 32, gh * pFrac);
+          ctx.strokeStyle = '#18181b';
+          ctx.strokeRect(gx0, gy0, 32, gh);
+          ctx.fillStyle = '#18181b';
+          ctx.textAlign = 'center';
+          ctx.font = 'bold 12px monospace';
+          ctx.fillText(P.toFixed(0) + (TXT.lang === 'en' ? ' kPa' : ' кПа'), gx0 + 16, gy0 - 8);
+          ctx.font = '11.5px sans-serif';
+          ctx.fillText(TXT.canvasLabels.gauge, gx0 + 16, gy0 + gh + 18);
+
+        } else {
+          var b = sbx.params.bio;
+          var ox0 = 64, oy0 = 22, ow = 786, oh = 204;
+          var mapY = function(mv) {
+            return oy0 + oh * (1 - (mv - (-100)) / 160);
+          };
+          var mapX = function(ms) {
+            return ox0 + (ms / 8.0) * ow;
+          };
+
+          /* Grid */
+          ctx.strokeStyle = '#e6e3dd';
+          ctx.lineWidth = 1;
+          [-80, -40, 0, 40].forEach(function(mv) {
+            var yy = mapY(mv);
+            ctx.beginPath();
+            ctx.moveTo(ox0, yy);
+            ctx.lineTo(ox0 + ow, yy);
+            ctx.stroke();
+            ctx.fillStyle = '#52525b';
+            ctx.font = '11px monospace';
+            ctx.textAlign = 'right';
+            ctx.fillText((mv > 0 ? '+' : '') + mv + (TXT.lang === 'en' ? ' mV' : ' мВ'), ox0 - 6, yy + 4);
+          });
+
+          /* Threshold -55 mV */
+          var yTh = mapY(-55);
+          ctx.save();
+          ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = '#b45309';
+          ctx.beginPath();
+          ctx.moveTo(ox0, yTh);
+          ctx.lineTo(ox0 + ow, yTh);
+          ctx.stroke();
+          ctx.restore();
+          ctx.fillStyle = '#b45309';
+          ctx.textAlign = 'left';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText(TXT.canvasLabels.thresh, ox0 + ow - 138, yTh - 6);
+
+          /* Stimulus bar */
+          ctx.fillStyle = 'rgba(29, 78, 216, 0.14)';
+          ctx.fillRect(mapX(1.0), oy0, mapX(1.8) - mapX(1.0), oh);
+          ctx.fillStyle = '#1d4ed8';
+          ctx.fillText(TXT.canvasLabels.stim, mapX(1.0) + 4, oy0 + oh - 8);
+
+          /* Full ghost curve */
+          ctx.strokeStyle = '#d6d3cd';
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          for (var ms = 0; ms <= 8.0; ms += 0.05) {
+            var xx = mapX(ms), yy = mapY(bioWaveVoltage(ms, b));
+            if (ms === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+          }
+          ctx.stroke();
+
+          /* Active swept curve up to sbx.t */
+          var curMs = Math.min(8.0, sbx.t);
+          ctx.strokeStyle = '#991b1b';
+          ctx.lineWidth = 2.8;
+          ctx.beginPath();
+          for (var ms2 = 0; ms2 <= curMs; ms2 += 0.04) {
+            var xx2 = mapX(ms2), yy2 = mapY(bioWaveVoltage(ms2, b));
+            if (ms2 === 0) ctx.moveTo(xx2, yy2); else ctx.lineTo(xx2, yy2);
+          }
+          ctx.stroke();
+
+          var curV = bioWaveVoltage(curMs, b);
+          ctx.fillStyle = '#991b1b';
+          ctx.beginPath();
+          ctx.arc(mapX(curMs), mapY(curV), 5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 1.4;
+          ctx.strokeRect(ox0, oy0, ow, oh);
+          ctx.fillStyle = '#52525b';
+          ctx.font = '11px monospace';
+          ctx.textAlign = 'center';
+          for (var tTick = 0; tTick <= 8; tTick += 2) {
+            ctx.fillText(tTick + (TXT.lang === 'en' ? ' ms' : ' мс'), mapX(tTick), oy0 + oh + 16);
+          }
+        }
+        ctx.restore();
+      }
+
+      function stepSim(dt) {
+        if (sbx.mode === 'phys') {
+          var p = sbx.params.phys;
+          var st = sbx.physState;
+          st.x1 += st.vx1 * dt;
+          st.x2 += st.vx2 * dt;
+          if (st.flash > 0) st.flash = Math.max(0, st.flash - dt * 1.8);
+          var rSumM = (30 + 4.8 * (Math.cbrt(p.m1) + Math.cbrt(p.m2))) / 65;
+          if (!st.hit && (st.x2 - st.x1) <= rSumM) {
+            st.hit = true;
+            st.flash = 1.0;
+            var v1 = st.vx1, v2 = st.vx2;
+            st.vx1 = (p.m1 * v1 + p.m2 * v2 - p.m2 * p.e * (v1 - v2)) / (p.m1 + p.m2);
+            st.vx2 = (p.m1 * v1 + p.m2 * v2 + p.m1 * p.e * (v1 - v2)) / (p.m1 + p.m2);
+            var mid = 0.5 * (st.x1 + st.x2);
+            st.x1 = mid - 0.5 * rSumM;
+            st.x2 = mid + 0.5 * rSumM;
+          }
+          sbx.t += dt;
+          if (sbx.t > 4.0 || st.x1 < -6.2 || st.x2 > 6.2) initPhys();
+        } else if (sbx.mode === 'chem') {
+          var c = sbx.params.chem;
+          var minX = 58, maxX = 120 + (c.V / 28) * 500 - 6;
+          var minY = 36, maxY = 224;
+          for (var i = 0; i < sbx.particles.length; i++) {
+            var pt = sbx.particles[i];
+            pt.x += pt.vx * dt;
+            pt.y += pt.vy * dt;
+            if (pt.flash > 0) pt.flash = Math.max(0, pt.flash - dt * 4);
+            if (pt.x < minX) { pt.x = minX; pt.vx = Math.abs(pt.vx); }
+            if (pt.x > maxX) { pt.x = maxX; pt.vx = -Math.abs(pt.vx); pt.flash = 1; }
+            if (pt.y < minY) { pt.y = minY; pt.vy = Math.abs(pt.vy); }
+            if (pt.y > maxY) { pt.y = maxY; pt.vy = -Math.abs(pt.vy); }
+          }
+        } else {
+          sbx.t += dt * 2.4;
+          if (sbx.t > 8.4) sbx.t = 0;
+        }
+      }
+
+      function loop(ts) {
+        if (!sbx.lastTs) sbx.lastTs = ts;
+        var dt = Math.min(0.04, (ts - sbx.lastTs) / 1000);
+        sbx.lastTs = ts;
+        if (!sbx.paused) {
+          stepSim(dt);
+          drawFrame();
+        }
+        requestAnimationFrame(loop);
+      }
+
+      if (canvas) {
+        initPhys();
+        initChem();
+        renderSliders();
+        updateMetrics();
+        drawFrame();
+        requestAnimationFrame(loop);
+
+        Array.prototype.forEach.call(modeBtns, function(btn) {
+          btn.addEventListener('click', function() {
+            sbx.mode = btn.getAttribute('data-sbx-mode');
+            Array.prototype.forEach.call(modeBtns, function(b) {
+              var act = b === btn;
+              b.classList.toggle('active', act);
+              b.setAttribute('aria-pressed', act ? 'true' : 'false');
+            });
+            if (sbx.mode === 'phys') initPhys();
+            else if (sbx.mode === 'chem') initChem();
+            else initBio();
+            renderSliders();
+            updateMetrics();
+            drawFrame();
+          });
+        });
+
+        triggerBtn.addEventListener('click', function() {
+          if (sbx.mode === 'phys') initPhys();
+          else if (sbx.mode === 'chem') initChem();
+          else sbx.t = 0;
+          sbx.paused = false;
+          updateMetrics();
+          drawFrame();
+        });
+
+        pauseBtn.addEventListener('click', function() {
+          sbx.paused = !sbx.paused;
+          updateMetrics();
+          drawFrame();
+        });
+      }
+
+      /* 2. 106-SIMULATION INTERACTIVE CATALOG EXPLORER */
+      var catGrid = document.getElementById('cat-cards-grid');
+      var catSearch = document.getElementById('cat-search-input');
+      var catStatus = document.getElementById('cat-count-status');
+      var catToggleAll = document.getElementById('cat-toggle-all-btn');
+      var catRandomBtn = document.getElementById('cat-random-btn');
+      var catDiscBtns = document.querySelectorAll('[data-cat-disc]');
+      var catTierCore = document.getElementById('cat-tier-core');
+      var catTierAdv = document.getElementById('cat-tier-adv');
+
+      var catState = { disc: 'all', tier: 'all', q: '', expanded: false, spotlightKey: '' };
+
+      function getFilteredCatalog() {
+        return CATALOG.filter(function(it) {
+          if (catState.disc !== 'all' && it.d !== catState.disc) return false;
+          if (catState.tier !== 'all' && it.t !== catState.tier) return false;
+          if (catState.q) {
+            var hay = (it.n + ' ' + (it.en || '') + ' ' + it.s + ' ' + it.g + ' ' + it.k).toLowerCase();
+            if (hay.indexOf(catState.q) === -1) return false;
+          }
+          return true;
+        });
+      }
+
+      function renderCatalog() {
+        if (!catGrid) return;
+        var list = getFilteredCatalog();
+        if (catState.spotlightKey) {
+          var idx = -1;
+          for (var i = 0; i < list.length; i++) {
+            if (list[i].k === catState.spotlightKey) { idx = i; break; }
+          }
+          if (idx > 0) {
+            var picked = list.splice(idx, 1)[0];
+            list.unshift(picked);
+          }
+        }
+        var showAllNow = catState.expanded || !!catState.q;
+        var slice = showAllNow ? list : list.slice(0, 12);
+        catGrid.innerHTML = '';
+        if (!slice.length) {
+          var empty = document.createElement('p');
+          empty.textContent = TXT.noMatch;
+          catGrid.appendChild(empty);
+        } else {
+          slice.forEach(function(it) {
+            var a = document.createElement('a');
+            a.className = 'sim-mini-card' + (it.k === catState.spotlightKey ? ' spotlight' : '');
+            a.href = TXT.simBase + it.k + '?lang=pl';
+            var meta = document.createElement('div');
+            meta.className = 'sim-mini-meta';
+            var s1 = document.createElement('span');
+            s1.textContent = TXT.discMap[it.d];
+            var s2 = document.createElement('span');
+            s2.textContent = it.g;
+            meta.appendChild(s1);
+            meta.appendChild(s2);
+            var t = document.createElement('div');
+            t.className = 'sim-mini-title';
+            t.textContent = it.n;
+            var sub = document.createElement('div');
+            sub.className = 'sim-mini-sub';
+            sub.textContent = it.s;
+            a.appendChild(meta);
+            a.appendChild(t);
+            a.appendChild(sub);
+            catGrid.appendChild(a);
+          });
+        }
+        if (catStatus) {
+          catStatus.textContent = TXT.showing.replace('{a}', String(slice.length)).replace('{b}', String(list.length));
+        }
+        if (catToggleAll) {
+          if (list.length <= 12 || catState.q) {
+            catToggleAll.style.display = 'none';
+          } else {
+            catToggleAll.style.display = '';
+            var lblTxt = catState.expanded
+              ? TXT.collapse
+              : TXT.showAll.replace('{n}', String(list.length));
+            catToggleAll.innerHTML = TXT.icoList + '<span>' + lblTxt + '</span>';
+          }
+        }
+      }
+
+      if (catGrid) {
+        Array.prototype.forEach.call(catDiscBtns, function(btn) {
+          btn.addEventListener('click', function() {
+            catState.disc = btn.getAttribute('data-cat-disc');
+            catState.spotlightKey = '';
+            Array.prototype.forEach.call(catDiscBtns, function(b) {
+              var act = b === btn;
+              b.classList.toggle('active', act);
+              b.setAttribute('aria-pressed', act ? 'true' : 'false');
+            });
+            renderCatalog();
+          });
+        });
+
+        [catTierCore, catTierAdv].forEach(function(tBtn) {
+          if (!tBtn) return;
+          tBtn.addEventListener('click', function() {
+            var val = tBtn.getAttribute('data-cat-tier');
+            catState.tier = (catState.tier === val) ? 'all' : val;
+            catState.spotlightKey = '';
+            if (catTierCore) {
+              var cAct = catState.tier === 'core';
+              catTierCore.classList.toggle('active', cAct);
+              catTierCore.setAttribute('aria-pressed', cAct ? 'true' : 'false');
+            }
+            if (catTierAdv) {
+              var aAct = catState.tier === 'adv';
+              catTierAdv.classList.toggle('active', aAct);
+              catTierAdv.setAttribute('aria-pressed', aAct ? 'true' : 'false');
+            }
+            renderCatalog();
+          });
+        });
+
+        if (catSearch) {
+          catSearch.addEventListener('input', function() {
+            catState.q = catSearch.value.trim().toLowerCase();
+            catState.spotlightKey = '';
+            renderCatalog();
+          });
+        }
+        if (catToggleAll) {
+          catToggleAll.addEventListener('click', function() {
+            catState.expanded = !catState.expanded;
+            renderCatalog();
+          });
+        }
+        if (catRandomBtn) {
+          catRandomBtn.addEventListener('click', function() {
+            var pool = getFilteredCatalog();
+            if (!pool.length) pool = CATALOG;
+            var pick = pool[Math.floor(Math.random() * pool.length)];
+            catState.spotlightKey = pick.k;
+            renderCatalog();
+          });
+        }
+      }
+
+      /* 3. QUICK 3-QUESTION DIAGNOSTIC QUIZ */
+      var qqWrap = document.getElementById('qq-cards-wrap');
+      var qqNextBtn = document.getElementById('qq-next-set-btn');
+      var qqScorePill = document.getElementById('qq-score-pill');
+      var qqSetIndex = 0;
+      var qqAnswered = {};
+
+      function renderQuickQuiz() {
+        if (!qqWrap) return;
+        qqWrap.innerHTML = '';
+        var setCount = Math.floor(QUIZ_POOL.length / 3);
+        var start = (qqSetIndex % setCount) * 3;
+        var current = QUIZ_POOL.slice(start, start + 3);
+        var correctCount = 0;
+
+        current.forEach(function(item, localIdx) {
+          var qid = start + localIdx;
+          var card = document.createElement('div');
+          card.className = 'worked-problem';
+          var kicker = document.createElement('div');
+          kicker.className = 'card-kicker';
+          kicker.textContent = item.disc;
+          var pQ = document.createElement('p');
+          pQ.style.fontWeight = '600';
+          pQ.style.color = 'var(--ink-primary)';
+          pQ.textContent = item.q;
+
+          var grid = document.createElement('div');
+          grid.className = 'nmt-opts-grid';
+          var expP = document.createElement('p');
+          expP.style.display = 'none';
+          expP.style.marginTop = '10px';
+          expP.style.marginBottom = '0';
+          expP.style.paddingTop = '8px';
+          expP.style.borderTop = '1px solid var(--rule-light)';
+
+          item.opts.forEach(function(optTxt, oi) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'nmt-opt-btn';
+            b.textContent = optTxt;
+            b.addEventListener('click', function() {
+              if (qqAnswered[qid] !== undefined) return;
+              qqAnswered[qid] = oi;
+              Array.prototype.forEach.call(grid.children, function(ch, ci) {
+                if (ci === item.ans) ch.classList.add('correct');
+                else if (ci === oi) ch.classList.add('wrong');
+              });
+              expP.style.display = 'block';
+              expP.textContent = (oi === item.ans ? TXT.correctPrefix : TXT.wrongPrefix) + item.exp + ' ';
+              var lnk = document.createElement('a');
+              lnk.href = item.sim;
+              lnk.textContent = item.simTitle + ' →';
+              expP.appendChild(lnk);
+              updateQuizScore(start);
+            });
+            grid.appendChild(b);
+          });
+
+          if (qqAnswered[qid] !== undefined) {
+            var chosen = qqAnswered[qid];
+            if (chosen === item.ans) correctCount++;
+            Array.prototype.forEach.call(grid.children, function(ch, ci) {
+              if (ci === item.ans) ch.classList.add('correct');
+              else if (ci === chosen) ch.classList.add('wrong');
+            });
+            expP.style.display = 'block';
+            expP.textContent = (chosen === item.ans ? TXT.correctPrefix : TXT.wrongPrefix) + item.exp + ' ';
+            var lnk2 = document.createElement('a');
+            lnk2.href = item.sim;
+            lnk2.textContent = item.simTitle + ' →';
+            expP.appendChild(lnk2);
+          }
+
+          card.appendChild(kicker);
+          card.appendChild(pQ);
+          card.appendChild(grid);
+          card.appendChild(expP);
+          qqWrap.appendChild(card);
+        });
+        updateQuizScore(start);
+      }
+
+      function updateQuizScore(start) {
+        if (!qqScorePill) return;
+        var c = 0;
+        for (var i = start; i < start + 3; i++) {
+          if (qqAnswered[i] === QUIZ_POOL[i].ans) c++;
+        }
+        qqScorePill.textContent = TXT.score.replace('{c}', String(c)).replace('{t}', '3');
+      }
+
+      if (qqWrap) {
+        renderQuickQuiz();
+        if (qqNextBtn) {
+          qqNextBtn.addEventListener('click', function() {
+            qqSetIndex++;
+            renderQuickQuiz();
+          });
+        }
+      }
+
+      /* 4. TEXTBOOK CHAPTER FILTER PILLS */
+      var chFilterBtns = document.querySelectorAll('[data-ch-filter]');
+      var chCards = document.querySelectorAll('.chapter-card[data-ch-disc]');
+      Array.prototype.forEach.call(chFilterBtns, function(btn) {
+        btn.addEventListener('click', function() {
+          var f = btn.getAttribute('data-ch-filter');
+          Array.prototype.forEach.call(chFilterBtns, function(b) {
+            var act = b === btn;
+            b.classList.toggle('active', act);
+            b.setAttribute('aria-pressed', act ? 'true' : 'false');
+          });
+          Array.prototype.forEach.call(chCards, function(card) {
+            var show = (f === 'all' || card.getAttribute('data-ch-disc') === f);
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+
+      /* 4b. SYNC MASTERED CHAPTERS FROM LOCALSTORAGE */
+      try {
+        var mastered = JSON.parse(localStorage.getItem('sheua_mastered_chapters') || '{}') || {};
+        var doneTotal = 0;
+        Array.prototype.forEach.call(chCards, function(card) {
+          var slug = card.getAttribute('data-ch-slug');
+          if (slug && mastered[slug]) {
+            doneTotal++;
+            var kEl = card.querySelector('.card-kicker');
+            if (kEl && kEl.textContent.indexOf('Засвоєно') === -1) {
+              kEl.textContent += ' · Засвоєно';
+              kEl.style.color = 'var(--accent-green)';
+            }
+          }
+        });
+        var mp = document.getElementById('home-mastery-pill');
+        if (mp) mp.textContent = doneTotal + ' / 8';
+      } catch (e) {}
+
+      /* 5. EQUATIONS TABLE FILTER + ONE-CLICK FORMULA COPY */
+      var lawInput = document.getElementById('law-filter');
+      var lawTbody = document.querySelector('#laws-table tbody');
+      var lawDiscBtns = document.querySelectorAll('[data-law-disc]');
+      var activeLawDisc = 'all';
+
+      function filterLawsTable() {
+        if (!lawTbody) return;
+        var q = lawInput ? lawInput.value.trim().toLowerCase() : '';
+        Array.prototype.forEach.call(lawTbody.rows, function(row) {
+          var dOk = (activeLawDisc === 'all' || row.getAttribute('data-law-row') === activeLawDisc);
+          var qOk = (!q || row.textContent.toLowerCase().indexOf(q) !== -1);
+          row.style.display = (dOk && qOk) ? '' : 'none';
+        });
+      }
+
+      if (lawTbody) {
+        Array.prototype.forEach.call(lawTbody.rows, function(row) {
+          var codeEl = row.cells[2] && row.cells[2].querySelector('code');
+          if (!codeEl) return;
+          var formulaText = codeEl.textContent.replace(/\s+/g, ' ').trim();
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'copy-formula-btn';
+          btn.title = TXT.copyBtn;
+          btn.setAttribute('aria-label', TXT.copyBtn);
+          btn.innerHTML = TXT.icoCopy;
+          btn.addEventListener('click', function() {
+            try { navigator.clipboard.writeText(formulaText); } catch (e) {}
+            btn.classList.add('copied');
+            btn.innerHTML = TXT.icoCheck;
+            setTimeout(function() {
+              btn.classList.remove('copied');
+              btn.innerHTML = TXT.icoCopy;
+            }, 1400);
+          });
+          row.cells[2].appendChild(btn);
+        });
+        if (lawInput) lawInput.addEventListener('input', filterLawsTable);
+        Array.prototype.forEach.call(lawDiscBtns, function(btn) {
+          btn.addEventListener('click', function() {
+            activeLawDisc = btn.getAttribute('data-law-disc');
+            Array.prototype.forEach.call(lawDiscBtns, function(b) {
+              var act = b === btn;
+              b.classList.toggle('active', act);
+              b.setAttribute('aria-pressed', act ? 'true' : 'false');
+            });
+            filterLawsTable();
+          });
+        });
+      }
+
+      /* 6. THREE-STAGE INQUIRY STEPPER */
+      var inqStepBtns = document.querySelectorAll('[data-inq-step]');
+      var inqPanels = document.querySelectorAll('[data-inq-panel]');
+      Array.prototype.forEach.call(inqStepBtns, function(btn) {
+        btn.addEventListener('click', function() {
+          var step = btn.getAttribute('data-inq-step');
+          Array.prototype.forEach.call(inqStepBtns, function(b) {
+            var act = b === btn;
+            b.classList.toggle('active', act);
+            b.setAttribute('aria-pressed', act ? 'true' : 'false');
+          });
+          Array.prototype.forEach.call(inqPanels, function(p) {
+            p.classList.toggle('hidden', p.getAttribute('data-inq-panel') !== step);
+          });
+        });
+      });
+
+      var inqOpts = document.querySelectorAll('#inq-predict-opts [data-inq-ans]');
+      var inqFb = document.getElementById('inq-predict-feedback');
+      Array.prototype.forEach.call(inqOpts, function(btn) {
+        btn.addEventListener('click', function() {
+          var ok = btn.getAttribute('data-inq-ans') === 'correct';
+          Array.prototype.forEach.call(inqOpts, function(b) {
+            b.classList.remove('correct', 'wrong');
+            if (b.getAttribute('data-inq-ans') === 'correct') b.classList.add('correct');
+            else if (b === btn) b.classList.add('wrong');
+          });
+          if (inqFb) {
+            inqFb.style.display = 'block';
+            inqFb.style.color = ok ? 'var(--accent-green)' : 'var(--accent-crimson)';
+            inqFb.textContent = ok ? TXT.inqOk : TXT.inqErr;
+          }
+        });
+      });
+
+      var inqSlider = document.getElementById('inq-angle-slider');
+      var inqVal = document.getElementById('inq-angle-val');
+      var inqRead = document.getElementById('inq-step2-readout');
+      if (inqSlider && inqRead) {
+        inqSlider.addEventListener('input', function() {
+          var deg = parseFloat(inqSlider.value);
+          var s = Math.sin(deg * Math.PI / 180);
+          var aCyl = ((2 / 3) * 9.81 * s).toFixed(2);
+          var aHoop = (0.5 * 9.81 * s).toFixed(2);
+          if (inqVal) inqVal.textContent = deg + '°';
+          var code = inqRead.querySelector('code');
+          if (code) {
+            code.textContent = TXT.inqFmt.replace('{a}', String(deg)).replace('{c}', aCyl).replace('{h}', aHoop);
+          }
+        });
+      }
+    })();
+  </script>
+  <script id="hub-lang-dd-script">
+  (function(){
+    var wrap = document.getElementById('hub-lang-dd');
+    var trig = document.getElementById('hub-lang-trig');
+    if (!wrap || !trig) return;
+    function closeMenu(focusTrig) {
+      wrap.classList.remove('open');
+      trig.setAttribute('aria-expanded', 'false');
+      if (focusTrig) trig.focus();
+    }
+    trig.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = wrap.classList.toggle('open');
+      trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    trig.addEventListener('keydown', function(e) {
+      var opts = wrap.querySelectorAll('.hub-lang-opt');
+      if (e.key === 'ArrowDown' && opts.length) {
+        e.preventDefault();
+        wrap.classList.add('open');
+        trig.setAttribute('aria-expanded', 'true');
+        opts[0].focus();
+      } else if (e.key === 'Escape') {
+        closeMenu(true);
+      }
+    });
+    var opts = Array.prototype.slice.call(wrap.querySelectorAll('.hub-lang-opt'));
+    opts.forEach(function(opt, idx) {
+      opt.addEventListener('click', function() {
+        var lg = opt.getAttribute('data-lang');
+        try { if (lg) localStorage.setItem('sheua_lab_lang', lg); } catch (err) {}
+      });
+      opt.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          opts[(idx + 1) % opts.length].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          opts[(idx - 1 + opts.length) % opts.length].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          opts[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          opts[opts.length - 1].focus();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeMenu(true);
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!wrap.contains(e.target)) closeMenu(false);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(false);
+    });
+  })();
+  </script>
+</body>
+</html>

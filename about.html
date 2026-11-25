@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="3D Physics, Chemistry & Biology Lab (physics.sheua.com)" />
   <meta name="twitter:title" content="Про проєкт і контакти · About &amp; Contact · 3D Science Lab (physics.sheua.com)" />
   <meta name="twitter:description" content="Про освітню платформу physics.sheua.com: 106 інтерактивних 3D-симуляцій та підручник з фізики, хімії, біології і біофізики українською та англійською мовами." />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"Про проєкт і контакти · About & Contact · 3D Science Lab (physics.sheua.com)","description":"Про освітню платформу physics.sheua.com: 106 інтерактивних 3D-симуляцій та підручник з фізики, хімії, біології і біофізики українською та англійською мовами.","url":"https://physics.sheua.com/about.html","inLanguage":["uk","en"],"isPartOf":{"@type":"WebSite","name":"3D Physics, Chemistry & Biology Lab (physics.sheua.com)","url":"https://physics.sheua.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"Про проєкт і контакти · About & Contact · 3D Science Lab (physics.sheua.com)","description":"Про освітню платформу physics.sheua.com: 106 інтерактивних 3D-симуляцій та підручник з фізики, хімії, біології і біофізики українською та англійською мовами.","url":"https://physics.sheua.com/about.html","inLanguage":["uk","en","pl","de","es","fr","pt"],"isPartOf":{"@type":"WebSite","name":"3D Physics, Chemistry & Biology Lab (physics.sheua.com)","url":"https://physics.sheua.com/"}}</script>
   <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
@@ -130,32 +130,111 @@
       gap: 10px;
     }
 
-    .legal-lang-switch {
+    .lang-dd-wrap {
+      position: relative;
       display: inline-flex;
-      border: 1px solid var(--rule-dark);
-      border-radius: 3px;
-      overflow: hidden;
-      background: var(--bg-page);
+      flex-shrink: 0;
     }
-    .legal-lang-btn {
-      border: none;
-      background: transparent;
-      color: var(--ink-secondary);
+    .lang-dd-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 30px;
+      padding: 0 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-page);
+      color: var(--ink-primary);
       font-family: var(--font-mono);
       font-size: 11.5px;
-      font-weight: 600;
-      padding: 4px 9px;
+      font-weight: 700;
       cursor: pointer;
     }
-    .legal-lang-btn + .legal-lang-btn {
-      border-left: 1px solid var(--rule-dark);
+    .lang-dd-btn:hover, .lang-dd-wrap.open .lang-dd-btn {
+      background: #efeae0;
+    }
+    .lang-dd-chev {
+      font-size: 10px;
+      transition: transform 0.15s ease;
+    }
+    .lang-dd-wrap.open .lang-dd-chev {
+      transform: rotate(180deg);
+    }
+    .lang-dd-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      z-index: 150;
+      min-width: 174px;
+      padding: 5px;
+      background: var(--bg-page);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 10px 28px rgba(24, 24, 27, 0.18);
+      flex-direction: column;
+      gap: 2px;
+    }
+    .lang-dd-wrap.open .lang-dd-menu {
+      display: flex;
+    }
+    .legal-lang-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      border: none !important;
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 9px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .legal-lang-btn:hover {
+      background: #efeae0;
+      color: var(--ink-primary);
     }
     .legal-lang-btn.active {
       background: var(--ink-primary);
       color: #faf9f5;
+      font-weight: 600;
     }
-    html[data-lang-view="en"] main > :not([lang="en"]):not(.lang-divider),
-    html[data-lang-view="en"] .lang-divider {
+    .legal-lang-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      min-width: 30px;
+    }
+    .legal-lang-name { flex: 1; }
+    .legal-lang-chk { opacity: 0; font-size: 11px; }
+    .legal-lang-btn.active .legal-lang-chk { opacity: 1; }
+    .legal-i18n-summary {
+      display: none;
+      margin: 0 0 20px;
+      padding: 14px 16px;
+      background: #efeae0;
+      border-left: 3px solid var(--ink-primary);
+      border-radius: 3px;
+    }
+    html[data-lang-view="pl"] .legal-i18n-summary,
+    html[data-lang-view="de"] .legal-i18n-summary,
+    html[data-lang-view="es"] .legal-i18n-summary,
+    html[data-lang-view="fr"] .legal-i18n-summary,
+    html[data-lang-view="pt"] .legal-i18n-summary {
+      display: block;
+    }
+    html[data-lang-view="en"] main > :not([lang="en"]):not(.lang-divider):not(.legal-i18n-summary),
+    html[data-lang-view="pl"] main > :not([lang="en"]):not(.lang-divider):not(.legal-i18n-summary),
+    html[data-lang-view="de"] main > :not([lang="en"]):not(.lang-divider):not(.legal-i18n-summary),
+    html[data-lang-view="es"] main > :not([lang="en"]):not(.lang-divider):not(.legal-i18n-summary),
+    html[data-lang-view="fr"] main > :not([lang="en"]):not(.lang-divider):not(.legal-i18n-summary),
+    html[data-lang-view="pt"] main > :not([lang="en"]):not(.lang-divider):not(.legal-i18n-summary),
+    html:not([data-lang-view="uk"]) .lang-divider {
       display: none !important;
     }
     html[data-lang-view="uk"] main > [lang="en"],
@@ -210,22 +289,98 @@
   </style>
   <script>
     (function() {
-      function setDocLang(mode) {
+      var CODES = { uk: 'УКР', en: 'EN', pl: 'PL', de: 'DE', es: 'ES', fr: 'FR', pt: 'PT' };
+      var SUMMARIES = {
+        about: {
+          pl: { t: 'O platformie SHEUA 3D Science Lab', p: 'Otwarte wirtualne laboratorium 3D obejmujące 106 symulacji w układzie SI: 46 z fizyki, 40 z chemii oraz 20 z biologii i biofizyki. Kontakt: contact@sheua.com.', cta: 'Otwórz laboratorium 3D (PL) →', u: '/?lang=pl' },
+          de: { t: 'Über das SHEUA 3D-Wissenschaftslabor', p: 'Offenes virtuelles 3D-Labor mit 106 Simulationen in SI-Einheiten: 46 Physik, 40 Chemie sowie 20 Biologie und Biophysik. Kontakt: contact@sheua.com.', cta: '3D-Labor öffnen (DE) →', u: '/?lang=de' },
+          es: { t: 'Acerca de SHEUA 3D Science Lab', p: 'Laboratorio virtual 3D de acceso abierto con 106 simulaciones en unidades SI: 46 de Física, 40 de Química y 20 de Biología y Biofísica. Contacto: contact@sheua.com.', cta: 'Abrir laboratorio 3D (ES) →', u: '/?lang=es' },
+          fr: { t: 'À propos de SHEUA 3D Science Lab', p: 'Laboratoire virtuel 3D en libre accès réunissant 106 simulations en unités SI : 46 en Physique, 40 en Chimie et 20 en Biologie et Biophysique. Contact : contact@sheua.com.', cta: 'Ouvrir le laboratoire 3D (FR) →', u: '/?lang=fr' },
+          pt: { t: 'Sobre o SHEUA 3D Science Lab', p: 'Laboratório virtual 3D de acesso aberto com 106 simulações em unidades SI: 46 de Física, 40 de Química e 20 de Biologia e Biofísica. Contato: contact@sheua.com.', cta: 'Abrir laboratório 3D (PT) →', u: '/?lang=pt' }
+        },
+        privacy: {
+          pl: { t: 'Polityka prywatności i plików cookie (Podsumowanie)', p: 'Wszystkie 106 symulacji 3D działa bez rejestracji i bez zbierania danych osobowych. Postęp nauki zapisywany jest wyłącznie lokalnie w przeglądarce (localStorage), a reklamy Google AdSense działają zgodnie z RODO. Pełny tekst prawny znajduje się poniżej po angielsku.', cta: 'Wróć do laboratorium 3D (PL) →', u: '/?lang=pl' },
+          de: { t: 'Datenschutz und Cookies (Zusammenfassung)', p: 'Alle 106 3D-Simulationen sind ohne Registrierung nutzbar. Lernfortschritte werden nur lokal im Browser (localStorage) gespeichert; Google AdSense erfüllt die DSGVO-Vorgaben. Der vollständige Rechtstext folgt unten auf Englisch.', cta: 'Zurück zum 3D-Labor (DE) →', u: '/?lang=de' },
+          es: { t: 'Política de privacidad y cookies (Resumen)', p: 'Las 106 simulaciones 3D funcionan sin registro ni cuentas personales. El progreso se guarda localmente en tu navegador (localStorage) y los anuncios de Google AdSense cumplen con el RGPD. El texto legal completo figura abajo en inglés.', cta: 'Volver al laboratorio 3D (ES) →', u: '/?lang=es' },
+          fr: { t: 'Politique de confidentialité et cookies (Résumé)', p: 'Les 106 simulations 3D sont accessibles sans inscription. La progression est enregistrée uniquement dans votre navigateur (localStorage) et Google AdSense respecte le RGPD. Le texte juridique complet figure ci-dessous en anglais.', cta: 'Retour au laboratoire 3D (FR) →', u: '/?lang=fr' },
+          pt: { t: 'Política de privacidade e cookies (Resumo)', p: 'Todas as 106 simulações 3D funcionam sem cadastro. O progresso de estudo fica salvo apenas localmente no navegador (localStorage) e o Google AdSense segue o GDPR/LGPD. O texto jurídico completo encontra-se abaixo em inglês.', cta: 'Voltar ao laboratório 3D (PT) →', u: '/?lang=pt' }
+        },
+        terms: {
+          pl: { t: 'Warunki korzystania z platformy (Podsumowanie)', p: 'Materiały i symulacje 3D są bezpłatne do użytku szkolnego, akademickiego i samodzielnej nauki z podaniem źródła sheua.com / physics.sheua.com. Pełny regulamin znajduje się poniżej po angielsku.', cta: 'Wróć do laboratorium 3D (PL) →', u: '/?lang=pl' },
+          de: { t: 'Nutzungsbedingungen (Zusammenfassung)', p: 'Alle 3D-Simulationen und Lehrmaterialien stehen kostenlos für Unterricht, Studium und Selbststudium mit Quellenangabe sheua.com / physics.sheua.com bereit. Die vollständigen Bedingungen folgen unten auf Englisch.', cta: 'Zurück zum 3D-Labor (DE) →', u: '/?lang=de' },
+          es: { t: 'Términos de uso (Resumen)', p: 'Las simulaciones 3D y apuntes son gratuitos para uso escolar, universitario y autodidacta citando la fuente sheua.com / physics.sheua.com. Los términos completos figuran abajo en inglés.', cta: 'Volver al laboratorio 3D (ES) →', u: '/?lang=es' },
+          fr: { t: 'Conditions d\'utilisation (Résumé)', p: 'Les simulations 3D et ressources pédagogiques sont gratuites pour l\'enseignement scolaire, universitaire et l\'auto-apprentissage avec mention de la source sheua.com / physics.sheua.com. Le texte complet suit en anglais.', cta: 'Retour au laboratoire 3D (FR) →', u: '/?lang=fr' },
+          pt: { t: 'Termos de uso (Resumo)', p: 'As simulações 3D e materiais didáticos são gratuitos para uso escolar, universitário e estudo individual citando a fonte sheua.com / physics.sheua.com. Os termos completos estão abaixo em inglês.', cta: 'Voltar ao laboratório 3D (PT) →', u: '/?lang=pt' }
+        }
+      };
+      function setDocLang(rawMode) {
+        var mode = CODES[rawMode] ? rawMode : 'uk';
         document.documentElement.setAttribute('data-lang-view', mode);
-        document.documentElement.lang = mode === 'en' ? 'en' : 'uk';
+        document.documentElement.lang = mode;
+        var curSpan = document.getElementById('legal-lang-cur');
+        if (curSpan) curSpan.textContent = CODES[mode];
         document.querySelectorAll('.legal-lang-btn').forEach(function(b) {
-          b.classList.toggle('active', b.getAttribute('data-lang-mode') === mode);
+          var act = b.getAttribute('data-lang-mode') === mode;
+          b.classList.toggle('active', act);
+          b.setAttribute('aria-selected', act ? 'true' : 'false');
         });
-        try { localStorage.setItem('sheua_legal_lang', mode); } catch (e) {}
+        var wrap = document.getElementById('legal-lang-dd');
+        var trig = document.getElementById('legal-lang-trig');
+        if (wrap) wrap.classList.remove('open');
+        if (trig) trig.setAttribute('aria-expanded', 'false');
+
+        var mainEl = document.getElementById('main-content');
+        if (mainEl) {
+          var box = document.getElementById('legal-i18n-summary');
+          if (!box) {
+            box = document.createElement('div');
+            box.id = 'legal-i18n-summary';
+            box.className = 'legal-i18n-summary';
+            mainEl.insertBefore(box, mainEl.firstChild);
+          }
+          var info = SUMMARIES['about'] && SUMMARIES['about'][mode];
+          if (info) {
+            box.innerHTML = '<strong style="display:block;font-size:16px;margin-bottom:6px;color:#18181b;">' + info.t + '</strong>' +
+              '<p style="margin:0 0 8px;font-size:14px;color:#3f3f46;">' + info.p + '</p>' +
+              '<a href="' + info.u + '" style="font-weight:600;font-size:13.5px;">' + info.cta + '</a>';
+          } else {
+            box.innerHTML = '';
+          }
+        }
+        try {
+          localStorage.setItem('sheua_legal_lang', mode);
+          localStorage.setItem('sheua_lab_lang', mode);
+        } catch (e) {}
       }
       window.__setLegalLang = setDocLang;
       document.addEventListener('DOMContentLoaded', function() {
+        var wrap = document.getElementById('legal-lang-dd');
+        var trig = document.getElementById('legal-lang-trig');
+        if (trig && wrap) {
+          trig.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var open = wrap.classList.toggle('open');
+            trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+          document.addEventListener('click', function(e) {
+            if (!wrap.contains(e.target)) {
+              wrap.classList.remove('open');
+              trig.setAttribute('aria-expanded', 'false');
+            }
+          });
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              wrap.classList.remove('open');
+              trig.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
         var params = new URLSearchParams(window.location.search);
         var qLang = params.get('lang');
         var saved = null;
-        try { saved = localStorage.getItem('sheua_legal_lang'); } catch (e) {}
+        try { saved = localStorage.getItem('sheua_legal_lang') || localStorage.getItem('sheua_lab_lang'); } catch (e) {}
         var fromEnRef = document.referrer && /\/sim\//.test(document.referrer) && !/\/uk\//.test(document.referrer);
-        var initial = (qLang === 'en' || qLang === 'uk') ? qLang : ((saved === 'en' || saved === 'uk') ? saved : (fromEnRef ? 'en' : 'uk'));
+        var initial = CODES[qLang] ? qLang : (CODES[saved] ? saved : (fromEnRef ? 'en' : 'uk'));
         setDocLang(initial);
       });
     })();
@@ -241,9 +396,21 @@
       <a href="/about.html">Про проєкт і контакти</a>
       <a href="/privacy.html">Політика конфіденційності</a>
       <a href="/terms.html">Умови використання</a>
-      <div class="legal-lang-switch" role="group" aria-label="Language view">
-        <button type="button" class="legal-lang-btn active" data-lang-mode="uk" onclick="window.__setLegalLang('uk')">УКР</button>
-        <button type="button" class="legal-lang-btn" data-lang-mode="en" onclick="window.__setLegalLang('en')">EN</button>
+      <div class="lang-dd-wrap" id="legal-lang-dd">
+        <button type="button" class="lang-dd-btn" id="legal-lang-trig" aria-haspopup="listbox" aria-expanded="false" aria-controls="legal-lang-menu" aria-label="Language selector">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="legal-lang-cur">УКР</span>
+          <span class="lang-dd-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="lang-dd-menu" id="legal-lang-menu" role="listbox" aria-label="Language selector">
+          <button type="button" class="legal-lang-btn active" role="option" aria-selected="true" data-lang-mode="uk" onclick="window.__setLegalLang('uk')"><span class="legal-lang-code">УКР</span><span class="legal-lang-name">Українська</span><span class="legal-lang-chk">✓</span></button>
+          <button type="button" class="legal-lang-btn" role="option" aria-selected="false" data-lang-mode="en" onclick="window.__setLegalLang('en')"><span class="legal-lang-code">EN</span><span class="legal-lang-name">English</span><span class="legal-lang-chk">✓</span></button>
+          <button type="button" class="legal-lang-btn" role="option" aria-selected="false" data-lang-mode="pl" onclick="window.__setLegalLang('pl')"><span class="legal-lang-code">PL</span><span class="legal-lang-name">Polski</span><span class="legal-lang-chk">✓</span></button>
+          <button type="button" class="legal-lang-btn" role="option" aria-selected="false" data-lang-mode="de" onclick="window.__setLegalLang('de')"><span class="legal-lang-code">DE</span><span class="legal-lang-name">Deutsch</span><span class="legal-lang-chk">✓</span></button>
+          <button type="button" class="legal-lang-btn" role="option" aria-selected="false" data-lang-mode="es" onclick="window.__setLegalLang('es')"><span class="legal-lang-code">ES</span><span class="legal-lang-name">Español</span><span class="legal-lang-chk">✓</span></button>
+          <button type="button" class="legal-lang-btn" role="option" aria-selected="false" data-lang-mode="fr" onclick="window.__setLegalLang('fr')"><span class="legal-lang-code">FR</span><span class="legal-lang-name">Français</span><span class="legal-lang-chk">✓</span></button>
+          <button type="button" class="legal-lang-btn" role="option" aria-selected="false" data-lang-mode="pt" onclick="window.__setLegalLang('pt')"><span class="legal-lang-code">PT</span><span class="legal-lang-name">Português</span><span class="legal-lang-chk">✓</span></button>
+        </div>
       </div>
     </nav>
   </header>

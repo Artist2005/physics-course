@@ -852,7 +852,7 @@
     }
 
     function makeBookVectorSprite(text, borderColor = '#142e46') {
-      const localized = (typeof uiState === 'undefined' || uiState.lang === 'en')
+      const localized = (typeof uiState === 'undefined' || uiState.lang !== 'uk')
         ? (VECTOR_LABEL_EN[text] || text)
         : text;
       const symbolText = extractShortVectorSymbol(text, localized);
@@ -20397,7 +20397,7 @@
         ctx.fillText(el.sym, 128, 142);
 
         // Element name
-        const isEn = uiState.lang === 'en';
+        const isEn = uiState.lang !== 'uk';
         ctx.fillStyle = '#334155';
         ctx.font = '600 22px "Google Sans", "Segoe UI", sans-serif';
         ctx.fillText(isEn ? el.nameEn : el.nameUk, 128, 179, 224);
@@ -20455,7 +20455,7 @@
       }
 
       updatePassportCard(el) {
-        const isEn = uiState.lang === 'en';
+        const isEn = uiState.lang !== 'uk';
         const mode = Math.round((sceneParams.chem_periodic && sceneParams.chem_periodic.propMode) || 1);
         const key = `${el.z}_${mode}_${isEn ? 'en' : 'uk'}`;
 
@@ -20892,7 +20892,7 @@
         const modeName = mode === 1 ? 'Атомний радіус r_ат' : (mode === 2 ? 'Енергія йонізації I₁' : 'Електронегативність χ');
         const blockLabel = activeEl.fRow === 1 ? '4f-лантаноїд' : (activeEl.fRow === 2 ? '5f-актиноїд' : `${activeEl.block}-елемент`);
         updateEnergyUI(activeEl.i1, activeEl.r / 100, activeEl.zeff, 20, [
-          { label: 'Хімічний елемент (1-118)', val: `${activeEl.sym}, ${uiState.lang === 'en' ? activeEl.nameEn : activeEl.nameUk} (Z = ${activeEl.z})` },
+          { label: 'Хімічний елемент (1-118)', val: `${activeEl.sym}, ${uiState.lang !== 'uk' ? activeEl.nameEn : activeEl.nameUk} (Z = ${activeEl.z})` },
           { label: 'Період / Група / Блок', val: `${activeEl.n}-й період, гр. ${activeEl.g}, ${blockLabel} (${activeEl.cfg})` },
           { label: 'Ефективний заряд Z_eff', val: `${activeEl.zeff.toFixed(2)} e (σ = ${(activeEl.z - activeEl.zeff).toFixed(2)})` },
           { label: 'Атомний радіус r_ат', val: `${activeEl.r} пм (${(activeEl.r / 100).toFixed(2)} Å)` },
@@ -23783,7 +23783,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             sl.value = this.params.elapsedTimeT.toFixed(1);
             updateSliderFill(sl);
           }
-          if (vl) vl.textContent = `${this.params.elapsedTimeT.toFixed(1)} ${uiState.lang === 'en' ? 's' : 'с'}`;
+          if (vl) vl.textContent = `${this.params.elapsedTimeT.toFixed(1)} ${uiState.lang !== 'uk' ? 's' : 'с'}`;
           updateLiveFormulaSubstitution();
         }
         this.syncVisuals();
@@ -24407,7 +24407,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             sl.value = this.params.frontHeight.toFixed(1);
             updateSliderFill(sl);
           }
-          if (vl) vl.textContent = `${this.params.frontHeight.toFixed(1)} ${uiState.lang === 'en' ? 'cm' : 'см'}`;
+          if (vl) vl.textContent = `${this.params.frontHeight.toFixed(1)} ${uiState.lang !== 'uk' ? 'cm' : 'см'}`;
           updateLiveFormulaSubstitution();
         }
         this.syncVisuals();
@@ -25631,7 +25631,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       pin.group.add(pin.line);
 
       pin.buildSprite = function() {
-        const isEn = (typeof uiState !== 'undefined' && uiState.lang === 'en');
+        const isEn = (typeof uiState !== 'undefined' && uiState.lang !== 'uk');
         const title = isEn ? (this.titleEn || this.titleUk) : this.titleUk;
         const sub = isEn ? (this.subEn || this.subUk) : this.subUk;
 
@@ -25870,7 +25870,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const oldFloatingHud = document.getElementById('bio-scene-hud');
       if (oldFloatingHud) oldFloatingHud.remove();
 
-      const isEn = (typeof uiState !== 'undefined' && uiState.lang === 'en');
+      const isEn = (typeof uiState !== 'undefined' && uiState.lang !== 'uk');
       const presetsKey = (config.presets || []).map(prItem => prItem.id).join('|') + ':' + (isEn ? 'en' : 'uk') + ':' + sceneKey;
 
       // 1. Update right sidebar Overlays legend-grid in native textbook style
@@ -35494,9 +35494,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     };
 
     function translateTelemetryLabel(labelStr) {
-      if (uiState.lang !== 'en' || typeof labelStr !== 'string') return labelStr;
-      if (TELEMETRY_LABEL_EN[labelStr]) return TELEMETRY_LABEL_EN[labelStr];
-      return labelStr
+      if (uiState.lang === 'uk' || typeof labelStr !== 'string') return labelStr;
+      const baseEn = TELEMETRY_LABEL_EN[labelStr] || labelStr
         .replace(/^Радіус темного кільця r_/, 'Dark ring radius r_')
         .replace(/^Радіус світлого кільця r_/, 'Bright ring radius r_')
         .replace('Напрямок процесу при T = ', 'Process direction at T = ')
@@ -35506,10 +35505,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace('Активність РуБісКО при T = ', 'RuBisCO activity at T = ')
         .replace('Ефект Бора при pH = ', 'Bohr effect at pH = ')
         .replace(/ К$/, ' K');
+      return uiState.lang === 'en' ? baseEn : translateTermI18n(baseEn, uiState.lang);
     }
 
     function translateTelemetryVal(valStr) {
-      if (uiState.lang !== 'en' || typeof valStr !== 'string') return valStr;
+      if (uiState.lang === 'uk' || typeof valStr !== 'string') return valStr;
       return valStr
         .replace('Усі органели клітини', 'All cell organelles')
         .replace('Ядро + ЕПС (транскрипція і трансляція)', 'Nucleus + ER (transcription & translation)')
@@ -36316,6 +36316,851 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         footerTerms: 'Умови використання',
         footerCopy: '© 2026 physics.sheua.com · Інтерактивний 3D-підручник (106 симуляцій)',
         curriculumSummary: 'Усі 106 дослідів'
+      },
+      pl: {
+              "docTitle": "Wirtualne laboratorium 3D fizyki, chemii i biologii",
+              "spineSub": "Paragrafy 1-46",
+              "spineMain": "Laboratorium fizyki",
+              "spineChem": "Laboratorium chemii",
+              "spineBio": "Laboratorium biologii",
+              "prevTitle": "Poprzedni rozdział (←)",
+              "nextTitle": "Następny rozdział (→)",
+              "adHdrBadge": "AD",
+              "adHdrText": "Reklama",
+              "adHdrSub": "Jednostka sponsorowana",
+              "adHdrCta": "",
+              "adLeftLabel": "Reklama",
+              "adLeftTitle": "Reklama",
+              "adLeftSub": "Jednostka elastyczna",
+              "adLeftSpec": "Slot sponsorowany",
+              "adRightLabel": "Reklama",
+              "adRightTitle": "Reklama",
+              "adRightSub": "Jednostka 300×250",
+              "adRightSpec": "Slot sponsorowany",
+              "filterAll": "Wszystkie (46)",
+              "filterOptics": "Optyka i fale (14)",
+              "filterMechanics": "Mechanika (15)",
+              "filterThermo": "Płyny i ciepło (9)",
+              "filterElectro": "Elektromagnetyzm (8)",
+              "chemFilterAll": "Wszystkie z chemii",
+              "chemFilter1": "Budowa materii (10)",
+              "chemFilter2": "Gazy, termochemia i kinetyka (9)",
+              "chemFilter3": "Roztwory, pH i analiza (10)",
+              "chemFilter4": "Elektrochemia i organika (11)",
+              "bioFilterAll": "Wszystkie z biologii",
+              "bioFilter1": "Komórka i wirusy",
+              "bioFilter2": "DNA i genetyka",
+              "bioFilter3": "Biofizyka i zmysły",
+              "bioFilter4": "Fizjologia i ekologia",
+              "crumbPredict": "Hipoteza",
+              "crumbTest": "Eksperyment",
+              "crumbExplain": "Dowód",
+              "camIso": "3D",
+              "camFront": "Przód",
+              "camTop": "Góra",
+              "camSide": "Bok",
+              "camMacro": "Zoom",
+              "camOrbit": "360°",
+              "problemLabel": "Pytanie",
+              "yourAnswer": "Wybrano",
+              "changeBtn": "Zmień",
+              "runExp": "Start",
+              "continueExp": "Dalej",
+              "repeatExp": "Powtórz",
+              "pauseBtn": "Pauza",
+              "resumeBtn": "Dalej",
+              "stepBtn": "+0.02 s",
+              "resetBtn": "Resetuj",
+              "verdictCorrect": "Eksperyment potwierdził twoją odpowiedź.",
+              "verdictIncorrect": "Eksperyment wykazał inny wynik. Zobacz wyprowadzenie poniżej.",
+              "eqHeaderLeft": "Wzór",
+              "eqHeaderRight": "",
+              "energyBalanceTitle": "Bilans energii",
+              "keyIndicatorsTitle": "Wskaźniki kluczowe",
+              "refHeadingLeft": "Równania",
+              "refHeadingRight": "",
+              "paramsHeading": "Parametry",
+              "presetDefault": "Domyślne",
+              "diagramHeading": "Warstwy 3D",
+              "toggleVectors": "Wektory",
+              "toggleLabels": "Etykiety",
+              "toggleTrails": "Trajektorie",
+              "toggleParticles": "Fale i cząstki",
+              "legendV": "<span class=\"legend-bar\" style=\"background:#166534;\"></span> Prędkość ($\\vec{v}$)",
+              "legendP": "<span class=\"legend-bar\" style=\"background:#1d4ed8;\"></span> Pęd / rzuty",
+              "legendMg": "<span class=\"legend-bar\" style=\"background:#b91c1c;\"></span> Siła ciężkości ($m\\vec{g}$)",
+              "legendN": "<span class=\"legend-bar\" style=\"background:#b45309;\"></span> Reakcja / naciąg / ciśnienie",
+              "letters": [
+                      "A",
+                      "B",
+                      "C",
+                      "D"
+              ],
+              "optionPrefix": "Opcja",
+              "secUnit": "s",
+              "jouleUnit": "J",
+              "theoryBtnTitle": "Notatki teoretyczne",
+              "theoryBtnShort": "Teoria",
+              "theoryExpandHint": "Otwórz",
+              "theoryCollapseHint": "Zwiń",
+              "theorySec1Title": "Mechanizm zjawiska",
+              "theorySec2Title": "Równania i zasady zachowania",
+              "theorySec3Title": "Pomiary i zastosowania",
+              "eduLevelSchool": "Szkoła",
+              "eduLevelUni": "Uczelnia",
+              "analogyCardTitle": "Model fizyczny i zastosowania",
+              "classroomBtn": "Klasa",
+              "classroomBtnTip": "Tryb projekcyjny dla klasy bez reklam",
+              "tierAll": "Wszystkie · 106",
+              "tierCore": "Podstawa",
+              "tierAdv": "Rozszerzony",
+              "tierBadgeCore": "Podstawa",
+              "tierBadgeAdv": "Rozszerzony",
+              "hintBtnLabel": "Wskazówka",
+              "hintBtnActive": "Ukryj",
+              "observeBannerText": "",
+              "observeRevealBtn": "Dowód",
+              "nextLessonPrefix": "Dalej",
+              "nextLessonBtnPrefix": "Dalej",
+              "presetModeLabel": "Presety",
+              "presetMin": "Min",
+              "presetStd": "Std",
+              "presetMax": "Max",
+              "presetMinTip": "Wartości minimalne",
+              "presetStdTip": "Wartości standardowe",
+              "presetMaxTip": "Wartości maksymalne",
+              "searchPlaceholder": "Szukaj wśród 106 doświadczeń (/)...",
+              "searchNoResults": "Brak pasujących doświadczeń.",
+              "progressBadgeTip": "Ukończone doświadczenia (kliknij, aby przejść do kolejnego)",
+              "kbdFooterHtml": "<span class=\"kbd-chip\">Space</span> Start/Pauza · <span class=\"kbd-chip\">←/→</span> Rozdział · <span class=\"kbd-chip\">R</span> Reset · <span class=\"kbd-chip\">T</span> Teoria · <span class=\"kbd-chip\">H</span> Wskazówka · <span class=\"kbd-chip\">F</span> Ekran · <span class=\"kbd-chip\">/</span> Szukaj",
+              "brandTitle": "Laboratorium 3D",
+              "brandSub": "Nauki przyrodnicze",
+              "discMenuHeader": "Dyscyplina naukowa",
+              "discPhysics": "Fizyka",
+              "discPhysicsSub": "Mechanika, optyka, termodynamika, elektromagnetyzm",
+              "discPhysicsTip": "Fizyka · 46 doświadczeń",
+              "discChemistry": "Chemia",
+              "discChemistrySub": "Orbitale, wiązania, kinetyka, pH, elektrochemia",
+              "discChemistryBadge": "40",
+              "discChemistryTip": "Chemia · 40 doświadczeń",
+              "discBiology": "Biologia",
+              "discBiologyFull": "Biologia i biofizyka",
+              "discBiologySub": "Komórka, DNA, CRISPR, neuron, optyka oka, fizjologia",
+              "discBiologyTip": "Biologia i biofizyka · 20 doświadczeń",
+              "shareBtn": "Link",
+              "shareTip": "Skopiuj link z bieżącymi parametrami",
+              "shareCopied": "Skopiowano",
+              "pinChartBtn": "Wzorzec",
+              "pinChartClear": "Usuń wzorzec",
+              "pinChartTip": "Przypnij bieżący wykres jako krzywą odniesienia",
+              "camPresent": "Ekran",
+              "camSnapshot": "PNG",
+              "camPinMobile": "Przypnij 3D",
+              "camPinnedMobile": "3D przypięte",
+              "footerAbout": "O projekcie i kontakt",
+              "footerPrivacy": "Polityka prywatności",
+              "footerTerms": "Warunki korzystania",
+              "footerCopy": "© 2026 physics.sheua.com · Interaktywne laboratorium 3D (106 symulacji)",
+              "curriculumSummary": "Wszystkie 106 doświadczeń",
+              "calcTitle": "Kalkulator",
+              "calcHint": "kliknij liczbę",
+              "reportBtn": "Raport",
+              "solutionBtn": "Rozwiązanie",
+              "verifyBtn": "Sprawdź",
+              "verifyPlaceholder": "Sprawdź własny wynik...",
+              "jumpNotes": "Teoria ↓",
+              "searchTip": "Szukaj wśród 106 doświadczeń (/)",
+              "randomTip": "Losowe doświadczenie 3D",
+              "relatedTitle": "Podobne doświadczenia 3D",
+              "shareLabel": "Udostępnij",
+              "coachText": "Przeciągnij, aby obrócić · Kółko przybliża · Podwójne kliknięcie centruje",
+              "cameraCentered": "Kamera wyśrodkowana",
+              "hdrTextbook": "Podręcznik",
+              "hdrAbout": "O projekcie",
+              "hdrPrivacy": "Prywatność",
+              "portalUrl": "https://sheua.com/pl/",
+              "editorialTitle": "Wirtualne laboratorium nauk przyrodniczych 3D",
+              "editorialP1": "106 trójwymiarowych symulacji w układzie SI: 46 z fizyki, 40 z chemii oraz 20 z biologii i biofizyki.",
+              "editorialP2": "Żywe wektory, oscylogramy energii, kalkulator wzorów i druk protokołu.",
+              "cookieAccept": "Akceptuj",
+              "cookieEssential": "Tylko niezbędne",
+              "cookieText": "Ta platforma edukacyjna używa plików cookie i <code>localStorage</code> do zapisywania postępów nauki oraz wyświetlania reklam Google AdSense zgodnie z <a href=\"/privacy.html?lang=en\">Polityką prywatności</a>."
+      },
+      de: {
+              "docTitle": "Virtuelles 3D-Labor für Physik, Chemie und Biologie",
+              "spineSub": "Kapitel 1-46",
+              "spineMain": "Physiklabor",
+              "spineChem": "Chemielabor",
+              "spineBio": "Biologielabor",
+              "prevTitle": "Vorheriges Kapitel (←)",
+              "nextTitle": "Nächstes Kapitel (→)",
+              "adHdrBadge": "AD",
+              "adHdrText": "Anzeige",
+              "adHdrSub": "Gesponserte Einheit",
+              "adHdrCta": "",
+              "adLeftLabel": "Anzeige",
+              "adLeftTitle": "Anzeige",
+              "adLeftSub": "Responsive Einheit",
+              "adLeftSpec": "Gesponsert",
+              "adRightLabel": "Anzeige",
+              "adRightTitle": "Anzeige",
+              "adRightSub": "300×250 Einheit",
+              "adRightSpec": "Gesponsert",
+              "filterAll": "Alle (46)",
+              "filterOptics": "Optik und Wellen (14)",
+              "filterMechanics": "Mechanik (15)",
+              "filterThermo": "Fluide und Wärme (9)",
+              "filterElectro": "Elektromagnetismus (8)",
+              "chemFilterAll": "Alle Chemie",
+              "chemFilter1": "Stoffstruktur (10)",
+              "chemFilter2": "Gase, Thermochemie & Kinetik (9)",
+              "chemFilter3": "Lösungen, pH & Analytik (10)",
+              "chemFilter4": "Elektrochemie & Organik (11)",
+              "bioFilterAll": "Alle Biologie",
+              "bioFilter1": "Zelle & Viren",
+              "bioFilter2": "DNA & Genetik",
+              "bioFilter3": "Biophysik & Sinne",
+              "bioFilter4": "Physiologie & Ökologie",
+              "crumbPredict": "Hypothese",
+              "crumbTest": "Versuch",
+              "crumbExplain": "Beweis",
+              "camIso": "3D",
+              "camFront": "Vorne",
+              "camTop": "Oben",
+              "camSide": "Seite",
+              "camMacro": "Zoom",
+              "camOrbit": "360°",
+              "problemLabel": "Frage",
+              "yourAnswer": "Gewählt",
+              "changeBtn": "Ändern",
+              "runExp": "Start",
+              "continueExp": "Weiter",
+              "repeatExp": "Nochmal",
+              "pauseBtn": "Pause",
+              "resumeBtn": "Weiter",
+              "stepBtn": "+0.02 s",
+              "resetBtn": "Reset",
+              "verdictCorrect": "Das Experiment bestätigt deine Vorhersage.",
+              "verdictIncorrect": "Das Experiment zeigt ein anderes Ergebnis. Siehe Herleitung unten.",
+              "eqHeaderLeft": "Formel",
+              "eqHeaderRight": "",
+              "energyBalanceTitle": "Energiebilanz",
+              "keyIndicatorsTitle": "Kennwerte",
+              "refHeadingLeft": "Gleichungen",
+              "refHeadingRight": "",
+              "paramsHeading": "Parameter",
+              "presetDefault": "Standard",
+              "diagramHeading": "3D-Ebenen",
+              "toggleVectors": "Vektoren",
+              "toggleLabels": "Beschriftungen",
+              "toggleTrails": "Bahnkurven",
+              "toggleParticles": "Wellen & Teilchen",
+              "legendV": "<span class=\"legend-bar\" style=\"background:#166534;\"></span> Geschwindigkeit ($\\vec{v}$)",
+              "legendP": "<span class=\"legend-bar\" style=\"background:#1d4ed8;\"></span> Impuls / Projektionen",
+              "legendMg": "<span class=\"legend-bar\" style=\"background:#b91c1c;\"></span> Gewichtskraft ($m\\vec{g}$)",
+              "legendN": "<span class=\"legend-bar\" style=\"background:#b45309;\"></span> Normalkraft / Zug / Druck",
+              "letters": [
+                      "A",
+                      "B",
+                      "C",
+                      "D"
+              ],
+              "optionPrefix": "Option",
+              "secUnit": "s",
+              "jouleUnit": "J",
+              "theoryBtnTitle": "Theoriekompendium",
+              "theoryBtnShort": "Theorie",
+              "theoryExpandHint": "Öffnen",
+              "theoryCollapseHint": "Einklappen",
+              "theorySec1Title": "Physikalischer Mechanismus",
+              "theorySec2Title": "Gleichungen und Erhaltungssätze",
+              "theorySec3Title": "Messung und Anwendungen",
+              "eduLevelSchool": "Schule",
+              "eduLevelUni": "Universität",
+              "analogyCardTitle": "Modell und Anwendung",
+              "classroomBtn": "Klasse",
+              "classroomBtnTip": "Beamer-Modus ohne Werbung für den Unterricht",
+              "tierAll": "Alle · 106",
+              "tierCore": "Basis",
+              "tierAdv": "Vertieft",
+              "tierBadgeCore": "Basis",
+              "tierBadgeAdv": "Vertieft",
+              "hintBtnLabel": "Hinweis",
+              "hintBtnActive": "Ausblenden",
+              "observeBannerText": "",
+              "observeRevealBtn": "Beweis",
+              "nextLessonPrefix": "Weiter",
+              "nextLessonBtnPrefix": "Weiter",
+              "presetModeLabel": "Presets",
+              "presetMin": "Min",
+              "presetStd": "Std",
+              "presetMax": "Max",
+              "presetMinTip": "Minimale Parameterwerte",
+              "presetStdTip": "Standardwerte",
+              "presetMaxTip": "Maximale Parameterwerte",
+              "searchPlaceholder": "Alle 106 Versuche durchsuchen (/)...",
+              "searchNoResults": "Keine passenden Versuche gefunden.",
+              "progressBadgeTip": "Gelöste Versuche (klicken für nächsten offenen Versuch)",
+              "kbdFooterHtml": "<span class=\"kbd-chip\">Space</span> Start/Pause · <span class=\"kbd-chip\">←/→</span> Kapitel · <span class=\"kbd-chip\">R</span> Reset · <span class=\"kbd-chip\">T</span> Theorie · <span class=\"kbd-chip\">H</span> Hinweis · <span class=\"kbd-chip\">F</span> Fokus 3D · <span class=\"kbd-chip\">/</span> Suche",
+              "brandTitle": "3D-Wissenschaftslabor",
+              "brandSub": "Interaktives Praktikum",
+              "discMenuHeader": "Fachbereich",
+              "discPhysics": "Physik",
+              "discPhysicsSub": "Mechanik, Optik, Thermodynamik, Elektromagnetismus",
+              "discPhysicsTip": "Physik · 46 Versuche",
+              "discChemistry": "Chemie",
+              "discChemistrySub": "Orbitale, Bindung, Kinetik, pH, Elektrochemie",
+              "discChemistryBadge": "40",
+              "discChemistryTip": "Chemie · 40 Versuche",
+              "discBiology": "Biologie",
+              "discBiologyFull": "Biologie & Biophysik",
+              "discBiologySub": "Zelle, DNA, CRISPR, Neuron, Augenoptik, Physiologie",
+              "discBiologyTip": "Biologie & Biophysik · 20 Versuche",
+              "shareBtn": "Link",
+              "shareTip": "Link mit aktuellen Parametern kopieren",
+              "shareCopied": "Kopiert",
+              "pinChartBtn": "Referenz",
+              "pinChartClear": "Referenz löschen",
+              "pinChartTip": "Aktuelle Kurve als gestrichelte Referenz fixieren",
+              "camPresent": "Fokus 3D",
+              "camSnapshot": "PNG",
+              "camPinMobile": "3D fixieren",
+              "camPinnedMobile": "3D fixiert",
+              "footerAbout": "Über das Projekt & Kontakt",
+              "footerPrivacy": "Datenschutz",
+              "footerTerms": "Nutzungsbedingungen",
+              "footerCopy": "© 2026 physics.sheua.com · Interaktives 3D-Labor (106 Simulationen)",
+              "curriculumSummary": "Alle 106 Versuche",
+              "calcTitle": "Rechner",
+              "calcHint": "Zahl anklicken",
+              "reportBtn": "Protokoll",
+              "solutionBtn": "Lösung",
+              "verifyBtn": "Prüfen",
+              "verifyPlaceholder": "Eigenes Ergebnis prüfen...",
+              "jumpNotes": "Theorie ↓",
+              "searchTip": "Alle 106 Versuche durchsuchen (/)",
+              "randomTip": "Zufälliger 3D-Versuch",
+              "relatedTitle": "Ähnliche 3D-Versuche",
+              "shareLabel": "Teilen",
+              "coachText": "Ziehen zum Drehen · Mausrad für Zoom · Doppelklick zentriert Kamera",
+              "cameraCentered": "Kamera zentriert",
+              "hdrTextbook": "Lehrbuch",
+              "hdrAbout": "Über uns",
+              "hdrPrivacy": "Datenschutz",
+              "portalUrl": "https://sheua.com/de/",
+              "editorialTitle": "Virtuelles 3D-Naturwissenschaftslabor",
+              "editorialP1": "106 Echtzeit-3D-Simulationen in SI-Einheiten: 46 Physik, 40 Chemie sowie 20 Biologie und Biophysik.",
+              "editorialP2": "Live-Vektoren, Energie-Oszillogramme, Formelrechner und druckbares Laborprotokoll.",
+              "cookieAccept": "Akzeptieren",
+              "cookieEssential": "Nur notwendige",
+              "cookieText": "Diese Bildungsplattform nutzt Cookies und <code>localStorage</code> für Lernfortschritte sowie Google AdSense gemäß unserer <a href=\"/privacy.html?lang=en\">Datenschutzerklärung</a>."
+      },
+      es: {
+              "docTitle": "Laboratorio virtual 3D de Física, Química y Biología",
+              "spineSub": "Capítulos 1-46",
+              "spineMain": "Laboratorio de Física",
+              "spineChem": "Laboratorio de Química",
+              "spineBio": "Laboratorio de Biología",
+              "prevTitle": "Capítulo anterior (←)",
+              "nextTitle": "Capítulo siguiente (→)",
+              "adHdrBadge": "AD",
+              "adHdrText": "Publicidad",
+              "adHdrSub": "Bloque patrocinado",
+              "adHdrCta": "",
+              "adLeftLabel": "Publicidad",
+              "adLeftTitle": "Publicidad",
+              "adLeftSub": "Bloque adaptable",
+              "adLeftSpec": "Patrocinado",
+              "adRightLabel": "Publicidad",
+              "adRightTitle": "Publicidad",
+              "adRightSub": "Bloque 300×250",
+              "adRightSpec": "Patrocinado",
+              "filterAll": "Todos (46)",
+              "filterOptics": "Óptica y ondas (14)",
+              "filterMechanics": "Mecánica (15)",
+              "filterThermo": "Fluidos y calor (9)",
+              "filterElectro": "Electromagnetismo (8)",
+              "chemFilterAll": "Toda Química",
+              "chemFilter1": "Estructura y enlace (10)",
+              "chemFilter2": "Gases, termoquímica y cinética (9)",
+              "chemFilter3": "Disoluciones, pH y análisis (10)",
+              "chemFilter4": "Electroquímica y orgánica (11)",
+              "bioFilterAll": "Toda Biología",
+              "bioFilter1": "Célula y virus",
+              "bioFilter2": "ADN y genética",
+              "bioFilter3": "Biofísica y sentidos",
+              "bioFilter4": "Fisiología y ecología",
+              "crumbPredict": "Hipótesis",
+              "crumbTest": "Práctica",
+              "crumbExplain": "Demostración",
+              "camIso": "3D",
+              "camFront": "Frente",
+              "camTop": "Planta",
+              "camSide": "Perfil",
+              "camMacro": "Zoom",
+              "camOrbit": "360°",
+              "problemLabel": "Pregunta",
+              "yourAnswer": "Elegida",
+              "changeBtn": "Cambiar",
+              "runExp": "Iniciar",
+              "continueExp": "Seguir",
+              "repeatExp": "Repetir",
+              "pauseBtn": "Pausa",
+              "resumeBtn": "Seguir",
+              "stepBtn": "+0.02 s",
+              "resetBtn": "Reiniciar",
+              "verdictCorrect": "El experimento confirma tu predicción.",
+              "verdictIncorrect": "El experimento muestra otro resultado. Revisa la deducción abajo.",
+              "eqHeaderLeft": "Fórmula",
+              "eqHeaderRight": "",
+              "energyBalanceTitle": "Balance de energía",
+              "keyIndicatorsTitle": "Indicadores clave",
+              "refHeadingLeft": "Ecuaciones",
+              "refHeadingRight": "",
+              "paramsHeading": "Parámetros",
+              "presetDefault": "Restablecer",
+              "diagramHeading": "Capas 3D",
+              "toggleVectors": "Vectores",
+              "toggleLabels": "Etiquetas",
+              "toggleTrails": "Trayectorias",
+              "toggleParticles": "Ondas y partículas",
+              "legendV": "<span class=\"legend-bar\" style=\"background:#166534;\"></span> Velocidad ($\\vec{v}$)",
+              "legendP": "<span class=\"legend-bar\" style=\"background:#1d4ed8;\"></span> Momento / proyecciones",
+              "legendMg": "<span class=\"legend-bar\" style=\"background:#b91c1c;\"></span> Gravedad ($m\\vec{g}$)",
+              "legendN": "<span class=\"legend-bar\" style=\"background:#b45309;\"></span> Normal / tensión / presión",
+              "letters": [
+                      "A",
+                      "B",
+                      "C",
+                      "D"
+              ],
+              "optionPrefix": "Opción",
+              "secUnit": "s",
+              "jouleUnit": "J",
+              "theoryBtnTitle": "Apuntes teóricos",
+              "theoryBtnShort": "Teoría",
+              "theoryExpandHint": "Abrir",
+              "theoryCollapseHint": "Cerrar",
+              "theorySec1Title": "Mecanismo del fenómeno",
+              "theorySec2Title": "Ecuaciones y leyes de conservación",
+              "theorySec3Title": "Mediciones y aplicaciones",
+              "eduLevelSchool": "Escuela",
+              "eduLevelUni": "Universidad",
+              "analogyCardTitle": "Modelo físico y aplicación",
+              "classroomBtn": "Aula",
+              "classroomBtnTip": "Modo proyector para el aula sin anuncios",
+              "tierAll": "Todos · 106",
+              "tierCore": "Básico",
+              "tierAdv": "Avanzado",
+              "tierBadgeCore": "Básico",
+              "tierBadgeAdv": "Avanzado",
+              "hintBtnLabel": "Pista",
+              "hintBtnActive": "Ocultar",
+              "observeBannerText": "",
+              "observeRevealBtn": "Demostración",
+              "nextLessonPrefix": "Siguiente",
+              "nextLessonBtnPrefix": "Siguiente",
+              "presetModeLabel": "Ajustes",
+              "presetMin": "Mín",
+              "presetStd": "Est",
+              "presetMax": "Máx",
+              "presetMinTip": "Valores mínimos",
+              "presetStdTip": "Valores estándar",
+              "presetMaxTip": "Valores máximos",
+              "searchPlaceholder": "Buscar entre las 106 prácticas (/)...",
+              "searchNoResults": "No se encontraron prácticas coincidentes.",
+              "progressBadgeTip": "Prácticas completadas (clic para abrir la siguiente)",
+              "kbdFooterHtml": "<span class=\"kbd-chip\">Space</span> Iniciar/Pausa · <span class=\"kbd-chip\">←/→</span> Capítulo · <span class=\"kbd-chip\">R</span> Reiniciar · <span class=\"kbd-chip\">T</span> Teoría · <span class=\"kbd-chip\">H</span> Pista · <span class=\"kbd-chip\">F</span> Pantalla · <span class=\"kbd-chip\">/</span> Buscar",
+              "brandTitle": "Laboratorio 3D",
+              "brandSub": "Ciencias naturales",
+              "discMenuHeader": "Disciplina científica",
+              "discPhysics": "Física",
+              "discPhysicsSub": "Mecánica, óptica, termodinámica, electromagnetismo",
+              "discPhysicsTip": "Física · 46 prácticas",
+              "discChemistry": "Química",
+              "discChemistrySub": "Orbitales, enlace, cinética, pH, electroquímica",
+              "discChemistryBadge": "40",
+              "discChemistryTip": "Química · 40 prácticas",
+              "discBiology": "Biología",
+              "discBiologyFull": "Biología y Biofísica",
+              "discBiologySub": "Célula, ADN, CRISPR, neurona, óptica ocular, fisiología",
+              "discBiologyTip": "Biología y Biofísica · 20 prácticas",
+              "shareBtn": "Enlace",
+              "shareTip": "Copiar enlace con los parámetros actuales",
+              "shareCopied": "Copiado",
+              "pinChartBtn": "Referencia",
+              "pinChartClear": "Borrar ref.",
+              "pinChartTip": "Fijar curva actual como referencia discontinua",
+              "camPresent": "Pantalla",
+              "camSnapshot": "PNG",
+              "camPinMobile": "Fijar 3D",
+              "camPinnedMobile": "3D fijado",
+              "footerAbout": "Acerca de y contacto",
+              "footerPrivacy": "Política de privacidad",
+              "footerTerms": "Términos de uso",
+              "footerCopy": "© 2026 physics.sheua.com · Laboratorio virtual 3D (106 simulaciones)",
+              "curriculumSummary": "Las 106 prácticas",
+              "calcTitle": "Calculadora",
+              "calcHint": "clic en valor",
+              "reportBtn": "Informe",
+              "solutionBtn": "Solución",
+              "verifyBtn": "Verificar",
+              "verifyPlaceholder": "Comprueba tu cálculo...",
+              "jumpNotes": "Teoría ↓",
+              "searchTip": "Buscar en las 106 prácticas (/)",
+              "randomTip": "Práctica 3D aleatoria",
+              "relatedTitle": "Prácticas 3D relacionadas",
+              "shareLabel": "Compartir",
+              "coachText": "Arrastra para rotar · Rueda para zoom · Doble clic centra la cámara",
+              "cameraCentered": "Cámara centrada",
+              "hdrTextbook": "Libro",
+              "hdrAbout": "Acerca de",
+              "hdrPrivacy": "Privacidad",
+              "portalUrl": "https://sheua.com/es/",
+              "editorialTitle": "Laboratorio virtual 3D de ciencias",
+              "editorialP1": "106 simulaciones 3D en tiempo real en unidades SI: 46 de Física, 40 de Química y 20 de Biología y Biofísica.",
+              "editorialP2": "Vectores dinámicos, oscilogramas de energía, calculadora SI e informe imprimible.",
+              "cookieAccept": "Aceptar",
+              "cookieEssential": "Solo esenciales",
+              "cookieText": "Esta plataforma educativa usa cookies y <code>localStorage</code> para guardar el progreso de estudio y mostrar anuncios de Google AdSense según nuestra <a href=\"/privacy.html?lang=en\">Política de privacidad</a>."
+      },
+      fr: {
+              "docTitle": "Laboratoire virtuel 3D de Physique, Chimie et Biologie",
+              "spineSub": "Chapitres 1-46",
+              "spineMain": "Laboratoire de Physique",
+              "spineChem": "Laboratoire de Chimie",
+              "spineBio": "Laboratoire de Biologie",
+              "prevTitle": "Chapitre précédent (←)",
+              "nextTitle": "Chapitre suivant (→)",
+              "adHdrBadge": "AD",
+              "adHdrText": "Publicité",
+              "adHdrSub": "Bloc sponsorisé",
+              "adHdrCta": "",
+              "adLeftLabel": "Publicité",
+              "adLeftTitle": "Publicité",
+              "adLeftSub": "Bloc adaptatif",
+              "adLeftSpec": "Sponsorisé",
+              "adRightLabel": "Publicité",
+              "adRightTitle": "Publicité",
+              "adRightSub": "Bloc 300×250",
+              "adRightSpec": "Sponsorisé",
+              "filterAll": "Tous (46)",
+              "filterOptics": "Optique et ondes (14)",
+              "filterMechanics": "Mécanique (15)",
+              "filterThermo": "Fluides et chaleur (9)",
+              "filterElectro": "Électromagnétisme (8)",
+              "chemFilterAll": "Toute la Chimie",
+              "chemFilter1": "Structure et liaisons (10)",
+              "chemFilter2": "Gaz, thermochimie et cinétique (9)",
+              "chemFilter3": "Solutions, pH et analyse (10)",
+              "chemFilter4": "Électrochimie et organique (11)",
+              "bioFilterAll": "Toute la Biologie",
+              "bioFilter1": "Cellule et virus",
+              "bioFilter2": "ADN et génétique",
+              "bioFilter3": "Biophysique et sens",
+              "bioFilter4": "Physiologie et écologie",
+              "crumbPredict": "Hypothèse",
+              "crumbTest": "Expérience",
+              "crumbExplain": "Démonstration",
+              "camIso": "3D",
+              "camFront": "Face",
+              "camTop": "Dessus",
+              "camSide": "Côté",
+              "camMacro": "Zoom",
+              "camOrbit": "360°",
+              "problemLabel": "Question",
+              "yourAnswer": "Choix",
+              "changeBtn": "Modifier",
+              "runExp": "Lancer",
+              "continueExp": "Continuer",
+              "repeatExp": "Rejouer",
+              "pauseBtn": "Pause",
+              "resumeBtn": "Continuer",
+              "stepBtn": "+0.02 s",
+              "resetBtn": "Réinitialiser",
+              "verdictCorrect": "L'expérience confirme votre prédiction.",
+              "verdictIncorrect": "L'expérience donne un autre résultat. Voir la démonstration ci-dessous.",
+              "eqHeaderLeft": "Formule",
+              "eqHeaderRight": "",
+              "energyBalanceTitle": "Bilan énergétique",
+              "keyIndicatorsTitle": "Indicateurs clés",
+              "refHeadingLeft": "Équations",
+              "refHeadingRight": "",
+              "paramsHeading": "Paramètres",
+              "presetDefault": "Par défaut",
+              "diagramHeading": "Calques 3D",
+              "toggleVectors": "Vecteurs",
+              "toggleLabels": "Étiquettes",
+              "toggleTrails": "Trajectoires",
+              "toggleParticles": "Ondes et particules",
+              "legendV": "<span class=\"legend-bar\" style=\"background:#166534;\"></span> Vitesse ($\\vec{v}$)",
+              "legendP": "<span class=\"legend-bar\" style=\"background:#1d4ed8;\"></span> Quantité de mouvement",
+              "legendMg": "<span class=\"legend-bar\" style=\"background:#b91c1c;\"></span> Poids ($m\\vec{g}$)",
+              "legendN": "<span class=\"legend-bar\" style=\"background:#b45309;\"></span> Réaction / tension / pression",
+              "letters": [
+                      "A",
+                      "B",
+                      "C",
+                      "D"
+              ],
+              "optionPrefix": "Option",
+              "secUnit": "s",
+              "jouleUnit": "J",
+              "theoryBtnTitle": "Cours théorique",
+              "theoryBtnShort": "Théorie",
+              "theoryExpandHint": "Ouvrir",
+              "theoryCollapseHint": "Réduire",
+              "theorySec1Title": "Mécanisme physique",
+              "theorySec2Title": "Équations et lois de conservation",
+              "theorySec3Title": "Mesures et applications",
+              "eduLevelSchool": "Lycée",
+              "eduLevelUni": "Université",
+              "analogyCardTitle": "Modèle physique et applications",
+              "classroomBtn": "Classe",
+              "classroomBtnTip": "Mode vidéoprojecteur sans publicité pour la classe",
+              "tierAll": "Tous · 106",
+              "tierCore": "Socle",
+              "tierAdv": "Avancé",
+              "tierBadgeCore": "Socle",
+              "tierBadgeAdv": "Avancé",
+              "hintBtnLabel": "Indice",
+              "hintBtnActive": "Masquer",
+              "observeBannerText": "",
+              "observeRevealBtn": "Preuve",
+              "nextLessonPrefix": "Suivant",
+              "nextLessonBtnPrefix": "Suivant",
+              "presetModeLabel": "Préréglages",
+              "presetMin": "Min",
+              "presetStd": "Std",
+              "presetMax": "Max",
+              "presetMinTip": "Valeurs minimales",
+              "presetStdTip": "Valeurs standard",
+              "presetMaxTip": "Valeurs maximales",
+              "searchPlaceholder": "Rechercher parmi les 106 TP (/)...",
+              "searchNoResults": "Aucune expérience correspondante.",
+              "progressBadgeTip": "Expériences validées (cliquer pour la suivante)",
+              "kbdFooterHtml": "<span class=\"kbd-chip\">Space</span> Lancer/Pause · <span class=\"kbd-chip\">←/→</span> Chapitre · <span class=\"kbd-chip\">R</span> Reset · <span class=\"kbd-chip\">T</span> Théorie · <span class=\"kbd-chip\">H</span> Indice · <span class=\"kbd-chip\">F</span> Plein écran · <span class=\"kbd-chip\">/</span> Chercher",
+              "brandTitle": "Laboratoire 3D",
+              "brandSub": "Sciences expérimentales",
+              "discMenuHeader": "Discipline scientifique",
+              "discPhysics": "Physique",
+              "discPhysicsSub": "Mécanique, optique, thermodynamique, électromagnétisme",
+              "discPhysicsTip": "Physique · 46 expériences",
+              "discChemistry": "Chimie",
+              "discChemistrySub": "Orbitales, liaisons, cinétique, pH, électrochimie",
+              "discChemistryBadge": "40",
+              "discChemistryTip": "Chimie · 40 expériences",
+              "discBiology": "Biologie",
+              "discBiologyFull": "Biologie et Biophysique",
+              "discBiologySub": "Cellule, ADN, CRISPR, neurone, optique de l'œil, physiologie",
+              "discBiologyTip": "Biologie et Biophysique · 20 expériences",
+              "shareBtn": "Lien",
+              "shareTip": "Copier le lien avec les paramètres actuels",
+              "shareCopied": "Copié",
+              "pinChartBtn": "Référence",
+              "pinChartClear": "Effacer réf.",
+              "pinChartTip": "Épingler la courbe actuelle en pointillés",
+              "camPresent": "Écran 3D",
+              "camSnapshot": "PNG",
+              "camPinMobile": "Épingler 3D",
+              "camPinnedMobile": "3D épinglé",
+              "footerAbout": "À propos et contact",
+              "footerPrivacy": "Confidentialité",
+              "footerTerms": "Conditions d'utilisation",
+              "footerCopy": "© 2026 physics.sheua.com · Laboratoire virtuel 3D (106 simulations)",
+              "curriculumSummary": "Les 106 expériences",
+              "calcTitle": "Calculateur",
+              "calcHint": "cliquer un nombre",
+              "reportBtn": "Compte rendu",
+              "solutionBtn": "Solution",
+              "verifyBtn": "Vérifier",
+              "verifyPlaceholder": "Vérifier votre calcul...",
+              "jumpNotes": "Théorie ↓",
+              "searchTip": "Rechercher parmi les 106 TP (/)",
+              "randomTip": "Expérience 3D aléatoire",
+              "relatedTitle": "Expériences 3D associées",
+              "shareLabel": "Partager",
+              "coachText": "Glisser pour tourner · Molette pour zoomer · Double-clic centre la caméra",
+              "cameraCentered": "Caméra centrée",
+              "hdrTextbook": "Manuel",
+              "hdrAbout": "À propos",
+              "hdrPrivacy": "Confidentialité",
+              "portalUrl": "https://sheua.com/fr/",
+              "editorialTitle": "Laboratoire virtuel 3D de sciences",
+              "editorialP1": "106 simulations 3D en temps réel en unités SI : 46 en Physique, 40 en Chimie et 20 en Biologie et Biophysique.",
+              "editorialP2": "Vecteurs dynamiques, oscillogrammes d'énergie, calculateur SI et compte rendu imprimable.",
+              "cookieAccept": "Accepter",
+              "cookieEssential": "Essentiels uniquement",
+              "cookieText": "Cette plateforme éducative utilise des cookies et <code>localStorage</code> pour enregistrer votre progression et diffuser des annonces Google AdSense conformément à notre <a href=\"/privacy.html?lang=en\">Politique de confidentialité</a>."
+      },
+      pt: {
+              "docTitle": "Laboratório virtual 3D de Física, Química e Biologia",
+              "spineSub": "Capítulos 1-46",
+              "spineMain": "Laboratório de Física",
+              "spineChem": "Laboratório de Química",
+              "spineBio": "Laboratório de Biologia",
+              "prevTitle": "Capítulo anterior (←)",
+              "nextTitle": "Próximo capítulo (→)",
+              "adHdrBadge": "AD",
+              "adHdrText": "Publicidade",
+              "adHdrSub": "Bloco patrocinado",
+              "adHdrCta": "",
+              "adLeftLabel": "Publicidade",
+              "adLeftTitle": "Publicidade",
+              "adLeftSub": "Bloco responsivo",
+              "adLeftSpec": "Patrocinado",
+              "adRightLabel": "Publicidade",
+              "adRightTitle": "Publicidade",
+              "adRightSub": "Bloco 300×250",
+              "adRightSpec": "Patrocinado",
+              "filterAll": "Todos (46)",
+              "filterOptics": "Óptica e ondas (14)",
+              "filterMechanics": "Mecânica (15)",
+              "filterThermo": "Fluidos e calor (9)",
+              "filterElectro": "Eletromagnetismo (8)",
+              "chemFilterAll": "Toda Química",
+              "chemFilter1": "Estrutura e ligação (10)",
+              "chemFilter2": "Gases, termoquímica e cinética (9)",
+              "chemFilter3": "Soluções, pH e análise (10)",
+              "chemFilter4": "Eletroquímica e orgânica (11)",
+              "bioFilterAll": "Toda Biologia",
+              "bioFilter1": "Célula e vírus",
+              "bioFilter2": "DNA e genética",
+              "bioFilter3": "Biofísica e sentidos",
+              "bioFilter4": "Fisiologia e ecologia",
+              "crumbPredict": "Hipótese",
+              "crumbTest": "Experimento",
+              "crumbExplain": "Demonstração",
+              "camIso": "3D",
+              "camFront": "Frente",
+              "camTop": "Topo",
+              "camSide": "Lado",
+              "camMacro": "Zoom",
+              "camOrbit": "360°",
+              "problemLabel": "Questão",
+              "yourAnswer": "Escolhida",
+              "changeBtn": "Alterar",
+              "runExp": "Iniciar",
+              "continueExp": "Continuar",
+              "repeatExp": "Repetir",
+              "pauseBtn": "Pausa",
+              "resumeBtn": "Continuar",
+              "stepBtn": "+0.02 s",
+              "resetBtn": "Reiniciar",
+              "verdictCorrect": "O experimento confirmou sua previsão.",
+              "verdictIncorrect": "O experimento mostrou outro resultado. Veja a dedução abaixo.",
+              "eqHeaderLeft": "Fórmula",
+              "eqHeaderRight": "",
+              "energyBalanceTitle": "Balanço de energia",
+              "keyIndicatorsTitle": "Indicadores-chave",
+              "refHeadingLeft": "Equações",
+              "refHeadingRight": "",
+              "paramsHeading": "Parâmetros",
+              "presetDefault": "Padrão",
+              "diagramHeading": "Camadas 3D",
+              "toggleVectors": "Vetores",
+              "toggleLabels": "Rótulos",
+              "toggleTrails": "Trajetórias",
+              "toggleParticles": "Ondas e partículas",
+              "legendV": "<span class=\"legend-bar\" style=\"background:#166534;\"></span> Velocidade ($\\vec{v}$)",
+              "legendP": "<span class=\"legend-bar\" style=\"background:#1d4ed8;\"></span> Momento / projeções",
+              "legendMg": "<span class=\"legend-bar\" style=\"background:#b91c1c;\"></span> Peso ($m\\vec{g}$)",
+              "legendN": "<span class=\"legend-bar\" style=\"background:#b45309;\"></span> Normal / tração / pressão",
+              "letters": [
+                      "A",
+                      "B",
+                      "C",
+                      "D"
+              ],
+              "optionPrefix": "Opção",
+              "secUnit": "s",
+              "jouleUnit": "J",
+              "theoryBtnTitle": "Resumo teórico",
+              "theoryBtnShort": "Teoria",
+              "theoryExpandHint": "Abrir",
+              "theoryCollapseHint": "Recolher",
+              "theorySec1Title": "Mecanismo do fenômeno",
+              "theorySec2Title": "Equações e leis de conservação",
+              "theorySec3Title": "Medições e aplicações",
+              "eduLevelSchool": "Escola",
+              "eduLevelUni": "Universidade",
+              "analogyCardTitle": "Modelo físico e aplicação",
+              "classroomBtn": "Aula",
+              "classroomBtnTip": "Modo projetor para sala de aula sem anúncios",
+              "tierAll": "Todos · 106",
+              "tierCore": "Base",
+              "tierAdv": "Avançado",
+              "tierBadgeCore": "Base",
+              "tierBadgeAdv": "Avançado",
+              "hintBtnLabel": "Dica",
+              "hintBtnActive": "Ocultar",
+              "observeBannerText": "",
+              "observeRevealBtn": "Prova",
+              "nextLessonPrefix": "Próximo",
+              "nextLessonBtnPrefix": "Próximo",
+              "presetModeLabel": "Ajustes",
+              "presetMin": "Mín",
+              "presetStd": "Pad",
+              "presetMax": "Máx",
+              "presetMinTip": "Valores mínimos",
+              "presetStdTip": "Valores padrão",
+              "presetMaxTip": "Valores máximos",
+              "searchPlaceholder": "Pesquisar nos 106 experimentos (/)...",
+              "searchNoResults": "Nenhum experimento encontrado.",
+              "progressBadgeTip": "Experimentos concluídos (clique para o próximo)",
+              "kbdFooterHtml": "<span class=\"kbd-chip\">Space</span> Iniciar/Pausa · <span class=\"kbd-chip\">←/→</span> Capítulo · <span class=\"kbd-chip\">R</span> Reiniciar · <span class=\"kbd-chip\">T</span> Teoria · <span class=\"kbd-chip\">H</span> Dica · <span class=\"kbd-chip\">F</span> Tela · <span class=\"kbd-chip\">/</span> Buscar",
+              "brandTitle": "Laboratório 3D",
+              "brandSub": "Ciências da natureza",
+              "discMenuHeader": "Disciplina científica",
+              "discPhysics": "Física",
+              "discPhysicsSub": "Mecânica, óptica, termodinâmica, eletromagnetismo",
+              "discPhysicsTip": "Física · 46 experimentos",
+              "discChemistry": "Química",
+              "discChemistrySub": "Orbitais, ligações, cinética, pH, eletroquímica",
+              "discChemistryBadge": "40",
+              "discChemistryTip": "Química · 40 experimentos",
+              "discBiology": "Biologia",
+              "discBiologyFull": "Biologia e Biofísica",
+              "discBiologySub": "Célula, DNA, CRISPR, neurônio, óptica ocular, fisiologia",
+              "discBiologyTip": "Biologia e Biofísica · 20 experimentos",
+              "shareBtn": "Link",
+              "shareTip": "Copiar link com os parâmetros atuais",
+              "shareCopied": "Copiado",
+              "pinChartBtn": "Referência",
+              "pinChartClear": "Limpar ref.",
+              "pinChartTip": "Fixar curva atual como referência tracejada",
+              "camPresent": "Tela 3D",
+              "camSnapshot": "PNG",
+              "camPinMobile": "Fixar 3D",
+              "camPinnedMobile": "3D fixado",
+              "footerAbout": "Sobre e contato",
+              "footerPrivacy": "Política de privacidade",
+              "footerTerms": "Termos de uso",
+              "footerCopy": "© 2026 physics.sheua.com · Laboratório virtual 3D (106 simulações)",
+              "curriculumSummary": "Todos os 106 experimentos",
+              "calcTitle": "Calculadora",
+              "calcHint": "clique no valor",
+              "reportBtn": "Relatório",
+              "solutionBtn": "Solução",
+              "verifyBtn": "Verificar",
+              "verifyPlaceholder": "Verifique seu cálculo...",
+              "jumpNotes": "Teoria ↓",
+              "searchTip": "Pesquisar nos 106 experimentos (/)",
+              "randomTip": "Experimento 3D aleatório",
+              "relatedTitle": "Experimentos 3D relacionados",
+              "shareLabel": "Compartilhar",
+              "coachText": "Arraste para girar · Roda para zoom · Clique duplo centraliza a câmera",
+              "cameraCentered": "Câmera centralizada",
+              "hdrTextbook": "Livro",
+              "hdrAbout": "Sobre",
+              "hdrPrivacy": "Privacidade",
+              "portalUrl": "https://sheua.com/pt/",
+              "editorialTitle": "Laboratório virtual 3D de ciências",
+              "editorialP1": "106 simulações 3D em tempo real em unidades SI: 46 de Física, 40 de Química e 20 de Biologia e Biofísica.",
+              "editorialP2": "Vetores dinâmicos, oscilogramas de energia, calculadora SI e relatório para impressão.",
+              "cookieAccept": "Aceitar",
+              "cookieEssential": "Apenas essenciais",
+              "cookieText": "Esta plataforma educacional usa cookies e <code>localStorage</code> para salvar o progresso de estudo e exibir anúncios do Google AdSense conforme nossa <a href=\"/privacy.html?lang=en\">Política de Privacidade</a>."
       }
     };
 
@@ -38657,6 +39502,61 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (trigger) trigger.setAttribute('aria-expanded', 'false');
     }
 
+    const SUPPORTED_LANGS = [{"code":"uk","short":"УКР","name":"Українська","locale":"uk_UA","portalPath":"/","labPath":"/uk/"},{"code":"en","short":"EN","name":"English","locale":"en_US","portalPath":"/en/","labPath":"/"},{"code":"pl","short":"PL","name":"Polski","locale":"pl_PL","portalPath":"/pl/","labPath":"/?lang=pl"},{"code":"de","short":"DE","name":"Deutsch","locale":"de_DE","portalPath":"/de/","labPath":"/?lang=de"},{"code":"es","short":"ES","name":"Español","locale":"es_ES","portalPath":"/es/","labPath":"/?lang=es"},{"code":"fr","short":"FR","name":"Français","locale":"fr_FR","portalPath":"/fr/","labPath":"/?lang=fr"},{"code":"pt","short":"PT","name":"Português","locale":"pt_BR","portalPath":"/pt/","labPath":"/?lang=pt"}];
+    const LANG_FIVE_IDX = { pl: 0, de: 1, es: 2, fr: 3, pt: 4 };
+    const SCENE_TITLES_5 = {"collision":["Zasada zachowania pędu i zderzenia kul","Impulserhaltungssatz und Kugelstoß","Conservación del momento lineal y choques","Conservation de la quantité de mouvement","Conservação do momento linear e colisões"],"incline":["Ruch ciała po równi pochyłej","Bewegung auf der schiefen Ebene","Movimiento en un plano inclinado","Mouvement sur un plan incliné","Movimento em um plano inclinado"],"pendulum":["Wahadło matematyczne i sprężynowe","Fadenpendel und Federpendel","Péndulo simple y de resorte","Pendule simple et pendule élastique","Pêndulo simples e de mola"],"projectile":["Rzut ukośny w polu grawitacyjnym","Schiefer Wurf im Schwerefeld","Tiro parabólico oblicuo","Tir balistique oblique","Lançamento oblíquo de projéteis"],"cradle":["Kołyska Newtona","Newton-Pendel","Péndulo de Newton","Pendule de Newton","Pêndulo de Newton"],"centripetal":["Przyspieszenie dośrodkowe i ruch po okręgu","Zentripetalbeschleunigung und Kurvenfahrt","Aceleración centrípeta y movimiento circular","Accélération centripète et virage","Aceleração centrípeta e curva"],"archimedes":["Prawo Archimedesa i pływanie ciał","Archimedisches Prinzip und Auftrieb","Principio de Arquímedes y flotación","Poussée d'Archimède et flottabilité","Princípio de Arquimedes e empuxo"],"gas":["Gaz doskonały pod tłokiem (PV = nRT)","Ideales Gas unter einem Kolben (PV = nRT)","Gas ideal bajo un pistón (PV = nRT)","Gaz parfait sous piston (PV = nRT)","Gás ideal sob um pistão (PV = nRT)"],"wavefront":["Czoło fali i zasada Huygensa-Fresnela","Wellenfront und Huygens-Fresnel-Prinzip","Frente de onda y principio de Huygens-Fresnel","Front d'onde et principe de Huygens-Fresnel","Frente de onda e princípio de Huygens-Fresnel"],"interference":["Interferencja światła (doświadczenie Younga)","Lichtinterferenz (Doppelspalt nach Young)","Interferencia de la luz (doble rendija de Young)","Interférences lumineuses (fentes d'Young)","Interferência da luz (fenda dupla de Young)"],"dispersion":["Dyspersja światła i widmo w pryzmacie","Lichtdispersion und Prismenspektrum","Dispersión de la luz en un prisma","Dispersion de la lumière par un prisme","Dispersão da luz em um prisma"],"emwave":["Fala elektromagnetyczna (E, B i wektor Poyntinga)","Elektromagnetische Welle (E, B & Poynting-Vektor)","Onda electromagnética (E, B y vector de Poynting)","Onde électromagnétique (E, B et vecteur de Poynting)","Onda eletromagnética (E, B e vetor de Poynting)"],"bernoulli":["Równanie Bernoulliego i zwężka Venturiego","Bernoulli-Gleichung und Venturi-Effekt","Ecuación de Bernoulli y efecto Venturi","Théorème de Bernoulli et effet Venturi","Equação de Bernoulli e tubo de Venturi"],"lens":["Soczewka skupiająca i ogniskowanie wiązki","Sammellinse und Strahlenfokussierung","Lente convergente y enfoque óptico","Lentille convergente et focalisation","Lente convergente e foco óptico"],"lorentz":["Siła Lorentza i spirala cyklotronowa 3D","Lorentzkraft und 3D-Zyklotronbahn","Fuerza de Lorentz y hélice ciclotrónica 3D","Force de Lorentz et hélice cyclotronique 3D","Força de Lorentz e hélice ciclotrônica 3D"],"faraday":["Indukcja Faradaya i reguła Lenza w 3D","Faradaysche Induktion und Lenzsche Regel","Ley de Faraday y regla de Lenz en 3D","Induction de Faraday et loi de Lenz en 3D","Lei de Faraday e lei de Lenz em 3D"],"kepler":["Orbita eliptyczna i II prawo Keplera","Ellipsenbahn und zweites Keplersches Gesetz","Órbita elíptica y segunda ley de Kepler","Orbite elliptique et deuxième loi de Kepler","Órbita elíptica e segunda lei de Kepler"],"gyroscope":["Moment bezwładności i energia toczenia","Trägheitsmoment und Rollenergie","Momento de inercia y energía de rodadura","Moment d'inertie et énergie de roulement","Momento de inércia e energia de rolamento"],"standingwave":["Fale stojące i harmoniczne struny","Stehende Wellen und Obertöne einer Saite","Ondas estacionarias y armónicos en cuerda","Ondes stationnaires et harmoniques d'une corde","Ondas estacionárias e harmônicos na corda"],"doppler":["Efekt Dopplera i deformacja czoła fali","Doppler-Effekt und Wellenfrontverzerrung","Efecto Doppler y frentes de onda","Effet Doppler et déformation des fronts d'onde","Efeito Doppler e frentes de onda"],"malus":["Polaryzacja światła i prawo Malusa","Lichtpolarisation und Gesetz von Malus","Polarización de la luz y ley de Malus","Polarisation lumineuse et loi de Malus","Polarização da luz e lei de Malus"],"diffraction":["Dyfrakcja światła na pojedynczej szczelinie","Beugung am Einzelspalt in 3D","Difracción por una rendija estrecha","Diffraction par une fente fine en 3D","Difração em fenda simples em 3D"],"carnot":["Silnik cieplny i cykl Carnota w 3D","Ideale Wärmekraftmaschine und Carnot-Prozess","Máquina térmica ideal y ciclo de Carnot","Machine thermique idéale et cycle de Carnot","Máquina térmica ideal e ciclo de Carnot"],"viscosity":["Ruch kulki w cieczy lepkiej (prawo Stokesa)","Kugelfall in zäher Flüssigkeit (Gesetz von Stokes)","Esfera en fluido viscoso (ley de Stokes)","Chute dans un fluide visqueux (loi de Stokes)","Esfera em fluido viscoso (lei de Stokes)"],"coulomb":["Prawo Coulomba i pole dipola elektrycznego","Coulombsches Gesetz und elektrisches Dipolfeld","Ley de Coulomb y campo dipolar eléctrico 3D","Loi de Coulomb et champ dipolaire 3D","Lei de Coulomb e campo dipolar elétrico 3D"],"rlccircuit":["Drgania elektromagnetyczne w obwodzie RLC","Elektromagnetische Schwingungen im RLC-Kreis","Oscilaciones electromagnéticas en circuito RLC","Oscillations électromagnétiques du circuit RLC","Oscilações eletromagnéticas no circuito RLC"],"atwood":["Maszyna Atwooda: przyspieszenie i naciąg nici","Atwoodsche Fallmaschine und Seilspannung","Máquina de Atwood: aceleración y tensión","Machine d'Atwood : accélération et tension","Máquina de Atwood: aceleração e tração"],"coriolis":["Siła Coriolisa w układzie obracającym się","Corioliskraft im rotierenden Bezugssystem","Fuerza de Coriolis en disco giratorio","Force de Coriolis en référentiel tournant","Força de Coriolis em referencial girante"],"hooke":["Prawo Hooke'a i moduł Younga przy rozciąganiu","Hookesches Gesetz und Elastizitätsmodul","Ley de Hooke y módulo de Young","Loi de Hooke et module d'Young","Lei de Hooke e módulo de Young"],"torricelli":["Wzór Torricellego i wypływ cieczy ze zbiornika","Ausflussgesetz von Torricelli","Teorema de Torricelli y chorro hidrodinámico","Formule de Torricelli et écoulement d'un jet","Teorema de Torricelli e escoamento de fluido"],"maxwell":["Rozkład prędkości cząsteczek Maxwella","Maxwellsche Geschwindigkeitsverteilung","Distribución de velocidades moleculares de Maxwell","Distribution des vitesses de Maxwell","Distribuição de velocidades de Maxwell"],"newtonrings":["Pierścienie Newtona i interferencja w klinie","Newtonsche Ringe und Dünnschichtinterferenz","Anillos de Newton e interferencia en cuña de aire","Anneaux de Newton et interférences en coin d'air","Anéis de Newton e interferência em filme fino"],"photoelectric":["Zjawisko fotoelektryczne i równanie Einsteina","Äußerer Fotoeffekt und Einstein-Gleichung","Efecto fotoeléctrico externo de Einstein","Effet photoélectrique et relation d'Einstein","Efeito fotoelétrico e equação de Einstein"],"rutherford":["Doświadczenie Rutherforda i rozpraszanie cząstek α","Rutherford-Streuversuch an Goldfolie","Experimento de Rutherford y dispersión alfa","Expérience de Rutherford et diffusion alpha","Experimento de Rutherford e espalhamento alfa"],"ampere":["Oddziaływanie prądów równoległych i siła elektrodynamiczna","Magnetische Kraft paralleler Leiter (Ampère)","Interacción magnética de corrientes paralelas","Force d'Ampère entre courants parallèles","Força magnética entre correntes paralelas"],"hall":["Zjawisko Halla i napięcie poprzeczne","Hall-Effekt und Hall-Spannung im Magnetfeld","Efecto Hall y diferencia de potencial transversal","Effet Hall et tension transversale","Efeito Hall e tensão transversal"],"coupled":["Wahadła sprzężone: mody normalne i dudnienia","Gekoppelte Pendel: Eigenschwingungen und Schwebung","Péndulos acoplados: modos normales y batidos","Pendules couplés : modes propres et battements","Pêndulos acoplados: modos normais e batimentos"],"precession":["Precesja żyroskopowa ciężkiego bąka","Kreiselpräzession eines symmetrischen Kreisels","Precesión giroscópica de un trompo simétrico","Précession gyroscopique d'une toupie lourde","Precessão giroscópica de um pião simétrico"],"magnus":["Efekt Magnusa i siła nośna obracającego się walca","Magnus-Effekt und Auftrieb am rotierenden Zylinder","Efecto Magnus y sustentación aerodinámica","Effet Magnus et portance d'un cylindre tournant","Efeito Magnus e sustentação aerodinâmica"],"capillary":["Napięcie powierzchniowe, menisk i kapilarność","Oberflächenspannung, Meniskus und Kapillarität","Tensión superficial, menisco y capilaridad","Tension superficielle, ménisque et capillarité","Tensão superficial, menisco e capilaridade"],"brownian":["Ruchy Browna i dyfuzja Einsteina-Smoluchowskiego","Brownsche Bewegung und Einstein-Diffusion","Movimiento browniano y difusión molecular","Mouvement brownien et diffusion d'Einstein","Movimento browniano e difusão molecular"],"michelson":["Interferometr Michelsona i przesunięcie fazowe","Michelson-Interferometer und Phasenverschiebung","Interferómetro de Michelson y desfase óptico","Interféromètre de Michelson et déphasage","Interferômetro de Michelson e diferença de fase"],"compton":["Zjawisko Comptona i pęd relatywistyczny fotonu","Compton-Effekt und Photonenimpuls","Efecto Compton e impulso relativista del fotón","Diffusion Compton et impulsion du photon","Efeito Compton e momento relativístico do fóton"],"bohr":["Model atomu Bohra, fale de Broglie'a i serie widmowe","Bohrsches Atommodell und de-Broglie-Wellen","Modelo atómico de Bohr y series espectrales","Modèle de Bohr, ondes de de Broglie et spectres","Modelo atômico de Bohr e séries espectrais"],"biot":["Prawo Biota-Savarta i cewki Helmholtza","Biot-Savart-Gesetz und Helmholtz-Spulen","Ley de Biot-Savart y bobinas de Helmholtz","Loi de Biot-Savart et bobines de Helmholtz","Lei de Biot-Savart e bobinas de Helmholtz"],"transformer":["Transformator prądu przemiennego i indukcja wzajemna","Wechselstromtransformator und Gegeninduktion","Transformador CA e inducción mutua","Transformateur alternatif et induction mutuelle","Transformador CA e indução mútua"],"chem_orbitals":["Powłoki elektronowe i orbitale kwantowe 3D (s, p, d)","Elektronenschalen und 3D-Atomorbitale (s, p, d)","Capas electrónicas y orbitales cuánticos 3D (s, p, d)","Couches électroniques et orbitales 3D (s, p, d)","Camadas eletrônicas e orbitais quânticos 3D (s, p, d)"],"chem_vsepr":["Hybrydyzacja orbitali i geometria cząsteczek VSEPR","Hybridisierung und 3D-Molekülgeometrie (VSEPR)","Hibridación y geometría molecular 3D (RPECV)","Hybridation et géométrie moléculaire VSEPR","Hibridização e geometria molecular 3D (VSEPR)"],"chem_lattice":["Sieć krystaliczna jonowa i energia sieci NaCl","Ionengitter und Gitterenergie von NaCl","Red cristalina iónica y energía reticular (NaCl)","Réseau cristallin ionique et énergie réticulaire","Rede cristalina iônica e energia reticular (NaCl)"],"chem_gaslaws":["Prawo Avogadra i objętość molowa gazu","Avogadro-Gesetz und molares Gasvolumen","Ley de Avogadro y ecuación de los gases ideales","Loi d'Avogadro et volume molaire des gaz","Lei de Avogadro e volume molar dos gases"],"chem_kinetics":["Szybkość reakcji chemicznej, energia aktywacji i kataliza","Reaktionsgeschwindigkeit, Aktivierungsenergie & Katalyse","Velocidad de reacción, energía de activación y catálisis","Cinétique chimique, énergie d'activation et catalyse","Velocidade de reação, energia de ativação e catálise"],"chem_equilibrium":["Równowaga chemiczna i reguła przekory Le Chateliera","Chemisches Gleichgewicht und Prinzip von Le Chatelier","Equilibrio químico y principio de Le Chatelier","Équilibre chimique et principe de Le Chatelier","Equilíbrio químico e princípio de Le Chatelier"],"chem_titration":["Miareczkowanie kwasowo-zasadowe, pH i wskaźniki","Säure-Base-Titration, pH-Kurve und Indikatoren","Valoración ácido-base, curva de pH e indicadores","Titrage acido-basique, courbe de pH et indicateurs","Titulação ácido-base, curva de pH e indicadores"],"chem_galvanic":["Ogniwo galwaniczne Daniella i potencjały elektrodowe","Galvanisches Daniell-Element und Elektrodenpotenziale","Celda galvánica de Daniell y potenciales redox","Pile Daniell et potentiels d'électrode","Pilha de Daniell e potenciais de eletrodo"],"chem_electrolysis":["Elektroliza roztworu i prawa Faradaya","Elektrolysezelle und Faradaysche Gesetze","Electrólisis acuosa y leyes de Faraday","Électrolyse et lois de Faraday","Eletrólise aquosa e leis de Faraday"],"chem_organic":["Budowa benzenu C₆H₆ i delokalizacja wiązań π","Benzolstruktur C₆H₆ und delokalisierte π-Elektronen","Estructura del benceno C₆H₆ y aromaticidad π","Structure du benzène C₆H₆ et délocalisation π","Estrutura do benzeno C₆H₆ e aromaticidade π"],"chem_periodic":["Układ okresowy pierwiastków (118): promień, jonizacja i χ","Periodensystem (118 Elemente): Atomradius & Ionisierung","Tabla periódica (118 elementos): radio, ionización y χ","Tableau périodique (118 éléments) : rayon et ionisation","Tabela periódica (118 elementos): raio, ionização e χ"],"chem_hbond":["Wiązanie wodorowe, lód heksagonalny i anomalia wody","Wasserstoffbrücken, Eisgitter und Dichteanomalie","Enlace de hidrógeno, hielo hexagonal y anomalía del agua","Liaison hydrogène, glace hexagonale et anomalie de l'eau","Ligação de hidrogênio, gelo hexagonal e anomalia da água"],"chem_calorimetry":["Termochemia, prawo Hessa i kalorymetria ΔH","Thermochemie, Satz von Hess und Kalorimetrie ΔH","Termoquímica, ley de Hess y calorimetría ΔH","Thermochimie, loi de Hess et calorimétrie ΔH","Termoquímica, lei de Hess e calorimetria ΔH"],"chem_osmosis":["Ciśnienie osmotyczne (prawo van 't Hoffa Π = iCRT)","Osmotischer Druck (van-'t-Hoff-Gesetz Π = iCRT)","Presión osmótica (ley de van 't Hoff Π = iCRT)","Pression osmotique (loi de van 't Hoff Π = iCRT)","Pressão osmótica (lei de van 't Hoff Π = iCRT)"],"chem_buffer":["Roztwory buforowe i równanie Hendersona-Hasselbalcha","Pufferlösungen und Henderson-Hasselbalch-Gleichung","Disoluciones tampón y ecuación de Henderson-Hasselbalch","Solutions tampons et équation de Henderson-Hasselbalch","Soluções-tampão e equação de Henderson-Hasselbalch"],"chem_ksp":["Iloczyn rozpuszczalności K_sp i efekt wspólnego jonu","Löslichkeitsprodukt K_sp und gleichioniger Zusatz","Producto de solubilidad K_ps y efecto del ion común","Produit de solubilité K_s et effet d'ion commun","Produto de solubilidade K_ps e efeito do íon comum"],"chem_beer":["Spektrofotometria i prawo Lamberta-Beera (A = ε·l·C)","Spektralphotometrie und Lambert-Beer-Gesetz","Espectrofotometría y ley de Beer-Lambert (A = ε·l·C)","Spectrophotométrie et loi de Beer-Lambert","Espectrofotometria e lei de Beer-Lambert"],"chem_fuelcell":["Wodorowo-tlenowe ogniwo paliwowe PEMFC","Wasserstoff-Sauerstoff-Brennstoffzelle (PEMFC)","Pila de combustible de hidrógeno-oxígeno (PEMFC)","Pile à combustible hydrogène-oxygène (PEMFC)","Célula a combustível de hidrogênio-oxigênio (PEMFC)"],"chem_isomerism":["Stereochemia: izomeria geometryczna Z/E i optyczna R/S","Stereochemie: cis-trans- und chirale R/S-Isomerie","Estereoquímica: isomería geométrica Z/E y óptica R/S","Stéréochimie : isomérie Z/E et chiralité R/S","Estereoquímica: isomeria geométrica Z/E e óptica R/S"],"chem_polymer":["Polimeryzacja rodnikowa etylenu i wzrost łańcucha","Radikalische Polymerisation von Ethylen","Polimerización radicalaria del etileno","Polymérisation radicalaire de l'éthylène","Polimerização radicalar do etileno"],"chem_mo":["Orbitale molekularne LCAO-MO i rząd wiązania","Molekülorbitaltheorie (LCAO-MO) und Bindungsordnung","Orbitales moleculares OM-CLOA y orden de enlace","Orbitales moléculaires CLOA et indice de liaison","Orbitais moleculares OM-CLOA e ordem de ligação"],"chem_allotropes":["Alotropia węgla: grafen, nanorurka i fuleren C₆₀","Kohlenstoff-Allotrope: Graphen, Nanoröhre & Fulleren C₆₀","Alótropos del carbono: grafeno, nanotubo y fulereno C₆₀","Allotropes du carbone : graphène, nanotube et C₆₀","Alótropos do carbono: grafeno, nanotubo e fulereno C₆₀"],"chem_complex":["Związki kompleksowe i teoria pola krystalicznego","Koordinationsverbindungen und Kristallfeldtheorie","Complejos de coordinación y teoría del campo cristalino","Complexes de coordination et champ cristallin","Compostos de coordenação e teoria do campo cristalino"],"chem_bornhaber":["Cykl termodynamiczny Borna-Habera kryształów jonowych","Born-Haber-Kreisprozess und Gitterenergie","Ciclo termodinámico de Born-Haber","Cycle thermodynamique de Born-Haber","Ciclo termodinâmico de Born-Haber"],"chem_dipole":["Polarność wiązania i moment dipolowy cząsteczki μ","Bindungspolarität und elektrisches Dipolmoment μ","Polaridad de enlace y momento dipolar eléctrico μ","Polarité des liaisons et moment dipolaire μ","Polaridade de ligação e momento dipolar elétrico μ"],"chem_phase":["Diagramy fazowe P-T, punkt potrójny i stan nadkrytyczny","Phasendiagramme P-T, Tripelpunkt und überkritisches Fluid","Diagramas de fases P-T, punto triple y fluido supercrítico","Diagrammes de phases P-T, point triple et état supercritique","Diagramas de fases P-T, ponto triplo e fluido supercrítico"],"chem_orders":["Rzędowość reakcji (0, 1, 2 rząd) i okres półtrwania t₁/₂","Reaktionsordnungen (0., 1., 2.) und Halbwertszeit t₁/₂","Órdenes de reacción (0, 1 y 2) y vida media t₁/₂","Ordres de réaction (0, 1, 2) et temps de demi-réaction","Ordens de reação (0, 1 e 2) e meia-vida t₁/₂"],"chem_enzyme":["Kataliza enzymatyczna i kinetyka Michaelisa-Menten","Enzymkatalyse und Michaelis-Menten-Kinetik","Catálisis enzimática y cinética de Michaelis-Menten","Catalyse enzymatique et cinétique de Michaelis-Menten","Catálise enzimática e cinética de Michaelis-Menten"],"chem_gibbs":["Energia swobodna Gibbsa ΔG = ΔH − TΔS i samorzutność","Freie Enthalpie ΔG = ΔH − TΔS und Spontaneität","Energía libre de Gibbs ΔG = ΔH − TΔS y espontaneidad","Enthalpie libre de Gibbs ΔG = ΔH − TΔS et spontanéité","Energia livre de Gibbs ΔG = ΔH − TΔS e espontaneidade"],"chem_haber":["Synteza amoniaku metodą Habera-Boscha","Ammoniaksynthese nach dem Haber-Bosch-Verfahren","Síntesis industrial de amoníaco de Haber-Bosch","Synthèse de l'ammoniac par le procédé Haber-Bosch","Síntese industrial da amônia de Haber-Bosch"],"chem_raoult":["Prawo Raoulta, ebulioskopia i krioskopia","Raoultsches Gesetz und kolligative Eigenschaften","Ley de Raoult y propiedades coligativas","Loi de Raoult et propriétés colligatives","Lei de Raoult e propriedades coligativas"],"chem_chromatography":["Chromatografia cienkowarstwowa i kolumnowa (R_f)","Dünnschicht- und Säulenchromatographie (R_f-Wert)","Cromatografía en capa fina y columna (factor R_f)","Chromatographie sur couche mince et colonne (R_f)","Cromatografia em camada delgada e coluna (fator R_f)"],"chem_adsorption":["Adsorpcja powierzchniowa i izoterma Langmuira","Oberflächenadsorption und Langmuir-Isotherme","Adsorción superficial e isoterma de Langmuir","Adsorption de surface et isotherme de Langmuir","Adsorção superficial e isoterma de Langmuir"],"chem_colloids":["Układy koloidalne, efekt Tyndalla i koagulacja","Kolloidale Systeme, Tyndall-Effekt und Koagulation","Sistemas coloidales, efecto Tyndall y coagulación","Colloïdes, effet Tyndall et coagulation","Sistemas coloidais, efeito Tyndall e coagulação"],"chem_hydrolysis":["Hydroliza soli w roztworze wodnym i odczyn pH","Salzhydrolyse in wässriger Lösung und pH-Wert","Hidrólisis de sales en disolución acuosa y pH","Hydrolyse des sels en solution aqueuse et pH","Hidrólise salina em solução aquosa e pH"],"chem_corrosion":["Korozja elektrochemiczna metali i ochrona katodowa","Elektrochemische Korrosion und Opferanodenschutz","Corrosión electroquímica y protección catódica","Corrosion électrochimique et protection cathodique","Corrosão eletroquímica e proteção catódica"],"chem_liion":["Akumulator litowo-jonowy i interkalacja jonów Li⁺","Lithium-Ionen-Akkumulator und Li⁺-Interkalation","Batería de iones de litio e intercalación de Li⁺","Batterie lithium-ion et intercalation des ions Li⁺","Bateria de íons de lítio e intercalação de Li⁺"],"chem_sn2":["Substytucja nukleofilowa S_N2 i inwersja Waldena","Nucleophile Substitution S_N2 und Walden-Umkehr","Sustitución nucleofílica S_N2 e inversión de Walden","Substitution nucléophile S_N2 et inversion de Walden","Substituição nucleofílica S_N2 e inversão de Walden"],"chem_ester":["Estryfikacja Fischera i znacznik izotopowy ¹⁸O","Fischer-Veresterung und ¹⁸O-Isotopenmarkierung","Esterificación de Fischer y trazador isotópico ¹⁸O","Estérification de Fischer et marquage isotopique ¹⁸O","Esterificação de Fischer e traçador isotópico ¹⁸O"],"chem_biopol":["Biopolimery: helisa α białka i podwójna helisa DNA","Biopolymere: Protein-α-Helix und DNA-Doppelhelix","Biopolímeros: hélice α proteica y doble hélice de ADN","Biopolymères : hélice α protéique et double hélice d'ADN","Biopolímeros: α-hélice proteica e dupla hélice de DNA"],"bio_eukaryote":["Komórka eukariotyczna: organella i granica S/V","Eukaryotische Zelle: Organellen und S/V-Verhältnis","Célula eucariota: orgánulos y relación S/V","Cellule eucaryote : organites et rapport S/V","Célula eucariótica: organelas e relação S/V"],"bio_mitochondria":["Teoria chemiosmotyczna Mitchella i syntaza ATP","Chemiosmotische Theorie und rotierende ATP-Synthase","Teoría quimiosmótica de Mitchell y síntesis de ATP","Théorie chimiosmotique de Mitchell et ATP synthase","Teoria quimiosmótica de Mitchell e síntese de ATP"],"bio_mitosis":["Podział mitotyczny komórki i wrzeciono kariokinetyczne","Mitotische Zellteilung und Spindelapparat","División celular mitótica y huso acromático","Division cellulaire mitotique et fuseau mitotique","Divisão celular mitótica e fuso mitótico"],"bio_replication":["Półzachowawcza replikacja DNA i widełki replikacyjne","Semikonservative DNA-Replikation und Replikationsgabel","Replicación semiconservativa del ADN","Réplication semi-conservative de l'ADN","Replicação semiconservativa do DNA"],"bio_ribosome":["Ekspresja genów i translacja mRNA na rybosomie","Genexpression und ribosomale mRNA-Translation","Expresión génica y traducción en el ribosoma","Traduction de l'ARNm par le ribosome","Expressão gênica e tradução no ribossomo"],"bio_mendel":["Genetyka Mendla i równowaga Hardy'ego-Weinberga","Mendelsche Genetik und Hardy-Weinberg-Gleichgewicht","Genética mendeliana y equilibrio de Hardy-Weinberg","Génétique mendélienne et loi de Hardy-Weinberg","Genética mendeliana e equilíbrio de Hardy-Weinberg"],"bio_membrane":["Biofizyka błony komórkowej i pompa Na⁺/K⁺-ATPaza","Membranbiophysik: Na⁺/K⁺-Pumpe und Ruhepotenzial","Biofísica de membrana: bomba Na⁺/K⁺ y potencial de reposo","Biophysique membranaire : pompe Na⁺/K⁺ et potentiel de repos","Biofísica da membrana: bomba Na⁺/K⁺ e potencial de repouso"],"bio_neuron":["Potencjał czynnościowy neuronu Hodgkina-Huxleya","Aktionspotenzial des Neurons (Hodgkin-Huxley)","Potencial de acción neuronal de Hodgkin-Huxley","Potentiel d'action neuronal de Hodgkin-Huxley","Potencial de ação neuronal de Hodgkin-Huxley"],"bio_sarcomere":["Biomechanika skurczu mięśnia i sarkomer","Muskelkontraktion: Gleitfilamenttheorie des Sarkomers","Contracción muscular: sarcómero y ecuación de Hill","Contraction musculaire : sarcomère et équation de Hill","Contração muscular: sarcômero e equação de Hill"],"bio_photosynthesis":["Fotosynteza w chloroplaście i cykl Calvina","Fotosynthese im Chloroplasten und Calvin-Zyklus","Fotosíntesis en el cloroplasto y ciclo de Calvin","Photosynthèse chloroplastique et cycle de Calvin","Fotossíntese no cloroplasto e ciclo de Calvin"],"bio_hemo":["Transport tlenu przez hemoglobinę i efekt Bohra","Sauerstofftransport durch Hämoglobin und Bohr-Effekt","Transporte de oxígeno por hemoglobina y efecto Bohr","Transport de l'oxygène par l'hémoglobine et effet Bohr","Transporte de oxigênio pela hemoglobina e efeito Bohr"],"bio_lotka":["Dynamika ekosystemu: model drapieżnik-ofiara Lotki-Volterry","Räuber-Beute-Dynamik nach Lotka-Volterra","Dinámica ecológica depredador-presa de Lotka-Volterra","Dynamique prédateur-proie de Lotka-Volterra","Dinâmica predador-presa de Lotka-Volterra"],"bio_meiosis":["Podział mejotyczny, biwalenty i crossing-over","Meiose: Paarung homologer Chromosomen & Crossing-over","División meiótica, sinapsis y entrecruzamiento","Méiose : appariement des bivalents et crossing-over","Divisão meiótica, sinapse e permutação gênica"],"bio_eye":["Biofizyka widzenia, akomodacja oka i korekcja wad","Biophysik des Sehens, Akkommodation und Sehkorrektur","Biofísica de la visión, acomodación y lentes correctoras","Biophysique de la vision et accommodation de l'œil","Biofísica da visão, acomodação e correção óptica"],"bio_synapse":["Synapsa chemiczna, egzocytoza i receptory jonotropowe","Chemische Synapse und vesikuläre Neurotransmission","Sinapsis química, exocitosis y receptores postsinápticos","Synapse chimique et exocytose des neurotransmetteurs","Sinapse química, exocitose e receptores pós-sinápticos"],"bio_pcr":["Reakcja łańcuchowa polimerazy (PCR) i amplifikacja DNA","Polymerase-Kettenreaktion (PCR) und DNA-Amplifikation","Reacción en cadena de la polimerasa (PCR)","Réaction de polymérisation en chaîne (PCR)","Reação em cadeia da polimerase (PCR)"],"bio_crispr":["System CRISPR-Cas9 i precyzyjna edycja genomu","CRISPR-Cas9-System und gezielte Genom-Editierung","Sistema CRISPR-Cas9 y edición precisa del genoma","Système CRISPR-Cas9 et édition ciblée du génome","Sistema CRISPR-Cas9 e edição precisa do genoma"],"bio_phage":["Bakteriofag T4 i iniekcja wirusowego DNA","Bakteriophage T4 und virale DNA-Injektion","Bacteriófago T4 e inyección de ADN viral","Bactériophage T4 et injection d'ADN viral","Bacteriófago T4 e injeção de DNA viral"],"bio_hemodynamics":["Biofizyka krążenia krwi i prawo Hagena-Poiseuille'a","Hämodynamik und Gesetz von Hagen-Poiseuille","Hemodinámica vascular y ley de Hagen-Poiseuille","Hémodynamique et loi de Hagen-Poiseuille","Hemodinâmica vascular e lei de Hagen-Poiseuille"],"bio_electrophoresis":["Elektroforeza żelowa DNA i rozdział fragmentów","DNA-Gelelektrophorese und Fragmenttrennung","Electroforesis en gel de ADN","Électrophorèse sur gel d'ADN","Eletroforese em gel de DNA"]};
+    const TERM_GLOSSARY_5 = {
+      pl: [["Part I.","Część I."],["Part II.","Część II."],["Part III.","Część III."],["Part IV.","Część IV."],["Part V.","Część V."],["Classical Mechanics","Mechanika klasyczna"],["Conservation Laws","Zasady zachowania"],["Oscillations","Drgania"],["Fluid Mechanics","Mechanika płynów"],["Thermodynamics","Termodynamika"],["Optics","Optyka"],["Electromagnetism","Elektromagnetyzm"],["Electrodynamics","Elektrodynamika"],["Quantum Physics","Fizyka kwantowa"],["Atomic Structure","Budowa atomu"],["Chemical Bonding","Wiązania chemiczne"],["Chemical Kinetics","Kinetyka chemiczna"],["Equilibrium","Równowaga"],["Solutions","Roztwory"],["Analytical Chemistry","Chemia analityczna"],["Electrochemistry","Elektrochemia"],["Organic Chemistry","Chemia organiczna"],["Cell Biology","Biologia komórki"],["Molecular Biology","Biologia molekularna"],["Genetics","Genetyka"],["Biophysics","Biofizyka"],["Physiology","Fizjologia"],["Ecology","Ekologia"],["Initial velocity","Prędkość początkowa"],["Refractive index","Współczynnik załamania"],["Wavefront","Czoło fali"],["Velocity","Prędkość"],["Speed","Szybkość"],["Acceleration","Przyspieszenie"],["Momentum","Pęd"],["Mass","Masa"],["Density","Gęstość"],["Viscosity","Lepkość"],["Temperature","Temperatura"],["Pressure","Ciśnienie"],["Volume","Objętość"],["Wavelength","Długość fali"],["Frequency","Częstotliwość"],["Period","Okres"],["Amplitude","Amplituda"],["Angle","Kąt"],["Radius","Promień"],["Length","Długość"],["Distance","Odległość"],["Current","Natężenie prądu"],["Voltage","Napięcie"],["Resistance","Opór"],["Inductance","Indukcyjność"],["Capacitance","Pojemność"],["Concentration","Stężenie"],["Time","Czas"],["Force","Siła"],["Charge","Ładunek"],["Kinetic","Kinetyczna"],["Potential","Potencjalna"],["Energy","Energia"],["Heat","Ciepło"],["Power","Moc"],["Efficiency","Sprawność"]],
+      de: [["Part I.","Teil I."],["Part II.","Teil II."],["Part III.","Teil III."],["Part IV.","Teil IV."],["Part V.","Teil V."],["Classical Mechanics","Klassische Mechanik"],["Conservation Laws","Erhaltungssätze"],["Oscillations","Schwingungen"],["Fluid Mechanics","Strömungsmechanik"],["Thermodynamics","Thermodynamik"],["Optics","Optik"],["Electromagnetism","Elektromagnetismus"],["Electrodynamics","Elektrodynamik"],["Quantum Physics","Quantenphysik"],["Atomic Structure","Atomaufbau"],["Chemical Bonding","Chemische Bindung"],["Chemical Kinetics","Chemische Kinetik"],["Equilibrium","Gleichgewicht"],["Solutions","Lösungen"],["Analytical Chemistry","Analytische Chemie"],["Electrochemistry","Elektrochemie"],["Organic Chemistry","Organische Chemie"],["Cell Biology","Zellbiologie"],["Molecular Biology","Molekularbiologie"],["Genetics","Genetik"],["Biophysics","Biophysik"],["Physiology","Physiologie"],["Ecology","Ökologie"],["Initial velocity","Anfangsgeschwindigkeit"],["Refractive index","Brechungsindex"],["Wavefront","Wellenfront"],["Velocity","Geschwindigkeit"],["Speed","Tempo"],["Acceleration","Beschleunigung"],["Momentum","Impuls"],["Mass","Masse"],["Density","Dichte"],["Viscosity","Viskosität"],["Temperature","Temperatur"],["Pressure","Druck"],["Volume","Volumen"],["Wavelength","Wellenlänge"],["Frequency","Frequenz"],["Period","Periode"],["Amplitude","Amplitude"],["Angle","Winkel"],["Radius","Radius"],["Length","Länge"],["Distance","Abstand"],["Current","Stromstärke"],["Voltage","Spannung"],["Resistance","Widerstand"],["Inductance","Induktivität"],["Capacitance","Kapazität"],["Concentration","Konzentration"],["Time","Zeit"],["Force","Kraft"],["Charge","Ladung"],["Kinetic","Kinetisch"],["Potential","Potenziell"],["Energy","Energie"],["Heat","Wärme"],["Power","Leistung"],["Efficiency","Wirkungsgrad"]],
+      es: [["Part I.","Parte I."],["Part II.","Parte II."],["Part III.","Parte III."],["Part IV.","Parte IV."],["Part V.","Parte V."],["Classical Mechanics","Mecánica clásica"],["Conservation Laws","Leyes de conservación"],["Oscillations","Oscilaciones"],["Fluid Mechanics","Mecánica de fluidos"],["Thermodynamics","Termodinámica"],["Optics","Óptica"],["Electromagnetism","Electromagnetismo"],["Electrodynamics","Electrodinámica"],["Quantum Physics","Física cuántica"],["Atomic Structure","Estructura atómica"],["Chemical Bonding","Enlace químico"],["Chemical Kinetics","Cinética química"],["Equilibrium","Equilibrio"],["Solutions","Disoluciones"],["Analytical Chemistry","Química analítica"],["Electrochemistry","Electroquímica"],["Organic Chemistry","Química orgánica"],["Cell Biology","Biología celular"],["Molecular Biology","Biología molecular"],["Genetics","Genética"],["Biophysics","Biofísica"],["Physiology","Fisiología"],["Ecology","Ecología"],["Initial velocity","Velocidad inicial"],["Refractive index","Índice de refracción"],["Wavefront","Frente de onda"],["Velocity","Velocidad"],["Speed","Rapidez"],["Acceleration","Aceleración"],["Momentum","Momento"],["Mass","Masa"],["Density","Densidad"],["Viscosity","Viscosidad"],["Temperature","Temperatura"],["Pressure","Presión"],["Volume","Volumen"],["Wavelength","Longitud de onda"],["Frequency","Frecuencia"],["Period","Período"],["Amplitude","Amplitud"],["Angle","Ángulo"],["Radius","Radio"],["Length","Longitud"],["Distance","Distancia"],["Current","Corriente"],["Voltage","Voltaje"],["Resistance","Resistencia"],["Inductance","Inductancia"],["Capacitance","Capacitancia"],["Concentration","Concentración"],["Time","Tiempo"],["Force","Fuerza"],["Charge","Carga"],["Kinetic","Cinética"],["Potential","Potencial"],["Energy","Energía"],["Heat","Calor"],["Power","Potencia"],["Efficiency","Rendimiento"]],
+      fr: [["Part I.","Partie I."],["Part II.","Partie II."],["Part III.","Partie III."],["Part IV.","Partie IV."],["Part V.","Partie V."],["Classical Mechanics","Mécanique classique"],["Conservation Laws","Lois de conservation"],["Oscillations","Oscillations"],["Fluid Mechanics","Mécanique des fluides"],["Thermodynamics","Thermodynamique"],["Optics","Optique"],["Electromagnetism","Électromagnétisme"],["Electrodynamics","Électrodynamique"],["Quantum Physics","Physique quantique"],["Atomic Structure","Structure atomique"],["Chemical Bonding","Liaison chimique"],["Chemical Kinetics","Cinétique chimique"],["Equilibrium","Équilibre"],["Solutions","Solutions"],["Analytical Chemistry","Chimie analytique"],["Electrochemistry","Électrochimie"],["Organic Chemistry","Chimie organique"],["Cell Biology","Biologie cellulaire"],["Molecular Biology","Biologie moléculaire"],["Genetics","Génétique"],["Biophysics","Biophysique"],["Physiology","Physiologie"],["Ecology","Écologie"],["Initial velocity","Vitesse initiale"],["Refractive index","Indice de réfraction"],["Wavefront","Front d'onde"],["Velocity","Vitesse"],["Speed","Vitesse"],["Acceleration","Accélération"],["Momentum","Impulsion"],["Mass","Masse"],["Density","Masse volumique"],["Viscosity","Viscosité"],["Temperature","Température"],["Pressure","Pression"],["Volume","Volume"],["Wavelength","Longueur d'onde"],["Frequency","Fréquence"],["Period","Période"],["Amplitude","Amplitude"],["Angle","Angle"],["Radius","Rayon"],["Length","Longueur"],["Distance","Distance"],["Current","Courant"],["Voltage","Tension"],["Resistance","Résistance"],["Inductance","Inductance"],["Capacitance","Capacité"],["Concentration","Concentration"],["Time","Temps"],["Force","Force"],["Charge","Charge"],["Kinetic","Cinétique"],["Potential","Potentielle"],["Energy","Énergie"],["Heat","Chaleur"],["Power","Puissance"],["Efficiency","Rendement"]],
+      pt: [["Part I.","Parte I."],["Part II.","Parte II."],["Part III.","Parte III."],["Part IV.","Parte IV."],["Part V.","Parte V."],["Classical Mechanics","Mecânica clássica"],["Conservation Laws","Leis de conservação"],["Oscillations","Oscilações"],["Fluid Mechanics","Mecânica dos fluidos"],["Thermodynamics","Termodinâmica"],["Optics","Óptica"],["Electromagnetism","Eletromagnetismo"],["Electrodynamics","Eletrodinâmica"],["Quantum Physics","Física quântica"],["Atomic Structure","Estrutura atômica"],["Chemical Bonding","Ligação química"],["Chemical Kinetics","Cinética química"],["Equilibrium","Equilíbrio"],["Solutions","Soluções"],["Analytical Chemistry","Química analítica"],["Electrochemistry","Eletroquímica"],["Organic Chemistry","Química orgânica"],["Cell Biology","Biologia celular"],["Molecular Biology","Biologia molecular"],["Genetics","Genética"],["Biophysics","Biofísica"],["Physiology","Fisiologia"],["Ecology","Ecologia"],["Initial velocity","Velocidade inicial"],["Refractive index","Índice de refração"],["Wavefront","Frente de onda"],["Velocity","Velocidade"],["Speed","Rapidez"],["Acceleration","Aceleração"],["Momentum","Momento"],["Mass","Massa"],["Density","Densidade"],["Viscosity","Viscosidade"],["Temperature","Temperatura"],["Pressure","Pressão"],["Volume","Volume"],["Wavelength","Comprimento de onda"],["Frequency","Frequência"],["Period","Período"],["Amplitude","Amplitude"],["Angle","Ângulo"],["Radius","Raio"],["Length","Comprimento"],["Distance","Distância"],["Current","Corrente"],["Voltage","Tensão"],["Resistance","Resistência"],["Inductance","Indutância"],["Capacitance","Capacitância"],["Concentration","Concentração"],["Time","Tempo"],["Force","Força"],["Charge","Carga"],["Kinetic","Cinética"],["Potential","Potencial"],["Energy","Energia"],["Heat","Calor"],["Power","Potência"],["Efficiency","Rendimento"]]
+    };
+    const COMPILED_TERM_GLOSSARY = {};
+    Object.keys(TERM_GLOSSARY_5).forEach(lg => {
+      COMPILED_TERM_GLOSSARY[lg] = TERM_GLOSSARY_5[lg].map(([enTerm, locTerm]) => {
+        const escaped = enTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const trailBound = /[a-zA-Z0-9]$/.test(enTerm) ? '\\b' : '';
+        return [new RegExp(`\\b${escaped}${trailBound}`, 'gi'), locTerm];
+      });
+    });
+
+    const REPORT_I18N = {
+      uk: { dateLoc: 'uk-UA', langSel: 'Вибір мови', cam: 'Камера', catPhys: 'Інтерактивні 3D-симуляції з фізики', catChem: 'Інтерактивні 3D-симуляції з хімії', catBio: 'Інтерактивні 3D-симуляції з біології та біофізики', expWord: 'дослідів', given: 'Дано', formula: 'Робоча формула', subst: 'Підстановка та результат', srcUrl: 'Джерело 3D-лабораторії', enterNum: 'Введіть числове значення для перевірки розрахунку.', okPre: '✓ Вірно. Ваш результат', okMid: 'збігається з розрахунком за формулою:', warnPre: 'Розбіжність із поточними параметрами. За формулою очікується:', repAria: 'Лабораторний звіт', repHdr: 'Офіційний бланк лабораторної роботи · physics.sheua.com', printBtn: 'Друкувати / PDF', csvBtn: 'Дані CSV', copyBtn: 'Копіювати текст', copiedBtn: '✓ Скопійовано', closeBtn: 'Закрити ✕', studentLbl: 'ПІБ учня / студента та клас чи група:', studentPh: 'Введіть ім\'я та клас...', s1: '1. Тривимірна схема установки та осцилограма', s2: '2. Вхідні параметри досліду', s3: '3. Виміряні величини та баланс', s4: '4. Робочі рівняння та підстановка чисел', s5: '5. Контрольне запитання та висновок', ansLbl: 'Відповідь:', csvCat: 'Категорія', csvQty: 'Величина', csvVal: 'Значення', csvExp: 'Дослід', csvStud: 'Учень / Студент', csvParam: 'Параметр', csvBal: 'Баланс', csvTel: 'Телеметрія' },
+      en: { dateLoc: 'en-US', langSel: 'Language selector', cam: 'Camera', catPhys: 'Interactive 3D Physics Simulations', catChem: 'Interactive 3D Chemistry Simulations', catBio: 'Interactive 3D Biology & Biophysics Simulations', expWord: 'Experiments', given: 'Given', formula: 'Governing Formula', subst: 'Substituted Calculation & Result', srcUrl: '3D Science Lab URL', enterNum: 'Enter a numeric value to check against the formula.', okPre: '✓ Correct. Your value', okMid: 'matches the formula calculation:', warnPre: 'Does not match current parameters. Expected from formula:', repAria: 'Laboratory Report', repHdr: 'Official Laboratory Worksheet · physics.sheua.com', printBtn: 'Print / PDF', csvBtn: 'Export CSV', copyBtn: 'Copy text', copiedBtn: '✓ Copied', closeBtn: 'Close ✕', studentLbl: 'Student Name & Class / Group:', studentPh: 'Enter name and class...', s1: '1. 3D Apparatus & Energy Oscillogram', s2: '2. Experimental Parameters', s3: '3. Measured Telemetry & Balance', s4: '4. Governing Equations & Substituted Calculation', s5: '5. Control Question & Theoretical Conclusion', ansLbl: 'Answer:', csvCat: 'Category', csvQty: 'Quantity', csvVal: 'Value', csvExp: 'Experiment', csvStud: 'Student', csvParam: 'Parameter', csvBal: 'Balance', csvTel: 'Telemetry' },
+      pl: { dateLoc: 'pl-PL', langSel: 'Wybór języka', cam: 'Kamera', catPhys: 'Interaktywne symulacje 3D z fizyki', catChem: 'Interaktywne symulacje 3D z chemii', catBio: 'Interaktywne symulacje 3D z biologii i biofizyki', expWord: 'doświadczeń', given: 'Dane', formula: 'Wzór roboczy', subst: 'Podstawienie i wynik', srcUrl: 'Adres laboratorium 3D', enterNum: 'Wpisz wartość liczbową, aby sprawdzić obliczenia.', okPre: '✓ Poprawnie. Twój wynik', okMid: 'zgadza się z obliczeniem ze wzoru:', warnPre: 'Niezgodność z bieżącymi parametrami. Oczekiwano ze wzoru:', repAria: 'Protokół laboratoryjny', repHdr: 'Karta pracy laboratoryjnej · physics.sheua.com', printBtn: 'Drukuj / PDF', csvBtn: 'Eksport CSV', copyBtn: 'Kopiuj tekst', copiedBtn: '✓ Skopiowano', closeBtn: 'Zamknij ✕', studentLbl: 'Imię i nazwisko ucznia / studenta oraz klasa lub grupa:', studentPh: 'Wpisz imię i klasę...', s1: '1. Układ pomiarowy 3D i oscylogram', s2: '2. Parametry wejściowe doświadczenia', s3: '3. Zmierzone wielkości i bilans', s4: '4. Równania i podstawienie liczb', s5: '5. Pytanie kontrolne i wniosek', ansLbl: 'Odpowiedź:', csvCat: 'Kategoria', csvQty: 'Wielkość', csvVal: 'Wartość', csvExp: 'Doświadczenie', csvStud: 'Uczeń / Student', csvParam: 'Parametr', csvBal: 'Bilans', csvTel: 'Telemetria' },
+      de: { dateLoc: 'de-DE', langSel: 'Sprachauswahl', cam: 'Kamera', catPhys: 'Interaktive 3D-Simulationen zur Physik', catChem: 'Interaktive 3D-Simulationen zur Chemie', catBio: 'Interaktive 3D-Simulationen zur Biologie & Biophysik', expWord: 'Versuche', given: 'Gegeben', formula: 'Grundgleichung', subst: 'Einsetzen und Ergebnis', srcUrl: '3D-Labor-Adresse', enterNum: 'Gib einen Zahlenwert ein, um deine Rechnung zu prüfen.', okPre: '✓ Richtig. Dein Wert', okMid: 'stimmt mit der Formelberechnung überein:', warnPre: 'Weicht von den aktuellen Parametern ab. Erwartet laut Formel:', repAria: 'Laborprotokoll', repHdr: 'Offizielles Laborprotokoll · physics.sheua.com', printBtn: 'Drucken / PDF', csvBtn: 'CSV-Export', copyBtn: 'Text kopieren', copiedBtn: '✓ Kopiert', closeBtn: 'Schließen ✕', studentLbl: 'Name der Schülerin / des Schülers & Klasse / Kurs:', studentPh: 'Name und Klasse eingeben...', s1: '1. 3D-Versuchsaufbau & Energie-Oszillogramm', s2: '2. Eingabeparameter des Versuchs', s3: '3. Messwerte und Bilanz', s4: '4. Gleichungen & Zahlenrechnung', s5: '5. Kontrollfrage & Fazit', ansLbl: 'Antwort:', csvCat: 'Kategorie', csvQty: 'Größe', csvVal: 'Wert', csvExp: 'Versuch', csvStud: 'Schüler / Student', csvParam: 'Parameter', csvBal: 'Bilanz', csvTel: 'Messdaten' },
+      es: { dateLoc: 'es-ES', langSel: 'Selector de idioma', cam: 'Cámara', catPhys: 'Simulaciones 3D interactivas de Física', catChem: 'Simulaciones 3D interactivas de Química', catBio: 'Simulaciones 3D interactivas de Biología y Biofísica', expWord: 'prácticas', given: 'Datos', formula: 'Ecuación principal', subst: 'Sustitución y resultado', srcUrl: 'Enlace del laboratorio 3D', enterNum: 'Introduce un valor numérico para comprobar el cálculo.', okPre: '✓ Correcto. Tu valor', okMid: 'coincide con el cálculo de la fórmula:', warnPre: 'No coincide con los parámetros actuales. Según la fórmula:', repAria: 'Informe de laboratorio', repHdr: 'Hoja oficial de práctica de laboratorio · physics.sheua.com', printBtn: 'Imprimir / PDF', csvBtn: 'Exportar CSV', copyBtn: 'Copiar texto', copiedBtn: '✓ Copiado', closeBtn: 'Cerrar ✕', studentLbl: 'Nombre del estudiante y curso / grupo:', studentPh: 'Introduce nombre y grupo...', s1: '1. Montaje 3D y oscilograma de energía', s2: '2. Parámetros experimentales', s3: '3. Magnitudes medidas y balance', s4: '4. Ecuaciones y cálculo sustituido', s5: '5. Pregunta de control y conclusión', ansLbl: 'Respuesta:', csvCat: 'Categoría', csvQty: 'Magnitud', csvVal: 'Valor', csvExp: 'Práctica', csvStud: 'Estudiante', csvParam: 'Parámetro', csvBal: 'Balance', csvTel: 'Telemetría' },
+      fr: { dateLoc: 'fr-FR', langSel: 'Choix de la langue', cam: 'Caméra', catPhys: 'Simulations 3D interactives de Physique', catChem: 'Simulations 3D interactives de Chimie', catBio: 'Simulations 3D interactives de Biologie et Biophysique', expWord: 'expériences', given: 'Données', formula: 'Formule principale', subst: 'Application numérique et résultat', srcUrl: 'Lien du laboratoire 3D', enterNum: 'Saisissez une valeur numérique pour vérifier votre calcul.', okPre: '✓ Correct. Votre valeur', okMid: 'correspond au calcul de la formule :', warnPre: 'Écart avec les paramètres actuels. Attendu selon la formule :', repAria: 'Compte rendu de TP', repHdr: 'Fiche officielle de travaux pratiques · physics.sheua.com', printBtn: 'Imprimer / PDF', csvBtn: 'Exporter CSV', copyBtn: 'Copier le texte', copiedBtn: '✓ Copié', closeBtn: 'Fermer ✕', studentLbl: 'Nom de l\'élève / étudiant et classe ou groupe :', studentPh: 'Saisir nom et classe...', s1: '1. Dispositif 3D et oscillogramme énergétique', s2: '2. Paramètres expérimentaux', s3: '3. Grandeurs mesurées et bilan', s4: '4. Équations et application numérique', s5: '5. Question de contrôle et conclusion', ansLbl: 'Réponse :', csvCat: 'Catégorie', csvQty: 'Grandeur', csvVal: 'Valeur', csvExp: 'Expérience', csvStud: 'Élève / Étudiant', csvParam: 'Paramètre', csvBal: 'Bilan', csvTel: 'Mesures' },
+      pt: { dateLoc: 'pt-BR', langSel: 'Seletor de idioma', cam: 'Câmera', catPhys: 'Simulações 3D interativas de Física', catChem: 'Simulações 3D interativas de Química', catBio: 'Simulações 3D interativas de Biologia e Biofísica', expWord: 'experimentos', given: 'Dados', formula: 'Equação principal', subst: 'Substituição e resultado', srcUrl: 'Link do laboratório 3D', enterNum: 'Digite um valor numérico para verificar o cálculo.', okPre: '✓ Correto. Seu valor', okMid: 'coincide com o cálculo da fórmula:', warnPre: 'Não coincide com os parâmetros atuais. Esperado pela fórmula:', repAria: 'Relatório de laboratório', repHdr: 'Folha oficial de relatório prático · physics.sheua.com', printBtn: 'Imprimir / PDF', csvBtn: 'Exportar CSV', copyBtn: 'Copiar texto', copiedBtn: '✓ Copiado', closeBtn: 'Fechar ✕', studentLbl: 'Nome do aluno / estudante e turma:', studentPh: 'Digite nome e turma...', s1: '1. Aparato 3D e oscilograma de energia', s2: '2. Parâmetros experimentais', s3: '3. Grandezas medidas e balanço', s4: '4. Equações e cálculo numérico', s5: '5. Questão de controle e conclusão', ansLbl: 'Resposta:', csvCat: 'Categoria', csvQty: 'Grandeza', csvVal: 'Valor', csvExp: 'Experimento', csvStud: 'Estudante', csvParam: 'Parâmetro', csvBal: 'Balanço', csvTel: 'Telemetria' }
+    };
+    function tRep() {
+      return REPORT_I18N[uiState.lang] || REPORT_I18N.en;
+    }
+
+    function translateTermI18n(str, lang) {
+      const pairs = COMPILED_TERM_GLOSSARY[lang];
+      if (!str || !pairs) return str;
+      let out = String(str);
+      for (const [re, locTerm] of pairs) {
+        out = out.replace(re, match => {
+          const isCap = match[0] === match[0].toUpperCase();
+          return isCap ? (locTerm[0].toUpperCase() + locTerm.slice(1)) : locTerm.toLowerCase();
+        });
+      }
+      return out;
+    }
+
+    function closeLangDropdownMenu(restoreFocus = false) {
+      const wrapper = document.getElementById('lang-dropdown-wrapper');
+      const trigger = document.getElementById('lang-dropdown-trigger');
+      if (wrapper) wrapper.classList.remove('open');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) trigger.focus();
+      }
+    }
+
     function syncDisciplineHeaderAndFilters() {
       const t = tUI();
       const disc = uiState.discipline || 'physics';
@@ -38712,9 +39612,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const spineMainEl = document.getElementById('ui-spine-main');
       if (spineMainEl) {
         if (isBio) {
-          spineMainEl.textContent = isUk ? 'Біологічний практикум' : 'Biology & Biophysics lab';
+          spineMainEl.textContent = t.spineBio || (isUk ? 'Біологічний практикум' : 'Biology & Biophysics lab');
         } else if (isChem) {
-          spineMainEl.textContent = isUk ? 'Хімічний практикум' : 'Chemistry lab';
+          spineMainEl.textContent = t.spineChem || (isUk ? 'Хімічний практикум' : 'Chemistry lab');
         } else {
           spineMainEl.textContent = t.spineMain;
         }
@@ -38732,17 +39632,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         const cGen = bioKeys.filter(k => SCENE_CONFIGS[k] && SCENE_CONFIGS[k].category === 'bio_genetics').length;
         const cBioph = bioKeys.filter(k => SCENE_CONFIGS[k] && SCENE_CONFIGS[k].category === 'bio_biophysics').length;
         const cPhysio = bioKeys.filter(k => SCENE_CONFIGS[k] && SCENE_CONFIGS[k].category === 'bio_physio').length;
-        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? `Усі з біології (${bioCount})` : `All biology (${bioCount})`; }
-        if (fOpt) { fOpt.dataset.filter = 'bio_cell'; fOpt.textContent = isUk ? `Клітина й віруси (${cCell})` : `Cell & viruses (${cCell})`; }
-        if (fMech) { fMech.dataset.filter = 'bio_genetics'; fMech.textContent = isUk ? `ДНК та генетика (${cGen})` : `DNA & genetics (${cGen})`; }
-        if (fTherm) { fTherm.dataset.filter = 'bio_biophysics'; fTherm.textContent = isUk ? `Біофізика й сенсорика (${cBioph})` : `Biophysics & senses (${cBioph})`; }
-        if (fElec) { fElec.dataset.filter = 'bio_physio'; fElec.textContent = isUk ? `Фізіологія та екологія (${cPhysio})` : `Physiology & ecology (${cPhysio})`; }
+        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = t.bioFilterAll ? `${t.bioFilterAll} (${bioCount})` : (isUk ? `Усі з біології (${bioCount})` : `All biology (${bioCount})`); }
+        if (fOpt) { fOpt.dataset.filter = 'bio_cell'; fOpt.textContent = t.bioFilter1 ? `${t.bioFilter1} (${cCell})` : (isUk ? `Клітина й віруси (${cCell})` : `Cell & viruses (${cCell})`); }
+        if (fMech) { fMech.dataset.filter = 'bio_genetics'; fOpt && (fMech.textContent = t.bioFilter2 ? `${t.bioFilter2} (${cGen})` : (isUk ? `ДНК та генетика (${cGen})` : `DNA & genetics (${cGen})`)); }
+        if (fTherm) { fTherm.dataset.filter = 'bio_biophysics'; fTherm.textContent = t.bioFilter3 ? `${t.bioFilter3} (${cBioph})` : (isUk ? `Біофізика й сенсорика (${cBioph})` : `Biophysics & senses (${cBioph})`); }
+        if (fElec) { fElec.dataset.filter = 'bio_physio'; fElec.textContent = t.bioFilter4 ? `${t.bioFilter4} (${cPhysio})` : (isUk ? `Фізіологія та екологія (${cPhysio})` : `Physiology & ecology (${cPhysio})`); }
       } else if (isChem) {
-        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = isUk ? `Усі з хімії (${chemCount})` : `All chemistry (${chemCount})`; }
-        if (fOpt) { fOpt.dataset.filter = 'chem_struct'; fOpt.textContent = isUk ? 'Будова речовини (10)' : 'Structure and bonding (10)'; }
-        if (fMech) { fMech.dataset.filter = 'chem_kinetics'; fMech.textContent = isUk ? 'Гази, термохімія і кінетика (9)' : 'Gases, thermo, and kinetics (9)'; }
-        if (fTherm) { fTherm.dataset.filter = 'chem_solutions'; fTherm.textContent = isUk ? 'Розчини, pH та аналіз (10)' : 'Solutions, pH, and analysis (10)'; }
-        if (fElec) { fElec.dataset.filter = 'chem_electro_org'; fElec.textContent = isUk ? 'Електрохімія й органіка (11)' : 'Electrochemistry and organic (11)'; }
+        if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = t.chemFilterAll ? `${t.chemFilterAll} (${chemCount})` : (isUk ? `Усі з хімії (${chemCount})` : `All chemistry (${chemCount})`); }
+        if (fOpt) { fOpt.dataset.filter = 'chem_struct'; fOpt.textContent = t.chemFilter1 || (isUk ? 'Будова речовини (10)' : 'Structure and bonding (10)'); }
+        if (fMech) { fMech.dataset.filter = 'chem_kinetics'; fMech.textContent = t.chemFilter2 || (isUk ? 'Гази, термохімія і кінетика (9)' : 'Gases, thermo, and kinetics (9)'); }
+        if (fTherm) { fTherm.dataset.filter = 'chem_solutions'; fTherm.textContent = t.chemFilter3 || (isUk ? 'Розчини, pH та аналіз (10)' : 'Solutions, pH, and analysis (10)'); }
+        if (fElec) { fElec.dataset.filter = 'chem_electro_org'; fElec.textContent = t.chemFilter4 || (isUk ? 'Електрохімія й органіка (11)' : 'Electrochemistry and organic (11)'); }
       } else {
         if (fAll) { fAll.dataset.filter = 'all'; fAll.textContent = t.filterAll; }
         if (fOpt) { fOpt.dataset.filter = 'optics'; fOpt.textContent = t.filterOptics; }
@@ -38810,10 +39710,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const seoNav = document.getElementById('seo-experiment-links');
       if (!seoNav) return;
       const isUk = uiState.lang === 'uk';
-      const targetLang = isUk ? 'uk' : 'en';
+      const curLang = uiState.lang || 'en';
       const activeKey = uiState.activeScene;
-      if (seoNav.dataset.renderedLang !== targetLang) {
+      if (seoNav.dataset.renderedLang !== curLang) {
         const dict = isUk ? SCENE_UK : SCENE_EN;
+        const lIdx = LANG_FIVE_IDX[curLang];
+        const r = tRep();
         const allKeys = Object.keys(SCENE_CONFIGS);
         const physKeys = allKeys.filter(k => !k.startsWith('chem_') && !k.startsWith('bio_'));
         const chemKeys = allKeys.filter(k => k.startsWith('chem_'));
@@ -38823,22 +39725,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const sec = isUk
             ? String(item.secSym || SCENE_CONFIGS[k].secSym || '').replace('§ C-', '§ Х-').replace('§ B-', '§ Б-')
             : String(item.secSym || SCENE_CONFIGS[k].secSym || '').replace('§ Х-', '§ C-').replace('§ Б-', '§ B-');
-          const href = getExperimentHref(k, targetLang);
+          const canonK = resolveCanonicalSceneKey(k);
+          const locT = (lIdx !== undefined && SCENE_TITLES_5[canonK] && SCENE_TITLES_5[canonK][lIdx]) || item.title;
+          const href = getExperimentHref(k, curLang);
           const hreflangAttr = isUk ? ' hreflang="uk"' : '';
-          return `<li><a href="${href}"${hreflangAttr}>${sec} ${item.title}</a></li>`;
+          return `<li><a href="${href}"${hreflangAttr}>${sec} ${locT}</a></li>`;
         }).join('');
-        seoNav.innerHTML = isUk
-          ? `<h2>Інтерактивні 3D-симуляції з фізики (${physKeys.length} дослідів)</h2><ul>${renderList(physKeys)}</ul>` +
-            `<h2>Інтерактивні 3D-симуляції з хімії (${chemKeys.length} дослідів)</h2><ul>${renderList(chemKeys)}</ul>` +
-            `<h2>Інтерактивні 3D-симуляції з біології та біофізики (${bioKeys.length} дослідів)</h2><ul>${renderList(bioKeys)}</ul>`
-          : `<h2>Interactive 3D Physics Simulations (${physKeys.length} Experiments)</h2><ul>${renderList(physKeys)}</ul>` +
-            `<h2>Interactive 3D Chemistry Simulations (${chemKeys.length} Experiments)</h2><ul>${renderList(chemKeys)}</ul>` +
-            `<h2>Interactive 3D Biology &amp; Biophysics Simulations (${bioKeys.length} Experiments)</h2><ul>${renderList(bioKeys)}</ul>`;
-        seoNav.dataset.renderedLang = targetLang;
+        seoNav.innerHTML =
+          `<h2>${r.catPhys} (${physKeys.length} ${r.expWord})</h2><ul>${renderList(physKeys)}</ul>` +
+          `<h2>${r.catChem} (${chemKeys.length} ${r.expWord})</h2><ul>${renderList(chemKeys)}</ul>` +
+          `<h2>${r.catBio} (${bioKeys.length} ${r.expWord})</h2><ul>${renderList(bioKeys)}</ul>`;
+        seoNav.dataset.renderedLang = curLang;
       }
       seoNav.querySelectorAll('a[href]').forEach(a => {
         const href = a.getAttribute('href') || '';
-        const m = href.match(/(?:^|\/)(?:uk\/)?sim\/([a-z0-9_]+)(?:\.html)?$/i);
+        const m = href.match(/(?:^|\/)(?:uk\/)?sim\/([a-z0-9_]+)(?:\.html)?(?:\?.*)?$/i);
         a.classList.toggle('active-catalog-link', Boolean(m && m[1] === activeKey));
       });
       syncRelatedClusterUI();
@@ -38915,11 +39816,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           if (!link) return;
           const href = link.getAttribute('href') || '';
           if (href.startsWith('http') && !href.includes(window.location.host || 'physics.sheua.com')) return;
-          const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?$/i);
+          const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?(?:\?([^#]*))?$/i);
           const canonLinkScene = resolveCanonicalSceneKey(m && m[2]);
           if (canonLinkScene && SCENE_CONFIGS[canonLinkScene]) {
             e.preventDefault();
-            const targetLang = m[1] ? 'uk' : 'en';
+            const qLang = m && m[3] ? new URLSearchParams(m[3]).get('lang') : null;
+            const targetLang = (qLang && SUPPORTED_LANGS.some(l => l.code === qLang))
+              ? qLang
+              : (m[1] ? 'uk' : uiState.lang);
             if (targetLang !== uiState.lang) applyLanguage(targetLang);
             loadScene(canonLinkScene, true);
           }
@@ -38927,39 +39831,42 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
 
       const isUk = uiState.lang === 'uk';
-      const targetLang = isUk ? 'uk' : 'en';
+      const tRel = tUI();
+      const lIdx = LANG_FIVE_IDX[uiState.lang];
       const dict = isUk ? SCENE_UK : SCENE_EN;
       const key = resolveCanonicalSceneKey(uiState.activeScene);
       const relatedKeys = getRelatedSceneKeys(key, 4);
       const relatedItemsHtml = relatedKeys.map(rk => {
         const item = dict[rk] || SCENE_CONFIGS[rk];
-        const href = getExperimentHref(rk, targetLang);
-        const cleanT = stripHtmlAndMath(item.title || rk);
+        const href = getExperimentHref(rk, uiState.lang);
+        const rawTitle = (lIdx !== undefined && SCENE_TITLES_5[rk] && SCENE_TITLES_5[rk][lIdx]) ? SCENE_TITLES_5[rk][lIdx] : (item.title || rk);
+        const cleanT = stripHtmlAndMath(rawTitle);
         return `<li><a href="${href}">${cleanT} →</a></li>`;
       }).join('');
 
       const chInfo = getSheuaTextbookChapter(key);
+      const portalBookHref = tRel.portalUrl || (isUk ? `https://sheua.com/${chInfo.slug}` : 'https://sheua.com/en/');
       const hubsHtml = isUk
         ? `<a class="related-hub-pill" data-hub="book" href="https://sheua.com/${chInfo.slug}">Підручник</a>` +
           `<a class="related-hub-pill" data-hub="quiz" href="https://sheua.com/nmt-trener.html">НМТ</a>` +
           `<a class="related-hub-pill" data-hub="labs" href="https://sheua.com/laboratorni-7-11-klas.html">7-11 клас</a>` +
           `<a class="related-hub-pill" data-hub="calc" href="https://sheua.com/kalkuliatory.html">Калькулятори</a>`
-        : `<a class="related-hub-pill" data-hub="book" href="https://sheua.com/en/">Textbook</a>` +
+        : `<a class="related-hub-pill" data-hub="book" href="${portalBookHref}">${tRel.hdrTextbook || 'Textbook'}</a>` +
           `<a class="related-hub-pill" data-hub="quiz" href="https://sheua.com/en/exam-practice.html">Exam Quiz</a>` +
-          `<a class="related-hub-pill" data-hub="calc" href="https://sheua.com/en/calculators.html">Calculators</a>`;
+          `<a class="related-hub-pill" data-hub="calc" href="${tRel.portalUrl ? (tRel.portalUrl + '#si-calculators') : 'https://sheua.com/en/calculators.html'}">${tRel.calcTitle || 'Calculators'}</a>`;
 
-      const curCfg = dict[key] || SCENE_CONFIGS[key];
-      const shareUrl = `https://physics.sheua.com${isUk ? '/uk' : ''}/sim/${key}`;
+      const curCfg = SCENE_CONFIGS[key] || dict[key];
+      const shareUrl = `https://physics.sheua.com${isUk ? '/uk' : ''}/sim/${key}${(!isUk && uiState.lang !== 'en') ? ('?lang=' + uiState.lang) : ''}`;
       const shareText = stripHtmlAndMath(curCfg ? curCfg.title : key);
       const encUrl = encodeURIComponent(shareUrl);
       const encTxt = encodeURIComponent(shareText);
 
       box.innerHTML =
-        `<h2 class="related-cluster-title">${isUk ? 'Схожі 3D-досліди' : 'Related 3D labs'}</h2>` +
+        `<h2 class="related-cluster-title">${tRel.relatedTitle || (isUk ? 'Схожі 3D-досліди' : 'Related 3D labs')}</h2>` +
         `<ul class="related-sims-list">${relatedItemsHtml}</ul>` +
         `<div class="related-hubs-row">${hubsHtml}</div>` +
         `<div class="messenger-share-row">` +
-          `<span>${isUk ? 'Поділитись' : 'Share'}</span>` +
+          `<span>${tRel.shareLabel || (isUk ? 'Поділитись' : 'Share')}</span>` +
           `<span class="messenger-share-btns">` +
             `<a class="messenger-share-link" href="https://t.me/share/url?url=${encUrl}&amp;text=${encTxt}" target="_blank" rel="noopener noreferrer">Telegram</a>` +
             `<a class="messenger-share-link" href="viber://forward?text=${encTxt}%20${encUrl}">Viber</a>` +
@@ -39307,6 +40214,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
     function buildFormattedStepByStepSolution() {
       const isUk = uiState.lang === 'uk';
+      const r = tRep();
       const key = uiState.activeScene;
       const cfg = SCENE_CONFIGS[key] || {};
       const p = sceneParams[key] || {};
@@ -39316,23 +40224,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const formulaClean = stripHtmlAndMath(cfg.formulaLatex || cfg.referenceLatex || '');
       const calcClean = cfg.liveLatexFn ? stripHtmlAndMath(cfg.liveLatexFn(p)) : '';
       const siteOrigin = window.location.protocol.startsWith('http') ? window.location.origin : 'https://physics.sheua.com';
-      const pageUrl = `${siteOrigin}${isUk ? '/uk' : ''}/sim/${key}`;
+      const langQs = (!isUk && uiState.lang !== 'en') ? `?lang=${uiState.lang}` : '';
+      const pageUrl = `${siteOrigin}${isUk ? '/uk' : ''}/sim/${key}${langQs}`;
 
-      if (isUk) {
-        return [
-          `${cfg.secSym || ''} ${cfg.title || ''}`.trim(),
-          `Дано:\n  • ${givenList}`,
-          `Робоча формула:\n  ${formulaClean}`,
-          `Підстановка та результат:\n  ${calcClean}`,
-          `Джерело 3D-лабораторії: ${pageUrl}`
-        ].join('\n\n');
-      }
       return [
         `${cfg.secSym || ''} ${cfg.title || ''}`.trim(),
-        `Given:\n  • ${givenList}`,
-        `Governing Formula:\n  ${formulaClean}`,
-        `Substituted Calculation & Result:\n  ${calcClean}`,
-        `3D Science Lab URL: ${pageUrl}`
+        `${r.given}:\n  • ${givenList}`,
+        `${r.formula}:\n  ${formulaClean}`,
+        `${r.subst}:\n  ${calcClean}`,
+        `${r.srcUrl}: ${pageUrl}`
       ].join('\n\n');
     }
 
@@ -39340,14 +40240,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const inp = document.getElementById('live-calc-user-input');
       const msgEl = document.getElementById('live-calc-verify-msg');
       if (!inp || !msgEl) return;
-      const isUk = uiState.lang === 'uk';
+      const r = tRep();
       const rawStr = String(inp.value || '').trim().replace(',', '.');
       const userNum = parseFloat(rawStr);
       if (!rawStr || Number.isNaN(userNum)) {
         msgEl.className = 'live-calc-verify-msg visible warn';
-        msgEl.textContent = isUk
-          ? 'Введіть числове значення для перевірки розрахунку.'
-          : 'Enter a numeric value to check against the formula.';
+        msgEl.textContent = r.enterNum;
         return;
       }
 
@@ -39369,20 +40267,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       if (matchedTarget !== null) {
         msgEl.className = 'live-calc-verify-msg visible ok';
-        msgEl.textContent = isUk
-          ? `✓ Вірно. Ваш результат (${userNum}) збігається з розрахунком за формулою: ${liveStr}`
-          : `✓ Correct. Your value (${userNum}) matches the formula calculation: ${liveStr}`;
+        msgEl.textContent = `${r.okPre} (${userNum}) ${r.okMid} ${liveStr}`;
         markExperimentMastered(key);
       } else {
         msgEl.className = 'live-calc-verify-msg visible warn';
-        msgEl.textContent = isUk
-          ? `Розбіжність із поточними параметрами. За формулою очікується: ${liveStr}`
-          : `Does not match current parameters. Expected from formula: ${liveStr}`;
+        msgEl.textContent = `${r.warnPre} ${liveStr}`;
       }
     }
 
     function openLabReportModal() {
       const isUk = uiState.lang === 'uk';
+      const r = tRep();
       const key = uiState.activeScene;
       const cfg = SCENE_CONFIGS[key] || {};
       const p = sceneParams[key] || {};
@@ -39436,7 +40331,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         <tr><td>${qLbl}</td><td>${qVal}</td></tr>
       `;
 
-      const dateStr = new Date().toLocaleDateString(isUk ? 'uk-UA' : 'en-US', {
+      const dateStr = new Date().toLocaleDateString(r.dateLoc, {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -39450,14 +40345,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const escAttr = str => String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
       modal.innerHTML = `
-        <div class="lab-report-sheet" role="dialog" aria-modal="true" aria-label="${isUk ? 'Лабораторний звіт' : 'Laboratory Report'}">
+        <div class="lab-report-sheet" role="dialog" aria-modal="true" aria-label="${r.repAria}">
           <div class="lab-report-toolbar">
-            <span class="lab-report-toolbar-left">${isUk ? 'Офіційний бланк лабораторної роботи · physics.sheua.com' : 'Official Laboratory Worksheet · physics.sheua.com'}</span>
+            <span class="lab-report-toolbar-left">${r.repHdr}</span>
             <div class="lab-report-toolbar-actions">
-              <button type="button" id="btn-report-print" class="btn-report-action primary">${isUk ? 'Друкувати / PDF' : 'Print / PDF'}</button>
-              <button type="button" id="btn-report-csv" class="btn-report-action">${isUk ? 'Дані CSV' : 'Export CSV'}</button>
-              <button type="button" id="btn-report-copy" class="btn-report-action">${isUk ? 'Копіювати текст' : 'Copy text'}</button>
-              <button type="button" id="btn-report-close" class="btn-report-action">${isUk ? 'Закрити ✕' : 'Close ✕'}</button>
+              <button type="button" id="btn-report-print" class="btn-report-action primary">${r.printBtn}</button>
+              <button type="button" id="btn-report-csv" class="btn-report-action">${r.csvBtn}</button>
+              <button type="button" id="btn-report-copy" class="btn-report-action">${r.copyBtn}</button>
+              <button type="button" id="btn-report-close" class="btn-report-action">${r.closeBtn}</button>
             </div>
           </div>
 
@@ -39468,14 +40363,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               <div class="lab-report-meta">${cfg.subtitle || ''}</div>
             </div>
             <div class="lab-report-student-box">
-              <label for="lab-report-student-name">${isUk ? 'ПІБ учня / студента та клас чи група:' : 'Student Name & Class / Group:'}</label>
-              <input type="text" id="lab-report-student-name" class="lab-report-student-input" value="${escAttr(savedStudentName)}" placeholder="${isUk ? 'Введіть ім\'я та клас...' : 'Enter name and class...'}" />
+              <label for="lab-report-student-name">${r.studentLbl}</label>
+              <input type="text" id="lab-report-student-name" class="lab-report-student-input" value="${escAttr(savedStudentName)}" placeholder="${r.studentPh}" />
             </div>
           </div>
 
           <div class="lab-report-two-col">
             <div class="lab-report-card">
-              <div class="lab-report-card-title">${isUk ? '1. Тривимірна схема установки та осцилограма' : '1. 3D Apparatus & Energy Oscillogram'}</div>
+              <div class="lab-report-card-title">${r.s1}</div>
               ${snapDataUrl ? `<img class="lab-report-snap-img" src="${snapDataUrl}" alt="3D Apparatus" />` : ''}
               ${chartDataUrl ? `<img class="lab-report-snap-img" src="${chartDataUrl}" alt="Oscillogram" style="max-height:92px;object-fit:contain;background:#faf9f5;" />` : ''}
               <div class="lab-report-meta">${cfg.figCaption || ''}</div>
@@ -39483,14 +40378,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
             <div style="display:flex;flex-direction:column;gap:12px;">
               <div class="lab-report-card">
-                <div class="lab-report-card-title">${isUk ? '2. Вхідні параметри досліду' : '2. Experimental Parameters'}</div>
+                <div class="lab-report-card-title">${r.s2}</div>
                 <table class="lab-report-table">
                   <tbody>${paramsRowsHtml}</tbody>
                 </table>
               </div>
 
               <div class="lab-report-card">
-                <div class="lab-report-card-title">${isUk ? '3. Виміряні величини та баланс' : '3. Measured Telemetry & Balance'}</div>
+                <div class="lab-report-card-title">${r.s3}</div>
                 <table class="lab-report-table">
                   <tbody>${energyRowsHtml}${telemetryRowsHtml}</tbody>
                 </table>
@@ -39499,15 +40394,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           </div>
 
           <div class="lab-report-card" style="margin-bottom:14px;">
-            <div class="lab-report-card-title">${isUk ? '4. Робочі рівняння та підстановка чисел' : '4. Governing Equations & Substituted Calculation'}</div>
+            <div class="lab-report-card-title">${r.s4}</div>
             <div style="margin-bottom:8px;">${renderStackedMath(cfg.referenceLatex || cfg.formulaLatex)}</div>
             <div style="padding-top:6px;border-top:1px dashed #d6d3cd;">${cfg.liveLatexFn ? renderLiveMathChips(cfg.liveLatexFn(p)) : ''}</div>
           </div>
 
           <div class="lab-report-card">
-            <div class="lab-report-card-title">${isUk ? '5. Контрольне запитання та висновок' : '5. Control Question & Theoretical Conclusion'}</div>
+            <div class="lab-report-card-title">${r.s5}</div>
             <p style="font-size:13px;font-weight:600;margin-bottom:6px;">${formatTextbookProse(cfg.question || '')}</p>
-            <p style="font-size:12.5px;color:#14532d;margin-bottom:8px;"><strong>${isUk ? 'Відповідь:' : 'Answer:'}</strong> ${chosenText}</p>
+            <p style="font-size:12.5px;color:#14532d;margin-bottom:8px;"><strong>${r.ansLbl}</strong> ${chosenText}</p>
             <div style="font-size:12.5px;line-height:1.55;color:#3f3f46;">${formatStructuredProse(cfg.explanation || '')}</div>
           </div>
         </div>
@@ -39527,20 +40422,20 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       modal.querySelector('#btn-report-csv')?.addEventListener('click', () => {
         const csvEsc = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
         const lines = [
-          [csvEsc(isUk ? 'Категорія' : 'Category'), csvEsc(isUk ? 'Величина' : 'Quantity'), csvEsc(isUk ? 'Значення' : 'Value')].join(','),
-          [csvEsc('Meta'), csvEsc(isUk ? 'Дослід' : 'Experiment'), csvEsc(`${cfg.secSym || ''} ${cfg.title || ''}`.trim())].join(','),
-          [csvEsc('Meta'), csvEsc(isUk ? 'Учень / Студент' : 'Student'), csvEsc(studentInp ? studentInp.value : '')].join(',')
+          [csvEsc(r.csvCat), csvEsc(r.csvQty), csvEsc(r.csvVal)].join(','),
+          [csvEsc('Meta'), csvEsc(r.csvExp), csvEsc(`${cfg.secSym || ''} ${cfg.title || ''}`.trim())].join(','),
+          [csvEsc('Meta'), csvEsc(r.csvStud), csvEsc(studentInp ? studentInp.value : '')].join(',')
         ];
         (cfg.sliders || []).forEach(s => {
-          lines.push([csvEsc(isUk ? 'Параметр' : 'Parameter'), csvEsc(s.label), csvEsc(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`)].join(','));
+          lines.push([csvEsc(r.csvParam), csvEsc(s.label), csvEsc(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`)].join(','));
         });
-        lines.push([csvEsc(isUk ? 'Баланс' : 'Balance'), csvEsc(ekLbl), csvEsc(ekVal)].join(','));
-        lines.push([csvEsc(isUk ? 'Баланс' : 'Balance'), csvEsc(epLbl), csvEsc(epVal)].join(','));
-        lines.push([csvEsc(isUk ? 'Баланс' : 'Balance'), csvEsc(qLbl), csvEsc(qVal)].join(','));
+        lines.push([csvEsc(r.csvBal), csvEsc(ekLbl), csvEsc(ekVal)].join(','));
+        lines.push([csvEsc(r.csvBal), csvEsc(epLbl), csvEsc(epVal)].join(','));
+        lines.push([csvEsc(r.csvBal), csvEsc(qLbl), csvEsc(qVal)].join(','));
         telemetryCells.forEach(cell => {
           const n = cell.querySelector('.meas-name')?.textContent || '';
           const v = cell.querySelector('.meas-num')?.textContent || '';
-          lines.push([csvEsc(isUk ? 'Телеметрія' : 'Telemetry'), csvEsc(n), csvEsc(v)].join(','));
+          lines.push([csvEsc(r.csvTel), csvEsc(n), csvEsc(v)].join(','));
         });
         if (chartHistory.ek.length > 0) {
           lines.push('');
@@ -39564,9 +40459,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(txt).catch(() => {});
         }
-        btn.textContent = isUk ? '✓ Скопійовано' : '✓ Copied';
+        btn.textContent = r.copiedBtn;
         setTimeout(() => {
-          btn.textContent = isUk ? 'Копіювати текст' : 'Copy text';
+          btn.textContent = r.copyBtn;
         }, 1800);
       });
       requestAnimationFrame(fitMathContainers);
@@ -39772,6 +40667,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           discTrig.addEventListener('click', e => {
             e.stopPropagation();
             closeDropdownMenu();
+            closeLangDropdownMenu();
             const isOpen = discWrap.classList.toggle('open');
             discTrig.setAttribute('aria-expanded', String(isOpen));
           });
@@ -39984,11 +40880,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             const link = e.target.closest('a[href]');
             if (!link) return;
             const href = link.getAttribute('href') || '';
-            const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?$/i);
+            const m = href.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?(?:\?([^#]*))?$/i);
             const canonLinkScene = resolveCanonicalSceneKey(m && m[2]);
             if (canonLinkScene && SCENE_CONFIGS[canonLinkScene]) {
               e.preventDefault();
-              const targetLang = m[1] ? 'uk' : 'en';
+              const qLang = m && m[3] ? new URLSearchParams(m[3]).get('lang') : null;
+              const targetLang = (qLang && SUPPORTED_LANGS.some(l => l.code === qLang))
+                ? qLang
+                : (m[1] ? 'uk' : uiState.lang);
               if (targetLang !== uiState.lang) {
                 applyLanguage(targetLang);
               }
@@ -40219,7 +41118,95 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       // 10. Кнопка «Режим класу» (#btn-classroom-mode) та лічильник опанованих дослідів (#edu-progress-pill)
       const headerRight = document.querySelector('.header-right');
-      const langSwitcher = headerRight ? headerRight.querySelector('.lang-switcher') : null;
+      if (headerRight) {
+        let langWrap = document.getElementById('lang-dropdown-wrapper');
+        const oldSwitcher = headerRight.querySelector('.lang-switcher');
+        if (!langWrap) {
+          langWrap = document.createElement('div');
+          langWrap.id = 'lang-dropdown-wrapper';
+          langWrap.className = 'lang-dropdown-wrapper';
+          const curInfo = SUPPORTED_LANGS.find(l => l.code === uiState.lang) || SUPPORTED_LANGS[1];
+          const selLabel = tRep().langSel;
+          langWrap.innerHTML = `
+            <button type="button" id="lang-dropdown-trigger" class="lang-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-dropdown-menu" aria-label="${selLabel}" title="${selLabel}">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span id="lang-trigger-code">${curInfo.short}</span>
+              <span class="lang-trigger-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="lang-dropdown-menu" class="lang-dropdown-menu" role="listbox" aria-label="${selLabel}">
+              ${SUPPORTED_LANGS.map(l => `<button type="button" class="lang-menu-item${l.code === uiState.lang ? ' active' : ''}" role="option" aria-selected="${l.code === uiState.lang}" data-lang="${l.code}"><span class="lang-item-code">${l.short}</span><span class="lang-item-name">${l.name}</span><span class="lang-item-check" aria-hidden="true">✓</span></button>`).join('')}
+            </div>
+          `;
+          if (oldSwitcher) {
+            oldSwitcher.replaceWith(langWrap);
+          } else {
+            headerRight.appendChild(langWrap);
+          }
+        }
+        const langTrig = document.getElementById('lang-dropdown-trigger');
+        if (langTrig && !langTrig.dataset.bound) {
+          langTrig.dataset.bound = '1';
+          const getLangItems = () => Array.from(langWrap.querySelectorAll('.lang-menu-item'));
+          const openAndFocusLangItem = idx => {
+            closeDropdownMenu();
+            closeDiscDropdownMenu();
+            langWrap.classList.add('open');
+            langTrig.setAttribute('aria-expanded', 'true');
+            const items = getLangItems();
+            if (items.length) {
+              const clamped = ((idx % items.length) + items.length) % items.length;
+              items[clamped].focus();
+            }
+          };
+          langTrig.addEventListener('click', e => {
+            e.stopPropagation();
+            closeDropdownMenu();
+            closeDiscDropdownMenu();
+            const isOpen = langWrap.classList.toggle('open');
+            langTrig.setAttribute('aria-expanded', String(isOpen));
+          });
+          langTrig.addEventListener('keydown', e => {
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              const curIdx = SUPPORTED_LANGS.findIndex(l => l.code === uiState.lang);
+              openAndFocusLangItem(curIdx >= 0 ? curIdx : 0);
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              openAndFocusLangItem(SUPPORTED_LANGS.length - 1);
+            } else if (e.key === 'Escape') {
+              closeLangDropdownMenu(true);
+            }
+          });
+          getLangItems().forEach((btn, idx) => {
+            btn.addEventListener('click', e => {
+              e.stopPropagation();
+              const chosenLang = btn.dataset.lang || 'en';
+              closeLangDropdownMenu(false);
+              applyLanguage(chosenLang, true);
+            });
+            btn.addEventListener('keydown', e => {
+              const items = getLangItems();
+              if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                items[(idx + 1) % items.length]?.focus();
+              } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                items[(idx - 1 + items.length) % items.length]?.focus();
+              } else if (e.key === 'Home') {
+                e.preventDefault();
+                items[0]?.focus();
+              } else if (e.key === 'End') {
+                e.preventDefault();
+                items[items.length - 1]?.focus();
+              } else if (e.key === 'Escape') {
+                e.preventDefault();
+                closeLangDropdownMenu(true);
+              }
+            });
+          });
+        }
+      }
+      const langSwitcher = headerRight ? (document.getElementById('lang-dropdown-wrapper') || headerRight.querySelector('.lang-switcher')) : null;
       if (headerRight) {
         let classBtn = document.getElementById('btn-classroom-mode');
         if (!classBtn) {
@@ -40470,15 +41457,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       syncEduLevelUI();
     }
 
+    const _mergedUiCache = {};
     function tUI() {
-      return UI_STRINGS[uiState.lang] || UI_STRINGS.en;
+      const code = uiState.lang || 'en';
+      if (!_mergedUiCache[code]) {
+        _mergedUiCache[code] = Object.assign({}, UI_STRINGS.en, UI_STRINGS[code] || {});
+      }
+      return _mergedUiCache[code];
     }
 
     let lastEnergyUIArgs = null;
 
-    function applyLanguage(lang) {
-      uiState.lang = lang === 'uk' ? 'uk' : 'en';
-      document.documentElement.lang = uiState.lang;
+    function applyLanguage(lang, pushUrl = false) {
+      const validCode = SUPPORTED_LANGS.some(l => l.code === lang) ? lang : 'en';
+      uiState.lang = validCode;
+      document.documentElement.lang = validCode;
+      try { localStorage.setItem('sheua_lab_lang', validCode); } catch (e) {}
       const t = tUI();
       document.title = t.docTitle;
 
@@ -40492,28 +41486,37 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (mobBtnEn) mobBtnEn.classList.toggle('active', uiState.lang === 'en');
       if (mobBtnUk) mobBtnUk.classList.toggle('active', uiState.lang === 'uk');
 
-      // Apply scene dictionary (SCENE_EN or SCENE_UK) onto SCENE_CONFIGS in-place
-      const dict = uiState.lang === 'en' ? SCENE_EN : SCENE_UK;
+      // Apply scene dictionary (SCENE_UK for uk, SCENE_EN + localized titles/terms for en/pl/de/es/fr/pt)
+      const isUkDict = uiState.lang === 'uk';
+      const dict = isUkDict ? SCENE_UK : SCENE_EN;
+      const fiveIdx = LANG_FIVE_IDX[uiState.lang];
       Object.keys(SCENE_CONFIGS).forEach(k => {
         const src = dict[k];
         if (!src) return;
         const target = SCENE_CONFIGS[k];
         if (target.secSym) {
-          target.secSym = uiState.lang === 'en'
+          target.secSym = !isUkDict
             ? target.secSym.replace('§ Х-', '§ C-').replace('§ Б-', '§ B-')
             : target.secSym.replace('§ C-', '§ Х-').replace('§ B-', '§ Б-');
         }
+        const canonK = resolveCanonicalSceneKey(k);
+        const locTitle = (fiveIdx !== undefined && SCENE_TITLES_5[canonK] && SCENE_TITLES_5[canonK][fiveIdx]) || null;
         target.secTag = src.secTag ?? target.secTag;
-        target.shortTitle = src.shortTitle ?? src.title ?? target.shortTitle;
+        target.shortTitle = locTitle || (src.shortTitle ?? src.title ?? target.shortTitle);
         target.subtitle = src.subtitle ?? target.subtitle;
-        target.badge = src.badge ?? target.badge;
-        target.categoryGroupTitle = src.categoryGroupTitle ?? target.categoryGroupTitle;
-        target.title = src.title ?? target.title;
+        const baseBadge = src.badge ?? target.badge;
+        const baseCatGroup = src.categoryGroupTitle ?? target.categoryGroupTitle;
+        target.badge = fiveIdx !== undefined ? translateTermI18n(baseBadge, uiState.lang) : baseBadge;
+        target.categoryGroupTitle = fiveIdx !== undefined ? translateTermI18n(baseCatGroup, uiState.lang) : baseCatGroup;
+        target.title = locTitle || (src.title ?? target.title);
         target.epigraph = src.epigraph ?? target.epigraph;
         target.figCaption = src.figCaption ?? target.figCaption;
-        target.ekLabel = src.ekLabel ?? target.ekLabel;
-        target.epLabel = src.epLabel ?? target.epLabel;
-        target.qLabel = src.qLabel ?? target.qLabel;
+        const baseEk = src.ekLabel ?? target.ekLabel;
+        const baseEp = src.epLabel ?? target.epLabel;
+        const baseQ = src.qLabel ?? target.qLabel;
+        target.ekLabel = fiveIdx !== undefined ? translateTermI18n(baseEk, uiState.lang) : baseEk;
+        target.epLabel = fiveIdx !== undefined ? translateTermI18n(baseEp, uiState.lang) : baseEp;
+        target.qLabel = fiveIdx !== undefined ? translateTermI18n(baseQ, uiState.lang) : baseQ;
         target.question = src.question ?? target.question;
         if (Array.isArray(src.options)) target.options = [...src.options];
         target.explanation = src.explanation ?? target.explanation;
@@ -40523,7 +41526,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (Array.isArray(src.sliders)) {
           src.sliders.forEach((sTrans, idx) => {
             if (target.sliders[idx]) {
-              target.sliders[idx].label = sTrans.label ?? target.sliders[idx].label;
+              const baseLbl = sTrans.label ?? target.sliders[idx].label;
+              target.sliders[idx].label = fiveIdx !== undefined ? translateTermI18n(baseLbl, uiState.lang) : baseLbl;
               target.sliders[idx].unit = sTrans.unit ?? target.sliders[idx].unit;
             }
           });
@@ -40574,8 +41578,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-energy-balance-title', t.energyBalanceTitle);
       setTxt('ui-ref-heading-left', t.refHeadingLeft);
       setTxt('ui-ref-heading-right', t.refHeadingRight);
-      setTxt('ui-live-calc-title', uiState.lang === 'uk' ? 'Калькулятор' : 'Calculator');
-      setTxt('ui-live-calc-hint', uiState.lang === 'uk' ? 'клік по числу' : 'click value');
+      setTxt('ui-live-calc-title', t.calcTitle || (uiState.lang === 'uk' ? 'Калькулятор' : 'Calculator'));
+      setTxt('ui-live-calc-hint', t.calcHint || (uiState.lang === 'uk' ? 'клік по числу' : 'click value'));
       setTxt('ui-params-heading', t.paramsHeading);
       setTxt('btn-preset-default', t.presetDefault);
       setTxt('ui-diagram-heading', t.diagramHeading);
@@ -40587,13 +41591,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
-      setTxt('btn-lab-report', uiState.lang === 'uk' ? 'Звіт' : 'Report');
-      setTxt('btn-copy-calc', uiState.lang === 'uk' ? 'Розв\'язок' : 'Solution');
-      setTxt('btn-verify-calc', uiState.lang === 'uk' ? 'Перевірити' : 'Check');
+      const activeLangObj = SUPPORTED_LANGS.find(l => l.code === uiState.lang) || SUPPORTED_LANGS[1];
+      const langTrigCode = document.getElementById('lang-trigger-code');
+      if (langTrigCode) langTrigCode.textContent = activeLangObj.short;
+      document.querySelectorAll('#lang-dropdown-menu .lang-menu-item').forEach(item => {
+        const isSel = item.dataset.lang === uiState.lang;
+        item.classList.toggle('active', isSel);
+        item.setAttribute('aria-selected', String(isSel));
+      });
+      setTxt('btn-lab-report', t.reportBtn || (uiState.lang === 'uk' ? 'Звіт' : 'Report'));
+      setTxt('btn-copy-calc', t.solutionBtn || (uiState.lang === 'uk' ? 'Розв\'язок' : 'Solution'));
+      setTxt('btn-verify-calc', t.verifyBtn || (uiState.lang === 'uk' ? 'Перевірити' : 'Check'));
       const calcInp = document.getElementById('live-calc-user-input');
       if (calcInp) {
-        calcInp.placeholder = uiState.lang === 'uk' ? 'Перевір свій розрахунок...' : 'Check your calculated value...';
-        calcInp.setAttribute('aria-label', uiState.lang === 'uk' ? 'Перевір свій розрахунок' : 'Check your calculated value');
+        const vPh = t.verifyPlaceholder || (uiState.lang === 'uk' ? 'Перевір свій розрахунок...' : 'Check your calculated value...');
+        calcInp.placeholder = vPh;
+        calcInp.setAttribute('aria-label', vPh);
       }
       syncPinChartBtnUI();
       setTxt('cam-present', t.camPresent);
@@ -40606,31 +41619,33 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-footer-copy', t.footerCopy);
       const tbHdrEl = document.getElementById('ui-hdr-textbook');
       if (tbHdrEl) {
-        tbHdrEl.textContent = uiState.lang === 'uk' ? 'Підручник' : 'Textbook';
-        tbHdrEl.setAttribute('href', uiState.lang === 'uk' ? 'https://sheua.com/' : 'https://sheua.com/en/');
+        tbHdrEl.textContent = t.hdrTextbook || (uiState.lang === 'uk' ? 'Підручник' : 'Textbook');
+        tbHdrEl.setAttribute('href', t.portalUrl || (uiState.lang === 'uk' ? 'https://sheua.com/' : 'https://sheua.com/en/'));
       }
-      setTxt('ui-hdr-about', uiState.lang === 'uk' ? 'Про проєкт' : 'About');
-      setTxt('ui-hdr-privacy', uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy');
-      setTxt('ui-editorial-title', uiState.lang === 'uk' ? '3D-лабораторія природничих наук' : '3D Science Virtual Lab');
-      setTxt('ui-editorial-p1', uiState.lang === 'uk'
+      setTxt('ui-hdr-about', t.hdrAbout || (uiState.lang === 'uk' ? 'Про проєкт' : 'About'));
+      setTxt('ui-hdr-privacy', t.hdrPrivacy || (uiState.lang === 'uk' ? 'Конфіденційність' : 'Privacy'));
+      setTxt('ui-editorial-title', t.editorialTitle || (uiState.lang === 'uk' ? '3D-лабораторія природничих наук' : '3D Science Virtual Lab'));
+      setTxt('ui-editorial-p1', t.editorialP1 || (uiState.lang === 'uk'
         ? '106 тривимірних симуляцій у системі СІ: 46 із фізики, 40 із хімії та 20 із біології й біофізики.'
-        : '106 real-time 3D simulations in SI units: 46 Physics, 40 Chemistry, and 20 Biology & Biophysics.');
-      setTxt('ui-editorial-p2', uiState.lang === 'uk'
+        : '106 real-time 3D simulations in SI units: 46 Physics, 40 Chemistry, and 20 Biology & Biophysics.'));
+      setTxt('ui-editorial-p2', t.editorialP2 || (uiState.lang === 'uk'
         ? 'Живі вектори, осцилограми енергії, калькулятор формул і друк звіту.'
-        : 'Live vectors, energy oscillograms, formula calculator, and printable lab report.');
+        : 'Live vectors, energy oscillograms, formula calculator, and printable lab report.'));
       setTxt('ui-editorial-about', t.footerAbout);
       setTxt('ui-editorial-privacy', t.footerPrivacy);
       setTxt('ui-editorial-terms', t.footerTerms);
-      setTxt('btn-cookie-essential', uiState.lang === 'uk' ? 'Лише необхідні' : 'Essential only');
-      setTxt('btn-cookie-accept', uiState.lang === 'uk' ? 'Прийняти' : 'Accept');
+      setTxt('btn-cookie-essential', t.cookieEssential || (uiState.lang === 'uk' ? 'Лише необхідні' : 'Essential only'));
+      setTxt('btn-cookie-accept', t.cookieAccept || (uiState.lang === 'uk' ? 'Прийняти' : 'Accept'));
       const cookieTxtEl = document.getElementById('ui-cookie-consent-text');
       if (cookieTxtEl) {
         const rPref = window.location.protocol.startsWith('http')
           ? '/'
           : (/(?:^|\/)uk\/sim\//i.test(window.location.pathname) ? '../../' : (/(?:^|\/)(?:sim|uk)\//i.test(window.location.pathname) ? '../' : ''));
-        cookieTxtEl.innerHTML = uiState.lang === 'uk'
-          ? `Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="${rPref}privacy.html">Політики конфіденційності</a>.`
-          : `This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="${rPref}privacy.html">Privacy Policy</a>.`;
+        cookieTxtEl.innerHTML = t.cookieText
+          ? t.cookieText.replace('/privacy.html', `${rPref}privacy.html`)
+          : (uiState.lang === 'uk'
+            ? `Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчального прогресу і показу оголошень Google AdSense відповідно до <a href="${rPref}privacy.html">Політики конфіденційності</a>.`
+            : `This educational platform uses cookies and <code>localStorage</code> to save study progress and serve Google AdSense ads in accordance with our <a href="${rPref}privacy.html">Privacy Policy</a>.`);
       }
       setTxt('ui-brand-title', t.brandTitle);
       setTxt('ui-disc-physics', t.discPhysics);
@@ -40687,12 +41702,31 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (nextBtn) nextBtn.title = t.nextTitle;
 
       const isUk = uiState.lang === 'uk';
+      const r = tRep();
+      const legalPref = window.location.protocol.startsWith('http')
+        ? '/'
+        : (/(?:^|\/)uk\/sim\//i.test(window.location.pathname) ? '../../' : (/(?:^|\/)(?:sim|uk)\//i.test(window.location.pathname) ? '../' : ''));
+      const legalQs = isUk ? '' : `?lang=${uiState.lang}`;
+      ['ui-hdr-about', 'ui-footer-about', 'ui-editorial-about'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute('href', `${legalPref}about.html${legalQs}`);
+      });
+      ['ui-hdr-privacy', 'ui-footer-privacy', 'ui-editorial-privacy'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute('href', `${legalPref}privacy.html${legalQs}`);
+      });
+      ['ui-footer-terms', 'ui-editorial-terms'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute('href', `${legalPref}terms.html${legalQs}`);
+      });
+
       const camLabel = document.querySelector('.cam-dock-label');
-      if (camLabel) camLabel.textContent = isUk ? 'Камера' : 'Camera';
+      if (camLabel) camLabel.textContent = r.cam;
       const setTitle = (sel, val) => {
         const el = document.querySelector(sel);
         if (el) el.title = val;
       };
+      setTitle('#lang-dropdown-trigger', r.langSel);
       setTitle('#cam-iso', isUk ? 'Ізометрична 3D-проєкція' : 'Isometric 3D projection');
       setTitle('#cam-front', isUk ? 'Вигляд спереду (фронтальний)' : 'Front elevation view');
       setTitle('#cam-top', isUk ? 'Вигляд зверху (план)' : 'Top plan view');
@@ -40708,34 +41742,36 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTitle('.phase-breadcrumbs', isUk ? 'Натисніть на етап, щоб перемкнути режим' : 'Click any stage to switch view');
       setTitle('#btn-close-ad-banner', isUk ? 'Сховати банер' : 'Hide banner');
       setTitle('#exp-dropdown-trigger', isUk ? 'Вибрати симуляцію' : 'Select physics experiment');
-      setTitle('#btn-quick-search', isUk ? 'Пошук серед 106 дослідів (/)' : 'Search all 106 labs (/)');
-      setTitle('#btn-random-sim', isUk ? 'Випадковий 3D-дослід' : 'Random 3D lab');
+      setTitle('#btn-quick-search', t.searchTip || (isUk ? 'Пошук серед 106 дослідів (/)' : 'Search all 106 labs (/)'));
+      setTitle('#btn-random-sim', t.randomTip || (isUk ? 'Випадковий 3D-дослід' : 'Random 3D lab'));
       setTitle('#btn-lab-report', isUk ? 'Відкрити готовий бланк лабораторної роботи для друку, PDF або CSV' : 'Open printable laboratory report worksheet and CSV export');
       setTitle('#btn-copy-calc', isUk ? 'Скопіювати умову, формулу та підстановку чисел' : 'Copy given parameters, formula, and substituted solution');
       setTitle('#btn-jump-theory', isUk ? 'Перейти до конспекту теорії (клавіша T)' : 'Jump to theory notes (Key T)');
       const jumpTheoryEl = document.getElementById('btn-jump-theory');
-      if (jumpTheoryEl) jumpTheoryEl.textContent = isUk ? 'Конспект ↓' : 'Notes ↓';
+      if (jumpTheoryEl) jumpTheoryEl.textContent = t.jumpNotes || (isUk ? 'Конспект ↓' : 'Notes ↓');
       const coachEl = document.getElementById('canvas-gesture-coach');
       if (coachEl) {
-        coachEl.textContent = isUk
+        coachEl.textContent = t.coachText || (isUk
           ? 'Обертайте мишею · Коліщатко для зуму · Двічі клік центрує камеру'
-          : 'Drag to rotate · Scroll to zoom · Double-click to center camera';
+          : 'Drag to rotate · Scroll to zoom · Double-click to center camera');
       }
       const setAria = (sel, val) => {
         const el = document.querySelector(sel);
         if (el) el.setAttribute('aria-label', val);
       };
       setAria('#exp-dropdown-menu', isUk ? 'Вибір симуляції' : 'Select simulation');
-      setAria('#btn-quick-search', isUk ? 'Пошук серед 106 дослідів' : 'Search all 106 labs');
-      setAria('#btn-random-sim', isUk ? 'Випадковий 3D-дослід' : 'Random 3D lab');
-      setAria('#theory-book-section', isUk ? 'Теоретичний конспект' : 'Theory notes');
+      setAria('#btn-quick-search', t.searchTip || (isUk ? 'Пошук серед 106 дослідів' : 'Search all 106 labs'));
+      setAria('#btn-random-sim', t.randomTip || (isUk ? 'Випадковий 3D-дослід' : 'Random 3D lab'));
+      setAria('#theory-book-section', t.theoryBtnTitle || (isUk ? 'Теоретичний конспект' : 'Theory notes'));
       setAria('#header-legal-links', isUk ? 'Інформація про сайт' : 'Site information');
-      setAria('.lang-switcher', isUk ? 'Вибір мови' : 'Language selector');
+      setAria('.lang-switcher', r.langSel);
+      setAria('#lang-dropdown-trigger', r.langSel);
+      setAria('#lang-dropdown-menu', r.langSel);
       setAria('.viewport-cam-dock', isUk ? 'Проєкції камери' : 'Camera projection views');
       setAria('#btn-toggle-left', isUk ? 'Згорнути або розгорнути ліву панель' : 'Toggle Left Panel');
       setAria('#btn-toggle-right', isUk ? 'Згорнути або розгорнути праву панель' : 'Toggle Right Panel');
-      setAria('#ad-slot-left', isUk ? 'Реклама' : 'Advertisement');
-      setAria('#ad-slot-right', isUk ? 'Реклама' : 'Advertisement');
+      setAria('#ad-slot-left', t.adLeftLabel || (isUk ? 'Реклама' : 'Advertisement'));
+      setAria('#ad-slot-right', t.adRightLabel || (isUk ? 'Реклама' : 'Advertisement'));
 
       syncDisciplineHeaderAndFilters();
       syncCurriculumCatalogUI();
@@ -40789,7 +41825,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (lastEnergyUIArgs) {
         updateEnergyUI(...lastEnergyUIArgs, true);
       }
-      syncPageSeoAndUrl(false);
+      syncPageSeoAndUrl(Boolean(pushUrl));
     }
 
     const chartCanvas = document.getElementById('chart-canvas');
@@ -41416,13 +42452,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function updateEnergyUI(ek, ep, q, maxRefEnergy, telemetryItems, skipHistory = false) {
       lastEnergyUIArgs = [ek, ep, q, maxRefEnergy, telemetryItems];
       const t = tUI();
-      const isEn = uiState.lang === 'en';
+      const isEn = uiState.lang !== 'uk';
       const sceneKey = resolveCanonicalSceneKey(uiState.activeScene);
       const cfg = SCENE_CONFIGS[sceneKey] || {};
 
-      const s0 = formatMetricBarSlot(ek, cfg.ekLabel, sceneKey, isEn);
-      const s1 = formatMetricBarSlot(ep, cfg.epLabel, sceneKey, isEn);
-      const s2 = formatMetricBarSlot(q, cfg.qLabel, sceneKey, isEn);
+      const enSrc = SCENE_EN[sceneKey] || {};
+      const rawEk = isEn ? (enSrc.ekLabel || cfg.ekLabel) : cfg.ekLabel;
+      const rawEp = isEn ? (enSrc.epLabel || cfg.epLabel) : cfg.epLabel;
+      const rawQ = isEn ? (enSrc.qLabel || cfg.qLabel) : cfg.qLabel;
+      const s0 = formatMetricBarSlot(ek, rawEk, sceneKey, isEn);
+      const s1 = formatMetricBarSlot(ep, rawEp, sceneKey, isEn);
+      const s2 = formatMetricBarSlot(q, rawQ, sceneKey, isEn);
 
       document.getElementById('ek-val').textContent = s0.text;
       document.getElementById('ep-val').textContent = s1.text;
@@ -41435,13 +42475,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (titleEl) titleEl.textContent = isEn ? 'Genotype ratio' : 'Співвідношення генотипів';
         if (totEl) totEl.textContent = 'p² + 2pq + q² = 100%';
       } else if (sceneKey === 'wavefront' || sceneKey === 'interference' || sceneKey === 'newtonrings') {
-        if (titleEl) titleEl.textContent = isEn ? 'Key indicators' : 'Ключові показники';
+        if (titleEl) titleEl.textContent = t.keyIndicatorsTitle || (isEn ? 'Key indicators' : 'Ключові показники');
         if (totEl) totEl.textContent = 'T + R = 100%';
       } else if (s0.isEnergy && s1.isEnergy && s2.isEnergy && s0.unit === s1.unit && s1.unit === s2.unit) {
         if (titleEl) titleEl.textContent = t.energyBalanceTitle;
         if (totEl) totEl.textContent = `E = ${tot.toFixed(1)} ${s0.unit}`;
       } else {
-        if (titleEl) titleEl.textContent = isEn ? 'Key indicators' : 'Ключові показники';
+        if (titleEl) titleEl.textContent = t.keyIndicatorsTitle || (isEn ? 'Key indicators' : 'Ключові показники');
         if (totEl) totEl.textContent = s0.text;
       }
 
@@ -41887,8 +42927,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     // ============================================================================
     const SCENE_KEYS_ORDER = Object.keys(SCENE_CONFIGS);
 
-    document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
-    document.getElementById('lang-uk').addEventListener('click', () => applyLanguage('uk'));
+    document.getElementById('lang-en')?.addEventListener('click', () => applyLanguage('en'));
+    document.getElementById('lang-uk')?.addEventListener('click', () => applyLanguage('uk'));
     const mobLangEn = document.getElementById('mobile-lang-en');
     const mobLangUk = document.getElementById('mobile-lang-uk');
     if (mobLangEn) mobLangEn.addEventListener('click', () => applyLanguage('en'));
@@ -41951,7 +42991,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (!isGlobalSearch && currentDropdownTier !== 'all' && itemTier !== currentDropdownTier) return;
         const gradeTag = uiState.lang === 'uk' ? (meta.gradeUk || '') : (meta.gradeEn || '');
         if (dropdownSearchQuery) {
-          const haystack = `${key} ${cfg.secSym} ${cfg.shortTitle} ${cfg.subtitle} ${cfg.title} ${cfg.badge} ${gradeTag}`.toLowerCase();
+          const enRef = SCENE_EN[key] || {};
+          const haystack = `${key} ${cfg.secSym} ${cfg.shortTitle} ${cfg.subtitle} ${cfg.title} ${cfg.badge} ${enRef.title || ''} ${enRef.shortTitle || ''} ${gradeTag}`.toLowerCase();
           if (!haystack.includes(dropdownSearchQuery)) return;
         }
 
@@ -42026,6 +43067,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     document.getElementById('exp-dropdown-trigger').addEventListener('click', e => {
       e.stopPropagation();
       closeDiscDropdownMenu();
+      closeLangDropdownMenu();
       const wrapper = document.getElementById('exp-dropdown-wrapper');
       const isOpen = wrapper.classList.toggle('open');
       e.currentTarget.setAttribute('aria-expanded', String(isOpen));
@@ -42039,6 +43081,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const discWrap = document.getElementById('disc-dropdown-wrapper');
       if (discWrap && !discWrap.contains(e.target)) {
         closeDiscDropdownMenu();
+      }
+      const langWrap = document.getElementById('lang-dropdown-wrapper');
+      if (langWrap && !langWrap.contains(e.target)) {
+        closeLangDropdownMenu();
       }
     });
 
@@ -42168,16 +43214,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
     
     function getExperimentHref(sceneKey, lang) {
-      const targetLang = (lang || uiState.lang) === 'uk' ? 'uk' : 'en';
+      const eff = lang || uiState.lang || 'en';
+      const langQs = (eff !== 'uk' && eff !== 'en') ? `?lang=${eff}` : '';
       if (window.location.protocol.startsWith('http')) {
-        return targetLang === 'uk'
+        return eff === 'uk'
           ? `/uk/sim/${sceneKey}`
-          : `/sim/${sceneKey}`;
+          : `/sim/${sceneKey}${langQs}`;
       }
       const rootPrefix = window.__ROOT_PREFIX__ || '';
-      return targetLang === 'uk'
+      return eff === 'uk'
         ? `${rootPrefix}uk/sim/${sceneKey}.html`
-        : `${rootPrefix}sim/${sceneKey}.html`;
+        : `${rootPrefix}sim/${sceneKey}.html${langQs}`;
     }
 
     const GREEK_LATEX_MAP = {
@@ -42329,16 +43376,23 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const isRootPath = /^\/(?:uk\/?)?(?:index\.html)?$/i.test(window.location.pathname) && !window.location.search.includes('sim=');
       const keepRootMeta = !pushHistory && isRootPath;
 
+      const isExtraLang = LANG_FIVE_IDX[uiState.lang] !== undefined;
       const pageTitle = keepRootMeta
-        ? (isUk
-          ? '3D Лабораторія фізики, хімії та біології: 106 симуляцій'
-          : '3D Physics, Chemistry & Biology Lab: 106 Virtual Sims')
-        : buildSmartSeoTitle(dictCfg.title, isUk);
+        ? (isExtraLang
+          ? tUI().docTitle
+          : (isUk
+            ? '3D Лабораторія фізики, хімії та біології: 106 симуляцій'
+            : '3D Physics, Chemistry & Biology Lab: 106 Virtual Sims'))
+        : (isExtraLang
+          ? `${stripHtmlAndMath(cfg.title)} · 3D Lab`
+          : buildSmartSeoTitle(dictCfg.title, isUk));
 
       const pageDesc = keepRootMeta
-        ? (isUk
-          ? 'Безкоштовна віртуальна 3D-лабораторія для 7-11 класів, НМТ та університетів: 46 симуляцій з фізики, 40 з хімії та 20 з біології, живі калькулятори формул СІ і тести.'
-          : 'Free interactive 3D virtual lab with 46 Physics, 40 Chemistry, and 20 Biology & Biophysics simulations, live SI formula calculators, quizzes, and printable lab reports.')
+        ? (isExtraLang
+          ? `${tUI().editorialP1} ${tUI().editorialP2}`
+          : (isUk
+            ? 'Безкоштовна віртуальна 3D-лабораторія для 7-11 класів, НМТ та університетів: 46 симуляцій з фізики, 40 з хімії та 20 з біології, живі калькулятори формул СІ і тести.'
+            : 'Free interactive 3D virtual lab with 46 Physics, 40 Chemistry, and 20 Biology & Biophysics simulations, live SI formula calculators, quizzes, and printable lab reports.'))
         : buildSmartSeoDesc(dictCfg.subtitle, dictCfg.epigraph, isUk);
 
       document.title = pageTitle;
@@ -42363,7 +43417,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const canonicalEl = document.querySelector('link[rel="canonical"]');
       if (canonicalEl) canonicalEl.setAttribute('href', canonicalAbs);
       setMetaContent('meta[property="og:url"]', canonicalAbs);
-      setMetaContent('meta[property="og:locale"]', isUk ? 'uk_UA' : 'en_US');
+      const curLangMeta = SUPPORTED_LANGS.find(l => l.code === uiState.lang);
+      setMetaContent('meta[property="og:locale"]', curLangMeta ? curLangMeta.locale : (isUk ? 'uk_UA' : 'en_US'));
       const enAltPath = keepRootMeta ? '/' : `/sim/${uiState.activeScene}`;
       const ukAltPath = keepRootMeta ? '/uk/' : `/uk/sim/${uiState.activeScene}`;
       const setHreflang = (langCode, pathVal) => {
@@ -42372,11 +43427,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       };
       setHreflang('en', enAltPath);
       setHreflang('uk', ukAltPath);
+      ['pl', 'de', 'es', 'fr', 'pt'].forEach(lg => {
+        setHreflang(lg, `${enAltPath}?lang=${lg}`);
+      });
       setHreflang('x-default', enAltPath);
 
       if (window.location.protocol.startsWith('http')) {
+        const rootLangQs = (!isUk && uiState.lang !== 'en') ? `?lang=${uiState.lang}` : '';
         const baseTargetUrl = keepRootMeta
-          ? (isUk ? '/uk/' : '/')
+          ? (isUk ? '/uk/' : `/${rootLangQs}`)
           : getExperimentHref(uiState.activeScene, uiState.lang);
         let targetUrl = baseTargetUrl;
         if (!pushHistory && window.location.search) {
@@ -43634,6 +44693,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       } else if (e.key === 'Escape') {
         closeDropdownMenu();
         closeDiscDropdownMenu();
+        closeLangDropdownMenu();
         document.getElementById('lab-report-modal')?.classList.remove('open');
       }
     });
@@ -44105,7 +45165,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             renderer.domElement.style.cursor = 'pointer';
             const td = tileObj.userData;
             setInteractionBadgeText(
-              uiState.lang === 'en'
+              uiState.lang !== 'uk'
                 ? `Click 3D tile to select element #${td.atomicZ} ${td.sym} (${td.nameEn}, Period ${td.periodN}, Group ${td.groupG})`
                 : `Клікніть по 3D-клітинці для вибору елемента №${td.atomicZ} ${td.sym} (${td.nameUk}, Період ${td.periodN}, Група ${td.groupG})`,
               true
@@ -44123,7 +45183,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               const val = p[m.key];
               return `${shortLbl}: ${val}${m.unit ? ' ' + m.unit : ''}`;
             };
-            const shiftHint = uiState.lang === 'en' ? 'Shift + drag' : 'Shift + перетягування';
+            const shiftHint = uiState.lang !== 'uk' ? 'Shift + drag' : 'Shift + перетягування';
             if (e.shiftKey) {
               renderer.domElement.style.cursor = 'grab';
             } else {
@@ -44196,7 +45256,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           setSimParamFrom3D('chem_periodic', 'groupG', st.periodicTile.groupG);
         }
         setInteractionBadgeText(
-          uiState.lang === 'en'
+          uiState.lang !== 'uk'
             ? `Selected element #${st.periodicTile.atomicZ} ${st.periodicTile.sym} (${st.periodicTile.nameEn}, Period ${st.periodicTile.periodN}, Group ${st.periodicTile.groupG})`
             : `Обрано елемент №${st.periodicTile.atomicZ} ${st.periodicTile.sym} (${st.periodicTile.nameUk}, Період ${st.periodicTile.periodN}, Група ${st.periodicTile.groupG})`,
           true
@@ -44219,7 +45279,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const isoBtn = document.getElementById('cam-iso');
       if (isoBtn) isoBtn.click();
       setInteractionBadgeText(
-        uiState.lang === 'uk' ? 'Камеру відцентровано' : 'Camera centered',
+        tUI().cameraCentered || (uiState.lang === 'uk' ? 'Камеру відцентровано' : 'Camera centered'),
         true
       );
       setTimeout(() => {
@@ -44281,6 +45341,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       applyLanguage,
       loadScene,
       switchDiscipline,
+      SUPPORTED_LANGS,
       SCENE_CONFIGS,
       SCENE_EN,
       SCENE_UK,
@@ -44296,9 +45357,15 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     const pathMatch = window.location.pathname.match(/(?:^|\/)((?:uk\/)?)sim\/([a-z0-9_]+)(?:\.html)?$/i);
     const isUkRoot = /(?:^|\/)uk\/(?:index\.html)?$/i.test(window.location.pathname);
 
-    const initialLang = (queryLang === 'uk' || queryLang === 'en')
+    let savedExtraLang = null;
+    try {
+      const sl = localStorage.getItem('sheua_lab_lang');
+      if (sl && LANG_FIVE_IDX[sl] !== undefined) savedExtraLang = sl;
+    } catch (e) {}
+    const isUkUrlPath = Boolean((pathMatch && pathMatch[1]) || isUkRoot || window.__INITIAL_LANG__ === 'uk');
+    const initialLang = SUPPORTED_LANGS.some(l => l.code === queryLang)
       ? queryLang
-      : (window.__INITIAL_LANG__ || (pathMatch && pathMatch[1] ? 'uk' : (isUkRoot ? 'uk' : 'en')));
+      : (isUkUrlPath ? 'uk' : (savedExtraLang || window.__INITIAL_LANG__ || 'en'));
 
     if (urlParams.get('mode') === 'classroom') {
       document.body.classList.add('classroom-mode');
@@ -44309,10 +45376,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     const initialScene = SCENE_CONFIGS[candidateScene] ? candidateScene : 'wavefront';
 
     window.addEventListener('popstate', e => {
+      const urlL = new URLSearchParams(window.location.search).get('lang');
+      const pathUk = /(?:^|\/)uk(\/|$)/i.test(window.location.pathname);
+      const nextLang = (e.state && e.state.lang)
+        || (SUPPORTED_LANGS.some(l => l.code === urlL) ? urlL : (pathUk ? 'uk' : 'en'));
+      if (nextLang && nextLang !== uiState.lang) {
+        applyLanguage(nextLang, false);
+      }
       if (e.state && e.state.scene && SCENE_CONFIGS[e.state.scene]) {
-        if (e.state.lang && e.state.lang !== uiState.lang) {
-          applyLanguage(e.state.lang);
-        }
         loadScene(e.state.scene, false);
       }
     });

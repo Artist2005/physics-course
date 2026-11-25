@@ -1150,6 +1150,94 @@
       color: var(--ink-primary);
     }
 
+
+    /* BEGIN HUB LANG DD */
+    .hub-lang-dd {
+      position: relative;
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+    .hub-lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 30px;
+      padding: 0 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .hub-lang-btn:hover, .hub-lang-dd.open .hub-lang-btn {
+      background: var(--bg-inset);
+    }
+    .hub-lang-chev {
+      font-size: 10px;
+      transition: transform 0.15s ease;
+    }
+    .hub-lang-dd.open .hub-lang-chev {
+      transform: rotate(180deg);
+    }
+    .hub-lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      z-index: 160;
+      min-width: 176px;
+      padding: 5px;
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 10px 28px rgba(24, 24, 27, 0.2);
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hub-lang-dd.open .hub-lang-menu {
+      display: flex;
+    }
+    .nav-bar a.hub-lang-opt, a.hub-lang-opt {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 6px 9px;
+      border-radius: 3px;
+      text-decoration: none !important;
+      color: var(--ink-secondary) !important;
+      font-family: var(--font-sans);
+      font-size: 12.8px;
+      font-weight: 500 !important;
+    }
+    .nav-bar a.hub-lang-opt:hover, a.hub-lang-opt:hover {
+      background: var(--bg-inset);
+      color: var(--ink-primary) !important;
+    }
+    .nav-bar a.hub-lang-opt.active, a.hub-lang-opt.active {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+      font-weight: 600 !important;
+    }
+    .hub-lang-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      min-width: 30px;
+    }
+    .hub-lang-name { flex: 1; text-align: left; }
+    .hub-lang-chk { opacity: 0; font-size: 11px; }
+    a.hub-lang-opt.active .hub-lang-chk { opacity: 1; }
+    @media (max-width: 640px) {
+      .hub-lang-btn { min-height: 44px; padding: 0 10px; }
+      a.hub-lang-opt { min-height: 40px; }
+    }
+    /* END HUB LANG DD */
 </style>
 </head>
 <body>
@@ -1164,7 +1252,22 @@
       <a href="https://physics.sheua.com/"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg><span>3D Lab · 106</span></a>
       <a href="/about.html?lang=en">About</a>
       <button type="button" class="search-nav-btn" id="open-site-search" title="Quick site search (/)" aria-label="Quick site search"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Search</span><kbd>/</kbd></button>
-      <a class="lang-pill" href="/nmt-trener.html" title="Українська версія">УКР</a>
+      <div class="hub-lang-dd" id="hub-lang-dd">
+      <button type="button" class="hub-lang-btn" id="hub-lang-trig" aria-haspopup="listbox" aria-expanded="false" aria-controls="hub-lang-menu" aria-label="Language selector" title="Language selector">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>EN</span>
+        <span class="hub-lang-chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="hub-lang-menu" id="hub-lang-menu" role="listbox" aria-label="Language selector">
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="uk" href="/nmt-trener.html"><span class="hub-lang-code">УКР</span><span class="hub-lang-name">Українська</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt active" role="option" aria-selected="true" data-lang="en" href="/en/exam-practice.html"><span class="hub-lang-code">EN</span><span class="hub-lang-name">English</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="pl" href="/pl/#quick-quiz"><span class="hub-lang-code">PL</span><span class="hub-lang-name">Polski</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="de" href="/de/#quick-quiz"><span class="hub-lang-code">DE</span><span class="hub-lang-name">Deutsch</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="es" href="/es/#quick-quiz"><span class="hub-lang-code">ES</span><span class="hub-lang-name">Español</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="fr" href="/fr/#quick-quiz"><span class="hub-lang-code">FR</span><span class="hub-lang-name">Français</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="pt" href="/pt/#quick-quiz"><span class="hub-lang-code">PT</span><span class="hub-lang-name">Português</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+      </div>
+    </div>
     </nav>
   </header>
 
@@ -1607,6 +1710,65 @@
     }
 
     render();
+  })();
+  </script>
+  <script id="hub-lang-dd-script">
+  (function(){
+    var wrap = document.getElementById('hub-lang-dd');
+    var trig = document.getElementById('hub-lang-trig');
+    if (!wrap || !trig) return;
+    function closeMenu(focusTrig) {
+      wrap.classList.remove('open');
+      trig.setAttribute('aria-expanded', 'false');
+      if (focusTrig) trig.focus();
+    }
+    trig.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = wrap.classList.toggle('open');
+      trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    trig.addEventListener('keydown', function(e) {
+      var opts = wrap.querySelectorAll('.hub-lang-opt');
+      if (e.key === 'ArrowDown' && opts.length) {
+        e.preventDefault();
+        wrap.classList.add('open');
+        trig.setAttribute('aria-expanded', 'true');
+        opts[0].focus();
+      } else if (e.key === 'Escape') {
+        closeMenu(true);
+      }
+    });
+    var opts = Array.prototype.slice.call(wrap.querySelectorAll('.hub-lang-opt'));
+    opts.forEach(function(opt, idx) {
+      opt.addEventListener('click', function() {
+        var lg = opt.getAttribute('data-lang');
+        try { if (lg) localStorage.setItem('sheua_lab_lang', lg); } catch (err) {}
+      });
+      opt.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          opts[(idx + 1) % opts.length].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          opts[(idx - 1 + opts.length) % opts.length].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          opts[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          opts[opts.length - 1].focus();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeMenu(true);
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!wrap.contains(e.target)) closeMenu(false);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(false);
+    });
   })();
   </script>
 </body>

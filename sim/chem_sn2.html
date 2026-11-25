@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Bimolecular Nucleophilic Substitution (S_N2) &amp; Walden Inversion of Configuration</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«The incoming group approaches the carbon atom on the side opposite to the replaced group, turning the tetrahedral configuration inside out.», Christopher K. Ingold &amp; Edward D. Hughes, 1937</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Organic Reaction Mechanisms</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Bimolecular nucleophilic substitution (S_N2) is a concerted, single-step reaction mechanism (HO⁻ + CH₃Br → CH₃OH + Br⁻) whose rate law is first-order in both substrate and nucleophile (v = k₂[R-X][Nu⁻], second-order overall).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The nucleophile attacks the electrophilic carbon from the backside (180° opposite the leaving group) to overlap with the antibonding σ^*_C-X orbital. At the saddle point (ξ = 0.50), the system passes through a planar trigonal-bipyramidal pentacoordinate transition state [HO^δ-·sCH₃·sBr^δ-]^‡ with no intermediate.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Departure of the leaving group flips the three substituents to the opposite side like an umbrella in a gale, resulting in 100% stereospecific Walden inversion of configuration ((R) → (S) at a chiral center).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Reaction coordinate ξ (0=Reactants, 0.5=TS‡, 1=Products)</strong>: 0 … 1, standard value 0.5</li><li><strong>Substrate concentration [CH₃Br]</strong>: 0.25 … 2.5 mol/L, standard value 1 mol/L</li><li><strong>Nucleophile concentration [OH⁻]</strong>: 0.25 … 2.5 mol/L, standard value 1.5 mol/L</li><li><strong>Activation energy barrier E_a‡</strong>: 45 … 110 kJ/mol, standard value 75 kJ/mol</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Bimolecular nucleophilic substitution (S_N2) proceeds in a single concerted step: the nucleophile HO⁻ attacks the electrophilic carbon from the backside (180° opposite the leaving group Br⁻), passing through a planar pentacoordinate transition state that inverts the configuration of the three C-H bonds (Walden inversion).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>v = k₂[mathrmR-X][Nu⁻], HO⁻ + CH₃Br → [HO^δ- ·s CH₃·s Br^δ-]^‡ → HOCH₃ + Br⁻</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">[CH₃Br] = 1.0 M, [OH⁻] = 1.5 M</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Organic Reaction Mechanisms</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Bimolecular nucleophilic substitution (S_N2) is a concerted, single-step reaction mechanism (HO⁻ + CH₃Br → CH₃OH + Br⁻) whose rate law is first-order in both substrate and nucleophile (v = k₂[R-X][Nu⁻], second-order overall).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The nucleophile attacks the electrophilic carbon from the backside (180° opposite the leaving group) to overlap with the antibonding σ^*_C-X orbital. At the saddle point (ξ = 0.50), the system passes through a planar trigonal-bipyramidal pentacoordinate transition state [HO^δ-·sCH₃·sBr^δ-]^‡ with no intermediate.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Departure of the leaving group flips the three substituents to the opposite side like an umbrella in a gale, resulting in 100% stereospecific Walden inversion of configuration ((R) → (S) at a chiral center).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Reaction coordinate ξ (0=Reactants, 0.5=TS‡, 1=Products)</strong>: 0 … 1, standard value 0.5</li><li><strong>Substrate concentration [CH₃Br]</strong>: 0.25 … 2.5 mol/L, standard value 1 mol/L</li><li><strong>Nucleophile concentration [OH⁻]</strong>: 0.25 … 2.5 mol/L, standard value 1.5 mol/L</li><li><strong>Activation energy barrier E_a‡</strong>: 45 … 110 kJ/mol, standard value 75 kJ/mol</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Bimolecular nucleophilic substitution (S_N2) proceeds in a single concerted step: the nucleophile HO⁻ attacks the electrophilic carbon from the backside (180° opposite the leaving group Br⁻), passing through a planar pentacoordinate transition state that inverts the configuration of the three C-H bonds (Walden inversion).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>v = k₂[mathrmR-X][Nu⁻], HO⁻ + CH₃Br → [HO^δ- ·s CH₃·s Br^δ-]^‡ → HOCH₃ + Br⁻</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Chemical Synapse: Calcium-Triggered Vesicle Exocytosis &amp; Postsynaptic Ionotropic Receptors</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"A chemical synapse converts an axonal action potential into a quantal burst of neurotransmitter molecules across a 20 nm cleft, ensuring unidirectional signaling and integrative computation."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Neurobiology: Chemical Synapse</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A chemical synapse transmits signals unidirectionally across a 20..30 nm synaptic cleft with a characteristic delay of 0.5..1.0 ms. Arrival of an action potential depolarizes the presynaptic bouton and opens voltage-gated Ca²⁺ channels, driving rapid inward Ca²⁺ flux.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Bernard Katz's quantal hypothesis, neurotransmitter is packaged in discrete synaptic vesicles (≈ 5000..10000 molecules per quantum). Cooperative Ca²⁺ binding to synaptotagmin catalyzes SNARE-complex zipping and exocytosis of m = N · p vesicles into the cleft.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Neurotransmitter molecules bind postsynaptic ligand-gated ion channels: excitatory transmitters (glutamate, acetylcholine) open Na⁺-permeable channels to generate a depolarizing EPSP (Δ V &gt; 0), whereas inhibitory transmitters (GABA, glycine) open Cl⁻ channels to produce a hyperpolarizing IPSP (Δ V &lt; 0). Cleft enzymes such as acetylcholinesterase rapidly hydrolyze the transmitter to reset the synapse.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Extracellular calcium concentration [Ca²⁺]_ext (exocytosis trigger)</strong>: 0.5 … 4 mM, standard value 2 mM</li><li><strong>Readily releasable synaptic vesicle pool N_pool</strong>: 8 … 40 vesicles, standard value 24 vesicles</li><li><strong>Synaptic cleft acetylcholinesterase activity (clearance rate)</strong>: 0.4 … 2 rel., standard value 1 rel.</li><li><strong>Synapse type (1: Excitatory Glutamate/ACh EPSP, 2: Inhibitory GABA IPSP)</strong>: 1 … 2 type, standard value 1 type</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Signal transmission across a chemical synapse converts an electrical spike into a chemical messenger and back: arrival of an action potential at the presynaptic bouton opens voltage-gated Ca²⁺ channels, calcium influx triggers SNARE-mediated vesicle exocytosis, and released neurotransmitter diffuses across the 20 nm synaptic cleft to gate postsynaptic ionotropic receptors.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>m = Nₚₒₒₗ· p(Ca²⁺), Δ V_PSP = m · q_quant, Vₚₒₛₜ = -70 mV + Δ V_PSP</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">0.65 ms (unidirectional transmission)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Neurobiology: Chemical Synapse</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A chemical synapse transmits signals unidirectionally across a 20..30 nm synaptic cleft with a characteristic delay of 0.5..1.0 ms. Arrival of an action potential depolarizes the presynaptic bouton and opens voltage-gated Ca²⁺ channels, driving rapid inward Ca²⁺ flux.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Bernard Katz's quantal hypothesis, neurotransmitter is packaged in discrete synaptic vesicles (≈ 5000..10000 molecules per quantum). Cooperative Ca²⁺ binding to synaptotagmin catalyzes SNARE-complex zipping and exocytosis of m = N · p vesicles into the cleft.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Neurotransmitter molecules bind postsynaptic ligand-gated ion channels: excitatory transmitters (glutamate, acetylcholine) open Na⁺-permeable channels to generate a depolarizing EPSP (Δ V &gt; 0), whereas inhibitory transmitters (GABA, glycine) open Cl⁻ channels to produce a hyperpolarizing IPSP (Δ V &lt; 0). Cleft enzymes such as acetylcholinesterase rapidly hydrolyze the transmitter to reset the synapse.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Extracellular calcium concentration [Ca²⁺]_ext (exocytosis trigger)</strong>: 0.5 … 4 mM, standard value 2 mM</li><li><strong>Readily releasable synaptic vesicle pool N_pool</strong>: 8 … 40 vesicles, standard value 24 vesicles</li><li><strong>Synaptic cleft acetylcholinesterase activity (clearance rate)</strong>: 0.4 … 2 rel., standard value 1 rel.</li><li><strong>Synapse type (1: Excitatory Glutamate/ACh EPSP, 2: Inhibitory GABA IPSP)</strong>: 1 … 2 type, standard value 1 type</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Signal transmission across a chemical synapse converts an electrical spike into a chemical messenger and back: arrival of an action potential at the presynaptic bouton opens voltage-gated Ca²⁺ channels, calcium influx triggers SNARE-mediated vesicle exocytosis, and released neurotransmitter diffuses across the 20 nm synaptic cleft to gate postsynaptic ionotropic receptors.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>m = Nₚₒₒₗ· p(Ca²⁺), Δ V_PSP = m · q_quant, Vₚₒₛₜ = -70 mV + Δ V_PSP</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

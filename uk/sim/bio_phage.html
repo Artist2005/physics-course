@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Будова і цикл бактеріофага Т4: біомеханічний шприц та ін’єкція вірусної ДНК у бактерію</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Бактеріофаг Т4 діє як досконалий біонаномеханічний шприц: розпізнавши рецептори клітинної стінки Escherichia coli хвостовими нитками, він скорочує спіральний чохол і під тиском ~50 атм впорскує лише молекулу ДНК, залишаючи білковий капсид назовні.»</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Вірусологія та дослід Герші-Чейз</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Бактеріофаг Т4, складний дволанцюговий ДНК-вірус бактерій кишкової палички (*Escherichia coli*), який є класичною моделлю молекулярної біології та біонаномеханіки. Його віріон складається з видовженої ікосаедричної білкової головки (капсиду) розміром 115× 85 нм, шийки з комірцем, порожнистого стрижня в оточенні скорочувального спірального чохла та гексагональної базальної пластинки з 6 короткими шипами і 6 довгими хвостовими фібрилами.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Усередині капсиду за допомогою АТФ-залежного пакувального мотора щільно укладена лінійна молекула ДНК довжиною ≈ 169 тис. п.н. (56 мкм), що через електростатичне відштовхування фосфатних груп створює величезний внутрішній тиск P₀ ≈ 50 атм. Після специфічного зв'язування фібрил із LPS-рецепторами бактерії базальна пластинка змінює форму з шестикутника на зірку, чохол скорочується на 55%, а внутрішній стрижень проколює клітинну стінку й ін'єктує ДНК у цитоплазму.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Саме на бактеріофагах у 1952 р. Алфред Герші та Марта Чейз виконали історичний експеримент із радіоактивними ізотопами: ДНК фагів мітили фосфором ³²P, а білкову оболонку, сіркою ³⁵S. Після зараження бактерій і збивання пустих оболонок у блендері виявилося, що всередину клітини проникає виключно ³²P-ДНК, програмуючи синтез сотень нових фагів.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Стадія інфекції (1: Адсорбція, 2: Прокол оболонки, 3: Ін'єкція ДНК, 4: Збирання фагів)</strong>: 1 … 4 етап, типове значення 3 етап</li><li><strong>Початковий внутрішній тиск упаковки ДНК у капсиді фага P₀</strong>: 20 … 65 атм, типове значення 50 атм</li><li><strong>Щільність рецепторів LPS на поверхні клітинної стінки бактерії</strong>: 20 … 100 %, типове значення 80 %</li><li><strong>Урожайність літичного циклу (кількість нових віріонів з 1 клітини)</strong>: 50 … 250 фагів, типове значення 150 фагів</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Бактеріофаг Т4 інфікує клітину *E. coli* за допомогою спеціалізованого скоротливого хвостового апарату: після адсорбції хвостових фібрил на рецепторах клітинної стінки білковий чохол скорочується і крізь порожнистий стрижень під внутрішнім тиском близько 50 атм ін'єктує геномну ДНК у цитоплазму бактерії, тоді як білковий капсид залишається ззовні.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>³²P (ДНК) →(ін'єкція) Цитоплазма бактерії, ³⁵S (білок капсиду) → Зовні на оболонці</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">150 віріонів / клітину</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Вірусологія та дослід Герші-Чейз</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Бактеріофаг Т4, складний дволанцюговий ДНК-вірус бактерій кишкової палички (*Escherichia coli*), який є класичною моделлю молекулярної біології та біонаномеханіки. Його віріон складається з видовженої ікосаедричної білкової головки (капсиду) розміром 115× 85 нм, шийки з комірцем, порожнистого стрижня в оточенні скорочувального спірального чохла та гексагональної базальної пластинки з 6 короткими шипами і 6 довгими хвостовими фібрилами.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Усередині капсиду за допомогою АТФ-залежного пакувального мотора щільно укладена лінійна молекула ДНК довжиною ≈ 169 тис. п.н. (56 мкм), що через електростатичне відштовхування фосфатних груп створює величезний внутрішній тиск P₀ ≈ 50 атм. Після специфічного зв'язування фібрил із LPS-рецепторами бактерії базальна пластинка змінює форму з шестикутника на зірку, чохол скорочується на 55%, а внутрішній стрижень проколює клітинну стінку й ін'єктує ДНК у цитоплазму.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Саме на бактеріофагах у 1952 р. Алфред Герші та Марта Чейз виконали історичний експеримент із радіоактивними ізотопами: ДНК фагів мітили фосфором ³²P, а білкову оболонку, сіркою ³⁵S. Після зараження бактерій і збивання пустих оболонок у блендері виявилося, що всередину клітини проникає виключно ³²P-ДНК, програмуючи синтез сотень нових фагів.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Стадія інфекції (1: Адсорбція, 2: Прокол оболонки, 3: Ін'єкція ДНК, 4: Збирання фагів)</strong>: 1 … 4 етап, типове значення 3 етап</li><li><strong>Початковий внутрішній тиск упаковки ДНК у капсиді фага P₀</strong>: 20 … 65 атм, типове значення 50 атм</li><li><strong>Щільність рецепторів LPS на поверхні клітинної стінки бактерії</strong>: 20 … 100 %, типове значення 80 %</li><li><strong>Урожайність літичного циклу (кількість нових віріонів з 1 клітини)</strong>: 50 … 250 фагів, типове значення 150 фагів</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Бактеріофаг Т4 інфікує клітину *E. coli* за допомогою спеціалізованого скоротливого хвостового апарату: після адсорбції хвостових фібрил на рецепторах клітинної стінки білковий чохол скорочується і крізь порожнистий стрижень під внутрішнім тиском близько 50 атм ін'єктує геномну ДНК у цитоплазму бактерії, тоді як білковий капсид залишається ззовні.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>³²P (ДНК) →(ін'єкція) Цитоплазма бактерії, ³⁵S (білок капсиду) → Зовні на оболонці</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

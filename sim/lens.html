@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Converging Lens &amp; Light Wavefront Focusing</h1>
       <p id="scene-epigraph" class="chapter-epigraph">An optical lens delays the central portion of a light wavefront more than its edges, transforming an incident plane wavefront into a spherical wavefront converging at the focus.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A biconvex converging lens acts as a spatial phase transformer for light wavefronts. Because the glass (n &gt; 1) is thickest along the optical axis, the central portion of an incident wavefront travels slower (v = c/n) over a longer path than the outer edges, bending a diverging or plane wavefront into a converging spherical wavefront.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Optical power D = 1/F (in diopters, m⁻¹) is given by the Lensmaker's equation D = (n - 1)((1)/(R₁) + (1)/(R₂)). Object distance d, image distance f, and focal length F satisfy the Gaussian thin-lens equation (1)/(d) + (1)/(f) = (1)/(F) ⇒ f = (dF)/(d - F), with lateral magnification Γ = (|f|)/(d).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Varying object distance d relative to F and 2F transitions across three optical regimes: for d &gt; 2F the image is real, inverted, and diminished (camera sensor / human eye); for F &lt; d &lt; 2F it is real, inverted, and magnified (projector); and for d &lt; F rays diverge to form a virtual, upright, magnified image (magnifying glass).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Lens refractive index n</strong>: 1.35 … 1.9, standard value 1.55</li><li><strong>Surface curvature radius R</strong>: 2.2 … 5.2 m, standard value 3.4 m</li><li><strong>Light beam aperture H</strong>: 0.8 … 2.1 m, standard value 1.6 m</li><li><strong>Light wavelength λ</strong>: 410 … 680 nm, standard value 510 nm</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In microscope objectives, camera lenses, and the crystalline lens of the eye, a converging lens is thicker at its center: the central portion of an incident wavefront traverses more glass and undergoes a greater phase delay, curving a planar wavefront into a spherical wave that converges at the focus.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>D = (1)/(F) = (n - 1) ((1)/(R₁) + (1)/(R₂)) (1)/(d) + (1)/(f) = (1)/(F), Γ = (H)/(h) = (f)/(d)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">54.7°</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A biconvex converging lens acts as a spatial phase transformer for light wavefronts. Because the glass (n &gt; 1) is thickest along the optical axis, the central portion of an incident wavefront travels slower (v = c/n) over a longer path than the outer edges, bending a diverging or plane wavefront into a converging spherical wavefront.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Optical power D = 1/F (in diopters, m⁻¹) is given by the Lensmaker's equation D = (n - 1)((1)/(R₁) + (1)/(R₂)). Object distance d, image distance f, and focal length F satisfy the Gaussian thin-lens equation (1)/(d) + (1)/(f) = (1)/(F) ⇒ f = (dF)/(d - F), with lateral magnification Γ = (|f|)/(d).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Varying object distance d relative to F and 2F transitions across three optical regimes: for d &gt; 2F the image is real, inverted, and diminished (camera sensor / human eye); for F &lt; d &lt; 2F it is real, inverted, and magnified (projector); and for d &lt; F rays diverge to form a virtual, upright, magnified image (magnifying glass).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Lens refractive index n</strong>: 1.35 … 1.9, standard value 1.55</li><li><strong>Surface curvature radius R</strong>: 2.2 … 5.2 m, standard value 3.4 m</li><li><strong>Light beam aperture H</strong>: 0.8 … 2.1 m, standard value 1.6 m</li><li><strong>Light wavelength λ</strong>: 410 … 680 nm, standard value 510 nm</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In microscope objectives, camera lenses, and the crystalline lens of the eye, a converging lens is thicker at its center: the central portion of an incident wavefront traverses more glass and undergoes a greater phase delay, curving a planar wavefront into a spherical wave that converges at the focus.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>D = (1)/(F) = (n - 1) ((1)/(R₁) + (1)/(R₂)) (1)/(d) + (1)/(f) = (1)/(F), Γ = (H)/(h) = (f)/(d)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

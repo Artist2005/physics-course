@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Faraday's Law &amp; Lenz's Rule in 3D</h1>
       <p id="scene-epigraph" class="chapter-epigraph">The induced electromotive force in a closed circuit is equal and opposite in sign to the time rate of change of magnetic flux through the surface bounded by the circuit.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Discovered by Michael Faraday in 1831, electromagnetic induction generates an electromotive force (induced EMF ℰ_i) around a closed conducting loop whenever the magnetic flux Φ = ∫ B· dS threading the loop changes with time.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Faraday's Law for an N-turn coil, ℰ_i = -N(dΦ)/(dt), driving an induced current I_i = (ℰ_i)/(R) through resistance R. The minus sign encodes Lenz's Law: the induced current always circulates in a direction whose own magnetic field B_ind opposes the flux change ΔΦ that produced it.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Thus, plunging a magnet toward the coil ((dΦ)/(dt) &gt; 0) induces a repulsive pole that brakes the magnet; pulling it away ((dΦ)/(dt) &lt; 0) induces an attractive pole; and holding the magnet stationary inside ((dΦ)/(dt) = 0) yields zero current. Mechanical work done against Lenz's braking force converts directly into Joule electrical power P = I_i² R.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Coil turn count N</strong>: 4 … 20, standard value 12</li><li><strong>Magnet field B₀</strong>: 0.6 … 2.5 T, standard value 1.6 T</li><li><strong>Magnet oscillation freq. ω</strong>: 0.8 … 4 rad/s, standard value 2.2 rad/s</li><li><strong>Circuit resistance R</strong>: 1 … 5 Ω, standard value 2 Ω</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Power-plant alternators, bicycle dynamos, and inductive chargers operate by Faraday's law of electromagnetic induction: moving a magnet relative to a coil varies the magnetic flux and induces an electromotive force, whereas a stationary magnet produces zero current.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>ℰ_i = -N (dΦ_B)/(dt), Φ_B = B S cos θ I_i = (ℰ_i)/(R), F_brake ∼ (N² B² S² v)/(R)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">v = 0 → ℰᵢ = 0</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Discovered by Michael Faraday in 1831, electromagnetic induction generates an electromotive force (induced EMF ℰ_i) around a closed conducting loop whenever the magnetic flux Φ = ∫ B· dS threading the loop changes with time.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Faraday's Law for an N-turn coil, ℰ_i = -N(dΦ)/(dt), driving an induced current I_i = (ℰ_i)/(R) through resistance R. The minus sign encodes Lenz's Law: the induced current always circulates in a direction whose own magnetic field B_ind opposes the flux change ΔΦ that produced it.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Thus, plunging a magnet toward the coil ((dΦ)/(dt) &gt; 0) induces a repulsive pole that brakes the magnet; pulling it away ((dΦ)/(dt) &lt; 0) induces an attractive pole; and holding the magnet stationary inside ((dΦ)/(dt) = 0) yields zero current. Mechanical work done against Lenz's braking force converts directly into Joule electrical power P = I_i² R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Coil turn count N</strong>: 4 … 20, standard value 12</li><li><strong>Magnet field B₀</strong>: 0.6 … 2.5 T, standard value 1.6 T</li><li><strong>Magnet oscillation freq. ω</strong>: 0.8 … 4 rad/s, standard value 2.2 rad/s</li><li><strong>Circuit resistance R</strong>: 1 … 5 Ω, standard value 2 Ω</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Power-plant alternators, bicycle dynamos, and inductive chargers operate by Faraday's law of electromagnetic induction: moving a magnet relative to a coil varies the magnetic flux and induces an electromotive force, whereas a stationary magnet produces zero current.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>ℰ_i = -N (dΦ_B)/(dt), Φ_B = B S cos θ I_i = (ℰ_i)/(R), F_brake ∼ (N² B² S² v)/(R)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

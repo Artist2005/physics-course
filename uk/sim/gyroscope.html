@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Момент інерції та енергія кочення</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Під час кочення без проковзування потенціальна енергія переходить одночасно у поступальну та обертальну кінетичну енергію: перемагає тіло з меншим відносним моментом інерції.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коли осесиметричне тверде тіло масою m і радіусом R котиться без проковзування по похилій площині (v = ω R), його повна кінетична енергія за теоремою Кеніга складається з енергії поступального руху центра мас E_пост = (1)/(2)mv² та енергії обертання навколо власної осі E_об = (1)/(2)Iω².</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Момент інерції тіла зручно записати через безрозмірний коефіцієнт розподілу маси β = (I)/(mR²): для суцільної кулі β = 0.4, для суцільного диска чи циліндра β = 0.5, а для тонкостінного обруча (труби), де вся маса віддалена на край обода, β = 1.0. Тоді закон збереження енергії має вигляд mgh = (1)/(2)mv²(1 + β), а лінійне прискорення центра мас уздовж схилу дорівнює a = (g sin α)/(1 + β).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Зверніть увагу на фундаментальний результат: прискорення кочення a не залежить ані від маси m, ані від радіуса R, а визначається виключно геометрією розподілу маси β! Оскільки в обруча β = 1.0 рівно половина (50%) потенціальної енергії витрачається на розкручування обода, а в суцільного диска (β = 0.5), лише третина (33.3%), суцільний диск або куля завжди перемагають обруч у перегонах по схилу.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Коефіцієнт інерції β = I/(mR²)</strong>: 0.2 … 1, типове значення 0.5</li><li><strong>Кут нахилу площини α</strong>: 14 … 40 °, типове значення 26 °</li><li><strong>Радіус тіла кочення R</strong>: 0.45 … 0.9 м, типове значення 0.65 м</li><li><strong>Маса тіла m</strong>: 1 … 4 кг, типове значення 2 кг</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Під час скочування суцільної кулі та тонкостінного обруча з однакової похилої площини суцільна куля набирає більшого лінійного прискорення, оскільки її момент інерції (I = (2)/(5)mR²) менший, ніж у обруча (I = mR²), де вся маса зосереджена на периферії.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>I = β m R², E_k = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) a = (g sin α)/(1 + β), β_куля = 0.4, β_цил = 0.5, β_обруч = 1.0</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.42 кг·м²</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли осесиметричне тверде тіло масою m і радіусом R котиться без проковзування по похилій площині (v = ω R), його повна кінетична енергія за теоремою Кеніга складається з енергії поступального руху центра мас E_пост = (1)/(2)mv² та енергії обертання навколо власної осі E_об = (1)/(2)Iω².</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Момент інерції тіла зручно записати через безрозмірний коефіцієнт розподілу маси β = (I)/(mR²): для суцільної кулі β = 0.4, для суцільного диска чи циліндра β = 0.5, а для тонкостінного обруча (труби), де вся маса віддалена на край обода, β = 1.0. Тоді закон збереження енергії має вигляд mgh = (1)/(2)mv²(1 + β), а лінійне прискорення центра мас уздовж схилу дорівнює a = (g sin α)/(1 + β).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Зверніть увагу на фундаментальний результат: прискорення кочення a не залежить ані від маси m, ані від радіуса R, а визначається виключно геометрією розподілу маси β! Оскільки в обруча β = 1.0 рівно половина (50%) потенціальної енергії витрачається на розкручування обода, а в суцільного диска (β = 0.5), лише третина (33.3%), суцільний диск або куля завжди перемагають обруч у перегонах по схилу.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Коефіцієнт інерції β = I/(mR²)</strong>: 0.2 … 1, типове значення 0.5</li><li><strong>Кут нахилу площини α</strong>: 14 … 40 °, типове значення 26 °</li><li><strong>Радіус тіла кочення R</strong>: 0.45 … 0.9 м, типове значення 0.65 м</li><li><strong>Маса тіла m</strong>: 1 … 4 кг, типове значення 2 кг</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Під час скочування суцільної кулі та тонкостінного обруча з однакової похилої площини суцільна куля набирає більшого лінійного прискорення, оскільки її момент інерції (I = (2)/(5)mR²) менший, ніж у обруча (I = mR²), де вся маса зосереджена на периферії.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>I = β m R², E_k = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) a = (g sin α)/(1 + β), β_куля = 0.4, β_цил = 0.5, β_обруч = 1.0</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

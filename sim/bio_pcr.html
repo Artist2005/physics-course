@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Polymerase Chain Reaction (PCR): Thermal Cycling &amp; Exponential DNA Amplification</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Invented by Kary Mullis, the Polymerase Chain Reaction amplifies a single target DNA molecule into billions of exact copies within hours using thermostable Taq polymerase and programmable temperature cycles."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Biotechnology: PCR</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Polymerase Chain Reaction (PCR, Kary Mullis, 1983) exponentially amplifies a defined DNA segment *in vitro* through automated thermal cycling. Each cycle comprises three steps: 1) Denaturation (94..96 °C) to melt duplex DNA into single strands; 2) Annealing (54..62 °C) to hybridize forward and reverse oligonucleotide primers to 3' flanking sequences; and 3) Extension (72 °C) to synthesize complementary 5'→ 3' strands.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">PCR relies on thermostable Taq DNA polymerase from the thermophilic bacterium *Thermus aquaticus*, which survives repeated 95 °C denaturation steps and catalyzes rapid dNTP incorporation at 72 °C in the presence of Mg²⁺ ions.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because newly synthesized strands serve as templates in subsequent cycles, target copy number grows exponentially as N(n) = N₀ · (1 + E)^n (yielding N = N₀ · 2^n for ideal efficiency E = 1, or 2²⁰ ≈ 1.05× 10⁶-fold amplification in 20 cycles). In real-time quantitative PCR (qPCR), the threshold cycle C_t scales inversely with lg N₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Completed PCR amplification cycles n</strong>: 1 … 30 cycles, standard value 20 cycles</li><li><strong>Thermal cycle stage (1: Denaturation 95 °C, 2: Annealing 58 °C, 3: Extension 72 °C)</strong>: 1 … 3 stage, standard value 3 stage</li><li><strong>Initial template DNA molecules N₀</strong>: 1 … 100 templates, standard value 10 templates</li><li><strong>Per-cycle amplification efficiency E (1.00 = ideal doubling 2ⁿ)</strong>: 0.7 … 1, standard value 0.98</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The polymerase chain reaction (PCR) exponentially amplifies a specific target DNA sequence *in vitro*. During each three-step thermal cycle (denaturation at 95 °C, primer annealing at 58 °C, extension at 72 °C), thermostable *Taq* polymerase doubles the number of target templates (N = N₀ · 2^n), generating 2²⁰ = 1,048,576 copies from a single molecule in 20 cycles.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>N(n) = N₀ · (1 + E)^n →(E=1) N₀ · 2^n, T_cycle: 95 °C → 58 °C → 72 °C</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Taq polymerase (Thermus aquaticus, 72 °C)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Biotechnology: PCR</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The Polymerase Chain Reaction (PCR, Kary Mullis, 1983) exponentially amplifies a defined DNA segment *in vitro* through automated thermal cycling. Each cycle comprises three steps: 1) Denaturation (94..96 °C) to melt duplex DNA into single strands; 2) Annealing (54..62 °C) to hybridize forward and reverse oligonucleotide primers to 3' flanking sequences; and 3) Extension (72 °C) to synthesize complementary 5'→ 3' strands.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">PCR relies on thermostable Taq DNA polymerase from the thermophilic bacterium *Thermus aquaticus*, which survives repeated 95 °C denaturation steps and catalyzes rapid dNTP incorporation at 72 °C in the presence of Mg²⁺ ions.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because newly synthesized strands serve as templates in subsequent cycles, target copy number grows exponentially as N(n) = N₀ · (1 + E)^n (yielding N = N₀ · 2^n for ideal efficiency E = 1, or 2²⁰ ≈ 1.05× 10⁶-fold amplification in 20 cycles). In real-time quantitative PCR (qPCR), the threshold cycle C_t scales inversely with lg N₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Completed PCR amplification cycles n</strong>: 1 … 30 cycles, standard value 20 cycles</li><li><strong>Thermal cycle stage (1: Denaturation 95 °C, 2: Annealing 58 °C, 3: Extension 72 °C)</strong>: 1 … 3 stage, standard value 3 stage</li><li><strong>Initial template DNA molecules N₀</strong>: 1 … 100 templates, standard value 10 templates</li><li><strong>Per-cycle amplification efficiency E (1.00 = ideal doubling 2ⁿ)</strong>: 0.7 … 1, standard value 0.98</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The polymerase chain reaction (PCR) exponentially amplifies a specific target DNA sequence *in vitro*. During each three-step thermal cycle (denaturation at 95 °C, primer annealing at 58 °C, extension at 72 °C), thermostable *Taq* polymerase doubles the number of target templates (N = N₀ · 2^n), generating 2²⁰ = 1,048,576 copies from a single molecule in 20 cycles.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>N(n) = N₀ · (1 + E)^n →(E=1) N₀ · 2^n, T_cycle: 95 °C → 58 °C → 72 °C</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

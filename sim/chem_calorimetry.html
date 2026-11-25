@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Thermochemistry, Hess’s Law &amp; Calorimetric Enthalpy Determination ΔH</h1>
       <p id="scene-epigraph" class="chapter-epigraph">The heat of a chemical reaction at constant pressure equals the enthalpy change ΔH and depends solely on the initial and final states (Hess's Law).</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Thermochemistry</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Thermochemistry quantifies the heat exchanged during chemical reactions. At constant pressure, the heat of reaction equals the change in enthalpy Δ H = H_products - H_reactants. In an exothermic reaction (Δ H 0 into the surroundings (e.g., strong acid-base neutralization H⁺ + OH⁻ → H₂O, Δ H° = -57.3 kJ/mol). In an endothermic process (Δ H &gt; 0), heat is absorbed from the solution (e.g., dissolution of NH₄NO₃, Δ H° = +25.7 kJ/mol).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In an insulated calorimeter, the heat balance yields Δ H = -(Q_cal)/(ν) = -((mₛₒₗ c_p + C_cal)Δ T)/(ν), where c_p ≈ 4.184 J/(g·K) is the specific heat capacity of the aqueous solution and C_cal is the calorimeter constant.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Hess's Law states that because enthalpy H is a state function, the overall enthalpy change Δ H°ᵣₓₙ of a reaction is independent of the pathway or number of intermediate steps: Δ H°ᵣₓₙ = ∑ ν_i Δ H°_f,prod - ∑ ν_j Δ H°_f,react.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Reaction (1=HCl+NaOH exo, 2=NH₄NO₃ endo, 3=Mg+2HCl strong exo)</strong>: 1 … 3, standard value 1</li><li><strong>Reactant molar amount ν</strong>: 0.02 … 0.25 mol, standard value 0.1 mol</li><li><strong>Calorimeter aqueous solution mass m</strong>: 100 … 400 g, standard value 200 g</li><li><strong>Calorimeter vessel heat capacity C_cal</strong>: 10 … 120 J/K, standard value 45 J/K</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">A chemical hand-warmer releases heat in an exothermic reaction (Δ H 0, temperature drops).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Q_cal = (mₛₒₗ c_p + C_cal) Δ T = -ν Δ Hᵣₓₙ Δ H°ᵣₓₙ = ∑ ν_i Δ H°_f,prod - ∑ ν_j Δ H°_f,react (Hess's Law)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">0.10 mol</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Thermochemistry</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Thermochemistry quantifies the heat exchanged during chemical reactions. At constant pressure, the heat of reaction equals the change in enthalpy Δ H = H_products - H_reactants. In an exothermic reaction (Δ H 0 into the surroundings (e.g., strong acid-base neutralization H⁺ + OH⁻ → H₂O, Δ H° = -57.3 kJ/mol). In an endothermic process (Δ H &gt; 0), heat is absorbed from the solution (e.g., dissolution of NH₄NO₃, Δ H° = +25.7 kJ/mol).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">In an insulated calorimeter, the heat balance yields Δ H = -(Q_cal)/(ν) = -((mₛₒₗ c_p + C_cal)Δ T)/(ν), where c_p ≈ 4.184 J/(g·K) is the specific heat capacity of the aqueous solution and C_cal is the calorimeter constant.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Hess's Law states that because enthalpy H is a state function, the overall enthalpy change Δ H°ᵣₓₙ of a reaction is independent of the pathway or number of intermediate steps: Δ H°ᵣₓₙ = ∑ ν_i Δ H°_f,prod - ∑ ν_j Δ H°_f,react.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Reaction (1=HCl+NaOH exo, 2=NH₄NO₃ endo, 3=Mg+2HCl strong exo)</strong>: 1 … 3, standard value 1</li><li><strong>Reactant molar amount ν</strong>: 0.02 … 0.25 mol, standard value 0.1 mol</li><li><strong>Calorimeter aqueous solution mass m</strong>: 100 … 400 g, standard value 200 g</li><li><strong>Calorimeter vessel heat capacity C_cal</strong>: 10 … 120 J/K, standard value 45 J/K</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">A chemical hand-warmer releases heat in an exothermic reaction (Δ H 0, temperature drops).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Q_cal = (mₛₒₗ c_p + C_cal) Δ T = -ν Δ Hᵣₓₙ Δ H°ᵣₓₙ = ∑ ν_i Δ H°_f,prod - ∑ ν_j Δ H°_f,react (Hess's Law)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

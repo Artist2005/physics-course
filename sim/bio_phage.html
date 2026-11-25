@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Bacteriophage T4 Structure &amp; Lytic Cycle: Biomechanical Syringe &amp; Viral DNA Injection</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Bacteriophage T4 operates as a spring-loaded bionanomechanical syringe: upon docking its tail fibers onto Escherichia coli surface receptors, its helical sheath contracts and injects viral DNA under ~50 atm pressure while leaving the protein coat outside."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Virology &amp; Hershey-Chase</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Bacteriophage T4 is a tailed double-stranded DNA virus (*Myoviridae*) that infects *Escherichia coli* and is a classic example of bionanomechanical engineering. Its virion comprises a prolate icosahedral protein capsid (115× 85 nm), a collar, a rigid inner tail tube surrounded by a contractile helical sheath, and a hexagonal baseplate bearing six short pins and six long receptor-binding tail fibers.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Packed inside the capsid by a powerful ATP-driven portal motor is a 169 kbp (56 μm) dsDNA genome whose bending stiffness and electrostatic repulsion generate an internal pressure of P₀ ≈ 50 atm. When tail fibers lock onto host lipopolysaccharide (LPS) receptors, the baseplate undergoes a hexagon-to-star conformational switch, contracting the sheath by 55% to drive the lysozyme-tipped core through the bacterial envelope and inject the DNA.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In the classic 1952 Hershey-Chase experiment, phage DNA was labeled with radioactive phosphorus (³²P) and capsid proteins with radioactive sulfur (³⁵S). Only ³²P-labeled DNA entered the host bacteria to direct progeny virion synthesis, proving that DNA is the hereditary material.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Infection stage (1: Adsorption, 2: Puncture, 3: DNA Injection, 4: Assembly)</strong>: 1 … 4 stage, standard value 3 stage</li><li><strong>Initial internal DNA packaging pressure in phage capsid P₀</strong>: 20 … 65 atm, standard value 50 atm</li><li><strong>Bacterial surface LPS receptor density</strong>: 20 … 100 %, standard value 80 %</li><li><strong>Lytic burst size (new virions released per host cell)</strong>: 50 … 250 phages, standard value 150 phages</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Bacteriophage T4 looks and acts like a lunar lander equipped with a high-pressure syringe. Landing on six tail fibers, it contracts its sheath and injects its DNA genome pressurized to 50 atm into the bacterium while leaving its empty protein shell outside.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>³²P (DNA) →(injection) Host Cytoplasm, ³⁵S (Protein Coat) → Extracellular Ghost</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">150 virions / cell</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Virology &amp; Hershey-Chase</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Bacteriophage T4 is a tailed double-stranded DNA virus (*Myoviridae*) that infects *Escherichia coli* and is a classic example of bionanomechanical engineering. Its virion comprises a prolate icosahedral protein capsid (115× 85 nm), a collar, a rigid inner tail tube surrounded by a contractile helical sheath, and a hexagonal baseplate bearing six short pins and six long receptor-binding tail fibers.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Packed inside the capsid by a powerful ATP-driven portal motor is a 169 kbp (56 μm) dsDNA genome whose bending stiffness and electrostatic repulsion generate an internal pressure of P₀ ≈ 50 atm. When tail fibers lock onto host lipopolysaccharide (LPS) receptors, the baseplate undergoes a hexagon-to-star conformational switch, contracting the sheath by 55% to drive the lysozyme-tipped core through the bacterial envelope and inject the DNA.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the classic 1952 Hershey-Chase experiment, phage DNA was labeled with radioactive phosphorus (³²P) and capsid proteins with radioactive sulfur (³⁵S). Only ³²P-labeled DNA entered the host bacteria to direct progeny virion synthesis, proving that DNA is the hereditary material.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Infection stage (1: Adsorption, 2: Puncture, 3: DNA Injection, 4: Assembly)</strong>: 1 … 4 stage, standard value 3 stage</li><li><strong>Initial internal DNA packaging pressure in phage capsid P₀</strong>: 20 … 65 atm, standard value 50 atm</li><li><strong>Bacterial surface LPS receptor density</strong>: 20 … 100 %, standard value 80 %</li><li><strong>Lytic burst size (new virions released per host cell)</strong>: 50 … 250 phages, standard value 150 phages</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Bacteriophage T4 looks and acts like a lunar lander equipped with a high-pressure syringe. Landing on six tail fibers, it contracts its sheath and injects its DNA genome pressurized to 50 atm into the bacterium while leaving its empty protein shell outside.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>³²P (DNA) →(injection) Host Cytoplasm, ³⁵S (Protein Coat) → Extracellular Ghost</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

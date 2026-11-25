@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Conservation of Linear Momentum</h1>
       <p id="scene-epigraph" class="chapter-epigraph">In a closed mechanical system, the vector sum of momenta of all bodies remains constant under any mutual interactions.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In an isolated mechanical system where external forces cancel out (∑ Fₑₓₜ = 0), Newton's third law guarantees that internal impact forces between two colliding bodies are equal in magnitude and opposite in direction at every instant: F₁₂ = -F₂₁. Consequently, the total linear momentum p = m₁v₁ + m₂v₂ remains strictly conserved across all collision regimes, from perfectly elastic to completely plastic.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The degree of elasticity is governed by the coefficient of restitution e = (|v'₂ - v'₁|)/(|v₁ - v₂|) ∈ [0, 1]. Relative to the center-of-mass velocity v_C = (m₁ v₁ + m₂ v₂)/(m₁ + m₂), the post-impact velocities are v'₁ = v_C - e (m₂)/(m₁ + m₂)(v₁ - v₂) and v'₂ = v_C + e (m₁)/(m₁ + m₂)(v₁ - v₂). The dissipated mechanical energy converted into internal heat and plastic deformation is Q = (1)/(2)μ (v₁ - v₂)² (1 - e²), where μ = (m₁ m₂)/(m₁ + m₂) is the reduced mass.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">By varying the mass ratio m₁/m₂ and restitution e, observe the two fundamental limits: for e = 1 and m₁ = m₂, the spheres completely exchange velocities (Q = 0), whereas for e = 0 they coalesce and move at the center-of-mass velocity v_C. This formalism supports ballistic pendulums, neutron moderation in nuclear reactors, and particle collider kinematics.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Mass of 1st sphere m₁</strong>: 0.5 … 6 kg, standard value 2 kg</li><li><strong>Mass of 2nd sphere m₂</strong>: 0.5 … 6 kg, standard value 2 kg</li><li><strong>Initial velocity v₁</strong>: 1 … 8 m/s, standard value 4 m/s</li><li><strong>Initial velocity v₂</strong>: -4 … 3 m/s, standard value 0 m/s</li><li><strong>Restitution coeff. e</strong>: 0 … 1, standard value 1</li><li><strong>Impact offset Δz</strong>: -0.6 … 0.6 m, standard value 0 m</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Colliding billiard balls or coupling railcars illustrate momentum conservation in an isolated system. Even in an inelastic impact where part of the kinetic energy converts into heat, the total linear momentum vector mv remains strictly constant in the absence of external forces.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>p₁ + p₂ = p₁' + p₂' = const v₁' = ((m₁ - e m₂)v₁ + (1+e)m₂ v₂)/(m₁ + m₂)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.00 J</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">In an isolated mechanical system where external forces cancel out (∑ Fₑₓₜ = 0), Newton's third law guarantees that internal impact forces between two colliding bodies are equal in magnitude and opposite in direction at every instant: F₁₂ = -F₂₁. Consequently, the total linear momentum p = m₁v₁ + m₂v₂ remains strictly conserved across all collision regimes, from perfectly elastic to completely plastic.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The degree of elasticity is governed by the coefficient of restitution e = (|v'₂ - v'₁|)/(|v₁ - v₂|) ∈ [0, 1]. Relative to the center-of-mass velocity v_C = (m₁ v₁ + m₂ v₂)/(m₁ + m₂), the post-impact velocities are v'₁ = v_C - e (m₂)/(m₁ + m₂)(v₁ - v₂) and v'₂ = v_C + e (m₁)/(m₁ + m₂)(v₁ - v₂). The dissipated mechanical energy converted into internal heat and plastic deformation is Q = (1)/(2)μ (v₁ - v₂)² (1 - e²), where μ = (m₁ m₂)/(m₁ + m₂) is the reduced mass.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">By varying the mass ratio m₁/m₂ and restitution e, observe the two fundamental limits: for e = 1 and m₁ = m₂, the spheres completely exchange velocities (Q = 0), whereas for e = 0 they coalesce and move at the center-of-mass velocity v_C. This formalism supports ballistic pendulums, neutron moderation in nuclear reactors, and particle collider kinematics.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Mass of 1st sphere m₁</strong>: 0.5 … 6 kg, standard value 2 kg</li><li><strong>Mass of 2nd sphere m₂</strong>: 0.5 … 6 kg, standard value 2 kg</li><li><strong>Initial velocity v₁</strong>: 1 … 8 m/s, standard value 4 m/s</li><li><strong>Initial velocity v₂</strong>: -4 … 3 m/s, standard value 0 m/s</li><li><strong>Restitution coeff. e</strong>: 0 … 1, standard value 1</li><li><strong>Impact offset Δz</strong>: -0.6 … 0.6 m, standard value 0 m</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Colliding billiard balls or coupling railcars illustrate momentum conservation in an isolated system. Even in an inelastic impact where part of the kinetic energy converts into heat, the total linear momentum vector mv remains strictly constant in the absence of external forces.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>p₁ + p₂ = p₁' + p₂' = const v₁' = ((m₁ - e m₂)v₁ + (1+e)m₂ v₂)/(m₁ + m₂)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -490,6 +492,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

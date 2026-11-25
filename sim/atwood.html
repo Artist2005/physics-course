@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Atwood's Machine: Dynamics of Connected Masses &amp; Pulley Inertia</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Two weights connected by an inextensible thread over a pulley move with a single common acceleration determined by the difference in weight and total system inertia.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Invented by George Atwood in 1784, Atwood's machine is a classic apparatus for verifying Newton's laws of motion under "diluted gravity." Two masses m₁ and m₂ connected by an inextensible cord over a pulley of radius R and mass M_p share a common linear acceleration a = α R.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Writing Newton's second law for both masses and the rotational torque equation for the solid disk pulley (I = (1)/(2)M_p R²) gives m₁ g - T₁ = m₁ a, T₂ - m₂ g = m₂ a, and (T₁ - T₂)R = Iα = (1)/(2)M_p R a. Summing the three equations yields the system acceleration a = ((m₁ - m₂)g)/(m₁ + m₂ + (1)/(2)M_p).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Whenever the pulley has inertia (M_p &gt; 0), the cord tensions on the two sides are not equal (T₁ ≠ T₂), because a net torque (T₁ - T₂)R is required to angularly accelerate the pulley! Choosing m₁ ≈ m₂ slows the motion (a ≪ g) for accurate timing.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Left load mass m₁</strong>: 1 … 5 kg, standard value 3.2 kg</li><li><strong>Right load mass m₂</strong>: 1 … 5 kg, standard value 1.8 kg</li><li><strong>Pulley mass M_p</strong>: 0 … 4 kg, standard value 1 kg</li><li><strong>Pulley radius R</strong>: 0.5 … 1.2 m, standard value 0.8 m</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">An elevator with a counterweight is a direct engineering application of Atwood's machine. Because masses m₁ and m₂ hang on opposite ends of a common cable over a pulley, only their weight difference (m₁ - m₂)g drives the motion, yielding a controlled, reduced acceleration.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>a = ((m₁ - m₂) g)/(m₁ + m₂ + (1)/(2)m_pulley), ε = (a)/(R) T₁ = m₁(g - a), T₂ = m₂(g + a), T_ideal = (2 m₁ m₂)/(m₁ + m₂) g</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.00 m/s</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Invented by George Atwood in 1784, Atwood's machine is a classic apparatus for verifying Newton's laws of motion under "diluted gravity." Two masses m₁ and m₂ connected by an inextensible cord over a pulley of radius R and mass M_p share a common linear acceleration a = α R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Writing Newton's second law for both masses and the rotational torque equation for the solid disk pulley (I = (1)/(2)M_p R²) gives m₁ g - T₁ = m₁ a, T₂ - m₂ g = m₂ a, and (T₁ - T₂)R = Iα = (1)/(2)M_p R a. Summing the three equations yields the system acceleration a = ((m₁ - m₂)g)/(m₁ + m₂ + (1)/(2)M_p).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Whenever the pulley has inertia (M_p &gt; 0), the cord tensions on the two sides are not equal (T₁ ≠ T₂), because a net torque (T₁ - T₂)R is required to angularly accelerate the pulley! Choosing m₁ ≈ m₂ slows the motion (a ≪ g) for accurate timing.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Left load mass m₁</strong>: 1 … 5 kg, standard value 3.2 kg</li><li><strong>Right load mass m₂</strong>: 1 … 5 kg, standard value 1.8 kg</li><li><strong>Pulley mass M_p</strong>: 0 … 4 kg, standard value 1 kg</li><li><strong>Pulley radius R</strong>: 0.5 … 1.2 m, standard value 0.8 m</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">An elevator with a counterweight is a direct engineering application of Atwood's machine. Because masses m₁ and m₂ hang on opposite ends of a common cable over a pulley, only their weight difference (m₁ - m₂)g drives the motion, yielding a controlled, reduced acceleration.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>a = ((m₁ - m₂) g)/(m₁ + m₂ + (1)/(2)m_pulley), ε = (a)/(R) T₁ = m₁(g - a), T₂ = m₂(g + a), T_ideal = (2 m₁ m₂)/(m₁ + m₂) g</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

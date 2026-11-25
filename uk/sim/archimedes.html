@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Закон Архімеда та умови плавання тіл</h1>
       <p id="scene-epigraph" class="chapter-epigraph">На тіло, занурене в рідину або газ, діє виштовхувальна сила, що дорівнює вазі рідини в об'ємі зануреної частини тіла.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 7 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Гідростатичний тиск у нерухомій рідині густиною ρ_рід зростає з глибиною за законом Паскаля-Стевіна: p(h) = p₀ + ρ_рід g h. Через це на нижню грань зануреного тіла діє більший тиск, ніж на верхню, а поверхневий інтеграл сил тиску по замкненій поверхні тіла дає напрямлену вертикально вгору виштовхувальну силу Архімеда F_A.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Модуль сили Архімеда дорівнює вазі рідини в об'ємі зануреної частини тіла V_зан: F_A = ρ_рід g V_зан. Динаміка вертикального руху тіла об'ємом V і густиною ρ_тіла визначається балансом сили тяжіння mg = ρ_тіла g V, сили Архімеда F_A та гідродинамічного опору води.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Співвідношення густин визначає три режими плавання: 1) при ρ_тіла ρ_рід тіло тоне з ефективною вагою у воді P_еф = (ρ_тіла - ρ_рід)gV.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Густина тіла ρ_тіла</strong>: 200 … 1800 кг/м³, типове значення 600 кг/м³</li><li><strong>Густина рідини ρ_рідини</strong>: 700 … 2000 кг/м³, типове значення 1000 кг/м³</li><li><strong>Лінійний розмір куба a</strong>: 0.8 … 1.6 м, типове значення 1 м</li><li><strong>В'язкість середовища η</strong>: 0.1 … 1.2 Па·с, типове значення 0.35 Па·с</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Плавання сталевих суден визначається співвідношенням середньої густини корпусу та густини рідини: різниця гідростатичного тиску на нижню і верхню грані зануреного тіла створює виштовхувальну силу Архімеда, рівну вазі витісненої рідини.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>F_А = ρ_рідини g V_зан, F_g = ρ_тіла g V₀ (V_зан)/(V₀) = (ρ_тіла)/(ρ_рідини) (при ρ_тіла ≤ ρ_рідини)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0 л</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 7 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Гідростатичний тиск у нерухомій рідині густиною ρ_рід зростає з глибиною за законом Паскаля-Стевіна: p(h) = p₀ + ρ_рід g h. Через це на нижню грань зануреного тіла діє більший тиск, ніж на верхню, а поверхневий інтеграл сил тиску по замкненій поверхні тіла дає напрямлену вертикально вгору виштовхувальну силу Архімеда F_A.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Модуль сили Архімеда дорівнює вазі рідини в об'ємі зануреної частини тіла V_зан: F_A = ρ_рід g V_зан. Динаміка вертикального руху тіла об'ємом V і густиною ρ_тіла визначається балансом сили тяжіння mg = ρ_тіла g V, сили Архімеда F_A та гідродинамічного опору води.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Співвідношення густин визначає три режими плавання: 1) при ρ_тіла ρ_рід тіло тоне з ефективною вагою у воді P_еф = (ρ_тіла - ρ_рід)gV.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Густина тіла ρ_тіла</strong>: 200 … 1800 кг/м³, типове значення 600 кг/м³</li><li><strong>Густина рідини ρ_рідини</strong>: 700 … 2000 кг/м³, типове значення 1000 кг/м³</li><li><strong>Лінійний розмір куба a</strong>: 0.8 … 1.6 м, типове значення 1 м</li><li><strong>В'язкість середовища η</strong>: 0.1 … 1.2 Па·с, типове значення 0.35 Па·с</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Плавання сталевих суден визначається співвідношенням середньої густини корпусу та густини рідини: різниця гідростатичного тиску на нижню і верхню грані зануреного тіла створює виштовхувальну силу Архімеда, рівну вазі витісненої рідини.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>F_А = ρ_рідини g V_зан, F_g = ρ_тіла g V₀ (V_зан)/(V₀) = (ρ_тіла)/(ρ_рідини) (при ρ_тіла ≤ ρ_рідини)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Закон Авогадро, молярний об’єм газу та рівняння Менделєєва–Клапейрона</h1>
       <p id="scene-epigraph" class="chapter-epigraph">В однакових об'ємах різних газів за однакових температури й тиску міститься однакова кількість молекул: N = ν · N_A.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 8-10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">В ідеальному газі власний об'єм молекул є нехтовно малим порівняно з об'ємом посудини, а міжмолекулярні сили проявляються лише під час пружних зіткнень. Згідно з законом Авогадро, один моль будь-якого ідеального газу (ν = 1 моль, що містить N_A = 6.022× 10²³ молекул) за однакових температури T і тиску P займає однаковий молярний об'єм V_m = (RT)/(P). За нормальних умов (T = 273.15 К, P = 101.325 кПа) V_m = 22.4 л/моль.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Об'єднання газових законів Бойля, Маріотта, Гей-Люссака, Шарля та Авогадро дає універсальне рівняння стану Менделєєва, Клапейрона: PV = ν RT = (m)/(M)RT. Звідси випливає формула густини газу ρ = (m)/(V) = (PM)/(RT): за сталих P і T густина газу прямо пропорційна його молярній масі M, а відносна густина одного газу за іншим дорівнює відношенню їхніх молярних мас D = M₁ / M₂.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">На мікроскопічному рівні середня кінетична енергія поступального руху одної молекули становить ⟨ E_k⟩ = (3)/(2)k_B T і залежить виключно від абсолютної температури T. Проте середньоквадратична швидкість молекул v_кв = √((3RT)/(M)) обернено пропорційна кореню з молярної маси: легкі молекули водню (H₂, M = 2 г/моль) рухаються у 4 рази швидше за молекули кисню (O₂, M = 32 г/моль), здійснюючи в 4 рази частіші, але слабші за імпульсом удари об поршень, що в підсумку дає однаковий макроскопічний тиск P!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кількість речовини газу ν</strong>: 0.5 … 2.5 моль, типове значення 1 моль</li><li><strong>Абсолютна температура T</strong>: 200 … 500 К, типове значення 273.15 К</li><li><strong>Зовнішній тиск на поршень P</strong>: 50 … 200 кПа, типове значення 101.3 кПа</li><li><strong>Молярна маса газу M (2=H₂, 32=O₂, 44=CO₂)</strong>: 2 … 44 г/моль, типове значення 32 г/моль</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Хоча молекула вуглекислого газу CO₂ у 22 рази важча за молекулу водню H₂, за законом Авогадро один моль будь-якого ідеального газу за однакових температури й тиску займає однаковий об'єм (22.4 л за н.у.): легші молекули мають вищу середню квадратичну швидкість і частіше зіштовхуються зі стінками, тоді як важчі молекули рухаються повільніше, але передають більший імпульс під час кожного удару.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>P V = ν R T = (m)/(M) R T, N = ν N_A V_m = (V)/(ν) = (R T)/(P) →(н.у.) 22.414 л/моль</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">461 м/с</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 8-10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">В ідеальному газі власний об'єм молекул є нехтовно малим порівняно з об'ємом посудини, а міжмолекулярні сили проявляються лише під час пружних зіткнень. Згідно з законом Авогадро, один моль будь-якого ідеального газу (ν = 1 моль, що містить N_A = 6.022× 10²³ молекул) за однакових температури T і тиску P займає однаковий молярний об'єм V_m = (RT)/(P). За нормальних умов (T = 273.15 К, P = 101.325 кПа) V_m = 22.4 л/моль.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Об'єднання газових законів Бойля, Маріотта, Гей-Люссака, Шарля та Авогадро дає універсальне рівняння стану Менделєєва, Клапейрона: PV = ν RT = (m)/(M)RT. Звідси випливає формула густини газу ρ = (m)/(V) = (PM)/(RT): за сталих P і T густина газу прямо пропорційна його молярній масі M, а відносна густина одного газу за іншим дорівнює відношенню їхніх молярних мас D = M₁ / M₂.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">На мікроскопічному рівні середня кінетична енергія поступального руху одної молекули становить ⟨ E_k⟩ = (3)/(2)k_B T і залежить виключно від абсолютної температури T. Проте середньоквадратична швидкість молекул v_кв = √((3RT)/(M)) обернено пропорційна кореню з молярної маси: легкі молекули водню (H₂, M = 2 г/моль) рухаються у 4 рази швидше за молекули кисню (O₂, M = 32 г/моль), здійснюючи в 4 рази частіші, але слабші за імпульсом удари об поршень, що в підсумку дає однаковий макроскопічний тиск P!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кількість речовини газу ν</strong>: 0.5 … 2.5 моль, типове значення 1 моль</li><li><strong>Абсолютна температура T</strong>: 200 … 500 К, типове значення 273.15 К</li><li><strong>Зовнішній тиск на поршень P</strong>: 50 … 200 кПа, типове значення 101.3 кПа</li><li><strong>Молярна маса газу M (2=H₂, 32=O₂, 44=CO₂)</strong>: 2 … 44 г/моль, типове значення 32 г/моль</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Хоча молекула вуглекислого газу CO₂ у 22 рази важча за молекулу водню H₂, за законом Авогадро один моль будь-якого ідеального газу за однакових температури й тиску займає однаковий об'єм (22.4 л за н.у.): легші молекули мають вищу середню квадратичну швидкість і частіше зіштовхуються зі стінками, тоді як важчі молекули рухаються повільніше, але передають більший імпульс під час кожного удару.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>P V = ν R T = (m)/(M) R T, N = ν N_A V_m = (V)/(ν) = (R T)/(P) →(н.у.) 22.414 л/моль</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

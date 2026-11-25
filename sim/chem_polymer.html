@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Radical Polymerization of Ethylene &amp; Polyethylene Chain Growth</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Cleaving each monomer π-bond releases 93 kJ/mol of energy, zipping thousands of ethylene units into a flexible sp³ polyethylene macromolecule.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Polymerization</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Chain-growth polymerization is the sequential addition of unsaturated monomer molecules M (such as ethylene CH₂=CH₂) to an active propagating center, forming a long macromolecular polymer chain (-CH₂-CH₂-)_n (polyethylene) without eliminating any small byproduct molecules.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Free-radical polymerization proceeds through three kinetic stages: 1) Initiation, homolytic cleavage of an initiator I₂ → 2R^• and attack on the first monomer R^• + CH₂=CH₂ → R-CH₂-CH₂^•; 2) Propagation, rapid sequential monomer addition to the active radical tip at rate v_p = k_p [M][R^•] ∝ [M]√([I₂]); 3) Termination via radical combination or disproportionation.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In each propagation step, a weaker monomer π-bond (268 kJ/mol, planar sp² carbon, 1.34 Å) converts into a stronger backbone C-C σ-bond (348 kJ/mol, tetrahedral sp³ carbon, 109.5°, 1.54 Å), making polymerization strongly exothermic (Δ H_poly ≈ -93 kJ/mol). The degree of polymerization n governs the molar mass M_n = n M₀ and the statistical coil radius of gyration R_g ∝ l₀√(n).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Degree of polymerization n (-CH₂-CH₂- repeat units)</strong>: 4 … 18 units, standard value 10 units</li><li><strong>Radical initiator concentration [I₂]</strong>: 0.5 … 5 mmol/L, standard value 2 mmol/L</li><li><strong>Ethylene monomer concentration [CH₂=CH₂]</strong>: 0.5 … 3 mol/L, standard value 1.5 mol/L</li><li><strong>Polymerization reactor temperature T</strong>: 300 … 420 K, standard value 350 K</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">During free-radical polymerization of ethylene CH₂=CH₂, an initiator radical cleaves the weaker π-component of the monomer's double bond to form a new single C-C σ-bond and propagates the radical center along the growing chain, linking thousands of monomer units into polyethylene.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>n mathrmCH₂=CH₂ (sp², 120°) &amp; →(R^•) mathrm(-CH₂-CH₂-)_n (sp³, 109.5°), Δ H_poly ≈ -93 kJ/mol M_n = n· M₀ = 28.05 n g/mol, R_g ≈ l₀√((2n C_∞)/(6))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">930 kJ/mol chains (93 kJ/mol monomer)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Polymerization</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Chain-growth polymerization is the sequential addition of unsaturated monomer molecules M (such as ethylene CH₂=CH₂) to an active propagating center, forming a long macromolecular polymer chain (-CH₂-CH₂-)_n (polyethylene) without eliminating any small byproduct molecules.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Free-radical polymerization proceeds through three kinetic stages: 1) Initiation, homolytic cleavage of an initiator I₂ → 2R^• and attack on the first monomer R^• + CH₂=CH₂ → R-CH₂-CH₂^•; 2) Propagation, rapid sequential monomer addition to the active radical tip at rate v_p = k_p [M][R^•] ∝ [M]√([I₂]); 3) Termination via radical combination or disproportionation.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">In each propagation step, a weaker monomer π-bond (268 kJ/mol, planar sp² carbon, 1.34 Å) converts into a stronger backbone C-C σ-bond (348 kJ/mol, tetrahedral sp³ carbon, 109.5°, 1.54 Å), making polymerization strongly exothermic (Δ H_poly ≈ -93 kJ/mol). The degree of polymerization n governs the molar mass M_n = n M₀ and the statistical coil radius of gyration R_g ∝ l₀√(n).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Degree of polymerization n (-CH₂-CH₂- repeat units)</strong>: 4 … 18 units, standard value 10 units</li><li><strong>Radical initiator concentration [I₂]</strong>: 0.5 … 5 mmol/L, standard value 2 mmol/L</li><li><strong>Ethylene monomer concentration [CH₂=CH₂]</strong>: 0.5 … 3 mol/L, standard value 1.5 mol/L</li><li><strong>Polymerization reactor temperature T</strong>: 300 … 420 K, standard value 350 K</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">During free-radical polymerization of ethylene CH₂=CH₂, an initiator radical cleaves the weaker π-component of the monomer's double bond to form a new single C-C σ-bond and propagates the radical center along the growing chain, linking thousands of monomer units into polyethylene.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>n mathrmCH₂=CH₂ (sp², 120°) &amp; →(R^•) mathrm(-CH₂-CH₂-)_n (sp³, 109.5°), Δ H_poly ≈ -93 kJ/mol M_n = n· M₀ = 28.05 n g/mol, R_g ≈ l₀√((2n C_∞)/(6))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

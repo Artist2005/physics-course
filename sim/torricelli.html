@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Torricelli's Theorem &amp; Hydrodynamic Efflux of a Liquid Jet</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Liquid emerging from a narrow orifice at depth h below the free surface acquires the exact speed of a body freely falling from height h.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 7-10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In 1643, Evangelista Torricelli discovered that the efflux speed of an ideal liquid jet emerging from a small orifice at depth h below the free surface equals the speed a body would acquire in free fall from height h: v = √(2gh).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Torricelli's theorem follows directly from Bernoulli's equation applied along a streamline from the wide free surface (area S₁, elevation H, pressure p₀) to the exit nozzle (area S₂ ≪ S₁, elevation H - h, also at atmospheric pressure p₀): p₀ + ρ g H + (1)/(2)ρ v₁² = p₀ + ρ g (H - h) + (1)/(2)ρ v₂². Since v₁ = v₂(S₂/S₁) ≈ 0 for a wide tank, fluid density ρ cancels out, leaving v₂ = √(2gh).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Launching horizontally from height H - h above the base, the jet falls for time t = √(2(H - h)/g) and strikes at horizontal range L(h) = v t = 2√(h(H - h)). By symmetry, maximum range Lₘₐₓ = H occurs when the nozzle is placed exactly at mid-depth (h = H/2).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Water column height H</strong>: 2.6 … 5 m, standard value 4.4 m</li><li><strong>Probed nozzle depth h</strong>: 0.4 … 4.2 m, standard value 2.2 m</li><li><strong>Nozzle velocity coeff. φ</strong>: 0.8 … 1, standard value 0.98</li><li><strong>Liquid density ρ</strong>: 0.8 … 1.8 g/cm³, standard value 1 g/cm³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">When an ideal fluid discharges through a small orifice at depth h below the free surface of an open tank, the efflux jet emerges with the exact speed v = √(2gh) that a body would acquire in free fall through height h.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>v = √(2gh) (Torricelli's Law), t_fall = √((2 y₀)/(g)) X = v t_fall = 2√(h y₀) = 2√(h(H - h)), Xₘₐₓ = H at h = (H)/(2)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">21.6 kPa</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 7-10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">In 1643, Evangelista Torricelli discovered that the efflux speed of an ideal liquid jet emerging from a small orifice at depth h below the free surface equals the speed a body would acquire in free fall from height h: v = √(2gh).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Torricelli's theorem follows directly from Bernoulli's equation applied along a streamline from the wide free surface (area S₁, elevation H, pressure p₀) to the exit nozzle (area S₂ ≪ S₁, elevation H - h, also at atmospheric pressure p₀): p₀ + ρ g H + (1)/(2)ρ v₁² = p₀ + ρ g (H - h) + (1)/(2)ρ v₂². Since v₁ = v₂(S₂/S₁) ≈ 0 for a wide tank, fluid density ρ cancels out, leaving v₂ = √(2gh).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Launching horizontally from height H - h above the base, the jet falls for time t = √(2(H - h)/g) and strikes at horizontal range L(h) = v t = 2√(h(H - h)). By symmetry, maximum range Lₘₐₓ = H occurs when the nozzle is placed exactly at mid-depth (h = H/2).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Water column height H</strong>: 2.6 … 5 m, standard value 4.4 m</li><li><strong>Probed nozzle depth h</strong>: 0.4 … 4.2 m, standard value 2.2 m</li><li><strong>Nozzle velocity coeff. φ</strong>: 0.8 … 1, standard value 0.98</li><li><strong>Liquid density ρ</strong>: 0.8 … 1.8 g/cm³, standard value 1 g/cm³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">When an ideal fluid discharges through a small orifice at depth h below the free surface of an open tank, the efflux jet emerges with the exact speed v = √(2gh) that a body would acquire in free fall through height h.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>v = √(2gh) (Torricelli's Law), t_fall = √((2 y₀)/(g)) X = v t_fall = 2√(h y₀) = 2√(h(H - h)), Xₘₐₓ = H at h = (H)/(2)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

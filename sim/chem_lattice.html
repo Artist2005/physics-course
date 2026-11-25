@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ionic Crystal Lattice &amp; Lattice Energy (NaCl)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">In an ionic crystal, every cation is octahedrally coordinated by six anions, forming a continuous three-dimensional electrostatic lattice.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 8-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Crystalline solids possess long-range periodic order across a 3D lattice. In ionic crystals (such as NaCl, face-centered cubic rocksalt lattice with 6:6 coordination), cations and anions are bound by omnidirectional electrostatic attraction. In covalent network crystals (diamond, quartz SiO₂), atoms form a continuous 3D scaffold of rigid directional bonds (sp³ tetrahedra in diamond). In metallic crystals, positive ion cores are immersed in a mobile, delocalized Fermi sea of conduction electrons.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The cohesive energy of an ionic crystal is given by the Born-Landé equation: U₀ = -(N_A M |z₊ z₋| e²)/(4πε₀ r₀)(1 - (1)/(n_B)), where M is the Madelung constant capturing the geometric lattice sum of electrostatic interactions (M = 1.7476 for NaCl), r₀ is the equilibrium interionic distance, and n_B ≈ 8-12 characterizes short-range Born repulsion between closed electron shells.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Increasing absolute temperature T amplifies the root-mean-square thermal vibration amplitude of lattice sites ⟨ u²⟩ ∝ (k_B T)/(k_bond). By Lindemann's melting criterion, when the thermal vibration amplitude reaches ≈ 10-15% of the interatomic spacing r₀, long-range order breaks down and the crystal melts. Hence crystals with high ionic charges and short bond lengths (MgO, Al₂O₃, diamond) exhibit exceptionally high melting points.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Interionic distance r₀ (r₊ + r₋)</strong>: 2.1 … 3.5 Å, standard value 2.82 Å</li><li><strong>Ion charge magnitude |z±| (1=NaCl, 2=MgO)</strong>: 1 … 2 e, standard value 1 e</li><li><strong>Crystal temperature T</strong>: 100 … 1000 K, standard value 300 K</li><li><strong>Born repulsion exponent n</strong>: 6 … 12, standard value 9</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Crystal lattice architecture governs bulk material properties: table salt NaCl alternates Na⁺ and Cl⁻ ions in a cubic ionic lattice, whereas diamond links every sp³ carbon atom to four neighbors via rigid covalent bonds, forming an ultrahard 3D network.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Uₗₐₜ = -(N_A M z⁺ z⁻ e²)/(4πε₀ r₀)(1 - (1)/(n)) M(NaCl) = 1.7476, CN(Na⁺) = CN(Cl⁻) = 6</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.11 Å</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 8-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Crystalline solids possess long-range periodic order across a 3D lattice. In ionic crystals (such as NaCl, face-centered cubic rocksalt lattice with 6:6 coordination), cations and anions are bound by omnidirectional electrostatic attraction. In covalent network crystals (diamond, quartz SiO₂), atoms form a continuous 3D scaffold of rigid directional bonds (sp³ tetrahedra in diamond). In metallic crystals, positive ion cores are immersed in a mobile, delocalized Fermi sea of conduction electrons.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The cohesive energy of an ionic crystal is given by the Born-Landé equation: U₀ = -(N_A M |z₊ z₋| e²)/(4πε₀ r₀)(1 - (1)/(n_B)), where M is the Madelung constant capturing the geometric lattice sum of electrostatic interactions (M = 1.7476 for NaCl), r₀ is the equilibrium interionic distance, and n_B ≈ 8-12 characterizes short-range Born repulsion between closed electron shells.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Increasing absolute temperature T amplifies the root-mean-square thermal vibration amplitude of lattice sites ⟨ u²⟩ ∝ (k_B T)/(k_bond). By Lindemann's melting criterion, when the thermal vibration amplitude reaches ≈ 10-15% of the interatomic spacing r₀, long-range order breaks down and the crystal melts. Hence crystals with high ionic charges and short bond lengths (MgO, Al₂O₃, diamond) exhibit exceptionally high melting points.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Interionic distance r₀ (r₊ + r₋)</strong>: 2.1 … 3.5 Å, standard value 2.82 Å</li><li><strong>Ion charge magnitude |z±| (1=NaCl, 2=MgO)</strong>: 1 … 2 e, standard value 1 e</li><li><strong>Crystal temperature T</strong>: 100 … 1000 K, standard value 300 K</li><li><strong>Born repulsion exponent n</strong>: 6 … 12, standard value 9</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Crystal lattice architecture governs bulk material properties: table salt NaCl alternates Na⁺ and Cl⁻ ions in a cubic ionic lattice, whereas diamond links every sp³ carbon atom to four neighbors via rigid covalent bonds, forming an ultrahard 3D network.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Uₗₐₜ = -(N_A M z⁺ z⁻ e²)/(4πε₀ r₀)(1 - (1)/(n)) M(NaCl) = 1.7476, CN(Na⁺) = CN(Cl⁻) = 6</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Coriolis Force &amp; Motion in a Rotating Reference Frame</h1>
       <p id="scene-epigraph" class="chapter-epigraph">A body moving radially in an inertial frame traces a curved spiral in a rotating frame under the action of the Coriolis inertial force.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Newton's laws take their standard form only in inertial reference frames. When observing motion from a rotating non-inertial platform with angular velocity Ω, two fictitious inertial forces appear in the rotating frame: the centrifugal force F_cf = -m[Ω × [Ω × r]] and the Coriolis force F_C = -2m[Ω × vᵣₑₗ].</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In the stationary laboratory frame (shown by the straight dashed reference line in 3D), a frictionless puck launched radially outward at speed v_r moves in a perfect straight line. Meanwhile, the turntable rotates beneath it through angle Δφ = Ω t, so the trace scribed on the disk forms an Archimedean spiral φ(r) = -(Ω)/(v_r)r with lateral deflection s ≈ Ω v_r t².</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because -2m[Ω × vᵣₑₗ] acts perpendicular to vᵣₑₗ, it performs no work (F_C · vᵣₑₗ = 0) yet deflects trajectories to the right in the Northern Hemisphere (Ω_z &gt; 0), driving cyclonic weather systems, ocean gyres, and the precession of Foucault's pendulum.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Platform angular speed ω</strong>: -2.4 … 2.4 rad/s, standard value 1.2 rad/s</li><li><strong>Launch radial speed v₀</strong>: 1.2 … 4 m/s, standard value 2.5 m/s</li><li><strong>Sphere mass m</strong>: 0.5 … 3 kg, standard value 1.5 kg</li><li><strong>Initial offset from center r₀</strong>: 0 … 1.5 m, standard value 0.2 m</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In a rotating reference frame, a body moving radially experiences a lateral deflection due to the Coriolis inertial force. On the rotating Earth, this Coriolis acceleration drives the cyclonic rotation of weather systems and precesses the swing plane of Foucault's pendulum.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>F_Cor = -2m[ω×vᵣₑₗ], |F_Cor| = 2m ω vᵣₑₗ sin α F_cf = m ω²r, Ω_Foucault = ω_oplus sin φ</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">6.75 m</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Newton's laws take their standard form only in inertial reference frames. When observing motion from a rotating non-inertial platform with angular velocity Ω, two fictitious inertial forces appear in the rotating frame: the centrifugal force F_cf = -m[Ω × [Ω × r]] and the Coriolis force F_C = -2m[Ω × vᵣₑₗ].</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the stationary laboratory frame (shown by the straight dashed reference line in 3D), a frictionless puck launched radially outward at speed v_r moves in a perfect straight line. Meanwhile, the turntable rotates beneath it through angle Δφ = Ω t, so the trace scribed on the disk forms an Archimedean spiral φ(r) = -(Ω)/(v_r)r with lateral deflection s ≈ Ω v_r t².</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because -2m[Ω × vᵣₑₗ] acts perpendicular to vᵣₑₗ, it performs no work (F_C · vᵣₑₗ = 0) yet deflects trajectories to the right in the Northern Hemisphere (Ω_z &gt; 0), driving cyclonic weather systems, ocean gyres, and the precession of Foucault's pendulum.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Platform angular speed ω</strong>: -2.4 … 2.4 rad/s, standard value 1.2 rad/s</li><li><strong>Launch radial speed v₀</strong>: 1.2 … 4 m/s, standard value 2.5 m/s</li><li><strong>Sphere mass m</strong>: 0.5 … 3 kg, standard value 1.5 kg</li><li><strong>Initial offset from center r₀</strong>: 0 … 1.5 m, standard value 0.2 m</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In a rotating reference frame, a body moving radially experiences a lateral deflection due to the Coriolis inertial force. On the rotating Earth, this Coriolis acceleration drives the cyclonic rotation of weather systems and precesses the swing plane of Foucault's pendulum.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>F_Cor = -2m[ω×vᵣₑₗ], |F_Cor| = 2m ω vᵣₑₗ sin α F_cf = m ω²r, Ω_Foucault = ω_oplus sin φ</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

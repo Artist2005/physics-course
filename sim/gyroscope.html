@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Moment of Inertia &amp; Rolling Kinetic Energy</h1>
       <p id="scene-epigraph" class="chapter-epigraph">In rolling without slipping, potential energy splits into translational and rotational kinetic energy: the body with smaller dimensionless inertia β wins.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">When an axisymmetric rigid body of mass m and radius R rolls without slipping (v = ω R) down an incline, König's theorem states that its total kinetic energy is the sum of translational kinetic energy Eₜᵣₐₙₛ = (1)/(2)mv² and rotational kinetic energy Eᵣₒₜ = (1)/(2)Iω².</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Expressing the moment of inertia via the dimensionless shape factor β = (I)/(mR²) (β = 0.4 for a solid sphere, β = 0.5 for a solid cylinder/disk, β = 1.0 for a thin hoop) gives E_k = (1)/(2)mv²(1 + β). Conservation of energy mgh = (1)/(2)mv²(1 + β) yields the linear downhill acceleration a = (g sin α)/(1 + β).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Remarkably, the rolling acceleration a is completely independent of total mass m and radius R, depending only on the mass distribution factor β! Because a thin hoop (β = 1.0) diverts 50% of its energy into rotation whereas a solid disk (β = 0.5) diverts only 33.3%, the solid disk or sphere always beats the hoop to the bottom.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Inertia factor β = I/(mR²)</strong>: 0.2 … 1, standard value 0.5</li><li><strong>Incline angle α</strong>: 14 … 40 °, standard value 26 °</li><li><strong>Rolling body radius R</strong>: 0.45 … 0.9 m, standard value 0.65 m</li><li><strong>Body mass m</strong>: 1 … 4 kg, standard value 2 kg</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">When a solid sphere and a thin-walled hoop roll without slipping down the same incline, the solid sphere achieves a higher linear acceleration regardless of total mass because its moment of inertia (I = (2)/(5)mR²) is smaller than that of the hoop (I = mR²), where mass is concentrated at the rim.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>I = β m R², E_k = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) a = (g sin α)/(1 + β), βₛₚₕₑᵣₑ = 0.4, β_cyl = 0.5, βₕₒₒₚ = 1.0</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.42 kg·m²</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">When an axisymmetric rigid body of mass m and radius R rolls without slipping (v = ω R) down an incline, König's theorem states that its total kinetic energy is the sum of translational kinetic energy Eₜᵣₐₙₛ = (1)/(2)mv² and rotational kinetic energy Eᵣₒₜ = (1)/(2)Iω².</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Expressing the moment of inertia via the dimensionless shape factor β = (I)/(mR²) (β = 0.4 for a solid sphere, β = 0.5 for a solid cylinder/disk, β = 1.0 for a thin hoop) gives E_k = (1)/(2)mv²(1 + β). Conservation of energy mgh = (1)/(2)mv²(1 + β) yields the linear downhill acceleration a = (g sin α)/(1 + β).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Remarkably, the rolling acceleration a is completely independent of total mass m and radius R, depending only on the mass distribution factor β! Because a thin hoop (β = 1.0) diverts 50% of its energy into rotation whereas a solid disk (β = 0.5) diverts only 33.3%, the solid disk or sphere always beats the hoop to the bottom.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Inertia factor β = I/(mR²)</strong>: 0.2 … 1, standard value 0.5</li><li><strong>Incline angle α</strong>: 14 … 40 °, standard value 26 °</li><li><strong>Rolling body radius R</strong>: 0.45 … 0.9 m, standard value 0.65 m</li><li><strong>Body mass m</strong>: 1 … 4 kg, standard value 2 kg</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">When a solid sphere and a thin-walled hoop roll without slipping down the same incline, the solid sphere achieves a higher linear acceleration regardless of total mass because its moment of inertia (I = (2)/(5)mR²) is smaller than that of the hoop (I = mR²), where mass is concentrated at the rim.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>I = β m R², E_k = (1)/(2)mv² + (1)/(2)Iω² = (1)/(2)m v² (1 + β) a = (g sin α)/(1 + β), βₛₚₕₑᵣₑ = 0.4, β_cyl = 0.5, βₕₒₒₚ = 1.0</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

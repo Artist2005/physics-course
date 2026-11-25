@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Кислотно-основне титрування, водневий показник pH та індикатори</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Поблизу точки еквівалентності додавання однієї-єдиної краплі лугу змінює концентрацію йонів Гідрогену [H⁺] у десятки тисяч разів, спричиняючи різкий стрибок pH і зміну кольору індикатора.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 8-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Кислотно-основний стан водного розчину кількісно характеризується водневим показником pH = - log ₁₀[H₃O⁺]. Внаслідок автопротолізу води (2H₂O ⇄ H₃O⁺ + OH⁻) за 25 °C йонний добуток води є сталим: K_w = [H⁺][OH⁻] = 10⁻¹⁴ моль²/л², звідки pH + pOH = 14. У кислому середовищі [H⁺] &gt; [OH⁻] і pH 7.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Під час титрування сильної одноосновної кислоти (HCl) сильним лугом (NaOH) відбувається екзотермічна реакція нейтралізації H⁺ + OH⁻ → H₂O (Δ H = -57.3 кДж/моль). Точка еквівалентності настає при додаванні об'єму титранту V_екв = (C_a V_a)/(C_b), коли кількості речовини кислоти і лугу зрівнюються (n(H⁺) = n(OH⁻)). Оскільки шкала pH є логарифмічною, поблизу V_екв додавання однієї краплі лугу (± 0.05 мл) викликає стрімкий вертикальний стрибок титрування від pH ≈ 4 до pH ≈ 10.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Для візуальної фіксації точки еквівалентності використовують кислотно-основні індикатори, слабкі органічні кислоти чи основи, чия протонована (HInd) і депротонована (Ind⁻) форми мають різне забарвлення. Зокрема, фенолфталеїн залишається безбарвним у кислих та нейтральних розчинах (pH &lt; 8.2), а в інтервалі переходу pH ∈ [8.2, 10.0] перебудовує хіноїдне кільце і забарвлює розчин у характерний малиново-рожевий колір.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Доданий об'єм титранту V(NaOH) з бюретки</strong>: 0 … 40 мл, типове значення 18 мл</li><li><strong>Початкова концентрація кислоти C(HCl) (V₀ = 25 мл)</strong>: 0.05 … 0.15 моль/л, типове значення 0.1 моль/л</li><li><strong>Молярна концентрація титранту C(NaOH)</strong>: 0.05 … 0.15 моль/л, типове значення 0.1 моль/л</li><li><strong>Індикатор (1=Фенолфталеїн, 2=Бромтимоловий, 3=Метилоранж)</strong>: 1 … 3, типове значення 1</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Кислотно-основне титрування є класичним методом кількісного об'ємного аналізу. Доки в реакційній колбі залишається невідтитрована сильна кислота HCl, фенолфталеїн залишається безбарвним, але в точці еквівалентності (C_a V_a = C_b V_b) нейтралізація останніх іонів H⁺ спричиняє різкий стрибок pH, від якого одна крапля надлишку NaOH забарвлює розчин у малиновий колір.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>H⁺ + OH⁻ &amp;→ H₂O, K_w = [H⁺][OH⁻] = 10⁻¹⁴ pH = - lg [H⁺], C_к V_к = C_л V_л,екв</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Безбарвний (фенолфталеїн, pH &lt; 8.2)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 8-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Кислотно-основний стан водного розчину кількісно характеризується водневим показником pH = - log ₁₀[H₃O⁺]. Внаслідок автопротолізу води (2H₂O ⇄ H₃O⁺ + OH⁻) за 25 °C йонний добуток води є сталим: K_w = [H⁺][OH⁻] = 10⁻¹⁴ моль²/л², звідки pH + pOH = 14. У кислому середовищі [H⁺] &gt; [OH⁻] і pH 7.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Під час титрування сильної одноосновної кислоти (HCl) сильним лугом (NaOH) відбувається екзотермічна реакція нейтралізації H⁺ + OH⁻ → H₂O (Δ H = -57.3 кДж/моль). Точка еквівалентності настає при додаванні об'єму титранту V_екв = (C_a V_a)/(C_b), коли кількості речовини кислоти і лугу зрівнюються (n(H⁺) = n(OH⁻)). Оскільки шкала pH є логарифмічною, поблизу V_екв додавання однієї краплі лугу (± 0.05 мл) викликає стрімкий вертикальний стрибок титрування від pH ≈ 4 до pH ≈ 10.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Для візуальної фіксації точки еквівалентності використовують кислотно-основні індикатори, слабкі органічні кислоти чи основи, чия протонована (HInd) і депротонована (Ind⁻) форми мають різне забарвлення. Зокрема, фенолфталеїн залишається безбарвним у кислих та нейтральних розчинах (pH &lt; 8.2), а в інтервалі переходу pH ∈ [8.2, 10.0] перебудовує хіноїдне кільце і забарвлює розчин у характерний малиново-рожевий колір.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Доданий об'єм титранту V(NaOH) з бюретки</strong>: 0 … 40 мл, типове значення 18 мл</li><li><strong>Початкова концентрація кислоти C(HCl) (V₀ = 25 мл)</strong>: 0.05 … 0.15 моль/л, типове значення 0.1 моль/л</li><li><strong>Молярна концентрація титранту C(NaOH)</strong>: 0.05 … 0.15 моль/л, типове значення 0.1 моль/л</li><li><strong>Індикатор (1=Фенолфталеїн, 2=Бромтимоловий, 3=Метилоранж)</strong>: 1 … 3, типове значення 1</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Кислотно-основне титрування є класичним методом кількісного об'ємного аналізу. Доки в реакційній колбі залишається невідтитрована сильна кислота HCl, фенолфталеїн залишається безбарвним, але в точці еквівалентності (C_a V_a = C_b V_b) нейтралізація останніх іонів H⁺ спричиняє різкий стрибок pH, від якого одна крапля надлишку NaOH забарвлює розчин у малиновий колір.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>H⁺ + OH⁻ &amp;→ H₂O, K_w = [H⁺][OH⁻] = 10⁻¹⁴ pH = - lg [H⁺], C_к V_к = C_л V_л,екв</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

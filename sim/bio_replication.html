@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Semiconservative DNA Replication: Replication Fork Mechanics &amp; Meselson–Stahl Experiment</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"All known DNA polymerases can add deoxyribonucleotides exclusively to the free 3′-OH terminus of an elongating strand (5′→3′ direction), dictating continuous leading-strand and discontinuous lagging-strand synthesis."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · DNA Replication</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Semiconservative DNA replication, demonstrated by Meselson and Stahl (1958) using ¹⁵N/¹⁴N density-gradient centrifugation, ensures that each daughter DNA duplex retains one parental template strand paired with one newly synthesized strand.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">At the replication fork, hexameric DNA helicase hydrolyzes ATP to unwind the double helix while topoisomerase relieves torsional supercoiling ahead of the fork. Because DNA Polymerase III catalyzes nucleophilic attack of the 3'-OH terminus on incoming dNTPs, chain elongation proceeds exclusively in the 5' → 3' direction.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Consequently, the antiparallel duplex imposes asymmetric synthesis: the leading strand elongates continuously toward the advancing fork on the 3' → 5' template, whereas the lagging strand is synthesized discontinuously away from the fork as short Okazaki fragments initiated by RNA primers, processed by DNA Polymerase I, and sealed by DNA ligase.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Helicase unwinding &amp; replication fork speed v_hel</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Template G≡C base-pair content (3 H-bonds per pair)</strong>: 20 … 80 %, standard value 50 %</li><li><strong>Okazaki fragment length on lagging strand</strong>: 2 … 5 seg., standard value 3 seg.</li><li><strong>Replication generation k in Meselson-Stahl (¹⁵N → ¹⁴N)</strong>: 1 … 4 gen., standard value 2 gen.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Because DNA polymerase can append nucleotides only to a free 3'-OH terminus in the 5'→ 3' direction, replication across the antiparallel duplex is semi-discontinuous: the leading strand is synthesized continuously behind the advancing helicase fork, while the lagging strand is assembled backward in short Okazaki fragments that DNA ligase subsequently seals into a continuous strand.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>dNTP + DNA_n →(DNA Pol) DNAₙ₊₁ + PP_i, f_hybrid(k) = (2)/(2^k) = 2¹-k</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">50.0 % (2 molecules of 4)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · DNA Replication</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Semiconservative DNA replication, demonstrated by Meselson and Stahl (1958) using ¹⁵N/¹⁴N density-gradient centrifugation, ensures that each daughter DNA duplex retains one parental template strand paired with one newly synthesized strand.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">At the replication fork, hexameric DNA helicase hydrolyzes ATP to unwind the double helix while topoisomerase relieves torsional supercoiling ahead of the fork. Because DNA Polymerase III catalyzes nucleophilic attack of the 3'-OH terminus on incoming dNTPs, chain elongation proceeds exclusively in the 5' → 3' direction.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Consequently, the antiparallel duplex imposes asymmetric synthesis: the leading strand elongates continuously toward the advancing fork on the 3' → 5' template, whereas the lagging strand is synthesized discontinuously away from the fork as short Okazaki fragments initiated by RNA primers, processed by DNA Polymerase I, and sealed by DNA ligase.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Helicase unwinding &amp; replication fork speed v_hel</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Template G≡C base-pair content (3 H-bonds per pair)</strong>: 20 … 80 %, standard value 50 %</li><li><strong>Okazaki fragment length on lagging strand</strong>: 2 … 5 seg., standard value 3 seg.</li><li><strong>Replication generation k in Meselson-Stahl (¹⁵N → ¹⁴N)</strong>: 1 … 4 gen., standard value 2 gen.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Because DNA polymerase can append nucleotides only to a free 3'-OH terminus in the 5'→ 3' direction, replication across the antiparallel duplex is semi-discontinuous: the leading strand is synthesized continuously behind the advancing helicase fork, while the lagging strand is assembled backward in short Okazaki fragments that DNA ligase subsequently seals into a continuous strand.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>dNTP + DNA_n →(DNA Pol) DNAₙ₊₁ + PP_i, f_hybrid(k) = (2)/(2^k) = 2¹-k</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

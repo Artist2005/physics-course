@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Поверхневий натяг, меніск та капілярні явища</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Тонка капілярна трубка унаочнює молекулярні сили зчеплення, здатні піднімати рідину всупереч тяжінню.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · 10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Молекули поверхневого шару рідини притягуються сусідніми молекулами зсередини об'єму сильніше, ніж розрідженими молекулами пари ззовні, тому вільна поверхня рідини має надлишкову вільну енергію E_s = σ S і поводиться як натягнута пружна плівка з коефіцієнтом поверхневого натягу σ (у Н/м або Дж/м²). Якщо притягання молекул рідини до стінок вузької трубки сильніше за взаємне притягання молекул рідини (змочування, крайовий кут θ 90°, як у ртуті на склі) меніск є опуклим.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Викривлена сферична поверхня меніска радіусом R_m = (r)/( cos θ) (де r, внутрішній радіус капіляра) створює під собою додатковий стрибок тиску за формулою Юнга-Лапласа: Δ p = (2σ)/(R_m) = (2σ cos θ)/(r). При змочуванні ( cos θ &gt; 0) тиск у рідині безпосередньо під увігнутим меніском менший за атмосферний на величину Δ p, тому зовнішній атмосферний тиск вдавлює стовпчик рідини вгору по капіляру.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Підйом триває доти, доки гідростатичний тиск піднятого стовпа ρ g h не зрівноважить капілярний перепад Лапласа (ρ g h = (2σ cos θ)/(r)), звідки отримуємо формулу Жюрена: h = (2σ cos θ)/(ρ g r). Отже, висота капілярного підйому обернено пропорційна радіусу трубки r, що забезпечує живлення рослин, рух вологи в ґрунтах і пористих матеріалах.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Коефіцієнт поверхневого натягу σ</strong>: 25 … 120 мН/м, типове значення 72.8 мН/м</li><li><strong>Крайовий кут змочування θ</strong>: 0 … 140 °, типове значення 20 °</li><li><strong>Внутрішній радіус капіляра r</strong>: 0.3 … 1.5 мм, типове значення 0.6 мм</li><li><strong>Густина рідини ρ</strong>: 0.7 … 2.5 г/см³, типове значення 1 г/см³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Підняття вологи в пористих ґрунтах, судинах ксилеми рослин та скляних капілярах зумовлене додатковим тиском Лапласа під скривленим меніском: за умови змочування сили поверхневого натягу вздовж периметра контакту підтягують стовп рідини вгору до врівноваження її гідростатичної ваги.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ P_Лапл = (2σ cos θ)/(r) = ρ g h h = (2σ cos θ)/(ρ g r)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Увігнутий (змочування)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · 10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Молекули поверхневого шару рідини притягуються сусідніми молекулами зсередини об'єму сильніше, ніж розрідженими молекулами пари ззовні, тому вільна поверхня рідини має надлишкову вільну енергію E_s = σ S і поводиться як натягнута пружна плівка з коефіцієнтом поверхневого натягу σ (у Н/м або Дж/м²). Якщо притягання молекул рідини до стінок вузької трубки сильніше за взаємне притягання молекул рідини (змочування, крайовий кут θ 90°, як у ртуті на склі) меніск є опуклим.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Викривлена сферична поверхня меніска радіусом R_m = (r)/( cos θ) (де r, внутрішній радіус капіляра) створює під собою додатковий стрибок тиску за формулою Юнга-Лапласа: Δ p = (2σ)/(R_m) = (2σ cos θ)/(r). При змочуванні ( cos θ &gt; 0) тиск у рідині безпосередньо під увігнутим меніском менший за атмосферний на величину Δ p, тому зовнішній атмосферний тиск вдавлює стовпчик рідини вгору по капіляру.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Підйом триває доти, доки гідростатичний тиск піднятого стовпа ρ g h не зрівноважить капілярний перепад Лапласа (ρ g h = (2σ cos θ)/(r)), звідки отримуємо формулу Жюрена: h = (2σ cos θ)/(ρ g r). Отже, висота капілярного підйому обернено пропорційна радіусу трубки r, що забезпечує живлення рослин, рух вологи в ґрунтах і пористих матеріалах.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Коефіцієнт поверхневого натягу σ</strong>: 25 … 120 мН/м, типове значення 72.8 мН/м</li><li><strong>Крайовий кут змочування θ</strong>: 0 … 140 °, типове значення 20 °</li><li><strong>Внутрішній радіус капіляра r</strong>: 0.3 … 1.5 мм, типове значення 0.6 мм</li><li><strong>Густина рідини ρ</strong>: 0.7 … 2.5 г/см³, типове значення 1 г/см³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Підняття вологи в пористих ґрунтах, судинах ксилеми рослин та скляних капілярах зумовлене додатковим тиском Лапласа під скривленим меніском: за умови змочування сили поверхневого натягу вздовж периметра контакту підтягують стовп рідини вгору до врівноваження її гідростатичної ваги.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ P_Лапл = (2σ cos θ)/(r) = ρ g h h = (2σ cos θ)/(ρ g r)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

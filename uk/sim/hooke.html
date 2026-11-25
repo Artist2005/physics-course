@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Механічна напруга та модуль Юнга при розтягу</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Механічна напруга в межах пружності прямо пропорційна відносному видовженню зразка: σ = E·ε.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 7-10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Класична формула Гука F = kΔ L залежить від геометричних розмірів конкретного стрижня (його довжини L₀ та площі поперечного перерізу S). Щоб сформулювати закон пружності як фундаментальну властивість самого матеріалу, Томас Юнг увів поняття механічної напруги σ = (F)/(S) (у паскалях, Па = Н/м²) та відносного видовження ε = (Δ L)/(L₀) (безрозмірна величина або у відсотках).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У межах пружних деформацій механічна напруга прямо пропорційна відносному видовженню (закон Гука в диференціальній формі): σ = Eε, звідки абсолютне видовження стрижня дорівнює Δ L = (F L₀)/(E S), а еквівалентна жорсткість k = (ES)/(L₀). Коефіцієнт пропорційності E називається модулем Юнга і характеризує опір кристалічної ґратки матеріалу розтягу або стиску (наприклад, для гуми E ∼ 0.01 ГПа, для алюмінію E ≈ 70 ГПа, для сталі E ≈ 200 ГПа).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Об'ємна густина потенціальної енергії пружно деформованого стрижня дорівнює площі під діаграмою розтягу σ(ε): w = (1)/(2)σε = (1)/(2)Eε² = (σ²)/(2E), а повна накопичена пружна енергія становить E_p = (1)/(2)FΔ L. При розтягу стрижень також зазнає поперечного стиснення (коефіцієнт Пуассона ν = -ε_⊥ / ε_∥), що відображено в 3D-деформації зразка.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Розтягувальне навантаження F</strong>: 2 … 16 кН, типове значення 8 кН</li><li><strong>Модуль Юнга матеріалу E</strong>: 2 … 20 ×10¹⁰ Па, типове значення 7 ×10¹⁰ Па</li><li><strong>Діаметр зразка d</strong>: 4 … 10 мм, типове значення 6 мм</li><li><strong>Початкова база зразка l₀</strong>: 1.2 … 2.8 м, типове значення 2 м</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У межах пружної деформації сталевих тросів, балок та динамометричних пружин механічна напруга σ = F/S прямо пропорційна відносному видовженню ε = Δ l / l₀ згідно із законом Гука.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>σ = (F)/(S) = Eε, ε = (Δ l)/(l₀), Δ l = (F l₀)/(E S) k = (E S)/(l₀), W_пр = (1)/(2) F Δ l = (1)/(2) E ε² V</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">323.4 Дж</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 7-10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Класична формула Гука F = kΔ L залежить від геометричних розмірів конкретного стрижня (його довжини L₀ та площі поперечного перерізу S). Щоб сформулювати закон пружності як фундаментальну властивість самого матеріалу, Томас Юнг увів поняття механічної напруги σ = (F)/(S) (у паскалях, Па = Н/м²) та відносного видовження ε = (Δ L)/(L₀) (безрозмірна величина або у відсотках).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">У межах пружних деформацій механічна напруга прямо пропорційна відносному видовженню (закон Гука в диференціальній формі): σ = Eε, звідки абсолютне видовження стрижня дорівнює Δ L = (F L₀)/(E S), а еквівалентна жорсткість k = (ES)/(L₀). Коефіцієнт пропорційності E називається модулем Юнга і характеризує опір кристалічної ґратки матеріалу розтягу або стиску (наприклад, для гуми E ∼ 0.01 ГПа, для алюмінію E ≈ 70 ГПа, для сталі E ≈ 200 ГПа).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Об'ємна густина потенціальної енергії пружно деформованого стрижня дорівнює площі під діаграмою розтягу σ(ε): w = (1)/(2)σε = (1)/(2)Eε² = (σ²)/(2E), а повна накопичена пружна енергія становить E_p = (1)/(2)FΔ L. При розтягу стрижень також зазнає поперечного стиснення (коефіцієнт Пуассона ν = -ε_⊥ / ε_∥), що відображено в 3D-деформації зразка.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Розтягувальне навантаження F</strong>: 2 … 16 кН, типове значення 8 кН</li><li><strong>Модуль Юнга матеріалу E</strong>: 2 … 20 ×10¹⁰ Па, типове значення 7 ×10¹⁰ Па</li><li><strong>Діаметр зразка d</strong>: 4 … 10 мм, типове значення 6 мм</li><li><strong>Початкова база зразка l₀</strong>: 1.2 … 2.8 м, типове значення 2 м</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У межах пружної деформації сталевих тросів, балок та динамометричних пружин механічна напруга σ = F/S прямо пропорційна відносному видовженню ε = Δ l / l₀ згідно із законом Гука.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>σ = (F)/(S) = Eε, ε = (Δ l)/(l₀), Δ l = (F l₀)/(E S) k = (E S)/(l₀), W_пр = (1)/(2) F Δ l = (1)/(2) E ε² V</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

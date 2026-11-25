@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Lithium-Ion Battery (Rocking-Chair Intercalation): LiC₆ + CoO₂ ⇄ C₆ + LiCoO₂</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«By shuttling lithium ions reversibly between two layered host lattices, we created a rechargeable battery that transformed portable electronics.», M. Stanley Whittingham, John Goodenough &amp; Akira Yoshino, Nobel Prize 2019</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Lithium-Ion Batteries</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A rechargeable Lithium-Ion Battery stores energy via reversible intercalation ("rocking-chair" shuttle) of Li⁺ ions between two layered host crystals separated by a microporous separator in a non-aqueous organic electrolyte.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The negative electrode consists of graphene sheets in graphite (Li_xC₆) (E° ≈ -3.0 V), while the positive electrode is a layered transition-metal oxide such as Li₁₋ₓCoO₂ (E° ≈ +0.7 V), delivering a cell voltage of 3.6-4.2 V.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">During discharge, Li⁺ ions de-intercalate from the graphite anode (Li_xC₆ → C₆ + xLi⁺ + xe⁻) and intercalate into the CoO₂ cathode while electrons power the external load; during charging, an external voltage reverses both ion and electron flows.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Operating mode (1 = Discharge to load, 2 = Charge)</strong>: 1 … 2, standard value 1</li><li><strong>State of Charge SoC (x in Li_xC₆)</strong>: 10 … 95 %, standard value 75 %</li><li><strong>C-rate current I</strong>: 0.5 … 4 C, standard value 1.5 C</li><li><strong>Cell temperature t</strong>: 0 … 50 °C, standard value 25 °C</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">A lithium-ion battery operates by reversible intercalation of Li⁺ cations between two layered host lattices (graphite C₆ and LiCoO₂). Charging intercalates Li⁺ ions between the graphene sheets of the anode, while discharging shuttles them across the separator into the CoO₂ cathode as electrons deliver electrical work at 3.7 V.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Li_xC₆ + Li₁₋ₓCoO₂ ⇄ C₆ + LiCoO₂, E_cell ≈ 3.7 V</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">17.2 W (T = 25 °C)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Lithium-Ion Batteries</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A rechargeable Lithium-Ion Battery stores energy via reversible intercalation ("rocking-chair" shuttle) of Li⁺ ions between two layered host crystals separated by a microporous separator in a non-aqueous organic electrolyte.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The negative electrode consists of graphene sheets in graphite (Li_xC₆) (E° ≈ -3.0 V), while the positive electrode is a layered transition-metal oxide such as Li₁₋ₓCoO₂ (E° ≈ +0.7 V), delivering a cell voltage of 3.6-4.2 V.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">During discharge, Li⁺ ions de-intercalate from the graphite anode (Li_xC₆ → C₆ + xLi⁺ + xe⁻) and intercalate into the CoO₂ cathode while electrons power the external load; during charging, an external voltage reverses both ion and electron flows.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Operating mode (1 = Discharge to load, 2 = Charge)</strong>: 1 … 2, standard value 1</li><li><strong>State of Charge SoC (x in Li_xC₆)</strong>: 10 … 95 %, standard value 75 %</li><li><strong>C-rate current I</strong>: 0.5 … 4 C, standard value 1.5 C</li><li><strong>Cell temperature t</strong>: 0 … 50 °C, standard value 25 °C</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">A lithium-ion battery operates by reversible intercalation of Li⁺ cations between two layered host lattices (graphite C₆ and LiCoO₂). Charging intercalates Li⁺ ions between the graphene sheets of the anode, while discharging shuttles them across the separator into the CoO₂ cathode as electrons deliver electrical work at 3.7 V.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Li_xC₆ + Li₁₋ₓCoO₂ ⇄ C₆ + LiCoO₂, E_cell ≈ 3.7 V</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

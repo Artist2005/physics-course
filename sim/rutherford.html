@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Rutherford's Gold Foil Experiment &amp; Planetary Model of the Atom</h1>
       <p id="scene-epigraph" class="chapter-epigraph">The backscattering of fast alpha particles from a thin gold foil revealed that the entire positive charge and mass of the atom are concentrated in a tiny nucleus.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Before 1911, J. J. Thomson's "plum-pudding" model pictured positive charge spread diffusely across the entire atomic volume (Rₐₜₒₘ ∼ 10⁻¹⁰ m), predicting that fast α-particles (q_α = +2e) would traverse thin gold foil with negligible deflection (θ 90°!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Rutherford concluded that all positive charge +Ze and 99.97% of atomic mass reside in a tiny central atomic nucleus (R_nuc ∼ 10⁻¹⁵ m). Repelled by the inverse-square Coulomb force F(r) = (1)/(4πε₀)(2Ze²)/(r²), an α-particle of kinetic energy E_α and impact parameter b follows a hyperbolic trajectory with scattering angle given by Rutherford's formula: cot ((θ)/(2)) = (4πε₀ E_α b)/(Z e²) = (2b)/(dₘᵢₙ).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In a head-on collision (b → 0, θ → 180°), kinetic energy converts entirely into electrostatic potential energy at the distance of closest approach dₘᵢₙ = (2Ze²)/(4πε₀ E_α), establishing the planetary nuclear model of the atom.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Impact parameter b</strong>: 3 … 60 fm, standard value 18 fm</li><li><strong>α-particle kinetic energy E_α</strong>: 3 … 9 MeV, standard value 5.5 MeV</li><li><strong>Target nuclear charge Z</strong>: 20 … 92 e, standard value 79 e</li><li><strong>Beam spread width</strong>: 0.5 … 1.5 ×, standard value 1 ×</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In Ernest Rutherford's gold-foil experiment, the vast majority of incident α-particles passed through thin gold foil with minimal deflection, while a tiny fraction scattered through angles exceeding 90°, demonstrating that an atom's positive charge and mass are concentrated in a compact, dense nucleus.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>cot (θ)/(2) = (4πε₀ E_α)/(Z e²) b = (2b)/(rₘᵢₙ), rₘᵢₙ = (1)/(4πε₀)(2 Z e²)/(E_α) (dσ)/(dΩ) = ((Z e²)/(8πε₀ E_α))² (1)/( sin ⁴(θ/2))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">+79 e</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Before 1911, J. J. Thomson's "plum-pudding" model pictured positive charge spread diffusely across the entire atomic volume (Rₐₜₒₘ ∼ 10⁻¹⁰ m), predicting that fast α-particles (q_α = +2e) would traverse thin gold foil with negligible deflection (θ 90°!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Rutherford concluded that all positive charge +Ze and 99.97% of atomic mass reside in a tiny central atomic nucleus (R_nuc ∼ 10⁻¹⁵ m). Repelled by the inverse-square Coulomb force F(r) = (1)/(4πε₀)(2Ze²)/(r²), an α-particle of kinetic energy E_α and impact parameter b follows a hyperbolic trajectory with scattering angle given by Rutherford's formula: cot ((θ)/(2)) = (4πε₀ E_α b)/(Z e²) = (2b)/(dₘᵢₙ).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">In a head-on collision (b → 0, θ → 180°), kinetic energy converts entirely into electrostatic potential energy at the distance of closest approach dₘᵢₙ = (2Ze²)/(4πε₀ E_α), establishing the planetary nuclear model of the atom.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Impact parameter b</strong>: 3 … 60 fm, standard value 18 fm</li><li><strong>α-particle kinetic energy E_α</strong>: 3 … 9 MeV, standard value 5.5 MeV</li><li><strong>Target nuclear charge Z</strong>: 20 … 92 e, standard value 79 e</li><li><strong>Beam spread width</strong>: 0.5 … 1.5 ×, standard value 1 ×</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In Ernest Rutherford's gold-foil experiment, the vast majority of incident α-particles passed through thin gold foil with minimal deflection, while a tiny fraction scattered through angles exceeding 90°, demonstrating that an atom's positive charge and mass are concentrated in a compact, dense nucleus.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>cot (θ)/(2) = (4πε₀ E_α)/(Z e²) b = (2b)/(rₘᵢₙ), rₘᵢₙ = (1)/(4πε₀)(2 Z e²)/(E_α) (dσ)/(dΩ) = ((Z e²)/(8πε₀ E_α))² (1)/( sin ⁴(θ/2))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

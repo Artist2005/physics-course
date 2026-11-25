@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Сила Коріоліса та траєкторія на диску, що обертається</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Для нерухомого спостерігача куля котиться по прямій, але на обертовій платформі її слід вигинається у спіраль.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Закони Ньютона у класичному вигляді виконуються лише в інерціальних системах відліку (ІСВ). Якщо ж ми спостерігаємо за рухом кульки з неінерціальної платформи, яка рівномірно обертається з кутовою швидкістю Ω, то в рівнянні руху відносно диска з'являються дві сили інерції: відцентрова сила F_відц = -m[Ω × [Ω × r]] та сила Коріоліса F_C = -2m[Ω × v_відн].</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">В інерціальній системі лабораторного столу (погляньте на пряму пунктирну лінію в 3D-сцені!) кулька, запущена з центра диска без тертя зі швидкістю v_r, рухається строго прямолінійно і рівномірно. Проте за час t = r / v_r сам диск повертається на кут Δφ = Ω t, тому на поверхні диска кулька залишає вигнутий слід, спіраль Архімеда φ(r) = -(Ω)/(v_r)r з поперечним відхиленням на краю s ≈ Ω v_r t².</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки векторний добуток -2m[Ω × v_відн] у Північній півкулі Землі (Ω_z &gt; 0) спрямований праворуч від вектора відносної швидкості v_відн, сила Коріоліса відхиляє вітри, морські течії та річки в Північній півкулі праворуч (підмивання правих берегів, закон Бера), закручує циклони проти годинникової стрілки та зумовлює поворот площини коливань маятника Фуко.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кутова швидкість платформи ω</strong>: -2.4 … 2.4 рад/с, типове значення 1.2 рад/с</li><li><strong>Радіальна швидкість кулі v₀</strong>: 1.2 … 4 м/с, типове значення 2.5 м/с</li><li><strong>Маса кулі m</strong>: 0.5 … 3 кг, типове значення 1.5 кг</li><li><strong>Початкове зміщення від центра r₀</strong>: 0 … 1.5 м, типове значення 0.2 м</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У неінерціальній системі відліку, що обертається, тіло під час руху вздовж радіуса зазнає поперечного відхилення під дією сили інерції Коріоліса. У масштабах добового обертання Землі сила Коріоліса зумовлює закручування атмосферних циклонів та обертання площини коливань маятника Фуко.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>F_Кор = -2m[ω × v_відн], F_Кор = 2mω v_відн sin α F_вдц = mω² r, A_Кор = ∫ F_Кор· dr_відн = 0</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">6.75 м</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Закони Ньютона у класичному вигляді виконуються лише в інерціальних системах відліку (ІСВ). Якщо ж ми спостерігаємо за рухом кульки з неінерціальної платформи, яка рівномірно обертається з кутовою швидкістю Ω, то в рівнянні руху відносно диска з'являються дві сили інерції: відцентрова сила F_відц = -m[Ω × [Ω × r]] та сила Коріоліса F_C = -2m[Ω × v_відн].</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">В інерціальній системі лабораторного столу (погляньте на пряму пунктирну лінію в 3D-сцені!) кулька, запущена з центра диска без тертя зі швидкістю v_r, рухається строго прямолінійно і рівномірно. Проте за час t = r / v_r сам диск повертається на кут Δφ = Ω t, тому на поверхні диска кулька залишає вигнутий слід, спіраль Архімеда φ(r) = -(Ω)/(v_r)r з поперечним відхиленням на краю s ≈ Ω v_r t².</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки векторний добуток -2m[Ω × v_відн] у Північній півкулі Землі (Ω_z &gt; 0) спрямований праворуч від вектора відносної швидкості v_відн, сила Коріоліса відхиляє вітри, морські течії та річки в Північній півкулі праворуч (підмивання правих берегів, закон Бера), закручує циклони проти годинникової стрілки та зумовлює поворот площини коливань маятника Фуко.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кутова швидкість платформи ω</strong>: -2.4 … 2.4 рад/с, типове значення 1.2 рад/с</li><li><strong>Радіальна швидкість кулі v₀</strong>: 1.2 … 4 м/с, типове значення 2.5 м/с</li><li><strong>Маса кулі m</strong>: 0.5 … 3 кг, типове значення 1.5 кг</li><li><strong>Початкове зміщення від центра r₀</strong>: 0 … 1.5 м, типове значення 0.2 м</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У неінерціальній системі відліку, що обертається, тіло під час руху вздовж радіуса зазнає поперечного відхилення під дією сили інерції Коріоліса. У масштабах добового обертання Землі сила Коріоліса зумовлює закручування атмосферних циклонів та обертання площини коливань маятника Фуко.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>F_Кор = -2m[ω × v_відн], F_Кор = 2mω v_відн sin α F_вдц = mω² r, A_Кор = ∫ F_Кор· dr_відн = 0</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

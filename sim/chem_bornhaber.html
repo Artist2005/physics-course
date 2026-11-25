@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Born–Haber Thermodynamic Cycle &amp; Ionic Lattice Energy U_L</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Although transferring an electron from an isolated sodium atom to chlorine is endothermic, the enormous electrostatic energy released upon assembling the 3D ionic lattice makes salt formation strongly exothermic.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Crystal Thermochemistry</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Born-Haber cycle applies Hess's Law to relate the standard enthalpy of formation Δ H_f° of an ionic solid MX(s) to its lattice energy Uₗₐₜ by constructing a closed thermodynamic path through gaseous atoms and ions.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Converting standard elements into gaseous ions requires endothermic sublimation (Δ H_sub), bond dissociation ((1)/(2)D_X₂), and ionization (I₁), partially offset by the exothermic electron affinity (Eₑₐ) of the nonmetal.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The overall formation of the salt is strongly exothermic because condensing gaseous ions into a 3D crystal lattice releases a massive lattice enthalpy Uₗₐₜ = Δ H_sub + (1)/(2)D_X₂ + I₁ + Eₑₐ - Δ H_f°, which scales with ionic charges and inverse interionic distance according to the Born-Landé equation.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Metal sublimation enthalpy ΔH_sub(M)</strong>: 75 … 180 kJ/mol, standard value 108 kJ/mol</li><li><strong>Halogen dissociation enthalpy ½D(X₂)</strong>: 75 … 160 kJ/mol, standard value 121 kJ/mol</li><li><strong>Metal first ionization energy I₁(M → M⁺)</strong>: 375 … 600 kJ/mol, standard value 496 kJ/mol</li><li><strong>Crystal lattice energy U_lat(M⁺ + X⁻ → MX)</strong>: 650 … 1050 kJ/mol, standard value 787 kJ/mol</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The Born-Haber cycle applies Hess's law to relate the standard enthalpy of formation of an ionic solid (NaCl) to its elementary thermodynamic steps: endothermic energy inputs for metal sublimation, halogen bond dissociation, and ionization are more than offset by the large exothermic lattice energy release Uₗₐₜ when gaseous Na⁺ and Cl⁻ ions condense into a crystal.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ H_f°(MX) = Δ H_sub + (1)/(2)D(X₂) + I₁(M) + Eₑₐ(X) - Uₗₐₜ Uₗₐₜ = (N_A M z⁺ z⁻ e²)/(4πε₀ r₀)(1 - (1)/(n))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Exothermically stable ionic salt</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Crystal Thermochemistry</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The Born-Haber cycle applies Hess's Law to relate the standard enthalpy of formation Δ H_f° of an ionic solid MX(s) to its lattice energy Uₗₐₜ by constructing a closed thermodynamic path through gaseous atoms and ions.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Converting standard elements into gaseous ions requires endothermic sublimation (Δ H_sub), bond dissociation ((1)/(2)D_X₂), and ionization (I₁), partially offset by the exothermic electron affinity (Eₑₐ) of the nonmetal.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">The overall formation of the salt is strongly exothermic because condensing gaseous ions into a 3D crystal lattice releases a massive lattice enthalpy Uₗₐₜ = Δ H_sub + (1)/(2)D_X₂ + I₁ + Eₑₐ - Δ H_f°, which scales with ionic charges and inverse interionic distance according to the Born-Landé equation.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Metal sublimation enthalpy ΔH_sub(M)</strong>: 75 … 180 kJ/mol, standard value 108 kJ/mol</li><li><strong>Halogen dissociation enthalpy ½D(X₂)</strong>: 75 … 160 kJ/mol, standard value 121 kJ/mol</li><li><strong>Metal first ionization energy I₁(M → M⁺)</strong>: 375 … 600 kJ/mol, standard value 496 kJ/mol</li><li><strong>Crystal lattice energy U_lat(M⁺ + X⁻ → MX)</strong>: 650 … 1050 kJ/mol, standard value 787 kJ/mol</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The Born-Haber cycle applies Hess's law to relate the standard enthalpy of formation of an ionic solid (NaCl) to its elementary thermodynamic steps: endothermic energy inputs for metal sublimation, halogen bond dissociation, and ionization are more than offset by the large exothermic lattice energy release Uₗₐₜ when gaseous Na⁺ and Cl⁻ ions condense into a crystal.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ H_f°(MX) = Δ H_sub + (1)/(2)D(X₂) + I₁(M) + Eₑₐ(X) - Uₗₐₜ Uₗₐₜ = (N_A M z⁺ z⁻ e²)/(4πε₀ r₀)(1 - (1)/(n))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

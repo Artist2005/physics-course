@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Salt Hydrolysis in Aqueous Solution: Kₕ = K_w / Kₐ, Degree h &amp; Medium pH</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Even a neutral salt crystal, once dissolved in water, enters into a subtle protolytic dialogue with the solvent.», J. N. Brønsted, 1923</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Salt Hydrolysis</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Salt hydrolysis is the proton-transfer reaction between dissolved salt ions and water molecules that shifts solution pH away from neutrality. Only ions conjugate to weak acids or weak bases undergo hydrolysis; the stronger parent electrolyte dictates whether the solution is acidic or basic.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">1) Weak-acid + strong-base salt (CH₃COONa, Na₂CO₃): anion hydrolysis A⁻ + H₂O ⇄ HA + OH⁻ yields a basic solution (pH &gt; 7). 2) Strong-acid + weak-base salt (NH₄Cl): cation hydrolysis BH⁺ + H₂O ⇄ B + H₃O⁺ yields an acidic solution (pH &lt; 7). 3) Strong-acid + strong-base salts (NaCl) do not hydrolyze (pH = 7.0).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The hydrolysis constant is K_h = K_w / K_weak, and the degree of hydrolysis h = √(K_h / C) increases upon dilution (C ↓) and heating (since K_w increases strongly with temperature).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Salt (1=NaCl, 2=CH₃COONa, 3=NH₄Cl, 4=Na₂CO₃)</strong>: 1 … 4, standard value 4</li><li><strong>Initial salt concentration C₀</strong>: 0.01 … 0.5 mol/L, standard value 0.1 mol/L</li><li><strong>Solution temperature t (K_w rises with T)</strong>: 15 … 85 °C, standard value 25 °C</li><li><strong>Water dilution factor (V / V₀)</strong>: 1 … 10 ×, standard value 1 ×</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The pH of an aqueous salt solution is governed by the relative strengths of its parent acid and base: sodium acetate (CH₃COONa, strong base + weak acid) undergoes anion hydrolysis to yield a basic solution (pH &gt; 7), whereas ammonium chloride (NH₄Cl, weak base + strong acid) undergoes cation hydrolysis to yield an acidic solution (pH &lt; 7).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>K_h = (K_w)/(K_a), h = √((K_h)/(C)), pH = 7 + (1)/(2)(pK_a + lg C)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Higher T and dilution increase hydrolysis degree h</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Salt Hydrolysis</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Salt hydrolysis is the proton-transfer reaction between dissolved salt ions and water molecules that shifts solution pH away from neutrality. Only ions conjugate to weak acids or weak bases undergo hydrolysis; the stronger parent electrolyte dictates whether the solution is acidic or basic.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">1) Weak-acid + strong-base salt (CH₃COONa, Na₂CO₃): anion hydrolysis A⁻ + H₂O ⇄ HA + OH⁻ yields a basic solution (pH &gt; 7). 2) Strong-acid + weak-base salt (NH₄Cl): cation hydrolysis BH⁺ + H₂O ⇄ B + H₃O⁺ yields an acidic solution (pH &lt; 7). 3) Strong-acid + strong-base salts (NaCl) do not hydrolyze (pH = 7.0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">The hydrolysis constant is K_h = K_w / K_weak, and the degree of hydrolysis h = √(K_h / C) increases upon dilution (C ↓) and heating (since K_w increases strongly with temperature).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Salt (1=NaCl, 2=CH₃COONa, 3=NH₄Cl, 4=Na₂CO₃)</strong>: 1 … 4, standard value 4</li><li><strong>Initial salt concentration C₀</strong>: 0.01 … 0.5 mol/L, standard value 0.1 mol/L</li><li><strong>Solution temperature t (K_w rises with T)</strong>: 15 … 85 °C, standard value 25 °C</li><li><strong>Water dilution factor (V / V₀)</strong>: 1 … 10 ×, standard value 1 ×</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The pH of an aqueous salt solution is governed by the relative strengths of its parent acid and base: sodium acetate (CH₃COONa, strong base + weak acid) undergoes anion hydrolysis to yield a basic solution (pH &gt; 7), whereas ammonium chloride (NH₄Cl, weak base + strong acid) undergoes cation hydrolysis to yield an acidic solution (pH &lt; 7).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>K_h = (K_w)/(K_a), h = √((K_h)/(C)), pH = 7 + (1)/(2)(pK_a + lg C)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

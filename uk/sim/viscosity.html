@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Рух кулі у в’язкій рідині (Закон Стокса)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Коли сума сили Архімеда та сили в'язкого опору Стокса зрівноважує силу тяжіння, прискорення зникає і куля падає зі сталою граничною швидкістю.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коли тверда сферична кулька радіусом r і густиною ρ_s опускається у в'язкій рідині густиною ρ_f за малих чисел Рейнольдса (Re = (2ρ_f v r)/(η) ≪ 1), обтікання є плавним і ламінарним (без відриву вихорів). Причиною внутрішнього тертя рідини є перенесення імпульсу між сусідніми шарами, що рухаються з різними швидкостями.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Джордж Габріель Стокс (1851 р.), розв'язавши рівняння гідродинаміки Нав'є, Стокса для повільного обтікання сфери, вивів формулу сили в'язкого опору (закон Стокса): F_c = -6π η r v, де η, динамічна в'язкість рідини (у Па·с). Рівняння руху кульки вздовж вертикалі має вигляд m(dv)/(dt) = (ρ_s - ρ_f)(4)/(3)π r³ g - 6π η r v.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">На початку падіння (v ≈ 0) кулька прискорюється, але зі зростанням швидкості сила Стокса F_c ∝ v лінійно збільшується, поки повністю не зрівноважить ефективну вагу кульки у рідині (F_тяж = F_A + F_c). Після цього прискорення стає нульовим і встановлюється гранична (термінальна) швидкість осідання: v_терм = (2 r² g (ρ_s - ρ_f))/(9η). Цей метод лежить в основі віскозиметра Стокса та знаменитого досліду Міллікена з вимірювання заряду електрона.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Радіус кульки r</strong>: 0.25 … 0.65 см, типове значення 0.42 см</li><li><strong>Динамічна в'язкість рідини η</strong>: 0.4 … 2.8 Па·с, типове значення 1.2 Па·с</li><li><strong>Густина матеріалу кулі ρ_тіла</strong>: 1500 … 4000 кг/м³, типове значення 2600 кг/м³</li><li><strong>Густина в'язкої рідини ρ_рід</strong>: 700 … 1250 кг/м³, типове значення 950 кг/м³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Під час осідання сферичної кульки у в'язкій рідині (гліцерині або мастилі) швидкість зростає лише до моменту, коли сила в'язкого тертя Стокса разом із силою Архімеда врівноважує силу тяжіння, після чого встановлюється стала гранична швидкість седиментації. Так само парашутист або дощова крапля в повітрі досягає граничної швидкості, коли опір середовища врівноважує тяжіння.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>F_Стокса = 6π η r v, m(dv)/(dt) = mg - F_A - 6πη r v v_уст = (2 r² g (ρ_тіла - ρ_рід))/(9η)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Розгін (a &gt; 0)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли тверда сферична кулька радіусом r і густиною ρ_s опускається у в'язкій рідині густиною ρ_f за малих чисел Рейнольдса (Re = (2ρ_f v r)/(η) ≪ 1), обтікання є плавним і ламінарним (без відриву вихорів). Причиною внутрішнього тертя рідини є перенесення імпульсу між сусідніми шарами, що рухаються з різними швидкостями.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Джордж Габріель Стокс (1851 р.), розв'язавши рівняння гідродинаміки Нав'є, Стокса для повільного обтікання сфери, вивів формулу сили в'язкого опору (закон Стокса): F_c = -6π η r v, де η, динамічна в'язкість рідини (у Па·с). Рівняння руху кульки вздовж вертикалі має вигляд m(dv)/(dt) = (ρ_s - ρ_f)(4)/(3)π r³ g - 6π η r v.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">На початку падіння (v ≈ 0) кулька прискорюється, але зі зростанням швидкості сила Стокса F_c ∝ v лінійно збільшується, поки повністю не зрівноважить ефективну вагу кульки у рідині (F_тяж = F_A + F_c). Після цього прискорення стає нульовим і встановлюється гранична (термінальна) швидкість осідання: v_терм = (2 r² g (ρ_s - ρ_f))/(9η). Цей метод лежить в основі віскозиметра Стокса та знаменитого досліду Міллікена з вимірювання заряду електрона.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Радіус кульки r</strong>: 0.25 … 0.65 см, типове значення 0.42 см</li><li><strong>Динамічна в'язкість рідини η</strong>: 0.4 … 2.8 Па·с, типове значення 1.2 Па·с</li><li><strong>Густина матеріалу кулі ρ_тіла</strong>: 1500 … 4000 кг/м³, типове значення 2600 кг/м³</li><li><strong>Густина в'язкої рідини ρ_рід</strong>: 700 … 1250 кг/м³, типове значення 950 кг/м³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Під час осідання сферичної кульки у в'язкій рідині (гліцерині або мастилі) швидкість зростає лише до моменту, коли сила в'язкого тертя Стокса разом із силою Архімеда врівноважує силу тяжіння, після чого встановлюється стала гранична швидкість седиментації. Так само парашутист або дощова крапля в повітрі досягає граничної швидкості, коли опір середовища врівноважує тяжіння.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>F_Стокса = 6π η r v, m(dv)/(dt) = mg - F_A - 6πη r v v_уст = (2 r² g (ρ_тіла - ρ_рід))/(9η)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

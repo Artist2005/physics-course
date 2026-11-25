@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Біофізика м’язового скорочення: модель ковзних ниток саркомера та рівняння Гілла</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Під час скорочення власна довжина актинових і міозинових філаментів не змінюється: міозинові голівки за участю Ca²⁺ та АТФ циклічно втягують тонкі нитки актину до центру саркомера, зближуючи Z-диски.»</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Біомеханіка м'язів</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Саркомер, це елементарна скоротлива одиниця посмугованого м'язового волокна (міофібрили), обмежена двома білковими Z-дисками (нормальна довжина спокою L₀ ≈ 2.0-2.2 мкм). Згідно з теорією ковзних ниток Г. Гакслі та А. Гакслі (1954), під час скорочення власна довжина товстих філаментів міозину та тонких філаментів актину не змінюється, нитки актину лише втягуються у проміжки між нитками міозину до центральної M-лінії.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У стані спокою центри зв'язування міозину на актині закриті білком тропоміозином. Коли потенціал дії викликає викид іонів Ca²⁺ із саркоплазматичного ретикулуму (концентрація зростає з 0.1 мкМ до 5-10 мкМ), кальцій зв'язується з тропоніном C, зсуває тропоміозин і запускає механохімічний цикл поперечних містків міозину (приєднання → робочий гребок із виділенням АДФ і Ф_н → від'єднання після зв'язування нової молекули АТФ → взведення голівки за рахунок гідролізу АТФ).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Динаміка скорочення описується гіперболічним рівнянням Арчибальда Гілла (1938): (F + a)(v + b) = (F₀ + a)b, або v(F) = b (F₀ - F)/(F + a). Максимальна швидкість укорочення vₘₐₓ = (b F₀)/(a) досягається при холостому ході (F = 0), а максимальна сила F₀, в ізометричному режимі (v = 0) при оптимальному перекритті філаментів. Механічна потужність м'яза P = F· v(F) досягає максимуму при навантаженні F ≈ 0.31 F₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Концентрація іонів Ca²⁺ у саркоплазмі (активація тропоніну C)</strong>: 0.2 … 5 мкМ, типове значення 2.5 мкМ</li><li><strong>Початкова довжина саркомера L_сарк (оптимум перекриття 2.0-2.2 мкм)</strong>: 1.5 … 3.2 мкм, типове значення 2.1 мкм</li><li><strong>Відносне зовнішнє навантаження F / F₀ (0, холостий хід, 1, ізометрія)</strong>: 0 … 1 F₀, типове значення 0.3 F₀</li><li><strong>Доступність АТФ для циклу міозинових містків</strong>: 0.4 … 2.5 ум.од., типове значення 1.5 ум.од.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Згідно з моделлю ковзних ниток Гакслі скорочення саркомера відбувається за рахунок циклічного утворення поперечних містків між міозиновими голівками та актиновими філаментами за рахунок гідролізу АТФ: власна довжина білкових ниток не змінюється, проте актинові нитки втягуються до центру саркомера, зближуючи Z-диски. За рівнянням Гілла швидкість укорочення v є максимальною за нульового зовнішнього навантаження (F → 0).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>(F + a)(v + b) = (F₀ + a)b ⇒ v(F) = b (F₀ - F)/(F + a), P_мех = F· v(F)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">47.4 Вт</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Біомеханіка м'язів</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Саркомер, це елементарна скоротлива одиниця посмугованого м'язового волокна (міофібрили), обмежена двома білковими Z-дисками (нормальна довжина спокою L₀ ≈ 2.0-2.2 мкм). Згідно з теорією ковзних ниток Г. Гакслі та А. Гакслі (1954), під час скорочення власна довжина товстих філаментів міозину та тонких філаментів актину не змінюється, нитки актину лише втягуються у проміжки між нитками міозину до центральної M-лінії.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">У стані спокою центри зв'язування міозину на актині закриті білком тропоміозином. Коли потенціал дії викликає викид іонів Ca²⁺ із саркоплазматичного ретикулуму (концентрація зростає з 0.1 мкМ до 5-10 мкМ), кальцій зв'язується з тропоніном C, зсуває тропоміозин і запускає механохімічний цикл поперечних містків міозину (приєднання → робочий гребок із виділенням АДФ і Ф_н → від'єднання після зв'язування нової молекули АТФ → взведення голівки за рахунок гідролізу АТФ).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Динаміка скорочення описується гіперболічним рівнянням Арчибальда Гілла (1938): (F + a)(v + b) = (F₀ + a)b, або v(F) = b (F₀ - F)/(F + a). Максимальна швидкість укорочення vₘₐₓ = (b F₀)/(a) досягається при холостому ході (F = 0), а максимальна сила F₀, в ізометричному режимі (v = 0) при оптимальному перекритті філаментів. Механічна потужність м'яза P = F· v(F) досягає максимуму при навантаженні F ≈ 0.31 F₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Концентрація іонів Ca²⁺ у саркоплазмі (активація тропоніну C)</strong>: 0.2 … 5 мкМ, типове значення 2.5 мкМ</li><li><strong>Початкова довжина саркомера L_сарк (оптимум перекриття 2.0-2.2 мкм)</strong>: 1.5 … 3.2 мкм, типове значення 2.1 мкм</li><li><strong>Відносне зовнішнє навантаження F / F₀ (0, холостий хід, 1, ізометрія)</strong>: 0 … 1 F₀, типове значення 0.3 F₀</li><li><strong>Доступність АТФ для циклу міозинових містків</strong>: 0.4 … 2.5 ум.од., типове значення 1.5 ум.од.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Згідно з моделлю ковзних ниток Гакслі скорочення саркомера відбувається за рахунок циклічного утворення поперечних містків між міозиновими голівками та актиновими філаментами за рахунок гідролізу АТФ: власна довжина білкових ниток не змінюється, проте актинові нитки втягуються до центру саркомера, зближуючи Z-диски. За рівнянням Гілла швидкість укорочення v є максимальною за нульового зовнішнього навантаження (F → 0).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>(F + a)(v + b) = (F₀ + a)b ⇒ v(F) = b (F₀ - F)/(F + a), P_мех = F· v(F)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

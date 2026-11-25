@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Newton's Rings: Interference in a Thin Air Wedge &amp; Half-Wave Phase Shift</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Equal-thickness interference fringes map out sub-micron air gap contours with half-wavelength precision.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Grade 11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Newton's rings are equal-thickness interference fringes formed in the thin air film trapped between a plano-convex lens of large curvature radius R ≫ r and an optical flat. At radial distance r from the contact point, the air-gap thickness follows from (R - d)² + r² = R² as d(r) ≈ (r²)/(2R).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Wave 1 reflects at the upper glass-to-air interface (higher to lower index) with zero phase shift. Wave 2 traverses the air gap twice (2d(r)) and reflects at the lower air-to-glass interface (lower to higher index), where Fresnel's equations dictate an abrupt π phase inversion equivalent to an extra (λ)/(2) path difference. Total optical path difference is therefore Δ(r) = 2d(r) + (λ)/(2) = (r²)/(R) + (λ)/(2).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">At the central point of contact (r = 0, d = 0), the λ/2 phase reversal leaves the two reflected rays exactly out of phase, producing a central dark spot in reflected light! Dark ring radii satisfy r_dark,m = √(mλ R) and bright ring radii satisfy r_bright,m = √((m - (1)/(2))λ R).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Wavelength λ</strong>: 420 … 680 nm, standard value 550 nm</li><li><strong>Lens curvature radius R</strong>: 1 … 5 m, standard value 2.5 m</li><li><strong>Gap refractive index n</strong>: 1 … 1.5, standard value 1</li><li><strong>Measured ring order m</strong>: 1 … 6, standard value 3</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Thin-film interference in wedge-shaped air gaps is widely used for precision optical surface metrology: when a plano-convex lens rests on a flat optical glass plate, light rays reflected from the top and bottom boundaries of the air layer interfere to form concentric fringes of equal thickness (Newton's rings).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>d(r) &amp;≈ (r²)/(2R), Δ = 2 n d(r) + (λ)/(2) r_m,dark = √((m λ R)/(n)), r_m,bright = √(((m - (1)/(2)) λ R)/(n))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Δφ = π (λ/2)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Grade 11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Newton's rings are equal-thickness interference fringes formed in the thin air film trapped between a plano-convex lens of large curvature radius R ≫ r and an optical flat. At radial distance r from the contact point, the air-gap thickness follows from (R - d)² + r² = R² as d(r) ≈ (r²)/(2R).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Wave 1 reflects at the upper glass-to-air interface (higher to lower index) with zero phase shift. Wave 2 traverses the air gap twice (2d(r)) and reflects at the lower air-to-glass interface (lower to higher index), where Fresnel's equations dictate an abrupt π phase inversion equivalent to an extra (λ)/(2) path difference. Total optical path difference is therefore Δ(r) = 2d(r) + (λ)/(2) = (r²)/(R) + (λ)/(2).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">At the central point of contact (r = 0, d = 0), the λ/2 phase reversal leaves the two reflected rays exactly out of phase, producing a central dark spot in reflected light! Dark ring radii satisfy r_dark,m = √(mλ R) and bright ring radii satisfy r_bright,m = √((m - (1)/(2))λ R).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Wavelength λ</strong>: 420 … 680 nm, standard value 550 nm</li><li><strong>Lens curvature radius R</strong>: 1 … 5 m, standard value 2.5 m</li><li><strong>Gap refractive index n</strong>: 1 … 1.5, standard value 1</li><li><strong>Measured ring order m</strong>: 1 … 6, standard value 3</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Thin-film interference in wedge-shaped air gaps is widely used for precision optical surface metrology: when a plano-convex lens rests on a flat optical glass plate, light rays reflected from the top and bottom boundaries of the air layer interfere to form concentric fringes of equal thickness (Newton's rings).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>d(r) &amp;≈ (r²)/(2R), Δ = 2 n d(r) + (λ)/(2) r_m,dark = √((m λ R)/(n)), r_m,bright = √(((m - (1)/(2)) λ R)/(n))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Gibbs Free Energy ΔG = ΔH − TΔS, Entropy &amp; Reaction Spontaneity</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Nature strives simultaneously toward two opposing goals: minimum enthalpy (ΔH 0) at high temperatures.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Chemical Thermodynamics</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">At constant temperature T and pressure P, chemical spontaneity is governed by the Gibbs free energy Δ G = Δ H - TΔ S, which balances the enthalpic driving force (Δ H, heat of bond rearrangement) against the entropic driving force (TΔ S, disorder and microstate multiplicity).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">A reaction is spontaneous when Δ G 0, and at chemical equilibrium when Δ G = 0. The standard free energy change determines the equilibrium constant through the van 't Hoff isotherm: Δ G° = -RT ln K_eq.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">When Δ H and Δ S share the same sign, spontaneity reverses across the inversion temperature T^* = (Δ H°)/(Δ S°): an endothermic reaction with positive entropy change (Δ H &gt; 0, Δ S &gt; 0) becomes spontaneous at high temperatures T &gt; T^*.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Reaction enthalpy ΔH° (− exo, + endo)</strong>: -120 … 120 kJ/mol, standard value 60 kJ/mol</li><li><strong>Reaction entropy ΔS°</strong>: -200 … 250 J/(mol·K), standard value 150 J/(mol·K)</li><li><strong>Absolute temperature T</strong>: 200 … 1000 K, standard value 500 K</li><li><strong>System pressure P</strong>: 0.5 … 5 atm, standard value 1 atm</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The spontaneity of a chemical process at constant temperature and pressure is governed by the Gibbs free energy change Δ G = Δ H - TΔ S, which balances enthalpic (Delta H) and entropic (TΔ S) driving forces: at low temperatures the enthalpy term dominates, whereas at high temperatures a positive entropy change (Δ S &gt; 0) drives endothermic reactions forward (Δ G &lt; 0).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ G = Δ H - TΔ S, Δ G° = -RT ln K Tᵢₙᵥ^* = (Δ H°)/(Δ S°)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">400 K</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Chemical Thermodynamics</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">At constant temperature T and pressure P, chemical spontaneity is governed by the Gibbs free energy Δ G = Δ H - TΔ S, which balances the enthalpic driving force (Δ H, heat of bond rearrangement) against the entropic driving force (TΔ S, disorder and microstate multiplicity).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">A reaction is spontaneous when Δ G 0, and at chemical equilibrium when Δ G = 0. The standard free energy change determines the equilibrium constant through the van 't Hoff isotherm: Δ G° = -RT ln K_eq.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">When Δ H and Δ S share the same sign, spontaneity reverses across the inversion temperature T^* = (Δ H°)/(Δ S°): an endothermic reaction with positive entropy change (Δ H &gt; 0, Δ S &gt; 0) becomes spontaneous at high temperatures T &gt; T^*.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Reaction enthalpy ΔH° (− exo, + endo)</strong>: -120 … 120 kJ/mol, standard value 60 kJ/mol</li><li><strong>Reaction entropy ΔS°</strong>: -200 … 250 J/(mol·K), standard value 150 J/(mol·K)</li><li><strong>Absolute temperature T</strong>: 200 … 1000 K, standard value 500 K</li><li><strong>System pressure P</strong>: 0.5 … 5 atm, standard value 1 atm</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The spontaneity of a chemical process at constant temperature and pressure is governed by the Gibbs free energy change Δ G = Δ H - TΔ S, which balances enthalpic (Delta H) and entropic (TΔ S) driving forces: at low temperatures the enthalpy term dominates, whereas at high temperatures a positive entropy change (Δ S &gt; 0) drives endothermic reactions forward (Δ G &lt; 0).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ G = Δ H - TΔ S, Δ G° = -RT ln K Tᵢₙᵥ^* = (Δ H°)/(Δ S°)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

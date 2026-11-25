@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Coupled Pendulums: Normal Modes &amp; Energy Beats</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Any motion of a linear coupled system is a superposition of its fundamental normal modes.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Two identical pendulums of mass m and length L coupled by a horizontal spring of stiffness k form a canonical two-degree-of-freedom coupled oscillator: mx₁ = -(mg)/(L)x₁ - k(x₁ - x₂) and mx₂ = -(mg)/(L)x₂ - k(x₂ - x₁).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Transforming to normal coordinates q₊ = x₁ + x₂ and q₋ = x₁ - x₂ diagonalizes the equations into two independent normal modes: 1) the in-phase symmetric mode (x₁ = x₂), where the coupling spring remains unstretched and ω₁ = √((g)/(L)); 2) the out-of-phase antisymmetric mode (x₁ = -x₂), where the spring stretches by 2x₁ and raises the frequency to ω₂ = √((g)/(L) + (2k)/(m)).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Displacing only pendulum 1 at t = 0 excites an equal superposition of both normal modes: x₁(t) = A cos ((ω₂ - ω₁)/(2)t) cos (ωt) and x₂(t) = A sin ((ω₂ - ω₁)/(2)t) sin (ωt). This produces energy beats: with beat period T_beat = (2π)/(ω₂ - ω₁), pendulum 1 comes to a complete halt while transferring 100% of its energy to pendulum 2, and then back again!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Pendulum suspension length L</strong>: 1.6 … 3.6 m, standard value 2.6 m</li><li><strong>Coupling spring stiffness κ</strong>: 0.4 … 5 N/m, standard value 1.8 N/m</li><li><strong>Mass of each bob m</strong>: 0.8 … 3 kg, standard value 1.5 kg</li><li><strong>Mode (0 = beats, 1 = in-phase, −1 = anti-phase)</strong>: -1 … 1, standard value 0</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In a system of two identical pendulums coupled by a spring of stiffness k_c, displacing one pendulum excites a superposition of symmetric and antisymmetric normal modes. This frequency difference produces periodic energy beats that transfer oscillation energy completely back and forth between the two pendulums.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>ω₁ = √((g)/(L)), ω₂ = √((g)/(L) + (2κ)/(m)) Ω_b = ω₂ - ω₁, T_b = (2π)/(ω₂ - ω₁)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">19.5° / 0.0°</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Two identical pendulums of mass m and length L coupled by a horizontal spring of stiffness k form a canonical two-degree-of-freedom coupled oscillator: mx₁ = -(mg)/(L)x₁ - k(x₁ - x₂) and mx₂ = -(mg)/(L)x₂ - k(x₂ - x₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Transforming to normal coordinates q₊ = x₁ + x₂ and q₋ = x₁ - x₂ diagonalizes the equations into two independent normal modes: 1) the in-phase symmetric mode (x₁ = x₂), where the coupling spring remains unstretched and ω₁ = √((g)/(L)); 2) the out-of-phase antisymmetric mode (x₁ = -x₂), where the spring stretches by 2x₁ and raises the frequency to ω₂ = √((g)/(L) + (2k)/(m)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Displacing only pendulum 1 at t = 0 excites an equal superposition of both normal modes: x₁(t) = A cos ((ω₂ - ω₁)/(2)t) cos (ωt) and x₂(t) = A sin ((ω₂ - ω₁)/(2)t) sin (ωt). This produces energy beats: with beat period T_beat = (2π)/(ω₂ - ω₁), pendulum 1 comes to a complete halt while transferring 100% of its energy to pendulum 2, and then back again!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Pendulum suspension length L</strong>: 1.6 … 3.6 m, standard value 2.6 m</li><li><strong>Coupling spring stiffness κ</strong>: 0.4 … 5 N/m, standard value 1.8 N/m</li><li><strong>Mass of each bob m</strong>: 0.8 … 3 kg, standard value 1.5 kg</li><li><strong>Mode (0 = beats, 1 = in-phase, −1 = anti-phase)</strong>: -1 … 1, standard value 0</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In a system of two identical pendulums coupled by a spring of stiffness k_c, displacing one pendulum excites a superposition of symmetric and antisymmetric normal modes. This frequency difference produces periodic energy beats that transfer oscillation energy completely back and forth between the two pendulums.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>ω₁ = √((g)/(L)), ω₂ = √((g)/(L) + (2κ)/(m)) Ω_b = ω₂ - ω₁, T_b = (2π)/(ω₂ - ω₁)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

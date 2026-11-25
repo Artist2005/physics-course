@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Поляризація світлового фронту та закон Малюса</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Оскільки світлова хвиля є поперечною, кристалічний аналізатор пропускає лише ту проєкцію вектора E, яка паралельна його оптичній осі.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки світло є поперечною електромагнітною хвилею (E ⊥ k), вектор електричного поля E може мати певну орієнтацію в площині, перпендикулярній до променя. Природне світло є неполяризованим (хаотична суперпозиція всіх азимутів коливань E). Лінійний поляризатор пропускає лише складову електричного поля, паралельну його осі пропускання.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Якщо на аналізатор падає лінійно поляризована хвиля з амплітудою E₀ та інтенсивністю I₀ ∝ E₀², а кут між площиною поляризації променя та віссю аналізатора дорівнює θ, то крізь аналізатор проходить проєкція амплітуди E = E₀ cos θ. Оскільки інтенсивність світла пропорційна квадрату амплітуди поля, отримуємо закон Малюса: I(θ) = I₀ cos ²θ. При схрещених поляризаторах (θ = 90°) настає повне гасіння світла (I = 0).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Поляризація виникає також при відбиванні світла від межі діелектрика з показником заломлення n. За законом Брюстера, якщо кут падіння задовольняє умову tan θ_B = n (при цьому відбитий і заломлений промені взаємно перпендикулярні: θ_B + γ = 90°), то відбитий промінь стає повністю лінійно поляризованим перпендикулярно до площини падіння (s-поляризація). Саме це явище використовують у поляризаційних окулярах і фотофільтрах для усунення відблисків.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кут повороту осі аналізатора θ</strong>: 0 … 90 °, типове значення 35 °</li><li><strong>Інтенсивність після поляризатора I₀</strong>: 40 … 160 Вт/м², типове значення 100 Вт/м²</li><li><strong>Довжина світлової хвилі λ</strong>: 420 … 680 нм, типове значення 530 нм</li><li><strong>Показник заломлення скла n (для θ_B)</strong>: 1.3 … 1.9, типове значення 1.52</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Відбите від горизонтальної діелектричної поверхні (води або скла) світло за кута падіння Брюстера стає повністю лінійно поляризованим паралельно площині межі поділу. Поляризаційний аналізатор із вертикальною віссю пропускання гасить цей відблиск відповідно до закону Малюса I = I₀ cos ²θ.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>E_вих = E₀ cos θ, I(θ) = I₀ cos ²θ (закон Малюса) tan θ_B = n₂₁, θ_B + θ_залом = 90° (закон Брюстера)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Лінійна (θ = 35°)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки світло є поперечною електромагнітною хвилею (E ⊥ k), вектор електричного поля E може мати певну орієнтацію в площині, перпендикулярній до променя. Природне світло є неполяризованим (хаотична суперпозиція всіх азимутів коливань E). Лінійний поляризатор пропускає лише складову електричного поля, паралельну його осі пропускання.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Якщо на аналізатор падає лінійно поляризована хвиля з амплітудою E₀ та інтенсивністю I₀ ∝ E₀², а кут між площиною поляризації променя та віссю аналізатора дорівнює θ, то крізь аналізатор проходить проєкція амплітуди E = E₀ cos θ. Оскільки інтенсивність світла пропорційна квадрату амплітуди поля, отримуємо закон Малюса: I(θ) = I₀ cos ²θ. При схрещених поляризаторах (θ = 90°) настає повне гасіння світла (I = 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Поляризація виникає також при відбиванні світла від межі діелектрика з показником заломлення n. За законом Брюстера, якщо кут падіння задовольняє умову tan θ_B = n (при цьому відбитий і заломлений промені взаємно перпендикулярні: θ_B + γ = 90°), то відбитий промінь стає повністю лінійно поляризованим перпендикулярно до площини падіння (s-поляризація). Саме це явище використовують у поляризаційних окулярах і фотофільтрах для усунення відблисків.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кут повороту осі аналізатора θ</strong>: 0 … 90 °, типове значення 35 °</li><li><strong>Інтенсивність після поляризатора I₀</strong>: 40 … 160 Вт/м², типове значення 100 Вт/м²</li><li><strong>Довжина світлової хвилі λ</strong>: 420 … 680 нм, типове значення 530 нм</li><li><strong>Показник заломлення скла n (для θ_B)</strong>: 1.3 … 1.9, типове значення 1.52</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Відбите від горизонтальної діелектричної поверхні (води або скла) світло за кута падіння Брюстера стає повністю лінійно поляризованим паралельно площині межі поділу. Поляризаційний аналізатор із вертикальною віссю пропускання гасить цей відблиск відповідно до закону Малюса I = I₀ cos ²θ.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>E_вих = E₀ cos θ, I(θ) = I₀ cos ²θ (закон Малюса) tan θ_B = n₂₁, θ_B + θ_залом = 90° (закон Брюстера)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

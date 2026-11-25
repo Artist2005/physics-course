@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ideal Heat Engine &amp; Carnot Cycle in 3D</h1>
       <p id="scene-epigraph" class="chapter-epigraph">No heat engine can convert all heat from a hot reservoir into work without rejecting heat to a colder sink: maximum efficiency is set by T₁ and T₂.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A heat engine operates cyclically between a hot reservoir at absolute temperature T₁ and a cold sink at T₂ 0).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In 1824, Sadi Carnot proved that the maximum possible efficiency between temperatures T₁ and T₂ is achieved by a reversible Carnot cycle comprising two isotherms (T₁ = const, T₂ = const) and two adiabats (δ Q = 0, PV^γ = const). For an ideal gas, net cycle work is W = ν R (T₁ - T₂) ln (V₂)/(V₁), and the thermal efficiency is η_Carnot = 1 - (T₂)/(T₁).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Carnot's theorem establishes an universal thermodynamic bound: maximum efficiency is independent of the working substance and depends solely on the absolute temperature ratio T₂/T₁. Raising turbine inlet temperature T₁ and lowering exhaust temperature T₂ is the primary route to higher efficiency in power engineering.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Hot reservoir temperature T₁</strong>: 450 … 900 K, standard value 600 K</li><li><strong>Cold sink temperature T₂</strong>: 200 … 400 K, standard value 300 K</li><li><strong>Heat absorbed per cycle Q₁</strong>: 60 … 200 J, standard value 120 J</li><li><strong>Thermodynamic cycle freq. ν</strong>: 0.8 … 3.2 Hz, standard value 1.8 Hz</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Thermal power plants and heat engines perform mechanical work by transferring heat from a high-temperature reservoir T_H to a low-temperature sink T_C. By the second law of thermodynamics, part of the heat must always be rejected to the cold sink, bounding efficiency below 100%.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Q₁ = A + Q₂, η = (A)/(Q₁) = (Q₁ - Q₂)/(Q₁) η_Carnot = 1 - (T₂)/(T₁), Aₘₐₓ = Q₁ (1 - (T₂)/(T₁))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">1→2 Isothermal exp. (T₁)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A heat engine operates cyclically between a hot reservoir at absolute temperature T₁ and a cold sink at T₂ 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">In 1824, Sadi Carnot proved that the maximum possible efficiency between temperatures T₁ and T₂ is achieved by a reversible Carnot cycle comprising two isotherms (T₁ = const, T₂ = const) and two adiabats (δ Q = 0, PV^γ = const). For an ideal gas, net cycle work is W = ν R (T₁ - T₂) ln (V₂)/(V₁), and the thermal efficiency is η_Carnot = 1 - (T₂)/(T₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Carnot's theorem establishes an universal thermodynamic bound: maximum efficiency is independent of the working substance and depends solely on the absolute temperature ratio T₂/T₁. Raising turbine inlet temperature T₁ and lowering exhaust temperature T₂ is the primary route to higher efficiency in power engineering.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Hot reservoir temperature T₁</strong>: 450 … 900 K, standard value 600 K</li><li><strong>Cold sink temperature T₂</strong>: 200 … 400 K, standard value 300 K</li><li><strong>Heat absorbed per cycle Q₁</strong>: 60 … 200 J, standard value 120 J</li><li><strong>Thermodynamic cycle freq. ν</strong>: 0.8 … 3.2 Hz, standard value 1.8 Hz</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Thermal power plants and heat engines perform mechanical work by transferring heat from a high-temperature reservoir T_H to a low-temperature sink T_C. By the second law of thermodynamics, part of the heat must always be rejected to the cold sink, bounding efficiency below 100%.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Q₁ = A + Q₂, η = (A)/(Q₁) = (Q₁ - Q₂)/(Q₁) η_Carnot = 1 - (T₂)/(T₁), Aₘₐₓ = Q₁ (1 - (T₂)/(T₁))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

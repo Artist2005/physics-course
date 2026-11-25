@@ -39578,9 +39578,23 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function ensureTheoryBookUI() {
       const t = tUI();
 
-      // 1. Розгортний теоретичний конспект у лівій панелі (відкритий за замовчуванням)
+      // 1. Розгортний теоретичний конспект унизу робочої частини лівої панелі (відкритий за замовчуванням) + швидкий перехід зверху
+      const leftPageEl = document.getElementById('left-sidebar');
       const chapterHeader = document.querySelector('.chapter-header');
-      if (chapterHeader) {
+      if (leftPageEl) {
+        let theorySec = document.getElementById('theory-book-section');
+        if (!theorySec) {
+          theorySec = document.createElement('section');
+          theorySec.id = 'theory-book-section';
+          theorySec.className = 'theory-book-section';
+          theorySec.setAttribute('aria-label', uiState.lang === 'uk' ? 'Теоретичний конспект' : 'Theory notes');
+          const adLeftEl = document.getElementById('ad-slot-left');
+          if (adLeftEl && adLeftEl.parentElement === leftPageEl) {
+            leftPageEl.insertBefore(theorySec, adLeftEl);
+          } else {
+            leftPageEl.appendChild(theorySec);
+          }
+        }
         let btn = document.getElementById('btn-theory-book');
         let drawer = document.getElementById('theory-drawer-box');
         if (!btn) {
@@ -39598,7 +39612,6 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               <span class="theory-book-chevron" aria-hidden="true">▾</span>
             </span>
           `;
-          chapterHeader.appendChild(btn);
         }
         if (!drawer) {
           drawer = document.createElement('div');
@@ -39606,8 +39619,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           drawer.className = 'theory-drawer-box open';
           drawer.setAttribute('aria-hidden', 'false');
           drawer.innerHTML = `<div id="theory-drawer-content" class="theory-drawer-content"></div>`;
-          chapterHeader.appendChild(drawer);
         }
+        if (btn.parentElement !== theorySec) theorySec.appendChild(btn);
+        if (drawer.parentElement !== theorySec) theorySec.appendChild(drawer);
+
         if (!btn.dataset.bound) {
           btn.dataset.bound = '1';
           btn.addEventListener('click', () => {
@@ -39615,6 +39630,34 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             syncTheoryDrawersUI();
             if (theoryLeftOpen) {
               requestAnimationFrame(fitMathContainers);
+            }
+          });
+        }
+      }
+      if (chapterHeader) {
+        const metaRow = chapterHeader.querySelector('.chapter-meta');
+        const timeEl = document.getElementById('sim-time-readout');
+        if (metaRow && !document.getElementById('btn-jump-theory')) {
+          const jumpBtn = document.createElement('button');
+          jumpBtn.type = 'button';
+          jumpBtn.id = 'btn-jump-theory';
+          jumpBtn.className = 'btn-jump-theory';
+          jumpBtn.textContent = uiState.lang === 'uk' ? 'Конспект ↓' : 'Notes ↓';
+          jumpBtn.title = uiState.lang === 'uk' ? 'Перейти до конспекту теорії (клавіша T)' : 'Jump to theory notes (Key T)';
+          if (timeEl && timeEl.parentElement === metaRow) {
+            metaRow.insertBefore(jumpBtn, timeEl);
+          } else {
+            metaRow.appendChild(jumpBtn);
+          }
+          jumpBtn.addEventListener('click', () => {
+            const btnLeft = document.getElementById('btn-theory-book');
+            if (!theoryLeftOpen) {
+              theoryLeftOpen = true;
+              syncTheoryDrawersUI();
+              requestAnimationFrame(fitMathContainers);
+            }
+            if (btnLeft) {
+              btnLeft.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           });
         }
@@ -39698,6 +39741,36 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               e.stopPropagation();
               switchDiscipline(d);
             });
+          }
+        });
+      }
+
+      const navGroup = document.querySelector('.chapter-nav-group');
+      if (navGroup && !document.getElementById('btn-quick-search')) {
+        const qBtn = document.createElement('button');
+        qBtn.type = 'button';
+        qBtn.id = 'btn-quick-search';
+        qBtn.className = 'chapter-step-btn btn-quick-search';
+        qBtn.title = uiState.lang === 'uk' ? 'Пошук серед 106 дослідів (/)' : 'Search all 106 labs (/)';
+        qBtn.setAttribute('aria-label', uiState.lang === 'uk' ? 'Пошук серед 106 дослідів' : 'Search all 106 labs');
+        qBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
+        navGroup.appendChild(qBtn);
+        qBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          closeDiscDropdownMenu();
+          const wrapper = document.getElementById('exp-dropdown-wrapper');
+          const trigger = document.getElementById('exp-dropdown-trigger');
+          if (wrapper && trigger) {
+            wrapper.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            renderDropdownMenu();
+            const searchInp = document.getElementById('dropdown-search-input');
+            if (searchInp) {
+              requestAnimationFrame(() => {
+                searchInp.focus();
+                searchInp.select();
+              });
+            }
           }
         });
       }
@@ -39836,15 +39909,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           catDetails = document.createElement('details');
           catDetails.id = 'curriculum-catalog-details';
           catDetails.className = 'curriculum-catalog-details';
-          catDetails.open = true;
           const catSummary = document.createElement('summary');
           catSummary.id = 'ui-curriculum-summary';
           catSummary.className = 'curriculum-catalog-summary';
           catSummary.textContent = t.curriculumSummary;
           catDetails.appendChild(catSummary);
           rightPage.appendChild(catDetails);
-        } else {
-          catDetails.open = true;
         }
         if (seoNav.parentElement !== catDetails) {
           catDetails.appendChild(seoNav);
@@ -40578,11 +40648,23 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTitle('.phase-breadcrumbs', isUk ? 'Натисніть на етап, щоб перемкнути режим' : 'Click any stage to switch view');
       setTitle('#btn-close-ad-banner', isUk ? 'Сховати банер' : 'Hide banner');
       setTitle('#exp-dropdown-trigger', isUk ? 'Вибрати симуляцію' : 'Select physics experiment');
+      setTitle('#btn-quick-search', isUk ? 'Пошук серед 106 дослідів (/)' : 'Search all 106 labs (/)');
+      setTitle('#btn-jump-theory', isUk ? 'Перейти до конспекту теорії (клавіша T)' : 'Jump to theory notes (Key T)');
+      const jumpTheoryEl = document.getElementById('btn-jump-theory');
+      if (jumpTheoryEl) jumpTheoryEl.textContent = isUk ? 'Конспект ↓' : 'Notes ↓';
+      const coachEl = document.getElementById('canvas-gesture-coach');
+      if (coachEl) {
+        coachEl.textContent = isUk
+          ? 'Обертайте мишею · Коліщатко для зуму · Двічі клік центрує камеру'
+          : 'Drag to rotate · Scroll to zoom · Double-click to center camera';
+      }
       const setAria = (sel, val) => {
         const el = document.querySelector(sel);
         if (el) el.setAttribute('aria-label', val);
       };
       setAria('#exp-dropdown-menu', isUk ? 'Вибір симуляції' : 'Select simulation');
+      setAria('#btn-quick-search', isUk ? 'Пошук серед 106 дослідів' : 'Search all 106 labs');
+      setAria('#theory-book-section', isUk ? 'Теоретичний конспект' : 'Theory notes');
       setAria('#header-legal-links', isUk ? 'Інформація про сайт' : 'Site information');
       setAria('.lang-switcher', isUk ? 'Вибір мови' : 'Language selector');
       setAria('.viewport-cam-dock', isUk ? 'Проєкції камери' : 'Camera projection views');
@@ -41684,6 +41766,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           applySliderValue(parseFloat(e.target.value));
         });
 
+        input.title = uiState.lang === 'uk' ? 'Подвійний клік скидає параметр до норми' : 'Double-click to reset parameter';
         input.addEventListener('dblclick', () => {
           applySliderValue(defVal);
         });
@@ -41695,6 +41778,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const inlineInp = document.createElement('input');
           inlineInp.type = 'number';
           inlineInp.className = 'param-inline-input';
+          inlineInp.setAttribute('aria-label', String(s.label || s.key));
           inlineInp.min = String(effMin);
           inlineInp.max = String(effMax);
           inlineInp.step = String(effStep);
@@ -44050,6 +44134,50 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         setInteractionBadgeText(null, false);
       }
     });
+
+    // Double-click empty 3D viewport space to smoothly reset camera to isometric view
+    renderer.domElement.addEventListener('dblclick', e => {
+      const hit = pickInteractiveHit(e.clientX, e.clientY);
+      if (hit) {
+        let tileObj = hit.object;
+        while (tileObj && (!tileObj.userData || !tileObj.userData.periodicTile)) {
+          tileObj = tileObj.parent;
+        }
+        if (tileObj) return;
+      }
+      const isoBtn = document.getElementById('cam-iso');
+      if (isoBtn) isoBtn.click();
+      setInteractionBadgeText(
+        uiState.lang === 'uk' ? 'Камеру відцентровано' : 'Camera centered',
+        true
+      );
+      setTimeout(() => {
+        if (!dragState3D) setInteractionBadgeText(null, false);
+      }, 1100);
+    });
+
+    // First-visit subtle 3D gesture coach pill (auto-dismisses on first interaction)
+    try {
+      if (!sessionStorage.getItem('sheua_3d_coach_v1')) {
+        const coach = document.createElement('div');
+        coach.id = 'canvas-gesture-coach';
+        coach.className = 'canvas-gesture-coach';
+        coach.setAttribute('aria-hidden', 'true');
+        coach.textContent = uiState.lang === 'uk'
+          ? 'Обертайте мишею · Коліщатко для зуму · Двічі клік центрує камеру'
+          : 'Drag to rotate · Scroll to zoom · Double-click to center camera';
+        document.body.appendChild(coach);
+        const dismissCoach = () => {
+          try { sessionStorage.setItem('sheua_3d_coach_v1', '1'); } catch (err) {}
+          coach.classList.add('dismissed');
+          setTimeout(() => { if (coach.parentNode) coach.parentNode.removeChild(coach); }, 320);
+        };
+        renderer.domElement.addEventListener('pointerdown', dismissCoach, { once: true, passive: true });
+        renderer.domElement.addEventListener('wheel', dismissCoach, { once: true, passive: true });
+        document.getElementById('btn-primary-cta')?.addEventListener('click', dismissCoach, { once: true });
+        setTimeout(dismissCoach, 8500);
+      }
+    } catch (err) {}
 
     // ============================================================================
     // 14. MAIN RENDER & PHYSICS LOOP (requestAnimationFrame + delta-time)

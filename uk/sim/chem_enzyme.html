@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ферментативний каталіз: рівняння Міхаеліса–Ментен та конкурентне інгібування</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Фермент, це молекулярна рука, чия долоня (активний центр) ідеально пристосована, щоб обійняти перехідний стан субстрату», Лайнус Полінг.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Біохімія та ферменти</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Ферменти (ензими), це високоспецифічні білкові біокаталізатори, які прискорюють біохімічні реакції в клітині в 10⁶-10¹² разів завдяки комплементарному зв'язуванню молекули субстрату S в активному центрі ферменту E з утворенням проміжного фермент-субстратного комплексу [ES]: E + S ⇄(k₁)(k₋₁) ES →(k_cat) E + P.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Застосування методу квазістаціонарних концентрацій Бріггса-Голдейна (d[ES]/dt = 0) дає класичне рівняння Міхаеліса-Ментен: v = (Vₘₐₓ[S])/(K_M + [S]), де Vₘₐₓ = k_cat[E]₀, гранична швидкість при повному насиченні всіх активних центрів ферменту, а константа Міхаеліса K_M = (k₋₁ + k_cat)/(k₁) чисельно дорівнює концентрації субстрату, за якої v = (1)/(2)Vₘₐₓ (що менша K_M, то вища спорідненість ферменту до субстрату).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Конкурентний інгібітор I має просторову будову, подібну до субстрату, і оборотно конкурує з ним за активний центр (E + I ⇄ EI). Це збільшує уявну константу Міхаеліса в α = 1 + [I]/K_I разів (K_M^app = α K_M), але за великого надлишку субстрату ([S] ≫ K_M^app) субстрат витісняє інгібітор, тому максимальна швидкість Vₘₐₓ не змінюється.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Концентрація субстрату в розчині [S]</strong>: 0.25 … 12 ммоль/л, типове значення 4 ммоль/л</li><li><strong>Константа Міхаеліса K_M (спорідненість центру: менша K_M = міцніше)</strong>: 0.5 … 5 ммоль/л, типове значення 1.5 ммоль/л</li><li><strong>Каталітичне число обертів ферменту k_cat (V_max)</strong>: 2 … 14 с⁻¹, типове значення 8 с⁻¹</li><li><strong>Концентрація конкурентного інгібітора [I]</strong>: 0 … 6 ммоль/л, типове значення 0 ммоль/л</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У ферментативній кінетиці Міхаеліса-Ментен субстрат S оборотно зв'язується з комплементарним активним центром ферменту E, утворюючи фермент-субстратний комплекс ES. За високої концентрації субстрату ([S] ≫ K_M) усі активні центри насичені й швидкість реакції досягає межі Vₘₐₓ = k_cat[E]₀, а присутність конкурентного інгібітора за низьких [S] збільшує позірну константу K_M^app, не змінюючи Vₘₐₓ.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>E + S ⇄(k₁)(k₋₁) ES →(k_cat) E + P, v₀ = (Vₘₐₓ[S])/(K_M(1 + ([I])/(K_i)) + [S])</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Без інгібітора (класична кінетика Міхаеліса-Ментен)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Біохімія та ферменти</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Ферменти (ензими), це високоспецифічні білкові біокаталізатори, які прискорюють біохімічні реакції в клітині в 10⁶-10¹² разів завдяки комплементарному зв'язуванню молекули субстрату S в активному центрі ферменту E з утворенням проміжного фермент-субстратного комплексу [ES]: E + S ⇄(k₁)(k₋₁) ES →(k_cat) E + P.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Застосування методу квазістаціонарних концентрацій Бріггса-Голдейна (d[ES]/dt = 0) дає класичне рівняння Міхаеліса-Ментен: v = (Vₘₐₓ[S])/(K_M + [S]), де Vₘₐₓ = k_cat[E]₀, гранична швидкість при повному насиченні всіх активних центрів ферменту, а константа Міхаеліса K_M = (k₋₁ + k_cat)/(k₁) чисельно дорівнює концентрації субстрату, за якої v = (1)/(2)Vₘₐₓ (що менша K_M, то вища спорідненість ферменту до субстрату).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Конкурентний інгібітор I має просторову будову, подібну до субстрату, і оборотно конкурує з ним за активний центр (E + I ⇄ EI). Це збільшує уявну константу Міхаеліса в α = 1 + [I]/K_I разів (K_M^app = α K_M), але за великого надлишку субстрату ([S] ≫ K_M^app) субстрат витісняє інгібітор, тому максимальна швидкість Vₘₐₓ не змінюється.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Концентрація субстрату в розчині [S]</strong>: 0.25 … 12 ммоль/л, типове значення 4 ммоль/л</li><li><strong>Константа Міхаеліса K_M (спорідненість центру: менша K_M = міцніше)</strong>: 0.5 … 5 ммоль/л, типове значення 1.5 ммоль/л</li><li><strong>Каталітичне число обертів ферменту k_cat (V_max)</strong>: 2 … 14 с⁻¹, типове значення 8 с⁻¹</li><li><strong>Концентрація конкурентного інгібітора [I]</strong>: 0 … 6 ммоль/л, типове значення 0 ммоль/л</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У ферментативній кінетиці Міхаеліса-Ментен субстрат S оборотно зв'язується з комплементарним активним центром ферменту E, утворюючи фермент-субстратний комплекс ES. За високої концентрації субстрату ([S] ≫ K_M) усі активні центри насичені й швидкість реакції досягає межі Vₘₐₓ = k_cat[E]₀, а присутність конкурентного інгібітора за низьких [S] збільшує позірну константу K_M^app, не змінюючи Vₘₐₓ.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>E + S ⇄(k₁)(k₋₁) ES →(k_cat) E + P, v₀ = (Vₘₐₓ[S])/(K_M(1 + ([I])/(K_i)) + [S])</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

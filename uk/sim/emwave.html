@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Електромагнітна світлова хвиля (E, B та вектор Пойнтінга)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Світло, це поперечна електромагнітна хвиля, у кожній площині світлового фронту якої вектори E та B коливаються в одній фазі перпендикулярно до напрямку поширення.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією Джеймса Клерка Максвелла (1865 р.), змінне у часі магнітне поле породжує вихрове електричне поле (∇ × E = -(∂ B)/(∂ t)), а змінне електричне поле (струм зміщення) породжує вихрове магнітне поле (∇ × B = μ₀ε₀ (∂ E)/(∂ t)). Внаслідок цього взаємного перетворення у просторі поширюється самопідтримувана поперечна електромагнітна хвиля зі швидкістю світла c = (1)/(√(ε₀μ₀)) ≈ 3× 10⁸ м/с.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У плоскій біжучій хвилі вектори напруженості електричного поля E(x,t) = E₀ sin (kx - ω t) та індукції магнітного поля B(x,t) = B₀ sin (kx - ω t) коливаються строго в одній фазі (синфазно), взаємно перпендикулярні (E ⊥ B) та перпендикулярні до напрямку поширення хвилі k, утворюючи праву трійку векторів. У вакуумі їхні амплітуди пов'язані співвідношенням E₀ = c B₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Густина потоку електромагнітної енергії (потужність, що переноситься хвилею через одиницю площі) описується вектором Умова-Пойнтінга S = (1)/(μ₀)[E × B], а об'ємні густини енергії електричного w_E = (1)/(2)ε₀ E² та магнітного w_B = (B²)/(2μ₀) полів у кожній точці хвилі точно рівні між собою (w_E = w_B).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Довжина хвилі між фронтами λ</strong>: 1.8 … 4.8 м, типове значення 3.2 м</li><li><strong>Амплітуда поля E₀</strong>: 0.8 … 2.2 В/м, типове значення 1.6 В/м</li><li><strong>Показник заломлення середовища n</strong>: 1 … 2.2, типове значення 1</li><li><strong>Еліптичність поляризації ε</strong>: 0 … 1, типове значення 0</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Видиме світло, радіосигнали та рентгенівське випромінювання є поперечними електромагнітними хвилями, які поширюються у вакуумі без потреби в матеріальному середовищі: змінне в часі електричне поле E індукує вихрове магнітне поле B, яке, своєю чергою, відновлює електричне поле.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>E(x,t) = E₀ sin (kx - ω t), B(x,t) = B₀ sin (kx - ω t) S = (1)/(μ₀)[E×B], c = (1)/(√(ε₀μ₀)), E⊥B⊥k</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">64.0 Вт/м²</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Згідно з теорією Джеймса Клерка Максвелла (1865 р.), змінне у часі магнітне поле породжує вихрове електричне поле (∇ × E = -(∂ B)/(∂ t)), а змінне електричне поле (струм зміщення) породжує вихрове магнітне поле (∇ × B = μ₀ε₀ (∂ E)/(∂ t)). Внаслідок цього взаємного перетворення у просторі поширюється самопідтримувана поперечна електромагнітна хвиля зі швидкістю світла c = (1)/(√(ε₀μ₀)) ≈ 3× 10⁸ м/с.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">У плоскій біжучій хвилі вектори напруженості електричного поля E(x,t) = E₀ sin (kx - ω t) та індукції магнітного поля B(x,t) = B₀ sin (kx - ω t) коливаються строго в одній фазі (синфазно), взаємно перпендикулярні (E ⊥ B) та перпендикулярні до напрямку поширення хвилі k, утворюючи праву трійку векторів. У вакуумі їхні амплітуди пов'язані співвідношенням E₀ = c B₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Густина потоку електромагнітної енергії (потужність, що переноситься хвилею через одиницю площі) описується вектором Умова-Пойнтінга S = (1)/(μ₀)[E × B], а об'ємні густини енергії електричного w_E = (1)/(2)ε₀ E² та магнітного w_B = (B²)/(2μ₀) полів у кожній точці хвилі точно рівні між собою (w_E = w_B).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Довжина хвилі між фронтами λ</strong>: 1.8 … 4.8 м, типове значення 3.2 м</li><li><strong>Амплітуда поля E₀</strong>: 0.8 … 2.2 В/м, типове значення 1.6 В/м</li><li><strong>Показник заломлення середовища n</strong>: 1 … 2.2, типове значення 1</li><li><strong>Еліптичність поляризації ε</strong>: 0 … 1, типове значення 0</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Видиме світло, радіосигнали та рентгенівське випромінювання є поперечними електромагнітними хвилями, які поширюються у вакуумі без потреби в матеріальному середовищі: змінне в часі електричне поле E індукує вихрове магнітне поле B, яке, своєю чергою, відновлює електричне поле.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>E(x,t) = E₀ sin (kx - ω t), B(x,t) = B₀ sin (kx - ω t) S = (1)/(μ₀)[E×B], c = (1)/(√(ε₀μ₀)), E⊥B⊥k</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

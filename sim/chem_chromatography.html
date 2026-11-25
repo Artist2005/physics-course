@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Chromatography (TLC &amp; Column): Partition Coefficient K_d &amp; Retention Factor R_f</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Like rays of light in a spectrum, the components of a pigment mixture separate systematically across the adsorbent layer.», Mikhail Tsvet, 1903</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Separation Science</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Chromatography separates chemical mixtures by continuously partitioning analyte molecules between a stationary phase (such as polar silica gel SiO₂ coated on a TLC plate or packed in a column) and a moving mobile phase (eluent).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">On polar silica gel, polar analytes form strong hydrogen bonds and dipole interactions with surface silanol (-Si-OH) groups (large partition coefficient K_d) and migrate slowly, whereas non-polar compounds remain in the mobile phase and travel rapidly near the solvent front.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Each component is identified by its dimensionless retention factor R_f = (zₛₚₒₜ)/(z_front) = (1)/(1 + k′), the ratio of the spot's migration distance zₛₚₒₜ to the total distance traveled by the solvent front z_front.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Mobile phase (eluent) polarity ε°</strong>: 0.15 … 0.95, standard value 0.55</li><li><strong>Solvent front migration height z_front</strong>: 2 … 9.5 cm, standard value 7.5 cm</li><li><strong>Silica gel stationary phase activity</strong>: 0.6 … 2, standard value 1.2</li><li><strong>Applied sample spot volume V_sample</strong>: 0.5 … 3 μL, standard value 1.5 μL</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Chromatographic separation on polar silica gel relies on differential partitioning between the stationary polar phase and the mobile non-polar eluent: non-polar β-carotene interacts weakly with silica and migrates near the solvent front (R_f ≈ 0.9), whereas polar chlorophyll b hydrogen-bonds strongly to surface silanol groups and elutes much more slowly (R_f ≈ 0.25).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>R_f = (z_i)/(z_front) = (1)/(1 + k_i), K_d = (Cₛₜₐₜ)/(C_mob), R_s = (2(z₂ - z₁))/(w₁ + w₂)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">1.20</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Separation Science</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Chromatography separates chemical mixtures by continuously partitioning analyte molecules between a stationary phase (such as polar silica gel SiO₂ coated on a TLC plate or packed in a column) and a moving mobile phase (eluent).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">On polar silica gel, polar analytes form strong hydrogen bonds and dipole interactions with surface silanol (-Si-OH) groups (large partition coefficient K_d) and migrate slowly, whereas non-polar compounds remain in the mobile phase and travel rapidly near the solvent front.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Each component is identified by its dimensionless retention factor R_f = (zₛₚₒₜ)/(z_front) = (1)/(1 + k′), the ratio of the spot's migration distance zₛₚₒₜ to the total distance traveled by the solvent front z_front.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Mobile phase (eluent) polarity ε°</strong>: 0.15 … 0.95, standard value 0.55</li><li><strong>Solvent front migration height z_front</strong>: 2 … 9.5 cm, standard value 7.5 cm</li><li><strong>Silica gel stationary phase activity</strong>: 0.6 … 2, standard value 1.2</li><li><strong>Applied sample spot volume V_sample</strong>: 0.5 … 3 μL, standard value 1.5 μL</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Chromatographic separation on polar silica gel relies on differential partitioning between the stationary polar phase and the mobile non-polar eluent: non-polar β-carotene interacts weakly with silica and migrates near the solvent front (R_f ≈ 0.9), whereas polar chlorophyll b hydrogen-bonds strongly to surface silanol groups and elutes much more slowly (R_f ≈ 0.25).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>R_f = (z_i)/(z_front) = (1)/(1 + k_i), K_d = (Cₛₜₐₜ)/(C_mob), R_s = (2(z₂ - z₁))/(w₁ + w₂)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

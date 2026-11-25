@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Кінетичні рівняння нульового, першого та другого порядків і період напівперетворення t₁/₂</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Порядок реакції розкриває справжній молекулярний сценарій перетворення, прихований за підсумковим стехіометричним рівнянням», Якоб Вант-Гофф.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Кінетичні рівняння</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Кінетичний порядок реакції n у диференціальному законі діючих мас v = -(d[A])/(dt) = k[A]^n показує, як миттєва швидкість перетворення реагенту залежить від його поточної молярної концентрації [A](t), і визначає закон зміни концентрації в часі та формулу періоду напівперетворення t₁/2.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">1) Нульовий порядок (n=0), характерний для гетерогенного та ферментативного каталізу при повному насиченні поверхні каталізатора: швидкість стала v = k, концентрація спадає лінійно [A](t) = [A]₀ - kt, а час напівперетворення прямо пропорційний початковій концентрації: t₁/2 = ([A]₀)/(2k).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">2) Перший порядок (n=1), мономолекулярний розклад та радіоактивний розпад: [A](t) = [A]₀ e⁻kt (лінеаризується у координатах ln [A] від t), а період напіврозпаду t₁/2 = ( ln 2)/(k) ≈ (0.693)/(k) взагалі не залежить від [A]₀. 3) Другий порядок (n=2), бімолекулярні зіткнення 2A → P: (1)/([A](t)) = (1)/([A]₀) + kt, а t₁/2 = (1)/(k[A]₀) обернено пропорційний початковій концентрації.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кінетичний порядок реакції n (0: нульовий, 1: перший, 2: другий)</strong>: 0 … 2, типове значення 1</li><li><strong>Початкова концентрація реагента [A]₀</strong>: 0.5 … 3 моль/л, типове значення 2 моль/л</li><li><strong>Константа швидкості реакції k</strong>: 0.1 … 1 с⁻¹, типове значення 0.35 с⁻¹</li><li><strong>Час перебігу реакції в реакторі t</strong>: 0 … 6 с, типове значення 2 с</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Кінетичний порядок реакції визначає характер залежності періоду напівперетворення t₁/2 від початкової концентрації реагенту [A]₀: для реакції 0-го порядку на насиченій поверхні каталізатора швидкість стала й t₁/2 = ([A]₀)/(2k); для мономолекулярної реакції 1-го порядку t₁/2 = ( ln 2)/(k) не залежить від концентрації; а для бімолекулярної реакції 2-го порядку зменшення концентрації уповільнює парні зіткнення і подовжує t₁/2 = (1)/(k[A]₀).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>v = -(d[A])/(dt) = k[A]^n ⇒ n=0: [A] = [A]₀ - kt, t₁/2 = ([A]₀)/(2k) n=1: [A] = [A]₀ e⁻kt, t₁/2 = ( ln 2)/(k) n=2: (1)/([A]) = (1)/([A]₀) + kt, t₁/2 = (1)/(k[A]₀)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">2.0 с</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Кінетичні рівняння</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Кінетичний порядок реакції n у диференціальному законі діючих мас v = -(d[A])/(dt) = k[A]^n показує, як миттєва швидкість перетворення реагенту залежить від його поточної молярної концентрації [A](t), і визначає закон зміни концентрації в часі та формулу періоду напівперетворення t₁/2.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">1) Нульовий порядок (n=0), характерний для гетерогенного та ферментативного каталізу при повному насиченні поверхні каталізатора: швидкість стала v = k, концентрація спадає лінійно [A](t) = [A]₀ - kt, а час напівперетворення прямо пропорційний початковій концентрації: t₁/2 = ([A]₀)/(2k).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">2) Перший порядок (n=1), мономолекулярний розклад та радіоактивний розпад: [A](t) = [A]₀ e⁻kt (лінеаризується у координатах ln [A] від t), а період напіврозпаду t₁/2 = ( ln 2)/(k) ≈ (0.693)/(k) взагалі не залежить від [A]₀. 3) Другий порядок (n=2), бімолекулярні зіткнення 2A → P: (1)/([A](t)) = (1)/([A]₀) + kt, а t₁/2 = (1)/(k[A]₀) обернено пропорційний початковій концентрації.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кінетичний порядок реакції n (0: нульовий, 1: перший, 2: другий)</strong>: 0 … 2, типове значення 1</li><li><strong>Початкова концентрація реагента [A]₀</strong>: 0.5 … 3 моль/л, типове значення 2 моль/л</li><li><strong>Константа швидкості реакції k</strong>: 0.1 … 1 с⁻¹, типове значення 0.35 с⁻¹</li><li><strong>Час перебігу реакції в реакторі t</strong>: 0 … 6 с, типове значення 2 с</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Кінетичний порядок реакції визначає характер залежності періоду напівперетворення t₁/2 від початкової концентрації реагенту [A]₀: для реакції 0-го порядку на насиченій поверхні каталізатора швидкість стала й t₁/2 = ([A]₀)/(2k); для мономолекулярної реакції 1-го порядку t₁/2 = ( ln 2)/(k) не залежить від концентрації; а для бімолекулярної реакції 2-го порядку зменшення концентрації уповільнює парні зіткнення і подовжує t₁/2 = (1)/(k[A]₀).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>v = -(d[A])/(dt) = k[A]^n ⇒ n=0: [A] = [A]₀ - kt, t₁/2 = ([A]₀)/(2k) n=1: [A] = [A]₀ e⁻kt, t₁/2 = ( ln 2)/(k) n=2: (1)/([A]) = (1)/([A]₀) + kt, t₁/2 = (1)/(k[A]₀)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

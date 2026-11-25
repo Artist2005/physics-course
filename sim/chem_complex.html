@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Coordination Complexes &amp; Crystal Field Theory (d-Orbital Splitting Δₒ)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">The vivid colors of ruby, emerald, and transition-metal solutions are the visible signature of five d-orbitals splitting in the electric field of ligands.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Coordination Chemistry</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In Crystal Field Theory (CFT), electrostatic repulsion from six octahedral ligands along the ± x, ± y, ± z axes lifts the five-fold degeneracy of metal d-orbitals into a lower t₂g triplet (d_xy, d_xz, d_yz at -0.4Δ_o) and an upper e_g doublet (d_z², d_x²-y² at +0.6Δ_o). In a tetrahedral field [ML₄]ⁿ⁺, the splitting is inverted and smaller (Δ_t ≈ (4)/(9)Δ_o).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The splitting parameter Δ_o increases across the spectrochemical series: I⁻ P) force spin pairing into low-spin states.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Absorption of a visible photon matching Δ_o = hc / λ_abs promotes an electron from t₂g to e_g (d-d transition), imparting vivid complementary colors to transition-metal complexes.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Central metal dⁿ electron count (d¹ … d⁹)</strong>: 1 … 9 e⁻, standard value 6 e⁻</li><li><strong>Ligand field splitting Δ_o (spectrochemical series: Cl⁻ → H₂O → NH₃ → CN⁻)</strong>: 130 … 320 kJ/mol, standard value 210 kJ/mol</li><li><strong>Metal-ligand coordinate bond length d(M←L)</strong>: 1.75 … 2.45 Å, standard value 2 Å</li><li><strong>Coordination geometry (1=Octahedron [ML₆], 2=Tetrahedron [ML₄])</strong>: 1 … 2, standard value 1</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In an octahedral coordination complex, six ligands approach the central transition-metal ion along the x, y, z axes: electrostatic repulsion strongly raises the energy of the axial d-orbitals (e_g: d_z², d_x²-y²), while the inter-axial orbitals (t₂g: d_xy, d_xz, d_yz) sit lower in energy by the crystal-field splitting Δ_o.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ_o = E(e_g) - E(t₂g) = (h c N_A)/(λ_abs) CFSE = bigl(-0.4 n_t₂g + 0.6 n_e_gbigr)Δ_o</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">570 nm</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Coordination Chemistry</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">In Crystal Field Theory (CFT), electrostatic repulsion from six octahedral ligands along the ± x, ± y, ± z axes lifts the five-fold degeneracy of metal d-orbitals into a lower t₂g triplet (d_xy, d_xz, d_yz at -0.4Δ_o) and an upper e_g doublet (d_z², d_x²-y² at +0.6Δ_o). In a tetrahedral field [ML₄]ⁿ⁺, the splitting is inverted and smaller (Δ_t ≈ (4)/(9)Δ_o).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The splitting parameter Δ_o increases across the spectrochemical series: I⁻ P) force spin pairing into low-spin states.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Absorption of a visible photon matching Δ_o = hc / λ_abs promotes an electron from t₂g to e_g (d-d transition), imparting vivid complementary colors to transition-metal complexes.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Central metal dⁿ electron count (d¹ … d⁹)</strong>: 1 … 9 e⁻, standard value 6 e⁻</li><li><strong>Ligand field splitting Δ_o (spectrochemical series: Cl⁻ → H₂O → NH₃ → CN⁻)</strong>: 130 … 320 kJ/mol, standard value 210 kJ/mol</li><li><strong>Metal-ligand coordinate bond length d(M←L)</strong>: 1.75 … 2.45 Å, standard value 2 Å</li><li><strong>Coordination geometry (1=Octahedron [ML₆], 2=Tetrahedron [ML₄])</strong>: 1 … 2, standard value 1</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In an octahedral coordination complex, six ligands approach the central transition-metal ion along the x, y, z axes: electrostatic repulsion strongly raises the energy of the axial d-orbitals (e_g: d_z², d_x²-y²), while the inter-axial orbitals (t₂g: d_xy, d_xz, d_yz) sit lower in energy by the crystal-field splitting Δ_o.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ_o = E(e_g) - E(t₂g) = (h c N_A)/(λ_abs) CFSE = bigl(-0.4 n_t₂g + 0.6 n_e_gbigr)Δ_o</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Полярність хімічного зв’язку, електричний дипольний момент та орієнтаційна поляризація</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Дипольний момент молекули, це геометрія молекули, помножена на асиметрію її електронної хмари», Петер Дебай.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 8-10 клас · Полярність молекул</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Електронегативність (χ за Полінгом) характеризує здатність атома в молекулі притягувати до себе спільну електронну густину ковалентного зв'язку. Якщо зв'язок утворений атомами з різною електронегативністю (Δχ = |χ_A - χ_B| &gt; 0), спільна електронна хмара зміщується до більш електронегативного атома, створюючи часткові заряди +δ q та -δ q.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Кількісною мірою полярності зв'язку є вектор дипольного моменту μ_зв = δ q · d (у хімії напрямлений від +δ до -δ, одиниця, Дебай: 1 Д = 3.336× 10⁻³⁰ Кл·м). Проте полярність усієї багатоатомної молекули визначається векторною сумою дипольних моментів усіх її зв'язків: μ_мол = ∑_i μ_i.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Для симетричної триатомної молекули AB₂ з валентним кутом θ модуль сумарного диполя становить μ_мол = 2μ_зв cos (θ/2). Тому кутова молекула води H₂O (θ = 104.5°) є сильно полярною (μ = 1.85 Д) і орієнтується вздовж зовнішнього електричного поля E під дією моменту сил τ = μ×E, тоді як лінійна молекула CO₂ (θ = 180°) має μ_мол = 0.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Різниця електронегативностей зв'язку Δχ = |χ_B − χ_A|</strong>: 0 … 2.5, типове значення 1.24</li><li><strong>Валентний кут між зв'язками θ (105° = H₂O, 180° = CO₂)</strong>: 90 … 180 °, типове значення 105 °</li><li><strong>Довжина ковалентного зв'язку l(A-B)</strong>: 0.9 … 1.8 Å, типове значення 0.96 Å</li><li><strong>Напруженість зовнішнього електричного поля E</strong>: 0 … 5 кВ/см, типове значення 2 кВ/см</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Полярність багатоатомної молекули визначається векторною сумою дипольних моментів окремих хімічних зв'язків. У лінійній симетричній молекулі CO₂ (180°) два рівні за модулем диполі зв'язків C=O напрямлені протилежно й взаємно компенсуються (μ = 0), тоді як у кутовій молекулі води (104.5°) векторне додавання диполів O-H створює значний сумарний дипольний момент.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>μ = ∑_i q_i r_i, μ_сум(AB₂) = 2μ₀ cos (θ)/(2), M = [μ × E]</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">2.0 кВ/см</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 8-10 клас · Полярність молекул</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Електронегативність (χ за Полінгом) характеризує здатність атома в молекулі притягувати до себе спільну електронну густину ковалентного зв'язку. Якщо зв'язок утворений атомами з різною електронегативністю (Δχ = |χ_A - χ_B| &gt; 0), спільна електронна хмара зміщується до більш електронегативного атома, створюючи часткові заряди +δ q та -δ q.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Кількісною мірою полярності зв'язку є вектор дипольного моменту μ_зв = δ q · d (у хімії напрямлений від +δ до -δ, одиниця, Дебай: 1 Д = 3.336× 10⁻³⁰ Кл·м). Проте полярність усієї багатоатомної молекули визначається векторною сумою дипольних моментів усіх її зв'язків: μ_мол = ∑_i μ_i.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Для симетричної триатомної молекули AB₂ з валентним кутом θ модуль сумарного диполя становить μ_мол = 2μ_зв cos (θ/2). Тому кутова молекула води H₂O (θ = 104.5°) є сильно полярною (μ = 1.85 Д) і орієнтується вздовж зовнішнього електричного поля E під дією моменту сил τ = μ×E, тоді як лінійна молекула CO₂ (θ = 180°) має μ_мол = 0.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Різниця електронегативностей зв'язку Δχ = |χ_B − χ_A|</strong>: 0 … 2.5, типове значення 1.24</li><li><strong>Валентний кут між зв'язками θ (105° = H₂O, 180° = CO₂)</strong>: 90 … 180 °, типове значення 105 °</li><li><strong>Довжина ковалентного зв'язку l(A-B)</strong>: 0.9 … 1.8 Å, типове значення 0.96 Å</li><li><strong>Напруженість зовнішнього електричного поля E</strong>: 0 … 5 кВ/см, типове значення 2 кВ/см</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Полярність багатоатомної молекули визначається векторною сумою дипольних моментів окремих хімічних зв'язків. У лінійній симетричній молекулі CO₂ (180°) два рівні за модулем диполі зв'язків C=O напрямлені протилежно й взаємно компенсуються (μ = 0), тоді як у кутовій молекулі води (104.5°) векторне додавання диполів O-H створює значний сумарний дипольний момент.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>μ = ∑_i q_i r_i, μ_сум(AB₂) = 2μ₀ cos (θ)/(2), M = [μ × E]</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

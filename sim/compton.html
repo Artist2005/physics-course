@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Compton Scattering &amp; Relativistic Photon Momentum</h1>
       <p id="scene-epigraph" class="chapter-epigraph">The billiard-like scattering of X-ray quanta proved that a photon carries not only energy hν but also linear momentum h/λ.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In 1923, Arthur Holly Compton observed that X-rays scattered by electrons in graphite through angle θ emerge with a longer wavelength λ' &gt; λ₀, where the wavelength shift Δλ = λ' - λ₀ depends solely on the scattering angle θ. Classical Thomson scattering (which predicts λ' = λ₀) could not account for this shift.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Treating the interaction as a relativistic elastic billiard collision between a photon of energy E₀ = (hc)/(λ₀) and momentum p₀ = (h)/(λ₀) and a stationary electron of rest energy m_e c² ≈ 511 keV, conservation of relativistic 4-momentum (E₀ + m_e c² = E' + √(p_e² c² + m_e² c⁴) and p₀ = p' + p_e) yields Compton's scattering formula: Δλ = λ' - λ₀ = λ_C (1 - cos θ).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Here λ_C = (h)/(m_e c) ≈ 2.426 pm is the Compton wavelength of the electron. Maximum energy transfer to the recoil electron occurs for 180° backscattering ( cos θ = -1), where Δλₘₐₓ = 2λ_C ≈ 4.85 pm. Compton's discovery proved conclusively that photons carry mechanical momentum p = ℏk.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Incident X-ray wavelength λ₀</strong>: 2 … 12 pm, standard value 5 pm</li><li><strong>Photon scattering angle θ</strong>: 15 … 180 °, standard value 90 °</li><li><strong>Target collision frequency</strong>: 0.8 … 2.4 Hz, standard value 1.4 Hz</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Compton scattering provides direct experimental confirmation of the corpuscular momentum of electromagnetic radiation. In an elastic collision between an X-ray photon and a free electron, kinetic energy transferred to the recoiling electron leaves the scattered photon with a reduced frequency and longer wavelength λ' &gt; λ₀.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>p_γ = p_γ' + p_e, hν + m_e c² = hν' + E_e Δλ = λ' - λ₀ = λ_C (1 - cos θ), λ_C = (h)/(m_e c) ≈ 2.43 pm</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">81.0 keV (φ=34°)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">In 1923, Arthur Holly Compton observed that X-rays scattered by electrons in graphite through angle θ emerge with a longer wavelength λ' &gt; λ₀, where the wavelength shift Δλ = λ' - λ₀ depends solely on the scattering angle θ. Classical Thomson scattering (which predicts λ' = λ₀) could not account for this shift.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Treating the interaction as a relativistic elastic billiard collision between a photon of energy E₀ = (hc)/(λ₀) and momentum p₀ = (h)/(λ₀) and a stationary electron of rest energy m_e c² ≈ 511 keV, conservation of relativistic 4-momentum (E₀ + m_e c² = E' + √(p_e² c² + m_e² c⁴) and p₀ = p' + p_e) yields Compton's scattering formula: Δλ = λ' - λ₀ = λ_C (1 - cos θ).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Here λ_C = (h)/(m_e c) ≈ 2.426 pm is the Compton wavelength of the electron. Maximum energy transfer to the recoil electron occurs for 180° backscattering ( cos θ = -1), where Δλₘₐₓ = 2λ_C ≈ 4.85 pm. Compton's discovery proved conclusively that photons carry mechanical momentum p = ℏk.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Incident X-ray wavelength λ₀</strong>: 2 … 12 pm, standard value 5 pm</li><li><strong>Photon scattering angle θ</strong>: 15 … 180 °, standard value 90 °</li><li><strong>Target collision frequency</strong>: 0.8 … 2.4 Hz, standard value 1.4 Hz</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Compton scattering provides direct experimental confirmation of the corpuscular momentum of electromagnetic radiation. In an elastic collision between an X-ray photon and a free electron, kinetic energy transferred to the recoiling electron leaves the scattered photon with a reduced frequency and longer wavelength λ' &gt; λ₀.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>p_γ = p_γ' + p_e, hν + m_e c² = hν' + E_e Δλ = λ' - λ₀ = λ_C (1 - cos θ), λ_C = (h)/(m_e c) ≈ 2.43 pm</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -469,6 +471,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

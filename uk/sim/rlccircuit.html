@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Електромагнітні коливання в контурі LC / RLC</h1>
       <p id="scene-epigraph" class="chapter-epigraph">У коливальному контурі енергія електричного поля конденсатора періодично перетворюється на енергію магнітного поля котушки зі струмом.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коливальний контур RLC, що складається з конденсатора ємністю C, котушки індуктивності L та активного опору R, є повною електродинамічною аналогією механічного пружинного маятника з тертям. Роль координати зміщення x відіграє заряд на обкладках конденсатора q(t), роль швидкості x, сила струму I(t) = q, роль маси m, індуктивність L («інерція» струму через ЕРС самоіндукції ℰ_s = -LI), а роль жорсткості k, обернена ємність 1/C.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">За другим правилом Кірхгофа U_L + U_R + U_C = 0, що дає диференціальне рівняння вільних коливань: Lq + Rq + (1)/(C)q = 0. За відсутності опору (R = 0) у контурі відбуваються незатухаючі гармонічні коливання з власною частотою ω₀ = (1)/(√(LC)) і періодом, який визначається формулою Томсона (Кельвіна): T₀ = 2π√(LC).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Чотири рази за період відбувається взаємне перетворення енергії електричного поля конденсатора W_E = (q²)/(2C) = (1)/(2)CU² на енергію магнітного поля котушки W_B = (1)/(2)LI². Струм I(t) випереджає заряд q(t) за фазою на π/2: коли конденсатор повністю розряджений (q = 0), струм і магнітне поле в котушці досягають максимуму. При R &gt; 0 енергія поступово розсіюється як джоулеве тепло P = I² R з коефіцієнтом загасання β = (R)/(2L).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Індуктивність котушки L</strong>: 0.8 … 4 Гн, типове значення 2 Гн</li><li><strong>Електроємність конденсатора C</strong>: 0.8 … 4 мФ, типове значення 2 мФ</li><li><strong>Активний опір контуру R (згасання)</strong>: 0 … 0.5 Ом, типове значення 0.05 Ом</li><li><strong>Початкова напруга на конденсаторі U₀</strong>: 2 … 8 В, типове значення 5 В</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Послідовний коливальний RLC-контур у радіотехнічних системах є електродинамічним аналогом механічного осцилятора: енергія електричного поля зарядженого конденсатора E_C = (q²)/(2C) періодично переходить в енергію магнітного поля котушки індуктивності E_L = (LI²)/(2), а активний опір R зумовлює загасання коливань.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>T = 2π√(LC), ω₀ = (1)/(√(LC)) (формула Томпсона) W = W_E + W_B = (q²)/(2C) + (L I²)/(2), q(t) = q₀ e⁻γ t cos (ω t)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">2.5 / 0.0 Дж</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коливальний контур RLC, що складається з конденсатора ємністю C, котушки індуктивності L та активного опору R, є повною електродинамічною аналогією механічного пружинного маятника з тертям. Роль координати зміщення x відіграє заряд на обкладках конденсатора q(t), роль швидкості x, сила струму I(t) = q, роль маси m, індуктивність L («інерція» струму через ЕРС самоіндукції ℰ_s = -LI), а роль жорсткості k, обернена ємність 1/C.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">За другим правилом Кірхгофа U_L + U_R + U_C = 0, що дає диференціальне рівняння вільних коливань: Lq + Rq + (1)/(C)q = 0. За відсутності опору (R = 0) у контурі відбуваються незатухаючі гармонічні коливання з власною частотою ω₀ = (1)/(√(LC)) і періодом, який визначається формулою Томсона (Кельвіна): T₀ = 2π√(LC).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Чотири рази за період відбувається взаємне перетворення енергії електричного поля конденсатора W_E = (q²)/(2C) = (1)/(2)CU² на енергію магнітного поля котушки W_B = (1)/(2)LI². Струм I(t) випереджає заряд q(t) за фазою на π/2: коли конденсатор повністю розряджений (q = 0), струм і магнітне поле в котушці досягають максимуму. При R &gt; 0 енергія поступово розсіюється як джоулеве тепло P = I² R з коефіцієнтом загасання β = (R)/(2L).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Індуктивність котушки L</strong>: 0.8 … 4 Гн, типове значення 2 Гн</li><li><strong>Електроємність конденсатора C</strong>: 0.8 … 4 мФ, типове значення 2 мФ</li><li><strong>Активний опір контуру R (згасання)</strong>: 0 … 0.5 Ом, типове значення 0.05 Ом</li><li><strong>Початкова напруга на конденсаторі U₀</strong>: 2 … 8 В, типове значення 5 В</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Послідовний коливальний RLC-контур у радіотехнічних системах є електродинамічним аналогом механічного осцилятора: енергія електричного поля зарядженого конденсатора E_C = (q²)/(2C) періодично переходить в енергію магнітного поля котушки індуктивності E_L = (LI²)/(2), а активний опір R зумовлює загасання коливань.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>T = 2π√(LC), ω₀ = (1)/(√(LC)) (формула Томпсона) W = W_E + W_B = (q²)/(2C) + (L I²)/(2), q(t) = q₀ e⁻γ t cos (ω t)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

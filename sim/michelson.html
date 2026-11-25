@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Michelson Interferometer &amp; Phase Shift of Beams</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Displacing a mirror by merely half a wavelength of light reverses the central interference fringe from bright to dark.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Invented by Albert A. Michelson in 1881, the Michelson interferometer splits a coherent monochromatic light beam of wavelength λ at a 45° beam splitter (BS) into two orthogonal arms of lengths L₁ and L₂. After reflecting off mirrors M₁ (micrometer-adjustable) and M₂ (fixed), the beams recombine at BS and interfere on the detector screen.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because light traverses arm 1 twice (out and back), translating mirror M₁ by distance Δ d changes the round-trip optical path length by Δ = 2Δ d, introducing a phase shift Δφ = (4π Δ d)/(λ). Central fringe intensity varies as I(Δ d) = Iₘₐₓ cos ² ((2π Δ d)/(λ)).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Consequently, moving mirror M₁ by just a quarter-wavelength (Δ d = λ/4) flips a bright maximum into a dark minimum, and every Δ d = λ/2 shifts the pattern by one full fringe (N = (2Δ d)/(λ)). This design powered the historic 1887 Michelson-Morley experiment and forms the optical core of the LIGO gravitational-wave observatories.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Laser wavelength λ</strong>: 420 … 680 nm, standard value 550 nm</li><li><strong>Micrometer mirror displacement Δd</strong>: 0 … 700 nm, standard value 0 nm</li><li><strong>Laser beam power P₀</strong>: 2 … 10 mW, standard value 5 mW</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The Michelson interferometer is a precision optical instrument capable of resolving sub-wavelength displacements. A coherent laser beam is split into two orthogonal arms and recombined after mirror reflection: displacing the movable mirror by half a wavelength (λ/2) shifts the interference pattern by one full fringe.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ = 2 Δ d, Δφ = (2π)/(λ)(2 Δ d) I(Δ d) = 4 I₀ cos ² ((2π Δ d)/(λ)), Δ m = (2 Δ d)/(λ)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Constructive maximum</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Invented by Albert A. Michelson in 1881, the Michelson interferometer splits a coherent monochromatic light beam of wavelength λ at a 45° beam splitter (BS) into two orthogonal arms of lengths L₁ and L₂. After reflecting off mirrors M₁ (micrometer-adjustable) and M₂ (fixed), the beams recombine at BS and interfere on the detector screen.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because light traverses arm 1 twice (out and back), translating mirror M₁ by distance Δ d changes the round-trip optical path length by Δ = 2Δ d, introducing a phase shift Δφ = (4π Δ d)/(λ). Central fringe intensity varies as I(Δ d) = Iₘₐₓ cos ² ((2π Δ d)/(λ)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Consequently, moving mirror M₁ by just a quarter-wavelength (Δ d = λ/4) flips a bright maximum into a dark minimum, and every Δ d = λ/2 shifts the pattern by one full fringe (N = (2Δ d)/(λ)). This design powered the historic 1887 Michelson-Morley experiment and forms the optical core of the LIGO gravitational-wave observatories.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Laser wavelength λ</strong>: 420 … 680 nm, standard value 550 nm</li><li><strong>Micrometer mirror displacement Δd</strong>: 0 … 700 nm, standard value 0 nm</li><li><strong>Laser beam power P₀</strong>: 2 … 10 mW, standard value 5 mW</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The Michelson interferometer is a precision optical instrument capable of resolving sub-wavelength displacements. A coherent laser beam is split into two orthogonal arms and recombined after mirror reflection: displacing the movable mirror by half a wavelength (λ/2) shifts the interference pattern by one full fringe.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ = 2 Δ d, Δφ = (2π)/(λ)(2 Δ d) I(Δ d) = 4 I₀ cos ² ((2π Δ d)/(λ)), Δ m = (2 Δ d)/(λ)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -469,6 +471,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ідеальна теплова машина та цикл Карно у 3D</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Неможливо перетворити всю теплоту нагрівника на роботу без передачі частини тепла холодильнику: максимальний ККД визначається температурами T₁ і T₂.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Будь-яка теплова машина перетворює частину тепла Q₁, отриманого робочим тілом від нагрівника з температурою T₁, на корисну механічну роботу A = Q₁ - Q₂, передаючи залишок тепла Q₂ холодильнику з температурою T₂ &lt; T₁. За ІІ началом термодинаміки (у формулюванні Томсона-Планка) неможливо створити періодично діючий двигун, який би повністю перетворював теплоту Q₁ на роботу без передачі частини тепла Q₂ холодному джерелу.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У 1824 році Саді Карно довів, що серед усіх циклічних машин, які працюють між заданими температурами T₁ і T₂, максимальний коефіцієнт корисної дії (ККД) має оборотний цикл Карно, що складається з двох ізотерм (T₁ = const і T₂ = const) та двох адіабат (δ Q = 0, PV^γ = const). Для ідеального газу корисна робота за цикл становить A = ν R (T₁ - T₂) ln (V₂)/(V₁), а граничний ККД дорівнює η_Карно = 1 - (T₂)/(T₁).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Теорема Карно встановлює фундаментальну межу енергетики: ККД ідеальної машини не залежить від природи робочого тіла, а визначається лише відношенням абсолютних температур холодильника й нагрівника T₂/T₁. Щоб підвищити η, інженери прагнуть максимально підняти температуру згоряння палива T₁ у турбінах та знизити температуру конденсатора T₂.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Температура нагрівника T₁</strong>: 450 … 900 К, типове значення 600 К</li><li><strong>Температура холодильника T₂</strong>: 200 … 400 К, типове значення 300 К</li><li><strong>Теплота від нагрівника за цикл Q₁</strong>: 60 … 200 Дж, типове значення 120 Дж</li><li><strong>Частота термодинамічного циклу ν</strong>: 0.8 … 3.2 Гц, типове значення 1.8 Гц</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Теплові двигуни електростанцій та автомобілів виконують механічну роботу за рахунок передачі теплоти від нагрівника з вищою температурою T_H до холодильника з нижчою температурою T_C. Згідно з другим началом термодинаміки частина теплоти неминуче відводиться холодильнику, тому ККД циклу завжди менший за одиницю.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Q₁ = A + Q₂, η = (A)/(Q₁) = (Q₁ - Q₂)/(Q₁) η_Карно = 1 - (T₂)/(T₁), Aₘₐₓ = Q₁ (1 - (T₂)/(T₁))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">1→2 Ізотерм. розширення (T₁)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Будь-яка теплова машина перетворює частину тепла Q₁, отриманого робочим тілом від нагрівника з температурою T₁, на корисну механічну роботу A = Q₁ - Q₂, передаючи залишок тепла Q₂ холодильнику з температурою T₂ &lt; T₁. За ІІ началом термодинаміки (у формулюванні Томсона-Планка) неможливо створити періодично діючий двигун, який би повністю перетворював теплоту Q₁ на роботу без передачі частини тепла Q₂ холодному джерелу.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">У 1824 році Саді Карно довів, що серед усіх циклічних машин, які працюють між заданими температурами T₁ і T₂, максимальний коефіцієнт корисної дії (ККД) має оборотний цикл Карно, що складається з двох ізотерм (T₁ = const і T₂ = const) та двох адіабат (δ Q = 0, PV^γ = const). Для ідеального газу корисна робота за цикл становить A = ν R (T₁ - T₂) ln (V₂)/(V₁), а граничний ККД дорівнює η_Карно = 1 - (T₂)/(T₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Теорема Карно встановлює фундаментальну межу енергетики: ККД ідеальної машини не залежить від природи робочого тіла, а визначається лише відношенням абсолютних температур холодильника й нагрівника T₂/T₁. Щоб підвищити η, інженери прагнуть максимально підняти температуру згоряння палива T₁ у турбінах та знизити температуру конденсатора T₂.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Температура нагрівника T₁</strong>: 450 … 900 К, типове значення 600 К</li><li><strong>Температура холодильника T₂</strong>: 200 … 400 К, типове значення 300 К</li><li><strong>Теплота від нагрівника за цикл Q₁</strong>: 60 … 200 Дж, типове значення 120 Дж</li><li><strong>Частота термодинамічного циклу ν</strong>: 0.8 … 3.2 Гц, типове значення 1.8 Гц</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Теплові двигуни електростанцій та автомобілів виконують механічну роботу за рахунок передачі теплоти від нагрівника з вищою температурою T_H до холодильника з нижчою температурою T_C. Згідно з другим началом термодинаміки частина теплоти неминуче відводиться холодильнику, тому ККД циклу завжди менший за одиницю.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Q₁ = A + Q₂, η = (A)/(Q₁) = (Q₁ - Q₂)/(Q₁) η_Карно = 1 - (T₂)/(T₁), Aₘₐₓ = Q₁ (1 - (T₂)/(T₁))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

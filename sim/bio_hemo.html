@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Oxygen Transport by Hemoglobin: Allosteric Cooperativity (T ↔ R) &amp; the Bohr Effect</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Binding of the first O₂ molecule to a ferrous Fe²⁺ heme triggers a quaternary T → R transition across the α₂β₂ hemoglobin tetramer, increasing the oxygen affinity of the remaining subunits."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Respiration &amp; Bohr Effect</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Adult hemoglobin A ( extHbA) is an allosteric α₂β₂ tetramer carrying four prosthetic heme groups, each containing a ferrous Fe²⁺ center (whose +2 oxidation state remains unchanged during reversible oxygenation). Unlike monomeric muscle myoglobin (n = 1, hyperbolic curve with P₅₀ ≈ 2.8 mmHg), hemoglobin exhibits positive cooperativity.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Binding of the first O₂ ligand pulls Fe²⁺ into the porphyrin plane and triggers a quaternary transition from the tense, low-affinity T-state (deoxyhemoglobin) to the relaxed, high-affinity R-state (oxyhemoglobin). Described by the Hill equation Y = ((pO₂)^n)/((P₅₀)^n + (pO₂)^n) (n ≈ 2.8, P₅₀ ≈ 26.8 mmHg), this sigmoidal curve guarantees ≈ 98% loading in the lungs (100 mmHg) and steep unloading in systemic capillaries (25-40 mmHg).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">By the Bohr effect, metabolically active tissues release CO₂, H⁺ (lowering blood pH), and heat; together with erythrocyte 2,3-BPG, these allosteric effectors stabilize the T-state, increase P₅₀, and shift the dissociation curve to the right, enhancing O₂ delivery to working tissues.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Oxygen partial pressure pO₂ (40=venous tissue, 100=alveolar lung)</strong>: 10 … 110 mmHg, standard value 40 mmHg</li><li><strong>Blood pH (Bohr effect: 7.40=normal, 7.15=exercising acidosis)</strong>: 7 … 7.6 pH units, standard value 7.4 pH units</li><li><strong>Blood temperature t (hyperthermia shifts curve right)</strong>: 35 … 41 °C, standard value 37 °C</li><li><strong>Erythrocyte 2,3-BPG level (high-altitude adaptation)</strong>: 0.5 … 2 rel., standard value 1 rel.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Tetrameric hemoglobin (4 subunits bearing Fe²⁺ hemes) binds oxygen cooperatively: oxygenation of the first heme in pulmonary capillaries triggers a conformational shift from the low-affinity T-state to the high-affinity R-state, accelerating binding at the remaining sites. In metabolically active tissues rich in H⁺ and CO₂, the Bohr effect stabilizes the T-state and promotes O₂ unloading.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Y_Hb = ((pO₂)^n)/((P₅₀)^n + (pO₂)^n) (n ≈ 2.8), Y_Mb = (pO₂)/(P₅0,Mb + pO₂) (n = 1)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Fe²⁺ (unchanged upon oxygenation)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Respiration &amp; Bohr Effect</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Adult hemoglobin A ( extHbA) is an allosteric α₂β₂ tetramer carrying four prosthetic heme groups, each containing a ferrous Fe²⁺ center (whose +2 oxidation state remains unchanged during reversible oxygenation). Unlike monomeric muscle myoglobin (n = 1, hyperbolic curve with P₅₀ ≈ 2.8 mmHg), hemoglobin exhibits positive cooperativity.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Binding of the first O₂ ligand pulls Fe²⁺ into the porphyrin plane and triggers a quaternary transition from the tense, low-affinity T-state (deoxyhemoglobin) to the relaxed, high-affinity R-state (oxyhemoglobin). Described by the Hill equation Y = ((pO₂)^n)/((P₅₀)^n + (pO₂)^n) (n ≈ 2.8, P₅₀ ≈ 26.8 mmHg), this sigmoidal curve guarantees ≈ 98% loading in the lungs (100 mmHg) and steep unloading in systemic capillaries (25-40 mmHg).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">By the Bohr effect, metabolically active tissues release CO₂, H⁺ (lowering blood pH), and heat; together with erythrocyte 2,3-BPG, these allosteric effectors stabilize the T-state, increase P₅₀, and shift the dissociation curve to the right, enhancing O₂ delivery to working tissues.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Oxygen partial pressure pO₂ (40=venous tissue, 100=alveolar lung)</strong>: 10 … 110 mmHg, standard value 40 mmHg</li><li><strong>Blood pH (Bohr effect: 7.40=normal, 7.15=exercising acidosis)</strong>: 7 … 7.6 pH units, standard value 7.4 pH units</li><li><strong>Blood temperature t (hyperthermia shifts curve right)</strong>: 35 … 41 °C, standard value 37 °C</li><li><strong>Erythrocyte 2,3-BPG level (high-altitude adaptation)</strong>: 0.5 … 2 rel., standard value 1 rel.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Tetrameric hemoglobin (4 subunits bearing Fe²⁺ hemes) binds oxygen cooperatively: oxygenation of the first heme in pulmonary capillaries triggers a conformational shift from the low-affinity T-state to the high-affinity R-state, accelerating binding at the remaining sites. In metabolically active tissues rich in H⁺ and CO₂, the Bohr effect stabilizes the T-state and promotes O₂ unloading.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Y_Hb = ((pO₂)^n)/((P₅₀)^n + (pO₂)^n) (n ≈ 2.8), Y_Mb = (pO₂)/(P₅0,Mb + pO₂) (n = 1)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

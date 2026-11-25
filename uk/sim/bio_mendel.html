@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Генетика Менделя та закон Гарді–Вайнберга: динаміка частот генотипів у популяції</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«У великій панміктичній популяції за відсутності добору, мутацій та міграцій частоти алелів p і q залишаються незмінними з покоління в покоління, а частоти генотипів AA, Aa та aa підпорядковуються біному (p + q)² = p² + 2pq + q² = 1.»</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас · Генетика Менделя та популяцій</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Закони Грегора Менделя (закон одноманітності гібридів першого покоління F₁, закон розщеплення 3:1 у F₂ при моногібридному схрещуванні Aa × Aa та закон незалежного комбінування ознак 9:3:3:1) описують дискретне успадкування генів під час мейозу та випадкового злиття гамет у решітці Пеннета.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">У масштабі цілої популяції ці закономірності узагальнює закон Гарді-Вайнберга (1908): у великій панміктичній (з вільним схрещуванням) диплоїдній популяції за відсутності природного добору, мутацій, міграцій та генетичного дрейфу частоти домінантного алеля p = f(A) та рецесивного алеля q = f(a) (p + q = 1) залишаються сталими з покоління в покоління.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Рівноважні частоти трьох генотипів визначаються біноміальним розкладом (p + q)² = p² + 2pq + q² = 1, де p², частка домінантних гомозигот AA, 2pq, частка гетерозиготних носіїв Aa (досягає максимуму 50% при p = q = 0.5), а q², частка рецесивних гомозигот aa. Якщо ж діє природний добір проти рецесивних гомозигот із коефіцієнтом селекції s, середня пристосованість популяції становить w = 1 - s q², а частота алеля A зростає як p' = (p² + pq)/(1 - s q²).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Частота домінантного алеля A в популяції p (q = 1 − p; при p = 0.5 → Мендель 3:1)</strong>: 0.1 … 0.9, типове значення 0.6</li><li><strong>Тип успадкування (1: Повне домінування 3:1, 0.5: Неповне домінування 1:2:1)</strong>: 0.5 … 1, типове значення 1</li><li><strong>Коефіцієнт природного добору проти рецесивних гомозигот aa (s)</strong>: 0 … 0.8, типове значення 0</li><li><strong>Чисельність модельної вибірки потомства N_особин</strong>: 50 … 500 особ., типове значення 200 особ.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У популяційній генетиці випадкове поєднання гамет із частотами алелів p (домінантний A) та q (рецесивний a, де p+q=1) підпорядковується біноміальному розподілу Гарді-Вайнберга: у стані рівноваги частота домінантних гомозигот AA становить p², рецесивних гомозигот aa дорівнює q², а частка гетерозиготних носіїв Aa визначається добутком 2pq.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>p + q = 1, p² (AA) + 2pq (Aa) + q² (aa) = 1, p' = (p² + pq)/(1 - s q²)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">p′ = 0.600 (w̄ = 1.000)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас · Генетика Менделя та популяцій</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Закони Грегора Менделя (закон одноманітності гібридів першого покоління F₁, закон розщеплення 3:1 у F₂ при моногібридному схрещуванні Aa × Aa та закон незалежного комбінування ознак 9:3:3:1) описують дискретне успадкування генів під час мейозу та випадкового злиття гамет у решітці Пеннета.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">У масштабі цілої популяції ці закономірності узагальнює закон Гарді-Вайнберга (1908): у великій панміктичній (з вільним схрещуванням) диплоїдній популяції за відсутності природного добору, мутацій, міграцій та генетичного дрейфу частоти домінантного алеля p = f(A) та рецесивного алеля q = f(a) (p + q = 1) залишаються сталими з покоління в покоління.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Рівноважні частоти трьох генотипів визначаються біноміальним розкладом (p + q)² = p² + 2pq + q² = 1, де p², частка домінантних гомозигот AA, 2pq, частка гетерозиготних носіїв Aa (досягає максимуму 50% при p = q = 0.5), а q², частка рецесивних гомозигот aa. Якщо ж діє природний добір проти рецесивних гомозигот із коефіцієнтом селекції s, середня пристосованість популяції становить w = 1 - s q², а частота алеля A зростає як p' = (p² + pq)/(1 - s q²).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Частота домінантного алеля A в популяції p (q = 1 − p; при p = 0.5 → Мендель 3:1)</strong>: 0.1 … 0.9, типове значення 0.6</li><li><strong>Тип успадкування (1: Повне домінування 3:1, 0.5: Неповне домінування 1:2:1)</strong>: 0.5 … 1, типове значення 1</li><li><strong>Коефіцієнт природного добору проти рецесивних гомозигот aa (s)</strong>: 0 … 0.8, типове значення 0</li><li><strong>Чисельність модельної вибірки потомства N_особин</strong>: 50 … 500 особ., типове значення 200 особ.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У популяційній генетиці випадкове поєднання гамет із частотами алелів p (домінантний A) та q (рецесивний a, де p+q=1) підпорядковується біноміальному розподілу Гарді-Вайнберга: у стані рівноваги частота домінантних гомозигот AA становить p², рецесивних гомозигот aa дорівнює q², а частка гетерозиготних носіїв Aa визначається добутком 2pq.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>p + q = 1, p² (AA) + 2pq (Aa) + q² (aa) = 1, p' = (p² + pq)/(1 - s q²)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

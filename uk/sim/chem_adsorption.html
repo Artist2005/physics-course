@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Поверхня твердого тіла, це шахівниця еквівалентних активних центрів, де кожна клітинка може утримати лише одну молекулу адсорбату», Ірвінг Ленгмюр (Нобелівська премія, 1932).</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Поверхневі явища</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Адсорбція, це самочинне концентрування молекул газу або розчиненої речовини (адсорбату) на поверхні поділу фаз із твердим тілом (адсорбентом, активованим вугіллям, цеолітом, силікагелем чи металічним каталізатором) за рахунок нескомпенсованих поверхневих сил Ван-дер-Ваальса (фізична адсорбція) або хімічних зв'язків (хемосорбція).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Модель моношарової адсорбції Ленгмюра виходить з того, що поверхня кристала містить скінченне число енергетично рівноцінних активних центрів N₀. Динамічна рівновага настає тоді, коли швидкість прилипання молекул на вільну частку поверхні (1-θ) зрівнюється зі швидкістю десорбції з зайнятої частки θ: k_a P(1-θ) = k_dθ, звідки випливає ізотерма адсорбції Ленгмюра: θ(P) = (K P)/(1 + K P), де K = k_a/k_d, константа адсорбційної рівноваги.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">За малих тисків (KP ≪ 1) заповнення поверхні зростає лінійно за законом Генрі (θ ≈ KP), а за високих тисків (KP ≫ 1) усі активні центри зайняті й поверхня насичується до суцільного моношару (θ → 1). Оскільки адсорбція газу завжди супроводжується виділенням теплоти (Δ H_адс = -Q_адс &lt; 0), підвищення температури зменшує K(T) = K₀ e^Q_адс/(RT) і спричиняє десорбцію.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Рівноважний тиск газу-адсорбату над вугіллям P</strong>: 0.2 … 6 атм, типове значення 2 атм</li><li><strong>Температура активованого вугілля T (нагрів → десорбція)</strong>: 250 … 450 К, типове значення 300 К</li><li><strong>Константа адсорбційної спорідненості K₀ (при 300 К)</strong>: 0.3 … 3 атм⁻¹, типове значення 1.2 атм⁻¹</li><li><strong>Молярна теплота адсорбції Q_адс = −ΔH_адс</strong>: 15 … 45 кДж/моль, типове значення 25 кДж/моль</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У моделі мономолекулярної адсорбції Ленгмюра поверхня твердого сорбенту (наприклад, активованого вугілля) містить фіксовану кількість енергетично еквівалентних активних центрів: за малих тисків ступінь заповнення зростає лінійно (θ ≈ KP), а за високих тисків наближається до насичення моношару (θ → 1).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>θ = (Γ)/(Γ_∞) = (K_адсP)/(1 + K_адсP), K_адс(T) = (k_a)/(k_d) = K₀ exp ((Q_адс)/(RT))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">r_адс = k_a·P·(1 − θ) = r_дес = k_d·θ</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Поверхневі явища</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Адсорбція, це самочинне концентрування молекул газу або розчиненої речовини (адсорбату) на поверхні поділу фаз із твердим тілом (адсорбентом, активованим вугіллям, цеолітом, силікагелем чи металічним каталізатором) за рахунок нескомпенсованих поверхневих сил Ван-дер-Ваальса (фізична адсорбція) або хімічних зв'язків (хемосорбція).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Модель моношарової адсорбції Ленгмюра виходить з того, що поверхня кристала містить скінченне число енергетично рівноцінних активних центрів N₀. Динамічна рівновага настає тоді, коли швидкість прилипання молекул на вільну частку поверхні (1-θ) зрівнюється зі швидкістю десорбції з зайнятої частки θ: k_a P(1-θ) = k_dθ, звідки випливає ізотерма адсорбції Ленгмюра: θ(P) = (K P)/(1 + K P), де K = k_a/k_d, константа адсорбційної рівноваги.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">За малих тисків (KP ≪ 1) заповнення поверхні зростає лінійно за законом Генрі (θ ≈ KP), а за високих тисків (KP ≫ 1) усі активні центри зайняті й поверхня насичується до суцільного моношару (θ → 1). Оскільки адсорбція газу завжди супроводжується виділенням теплоти (Δ H_адс = -Q_адс &lt; 0), підвищення температури зменшує K(T) = K₀ e^Q_адс/(RT) і спричиняє десорбцію.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Рівноважний тиск газу-адсорбату над вугіллям P</strong>: 0.2 … 6 атм, типове значення 2 атм</li><li><strong>Температура активованого вугілля T (нагрів → десорбція)</strong>: 250 … 450 К, типове значення 300 К</li><li><strong>Константа адсорбційної спорідненості K₀ (при 300 К)</strong>: 0.3 … 3 атм⁻¹, типове значення 1.2 атм⁻¹</li><li><strong>Молярна теплота адсорбції Q_адс = −ΔH_адс</strong>: 15 … 45 кДж/моль, типове значення 25 кДж/моль</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У моделі мономолекулярної адсорбції Ленгмюра поверхня твердого сорбенту (наприклад, активованого вугілля) містить фіксовану кількість енергетично еквівалентних активних центрів: за малих тисків ступінь заповнення зростає лінійно (θ ≈ KP), а за високих тисків наближається до насичення моношару (θ → 1).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>θ = (Γ)/(Γ_∞) = (K_адсP)/(1 + K_адсP), K_адс(T) = (k_a)/(k_d) = K₀ exp ((Q_адс)/(RT))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

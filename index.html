@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">3D Physics, Chemistry &amp; Biology Virtual Laboratory (106 Simulations)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Interactive 3D textbook and virtual laboratory with 46 Physics, 40 Chemistry, and 20 Biology &amp; Biophysics simulations, live formula calculators, and derivations.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">According to the Huygens-Fresnel principle, every point on an advancing light wavefront acts as a point source of secondary spherical wavelets. The wavefront surface at a later instant t + Δ t is formed by the forward tangent envelope of all these secondary wavelets.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">When an oblique plane wavefront strikes the interface between media of refractive indices n₁ and n₂ &gt; n₁ at angle α, its phase velocity drops from v₁ = c/n₁ to v₂ = c/n₂. While the outer edge of the wavefront travels distance BC = v₁ Δ t = AB sin α in medium 1, the edge that entered medium 2 expands only to radius AD = v₂ Δ t = AB sin γ. Taking the ratio immediately proves Snell's Law of Refraction: ( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Observe in 3D how entering optically denser glass (n₂ &gt; n₁) compresses the spacing between wavefront crests (λ₂ = λ₀ / n₂) while keeping frequency ν constant, rotating the wavefront normal toward the interface normal (γ &lt; α).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Wavefront incidence angle α</strong>: 10 … 75 °, standard value 45 °</li><li><strong>Medium refractive index n₂</strong>: 1.15 … 2.4, standard value 1.55</li><li><strong>Vacuum wavelength λ₀</strong>: 400 … 700 nm, standard value 540 nm</li><li><strong>Huygens wavelet sources N</strong>: 3 … 7 sources, standard value 5 sources</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">When a two-wheeled axle rolls obliquely from smooth pavement onto soft sand, the wheel that crosses the boundary first slows down while the second wheel continues briefly at speed v₁, pivoting the axle toward the normal. By the same geometric mechanism, an oblique planar wavefront bends toward the normal upon entering an optically denser medium (n₂ &gt; n₁).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁), v = (c)/(n) λ₂ = (λ₀)/(n₂), Φ(r, t) = k·r - ω t = const</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">89.6 %</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">According to the Huygens-Fresnel principle, every point on an advancing light wavefront acts as a point source of secondary spherical wavelets. The wavefront surface at a later instant t + Δ t is formed by the forward tangent envelope of all these secondary wavelets.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">When an oblique plane wavefront strikes the interface between media of refractive indices n₁ and n₂ &gt; n₁ at angle α, its phase velocity drops from v₁ = c/n₁ to v₂ = c/n₂. While the outer edge of the wavefront travels distance BC = v₁ Δ t = AB sin α in medium 1, the edge that entered medium 2 expands only to radius AD = v₂ Δ t = AB sin γ. Taking the ratio immediately proves Snell's Law of Refraction: ( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Observe in 3D how entering optically denser glass (n₂ &gt; n₁) compresses the spacing between wavefront crests (λ₂ = λ₀ / n₂) while keeping frequency ν constant, rotating the wavefront normal toward the interface normal (γ &lt; α).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Wavefront incidence angle α</strong>: 10 … 75 °, standard value 45 °</li><li><strong>Medium refractive index n₂</strong>: 1.15 … 2.4, standard value 1.55</li><li><strong>Vacuum wavelength λ₀</strong>: 400 … 700 nm, standard value 540 nm</li><li><strong>Huygens wavelet sources N</strong>: 3 … 7 sources, standard value 5 sources</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">When a two-wheeled axle rolls obliquely from smooth pavement onto soft sand, the wheel that crosses the boundary first slows down while the second wheel continues briefly at speed v₁, pivoting the axle toward the normal. By the same geometric mechanism, an oblique planar wavefront bends toward the normal upon entering an optically denser medium (n₂ &gt; n₁).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁), v = (c)/(n) λ₂ = (λ₀)/(n₂), Φ(r, t) = k·r - ω t = const</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="assets/app.js?v=20261125b"></script>
+  <script defer src="assets/app.js?v=20261125c"></script>
 </body>
 </html>

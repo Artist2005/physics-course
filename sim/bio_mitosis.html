@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Mitotic Cell Division: Spindle Microtubule Mechanics &amp; Ploidy Conservation</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Equal partitioning of the replicated genome into daughter cells is orchestrated by the bipolar mitotic spindle: kinetochore microtubules align chromosomes at the equator and synchronously pull sister chromatids to opposite poles."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10 · Mitosis &amp; Cell Cycle</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Mitosis is the division of a eukaryotic somatic cell that partitions a replicated genome equally into two genetically identical daughter cells (2n → 2n). Because DNA replication completes during interphase S-phase (2n2c → 2n4c), chromosomes enter mitosis composed of two sister chromatids joined at the centromere by cohesin.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">During prophase, chromatin condenses and the bipolar mitotic spindle assembles from dynamic tubulin microtubules. In metaphase, amphitelic attachment of kinetochore microtubules balances opposing pulling forces (Fₖᵢₙ ≈ 10-50 pN), aligning all 2n4c chromosomes on the equatorial metaphase plate.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Once the spindle assembly checkpoint (SAC) is satisfied, separase cleaves cohesin to initiate anaphase: sister chromatids separate as independent chromosomes (transiently 4n4c in the cell) and move poleward via microtubule depolymerization (Anaphase A) and spindle elongation (Anaphase B), followed by nuclear envelope reformation in telophase and cytokinesis (2 × 2n2c).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Mitosis stage (1=Prophase, 2=Metaphase, 3=Anaphase, 4=Telophase)</strong>: 1 … 4, standard value 2</li><li><strong>Number of homologous chromosome pairs n (diploid 2n)</strong>: 1 … 3 pairs, standard value 2 pairs</li><li><strong>Kinetochore microtubule pulling tension F_kin</strong>: 0.5 … 2.5 rel., standard value 1.4 rel.</li><li><strong>Spindle elongation speed (Anaphase B pole separation)</strong>: 0.5 … 2 rel., standard value 1 rel.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Before mitosis, the cell photocopies every chromosome book during S-phase and staples the twin copies together into an X-shape (2n4c). In metaphase they line up along the equator, and in anaphase the staple is cut so spindle fibers pull one complete set (2n2c) to each daughter pole.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>G₁ (2n2c) →(S-phase) G₂/Metaphase (2n4c) →(Anaphase) 2 × (2n2c), Fₖᵢₙ = N_MT f₀</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Satisfied (kinetochore biorientation)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10 · Mitosis &amp; Cell Cycle</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Mitosis is the division of a eukaryotic somatic cell that partitions a replicated genome equally into two genetically identical daughter cells (2n → 2n). Because DNA replication completes during interphase S-phase (2n2c → 2n4c), chromosomes enter mitosis composed of two sister chromatids joined at the centromere by cohesin.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">During prophase, chromatin condenses and the bipolar mitotic spindle assembles from dynamic tubulin microtubules. In metaphase, amphitelic attachment of kinetochore microtubules balances opposing pulling forces (Fₖᵢₙ ≈ 10-50 pN), aligning all 2n4c chromosomes on the equatorial metaphase plate.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Once the spindle assembly checkpoint (SAC) is satisfied, separase cleaves cohesin to initiate anaphase: sister chromatids separate as independent chromosomes (transiently 4n4c in the cell) and move poleward via microtubule depolymerization (Anaphase A) and spindle elongation (Anaphase B), followed by nuclear envelope reformation in telophase and cytokinesis (2 × 2n2c).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Mitosis stage (1=Prophase, 2=Metaphase, 3=Anaphase, 4=Telophase)</strong>: 1 … 4, standard value 2</li><li><strong>Number of homologous chromosome pairs n (diploid 2n)</strong>: 1 … 3 pairs, standard value 2 pairs</li><li><strong>Kinetochore microtubule pulling tension F_kin</strong>: 0.5 … 2.5 rel., standard value 1.4 rel.</li><li><strong>Spindle elongation speed (Anaphase B pole separation)</strong>: 0.5 … 2 rel., standard value 1 rel.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Before mitosis, the cell photocopies every chromosome book during S-phase and staples the twin copies together into an X-shape (2n4c). In metaphase they line up along the equator, and in anaphase the staple is cut so spindle fibers pull one complete set (2n2c) to each daughter pole.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>G₁ (2n2c) →(S-phase) G₂/Metaphase (2n4c) →(Anaphase) 2 × (2n2c), Fₖᵢₙ = N_MT f₀</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

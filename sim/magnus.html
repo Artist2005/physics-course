@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Magnus Effect &amp; Lift Force on a Rotating Cylinder</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Rotation entrains the boundary layer, creating a velocity asymmetry and a transverse Bernoulli pressure gradient.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Grade 10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Magnus effect (Heinrich Gustav Magnus, 1852) is the generation of a transverse aerodynamic lift force F_M on a spinning cylinder or sphere moving through a fluid of density ρ at freestream velocity v_∞.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Through boundary-layer entrainment, a cylinder of radius R spinning at angular speed ω establishes a net velocity circulation Γ = ∮ v· dl = 2π R² ω. On the side where surface rotation moves with the freestream, flow speeds add (vₜₒₚ = v_∞ + ω R); on the opposite side, flow is retarded (v_bot = v_∞ - ω R). By Bernoulli's theorem p + (1)/(2)ρ v² = const, higher velocity produces lower static pressure (pₜₒₚ &lt; p_bot)!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Integrating pressure around a cylinder of span L yields the Kutta-Joukowski lift theorem: F_M = ρ v_∞ Γ L = 2π ρ R² L ω v_∞, directed along ω × v_∞. This mechanism explains curved trajectories of spinning soccer, tennis, and baseballs as well as Flettner rotor ships.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Free-stream flow velocity v_∞</strong>: 3 … 15 m/s, standard value 8 m/s</li><li><strong>Cylinder angular velocity ω</strong>: -40 … 40 rad/s, standard value 25 rad/s</li><li><strong>Rotor radius R</strong>: 0.8 … 1.8 dm, standard value 1.2 dm</li><li><strong>Fluid density ρ</strong>: 0.6 … 2.4 kg/m³, standard value 1.25 kg/m³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">When a rotating cylinder or sphere translates through an airflow or fluid stream, circulation around the body accelerates flow on the side moving with the stream and decelerates it on the opposite side. By Bernoulli's theorem, the resulting lateral pressure differential generates the transverse Magnus lift force.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Γ = 2π R² ω, Δ P = (1)/(2)ρ(vₜₒₚ² - v_bot²) F_M = ρ v_∞ Γ L = 2π ρ R² L ω v_∞</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">3.00 m/s</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Grade 10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The Magnus effect (Heinrich Gustav Magnus, 1852) is the generation of a transverse aerodynamic lift force F_M on a spinning cylinder or sphere moving through a fluid of density ρ at freestream velocity v_∞.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Through boundary-layer entrainment, a cylinder of radius R spinning at angular speed ω establishes a net velocity circulation Γ = ∮ v· dl = 2π R² ω. On the side where surface rotation moves with the freestream, flow speeds add (vₜₒₚ = v_∞ + ω R); on the opposite side, flow is retarded (v_bot = v_∞ - ω R). By Bernoulli's theorem p + (1)/(2)ρ v² = const, higher velocity produces lower static pressure (pₜₒₚ &lt; p_bot)!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Integrating pressure around a cylinder of span L yields the Kutta-Joukowski lift theorem: F_M = ρ v_∞ Γ L = 2π ρ R² L ω v_∞, directed along ω × v_∞. This mechanism explains curved trajectories of spinning soccer, tennis, and baseballs as well as Flettner rotor ships.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Free-stream flow velocity v_∞</strong>: 3 … 15 m/s, standard value 8 m/s</li><li><strong>Cylinder angular velocity ω</strong>: -40 … 40 rad/s, standard value 25 rad/s</li><li><strong>Rotor radius R</strong>: 0.8 … 1.8 dm, standard value 1.2 dm</li><li><strong>Fluid density ρ</strong>: 0.6 … 2.4 kg/m³, standard value 1.25 kg/m³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">When a rotating cylinder or sphere translates through an airflow or fluid stream, circulation around the body accelerates flow on the side moving with the stream and decelerates it on the opposite side. By Bernoulli's theorem, the resulting lateral pressure differential generates the transverse Magnus lift force.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Γ = 2π R² ω, Δ P = (1)/(2)ρ(vₜₒₚ² - v_bot²) F_M = ρ v_∞ Γ L = 2π ρ R² L ω v_∞</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

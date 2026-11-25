@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Трансформатор змінного струму та взаємна індукція</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Змінне магнітне поле замкненого осердя безконтактно передає електричну потужність із одного контуру в інший, масштабуючи напругу.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Трансформатор, це електромагнітний статичний апарат, призначений для підвищення або зниження напруги змінного струму без зміни його частоти f за допомогою явища взаємної електромагнітної індукції. Первинна обмотка з числом витків N₁ та вторинна обмотка з числом витків N₂ насаджені на спільне замкнене феромагнітне осердя з високою магнітною проникністю (μ ∼ 10³-10⁴), яке концентрує змінний магнітний потік Φ(t) = Φ_m sin (2π f t) так, що він пронизує кожен виток обох котушок.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">За законом електромагнітної індукції Фарадея в одному витку індукується однакова ЕРС e₁ = -(dΦ)/(dt). Тому відношення діючих значень напруг на обмотках дорівнює відношенню кількості витків (коефіцієнт трансформації): (U₂)/(U₁) = (N₂)/(N₁) = k. Якщо N₂ &gt; N₁ (k &gt; 1), трансформатор є підвищувальним; якщо N₂ &lt; N₁ (k &lt; 1), знижувальним.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Згідно із законом збереження енергії, потужність на виході дорівнює вхідній потужності, помноженій на ККД η (який у силових трансформаторах досягає 95-99% завдяки шихтованому осердю з тонких пластин електротехнічної сталі, що пригнічує вихрові струми Фуко): P₂ = η P₁ ⇒ U₂ I₂ = η U₁ I₁. Отже, у скільки разів трансформатор підвищує напругу, у стільки ж разів він зменшує силу струму: (I₂)/(I₁) = η(N₁)/(N₂). Саме це дозволяє передавати електроенергію в ЛЕП при високих напругах (110-750 кВ) із мінімальними тепловими втратами в дротах P_втр = I² R_лінії ∝ 1/U²!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Діюча первинна напруга U₁</strong>: 50 … 220 В, типове значення 110 В</li><li><strong>Число витків первинної обмотки N₁</strong>: 10 … 50, типове значення 20</li><li><strong>Число витків вторинної обмотки N₂</strong>: 10 … 80, типове значення 40</li><li><strong>Частота змінного струму f (масштабована)</strong>: 1 … 5 Гц, типове значення 2 Гц</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Силові трансформатори енергомереж та імпульсні блоки живлення працюють на явищі взаємної індукції: змінний струм у первинній обмотці збуджує у феромагнітному осерді змінний магнітний потік, який пронизує вторинну обмотку та індукує в ній ЕРС, пропорційну кількості витків N₂.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>ℰ₁ = -N₁(dΦ)/(dt), ℰ₂ = -N₂(dΦ)/(dt) (U₂)/(U₁) = (N₂)/(N₁) = k, I₁ U₁ ≈ I₂ U₂</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Підвищувальний (U₂ &gt; U₁)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Трансформатор, це електромагнітний статичний апарат, призначений для підвищення або зниження напруги змінного струму без зміни його частоти f за допомогою явища взаємної електромагнітної індукції. Первинна обмотка з числом витків N₁ та вторинна обмотка з числом витків N₂ насаджені на спільне замкнене феромагнітне осердя з високою магнітною проникністю (μ ∼ 10³-10⁴), яке концентрує змінний магнітний потік Φ(t) = Φ_m sin (2π f t) так, що він пронизує кожен виток обох котушок.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">За законом електромагнітної індукції Фарадея в одному витку індукується однакова ЕРС e₁ = -(dΦ)/(dt). Тому відношення діючих значень напруг на обмотках дорівнює відношенню кількості витків (коефіцієнт трансформації): (U₂)/(U₁) = (N₂)/(N₁) = k. Якщо N₂ &gt; N₁ (k &gt; 1), трансформатор є підвищувальним; якщо N₂ &lt; N₁ (k &lt; 1), знижувальним.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Згідно із законом збереження енергії, потужність на виході дорівнює вхідній потужності, помноженій на ККД η (який у силових трансформаторах досягає 95-99% завдяки шихтованому осердю з тонких пластин електротехнічної сталі, що пригнічує вихрові струми Фуко): P₂ = η P₁ ⇒ U₂ I₂ = η U₁ I₁. Отже, у скільки разів трансформатор підвищує напругу, у стільки ж разів він зменшує силу струму: (I₂)/(I₁) = η(N₁)/(N₂). Саме це дозволяє передавати електроенергію в ЛЕП при високих напругах (110-750 кВ) із мінімальними тепловими втратами в дротах P_втр = I² R_лінії ∝ 1/U²!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Діюча первинна напруга U₁</strong>: 50 … 220 В, типове значення 110 В</li><li><strong>Число витків первинної обмотки N₁</strong>: 10 … 50, типове значення 20</li><li><strong>Число витків вторинної обмотки N₂</strong>: 10 … 80, типове значення 40</li><li><strong>Частота змінного струму f (масштабована)</strong>: 1 … 5 Гц, типове значення 2 Гц</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Силові трансформатори енергомереж та імпульсні блоки живлення працюють на явищі взаємної індукції: змінний струм у первинній обмотці збуджує у феромагнітному осерді змінний магнітний потік, який пронизує вторинну обмотку та індукує в ній ЕРС, пропорційну кількості витків N₂.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>ℰ₁ = -N₁(dΦ)/(dt), ℰ₂ = -N₂(dΦ)/(dt) (U₂)/(U₁) = (N₂)/(N₁) = k, I₁ U₁ ≈ I₂ U₂</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

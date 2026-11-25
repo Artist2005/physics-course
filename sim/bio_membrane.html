@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Plasma Membrane Biophysics: Electrogenic Na⁺/K⁺-ATPase Pump &amp; Resting Potential</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Per single ATP hydrolyzed, the Na⁺/K⁺-ATPase extrudes 3 Na⁺ ions out of the cell in exchange for 2 K⁺ ions pumped inward, establishing steep ionic gradients and maintaining the negative resting potential."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · Membrane Biophysics</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">In the Singer-Nicolson fluid mosaic model, the plasma membrane is a 5 nm-thick amphipathic phospholipid bilayer whose hydrophobic core acts as an electrical capacitor (C_m ≈ 1.0 μF/cm²) impermeable to hydrated ions.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Steep transmembrane ion gradients ([K⁺]_i ≈ 140 mM, [Na⁺]_i ≈ 12 mM inside vs. [K⁺]_o ≈ 4.5 mM, [Na⁺]_o ≈ 145 mM outside) are maintained by the electrogenic Na⁺/K⁺-ATPase pump, which hydrolyzes 1 ATP per E₁ ≤ftrightarrow E₂ cycle to extrude 3 Na⁺ outward and import 2 K⁺ inward.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because resting membrane permeability is dominated by open potassium leak channels (P_K ≫ P_Na), outward K⁺ diffusion leaves the cytosol electrically negative near the Nernst potential E_K = (RT)/(zF) ln ([K⁺]_o)/([K⁺]_i) ≈ -90 mV, refined by the Goldman-Hodgkin-Katz equation to V_m ≈ -70 mV.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Na⁺/K⁺-ATPase pump activity (ATP turnover rate)</strong>: 0.4 … 2.5 rel., standard value 1.4 rel.</li><li><strong>Extracellular potassium concentration [K⁺]_out (normal 4.5 mM)</strong>: 2 … 15 mM, standard value 4.5 mM</li><li><strong>Intracellular sodium concentration [Na⁺]_in</strong>: 5 … 30 mM, standard value 12 mM</li><li><strong>Relative permeability ratio P_Na / P_K in Goldman equation</strong>: 0.01 … 0.2, standard value 0.04</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The Na⁺/K⁺ pump acts like a revolving door that spends 1 ATP coin to eject 3 Na⁺ ions outside while letting only 2 K⁺ ions inside. Coupled with outward K⁺ diffusion through open leak channels, this keeps the cell interior negatively charged at -70 mV.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>E_K = (RT)/(zF) ln ([K⁺]ₒᵤₜ)/([K⁺]ᵢₙ), V_m = (RT)/(F) ln (P_K[K⁺]_o + P_Na[Na⁺]_o)/(P_K[K⁺]_i + P_Na[Na⁺]_i)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">14.0 kV/cm</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · Membrane Biophysics</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">In the Singer-Nicolson fluid mosaic model, the plasma membrane is a 5 nm-thick amphipathic phospholipid bilayer whose hydrophobic core acts as an electrical capacitor (C_m ≈ 1.0 μF/cm²) impermeable to hydrated ions.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Steep transmembrane ion gradients ([K⁺]_i ≈ 140 mM, [Na⁺]_i ≈ 12 mM inside vs. [K⁺]_o ≈ 4.5 mM, [Na⁺]_o ≈ 145 mM outside) are maintained by the electrogenic Na⁺/K⁺-ATPase pump, which hydrolyzes 1 ATP per E₁ ≤ftrightarrow E₂ cycle to extrude 3 Na⁺ outward and import 2 K⁺ inward.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because resting membrane permeability is dominated by open potassium leak channels (P_K ≫ P_Na), outward K⁺ diffusion leaves the cytosol electrically negative near the Nernst potential E_K = (RT)/(zF) ln ([K⁺]_o)/([K⁺]_i) ≈ -90 mV, refined by the Goldman-Hodgkin-Katz equation to V_m ≈ -70 mV.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Na⁺/K⁺-ATPase pump activity (ATP turnover rate)</strong>: 0.4 … 2.5 rel., standard value 1.4 rel.</li><li><strong>Extracellular potassium concentration [K⁺]_out (normal 4.5 mM)</strong>: 2 … 15 mM, standard value 4.5 mM</li><li><strong>Intracellular sodium concentration [Na⁺]_in</strong>: 5 … 30 mM, standard value 12 mM</li><li><strong>Relative permeability ratio P_Na / P_K in Goldman equation</strong>: 0.01 … 0.2, standard value 0.04</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The Na⁺/K⁺ pump acts like a revolving door that spends 1 ATP coin to eject 3 Na⁺ ions outside while letting only 2 K⁺ ions inside. Coupled with outward K⁺ diffusion through open leak channels, this keeps the cell interior negatively charged at -70 mV.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>E_K = (RT)/(zF) ln ([K⁺]ₒᵤₜ)/([K⁺]ᵢₙ), V_m = (RT)/(F) ln (P_K[K⁺]_o + P_Na[Na⁺]_o)/(P_K[K⁺]_i + P_Na[Na⁺]_i)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

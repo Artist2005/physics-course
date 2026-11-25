@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Доцентрове прискорення та рух на повороті</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Будь-який криволінійний рух є прискореним: вектор швидкості змінює свій напрямок завдяки доцентровій силі, спрямованій до центра кривизни.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Будь-який криволінійний рух є прискореним: навіть за незмінного модуля швидкості (v = const) вектор швидкості v, спрямований по дотичній до траєкторії, безперервно змінює свій напрямок у просторі. Швидкість повороту вектора v характеризується доцентровим (нормальним) прискоренням a_n, яке завжди напрямлене вздовж радіуса до центра кривини траєкторії.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">З геометричної подібності трикутника переміщень Δr і трикутника приросту швидкостей Δv за малий інтервал Δ t → 0 випливає формула Гюйгенса: a_n = (v²)/(R) = ω² R. За ІІ законом Ньютона це прискорення створюється рівнодійною всіх сил у радіальному напрямку F_n = (mv²)/(R). На горизонтальному повороті роль утримувальної доцентрової сили виконує сила тертя спокою коліс об дорожнє полотно: F_тер ≤ μ mg.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Умова безпечного проходження повороту без заносу має вигляд (mv²)/(R) ≤ μ mg, звідки критична швидкість vₘₐₓ = √(μ g R). Якщо перевищити цей поріг, поперечного зчеплення шин не вистачить для викривлення траєкторії по радіусу R, і автомобіль за інерцією зійде з дуги по дотичній (на більший радіус).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кутова швидкість диска ω</strong>: 0.5 … 3.5 рад/с, типове значення 1.8 рад/с</li><li><strong>Радіус орбіти R</strong>: 1.2 … 4.2 м, типове значення 2.6 м</li><li><strong>Коефіцієнт тертя спокою μ</strong>: 0.1 … 0.9, типове значення 0.45</li><li><strong>Маса тіла m</strong>: 0.5 … 5 кг, типове значення 2 кг</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Під час руху автомобіля по заокругленню дороги або обертання тягарця на нитці тіло зберігає тенденцію до прямолінійного руху за інерцією, тоді як сила тертя шин або натяг нитки створює доцентрове прискорення, спрямоване до центра кола.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>a_дц = (v²)/(R) = ω² R, F_дц = mω² R ω_кр = √((μ g)/(R)) (умова безковзного обертання)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">8.8 Н</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Будь-який криволінійний рух є прискореним: навіть за незмінного модуля швидкості (v = const) вектор швидкості v, спрямований по дотичній до траєкторії, безперервно змінює свій напрямок у просторі. Швидкість повороту вектора v характеризується доцентровим (нормальним) прискоренням a_n, яке завжди напрямлене вздовж радіуса до центра кривини траєкторії.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">З геометричної подібності трикутника переміщень Δr і трикутника приросту швидкостей Δv за малий інтервал Δ t → 0 випливає формула Гюйгенса: a_n = (v²)/(R) = ω² R. За ІІ законом Ньютона це прискорення створюється рівнодійною всіх сил у радіальному напрямку F_n = (mv²)/(R). На горизонтальному повороті роль утримувальної доцентрової сили виконує сила тертя спокою коліс об дорожнє полотно: F_тер ≤ μ mg.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Умова безпечного проходження повороту без заносу має вигляд (mv²)/(R) ≤ μ mg, звідки критична швидкість vₘₐₓ = √(μ g R). Якщо перевищити цей поріг, поперечного зчеплення шин не вистачить для викривлення траєкторії по радіусу R, і автомобіль за інерцією зійде з дуги по дотичній (на більший радіус).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кутова швидкість диска ω</strong>: 0.5 … 3.5 рад/с, типове значення 1.8 рад/с</li><li><strong>Радіус орбіти R</strong>: 1.2 … 4.2 м, типове значення 2.6 м</li><li><strong>Коефіцієнт тертя спокою μ</strong>: 0.1 … 0.9, типове значення 0.45</li><li><strong>Маса тіла m</strong>: 0.5 … 5 кг, типове значення 2 кг</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Під час руху автомобіля по заокругленню дороги або обертання тягарця на нитці тіло зберігає тенденцію до прямолінійного руху за інерцією, тоді як сила тертя шин або натяг нитки створює доцентрове прискорення, спрямоване до центра кола.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>a_дц = (v²)/(R) = ω² R, F_дц = mω² R ω_кр = √((μ g)/(R)) (умова безковзного обертання)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

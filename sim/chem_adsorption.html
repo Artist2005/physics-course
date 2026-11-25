@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Surface Adsorption &amp; the Langmuir Isotherm: θ = K·P / (1 + K·P)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Every solid crystal surface possesses a definite number of elementary spaces capable of holding adsorbed molecules in a monomolecular layer.», Irving Langmuir, 1918</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Surface Chemistry</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Adsorption is the accumulation of gas or solute molecules (adsorbate) onto the surface of a solid (adsorbent, such as activated carbon or a metal catalyst). Because gas molecules lose translational freedom upon binding (Δ S_ads &lt; 0), spontaneous adsorption is universally exothermic (Δ H_ads = -Q_ads &lt; 0).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Langmuir's monolayer model assumes a fixed number of equivalent surface sites. Equating the rate of adsorption on vacant sites k_a P(1-θ) to the rate of desorption from occupied sites k_dθ yields the Langmuir isotherm: θ(P) = (K P)/(1 + K P), where K = k_a / k_d.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">At low pressures (KP ≪ 1), fractional coverage rises linearly (θ ≈ KP, Henry's regime); at high pressures (KP ≫ 1), the surface saturates at a complete monolayer (θ → 1). Raising temperature T decreases K(T) and drives thermal desorption.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Adsorbate gas pressure P</strong>: 0.2 … 6 atm, standard value 2 atm</li><li><strong>Surface temperature T</strong>: 250 … 450 K, standard value 300 K</li><li><strong>Adsorption affinity constant K₀ (at 300 K)</strong>: 0.3 … 3 atm⁻¹, standard value 1.2 atm⁻¹</li><li><strong>Heat of adsorption Q_ads = −ΔH_ads</strong>: 15 … 45 kJ/mol, standard value 25 kJ/mol</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily (θ ≈ KP), but once every spot is taken in a monolayer, coverage hits a ceiling (θ → 1).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>θ = (K P)/(1 + K P), K(T) = K₀ exp ((Q_ads)/(RT)), r_ads = k_a P(1-θ) = k_dθ</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">r_ads = k_a·P·(1 − θ) = r_des = k_d·θ</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Surface Chemistry</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Adsorption is the accumulation of gas or solute molecules (adsorbate) onto the surface of a solid (adsorbent, such as activated carbon or a metal catalyst). Because gas molecules lose translational freedom upon binding (Δ S_ads &lt; 0), spontaneous adsorption is universally exothermic (Δ H_ads = -Q_ads &lt; 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Langmuir's monolayer model assumes a fixed number of equivalent surface sites. Equating the rate of adsorption on vacant sites k_a P(1-θ) to the rate of desorption from occupied sites k_dθ yields the Langmuir isotherm: θ(P) = (K P)/(1 + K P), where K = k_a / k_d.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">At low pressures (KP ≪ 1), fractional coverage rises linearly (θ ≈ KP, Henry's regime); at high pressures (KP ≫ 1), the surface saturates at a complete monolayer (θ → 1). Raising temperature T decreases K(T) and drives thermal desorption.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Adsorbate gas pressure P</strong>: 0.2 … 6 atm, standard value 2 atm</li><li><strong>Surface temperature T</strong>: 250 … 450 K, standard value 300 K</li><li><strong>Adsorption affinity constant K₀ (at 300 K)</strong>: 0.3 … 3 atm⁻¹, standard value 1.2 atm⁻¹</li><li><strong>Heat of adsorption Q_ads = −ΔH_ads</strong>: 15 … 45 kJ/mol, standard value 25 kJ/mol</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">An activated-carbon surface is like a parking lot with a fixed number of spaces. At low gas pressure cars park easily (θ ≈ KP), but once every spot is taken in a monolayer, coverage hits a ceiling (θ → 1).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>θ = (K P)/(1 + K P), K(T) = K₀ exp ((Q_ads)/(RT)), r_ads = k_a P(1-θ) = k_dθ</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Розподіл Максвелла та характерні швидкості газу</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Хаотичні зіткнення міріад молекул формують строго визначений статистичний профіль густини ймовірності f(v).</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Хоча середня кінетична енергія молекул газу однозначно задається температурою T, унаслідок безперервних випадкових зіткнень окремі молекули мають найрізноманітніші швидкості, від майже нульових до надзвукових. У 1859 році Джеймс Клерк Максвелл вивів фундаментальну функцію густини ймовірності модулів швидкостей молекул у стані термодинамічної рівноваги: f(v) = 4π ((M)/(2π R T))^ 3/2 v² exp (-(M v²)/(2 R T)).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Структура розподілу Максвелла визначається конкуренцією двох множників: параболічного множника v² (об'єм сферичного шару 4π v² dv у просторі швидкостей, через який частка зовсім повільних молекул прямує до нуля) та експоненціального больцманівського множника exp (-(ε_k)/(k_B T)), що обмежує ймовірність великих енергій.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Розподіл характеризується трьома строго впорядкованими характерними швидкостями (v_імов &lt; ⟨ v ⟩ &lt; v_кв): 1) найбільш імовірна швидкість (максимум купола df/dv = 0) v_імов = √((2RT)/(M)); 2) середня арифметична швидкість ⟨ v ⟩ = √((8RT)/(π M)) ≈ 1.128 v_імов; 3) середня квадратична швидкість (що визначає тиск і внутрішню енергію газу) v_кв = √((3RT)/(M)) ≈ 1.225 v_імов. При нагріванні або зменшенні молярної маси M (перехід від Xe до He) крива зміщується праворуч і розширюється за умови нормування ∫₀^∞ f(v) dv = 1.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Абсолютна температура газу T</strong>: 150 … 900 К, типове значення 350 К</li><li><strong>Молярна маса газу M (4=He, 28=N₂, 44=CO₂)</strong>: 4 … 64 г/моль, типове значення 28 г/моль</li><li><strong>Число візуалізованих молекул N</strong>: 40 … 140 шт., типове значення 90 шт.</li><li><strong>Поріг активації v_пор / v_p</strong>: 0.8 … 2, типове значення 1.2</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Молекули газу за термодинамічної рівноваги перебувають у стані хаотичного теплового руху з широким спектром швидкостей: частина молекул після зіткнень має малу швидкість, більшість групується поблизу найбільш імовірної швидкості (∼ 500 м/с за кімнатної температури), а невелика частка рухається значно швидше. Підвищення температури зміщує криву розподілу Максвелла в бік вищих швидкостей.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>f(v) = 4π((M)/(2π RT))³/2 v² exp (-(Mv²)/(2RT)) v_p = √((2RT)/(M)) &lt; ⟨ v⟩ = √((8RT)/(π M)) &lt; v_кв = √((3RT)/(M))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">41.0 %</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Хоча середня кінетична енергія молекул газу однозначно задається температурою T, унаслідок безперервних випадкових зіткнень окремі молекули мають найрізноманітніші швидкості, від майже нульових до надзвукових. У 1859 році Джеймс Клерк Максвелл вивів фундаментальну функцію густини ймовірності модулів швидкостей молекул у стані термодинамічної рівноваги: f(v) = 4π ((M)/(2π R T))^ 3/2 v² exp (-(M v²)/(2 R T)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Структура розподілу Максвелла визначається конкуренцією двох множників: параболічного множника v² (об'єм сферичного шару 4π v² dv у просторі швидкостей, через який частка зовсім повільних молекул прямує до нуля) та експоненціального больцманівського множника exp (-(ε_k)/(k_B T)), що обмежує ймовірність великих енергій.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Розподіл характеризується трьома строго впорядкованими характерними швидкостями (v_імов &lt; ⟨ v ⟩ &lt; v_кв): 1) найбільш імовірна швидкість (максимум купола df/dv = 0) v_імов = √((2RT)/(M)); 2) середня арифметична швидкість ⟨ v ⟩ = √((8RT)/(π M)) ≈ 1.128 v_імов; 3) середня квадратична швидкість (що визначає тиск і внутрішню енергію газу) v_кв = √((3RT)/(M)) ≈ 1.225 v_імов. При нагріванні або зменшенні молярної маси M (перехід від Xe до He) крива зміщується праворуч і розширюється за умови нормування ∫₀^∞ f(v) dv = 1.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Абсолютна температура газу T</strong>: 150 … 900 К, типове значення 350 К</li><li><strong>Молярна маса газу M (4=He, 28=N₂, 44=CO₂)</strong>: 4 … 64 г/моль, типове значення 28 г/моль</li><li><strong>Число візуалізованих молекул N</strong>: 40 … 140 шт., типове значення 90 шт.</li><li><strong>Поріг активації v_пор / v_p</strong>: 0.8 … 2, типове значення 1.2</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Молекули газу за термодинамічної рівноваги перебувають у стані хаотичного теплового руху з широким спектром швидкостей: частина молекул після зіткнень має малу швидкість, більшість групується поблизу найбільш імовірної швидкості (∼ 500 м/с за кімнатної температури), а невелика частка рухається значно швидше. Підвищення температури зміщує криву розподілу Максвелла в бік вищих швидкостей.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>f(v) = 4π((M)/(2π RT))³/2 v² exp (-(Mv²)/(2RT)) v_p = √((2RT)/(M)) &lt; ⟨ v⟩ = √((8RT)/(π M)) &lt; v_кв = √((3RT)/(M))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

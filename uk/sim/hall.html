@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ефект Холла та поперечна ЕРС у магнітному полі</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Ефект Холла не лише вимірює магнітну індукцію B, а й безпосередньо виявляє знак і концентрацію вільних носіїв заряду.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Ефект Холла (відкритий Едвіном Холлом у 1879 р.) виникає, коли пластинку провідника чи напівпровідника товщиною d і шириною w, крізь яку тече поздовжній струм I = |q|n v_d w d, поміщають у перпендикулярне магнітне поле B. На носії заряду q, що дрейфують зі швидкістю v_d, діє поперечна магнітна сила Лоренца F_B = q[v_d × B], яка відхиляє їх до однієї з бічних граней пластинки.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Накопичення зарядів на бічних гранях створює поперечне електростатичне поле Холла E_H. В усталеному режимі електрична сила qE_H повністю зрівноважує магнітну силу Лоренца (|q|E_H = |q|v_d B ⇒ E_H = v_d B), і подальше бокове розділення зарядів припиняється. Між бічними гранями встановлюється холлівська різниця потенціалів (ЕРС Холла): U_H = E_H w = v_d B w = (I B)/(n |q| d) = R_H (I B)/(d), де R_H = (1)/(nq), стала Холла.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Ефект Холла має унікальне значення у фізиці твердого тіла: 1) за величиною U_H безпосередньо вимірюють концентрацію вільних носіїв заряду n; 2) за полярністю напруги U_H визначають знак носіїв струму (електронна провідність n-типу чи діркова провідність p-типу), бо і негативні електрони (q = -e, v_d проти струму), і позитивні дірки (q = +e, v_d за струмом) відхиляються силою Лоренца до однієї й тієї самої бічної грані, заряджаючи її протилежними знаками!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Поздовжній струм через датчик I</strong>: 1 … 6 А, типове значення 3 А</li><li><strong>Магнітна індукція поля B</strong>: 0.5 … 3 Тл, типове значення 1.5 Тл</li><li><strong>Концентрація носіїв n (відносна)</strong>: 0.8 … 5 ×10²² м⁻³, типове значення 2 ×10²² м⁻³</li><li><strong>Товщина пластинки d</strong>: 0.5 … 2.5 мм, типове значення 1 мм</li><li><strong>Знак носіїв (-1 = електрони, +1 = дірки)</strong>: -1 … 1, типове значення -1</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Напівпровідникові датчики Холла широко застосовуються в безщіткових електродвигунах, автомобільних системах запалювання та магнітометрах: коли крізь провідну пластинку зі струмом проходить перпендикулярне магнітне поле, сила Лоренца зміщує носії заряду до бічної грані, індукуючи поперечну різницю потенціалів (напругу Холла).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>|q| E_H = |q| v_d B ⇒ E_H = v_d B, I = n |q| v_d b d U_H = E_H b = (I B)/(n |q| d) = R_H (I B)/(d), R_H = (1)/(n q)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">n-тип (електрони -e)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Ефект Холла (відкритий Едвіном Холлом у 1879 р.) виникає, коли пластинку провідника чи напівпровідника товщиною d і шириною w, крізь яку тече поздовжній струм I = |q|n v_d w d, поміщають у перпендикулярне магнітне поле B. На носії заряду q, що дрейфують зі швидкістю v_d, діє поперечна магнітна сила Лоренца F_B = q[v_d × B], яка відхиляє їх до однієї з бічних граней пластинки.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Накопичення зарядів на бічних гранях створює поперечне електростатичне поле Холла E_H. В усталеному режимі електрична сила qE_H повністю зрівноважує магнітну силу Лоренца (|q|E_H = |q|v_d B ⇒ E_H = v_d B), і подальше бокове розділення зарядів припиняється. Між бічними гранями встановлюється холлівська різниця потенціалів (ЕРС Холла): U_H = E_H w = v_d B w = (I B)/(n |q| d) = R_H (I B)/(d), де R_H = (1)/(nq), стала Холла.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Ефект Холла має унікальне значення у фізиці твердого тіла: 1) за величиною U_H безпосередньо вимірюють концентрацію вільних носіїв заряду n; 2) за полярністю напруги U_H визначають знак носіїв струму (електронна провідність n-типу чи діркова провідність p-типу), бо і негативні електрони (q = -e, v_d проти струму), і позитивні дірки (q = +e, v_d за струмом) відхиляються силою Лоренца до однієї й тієї самої бічної грані, заряджаючи її протилежними знаками!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Поздовжній струм через датчик I</strong>: 1 … 6 А, типове значення 3 А</li><li><strong>Магнітна індукція поля B</strong>: 0.5 … 3 Тл, типове значення 1.5 Тл</li><li><strong>Концентрація носіїв n (відносна)</strong>: 0.8 … 5 ×10²² м⁻³, типове значення 2 ×10²² м⁻³</li><li><strong>Товщина пластинки d</strong>: 0.5 … 2.5 мм, типове значення 1 мм</li><li><strong>Знак носіїв (-1 = електрони, +1 = дірки)</strong>: -1 … 1, типове значення -1</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Напівпровідникові датчики Холла широко застосовуються в безщіткових електродвигунах, автомобільних системах запалювання та магнітометрах: коли крізь провідну пластинку зі струмом проходить перпендикулярне магнітне поле, сила Лоренца зміщує носії заряду до бічної грані, індукуючи поперечну різницю потенціалів (напругу Холла).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>|q| E_H = |q| v_d B ⇒ E_H = v_d B, I = n |q| v_d b d U_H = E_H b = (I B)/(n |q| d) = R_H (I B)/(d), R_H = (1)/(n q)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -483,6 +485,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

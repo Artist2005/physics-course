@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Surface Tension, Meniscus Curvature &amp; Capillary Action</h1>
       <p id="scene-epigraph" class="chapter-epigraph">A narrow capillary tube makes visible the molecular cohesive forces capable of lifting a liquid column against gravity.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Grade 10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Molecules at a liquid-gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy E_s = σ S characterized by surface tension σ (N/m). When liquid-solid adhesion exceeds liquid-liquid cohesion (wetting, contact angle θ 90°, such as mercury in glass), the meniscus is convex.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In a cylindrical capillary tube of inner radius r, the spherical meniscus of radius of curvature R_m = (r)/( cos θ) sustains a pressure jump across the interface given by the Young-Laplace equation: Δ p = (2σ)/(R_m) = (2σ cos θ)/(r).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Equating this Laplace capillary suction to the hydrostatic pressure ρ g h of the liquid column yields Jurin's Law: h = (2σ cos θ)/(ρ g r) (positive rise for θ 90°). Because h ∝ 1/r, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Surface tension coefficient σ</strong>: 25 … 120 mN/m, standard value 72.8 mN/m</li><li><strong>Contact wetting angle θ</strong>: 0 … 140 °, standard value 20 °</li><li><strong>Inner capillary radius r</strong>: 0.3 … 1.5 mm, standard value 0.6 mm</li><li><strong>Liquid density ρ</strong>: 0.7 … 2.5 g/cm³, standard value 1 g/cm³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Moisture transport in porous soils, plant xylem vessels, and laboratory capillaries is driven by Laplace pressure across a curved meniscus: for a wetting liquid, surface tension along the contact perimeter draws the liquid column upward until hydrostatic weight balances the capillary force.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ P_Lap = (2σ cos θ)/(r) = ρ g h h = (2σ cos θ)/(ρ g r)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">Concave (wetting)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Grade 10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Molecules at a liquid-gas interface experience an inward cohesive pull from bulk neighbors, endowing the surface with excess free energy E_s = σ S characterized by surface tension σ (N/m). When liquid-solid adhesion exceeds liquid-liquid cohesion (wetting, contact angle θ 90°, such as mercury in glass), the meniscus is convex.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">In a cylindrical capillary tube of inner radius r, the spherical meniscus of radius of curvature R_m = (r)/( cos θ) sustains a pressure jump across the interface given by the Young-Laplace equation: Δ p = (2σ)/(R_m) = (2σ cos θ)/(r).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Equating this Laplace capillary suction to the hydrostatic pressure ρ g h of the liquid column yields Jurin's Law: h = (2σ cos θ)/(ρ g r) (positive rise for θ 90°). Because h ∝ 1/r, narrower capillaries draw liquids to dramatically greater heights, driving sap transport in plants and wicking in porous media.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Surface tension coefficient σ</strong>: 25 … 120 mN/m, standard value 72.8 mN/m</li><li><strong>Contact wetting angle θ</strong>: 0 … 140 °, standard value 20 °</li><li><strong>Inner capillary radius r</strong>: 0.3 … 1.5 mm, standard value 0.6 mm</li><li><strong>Liquid density ρ</strong>: 0.7 … 2.5 g/cm³, standard value 1 g/cm³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Moisture transport in porous soils, plant xylem vessels, and laboratory capillaries is driven by Laplace pressure across a curved meniscus: for a wetting liquid, surface tension along the contact perimeter draws the liquid column upward until hydrostatic weight balances the capillary force.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ P_Lap = (2σ cos θ)/(r) = ρ g h h = (2σ cos θ)/(ρ g r)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

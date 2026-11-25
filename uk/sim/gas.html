@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ідеальний газ під поршнем (Рівняння Менделєєва–Клапейрона)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Тиск газу на стінки посудини та поршень зумовлений сумарним імпульсом незліченних пружних ударів молекул, що перебувають у хаотичному тепловому русі.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">З погляду молекулярно-кінетичної теорії (МКТ), макроскопічний тиск газу P є результатом мільярдів пружних ударів хаотично рухомих молекул об стінки циліндра та рухомий поршень. Середня кінетична енергія поступального руху однієї молекули прямо пропорційна абсолютній температурі: ⟨ ε_k ⟩ = (3)/(2)k_B T, де k_B = 1.38× 10⁻²³ Дж/К, стала Больцмана.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Основне рівняння МКТ P = n k_B T = (1)/(3)n m₀ ⟨ v² ⟩ при переході до кількості речовини ν = N / N_A дає рівняння стану ідеального газу Менделєєва-Клапейрона: PV = ν R T, де R = k_B N_A = 8.314 Дж/(моль·К). Внутрішня енергія одноатомного ідеального газу визначається лише його температурою: U = (3)/(2)ν R T = (3)/(2)PV.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">У нашій 3D-установці при фіксованій кількості газу ν ви можете дослідити ізотермічне стиснення Бойля-Маріотта (T = const ⇒ P ∝ 1/V) та ізохорний чи ізобарний нагрів Гей-Люссака / Шарля: підвищення температури T збільшує середню квадратичну швидкість частинок v_кв = √(3RT/M) і змушує газ виконувати додатну термодинамічну роботу A = ∫ P dV.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Абсолютна температура T</strong>: 150 … 600 К, типове значення 300 К</li><li><strong>Зовнішній тиск на поршень P</strong>: 0.8 … 3 атм, типове значення 1.5 атм</li><li><strong>Кількість модельних частинок N</strong>: 20 … 70 мол, типове значення 45 мол</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У закритому резервуарі або пневматичній шині макроскопічний тиск газу є результатом сумарної передачі імпульсу під час численних пружних зіткнень молекул зі стінками посудини; підвищення температури або зменшення об'єму збільшує частоту й інтенсивність ударів.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>P V = ν R T, P = (1)/(3) n m₀ v² E_k = (3)/(2) k_B T, Q = Δ U + PΔ V</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">508 м/с</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">З погляду молекулярно-кінетичної теорії (МКТ), макроскопічний тиск газу P є результатом мільярдів пружних ударів хаотично рухомих молекул об стінки циліндра та рухомий поршень. Середня кінетична енергія поступального руху однієї молекули прямо пропорційна абсолютній температурі: ⟨ ε_k ⟩ = (3)/(2)k_B T, де k_B = 1.38× 10⁻²³ Дж/К, стала Больцмана.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Основне рівняння МКТ P = n k_B T = (1)/(3)n m₀ ⟨ v² ⟩ при переході до кількості речовини ν = N / N_A дає рівняння стану ідеального газу Менделєєва-Клапейрона: PV = ν R T, де R = k_B N_A = 8.314 Дж/(моль·К). Внутрішня енергія одноатомного ідеального газу визначається лише його температурою: U = (3)/(2)ν R T = (3)/(2)PV.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">У нашій 3D-установці при фіксованій кількості газу ν ви можете дослідити ізотермічне стиснення Бойля-Маріотта (T = const ⇒ P ∝ 1/V) та ізохорний чи ізобарний нагрів Гей-Люссака / Шарля: підвищення температури T збільшує середню квадратичну швидкість частинок v_кв = √(3RT/M) і змушує газ виконувати додатну термодинамічну роботу A = ∫ P dV.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Абсолютна температура T</strong>: 150 … 600 К, типове значення 300 К</li><li><strong>Зовнішній тиск на поршень P</strong>: 0.8 … 3 атм, типове значення 1.5 атм</li><li><strong>Кількість модельних частинок N</strong>: 20 … 70 мол, типове значення 45 мол</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У закритому резервуарі або пневматичній шині макроскопічний тиск газу є результатом сумарної передачі імпульсу під час численних пружних зіткнень молекул зі стінками посудини; підвищення температури або зменшення об'єму збільшує частоту й інтенсивність ударів.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>P V = ν R T, P = (1)/(3) n m₀ v² E_k = (3)/(2) k_B T, Q = Δ U + PΔ V</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -469,6 +471,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

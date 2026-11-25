@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ефект Комптона та релятивістський імпульс фотона</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Розсіяння рентгенівських квантів за законами більярдних куль довело, що фотон несе не лише енергію hν, а й імпульс h/λ.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">У 1923 році Артур Комптон досліджував розсіяння жорсткого рентгенівського та γ-випромінювання на легких речовинах (графіті) і виявив, що розсіяне під кутом θ випромінювання має більшу довжину хвилі λ' &gt; λ₀, причому зсув Δλ = λ' - λ₀ не залежить від матеріалу мішені, а визначається виключно кутом розсіяння θ. У межах класичної електродинаміки Томсона (де електрон розгойдується полем хвилі і випромінює на тій самій частоті λ' = λ₀) пояснити це явище було неможливо.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Комптон розрахував процес як пружне релятивістське зіткнення корпускули-фотона з енергією E₀ = (hc)/(λ₀) та імпульсом p₀ = (h)/(λ₀) із майже вільним нерухомим електроном (енергія спокою m_e c² ≈ 511 кеВ). Із релятивістських законів збереження енергії E₀ + m_e c² = E' + √(p_e² c² + m_e² c⁴) та векторного імпульсу p₀ = p' + p_e випливає знаменита формула Комптона: Δλ = λ' - λ₀ = λ_C (1 - cos θ).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Фундаментальна константа λ_C = (h)/(m_e c) ≈ 2.426 пм (2.426× 10⁻¹² м) називається комптонівською довжиною хвилі електрона. При розсіянні назад (θ = 180°, cos θ = -1) фотон передає електрону віддачі максимальну частку своєї енергії, а його довжина хвилі зростає на подвійну комптонівську величину Δλₘₐₓ = 2λ_C ≈ 4.85 пм. Дослід Комптона став вирішальним доказом того, що фотон переносить не лише квант енергії hν, а й реальний механічний імпульс p = ℏk.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Початкова довжина хвилі рентгену λ₀</strong>: 2 … 12 пм, типове значення 5 пм</li><li><strong>Кут розсіяння фотона θ</strong>: 15 … 180 °, типове значення 90 °</li><li><strong>Частота зіткнень у мішені</strong>: 0.8 … 2.4 Гц, типове значення 1.4 Гц</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Ефект Комптона є прямим експериментальним підтвердженням корпускулярних властивостей електромагнітного випромінювання. Під час пружного розсіювання рентгенівського фотона на вільному електроні частина енергії та імпульсу передається електрону віддачі, внаслідок чого розсіяний фотон має меншу частоту і більшу довжину хвилі λ' &gt; λ₀.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>p_γ = p_γ' + p_e, hν + m_e c² = hν' + E_e Δλ = λ' - λ₀ = λ_C (1 - cos θ), λ_C = (h)/(m_e c) ≈ 2.43 пм</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">81.0 кеВ (φ=34°)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">У 1923 році Артур Комптон досліджував розсіяння жорсткого рентгенівського та γ-випромінювання на легких речовинах (графіті) і виявив, що розсіяне під кутом θ випромінювання має більшу довжину хвилі λ' &gt; λ₀, причому зсув Δλ = λ' - λ₀ не залежить від матеріалу мішені, а визначається виключно кутом розсіяння θ. У межах класичної електродинаміки Томсона (де електрон розгойдується полем хвилі і випромінює на тій самій частоті λ' = λ₀) пояснити це явище було неможливо.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Комптон розрахував процес як пружне релятивістське зіткнення корпускули-фотона з енергією E₀ = (hc)/(λ₀) та імпульсом p₀ = (h)/(λ₀) із майже вільним нерухомим електроном (енергія спокою m_e c² ≈ 511 кеВ). Із релятивістських законів збереження енергії E₀ + m_e c² = E' + √(p_e² c² + m_e² c⁴) та векторного імпульсу p₀ = p' + p_e випливає знаменита формула Комптона: Δλ = λ' - λ₀ = λ_C (1 - cos θ).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Фундаментальна константа λ_C = (h)/(m_e c) ≈ 2.426 пм (2.426× 10⁻¹² м) називається комптонівською довжиною хвилі електрона. При розсіянні назад (θ = 180°, cos θ = -1) фотон передає електрону віддачі максимальну частку своєї енергії, а його довжина хвилі зростає на подвійну комптонівську величину Δλₘₐₓ = 2λ_C ≈ 4.85 пм. Дослід Комптона став вирішальним доказом того, що фотон переносить не лише квант енергії hν, а й реальний механічний імпульс p = ℏk.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Початкова довжина хвилі рентгену λ₀</strong>: 2 … 12 пм, типове значення 5 пм</li><li><strong>Кут розсіяння фотона θ</strong>: 15 … 180 °, типове значення 90 °</li><li><strong>Частота зіткнень у мішені</strong>: 0.8 … 2.4 Гц, типове значення 1.4 Гц</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Ефект Комптона є прямим експериментальним підтвердженням корпускулярних властивостей електромагнітного випромінювання. Під час пружного розсіювання рентгенівського фотона на вільному електроні частина енергії та імпульсу передається електрону віддачі, внаслідок чого розсіяний фотон має меншу частоту і більшу довжину хвилі λ' &gt; λ₀.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>p_γ = p_γ' + p_e, hν + m_e c² = hν' + E_e Δλ = λ' - λ₀ = λ_C (1 - cos θ), λ_C = (h)/(m_e c) ≈ 2.43 пм</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -469,6 +471,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Biomechanics of Muscle Contraction: Sliding Filament Sarcomere &amp; Hill’s Equation</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"During muscle contraction, individual actin and myosin filaments do not shorten; rather, Ca²⁺-activated myosin cross-bridges cyclically pull thin actin filaments toward the M-line, drawing Z-discs together."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Muscle Biomechanics</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The sarcomere is the contractile unit of striated muscle bordered by two Z-discs (L₀ ≈ 2.0-2.2 μm). According to the Huxley sliding-filament theory (1954), thick myosin and thin actin filaments maintain constant length while myosin cross-bridges pull actin filaments inward toward the central M-line.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">At rest, tropomyosin sterically blocks myosin-binding sites on actin. Action-potential-triggered Ca²⁺ release from the sarcoplasmic reticulum binds troponin C, shifting tropomyosin and initiating the ATP-driven cross-bridge power-stroke cycle (attachment → power stroke releasing ADP+P_i → rigor detachment upon fresh ATP binding → cocking via ATP hydrolysis).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Macroscopic mechanics obey A. V. Hill's force-velocity hyperbola (1938): (F + a)(v + b) = (F₀ + a)b, or v(F) = b (F₀ - F)/(F + a). Shortening velocity peaks at vₘₐₓ = b F₀ / a when unloaded (F = 0), tension peaks at F₀ under isometric load (v = 0) at optimal filament overlap, and mechanical power P = Fv maximizes near F ≈ 0.31 F₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Sarcoplasmic Ca²⁺ concentration (troponin C activation)</strong>: 0.2 … 5 μM, standard value 2.5 μM</li><li><strong>Initial sarcomere length L_sarc (optimal overlap 2.0-2.2 μm)</strong>: 1.5 … 3.2 μm, standard value 2.1 μm</li><li><strong>Relative external load F / F₀ (0=unloaded, 1=isometric)</strong>: 0 … 1 F₀, standard value 0.3 F₀</li><li><strong>ATP availability for myosin cross-bridge cycling</strong>: 0.4 … 2.5 rel., standard value 1.5 rel.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">According to Huxley's sliding-filament model, sarcomere contraction is driven by cyclic ATP-powered cross-bridge strokes of myosin heads along actin filaments: neither filament changes its intrinsic length, yet the Z-discs are drawn together as thin filaments slide inward. By Hill's force-velocity relation, shortening velocity v reaches its maximum vₘₐₓ as external load F → 0.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>(F + a)(v + b) = (F₀ + a)b ⇒ v(F) = b (F₀ - F)/(F + a), P_mech = F· v(F)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">47.4 W</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Muscle Biomechanics</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The sarcomere is the contractile unit of striated muscle bordered by two Z-discs (L₀ ≈ 2.0-2.2 μm). According to the Huxley sliding-filament theory (1954), thick myosin and thin actin filaments maintain constant length while myosin cross-bridges pull actin filaments inward toward the central M-line.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">At rest, tropomyosin sterically blocks myosin-binding sites on actin. Action-potential-triggered Ca²⁺ release from the sarcoplasmic reticulum binds troponin C, shifting tropomyosin and initiating the ATP-driven cross-bridge power-stroke cycle (attachment → power stroke releasing ADP+P_i → rigor detachment upon fresh ATP binding → cocking via ATP hydrolysis).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Macroscopic mechanics obey A. V. Hill's force-velocity hyperbola (1938): (F + a)(v + b) = (F₀ + a)b, or v(F) = b (F₀ - F)/(F + a). Shortening velocity peaks at vₘₐₓ = b F₀ / a when unloaded (F = 0), tension peaks at F₀ under isometric load (v = 0) at optimal filament overlap, and mechanical power P = Fv maximizes near F ≈ 0.31 F₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Sarcoplasmic Ca²⁺ concentration (troponin C activation)</strong>: 0.2 … 5 μM, standard value 2.5 μM</li><li><strong>Initial sarcomere length L_sarc (optimal overlap 2.0-2.2 μm)</strong>: 1.5 … 3.2 μm, standard value 2.1 μm</li><li><strong>Relative external load F / F₀ (0=unloaded, 1=isometric)</strong>: 0 … 1 F₀, standard value 0.3 F₀</li><li><strong>ATP availability for myosin cross-bridge cycling</strong>: 0.4 … 2.5 rel., standard value 1.5 rel.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">According to Huxley's sliding-filament model, sarcomere contraction is driven by cyclic ATP-powered cross-bridge strokes of myosin heads along actin filaments: neither filament changes its intrinsic length, yet the Z-discs are drawn together as thin filaments slide inward. By Hill's force-velocity relation, shortening velocity v reaches its maximum vₘₐₓ as external load F → 0.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>(F + a)(v + b) = (F₀ + a)b ⇒ v(F) = b (F₀ - F)/(F + a), P_mech = F· v(F)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

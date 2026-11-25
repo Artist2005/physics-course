@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Hooke's Law in Differential Form &amp; Young's Modulus</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Within the proportional limit, mechanical normal stress in a rod is directly proportional to its relative longitudinal elongation.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 7-10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">While the elementary spring formula F = kΔ L depends on specimen dimensions, continuum mechanics expresses elasticity entirely in terms of intrinsic material quantities: normal mechanical stress σ = (F)/(S) (in Pascals, Pa = N/m²) and dimensionless longitudinal strain ε = (Δ L)/(L₀).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Within the proportional elastic limit, stress varies linearly with strain (Hooke's Law in differential form): σ = Eε, yielding total elongation Δ L = (F L₀)/(E S) and effective axial stiffness k = (ES)/(L₀). The material constant E is Young's modulus, measuring interatomic bond stiffness (ranging from ∼ 0.01 GPa in elastomers to 70 GPa in aluminum and 200 GPa in structural steel).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Elastic strain energy stored per unit volume equals the area under the stress-strain curve: w = (1)/(2)σε = (1)/(2)Eε² = (σ²)/(2E), with total potential energy E_p = (1)/(2)FΔ L. Axial stretching is accompanied by lateral Poisson contraction (ε_⊥ = -νε_∥), visible on the 3D tensile specimen.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Tensile load force F</strong>: 2 … 16 kN, standard value 8 kN</li><li><strong>Young's modulus E</strong>: 2 … 20 ×10¹⁰ Pa, standard value 7 ×10¹⁰ Pa</li><li><strong>Specimen diameter d</strong>: 4 … 10 mm, standard value 6 mm</li><li><strong>Initial gauge length l₀</strong>: 1.2 … 2.8 m, standard value 2 m</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Within the proportional elastic limit of structural steel cables, beams, and dynamometer springs, mechanical normal stress σ = F/A is directly proportional to longitudinal strain ε = Δ L / L₀ according to Hooke's law.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>σ = (F)/(A) = E ε, ε = (Δ L)/(L₀), Δ L = (F L₀)/(E A) k_rod = (E A)/(L₀), Wₑₗ = (1)/(2)F Δ L = (σ²)/(2E) V, ε_⊥ = -ν ε</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">323.4 J</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 7-10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">While the elementary spring formula F = kΔ L depends on specimen dimensions, continuum mechanics expresses elasticity entirely in terms of intrinsic material quantities: normal mechanical stress σ = (F)/(S) (in Pascals, Pa = N/m²) and dimensionless longitudinal strain ε = (Δ L)/(L₀).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Within the proportional elastic limit, stress varies linearly with strain (Hooke's Law in differential form): σ = Eε, yielding total elongation Δ L = (F L₀)/(E S) and effective axial stiffness k = (ES)/(L₀). The material constant E is Young's modulus, measuring interatomic bond stiffness (ranging from ∼ 0.01 GPa in elastomers to 70 GPa in aluminum and 200 GPa in structural steel).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Elastic strain energy stored per unit volume equals the area under the stress-strain curve: w = (1)/(2)σε = (1)/(2)Eε² = (σ²)/(2E), with total potential energy E_p = (1)/(2)FΔ L. Axial stretching is accompanied by lateral Poisson contraction (ε_⊥ = -νε_∥), visible on the 3D tensile specimen.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Tensile load force F</strong>: 2 … 16 kN, standard value 8 kN</li><li><strong>Young's modulus E</strong>: 2 … 20 ×10¹⁰ Pa, standard value 7 ×10¹⁰ Pa</li><li><strong>Specimen diameter d</strong>: 4 … 10 mm, standard value 6 mm</li><li><strong>Initial gauge length l₀</strong>: 1.2 … 2.8 m, standard value 2 m</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Within the proportional elastic limit of structural steel cables, beams, and dynamometer springs, mechanical normal stress σ = F/A is directly proportional to longitudinal strain ε = Δ L / L₀ according to Hooke's law.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>σ = (F)/(A) = E ε, ε = (Δ L)/(L₀), Δ L = (F L₀)/(E A) k_rod = (E A)/(L₀), Wₑₗ = (1)/(2)F Δ L = (σ²)/(2E) V, ε_⊥ = -ν ε</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

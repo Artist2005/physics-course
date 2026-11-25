@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Mitchell’s Chemiosmotic Theory: Proton-Motive Force Δp &amp; Rotary ATP Synthesis</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Energy released by NADH oxidation along the inner mitochondrial membrane is first transduced into an electrochemical proton gradient Δμ_H+, which drives the rotary molecular turbine of F₀F₁-ATP synthase."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · Bioenergetics &amp; ATP Synthase</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">According to Peter Mitchell's chemiosmotic theory (Nobel Prize, 1978), electron transfer from NADH and FADH₂ to O₂ along the inner mitochondrial membrane (cristae) is coupled to outward proton translocation across Complexes I, III, and IV from the matrix into the intermembrane space (IMS).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">This establishes an electrochemical proton gradient quantified by the proton-motive force Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 (pHₘₐₜᵣᵢₓ - pH_IMS) mV, combining the membrane electrical potential (Δψ ≈ 150-180 mV, matrix negative) and the transmembrane pH difference.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Downhill proton return through the F₀ c-ring drives mechanical rotation of the central γ-stalk inside the F₁ catalytic hexamer (Paul Boyer's binding-change mechanism), synthesizing 3 ATP molecules per 360° revolution. Uncoupling proteins (UCP1 / thermogenin) create a proton leak bypassing F₀F₁, dissipating Δ p directly as heat.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Electron donor flux (NADH / FADH₂) into respiratory chain</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Inner membrane electrical potential Δψ</strong>: 80 … 190 mV, standard value 150 mV</li><li><strong>Transmembrane pH gradient ΔpH (pH_matrix − pH_IMS)</strong>: 0.2 … 1.5 pH units, standard value 0.8 pH units</li><li><strong>Proton leak / uncoupler UCP1 (0=coupled, 1=shunted)</strong>: 0 … 0.9, standard value 0.05</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The inner mitochondrial membrane works like a hydroelectric dam. Respiratory complexes pump H⁺ protons into an upper reservoir, and F₀F₁-ATP synthase is a rotary nano-turbine spinning as protons rush back to mint ATP. Opening a bypass spillway (uncoupling protein UCP1 in brown fat) lets protons leak without spinning the turbine, generating pure body heat.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 ΔpH_mat-IMS (mV), Δ G_ATP ≤ n_H⁺ F Δ p</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">2.39 ATP / ½O₂</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · Bioenergetics &amp; ATP Synthase</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">According to Peter Mitchell's chemiosmotic theory (Nobel Prize, 1978), electron transfer from NADH and FADH₂ to O₂ along the inner mitochondrial membrane (cristae) is coupled to outward proton translocation across Complexes I, III, and IV from the matrix into the intermembrane space (IMS).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">This establishes an electrochemical proton gradient quantified by the proton-motive force Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 (pHₘₐₜᵣᵢₓ - pH_IMS) mV, combining the membrane electrical potential (Δψ ≈ 150-180 mV, matrix negative) and the transmembrane pH difference.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Downhill proton return through the F₀ c-ring drives mechanical rotation of the central γ-stalk inside the F₁ catalytic hexamer (Paul Boyer's binding-change mechanism), synthesizing 3 ATP molecules per 360° revolution. Uncoupling proteins (UCP1 / thermogenin) create a proton leak bypassing F₀F₁, dissipating Δ p directly as heat.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Electron donor flux (NADH / FADH₂) into respiratory chain</strong>: 0.4 … 2.5 rel., standard value 1.2 rel.</li><li><strong>Inner membrane electrical potential Δψ</strong>: 80 … 190 mV, standard value 150 mV</li><li><strong>Transmembrane pH gradient ΔpH (pH_matrix − pH_IMS)</strong>: 0.2 … 1.5 pH units, standard value 0.8 pH units</li><li><strong>Proton leak / uncoupler UCP1 (0=coupled, 1=shunted)</strong>: 0 … 0.9, standard value 0.05</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The inner mitochondrial membrane works like a hydroelectric dam. Respiratory complexes pump H⁺ protons into an upper reservoir, and F₀F₁-ATP synthase is a rotary nano-turbine spinning as protons rush back to mint ATP. Opening a bypass spillway (uncoupling protein UCP1 in brown fat) lets protons leak without spinning the turbine, generating pure body heat.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Δ p = Δψ - (2.303 RT)/(F) ΔpH ≈ Δψ + 61.5 ΔpH_mat-IMS (mV), Δ G_ATP ≤ n_H⁺ F Δ p</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

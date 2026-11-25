@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Dispersion of Light &amp; Spectrum Formation in a Prism</h1>
       <p id="scene-epigraph" class="chapter-epigraph">A narrow beam of white light in a glass prism splits into a rainbow spectrum because short violet waves have a lower phase velocity in glass than long red waves.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Optical dispersion is the dependence of a medium's refractive index n(λ) on wavelength λ. In transparent dielectrics such as crown or flint glass (normal dispersion), n(λ) increases as wavelength decreases according to Cauchy's equation: n(λ) = A + (B)/(λ²) + (C)/(λ⁴), driven by ultraviolet electronic resonances of the material.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Tracing a ray through a triangular prism of apex angle A requires two Snell's-law refractions: sin α₁ = n sin γ₁, γ₁ + γ₂ = A, and sin α₂ = n sin γ₂. The total angular deviation from the original beam direction is δ(λ) = α₁ + α₂ - A (or δ ≈ (n(λ) - 1)A for small apex angles).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because short-wavelength violet light (λ ≈ 400 nm) travels slower in glass and experiences a higher refractive index than red light (nᵥᵢₒₗₑₜ &gt; n_red), violet rays deviate most strongly (δᵥᵢₒₗₑₜ &gt; δ_red), fanning white light out into Newton's continuous rainbow spectrum.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Prism apex angle φ</strong>: 35 … 62 °, standard value 52 °</li><li><strong>Incident beam angle α₁</strong>: 25 … 65 °, standard value 44 °</li><li><strong>Base glass index n₀</strong>: 1.42 … 1.72, standard value 1.5</li><li><strong>Cauchy dispersion coeff. B</strong>: 0.02 … 0.12 μm², standard value 0.06 μm²</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Atmospheric rainbows and spectral splitting in an optical prism arise from normal dispersion: polychromatic white light is a superposition of different wavelengths. In glass, shorter-wavelength violet waves travel slower than red waves and refract more strongly, fanning the beam into a spectrum.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>n(λ) = n₀ + (B)/(λ²) (Cauchy's Law), v(λ) = (c)/(n(λ)) δ(λ) = α₁ + arcsin (n(λ) sin (φ - γ₁)) - φ</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">189 k km/s</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Optical dispersion is the dependence of a medium's refractive index n(λ) on wavelength λ. In transparent dielectrics such as crown or flint glass (normal dispersion), n(λ) increases as wavelength decreases according to Cauchy's equation: n(λ) = A + (B)/(λ²) + (C)/(λ⁴), driven by ultraviolet electronic resonances of the material.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Tracing a ray through a triangular prism of apex angle A requires two Snell's-law refractions: sin α₁ = n sin γ₁, γ₁ + γ₂ = A, and sin α₂ = n sin γ₂. The total angular deviation from the original beam direction is δ(λ) = α₁ + α₂ - A (or δ ≈ (n(λ) - 1)A for small apex angles).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because short-wavelength violet light (λ ≈ 400 nm) travels slower in glass and experiences a higher refractive index than red light (nᵥᵢₒₗₑₜ &gt; n_red), violet rays deviate most strongly (δᵥᵢₒₗₑₜ &gt; δ_red), fanning white light out into Newton's continuous rainbow spectrum.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Prism apex angle φ</strong>: 35 … 62 °, standard value 52 °</li><li><strong>Incident beam angle α₁</strong>: 25 … 65 °, standard value 44 °</li><li><strong>Base glass index n₀</strong>: 1.42 … 1.72, standard value 1.5</li><li><strong>Cauchy dispersion coeff. B</strong>: 0.02 … 0.12 μm², standard value 0.06 μm²</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Atmospheric rainbows and spectral splitting in an optical prism arise from normal dispersion: polychromatic white light is a superposition of different wavelengths. In glass, shorter-wavelength violet waves travel slower than red waves and refract more strongly, fanning the beam into a spectrum.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>n(λ) = n₀ + (B)/(λ²) (Cauchy's Law), v(λ) = (c)/(n(λ)) δ(λ) = α₁ + arcsin (n(λ) sin (φ - γ₁)) - φ</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

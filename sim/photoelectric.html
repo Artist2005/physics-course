@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">External Photoelectric Effect: Einstein's Equation &amp; Stopping Potential</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Light is absorbed in discrete quanta hν: the maximum kinetic energy of photoelectrons depends solely on light frequency and cathode work function.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The external photoelectric effect, emission of electrons from a metal surface illuminated by light, defied classical wave electrodynamics, which could not explain why maximum photoelectron kinetic energy is independent of light intensity and why emission ceases abruptly above a threshold wavelength λₘₐₓ = hc / W.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In 1905, Albert Einstein resolved the paradox by proposing that light consists of discrete energy quanta (photons) of energy E_γ = hν = (hc)/(λ), where h = 6.626× 10⁻³⁴ J·s is Planck's constant. A single electron absorbs one photon, expends the metal's work function W to escape the surface barrier, and retains maximum kinetic energy given by Einstein's photoelectric equation: hν = W + E_k,max.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Applying a reverse bias halts the photocurrent at the stopping potential U_s, where e U_s = E_k,max = (hc)/(λ) - W. Increasing optical intensity (for λ &lt; λₘₐₓ) increases the photon flux and saturation photocurrent Iₛₐₜ proportionally without altering E_k,max.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Incident wavelength λ</strong>: 250 … 650 nm, standard value 380 nm</li><li><strong>Cathode work function A_w (Cs=1.9, K=2.2, Zn=4.3)</strong>: 1.8 … 4.5 eV, standard value 2.2 eV</li><li><strong>Photon flux intensity Φ</strong>: 0.5 … 3 W/m², standard value 1.5 W/m²</li><li><strong>Retarding voltage U_ret</strong>: 0 … 2.5 V, standard value 0.4 V</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Photodiodes, solar cells, and optical sensors operate via the photoelectric effect. Electromagnetic radiation is absorbed in discrete quanta of energy E = hν: photons with energy below the metal's work function W cannot eject electrons regardless of beam intensity, whereas photons with ν &gt; W/h trigger immediate photoelectron emission.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>hν = (hc)/(λ) = A_w + E_k,max, E_k,max = (m vₘₐₓ²)/(2) = e Uₛₜₒₚ νₘᵢₙ = (A_w)/(h), λₘₐₓ = (hc)/(A_w) ≈ (1240 eV·nm)/(A_w)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">18.4 μA (564 nm)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The external photoelectric effect, emission of electrons from a metal surface illuminated by light, defied classical wave electrodynamics, which could not explain why maximum photoelectron kinetic energy is independent of light intensity and why emission ceases abruptly above a threshold wavelength λₘₐₓ = hc / W.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">In 1905, Albert Einstein resolved the paradox by proposing that light consists of discrete energy quanta (photons) of energy E_γ = hν = (hc)/(λ), where h = 6.626× 10⁻³⁴ J·s is Planck's constant. A single electron absorbs one photon, expends the metal's work function W to escape the surface barrier, and retains maximum kinetic energy given by Einstein's photoelectric equation: hν = W + E_k,max.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Applying a reverse bias halts the photocurrent at the stopping potential U_s, where e U_s = E_k,max = (hc)/(λ) - W. Increasing optical intensity (for λ &lt; λₘₐₓ) increases the photon flux and saturation photocurrent Iₛₐₜ proportionally without altering E_k,max.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Incident wavelength λ</strong>: 250 … 650 nm, standard value 380 nm</li><li><strong>Cathode work function A_w (Cs=1.9, K=2.2, Zn=4.3)</strong>: 1.8 … 4.5 eV, standard value 2.2 eV</li><li><strong>Photon flux intensity Φ</strong>: 0.5 … 3 W/m², standard value 1.5 W/m²</li><li><strong>Retarding voltage U_ret</strong>: 0 … 2.5 V, standard value 0.4 V</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Photodiodes, solar cells, and optical sensors operate via the photoelectric effect. Electromagnetic radiation is absorbed in discrete quanta of energy E = hν: photons with energy below the metal's work function W cannot eject electrons regardless of beam intensity, whereas photons with ν &gt; W/h trigger immediate photoelectron emission.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>hν = (hc)/(λ) = A_w + E_k,max, E_k,max = (m vₘₐₓ²)/(2) = e Uₛₜₒₚ νₘᵢₙ = (A_w)/(h), λₘₐₓ = (hc)/(A_w) ≈ (1240 eV·nm)/(A_w)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

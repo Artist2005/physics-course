@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Reaction Orders (0th, 1st &amp; 2nd Order), Rate Laws &amp; Half-Life t₁/₂</h1>
       <p id="scene-epigraph" class="chapter-epigraph">The kinetic order of a reaction reveals the true molecular mechanism hidden behind the overall stoichiometric equation.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Rate Laws &amp; Half-Life</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The reaction order n in the differential rate law v = -(d[A])/(dt) = k[A]^n dictates both the integrated concentration decay [A](t) and the scaling of the half-life t₁/2 with initial concentration [A]₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">For zero-order kinetics (n=0) (e.g., surface-saturated catalysis), rate is constant (v = k), [A](t) = [A]₀ - kt, and t₁/2 = ([A]₀)/(2k) ∝ [A]₀. For first-order kinetics (n=1), decay is exponential [A](t) = [A]₀ e⁻kt and the half-life t₁/2 = ( ln 2)/(k) is strictly independent of [A]₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">For second-order kinetics (n=2) (bimolecular collisions 2A → P), (1)/([A](t)) = (1)/([A]₀) + kt (linear in 1/[A] vs. t) and the half-life scales inversely with initial concentration: t₁/2 = (1)/(k[A]₀).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Reaction order n (0 = zero, 1 = first, 2 = second)</strong>: 0 … 2, standard value 1</li><li><strong>Initial reactant concentration [A]₀</strong>: 0.5 … 3 mol/L, standard value 2 mol/L</li><li><strong>Rate constant k</strong>: 0.1 … 1 s⁻¹, standard value 0.35 s⁻¹</li><li><strong>Reaction time t</strong>: 0 … 6 s, standard value 2 s</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Reaction order governs how half-life t₁/2 depends on initial reactant concentration [A]₀: in a 0th-order surface-saturated reaction, rate is constant and t₁/2 = ([A]₀)/(2k); in 1st-order decay, half-life t₁/2 = ( ln 2)/(k) is strictly concentration-independent; and in 2nd-order bimolecular kinetics, dilution slows pair collisions so t₁/2 = (1)/(k[A]₀) grows inversely with [A]₀.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>v = -(d[A])/(dt) = k[A]^n n=0: t₁/2 = ([A]₀)/(2k), n=1: t₁/2 = ( ln 2)/(k), n=2: t₁/2 = (1)/(k[A]₀)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">2.0 s</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Rate Laws &amp; Half-Life</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The reaction order n in the differential rate law v = -(d[A])/(dt) = k[A]^n dictates both the integrated concentration decay [A](t) and the scaling of the half-life t₁/2 with initial concentration [A]₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">For zero-order kinetics (n=0) (e.g., surface-saturated catalysis), rate is constant (v = k), [A](t) = [A]₀ - kt, and t₁/2 = ([A]₀)/(2k) ∝ [A]₀. For first-order kinetics (n=1), decay is exponential [A](t) = [A]₀ e⁻kt and the half-life t₁/2 = ( ln 2)/(k) is strictly independent of [A]₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">For second-order kinetics (n=2) (bimolecular collisions 2A → P), (1)/([A](t)) = (1)/([A]₀) + kt (linear in 1/[A] vs. t) and the half-life scales inversely with initial concentration: t₁/2 = (1)/(k[A]₀).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Reaction order n (0 = zero, 1 = first, 2 = second)</strong>: 0 … 2, standard value 1</li><li><strong>Initial reactant concentration [A]₀</strong>: 0.5 … 3 mol/L, standard value 2 mol/L</li><li><strong>Rate constant k</strong>: 0.1 … 1 s⁻¹, standard value 0.35 s⁻¹</li><li><strong>Reaction time t</strong>: 0 … 6 s, standard value 2 s</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Reaction order governs how half-life t₁/2 depends on initial reactant concentration [A]₀: in a 0th-order surface-saturated reaction, rate is constant and t₁/2 = ([A]₀)/(2k); in 1st-order decay, half-life t₁/2 = ( ln 2)/(k) is strictly concentration-independent; and in 2nd-order bimolecular kinetics, dilution slows pair collisions so t₁/2 = (1)/(k[A]₀) grows inversely with [A]₀.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>v = -(d[A])/(dt) = k[A]^n n=0: t₁/2 = ([A]₀)/(2k), n=1: t₁/2 = ( ln 2)/(k), n=2: t₁/2 = (1)/(k[A]₀)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

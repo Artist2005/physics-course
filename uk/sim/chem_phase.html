@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Фазові діаграми речовини (P–T), потрійна точка та надкритичний стан (H₂O і CO₂)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Правило фаз Гіббса встановлює строгу конституцію природи: скільки фаз може співіснувати в рівновазі при заданих тиску й температурі», Віллард Гіббс.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Фазові рівноваги</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Фазова діаграма P-T однокомпонентної речовини відображає області термодинамічної стійкості твердої, рідкої та газоподібної фаз. Криві фазової рівноваги (сублімації, плавлення та кипіння) описуються диференціальним рівнянням Клапейрона-Клаузіуса: (dP)/(dT) = (Δ H_ф.п.)/(T Δ V_ф.п.).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">За правилом фаз Гіббса (f = C - Φ + 2 = 3 - Φ), усі три агрегатні стани (Φ = 3) можуть співіснувати в рівновазі лише в єдиній інваріантній (f = 0) потрійній точці (T_потр, P_потр). Для CO₂ тиск потрійної точки дорівнює 5.11 атм &gt; 1 атм, тому за нормального атмосферного тиску рідкий CO₂ не існує і твердий «сухий лід» одразу сублімує в газ при -78.5 °C. Для води питомий об'єм льоду більший за об'єм рідкої води (Δ V_пл &lt; 0), тому крива плавлення льоду має від'ємний нахил (dP/dT &lt; 0).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Крива кипіння закінчується у критичній точці (T_c, P_c), де густини рідини і насиченої пари зрівнюються, поверхневий натяг і теплота пароутворення падають до нуля, а за T &gt; T_c, P &gt; P_c речовина переходить у стан надкритичного флюїду.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Досліджувана речовина (1: Вода H₂O, 2: Діоксид карбону CO₂)</strong>: 1 … 2, типове значення 2</li><li><strong>Температура в автоклаві T</strong>: 170 … 420 К, типове значення 260 К</li><li><strong>Зовнішній тиск у камері P</strong>: 1 … 90 атм, типове значення 15 атм</li><li><strong>Потужність теплового обміну Q</strong>: 0.5 … 5 кДж, типове значення 2 кДж</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Аномальний нахил кривої плавлення льоду (dP/dT &lt; 0) та сублімація твердого CO₂ за атмосферного тиску безпосередньо випливають із діаграми фазових рівноваг: оскільки густина льоду менша за густину рідкої води, підвищення тиску знижує температуру плавлення, а для CO₂ потрійна точка (5.11 атм) лежить значно вище 1 атм, тому за нормального тиску рідка фаза не утворюється.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>(dP)/(dT) = (Δ H_фаз)/(T Δ V_фаз), ln (P₂)/(P₁) = -(Δ H_вип)/(R)((1)/(T₂) - (1)/(T₁)), F = C - Φ + 2</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">2.0 кДж/моль</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Фазові рівноваги</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Фазова діаграма P-T однокомпонентної речовини відображає області термодинамічної стійкості твердої, рідкої та газоподібної фаз. Криві фазової рівноваги (сублімації, плавлення та кипіння) описуються диференціальним рівнянням Клапейрона-Клаузіуса: (dP)/(dT) = (Δ H_ф.п.)/(T Δ V_ф.п.).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">За правилом фаз Гіббса (f = C - Φ + 2 = 3 - Φ), усі три агрегатні стани (Φ = 3) можуть співіснувати в рівновазі лише в єдиній інваріантній (f = 0) потрійній точці (T_потр, P_потр). Для CO₂ тиск потрійної точки дорівнює 5.11 атм &gt; 1 атм, тому за нормального атмосферного тиску рідкий CO₂ не існує і твердий «сухий лід» одразу сублімує в газ при -78.5 °C. Для води питомий об'єм льоду більший за об'єм рідкої води (Δ V_пл &lt; 0), тому крива плавлення льоду має від'ємний нахил (dP/dT &lt; 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Крива кипіння закінчується у критичній точці (T_c, P_c), де густини рідини і насиченої пари зрівнюються, поверхневий натяг і теплота пароутворення падають до нуля, а за T &gt; T_c, P &gt; P_c речовина переходить у стан надкритичного флюїду.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Досліджувана речовина (1: Вода H₂O, 2: Діоксид карбону CO₂)</strong>: 1 … 2, типове значення 2</li><li><strong>Температура в автоклаві T</strong>: 170 … 420 К, типове значення 260 К</li><li><strong>Зовнішній тиск у камері P</strong>: 1 … 90 атм, типове значення 15 атм</li><li><strong>Потужність теплового обміну Q</strong>: 0.5 … 5 кДж, типове значення 2 кДж</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Аномальний нахил кривої плавлення льоду (dP/dT &lt; 0) та сублімація твердого CO₂ за атмосферного тиску безпосередньо випливають із діаграми фазових рівноваг: оскільки густина льоду менша за густину рідкої води, підвищення тиску знижує температуру плавлення, а для CO₂ потрійна точка (5.11 атм) лежить значно вище 1 атм, тому за нормального тиску рідка фаза не утворюється.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>(dP)/(dT) = (Δ H_фаз)/(T Δ V_фаз), ln (P₂)/(P₁) = -(Δ H_вип)/(R)((1)/(T₂) - (1)/(T₁)), F = C - Φ + 2</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Standing Waves &amp; String Overtones in 3D</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Superposition of forward and reflected waves creates a standing wave with stationary nodes and vibrating antinodes.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A standing wave forms from the superposition of two coherent counter-propagating waves of equal amplitude and frequency on a string of length L fixed at both ends: y(x,t) = y₊(x - vt) + y₋(x + vt) = A sin (kx) cos (ω t). Unlike a traveling wave, a standing wave does not transport net energy along the string; instead, kinetic and potential energy oscillate locally within each half-wavelength loop.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Boundary conditions y(0,t) = y(L,t) = 0 quantize the allowed wavelengths so that an integer number of half-waves fits along L: L = n(λ_n)/(2) (n = 1, 2, 3, …). With transverse wave speed v = √(T/μ) set by tension T and linear mass density μ, the natural frequencies form a discrete harmonic series: f_n = (n)/(2L)√((T)/(μ)) = n f₁.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Mode n = 1 is the fundamental frequency, while n ≥ 2 are overtones (harmonics) featuring n + 1 stationary nodes and n vibrating antinodes. This boundary-value quantization supports musical acoustics and provides the classical wave analogy for quantized electron states in quantum mechanics.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Harmonic mode (antinodes) n</strong>: 1 … 6, standard value 3</li><li><strong>String tension T</strong>: 15 … 90 N, standard value 45 N</li><li><strong>Linear mass density μ</strong>: 0.5 … 3.5 g/m, standard value 1.5 g/m</li><li><strong>Antinode amplitude A</strong>: 0.4 … 1.6 m, standard value 1.1 m</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In a string fixed at both ends, a traveling wave reflects from the supports and superposes with the counter-propagating wave of equal frequency. This interference establishes stationary nodes of zero displacement and oscillating antinodes, defining the harmonic spectrum of stringed instruments.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>y(x,t) = 2A sin ((nπ x)/(L)) cos (ω_n t), λ_n = (2L)/(n) v = √((T)/(μ)), f_n = (n)/(2L)√((T)/(μ)) (n = 1, 2, 3, …)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">4 / 3</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A standing wave forms from the superposition of two coherent counter-propagating waves of equal amplitude and frequency on a string of length L fixed at both ends: y(x,t) = y₊(x - vt) + y₋(x + vt) = A sin (kx) cos (ω t). Unlike a traveling wave, a standing wave does not transport net energy along the string; instead, kinetic and potential energy oscillate locally within each half-wavelength loop.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Boundary conditions y(0,t) = y(L,t) = 0 quantize the allowed wavelengths so that an integer number of half-waves fits along L: L = n(λ_n)/(2) (n = 1, 2, 3, …). With transverse wave speed v = √(T/μ) set by tension T and linear mass density μ, the natural frequencies form a discrete harmonic series: f_n = (n)/(2L)√((T)/(μ)) = n f₁.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Mode n = 1 is the fundamental frequency, while n ≥ 2 are overtones (harmonics) featuring n + 1 stationary nodes and n vibrating antinodes. This boundary-value quantization supports musical acoustics and provides the classical wave analogy for quantized electron states in quantum mechanics.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Harmonic mode (antinodes) n</strong>: 1 … 6, standard value 3</li><li><strong>String tension T</strong>: 15 … 90 N, standard value 45 N</li><li><strong>Linear mass density μ</strong>: 0.5 … 3.5 g/m, standard value 1.5 g/m</li><li><strong>Antinode amplitude A</strong>: 0.4 … 1.6 m, standard value 1.1 m</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In a string fixed at both ends, a traveling wave reflects from the supports and superposes with the counter-propagating wave of equal frequency. This interference establishes stationary nodes of zero displacement and oscillating antinodes, defining the harmonic spectrum of stringed instruments.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>y(x,t) = 2A sin ((nπ x)/(L)) cos (ω_n t), λ_n = (2L)/(n) v = √((T)/(μ)), f_n = (n)/(2L)√((T)/(μ)) (n = 1, 2, 3, …)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

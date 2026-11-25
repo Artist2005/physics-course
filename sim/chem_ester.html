@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Fischer Esterification &amp; Isotopic ¹⁸O Tracer: R–COOH + R′–¹⁸OH ⇄ R–CO–¹⁸OR′ + H₂O</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Tracing the heavy oxygen isotope ¹⁸O proved conclusively that the carboxylic acid supplies the hydroxyl group of water while the alcohol oxygen remains in the ester.», Irving Roberts &amp; Harold C. Urey, 1938</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · Esters &amp; Isotopic Tracers</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Fischer esterification is the reversible, acid-catalyzed condensation of a carboxylic acid and an alcohol to form an ester and water: R-COOH + R′-OH ⇄ R-COOR′ + H₂O. Protonation of the carbonyl oxygen by H⁺ activates the acyl carbon toward nucleophilic attack by the alcohol.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Isotopic tracer experiments using ¹⁸O-labeled alcohol (R′-¹⁸OH) established the acyl-oxygen cleavage mechanism: the heavy ¹⁸O atom is incorporated exclusively into the ester (R-CO-¹⁸OR′), proving that the carboxylic acid loses its -OH group while the alcohol loses only -H.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because K_eq ≈ 4.0, an equimolar (1:1) mixture reaches equilibrium at 66.7% conversion. High yields (&gt;98%) are achieved by applying Le Chatelier's principle: adding excess alcohol or continuously removing water via azeotropic distillation (Dean-Stark trap).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Molar ratio of alcohol to acid b = [R′¹⁸OH]₀ / [RCOOH]₀</strong>: 0.5 … 5 eq, standard value 1 eq</li><li><strong>Fraction of water removed (Dean-Stark trap)</strong>: 0 … 1, standard value 0</li><li><strong>Acid catalyst concentration [H₂SO₄]</strong>: 0.2 … 2 mol/L, standard value 1 mol/L</li><li><strong>Reflux temperature t</strong>: 40 … 100 °C, standard value 78 °C</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Where do fruity pear and pineapple aromas come from? Esters made from an acid and an alcohol. By tagging the alcohol oxygen with heavy ¹⁸O, chemists proved that the acid loses -OH while the ¹⁸O stays locked inside the fragrant ester.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>mathrmR-C(=O)OH + H¹⁸O-R' ⇄(H⁺) R-C(=O)¹⁸O-R' + H₂O, K_eq = ([Ester][H₂O])/([Acid][Alcohol]) ≈ 4.0</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">0 %</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10-11 · Esters &amp; Isotopic Tracers</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Fischer esterification is the reversible, acid-catalyzed condensation of a carboxylic acid and an alcohol to form an ester and water: R-COOH + R′-OH ⇄ R-COOR′ + H₂O. Protonation of the carbonyl oxygen by H⁺ activates the acyl carbon toward nucleophilic attack by the alcohol.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Isotopic tracer experiments using ¹⁸O-labeled alcohol (R′-¹⁸OH) established the acyl-oxygen cleavage mechanism: the heavy ¹⁸O atom is incorporated exclusively into the ester (R-CO-¹⁸OR′), proving that the carboxylic acid loses its -OH group while the alcohol loses only -H.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because K_eq ≈ 4.0, an equimolar (1:1) mixture reaches equilibrium at 66.7% conversion. High yields (&gt;98%) are achieved by applying Le Chatelier's principle: adding excess alcohol or continuously removing water via azeotropic distillation (Dean-Stark trap).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Molar ratio of alcohol to acid b = [R′¹⁸OH]₀ / [RCOOH]₀</strong>: 0.5 … 5 eq, standard value 1 eq</li><li><strong>Fraction of water removed (Dean-Stark trap)</strong>: 0 … 1, standard value 0</li><li><strong>Acid catalyst concentration [H₂SO₄]</strong>: 0.2 … 2 mol/L, standard value 1 mol/L</li><li><strong>Reflux temperature t</strong>: 40 … 100 °C, standard value 78 °C</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Where do fruity pear and pineapple aromas come from? Esters made from an acid and an alcohol. By tagging the alcohol oxygen with heavy ¹⁸O, chemists proved that the acid loses -OH while the ¹⁸O stays locked inside the fragrant ester.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>mathrmR-C(=O)OH + H¹⁸O-R' ⇄(H⁺) R-C(=O)¹⁸O-R' + H₂O, K_eq = ([Ester][H₂O])/([Acid][Alcohol]) ≈ 4.0</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

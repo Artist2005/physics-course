@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Projectile Launched at an Angle to the Horizontal</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Ballistic motion in a uniform gravitational field is a superposition of uniform horizontal motion along Ox and uniformly accelerated vertical motion along Oy.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Projectile motion launched at angle α with initial speed v₀ illustrates Galileo's principle of independence of motions. In vacuum (k = 0), no horizontal force acts along Ox, keeping v_x = v₀ cos α = const, while along the vertical axis Oy gravity produces constant downward acceleration a_y = -g.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Eliminating time t = (x)/(v₀ cos α) from x(t) = v₀ cos α · t and y(t) = v₀ sin α · t - (1)/(2)gt² yields the parabolic trajectory equation: y(x) = x tan α - (gx²)/(2v₀² cos ²α). The time of flight is t_flight = (2v₀ sin α)/(g), the apex height is H = (v₀² sin ²α)/(2g), and the horizontal range L = (v₀² sin (2α))/(g) peaks at α = 45°.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">When linear aerodynamic drag (F_d = -kv) is introduced, horizontal velocity decays exponentially as v_x(t) = v₀ₓe⁻(k/m)t, the descending branch becomes steeper than the ascending branch (Tartaglia's ballistic curve), and the optimal launch angle for maximum range shifts below 45°.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Initial velocity v₀</strong>: 6 … 15 m/s, standard value 11.5 m/s</li><li><strong>Launch angle θ</strong>: 15 … 80 °, standard value 45 °</li><li><strong>Initial height h₀</strong>: 0.2 … 4.5 m, standard value 1.2 m</li><li><strong>Air drag coeff. c_d</strong>: 0 … 0.15 kg/m, standard value 0 kg/m</li><li><strong>Projectile mass m</strong>: 0.5 … 5 kg, standard value 1.5 kg</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">For a projectile launched at an angle to the horizontal, maximum range in vacuum is achieved at a launch angle of 45°. In a real atmosphere, aerodynamic drag opposes velocity v, dissipating mechanical energy and shortening the horizontal range.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>x(t) = v₀ cos θ· t, y(t) = h₀ + v₀ sin θ· t - (gt²)/(2) Hₘₐₓ = h₀ + (v₀² sin ²θ)/(2g), L = (v₀² sin 2θ)/(g)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.00 m</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Projectile motion launched at angle α with initial speed v₀ illustrates Galileo's principle of independence of motions. In vacuum (k = 0), no horizontal force acts along Ox, keeping v_x = v₀ cos α = const, while along the vertical axis Oy gravity produces constant downward acceleration a_y = -g.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Eliminating time t = (x)/(v₀ cos α) from x(t) = v₀ cos α · t and y(t) = v₀ sin α · t - (1)/(2)gt² yields the parabolic trajectory equation: y(x) = x tan α - (gx²)/(2v₀² cos ²α). The time of flight is t_flight = (2v₀ sin α)/(g), the apex height is H = (v₀² sin ²α)/(2g), and the horizontal range L = (v₀² sin (2α))/(g) peaks at α = 45°.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">When linear aerodynamic drag (F_d = -kv) is introduced, horizontal velocity decays exponentially as v_x(t) = v₀ₓe⁻(k/m)t, the descending branch becomes steeper than the ascending branch (Tartaglia's ballistic curve), and the optimal launch angle for maximum range shifts below 45°.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Initial velocity v₀</strong>: 6 … 15 m/s, standard value 11.5 m/s</li><li><strong>Launch angle θ</strong>: 15 … 80 °, standard value 45 °</li><li><strong>Initial height h₀</strong>: 0.2 … 4.5 m, standard value 1.2 m</li><li><strong>Air drag coeff. c_d</strong>: 0 … 0.15 kg/m, standard value 0 kg/m</li><li><strong>Projectile mass m</strong>: 0.5 … 5 kg, standard value 1.5 kg</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">For a projectile launched at an angle to the horizontal, maximum range in vacuum is achieved at a launch angle of 45°. In a real atmosphere, aerodynamic drag opposes velocity v, dissipating mechanical energy and shortening the horizontal range.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>x(t) = v₀ cos θ· t, y(t) = h₀ + v₀ sin θ· t - (gt²)/(2) Hₘₐₓ = h₀ + (v₀² sin ²θ)/(2g), L = (v₀² sin 2θ)/(g)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -483,6 +485,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Колиска Ньютона</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Одночасне виконання законів збереження імпульсу та механічної енергії однозначно визначає не лише сумарний імпульс, а й кількість куль, що відскакують.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Колиска Ньютона наочно демонструє, що одного лише закону збереження імпульсу недостатньо для однозначного визначення результату удару, необхідне одночасне виконання і закону збереження імпульсу, і закону збереження механічної енергії. Коли N куль однакової маси m налітають зі швидкістю v₀ на ланцюжок нерухомих куль, через них поширюється пружний імпульс стиснення (хвиля Герца).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Припустимо, що після удару N куль зі швидкістю v₀ відскочило б k куль зі швидкістю u. Тоді із збереження імпульсу Nmv₀ = kmu та збереження кінетичної енергії N(mv₀²)/(2) = k(mu²)/(2) шляхом ділення другого рівняння на перше отримуємо u = v₀, а отже, обов'язково k = N. Тобто відлітає рівно стільки ж куль, скільки було відхилено на початку!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Якщо коефіцієнт відновлення e &lt; 1 (неідеальна пружність сталі та втрати на акустичне випромінювання), під час кожного удару частина енергії розсіюється у тепло Q. Через це центральні кулі поступово набувають невеликої синфазної швидкості, а амплітуда коливань усієї системи згасає.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кількість відведених куль N</strong>: 1 … 3 шт, типове значення 2 шт</li><li><strong>Кут відведення θ₀</strong>: 15 … 55 °, типове значення 40 °</li><li><strong>Коефіцієнт пружності сталі e</strong>: 0.7 … 1, типове значення 0.99</li><li><strong>Довжина підвісу L</strong>: 2.4 … 4.2 м, типове значення 3.4 м</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У колисці Ньютона відхилення однієї крайньої кулі спричиняє відлітання рівно однієї кулі з протилежного краю з тією самою швидкістю, оскільки при пружному ударі одночасно виконуються закони збереження імпульсу та кінетичної енергії.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>N_до m v = N_після m u N_до (mv²)/(2) = N_після (mu²)/(2) ⇒ N_після = N_до, u = v</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.0°</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Колиска Ньютона наочно демонструє, що одного лише закону збереження імпульсу недостатньо для однозначного визначення результату удару, необхідне одночасне виконання і закону збереження імпульсу, і закону збереження механічної енергії. Коли N куль однакової маси m налітають зі швидкістю v₀ на ланцюжок нерухомих куль, через них поширюється пружний імпульс стиснення (хвиля Герца).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Припустимо, що після удару N куль зі швидкістю v₀ відскочило б k куль зі швидкістю u. Тоді із збереження імпульсу Nmv₀ = kmu та збереження кінетичної енергії N(mv₀²)/(2) = k(mu²)/(2) шляхом ділення другого рівняння на перше отримуємо u = v₀, а отже, обов'язково k = N. Тобто відлітає рівно стільки ж куль, скільки було відхилено на початку!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Якщо коефіцієнт відновлення e &lt; 1 (неідеальна пружність сталі та втрати на акустичне випромінювання), під час кожного удару частина енергії розсіюється у тепло Q. Через це центральні кулі поступово набувають невеликої синфазної швидкості, а амплітуда коливань усієї системи згасає.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кількість відведених куль N</strong>: 1 … 3 шт, типове значення 2 шт</li><li><strong>Кут відведення θ₀</strong>: 15 … 55 °, типове значення 40 °</li><li><strong>Коефіцієнт пружності сталі e</strong>: 0.7 … 1, типове значення 0.99</li><li><strong>Довжина підвісу L</strong>: 2.4 … 4.2 м, типове значення 3.4 м</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У колисці Ньютона відхилення однієї крайньої кулі спричиняє відлітання рівно однієї кулі з протилежного краю з тією самою швидкістю, оскільки при пружному ударі одночасно виконуються закони збереження імпульсу та кінетичної енергії.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>N_до m v = N_після m u N_до (mv²)/(2) = N_після (mu²)/(2) ⇒ N_після = N_до, u = v</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

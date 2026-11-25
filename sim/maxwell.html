@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Maxwell's Law of Molecular Speed Distribution in an Ideal Gas</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Chaos of individual molecular collisions gives rise to a strictly deterministic bell-shaped statistical curve of speed probabilities.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Although temperature T fixes the mean kinetic energy of an ideal gas, incessant molecular collisions spread individual molecular speeds across a wide spectrum. In 1859, James Clerk Maxwell derived the equilibrium speed probability density function: f(v) = 4π ((M)/(2π R T))^ 3/2 v² exp (-(M v²)/(2 R T)).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The shape of the Maxwell-Boltzmann curve arises from the product of the phase-space shell volume factor 4π v² (which suppresses f(v) → 0 as v → 0) and the Boltzmann exponential factor exp (-(Mv²)/(2RT)) (which suppresses high-energy tails).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Three characteristic speeds obey the invariant ordering v_p &lt; ⟨ v ⟩ &lt; vᵣₘₛ: 1) most probable speed (peak of f(v)) v_p = √((2RT)/(M)); 2) mean speed ⟨ v ⟩ = √((8RT)/(π M)) ≈ 1.128 v_p; and 3) root-mean-square speed vᵣₘₛ = √((3RT)/(M)) ≈ 1.225 v_p. Raising temperature T or choosing a lighter gas M shifts the peak rightward and lowers its height while preserving total probability ∫₀^∞ f(v) dv = 1.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Gas temperature T</strong>: 150 … 900 K, standard value 350 K</li><li><strong>Gas molar mass M (4=He, 28=N₂, 44=CO₂)</strong>: 4 … 64 g/mol, standard value 28 g/mol</li><li><strong>Visualized molecules N</strong>: 40 … 140 pcs, standard value 90 pcs</li><li><strong>Activation threshold v_thr / v_p</strong>: 0.8 … 2, standard value 1.2</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Gas molecules in thermal equilibrium exhibit a continuous statistical distribution of speeds: a small fraction moves slowly just after collisions, most cluster near the most probable speed (∼ 500 m/s at room temperature), and a high-energy tail travels much faster. Heating the gas shifts the Maxwell distribution curve toward higher speeds.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>f(v) = 4π((M)/(2π R T))³/2 v² exp (-(M v²)/(2 R T)) v_p = √((2RT)/(M)) &lt; ⟨ v⟩ = √((8RT)/(π M)) &lt; vᵣₘₛ = √((3RT)/(M))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">41.0 %</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Although temperature T fixes the mean kinetic energy of an ideal gas, incessant molecular collisions spread individual molecular speeds across a wide spectrum. In 1859, James Clerk Maxwell derived the equilibrium speed probability density function: f(v) = 4π ((M)/(2π R T))^ 3/2 v² exp (-(M v²)/(2 R T)).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The shape of the Maxwell-Boltzmann curve arises from the product of the phase-space shell volume factor 4π v² (which suppresses f(v) → 0 as v → 0) and the Boltzmann exponential factor exp (-(Mv²)/(2RT)) (which suppresses high-energy tails).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Three characteristic speeds obey the invariant ordering v_p &lt; ⟨ v ⟩ &lt; vᵣₘₛ: 1) most probable speed (peak of f(v)) v_p = √((2RT)/(M)); 2) mean speed ⟨ v ⟩ = √((8RT)/(π M)) ≈ 1.128 v_p; and 3) root-mean-square speed vᵣₘₛ = √((3RT)/(M)) ≈ 1.225 v_p. Raising temperature T or choosing a lighter gas M shifts the peak rightward and lowers its height while preserving total probability ∫₀^∞ f(v) dv = 1.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Gas temperature T</strong>: 150 … 900 K, standard value 350 K</li><li><strong>Gas molar mass M (4=He, 28=N₂, 44=CO₂)</strong>: 4 … 64 g/mol, standard value 28 g/mol</li><li><strong>Visualized molecules N</strong>: 40 … 140 pcs, standard value 90 pcs</li><li><strong>Activation threshold v_thr / v_p</strong>: 0.8 … 2, standard value 1.2</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Gas molecules in thermal equilibrium exhibit a continuous statistical distribution of speeds: a small fraction moves slowly just after collisions, most cluster near the most probable speed (∼ 500 m/s at room temperature), and a high-energy tail travels much faster. Heating the gas shifts the Maxwell distribution curve toward higher speeds.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>f(v) = 4π((M)/(2π R T))³/2 v² exp (-(M v²)/(2 R T)) v_p = √((2RT)/(M)) &lt; ⟨ v⟩ = √((8RT)/(π M)) &lt; vᵣₘₛ = √((3RT)/(M))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

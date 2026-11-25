@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Daniell–Jacobi Galvanic Cell &amp; Electrode Potentials</h1>
       <p id="scene-epigraph" class="chapter-epigraph">A spatially separated redox reaction converts the chemical Gibbs free energy change ΔG directly into an ordered flow of electrons, electric current.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Daniell galvanic cell converts the chemical free energy of the spontaneous redox reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) directly into electrical work by spatially separating the half-reactions. At the anode (negative terminal), zinc metal undergoes oxidation and dissolves: Zn⁰ - 2e⁻ → Zn²⁺ (E° = -0.76 V). Electrons travel through the external circuit to the cathode (positive terminal), where copper ions are reduced and plate out: Cu²⁺ + 2e⁻ → Cu⁰ (E° = +0.34 V).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">The cell electromotive force (EMF) at arbitrary ion concentrations is governed by the Nernst equation: E_cell = E°_cell - (RT)/(zF) ln ([Zn²⁺])/([Cu²⁺]), where E°_cell = E°_cathode - E°_anode = +0.34 - (-0.76) = 1.10 V and z = 2. The maximum electrical work equals the decrease in Gibbs free energy: W_elec,max = -Δ G = z F E_cell.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The salt bridge (a U-tube filled with KCl or KNO₃ gel) is essential to close the internal circuit: without it, excess Zn²⁺ charge in the anode half-cell and uncompensated SO₄²⁻ anions in the cathode half-cell would build an opposing liquid-junction potential that halts electron flow within microseconds.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Catholyte concentration [Cu²⁺] (CuSO₄)</strong>: 0.05 … 2 mol/L, standard value 1 mol/L</li><li><strong>Anolyte concentration [Zn²⁺] (ZnSO₄)</strong>: 0.05 … 2 mol/L, standard value 1 mol/L</li><li><strong>Cell temperature T</strong>: 273 … 353 K, standard value 298 K</li><li><strong>External load conductance (discharge rate)</strong>: 0.4 … 2 ×, standard value 1 ×</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The Daniell galvanic cell converts chemical energy from a spontaneous redox reaction directly into electrical work. Because zinc has a more negative standard reduction potential (-0.76 V) than copper (+0.34 V), separating the two half-cells with a salt bridge forces electrons to flow from the Zn anode to the Cu cathode through the external circuit.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Anode (-): Zn⁰ → Zn²⁺ + 2e⁻, &amp; Cathode (+): Cu²⁺ + 2e⁻ → Cu⁰ E = E° - (RT)/(2F) ln ([Zn²⁺])/([Cu²⁺]), &amp; E° = E°_Cu - E°_Zn = +1.10 V</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">-212.3 kJ/mol</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The Daniell galvanic cell converts the chemical free energy of the spontaneous redox reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) directly into electrical work by spatially separating the half-reactions. At the anode (negative terminal), zinc metal undergoes oxidation and dissolves: Zn⁰ - 2e⁻ → Zn²⁺ (E° = -0.76 V). Electrons travel through the external circuit to the cathode (positive terminal), where copper ions are reduced and plate out: Cu²⁺ + 2e⁻ → Cu⁰ (E° = +0.34 V).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">The cell electromotive force (EMF) at arbitrary ion concentrations is governed by the Nernst equation: E_cell = E°_cell - (RT)/(zF) ln ([Zn²⁺])/([Cu²⁺]), where E°_cell = E°_cathode - E°_anode = +0.34 - (-0.76) = 1.10 V and z = 2. The maximum electrical work equals the decrease in Gibbs free energy: W_elec,max = -Δ G = z F E_cell.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">The salt bridge (a U-tube filled with KCl or KNO₃ gel) is essential to close the internal circuit: without it, excess Zn²⁺ charge in the anode half-cell and uncompensated SO₄²⁻ anions in the cathode half-cell would build an opposing liquid-junction potential that halts electron flow within microseconds.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Catholyte concentration [Cu²⁺] (CuSO₄)</strong>: 0.05 … 2 mol/L, standard value 1 mol/L</li><li><strong>Anolyte concentration [Zn²⁺] (ZnSO₄)</strong>: 0.05 … 2 mol/L, standard value 1 mol/L</li><li><strong>Cell temperature T</strong>: 273 … 353 K, standard value 298 K</li><li><strong>External load conductance (discharge rate)</strong>: 0.4 … 2 ×, standard value 1 ×</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The Daniell galvanic cell converts chemical energy from a spontaneous redox reaction directly into electrical work. Because zinc has a more negative standard reduction potential (-0.76 V) than copper (+0.34 V), separating the two half-cells with a salt bridge forces electrons to flow from the Zn anode to the Cu cathode through the external circuit.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Anode (-): Zn⁰ → Zn²⁺ + 2e⁻, &amp; Cathode (+): Cu²⁺ + 2e⁻ → Cu⁰ E = E° - (RT)/(2F) ln ([Zn²⁺])/([Cu²⁺]), &amp; E° = E°_Cu - E°_Zn = +1.10 V</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

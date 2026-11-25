@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">CRISPR–Cas9 System: Programmable Target DNA Recognition &amp; Precision Genome Editing</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"The Cas9-sgRNA ribonucleoprotein acts as a GPS-guided molecular scalpel: upon recognizing a 5′-NGG-3′ PAM sequence, it unwinds target DNA to pair 20 guide nucleotides and executes a precise double-strand break."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Genome Editing: CRISPR-Cas9</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Derived from bacterial adaptive immunity against bacteriophages, the CRISPR-Cas9 system (Emmanuelle Charpentier &amp; Jennifer Doudna, 2020 Nobel Prize) is a programmable RNA-guided genome editing platform. The active complex pairs the Cas9 endonuclease with a single-guide RNA (sgRNA) carrying a 20-nucleotide target-specific spacer.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Target interrogation begins when Cas9's PAM-interacting domain recognizes a short **Protospacer Adjacent Motif (5'-NGG-3' for *SpCas9*). PAM binding triggers local DNA duplex melting and directional invasion of the sgRNA spacer to form an R-loop** hybrid with the target DNA strand.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Full complementarity across the 20-nt spacer allosterically activates two catalytic nuclease domains: HNH cleaves the target strand paired to sgRNA, while RuvC cleaves the displaced non-target strand 3 bp upstream of PAM, creating a blunt double-strand break (DSB). Host repair proceeds via NHEJ (generating indel knockouts) or Homology-Directed Repair (HDR) using an exogenous donor template for precise sequence replacement.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Guide RNA-DNA mismatches N_mm (0 = perfect 20/20 complementarity)</strong>: 0 … 6 mismatches, standard value 0 mismatches</li><li><strong>Presence of 5′-NGG-3′ PAM motif adjacent to target (1: intact, 0: mutated)</strong>: 0 … 1 PAM, standard value 1 PAM</li><li><strong>Homologous donor DNA template availability for HDR repair</strong>: 0 … 100 %, standard value 65 %</li><li><strong>Cas9-sgRNA ribonucleoprotein concentration</strong>: 10 … 100 nM, standard value 50 nM</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The CRISPR-Cas9 genome-editing complex functions as a programmable site-specific endonuclease: single-guide RNA (sgRNA) carries a 20-nucleotide spacer complementary to the target locus, and once Cas9 verifies the adjacent 5'-NGG-3' PAM motif, it unwinds the duplex and cleaves both DNA strands for subsequent repair.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>PAM (5'-NGG-3') + 20 nt sgRNA ⇒ DSB (HNH + RuvC) →(HDR / NHEJ) Edited Locus</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">HNH (target strand) + RuvC (non-target strand)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Genome Editing: CRISPR-Cas9</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Derived from bacterial adaptive immunity against bacteriophages, the CRISPR-Cas9 system (Emmanuelle Charpentier &amp; Jennifer Doudna, 2020 Nobel Prize) is a programmable RNA-guided genome editing platform. The active complex pairs the Cas9 endonuclease with a single-guide RNA (sgRNA) carrying a 20-nucleotide target-specific spacer.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Target interrogation begins when Cas9's PAM-interacting domain recognizes a short **Protospacer Adjacent Motif (5'-NGG-3' for *SpCas9*). PAM binding triggers local DNA duplex melting and directional invasion of the sgRNA spacer to form an R-loop** hybrid with the target DNA strand.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Full complementarity across the 20-nt spacer allosterically activates two catalytic nuclease domains: HNH cleaves the target strand paired to sgRNA, while RuvC cleaves the displaced non-target strand 3 bp upstream of PAM, creating a blunt double-strand break (DSB). Host repair proceeds via NHEJ (generating indel knockouts) or Homology-Directed Repair (HDR) using an exogenous donor template for precise sequence replacement.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Guide RNA-DNA mismatches N_mm (0 = perfect 20/20 complementarity)</strong>: 0 … 6 mismatches, standard value 0 mismatches</li><li><strong>Presence of 5′-NGG-3′ PAM motif adjacent to target (1: intact, 0: mutated)</strong>: 0 … 1 PAM, standard value 1 PAM</li><li><strong>Homologous donor DNA template availability for HDR repair</strong>: 0 … 100 %, standard value 65 %</li><li><strong>Cas9-sgRNA ribonucleoprotein concentration</strong>: 10 … 100 nM, standard value 50 nM</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The CRISPR-Cas9 genome-editing complex functions as a programmable site-specific endonuclease: single-guide RNA (sgRNA) carries a 20-nucleotide spacer complementary to the target locus, and once Cas9 verifies the adjacent 5'-NGG-3' PAM motif, it unwinds the duplex and cleaves both DNA strands for subsequent repair.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>PAM (5'-NGG-3') + 20 nt sgRNA ⇒ DSB (HNH + RuvC) →(HDR / NHEJ) Edited Locus</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

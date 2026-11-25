@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Закон збереження імпульсу</h1>
       <p id="scene-epigraph" class="chapter-epigraph">У замкненій механічній системі векторна сума імпульсів усіх тіл залишається сталою за будь-яких взаємодій між ними.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">У замкненій механічній системі, де зовнішні сили врівноважені або відсутні (∑ F_зовн = 0), за ІІІ законом Ньютона внутрішні сили ударної взаємодії двох тіл у кожну мить рівні за модулем і протилежні за напрямком: F₁₂ = -F₂₁. Тому сумарний імпульс системи p = m₁v₁ + m₂v₂ залишається строго інваріантним при будь-якому характері зіткнення, від абсолютно пружного до повністю пластичного.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Характер деформації тіл визначається коефіцієнтом відновлення e = (|v'₂ - v'₁|)/(|v₁ - v₂|) ∈ [0, 1]. У системі відліку центра мас зі швидкістю v_C = (m₁ v₁ + m₂ v₂)/(m₁ + m₂) після удару швидкості тіл становлять v'₁ = v_C - e (m₂)/(m₁ + m₂)(v₁ - v₂) та v'₂ = v_C + e (m₁)/(m₁ + m₂)(v₁ - v₂). Частина початкової кінетичної енергії переходить у внутрішню теплову енергію деформації: Q = (1)/(2)μ (v₁ - v₂)² (1 - e²), де μ = (m₁ m₂)/(m₁ + m₂), зведена маса двочастинкової системи.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Змінюючи повзунками відношення мас m₁/m₂ та пружність e, простежте два граничні режими: при e = 1 і m₁ = m₂ кулі повністю обмінюються швидкостями (Q = 0), а при e = 0 тіла злипаються і рухаються як єдине ціле зі швидкістю центра мас v_C. Цей принцип лежить в основі балістичних маятників, розрахунку сповільнювачів нейтронів у ядерних реакторах та аналізу зіткнень елементарних частинок у колайдерах.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Маса першої кулі m₁</strong>: 0.5 … 6 кг, типове значення 2 кг</li><li><strong>Маса другої кулі m₂</strong>: 0.5 … 6 кг, типове значення 2 кг</li><li><strong>Початкова швидкість v₁</strong>: 1 … 8 м/с, типове значення 4 м/с</li><li><strong>Початкова швидкість v₂</strong>: -4 … 3 м/с, типове значення 0 м/с</li><li><strong>Коефіцієнт відновлення e</strong>: 0 … 1, типове значення 1</li><li><strong>Прицільний параметр Δz</strong>: -0.6 … 0.6 м, типове значення 0 м</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Зіткнення більярдних куль або залізничних вагонів наочно ілюструє закон збереження імпульсу в ізольованій системі. Навіть під час непружного зіткнення з перетворенням частини механічної енергії на тепло сумарний вектор імпульсу mv системи залишається незмінним за відсутності зовнішніх сил.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>p₁ + p₂ = p₁' + p₂' = const v₁' = ((m₁ - e m₂)v₁ + (1+e)m₂ v₂)/(m₁ + m₂)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.00 Дж</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">У замкненій механічній системі, де зовнішні сили врівноважені або відсутні (∑ F_зовн = 0), за ІІІ законом Ньютона внутрішні сили ударної взаємодії двох тіл у кожну мить рівні за модулем і протилежні за напрямком: F₁₂ = -F₂₁. Тому сумарний імпульс системи p = m₁v₁ + m₂v₂ залишається строго інваріантним при будь-якому характері зіткнення, від абсолютно пружного до повністю пластичного.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Характер деформації тіл визначається коефіцієнтом відновлення e = (|v'₂ - v'₁|)/(|v₁ - v₂|) ∈ [0, 1]. У системі відліку центра мас зі швидкістю v_C = (m₁ v₁ + m₂ v₂)/(m₁ + m₂) після удару швидкості тіл становлять v'₁ = v_C - e (m₂)/(m₁ + m₂)(v₁ - v₂) та v'₂ = v_C + e (m₁)/(m₁ + m₂)(v₁ - v₂). Частина початкової кінетичної енергії переходить у внутрішню теплову енергію деформації: Q = (1)/(2)μ (v₁ - v₂)² (1 - e²), де μ = (m₁ m₂)/(m₁ + m₂), зведена маса двочастинкової системи.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Змінюючи повзунками відношення мас m₁/m₂ та пружність e, простежте два граничні режими: при e = 1 і m₁ = m₂ кулі повністю обмінюються швидкостями (Q = 0), а при e = 0 тіла злипаються і рухаються як єдине ціле зі швидкістю центра мас v_C. Цей принцип лежить в основі балістичних маятників, розрахунку сповільнювачів нейтронів у ядерних реакторах та аналізу зіткнень елементарних частинок у колайдерах.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Маса першої кулі m₁</strong>: 0.5 … 6 кг, типове значення 2 кг</li><li><strong>Маса другої кулі m₂</strong>: 0.5 … 6 кг, типове значення 2 кг</li><li><strong>Початкова швидкість v₁</strong>: 1 … 8 м/с, типове значення 4 м/с</li><li><strong>Початкова швидкість v₂</strong>: -4 … 3 м/с, типове значення 0 м/с</li><li><strong>Коефіцієнт відновлення e</strong>: 0 … 1, типове значення 1</li><li><strong>Прицільний параметр Δz</strong>: -0.6 … 0.6 м, типове значення 0 м</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Зіткнення більярдних куль або залізничних вагонів наочно ілюструє закон збереження імпульсу в ізольованій системі. Навіть під час непружного зіткнення з перетворенням частини механічної енергії на тепло сумарний вектор імпульсу mv системи залишається незмінним за відсутності зовнішніх сил.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>p₁ + p₂ = p₁' + p₂' = const v₁' = ((m₁ - e m₂)v₁ + (1+e)m₂ v₂)/(m₁ + m₂)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -490,6 +492,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

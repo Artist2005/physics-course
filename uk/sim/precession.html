@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Гіроскопічна прецесія важкої симетричної дзиґи</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Вісь швидкого гіроскопа рухається не туди, куди її штовхає сила, а в напрямку вектора моменту цієї сили.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Чому важка дзиґа або гіроскоп, вісь якої нахилена під кутом θ до вертикалі, не падає вниз під дією сили тяжіння, а натомість плавно описує конус у горизонтальній площині? Відповідь дає основне рівняння динаміки обертального руху у векторній формі: швидкість зміни вектора моменту імпульсу тіла дорівнює вектору моменту зовнішніх сил (dL)/(dt) = M.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Масивний ротор, розкручений із великою кутовою швидкістю ω_s, має потужний власний момент імпульсу L = Iω_s, спрямований уздовж осі симетрії дзиґи. Сила тяжіння mg, прикладена в центрі мас на відстані l від точки опори O, створює відносно O момент сили M = [r × mg] модулем M = mgl sin θ, який за правилом правого гвинта перпендикулярний до вертикальної площини нахилу осі (тобто горизонтальний і ортогональний до L!).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки приріст dL = M dt перпендикулярний до самого вектора L, він не змінює його довжину, а лише повертає кінець вектора L по горизонтальному колу радіуса L sin θ. Кутова швидкість цієї регулярної гіроскопічної прецесії дорівнює Ω_p = (M)/(L sin θ) = (mgl)/(Iω_s): що швидше крутиться ротор ω_s, то повільніше і стабільніше прецесує гіроскоп!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Власна кутова швидкість ротора ω</strong>: 15 … 70 рад/с, типове значення 35 рад/с</li><li><strong>Маса маховика гіроскопа m</strong>: 1 … 3.5 кг, типове значення 2 кг</li><li><strong>Плече центру мас відносно опори d</strong>: 0.6 … 2 м, типове значення 1.2 м</li><li><strong>Кут нутації (нахилу осі) θ</strong>: 15 … 55 °, типове значення 32 °</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Швидко розкручений ротор гірокомпаса або маховика зберігає орієнтацію у полі тяжіння завдяки великому власному моменту імпульсу L = Iω: під дією моменту сили тяжіння M вісь ротора не падає вниз, а плавно повертається в горизонтальній площині, здійснюючи гіроскопічну прецесію.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>(dL)/(dt) = M = [r × mg], L = Iω Ω_прец = (m g d)/(I ω) = (M)/(L sin θ)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">12.4 с</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Чому важка дзиґа або гіроскоп, вісь якої нахилена під кутом θ до вертикалі, не падає вниз під дією сили тяжіння, а натомість плавно описує конус у горизонтальній площині? Відповідь дає основне рівняння динаміки обертального руху у векторній формі: швидкість зміни вектора моменту імпульсу тіла дорівнює вектору моменту зовнішніх сил (dL)/(dt) = M.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Масивний ротор, розкручений із великою кутовою швидкістю ω_s, має потужний власний момент імпульсу L = Iω_s, спрямований уздовж осі симетрії дзиґи. Сила тяжіння mg, прикладена в центрі мас на відстані l від точки опори O, створює відносно O момент сили M = [r × mg] модулем M = mgl sin θ, який за правилом правого гвинта перпендикулярний до вертикальної площини нахилу осі (тобто горизонтальний і ортогональний до L!).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки приріст dL = M dt перпендикулярний до самого вектора L, він не змінює його довжину, а лише повертає кінець вектора L по горизонтальному колу радіуса L sin θ. Кутова швидкість цієї регулярної гіроскопічної прецесії дорівнює Ω_p = (M)/(L sin θ) = (mgl)/(Iω_s): що швидше крутиться ротор ω_s, то повільніше і стабільніше прецесує гіроскоп!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Власна кутова швидкість ротора ω</strong>: 15 … 70 рад/с, типове значення 35 рад/с</li><li><strong>Маса маховика гіроскопа m</strong>: 1 … 3.5 кг, типове значення 2 кг</li><li><strong>Плече центру мас відносно опори d</strong>: 0.6 … 2 м, типове значення 1.2 м</li><li><strong>Кут нутації (нахилу осі) θ</strong>: 15 … 55 °, типове значення 32 °</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Швидко розкручений ротор гірокомпаса або маховика зберігає орієнтацію у полі тяжіння завдяки великому власному моменту імпульсу L = Iω: під дією моменту сили тяжіння M вісь ротора не падає вниз, а плавно повертається в горизонтальній площині, здійснюючи гіроскопічну прецесію.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>(dL)/(dt) = M = [r × mg], L = Iω Ω_прец = (m g d)/(I ω) = (M)/(L sin θ)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

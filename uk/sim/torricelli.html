@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Формула Торрічеллі: витікання рідини з резервуара</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Рідина, що витікає з малого отвору на глибині h, має таку саму швидкість, яку мало б тіло при вільному падінні з висоти h.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 7-10 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">У 1643 році учень Галілея Еванджеліста Торрічеллі встановив дивовижний факт: швидкість витікання струменя ідеальної рідини з малого бічного отвору у відкритій посудині на глибині h під вільною поверхнею точно дорівнює швидкості, якої набуло б будь-яке тверде тіло при вільному падінні у вакуумі з тієї самої висоти h: v = √(2gh).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Строге доведення формули Торрічеллі випливає з рівняння Бернуллі, записаного для лінії течії від вільної поверхні резервуара (переріз S₁, висота H, атмосферний тиск p₀) до вихідного сопла (переріз S₂ ≪ S₁, висота y = H - h, де струмінь у повітрі також перебуває під атмосферним тиском p₀): p₀ + ρ g H + (1)/(2)ρ v₁² = p₀ + ρ g (H - h) + (1)/(2)ρ v₂². Оскільки при S₂ ≪ S₁ швидкість опускання рівня v₁ = v₂(S₂/S₁) ≈ 0, густина рідини ρ скорочується і ми отримуємо v₂ = √(2gh).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Виходячи горизонтально з сопла на висоті y = H - h від основи зі швидкістю v = √(2gh), струмінь падає за час t = √(2(H - h)/g) і б'є на горизонтальну відстань L(h) = v t = 2√(h(H - h)). Ця функція симетрична відносно заміни h ≤ftrightarrow H - h і досягає абсолютного максимуму Lₘₐₓ = H рівно посередині висоти стовпа рідини (h = H/2).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Рівень води в башті H</strong>: 2.6 … 5 м, типове значення 4.4 м</li><li><strong>Глибина досліджуваного сопла h</strong>: 0.4 … 4.2 м, типове значення 2.2 м</li><li><strong>Коефіцієнт швидкості сопла φ</strong>: 0.8 … 1, типове значення 0.98</li><li><strong>Густина рідини ρ</strong>: 0.8 … 1.8 г/см³, типове значення 1 г/см³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Під час витікання ідеальної рідини крізь малий отвір у бічній стінці відкритої посудини швидкість струменя визначається гідростатичним напором h над отвором і збігається зі швидкістю вільного падіння тіла з висоти рівня вільної поверхні.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>v = √(2gh), t_пад = √((2(H - h))/(g)) x(h) = v t_пад = 2√(h(H - h)), xₘₐₓ = H (при h = (H)/(2))</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">21.6 кПа</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 7-10 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">У 1643 році учень Галілея Еванджеліста Торрічеллі встановив дивовижний факт: швидкість витікання струменя ідеальної рідини з малого бічного отвору у відкритій посудині на глибині h під вільною поверхнею точно дорівнює швидкості, якої набуло б будь-яке тверде тіло при вільному падінні у вакуумі з тієї самої висоти h: v = √(2gh).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Строге доведення формули Торрічеллі випливає з рівняння Бернуллі, записаного для лінії течії від вільної поверхні резервуара (переріз S₁, висота H, атмосферний тиск p₀) до вихідного сопла (переріз S₂ ≪ S₁, висота y = H - h, де струмінь у повітрі також перебуває під атмосферним тиском p₀): p₀ + ρ g H + (1)/(2)ρ v₁² = p₀ + ρ g (H - h) + (1)/(2)ρ v₂². Оскільки при S₂ ≪ S₁ швидкість опускання рівня v₁ = v₂(S₂/S₁) ≈ 0, густина рідини ρ скорочується і ми отримуємо v₂ = √(2gh).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Виходячи горизонтально з сопла на висоті y = H - h від основи зі швидкістю v = √(2gh), струмінь падає за час t = √(2(H - h)/g) і б'є на горизонтальну відстань L(h) = v t = 2√(h(H - h)). Ця функція симетрична відносно заміни h ≤ftrightarrow H - h і досягає абсолютного максимуму Lₘₐₓ = H рівно посередині висоти стовпа рідини (h = H/2).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Рівень води в башті H</strong>: 2.6 … 5 м, типове значення 4.4 м</li><li><strong>Глибина досліджуваного сопла h</strong>: 0.4 … 4.2 м, типове значення 2.2 м</li><li><strong>Коефіцієнт швидкості сопла φ</strong>: 0.8 … 1, типове значення 0.98</li><li><strong>Густина рідини ρ</strong>: 0.8 … 1.8 г/см³, типове значення 1 г/см³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Під час витікання ідеальної рідини крізь малий отвір у бічній стінці відкритої посудини швидкість струменя визначається гідростатичним напором h над отвором і збігається зі швидкістю вільного падіння тіла з висоти рівня вільної поверхні.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>v = √(2gh), t_пад = √((2(H - h))/(g)) x(h) = v t_пад = 2√(h(H - h)), xₘₐₓ = H (при h = (H)/(2))</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

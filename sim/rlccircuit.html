@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Electromagnetic Oscillations in an LC / RLC Circuit</h1>
       <p id="scene-epigraph" class="chapter-epigraph">In an oscillating tank circuit, electric field energy in the capacitor periodically transforms into magnetic field energy in the inductor coil.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A series RLC circuit comprising capacitance C, inductance L, and resistance R is the exact electrodynamic dual of a damped mechanical oscillator. Capacitor charge q(t) corresponds to displacement x, current I(t) = q to velocity x, inductance L to mass m (via self-induced EMF ℰ_L = -LI), and inverse capacitance 1/C to spring stiffness k.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Kirchhoff's voltage loop rule U_L + U_R + U_C = 0 yields the second-order differential equation Lq + Rq + (1)/(C)q = 0. In an ideal lossless LC tank (R = 0), charge oscillates harmonically at natural angular frequency ω₀ = (1)/(√(LC)) with Thomson's period T₀ = 2π√(LC).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Four times per period, energy sloshes between the capacitor's electric field W_E = (q²)/(2C) = (1)/(2)CU² and the inductor's magnetic field W_B = (1)/(2)LI². Because I = q, current leads charge in phase by π/2. With nonzero resistance (R &gt; 0), amplitude decays exponentially at rate β = (R)/(2L) as electromagnetic energy dissipates into Joule heat P = I² R.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Coil inductance L</strong>: 0.8 … 4 H, standard value 2 H</li><li><strong>Capacitor capacitance C</strong>: 0.8 … 4 mF, standard value 2 mF</li><li><strong>Circuit resistance R (damping)</strong>: 0 … 0.5 Ω, standard value 0.05 Ω</li><li><strong>Initial capacitor voltage U₀</strong>: 2 … 8 V, standard value 5 V</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">A series RLC circuit in radio-frequency engineering is the electrodynamic analog of a damped mechanical oscillator: electric field energy stored in the capacitor E_C = (q²)/(2C) exchanges periodically with magnetic energy in the inductor E_L = (LI²)/(2), while resistance R dissipates energy as Joule heat.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>T = 2π√(LC), ω₀ = (1)/(√(LC)) (Thomson's Formula) W = W_E + W_B = (q²)/(2C) + (L I²)/(2), q(t) = q₀ e⁻γ t cos (ω t)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">2.5 / 0.0 J</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A series RLC circuit comprising capacitance C, inductance L, and resistance R is the exact electrodynamic dual of a damped mechanical oscillator. Capacitor charge q(t) corresponds to displacement x, current I(t) = q to velocity x, inductance L to mass m (via self-induced EMF ℰ_L = -LI), and inverse capacitance 1/C to spring stiffness k.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Kirchhoff's voltage loop rule U_L + U_R + U_C = 0 yields the second-order differential equation Lq + Rq + (1)/(C)q = 0. In an ideal lossless LC tank (R = 0), charge oscillates harmonically at natural angular frequency ω₀ = (1)/(√(LC)) with Thomson's period T₀ = 2π√(LC).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Four times per period, energy sloshes between the capacitor's electric field W_E = (q²)/(2C) = (1)/(2)CU² and the inductor's magnetic field W_B = (1)/(2)LI². Because I = q, current leads charge in phase by π/2. With nonzero resistance (R &gt; 0), amplitude decays exponentially at rate β = (R)/(2L) as electromagnetic energy dissipates into Joule heat P = I² R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Coil inductance L</strong>: 0.8 … 4 H, standard value 2 H</li><li><strong>Capacitor capacitance C</strong>: 0.8 … 4 mF, standard value 2 mF</li><li><strong>Circuit resistance R (damping)</strong>: 0 … 0.5 Ω, standard value 0.05 Ω</li><li><strong>Initial capacitor voltage U₀</strong>: 2 … 8 V, standard value 5 V</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">A series RLC circuit in radio-frequency engineering is the electrodynamic analog of a damped mechanical oscillator: electric field energy stored in the capacitor E_C = (q²)/(2C) exchanges periodically with magnetic energy in the inductor E_L = (LI²)/(2), while resistance R dissipates energy as Joule heat.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>T = 2π√(LC), ω₀ = (1)/(√(LC)) (Thomson's Formula) W = W_E + W_B = (q²)/(2C) + (L I²)/(2), q(t) = q₀ e⁻γ t cos (ω t)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

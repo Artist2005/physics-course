@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Дисперсія світла та утворення спектра у призмі</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Вузький пучок білого світла у скляній призмі розкладається у райдужний спектр через те, що короткі фіолетові хвилі мають меншу фазову швидкість у склі, ніж довгі червоні.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Нормальною дисперсією світла називається залежність абсолютного показника заломлення речовини n(λ) від довжини світлової хвилі λ (або частоти ω). В області прозорості скла чи кварцу показник заломлення монотонно зростає при зменшенні довжини хвилі, що описується емпіричною формулою Коші: n(λ) = A + (B)/(λ²) + (C)/(λ⁴), де сталі A, B, C визначаються власною частотою електронних осциляторів атома.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">При проходженні променя крізь тригранну призму із заломним кутом A промінь двічі заломлюється на її гранях: sin α₁ = n sin γ₁, γ₁ + γ₂ = A, sin α₂ = n sin γ₂. Повний кут відхилення променя від початкового напрямку становить δ(λ) = α₁ + α₂ - A (для тонкої призми δ ≈ (n(λ) - 1)A).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Оскільки для коротких фіолетових хвиль (λ ≈ 400 нм) фазова швидкість у склі найменша, а показник заломлення найбільший (n_фіол &gt; n_черв), фіолетові промені заломлюються сильніше за червоні (δ_фіол &gt; δ_черв), розкладаючи вузький пучок білого світла у неперервний спектр Ньютона.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Заломлюючий кут призми φ</strong>: 35 … 62 °, типове значення 52 °</li><li><strong>Кут падіння білого променя α₁</strong>: 25 … 65 °, типове значення 44 °</li><li><strong>Базовий показник скла n₀</strong>: 1.42 … 1.72, типове значення 1.5</li><li><strong>Коефіцієнт дисперсії B</strong>: 0.02 … 0.12 мкм², типове значення 0.06 мкм²</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Утворення атмосферної веселки та спектральне розкладання світла у скляній призмі зумовлені явищем нормальної дисперсії: біле поліхроматичне світло є суперпозицією хвиль різної довжини. В оптичному склі короткохвильові фіолетові промені поширюються повільніше за червоні й заломлюються під більшим кутом, розкладаючи пучок у неперервний спектр.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>n(λ) = n₀ + (B)/(λ²) (формула Коші), v(λ) = (c)/(n(λ)) δ(λ) = α₁ + arcsin (n(λ) sin (φ - γ₁)) - φ</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">189 тис. км/с</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Нормальною дисперсією світла називається залежність абсолютного показника заломлення речовини n(λ) від довжини світлової хвилі λ (або частоти ω). В області прозорості скла чи кварцу показник заломлення монотонно зростає при зменшенні довжини хвилі, що описується емпіричною формулою Коші: n(λ) = A + (B)/(λ²) + (C)/(λ⁴), де сталі A, B, C визначаються власною частотою електронних осциляторів атома.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">При проходженні променя крізь тригранну призму із заломним кутом A промінь двічі заломлюється на її гранях: sin α₁ = n sin γ₁, γ₁ + γ₂ = A, sin α₂ = n sin γ₂. Повний кут відхилення променя від початкового напрямку становить δ(λ) = α₁ + α₂ - A (для тонкої призми δ ≈ (n(λ) - 1)A).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Оскільки для коротких фіолетових хвиль (λ ≈ 400 нм) фазова швидкість у склі найменша, а показник заломлення найбільший (n_фіол &gt; n_черв), фіолетові промені заломлюються сильніше за червоні (δ_фіол &gt; δ_черв), розкладаючи вузький пучок білого світла у неперервний спектр Ньютона.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Заломлюючий кут призми φ</strong>: 35 … 62 °, типове значення 52 °</li><li><strong>Кут падіння білого променя α₁</strong>: 25 … 65 °, типове значення 44 °</li><li><strong>Базовий показник скла n₀</strong>: 1.42 … 1.72, типове значення 1.5</li><li><strong>Коефіцієнт дисперсії B</strong>: 0.02 … 0.12 мкм², типове значення 0.06 мкм²</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Утворення атмосферної веселки та спектральне розкладання світла у скляній призмі зумовлені явищем нормальної дисперсії: біле поліхроматичне світло є суперпозицією хвиль різної довжини. В оптичному склі короткохвильові фіолетові промені поширюються повільніше за червоні й заломлюються під більшим кутом, розкладаючи пучок у неперервний спектр.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>n(λ) = n₀ + (B)/(λ²) (формула Коші), v(λ) = (c)/(n(λ)) δ(λ) = α₁ + arcsin (n(λ) sin (φ - γ₁)) - φ</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

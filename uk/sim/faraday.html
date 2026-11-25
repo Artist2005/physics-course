@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Закон Фарадея та правило Ленца у 3D</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Електрорушійна сила індукції в замкненому контурі дорівнює і протилежна за знаком швидкості зміни магнітного потоку крізь поверхню, обмежену цим контуром.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Явище електромагнітної індукції, відкрите Майклом Фарадеєм у 1831 році, полягає у виникненні вихрового електричного поля та електрорушійної сили (ЕРС індукції ℰ_i) у замкненому провідному контурі при будь-якій зміні магнітного потоку Φ = ∫ B· dS крізь поверхню, обмежену цим контуром.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">За законом Фарадея-Максвелла з урахуванням N витків котушки, миттєва ЕРС дорівнює швидкості зміни магнітного потоку зі знаком мінус: ℰ_i = -N(dΦ)/(dt), а індукційний струм у колі з опором R становить I_i = (ℰ_i)/(R). Знак мінус математично виражає правило Ленца: індукційний струм завжди має такий напрямок, що створене ним власне магнітне поле B_інд протидіє тій зміні зовнішнього потоку ΔΦ, яка його викликала.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Тому, коли північний полюс магніту наближається до котушки ((dΦ)/(dt) &gt; 0), котушка обертається до нього однойменним північним полюсом і відштовхує магніт; коли ж магніт віддаляється ((dΦ)/(dt) &lt; 0), котушка притягує його; а якщо магніт зупинити всередині котушки ((dΦ)/(dt) = 0), струм миттєво зникає! Саме тому робота зовнішньої сили проти гальмівної сили Ленца перетворюється на електричну та джоулеву енергію P = I_i² R.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кількість витків котушки N</strong>: 4 … 20, типове значення 12</li><li><strong>Індукція магніту B₀</strong>: 0.6 … 2.5 Тл, типове значення 1.6 Тл</li><li><strong>Частота коливань магніту ω</strong>: 0.8 … 4 рад/с, типове значення 2.2 рад/с</li><li><strong>Електричний опір контуру R</strong>: 1 … 5 Ом, типове значення 2 Ом</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Робота генераторів електростанцій, велосипедних динамовтулок та індукційних зарядних пристроїв ґрунтується на законі електромагнітної індукції Фарадея: під час руху магніту відносно котушки змінний магнітний потік наводить у витках електрорушійну силу, тоді як за нерухомого магніту індукційний струм дорівнює нулю.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>ℰ_i = -N (dΦ_B)/(dt), Φ_B = B S cos θ I_i = (ℰ_i)/(R), F_гальм ∼ (N² B² S² v)/(R)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">v = 0 → ℰᵢ = 0</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Явище електромагнітної індукції, відкрите Майклом Фарадеєм у 1831 році, полягає у виникненні вихрового електричного поля та електрорушійної сили (ЕРС індукції ℰ_i) у замкненому провідному контурі при будь-якій зміні магнітного потоку Φ = ∫ B· dS крізь поверхню, обмежену цим контуром.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">За законом Фарадея-Максвелла з урахуванням N витків котушки, миттєва ЕРС дорівнює швидкості зміни магнітного потоку зі знаком мінус: ℰ_i = -N(dΦ)/(dt), а індукційний струм у колі з опором R становить I_i = (ℰ_i)/(R). Знак мінус математично виражає правило Ленца: індукційний струм завжди має такий напрямок, що створене ним власне магнітне поле B_інд протидіє тій зміні зовнішнього потоку ΔΦ, яка його викликала.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Тому, коли північний полюс магніту наближається до котушки ((dΦ)/(dt) &gt; 0), котушка обертається до нього однойменним північним полюсом і відштовхує магніт; коли ж магніт віддаляється ((dΦ)/(dt) &lt; 0), котушка притягує його; а якщо магніт зупинити всередині котушки ((dΦ)/(dt) = 0), струм миттєво зникає! Саме тому робота зовнішньої сили проти гальмівної сили Ленца перетворюється на електричну та джоулеву енергію P = I_i² R.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кількість витків котушки N</strong>: 4 … 20, типове значення 12</li><li><strong>Індукція магніту B₀</strong>: 0.6 … 2.5 Тл, типове значення 1.6 Тл</li><li><strong>Частота коливань магніту ω</strong>: 0.8 … 4 рад/с, типове значення 2.2 рад/с</li><li><strong>Електричний опір контуру R</strong>: 1 … 5 Ом, типове значення 2 Ом</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Робота генераторів електростанцій, велосипедних динамовтулок та індукційних зарядних пристроїв ґрунтується на законі електромагнітної індукції Фарадея: під час руху магніту відносно котушки змінний магнітний потік наводить у витках електрорушійну силу, тоді як за нерухомого магніту індукційний струм дорівнює нулю.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>ℰ_i = -N (dΦ_B)/(dt), Φ_B = B S cos θ I_i = (ℰ_i)/(R), F_гальм ∼ (N² B² S² v)/(R)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

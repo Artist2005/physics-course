@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Система CRISPR–Cas9: програмоване розпізнавання мішені ДНК та високоточне редагування генів</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Комплекс ендонуклеази Cas9 із гідовою РНК працює як молекулярний скальпель із GPS-навігацією: знайшовши тринуклеотидний мотив PAM (5′-NGG-3′), він звіряє 20 нуклеотидів мішені й виконує точний дволанцюговий розріз ДНК.»</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Генна інженерія: CRISPR-Cas9</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Система CRISPR-Cas9 походить із адаптивного антивірусного імунітету бактерій та архей і була перетворена Емманюель Шарпантьє та Дженніфер Даудною (Нобелівська премія 2020 р.) на універсальний інструмент програмованого редагування геному. Рибонуклеопротеїновий комплекс складається з білка-ендонуклеази Cas9 та єдиної гідової РНК (sgRNA), яка містить 20-нуклеотидний спейсер («адресу мішені»).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Пошук мішені в геномі завжди починається з розпізнавання білком Cas9 короткого тринуклеотидного мотиву **PAM (Protospacer Adjacent Motif, для *SpCas9* це послідовність 5'-NGG-3') на нецільовому ланцюзі ДНК. Лише за наявності PAM білок розплітає подвійну спіраль ДНК, дозволяючи sgRNA утворити гібридну R-петлю** з комплементарним цільовим ланцюгом.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коли всі 20 нуклеотидів (особливо «seed»-регіон біля PAM) збігаються без помилок, активуються два нуклеазні домени: HNH розрізає цільовий ланцюг, а RuvC, нецільовий ланцюг за 3 п.н. від PAM, утворюючи дволанцюговий розрив (DSB). Клітина відновлює розрив або шляхом NHEJ (швидке зшивання з мікроінсерціями/делеціями для нокауту гена), або шляхом HDR (високоточне вбудовування нової послідовності з донорної ДНК-матриці).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кількість некомплементарних помилок між sgRNA та ДНК (0, ідеальний збіг 20/20)</strong>: 0 … 6 помилок, типове значення 0 помилок</li><li><strong>Наявність мотиву PAM 5′-NGG-3′ поруч із мішенню (1: є PAM, 0: мутація PAM)</strong>: 0 … 1 PAM, типове значення 1 PAM</li><li><strong>Доступність донорної ДНК-матриці для гомологічної репарації HDR</strong>: 0 … 100 %, типове значення 65 %</li><li><strong>Концентрація рибонуклеопротеїнового комплексу Cas9-sgRNA</strong>: 10 … 100 нМ, типове значення 50 нМ</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Система геномного редагування CRISPR-Cas9 діє як програмована сайт-специфічна ендонуклеаза: молекула гідової РНК (sgRNA) містить 20-нуклеотидний спейсер, комплементарний цільовій ділянці геному, а білок Cas9 після розпізнавання сусіднього тринуклеотидного мотиву PAM (5'-NGG-3') розплітає подвійну спіраль і вносить точний дволанцюговий розрив ДНК.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>PAM (5'-NGG-3') + 20 нт sgRNA ⇒ DSB (HNH + RuvC) →(HDR / NHEJ) Редагований ген</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">HNH (цільовий) + RuvC (нецільовий ланцюг)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Генна інженерія: CRISPR-Cas9</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Система CRISPR-Cas9 походить із адаптивного антивірусного імунітету бактерій та архей і була перетворена Емманюель Шарпантьє та Дженніфер Даудною (Нобелівська премія 2020 р.) на універсальний інструмент програмованого редагування геному. Рибонуклеопротеїновий комплекс складається з білка-ендонуклеази Cas9 та єдиної гідової РНК (sgRNA), яка містить 20-нуклеотидний спейсер («адресу мішені»).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Пошук мішені в геномі завжди починається з розпізнавання білком Cas9 короткого тринуклеотидного мотиву **PAM (Protospacer Adjacent Motif, для *SpCas9* це послідовність 5'-NGG-3') на нецільовому ланцюзі ДНК. Лише за наявності PAM білок розплітає подвійну спіраль ДНК, дозволяючи sgRNA утворити гібридну R-петлю** з комплементарним цільовим ланцюгом.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли всі 20 нуклеотидів (особливо «seed»-регіон біля PAM) збігаються без помилок, активуються два нуклеазні домени: HNH розрізає цільовий ланцюг, а RuvC, нецільовий ланцюг за 3 п.н. від PAM, утворюючи дволанцюговий розрив (DSB). Клітина відновлює розрив або шляхом NHEJ (швидке зшивання з мікроінсерціями/делеціями для нокауту гена), або шляхом HDR (високоточне вбудовування нової послідовності з донорної ДНК-матриці).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кількість некомплементарних помилок між sgRNA та ДНК (0, ідеальний збіг 20/20)</strong>: 0 … 6 помилок, типове значення 0 помилок</li><li><strong>Наявність мотиву PAM 5′-NGG-3′ поруч із мішенню (1: є PAM, 0: мутація PAM)</strong>: 0 … 1 PAM, типове значення 1 PAM</li><li><strong>Доступність донорної ДНК-матриці для гомологічної репарації HDR</strong>: 0 … 100 %, типове значення 65 %</li><li><strong>Концентрація рибонуклеопротеїнового комплексу Cas9-sgRNA</strong>: 10 … 100 нМ, типове значення 50 нМ</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Система геномного редагування CRISPR-Cas9 діє як програмована сайт-специфічна ендонуклеаза: молекула гідової РНК (sgRNA) містить 20-нуклеотидний спейсер, комплементарний цільовій ділянці геному, а білок Cas9 після розпізнавання сусіднього тринуклеотидного мотиву PAM (5'-NGG-3') розплітає подвійну спіраль і вносить точний дволанцюговий розрив ДНК.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>PAM (5'-NGG-3') + 20 нт sgRNA ⇒ DSB (HNH + RuvC) →(HDR / NHEJ) Редагований ген</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

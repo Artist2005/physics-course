@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Паливний елемент перетворює вільну енергію Гіббса ΔG окиснення водню безпосередньо в електричну роботу з теоретичним ККД до 83%, залишаючи на виході лише чисту воду.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас · Воднева енергетика</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC), це електрохімічний генератор, який безпосередньо перетворює хімічну енергію окиснення водню киснем (2H₂ + O₂ → 2H₂O, Δ H° = -285.8 кДж/моль, Δ G° = -237.1 кДж/моль) в електричну енергію без проміжного спалювання та механічних турбін. Завдяки цьому теоретичний термодинамічний ККД паливного елемента становить ηₘₐₓ = (Δ G°)/(Δ H°) ≈ 83%, що значно перевищує межу циклу Карно для теплових двигунів.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">На пористому аноді (-), вкритому наночастинками платинового каталізатора (Pt), молекули водню адсорбуються й дисоціюють на протони та електрони: 2H₂ → 4H⁺ + 4e⁻. Тонка фторполімерна мембрана (Nafion) є електронним ізолятором, але чудовим провідником протонів: іони H⁺ мігрують крізь мембрану до катода (+), тоді як електрони e⁻ змушені рухатися зовнішчним електричним колом, обертаючи електродвигун. На катоді кисень відновлюється з утворенням екологічно чистої води: O₂ + 4H⁺ + 4e⁻ → 2H₂O.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Термодинамічна ЕРС комірки зростає з тиском газів за рівнянням Нернста: E_Нернст = 1.229 + (RT)/(4F) ln (P_H₂² P_O₂). Під навантаженням робоча напруга U(j) = E_Нернст - η_акт(j) - j R_мембр дещо знижується через активаційну перенапругу Тафеля на електродах та омічний опір мембрани.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Парціальний тиск водню на аноді P(H₂)</strong>: 0.5 … 5 атм, типове значення 2 атм</li><li><strong>Парціальний тиск кисню на катоді P(O₂)</strong>: 0.2 … 3 атм, типове значення 1 атм</li><li><strong>Густина робочого струму навантаження j</strong>: 0.1 … 2 А/см², типове значення 0.8 А/см²</li><li><strong>Активність платинового каталізатора Pt</strong>: 0.5 … 2 ×, типове значення 1 ×</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Водневий паливний елемент безперервно перетворює хімічну енергію окиснення водню на електричну енергію за постійного підведення реагентів H₂ та O₂: протон-провідна полімерна мембрана пропускає катіони H⁺ від анода до катода, а електрони e⁻ спрямовуються у зовнішнє навантаження, утворюючи воду H₂O як єдиний продукт реакції.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Анод (-): &amp; 2H₂ →(Pt) 4H⁺ + 4e⁻, Катод (+): O₂ + 4H⁺ + 4e⁻ →(Pt) 2H₂O E_Нернст = E° + (RT)/(4F) ln (P_H₂² P_O₂), E° = 1.229 В, ηₘₐₓ = (Δ G°)/(Δ H°) ≈ 83%</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">232 мВ</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас · Воднева енергетика</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC), це електрохімічний генератор, який безпосередньо перетворює хімічну енергію окиснення водню киснем (2H₂ + O₂ → 2H₂O, Δ H° = -285.8 кДж/моль, Δ G° = -237.1 кДж/моль) в електричну енергію без проміжного спалювання та механічних турбін. Завдяки цьому теоретичний термодинамічний ККД паливного елемента становить ηₘₐₓ = (Δ G°)/(Δ H°) ≈ 83%, що значно перевищує межу циклу Карно для теплових двигунів.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">На пористому аноді (-), вкритому наночастинками платинового каталізатора (Pt), молекули водню адсорбуються й дисоціюють на протони та електрони: 2H₂ → 4H⁺ + 4e⁻. Тонка фторполімерна мембрана (Nafion) є електронним ізолятором, але чудовим провідником протонів: іони H⁺ мігрують крізь мембрану до катода (+), тоді як електрони e⁻ змушені рухатися зовнішчним електричним колом, обертаючи електродвигун. На катоді кисень відновлюється з утворенням екологічно чистої води: O₂ + 4H⁺ + 4e⁻ → 2H₂O.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Термодинамічна ЕРС комірки зростає з тиском газів за рівнянням Нернста: E_Нернст = 1.229 + (RT)/(4F) ln (P_H₂² P_O₂). Під навантаженням робоча напруга U(j) = E_Нернст - η_акт(j) - j R_мембр дещо знижується через активаційну перенапругу Тафеля на електродах та омічний опір мембрани.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Парціальний тиск водню на аноді P(H₂)</strong>: 0.5 … 5 атм, типове значення 2 атм</li><li><strong>Парціальний тиск кисню на катоді P(O₂)</strong>: 0.2 … 3 атм, типове значення 1 атм</li><li><strong>Густина робочого струму навантаження j</strong>: 0.1 … 2 А/см², типове значення 0.8 А/см²</li><li><strong>Активність платинового каталізатора Pt</strong>: 0.5 … 2 ×, типове значення 1 ×</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Водневий паливний елемент безперервно перетворює хімічну енергію окиснення водню на електричну енергію за постійного підведення реагентів H₂ та O₂: протон-провідна полімерна мембрана пропускає катіони H⁺ від анода до катода, а електрони e⁻ спрямовуються у зовнішнє навантаження, утворюючи воду H₂O як єдиний продукт реакції.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Анод (-): &amp; 2H₂ →(Pt) 4H⁺ + 4e⁻, Катод (+): O₂ + 4H⁺ + 4e⁻ →(Pt) 2H₂O E_Нернст = E° + (RT)/(4F) ln (P_H₂² P_O₂), E° = 1.229 В, ηₘₐₓ = (Δ G°)/(Δ H°) ≈ 83%</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

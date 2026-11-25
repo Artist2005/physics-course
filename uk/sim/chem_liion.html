@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Літій-іонний акумулятор (LiCoO₂ || C₆): оборотна інтеркаляція іонів Li⁺ (Нобелівська премія, 2019)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Замість руйнівного осадження металічного літію ми навчили іони Li⁺ м'яко входити й виходити між атомними шарами графіту та оксиду кобальту, немов гості у багатоповерховому готелі», Джон Гуденаф і Стенлі Віттінгем.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Сучасні хімічні джерела струму</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Літій-іонний акумулятор (Li-ion) працює за принципом оборотного топотактичного проникнення, інтеркаляції («крісла-гойдалки», *rocking-chair battery*) катіонів Li⁺ між двома шаруватими кристалічними матрицями (електродами-господарями) без виділення металічного літію.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Негативним електродом у зарядженому стані є шаруватий графіт Li_xC₆ (E° ≈ -3.0 В), де йони Li⁺ розташовані між графеновими площинами, а позитивним електродом, шаруватий оксид перехідного металу Li₁₋ₓCoO₂ (E° ≈ +0.7 В), утворений октаедрами [CoO₆]. Між електродами розміщений пористий полімерний сепаратор, просочений апротонним органічним електролітом (LiPF₆ в етиленкарбонаті).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Під час розряду графіт є анодом (-): Li_xC₆ → C₆ + xLi⁺ + xe⁻, катіони Li⁺ мігрують крізь сепаратор і вбудовуються в катод (+): Li₁₋ₓCoO₂ + xLi⁺ + xe⁻ → LiCoO₂, а електрони в зовнішньому колі створюють високу напругу U ≈ 3.6-4.2 В. Під час заряду зовнішнє джерело струму повертає йони Li⁺ назад у графіт.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Режим роботи акумулятора (1: Розряджання на навантаження, 2: Заряджання)</strong>: 1 … 2, типове значення 1</li><li><strong>Рівень заряду акумулятора SoC (частка Li⁺ у графіті Li_xC₆)</strong>: 10 … 95 %, типове значення 75 %</li><li><strong>Струм циклування I (швидкість міграції іонів Li⁺)</strong>: 0.5 … 4 А, типове значення 1.5 А</li><li><strong>Робоча температура комірки t</strong>: 0 … 50 °C, типове значення 25 °C</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Робота літій-іонного акумулятора ґрунтується на оборотній інтеркаляції катіонів Li⁺ між двома шаруватими електродними матрицями (графітом C₆ та оксидом літію-кобальту LiCoO₂). Під час заряджання іони Li⁺ вбудовуються між графенові площини анода, а під час розряджання мігрують крізь електроліт у кристалічну ґратку катода CoO₂, створюючи робочу напругу близько 3.7 В.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Li_xC₆ + Li₁₋ₓCoO₂ ⇄(Розряд)(Заряд) C₆ + LiCoO₂, E°_ком ≈ 3.70-4.20 В</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">17.2 Вт (T = 25 °C)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Поглиблений рівень · Профільний / ЗВО · Сучасні хімічні джерела струму</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Літій-іонний акумулятор (Li-ion) працює за принципом оборотного топотактичного проникнення, інтеркаляції («крісла-гойдалки», *rocking-chair battery*) катіонів Li⁺ між двома шаруватими кристалічними матрицями (електродами-господарями) без виділення металічного літію.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Негативним електродом у зарядженому стані є шаруватий графіт Li_xC₆ (E° ≈ -3.0 В), де йони Li⁺ розташовані між графеновими площинами, а позитивним електродом, шаруватий оксид перехідного металу Li₁₋ₓCoO₂ (E° ≈ +0.7 В), утворений октаедрами [CoO₆]. Між електродами розміщений пористий полімерний сепаратор, просочений апротонним органічним електролітом (LiPF₆ в етиленкарбонаті).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Під час розряду графіт є анодом (-): Li_xC₆ → C₆ + xLi⁺ + xe⁻, катіони Li⁺ мігрують крізь сепаратор і вбудовуються в катод (+): Li₁₋ₓCoO₂ + xLi⁺ + xe⁻ → LiCoO₂, а електрони в зовнішньому колі створюють високу напругу U ≈ 3.6-4.2 В. Під час заряду зовнішнє джерело струму повертає йони Li⁺ назад у графіт.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Режим роботи акумулятора (1: Розряджання на навантаження, 2: Заряджання)</strong>: 1 … 2, типове значення 1</li><li><strong>Рівень заряду акумулятора SoC (частка Li⁺ у графіті Li_xC₆)</strong>: 10 … 95 %, типове значення 75 %</li><li><strong>Струм циклування I (швидкість міграції іонів Li⁺)</strong>: 0.5 … 4 А, типове значення 1.5 А</li><li><strong>Робоча температура комірки t</strong>: 0 … 50 °C, типове значення 25 °C</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Робота літій-іонного акумулятора ґрунтується на оборотній інтеркаляції катіонів Li⁺ між двома шаруватими електродними матрицями (графітом C₆ та оксидом літію-кобальту LiCoO₂). Під час заряджання іони Li⁺ вбудовуються між графенові площини анода, а під час розряджання мігрують крізь електроліт у кристалічну ґратку катода CoO₂, створюючи робочу напругу близько 3.7 В.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Li_xC₆ + Li₁₋ₓCoO₂ ⇄(Розряд)(Заряд) C₆ + LiCoO₂, E°_ком ≈ 3.70-4.20 В</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

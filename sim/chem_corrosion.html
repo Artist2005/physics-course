@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Electrochemical Corrosion of Metals &amp; Sacrificial Anode Cathodic Protection</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Attach a small block of zinc or iron to the copper sheathing of a ship, and the sea water will no longer corrode the protected metal.», Humphry Davy, 1824</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Corrosion &amp; Protection</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Electrochemical corrosion destroys metals via short-circuited microgalvanic cells beneath an aqueous electrolyte film. In any bimetallic couple, the metal with the more negative standard reduction potential E° acts as the anode (-) and dissolves (M → Mⁿ⁺ + ne⁻), while dissolved oxygen is reduced at the cathode (+): O₂ + 2H₂O + 4e⁻ → 4OH⁻.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Because E°(Fe²⁺/Fe) = -0.44 V, coupling steel with a nobler metal such as tin (-0.14 V) or copper (+0.34 V) makes iron the anode, severely accelerating rusting at any coating scratch.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In sacrificial cathodic protection (galvanized steel or hull anodes), iron is coupled to a more active metal such as zinc (E° = -0.76 V). Zinc acts as the sacrificial anode (Zn → Zn²⁺ + 2e⁻), pumping electrons into the steel cathode and preventing iron oxidation even if the coating is breached.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Contact metal coupled to Fe (1=Cu, 2=Sn, 3=Zn protector, 4=Mg protector)</strong>: 1 … 4, standard value 1</li><li><strong>Electrolyte salinity [NaCl]</strong>: 0.05 … 1.5 mol/L, standard value 0.5 mol/L</li><li><strong>Dissolved oxygen concentration [O₂]</strong>: 1 … 12 mg/L, standard value 8 mg/L</li><li><strong>Medium acidity pH</strong>: 3 … 10 pH, standard value 7 pH</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Sacrificial cathodic protection of steel structures relies on standard electrode potentials: because zinc (E° = -0.76 V) is more active than iron (E° = -0.44 V), a zinc coating acts as the sacrificial anode and feeds electrons to protect exposed steel, whereas contact with copper (E° = +0.34 V) makes iron the corroding anode.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Anode (-): Fe → Fe²⁺ + 2e⁻, Cathode (+): O₂ + 2H₂O + 4e⁻ → 4OH⁻</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">[NaCl] = 0.50 M, [O₂] = 8.0 mg/L, pH = 7.0</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Corrosion &amp; Protection</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Electrochemical corrosion destroys metals via short-circuited microgalvanic cells beneath an aqueous electrolyte film. In any bimetallic couple, the metal with the more negative standard reduction potential E° acts as the anode (-) and dissolves (M → Mⁿ⁺ + ne⁻), while dissolved oxygen is reduced at the cathode (+): O₂ + 2H₂O + 4e⁻ → 4OH⁻.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Because E°(Fe²⁺/Fe) = -0.44 V, coupling steel with a nobler metal such as tin (-0.14 V) or copper (+0.34 V) makes iron the anode, severely accelerating rusting at any coating scratch.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">In sacrificial cathodic protection (galvanized steel or hull anodes), iron is coupled to a more active metal such as zinc (E° = -0.76 V). Zinc acts as the sacrificial anode (Zn → Zn²⁺ + 2e⁻), pumping electrons into the steel cathode and preventing iron oxidation even if the coating is breached.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Contact metal coupled to Fe (1=Cu, 2=Sn, 3=Zn protector, 4=Mg protector)</strong>: 1 … 4, standard value 1</li><li><strong>Electrolyte salinity [NaCl]</strong>: 0.05 … 1.5 mol/L, standard value 0.5 mol/L</li><li><strong>Dissolved oxygen concentration [O₂]</strong>: 1 … 12 mg/L, standard value 8 mg/L</li><li><strong>Medium acidity pH</strong>: 3 … 10 pH, standard value 7 pH</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Sacrificial cathodic protection of steel structures relies on standard electrode potentials: because zinc (E° = -0.76 V) is more active than iron (E° = -0.44 V), a zinc coating acts as the sacrificial anode and feeds electrons to protect exposed steel, whereas contact with copper (E° = +0.34 V) makes iron the corroding anode.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Anode (-): Fe → Fe²⁺ + 2e⁻, Cathode (+): O₂ + 2H₂O + 4e⁻ → 4OH⁻</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">The Hall Effect: Transverse Potential Difference &amp; Carrier Sign Determination</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Balancing the magnetic Lorentz force with the transverse electrostatic field of accumulated edge charges reveals both the concentration and sign of charge carriers.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Discovered by Edwin Hall in 1879, the Hall effect occurs when a conducting or semiconducting slab of thickness d and width w carrying longitudinal current I = |q|n v_d w d is placed in a perpendicular magnetic field B. Charge carriers q drifting at velocity v_d experience a transverse Lorentz force F_B = q[v_d × B] that deflects them toward one lateral edge.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Charge accumulation on the side faces builds up a transverse electrostatic Hall field E_H until electric force balances magnetic deflection (|q|E_H = |q|v_d B ⇒ E_H = v_d B). The resulting steady-state Hall voltage across width w is U_H = E_H w = v_d B w = (I B)/(n |q| d) = R_H (I B)/(d), where R_H = (1)/(nq) is the Hall coefficient.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Hall effect is a cornerstone of solid-state physics and sensor engineering: 1) measuring U_H directly reveals the carrier concentration n; 2) the polarity of U_H unambiguously identifies the sign of the majority charge carriers (n-type electrons vs. p-type holes), since both are deflected to the same side of the slab!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Longitudinal current I</strong>: 1 … 6 A, standard value 3 A</li><li><strong>Magnetic induction B</strong>: 0.5 … 3 T, standard value 1.5 T</li><li><strong>Carrier concentration n</strong>: 0.8 … 5 ×10²² m⁻³, standard value 2 ×10²² m⁻³</li><li><strong>Wafer thickness d</strong>: 0.5 … 2.5 mm, standard value 1 mm</li><li><strong>Conductivity type (−1 n-type, +1 p-type)</strong>: -1 … 1, standard value -1</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Semiconductor Hall sensors are widely used in brushless motors, automotive ignition timing, and magnetometers: when a perpendicular magnetic field penetrates a current-carrying strip, the Lorentz force deflects charge carriers toward one lateral edge, generating a measurable transverse Hall voltage.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>|q| E_H = |q| v_d B ⇒ E_H = v_d B, I = |q| n v_d w d U_H = E_H w = (I B)/(|q| n d) = R_H (I B)/(d), R_H = (1)/(q n)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">n-type (electrons -e)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Discovered by Edwin Hall in 1879, the Hall effect occurs when a conducting or semiconducting slab of thickness d and width w carrying longitudinal current I = |q|n v_d w d is placed in a perpendicular magnetic field B. Charge carriers q drifting at velocity v_d experience a transverse Lorentz force F_B = q[v_d × B] that deflects them toward one lateral edge.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Charge accumulation on the side faces builds up a transverse electrostatic Hall field E_H until electric force balances magnetic deflection (|q|E_H = |q|v_d B ⇒ E_H = v_d B). The resulting steady-state Hall voltage across width w is U_H = E_H w = v_d B w = (I B)/(n |q| d) = R_H (I B)/(d), where R_H = (1)/(nq) is the Hall coefficient.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">The Hall effect is a cornerstone of solid-state physics and sensor engineering: 1) measuring U_H directly reveals the carrier concentration n; 2) the polarity of U_H unambiguously identifies the sign of the majority charge carriers (n-type electrons vs. p-type holes), since both are deflected to the same side of the slab!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Longitudinal current I</strong>: 1 … 6 A, standard value 3 A</li><li><strong>Magnetic induction B</strong>: 0.5 … 3 T, standard value 1.5 T</li><li><strong>Carrier concentration n</strong>: 0.8 … 5 ×10²² m⁻³, standard value 2 ×10²² m⁻³</li><li><strong>Wafer thickness d</strong>: 0.5 … 2.5 mm, standard value 1 mm</li><li><strong>Conductivity type (−1 n-type, +1 p-type)</strong>: -1 … 1, standard value -1</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Semiconductor Hall sensors are widely used in brushless motors, automotive ignition timing, and magnetometers: when a perpendicular magnetic field penetrates a current-carrying strip, the Lorentz force deflects charge carriers toward one lateral edge, generating a measurable transverse Hall voltage.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>|q| E_H = |q| v_d B ⇒ E_H = v_d B, I = |q| n v_d w d U_H = E_H w = (I B)/(|q| n d) = R_H (I B)/(d), R_H = (1)/(q n)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -483,6 +485,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

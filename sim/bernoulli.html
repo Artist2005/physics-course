@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Bernoulli's Equation &amp; Venturi Effect</h1>
       <p id="scene-epigraph" class="chapter-epigraph">In steady flow of an ideal incompressible fluid, the sum of static pressure and dynamic pressure head remains constant along any streamline.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Steady laminar flow of an ideal incompressible fluid (ρ = const) through a variable-cross-section pipe obeys two conservation laws. First is the continuity equation: volume flow rate Q_V = S₁ v₁ = S₂ v₂ = const is invariant along the tube, forcing the fluid to accelerate wherever the cross-section narrows (S₂ v₁).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Second is Bernoulli's equation (conservation of mechanical energy per unit volume): along any streamline, the sum of static pressure p, dynamic pressure (1)/(2)ρ v², and hydrostatic head ρ g h remains constant: p₁ + (1)/(2)ρ v₁² = p₂ + (1)/(2)ρ v₂² = const for a horizontal pipe.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">This explains the Venturi effect: accelerating a fluid parcel into the constriction requires a forward pressure gradient p₁ - p₂ = (1)/(2)ρ v₁² [((S₁)/(S₂))² - 1] &gt; 0. Consequently, where flow speed is highest, static pressure against the pipe walls (shown by the manometer column) is lowest!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Inlet flow speed v₁</strong>: 0.6 … 2.8 m/s, standard value 1.5 m/s</li><li><strong>Wide pipe diameter D₁</strong>: 1.8 … 2.6 m, standard value 2.2 m</li><li><strong>Throat diameter D₂</strong>: 0.8 … 1.7 m, standard value 1.2 m</li><li><strong>Fluid density ρ</strong>: 700 … 1400 kg/m³, standard value 1000 kg/m³</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">In the narrowed throat of a Venturi tube or nozzle, incompressible fluid flow accelerates by continuity (A₁ v₁ = A₂ v₂) while static wall pressure drops according to Bernoulli's principle. The same hydrodynamic mechanism governs atomizers and airfoil lift.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>S₁ v₁ = S₂ v₂ = Q = const P₁ + (ρ v₁²)/(2) = P₂ + (ρ v₂²)/(2) = const</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">11.58 kPa</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Steady laminar flow of an ideal incompressible fluid (ρ = const) through a variable-cross-section pipe obeys two conservation laws. First is the continuity equation: volume flow rate Q_V = S₁ v₁ = S₂ v₂ = const is invariant along the tube, forcing the fluid to accelerate wherever the cross-section narrows (S₂ v₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Second is Bernoulli's equation (conservation of mechanical energy per unit volume): along any streamline, the sum of static pressure p, dynamic pressure (1)/(2)ρ v², and hydrostatic head ρ g h remains constant: p₁ + (1)/(2)ρ v₁² = p₂ + (1)/(2)ρ v₂² = const for a horizontal pipe.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">This explains the Venturi effect: accelerating a fluid parcel into the constriction requires a forward pressure gradient p₁ - p₂ = (1)/(2)ρ v₁² [((S₁)/(S₂))² - 1] &gt; 0. Consequently, where flow speed is highest, static pressure against the pipe walls (shown by the manometer column) is lowest!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Inlet flow speed v₁</strong>: 0.6 … 2.8 m/s, standard value 1.5 m/s</li><li><strong>Wide pipe diameter D₁</strong>: 1.8 … 2.6 m, standard value 2.2 m</li><li><strong>Throat diameter D₂</strong>: 0.8 … 1.7 m, standard value 1.2 m</li><li><strong>Fluid density ρ</strong>: 700 … 1400 kg/m³, standard value 1000 kg/m³</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">In the narrowed throat of a Venturi tube or nozzle, incompressible fluid flow accelerates by continuity (A₁ v₁ = A₂ v₂) while static wall pressure drops according to Bernoulli's principle. The same hydrodynamic mechanism governs atomizers and airfoil lift.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>S₁ v₁ = S₂ v₂ = Q = const P₁ + (ρ v₁²)/(2) = P₂ + (ρ v₂²)/(2) = const</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

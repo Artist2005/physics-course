@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Синтез аміаку Габера–Боша та гетерогенний каталіз на поверхні заліза</h1>
       <p id="scene-epigraph" class="chapter-epigraph">«Хліб із повітря: розірвати потрійний зв'язок молекули азоту N≡N вдалося лише завдяки союзу високого тиску, хімічної термодинаміки та залізного каталізатора», Фріц Габер.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас · Хімічна технологія</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Промисловий синтез аміаку за методом Габера-Боша (N₂(г) + 3H₂(г) ⇄ 2NH₃(г), Δ H° = -92.4 кДж/моль) є класичним прикладом фізико-хімічної оптимізації, де вимоги термодинаміки та хімічної кінетики суперечать одна одній.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">За принципом Ле Шательє, оскільки пряма реакція є екзотермічною (Δ H &lt; 0) і супроводжується вдвічі меншим об'ємом газу (4 моль → 2 моль), рівноважний вихід аміаку зростає при підвищенні тиску P та зниженні температури T. Проте при низькій температурі швидкість реакції дорівнює нулю через колосальну міцність потрійного зв'язку в молекулі азоту N≡N (E_диc = 945 кДж/моль).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Тому в промисловості застосовують компромісний режим: високий тиск P = 150-300 атм, помірну температуру t = 420-500 °C та пористий залізний каталізатор Fe, промотований K₂O та Al₂O₃, на поверхні якого молекули N₂ та H₂ дисоціативно хемосорбуються зі зниженням енергії активації.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Робочий тиск у колоні синтезу P</strong>: 50 … 350 атм, типове значення 200 атм</li><li><strong>Температура каталітичного реактора t</strong>: 300 … 600 °C, типове значення 450 °C</li><li><strong>Активність пористого Fe-каталізатора (0: без кат., 1: промотований Fe)</strong>: 0 … 1, типове значення 1</li><li><strong>Стехіометричне відношення газів [H₂] / [N₂] на вході</strong>: 1 … 4, типове значення 3</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Молекула азоту N≡N характеризується високою енергією потрійного зв'язку (945 кДж/моль): за низьких температур швидкість її гідрування надто мала, а за надмірного нагрівання екзотермічна рівновага зміщується в бік розкладу аміаку NH₃. Технологічний компроміс процесу Габера-Боша поєднує помірну температуру 450 °C, високий тиск 200 атм та пористий залізний каталізатор.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>N₂(г) + 3H₂(г) ⇄(Fe, P,T) 2NH₃(г), Δ H° = -92.4 кДж/моль, K_p = (P_NH₃²)/(P_N₂ P_H₂³)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">−92.4 кДж/моль (екзотермічний синтез)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас · Хімічна технологія</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Промисловий синтез аміаку за методом Габера-Боша (N₂(г) + 3H₂(г) ⇄ 2NH₃(г), Δ H° = -92.4 кДж/моль) є класичним прикладом фізико-хімічної оптимізації, де вимоги термодинаміки та хімічної кінетики суперечать одна одній.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">За принципом Ле Шательє, оскільки пряма реакція є екзотермічною (Δ H &lt; 0) і супроводжується вдвічі меншим об'ємом газу (4 моль → 2 моль), рівноважний вихід аміаку зростає при підвищенні тиску P та зниженні температури T. Проте при низькій температурі швидкість реакції дорівнює нулю через колосальну міцність потрійного зв'язку в молекулі азоту N≡N (E_диc = 945 кДж/моль).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Тому в промисловості застосовують компромісний режим: високий тиск P = 150-300 атм, помірну температуру t = 420-500 °C та пористий залізний каталізатор Fe, промотований K₂O та Al₂O₃, на поверхні якого молекули N₂ та H₂ дисоціативно хемосорбуються зі зниженням енергії активації.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Робочий тиск у колоні синтезу P</strong>: 50 … 350 атм, типове значення 200 атм</li><li><strong>Температура каталітичного реактора t</strong>: 300 … 600 °C, типове значення 450 °C</li><li><strong>Активність пористого Fe-каталізатора (0: без кат., 1: промотований Fe)</strong>: 0 … 1, типове значення 1</li><li><strong>Стехіометричне відношення газів [H₂] / [N₂] на вході</strong>: 1 … 4, типове значення 3</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Молекула азоту N≡N характеризується високою енергією потрійного зв'язку (945 кДж/моль): за низьких температур швидкість її гідрування надто мала, а за надмірного нагрівання екзотермічна рівновага зміщується в бік розкладу аміаку NH₃. Технологічний компроміс процесу Габера-Боша поєднує помірну температуру 450 °C, високий тиск 200 атм та пористий залізний каталізатор.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>N₂(г) + 3H₂(г) ⇄(Fe, P,T) 2NH₃(г), Δ H° = -92.4 кДж/моль, K_p = (P_NH₃²)/(P_N₂ P_H₂³)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

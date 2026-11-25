@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Phase Diagrams P–T, Triple Point, Critical Point &amp; Supercritical Fluid</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Gibbs' phase rule establishes nature's strict constitution: how many phases may coexist in equilibrium at any given temperature and pressure.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Phase Equilibria</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A single-component P-T phase diagram maps the stability fields of solid, liquid, and gas separated by coexistence curves governed by the Clapeyron equation (dP)/(dT) = (Δ Hₜᵣ)/(T Δ Vₜᵣ). Because ice is less dense than liquid water (Δ V_fus &lt; 0), water's melting curve has an anomalous negative slope (dP/dT &lt; 0).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">By Gibbs' Phase Rule (f = 3 - Φ), solid, liquid, and vapor coexist exclusively at the invariant triple point (T_t, P_t). Because P_t(CO₂) = 5.11 atm &gt; 1 atm, solid CO₂ ("dry ice") sublimes directly into gas at atmospheric pressure.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The liquid-vapor boundary terminates at the critical point (T_c, P_c); beyond this point the meniscus vanishes and the substance forms a supercritical fluid combining liquid-like solvating density with gas-like diffusivity.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Substance (1=H₂O water, 2=CO₂ dry ice / supercritical)</strong>: 1 … 2, standard value 2</li><li><strong>Autoclave temperature T</strong>: 170 … 420 K, standard value 260 K</li><li><strong>External chamber pressure P</strong>: 1 … 90 atm, standard value 15 atm</li><li><strong>Thermal heat exchange power Q</strong>: 0.5 … 5 kJ, standard value 2 kJ</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Why do ice skates glide on a thin water film while dry ice (CO₂) smokes without melting into a puddle? Because water expands on freezing (dP/dT &lt; 0), and CO₂'s triple point (5.11 atm) lies above atmospheric pressure.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>(dP)/(dT) = (Δ Hₜᵣ)/(T Δ Vₜᵣ), ln (P₂)/(P₁) = -(Δ Hᵥₐₚ)/(R)((1)/(T₂) - (1)/(T₁)) F = C - Φ + 2</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">2.0 kJ/mol</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Phase Equilibria</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A single-component P-T phase diagram maps the stability fields of solid, liquid, and gas separated by coexistence curves governed by the Clapeyron equation (dP)/(dT) = (Δ Hₜᵣ)/(T Δ Vₜᵣ). Because ice is less dense than liquid water (Δ V_fus &lt; 0), water's melting curve has an anomalous negative slope (dP/dT &lt; 0).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">By Gibbs' Phase Rule (f = 3 - Φ), solid, liquid, and vapor coexist exclusively at the invariant triple point (T_t, P_t). Because P_t(CO₂) = 5.11 atm &gt; 1 atm, solid CO₂ ("dry ice") sublimes directly into gas at atmospheric pressure.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">The liquid-vapor boundary terminates at the critical point (T_c, P_c); beyond this point the meniscus vanishes and the substance forms a supercritical fluid combining liquid-like solvating density with gas-like diffusivity.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Substance (1=H₂O water, 2=CO₂ dry ice / supercritical)</strong>: 1 … 2, standard value 2</li><li><strong>Autoclave temperature T</strong>: 170 … 420 K, standard value 260 K</li><li><strong>External chamber pressure P</strong>: 1 … 90 atm, standard value 15 atm</li><li><strong>Thermal heat exchange power Q</strong>: 0.5 … 5 kJ, standard value 2 kJ</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Why do ice skates glide on a thin water film while dry ice (CO₂) smokes without melting into a puddle? Because water expands on freezing (dP/dT &lt; 0), and CO₂'s triple point (5.11 atm) lies above atmospheric pressure.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>(dP)/(dT) = (Δ Hₜᵣ)/(T Δ Vₜᵣ), ln (P₂)/(P₁) = -(Δ Hᵥₐₚ)/(R)((1)/(T₂) - (1)/(T₁)) F = C - Φ + 2</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

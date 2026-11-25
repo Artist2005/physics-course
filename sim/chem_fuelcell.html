@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Hydrogen–Oxygen Proton-Exchange Membrane Fuel Cell (PEMFC)</h1>
       <p id="scene-epigraph" class="chapter-epigraph">A fuel cell converts the Gibbs free energy ΔG of hydrogen oxidation directly into electricity with up to 83% theoretical efficiency and pure water as its only exhaust.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Hydrogen Fuel Cell</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A Proton-Exchange Membrane Fuel Cell (PEMFC) is an electrochemical energy converter that transforms the chemical free energy of hydrogen oxidation (2H₂ + O₂ → 2H₂O, Δ G° = -237.1 kJ/mol) directly into electricity. Because it bypasses thermal combustion, its theoretical efficiency ηₘₐₓ = Δ G° / Δ H° ≈ 83% is not restricted by the Carnot heat-engine limit.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">At the anode (-), H₂ gas dissociates on a platinum (Pt) nanocatalyst: 2H₂ → 4H⁺ + 4e⁻. The central polymer electrolyte membrane (Nafion) conducts protons H⁺ directly to the cathode (+) while blocking electrons e⁻, driving them through the external load. At the cathode, O₂ combines with protons and electrons to produce pure water: O₂ + 4H⁺ + 4e⁻ → 2H₂O.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Open-circuit EMF follows the Nernst equation E_Nernst = 1.229 + (RT)/(4F) ln (P_H₂² P_O₂), while operating cell voltage under load current density j reflects Tafel activation and ohmic membrane losses: U(j) = E_Nernst - η_act(j) - j Rₒₕₘ.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Anode hydrogen partial pressure P(H₂)</strong>: 0.5 … 5 atm, standard value 2 atm</li><li><strong>Cathode oxygen partial pressure P(O₂)</strong>: 0.2 … 3 atm, standard value 1 atm</li><li><strong>Operating load current density j</strong>: 0.1 … 2 A/cm², standard value 0.8 A/cm²</li><li><strong>Platinum catalyst activity factor Pt</strong>: 0.5 … 2 ×, standard value 1 ×</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">A hydrogen fuel cell is an electrochemical generator: the polymer membrane passes protons H⁺ directly while forcing electrons e⁻ through the external motor to power hydrogen cars and spacecraft, with pure water H₂O as the only exhaust.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>Anode (-): &amp; 2H₂ →(Pt) 4H⁺ + 4e⁻, Cathode (+): O₂ + 4H⁺ + 4e⁻ →(Pt) 2H₂O E_Nernst = E° + (RT)/(4F) ln (P_H₂² P_O₂), E° = 1.229 V, ηₘₐₓ = (Δ G°)/(Δ H°) ≈ 83%</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">232 mV</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Hydrogen Fuel Cell</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A Proton-Exchange Membrane Fuel Cell (PEMFC) is an electrochemical energy converter that transforms the chemical free energy of hydrogen oxidation (2H₂ + O₂ → 2H₂O, Δ G° = -237.1 kJ/mol) directly into electricity. Because it bypasses thermal combustion, its theoretical efficiency ηₘₐₓ = Δ G° / Δ H° ≈ 83% is not restricted by the Carnot heat-engine limit.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">At the anode (-), H₂ gas dissociates on a platinum (Pt) nanocatalyst: 2H₂ → 4H⁺ + 4e⁻. The central polymer electrolyte membrane (Nafion) conducts protons H⁺ directly to the cathode (+) while blocking electrons e⁻, driving them through the external load. At the cathode, O₂ combines with protons and electrons to produce pure water: O₂ + 4H⁺ + 4e⁻ → 2H₂O.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Open-circuit EMF follows the Nernst equation E_Nernst = 1.229 + (RT)/(4F) ln (P_H₂² P_O₂), while operating cell voltage under load current density j reflects Tafel activation and ohmic membrane losses: U(j) = E_Nernst - η_act(j) - j Rₒₕₘ.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Anode hydrogen partial pressure P(H₂)</strong>: 0.5 … 5 atm, standard value 2 atm</li><li><strong>Cathode oxygen partial pressure P(O₂)</strong>: 0.2 … 3 atm, standard value 1 atm</li><li><strong>Operating load current density j</strong>: 0.1 … 2 A/cm², standard value 0.8 A/cm²</li><li><strong>Platinum catalyst activity factor Pt</strong>: 0.5 … 2 ×, standard value 1 ×</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">A hydrogen fuel cell is an electrochemical generator: the polymer membrane passes protons H⁺ directly while forcing electrons e⁻ through the external motor to power hydrogen cars and spacecraft, with pure water H₂O as the only exhaust.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>Anode (-): &amp; 2H₂ →(Pt) 4H⁺ + 4e⁻, Cathode (+): O₂ + 4H⁺ + 4e⁻ →(Pt) 2H₂O E_Nernst = E° + (RT)/(4F) ln (P_H₂² P_O₂), E° = 1.229 V, ηₘₐₓ = (Δ G°)/(Δ H°) ≈ 83%</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

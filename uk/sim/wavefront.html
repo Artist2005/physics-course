@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Світловий фронт і принцип Гюйгенса–Френеля</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Кожна точка середовища, до якої дійшов світловий фронт, стає джерелом вторинних напівсферичних хвиль, а їхня огинаюча утворює новий хвильовий фронт.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">За принципом Гюйгенса-Френеля, кожна точка середовища, до якої дійшов світловий хвильовий фронт, стає джерелом вторинних сферичних (у прозорому середовищі, півсферичних) когерентних хвиль. Нове положення хвильового фронту в наступний момент часу t + Δ t визначається як геометрична обвідна (огинаюча поверхня) усіх вторинних хвиль.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Коли плоский світловий фронт падає під кутом α із середовища з показником заломлення n₁ на межу поділу з оптично густішим середовищем n₂ &gt; n₁, його фазова швидкість зменшується від v₁ = c/n₁ до v₂ = c/n₂. Поки правий край фронту проходить у першому середовищі відстань BC = v₁ Δ t = AB sin α, лівий край у другому середовищі встигає утворити півсферу меншого радіуса AD = v₂ Δ t = AB sin γ. Ділення цих відрізків дає закон заломлення Снелліуса: ( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Зверніть увагу на 3D-сцену: при вході в оптично густіше скло (n₂ &gt; n₁) відстань між сусідніми гребенями хвильового фронту (довжина хвилі λ₂ = λ₀ / n₂) стискається в n₂/n₁ разів, тоді як частота коливань ν залишається незмінною, а нормаль до хвильового фронту повертається ближче до перпендикуляра (γ &lt; α).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Кут падіння фронту α</strong>: 10 … 75 °, типове значення 45 °</li><li><strong>Показник заломлення середовища n₂</strong>: 1.15 … 2.4, типове значення 1.55</li><li><strong>Довжина світлової хвилі λ₀</strong>: 400 … 700 нм, типове значення 540 нм</li><li><strong>Вторинні центри Гюйгенса N</strong>: 3 … 7 джерел, типове значення 5 джерел</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">У двоколісній осі візка, що викочується під кутом із гладкого асфальту на пухкий пісок, першим гальмує те колесо, яке раніше перетинає межу поділу середовищ. Поки друге колесо ще рухається з вищою швидкістю v₁, вісь повертається до нормалі. За тим самим геометричним механізмом плоский хвильовий фронт змінює напрямок поширення на межі середовищ із різними показниками заломлення n₁ та n₂.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁), v = (c)/(n) λ₂ = (λ₀)/(n₂), Φ(r, t) = k·r - ω t = const</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">89.6 %</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">За принципом Гюйгенса-Френеля, кожна точка середовища, до якої дійшов світловий хвильовий фронт, стає джерелом вторинних сферичних (у прозорому середовищі, півсферичних) когерентних хвиль. Нове положення хвильового фронту в наступний момент часу t + Δ t визначається як геометрична обвідна (огинаюча поверхня) усіх вторинних хвиль.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Коли плоский світловий фронт падає під кутом α із середовища з показником заломлення n₁ на межу поділу з оптично густішим середовищем n₂ &gt; n₁, його фазова швидкість зменшується від v₁ = c/n₁ до v₂ = c/n₂. Поки правий край фронту проходить у першому середовищі відстань BC = v₁ Δ t = AB sin α, лівий край у другому середовищі встигає утворити півсферу меншого радіуса AD = v₂ Δ t = AB sin γ. Ділення цих відрізків дає закон заломлення Снелліуса: ( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Зверніть увагу на 3D-сцену: при вході в оптично густіше скло (n₂ &gt; n₁) відстань між сусідніми гребенями хвильового фронту (довжина хвилі λ₂ = λ₀ / n₂) стискається в n₂/n₁ разів, тоді як частота коливань ν залишається незмінною, а нормаль до хвильового фронту повертається ближче до перпендикуляра (γ &lt; α).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Кут падіння фронту α</strong>: 10 … 75 °, типове значення 45 °</li><li><strong>Показник заломлення середовища n₂</strong>: 1.15 … 2.4, типове значення 1.55</li><li><strong>Довжина світлової хвилі λ₀</strong>: 400 … 700 нм, типове значення 540 нм</li><li><strong>Вторинні центри Гюйгенса N</strong>: 3 … 7 джерел, типове значення 5 джерел</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">У двоколісній осі візка, що викочується під кутом із гладкого асфальту на пухкий пісок, першим гальмує те колесо, яке раніше перетинає межу поділу середовищ. Поки друге колесо ще рухається з вищою швидкістю v₁, вісь повертається до нормалі. За тим самим геометричним механізмом плоский хвильовий фронт змінює напрямок поширення на межі середовищ із різними показниками заломлення n₁ та n₂.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>( sin α)/( sin γ) = (v₁)/(v₂) = (n₂)/(n₁), v = (c)/(n) λ₂ = (λ₀)/(n₂), Φ(r, t) = k·r - ω t = const</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

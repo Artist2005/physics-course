@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Lorentz Force &amp; 3D Cyclotron Helix</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Because the magnetic Lorentz force is always perpendicular to a particle's velocity, it does no mechanical work, but curves the trajectory into a circle or 3D helix.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 11</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">A point charge q moving at velocity v through a uniform magnetic field B experiences the magnetic Lorentz force F_L = q[v × B]. Because the cross product is always orthogonal to v, the mechanical power delivered by the magnetic field is identically zero (P = F_L · v = 0), leaving the particle's speed v and kinetic energy strictly constant!</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Decomposing velocity relative to B at pitch angle α yields uniform drift along the field lines at v_∥ = v cos α = const and circular motion in the transverse plane at v_⊥ = v sin α. Equating centripetal force to Lorentz force gives (mv_⊥²)/(R) = |q|v_⊥ B, defining the Larmor (cyclotron) radius R = (mv sin α)/(|q|B).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">Combining circular gyration with parallel drift traces a 3D helix. the cyclotron period T = (2π m)/(|q|B) and frequency ω_c = (|q|B)/(m) are independent of particle speed, with helical pitch h = v_∥ T = (2π m v cos α)/(|q|B). This governs cyclotrons, mass spectrometers, and magnetic plasma confinement.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Magnetic field B</strong>: 0.6 … 3 T, standard value 1.5 T</li><li><strong>Initial particle speed v₀</strong>: 2 … 6.5 m/s, standard value 4.2 m/s</li><li><strong>Pitch angle α to B</strong>: 25 … 90 °, standard value 68 °</li><li><strong>Specific charge |q|/m</strong>: 0.8 … 3.2 C/kg, standard value 1.8 C/kg</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">Earth's magnetosphere deflects charged solar-wind particles via the Lorentz force, guiding them along helical trajectories toward the polar regions where auroras form. Because the magnetic force is perpendicular to velocity, it curves the particle's path without altering its speed.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>F_L = q[v×B], F_L = |q| v B sin α R = (m v_⊥)/(|q| B) = (m v sin α)/(|q| B), T = (2π m)/(|q| B), h = v_∥ T</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">0.00 J (F_L ⊥ v)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 11</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">A point charge q moving at velocity v through a uniform magnetic field B experiences the magnetic Lorentz force F_L = q[v × B]. Because the cross product is always orthogonal to v, the mechanical power delivered by the magnetic field is identically zero (P = F_L · v = 0), leaving the particle's speed v and kinetic energy strictly constant!</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Decomposing velocity relative to B at pitch angle α yields uniform drift along the field lines at v_∥ = v cos α = const and circular motion in the transverse plane at v_⊥ = v sin α. Equating centripetal force to Lorentz force gives (mv_⊥²)/(R) = |q|v_⊥ B, defining the Larmor (cyclotron) radius R = (mv sin α)/(|q|B).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">Combining circular gyration with parallel drift traces a 3D helix. the cyclotron period T = (2π m)/(|q|B) and frequency ω_c = (|q|B)/(m) are independent of particle speed, with helical pitch h = v_∥ T = (2π m v cos α)/(|q|B). This governs cyclotrons, mass spectrometers, and magnetic plasma confinement.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Magnetic field B</strong>: 0.6 … 3 T, standard value 1.5 T</li><li><strong>Initial particle speed v₀</strong>: 2 … 6.5 m/s, standard value 4.2 m/s</li><li><strong>Pitch angle α to B</strong>: 25 … 90 °, standard value 68 °</li><li><strong>Specific charge |q|/m</strong>: 0.8 … 3.2 C/kg, standard value 1.8 C/kg</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">Earth's magnetosphere deflects charged solar-wind particles via the Lorentz force, guiding them along helical trajectories toward the polar regions where auroras form. Because the magnetic force is perpendicular to velocity, it curves the particle's path without altering its speed.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>F_L = q[v×B], F_L = |q| v B sin α R = (m v_⊥)/(|q| B) = (m v sin α)/(|q| B), T = (2π m)/(|q| B), h = v_∥ T</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

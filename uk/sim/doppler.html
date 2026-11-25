@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Ефект Доплера та деформація хвильового фронту</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Рух джерела хвиль стискає гребені хвильового фронту попереду себе, зменшуючи довжину хвилі λ′ і підвищуючи частоту для нерухомого приймача.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Ефект Доплера (відкритий Крістіаном Доплером у 1842 р.) полягає в зміні частоти ν та довжини хвилі λ, які реєструє приймач, коли джерело хвиль та/або спостерігач рухаються відносно хвильового середовища. Фізична причина ефекту наочно видна на 3D-картині сферичних фронтів: кожен наступний гребінь хвилі випромінюється з нової точки простору, куди змістилося джерело за період T₀ = 1/ν₀.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Попереду джерела, що рухається зі швидкістю v_s &lt; c_s, хвильові гребені стискаються: за період T₀ фронт проходить шлях c_s T₀, а джерело наздоганяє його на v_s T₀, тому довжина хвилі зменшується до λ_перед = (c_s - v_s)T₀ = λ₀ (1 - (v_s)/(c_s)), а частота зростає до ν_перед = (ν₀)/(1 - v_s/c_s). Позаду джерела фронти розтягуються: λ_зад = λ₀ (1 + (v_s)/(c_s)) і частота падає до ν_зад = (ν₀)/(1 + v_s/c_s).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">Відношення швидкості джерела до швидкості хвилі M = v_s / c_s називається числом Маха. При наближенні v_s → c_s (M → 1) усі передні хвильові фронти накладаються в одній точці на носі джерела (звуковий бар'єр та ударний конус Маха з півкутом sin μ = c_s/v_s). Ефект Доплера використовується в медичному УЗД кровотоку, метеорадарах та астрофізиці (червоний зсув галактик).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Число Маха джерела M = v_s / v</strong>: 0 … 1.25, типове значення 0.55</li><li><strong>Швидкість хвильового фронту v</strong>: 2.2 … 5 м/с, типове значення 3.6 м/с</li><li><strong>Власна частота джерела f₀</strong>: 1 … 3.5 Гц, типове значення 2 Гц</li><li><strong>Інтенсивність гребенів фронту I₀</strong>: 0.5 … 1.5 од., типове значення 1 од.</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Під час руху джерела звуку відносно нерухомого приймача хвильові гребені попереду джерела ущільнюються, підвищуючи реєстровану частоту, а позаду джерела розріджуються, знижуючи частоту. На ефекті Доплера ґрунтуються радари швидкості та ультразвукова доплерографія кровотоку.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>λ_попереду = λ₀ (1 - (v_s)/(v)), λ_позаду = λ₀ (1 + (v_s)/(v)) f₊ = (f₀)/(1 - M), f₋ = (f₀)/(1 + M), M = (v_s)/(v)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">2.79 м</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 9-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Ефект Доплера (відкритий Крістіаном Доплером у 1842 р.) полягає в зміні частоти ν та довжини хвилі λ, які реєструє приймач, коли джерело хвиль та/або спостерігач рухаються відносно хвильового середовища. Фізична причина ефекту наочно видна на 3D-картині сферичних фронтів: кожен наступний гребінь хвилі випромінюється з нової точки простору, куди змістилося джерело за період T₀ = 1/ν₀.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Попереду джерела, що рухається зі швидкістю v_s &lt; c_s, хвильові гребені стискаються: за період T₀ фронт проходить шлях c_s T₀, а джерело наздоганяє його на v_s T₀, тому довжина хвилі зменшується до λ_перед = (c_s - v_s)T₀ = λ₀ (1 - (v_s)/(c_s)), а частота зростає до ν_перед = (ν₀)/(1 - v_s/c_s). Позаду джерела фронти розтягуються: λ_зад = λ₀ (1 + (v_s)/(c_s)) і частота падає до ν_зад = (ν₀)/(1 + v_s/c_s).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">Відношення швидкості джерела до швидкості хвилі M = v_s / c_s називається числом Маха. При наближенні v_s → c_s (M → 1) усі передні хвильові фронти накладаються в одній точці на носі джерела (звуковий бар'єр та ударний конус Маха з півкутом sin μ = c_s/v_s). Ефект Доплера використовується в медичному УЗД кровотоку, метеорадарах та астрофізиці (червоний зсув галактик).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Число Маха джерела M = v_s / v</strong>: 0 … 1.25, типове значення 0.55</li><li><strong>Швидкість хвильового фронту v</strong>: 2.2 … 5 м/с, типове значення 3.6 м/с</li><li><strong>Власна частота джерела f₀</strong>: 1 … 3.5 Гц, типове значення 2 Гц</li><li><strong>Інтенсивність гребенів фронту I₀</strong>: 0.5 … 1.5 од., типове значення 1 од.</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Під час руху джерела звуку відносно нерухомого приймача хвильові гребені попереду джерела ущільнюються, підвищуючи реєстровану частоту, а позаду джерела розріджуються, знижуючи частоту. На ефекті Доплера ґрунтуються радари швидкості та ультразвукова доплерографія кровотоку.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>λ_попереду = λ₀ (1 - (v_s)/(v)), λ_позаду = λ₀ (1 + (v_s)/(v)) f₊ = (f₀)/(1 - M), f₋ = (f₀)/(1 + M), M = (v_s)/(v)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

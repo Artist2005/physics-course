@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Molecular Orbitals (LCAO–MO): Bonding σ/π, Antibonding σ*/π* &amp; Bond Order</h1>
       <p id="scene-epigraph" class="chapter-epigraph">An atomic orbital is monocentric, whereas a molecular orbital embraces all nuclei of the molecule as a single quantum wave.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Quantum Chemistry</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The Molecular Orbital (LCAO-MO) theory treats valence electrons as delocalized over the entire molecule via linear combinations of atomic orbitals ψ_A and ψ_B. Constructive interference (ψ₊ = c(ψ_A + ψ_B)) accumulates electron density between the nuclei, forming a lower-energy bonding MO (σ_g, π_u). Destructive interference (ψ₋ = c(ψ_A - ψ_B)) creates a nodal plane between the nuclei, forming a higher-energy antibonding MO (σ_u^*, π_g^*).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">Chemical bond order is defined as B = (1)/(2)(N_bond - Nₐₙₜᵢ). For He₂, B = (1)/(2)(2 - 2) = 0 (unstable), whereas for dinitrogen N₂, B = (1)/(2)(8 - 2) = 3.0 (D₀ = 945 kJ/mol).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">MO theory triumphantly explains why liquid and gaseous dioxygen O₂ is paramagnetic: of its 12 valence electrons, the highest two occupy the degenerate antibonding π₂p,x^* and π₂p,y^* orbitals singly with parallel spins (Hund's rule, S = 1, μ_s = 2.83 μ_B), giving B = 2.0.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Diatomic species (1=H₂, 2=He₂⁺, 3=N₂, 4=O₂, 5=F₂)</strong>: 1 … 5, standard value 4</li><li><strong>Internuclear distance R</strong>: 0.7 … 2.2 Å, standard value 1.21 Å</li><li><strong>Displayed MO (1=σ_g bonding, 2=σ*_u, 3=π_u, 4=π*_g)</strong>: 1 … 4, standard value 1</li><li><strong>Resonance overlap integral |β|</strong>: 1 … 4.5 eV, standard value 2.5 eV</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">By the linear combination of atomic orbitals (LCAO), constructive in-phase overlap of atomic wavefunctions concentrates electron density between the nuclei to stabilize the bond (bonding MO σ, π), whereas destructive out-of-phase overlap creates a nodal plane between the nuclei and raises energy (antibonding MO σ^*, π^*).</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>ψ_± = (ψ_A ± ψ_B)/(√(2(1 ± S))), B = (N_bond - Nₐₙₜᵢ)/(2) μ_s = √(n(n+2)) μ_B</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">Paramagnetic (2 unpaired e⁻ in π*)</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-advanced">Advanced Level · AP / University · Quantum Chemistry</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The Molecular Orbital (LCAO-MO) theory treats valence electrons as delocalized over the entire molecule via linear combinations of atomic orbitals ψ_A and ψ_B. Constructive interference (ψ₊ = c(ψ_A + ψ_B)) accumulates electron density between the nuclei, forming a lower-energy bonding MO (σ_g, π_u). Destructive interference (ψ₋ = c(ψ_A - ψ_B)) creates a nodal plane between the nuclei, forming a higher-energy antibonding MO (σ_u^*, π_g^*).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">Chemical bond order is defined as B = (1)/(2)(N_bond - Nₐₙₜᵢ). For He₂, B = (1)/(2)(2 - 2) = 0 (unstable), whereas for dinitrogen N₂, B = (1)/(2)(8 - 2) = 3.0 (D₀ = 945 kJ/mol).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">MO theory triumphantly explains why liquid and gaseous dioxygen O₂ is paramagnetic: of its 12 valence electrons, the highest two occupy the degenerate antibonding π₂p,x^* and π₂p,y^* orbitals singly with parallel spins (Hund's rule, S = 1, μ_s = 2.83 μ_B), giving B = 2.0.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Diatomic species (1=H₂, 2=He₂⁺, 3=N₂, 4=O₂, 5=F₂)</strong>: 1 … 5, standard value 4</li><li><strong>Internuclear distance R</strong>: 0.7 … 2.2 Å, standard value 1.21 Å</li><li><strong>Displayed MO (1=σ_g bonding, 2=σ*_u, 3=π_u, 4=π*_g)</strong>: 1 … 4, standard value 1</li><li><strong>Resonance overlap integral |β|</strong>: 1 … 4.5 eV, standard value 2.5 eV</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">By the linear combination of atomic orbitals (LCAO), constructive in-phase overlap of atomic wavefunctions concentrates electron density between the nuclei to stabilize the bond (bonding MO σ, π), whereas destructive out-of-phase overlap creates a nodal plane between the nuclei and raises energy (antibonding MO σ^*, π^*).</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>ψ_± = (ψ_A ± ψ_B)/(√(2(1 ± S))), B = (N_bond - Nₐₙₜᵢ)/(2) μ_s = √(n(n+2)) μ_B</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

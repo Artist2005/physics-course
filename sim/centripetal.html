@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Centripetal Acceleration &amp; Turning Dynamics</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Any curvilinear motion is accelerated: the velocity vector continuously changes direction due to a centripetal force directed toward the center of curvature.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">Every curvilinear motion is accelerated: even when speed v = const is uniform, the tangent velocity vector v continuously changes direction. The rate of rotation of v defines the centripetal (normal) acceleration a_n, directed radially inward toward the center of curvature.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">From the geometric similarity of the position triangle Δr and velocity-change triangle Δv as Δ t → 0, one derives a_n = (v²)/(R) = ω² R. By Newton's second law, this acceleration requires a net inward radial force F_n = (mv²)/(R). On a flat horizontal turn, static tire friction provides this centripetal force: F_fr ≤ μ mg.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">The no-skid stability condition (mv²)/(R) ≤ μ mg sets the critical cornering speed vₘₐₓ = √(μ g R). Exceeding vₘₐₓ means static friction can no longer bend the trajectory along radius R, causing the vehicle to skid outward toward the tangent.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Disk angular velocity ω</strong>: 0.5 … 3.5 rad/s, standard value 1.8 rad/s</li><li><strong>Orbit radius R</strong>: 1.2 … 4.2 m, standard value 2.6 m</li><li><strong>Static friction coeff. μ</strong>: 0.1 … 0.9, standard value 0.45</li><li><strong>Body mass m</strong>: 0.5 … 5 kg, standard value 2 kg</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">When a vehicle rounds a curve or a mass revolves on a taut cord, inertia tends to carry the body along a straight tangent, while tire friction or cord tension provides the inward centripetal force required to curve the trajectory.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>a_c = (v²)/(R) = ω² R, F_c = mω² R ω_cr = √((μ g)/(R)) (no-slip condition)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">8.8 N</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">Every curvilinear motion is accelerated: even when speed v = const is uniform, the tangent velocity vector v continuously changes direction. The rate of rotation of v defines the centripetal (normal) acceleration a_n, directed radially inward toward the center of curvature.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">From the geometric similarity of the position triangle Δr and velocity-change triangle Δv as Δ t → 0, one derives a_n = (v²)/(R) = ω² R. By Newton's second law, this acceleration requires a net inward radial force F_n = (mv²)/(R). On a flat horizontal turn, static tire friction provides this centripetal force: F_fr ≤ μ mg.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">The no-skid stability condition (mv²)/(R) ≤ μ mg sets the critical cornering speed vₘₐₓ = √(μ g R). Exceeding vₘₐₓ means static friction can no longer bend the trajectory along radius R, causing the vehicle to skid outward toward the tangent.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Disk angular velocity ω</strong>: 0.5 … 3.5 rad/s, standard value 1.8 rad/s</li><li><strong>Orbit radius R</strong>: 1.2 … 4.2 m, standard value 2.6 m</li><li><strong>Static friction coeff. μ</strong>: 0.1 … 0.9, standard value 0.45</li><li><strong>Body mass m</strong>: 0.5 … 5 kg, standard value 2 kg</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">When a vehicle rounds a curve or a mass revolves on a taut cord, inertia tends to carry the body along a straight tangent, while tire friction or cord tension provides the inward centripetal force required to curve the trajectory.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>a_c = (v²)/(R) = ω² R, F_c = mω² R ω_cr = √((μ g)/(R)) (no-slip condition)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Еліптична орбіта та ІІ закон Кеплера</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Радіус-вектор планети за рівні проміжки часу описує рівні площі: у перигелії планета рухається найшвидше, а в афелії, найповільніше.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 10-11 клас</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Механізм явища</div>
-            <div class="theory-note-body"><p class="theory-note-para">Рух планет, комет і штучних супутників у центральному полі тяжіння масивного тіла M визначається законом всесвітнього тяжіння Ньютона F = -G(Mm)/(r³)r. Оскільки лінія дії центральної сили завжди проходить через центр Сонця, її момент відносно фокуса дорівнює нулю (M = [r × F] = 0), а отже, орбітальний момент імпульсу планети L = m[r × v] = const строго зберігається.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
-            <div class="theory-note-body"><p class="theory-note-para">Із збереження моменту імпульсу безпосередньо випливає ІІ закон Кеплера (закон площ): площа сектора dS = (1)/(2)|[r × dr]|, яку замітає радіус-вектор планети за час dt, росте з постійною секторною швидкістю (dS)/(dt) = (L)/(2m) = const. Траєкторією зв'язаного руху (E &lt; 0) є еліпс r(θ) = (a(1 - e²))/(1 + e cos θ) із великою піввіссю a та ексцентриситетом e ∈ [0, 1), у фокусі якого розташоване Сонце.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Вимірювання і застосування</div>
-            <div class="theory-note-body"><p class="theory-note-para">У перигелії (найближчій до Сонця точці, rₘᵢₙ = a(1 - e)) гравітаційна потенціальна енергія E_p = -(GMm)/(r) є мінімальною, а орбітальна швидкість, максимальною: vₚ = √((GM)/(a)(1+e)/(1-e)). В афелії (rₘₐₓ = a(1 + e)) швидкість спадає до vₐ = √((GM)/(a)(1-e)/(1+e)), так що виконується співвідношення vₚ / vₐ = (1 + e)/(1 - e).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
-            <ul class="theory-params-list"><li><strong>Ексцентриситет орбіти e</strong>: 0 … 0.75, типове значення 0.45</li><li><strong>Велика піввісь орбіти a</strong>: 3 … 5.6 а.о., типове значення 4.4 а.о.</li><li><strong>Маса центральної зорі M</strong>: 0.8 … 2.5 M☉, типове значення 1.5 M☉</li><li><strong>Маса планети m</strong>: 0.5 … 2.5 M⊕, типове значення 1 M⊕</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Фізична модель і застосування</div>
-            <div class="theory-analogy-body">Внаслідок збереження орбітального моменту імпульсу L = mvr sin θ планета або комета досягає максимальної лінійної швидкості в перигелії на мінімальній відстані від центрального світила і сповільнюється в афелії.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>r(θ) = (a(1 - e²))/(1 + e cos θ), (dS)/(dt) = (L)/(2m) = const v² = GM((2)/(r) - (1)/(a)), T² = (4π²)/(GM)a³</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">13.67 с</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Теоретичний конспект">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Конспект</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Згорнути</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Шкільний мінімум · 10-11 клас</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Механізм явища</div>
+            <div class="theory-note-body"><p class="theory-note-para">Рух планет, комет і штучних супутників у центральному полі тяжіння масивного тіла M визначається законом всесвітнього тяжіння Ньютона F = -G(Mm)/(r³)r. Оскільки лінія дії центральної сили завжди проходить через центр Сонця, її момент відносно фокуса дорівнює нулю (M = [r × F] = 0), а отже, орбітальний момент імпульсу планети L = m[r × v] = const строго зберігається.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Рівняння і закони збереження</div>
+            <div class="theory-note-body"><p class="theory-note-para">Із збереження моменту імпульсу безпосередньо випливає ІІ закон Кеплера (закон площ): площа сектора dS = (1)/(2)|[r × dr]|, яку замітає радіус-вектор планети за час dt, росте з постійною секторною швидкістю (dS)/(dt) = (L)/(2m) = const. Траєкторією зв'язаного руху (E &lt; 0) є еліпс r(θ) = (a(1 - e²))/(1 + e cos θ) із великою піввіссю a та ексцентриситетом e ∈ [0, 1), у фокусі якого розташоване Сонце.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Вимірювання і застосування</div>
+            <div class="theory-note-body"><p class="theory-note-para">У перигелії (найближчій до Сонця точці, rₘᵢₙ = a(1 - e)) гравітаційна потенціальна енергія E_p = -(GMm)/(r) є мінімальною, а орбітальна швидкість, максимальною: vₚ = √((GM)/(a)(1+e)/(1-e)). В афелії (rₘₐₓ = a(1 + e)) швидкість спадає до vₐ = √((GM)/(a)(1-e)/(1+e)), так що виконується співвідношення vₚ / vₐ = (1 + e)/(1 - e).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Фізичні параметри установки та одиниці СІ</div>
+            <ul class="theory-params-list"><li><strong>Ексцентриситет орбіти e</strong>: 0 … 0.75, типове значення 0.45</li><li><strong>Велика піввісь орбіти a</strong>: 3 … 5.6 а.о., типове значення 4.4 а.о.</li><li><strong>Маса центральної зорі M</strong>: 0.8 … 2.5 M☉, типове значення 1.5 M☉</li><li><strong>Маса планети m</strong>: 0.5 … 2.5 M⊕, типове значення 1 M⊕</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Фізична модель і застосування</div>
+            <div class="theory-analogy-body">Внаслідок збереження орбітального моменту імпульсу L = mvr sin θ планета або комета досягає максимальної лінійної швидкості в перигелії на мінімальній відстані від центрального світила і сповільнюється в афелії.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>r(θ) = (a(1 - e²))/(1 + e cos θ), (dS)/(dt) = (L)/(2m) = const v² = GM((2)/(r) - (1)/(a)), T² = (4π²)/(GM)a³</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Реклама">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../../assets/app.js?v=20261125b"></script>
+  <script defer src="../../assets/app.js?v=20261125c"></script>
 </body>
 </html>

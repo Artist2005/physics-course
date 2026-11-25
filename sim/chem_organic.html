@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Benzene Structure C₆H₆, Aromaticity &amp; Delocalized π-Bonding</h1>
       <p id="scene-epigraph" class="chapter-epigraph">Six unhybridized 2p_z orbitals on the carbon ring overlap continuously above and below the molecular plane, forming a unified 6π aromatic electron cloud.</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Organic Chemistry</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The vast structural diversity of organic molecules arises from carbon's ability (1s² 2s² 2p²) to adopt three distinct valence hybridization states. In alkanes (ethane C₂H₆), carbon atoms are sp³-hybridized with tetrahedral bond angles of 109.5° and single σ-bonds of length 1.54 Å, permitting internal rotation between staggered and eclipsed conformations.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">In alkenes (ethene / ethylene C₂H₄), carbon atoms are sp²-hybridized in a trigonal planar geometry (120°). The C=C double bond (1.34 Å) comprises one axial σ-bond and one lateral π-bond formed by side-by-side overlap of unhybridized 2p_z orbitals above and below the molecular plane, locking rotation.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">In benzene C₆H₆, six sp² carbon atoms form a flat regular hexagon (120°). Their six unhybridized 2p_z electrons overlap continuously around the ring to form a delocalized aromatic π-system consisting of two toroidal electron clouds above and below the ring plane (satisfying Hückel's 4n+2 = 6 rule). Consequently, all six C-C bonds are identical with an intermediate bond order of 1.5 and length 1.40 Å, conferring 150 kJ/mol of resonance stabilization.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>π-delocalization degree (0=Kekulé triene, 1=benzene)</strong>: 0 … 1, standard value 1</li><li><strong>External magnetic field B₀ (induced π-ring current)</strong>: 0 … 3 T, standard value 1.5 T</li><li><strong>Aromatic ring plane tilt angle</strong>: 0 … 45 °, standard value 18 °</li><li><strong>Ring vibrational amplitude</strong>: 0 … 1 ×, standard value 0.4 ×</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">The spatial geometry and reactivity of hydrocarbons are governed by carbon hybridization: in ethane C₂H₆ (sp³), two tetrahedral methyl groups rotate freely around a single σ-bond; in ethene C₂H₄ (sp²), lateral p_z overlap in the double (σ+π) bond locks the molecule into a plane; and in benzene C₆H₆, six π-electrons delocalize into continuous aromatic clouds above and below the hexagonal ring.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>N_π = 4n + 2 = 6 (n = 1), d(mathrmC-C) = 1.397 AA, ∠CCC = 120° Eᵣₑₛ(C₆H₆) = 3 Δ H_hyd(mathrmC=C) - Δ H_hyd(C₆H₆) ≈ 150 kJ/mol</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -307,6 +271,44 @@
           <span class="meas-num">7.27 ppm</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-11 · Organic Chemistry</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The vast structural diversity of organic molecules arises from carbon's ability (1s² 2s² 2p²) to adopt three distinct valence hybridization states. In alkanes (ethane C₂H₆), carbon atoms are sp³-hybridized with tetrahedral bond angles of 109.5° and single σ-bonds of length 1.54 Å, permitting internal rotation between staggered and eclipsed conformations.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">In alkenes (ethene / ethylene C₂H₄), carbon atoms are sp²-hybridized in a trigonal planar geometry (120°). The C=C double bond (1.34 Å) comprises one axial σ-bond and one lateral π-bond formed by side-by-side overlap of unhybridized 2p_z orbitals above and below the molecular plane, locking rotation.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">In benzene C₆H₆, six sp² carbon atoms form a flat regular hexagon (120°). Their six unhybridized 2p_z electrons overlap continuously around the ring to form a delocalized aromatic π-system consisting of two toroidal electron clouds above and below the ring plane (satisfying Hückel's 4n+2 = 6 rule). Consequently, all six C-C bonds are identical with an intermediate bond order of 1.5 and length 1.40 Å, conferring 150 kJ/mol of resonance stabilization.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>π-delocalization degree (0=Kekulé triene, 1=benzene)</strong>: 0 … 1, standard value 1</li><li><strong>External magnetic field B₀ (induced π-ring current)</strong>: 0 … 3 T, standard value 1.5 T</li><li><strong>Aromatic ring plane tilt angle</strong>: 0 … 45 °, standard value 18 °</li><li><strong>Ring vibrational amplitude</strong>: 0 … 1 ×, standard value 0.4 ×</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">The spatial geometry and reactivity of hydrocarbons are governed by carbon hybridization: in ethane C₂H₆ (sp³), two tetrahedral methyl groups rotate freely around a single σ-bond; in ethene C₂H₄ (sp²), lateral p_z overlap in the double (σ+π) bond locks the molecule into a plane; and in benzene C₆H₆, six π-electrons delocalize into continuous aromatic clouds above and below the hexagonal ring.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>N_π = 4n + 2 = 6 (n = 1), d(mathrmC-C) = 1.397 AA, ∠CCC = 120° Eᵣₑₛ(C₆H₆) = 3 Δ H_hyd(mathrmC=C) - Δ H_hyd(C₆H₆) ≈ 150 kJ/mol</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -476,6 +478,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
   <script>window.__ADSENSE_CLIENT__ = 'ca-pub-7543476344104123';</script>
 
-  <link rel="stylesheet" href="../assets/styles.css?v=20261125b" />
+  <link rel="stylesheet" href="../assets/styles.css?v=20261125c" />
 
   <!-- Підключення Three.js та OrbitControls через CDN -->
   <script type="importmap">
@@ -162,42 +162,6 @@
       </div>
       <h1 id="scene-title" class="chapter-title">Eukaryotic Cell Architecture: Organelle Compartmentalization &amp; S/V Scaling Limit</h1>
       <p id="scene-epigraph" class="chapter-epigraph">"Dividing the eukaryotic cell into membrane-bound compartments permits incompatible biochemical reactions to proceed simultaneously, while the surface-to-volume ratio S/V = 3/R constrains maximum cell size."</p>
-      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
-        <span class="theory-book-left">
-          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
-        </span>
-        <span class="theory-book-right">
-          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
-          <span class="theory-book-chevron" aria-hidden="true">▾</span>
-        </span>
-      </button>
-      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
-        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10 · Cytology: Cell Structure</span></div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Mechanism</div>
-            <div class="theory-note-body"><p class="theory-note-para">The eukaryotic cell is defined by extensive membrane compartmentalization: internal lipid bilayers partition the cytoplasm into specialized organelles with distinct pH, ionic milieus, and enzyme systems. This enables incompatible pathways, such as polypeptide folding in the endoplasmic reticulum (ER) and acid hydrolysis inside lysosomes (pH ≈ 4.5-5.0), to operate simultaneously.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Equations and conservation laws</div>
-            <div class="theory-note-body"><p class="theory-note-para">A fundamental biophysical constraint on cell size arises from geometric scaling: for a sphere of radius R, surface area scales quadratically (S = 4π R²) whereas cytoplasmic volume scales cubically (V = (4)/(3)π R³). Thus, the surface-to-volume ratio decreases as (S)/(V) = (3)/(R), and the passive diffusion time scales as τ_diff ≈ (R²)/(6D).</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Measurements and applications</div>
-            <div class="theory-note-body"><p class="theory-note-para">To overcome diffusion limits at eukaryotic dimensions (R ≈ 10-50 μm), cells amplify internal membrane area (rough and smooth ER, Golgi cisternae, mitochondrial cristae) and employ ATP-driven motor proteins (kinesin and dynein) to haul cargo vesicles along microtubule tracks.</p></div>
-          </div>
-          <div class="theory-note-block">
-            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
-            <ul class="theory-params-list"><li><strong>Eukaryotic cell radius R (S/V = 3/R geometric limit)</strong>: 8 … 30 μm, standard value 15 μm</li><li><strong>Organelle focus (1=All, 2=Nucleus+ER, 3=Golgi+Lysosomes, 4=Mitochondria)</strong>: 1 … 4, standard value 1</li><li><strong>Cellular metabolic &amp; respiratory intensity</strong>: 0.4 … 2.5 rel., standard value 1 rel.</li><li><strong>Kinesin vesicular transport velocity v_ves</strong>: 0.4 … 2.5 μm/s, standard value 1.2 μm/s</li></ul>
-          </div>
-          <div class="theory-analogy-card">
-            <div class="theory-analogy-title">Physical model and application</div>
-            <div class="theory-analogy-body">A eukaryotic cell operates as a compartmentalized biochemical system: the nucleus houses genomic DNA, mitochondria synthesize ATP via oxidative phosphorylation, the endoplasmic reticulum and Golgi apparatus process and sort proteins, and lysosomes mediate intracellular digestion. Because cell volume (V ∝ R³) grows faster than outer membrane area (S ∝ R²) as radius R increases, extensive internal membrane networks are essential to sustain metabolic transport.</div>
-          </div>
-          <div class="theory-note-formula">
-            <code>S = 4π R², V = (4)/(3)π R³, (S)/(V) = (3)/(R), τ_diff ≈ (R²)/(6D)</code>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Керування дослідом (завжди на видноті зверху для миттєвого запуску) -->
@@ -315,6 +279,44 @@
           <span class="meas-num">All cell organelles</span>
         </div></div>
     </div>
+    <section id="theory-book-section" class="theory-book-section" aria-label="Theory notes">
+      <button type="button" id="btn-theory-book" class="btn-theory-book open" aria-expanded="true">
+        <span class="theory-book-left">
+          <span id="ui-theory-btn-label" class="theory-book-label">Theory notes</span>
+        </span>
+        <span class="theory-book-right">
+          <span id="ui-theory-btn-hint" class="theory-book-hint">Close</span>
+          <span class="theory-book-chevron" aria-hidden="true">▾</span>
+        </span>
+      </button>
+      <div id="theory-drawer-box" class="theory-drawer-box open" aria-hidden="false">
+        <div id="theory-drawer-content" class="theory-drawer-content"><div class="theory-meta-bar"><span class="theory-grade-pill tier-core">Core Curriculum · Grade 9-10 · Cytology: Cell Structure</span></div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Mechanism</div>
+            <div class="theory-note-body"><p class="theory-note-para">The eukaryotic cell is defined by extensive membrane compartmentalization: internal lipid bilayers partition the cytoplasm into specialized organelles with distinct pH, ionic milieus, and enzyme systems. This enables incompatible pathways, such as polypeptide folding in the endoplasmic reticulum (ER) and acid hydrolysis inside lysosomes (pH ≈ 4.5-5.0), to operate simultaneously.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Equations and conservation laws</div>
+            <div class="theory-note-body"><p class="theory-note-para">A fundamental biophysical constraint on cell size arises from geometric scaling: for a sphere of radius R, surface area scales quadratically (S = 4π R²) whereas cytoplasmic volume scales cubically (V = (4)/(3)π R³). Thus, the surface-to-volume ratio decreases as (S)/(V) = (3)/(R), and the passive diffusion time scales as τ_diff ≈ (R²)/(6D).</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Measurements and applications</div>
+            <div class="theory-note-body"><p class="theory-note-para">To overcome diffusion limits at eukaryotic dimensions (R ≈ 10-50 μm), cells amplify internal membrane area (rough and smooth ER, Golgi cisternae, mitochondrial cristae) and employ ATP-driven motor proteins (kinesin and dynein) to haul cargo vesicles along microtubule tracks.</p></div>
+          </div>
+          <div class="theory-note-block">
+            <div class="theory-note-subtitle">Experimental parameters and SI units</div>
+            <ul class="theory-params-list"><li><strong>Eukaryotic cell radius R (S/V = 3/R geometric limit)</strong>: 8 … 30 μm, standard value 15 μm</li><li><strong>Organelle focus (1=All, 2=Nucleus+ER, 3=Golgi+Lysosomes, 4=Mitochondria)</strong>: 1 … 4, standard value 1</li><li><strong>Cellular metabolic &amp; respiratory intensity</strong>: 0.4 … 2.5 rel., standard value 1 rel.</li><li><strong>Kinesin vesicular transport velocity v_ves</strong>: 0.4 … 2.5 μm/s, standard value 1.2 μm/s</li></ul>
+          </div>
+          <div class="theory-analogy-card">
+            <div class="theory-analogy-title">Physical model and application</div>
+            <div class="theory-analogy-body">A eukaryotic cell operates as a compartmentalized biochemical system: the nucleus houses genomic DNA, mitochondria synthesize ATP via oxidative phosphorylation, the endoplasmic reticulum and Golgi apparatus process and sort proteins, and lysosomes mediate intracellular digestion. Because cell volume (V ∝ R³) grows faster than outer membrane area (S ∝ R²) as radius R increases, extensive internal membrane networks are essential to sustain metabolic transport.</div>
+          </div>
+          <div class="theory-note-formula">
+            <code>S = 4π R², V = (4)/(3)π R³, (S)/(V) = (3)/(R), τ_diff ≈ (R²)/(6D)</code>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Спонсорський блок унизу лівої панелі (поза робочою зоною симуляції) -->
     <div id="ad-slot-left" class="ad-sidebar-card" role="complementary" aria-label="Advertisement">
       <div class="ad-card-meta">
@@ -484,6 +486,6 @@
   </aside>
 
   <!-- Основний модуль Three.js, KaTeX-рендерингу та 16 фізичних симуляцій -->
-  <script defer src="../assets/app.js?v=20261125b"></script>
+  <script defer src="../assets/app.js?v=20261125c"></script>
 </body>
 </html>

@@ -762,6 +762,113 @@
       .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent-crimson);
+      z-index: 120;
+      transition: width 0.08s linear;
+    }
+    .toc-box {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .toc-box-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc-links li { margin: 0; font-size: 13.5px; }
+    .toc-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .toc-links a:hover { color: var(--accent-crimson); }
+    .mastery-pill {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+    }
+    .mastery-pill.done {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+    }
+    .self-study-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0 14px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 13.5px;
+    }
+    .sol-hidden {
+      display: none !important;
+    }
+    .si-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0 22px;
+    }
+    .si-tool-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .si-tool-card h3 { margin-top: 0; }
+    .si-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+    }
+    .si-field input, .si-field select {
+      padding: 7px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+
 </style>
 </head>
 <body>
@@ -1017,6 +1124,20 @@
 
         Array.prototype.forEach.call(document.querySelectorAll('.calc-widget input'), function(inp) {
           inp.addEventListener('input', recalcAll);
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('.calc-widget .formula-block'), function(fb) {
+          var cd = fb.querySelector('code');
+          if (!cd) return;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'copy-formula-btn';
+          b.textContent = 'Скопіювати';
+          b.addEventListener('click', function() {
+            try { navigator.clipboard.writeText(cd.textContent); } catch (e) {}
+            b.textContent = 'Скопійовано';
+            setTimeout(function(){ b.textContent = 'Скопіювати'; }, 1400);
+          });
+          fb.appendChild(b);
         });
         recalcAll();
       })();

@@ -762,6 +762,113 @@
       .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent-crimson);
+      z-index: 120;
+      transition: width 0.08s linear;
+    }
+    .toc-box {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .toc-box-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc-links li { margin: 0; font-size: 13.5px; }
+    .toc-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .toc-links a:hover { color: var(--accent-crimson); }
+    .mastery-pill {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+    }
+    .mastery-pill.done {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+    }
+    .self-study-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0 14px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 13.5px;
+    }
+    .sol-hidden {
+      display: none !important;
+    }
+    .si-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0 22px;
+    }
+    .si-tool-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .si-tool-card h3 { margin-top: 0; }
+    .si-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+    }
+    .si-field input, .si-field select {
+      padding: 7px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+
 </style>
 </head>
 <body>
@@ -797,7 +904,14 @@
         <button type="button" class="hub-pill" data-nmt-subj="phys">Фізика · 5</button>
         <button type="button" class="hub-pill" data-nmt-subj="chem">Хімія · 5</button>
         <button type="button" class="hub-pill" data-nmt-subj="bio">Біологія · 5</button>
-        <span id="nmt-score-badge" class="score-pill">Результат: 0 / 0</span>
+        <span id="nmt-score-badge" class="score-pill">Результат: 0 / 15</span>
+      </div>
+
+      <div class="hub-filter-row" role="group" aria-label="Керування тренажером і таймером">
+        <button type="button" class="hub-pill" id="nmt-timer-btn">Старт таймера 20:00</button>
+        <span id="nmt-timer-readout" class="mastery-pill" aria-live="off">Таймер: 20:00</span>
+        <button type="button" class="hub-pill" id="nmt-shuffle-btn">Перемішати порядок</button>
+        <button type="button" class="hub-pill" id="nmt-reset-btn">Скинути відповіді</button>
       </div>
 
       <div id="nmt-quiz-list" class="quiz-cards-stack"></div>
@@ -891,30 +1005,75 @@
 
         var listEl = document.getElementById('nmt-quiz-list');
         var scoreEl = document.getElementById('nmt-score-badge');
-        var answered = {};
+        var timerBtn = document.getElementById('nmt-timer-btn');
+        var timerOut = document.getElementById('nmt-timer-readout');
+        var shuffleBtn = document.getElementById('nmt-shuffle-btn');
+        var resetBtn = document.getElementById('nmt-reset-btn');
+        var order = QUESTIONS.map(function(_, i){ return i; });
+        var chosen = {};
+        try { chosen = JSON.parse(localStorage.getItem('sheua_nmt_chosen') || '{}') || {}; } catch (e) {}
         var activeSubj = 'all';
 
+        var secLeft = 1200, timerId = null;
+        function fmtTime(s) {
+          var m = Math.floor(s / 60), r = s % 60;
+          return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r;
+        }
+        if (timerBtn && timerOut) {
+          timerBtn.addEventListener('click', function() {
+            if (timerId) {
+              clearInterval(timerId);
+              timerId = null;
+              timerBtn.textContent = 'Продовжити таймер';
+            } else {
+              if (secLeft <= 0) secLeft = 1200;
+              timerBtn.textContent = 'Пауза таймера';
+              timerId = setInterval(function() {
+                secLeft = Math.max(0, secLeft - 1);
+                timerOut.textContent = 'Таймер: ' + fmtTime(secLeft);
+                if (secLeft === 0) {
+                  clearInterval(timerId);
+                  timerId = null;
+                  timerBtn.textContent = 'Час вичерпано · Почати знову';
+                }
+              }, 1000);
+            }
+          });
+        }
+
         function updateScore() {
-          var keys = Object.keys(answered);
-          var ok = keys.filter(function(k){ return answered[k]; }).length;
-          if (scoreEl) scoreEl.textContent = 'Результат: ' + ok + ' / ' + keys.length;
+          var keys = Object.keys(chosen);
+          var ok = keys.filter(function(k){ return QUESTIONS[k] && chosen[k] === QUESTIONS[k].ans; }).length;
+          if (scoreEl) scoreEl.textContent = 'Результат: ' + ok + ' / ' + QUESTIONS.length + ' (відповідей: ' + keys.length + ')';
         }
 
         function render() {
           if (!listEl) return;
           listEl.innerHTML = '';
-          QUESTIONS.forEach(function(item, idx) {
+          order.forEach(function(idx, visPos) {
+            var item = QUESTIONS[idx];
             if (activeSubj !== 'all' && item.subj !== activeSubj) return;
             var card = document.createElement('div');
             card.className = 'worked-problem';
-            var h = '<div class="card-kicker">' + item.label + ' · Завдання № ' + (idx + 1) + '</div>';
+            var h = '<div class="card-kicker">' + item.label + ' · Завдання № ' + (visPos + 1) + '</div>';
             h += '<h3>' + item.q + '</h3>';
             h += '<div class="nmt-opts-grid">';
             item.opts.forEach(function(opt, oi) {
-              h += '<button type="button" class="nmt-opt-btn" data-qi="' + idx + '" data-oi="' + oi + '">' + opt + '</button>';
+              var cls = 'nmt-opt-btn';
+              if (idx in chosen) {
+                if (oi === item.ans) cls += ' correct';
+                else if (oi === chosen[idx]) cls += ' wrong';
+              }
+              h += '<button type="button" class="' + cls + '" data-qi="' + idx + '" data-oi="' + oi + '">' + opt + '</button>';
             });
             h += '</div>';
-            h += '<div class="nmt-feedback" id="nmt-fb-' + idx + '" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-dark);font-size:14px;"></div>';
+            var showFb = (idx in chosen);
+            var isRight = showFb && (chosen[idx] === item.ans);
+            h += '<div class="nmt-feedback" id="nmt-fb-' + idx + '" style="display:' + (showFb ? 'block' : 'none') + ';margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-dark);font-size:14px;">';
+            if (showFb) {
+              h += '<strong>' + (isRight ? 'Правильно.' : 'Зверніть увагу на розрахунок.') + '</strong> ' + item.exp + ' <a href="' + item.url + '" style="font-weight:600;margin-left:6px;">' + item.linkText + ' →</a>';
+            }
+            h += '</div>';
             card.innerHTML = h;
             listEl.appendChild(card);
           });
@@ -923,25 +1082,13 @@
             btn.addEventListener('click', function() {
               var qi = parseInt(btn.getAttribute('data-qi'), 10);
               var oi = parseInt(btn.getAttribute('data-oi'), 10);
-              var item = QUESTIONS[qi];
-              var isRight = (oi === item.ans);
-              if (!(qi in answered)) {
-                answered[qi] = isRight;
-                updateScore();
-              }
-              var siblings = btn.parentNode.querySelectorAll('.nmt-opt-btn');
-              Array.prototype.forEach.call(siblings, function(sb, si) {
-                sb.classList.remove('correct', 'wrong');
-                if (si === item.ans) sb.classList.add('correct');
-                else if (si === oi) sb.classList.add('wrong');
-              });
-              var fb = document.getElementById('nmt-fb-' + qi);
-              if (fb) {
-                fb.style.display = 'block';
-                fb.innerHTML = '<strong>' + (isRight ? 'Правильно.' : 'Зверніть увагу на розрахунок.') + '</strong> ' + item.exp + ' <a href="' + item.url + '" style="font-weight:600;margin-left:6px;">' + item.linkText + ' →</a>';
-              }
+              chosen[qi] = oi;
+              try { localStorage.setItem('sheua_nmt_chosen', JSON.stringify(chosen)); } catch (e) {}
+              updateScore();
+              render();
             });
           });
+          updateScore();
         }
 
         Array.prototype.forEach.call(document.querySelectorAll('[data-nmt-subj]'), function(pill) {
@@ -951,6 +1098,41 @@
             pill.classList.add('active');
             render();
           });
+        });
+
+        if (shuffleBtn) {
+          shuffleBtn.addEventListener('click', function() {
+            for (var i = order.length - 1; i > 0; i--) {
+              var j = Math.floor(Math.random() * (i + 1));
+              var t = order[i]; order[i] = order[j]; order[j] = t;
+            }
+            render();
+          });
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function() {
+            chosen = {};
+            try { localStorage.removeItem('sheua_nmt_chosen'); } catch (e) {}
+            secLeft = 1200;
+            if (timerOut) timerOut.textContent = 'Таймер: 20:00';
+            render();
+          });
+        }
+
+        Array.prototype.forEach.call(document.querySelectorAll('.ref-table tbody tr'), function(row) {
+          var code = row.cells[1] && row.cells[1].querySelector('code');
+          if (!code) return;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'copy-formula-btn';
+          b.textContent = 'Копіювати';
+          b.addEventListener('click', function() {
+            try { navigator.clipboard.writeText(code.textContent.replace(/\s+/g, ' ').trim()); } catch (e) {}
+            b.textContent = 'Скопійовано';
+            setTimeout(function(){ b.textContent = 'Копіювати'; }, 1400);
+          });
+          row.cells[1].appendChild(b);
         });
 
         render();

@@ -759,9 +759,117 @@
       .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent-crimson);
+      z-index: 120;
+      transition: width 0.08s linear;
+    }
+    .toc-box {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .toc-box-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc-links li { margin: 0; font-size: 13.5px; }
+    .toc-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .toc-links a:hover { color: var(--accent-crimson); }
+    .mastery-pill {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+    }
+    .mastery-pill.done {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+    }
+    .self-study-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0 14px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 13.5px;
+    }
+    .sol-hidden {
+      display: none !important;
+    }
+    .si-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0 22px;
+    }
+    .si-tool-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .si-tool-card h3 { margin-top: 0; }
+    .si-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+    }
+    .si-field input, .si-field select {
+      padding: 7px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+
 </style>
 </head>
 <body>
+  <div id="reading-progress-bar" class="reading-progress" aria-hidden="true"></div>
   
   <a class="skip-link" href="#main-content">Перейти до основного змісту</a>
   <header class="site-header">
@@ -785,6 +893,36 @@
     </section>
 
     <article class="article-sheet">
+      <nav class="toc-box" aria-label="Зміст розділу">
+        <div class="toc-box-header">
+          <span>ЗМІСТ РОЗДІЛУ</span>
+          <span id="ch-mastery-badge" class="mastery-pill">Прогрес курсу: 0 / 8 розділів</span>
+        </div>
+        <ul id="chapter-toc-list" class="toc-links"></ul>
+      </nav>
+
+      
+      <section class="sandbox-box" id="chapter-workbench" style="margin:22px 0;" aria-label="Інтерактивний стенд розділу">
+        <div class="sandbox-header">
+          <div>
+            <span class="card-kicker">ІНТЕРАКТИВНИЙ СТЕНД РОЗДІЛУ · ЖИВИЙ РОЗРАХУНОК</span>
+            <h2 style="margin:2px 0 4px;padding:0;border:none;font-size:18.5px;">Інтерактивний стенд розділу: закон заломлення Снеліуса та повне внутрішнє відбивання</h2>
+            <p style="margin:0;font-size:13.8px;">Змінюйте кут падіння променя α і показники заломлення середовищ n₁ та n₂, спостерігаючи перехід через граничний кут α_гр.</p>
+          </div>
+        </div>
+        <div class="sandbox-canvas-wrap">
+          <canvas id="ch-wb-canvas" width="880" height="250" aria-label="Інтерактивний стенд розділу: закон заломлення Снеліуса та повне внутрішнє відбивання"></canvas>
+        </div>
+        <div id="ch-wb-sliders" class="sandbox-controls"></div>
+        <div class="sandbox-telemetry">
+          <div id="ch-wb-metrics" class="telemetry-metrics" aria-live="polite"></div>
+          <div class="sandbox-actions">
+            <button type="button" id="ch-wb-replay" class="hub-pill">Оновити дослід</button>
+            <a class="btn-primary-link" href="https://physics.sheua.com/uk/sim/wavefront">Відкрити 3D-заломлення Гюйгенса-Снеліуса →</a>
+          </div>
+        </div>
+      </section>
+
       
       <h2>1. Заломлення, інтерференція, дифракція та поляризація світлових хвиль</h2>
       <p>Світло є поперечною електромагнітною хвилею, у якій вектори напруженості електричного поля <code>E</code> та магнітної індукції <code>B</code> коливаються у взаємно перпендикулярних площинах і ортогональні до хвильового вектора <code>k</code>. При переході монохроматичної хвилі з вакууму в прозорий діелектрик з абсолютним показником заломлення <code>n = √(εμ)</code> частота коливань <code>ν</code> залишається незмінною, а фазова швидкість <code>v = c / n</code> і довжина хвилі <code>λ = λ₀ / n</code> зменшуються в <code>n</code> разів, що геометрично зумовлює закон заломлення Снеліуса <code>n₁ sin α = n₂ sin γ</code>.</p>
@@ -855,6 +993,17 @@
       </div>
     
 
+      
+      <section id="chapter-checkpoint" aria-label="Контрольна самоперевірка розділу">
+        <h2>Контрольна самоперевірка за матеріалом розділу</h2>
+        <p>Дайте відповідь на три перевірочні запитання, щоб закріпити основні формули розділу та відмітити його як опрацьований:</p>
+        <div class="hub-filter-row">
+          <div class="score-pill" id="ch-quiz-score" style="margin-left:0;" aria-live="polite">Результат розділу: 0 / 3</div>
+          <button type="button" id="ch-quiz-reset" class="hub-pill">Скинути відповіді</button>
+        </div>
+        <div id="ch-quiz-cards"></div>
+      </section>
+
       <section class="lab-links-box" aria-label="Пов'язані тривимірні лабораторні роботи">
         <h2>Перевірка рівнянь у тривимірній віртуальній лабораторії</h2>
         <p>Кожну розглянуту вище залежність можна дослідити в інтерактивній 3D-установці зі змінними параметрами, векторами сил і друкованим протоколом вимірювань:</p>
@@ -917,6 +1066,735 @@
         var b = document.getElementById('cookie-consent-banner');
         if (c && b) b.classList.add('hidden');
       } catch (e) {}
+    })();
+  </script>
+  <script>
+    (function(){
+      var SLUG = "optics-electromagnetism.html";
+      var WB = {"mode":"optics","title":"Інтерактивний стенд розділу: закон заломлення Снеліуса та повне внутрішнє відбивання","desc":"Змінюйте кут падіння променя α і показники заломлення середовищ n₁ та n₂, спостерігаючи перехід через граничний кут α_гр.","simUrl":"https://physics.sheua.com/uk/sim/wavefront","simLabel":"Відкрити 3D-заломлення Гюйгенса-Снеліуса →","sliders":[{"key":"alpha","label":"Кут падіння α","unit":"°","min":0,"max":85,"step":1,"val":40},{"key":"n1","label":"Показник n₁ (верхнє)","unit":"","min":1,"max":2,"step":0.05,"val":1.5},{"key":"n2","label":"Показник n₂ (нижнє)","unit":"","min":1,"max":2,"step":0.05,"val":1}]};
+      var QUIZ = [{"q":"Промінь переходить зі скла з показником заломлення n₁ = 1.50 у повітря n₂ = 1.00. При якому мінімальному синусі кута падіння настає повне внутрішнє відбивання?","opts":["sin α = 0.50","sin α = 0.67","sin α = 0.75","sin α = 0.87"],"ans":1,"exp":"Граничний кут повного внутрішнього відбивання визначається умовою sin α_гр = n₂ / n₁ = 1.00 / 1.50 ≈ 0.67 (кут близько 41.8°)."},{"q":"У коливальному контурі індуктивність котушки L збільшили у 4 рази, а ємність конденсатора C зменшили у 4 рази. Як змінився період вільних коливань T?","opts":["Не змінився","Збільшився у 2 рази","Збільшився у 4 рази","Зменшився у 2 рази"],"ans":0,"exp":"За формулою Томсона T = 2π√(LC) добуток L·C залишився незмінним, тому період власних коливань не змінився."},{"q":"Червона межа фотоефекту для металу відповідає роботі виходу A_вих = 2.2 еВ. Фотони з енергією 3.7 еВ виривають електрони з максимальною кінетичною енергією:","opts":["0.75 еВ","1.5 еВ","2.2 еВ","5.9 еВ"],"ans":1,"exp":"За рівнянням Ейнштейна для фотоефекту E_k,max = hν − A_вих = 3.7 − 2.2 = 1.5 еВ."}];
+
+      /* 1. READING PROGRESS BAR + AUTO TABLE OF CONTENTS */
+      var progBar = document.getElementById('reading-progress-bar');
+      if (progBar) {
+        window.addEventListener('scroll', function() {
+          var docH = document.documentElement.scrollHeight - window.innerHeight;
+          var pct = docH > 0 ? Math.min(100, Math.max(0, (window.scrollY / docH) * 100)) : 0;
+          progBar.style.width = pct.toFixed(1) + '%';
+        }, { passive: true });
+      }
+
+      var tocList = document.getElementById('chapter-toc-list');
+      var article = document.querySelector('article.article-sheet');
+      if (tocList && article) {
+        var headings = article.querySelectorAll('h2');
+        var count = 0;
+        Array.prototype.forEach.call(headings, function(h, idx) {
+          if (h.closest('#chapter-workbench')) return;
+          var id = h.id || ('sec-' + (idx + 1));
+          h.id = id;
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = '#' + id;
+          a.textContent = h.textContent;
+          li.appendChild(a);
+          tocList.appendChild(li);
+          count++;
+        });
+        if (!count && tocList.parentNode) tocList.parentNode.style.display = 'none';
+      }
+
+      /* 2. ONE-CLICK FORMULA COPY ON FORMULA BLOCKS & CODATA TABLE */
+      Array.prototype.forEach.call(document.querySelectorAll('.formula-block'), function(fb) {
+        var code = fb.querySelector('code');
+        if (!code || code.id) return;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-formula-btn';
+        btn.textContent = 'Копіювати';
+        btn.addEventListener('click', function() {
+          var txt = code.textContent.replace(/\s+/g, ' ').trim();
+          try { navigator.clipboard.writeText(txt); } catch (e) {}
+          btn.textContent = 'Скопійовано';
+          setTimeout(function(){ btn.textContent = 'Копіювати'; }, 1400);
+        });
+        fb.appendChild(btn);
+      });
+
+      if (SLUG === 'si-constants-handbook.html') {
+        var firstTable = article && article.querySelector('.ref-table tbody');
+        if (firstTable) {
+          Array.prototype.forEach.call(firstTable.rows, function(row) {
+            var valCell = row.cells[2];
+            var code = valCell && valCell.querySelector('code');
+            if (!code) return;
+            var rawVal = code.textContent.trim();
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'copy-formula-btn';
+            b.textContent = 'Копіювати';
+            b.addEventListener('click', function() {
+              try { navigator.clipboard.writeText(rawVal); } catch (e) {}
+              b.textContent = 'Скопійовано';
+              setTimeout(function(){ b.textContent = 'Копіювати'; }, 1400);
+            });
+            valCell.appendChild(b);
+          });
+        }
+      }
+
+      /* 3. WORKED PROBLEMS SELF-STUDY TOGGLE */
+      var wpList = article ? article.querySelectorAll(':scope > .worked-problem') : [];
+      if (wpList.length > 0) {
+        var firstWp = wpList[0];
+        var bar = document.createElement('div');
+        bar.className = 'self-study-bar';
+        var labelSpan = document.createElement('span');
+        labelSpan.textContent = 'Хочете спершу розв\'язати задачі самостійно без підглядання у відповідь?';
+        var toggleBtn = document.createElement('button');
+        toggleBtn.type = 'button';
+        toggleBtn.className = 'hub-pill';
+        toggleBtn.textContent = 'Приховати розв\'язання для самоперевірки';
+        var hiddenMode = false;
+
+        toggleBtn.addEventListener('click', function() {
+          hiddenMode = !hiddenMode;
+          toggleBtn.textContent = hiddenMode ? 'Показати всі розв\'язання' : 'Приховати розв\'язання для самоперевірки';
+          Array.prototype.forEach.call(wpList, function(wp) {
+            var ps = wp.querySelectorAll('p');
+            for (var i = 1; i < ps.length; i++) {
+              ps[i].classList.toggle('sol-hidden', hiddenMode);
+            }
+          });
+        });
+        bar.appendChild(labelSpan);
+        bar.appendChild(toggleBtn);
+        firstWp.parentNode.insertBefore(bar, firstWp);
+      }
+
+      /* 4. SI HANDBOOK METROLOGY & UNIT CALCULATORS */
+      var errIn = document.getElementById('err-series-input');
+      var errInst = document.getElementById('err-inst-input');
+      var errConf = document.getElementById('err-conf-select');
+      var errOut = document.getElementById('err-calc-output');
+
+      function calcErrorStats() {
+        if (!errIn || !errOut) return;
+        var nums = errIn.value.split(/[,;\s]+/).map(function(s){ return parseFloat(s.replace(',', '.')); }).filter(function(v){ return !isNaN(v); });
+        var dInst = Math.max(0, parseFloat(errInst.value) || 0);
+        if (nums.length < 2) {
+          errOut.textContent = 'Введіть щонайменше 2 виміри через кому для статистичної оцінки.';
+          return;
+        }
+        var n = nums.length;
+        var mean = nums.reduce(function(a, b){ return a + b; }, 0) / n;
+        var sumSq = nums.reduce(function(a, b){ return a + (b - mean) * (b - mean); }, 0);
+        var sMean = Math.sqrt(sumSq / (n * (n - 1)));
+        var t95 = { 2: 12.71, 3: 4.30, 4: 3.18, 5: 2.78, 6: 2.57, 7: 2.45, 8: 2.36, 9: 2.31, 10: 2.26 };
+        var t99 = { 2: 63.66, 3: 9.92, 4: 5.84, 5: 4.60, 6: 4.03, 7: 3.71, 8: 3.50, 9: 3.36, 10: 3.25 };
+        var tbl = errConf.value === '99' ? t99 : t95;
+        var tVal = tbl[n] || (errConf.value === '99' ? 2.58 : 1.96);
+        var dRand = tVal * sMean;
+        var dTot = Math.sqrt(dRand * dRand + dInst * dInst);
+        var rel = Math.abs(mean) > 1e-12 ? (dTot / Math.abs(mean)) * 100 : 0;
+        errOut.textContent = 'n = ' + n + ', ⟨x⟩ = ' + mean.toFixed(4) + ', s_⟨x⟩ = ' + sMean.toFixed(4) + ', t = ' + tVal + '  ⇒  x = ' + mean.toFixed(3) + ' ± ' + dTot.toFixed(3) + ' (ε = ' + rel.toFixed(2) + '%)';
+      }
+      if (errIn) {
+        [errIn, errInst, errConf].forEach(function(el){ el.addEventListener('input', calcErrorStats); el.addEventListener('change', calcErrorStats); });
+        calcErrorStats();
+      }
+
+      var uVal = document.getElementById('unit-val-input');
+      var uType = document.getElementById('unit-type-select');
+      var uOut = document.getElementById('unit-conv-output');
+      function calcUnitConv() {
+        if (!uVal || !uOut) return;
+        var x = parseFloat(uVal.value) || 0;
+        var tp = uType.value;
+        var res = 0, unit = '', eq = '';
+        if (tp === 'kmh') { res = x / 3.6; unit = 'м/с'; eq = x + ' / 3.6'; }
+        else if (tp === 'mmhg') { res = x * 133.322368; unit = 'Па'; eq = x + ' × 133.322'; }
+        else if (tp === 'atm') { res = x * 101325; unit = 'Па'; eq = x + ' × 101 325'; }
+        else if (tp === 'bar') { res = x * 100000; unit = 'Па'; eq = x + ' × 10⁵'; }
+        else if (tp === 'kcal') { res = x * 4184; unit = 'Дж'; eq = x + ' × 4184'; }
+        else if (tp === 'kwh') { res = x * 3.6e6; unit = 'Дж'; eq = x + ' × 3.6×10⁶'; }
+        else if (tp === 'ev') { res = x * 1.602176634e-19; unit = 'Дж'; eq = x + ' × 1.602×10⁻¹⁹'; }
+        else if (tp === 'cel') { res = x + 273.15; unit = 'К'; eq = x + ' + 273.15'; }
+        else if (tp === 'lit') { res = x * 1e-3; unit = 'м³'; eq = x + ' × 10⁻³'; }
+        else if (tp === 'ml') { res = x * 1e-6; unit = 'м³'; eq = x + ' × 10⁻⁶'; }
+        else if (tp === 'cm2') { res = x * 1e-4; unit = 'м²'; eq = x + ' × 10⁻⁴'; }
+        else if (tp === 'gcm3') { res = x * 1000; unit = 'кг/м³'; eq = x + ' × 1000'; }
+        var fmt = (Math.abs(res) >= 0.01 && Math.abs(res) < 1e6) ? Number(res.toPrecision(6)).toString() : res.toExponential(4);
+        uOut.textContent = eq + ' = ' + fmt + ' ' + unit;
+      }
+      if (uVal) {
+        uVal.addEventListener('input', calcUnitConv);
+        uType.addEventListener('change', calcUnitConv);
+        calcUnitConv();
+      }
+
+      /* 5. INTERACTIVE CHAPTER CANVAS WORKBENCH (CHAPTERS I-VII) */
+      var canvas = document.getElementById('ch-wb-canvas');
+      var slWrap = document.getElementById('ch-wb-sliders');
+      var mtWrap = document.getElementById('ch-wb-metrics');
+      var repBtn = document.getElementById('ch-wb-replay');
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (canvas && WB) {
+        var params = {};
+        WB.sliders.forEach(function(s) {
+          params[s.key] = s.val;
+          var lbl = document.createElement('label');
+          lbl.className = 'sandbox-slider-lbl';
+          var top = document.createElement('span');
+          top.className = 'sandbox-slider-top';
+          var nm = document.createElement('span');
+          nm.textContent = s.label;
+          var cd = document.createElement('code');
+          cd.textContent = s.val + (s.unit ? ' ' + s.unit : '');
+          top.appendChild(nm);
+          top.appendChild(cd);
+          var inp = document.createElement('input');
+          inp.type = 'range';
+          inp.min = String(s.min);
+          inp.max = String(s.max);
+          inp.step = String(s.step);
+          inp.value = String(s.val);
+          inp.setAttribute('aria-label', s.label);
+          inp.addEventListener('input', function() {
+            params[s.key] = parseFloat(inp.value);
+            cd.textContent = params[s.key] + (s.unit ? ' ' + s.unit : '');
+            animT = reduceMotion ? 1.6 : 0;
+            syncMetrics();
+            drawWb();
+          });
+          lbl.appendChild(top);
+          lbl.appendChild(inp);
+          slWrap.appendChild(lbl);
+        });
+
+        var animT = reduceMotion ? 1.6 : 0;
+        var lastTs = 0;
+
+        function setMetrics(arr) {
+          mtWrap.innerHTML = '';
+          arr.forEach(function(t) {
+            var s = document.createElement('span');
+            s.textContent = t;
+            mtWrap.appendChild(s);
+          });
+        }
+
+        function calcTitrationPh(vMl, Ca, pKa) {
+          var Va = 25.0, Cb = 0.10;
+          var na = Va * Ca, nb = vMl * Cb, Vtot = Va + vMl;
+          if (pKa <= 1.55) {
+            if (nb < na - 1e-6) return -Math.log10((na - nb) / Vtot);
+            if (nb > na + 1e-6) return 14 + Math.log10((nb - na) / Vtot);
+            return 7.0;
+          }
+          if (nb <= 0.01) return 0.5 * (pKa - Math.log10(Ca));
+          if (nb < na - 0.02) return pKa + Math.log10(nb / (na - nb));
+          if (Math.abs(nb - na) <= 0.02) {
+            var Cs = na / Vtot;
+            var pKb = 14 - pKa;
+            var pOH = 0.5 * (pKb - Math.log10(Cs));
+            return 14 - pOH;
+          }
+          return 14 + Math.log10((nb - na) / Vtot);
+        }
+
+        function syncMetrics() {
+          var m = WB.mode;
+          if (m === 'mech') {
+            var sA = Math.sin(params.alpha * Math.PI / 180);
+            var tSphere = Math.sqrt(2 * params.L * 1.4 / (9.81 * sA));
+            var tCyl = Math.sqrt(2 * params.L * 1.5 / (9.81 * sA));
+            var tHoop = Math.sqrt(2 * params.L * 2.0 / (9.81 * sA));
+            setMetrics([
+              't(куля) = ' + tSphere.toFixed(2) + ' с',
+              't(циліндр) = ' + tCyl.toFixed(2) + ' с',
+              't(обруч) = ' + tHoop.toFixed(2) + ' с'
+            ]);
+          } else if (m === 'thermo') {
+            var eta = (1 - params.T2 / params.T1);
+            var Q1 = 8.31446 * params.T1 * Math.log(params.rv);
+            var A = eta * Q1;
+            setMetrics([
+              'ККД η = ' + (eta * 100).toFixed(1) + '%',
+              'Q₁ = ' + (Q1 / 1000).toFixed(2) + ' кДж/моль',
+              'Робота A = ' + (A / 1000).toFixed(2) + ' кДж/моль'
+            ]);
+          } else if (m === 'optics') {
+            var rad = params.alpha * Math.PI / 180;
+            var sinG = (params.n1 / params.n2) * Math.sin(rad);
+            var crit = params.n1 > params.n2 ? (Math.asin(params.n2 / params.n1) * 180 / Math.PI).toFixed(1) + '°' : 'відсутній';
+            if (sinG > 1) {
+              setMetrics(['Повне внутрішнє відбивання', 'Кут відбивання = ' + params.alpha + '°', 'α_гр = ' + crit]);
+            } else {
+              var gDeg = (Math.asin(sinG) * 180 / Math.PI).toFixed(1);
+              setMetrics(['Кут заломлення γ = ' + gDeg + '°', 'n₁ sin α = ' + (params.n1 * Math.sin(rad)).toFixed(3), 'α_гр = ' + crit]);
+            }
+          } else if (m === 'qchem') {
+            var X = params.X, E = params.E;
+            if (X + E > 6) { E = 6 - X; params.E = E; }
+            var SN = X + E;
+            var hybMap = { 2: 'sp', 3: 'sp²', 4: 'sp³', 5: 'sp³d', 6: 'sp³d²' };
+            var key = 'AX' + X + (E ? 'E' + (E > 1 ? E : '') : '');
+            var geomMap = {
+              'AX2': ['Лінійна · 180°', 'CO₂, BeCl₂'],
+              'AX2E': ['Кутова · ≈117°', 'SO₂, O₃'],
+              'AX2E2': ['Кутова · 104.5°', 'H₂O, H₂S'],
+              'AX3': ['Тригональна плоска · 120°', 'BF₃, SO₃'],
+              'AX3E': ['Тригонально-пірамідальна · 107°', 'NH₃, PCl₃'],
+              'AX3E2': ['Т-подібна · ≈88°', 'ClF₃'],
+              'AX4': ['Тетраедрична · 109.5°', 'CH₄, SiCl₄'],
+              'AX4E': ['Дисфеноїдна · <120°/90°', 'SF₄'],
+              'AX4E2': ['Квадратна плоска · 90°', 'XeF₄'],
+              'AX5': ['Тригонально-біпірамідальна · 120°/90°', 'PCl₅'],
+              'AX5E': ['Квадратно-пірамідальна · <90°', 'BrF₅'],
+              'AX6': ['Октаедрична · 90°', 'SF₆']
+            };
+            var info = geomMap[key] || ['Стеричне число ' + SN, key];
+            setMetrics(['Тип: ' + key + ' (' + hybMap[SN] + ')', info[0], 'Приклад: ' + info[1]]);
+          } else if (m === 'pchem') {
+            var ph = calcTitrationPh(params.Vadd, params.Ca, params.pKa);
+            var Veq = (25 * params.Ca / 0.10).toFixed(1);
+            setMetrics(['Поточний pH = ' + ph.toFixed(2), 'Точка еквівалентності V_екв = ' + Veq + ' мл', ph > 8.2 ? 'Фенолфталеїн: малиновий' : 'Фенолфталеїн: безбарвний']);
+          } else if (m === 'cellbio') {
+            var q = params.q, p = 1 - q;
+            var het = (2 * p * q * 100).toFixed(1);
+            var copies = Math.pow(1 + params.eff, params.cycles);
+            var fmtC = copies > 1e6 ? copies.toExponential(2) : Math.round(copies).toLocaleString('uk-UA');
+            setMetrics(['AA: ' + (p * p * 100).toFixed(1) + '% · Aa: ' + het + '% · aa: ' + (q * q * 100).toFixed(1) + '%', 'Вихід ПЛР з 1 матриці: ' + fmtC + ' копій']);
+          } else if (m === 'biophys') {
+            var r4 = Math.pow(params.rRatio, 4);
+            var qRel = r4 * (params.dP / 12) * (3.5 / params.eta) * 100;
+            var resist = (1 / r4).toFixed(2);
+            setMetrics(['Кровотік Q = ' + qRel.toFixed(1) + '% від норми', 'Опір судини R_гідр × ' + resist, '(R/R₀)⁴ = ' + r4.toFixed(3)]);
+          }
+        }
+
+        function drawWb() {
+          var ctx = canvas.getContext('2d');
+          var W = 880, H = 250;
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          if (canvas.width !== W * dpr || canvas.height !== H * dpr) {
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+          }
+          ctx.save();
+          ctx.scale(dpr, dpr);
+          ctx.fillStyle = '#faf9f5';
+          ctx.fillRect(0, 0, W, H);
+          var m = WB.mode;
+
+          if (m === 'mech') {
+            var bodies = [
+              { name: 'Брусок (β=0)', beta: 0, col: '#52525b' },
+              { name: 'Куля (β=0.4)', beta: 0.4, col: '#166534' },
+              { name: 'Циліндр (β=0.5)', beta: 0.5, col: '#1d4ed8' },
+              { name: 'Обруч (β=1.0)', beta: 1.0, col: '#991b1b' }
+            ];
+            var sA = Math.sin(params.alpha * Math.PI / 180);
+            var maxT = Math.sqrt(2 * params.L * 2.0 / (9.81 * sA));
+            var tNow = animT % (maxT + 0.9);
+            bodies.forEach(function(b, idx) {
+              var y = 42 + idx * 52;
+              ctx.strokeStyle = '#d6d3cd';
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.moveTo(190, y + 12);
+              ctx.lineTo(810, y + 12);
+              ctx.stroke();
+              ctx.fillStyle = '#18181b';
+              ctx.font = 'bold 12px sans-serif';
+              ctx.textAlign = 'left';
+              ctx.fillText(b.name, 26, y + 8);
+
+              var acc = 9.81 * sA / (1 + b.beta);
+              var dist = Math.min(params.L, 0.5 * acc * tNow * tNow);
+              var px = 190 + (dist / params.L) * 620;
+              ctx.fillStyle = b.col;
+              if (b.beta === 0) {
+                ctx.fillRect(px - 14, y - 10, 28, 20);
+              } else {
+                ctx.beginPath();
+                ctx.arc(px, y, 12, 0, Math.PI * 2);
+                if (b.beta >= 0.95) { ctx.lineWidth = 3.5; ctx.strokeStyle = b.col; ctx.stroke(); }
+                else ctx.fill();
+                var ang = dist * 3.5;
+                ctx.strokeStyle = b.beta >= 0.95 ? '#18181b' : '#faf9f5';
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.moveTo(px, y);
+                ctx.lineTo(px + Math.cos(ang) * 10, y + Math.sin(ang) * 10);
+                ctx.stroke();
+              }
+              var tf = Math.sqrt(2 * params.L / acc);
+              ctx.fillStyle = '#3f3f46';
+              ctx.font = '11.5px monospace';
+              ctx.fillText(tf.toFixed(2) + ' с', 822, y + 8);
+            });
+          } else if (m === 'thermo') {
+            var V1 = 1.0, V2 = params.rv;
+            var gma = 5 / 3;
+            var adRatio = Math.pow(params.T1 / params.T2, 1 / (gma - 1));
+            var V3 = V2 * adRatio, V4 = V1 * adRatio;
+            var Pmax = params.T1 / V1;
+            var Vmax = Math.max(8, V3 * 1.08);
+            var ox = 80, oy = 24, ow = 740, oh = 196;
+            var mx = function(v){ return ox + (v / Vmax) * ow; };
+            var my = function(p){ return oy + oh * (1 - Math.min(1, p / (Pmax * 1.08))); };
+
+            ctx.strokeStyle = '#e6e3dd';
+            for (var gi = 1; gi <= 4; gi++) {
+              ctx.beginPath(); ctx.moveTo(ox, oy + oh * gi / 5); ctx.lineTo(ox + ow, oy + oh * gi / 5); ctx.stroke();
+            }
+            var pts = [];
+            for (var s1 = 0; s1 <= 30; s1++) { var v = V1 + (V2 - V1) * s1 / 30; pts.push([mx(v), my(params.T1 / v)]); }
+            for (var s2 = 0; s2 <= 30; s2++) { var v2 = V2 + (V3 - V2) * s2 / 30; pts.push([mx(v2), my((params.T1 / V2) * Math.pow(V2 / v2, gma))]); }
+            for (var s3 = 0; s3 <= 30; s3++) { var v3 = V3 + (V4 - V3) * s3 / 30; pts.push([mx(v3), my(params.T2 / v3)]); }
+            for (var s4 = 0; s4 <= 30; s4++) { var v4 = V4 + (V1 - V4) * s4 / 30; pts.push([mx(v4), my((params.T2 / V4) * Math.pow(V4 / v4, gma))]); }
+
+            ctx.fillStyle = 'rgba(153, 27, 27, 0.14)';
+            ctx.beginPath();
+            pts.forEach(function(pt, i){ if (i === 0) ctx.moveTo(pt[0], pt[1]); else ctx.lineTo(pt[0], pt[1]); });
+            ctx.closePath();
+            ctx.fill();
+            ctx.strokeStyle = '#991b1b';
+            ctx.lineWidth = 2.4;
+            ctx.stroke();
+
+            var idxPt = Math.floor((animT * 28) % pts.length);
+            ctx.fillStyle = '#1d4ed8';
+            ctx.beginPath();
+            ctx.arc(pts[idxPt][0], pts[idxPt][1], 5.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = '#18181b';
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(ox, oy, ow, oh);
+            ctx.fillStyle = '#18181b';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.fillText('Тиск P', ox + 10, oy + 18);
+            ctx.fillText('Об\'єм V  (заштрихована площа = корисна робота циклу A)', ox + ow - 340, oy + oh + 18);
+          } else if (m === 'optics') {
+            var midY = 125, midX = 440;
+            ctx.fillStyle = params.n1 > params.n2 ? 'rgba(29, 78, 216, 0.08)' : '#faf9f5';
+            ctx.fillRect(0, 0, W, midY);
+            ctx.fillStyle = params.n2 > params.n1 ? 'rgba(29, 78, 216, 0.08)' : '#f4f2ed';
+            ctx.fillRect(0, midY, W, H - midY);
+            ctx.strokeStyle = '#18181b';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(40, midY); ctx.lineTo(840, midY); ctx.stroke();
+            ctx.save();
+            ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = '#52525b';
+            ctx.beginPath(); ctx.moveTo(midX, 16); ctx.lineTo(midX, 234); ctx.stroke();
+            ctx.restore();
+
+            var rad = params.alpha * Math.PI / 180;
+            var Lray = 220;
+            var xIn = midX - Math.sin(rad) * Lray, yIn = midY - Math.cos(rad) * Lray;
+            ctx.strokeStyle = '#991b1b';
+            ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(xIn, yIn); ctx.lineTo(midX, midY); ctx.stroke();
+
+            var sinG = (params.n1 / params.n2) * Math.sin(rad);
+            var xRefl = midX + Math.sin(rad) * Lray, yRefl = midY - Math.cos(rad) * Lray;
+            ctx.strokeStyle = sinG > 1 ? '#991b1b' : 'rgba(153, 27, 27, 0.42)';
+            ctx.lineWidth = sinG > 1 ? 3 : 2;
+            ctx.beginPath(); ctx.moveTo(midX, midY); ctx.lineTo(xRefl, yRefl); ctx.stroke();
+
+            if (sinG <= 1) {
+              var gRad = Math.asin(sinG);
+              ctx.strokeStyle = '#1d4ed8';
+              ctx.lineWidth = 3;
+              ctx.beginPath();
+              ctx.moveTo(midX, midY);
+              ctx.lineTo(midX + Math.sin(gRad) * Lray, midY + Math.cos(gRad) * Lray);
+              ctx.stroke();
+            }
+            ctx.fillStyle = '#18181b';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.fillText('Середовище 1: n₁ = ' + params.n1.toFixed(2), 54, 30);
+            ctx.fillText('Середовище 2: n₂ = ' + params.n2.toFixed(2), 54, 232);
+          } else if (m === 'qchem') {
+            var X = params.X, E = Math.min(params.E, 6 - X);
+            var SN = X + E;
+            var dirs = [];
+            if (SN === 2) dirs = [[1,0,0], [-1,0,0]];
+            else if (SN === 3) dirs = [[0,1,0], [0.866,-0.5,0], [-0.866,-0.5,0]];
+            else if (SN === 4) dirs = [[0,1,0], [0.943,-0.333,0], [-0.471,-0.333,0.816], [-0.471,-0.333,-0.816]];
+            else if (SN === 5) dirs = [[0,1,0], [0,-1,0], [1,0,0], [-0.5,0,0.866], [-0.5,0,-0.866]];
+            else dirs = [[0,1,0], [0,-1,0], [1,0,0], [-1,0,0], [0,0,1], [0,0,-1]];
+
+            var rot = animT * 0.65;
+            var cx = 440, cy = 126, R = 86;
+            var proj = dirs.map(function(d, idx) {
+              var rx = d[0] * Math.cos(rot) + d[2] * Math.sin(rot);
+              var rz = -d[0] * Math.sin(rot) + d[2] * Math.cos(rot);
+              return { x: cx + rx * R, y: cy - d[1] * R, z: rz, isLP: idx >= X };
+            });
+            proj.sort(function(a, b){ return a.z - b.z; });
+
+            proj.forEach(function(pt) {
+              if (pt.z < 0) {
+                ctx.strokeStyle = pt.isLP ? '#b45309' : '#3f3f46';
+                ctx.lineWidth = pt.isLP ? 2 : 4;
+                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(pt.x, pt.y); ctx.stroke();
+                ctx.fillStyle = pt.isLP ? 'rgba(180, 83, 9, 0.30)' : '#1d4ed8';
+                ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.isLP ? 16 : 13, 0, Math.PI * 2); ctx.fill();
+              }
+            });
+            ctx.fillStyle = '#991b1b';
+            ctx.beginPath(); ctx.arc(cx, cy, 20, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#faf9f5';
+            ctx.font = 'bold 13px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('A', cx, cy + 4);
+
+            proj.forEach(function(pt) {
+              if (pt.z >= 0) {
+                ctx.strokeStyle = pt.isLP ? '#b45309' : '#18181b';
+                ctx.lineWidth = pt.isLP ? 2.2 : 4.5;
+                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(pt.x, pt.y); ctx.stroke();
+                ctx.fillStyle = pt.isLP ? 'rgba(180, 83, 9, 0.48)' : '#1d4ed8';
+                ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.isLP ? 17 : 14, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = pt.isLP ? '#18181b' : '#faf9f5';
+                ctx.font = 'bold 11px monospace';
+                ctx.fillText(pt.isLP ? 'E' : 'X', pt.x, pt.y + 4);
+              }
+            });
+          } else if (m === 'pchem') {
+            var ox2 = 72, oy2 = 20, ow2 = 660, oh2 = 200;
+            var mapX2 = function(v){ return ox2 + (v / 50) * ow2; };
+            var mapY2 = function(ph){ return oy2 + oh2 * (1 - ph / 14); };
+
+            ctx.fillStyle = 'rgba(219, 39, 119, 0.10)';
+            ctx.fillRect(ox2, mapY2(10.0), ow2, mapY2(8.2) - mapY2(10.0));
+            ctx.strokeStyle = '#e6e3dd';
+            [2, 4, 7, 10, 12].forEach(function(pVal) {
+              var yy = mapY2(pVal);
+              ctx.beginPath(); ctx.moveTo(ox2, yy); ctx.lineTo(ox2 + ow2, yy); ctx.stroke();
+              ctx.fillStyle = '#52525b';
+              ctx.font = '11px monospace';
+              ctx.textAlign = 'right';
+              ctx.fillText('pH ' + pVal, ox2 - 6, yy + 4);
+            });
+
+            ctx.strokeStyle = '#1d4ed8';
+            ctx.lineWidth = 2.6;
+            ctx.beginPath();
+            for (var vv = 0; vv <= 50; vv += 0.25) {
+              var xx = mapX2(vv), yy2 = mapY2(calcTitrationPh(vv, params.Ca, params.pKa));
+              if (vv === 0) ctx.moveTo(xx, yy2); else ctx.lineTo(xx, yy2);
+            }
+            ctx.stroke();
+
+            var curPh = calcTitrationPh(params.Vadd, params.Ca, params.pKa);
+            ctx.fillStyle = '#991b1b';
+            ctx.beginPath();
+            ctx.arc(mapX2(params.Vadd), mapY2(curPh), 5.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#18181b';
+            ctx.strokeRect(ox2, oy2, ow2, oh2);
+
+            /* Flask indicator preview */
+            ctx.fillStyle = curPh > 8.2 ? 'rgba(219, 39, 119, 0.55)' : 'rgba(29, 78, 216, 0.10)';
+            ctx.beginPath(); ctx.arc(804, 130, 38, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = '#18181b'; ctx.stroke();
+            ctx.fillStyle = '#18181b';
+            ctx.textAlign = 'center';
+            ctx.font = 'bold 11.5px sans-serif';
+            ctx.fillText('Колба', 804, 184);
+          } else if (m === 'cellbio') {
+            var lx = 60, ly = 24, lw = 350, lh = 194;
+            ctx.strokeStyle = '#18181b'; ctx.strokeRect(lx, ly, lw, lh);
+            var drawCurve = function(fn, col) {
+              ctx.strokeStyle = col; ctx.lineWidth = 2.3; ctx.beginPath();
+              for (var qq = 0; qq <= 1.001; qq += 0.02) {
+                var x = lx + qq * lw, y = ly + lh * (1 - fn(qq));
+                if (qq === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+              }
+              ctx.stroke();
+            };
+            drawCurve(function(q){ return (1 - q) * (1 - q); }, '#1d4ed8');
+            drawCurve(function(q){ return 2 * q * (1 - q); }, '#166534');
+            drawCurve(function(q){ return q * q; }, '#991b1b');
+            var qX = lx + params.q * lw;
+            ctx.strokeStyle = '#52525b';
+            ctx.beginPath(); ctx.moveTo(qX, ly); ctx.lineTo(qX, ly + lh); ctx.stroke();
+            ctx.fillStyle = '#18181b'; ctx.font = 'bold 11.5px sans-serif'; ctx.textAlign = 'left';
+            ctx.fillText('Гарді-Вайнберг: синя p², зелена 2pq, червона q²', lx, ly + lh + 18);
+
+            /* PCR exponential bars on right */
+            var rx = 470, ry = 24, rw = 370, rh = 194;
+            ctx.strokeStyle = '#18181b'; ctx.strokeRect(rx, ry, rw, rh);
+            var nMax = params.cycles;
+            var maxVal = Math.pow(1 + params.eff, nMax);
+            for (var c = 1; c <= nMax; c++) {
+              var val = Math.pow(1 + params.eff, c);
+              var bh = (val / maxVal) * (rh - 24);
+              var bw = Math.max(4, (rw - 24) / nMax - 2);
+              var bx = rx + 12 + (c - 1) * ((rw - 24) / nMax);
+              ctx.fillStyle = '#991b1b';
+              ctx.fillRect(bx, ry + rh - bh, bw, bh);
+            }
+            ctx.fillStyle = '#18181b';
+            ctx.fillText('Експоненціальний ріст ампліконів ПЛР за циклами', rx, ry + rh + 18);
+          } else if (m === 'biophys') {
+            var midY3 = 125;
+            var halfR = 72 * params.rRatio;
+            ctx.fillStyle = '#fee2e2';
+            ctx.fillRect(80, midY3 - halfR, 720, halfR * 2);
+            ctx.strokeStyle = '#991b1b';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(80, midY3 - halfR); ctx.lineTo(800, midY3 - halfR);
+            ctx.moveTo(80, midY3 + halfR); ctx.lineTo(800, midY3 + halfR);
+            ctx.stroke();
+
+            var vScale = Math.pow(params.rRatio, 2) * (params.dP / 12) * (3.5 / params.eta);
+            /* Parabolic velocity profile */
+            ctx.strokeStyle = '#1d4ed8';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            for (var dy = -halfR; dy <= halfR; dy += 2) {
+              var frac = 1 - (dy * dy) / (halfR * halfR);
+              var vxPx = 220 + frac * 150 * Math.min(2.2, vScale);
+              if (dy === -halfR) ctx.moveTo(vxPx, midY3 + dy); else ctx.lineTo(vxPx, midY3 + dy);
+            }
+            ctx.stroke();
+
+            /* Animated RBCs */
+            for (var row = -3; row <= 3; row++) {
+              var ryOff = (row / 3.6) * halfR;
+              var localSpd = (1 - (ryOff * ryOff) / (halfR * halfR)) * 180 * vScale;
+              for (var k = 0; k < 5; k++) {
+                var rxCell = 90 + ((k * 144 + animT * localSpd) % 700);
+                ctx.fillStyle = '#991b1b';
+                ctx.beginPath();
+                ctx.ellipse(rxCell, midY3 + ryOff, 6.5, 4.2, 0, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+          }
+          ctx.restore();
+        }
+
+        function tick(ts) {
+          if (!lastTs) lastTs = ts;
+          var dt = Math.min(0.04, (ts - lastTs) / 1000);
+          lastTs = ts;
+          if (!reduceMotion) {
+            animT += dt;
+            drawWb();
+          }
+          requestAnimationFrame(tick);
+        }
+
+        syncMetrics();
+        drawWb();
+        requestAnimationFrame(tick);
+        if (repBtn) {
+          repBtn.addEventListener('click', function() {
+            animT = 0;
+            reduceMotion = false;
+            drawWb();
+          });
+        }
+      }
+
+      /* 6. CHAPTER 3-QUESTION CHECKPOINT & MASTERY PERSISTENCE */
+      var qWrap = document.getElementById('ch-quiz-cards');
+      var qScore = document.getElementById('ch-quiz-score');
+      var qReset = document.getElementById('ch-quiz-reset');
+      var masteryBadge = document.getElementById('ch-mastery-badge');
+      var storageKey = 'sheua_ch_quiz_' + SLUG;
+      var savedAns = {};
+      try { savedAns = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch (e) {}
+
+      function updateMasteryBadge(correctCount) {
+        try {
+          var allDone = JSON.parse(localStorage.getItem('sheua_mastered_chapters') || '{}') || {};
+          if (correctCount === QUIZ.length && QUIZ.length > 0) allDone[SLUG] = true;
+          localStorage.setItem('sheua_mastered_chapters', JSON.stringify(allDone));
+          var totalDone = Object.keys(allDone).length;
+          if (masteryBadge) {
+            masteryBadge.textContent = allDone[SLUG]
+              ? ('Розділ засвоєно · Прогрес курсу: ' + totalDone + ' / 8')
+              : ('Прогрес курсу: ' + totalDone + ' / 8 розділів');
+            masteryBadge.classList.toggle('done', !!allDone[SLUG]);
+          }
+        } catch (e) {}
+      }
+
+      function renderChQuiz() {
+        if (!qWrap || !QUIZ.length) return;
+        qWrap.innerHTML = '';
+        var correctCount = 0;
+        QUIZ.forEach(function(item, qi) {
+          var card = document.createElement('div');
+          card.className = 'worked-problem';
+          var h = document.createElement('h3');
+          h.textContent = (qi + 1) + '. ' + item.q;
+          var grid = document.createElement('div');
+          grid.className = 'nmt-opts-grid';
+          var exp = document.createElement('p');
+          exp.style.display = 'none';
+          exp.style.marginTop = '10px';
+          exp.style.marginBottom = '0';
+          exp.style.paddingTop = '8px';
+          exp.style.borderTop = '1px solid var(--rule-light)';
+
+          item.opts.forEach(function(opt, oi) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'nmt-opt-btn';
+            b.textContent = opt;
+            b.addEventListener('click', function() {
+              if (savedAns[qi] !== undefined) return;
+              savedAns[qi] = oi;
+              try { localStorage.setItem(storageKey, JSON.stringify(savedAns)); } catch (e) {}
+              renderChQuiz();
+            });
+            grid.appendChild(b);
+          });
+
+          if (savedAns[qi] !== undefined) {
+            var ch = savedAns[qi];
+            if (ch === item.ans) correctCount++;
+            Array.prototype.forEach.call(grid.children, function(btnEl, bi) {
+              if (bi === item.ans) btnEl.classList.add('correct');
+              else if (bi === ch) btnEl.classList.add('wrong');
+            });
+            exp.style.display = 'block';
+            exp.textContent = (ch === item.ans ? 'Правильно. ' : 'Перевірте за формулою. ') + item.exp;
+          }
+
+          card.appendChild(h);
+          card.appendChild(grid);
+          card.appendChild(exp);
+          qWrap.appendChild(card);
+        });
+        if (qScore) qScore.textContent = 'Результат розділу: ' + correctCount + ' / ' + QUIZ.length;
+        updateMasteryBadge(correctCount);
+      }
+
+      if (qWrap) {
+        renderChQuiz();
+        if (qReset) {
+          qReset.addEventListener('click', function() {
+            savedAns = {};
+            try { localStorage.removeItem(storageKey); } catch (e) {}
+            renderChQuiz();
+          });
+        }
+      } else {
+        updateMasteryBadge(0);
+      }
     })();
   </script>
 </body>

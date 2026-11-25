@@ -307,10 +307,11 @@
       renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
       renderer.setSize(initVpW, initVpH);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      if ('outputColorSpace' in renderer) renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.05;
+      renderer.toneMappingExposure = 1.06;
     } catch (webglErr) {
       const fallbackCanvas = document.createElement('canvas');
       fallbackCanvas.width = initVpW;
@@ -348,65 +349,85 @@
     hemiLight.position.set(0, 25, 0);
     scene.add(hemiLight);
 
-    const dirLight = new THREE.DirectionalLight(0xfffdf9, 2.05);
-    dirLight.position.set(11, 20, 14);
+    const dirLight = new THREE.DirectionalLight(0xfffdf9, 2.12);
+    dirLight.position.set(10.5, 19.5, 13.5);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
     dirLight.shadow.camera.near = 1;
-    dirLight.shadow.camera.far = 55;
-    const d = 15;
+    dirLight.shadow.camera.far = 52;
+    const d = 12.2;
     dirLight.shadow.camera.left = -d;
     dirLight.shadow.camera.right = d;
     dirLight.shadow.camera.top = d;
     dirLight.shadow.camera.bottom = -d;
-    dirLight.shadow.bias = -0.0003;
-    dirLight.shadow.normalBias = 0.012;
+    dirLight.shadow.bias = -0.00025;
+    dirLight.shadow.normalBias = 0.014;
+    dirLight.shadow.radius = 2.2;
     scene.add(dirLight);
 
-    const rimLight = new THREE.DirectionalLight(0xe2e8f0, 0.78);
-    rimLight.position.set(-12, 11, -10);
+    const rimLight = new THREE.DirectionalLight(0xe0f2fe, 0.88);
+    rimLight.position.set(-12, 11.5, -10.5);
     scene.add(rimLight);
 
-    const fillLight = new THREE.DirectionalLight(0xfff7ed, 0.38);
-    fillLight.position.set(-8, 6, 12);
+    const fillLight = new THREE.DirectionalLight(0xfff7ed, 0.44);
+    fillLight.position.set(-8.5, 6.5, 12.5);
     scene.add(fillLight);
 
-    // Процедурна висококонтрастна студійна карта відбиттів (PMREM) для реалістичної сталі, латуні та скла
+    // Процедурна багатозонна архітектурно-студійна карта відбиттів (PMREM HDRI) для сталі, латуні, скла, молекул та біомембран
     try {
       const pmremGen = new THREE.PMREMGenerator(renderer);
       const envScene = new THREE.Scene();
-      envScene.background = new THREE.Color(0xe6e2d8);
+      envScene.background = new THREE.Color(0xe8e4da);
+
+      const skyCanvas = document.createElement('canvas');
+      skyCanvas.width = 256;
+      skyCanvas.height = 256;
+      const sctx = skyCanvas.getContext('2d');
+      const skyGrad = sctx.createLinearGradient(0, 0, 0, 256);
+      skyGrad.addColorStop(0.0, '#fcfbf7');
+      skyGrad.addColorStop(0.42, '#f0ece2');
+      skyGrad.addColorStop(0.52, '#d5cec0');
+      skyGrad.addColorStop(1.0, '#c8bfb0');
+      sctx.fillStyle = skyGrad;
+      sctx.fillRect(0, 0, 256, 256);
+      const skyTex = new THREE.CanvasTexture(skyCanvas);
+      skyTex.colorSpace = THREE.SRGBColorSpace;
+
       const skyDome = new THREE.Mesh(
-        new THREE.SphereGeometry(22, 24, 16),
-        new THREE.MeshBasicMaterial({ color: 0xf5f3ee, side: THREE.BackSide })
+        new THREE.SphereGeometry(24, 32, 20),
+        new THREE.MeshBasicMaterial({ map: skyTex, side: THREE.BackSide })
       );
       envScene.add(skyDome);
 
-      // Контрастний темний екваторіальний пояс і студійні стійки для чітких металевих бліків
       const horizonBand = new THREE.Mesh(
-        new THREE.CylinderGeometry(20, 20, 3.2, 32, 1, true),
+        new THREE.CylinderGeometry(20, 20, 2.8, 40, 1, true),
         new THREE.MeshBasicMaterial({ color: 0x1e293b, side: THREE.BackSide })
       );
-      horizonBand.position.y = 1.2;
+      horizonBand.position.y = 1.15;
       envScene.add(horizonBand);
 
-      for (let i = 0; i < 4; i++) {
-        const ang = (i * Math.PI) / 2 + 0.4;
-        const rib = new THREE.Mesh(
-          new THREE.PlaneGeometry(2.2, 18),
-          new THREE.MeshBasicMaterial({ color: 0x0f172a, side: THREE.DoubleSide })
+      // Лабораторні віконні панелі та темні імпости для реалістичних бліків на склі й атомах
+      for (let i = 0; i < 6; i++) {
+        const ang = (i * Math.PI) / 3 + 0.28;
+        const isBrightWindow = (i % 2 === 0);
+        const panel = new THREE.Mesh(
+          new THREE.PlaneGeometry(isBrightWindow ? 6.4 : 1.8, isBrightWindow ? 10.5 : 17.5),
+          new THREE.MeshBasicMaterial({
+            color: isBrightWindow ? (i === 0 ? 0xffffff : 0xe0f2fe) : 0x0f172a,
+            side: THREE.DoubleSide
+          })
         );
-        rib.position.set(Math.cos(ang) * 16, 7, Math.sin(ang) * 16);
-        rib.lookAt(0, 4, 0);
-        envScene.add(rib);
+        panel.position.set(Math.cos(ang) * 16.5, isBrightWindow ? 8.2 : 6.8, Math.sin(ang) * 16.5);
+        panel.lookAt(0, 3.5, 0);
+        envScene.add(panel);
       }
 
       const softboxTop = new THREE.Mesh(
-        new THREE.PlaneGeometry(16, 16),
+        new THREE.PlaneGeometry(17, 17),
         new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide })
       );
-      softboxTop.position.set(5, 15, 7);
+      softboxTop.position.set(5.5, 16, 7.5);
       softboxTop.lookAt(0, 0, 0);
       envScene.add(softboxTop);
 
@@ -414,19 +435,28 @@
         new THREE.PlaneGeometry(14, 10),
         new THREE.MeshBasicMaterial({ color: 0xe0f2fe, side: THREE.DoubleSide })
       );
-      softboxSide.position.set(-13, 7, -8);
+      softboxSide.position.set(-13.5, 7.5, -8.5);
       softboxSide.lookAt(0, 0, 0);
       envScene.add(softboxSide);
 
+      const warmKicker = new THREE.Mesh(
+        new THREE.PlaneGeometry(11, 5.5),
+        new THREE.MeshBasicMaterial({ color: 0xffedd5, side: THREE.DoubleSide })
+      );
+      warmKicker.position.set(12.5, 4.8, -9.5);
+      warmKicker.lookAt(0, 1.5, 0);
+      envScene.add(warmKicker);
+
       const warmBounce = new THREE.Mesh(
-        new THREE.PlaneGeometry(26, 26),
+        new THREE.PlaneGeometry(28, 28),
         new THREE.MeshBasicMaterial({ color: 0xd6cfc2, side: THREE.DoubleSide })
       );
       warmBounce.rotation.x = -Math.PI / 2;
       warmBounce.position.y = -5;
       envScene.add(warmBounce);
 
-      scene.environment = pmremGen.fromScene(envScene, 0.035).texture;
+      scene.environment = pmremGen.fromScene(envScene, 0.03).texture;
+      skyTex.dispose();
       pmremGen.dispose();
     } catch (e) {}
 
@@ -1070,27 +1100,27 @@
         this.group = new THREE.Group();
         this.idealLabelPos = new THREE.Vector3();
 
-        // Витончений приладовий вектор-покажчик: опорна муфта + тонкий стрижень + латунне кільце + гостре вістря
-        const collarGeo = new THREE.CylinderGeometry(0.032, 0.036, 0.022, 16);
-        collarGeo.translate(0, 0.011, 0);
-        const shaftGeo = new THREE.CylinderGeometry(0.0155, 0.0155, 1, 16);
+        // Витончений приладовий вектор-покажчик: опорна муфта + тонкий стрижень + латунне кільце + гладке емалеве вістря
+        const collarGeo = new THREE.CylinderGeometry(0.031, 0.037, 0.024, 24);
+        collarGeo.translate(0, 0.012, 0);
+        const shaftGeo = new THREE.CylinderGeometry(0.0155, 0.0155, 1, 24);
         shaftGeo.translate(0, 0.5, 0);
-        const headGeo = new THREE.ConeGeometry(0.052, 0.19, 20);
-        headGeo.translate(0, 0.095, 0);
-        const ferruleGeo = new THREE.CylinderGeometry(0.024, 0.022, 0.024, 16);
-        ferruleGeo.translate(0, -0.012, 0);
+        const headGeo = new THREE.ConeGeometry(0.053, 0.195, 28);
+        headGeo.translate(0, 0.0975, 0);
+        const ferruleGeo = new THREE.CylinderGeometry(0.026, 0.023, 0.026, 24);
+        ferruleGeo.translate(0, -0.013, 0);
 
         const mat = new THREE.MeshPhysicalMaterial({
           color: colorHex,
-          roughness: 0.22,
-          metalness: 0.28,
-          clearcoat: 0.45,
-          clearcoatRoughness: 0.18
+          roughness: 0.18,
+          metalness: 0.25,
+          clearcoat: 0.72,
+          clearcoatRoughness: 0.12
         });
         const ferruleMat = new THREE.MeshStandardMaterial({
           color: 0xb45309,
-          roughness: 0.24,
-          metalness: 0.82
+          roughness: 0.2,
+          metalness: 0.86
         });
 
         this.collar = new THREE.Mesh(collarGeo, mat);
@@ -1098,14 +1128,10 @@
         this.head = new THREE.Mesh(headGeo, mat);
         const ferrule = new THREE.Mesh(ferruleGeo, ferruleMat);
         ferrule.raycast = () => {};
+        this.collar.raycast = () => {};
+        this.shaft.raycast = () => {};
+        this.head.raycast = () => {};
         this.head.add(ferrule);
-
-        const headEdges = new THREE.LineSegments(
-          new THREE.EdgesGeometry(headGeo, 35),
-          new THREE.LineBasicMaterial({ color: 0x18181b, transparent: true, opacity: 0.24 })
-        );
-        headEdges.raycast = () => {};
-        this.head.add(headEdges);
 
         this.group.add(this.collar, this.shaft, this.head);
 
@@ -1249,15 +1275,22 @@
         const safeMax = (typeof maxParticles === 'number' && maxParticles > 0 && maxParticles <= 300) ? Math.floor(maxParticles) : 100;
         this.max = safeMax;
         this.particles = [];
-        this.sharedGeo = new THREE.SphereGeometry(0.055, 8, 8);
+        this.sharedGeo = new THREE.SphereGeometry(0.052, 14, 12);
         for (let i = 0; i < safeMax; i++) {
-          const mat = new THREE.MeshBasicMaterial({
+          const mat = new THREE.MeshStandardMaterial({
             color: 0xb45309,
+            emissive: 0xb45309,
+            emissiveIntensity: 0.35,
+            roughness: 0.22,
+            metalness: 0.1,
             transparent: true,
-            opacity: 0
+            opacity: 0,
+            depthWrite: false
           });
           const mesh = new THREE.Mesh(this.sharedGeo, mat);
           mesh.visible = false;
+          mesh.raycast = () => {};
+          mesh.userData = { cadEnhanced: true, isParticle: true };
           worldGroup.add(mesh);
           this.particles.push({ mesh, vel: new THREE.Vector3(), life: 0, maxLife: 1 });
         }
@@ -1277,6 +1310,7 @@
           this.cursor = (this.cursor + 1) % this.max;
           p.mesh.position.copy(pos);
           p.mesh.material.color.setHex(colorHex);
+          if (p.mesh.material.emissive) p.mesh.material.emissive.setHex(colorHex);
           p.mesh.material.opacity = 0.9;
           p.mesh.scale.setScalar(1);
           p.mesh.visible = true;
@@ -8043,12 +8077,39 @@
         }
 
         const heaterCoil = new THREE.Mesh(
-          new THREE.TorusGeometry(this.cylRadius * 0.58, 0.055, 14, 32),
-          new THREE.MeshStandardMaterial({ color: 0xd97706, emissive: 0xb45309, emissiveIntensity: 0.35, metalness: 0.5, roughness: 0.3 })
+          new THREE.TorusGeometry(this.cylRadius * 0.58, 0.055, 16, 40),
+          new THREE.MeshStandardMaterial({ color: 0xd97706, emissive: 0xb45309, emissiveIntensity: 0.35, metalness: 0.55, roughness: 0.26 })
         );
         heaterCoil.rotation.x = Math.PI / 2;
         heaterCoil.position.set(0, this.baseY + 0.05, 0);
         worldGroup.add(heaterCoil);
+
+        // Латунний манометр Бурдона зі стрілкою тиску газу праворуч на штуцері циліндра
+        const brassGaugeMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.84, roughness: 0.22 });
+        const manifoldStem = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.55, 20), brassGaugeMat);
+        manifoldStem.rotation.z = Math.PI / 2;
+        manifoldStem.position.set(this.cylRadius + 0.28, this.baseY + 0.42, 0);
+        const gaugeRiser = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.45, 20), brassGaugeMat);
+        gaugeRiser.position.set(this.cylRadius + 0.52, this.baseY + 0.62, 0);
+        const gaugeCase = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.16, 32), brassGaugeMat);
+        gaugeCase.rotation.x = Math.PI / 2;
+        gaugeCase.position.set(this.cylRadius + 0.52, this.baseY + 1.18, 0);
+        const gaugeDial = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.36, 0.36, 0.02, 32),
+          new THREE.MeshBasicMaterial({ color: 0xfefce8 })
+        );
+        gaugeDial.rotation.x = Math.PI / 2;
+        gaugeDial.position.set(this.cylRadius + 0.52, this.baseY + 1.18, 0.082);
+        this.gaugeNeedlePivot = new THREE.Group();
+        this.gaugeNeedlePivot.position.set(this.cylRadius + 0.52, this.baseY + 1.18, 0.098);
+        const gNeedle = new THREE.Mesh(
+          new THREE.BoxGeometry(0.026, 0.28, 0.015),
+          new THREE.MeshBasicMaterial({ color: 0xb91c1c })
+        );
+        gNeedle.position.y = 0.11;
+        const gCap = new THREE.Mesh(new THREE.SphereGeometry(0.038, 16, 16), brassGaugeMat);
+        this.gaugeNeedlePivot.add(gNeedle, gCap);
+        worldGroup.add(manifoldStem, gaugeRiser, gaugeCase, gaugeDial, this.gaugeNeedlePivot);
 
         // Пул молекул газу
         const molGeo = new THREE.SphereGeometry(0.11, 16, 16);
@@ -8158,6 +8219,10 @@
         // Колір молекул змінюється від холодного синього до гарячого багряного зі зростанням T
         const tNorm = (p.temperature - 150) / 450;
         this.molMat.color.lerpColors(new THREE.Color(0x1e3a5f), new THREE.Color(0xb91c1c), tNorm);
+        if (this.gaugeNeedlePivot) {
+          const pNorm = THREE.MathUtils.clamp((p.pistonLoad - 0.5) / 3.5, 0, 1);
+          this.gaugeNeedlePivot.rotation.z = THREE.MathUtils.lerp(1.05, -1.05, pNorm);
+        }
 
         const fScale = p.pistonLoad * 0.75;
         this.pGasArrow.update(
@@ -9521,16 +9586,46 @@
         );
         this.group.add(axisLine);
 
-        // Оправа та двоопукла скляна лінза (опора тільки під нижнім краєм оправи, не пронизує скло)
-        const brassMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.72, roughness: 0.28 });
+        // Градуйована лінійка оптичної лави та латунний рейтер оправи двоопуклої лінзи
+        const brassMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.82, roughness: 0.22 });
+        const rulerCanvas = document.createElement('canvas');
+        rulerCanvas.width = 512;
+        rulerCanvas.height = 48;
+        const rctx = rulerCanvas.getContext('2d');
+        rctx.fillStyle = '#e7e2d5';
+        rctx.fillRect(0, 0, 512, 48);
+        rctx.strokeStyle = '#1e293b';
+        for (let tx = 8; tx < 512; tx += 8) {
+          const isMaj = tx % 32 === 0;
+          rctx.lineWidth = isMaj ? 2 : 1;
+          rctx.beginPath();
+          rctx.moveTo(tx, 0);
+          rctx.lineTo(tx, isMaj ? 26 : 14);
+          rctx.stroke();
+        }
+        const rulerTex = new THREE.CanvasTexture(rulerCanvas);
+        rulerTex.colorSpace = THREE.SRGBColorSpace;
+        const benchScaleStrip = new THREE.Mesh(
+          new THREE.PlaneGeometry(15.0, 0.22),
+          new THREE.MeshBasicMaterial({ map: rulerTex })
+        );
+        benchScaleStrip.rotation.x = -Math.PI / 2;
+        benchScaleStrip.position.set(0, 0.244, 0.92);
+        this.group.add(benchScaleStrip);
+
+        const riderSaddle = new THREE.Mesh(
+          new THREE.BoxGeometry(0.68, 0.14, 2.32),
+          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.75, roughness: 0.28 })
+        );
+        riderSaddle.position.set(this.lensX, 0.22, 0);
         this.lensSupport = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.18, 0.28, 0.28, 20),
+          new THREE.CylinderGeometry(0.18, 0.26, 0.28, 28),
           brassMat
         );
-        this.lensSupport.position.set(this.lensX, 0.34, 0);
-        const lensCradle = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.12, 0.75), brassMat);
-        lensCradle.position.set(this.lensX, 0.45, 0);
-        this.group.add(this.lensSupport, lensCradle);
+        this.lensSupport.position.set(this.lensX, 0.36, 0);
+        const lensCradle = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.12, 0.78), brassMat);
+        lensCradle.position.set(this.lensX, 0.46, 0);
+        this.group.add(riderSaddle, this.lensSupport, lensCradle);
 
         this.lensRim = new THREE.Mesh(
           new THREE.TorusGeometry(2.15, 0.08, 16, 48),
@@ -9979,33 +10074,85 @@
         meterBox.castShadow = true;
         this.group.add(meterBox);
 
+        const dialCanvas = document.createElement('canvas');
+        dialCanvas.width = 256;
+        dialCanvas.height = 192;
+        const dctx = dialCanvas.getContext('2d');
+        dctx.fillStyle = '#fefce8';
+        dctx.fillRect(0, 0, 256, 192);
+        dctx.strokeStyle = '#334155';
+        dctx.lineWidth = 2;
+        dctx.beginPath();
+        dctx.arc(128, 158, 108, Math.PI * 1.18, Math.PI * 1.82);
+        dctx.stroke();
+        for (let k = -6; k <= 6; k++) {
+          const a = -Math.PI * 0.5 + (k / 6) * 0.92;
+          const r0 = k % 3 === 0 ? 92 : 100;
+          dctx.lineWidth = k === 0 ? 2.4 : 1.4;
+          dctx.beginPath();
+          dctx.moveTo(128 + Math.cos(a) * r0, 158 + Math.sin(a) * r0);
+          dctx.lineTo(128 + Math.cos(a) * 110, 158 + Math.sin(a) * 110);
+          dctx.stroke();
+        }
+        dctx.fillStyle = '#1e293b';
+        dctx.font = '700 18px "Google Sans Mono", monospace';
+        dctx.textAlign = 'center';
+        dctx.fillText('0', 128, 36);
+        dctx.fillText('-G', 52, 62);
+        dctx.fillText('+G', 204, 62);
+        const dialTex = new THREE.CanvasTexture(dialCanvas);
+        dialTex.colorSpace = THREE.SRGBColorSpace;
+
         const dialFace = new THREE.Mesh(
           new THREE.PlaneGeometry(1.8, 1.3),
-          new THREE.MeshBasicMaterial({ color: 0xfefce8 })
+          new THREE.MeshBasicMaterial({ map: dialTex })
         );
         dialFace.position.set(0, 1.5, -1.64);
-        this.group.add(dialFace);
+        const dialGlass = new THREE.Mesh(
+          new THREE.PlaneGeometry(1.84, 1.34),
+          new THREE.MeshPhysicalMaterial({ color: 0xe0f2fe, transparent: true, opacity: 0.22, roughness: 0.05, clearcoat: 1.0 })
+        );
+        dialGlass.position.set(0, 1.5, -1.58);
+        this.group.add(dialFace, dialGlass);
+
+        // Клемні затискачі гальванометра та латунний цоколь індикаторної лампи
+        const brassSocketMat = new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.85, roughness: 0.22 });
+        [-0.55, 0.55].forEach((tx, idx) => {
+          const term = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.075, 0.075, 0.16, 18),
+            new THREE.MeshStandardMaterial({ color: idx === 0 ? 0x1e40af : 0x991b1b, roughness: 0.28, metalness: 0.35 })
+          );
+          term.rotation.x = Math.PI / 2;
+          term.position.set(tx, 0.58, -1.62);
+          this.group.add(term);
+        });
 
         this.needlePivot = new THREE.Group();
         this.needlePivot.position.set(0, 1.05, -1.61);
         const needleMesh = new THREE.Mesh(
-          new THREE.BoxGeometry(0.05, 0.95, 0.02),
+          new THREE.BoxGeometry(0.04, 0.95, 0.018),
           new THREE.MeshBasicMaterial({ color: 0xbe123c })
         );
         needleMesh.position.set(0, 0.45, 0);
-        this.needlePivot.add(needleMesh);
+        const needleHub = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.03, 20), brassSocketMat);
+        needleHub.rotation.x = Math.PI / 2;
+        this.needlePivot.add(needleMesh, needleHub);
         this.group.add(this.needlePivot);
 
-        this.bulbMat = new THREE.MeshStandardMaterial({
+        const bulbSocket = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.19, 0.24, 24), brassSocketMat);
+        bulbSocket.position.set(0, 2.44, -2.1);
+        this.bulbMat = new THREE.MeshPhysicalMaterial({
           color: 0xfef08a,
           emissive: 0xf59e0b,
           emissiveIntensity: 0.1,
           transparent: true,
-          opacity: 0.85
+          opacity: 0.78,
+          roughness: 0.08,
+          clearcoat: 1.0
         });
-        this.bulbMesh = new THREE.Mesh(new THREE.SphereGeometry(0.28, 20, 20), this.bulbMat);
-        this.bulbMesh.position.set(0, 2.65, -2.1);
-        this.group.add(this.bulbMesh);
+        this.bulbMesh = new THREE.Mesh(new THREE.SphereGeometry(0.28, 28, 24), this.bulbMat);
+        this.bulbMesh.position.set(0, 2.72, -2.1);
+        this.group.add(bulbSocket, this.bulbMesh);
 
         this.magnetGroup = new THREE.Group();
         this.group.add(this.magnetGroup);
@@ -17607,14 +17754,21 @@
         radialBar2.position.set(0, 2.27, 0);
         worldGroup.add(nucleus, centerPedestal, radialBar1, radialBar2);
 
-        // 4 дозволені стаціонарні борівські орбіти (n = 1, 2, 3, 4)
+        // Напівпрозорий кулонівський ореол навколо протона та 4 об'ємні тороїдальні борівські орбіти (n = 1..4)
+        const nucHalo = new THREE.Mesh(
+          new THREE.SphereGeometry(0.48, 28, 24),
+          new THREE.MeshPhysicalMaterial({ color: 0xef4444, transparent: true, opacity: 0.22, roughness: 0.12, depthWrite: false })
+        );
+        nucHalo.position.set(0, 2.3, 0);
+        worldGroup.add(nucHalo);
+
         const radii = [1.0, 1.9, 2.95, 4.1];
         radii.forEach(r => {
           const ring = new THREE.Mesh(
-            new THREE.RingGeometry(r - 0.025, r + 0.025, 64),
-            new THREE.MeshBasicMaterial({ color: 0x64748b, side: THREE.DoubleSide, transparent: true, opacity: 0.45 })
+            new THREE.TorusGeometry(r, 0.022, 16, 84),
+            new THREE.MeshPhysicalMaterial({ color: 0x64748b, roughness: 0.22, metalness: 0.55, clearcoat: 0.6, transparent: true, opacity: 0.52 })
           );
-          ring.rotation.x = -Math.PI / 2;
+          ring.rotation.x = Math.PI / 2;
           ring.position.set(0, 2.3, 0);
           worldGroup.add(ring);
           this.orbitRings.push({ mesh: ring, r });
@@ -19529,36 +19683,58 @@
         base.receiveShadow = true;
         worldGroup.add(base);
 
-        // Магнітна мішалка з білою порцеляновою плиткою під колбою Ерленмеєра
+        // Магнітна мішалка з керамічним диском нагріву та ручками обертів rpm / T
         const stirrerBox = new THREE.Mesh(
           new THREE.BoxGeometry(3.6, 0.34, 3.6),
-          new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.3, metalness: 0.15 })
+          new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.32, metalness: 0.18 })
         );
         stirrerBox.position.set(0, 0.53, 0);
-        worldGroup.add(stirrerBox);
+        const ceramicPlate = new THREE.Mesh(
+          new THREE.CylinderGeometry(1.45, 1.48, 0.045, 40),
+          new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.14, clearcoat: 0.85 })
+        );
+        ceramicPlate.position.set(0, 0.72, 0);
+        const dialMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.55, roughness: 0.28 });
+        for (const kx of [-0.95, 0.95]) {
+          const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.12, 0.09, 24), dialMat);
+          knob.rotation.x = Math.PI / 2;
+          knob.position.set(kx, 0.52, 1.83);
+          worldGroup.add(knob);
+        }
+        worldGroup.add(stirrerBox, ceramicPlate);
 
-        // Лабораторний штатив Бунзена з вертикальною стійкою та лапкою для бюретки
-        const standMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.72, roughness: 0.28 });
-        const standRod = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 6.4, 24), standMat);
+        // Лабораторний штатив Бунзена з вертикальною стійкою, муфтою та подвійною лапкою для бюретки
+        const standMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.75, roughness: 0.26 });
+        const standRod = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 6.4, 28), standMat);
         standRod.position.set(-2.3, 3.55, 0);
-        const clampArm = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.14, 0.18), standMat);
-        clampArm.position.set(-1.15, 5.15, 0);
-        worldGroup.add(standRod, clampArm);
+        const clampArm = new THREE.Mesh(new THREE.BoxGeometry(2.25, 0.12, 0.16), standMat);
+        clampArm.position.set(-1.18, 5.15, 0);
+        const buretteJaw = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.038, 14, 28), standMat);
+        buretteJaw.rotation.x = Math.PI / 2;
+        buretteJaw.position.set(0, 5.15, 0);
+        worldGroup.add(standRod, clampArm, buretteJaw);
 
-        // Конічна колба Ерленмеєра
+        // Конічна боросилікатна колба Ерленмеєра з відбортованим вінчиком і товстим скляним дном
         const glassMat = new THREE.MeshPhysicalMaterial({
           color: 0xe0f2fe,
           transparent: true,
           opacity: 0.28,
-          roughness: 0.08,
+          roughness: 0.06,
+          clearcoat: 1.0,
+          ior: 1.52,
           side: THREE.DoubleSide,
           depthWrite: false
         });
-        const flaskCone = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 1.48, 2.0, 40, 1, true), glassMat);
-        flaskCone.position.set(0, 1.70, 0);
-        const flaskNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.62, 0.75, 36, 1, true), glassMat);
-        flaskNeck.position.set(0, 3.07, 0);
-        worldGroup.add(flaskCone, flaskNeck);
+        const flaskCone = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 1.48, 2.0, 44, 1, true), glassMat);
+        flaskCone.position.set(0, 1.74, 0);
+        const flaskBottom = new THREE.Mesh(new THREE.CylinderGeometry(1.48, 1.44, 0.05, 44), glassMat);
+        flaskBottom.position.set(0, 0.76, 0);
+        const flaskNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.62, 0.75, 40, 1, true), glassMat);
+        flaskNeck.position.set(0, 3.11, 0);
+        const flaskLip = new THREE.Mesh(new THREE.TorusGeometry(0.63, 0.035, 16, 40), glassMat);
+        flaskLip.rotation.x = Math.PI / 2;
+        flaskLip.position.set(0, 3.49, 0);
+        worldGroup.add(flaskCone, flaskBottom, flaskNeck, flaskLip);
 
         // Розчин у колбі Ерленмеєра (колір змінюється за pH та індикатором)
         this.solMat = new THREE.MeshPhysicalMaterial({
@@ -19580,15 +19756,23 @@
         this.stirBar.position.set(0, 0.79, 0);
         worldGroup.add(this.stirBar);
 
-        // Градуйована бюретка над горлом колби
-        const buretteTube = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 2.6, 28, 1, true), glassMat);
+        // Градуйована бюретка з тефлоновим краном і витягнутим капілярним носиком
+        const buretteTube = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 2.6, 32, 1, true), glassMat);
         buretteTube.position.set(0, 5.15, 0);
-        const stopcock = new THREE.Mesh(
-          new THREE.BoxGeometry(0.48, 0.12, 0.12),
-          new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.3 })
+        const buretteTip = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.032, 0.42, 24, 1, true), glassMat);
+        buretteTip.position.set(0, 3.64, 0);
+        const stopcockBarrel = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.095, 0.095, 0.44, 20),
+          new THREE.MeshPhysicalMaterial({ color: 0xf8fafc, roughness: 0.22, clearcoat: 0.5 })
         );
-        stopcock.position.set(0, 3.78, 0);
-        worldGroup.add(buretteTube, stopcock);
+        stopcockBarrel.rotation.z = Math.PI / 2;
+        stopcockBarrel.position.set(0, 3.82, 0);
+        const stopcock = new THREE.Mesh(
+          new THREE.BoxGeometry(0.12, 0.28, 0.08),
+          new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.24, metalness: 0.65 })
+        );
+        stopcock.position.set(0.24, 3.82, 0);
+        worldGroup.add(buretteTube, buretteTip, stopcockBarrel, stopcock);
 
         // Стовпчик титранту NaOH у бюретці
         this.buretteLiq = new THREE.Mesh(
@@ -19767,16 +19951,31 @@
         this.cuPlate.position.set(2.85, 2.15, 0);
         worldGroup.add(this.znPlate, this.cuPlate);
 
-        // П-подібний сольовий місток KCl між двома стаканами
-        const bridgeMat = new THREE.MeshPhysicalMaterial({ color: 0xfef08a, transparent: true, opacity: 0.48, roughness: 0.12 });
-        const legL = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 2.1, 24), bridgeMat);
-        legL.position.set(-1.35, 2.35, 0);
-        const legR = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 2.1, 24), bridgeMat);
-        legR.position.set(1.35, 2.35, 0);
-        const topBridge = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 2.9, 24), bridgeMat);
-        topBridge.rotation.z = Math.PI / 2;
-        topBridge.position.set(0, 3.35, 0);
-        worldGroup.add(legL, legR, topBridge);
+        // Суцільний вигнутий U-подібний скляний сольовий місток KCl з пористими мембранними корками
+        const bridgeMat = new THREE.MeshPhysicalMaterial({
+          color: 0xfef08a,
+          transparent: true,
+          opacity: 0.52,
+          roughness: 0.08,
+          clearcoat: 1.0,
+          ior: 1.5
+        });
+        const uBridgeCurve = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(-1.38, 1.32, 0),
+          new THREE.Vector3(-1.38, 2.95, 0),
+          new THREE.Vector3(-0.92, 3.42, 0),
+          new THREE.Vector3(0, 3.48, 0),
+          new THREE.Vector3(0.92, 3.42, 0),
+          new THREE.Vector3(1.38, 2.95, 0),
+          new THREE.Vector3(1.38, 1.32, 0)
+        ]);
+        const uBridgeMesh = new THREE.Mesh(new THREE.TubeGeometry(uBridgeCurve, 56, 0.21, 24, false), bridgeMat);
+        const fritMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.78 });
+        const fritL = new THREE.Mesh(new THREE.CylinderGeometry(0.19, 0.19, 0.18, 20), fritMat);
+        fritL.position.set(-1.38, 1.28, 0);
+        const fritR = new THREE.Mesh(new THREE.CylinderGeometry(0.19, 0.19, 0.18, 20), fritMat);
+        fritR.position.set(1.38, 1.28, 0);
+        worldGroup.add(uBridgeMesh, fritL, fritR);
 
         // Зовнішнє електричне коло з цифровим вольтметром угорі
         const wireMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.65, roughness: 0.3 });
@@ -22782,7 +22981,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
     // ============================================================================
     function createTechnicalMaterial(colorHex, roughness = 0.4, metalness = 0.3) {
-      return new THREE.MeshStandardMaterial({ color: colorHex, roughness, metalness });
+      const isMetallic = metalness >= 0.5;
+      const isGlossyEnamel = !isMetallic && roughness <= 0.36;
+      return new THREE.MeshPhysicalMaterial({
+        color: colorHex,
+        roughness: isMetallic ? Math.max(0.14, roughness * 0.85) : (isGlossyEnamel ? Math.max(0.12, roughness * 0.78) : roughness),
+        metalness: isMetallic ? Math.min(0.92, metalness * 1.08) : metalness,
+        clearcoat: isMetallic ? 0.24 : (isGlossyEnamel ? 0.76 : 0.14),
+        clearcoatRoughness: isGlossyEnamel ? 0.12 : 0.28,
+        sheen: isGlossyEnamel ? 0.22 : 0.0,
+        envMapIntensity: isMetallic ? 1.35 : (isGlossyEnamel ? 1.25 : 1.05)
+      });
     }
 
     // 11.21 MOLECULAR ORBITAL THEORY (MO LCAO)
@@ -26147,21 +26356,37 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.nucleusGroup = new THREE.Group();
         this.nucleusGroup.position.set(-0.35, 0.70, -0.22);
         const nucEnv = new THREE.Mesh(
-          new THREE.SphereGeometry(0.62, 28, 22, Math.PI * 0.32, Math.PI * 1.48, 0, Math.PI),
-          new THREE.MeshStandardMaterial({
+          new THREE.SphereGeometry(0.62, 36, 28, Math.PI * 0.32, Math.PI * 1.48, 0, Math.PI),
+          new THREE.MeshPhysicalMaterial({
             color: 0x1e3a8a,
-            roughness: 0.32,
-            metalness: 0.12,
+            roughness: 0.26,
+            metalness: 0.08,
+            clearcoat: 0.55,
+            sheen: 0.4,
             side: THREE.DoubleSide
           })
         );
         nucEnv.rotation.y = Math.PI * 0.25;
         const nucleolus = new THREE.Mesh(
-          new THREE.SphereGeometry(0.26, 20, 16),
-          new THREE.MeshStandardMaterial({ color: 0x7f1d1d, emissive: 0x7f1d1d, emissiveIntensity: 0.12, roughness: 0.28 })
+          new THREE.SphereGeometry(0.26, 28, 22),
+          new THREE.MeshPhysicalMaterial({ color: 0x7f1d1d, emissive: 0x7f1d1d, emissiveIntensity: 0.14, roughness: 0.22, clearcoat: 0.6 })
         );
         nucleolus.position.set(0.06, 0.08, 0.12);
         this.nucleusGroup.add(nucEnv, nucleolus);
+
+        // Ядерні порові комплекси (NPC) на поверхні каріотеки
+        const npcMat = new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.28, metalness: 0.25 });
+        for (let np = 0; np < 8; np++) {
+          const phi = Math.PI * 0.62 + (np % 4) * 0.62;
+          const th = 0.82 + Math.floor(np / 4) * 0.65;
+          const px = Math.sin(th) * Math.cos(phi) * 0.625;
+          const py = Math.cos(th) * 0.625;
+          const pz = Math.sin(th) * Math.sin(phi) * 0.625;
+          const npc = new THREE.Mesh(new THREE.TorusGeometry(0.048, 0.015, 10, 18), npcMat);
+          npc.position.set(px, py, pz);
+          npc.lookAt(px * 2, py * 2, pz * 2);
+          this.nucleusGroup.add(npc);
+        }
 
         // Складчасті цистерни шорсткої ЕПС (Rough ER) з точками-рибосомами позаду-ліворуч від ядра
         for (let r = 0; r < 3; r++) {
@@ -26485,15 +26710,21 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.innerMembrane.position.set(0, 2.15, 0);
         worldGroup.add(this.innerMembrane);
 
-        // Ряди гідрофільних голівок фосфоліпідного бішару на передньому краї мембрани
-        const headGeo = new THREE.SphereGeometry(0.065, 10, 8);
-        const headMat = new THREE.MeshStandardMaterial({ color: 0x1e40af, roughness: 0.32 });
+        // Ряди гідрофільних голівок та гідрофобних ацильних хвостів фосфоліпідного бішару на передньому зрізі мембрани
+        const headGeo = new THREE.SphereGeometry(0.068, 18, 14);
+        const headMat = new THREE.MeshPhysicalMaterial({ color: 0x1e40af, roughness: 0.24, clearcoat: 0.55 });
+        const tailGeo = new THREE.CylinderGeometry(0.013, 0.013, 0.14, 10);
+        const tailMat = new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.42 });
         for (let hx = -3.6; hx <= 3.6; hx += 0.36) {
           const hTop = new THREE.Mesh(headGeo, headMat);
           hTop.position.set(hx, 2.34, 1.18);
           const hBot = new THREE.Mesh(headGeo, headMat);
           hBot.position.set(hx, 1.96, 1.18);
-          worldGroup.add(hTop, hBot);
+          const tTop = new THREE.Mesh(tailGeo, tailMat);
+          tTop.position.set(hx - 0.018, 2.24, 1.18);
+          const tBot = new THREE.Mesh(tailGeo, tailMat);
+          tBot.position.set(hx + 0.018, 2.06, 1.18);
+          worldGroup.add(hTop, hBot, tTop, tBot);
         }
 
         // Дихальні комплекси I, III, IV та UCP1 у мембрані
@@ -26531,18 +26762,24 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         statorStalk.position.set(0.52, -0.58, 0);
         this.atpSynthaseGroup.add(statorA, statorStalk);
 
-        // Мембранний ротор F₀ (c-кільце з ребрами субодиниць) і центральний вал γ
+        // Мембранний ротор F₀ (10 трансмембранних c-субодиниць у кільці) і центральний вал γ
         this.rotorF0 = new THREE.Group();
-        const cRing = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.42, 0.42, 0.54, 12),
-          new THREE.MeshStandardMaterial({ color: 0xb45309, metalness: 0.45, roughness: 0.28 })
-        );
+        const cSubMat = new THREE.MeshPhysicalMaterial({ color: 0xb45309, metalness: 0.35, roughness: 0.24, clearcoat: 0.55 });
+        const cCore = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.50, 24), cSubMat);
+        this.rotorF0.add(cCore);
+        const cHelixGeo = new THREE.CapsuleGeometry(0.085, 0.38, 8, 16);
+        for (let cs = 0; cs < 10; cs++) {
+          const ca = (cs / 10) * Math.PI * 2;
+          const cSub = new THREE.Mesh(cHelixGeo, cSubMat);
+          cSub.position.set(Math.cos(ca) * 0.36, 0, Math.sin(ca) * 0.36);
+          this.rotorF0.add(cSub);
+        }
         const gammaStalk = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.11, 0.14, 1.15, 14),
-          new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.4, roughness: 0.28 })
+          new THREE.CylinderGeometry(0.11, 0.14, 1.15, 24),
+          new THREE.MeshPhysicalMaterial({ color: 0xd97706, metalness: 0.32, roughness: 0.24, clearcoat: 0.5 })
         );
         gammaStalk.position.y = -0.58;
-        this.rotorF0.add(cRing, gammaStalk);
+        this.rotorF0.add(gammaStalk);
         this.atpSynthaseGroup.add(this.rotorF0);
 
         // Каталітична гексамерна голівка F₁ (3α + 3β субодиниці у матриксі знизу)
@@ -28078,15 +28315,36 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.axonCore.position.set(0, 2.15, 0);
         worldGroup.add(this.axonCore);
 
-        // 4 мієлінові муфти (клітини Шванна) та 5 перехватів Ранв’є
+        // Скляна стимулювальна мікропіпетка (patch-clamp) з хлорсрібним електродом біля аксонного горбика
+        const pipetteGlass = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.16, 0.024, 1.45, 24, 1, true),
+          new THREE.MeshPhysicalMaterial({ color: 0xe0f2fe, transparent: true, opacity: 0.38, roughness: 0.06, clearcoat: 1.0, side: THREE.DoubleSide })
+        );
+        pipetteGlass.position.set(-3.35, 3.08, 0.22);
+        pipetteGlass.rotation.z = 0.28;
+        const agWire = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.018, 0.018, 1.25, 14),
+          new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.85, roughness: 0.2 })
+        );
+        agWire.position.copy(pipetteGlass.position);
+        agWire.rotation.z = 0.28;
+        worldGroup.add(pipetteGlass, agWire);
+
+        // 4 багатошарові мієлінові муфти (клітини Шванна з ядрами) та 5 перехватів Ранв’є
+        const schwannMat = new THREE.MeshPhysicalMaterial({ color: 0xd97706, roughness: 0.28, clearcoat: 0.48, sheen: 0.38 });
+        const schwannNucMat = new THREE.MeshPhysicalMaterial({ color: 0x9a3412, roughness: 0.26, clearcoat: 0.4 });
         for (let i = 0; i < 4; i++) {
           const mx = -2.7 + i * 1.8;
           const myelin = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.44, 0.44, 1.32, 24),
-            new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.34, metalness: 0.12 })
+            new THREE.CapsuleGeometry(0.43, 0.56, 12, 28),
+            schwannMat
           );
           myelin.rotation.z = Math.PI / 2;
           myelin.position.set(mx, 2.15, 0);
+          const sNuc = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 14), schwannNucMat);
+          sNuc.scale.set(0.55, 1.35, 0.75);
+          sNuc.position.set(0, 0.05, 0.40);
+          myelin.add(sNuc);
           worldGroup.add(myelin);
           this.myelinSegments.push(myelin);
         }
@@ -29505,22 +29763,43 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.eyeLens.position.set(0.22, 2.25, 0);
         worldGroup.add(this.eyeLens);
 
+        // Цилiарне тіло навколо кришталика та зоровий нерв на задньому полюсі склери
+        const ciliaryRing = new THREE.Mesh(
+          new THREE.TorusGeometry(0.84, 0.095, 16, 36),
+          new THREE.MeshPhysicalMaterial({ color: 0x991b1b, roughness: 0.32, clearcoat: 0.42 })
+        );
+        ciliaryRing.rotation.y = Math.PI / 2;
+        ciliaryRing.position.set(0.22, 2.25, 0);
+        const opticNerve = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.28, 0.34, 0.95, 24),
+          new THREE.MeshPhysicalMaterial({ color: 0xe2d9c8, roughness: 0.36, clearcoat: 0.3 })
+        );
+        opticNerve.rotation.z = -Math.PI / 2 + 0.12;
+        opticNerve.position.set(3.42, 2.08, 0);
+        worldGroup.add(ciliaryRing, opticNerve);
+
         // Сітківка (жовта пляма на задньому полюсі очного яблука)
         this.retinaArc = new THREE.Mesh(
-          new THREE.CylinderGeometry(1.25, 1.25, 0.14, 28),
-          new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.38 })
+          new THREE.CylinderGeometry(1.25, 1.25, 0.14, 36),
+          new THREE.MeshPhysicalMaterial({ color: 0xd97706, roughness: 0.32, clearcoat: 0.45 })
         );
         this.retinaArc.rotation.z = Math.PI / 2;
         this.retinaArc.position.set(3.1, 2.25, 0);
         worldGroup.add(this.retinaArc);
 
-        // Окулярна лінза перед оком (з’являється при |D_окул| > 0)
+        // Окулярна лінза в титановій оправі перед оком (з’являється при |D_окул| > 0)
         this.spectacleLens = new THREE.Mesh(
-          new THREE.CylinderGeometry(1.05, 1.05, 0.16, 32),
-          new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.15, transparent: true, opacity: 0.48 })
+          new THREE.CylinderGeometry(1.05, 1.05, 0.16, 40),
+          new THREE.MeshPhysicalMaterial({ color: 0x0284c7, roughness: 0.06, clearcoat: 1.0, ior: 1.52, transparent: true, opacity: 0.44 })
         );
         this.spectacleLens.rotation.z = Math.PI / 2;
         this.spectacleLens.position.set(-1.35, 2.25, 0);
+        const specRim = new THREE.Mesh(
+          new THREE.TorusGeometry(1.06, 0.045, 16, 40),
+          new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.82, roughness: 0.22 })
+        );
+        specRim.rotation.x = Math.PI / 2;
+        this.spectacleLens.add(specRim);
         worldGroup.add(this.spectacleLens);
 
         // Світна точка фокуса пучка променів
@@ -30365,50 +30644,74 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.cytoplasmBox.position.set(0, 0.84, 0);
         worldGroup.add(this.cellWall, this.cytoplasmBox);
 
-        // Група віріона бактеріофага Т4
+        // Група віріона бактеріофага Т4 з деталізованим капсидом, комірцем, кільцевим чохлом та суглобовими фібрилами
         this.phageGroup = new THREE.Group();
-        const capsidMat = new THREE.MeshStandardMaterial({ color: 0x1e40af, roughness: 0.28, metalness: 0.22, transparent: true, opacity: 0.82 });
+        const capsidMat = new THREE.MeshPhysicalMaterial({
+          color: 0x1e40af,
+          roughness: 0.2,
+          metalness: 0.18,
+          clearcoat: 0.68,
+          transparent: true,
+          opacity: 0.82
+        });
         this.capsidHead = new THREE.Mesh(new THREE.IcosahedronGeometry(0.68, 1), capsidMat);
         this.capsidHead.scale.set(0.92, 1.25, 0.92);
         this.capsidHead.position.set(0, 2.15, 0);
 
         // Спіраль ДНК (³²P) усередині капсиду
         this.capsidDna = new THREE.Mesh(
-          new THREE.TorusKnotGeometry(0.28, 0.07, 48, 10),
-          new THREE.MeshStandardMaterial({ color: 0x16a34a, emissive: 0x15803d, emissiveIntensity: 0.35, roughness: 0.25 })
+          new THREE.TorusKnotGeometry(0.28, 0.07, 64, 14),
+          new THREE.MeshPhysicalMaterial({ color: 0x16a34a, emissive: 0x15803d, emissiveIntensity: 0.32, roughness: 0.22, clearcoat: 0.5 })
         );
         this.capsidDna.position.set(0, 2.15, 0);
 
-        // Хвостовий чохол і внутрішній порожнистий стрижень
+        // Хвостовий чохол з кільцевими білковими дисками (стискається під час проколу) і внутрішній стрижень
+        const sheathMat = new THREE.MeshPhysicalMaterial({ color: 0x475569, roughness: 0.28, metalness: 0.34, clearcoat: 0.4 });
         this.tailSheath = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.22, 0.22, 1.15, 20),
-          new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.35, metalness: 0.3 })
+          new THREE.CylinderGeometry(0.22, 0.22, 1.15, 28),
+          sheathMat
         );
         this.tailSheath.position.set(0, 0.85, 0);
+        const neckCollar = new THREE.Mesh(
+          new THREE.TorusGeometry(0.24, 0.045, 14, 28),
+          new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.26, metalness: 0.55 })
+        );
+        neckCollar.rotation.x = Math.PI / 2;
+        neckCollar.position.y = 0.56;
+        this.tailSheath.add(neckCollar);
+        for (let sr = -3; sr <= 3; sr++) {
+          const sRing = new THREE.Mesh(new THREE.TorusGeometry(0.225, 0.026, 10, 24), sheathMat);
+          sRing.rotation.x = Math.PI / 2;
+          sRing.position.y = sr * 0.14;
+          this.tailSheath.add(sRing);
+        }
 
         this.innerTube = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.08, 0.08, 1.35, 16),
-          new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.25, metalness: 0.45 })
+          new THREE.CylinderGeometry(0.08, 0.08, 1.35, 24),
+          new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.22, metalness: 0.58 })
         );
         this.innerTube.position.set(0, 0.75, 0);
 
-        // Базальна пластинка та 6 довгих хвостових фібрил
+        // Шестигранна базальна пластинка, шипи та 6 об'ємних двосегментних хвостових фібрил
+        const fiberSolidMat = new THREE.MeshPhysicalMaterial({ color: 0xb45309, roughness: 0.26, metalness: 0.35, clearcoat: 0.45 });
         this.baseplate = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.36, 0.36, 0.12, 6),
-          new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.32 })
+          new THREE.CylinderGeometry(0.37, 0.39, 0.13, 6),
+          fiberSolidMat
         );
         this.baseplate.position.set(0, 0.25, 0);
 
-        const fiberMat = new THREE.LineBasicMaterial({ color: 0xb45309 });
         for (let i = 0; i < 6; i++) {
           const ang = (i * Math.PI) / 3;
-          const pts = [
-            new THREE.Vector3(Math.cos(ang) * 0.32, 0.25, Math.sin(ang) * 0.32),
-            new THREE.Vector3(Math.cos(ang) * 0.85, 0.55, Math.sin(ang) * 0.85),
-            new THREE.Vector3(Math.cos(ang) * 1.15, -0.05, Math.sin(ang) * 1.15)
-          ];
-          const fLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), fiberMat);
-          this.phageGroup.add(fLine);
+          const p0 = new THREE.Vector3(Math.cos(ang) * 0.32, 0.25, Math.sin(ang) * 0.32);
+          const pKnee = new THREE.Vector3(Math.cos(ang) * 0.85, 0.58, Math.sin(ang) * 0.85);
+          const pTip = new THREE.Vector3(Math.cos(ang) * 1.16, -0.05, Math.sin(ang) * 1.16);
+          const fCurve = new THREE.CatmullRomCurve3([p0, pKnee, pTip], false, 'catmullrom', 0.18);
+          const fTube = new THREE.Mesh(new THREE.TubeGeometry(fCurve, 20, 0.024, 10, false), fiberSolidMat);
+          const kneeJoint = new THREE.Mesh(new THREE.SphereGeometry(0.042, 12, 12), fiberSolidMat);
+          kneeJoint.position.copy(pKnee);
+          const tipFoot = new THREE.Mesh(new THREE.SphereGeometry(0.038, 12, 12), fiberSolidMat);
+          tipFoot.position.copy(pTip);
+          this.phageGroup.add(fTube, kneeJoint, tipFoot);
         }
 
         this.phageGroup.add(this.capsidHead, this.capsidDna, this.tailSheath, this.innerTube, this.baseplate);
@@ -30600,13 +30903,34 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         this.stenosisRing.position.set(0, 2.25, 0);
         worldGroup.add(this.stenosisRing);
 
-        // 28 еритроцитів (двовігнуті диски), що рухаються за параболічним профілем v(r)
-        const rbcMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.32, metalness: 0.1 });
+        // 28 анатомічних двовігнутих еритроцитів (профіль Еванса-Фунга), що рухаються за параболічним профілем v(r)
+        const rbcProfilePts = [];
+        const rbcR = 0.175;
+        const rbcSteps = 18;
+        for (let s = 0; s <= rbcSteps; s++) {
+          const theta = (s / rbcSteps) * Math.PI;
+          const rNorm = Math.sin(theta);
+          const signY = Math.cos(theta) >= 0 ? 1 : -1;
+          const r2 = rNorm * rNorm;
+          const halfThick = 0.5 * Math.sqrt(Math.max(0, 1 - r2)) * (0.207 + 2.003 * r2 - 1.123 * r2 * r2);
+          rbcProfilePts.push(new THREE.Vector2(rNorm * rbcR, signY * halfThick * rbcR * 1.45));
+        }
+        const rbcBiconcaveGeo = new THREE.LatheGeometry(rbcProfilePts, 28);
+        rbcBiconcaveGeo.rotateZ(Math.PI / 2);
+        const rbcMat = new THREE.MeshPhysicalMaterial({
+          color: 0xb91c1c,
+          roughness: 0.24,
+          metalness: 0.06,
+          clearcoat: 0.58,
+          clearcoatRoughness: 0.18,
+          sheen: 0.45
+        });
         for (let i = 0; i < 28; i++) {
-          const rbc = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 12), rbcMat);
-          rbc.scale.set(0.48, 1.0, 1.0);
+          const rbc = new THREE.Mesh(rbcBiconcaveGeo, rbcMat);
           const rFrac = ((i % 7) - 3) / 3.4;
           const zFrac = (((i * 3) % 5) - 2) * 0.18;
+          rbc.rotation.z = -rFrac * 0.42;
+          rbc.rotation.y = (i % 3 - 1) * 0.22;
           worldGroup.add(rbc);
           this.rbcList.push({ mesh: rbc, xOffset: -3.2 + (i / 28) * 6.4, rFrac, zFrac });
         }
@@ -42962,12 +43286,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             document.getElementById('sim-time-readout').textContent = `t = 0.00 ${t.secUnit}`;
             resetChartHistory();
             activeSim.reset();
+            enhanceDynamicSubtreesIfNeeded(worldGroup, key);
             syncActionButtons();
           } else if (activeSim) {
             if (key === 'projectile') activeSim.computeVacuumCurve();
-            if (typeof activeSim.syncVisuals === 'function') {
+            if (typeof activeSim.onParamChange === 'function') {
+              activeSim.onParamChange();
+            } else if (typeof activeSim.syncVisuals === 'function') {
               activeSim.syncVisuals();
             }
+            enhanceDynamicSubtreesIfNeeded(worldGroup, key);
           }
         };
 
@@ -43654,6 +43982,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
 
       clearGroup3D(worldGroup);
+      worldGroup.userData = {};
 
       const cfg = SCENE_CONFIGS[sceneKey];
       controls.autoRotate = false;
@@ -43787,12 +44116,135 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       woodTex: null,
       breadboardTex: null,
       metalBumpTex: null,
+      contactAoTex: null,
+      contactAoMat: null,
+      benchAoMat: null,
       solidEdgeMat: null,
       glassEdgeMat: null,
       darkSteelMat: null,
       brassMat: null,
       rubberFootMat: null
     };
+
+    // Генерує водонепроникний 3D-паралелепіпед зі згладженими фасками на всіх 12 ребрах і 8 кутах та точними нормалями
+    function createSmoothBeveledBoxGeometry(w, h, d, radius, segs = 3) {
+      const hx = w * 0.5;
+      const hy = h * 0.5;
+      const hz = d * 0.5;
+      const r = Math.min(radius, hx * 0.38, hy * 0.38, hz * 0.38);
+      if (r < 1e-4) return new THREE.BoxGeometry(w, h, d);
+
+      const buildAxis = half => {
+        const arr = [];
+        for (let i = 0; i <= segs; i++) {
+          const a = (i / segs) * (Math.PI * 0.5);
+          const core = -half + r;
+          const p0 = core - r * Math.cos(a);
+          arr.push({ p0, core, uv: (p0 + half) / (2 * half) });
+        }
+        for (let i = 0; i <= segs; i++) {
+          const a = (i / segs) * (Math.PI * 0.5);
+          const core = half - r;
+          const p0 = core + r * Math.sin(a);
+          arr.push({ p0, core, uv: (p0 + half) / (2 * half) });
+        }
+        return arr;
+      };
+
+      const axesSamples = [buildAxis(hx), buildAxis(hy), buildAxis(hz)];
+      const halfArr = [hx, hy, hz];
+      // 6 правосторонніх граней куба: e_u × e_v = e_w (зовнішня нормаль)
+      const faces = [
+        [0, 1, 2,  1,  1,  1], // +Z
+        [0, 1, 2, -1,  1, -1], // -Z
+        [2, 1, 0, -1,  1,  1], // +X
+        [2, 1, 0,  1,  1, -1], // -X
+        [0, 2, 1,  1, -1,  1], // +Y
+        [0, 2, 1,  1,  1, -1]  // -Y
+      ];
+
+      const nPerAxis = 2 * (segs + 1);
+      const totalVerts = 6 * nPerAxis * nPerAxis;
+      const totalIndices = 6 * (nPerAxis - 1) * (nPerAxis - 1) * 6;
+      const positions = new Float32Array(totalVerts * 3);
+      const normals = new Float32Array(totalVerts * 3);
+      const uvs = new Float32Array(totalVerts * 2);
+      const indices = new Uint16Array(totalIndices);
+
+      let vPtr = 0;
+      let uvPtr = 0;
+      let idxPtr = 0;
+      let baseVert = 0;
+      const p0Vec = [0, 0, 0];
+      const coreVec = [0, 0, 0];
+
+      for (let f = 0; f < 6; f++) {
+        const [uAx, vAx, wAx, uSign, vSign, wSign] = faces[f];
+        const suList = axesSamples[uAx];
+        const svList = axesSamples[vAx];
+        const wHalf = halfArr[wAx];
+
+        for (let iv = 0; iv < nPerAxis; iv++) {
+          const sv = svList[iv];
+          for (let iu = 0; iu < nPerAxis; iu++) {
+            const su = suList[iu];
+            p0Vec[uAx] = uSign * su.p0;
+            coreVec[uAx] = uSign * su.core;
+            p0Vec[vAx] = vSign * sv.p0;
+            coreVec[vAx] = vSign * sv.core;
+            p0Vec[wAx] = wSign * wHalf;
+            coreVec[wAx] = wSign * (wHalf - r);
+
+            const dx = p0Vec[0] - coreVec[0];
+            const dy = p0Vec[1] - coreVec[1];
+            const dz = p0Vec[2] - coreVec[2];
+            const invLen = 1 / (Math.hypot(dx, dy, dz) || 1);
+            const nx = dx * invLen;
+            const ny = dy * invLen;
+            const nz = dz * invLen;
+
+            positions[vPtr] = coreVec[0] + r * nx;
+            positions[vPtr + 1] = coreVec[1] + r * ny;
+            positions[vPtr + 2] = coreVec[2] + r * nz;
+            normals[vPtr] = nx;
+            normals[vPtr + 1] = ny;
+            normals[vPtr + 2] = nz;
+            vPtr += 3;
+
+            uvs[uvPtr] = uSign > 0 ? su.uv : (1 - su.uv);
+            uvs[uvPtr + 1] = vSign > 0 ? sv.uv : (1 - sv.uv);
+            uvPtr += 2;
+          }
+        }
+
+        for (let iv = 0; iv < nPerAxis - 1; iv++) {
+          for (let iu = 0; iu < nPerAxis - 1; iu++) {
+            const a = baseVert + iv * nPerAxis + iu;
+            const b = a + 1;
+            const dIdx = a + nPerAxis;
+            const c = dIdx + 1;
+            indices[idxPtr++] = a;
+            indices[idxPtr++] = b;
+            indices[idxPtr++] = c;
+            indices[idxPtr++] = a;
+            indices[idxPtr++] = c;
+            indices[idxPtr++] = dIdx;
+          }
+        }
+        baseVert += nPerAxis * nPerAxis;
+      }
+
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geo.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
+      geo.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+      geo.setIndex(new THREE.BufferAttribute(indices, 1));
+      geo.parameters = { width: w, height: h, depth: d };
+      geo.userData = { wasRoundedBox: true };
+      geo.computeBoundingBox();
+      geo.computeBoundingSphere();
+      return geo;
+    }
 
     function getCadSharedAssets() {
       if (!cadSharedCache.woodTex) {
@@ -43925,6 +44377,44 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           roughness: 0.82
         });
         cadSharedCache.rubberFootMat.userData = { persistent: true };
+      }
+
+      if (!cadSharedCache.contactAoTex) {
+        const ca = document.createElement('canvas');
+        ca.width = 256;
+        ca.height = 256;
+        const ctx = ca.getContext('2d');
+        const g = ctx.createRadialGradient(128, 128, 10, 128, 128, 124);
+        g.addColorStop(0.0, 'rgba(15, 23, 42, 0.38)');
+        g.addColorStop(0.45, 'rgba(15, 23, 42, 0.19)');
+        g.addColorStop(0.78, 'rgba(15, 23, 42, 0.05)');
+        g.addColorStop(1.0, 'rgba(15, 23, 42, 0.0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 256, 256);
+        const tex = new THREE.CanvasTexture(ca);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.userData = { persistent: true };
+        cadSharedCache.contactAoTex = tex;
+
+        cadSharedCache.contactAoMat = new THREE.MeshBasicMaterial({
+          map: tex,
+          transparent: true,
+          opacity: 0.88,
+          depthWrite: false,
+          polygonOffset: true,
+          polygonOffsetFactor: -2
+        });
+        cadSharedCache.contactAoMat.userData = { persistent: true };
+
+        cadSharedCache.benchAoMat = new THREE.MeshBasicMaterial({
+          map: tex,
+          transparent: true,
+          opacity: 0.62,
+          depthWrite: false,
+          polygonOffset: true,
+          polygonOffsetFactor: -2
+        });
+        cadSharedCache.benchAoMat.userData = { persistent: true };
       }
 
       if (!cadSharedCache.enamelTickMat) {
@@ -44149,12 +44639,99 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
       }
 
+      const upgradedPrimMap = new Map();
+      let detectedBenchSlab = null;
+
+      function isStandardCenteredPrimitive(g, expectedSpanX, expectedSpanY, expectedSpanZ) {
+        if (!g || (g.userData && g.userData.persistent)) return false;
+        const posAttr = g.attributes && g.attributes.position;
+        if (!posAttr || posAttr.usage === THREE.DynamicDrawUsage) return false;
+        if (!g.boundingBox) g.computeBoundingBox();
+        const bb = g.boundingBox;
+        if (!bb) return false;
+        const cx = (bb.min.x + bb.max.x) * 0.5;
+        const cy = (bb.min.y + bb.max.y) * 0.5;
+        const cz = (bb.min.z + bb.max.z) * 0.5;
+        if (Math.hypot(cx, cy, cz) > 0.025) return false;
+        const sx = bb.max.x - bb.min.x;
+        const sy = bb.max.y - bb.min.y;
+        const sz = bb.max.z - bb.min.z;
+        const tol = Math.max(0.03, Math.max(expectedSpanX, expectedSpanY, expectedSpanZ) * 0.045);
+        return Math.abs(sx - expectedSpanX) <= tol && Math.abs(sy - expectedSpanY) <= tol && Math.abs(sz - expectedSpanZ) <= tol;
+      }
+
       for (const mesh of meshes) {
         mesh.userData = Object.assign({}, mesh.userData, { cadEnhanced: true });
-        const geo = mesh.geometry;
+        if (mesh.userData.isParticle) continue;
+        let geo = mesh.geometry;
         if (!geo) continue;
         const gType = geo.type || '';
         const p = geo.parameters || {};
+
+        // 0. Плавне підвищення сегментації грубих примітивів (сфер, циліндрів, конусів, торів) зі збереженням спільних буферів у GPU
+        if (!mesh.isInstancedMesh) {
+          if (upgradedPrimMap.has(geo)) {
+            mesh.geometry = upgradedPrimMap.get(geo);
+            geo = mesh.geometry;
+          } else if (gType === 'SphereGeometry') {
+            const r = p.radius !== undefined ? p.radius : 0.2;
+            const ws = p.widthSegments || 16;
+            const hs = p.heightSegments || 12;
+            const fullPhi = p.phiLength === undefined || Math.abs(p.phiLength - Math.PI * 2) < 0.02;
+            const fullTheta = p.thetaLength === undefined || Math.abs(p.thetaLength - Math.PI) < 0.02;
+            if (fullPhi && fullTheta && ws < 28 && isStandardCenteredPrimitive(geo, r * 2, r * 2, r * 2)) {
+              const targetW = r >= 0.09 ? 32 : 22;
+              const targetH = r >= 0.09 ? 24 : 16;
+              if (ws < targetW || hs < targetH) {
+                const smoothGeo = new THREE.SphereGeometry(r, targetW, targetH);
+                smoothGeo.parameters = Object.assign({}, p, { widthSegments: targetW, heightSegments: targetH });
+                upgradedPrimMap.set(geo, smoothGeo);
+                mesh.geometry = smoothGeo;
+                geo = smoothGeo;
+              }
+            }
+          } else if (gType === 'CylinderGeometry') {
+            const rTop = p.radiusTop !== undefined ? p.radiusTop : 0.1;
+            const rBot = p.radiusBottom !== undefined ? p.radiusBottom : 0.1;
+            const hCyl = p.height !== undefined ? p.height : 1;
+            const radSeg = p.radialSegments || 16;
+            const fullTh = p.thetaLength === undefined || Math.abs(p.thetaLength - Math.PI * 2) < 0.02;
+            const maxR = Math.max(rTop, rBot);
+            // Зберігаємо шестигранні болти/гайки/призми (radSeg <= 8), згладжуючи лише круглі циліндри (radSeg >= 10)
+            if (fullTh && radSeg >= 10 && radSeg < 32 && maxR > 0.01 && isStandardCenteredPrimitive(geo, maxR * 2, hCyl, maxR * 2)) {
+              const targetSeg = maxR >= 0.35 ? 40 : 32;
+              const smoothGeo = new THREE.CylinderGeometry(rTop, rBot, hCyl, targetSeg, p.heightSegments || 1, Boolean(p.openEnded));
+              smoothGeo.parameters = Object.assign({}, p, { radialSegments: targetSeg });
+              upgradedPrimMap.set(geo, smoothGeo);
+              mesh.geometry = smoothGeo;
+              geo = smoothGeo;
+            }
+          } else if (gType === 'ConeGeometry') {
+            const rCone = p.radius !== undefined ? p.radius : 0.2;
+            const hCone = p.height !== undefined ? p.height : 0.5;
+            const radSeg = p.radialSegments || 16;
+            if (radSeg >= 10 && radSeg < 28 && isStandardCenteredPrimitive(geo, rCone * 2, hCone, rCone * 2)) {
+              const smoothGeo = new THREE.ConeGeometry(rCone, hCone, 32, p.heightSegments || 1, Boolean(p.openEnded));
+              smoothGeo.parameters = Object.assign({}, p, { radialSegments: 32 });
+              upgradedPrimMap.set(geo, smoothGeo);
+              mesh.geometry = smoothGeo;
+              geo = smoothGeo;
+            }
+          } else if (gType === 'TorusGeometry') {
+            const rMaj = p.radius !== undefined ? p.radius : 0.5;
+            const rTub = p.tube !== undefined ? p.tube : 0.08;
+            const rSeg = p.radialSegments || 12;
+            const tSeg = p.tubularSegments || 24;
+            const fullArc = p.arc === undefined || Math.abs(p.arc - Math.PI * 2) < 0.02;
+            if (fullArc && tSeg < 40 && isStandardCenteredPrimitive(geo, (rMaj + rTub) * 2, (rMaj + rTub) * 2, rTub * 2)) {
+              const smoothGeo = new THREE.TorusGeometry(rMaj, rTub, Math.max(18, rSeg), Math.max(44, tSeg));
+              smoothGeo.parameters = Object.assign({}, p);
+              upgradedPrimMap.set(geo, smoothGeo);
+              mesh.geometry = smoothGeo;
+              geo = smoothGeo;
+            }
+          }
+        }
 
         // 1. Оновлюємо пласкі MeshBasicMaterial на об'ємних 3D-тілах до фізично освітлених MeshStandardMaterial
         if (mesh.material && !Array.isArray(mesh.material)) {
@@ -44200,13 +44777,83 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           }
         }
 
-        const mat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
+        let mat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
         const isTransparent = Boolean(mat && mat.transparent && mat.opacity < 0.62);
         const isVeryFaint = Boolean(mat && mat.transparent && mat.opacity < 0.18);
         const isPeriodicTile = Boolean(mesh.userData && mesh.userData.periodicTile);
         const isBioScene = Boolean(sceneKey && sceneKey.startsWith('bio_'));
         const isMolecularChem = Boolean(sceneKey && /^(chem_orbitals|chem_vsepr|chem_lattice|chem_organic|chem_periodic|chem_hbond|chem_isomerism|chem_polymer|chem_mo|chem_allotropes|chem_complex|chem_bornhaber|chem_dipole|chem_enzyme|chem_sn2|chem_biopol)$/.test(sceneKey));
         const isBioOrMolecular = isBioScene || isMolecularChem;
+
+        // 1b. Фізичні матеріали (MeshPhysicalMaterial) для боросилікатного скла, біомембран/органел та глянцевих CPK-атомів
+        if (mat && !Array.isArray(mesh.material) && mat.isMeshStandardMaterial && !mat.isMeshPhysicalMaterial && !isPeriodicTile) {
+          if (isTransparent && !isVeryFaint) {
+            const glassUpgrade = new THREE.MeshPhysicalMaterial({
+              color: mat.color.clone(),
+              emissive: mat.emissive ? mat.emissive.clone() : new THREE.Color(0x000000),
+              emissiveIntensity: mat.emissiveIntensity || 0,
+              transparent: true,
+              opacity: mat.opacity,
+              roughness: isBioScene ? 0.16 : 0.06,
+              metalness: 0.04,
+              clearcoat: 0.95,
+              clearcoatRoughness: 0.06,
+              ior: isBioScene ? 1.38 : 1.52,
+              reflectivity: 0.9,
+              envMapIntensity: 1.75,
+              side: mat.side,
+              depthWrite: mat.depthWrite
+            });
+            mat.dispose();
+            mesh.material = glassUpgrade;
+            mat = glassUpgrade;
+          } else if (isBioScene && !isTransparent && gType !== 'BoxGeometry') {
+            const bioUpgrade = new THREE.MeshPhysicalMaterial({
+              color: mat.color.clone(),
+              emissive: mat.emissive ? mat.emissive.clone() : new THREE.Color(0x000000),
+              emissiveIntensity: mat.emissiveIntensity || 0,
+              roughness: Math.min(0.32, Math.max(0.18, mat.roughness * 0.85)),
+              metalness: Math.min(0.25, mat.metalness),
+              clearcoat: 0.48,
+              clearcoatRoughness: 0.22,
+              sheen: 0.42,
+              sheenRoughness: 0.48,
+              envMapIntensity: 1.2,
+              side: mat.side
+            });
+            mat.dispose();
+            mesh.material = bioUpgrade;
+            mat = bioUpgrade;
+          } else if (isMolecularChem && !isTransparent && gType === 'SphereGeometry') {
+            const cpkUpgrade = new THREE.MeshPhysicalMaterial({
+              color: mat.color.clone(),
+              emissive: mat.emissive ? mat.emissive.clone() : new THREE.Color(0x000000),
+              emissiveIntensity: mat.emissiveIntensity || 0,
+              roughness: 0.16,
+              metalness: 0.18,
+              clearcoat: 0.82,
+              clearcoatRoughness: 0.1,
+              envMapIntensity: 1.32
+            });
+            mat.dispose();
+            mesh.material = cpkUpgrade;
+            mat = cpkUpgrade;
+          }
+        } else if (mat && mat.isMeshPhysicalMaterial && isTransparent && !isVeryFaint) {
+          mat.clearcoat = Math.max(mat.clearcoat || 0, 0.92);
+          mat.clearcoatRoughness = Math.min(mat.clearcoatRoughness || 0.08, 0.08);
+          mat.envMapIntensity = Math.max(mat.envMapIntensity || 1.0, 1.75);
+        }
+
+        // 1c. Автоматичне ввімкнення м'яких фізичних тіней для всіх непрозорих 3D-деталей (прозорі колби/мембрани не кидають чорних тіней)
+        if (isTransparent || isVeryFaint) {
+          mesh.castShadow = false;
+        } else if (gType !== 'PlaneGeometry' && gType !== 'RingGeometry') {
+          const boxEntry = simBoxes.find(b => b.mesh === mesh);
+          const maxSpan = boxEntry ? Math.max(boxEntry.hx, boxEntry.hy, boxEntry.hz) * 2 : 0.25;
+          if (maxSpan >= 0.075) mesh.castShadow = true;
+          if (maxSpan >= 0.12) mesh.receiveShadow = true;
+        }
 
         // 2. Текстурування та кріплення основних лабораторних плит/стендів, корпусів приладів, оптичних дзеркал і вантажів (BoxGeometry)
         if (gType === 'BoxGeometry' && !isPeriodicTile) {
@@ -44220,9 +44867,46 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           const isUnitScale = Math.abs(mesh.scale.x - 1) < 1e-3 && Math.abs(mesh.scale.y - 1) < 1e-3 && Math.abs(mesh.scale.z - 1) < 1e-3;
           let boxCategorized = false;
 
+          // 2.0 Фрезеровані фаски (3D Rounded Bevel) на непрозорих прямокутних плитах, корпусах приладів, магнітах і брусках
+          const minBoxDim = Math.min(w, h, d);
+          const maxBoxDim = Math.max(w, h, d);
+          let boxWasBeveled = false;
+          if (!isTransparent && isUnitScale && minBoxDim >= 0.08 && maxBoxDim >= 0.22 && isStandardCenteredPrimitive(geo, w, h, d)) {
+            if (upgradedPrimMap.has(geo)) {
+              mesh.geometry = upgradedPrimMap.get(geo);
+              geo = mesh.geometry;
+              boxWasBeveled = true;
+            } else {
+              const bevelR = Math.min(0.036, minBoxDim * 0.14);
+              const bevGeo = createSmoothBeveledBoxGeometry(w, h, d, bevelR, 3);
+              upgradedPrimMap.set(geo, bevGeo);
+              mesh.geometry = bevGeo;
+              geo = bevGeo;
+              boxWasBeveled = true;
+            }
+          }
+
           // 2a. Широка опорна плита лабораторного столу (для всіх 106 симуляцій)
           if (w >= 4.2 && h >= 0.14 && h <= 0.48 && d >= 1.5 && worldPos.y <= 0.68 && isUpright && !isTransparent) {
             boxCategorized = true;
+            mesh.receiveShadow = true;
+            mesh.castShadow = true;
+            detectedBenchSlab = {
+              mesh,
+              topY: worldPos.y + h * 0.5,
+              minX: worldPos.x - w * 0.5,
+              maxX: worldPos.x + w * 0.5,
+              minZ: worldPos.z - d * 0.5,
+              maxZ: worldPos.z + d * 0.5
+            };
+            // М'яка контактна тінь (Ambient Occlusion) під опорною плитою на лабораторній підлозі
+            if (worldPos.y - h * 0.5 >= -0.03 && worldPos.y - h * 0.5 <= 0.18) {
+              const floorAo = new THREE.Mesh(new THREE.PlaneGeometry(w * 1.18, d * 1.22), assets.contactAoMat);
+              floorAo.rotation.x = -Math.PI / 2;
+              floorAo.position.set(worldPos.x, 0.0045, worldPos.z);
+              markCadHardwareRecursive(floorAo);
+              rootGroup.add(floorAo);
+            }
             const hex = (mat && mat.color) ? mat.color.getHex() : 0xd6cfc2;
             if (hex === 0xd6cfc2 || hex === 0xc2b69f || hex === 0xe2d9c8 || hex === 0xd6d3d1 || hex === 0xe5e0d5) {
               mat.map = assets.woodTex;
@@ -44452,10 +45136,10 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             attachCadGroupSafely(mesh, massGrp);
           }
 
-          // Чіткі креслярські ребра (EdgesGeometry) для прямокутних деталей приладів
+          // Креслярський контур граней для прозорих скляних камер/кювет та тонких безфаскових деталей
           const minDim = Math.min(w, h, d);
           const maxDim = Math.max(w, h, d);
-          if (!isBioOrMolecular && maxDim >= 0.20 && minDim >= 0.035 && !isVeryFaint) {
+          if (!isBioOrMolecular && (isTransparent || !boxWasBeveled) && maxDim >= 0.20 && minDim >= 0.035 && !isVeryFaint) {
             const edges = new THREE.LineSegments(
               new THREE.EdgesGeometry(geo, 28),
               isTransparent ? assets.glassEdgeMat : assets.solidEdgeMat
@@ -44533,6 +45217,43 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             postHardware.add(topCollar, thumbStem, thumbKnob);
 
             attachCadGroupSafely(mesh, postHardware);
+          }
+
+          // Відбортований скляний вінчик для вузьких пробірок, капілярів та п'єзометричних трубок
+          if (!cylCategorized && isUpright && !isTransparent && rTop >= 1.8 && h >= 0.14 && h <= 0.50 && worldPos.y <= 0.62 && Math.abs(rTop - rBot) <= 0.45) {
+            cylCategorized = true;
+            mesh.receiveShadow = true;
+            mesh.castShadow = true;
+            const hex = (mat && mat.color) ? mat.color.getHex() : 0xd6cfc2;
+            if ((hex === 0xd6cfc2 || hex === 0xc2b69f || hex === 0xe2d9c8) && !mat.map) {
+              mat.map = assets.woodTex;
+              mat.roughness = 0.56;
+              mat.needsUpdate = true;
+            }
+            if (worldPos.y - h * 0.5 >= -0.03 && worldPos.y - h * 0.5 <= 0.18) {
+              const discAo = new THREE.Mesh(new THREE.PlaneGeometry(rBot * 2.45, rBot * 2.45), assets.contactAoMat);
+              discAo.rotation.x = -Math.PI / 2;
+              discAo.position.set(worldPos.x, 0.0045, worldPos.z);
+              markCadHardwareRecursive(discAo);
+              rootGroup.add(discAo);
+            }
+          }
+
+          if (!cylCategorized && isUpright && isTransparent && !isVeryFaint && !isDynamicRod && rTop >= 0.11 && rTop < 0.36 && h >= 0.75 && Math.abs(rTop - rBot) < 0.05) {
+            cylCategorized = true;
+            const narrowLipMat = new THREE.MeshPhysicalMaterial({
+              color: 0xe2e8f0,
+              transparent: true,
+              opacity: Math.min(0.68, (mat.opacity || 0.28) + 0.22),
+              roughness: 0.06,
+              clearcoat: 1.0
+            });
+            const narrowLip = new THREE.Mesh(new THREE.TorusGeometry(rTop * 1.02, Math.max(0.012, rTop * 0.11), 12, 28), narrowLipMat);
+            narrowLip.rotation.x = Math.PI / 2;
+            narrowLip.position.y = h * 0.5;
+            const narrowGrp = new THREE.Group();
+            narrowGrp.add(narrowLip);
+            attachCadGroupSafely(mesh, narrowGrp);
           }
 
           // Відбортований скляний вінчик, скляне дно, мірна шкала та опорний триножник на прозорих лабораторних склянках і реакторах (для всіх сцен, включно з хімією та біологією)
@@ -44667,14 +45388,74 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           }
           if ((sceneKey === 'pendulum' || sceneKey === 'coupled' || sceneKey === 'conical' || sceneKey === 'ballistic' || sceneKey === 'driven') && r >= 0.18 && r <= 0.58 && Math.abs(mesh.scale.x - 1) < 1e-3) {
             const bobHardware = new THREE.Group();
-            const cap = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.24, r * 0.34, r * 0.20, 16), assets.brassMat);
+            const cap = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.24, r * 0.34, r * 0.20, 20), assets.brassMat);
             cap.position.y = r * 0.92;
-            const ring = new THREE.Mesh(new THREE.TorusGeometry(r * 0.16, r * 0.042, 10, 18), assets.brassMat);
+            const ring = new THREE.Mesh(new THREE.TorusGeometry(r * 0.16, r * 0.042, 12, 24), assets.brassMat);
             ring.position.y = r * 1.08;
             bobHardware.add(cap, ring);
             attachCadGroupSafely(mesh, bobHardware);
           }
         }
+      }
+
+      for (const oldGeo of upgradedPrimMap.keys()) {
+        if (oldGeo && (!oldGeo.userData || !oldGeo.userData.persistent)) {
+          oldGeo.dispose();
+        }
+      }
+
+      // 5. Локальні контактні тіні (Ambient Occlusion) на поверхні лабораторного столу під стійками, колбами та приладами
+      if (detectedBenchSlab && !rootGroup.userData?.benchAoApplied) {
+        rootGroup.userData = Object.assign({}, rootGroup.userData, { benchAoApplied: true });
+        const bTop = detectedBenchSlab.topY;
+        let aoCount = 0;
+        for (const sb of simBoxes) {
+          if (aoCount >= 14) break;
+          if (sb.mesh === detectedBenchSlab.mesh) continue;
+          const mMat = Array.isArray(sb.mesh.material) ? sb.mesh.material[0] : sb.mesh.material;
+          if (mMat && mMat.transparent && mMat.opacity < 0.22) continue;
+          const gapY = sb.minY - bTop;
+          const wFoot = sb.hx * 2;
+          const dFoot = sb.hz * 2;
+          if (gapY >= -0.06 && gapY <= 0.14 && wFoot >= 0.16 && wFoot <= 5.2 && dFoot >= 0.16 && dFoot <= 4.5 && (sb.hy * 2) >= 0.14) {
+            const cx = (sb.minX + sb.maxX) * 0.5;
+            const cz = (sb.minZ + sb.maxZ) * 0.5;
+            if (cx >= detectedBenchSlab.minX + 0.2 && cx <= detectedBenchSlab.maxX - 0.2 && cz >= detectedBenchSlab.minZ + 0.2 && cz <= detectedBenchSlab.maxZ - 0.2) {
+              const pad = new THREE.Mesh(
+                new THREE.PlaneGeometry(Math.min(4.8, wFoot * 1.48 + 0.14), Math.min(4.2, dFoot * 1.48 + 0.14)),
+                assets.benchAoMat
+              );
+              pad.rotation.x = -Math.PI / 2;
+              pad.position.set(cx, bTop + 0.0028, cz);
+              markCadHardwareRecursive(pad);
+              rootGroup.add(pad);
+              aoCount++;
+            }
+          }
+        }
+      }
+
+      // Вмикаємо тіні на всіх доданих металевих вузлах кріплення (окрім напівпрозорих AO-підкладок та скляних вінчиків)
+      rootGroup.traverse(ch => {
+        if (!ch || !ch.isMesh || !ch.userData || !ch.userData.isCadHardware) return;
+        const cm = ch.material;
+        if (cm && !cm.transparent && ch.geometry && ch.geometry.type !== 'PlaneGeometry') {
+          ch.castShadow = true;
+          ch.receiveShadow = true;
+        }
+      });
+    }
+
+    function enhanceDynamicSubtreesIfNeeded(rootGroup, sceneKey) {
+      if (!rootGroup) return;
+      let hasNewMesh = false;
+      rootGroup.traverse(obj => {
+        if (!hasNewMesh && obj && obj.isMesh && (!obj.userData || !obj.userData.cadEnhanced)) {
+          hasNewMesh = true;
+        }
+      });
+      if (hasNewMesh) {
+        enhanceApparatusScene(rootGroup, sceneKey);
       }
     }
 
@@ -44684,6 +45465,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       document.getElementById('sim-time-readout').textContent = `t = 0.00 ${tUI().secUnit}`;
       resetChartHistory();
       if (activeSim) activeSim.reset();
+      enhanceDynamicSubtreesIfNeeded(worldGroup, uiState.activeScene);
       deoverlapVectorLabels();
       if (keepPhaseTest && uiState.selectedOption !== null) {
         transitionToPhase(uiState.phase === 'explain' ? 'explain' : 'test');

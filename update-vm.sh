@@ -188,9 +188,9 @@ PYHUB
     sudo mkdir -p "${TARGET_HUB}"
     if [ "$(realpath "${TARGET_HUB}")" != "${SRC_SHEUA_REAL}" ]; then
       sudo cp -a "${SRC_DIR}/sheua-root/." "${TARGET_HUB}/"
-    fi
-    if command -v gzip >/dev/null 2>&1 && [ -f "${TARGET_HUB}/sitemap.xml" ]; then
-      sudo gzip -9 -k -f "${TARGET_HUB}/sitemap.xml" || true
+      if command -v gzip >/dev/null 2>&1; then
+        sudo find "${TARGET_HUB}" -maxdepth 2 \( -name "*.html" -o -name "*.xml" \) -exec gzip -9 -k -f {} + || true
+      fi
     fi
     if [ -n "${WEB_OWNER}" ]; then
       sudo chown -R "${WEB_OWNER}" "${TARGET_HUB}"

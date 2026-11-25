@@ -566,6 +566,226 @@
       .hero-sheet, .article-sheet { padding: 20px 16px; }
       .hub-pill, .share-chip, .nmt-opt-btn, .lang-pill { min-height: 44px; display: inline-flex; align-items: center; }
     }
+
+    .sandbox-box {
+      margin-top: 22px;
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .sandbox-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sandbox-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .sandbox-canvas-wrap {
+      position: relative;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .sandbox-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 880 / 260;
+    }
+    .sandbox-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .sandbox-slider-lbl {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 8px 10px;
+    }
+    .sandbox-slider-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .sandbox-slider-lbl input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-crimson);
+      cursor: pointer;
+    }
+    .sandbox-telemetry {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .telemetry-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12.8px;
+      color: var(--ink-primary);
+    }
+    .telemetry-metrics span {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      padding: 3px 8px;
+    }
+    .sandbox-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 3px;
+      border: 1px solid var(--ink-primary);
+    }
+    .btn-primary-link:hover {
+      background: var(--accent-crimson);
+      border-color: var(--accent-crimson);
+    }
+    .explorer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .explorer-search-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .explorer-search-row .filter-input {
+      margin-bottom: 0;
+      flex: 1 1 260px;
+    }
+    .sim-catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .sim-mini-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 11px 13px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: border-color 0.12s ease, transform 0.12s ease;
+    }
+    .sim-mini-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .sim-mini-card.spotlight {
+      border: 2px solid var(--accent-crimson);
+      background: #fffbeb;
+    }
+    .sim-mini-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .sim-mini-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+    .sim-mini-sub {
+      font-size: 12.6px;
+      color: var(--ink-secondary);
+      line-height: 1.42;
+    }
+    .catalog-footer-row {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .copy-formula-btn {
+      padding: 2px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .copy-formula-btn:hover {
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .inquiry-stepper {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 16px 18px;
+      margin: 14px 0 18px;
+    }
+    .inquiry-panel {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .inquiry-panel.hidden { display: none; }
+    @media (max-width: 640px) {
+      .sandbox-box { padding: 14px 12px; }
+      .copy-formula-btn, .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+
 </style>
 </head>
 <body>
@@ -610,9 +830,139 @@
           <span class="card-link-hint">Відкрити 3D-лабораторію біології →</span>
         </a>
       </div>
+
+      
+      <div class="sandbox-box" id="live-sandbox" role="region" aria-label="Інтерактивний лабораторний стенд">
+        <div class="sandbox-header">
+          <div>
+            <span class="card-kicker">ЖИВИЙ СТЕНД НА ГОЛОВНІЙ · СПРОБУЙТЕ В ДІЇ</span>
+            <h2 style="margin:2px 0 0;padding:0;border:none;font-size:19px;">Дослідіть зіткнення тіл, тиск ідеального газу та імпульс нейрона</h2>
+          </div>
+          <div class="sandbox-tabs">
+            <button type="button" class="hub-pill active" data-sbx-mode="phys" aria-pressed="true">Фізика: Зіткнення</button>
+            <button type="button" class="hub-pill" data-sbx-mode="chem" aria-pressed="false">Хімія: Газ PV = νRT</button>
+            <button type="button" class="hub-pill" data-sbx-mode="bio" aria-pressed="false">Біофізика: Нейрон</button>
+          </div>
+        </div>
+
+        <div class="sandbox-canvas-wrap">
+          <canvas id="home-sim-canvas" width="880" height="260" aria-label="Полотно інтерактивної фізичної моделі"></canvas>
+        </div>
+
+        <div id="sbx-sliders" class="sandbox-controls"></div>
+
+        <div class="sandbox-telemetry">
+          <div id="sbx-metrics" class="telemetry-metrics" aria-live="polite"></div>
+          <div class="sandbox-actions">
+            <button type="button" id="sbx-trigger-btn" class="hub-pill">Запустити знову</button>
+            <button type="button" id="sbx-pause-btn" class="hub-pill">Пауза</button>
+            <a id="sbx-open-3d" class="btn-primary-link" href="https://physics.sheua.com/uk/sim/collision">Відкрити повну 3D-установку →</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <article class="article-sheet">
+      
+      <h2>Інтерактивний навігатор усіма 106 3D-експериментами</h2>
+      <p>Відфільтруйте каталог за предметом або складністю, введіть назву теми у поле пошуку чи відкрийте випадкову тривимірну установку:</p>
+
+      <div class="explorer-toolbar" id="cat-disc-bar">
+        <button type="button" class="hub-pill active" data-cat-disc="all" aria-pressed="true">Усі · 106</button>
+        <button type="button" class="hub-pill" data-cat-disc="phys" aria-pressed="false">Фізика · 46</button>
+        <button type="button" class="hub-pill" data-cat-disc="chem" aria-pressed="false">Хімія · 40</button>
+        <button type="button" class="hub-pill" data-cat-disc="bio" aria-pressed="false">Біологія · 20</button>
+        <button type="button" class="hub-pill" data-cat-tier="core" id="cat-tier-core" aria-pressed="false">Шкільна база</button>
+        <button type="button" class="hub-pill" data-cat-tier="adv" id="cat-tier-adv" aria-pressed="false">Поглиблений рівень</button>
+      </div>
+
+      <div class="explorer-search-row">
+        <label for="cat-search-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Пошук серед 106 3D-симуляцій</label>
+        <input type="search" id="cat-search-input" class="filter-input" placeholder="Пошук серед 106 робіт: маятник, лінза, Карно, орбіталі, титрування, ПЛР, нейрон..." />
+        <button type="button" id="cat-random-btn" class="hub-pill">Випадковий 3D-дослід</button>
+      </div>
+
+      <div id="cat-cards-grid" class="sim-catalog-grid">
+        
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/collision">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9 клас</span></div>
+            <div class="sim-mini-title">Закон збереження імпульсу</div>
+            <div class="sim-mini-sub">Пружне та непружне зіткнення куль, обмін імпульсами</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/incline">
+            <div class="sim-mini-meta"><span>Фізика</span><span>7-9 клас</span></div>
+            <div class="sim-mini-title">Рух тіла по похилій площині</div>
+            <div class="sim-mini-sub">Розклад сили тяжіння, реакція опори N та кут тертя</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/pendulum">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9-10 клас</span></div>
+            <div class="sim-mini-title">Математичний та пружинний маятники</div>
+            <div class="sim-mini-sub">Порівняння періодів T = 2π√(L/g) та T = 2π√(m/k)</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/projectile">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9-10 клас</span></div>
+            <div class="sim-mini-title">Рух тіла, кинутого під кутом до горизонту</div>
+            <div class="sim-mini-sub">Парабола у вакуумі та балістична крива з опором повітря</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/cradle">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9 клас</span></div>
+            <div class="sim-mini-title">Колиска Ньютона</div>
+            <div class="sim-mini-sub">Передача імпульсу та енергії ланцюжком сталевих куль</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/centripetal">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9-10 клас</span></div>
+            <div class="sim-mini-title">Доцентрове прискорення та рух на повороті</div>
+            <div class="sim-mini-sub">Доцентрове прискорення a = ω²R та умова зриву в занос</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/archimedes">
+            <div class="sim-mini-meta"><span>Фізика</span><span>7 клас</span></div>
+            <div class="sim-mini-title">Закон Архімеда та умови плавання тіл</div>
+            <div class="sim-mini-sub">Виштовхувальна сила F_A = ρgV та умова плавання біля ватерлінії</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/gas">
+            <div class="sim-mini-meta"><span>Фізика</span><span>10 клас</span></div>
+            <div class="sim-mini-title">Ідеальний газ під поршнем (Рівняння Менделєєва-Клапейрона)</div>
+            <div class="sim-mini-sub">Рівняння Менделєєва-Клапейрона PV = νRT та тепловий рух молекул</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/wavefront">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9-11 клас</span></div>
+            <div class="sim-mini-title">Світловий фронт і принцип Гюйгенса-Френеля</div>
+            <div class="sim-mini-sub">Вторинні сферичні хвилі Гюйгенса та заломлення плоского фронту світла</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/interference">
+            <div class="sim-mini-meta"><span>Фізика</span><span>11 клас</span></div>
+            <div class="sim-mini-title">Інтерференція світлових фронтів (Дослід Юнга)</div>
+            <div class="sim-mini-sub">Накладання двох сферичних світлових фронтів, максимуми та мінімуми</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/dispersion">
+            <div class="sim-mini-meta"><span>Фізика</span><span>9-11 клас</span></div>
+            <div class="sim-mini-title">Дисперсія світла та утворення спектра у призмі</div>
+            <div class="sim-mini-sub">Залежність показника заломлення n(λ) від довжини хвилі та розклад спектра</div>
+          </a>
+          <a class="sim-mini-card" href="https://physics.sheua.com/uk/sim/emwave">
+            <div class="sim-mini-meta"><span>Фізика</span><span>11 клас</span></div>
+            <div class="sim-mini-title">Електромагнітна світлова хвиля (E, B та вектор Пойнтінга)</div>
+            <div class="sim-mini-sub">Взаємно перпендикулярні поля E ⊥ B, фазовий фронт та поляризація світла</div>
+          </a>
+      </div>
+
+      <div class="catalog-footer-row">
+        <span id="cat-count-status">Показано 12 із 106 інтерактивних 3D-симуляцій</span>
+        <button type="button" id="cat-toggle-all-btn" class="hub-pill">Показати всі 106 експериментів</button>
+      </div>
+
+      
+      <h2>Бліц-самоперевірка знань із фізики, хімії та біології</h2>
+      <p>Розв'яжіть три короткі розрахункові задачі з миттєвою перевіркою за формулами СІ або завантажте наступну трійку завдань:</p>
+
+      <div class="hub-filter-row">
+        <button type="button" id="qq-next-set-btn" class="hub-pill">Нова трійка задач</button>
+        <a class="hub-pill" style="text-decoration:none;" href="/nmt-trener.html">Повний тренажер НМТ на 15 задач →</a>
+        <div class="score-pill" id="qq-score-pill" aria-live="polite">Результат: 0 / 3</div>
+      </div>
+
+      <div id="qq-cards-wrap"></div>
+
       <h2>Інтерактивні тренажери, шкільні лабораторні роботи та калькулятори СІ</h2>
       <p>Для щоденної підготовки до уроків у 7-11 класах, домашніх розрахунків та іспитів НМТ скористайтеся трьома спеціалізованими онлайн-інструментами:</p>
       <div class="cta-grid">
@@ -638,51 +988,57 @@
 
       <h2>Теоретичні розділи підручника та практикум розв'язування задач</h2>
       <p>Кожен розділ містить строге математичне виведення основних законів, межі застосовності фізичних і хімічних моделей, зведені довідникові таблиці та детальний розбір типових розрахункових задач із перевіркою розмірностей у системі СІ:</p>
+      <div class="hub-filter-row">
+        <button type="button" class="hub-pill active" data-ch-filter="all" aria-pressed="true">Усі розділи · 8</button>
+        <button type="button" class="hub-pill" data-ch-filter="phys" aria-pressed="false">Фізика · 3</button>
+        <button type="button" class="hub-pill" data-ch-filter="chem" aria-pressed="false">Хімія · 2</button>
+        <button type="button" class="hub-pill" data-ch-filter="bio" aria-pressed="false">Біологія та СІ · 3</button>
+      </div>
       <div class="chapters-grid">
         
-        <a class="chapter-card" href="/mechanics-conservation.html">
+        <a class="chapter-card" data-ch-disc="phys" href="/mechanics-conservation.html">
           <span class="card-kicker">Розділ I · Теоретичний розділ і задачі</span>
           <div class="card-title">Класична механіка: закони збереження імпульсу й енергії та динаміка обертання</div>
           <p class="card-desc">Аналітичний виклад законів збереження імпульсу, механічної енергії та моменту імпульсу, теорія пружного й непружного удару, момент інерції тіл і розв'язані задачі в системі СІ.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/thermodynamics-fluids.html">
+        <a class="chapter-card" data-ch-disc="phys" href="/thermodynamics-fluids.html">
           <span class="card-kicker">Розділ II · Теоретичний розділ і задачі</span>
           <div class="card-title">Механіка рідин і газів та молекулярна термодинаміка: від закону Архімеда до циклу Карно</div>
           <p class="card-desc">Гідростатика й гідродинаміка ідеальної та в'язкої рідини, рівняння Бернуллі, формула Торрічеллі, закон Стокса, молекулярно-кінетична теорія ідеального газу та ККД теплових машин.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/optics-electromagnetism.html">
+        <a class="chapter-card" data-ch-disc="phys" href="/optics-electromagnetism.html">
           <span class="card-kicker">Розділ III · Теоретичний розділ і задачі</span>
           <div class="card-title">Хвильова оптика, електромагнетизм і квантова фізика: поля, хвилі та будова атома</div>
           <p class="card-desc">Принцип Гюйгенса-Френеля, інтерференція Юнга, дифракція на щілині, закон Малюса, сила Лоренца, електромагнітна індукція Фарадея, фотоефект Ейнштейна, ефект Комптона і постулати Бора.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/quantum-chemistry-bonding.html">
+        <a class="chapter-card" data-ch-disc="chem" href="/quantum-chemistry-bonding.html">
           <span class="card-kicker">Розділ IV · Теоретичний розділ і задачі</span>
           <div class="card-title">Квантова хімія та будова речовини: електронні орбіталі, гібридизація ГЕПВО і кристалічні ґратки</div>
           <p class="card-desc">Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний закон, модель відштовхування електронних пар ГЕПВО, метод молекулярних орбіталей МО ЛКАО та енергія йонних кристалів.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/chemical-kinetics-equilibrium.html">
+        <a class="chapter-card" data-ch-disc="chem" href="/chemical-kinetics-equilibrium.html">
           <span class="card-kicker">Розділ V · Теоретичний розділ і задачі</span>
           <div class="card-title">Фізична хімія, кінетика та електрохімія: вільна енергія Гіббса, рівновага, pH і рівняння Нернста</div>
           <p class="card-desc">Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й порядки реакцій, принцип Ле Шательє, буферні розчини Гендерсона-Гассельбаха, гальванічні елементи та електроліз Фарадея.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/cell-molecular-biology.html">
+        <a class="chapter-card" data-ch-disc="bio" href="/cell-molecular-biology.html">
           <span class="card-kicker">Розділ VI · Теоретичний розділ і задачі</span>
           <div class="card-title">Молекулярна біологія клітини і генетика: біоенергетика АТФ, поділ клітини, ДНК, ПЛР та CRISPR-Cas9</div>
           <p class="card-desc">Геометричне обмеження площі до об'єму клітини, хеміосмотичне спряження Мітчелла та синтез АТФ, мітоз і мейоз, реплікація ДНК, трансляція на рибосомі, закон Гарді-Вайнберга, ПЛР і CRISPR-Cas9.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/biophysics-physiology.html">
+        <a class="chapter-card" data-ch-disc="bio" href="/biophysics-physiology.html">
           <span class="card-kicker">Розділ VII · Теоретичний розділ і задачі</span>
           <div class="card-title">Біофізика живих систем: мембранний потенціал, імпульс нейрона, оптика ока та гемодинаміка</div>
           <p class="card-desc">Рівняння Нернста та Гольдмана-Ходжкіна-Каца для мембранного потенціалу, потенціал дії нейрона, синаптична передача, біомеханіка саркомера Гілла, рефракція ока і закон Гагена-Пуазейля.</p>
           <span class="card-link-hint">Читати розділ і приклади розрахунків →</span>
         </a>
-        <a class="chapter-card" href="/si-constants-handbook.html">
+        <a class="chapter-card" data-ch-disc="bio" href="/si-constants-handbook.html">
           <span class="card-kicker">Розділ VIII · Теоретичний розділ і задачі</span>
           <div class="card-title">Довідник фізичних сталих CODATA, одиниць системи СІ та похибок лабораторних вимірювань</div>
           <p class="card-desc">Точні значення фундаментальних фізико-хімічних констант у сучасній редакції Міжнародної системи одиниць СІ, похідні одиниці, десяткові префікси та методика оцінювання похибок вимірювань.</p>
@@ -691,7 +1047,13 @@
       </div>
 
       <h2>Зведений довідник розрахункових рівнянь курсу</h2>
-      <p>Скористайтеся полем швидкої фільтрації нижче, щоб знайти потрібний закон, формулу або фізичну величину:</p>
+      <p>Скористайтеся фільтром дисциплін або полем пошуку, щоб знайти потрібне рівняння та скопіювати його в один клік:</p>
+      <div class="hub-filter-row">
+        <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true">Усі рівняння · 12</button>
+        <button type="button" class="hub-pill" data-law-disc="phys" aria-pressed="false">Фізика</button>
+        <button type="button" class="hub-pill" data-law-disc="chem" aria-pressed="false">Хімія</button>
+        <button type="button" class="hub-pill" data-law-disc="bio" aria-pressed="false">Біологія і біофізика</button>
+      </div>
       <label for="law-filter" style="display:block;font-size:13px;font-weight:600;margin-bottom:4px;color:var(--ink-primary);">Пошук за назвою закону, розділом або символом величини</label>
       <input type="search" id="law-filter" class="filter-input" placeholder="Наприклад: Бернуллі, Нернст, Комптон, pH, Пуазейль..." />
 
@@ -706,73 +1068,73 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/mechanics-conservation.html">Класична механіка</a></td>
               <td>Закон збереження імпульсу та непружний удар</td>
               <td><code>m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂, &nbsp; ΔQ = ½μ·Δv²(1 − e²)</code></td>
               <td>Маса <code>m</code> (кг), швидкість <code>v</code> (м/с), коефіцієнт відновлення <code>e</code></td>
             </tr>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/mechanics-conservation.html">Динаміка обертання</a></td>
               <td>Кінетична енергія кочення та гіроскопічна прецесія</td>
               <td><code>E_k = ½mv² + ½Iω², &nbsp; Ω_пр = mgl / (I_s ω_s)</code></td>
               <td>Момент інерції <code>I</code> (кг·м²), кутова швидкість <code>ω</code> (рад/с)</td>
             </tr>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/thermodynamics-fluids.html">Гідродинаміка</a></td>
               <td>Рівняння Бернуллі, формула Торрічеллі та закон Стокса</td>
               <td><code>P + ½ρv² + ρgy = const, &nbsp; v = √(2gh), &nbsp; F_c = 6πηrv</code></td>
               <td>Тиск <code>P</code> (Па), густина <code>ρ</code> (кг/м³), в'язкість <code>η</code> (Па·с)</td>
             </tr>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/thermodynamics-fluids.html">Термодинаміка і МКТ</a></td>
               <td>Рівняння Менделєєва-Клапейрона та ККД циклу Карно</td>
               <td><code>PV = νRT, &nbsp; v_кв = √(3RT/M), &nbsp; η = 1 − T₂/T₁</code></td>
               <td>Температура <code>T</code> (К), кількість речовини <code>ν</code> (моль)</td>
             </tr>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/optics-electromagnetism.html">Хвильова оптика</a></td>
               <td>Закон заломлення Снеліуса, інтерференція Юнга і закон Малюса</td>
               <td><code>n₁ sin α = n₂ sin γ, &nbsp; Δy = λL/d, &nbsp; I = I₀ cos² θ</code></td>
               <td>Показник заломлення <code>n</code>, довжина хвилі <code>λ</code> (нм)</td>
             </tr>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/optics-electromagnetism.html">Електродинаміка</a></td>
               <td>Сила Лоренца, індукція Фарадея та коливальний контур</td>
               <td><code>F_L = |q|vB sin α, &nbsp; ℰ_i = −N dΦ/dt, &nbsp; T = 2π√(LC)</code></td>
               <td>Індукція <code>B</code> (Тл), індуктивність <code>L</code> (Гн), ємність <code>C</code> (Ф)</td>
             </tr>
-            <tr>
+            <tr data-law-row="phys">
               <td><a href="/optics-electromagnetism.html">Квантова фізика</a></td>
               <td>Фотоефект Ейнштейна, зсув Комптона та рівні атома Бора</td>
               <td><code>hc/λ = A_вих + eU_з, &nbsp; Δλ = λ_C(1 − cos θ), &nbsp; E_n = −13.6/n² еВ</code></td>
               <td>Стала Планка <code>h</code> (Дж·с), затримуюча напруга <code>U_з</code> (В)</td>
             </tr>
-            <tr>
+            <tr data-law-row="chem">
               <td><a href="/quantum-chemistry-bonding.html">Квантова хімія</a></td>
               <td>Порядок зв'язку МО ЛКАО та цикл Борна-Габера</td>
               <td><code>BO = ½(N_зв − N_розп), &nbsp; ΔH°_f = ΔH_ат + I₁ + E_ea − U_ґрат</code></td>
               <td>Енергія ґратки <code>U_ґрат</code> (кДж/моль), валентні кути ГЕПВО</td>
             </tr>
-            <tr>
+            <tr data-law-row="chem">
               <td><a href="/chemical-kinetics-equilibrium.html">Фізична хімія</a></td>
               <td>Енергія Гіббса, рівняння Арреніуса та буферне рівняння pH</td>
               <td><code>ΔG = ΔH − TΔS = −RT ln K, &nbsp; k = A e^{−E_a/RT}, &nbsp; pH = pK_a + lg([A⁻]/[HA])</code></td>
               <td>Енергія активації <code>E_a</code> (кДж/моль), водневий показник <code>pH</code></td>
             </tr>
-            <tr>
+            <tr data-law-row="chem">
               <td><a href="/chemical-kinetics-equilibrium.html">Електрохімія</a></td>
               <td>Рівняння Нернста та об'єднаний закон електролізу Фарадея</td>
               <td><code>E = E° + (RT/zF) ln([Ox]/[Red]), &nbsp; m = (M·I·t) / (z·F)</code></td>
               <td>Стала Фарадея <code>F = 96 485 Кл/моль</code>, сила струму <code>I</code> (А)</td>
             </tr>
-            <tr>
+            <tr data-law-row="bio">
               <td><a href="/cell-molecular-biology.html">Молекулярна біологія</a></td>
               <td>Протонна рушійна сила Мітчелла, ПЛР та закон Гарді-Вайнберга</td>
               <td><code>Δp = Δψ − 61.5·ΔpH (мВ), &nbsp; N = N₀(1+E)^n, &nbsp; p² + 2pq + q² = 1</code></td>
               <td>Мембранний потенціал <code>Δψ</code> (мВ), частоти алелів <code>p, q</code></td>
             </tr>
-            <tr>
+            <tr data-law-row="bio">
               <td><a href="/biophysics-physiology.html">Біофізика і фізіологія</a></td>
               <td>Потенціал Нернста, рівняння м'яза Гілла та закон Гагена-Пуазейля</td>
               <td><code>E_i = (RT/zF) ln([C]_o/[C]_i), &nbsp; Q = (πΔP·R⁴) / (8ηL)</code></td>
@@ -782,13 +1144,49 @@
         </table>
       </div>
 
+      
       <h2>Методика триступеневого дослідницького практикуму</h2>
-      <p>Кожна зі 106 лабораторних робіт на піддомені <strong>physics.sheua.com</strong> побудована за циклом наукового дослідження, який застосовується на уроках природничих дисциплін, факультативах та університетських семінарах:</p>
-      <ol>
-        <li>Формулювання кількісної гіпотези перед запуском установки шляхом аналізу граничних випадків і розмірностей фізичних величин.</li>
-        <li>Експериментальна перевірка у тривимірному просторі WebGL із керуванням параметрами через пресети мінімальних, стандартних і максимальних значень, спостереженням живих векторів сил, швидкостей та енергетичної осцилограми.</li>
-        <li>Аналітичне доведення результату в інтерактивному калькуляторі формул із прямою підстановкою обраних чисел, режимом класу для проєктора та генерацією друкованого протоколу лабораторної роботи.</li>
-      </ol>
+      <p>Кожна зі 106 лабораторних робіт на піддомені <strong>physics.sheua.com</strong> веде учня через три послідовні етапи наукового дослідження. Перемикніть кроки нижче на прикладі скочування тіл із похилої площини:</p>
+
+      <div class="inquiry-stepper">
+        <div class="hub-filter-row" style="margin-top:0;">
+          <button type="button" class="hub-pill active" data-inq-step="1" aria-pressed="true">Крок 1. Кількісна гіпотеза</button>
+          <button type="button" class="hub-pill" data-inq-step="2" aria-pressed="false">Крок 2. 3D-експеримент</button>
+          <button type="button" class="hub-pill" data-inq-step="3" aria-pressed="false">Крок 3. Доведення у СІ</button>
+        </div>
+
+        <div class="inquiry-panel" data-inq-panel="1">
+          <h3>Формулювання передбачення до запуску приладу</h3>
+          <p>Суцільний циліндр і тонкостінне кільце однакової маси та радіуса одночасно починають котитися без проковзування з вершини похилої площини. Яке тіло дістанеться основи першим?</p>
+          <div class="nmt-opts-grid" id="inq-predict-opts">
+            <button type="button" class="nmt-opt-btn" data-inq-ans="correct">Суцільний циліндр фінішує швидше</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Тонкостінне кільце фінішує швидше</button>
+            <button type="button" class="nmt-opt-btn" data-inq-ans="wrong">Обидва тіла прибудуть одночасно</button>
+          </div>
+          <p id="inq-predict-feedback" style="margin-top:10px;margin-bottom:0;font-weight:600;display:none;"></p>
+        </div>
+
+        <div class="inquiry-panel hidden" data-inq-panel="2">
+          <h3>Перевірка в інтерактивній установці зі змінним кутом нахилу</h3>
+          <p>Змініть кут нахилу площини <code>α</code> та порівняйте лінійні прискорення центрів мас суцільного циліндра і тонкостінного кільця за g = 9.81 м/с²:</p>
+          <label class="sandbox-slider-lbl" for="inq-angle-slider" style="max-width:340px;">
+            <span class="sandbox-slider-top"><span>Кут нахилу площини α</span><code id="inq-angle-val">30°</code></span>
+            <input type="range" id="inq-angle-slider" min="10" max="60" step="1" value="30" />
+          </label>
+          <div class="formula-block" id="inq-step2-readout" style="margin-bottom:0;">
+            <code>α = 30°: a_циліндр = 3.27 м/с², a_кільце = 2.45 м/с²</code>
+          </div>
+        </div>
+
+        <div class="inquiry-panel hidden" data-inq-panel="3">
+          <h3>Аналітичне виведення через момент інерції</h3>
+          <p>Під час кочення без проковзування потенціальна енергія <code>mgh</code> розподіляється між поступальним рухом <code>½mv²</code> та обертанням <code>½Iω²</code>. Для суцільного циліндра безрозмірний коефіцієнт моменту інерції становить <code>β = I/(mR²) = 0.5</code>, а для кільця <code>β = 1.0</code>:</p>
+          <div class="formula-block">
+            <code>a = g sin α / (1 + β)  ⇒  a_циліндр = (2/3) g sin α,   a_кільце = (1/2) g sin α</code>
+          </div>
+          <p style="margin-bottom:0;">Результат не залежить ні від маси <code>m</code>, ні від радіуса <code>R</code>. Перевірити це в повному тривимірному досліді з векторами сил і друкованим протоколом можна у роботі <a href="https://physics.sheua.com/uk/sim/incline">Похила площина та кочення тіл →</a></p>
+        </div>
+      </div>
       
       <div class="share-strip" role="region" aria-label="Поділитися матеріалом">
         <span><strong>Надіслати учням або колегам.</strong></span>
@@ -838,15 +1236,930 @@
   </script>
   <script>
     (function(){
-      var input = document.getElementById('law-filter');
-      var tbody = document.querySelector('#laws-table tbody');
-      if (!input || !tbody) return;
-      input.addEventListener('input', function() {
-        var q = input.value.trim().toLowerCase();
-        Array.prototype.forEach.call(tbody.rows, function(row) {
-          row.style.display = (!q || row.textContent.toLowerCase().indexOf(q) !== -1) ? '' : 'none';
+      var CATALOG = [{"k":"collision","d":"phys","t":"core","g":"9 клас","n":"Закон збереження імпульсу","s":"Пружне та непружне зіткнення куль, обмін імпульсами"},{"k":"incline","d":"phys","t":"core","g":"7-9 клас","n":"Рух тіла по похилій площині","s":"Розклад сили тяжіння, реакція опори N та кут тертя"},{"k":"pendulum","d":"phys","t":"core","g":"9-10 клас","n":"Математичний та пружинний маятники","s":"Порівняння періодів T = 2π√(L/g) та T = 2π√(m/k)"},{"k":"projectile","d":"phys","t":"core","g":"9-10 клас","n":"Рух тіла, кинутого під кутом до горизонту","s":"Парабола у вакуумі та балістична крива з опором повітря"},{"k":"cradle","d":"phys","t":"core","g":"9 клас","n":"Колиска Ньютона","s":"Передача імпульсу та енергії ланцюжком сталевих куль"},{"k":"centripetal","d":"phys","t":"core","g":"9-10 клас","n":"Доцентрове прискорення та рух на повороті","s":"Доцентрове прискорення a = ω²R та умова зриву в занос"},{"k":"archimedes","d":"phys","t":"core","g":"7 клас","n":"Закон Архімеда та умови плавання тіл","s":"Виштовхувальна сила F_A = ρgV та умова плавання біля ватерлінії"},{"k":"gas","d":"phys","t":"core","g":"10 клас","n":"Ідеальний газ під поршнем (Рівняння Менделєєва-Клапейрона)","s":"Рівняння Менделєєва-Клапейрона PV = νRT та тепловий рух молекул"},{"k":"wavefront","d":"phys","t":"core","g":"9-11 клас","n":"Світловий фронт і принцип Гюйгенса-Френеля","s":"Вторинні сферичні хвилі Гюйгенса та заломлення плоского фронту світла"},{"k":"interference","d":"phys","t":"core","g":"11 клас","n":"Інтерференція світлових фронтів (Дослід Юнга)","s":"Накладання двох сферичних світлових фронтів, максимуми та мінімуми"},{"k":"dispersion","d":"phys","t":"core","g":"9-11 клас","n":"Дисперсія світла та утворення спектра у призмі","s":"Залежність показника заломлення n(λ) від довжини хвилі та розклад спектра"},{"k":"emwave","d":"phys","t":"core","g":"11 клас","n":"Електромагнітна світлова хвиля (E, B та вектор Пойнтінга)","s":"Взаємно перпендикулярні поля E ⊥ B, фазовий фронт та поляризація світла"},{"k":"bernoulli","d":"phys","t":"core","g":"10 клас","n":"Рівняння Бернуллі та ефект Вентурі","s":"Зв'язок швидкості потоку рідини та статичного тиску у трубі змінного перерізу"},{"k":"lens","d":"phys","t":"core","g":"9-11 клас","n":"Збиральна лінза та фокусування світлового фронту","s":"Перетворення плоского світлового фронту на сферичний збіжний фронт у лінзі"},{"k":"lorentz","d":"phys","t":"core","g":"11 клас","n":"Сила Лоренца та циклотронна спіраль у 3D","s":"Рух зарядженої частинки по гвинтовій лінії (спіралі) в однорідному полі B"},{"k":"faraday","d":"phys","t":"core","g":"9-11 клас","n":"Закон Фарадея та правило Ленца у 3D","s":"Генерація індукційного струму в котушці під час руху магніту та правило Ленца"},{"k":"kepler","d":"phys","t":"core","g":"10-11 клас","n":"Еліптична орбіта та ІІ закон Кеплера","s":"Рух планети по еліптичній орбіті, секторна швидкість та обмін енергій у гравітаційному полі"},{"k":"gyroscope","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Момент інерції та енергія кочення","s":"Змагання суцільного циліндра та порожнистого обруча на похилій площині без проковзування"},{"k":"standingwave","d":"phys","t":"core","g":"9-11 клас","n":"Стоячі хвилі та обертони струни у 3D","s":"Власні моди коливань закріпленої струни, вузли й пучності та залежність частоти від натягу"},{"k":"doppler","d":"phys","t":"core","g":"9-11 клас","n":"Ефект Доплера та деформація хвильового фронту","s":"Стиснення сферичних хвильових фронтів попереду рухомого джерела, зміщення частоти та конус Маха"},{"k":"malus","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Поляризація світлового фронту та закон Малюса","s":"Проходження лінійно поляризованого світлового фронту крізь поляризатор та обертовий аналізатор"},{"k":"diffraction","d":"phys","t":"core","g":"11 клас","n":"Дифракція світлового фронту на вузькій щілині","s":"Огинання світловим фронтом країв вузької щілини, зони Гюйгенса та центральний дифракційний максимум"},{"k":"carnot","d":"phys","t":"core","g":"10 клас","n":"Ідеальна теплова машина та цикл Карно у 3D","s":"Перетворення теплоти нагрівника Q₁ на механічну роботу поршня A та передача Q₂ холодильнику"},{"k":"viscosity","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Рух кулі у в'язкій рідині (Закон Стокса)","s":"Падіння кульки у в'язкому маслі, сила в'язкого тертя Стокса та встановлення усталеної швидкості"},{"k":"coulomb","d":"phys","t":"core","g":"8-10 клас","n":"Закон Кулона та 3D-поле електричного диполя","s":"Силові лінії напруженості E двох точкових зарядів, закон Кулона та рух пробного заряду"},{"k":"rlccircuit","d":"phys","t":"core","g":"11 клас","n":"Електромагнітні коливання в контурі LC / RLC","s":"Вільні електромагнітні коливання між конденсатором C та котушкою індуктивності L, формула Томпсона"},{"k":"atwood","d":"phys","t":"core","g":"9-10 клас","n":"Машина Атвуда: прискорення та натяг нитки","s":"Рух зв'язаних тіл на невагомій нитці через масивний блок з моментом інерції I"},{"k":"coriolis","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Сила Коріоліса та траєкторія на диску, що обертається","s":"Відхилення траєкторії тіла в системі відліку, що обертається з кутовою швидкістю ω"},{"k":"hooke","d":"phys","t":"core","g":"7-10 клас","n":"Механічна напруга та модуль Юнга при розтягу","s":"Механічна напруга σ, відносне видовження ε та модуль пружності Юнга E при розтягу стрижня"},{"k":"torricelli","d":"phys","t":"core","g":"7-10 клас","n":"Формула Торрічеллі: витікання рідини з резервуара","s":"Швидкість витікання ідеальної рідини з малого отвору під дією гідростатичного напору h"},{"k":"maxwell","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Розподіл Максвелла та характерні швидкості газу","s":"Статистичний закон розподілу молекул ідеального газу за модулями швидкостей та характерні швидкості"},{"k":"newtonrings","d":"phys","t":"core","g":"Профільний / ЗВО · 11 клас","n":"Кільця Ньютона: інтерференція на повітряному прошарку","s":"Смуги рівної товщини в клиноподібному повітряному прошарку між плоско-опуклою лінзою та скляною пластиною"},{"k":"photoelectric","d":"phys","t":"core","g":"11 клас","n":"Зовнішній фотоефект та рівняння Ейнштейна","s":"Виривання фотоелектронів квантами світла hν, робота виходу A_вих, червона межа та затримуючий потенціал U_з"},{"k":"rutherford","d":"phys","t":"core","g":"9-11 клас","n":"Дослід Резерфорда: розсіяння α-частинок ядром","s":"Гіперболічні траєкторії α-частинок у кулонівському полі важкого атомного ядра +Ze та прицільний параметр b"},{"k":"ampere","d":"phys","t":"core","g":"9-11 клас","n":"Взаємодія паралельних струмів та сила Ампера","s":"Магнітна взаємодія двох паралельних провідників зі струмами I₁ та I₂ та еталон сили струму 1 Ампер"},{"k":"hall","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Ефект Холла та поперечна ЕРС у магнітному полі","s":"Виникнення поперечної різниці потенціалів U_H у пластинці зі струмом, вміщеній у перпендикулярне магнітне поле B"},{"k":"coupled","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Зв'язані маятники: нормальні моди та явище биття","s":"Періодичне перетікання механічної енергії між двома маятниками, з'єднаними пружною пружиною"},{"k":"precession","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Гіроскопічна прецесія важкої симетричної дзиґи","s":"Прецесія вектора власного моменту імпульсу L навколо вертикалі під дією моменту сили тяжіння M = [r × mg]"},{"k":"magnus","d":"phys","t":"core","g":"Профільний / ЗВО · 10 клас","n":"Ефект Магнуса та підіймальна сила обертового циліндра","s":"Виникнення поперечної підіймальної сили F_M при обтіканні обертового циліндра потоком внаслідок циркуляції швидкості Γ"},{"k":"capillary","d":"phys","t":"core","g":"Профільний / ЗВО · 10 клас","n":"Поверхневий натяг, меніск та капілярні явища","s":"Додатковий лапласівський тиск ΔP = 2σ cos θ / r під увігнутим або опуклим меніском та рівноважна висота стовпчика h"},{"k":"brownian","d":"phys","t":"core","g":"Профільний / ЗВО · 8-10 клас","n":"Броунівський рух та дифузія Ейнштейна-Смолуховського","s":"Хаотична траєкторія завислої мікрочастинки під ударами молекул рідини та лінійне зростання середнього квадрата зміщення ⟨r²⟩ = 6Dt"},{"k":"michelson","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Інтерферометр Майкельсона та фазовий зсув променів","s":"Поділ когерентного лазерного пучка напівпрозорим дзеркалом на два ортогональні плеча L₁, L₂ та зміщення кілець при зсуві Δd"},{"k":"compton","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Ефект Комптона та релятивістський імпульс фотона","s":"Пружне зіткнення рентгенівського фотона з вільним електроном, збільшення довжини хвилі Δλ = λ_C (1 − cos θ) та імпульс віддачі"},{"k":"bohr","d":"phys","t":"core","g":"9-11 клас","n":"Модель атома Бора, хвилі де Бройля та спектральні серії","s":"Квантування моменту імпульсу L_n = nℏ, стоячі хвилі де Бройля 2πr_n = nλ_дБ та випромінювання спектральних ліній Рідберга"},{"k":"biot","d":"phys","t":"core","g":"Профільний / ЗВО","n":"Закон Біо-Савара-Лапласа та котушки Гельмгольца","s":"Розрахунок магнітної індукції B(x) на осі колових витків зі струмом та створення високооднорідного поля між котушками Гельмгольца"},{"k":"transformer","d":"phys","t":"core","g":"9-11 клас","n":"Трансформатор змінного струму та взаємна індукція","s":"Взаємна електромагнітна індукція через спільний змінний магнітний потік Φ(t) в осерді та коефіцієнт трансформації U₂/U₁ = N₂/N₁"},{"k":"chem_orbitals","d":"chem","t":"core","g":"8-11 клас","n":"Будова електронних оболонок атома та 3D-орбіталі (s, p, d)","s":"Хвильова функція Шредінгера |ψ|², квантові числа n, l та вузлові поверхні"},{"k":"chem_vsepr","d":"chem","t":"core","g":"Профільний / ЗВО","n":"Гібридизація орбіталей і просторова геометрія молекул (ГЕПВО)","s":"Лінійна sp (180°), тригональна sp² (120°), тетраедрична sp³ (109.5°) і неподілені пари"},{"k":"chem_lattice","d":"chem","t":"core","g":"8-11 клас","n":"Йонна кристалічна ґратка та енергія зв'язку кристала (NaCl)","s":"Елементарна комірка кам'яної солі, стала Маделунга, енергія ґратки та теплові коливання"},{"k":"chem_gaslaws","d":"chem","t":"core","g":"8-10 клас","n":"Закон Авогадро, молярний об'єм газу та рівняння Менделєєва-Клапейрона","s":"Молярний об'єм газу V_m = 22.4 л/моль (н.у.), кількість речовини ν та рівняння PV = νRT"},{"k":"chem_kinetics","d":"chem","t":"core","g":"9-11 клас","n":"Швидкість хімічної реакції, енергія активації та каталіз","s":"Теорія активних зіткнень, рівняння Арреніуса k = A·exp(−E_a/RT) та дія каталізатора"},{"k":"chem_equilibrium","d":"chem","t":"core","g":"9-11 клас","n":"Хімічна рівновага та принцип Ле Шательє (система N₂O₄ ⇄ 2NO₂)","s":"Динамічна рівновага димеризації, константа K_p та зміщення під дією T і P"},{"k":"chem_titration","d":"chem","t":"core","g":"8-11 клас","n":"Кислотно-основне титрування, водневий показник pH та індикатори","s":"Крива нейтралізації HCl + NaOH → NaCl + H₂O, точка еквівалентності та стрибок pH"},{"k":"chem_galvanic","d":"chem","t":"core","g":"9-11 клас","n":"Гальванічний елемент Даніеля-Якобі та електродні потенціали","s":"Анодне окиснення Zn⁰ → Zn²⁺ + 2e⁻, катодне відновлення Cu²⁺ + 2e⁻ → Cu⁰ і сольовий місток"},{"k":"chem_electrolysis","d":"chem","t":"core","g":"9-11 клас","n":"Електроліз водного розчину електроліту та закони Фарадея","s":"Катодне осадження міді, анодне виділення кисню O₂↑ та маса m = (M·I·t)/(z·F)"},{"k":"chem_organic","d":"chem","t":"core","g":"9-11 клас · Органічна хімія","n":"Будова молекули бензену C₆H₆, ароматичність та делокалізація π-зв'язку","s":"Правильний плоский шестикутник Кекуле, sp²-каркас (120°) і єдина 6π-електронна хмара Гюккеля"},{"k":"chem_periodic","d":"chem","t":"core","g":"8-11 клас · Періодичний закон","n":"Періодична система Д. І. Менделєєва (118 елементів): радіус r_ат, енергія йонізації I₁ та χ","s":"Повна 3D-таблиця всіх 118 хімічних елементів (періоди 1-7, групи 1-18, s-, p-, d-, f-блоки: лантаноїди та актиноїди), радіус атома r_ат, енергія йонізації I₁ та електронегативність χ"},{"k":"chem_hbond","d":"chem","t":"core","g":"9-10 клас · Водневий зв'язок","n":"Водневий зв'язок, гексагональна ґратка льоду Iₕ та аномалія густини води","s":"Тетраедрична сітка водневих зв'язків O-H···O у кристалі гексагонального льоду Iₕ (ρ = 0.917 г/см³) та максимум густини води при +4 °C"},{"k":"chem_calorimetry","d":"chem","t":"core","g":"9-11 клас · Термохімія","n":"Термохімія, закон Гесса та калориметричне визначення ентальпії реакції ΔH","s":"Вимірювання теплового ефекту екзо- та ендотермічних реакцій у калориметрі Q = (m·c + C_кал)ΔT = −ν·ΔH та діаграма закону Гесса"},{"k":"chem_osmosis","d":"chem","t":"core","g":"9-11 клас · Розчини та осмос","n":"Осмотичний тиск розчину (закон Вант-Гоффа Π = iCRT) та напівпроникна мембрана","s":"Однобічна дифузія води крізь напівпроникну мембрану в U-подібному осмометрі, ізотонічний коефіцієнт i та опріснення зворотним осмосом"},{"k":"chem_buffer","d":"chem","t":"core","g":"Профільний / ЗВО · Буферні системи","n":"Буферні розчини, рівняння Гендерсона-Гассельбаха та буферна ємність","s":"Порівняння стабільності pH ацетатного буфера (CH₃COOH + CH₃COONa) та чистої води при додаванні сильної кислоти HCl або лугу NaOH"},{"k":"chem_ksp","d":"chem","t":"core","g":"9-11 клас · Добуток розчинності","n":"Добуток розчинності K_sp, реакція «Золотий дощ» (PbI₂↓) та ефект спільного йона","s":"Кристалізація золотистих гексагональних лусочок плюмбум(ІІ) йодиду PbI₂↓ за умови Q_sp > K_sp(T) та ефект спільного йона I⁻"},{"k":"chem_beer","d":"chem","t":"core","g":"Профільний / ЗВО · Спектрофотометрія","n":"Оптична спектрофотометрія та закон Бугера-Ламберта-Бера (A = ε·l·C)","s":"Поглинання монохроматичного променя забарвленим розчином у кварцовій кюветі, оптична густина A = ε(λ)lC та пропускання T = 10⁻ᴬ"},{"k":"chem_fuelcell","d":"chem","t":"core","g":"9-11 клас · Воднева енергетика","n":"Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC)","s":"Пряме електрохімічне перетворення енергії реакції 2H₂ + O₂ → 2H₂O в електричний струм крізь протонно-обмінну мембрану з Pt-каталізатором"},{"k":"chem_isomerism","d":"chem","t":"core","g":"10-11 клас · Стереохімія","n":"Стереохімія: геометрична (цис-транс, Z/E) та оптична хіральна ізомерія (R/S)","s":"Порівняння дипольної полярності геометричних цис/транс-ізомерів алкенів і обертання площини поляризації світла хіральними R/S-енантіомерами"},{"k":"chem_polymer","d":"chem","t":"core","g":"9-11 клас · Полімери та пластмаси","n":"Радикальна полімеризація етилену та ріст макромолекулярного ланцюга поліетилену","s":"Ланцюгова полімеризація n CH₂=CH₂ → (-CH₂-CH₂-)_n, перехід гібридизації sp² → sp³, молекулярна маса M_n та радіус клубка R_g"},{"k":"chem_mo","d":"chem","t":"core","g":"Профільний / ЗВО · Квантова хімія","n":"Метод молекулярних орбіталей (МО ЛКАО) та парамагнетизм кисню","s":"Зв'язувальні σ, π та розпушувальні σ*, π* орбіталі, порядок зв'язку і парамагнетизм O₂"},{"k":"chem_allotropes","d":"chem","t":"core","g":"9-11 клас · Алотропія Карбону та нанотехнології","n":"Алотропні модифікації та наноструктури Карбону: Графен, Нанотрубка і Фулерен C₆₀","s":"Фулерен C₆₀, вуглецева нанотрубка та графеновий лист: sp²-делокалізація і геометрія"},{"k":"chem_complex","d":"chem","t":"core","g":"Профільний / ЗВО · Комплексні сполуки","n":"Координаційні сполуки Вернера та теорія кристалічного поля (розщеплення d-орбіталей)","s":"Октаедричний комплекс [ML₆]ⁿ⁺, розщеплення t₂g / e_g (Δ_o), спектрохімічний ряд і колір"},{"k":"chem_bornhaber","d":"chem","t":"core","g":"Профільний / ЗВО · Термохімія кристалів","n":"Круговий термодинамічний цикл Борна-Габера для йонних кристалів","s":"Термодинамічний баланс сублімації, дисоціації, йонізації, спорідненості до електрона та U_ґрат"},{"k":"chem_dipole","d":"chem","t":"core","g":"8-10 клас · Полярність молекул","n":"Полярність хімічного зв'язку, електричний дипольний момент та орієнтаційна поляризація","s":"Часткові заряди δ⁺/δ⁻, векторна сума диполів зв'язків і орієнтація молекули в полі E"},{"k":"chem_phase","d":"chem","t":"core","g":"Профільний / ЗВО · Фазові рівноваги","n":"Фазові діаграми речовини (P-T), потрійна точка та надкритичний стан (H₂O і CO₂)","s":"Рівняння Клапейрона-Клаузіуса, сублімація CO₂ («сухий лід») і надкритичний стан"},{"k":"chem_orders","d":"chem","t":"core","g":"Профільний / ЗВО · Кінетичні рівняння","n":"Кінетичні рівняння нульового, першого та другого порядків і період напівперетворення t₁/₂","s":"Інтегральні кінетичні рівняння нульового, першого та другого порядків і період напіврозпаду"},{"k":"chem_enzyme","d":"chem","t":"core","g":"Профільний / ЗВО · Біохімія та ферменти","n":"Ферментативний каталіз: рівняння Міхаеліса-Ментен та конкурентне інгібування","s":"Комплекс фермент-субстрат ES, модель «ключ-замок», V_max, K_M та конкурентне інгібування"},{"k":"chem_gibbs","d":"chem","t":"core","g":"Профільний / ЗВО · Хімічна термодинаміка","n":"Вільна енергія Гіббса (ΔG = ΔH − TΔS), ентропія та термодинамічний критерій напрямку реакції","s":"Конкуренція ентальпійного ΔH і ентропійного TΔS факторів, температура інверсії T_рівн = ΔH/ΔS"},{"k":"chem_haber","d":"chem","t":"core","g":"9-11 клас · Хімічна технологія","n":"Синтез аміаку Габера-Боша та гетерогенний каталіз на поверхні заліза","s":"Компроміс між кінетикою та рівновагою: високий тиск P, оптимальна температура 450 °C і Fe-каталізатор"},{"k":"chem_raoult","d":"chem","t":"core","g":"Профільний / ЗВО · Властивості розчинів","n":"Колігативні властивості розчинів: Закон Рауля, ебуліоскопія (ΔT_кип) та кріоскопія (ΔT_зам)","s":"Зниження тиску насиченої пари ΔP = x₂P₀, підвищення T_кип і зниження T_зам розчинів"},{"k":"chem_chromatography","d":"chem","t":"core","g":"Профільний / ЗВО · Методи розділення сумішей","n":"Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f","s":"Розподіл між нерухомою (сорбент SiO₂) і рухомою (елюент) фазами та розділення пігментів"},{"k":"chem_adsorption","d":"chem","t":"core","g":"Профільний / ЗВО · Поверхневі явища","n":"Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра","s":"Мономолекулярний шар на активних центрах, ступінь заповнення θ = KP/(1 + KP) і десорбція"},{"k":"chem_colloids","d":"chem","t":"core","g":"9-11 клас · Дисперсні та колоїдні системи","n":"Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція","s":"Будова міцели золю, подвійний електричний шар (ζ-потенціал), ефект Тіндаля і правило Шульце-Гарді"},{"k":"chem_hydrolysis","d":"chem","t":"core","g":"9-11 клас · Гідроліз солей у розчинах","n":"Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища","s":"Константа K_г = K_w / K_a, ступінь гідролізу h = √(K_г/C) та реакція середовища розчинів солей"},{"k":"chem_corrosion","d":"chem","t":"core","g":"9-11 клас · Корозія та захист металів","n":"Електрохімічна корозія заліза з кисневою деполяризацією та катодний протекторний захист","s":"Мікрогальванічні пари Fe-Cu (руйнування заліза) та Fe-Zn / Fe-Mg (жертовний анод-протектор)"},{"k":"chem_liion","d":"chem","t":"core","g":"Профільний / ЗВО · Сучасні хімічні джерела струму","n":"Літій-іонний акумулятор (LiCoO₂ || C₆): оборотна інтеркаляція іонів Li⁺ (Нобелівська премія, 2019)","s":"Шаруватий катод LiCoO₂ та графітовий анод LiC₆: цикл «гойдалки» розряджання / заряджання і напруга 3.7 В"},{"k":"chem_sn2","d":"chem","t":"core","g":"Профільний / ЗВО · Механізми органічних реакцій","n":"Бімолекулярне нуклеофільне заміщення (S_N2): перехідний стан та інверсія конфігурації Вальдена","s":"Тилова атака нуклеофіла OH⁻ під кутом 180°, тригонально-біпірамідальний перехідний стан і вивертання конфігурації"},{"k":"chem_ester","d":"chem","t":"core","g":"10-11 клас · Естери та мічені атоми","n":"Реакція естерифікації Фішера та доведення її механізму методом мічених атомів (¹⁸O)","s":"Синтез етилетаноату CH₃COOH + C₂H₅¹⁸OH ⇄ CH₃CO¹⁸OC₂H₅ + H₂O, константа рівноваги K_c = 4"},{"k":"chem_biopol","d":"chem","t":"core","g":"Профільний / ЗВО · Біохімія: Білки та ДНК","n":"Структура біополімерів: плоский пептидний зв'язок, α-спіраль білка та подвійна спіраль ДНК","s":"Пептидна група -CO-NH-, водневі зв'язки в α-спіралі Полінга і комплементарні пари A=T, G≡C у ДНК"},{"k":"bio_eukaryote","d":"bio","t":"core","g":"9-10 клас · Цитологія: будова клітини","n":"Еукаріотична клітина: компартменталізація органел і геометрична межа S/V","s":"Ядро, мітохондрії, ЕПС, апарат Гольджі, лізосоми та відношення площі до об'єму S/V = 3/R"},{"k":"bio_mitochondria","d":"bio","t":"core","g":"10-11 клас · Біоенергетика та АТФ-синтаза","n":"Хеміосмотична теорія Мітчелла: протонна рушійна сила Δp і синтез АТФ","s":"Дихальний ланцюг (комплекси I-IV), протонний градієнт Δp і роторний мотор F₀F₁-АТФ-синтази"},{"k":"bio_mitosis","d":"bio","t":"core","g":"9-10 клас · Мітоз і клітинний цикл","n":"Мітотичний поділ клітини: динаміка мікротрубочок веретена та збереження плоїдності","s":"Профаза, метафазна пластинка, анафазне розходження сестринських хроматид і телофаза (2n → 2n)"},{"k":"bio_replication","d":"bio","t":"core","g":"10-11 клас · Реплікація ДНК","n":"Напівконсервативна реплікація ДНК: реплікативна вилка Мезельсона-Сталя","s":"Геліказа, ДНК-полімераза III, синтез 5′→3′, ведучий ланцюг і фрагменти Оказакі відстаючого ланцюга"},{"k":"bio_ribosome","d":"bio","t":"core","g":"10-11 клас · Генетичний код і трансляція","n":"Експресія генів і трансляція: декодування мРНК рибосомою та синтез поліпептиду","s":"Центральна догма ДНК → мРНК → Білок, триплетний генетичний код, сайти A-P-E рибосоми та тРНК"},{"k":"bio_mendel","d":"bio","t":"core","g":"9-11 клас · Генетика Менделя та популяцій","n":"Генетика Менделя та закон Гарді-Вайнберга: динаміка частот генотипів у популяції","s":"Решітка Пеннета, розщеплення 3:1 і 9:3:3:1 та популяційна рівновага частот алелів p² + 2pq + q² = 1"},{"k":"bio_membrane","d":"bio","t":"core","g":"10-11 клас · Біофізика мембран","n":"Біофізика плазматичної мембрани: електрогенний Na⁺/K⁺-насос і потенціал спокою","s":"Рідинно-мозаїчна модель Сінгера-Ніколсона, активний транспорт 3Na⁺/2K⁺ і рівняння Нернста"},{"k":"bio_neuron","d":"bio","t":"core","g":"10-11 клас · Нейрон і потенціал дії","n":"Потенціал дії нейрона: поширення нервового імпульсу та сальтаторне проведення","s":"Модель Ходжкіна-Хакслі, деполяризація Na⁺, реполяризація K⁺, мієлінова оболонка та перехвати Ранв'є"},{"k":"bio_sarcomere","d":"bio","t":"core","g":"Профільний / ЗВО · Біомеханіка м'язів","n":"Біофізика м'язового скорочення: модель ковзних ниток саркомера та рівняння Гілла","s":"Ковзання ниток актину й міозину (Гакслі), роль Ca²⁺ і тропоміозину та гіпербола сили-швидкості Гілла"},{"k":"bio_photosynthesis","d":"bio","t":"core","g":"9-11 клас · Фотосинтез і цикл Кальвіна","n":"Фотосинтез у хлоропласті: Z-схема електронного транспорту та фіксація CO₂ у циклі Кальвіна","s":"Світлова фаза на мембрані тилакоїда (ФС ІІ, фотоліз води, ФС І) та цикл Кальвіна в стромі"},{"k":"bio_hemo","d":"bio","t":"core","g":"Профільний / ЗВО · Дихання та ефект Бора","n":"Транспорт кисню гемоглобіном: алостерична кооперативність (T ↔ R) і ефект Бора","s":"Тетрамер α₂β₂ з 4 гемами Fe²⁺, кооперативна сигмоїда Гілла (n ≈ 2.8), міоглобін і зсув кривої Бора"},{"k":"bio_lotka","d":"bio","t":"core","g":"Профільний / ЗВО · Екологія: модель Лотки-Вольтерри","n":"Динаміка екосистем: автоколивання «хижак-жертва» Лотки-Вольтерри та трофічні рівні","s":"Диференціальні рівняння «хижак-жертва», фазовий портрет, хвилі популяцій і піраміда Ліндемана (10%)"},{"k":"bio_meiosis","d":"bio","t":"core","g":"9-11 клас · Мейоз і кросинговер","n":"Мейотичний поділ клітини: синапсис бівалентів, кросинговер і комбінативна мінливість","s":"Кон'югація гомологів у профазі І, хіазми, обмін ділянками хроматид і гаплоїдні гамети (1n1c)"},{"k":"bio_eye","d":"bio","t":"core","g":"8-11 клас · Біофізика зору та оптика ока","n":"Біофізика зору: оптична сила ока, акомодація кришталика та корекція аметропій лінзами","s":"Заломлення світла в рогівці й кришталику, рефлекс акомодації, короткозорість (міопія) та далекозорість"},{"k":"bio_synapse","d":"bio","t":"core","g":"Профільний / ЗВО · Нейробіологія: хімічний синапс","n":"Хімічний синапс: кальцій-залежний екзоцитоз медіатора та постсинаптичні рецептори","s":"Вхід йонів Ca²⁺, SNARE-екзоцитоз синаптичних везикул, дифузія крізь щілину та потенціал ЗПСП / ГПСП"},{"k":"bio_pcr","d":"bio","t":"core","g":"Профільний / ЗВО · Біотехнологія: ПЛР-діагностика","n":"Полімеразна ланцюгова реакція (ПЛР): температурні цикли та експоненційна ампліфікація ДНК","s":"Термоциклер: денатурація (95 °C), відпал праймерів (58 °C), синтез Taq-полімеразою (72 °C) та ріст 2ⁿ"},{"k":"bio_crispr","d":"bio","t":"core","g":"Профільний / ЗВО · Генна інженерія: CRISPR-Cas9","n":"Система CRISPR-Cas9: програмоване розпізнавання мішені ДНК та високоточне редагування генів","s":"Розпізнавання мотиву PAM (5′-NGG-3′), R-петля гідової sgRNA, нуклеазні домени HNH/RuvC і репарація ДНК"},{"k":"bio_phage","d":"bio","t":"core","g":"Профільний / ЗВО · Вірусологія та дослід Герші-Чейз","n":"Будова і цикл бактеріофага Т4: біомеханічний шприц та ін'єкція вірусної ДНК у бактерію","s":"Ікосаедричний капсид, рецепторні хвостові нитки, скорочення чохла та впорскування геному у клітину"},{"k":"bio_hemodynamics","d":"bio","t":"core","g":"Профільний / ЗВО · Фізіологія кровообігу (закон Пуазейля)","n":"Біофізика кровообігу: ламінарний потік еритроцитів і закон Гагена-Пуазейля для судин ($Q \\propto R^4$)","s":"Параболічний профіль швидкості еритроцитів, залежність кровотоку Q ∝ R⁴, в'язкість крові та стеноз судини"},{"k":"bio_electrophoresis","d":"bio","t":"core","g":"Профільний / ЗВО · Молекулярна біологія: гель-електрофорез","n":"Гель-електрофорез ДНК: розділення рестрикційних фрагментів у полімерній сітці за молекулярною масою","s":"Міграція поліаніонів ДНК до анода (+), молекулярне сито агарозного гелю та логарифмічна шкала довжин"}];
+      var QUIZ_POOL = [{"disc":"Фізика · Імпульс","q":"Візок масою 2 кг рухається зі швидкістю 6 м/с і абсолютно непружно зчіплюється з нерухомим візком масою 4 кг. Якою буде їхня спільна швидкість після удару?","opts":["1.5 м/с","2.0 м/с","3.0 м/с","4.0 м/с"],"ans":1,"exp":"За законом збереження імпульсу u = m₁v₁ / (m₁ + m₂) = (2 · 6) / (2 + 4) = 2.0 м/с.","sim":"https://physics.sheua.com/uk/sim/collision","simTitle":"3D-дослід зіткнення куль"},{"disc":"Хімія · Газові закони","q":"Ідеальний газ за сталого об'єму нагріли від 300 К до 600 К. Як зміняться тиск газу P та середня квадратична швидкість молекул v_кв?","opts":["P зросте у 2 рази, v_кв у √2 раза","І P, і v_кв зростуть у 2 рази","P зросте у 4 рази, v_кв у 2 рази","P не зміниться, v_кв зросте у √2 раза"],"ans":0,"exp":"За законом Шарля P пропорційний T, тому тиск подвоїться. Швидкість v_кв = √(3RT/M) пропорційна √T, отже зросте у √2 ≈ 1.41 раза.","sim":"https://physics.sheua.com/uk/sim/chem_gaslaws","simTitle":"3D-модель газових законів"},{"disc":"Біологія · Гемодинаміка","q":"За законом Гагена-Пуазейля внутрішній радіус артеріоли R зменшився у 2 рази за незмінного перепаду тиску ΔP. У скільки разів зменшиться об'ємний кровотік Q?","opts":["У 2 рази","У 4 рази","У 8 разів","У 16 разів"],"ans":3,"exp":"Об'ємна витрата в'язкої рідини Q = πΔP·R⁴ / (8ηL) пропорційна четвертому степеню радіуса: (1/2)⁴ = 1/16.","sim":"https://physics.sheua.com/uk/sim/bio_hemodynamics","simTitle":"3D-гемодинаміка судини"},{"disc":"Фізика · Термодинаміка","q":"Теплова машина Карно працює між нагрівником 600 К та холодильником 300 К. Чому дорівнює її максимальний теоретичний ККД?","opts":["25%","50%","75%","100%"],"ans":1,"exp":"ККД ідеального циклу Карно η = 1 − T₂ / T₁ = 1 − 300 / 600 = 0.50, або 50%.","sim":"https://physics.sheua.com/uk/sim/carnot","simTitle":"3D-цикл Карно"},{"disc":"Хімія · Розчини і pH","q":"Ацетатний буфер містить однакові молярні концентрації CH₃COOH та CH₃COONa (pK_a = 4.76). Чому дорівнює pH цього розчину?","opts":["2.38","4.76","7.00","9.24"],"ans":1,"exp":"За рівнянням Гендерсона-Гассельбаха pH = pK_a + lg([A⁻]/[HA]). Оскільки [A⁻] = [HA], lg(1) = 0 і pH = 4.76.","sim":"https://physics.sheua.com/uk/sim/chem_buffers","simTitle":"3D-симуляція буферних розчинів"},{"disc":"Біологія · Молекулярна генетика","q":"У реакцію ПЛР ввели 10 копій матричної ДНК і провели 6 повних циклів за 100% ефективності подвоєння. Скільки копій утвориться?","opts":["60 копій","320 копій","640 копій","1280 копій"],"ans":2,"exp":"Кількість амплифікованих молекул ДНК зростає експоненційно: N = N₀ · 2ⁿ = 10 · 2⁶ = 10 · 64 = 640 копій.","sim":"https://physics.sheua.com/uk/sim/bio_pcr","simTitle":"3D-ампліфікація ПЛР"},{"disc":"Фізика · Хвильова оптика","q":"Кут між площиною поляризації світла та віссю аналізатора дорівнює 60°. Яка частка початкової інтенсивності I₀ проходить крізь аналізатор?","opts":["0.25 I₀","0.50 I₀","0.75 I₀","0.87 I₀"],"ans":0,"exp":"За законом Малюса I = I₀ cos² θ. Оскільки cos 60° = 0.5, інтенсивність на виході становить 0.5² I₀ = 0.25 I₀.","sim":"https://physics.sheua.com/uk/sim/malus","simTitle":"3D-поляризація світла"},{"disc":"Хімія · Електроліз","q":"Скільки електронів потрібно передати на катоді для відновлення 1 моль катіонів Cu²⁺ до металічної міді Cu⁰?","opts":["0.5 моль e⁻","1 моль e⁻","2 моль e⁻","4 моль e⁻"],"ans":2,"exp":"Напівреакція на катоді Cu²⁺ + 2e⁻ → Cu⁰ потребує z = 2 моль електронів (заряд 2F ≈ 192 970 Кл) на кожен моль міді.","sim":"https://physics.sheua.com/uk/sim/chem_electrolysis","simTitle":"3D-електроліз Фарадея"},{"disc":"Біофізика · Нейрон","q":"Який потік іонів спричиняє стрімку фазу деполяризації мембрани нейрона вище порога −55 мВ під час генерації потенціалу дії?","opts":["Вхід катіонів Na⁺ у клітину","Вихід катіонів K⁺ із клітини","Вхід аніонів Cl⁻ у клітину","Зупинка синтезу АТФ у ядрі"],"ans":0,"exp":"Відкриття потенціалзалежних Na⁺-каналів викликає лавиноподібний вхід Na⁺ за електрохімічним градієнтом, зміщуючи мембранний потенціал до +35...+40 мВ.","sim":"https://physics.sheua.com/uk/sim/bio_neuron","simTitle":"3D-потенціал дії нейрона"}];
+      var TXT = {"lang":"uk","simBase":"https://physics.sheua.com/uk/sim/","discMap":{"phys":"Фізика","chem":"Хімія","bio":"Біологія"},"replayPhys":"Зіткнути знову","replayChem":"Оновити ансамбль","replayBio":"Подати імпульс","pause":"Пауза","resume":"Продовжити","openPhys":"Відкрити 3D-зіткнення куль →","openChem":"Відкрити 3D-газові закони →","openBio":"Відкрити 3D-імпульс нейрона →","showing":"Показано {a} із {b} відібраних 3D-симуляцій","showAll":"Показати всі {n} дослідів","collapse":"Згорнути до 12 карток","noMatch":"За цим запитом симуляцій не знайдено. Спробуйте скинути фільтр.","score":"Результат: {c} / {t}","correctPrefix":"Правильно. ","wrongPrefix":"Перевірте за формулою. ","copyBtn":"Копіювати","copiedBtn":"Скопійовано","inqOk":"Правильно. У суцільного циліндра момент інерції менший (I = ½mR² проти mR² у кільця), тому менша частка енергії йде на обертання і лінійне прискорення більше.","inqErr":"Порівняйте моменти інерції: у кільця вся маса віддалена від осі (I = mR²), а у суцільного циліндра I = ½mR², тому циліндр розганяється швидше.","inqFmt":"α = {a}°: a_циліндр = {c} м/с², a_кільце = {h} м/с²","sliders":{"phys":[{"key":"m1","label":"Маса кулі m₁","unit":"кг","min":0.5,"max":5,"step":0.5,"val":2},{"key":"m2","label":"Маса кулі m₂","unit":"кг","min":0.5,"max":5,"step":0.5,"val":1.2},{"key":"v1","label":"Початкова v₁","unit":"м/с","min":1,"max":9,"step":0.5,"val":5},{"key":"e","label":"Відновлення e","unit":"","min":0,"max":1,"step":0.05,"val":0.85}],"chem":[{"key":"T","label":"Температура T","unit":"К","min":150,"max":900,"step":10,"val":300},{"key":"V","label":"Об'єм газу V","unit":"л","min":6,"max":28,"step":1,"val":14},{"key":"nu","label":"Кількість речовини ν","unit":"моль","min":0.5,"max":3,"step":0.25,"val":1}],"bio":[{"key":"Istim","label":"Струм стимулу I_ст","unit":"мкА/см²","min":2,"max":24,"step":1,"val":14},{"key":"Ko","label":"Зовнішній [K⁺]_o","unit":"ммоль/л","min":2.5,"max":14,"step":0.5,"val":4.5},{"key":"gNa","label":"Провідність g_Na","unit":"мСм/см²","min":50,"max":160,"step":5,"val":120}]},"canvasLabels":{"cm":"ЦМ","ek":"Енергія E_k","dq":"Втрати ΔQ","piston":"Поршень","gauge":"Тиск P","thresh":"Поріг −55 мВ","spike":"Потенціал дії","sub":"Підпороговий спад","stim":"Стимул"}};
+
+      /* 1. LIVE INTERACTIVE CANVAS SANDBOX */
+      var canvas = document.getElementById('home-sim-canvas');
+      var slidersWrap = document.getElementById('sbx-sliders');
+      var metricsWrap = document.getElementById('sbx-metrics');
+      var triggerBtn = document.getElementById('sbx-trigger-btn');
+      var pauseBtn = document.getElementById('sbx-pause-btn');
+      var open3dLink = document.getElementById('sbx-open-3d');
+      var modeBtns = document.querySelectorAll('[data-sbx-mode]');
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var sbx = {
+        mode: 'phys',
+        paused: !!reduceMotion,
+        t: 0,
+        lastTs: 0,
+        params: {
+          phys: { m1: 2.0, m2: 1.2, v1: 5.0, e: 0.85 },
+          chem: { T: 300, V: 14, nu: 1.0 },
+          bio: { Istim: 14, Ko: 4.5, gNa: 120 }
+        },
+        physState: { x1: -3.6, x2: 2.4, vx1: 5.0, vx2: -2.0, hit: false, flash: 0 },
+        particles: [],
+        wallHits: 0
+      };
+
+      function initPhys() {
+        var p = sbx.params.phys;
+        sbx.physState = { x1: -3.8, x2: 2.4, vx1: p.v1, vx2: -2.0, hit: false, flash: 0 };
+        sbx.t = 0;
+      }
+
+      function initChem() {
+        var p = sbx.params.chem;
+        var count = Math.max(8, Math.round(22 * p.nu));
+        var maxX = 110 + (p.V / 28) * 510;
+        var arr = [];
+        var spdBase = Math.sqrt(p.T / 300) * 145;
+        for (var i = 0; i < count; i++) {
+          var ang = (i * 2.39996) + 0.4;
+          var mult = 0.65 + (i % 7) * 0.12;
+          arr.push({
+            x: 68 + ((i * 73) % Math.max(40, Math.floor(maxX - 95))),
+            y: 44 + ((i * 53) % 172),
+            vx: Math.cos(ang) * spdBase * mult,
+            vy: Math.sin(ang) * spdBase * mult,
+            flash: 0
+          });
+        }
+        sbx.particles = arr;
+      }
+
+      function initBio() {
+        sbx.t = reduceMotion ? 5.2 : 0;
+      }
+
+      function syncChemSpeeds() {
+        var p = sbx.params.chem;
+        var count = Math.max(8, Math.round(22 * p.nu));
+        if (sbx.particles.length !== count) { initChem(); return; }
+        var targetRms = Math.sqrt(p.T / 300) * 145;
+        for (var i = 0; i < sbx.particles.length; i++) {
+          var pt = sbx.particles[i];
+          var cur = Math.hypot(pt.vx, pt.vy) || 1;
+          var mult = 0.65 + (i % 7) * 0.12;
+          var s = (targetRms * mult) / cur;
+          pt.vx *= s;
+          pt.vy *= s;
+        }
+      }
+
+      function renderSliders() {
+        if (!slidersWrap) return;
+        slidersWrap.innerHTML = '';
+        var defs = TXT.sliders[sbx.mode];
+        var vals = sbx.params[sbx.mode];
+        defs.forEach(function(d) {
+          var lbl = document.createElement('label');
+          lbl.className = 'sandbox-slider-lbl';
+          var top = document.createElement('span');
+          top.className = 'sandbox-slider-top';
+          var nameSpan = document.createElement('span');
+          nameSpan.textContent = d.label;
+          var valCode = document.createElement('code');
+          valCode.textContent = vals[d.key] + (d.unit ? ' ' + d.unit : '');
+          top.appendChild(nameSpan);
+          top.appendChild(valCode);
+          var inp = document.createElement('input');
+          inp.type = 'range';
+          inp.min = String(d.min);
+          inp.max = String(d.max);
+          inp.step = String(d.step);
+          inp.value = String(vals[d.key]);
+          inp.setAttribute('aria-label', d.label);
+          inp.addEventListener('input', function() {
+            vals[d.key] = parseFloat(inp.value);
+            valCode.textContent = vals[d.key] + (d.unit ? ' ' + d.unit : '');
+            if (sbx.mode === 'phys') initPhys();
+            else if (sbx.mode === 'chem') syncChemSpeeds();
+            else if (sbx.mode === 'bio') sbx.t = 0;
+            updateMetrics();
+            if (sbx.paused) drawFrame();
+          });
+          lbl.appendChild(top);
+          lbl.appendChild(inp);
+          slidersWrap.appendChild(lbl);
+        });
+      }
+
+      function updateMetrics() {
+        if (!metricsWrap) return;
+        var items = [];
+        if (sbx.mode === 'phys') {
+          var p = sbx.params.phys;
+          var v2 = -2.0;
+          var u1 = (p.m1 * p.v1 + p.m2 * v2 - p.m2 * p.e * (p.v1 - v2)) / (p.m1 + p.m2);
+          var u2 = (p.m1 * p.v1 + p.m2 * v2 + p.m1 * p.e * (p.v1 - v2)) / (p.m1 + p.m2);
+          var ptot = p.m1 * p.v1 + p.m2 * v2;
+          var ek0 = 0.5 * p.m1 * p.v1 * p.v1 + 0.5 * p.m2 * v2 * v2;
+          var ek1 = 0.5 * p.m1 * u1 * u1 + 0.5 * p.m2 * u2 * u2;
+          var dq = Math.max(0, ek0 - ek1);
+          var uMs = TXT.lang === 'en' ? ' m/s' : ' м/с';
+          var uMom = TXT.lang === 'en' ? ' kg·m/s' : ' кг·м/с';
+          var uJ = TXT.lang === 'en' ? ' J' : ' Дж';
+          items = [
+            'p = ' + ptot.toFixed(1) + uMom,
+            'u₁ = ' + u1.toFixed(2) + uMs,
+            'u₂ = ' + u2.toFixed(2) + uMs,
+            'ΔQ = ' + dq.toFixed(1) + uJ
+          ];
+          triggerBtn.textContent = TXT.replayPhys;
+          open3dLink.href = TXT.simBase + 'collision';
+          open3dLink.textContent = TXT.openPhys;
+        } else if (sbx.mode === 'chem') {
+          var c = sbx.params.chem;
+          var P = (c.nu * 8.31446 * c.T) / c.V;
+          var vrms = Math.sqrt(3 * 8.31446 * c.T / 0.028014);
+          var ek = 1.5 * 0.0138065 * c.T;
+          items = TXT.lang === 'en'
+            ? ['P = ' + P.toFixed(1) + ' kPa', 'v_rms(N₂) = ' + Math.round(vrms) + ' m/s', '⟨E_k⟩ = ' + ek.toFixed(2) + ' zJ']
+            : ['P = ' + P.toFixed(1) + ' кПа', 'v_кв(N₂) = ' + Math.round(vrms) + ' м/с', '⟨E_k⟩ = ' + ek.toFixed(2) + ' зДж'];
+          triggerBtn.textContent = TXT.replayChem;
+          open3dLink.href = TXT.simBase + 'chem_gaslaws';
+          open3dLink.textContent = TXT.openChem;
+        } else {
+          var b = sbx.params.bio;
+          var vRest = 26.7 * Math.log((b.Ko + 0.04 * 145 + 4.5) / (140 + 0.6 + 49.5));
+          var fires = (vRest + b.Istim * 1.85) >= -55.0;
+          var vPeak = fires ? (vRest + (61 - vRest) * (b.gNa / (b.gNa + 28))) : (vRest + b.Istim * 1.85);
+          items = TXT.lang === 'en'
+            ? ['V_rest = ' + vRest.toFixed(1) + ' mV', 'V_peak = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' mV', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub]
+            : ['V_спок = ' + vRest.toFixed(1) + ' мВ', 'V_пік = ' + (vPeak >= 0 ? '+' : '') + vPeak.toFixed(1) + ' мВ', fires ? TXT.canvasLabels.spike : TXT.canvasLabels.sub];
+          triggerBtn.textContent = TXT.replayBio;
+          open3dLink.href = TXT.simBase + 'bio_neuron';
+          open3dLink.textContent = TXT.openBio;
+        }
+        metricsWrap.innerHTML = '';
+        items.forEach(function(tx) {
+          var sp = document.createElement('span');
+          sp.textContent = tx;
+          metricsWrap.appendChild(sp);
+        });
+        pauseBtn.textContent = sbx.paused ? TXT.resume : TXT.pause;
+      }
+
+      function bioWaveVoltage(tMs, b) {
+        var vRest = 26.7 * Math.log((b.Ko + 0.04 * 145 + 4.5) / (140 + 0.6 + 49.5));
+        var eK = 26.7 * Math.log(b.Ko / 140);
+        var dv = b.Istim * 1.85;
+        var fires = (vRest + dv) >= -55.0;
+        if (tMs < 1.0) return vRest;
+        if (!fires) {
+          if (tMs <= 1.8) return vRest + dv * (1 - Math.exp(-(tMs - 1.0) / 0.35));
+          var vEnd = vRest + dv * (1 - Math.exp(-0.8 / 0.35));
+          return vRest + (vEnd - vRest) * Math.exp(-(tMs - 1.8) / 0.85);
+        }
+        var vPeak = vRest + (61 - vRest) * (b.gNa / (b.gNa + 28));
+        if (tMs < 1.45) {
+          var p1 = (tMs - 1.0) / 0.45;
+          return vRest + (-55 - vRest) * p1;
+        }
+        if (tMs < 2.15) {
+          var p2 = (tMs - 1.45) / 0.70;
+          var s = p2 * p2 * (3 - 2 * p2);
+          return -55 + (vPeak - (-55)) * s;
+        }
+        if (tMs < 3.65) {
+          var p3 = (tMs - 2.15) / 1.50;
+          var s3 = p3 * p3 * (3 - 2 * p3);
+          var under = Math.max(eK, vRest - 12);
+          return vPeak + (under - vPeak) * s3;
+        }
+        var under2 = Math.max(eK, vRest - 12);
+        return vRest + (under2 - vRest) * Math.exp(-(tMs - 3.65) / 1.25);
+      }
+
+      function drawArrow(ctx, x1, y1, x2, y2, color) {
+        var dx = x2 - x1;
+        if (Math.abs(dx) < 3) return;
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        var dir = dx >= 0 ? 1 : -1;
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - dir * 8, y2 - 4.5);
+        ctx.lineTo(x2 - dir * 8, y2 + 4.5);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawFrame() {
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W = 880, H = 260;
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (canvas.width !== W * dpr || canvas.height !== H * dpr) {
+          canvas.width = W * dpr;
+          canvas.height = H * dpr;
+        }
+        ctx.save();
+        ctx.scale(dpr, dpr);
+        ctx.fillStyle = '#faf9f5';
+        ctx.fillRect(0, 0, W, H);
+
+        if (sbx.mode === 'phys') {
+          var p = sbx.params.phys;
+          var st = sbx.physState;
+          var trackY = 166;
+          ctx.strokeStyle = '#e6e3dd';
+          ctx.lineWidth = 1;
+          for (var gx = 50; gx <= 830; gx += 65) {
+            ctx.beginPath();
+            ctx.moveTo(gx, 32);
+            ctx.lineTo(gx, trackY);
+            ctx.stroke();
+          }
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(36, trackY);
+          ctx.lineTo(844, trackY);
+          ctx.stroke();
+
+          ctx.fillStyle = '#52525b';
+          ctx.font = '11px monospace';
+          ctx.textAlign = 'center';
+          for (var m = -6; m <= 6; m += 2) {
+            var tx = 440 + m * 65;
+            ctx.fillText(m + (TXT.lang === 'en' ? ' m' : ' м'), tx, trackY + 18);
+          }
+
+          var r1 = 15 + 4.8 * Math.cbrt(p.m1);
+          var r2 = 15 + 4.8 * Math.cbrt(p.m2);
+          var cx1 = 440 + st.x1 * 65;
+          var cx2 = 440 + st.x2 * 65;
+          var cy1 = trackY - r1;
+          var cy2 = trackY - r2;
+
+          /* Center of mass */
+          var xcm = (p.m1 * st.x1 + p.m2 * st.x2) / (p.m1 + p.m2);
+          var pxCm = 440 + xcm * 65;
+          ctx.fillStyle = '#166534';
+          ctx.beginPath();
+          ctx.moveTo(pxCm, trackY + 3);
+          ctx.lineTo(pxCm - 6, trackY + 13);
+          ctx.lineTo(pxCm + 6, trackY + 13);
+          ctx.closePath();
+          ctx.fill();
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText(TXT.canvasLabels.cm, pxCm, trackY + 26);
+
+          if (st.flash > 0.02) {
+            var midX = (cx1 + r1 + cx2 - r2) * 0.5;
+            ctx.strokeStyle = 'rgba(153, 27, 27, ' + st.flash.toFixed(2) + ')';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.arc(midX, trackY - Math.min(r1, r2), (1 - st.flash) * 34 + 8, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+
+          /* Sphere 1 */
+          ctx.fillStyle = '#1d4ed8';
+          ctx.beginPath();
+          ctx.arc(cx1, cy1, r1, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#faf9f5';
+          ctx.font = 'bold 12px monospace';
+          ctx.fillText('m₁', cx1, cy1 + 4);
+          drawArrow(ctx, cx1, cy1 - r1 - 12, cx1 + st.vx1 * 11, cy1 - r1 - 12, '#1d4ed8');
+
+          /* Sphere 2 */
+          ctx.fillStyle = '#991b1b';
+          ctx.beginPath();
+          ctx.arc(cx2, cy2, r2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#faf9f5';
+          ctx.fillText('m₂', cx2, cy2 + 4);
+          drawArrow(ctx, cx2, cy2 - r2 - 12, cx2 + st.vx2 * 11, cy2 - r2 - 12, '#991b1b');
+
+          /* Energy bar top-right */
+          var ek0 = 0.5 * p.m1 * p.v1 * p.v1 + 0.5 * p.m2 * 4.0;
+          var ekCur = 0.5 * p.m1 * st.vx1 * st.vx1 + 0.5 * p.m2 * st.vx2 * st.vx2;
+          var ekFrac = ek0 > 0 ? Math.min(1, ekCur / ek0) : 1;
+          ctx.fillStyle = '#efeae0';
+          ctx.fillRect(610, 18, 236, 16);
+          ctx.fillStyle = '#166534';
+          ctx.fillRect(610, 18, 236 * ekFrac, 16);
+          ctx.fillStyle = '#991b1b';
+          ctx.fillRect(610 + 236 * ekFrac, 18, 236 * (1 - ekFrac), 16);
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(610, 18, 236, 16);
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#18181b';
+          ctx.font = '11.5px sans-serif';
+          ctx.fillText(TXT.canvasLabels.ek + ': ' + Math.round(ekFrac * 100) + '%   ' + TXT.canvasLabels.dq + ': ' + Math.round((1 - ekFrac) * 100) + '%', 610, 48);
+
+        } else if (sbx.mode === 'chem') {
+          var c = sbx.params.chem;
+          var leftX = 52, topY = 30, botY = 230;
+          var pisX = 120 + (c.V / 28) * 500;
+          ctx.fillStyle = '#f4f2ed';
+          ctx.fillRect(leftX, topY, pisX - leftX, botY - topY);
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(pisX + 18, topY);
+          ctx.lineTo(leftX, topY);
+          ctx.lineTo(leftX, botY);
+          ctx.lineTo(pisX + 18, botY);
+          ctx.stroke();
+
+          /* Piston head + rod */
+          ctx.fillStyle = '#3f3f46';
+          ctx.fillRect(pisX, topY + 2, 14, botY - topY - 4);
+          ctx.fillStyle = '#d6d3cd';
+          ctx.fillRect(pisX + 14, 122, 68, 16);
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(pisX + 14, 122, 68, 16);
+          ctx.fillStyle = '#18181b';
+          ctx.font = 'bold 11.5px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(TXT.canvasLabels.piston + ' (V = ' + c.V + ' L)', pisX + 18, 114);
+
+          /* Color temperature */
+          var heat = Math.min(1, Math.max(0, (c.T - 150) / 750));
+          var rCol = Math.round(29 + heat * (185 - 29));
+          var gCol = Math.round(78 - heat * 46);
+          var bCol = Math.round(216 - heat * 188);
+          var molColor = 'rgb(' + rCol + ',' + gCol + ',' + bCol + ')';
+
+          for (var i = 0; i < sbx.particles.length; i++) {
+            var pt = sbx.particles[i];
+            ctx.fillStyle = pt.flash > 0 ? '#b45309' : molColor;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 4.6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          /* Pressure bar gauge on right */
+          var P = (c.nu * 8.31446 * c.T) / c.V;
+          var pFrac = Math.min(1, P / 1500);
+          var gx0 = 748, gy0 = 36, gh = 186;
+          ctx.fillStyle = '#efeae0';
+          ctx.fillRect(gx0, gy0, 32, gh);
+          ctx.fillStyle = heat > 0.55 ? '#991b1b' : '#1d4ed8';
+          ctx.fillRect(gx0, gy0 + gh * (1 - pFrac), 32, gh * pFrac);
+          ctx.strokeStyle = '#18181b';
+          ctx.strokeRect(gx0, gy0, 32, gh);
+          ctx.fillStyle = '#18181b';
+          ctx.textAlign = 'center';
+          ctx.font = 'bold 12px monospace';
+          ctx.fillText(P.toFixed(0) + (TXT.lang === 'en' ? ' kPa' : ' кПа'), gx0 + 16, gy0 - 8);
+          ctx.font = '11.5px sans-serif';
+          ctx.fillText(TXT.canvasLabels.gauge, gx0 + 16, gy0 + gh + 18);
+
+        } else {
+          var b = sbx.params.bio;
+          var ox0 = 64, oy0 = 22, ow = 786, oh = 204;
+          var mapY = function(mv) {
+            return oy0 + oh * (1 - (mv - (-100)) / 160);
+          };
+          var mapX = function(ms) {
+            return ox0 + (ms / 8.0) * ow;
+          };
+
+          /* Grid */
+          ctx.strokeStyle = '#e6e3dd';
+          ctx.lineWidth = 1;
+          [-80, -40, 0, 40].forEach(function(mv) {
+            var yy = mapY(mv);
+            ctx.beginPath();
+            ctx.moveTo(ox0, yy);
+            ctx.lineTo(ox0 + ow, yy);
+            ctx.stroke();
+            ctx.fillStyle = '#52525b';
+            ctx.font = '11px monospace';
+            ctx.textAlign = 'right';
+            ctx.fillText((mv > 0 ? '+' : '') + mv + (TXT.lang === 'en' ? ' mV' : ' мВ'), ox0 - 6, yy + 4);
+          });
+
+          /* Threshold -55 mV */
+          var yTh = mapY(-55);
+          ctx.save();
+          ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = '#b45309';
+          ctx.beginPath();
+          ctx.moveTo(ox0, yTh);
+          ctx.lineTo(ox0 + ow, yTh);
+          ctx.stroke();
+          ctx.restore();
+          ctx.fillStyle = '#b45309';
+          ctx.textAlign = 'left';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText(TXT.canvasLabels.thresh, ox0 + ow - 138, yTh - 6);
+
+          /* Stimulus bar */
+          ctx.fillStyle = 'rgba(29, 78, 216, 0.14)';
+          ctx.fillRect(mapX(1.0), oy0, mapX(1.8) - mapX(1.0), oh);
+          ctx.fillStyle = '#1d4ed8';
+          ctx.fillText(TXT.canvasLabels.stim, mapX(1.0) + 4, oy0 + oh - 8);
+
+          /* Full ghost curve */
+          ctx.strokeStyle = '#d6d3cd';
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          for (var ms = 0; ms <= 8.0; ms += 0.05) {
+            var xx = mapX(ms), yy = mapY(bioWaveVoltage(ms, b));
+            if (ms === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+          }
+          ctx.stroke();
+
+          /* Active swept curve up to sbx.t */
+          var curMs = Math.min(8.0, sbx.t);
+          ctx.strokeStyle = '#991b1b';
+          ctx.lineWidth = 2.8;
+          ctx.beginPath();
+          for (var ms2 = 0; ms2 <= curMs; ms2 += 0.04) {
+            var xx2 = mapX(ms2), yy2 = mapY(bioWaveVoltage(ms2, b));
+            if (ms2 === 0) ctx.moveTo(xx2, yy2); else ctx.lineTo(xx2, yy2);
+          }
+          ctx.stroke();
+
+          var curV = bioWaveVoltage(curMs, b);
+          ctx.fillStyle = '#991b1b';
+          ctx.beginPath();
+          ctx.arc(mapX(curMs), mapY(curV), 5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = '#18181b';
+          ctx.lineWidth = 1.4;
+          ctx.strokeRect(ox0, oy0, ow, oh);
+          ctx.fillStyle = '#52525b';
+          ctx.font = '11px monospace';
+          ctx.textAlign = 'center';
+          for (var tTick = 0; tTick <= 8; tTick += 2) {
+            ctx.fillText(tTick + (TXT.lang === 'en' ? ' ms' : ' мс'), mapX(tTick), oy0 + oh + 16);
+          }
+        }
+        ctx.restore();
+      }
+
+      function stepSim(dt) {
+        if (sbx.mode === 'phys') {
+          var p = sbx.params.phys;
+          var st = sbx.physState;
+          st.x1 += st.vx1 * dt;
+          st.x2 += st.vx2 * dt;
+          if (st.flash > 0) st.flash = Math.max(0, st.flash - dt * 1.8);
+          var rSumM = (30 + 4.8 * (Math.cbrt(p.m1) + Math.cbrt(p.m2))) / 65;
+          if (!st.hit && (st.x2 - st.x1) <= rSumM) {
+            st.hit = true;
+            st.flash = 1.0;
+            var v1 = st.vx1, v2 = st.vx2;
+            st.vx1 = (p.m1 * v1 + p.m2 * v2 - p.m2 * p.e * (v1 - v2)) / (p.m1 + p.m2);
+            st.vx2 = (p.m1 * v1 + p.m2 * v2 + p.m1 * p.e * (v1 - v2)) / (p.m1 + p.m2);
+            var mid = 0.5 * (st.x1 + st.x2);
+            st.x1 = mid - 0.5 * rSumM;
+            st.x2 = mid + 0.5 * rSumM;
+          }
+          sbx.t += dt;
+          if (sbx.t > 4.0 || st.x1 < -6.2 || st.x2 > 6.2) initPhys();
+        } else if (sbx.mode === 'chem') {
+          var c = sbx.params.chem;
+          var minX = 58, maxX = 120 + (c.V / 28) * 500 - 6;
+          var minY = 36, maxY = 224;
+          for (var i = 0; i < sbx.particles.length; i++) {
+            var pt = sbx.particles[i];
+            pt.x += pt.vx * dt;
+            pt.y += pt.vy * dt;
+            if (pt.flash > 0) pt.flash = Math.max(0, pt.flash - dt * 4);
+            if (pt.x < minX) { pt.x = minX; pt.vx = Math.abs(pt.vx); }
+            if (pt.x > maxX) { pt.x = maxX; pt.vx = -Math.abs(pt.vx); pt.flash = 1; }
+            if (pt.y < minY) { pt.y = minY; pt.vy = Math.abs(pt.vy); }
+            if (pt.y > maxY) { pt.y = maxY; pt.vy = -Math.abs(pt.vy); }
+          }
+        } else {
+          sbx.t += dt * 2.4;
+          if (sbx.t > 8.4) sbx.t = 0;
+        }
+      }
+
+      function loop(ts) {
+        if (!sbx.lastTs) sbx.lastTs = ts;
+        var dt = Math.min(0.04, (ts - sbx.lastTs) / 1000);
+        sbx.lastTs = ts;
+        if (!sbx.paused) {
+          stepSim(dt);
+          drawFrame();
+        }
+        requestAnimationFrame(loop);
+      }
+
+      if (canvas) {
+        initPhys();
+        initChem();
+        renderSliders();
+        updateMetrics();
+        drawFrame();
+        requestAnimationFrame(loop);
+
+        Array.prototype.forEach.call(modeBtns, function(btn) {
+          btn.addEventListener('click', function() {
+            sbx.mode = btn.getAttribute('data-sbx-mode');
+            Array.prototype.forEach.call(modeBtns, function(b) {
+              var act = b === btn;
+              b.classList.toggle('active', act);
+              b.setAttribute('aria-pressed', act ? 'true' : 'false');
+            });
+            if (sbx.mode === 'phys') initPhys();
+            else if (sbx.mode === 'chem') initChem();
+            else initBio();
+            renderSliders();
+            updateMetrics();
+            drawFrame();
+          });
+        });
+
+        triggerBtn.addEventListener('click', function() {
+          if (sbx.mode === 'phys') initPhys();
+          else if (sbx.mode === 'chem') initChem();
+          else sbx.t = 0;
+          sbx.paused = false;
+          updateMetrics();
+          drawFrame();
+        });
+
+        pauseBtn.addEventListener('click', function() {
+          sbx.paused = !sbx.paused;
+          updateMetrics();
+          drawFrame();
+        });
+      }
+
+      /* 2. 106-SIMULATION INTERACTIVE CATALOG EXPLORER */
+      var catGrid = document.getElementById('cat-cards-grid');
+      var catSearch = document.getElementById('cat-search-input');
+      var catStatus = document.getElementById('cat-count-status');
+      var catToggleAll = document.getElementById('cat-toggle-all-btn');
+      var catRandomBtn = document.getElementById('cat-random-btn');
+      var catDiscBtns = document.querySelectorAll('[data-cat-disc]');
+      var catTierCore = document.getElementById('cat-tier-core');
+      var catTierAdv = document.getElementById('cat-tier-adv');
+
+      var catState = { disc: 'all', tier: 'all', q: '', expanded: false, spotlightKey: '' };
+
+      function getFilteredCatalog() {
+        return CATALOG.filter(function(it) {
+          if (catState.disc !== 'all' && it.d !== catState.disc) return false;
+          if (catState.tier !== 'all' && it.t !== catState.tier) return false;
+          if (catState.q) {
+            var hay = (it.n + ' ' + it.s + ' ' + it.g + ' ' + it.k).toLowerCase();
+            if (hay.indexOf(catState.q) === -1) return false;
+          }
+          return true;
+        });
+      }
+
+      function renderCatalog() {
+        if (!catGrid) return;
+        var list = getFilteredCatalog();
+        if (catState.spotlightKey) {
+          var idx = -1;
+          for (var i = 0; i < list.length; i++) {
+            if (list[i].k === catState.spotlightKey) { idx = i; break; }
+          }
+          if (idx > 0) {
+            var picked = list.splice(idx, 1)[0];
+            list.unshift(picked);
+          }
+        }
+        var showAllNow = catState.expanded || !!catState.q;
+        var slice = showAllNow ? list : list.slice(0, 12);
+        catGrid.innerHTML = '';
+        if (!slice.length) {
+          var empty = document.createElement('p');
+          empty.textContent = TXT.noMatch;
+          catGrid.appendChild(empty);
+        } else {
+          slice.forEach(function(it) {
+            var a = document.createElement('a');
+            a.className = 'sim-mini-card' + (it.k === catState.spotlightKey ? ' spotlight' : '');
+            a.href = TXT.simBase + it.k;
+            var meta = document.createElement('div');
+            meta.className = 'sim-mini-meta';
+            var s1 = document.createElement('span');
+            s1.textContent = TXT.discMap[it.d];
+            var s2 = document.createElement('span');
+            s2.textContent = it.g;
+            meta.appendChild(s1);
+            meta.appendChild(s2);
+            var t = document.createElement('div');
+            t.className = 'sim-mini-title';
+            t.textContent = it.n;
+            var sub = document.createElement('div');
+            sub.className = 'sim-mini-sub';
+            sub.textContent = it.s;
+            a.appendChild(meta);
+            a.appendChild(t);
+            a.appendChild(sub);
+            catGrid.appendChild(a);
+          });
+        }
+        if (catStatus) {
+          catStatus.textContent = TXT.showing.replace('{a}', String(slice.length)).replace('{b}', String(list.length));
+        }
+        if (catToggleAll) {
+          if (list.length <= 12 || catState.q) {
+            catToggleAll.style.display = 'none';
+          } else {
+            catToggleAll.style.display = '';
+            catToggleAll.textContent = catState.expanded
+              ? TXT.collapse
+              : TXT.showAll.replace('{n}', String(list.length));
+          }
+        }
+      }
+
+      if (catGrid) {
+        Array.prototype.forEach.call(catDiscBtns, function(btn) {
+          btn.addEventListener('click', function() {
+            catState.disc = btn.getAttribute('data-cat-disc');
+            catState.spotlightKey = '';
+            Array.prototype.forEach.call(catDiscBtns, function(b) {
+              var act = b === btn;
+              b.classList.toggle('active', act);
+              b.setAttribute('aria-pressed', act ? 'true' : 'false');
+            });
+            renderCatalog();
+          });
+        });
+
+        [catTierCore, catTierAdv].forEach(function(tBtn) {
+          if (!tBtn) return;
+          tBtn.addEventListener('click', function() {
+            var val = tBtn.getAttribute('data-cat-tier');
+            catState.tier = (catState.tier === val) ? 'all' : val;
+            catState.spotlightKey = '';
+            if (catTierCore) {
+              var cAct = catState.tier === 'core';
+              catTierCore.classList.toggle('active', cAct);
+              catTierCore.setAttribute('aria-pressed', cAct ? 'true' : 'false');
+            }
+            if (catTierAdv) {
+              var aAct = catState.tier === 'adv';
+              catTierAdv.classList.toggle('active', aAct);
+              catTierAdv.setAttribute('aria-pressed', aAct ? 'true' : 'false');
+            }
+            renderCatalog();
+          });
+        });
+
+        if (catSearch) {
+          catSearch.addEventListener('input', function() {
+            catState.q = catSearch.value.trim().toLowerCase();
+            catState.spotlightKey = '';
+            renderCatalog();
+          });
+        }
+        if (catToggleAll) {
+          catToggleAll.addEventListener('click', function() {
+            catState.expanded = !catState.expanded;
+            renderCatalog();
+          });
+        }
+        if (catRandomBtn) {
+          catRandomBtn.addEventListener('click', function() {
+            var pool = getFilteredCatalog();
+            if (!pool.length) pool = CATALOG;
+            var pick = pool[Math.floor(Math.random() * pool.length)];
+            catState.spotlightKey = pick.k;
+            renderCatalog();
+          });
+        }
+      }
+
+      /* 3. QUICK 3-QUESTION DIAGNOSTIC QUIZ */
+      var qqWrap = document.getElementById('qq-cards-wrap');
+      var qqNextBtn = document.getElementById('qq-next-set-btn');
+      var qqScorePill = document.getElementById('qq-score-pill');
+      var qqSetIndex = 0;
+      var qqAnswered = {};
+
+      function renderQuickQuiz() {
+        if (!qqWrap) return;
+        qqWrap.innerHTML = '';
+        var setCount = Math.floor(QUIZ_POOL.length / 3);
+        var start = (qqSetIndex % setCount) * 3;
+        var current = QUIZ_POOL.slice(start, start + 3);
+        var correctCount = 0;
+
+        current.forEach(function(item, localIdx) {
+          var qid = start + localIdx;
+          var card = document.createElement('div');
+          card.className = 'worked-problem';
+          var kicker = document.createElement('div');
+          kicker.className = 'card-kicker';
+          kicker.textContent = item.disc;
+          var pQ = document.createElement('p');
+          pQ.style.fontWeight = '600';
+          pQ.style.color = 'var(--ink-primary)';
+          pQ.textContent = item.q;
+
+          var grid = document.createElement('div');
+          grid.className = 'nmt-opts-grid';
+          var expP = document.createElement('p');
+          expP.style.display = 'none';
+          expP.style.marginTop = '10px';
+          expP.style.marginBottom = '0';
+          expP.style.paddingTop = '8px';
+          expP.style.borderTop = '1px solid var(--rule-light)';
+
+          item.opts.forEach(function(optTxt, oi) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'nmt-opt-btn';
+            b.textContent = optTxt;
+            b.addEventListener('click', function() {
+              if (qqAnswered[qid] !== undefined) return;
+              qqAnswered[qid] = oi;
+              Array.prototype.forEach.call(grid.children, function(ch, ci) {
+                if (ci === item.ans) ch.classList.add('correct');
+                else if (ci === oi) ch.classList.add('wrong');
+              });
+              expP.style.display = 'block';
+              expP.textContent = (oi === item.ans ? TXT.correctPrefix : TXT.wrongPrefix) + item.exp + ' ';
+              var lnk = document.createElement('a');
+              lnk.href = item.sim;
+              lnk.textContent = item.simTitle + ' →';
+              expP.appendChild(lnk);
+              updateQuizScore(start);
+            });
+            grid.appendChild(b);
+          });
+
+          if (qqAnswered[qid] !== undefined) {
+            var chosen = qqAnswered[qid];
+            if (chosen === item.ans) correctCount++;
+            Array.prototype.forEach.call(grid.children, function(ch, ci) {
+              if (ci === item.ans) ch.classList.add('correct');
+              else if (ci === chosen) ch.classList.add('wrong');
+            });
+            expP.style.display = 'block';
+            expP.textContent = (chosen === item.ans ? TXT.correctPrefix : TXT.wrongPrefix) + item.exp + ' ';
+            var lnk2 = document.createElement('a');
+            lnk2.href = item.sim;
+            lnk2.textContent = item.simTitle + ' →';
+            expP.appendChild(lnk2);
+          }
+
+          card.appendChild(kicker);
+          card.appendChild(pQ);
+          card.appendChild(grid);
+          card.appendChild(expP);
+          qqWrap.appendChild(card);
+        });
+        updateQuizScore(start);
+      }
+
+      function updateQuizScore(start) {
+        if (!qqScorePill) return;
+        var c = 0;
+        for (var i = start; i < start + 3; i++) {
+          if (qqAnswered[i] === QUIZ_POOL[i].ans) c++;
+        }
+        qqScorePill.textContent = TXT.score.replace('{c}', String(c)).replace('{t}', '3');
+      }
+
+      if (qqWrap) {
+        renderQuickQuiz();
+        if (qqNextBtn) {
+          qqNextBtn.addEventListener('click', function() {
+            qqSetIndex++;
+            renderQuickQuiz();
+          });
+        }
+      }
+
+      /* 4. TEXTBOOK CHAPTER FILTER PILLS */
+      var chFilterBtns = document.querySelectorAll('[data-ch-filter]');
+      var chCards = document.querySelectorAll('.chapter-card[data-ch-disc]');
+      Array.prototype.forEach.call(chFilterBtns, function(btn) {
+        btn.addEventListener('click', function() {
+          var f = btn.getAttribute('data-ch-filter');
+          Array.prototype.forEach.call(chFilterBtns, function(b) {
+            var act = b === btn;
+            b.classList.toggle('active', act);
+            b.setAttribute('aria-pressed', act ? 'true' : 'false');
+          });
+          Array.prototype.forEach.call(chCards, function(card) {
+            var show = (f === 'all' || card.getAttribute('data-ch-disc') === f);
+            card.style.display = show ? '' : 'none';
+          });
         });
       });
+
+      /* 5. EQUATIONS TABLE FILTER + ONE-CLICK FORMULA COPY */
+      var lawInput = document.getElementById('law-filter');
+      var lawTbody = document.querySelector('#laws-table tbody');
+      var lawDiscBtns = document.querySelectorAll('[data-law-disc]');
+      var activeLawDisc = 'all';
+
+      function filterLawsTable() {
+        if (!lawTbody) return;
+        var q = lawInput ? lawInput.value.trim().toLowerCase() : '';
+        Array.prototype.forEach.call(lawTbody.rows, function(row) {
+          var dOk = (activeLawDisc === 'all' || row.getAttribute('data-law-row') === activeLawDisc);
+          var qOk = (!q || row.textContent.toLowerCase().indexOf(q) !== -1);
+          row.style.display = (dOk && qOk) ? '' : 'none';
+        });
+      }
+
+      if (lawTbody) {
+        Array.prototype.forEach.call(lawTbody.rows, function(row) {
+          var codeEl = row.cells[2] && row.cells[2].querySelector('code');
+          if (!codeEl) return;
+          var formulaText = codeEl.textContent.replace(/\s+/g, ' ').trim();
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'copy-formula-btn';
+          btn.textContent = TXT.copyBtn;
+          btn.addEventListener('click', function() {
+            try { navigator.clipboard.writeText(formulaText); } catch (e) {}
+            btn.textContent = TXT.copiedBtn;
+            setTimeout(function() { btn.textContent = TXT.copyBtn; }, 1400);
+          });
+          row.cells[2].appendChild(btn);
+        });
+        if (lawInput) lawInput.addEventListener('input', filterLawsTable);
+        Array.prototype.forEach.call(lawDiscBtns, function(btn) {
+          btn.addEventListener('click', function() {
+            activeLawDisc = btn.getAttribute('data-law-disc');
+            Array.prototype.forEach.call(lawDiscBtns, function(b) {
+              var act = b === btn;
+              b.classList.toggle('active', act);
+              b.setAttribute('aria-pressed', act ? 'true' : 'false');
+            });
+            filterLawsTable();
+          });
+        });
+      }
+
+      /* 6. THREE-STAGE INQUIRY STEPPER */
+      var inqStepBtns = document.querySelectorAll('[data-inq-step]');
+      var inqPanels = document.querySelectorAll('[data-inq-panel]');
+      Array.prototype.forEach.call(inqStepBtns, function(btn) {
+        btn.addEventListener('click', function() {
+          var step = btn.getAttribute('data-inq-step');
+          Array.prototype.forEach.call(inqStepBtns, function(b) {
+            var act = b === btn;
+            b.classList.toggle('active', act);
+            b.setAttribute('aria-pressed', act ? 'true' : 'false');
+          });
+          Array.prototype.forEach.call(inqPanels, function(p) {
+            p.classList.toggle('hidden', p.getAttribute('data-inq-panel') !== step);
+          });
+        });
+      });
+
+      var inqOpts = document.querySelectorAll('#inq-predict-opts [data-inq-ans]');
+      var inqFb = document.getElementById('inq-predict-feedback');
+      Array.prototype.forEach.call(inqOpts, function(btn) {
+        btn.addEventListener('click', function() {
+          var ok = btn.getAttribute('data-inq-ans') === 'correct';
+          Array.prototype.forEach.call(inqOpts, function(b) {
+            b.classList.remove('correct', 'wrong');
+            if (b.getAttribute('data-inq-ans') === 'correct') b.classList.add('correct');
+            else if (b === btn) b.classList.add('wrong');
+          });
+          if (inqFb) {
+            inqFb.style.display = 'block';
+            inqFb.style.color = ok ? 'var(--accent-green)' : 'var(--accent-crimson)';
+            inqFb.textContent = ok ? TXT.inqOk : TXT.inqErr;
+          }
+        });
+      });
+
+      var inqSlider = document.getElementById('inq-angle-slider');
+      var inqVal = document.getElementById('inq-angle-val');
+      var inqRead = document.getElementById('inq-step2-readout');
+      if (inqSlider && inqRead) {
+        inqSlider.addEventListener('input', function() {
+          var deg = parseFloat(inqSlider.value);
+          var s = Math.sin(deg * Math.PI / 180);
+          var aCyl = ((2 / 3) * 9.81 * s).toFixed(2);
+          var aHoop = (0.5 * 9.81 * s).toFixed(2);
+          if (inqVal) inqVal.textContent = deg + '°';
+          var code = inqRead.querySelector('code');
+          if (code) {
+            code.textContent = TXT.inqFmt.replace('{a}', String(deg)).replace('{c}', aCyl).replace('{h}', aHoop);
+          }
+        });
+      }
     })();
   </script>
 </body>

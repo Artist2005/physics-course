@@ -4115,23 +4115,25 @@
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2'/%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/%3E%3C/svg%3E");
     }
 
-    @media (max-width: 768px) {
+    @media (pointer: coarse), (max-width: 820px) {
       .chapter-step-btn {
-        min-width: 38px;
-        min-height: 38px;
+        min-width: 44px;
+        min-height: 44px;
       }
       .lang-btn,
       .proj-btn,
       .preset-chip-btn,
       .btn-share-state,
       .messenger-share-link,
-      .related-hub-pill {
-        min-height: 38px;
-        padding-top: 6px;
-        padding-bottom: 6px;
+      .related-hub-pill,
+      .edu-progress-pill,
+      .btn-classroom-mode {
+        min-height: 44px;
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
       .panel-collapse-btn {
-        width: 32px;
+        width: 44px;
         height: 44px;
       }
     }
@@ -4249,14 +4251,14 @@
       opacity: 1;
     }
 
-    @media (pointer: coarse), (max-width: 768px) {
+    @media (pointer: coarse), (max-width: 820px) {
       .lang-dropdown-trigger {
-        min-height: 40px;
+        min-height: 44px;
         min-width: 44px;
         padding: 0 10px;
       }
       .lang-menu-item {
-        min-height: 40px;
+        min-height: 44px;
       }
     }
 

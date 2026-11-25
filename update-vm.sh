@@ -142,6 +142,7 @@ sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-ro
 
 if command -v gzip >/dev/null 2>&1; then
   sudo gzip -9 -k -f "${WEB_ROOT}/assets/app.js" "${WEB_ROOT}/assets/styles.css" "${WEB_ROOT}/sitemap.xml" "${WEB_ROOT}/manifest.json" || true
+  sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec gzip -9 -k -f {} + || true
 fi
 
 WEB_OWNER=""

@@ -40,6 +40,8 @@
       sub, sup { font-size: 0.75em; line-height: 0; position: relative; vertical-align: baseline; }
     sub { bottom: -0.22em; }
     sup { top: -0.38em; }
+      @media (pointer: coarse), (max-width: 820px) { .res-chip, .search-input { min-height: 44px; display: flex; align-items: center; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
   </style>
   <script id="sheua-sub-helper">window.__subH=function(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\bS_N([12])\b/g,'S<sub>N</sub>$1').replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g,function(m,b,d){return /^(chem|bio|sim|sheua|http|https|data|aria)$/i.test(b)?m:(b+'<sub>'+d+'</sub>');});};</script>
 </head>

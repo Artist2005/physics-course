@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found · Сторінку не знайдено · 3D Science Lab (physics.sheua.com)</title>
+  <title>404 · Page Not Found · physics.sheua.com</title>
   <meta name="robots" content="noindex, follow" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg-paper: #f4f2ed;
@@ -18,72 +18,46 @@
       --ink-muted: #52525b;
       --rule-dark: #d6d3cd;
       --accent-crimson: #991b1b;
-      --font-sans: "Google Sans", "Google Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-serif: "Google Sans", "Google Sans Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: "Google Sans Mono", "Google Sans", monospace;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg-paper);
-      color: var(--ink-primary);
-      font-family: var(--font-sans);
-      line-height: 1.65;
-      padding: 40px 16px;
-    }
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      background: var(--bg-page);
-      border: 1px solid var(--rule-dark);
-      padding: 32px 28px;
-    }
-    .code {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--ink-muted);
-      margin-bottom: 8px;
-    }
-    h1 {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      line-height: 1.25;
-      margin-bottom: 14px;
-    }
-    p {
-      font-size: 14.5px;
-      color: var(--ink-secondary);
-      margin-bottom: 16px;
-    }
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--rule-dark);
-    }
-    .links a {
-      color: var(--accent-crimson);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      font-size: 14px;
-    }
+    body { background: var(--bg-paper); color: var(--ink-primary); font-family: var(--font-sans); line-height: 1.65; padding: 40px 16px; }
+    .skip-link { position: fixed; top: -60px; left: 12px; z-index: 9999; padding: 8px 12px; background: #18181b; color: #faf9f5; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 3px; }
+    .skip-link:focus { top: 12px; }
+    a:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }
+    main { max-width: 680px; margin: 0 auto; background: var(--bg-page); border: 1px solid var(--rule-dark); padding: 32px 28px; }
+    .code { font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted); margin-bottom: 8px; }
+    h1 { font-size: 28px; line-height: 1.25; margin-bottom: 14px; }
+    p { font-size: 15px; color: var(--ink-secondary); margin-bottom: 16px; }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule-dark); }
+    .links a { color: var(--accent-crimson); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: 14px; }
   </style>
 </head>
 <body>
-  <main>
+  <a class="skip-link" id="skip-404" href="#main-content">Skip to main content</a>
+  <main id="main-content">
     <div class="code">HTTP 404 · physics.sheua.com</div>
-    <h1>Page Not Found · Сторінку не знайдено</h1>
-    <p>The requested address was not found. Use the links below to open the interactive 3D Physics, Chemistry, and Biology Laboratory (106 simulations).</p>
-    <p>Запитану сторінку не знайдено. Перейдіть за посиланнями нижче до інтерактивної 3D-лабораторії фізики, хімії та біології (106 віртуальних дослідів).</p>
+    <h1 id="h1-404">Page not found</h1>
+    <p id="p-404">The requested simulation address was not found. Choose one of the sections below to open the interactive 3D Physics, Chemistry, and Biology virtual laboratory.</p>
     <nav class="links" aria-label="Site navigation">
-      <a href="/">Home · 3D Science Lab (EN)</a>
-      <a href="/uk/">Головна · 3D Лабораторія (УКР)</a>
-      <a href="/about.html">About &amp; Full 106-Simulation Index</a>
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/terms.html">Terms of Use</a>
+      <a href="/">3D Science Lab (EN)</a>
+      <a href="/uk/">3D Лабораторія (УКР)</a>
+      <a href="https://sheua.com/">Підручник і НМТ</a>
+      <a href="https://sheua.com/en/calculators.html">SI Calculators</a>
+      <a href="/about.html">About &amp; Contact</a>
     </nav>
   </main>
+  <script>
+    (function(){
+      if (/^\/uk(\/|$)/i.test(location.pathname)) {
+        document.documentElement.lang = 'uk';
+        document.title = '404 · Сторінку не знайдено · physics.sheua.com';
+        document.getElementById('skip-404').textContent = 'Перейти до основного змісту';
+        document.getElementById('h1-404').textContent = 'Сторінку не знайдено';
+        document.getElementById('p-404').textContent = 'Запитану адресу не знайдено. Скористайтеся посиланнями нижче, щоб відкрити тривимірну лабораторію або теоретичний підручник.';
+      }
+    })();
+  </script>
 </body>
 </html>

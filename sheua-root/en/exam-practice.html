@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP, IB &amp; GCSE Science Exam Quiz &amp; 3D Labs · SHEUA.COM</title>
+  <meta name="description" content="Free interactive AP, IB, GCSE, and introductory university Physics, Chemistry, and Biology practice quiz with SI derivations and 106 3D virtual lab experiments." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/en/exam-practice.html" />
+  <link rel="alternate" hreflang="en" href="https://sheua.com/en/exam-practice.html" />
+  <link rel="alternate" hreflang="uk" href="https://sheua.com/nmt-trener.html" />
+  <link rel="alternate" hreflang="x-default" href="https://sheua.com/en/exam-practice.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="AP, IB &amp; GCSE Science Exam Quiz &amp; 3D Labs · SHEUA.COM" />
+  <meta property="og:description" content="Interactive 15-question Physics, Chemistry, and Biology diagnostic quiz and curriculum directory linked to 106 WebGL 3D simulations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/en/exam-practice.html" />
+  <meta property="og:site_name" content="SHEUA.COM · 3D Science Lab" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AP, IB &amp; GCSE Science Exam Quiz &amp; 3D Labs · SHEUA.COM" />
+  <meta name="twitter:description" content="Practice Physics, Chemistry, and Biology exam questions with instant SI derivations and 3D virtual laboratory verification." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-7543476344104123" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"AP, IB & GCSE Physics, Chemistry and Biology Exam Practice & 3D Lab Guide","url":"https://sheua.com/en/exam-practice.html","inLanguage":"en","isAccessibleForFree":true,"educationalLevel":"High School (AP, IB, GCSE, A-Level) and Introductory University"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can teachers share a 3D lab setup with preset parameters for homework?","acceptedAnswer":{"@type":"Answer","text":"Open any experiment on physics.sheua.com, set the desired slider values, and click Share Parameter Link to copy a direct URL that loads those exact initial conditions for students."}},{"@type":"Question","name":"Does the virtual lab include a distraction-free projector mode for classrooms?","acceptedAnswer":{"@type":"Answer","text":"Yes, clicking Classroom Mode in the top header hides all non-instructional panels and advertisements while enlarging live telemetry readouts for classroom projection."}}]}]}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .skip-link {
+      position: fixed;
+      top: -60px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      background: #18181b;
+      color: #faf9f5;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .skip-link:focus { top: 12px; }
+    :where(a, button, input, select, textarea, summary):focus-visible {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+      .hub-pill, .share-chip, .nmt-opt-btn, .lang-pill { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/en/">SHEUA.COM · 3D Science Lab</a>
+    <nav class="nav-bar" aria-label="Main navigation">
+      <a href="/en/">Overview</a>
+      <a href="/en/exam-practice.html" class="active">Exam Quiz &amp; Labs</a>
+      <a href="/en/calculators.html">SI Calculators</a>
+      <a href="https://physics.sheua.com/">3D Lab (106 Sims)</a>
+      <a href="/about.html?lang=en">About &amp; Contact</a>
+      <a href="/privacy.html?lang=en">Privacy Policy</a>
+      <a class="lang-pill" href="/nmt-trener.html" title="Українська версія">УКР</a>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/en/">SHEUA.COM</a> / <span>EXAM PRACTICE &amp; CURRICULUM LABS</span></div>
+      <span class="badge">AP · IB · GCSE · A-LEVEL · INTRODUCTORY UNIVERSITY</span>
+      <h1>Interactive Science Exam Practice Quiz &amp; Virtual Lab Curriculum Guide</h1>
+      <p class="lead">Test your quantitative reasoning across 15 core Physics, Chemistry, and Biology problems modeled on AP, IB, GCSE, and first-year university exams. Every question provides immediate grading, a step-by-step SI derivation, and a direct link into the corresponding 3D WebGL simulation.</p>
+    </section>
+
+    <article class="article-sheet">
+      <h2>Diagnostic multi-subject science quiz</h2>
+      <p>Filter by discipline below or work through all 15 problems sequentially.</p>
+      <div class="hub-filter-row" role="group" aria-label="Filter exam subject">
+        <button type="button" class="hub-pill active" data-en-subj="all">All subjects · 15</button>
+        <button type="button" class="hub-pill" data-en-subj="phys">Physics · 5</button>
+        <button type="button" class="hub-pill" data-en-subj="chem">Chemistry · 5</button>
+        <button type="button" class="hub-pill" data-en-subj="bio">Biology · 5</button>
+        <span id="en-score-badge" class="score-pill">Score: 0 / 0</span>
+      </div>
+
+      <div id="en-quiz-list" class="quiz-cards-stack"></div>
+
+      <h2>Core curriculum 3D laboratory experiments by topic</h2>
+      <p>Use the search box to jump directly to any core secondary school or university 3D experiment on <strong>physics.sheua.com</strong>:</p>
+      <input type="search" id="en-lab-filter" class="filter-input" placeholder="Filter by topic: Archimedes, lens, Carnot, titration, VSEPR, PCR, neuron..." aria-label="Search virtual labs" />
+      <div class="table-scroll">
+        <table class="ref-table" id="en-labs-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Discipline</th>
+              <th>Virtual 3D Laboratory Investigation</th>
+              <th>Governing SI Relation</th>
+              <th>Launch</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Core · Grade 8-10</td><td>Physics</td><td>Archimedes buoyancy and equilibrium flotation</td><td><code>F_b = ρ_f g V_sub</code></td><td><a href="https://physics.sheua.com/sim/archimedes">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 9-11</td><td>Physics</td><td>Elastic and inelastic collisions and momentum conservation</td><td><code>m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂</code></td><td><a href="https://physics.sheua.com/sim/collision">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 9-11</td><td>Physics</td><td>Simple and spring pendulum harmonic oscillations</td><td><code>T = 2π√(L/g)</code></td><td><a href="https://physics.sheua.com/sim/pendulum">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 10-12</td><td>Physics</td><td>Ideal gas law, Maxwell speeds, and Carnot engine efficiency</td><td><code>PV = nRT, &nbsp; η = 1 - T_C/T_H</code></td><td><a href="https://physics.sheua.com/sim/carnot">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 10-12</td><td>Physics</td><td>Converging lens optics, Young double-slit, and diffraction</td><td><code>1/F = 1/d + 1/f, &nbsp; Δy = λL/d</code></td><td><a href="https://physics.sheua.com/sim/interference">Open 3D Lab →</a></td></tr>
+            <tr><td>Advanced · AP / Uni</td><td>Physics</td><td>Faraday induction, RLC resonance, photoelectric &amp; Compton shift</td><td><code>ℰ = -N dΦ/dt, &nbsp; hc/λ = φ + eU_s</code></td><td><a href="https://physics.sheua.com/sim/compton">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 9-11</td><td>Chemistry</td><td>Quantum s, p, d orbitals and VSEPR 3D molecular geometry</td><td><code>sp, sp², sp³, sp³d, sp³d²</code></td><td><a href="https://physics.sheua.com/sim/chem_vsepr">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 10-12</td><td>Chemistry</td><td>Acid-base titration curves, indicators, and Henderson-Hasselbalch buffers</td><td><code>pH = pK_a + log([A⁻]/[HA])</code></td><td><a href="https://physics.sheua.com/sim/chem_titration">Open 3D Lab →</a></td></tr>
+            <tr><td>Advanced · AP / Uni</td><td>Chemistry</td><td>Arrhenius kinetics, Le Chatelier equilibrium, galvanic cells &amp; SN2</td><td><code>E = E° + (RT/zF)ln([Ox]/[Red])</code></td><td><a href="https://physics.sheua.com/sim/chem_galvanic">Open 3D Lab →</a></td></tr>
+            <tr><td>Core · Grade 9-11</td><td>Biology</td><td>Eukaryotic organelles, ATP synthase, mitosis, meiosis &amp; photosynthesis</td><td><code>Δp = Δψ - 61.5·ΔpH</code></td><td><a href="https://physics.sheua.com/sim/bio_mitochondria">Open 3D Lab →</a></td></tr>
+            <tr><td>Advanced · AP / Uni</td><td>Biology</td><td>DNA replication, PCR, CRISPR-Cas9, Hodgkin-Huxley spike &amp; hemodynamics</td><td><code>Q = πΔP·R⁴ / (8ηL)</code></td><td><a href="https://physics.sheua.com/sim/bio_crispr">Open 3D Lab →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Frequently asked questions for teachers and students</h2>
+      <h3>How can teachers share a 3D lab setup with preset parameters for homework?</h3>
+      <p>Open any experiment on physics.sheua.com, set the desired slider values, and click Share Parameter Link to copy a direct URL that loads those exact initial conditions for students.</p>
+      <h3>Does the virtual lab include a distraction-free projector mode for classrooms?</h3>
+      <p>Yes, clicking Classroom Mode in the top header hides all non-instructional panels and advertisements while enlarging live telemetry readouts for classroom projection.</p>
+
+      
+      <div class="share-strip" role="region" aria-label="Share material">
+        <span><strong>Share with students or colleagues.</strong></span>
+        <div class="share-strip-actions">
+          <a class="share-chip" href="https://t.me/share/url?url=https%3A%2F%2Fsheua.com%2Fen%2Fexam-practice.html&amp;text=AP%2C%20IB%20%26%20GCSE%20Science%20Exam%20Quiz%20%26%203D%20Virtual%20Labs%20%C2%B7%20SHEUA.COM" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="share-chip" href="viber://forward?text=AP%2C%20IB%20%26%20GCSE%20Science%20Exam%20Quiz%20%26%203D%20Virtual%20Labs%20%C2%B7%20SHEUA.COM%20https%3A%2F%2Fsheua.com%2Fen%2Fexam-practice.html">Viber</a>
+          <button type="button" class="share-chip" onclick="var b=this;try{navigator.clipboard.writeText('https://sheua.com/en/exam-practice.html');}catch(e){}b.textContent='Copied';setTimeout(function(){b.textContent='Copy link';},1800);">Copy link</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Open-Access 3D Science Lab · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/en/">Home (EN)</a>
+      <a href="/en/exam-practice.html">Exam Quiz &amp; Labs</a>
+      <a href="/en/calculators.html">SI Calculators</a>
+      <a href="/">Український підручник</a>
+      <a href="/about.html?lang=en">About &amp; Contact</a>
+      <a href="/privacy.html?lang=en">Privacy Policy</a>
+      <a href="/terms.html?lang=en">Terms of Use</a>
+    </div>
+  </footer>
+  
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Cookie notice">
+    <div>This educational site uses cookies and <code>localStorage</code> to save study preferences and serve Google AdSense ads in accordance with our <a href="/privacy.html?lang=en">Privacy Policy</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Essential only</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Accept</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+  (function(){
+    var QUESTIONS = [{"subj":"phys","label":"Physics · Mechanics","q":"A 2 kg sphere moving at 6 m/s undergoes a completely inelastic collision with a stationary 4 kg cart. What is their common speed after impact?","opts":["1 m/s","2 m/s","3 m/s","4 m/s"],"ans":1,"exp":"By conservation of linear momentum in a completely inelastic collision, u = m₁v₁ / (m₁ + m₂) = (2 · 6) / (2 + 4) = 2 m/s.","url":"https://physics.sheua.com/sim/collision","linkText":"Verify in 3D Collision Lab"},{"subj":"phys","label":"Physics · Oscillations","q":"How does the small-angle period of a simple pendulum change if the suspension length is quadrupled?","opts":["Increases by a factor of 2","Increases by a factor of 4","Decreases by a factor of 2","Remains unchanged"],"ans":0,"exp":"From T = 2π√(L/g), the period scales with the square root of suspension length: √4 = 2.","url":"https://physics.sheua.com/sim/pendulum","linkText":"Open 3D Pendulum Lab"},{"subj":"phys","label":"Physics · Thermodynamics","q":"An ideal Carnot engine operates between a 400 K hot reservoir and a 300 K cold sink. What is its thermal efficiency?","opts":["25 %","33 %","50 %","75 %"],"ans":0,"exp":"Carnot thermal efficiency is η = 1 - T_C / T_H = 1 - 300 / 400 = 0.25, or 25 %.","url":"https://physics.sheua.com/sim/carnot","linkText":"Open 3D Carnot Engine"},{"subj":"phys","label":"Physics · Geometric Optics","q":"An object sits at distance d = 0.30 m from a thin converging lens of focal length F = 0.10 m. At what image distance f does the real image form?","opts":["0.12 m","0.15 m","0.20 m","0.40 m"],"ans":1,"exp":"From the thin-lens formula, 1/f = 1/F - 1/d = 10 - 3.333 = 6.667 m⁻¹, giving f = 0.15 m.","url":"https://physics.sheua.com/sim/lens","linkText":"Open 3D Converging Lens"},{"subj":"phys","label":"Physics · Quantum Physics","q":"Photons of energy 3.5 eV strike a metal surface with work function 2.0 eV. What is the maximum kinetic energy of emitted photoelectrons?","opts":["1.5 eV","2.0 eV","3.5 eV","5.5 eV"],"ans":0,"exp":"By Einstein photoelectric equation, E_k max = hν - φ = 3.5 - 2.0 = 1.5 eV.","url":"https://physics.sheua.com/sim/photoelectric","linkText":"Verify in 3D Photoelectric Lab"},{"subj":"chem","label":"Chemistry · Molecular Geometry","q":"What orbital hybridization and bond angle characterize the carbon atom in methane CH₄?","opts":["sp, 180°","sp², 120°","sp³, 109.5°","dsp², 90°"],"ans":2,"exp":"Four equivalent bonding electron domains with zero lone pairs produce sp³ hybridization and a tetrahedral 109.5° bond angle.","url":"https://physics.sheua.com/sim/chem_vsepr","linkText":"Inspect 3D VSEPR Geometry"},{"subj":"chem","label":"Chemistry · Chemical Equilibrium","q":"In which direction does the equilibrium N₂ + 3H₂ ⇄ 2NH₃ shift when total pressure increases at constant temperature?","opts":["Toward ammonia NH₃","Toward reactants N₂ and H₂","No shift occurs","Equilibrium constant doubles"],"ans":0,"exp":"Four moles of gas on the left convert to two moles of gas on the right, so higher pressure favors the side with fewer gas moles.","url":"https://physics.sheua.com/sim/chem_haber","linkText":"Open 3D Haber-Bosch Lab"},{"subj":"chem","label":"Chemistry · Acids and Bases","q":"What is the pH of an aqueous 0.01 M solution of the strong monoprotic acid HCl at 25 °C?","opts":["pH = 1","pH = 2","pH = 7","pH = 12"],"ans":1,"exp":"Complete dissociation gives [H⁺] = 10⁻² M, so pH = -log₁₀(10⁻²) = 2.","url":"https://physics.sheua.com/sim/chem_titration","linkText":"Open 3D Acid-Base Titration"},{"subj":"chem","label":"Chemistry · Chemical Kinetics","q":"A first-order reaction has a half-life of 10 minutes. What percentage of the initial reactant remains after 30 minutes?","opts":["50 %","25 %","12.5 %","6.25 %"],"ans":2,"exp":"Thirty minutes equals three half-lives: N / N₀ = (1/2)³ = 1/8 = 12.5 %.","url":"https://physics.sheua.com/sim/chem_orders","linkText":"Open 3D Reaction Orders Lab"},{"subj":"chem","label":"Chemistry · Electrochemistry","q":"Which process always occurs at the anode of both galvanic cells and electrolytic cells?","opts":["Cation reduction","Oxidation with electron loss","Metal plating","Hydrogen gas evolution"],"ans":1,"exp":"Regardless of electrode polarity, electrochemical oxidation always takes place at the anode while reduction takes place at the cathode.","url":"https://physics.sheua.com/sim/chem_galvanic","linkText":"Open 3D Galvanic Cell"},{"subj":"bio","label":"Biology · Bioenergetics","q":"Which gradient directly drives rotation of the mitochondrial ATP synthase rotor?","opts":["Cytosolic glucose gradient","Electrochemical proton gradient H⁺","Osmotic water flux","Carbon dioxide diffusion"],"ans":1,"exp":"By Mitchell chemiosmotic theory, proton-motive force across the inner mitochondrial membrane powers rotary ATP synthesis.","url":"https://physics.sheua.com/sim/bio_mitochondria","linkText":"Open 3D Mitochondria Lab"},{"subj":"bio","label":"Biology · Cell Division","q":"During which stage of cell division do homologous chromosomes pair as bivalents and undergo crossing-over?","opts":["Mitotic prophase","Prophase I of meiosis","Anaphase II of meiosis","Interphase S phase"],"ans":1,"exp":"Synapsis of homologous chromosomes and reciprocal genetic recombination occur exclusively during prophase I of meiosis.","url":"https://physics.sheua.com/sim/bio_meiosis","linkText":"Inspect 3D Meiosis Lab"},{"subj":"bio","label":"Biology · Molecular Genetics","q":"How many double-stranded target DNA copies are produced from a single template molecule after 10 ideal PCR cycles?","opts":["20 copies","100 copies","512 copies","1024 copies"],"ans":3,"exp":"Amplicon count grows exponentially as N = N₀ · 2ⁿ = 1 · 2¹⁰ = 1024 molecules.","url":"https://physics.sheua.com/sim/bio_pcr","linkText":"Run 3D PCR Thermal Cycler"},{"subj":"bio","label":"Biology · Population Genetics","q":"In a Hardy-Weinberg population, the recessive phenotype frequency is q² = 0.04. What is the heterozygous carrier frequency 2pq?","opts":["0.16","0.20","0.32","0.64"],"ans":2,"exp":"From q = √0.04 = 0.20 and p = 1 - 0.20 = 0.80, the carrier frequency is 2pq = 2 · 0.80 · 0.20 = 0.32.","url":"https://physics.sheua.com/sim/bio_mendel","linkText":"Open 3D Hardy-Weinberg Lab"},{"subj":"bio","label":"Biology · Cardiovascular Biophysics","q":"By what factor does laminar blood flow through an arteriole increase at constant pressure drop if its inner radius doubles?","opts":["Factor of 2","Factor of 4","Factor of 8","Factor of 16"],"ans":3,"exp":"By Hagen-Poiseuille fourth-power law Q = πΔP·R⁴ / (8ηL), doubling vessel radius increases volumetric flow by 2⁴ = 16.","url":"https://physics.sheua.com/sim/bio_hemodynamics","linkText":"Open 3D Hemodynamics Lab"}];
+    var listEl = document.getElementById('en-quiz-list');
+    var scoreEl = document.getElementById('en-score-badge');
+    var answered = {};
+    var activeSubj = 'all';
+
+    function updateScore() {
+      var keys = Object.keys(answered);
+      var ok = keys.filter(function(k){ return answered[k]; }).length;
+      if (scoreEl) scoreEl.textContent = 'Score: ' + ok + ' / ' + keys.length;
+    }
+
+    function render() {
+      if (!listEl) return;
+      listEl.innerHTML = '';
+      QUESTIONS.forEach(function(item, idx) {
+        if (activeSubj !== 'all' && item.subj !== activeSubj) return;
+        var card = document.createElement('div');
+        card.className = 'worked-problem';
+        var h = '<div class="card-kicker">' + item.label + ' · Question ' + (idx + 1) + '</div>';
+        h += '<h3>' + item.q + '</h3><div class="nmt-opts-grid">';
+        item.opts.forEach(function(opt, oi) {
+          h += '<button type="button" class="nmt-opt-btn" data-qi="' + idx + '" data-oi="' + oi + '">' + opt + '</button>';
+        });
+        h += '</div><div id="en-fb-' + idx + '" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-dark);font-size:14px;"></div>';
+        card.innerHTML = h;
+        listEl.appendChild(card);
+      });
+
+      Array.prototype.forEach.call(listEl.querySelectorAll('.nmt-opt-btn'), function(btn) {
+        btn.addEventListener('click', function() {
+          var qi = parseInt(btn.getAttribute('data-qi'), 10);
+          var oi = parseInt(btn.getAttribute('data-oi'), 10);
+          var item = QUESTIONS[qi];
+          var isRight = (oi === item.ans);
+          if (!(qi in answered)) { answered[qi] = isRight; updateScore(); }
+          Array.prototype.forEach.call(btn.parentNode.querySelectorAll('.nmt-opt-btn'), function(sb, si) {
+            sb.classList.remove('correct', 'wrong');
+            if (si === item.ans) sb.classList.add('correct');
+            else if (si === oi) sb.classList.add('wrong');
+          });
+          var fb = document.getElementById('en-fb-' + qi);
+          if (fb) {
+            fb.style.display = 'block';
+            fb.innerHTML = '<strong>' + (isRight ? 'Correct.' : 'Review derivation.') + '</strong> ' + item.exp + ' <a href="' + item.url + '" style="font-weight:600;margin-left:6px;">' + item.linkText + ' →</a>';
+          }
+        });
+      });
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-en-subj]'), function(pill) {
+      pill.addEventListener('click', function() {
+        activeSubj = pill.getAttribute('data-en-subj');
+        Array.prototype.forEach.call(document.querySelectorAll('[data-en-subj]'), function(p){ p.classList.remove('active'); });
+        pill.classList.add('active');
+        render();
+      });
+    });
+
+    var sInp = document.getElementById('en-lab-filter');
+    var tRows = document.querySelectorAll('#en-labs-table tbody tr');
+    if (sInp) {
+      sInp.addEventListener('input', function() {
+        var q = sInp.value.trim().toLowerCase();
+        Array.prototype.forEach.call(tRows, function(r) {
+          r.style.display = (!q || r.textContent.toLowerCase().indexOf(q) !== -1) ? '' : 'none';
+        });
+      });
+    }
+
+    render();
+  })();
+  </script>
+</body>
+</html>

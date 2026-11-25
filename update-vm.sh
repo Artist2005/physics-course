@@ -27,13 +27,116 @@ echo "=== [2/5] Оновлення файлів 3D-лабораторії у ${W
 sudo mkdir -p "${WEB_ROOT}"
 if [ "$(realpath "${SRC_DIR}")" != "$(realpath "${WEB_ROOT}")" ]; then
   sudo cp -a "${SRC_DIR}/index.html" "${SRC_DIR}/404.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${SRC_DIR}/sheua-root" "${WEB_ROOT}/"
+
+  sudo python3 - "${WEB_ROOT}" << 'PYMIN' || true
+import os, re, shutil, subprocess, sys
+
+web_root = sys.argv[1]
+js_path = os.path.join(web_root, 'assets', 'app.js')
+css_path = os.path.join(web_root, 'assets', 'styles.css')
+
+if os.path.isfile(js_path):
+    raw_js = open(js_path, 'r', encoding='utf-8').read()
+    out = []
+    stack = []
+    in_block = False
+    for line in raw_js.splitlines(keepends=True):
+        if (not stack or stack[-1] != 'tmpl') and not in_block:
+            s = line.lstrip(' \t')
+            if not s or s in ('\n', '\r\n') or s.startswith('//'):
+                continue
+            emit = s
+        else:
+            emit = line
+        i, n, in_sq, in_dq = 0, len(emit), False, False
+        while i < n:
+            ch = emit[i]
+            nxt = emit[i + 1] if i + 1 < n else ''
+            if in_block:
+                if ch == '*' and nxt == '/':
+                    in_block = False
+                    i += 2
+                    continue
+                i += 1
+                continue
+            if stack and stack[-1] == 'tmpl':
+                if ch == '\\':
+                    i += 2
+                    continue
+                if ch == '`':
+                    stack.pop()
+                    i += 1
+                    continue
+                if ch == '$' and nxt == '{':
+                    stack.append(['expr', 1])
+                    i += 2
+                    continue
+                i += 1
+                continue
+            if in_sq:
+                if ch == '\\':
+                    i += 2
+                    continue
+                if ch == "'":
+                    in_sq = False
+                i += 1
+                continue
+            if in_dq:
+                if ch == '\\':
+                    i += 2
+                    continue
+                if ch == '"':
+                    in_dq = False
+                i += 1
+                continue
+            if ch == '/' and nxt == '/':
+                break
+            if ch == '/' and nxt == '*':
+                in_block = True
+                i += 2
+                continue
+            if ch == "'":
+                in_sq = True
+                i += 1
+                continue
+            if ch == '"':
+                in_dq = True
+                i += 1
+                continue
+            if ch == '`':
+                stack.append('tmpl')
+                i += 1
+                continue
+            if stack and isinstance(stack[-1], list):
+                if ch == '{':
+                    stack[-1][1] += 1
+                elif ch == '}':
+                    stack[-1][1] -= 1
+                    if stack[-1][1] == 0:
+                        stack.pop()
+            i += 1
+        out.append(emit)
+    if not stack and not in_block:
+        comp_js = ''.join(out)
+        open(js_path, 'w', encoding='utf-8', newline='\n').write(comp_js)
+        if shutil.which('node'):
+            chk = subprocess.run(['node', '--check', js_path], capture_output=True)
+            if chk.returncode != 0:
+                open(js_path, 'w', encoding='utf-8', newline='\n').write(raw_js)
+
+if os.path.isfile(css_path):
+    raw_css = open(css_path, 'r', encoding='utf-8').read()
+    no_c = re.sub(r'("(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\')|/\*[\s\S]*?\*/', lambda m: m.group(1) or '', raw_css)
+    comp_css = '\n'.join(ln.strip() for ln in no_c.splitlines() if ln.strip()) + '\n'
+    open(css_path, 'w', encoding='utf-8', newline='\n').write(comp_css)
+PYMIN
 fi
 
 CACHE_VER="$(date +%s)"
 sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec sed -i -E "s#assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?#assets/\1?v=${CACHE_VER}#g" {} +
 
 if command -v gzip >/dev/null 2>&1; then
-  sudo gzip -9 -k -f "${WEB_ROOT}/assets/app.js" "${WEB_ROOT}/assets/styles.css" "${WEB_ROOT}/sitemap.xml" || true
+  sudo gzip -9 -k -f "${WEB_ROOT}/assets/app.js" "${WEB_ROOT}/assets/styles.css" "${WEB_ROOT}/sitemap.xml" "${WEB_ROOT}/manifest.json" || true
 fi
 
 WEB_OWNER=""
@@ -85,6 +188,9 @@ PYHUB
     sudo mkdir -p "${TARGET_HUB}"
     if [ "$(realpath "${TARGET_HUB}")" != "${SRC_SHEUA_REAL}" ]; then
       sudo cp -a "${SRC_DIR}/sheua-root/." "${TARGET_HUB}/"
+    fi
+    if command -v gzip >/dev/null 2>&1 && [ -f "${TARGET_HUB}/sitemap.xml" ]; then
+      sudo gzip -9 -k -f "${TARGET_HUB}/sitemap.xml" || true
     fi
     if [ -n "${WEB_OWNER}" ]; then
       sudo chown -R "${WEB_OWNER}" "${TARGET_HUB}"
@@ -216,16 +322,42 @@ for path in real_confs:
                 'add_header Cache-Control "no-cache" always;\n        add_header X-Content-Type-Options "nosniff" always;\n        add_header Referrer-Policy "strict-origin-when-cross-origin" always;\n        add_header X-Frame-Options "SAMEORIGIN" always;\n        try_files $uri $uri.html $uri/ =404;'
             )
 
-        # Enable gzip_static on; for pre-compressed .gz assets
+        # Enable gzip_static on; and tune gzip settings for pre-compressed .gz assets
         if 'gzip on;' in block and 'gzip_static on;' not in block:
             block = block.replace('gzip on;', 'gzip on;\n    gzip_static on;', 1)
+        block = re.sub(r'gzip_min_length\s+1024;', 'gzip_min_length 512;', block)
+        def patch_gzip_types(m):
+            gt = re.sub(r'\s+text/html\b', '', m.group(0))
+            if 'application/manifest+json' not in gt:
+                gt = gt.replace('application/ld+json', 'application/ld+json application/manifest+json')
+            return gt
+        block = re.sub(r'gzip_types\b[^;]*;', patch_gzip_types, block)
 
-        # Add HSTS (Strict-Transport-Security) inside HTTPS blocks
-        if 'ssl_certificate' in block and 'Strict-Transport-Security' not in block:
-            block = block.replace(
-                'add_header X-Content-Type-Options "nosniff" always;',
-                'add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;\n        add_header X-Content-Type-Options "nosniff" always;'
-            )
+        # Avoid duplicate Cache-Control headers from expires 7d + add_header Cache-Control
+        if 'max-age=604800' in block:
+            block = re.sub(r'^[ \t]*expires\s+7d;\s*\n', '', block, flags=re.M)
+
+        # Ensure HSTS on every location block with security headers inside HTTPS servers, and deduplicate add_header lines
+        is_https = ('ssl_certificate' in block)
+        def patch_loc_headers(m):
+            loc = m.group(0)
+            if is_https and 'X-Content-Type-Options' in loc and 'Strict-Transport-Security' not in loc:
+                loc = loc.replace(
+                    'add_header X-Content-Type-Options "nosniff" always;',
+                    'add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;\n        add_header X-Content-Type-Options "nosniff" always;',
+                    1
+                )
+            seen_hdrs = set()
+            dedup_lines = []
+            for ln in loc.splitlines(keepends=True):
+                norm = ln.strip()
+                if norm.startswith('add_header '):
+                    if norm in seen_hdrs:
+                        continue
+                    seen_hdrs.add(norm)
+                dedup_lines.append(ln)
+            return ''.join(dedup_lines)
+        block = re.sub(r'^[ \t]*location\b[^{]*\{[^}]*\}', patch_loc_headers, block, flags=re.M)
 
         new_parts.append(block)
 
@@ -253,6 +385,7 @@ for CHECK_URL in \
   "https://sheua.com/laboratorni-7-11-klas.html" \
   "https://sheua.com/kalkuliatory.html" \
   "https://sheua.com/en/calculators.html" \
+  "https://sheua.com/en/exam-practice.html" \
   "https://sheua.com/mechanics-conservation.html" \
   "https://physics.sheua.com/ads.txt" \
   "https://physics.sheua.com/sim/collision"; do

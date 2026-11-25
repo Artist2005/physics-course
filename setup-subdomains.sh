@@ -38,8 +38,8 @@ server {
     gzip_vary on;
     gzip_proxied any;
     gzip_comp_level 6;
-    gzip_min_length 1024;
-    gzip_types text/plain text/css text/html text/javascript text/xml application/javascript application/json application/ld+json application/xml image/svg+xml;
+    gzip_min_length 512;
+    gzip_types text/plain text/css text/javascript text/xml application/javascript application/json application/ld+json application/manifest+json application/xml image/svg+xml;
 
     error_page 404 /404.html;
 

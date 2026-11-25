@@ -3068,7 +3068,8 @@
         formulaLatex: String.raw`\langle r^2 \rangle = 6 D t, \qquad D = \frac{k_B T}{6\pi \eta a}`,
         liveLatexFn: p => {
           const dVal = (1.38 * p.tempK) / (6 * Math.PI * p.viscosityEta * p.grainRadiusUm * 100);
-          const rmsUm = Math.sqrt(6 * dVal * Math.max(0.2, uiState.simTime));
+          const simT = (typeof uiState !== 'undefined' && typeof uiState.simTime === 'number') ? uiState.simTime : 0;
+          const rmsUm = Math.sqrt(6 * dVal * Math.max(0.2, simT));
           return String.raw`D = ${dVal.toFixed(2)}\text{ мкм}^2/\text{с}, \qquad \sqrt{\langle r^2 \rangle} = ${rmsUm.toFixed(2)}\text{ мкм}`;
         },
         defaults: { tempK: 310, grainRadiusUm: 1.0, viscosityEta: 1.0 },
@@ -32382,7 +32383,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         formulaLatex: String.raw`\langle r^2 \rangle = 6 D t, \qquad D = \frac{k_B T}{6\pi \eta a}`,
         liveLatexFn: p => {
           const dVal = (1.38 * p.tempK) / (6 * Math.PI * p.viscosityEta * p.grainRadiusUm * 100);
-          const rmsUm = Math.sqrt(6 * dVal * Math.max(0.2, uiState.simTime));
+          const simT = (typeof uiState !== 'undefined' && typeof uiState.simTime === 'number') ? uiState.simTime : 0;
+          const rmsUm = Math.sqrt(6 * dVal * Math.max(0.2, simT));
           return String.raw`D = ${dVal.toFixed(2)}\;\mu\text{m}^2/\text{s}, \qquad \sqrt{\langle r^2 \rangle} = ${rmsUm.toFixed(2)}\;\mu\text{m}`;
         },
         sliders: [
@@ -35636,6 +35638,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         .replace(' см/с', ' cm/s')
         .replace(' мПа·с (Ht = ', ' mPa·s (Ht = ')
         .replace('ум.од.', 'a.u.')
+        .replace(', Ферум (', ', Iron (')
+        .replace('Тригонально-біпірамідальний перехідний стан [HO···CH₃···Br]⁻‡ (sp²)', 'Trigonal-bipyramidal transition state [HO···CH₃···Br]⁻‡ (sp²)')
         .replace('ламінарний параболічний', 'laminar parabolic')
         .replace('перехідний', 'transitional')
         .replace('Від катода (−) до анода (+) (заряд −PO₄⁻)', 'From cathode (−) to anode (+) (−PO₄⁻ charge)')
@@ -38860,7 +38864,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           ? { slug: 'biophysics-physiology.html', titleUk: 'Підручник: Біофізика мембран і судин' }
           : { slug: 'cell-molecular-biology.html', titleUk: 'Підручник: Клітинна біологія, ДНК і ПЛР' };
       }
-      const cat = (SCENE_CONFIGS[sceneKey] && SCENE_CONFIGS[sceneKey].cat) || 'mechanics';
+      const cat = (SCENE_CONFIGS[sceneKey] && SCENE_CONFIGS[sceneKey].category) || 'mechanics';
       if (cat === 'thermo') {
         return { slug: 'thermodynamics-fluids.html', titleUk: 'Підручник: Гідродинаміка і термодинаміка' };
       }
@@ -38871,16 +38875,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     }
 
     function getRelatedSceneKeys(sceneKey, count = 4) {
-      const allKeys = Object.keys(SCENE_CONFIGS);
+      const canonSelf = resolveCanonicalSceneKey(sceneKey);
+      const allKeys = Object.keys(SCENE_CONFIGS).filter(k => k !== 'brewster' && k !== 'chem_arrhenius');
       const discKeys = allKeys.filter(k => {
-        if (sceneKey.startsWith('chem_')) return k.startsWith('chem_');
-        if (sceneKey.startsWith('bio_')) return k.startsWith('bio_');
+        if (canonSelf.startsWith('chem_')) return k.startsWith('chem_');
+        if (canonSelf.startsWith('bio_')) return k.startsWith('bio_');
         return !k.startsWith('chem_') && !k.startsWith('bio_');
       });
-      const baseCat = SCENE_CONFIGS[sceneKey] && SCENE_CONFIGS[sceneKey].cat;
-      const sameCat = baseCat ? discKeys.filter(k => k !== sceneKey && SCENE_CONFIGS[k].cat === baseCat) : [];
-      const pool = sameCat.length >= count ? sameCat : discKeys.filter(k => k !== sceneKey);
-      const idx = Math.max(0, discKeys.indexOf(sceneKey));
+      const baseCat = SCENE_CONFIGS[canonSelf] && SCENE_CONFIGS[canonSelf].category;
+      const sameCat = baseCat ? discKeys.filter(k => k !== canonSelf && SCENE_CONFIGS[k].category === baseCat) : [];
+      const pool = sameCat.length >= count ? sameCat : discKeys.filter(k => k !== canonSelf);
+      const idx = Math.max(0, discKeys.indexOf(canonSelf));
       const picked = [];
       for (let i = 0; i < pool.length && picked.length < count; i++) {
         picked.push(pool[(idx + i) % pool.length]);
@@ -38939,8 +38944,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           `<a class="related-hub-pill" href="https://sheua.com/nmt-trener.html">Тренажер НМТ</a>` +
           `<a class="related-hub-pill" href="https://sheua.com/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>` +
           `<a class="related-hub-pill" href="https://sheua.com/kalkuliatory.html">Калькулятори СІ</a>`
-        : `<a class="related-hub-pill" href="https://sheua.com/en/">SHEUA.COM · Governing Equations &amp; Textbook</a>` +
-          `<a class="related-hub-pill" href="https://sheua.com/si-constants-handbook.html">SI Constants Reference</a>`;
+        : `<a class="related-hub-pill" href="https://sheua.com/en/">SHEUA.COM · Textbook Overview</a>` +
+          `<a class="related-hub-pill" href="https://sheua.com/en/exam-practice.html">AP, IB &amp; GCSE Exam Quiz</a>` +
+          `<a class="related-hub-pill" href="https://sheua.com/en/calculators.html">SI Calculators</a>`;
 
       const curCfg = dict[key] || SCENE_CONFIGS[key];
       const shareUrl = `https://physics.sheua.com${isUk ? '/uk' : ''}/sim/${key}`;

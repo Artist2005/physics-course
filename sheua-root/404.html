@@ -13,6 +13,7 @@
     :root {
       --bg-paper: #f4f2ed;
       --bg-page: #faf9f5;
+      --bg-inset: #efeae0;
       --ink-primary: #18181b;
       --ink-secondary: #3f3f46;
       --ink-muted: #52525b;
@@ -22,16 +23,20 @@
       --font-mono: "Google Sans Mono", monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg-paper); color: var(--ink-primary); font-family: var(--font-sans); line-height: 1.65; padding: 40px 16px; }
+    body { background: var(--bg-paper); color: var(--ink-primary); font-family: var(--font-sans); line-height: 1.65; padding: 36px 16px; }
     .skip-link { position: fixed; top: -60px; left: 12px; z-index: 9999; padding: 8px 12px; background: #18181b; color: #faf9f5; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 3px; }
     .skip-link:focus { top: 12px; }
-    a:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }
+    :where(a, input):focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }
     main { max-width: 680px; margin: 0 auto; background: var(--bg-page); border: 1px solid var(--rule-dark); padding: 32px 28px; }
     .code { font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted); margin-bottom: 8px; }
-    h1 { font-size: 28px; line-height: 1.25; margin-bottom: 14px; }
-    p { font-size: 15px; color: var(--ink-secondary); margin-bottom: 16px; }
-    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule-dark); }
-    .links a { color: var(--accent-crimson); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: 14px; }
+    h1 { font-size: 28px; line-height: 1.25; margin-bottom: 10px; }
+    p { font-size: 15px; color: var(--ink-secondary); margin-bottom: 14px; }
+    .search-input { width: 100%; padding: 9px 12px; border: 1px solid var(--rule-dark); border-radius: 3px; background: var(--bg-paper); font-family: var(--font-sans); font-size: 14.5px; color: var(--ink-primary); margin-bottom: 12px; }
+    .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-bottom: 16px; }
+    .res-chip { display: block; padding: 8px 11px; border: 1px solid var(--rule-dark); border-radius: 3px; background: var(--bg-paper); color: var(--ink-primary); font-size: 13.5px; font-weight: 600; text-decoration: none; }
+    .res-chip:hover { border-color: var(--ink-primary); color: var(--accent-crimson); background: var(--bg-inset); }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule-dark); }
+    .links a { color: var(--accent-crimson); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; font-size: 13.5px; }
   </style>
 </head>
 <body>
@@ -39,25 +44,67 @@
   <main id="main-content">
     <div class="code">HTTP 404 · sheua.com</div>
     <h1 id="h1-404">Сторінку не знайдено</h1>
-    <p id="p-404">Запитану сторінку не знайдено. Перейдіть за посиланнями нижче до теоретичного підручника, онлайн-тренажера НМТ, калькуляторів СІ або тривимірної лабораторії.</p>
+    <p id="p-404">Запитану адресу не знайдено. Скористайтеся миттєвим пошуком нижче або оберіть потрібний розділ порталу.</p>
+    <input type="search" id="q-404" class="search-input" placeholder="Пошук: механіка, НМТ, калькулятори, лінза, pH, ДНК..." aria-label="Пошук розділу або симуляції" autocomplete="off" />
+    <div id="res-404" class="results-grid"></div>
     <nav class="links" aria-label="Навігація сайту">
       <a href="/">Головна · Підручник</a>
       <a href="/nmt-trener.html">Тренажер НМТ</a>
       <a href="/laboratorni-7-11-klas.html">Лабораторні 7-11 клас</a>
       <a href="/kalkuliatory.html">Калькулятори СІ</a>
-      <a href="https://physics.sheua.com/uk/">3D Лабораторія (106)</a>
+      <a href="https://physics.sheua.com/uk/">3D-лабораторія · 106</a>
       <a href="/en/">English Overview</a>
     </nav>
   </main>
   <script>
     (function(){
-      if (/^\/en(\/|$)/i.test(location.pathname)) {
+      var isEn = /^\/en(\/|$)/i.test(location.pathname);
+      var ITEMS = isEn ? [
+        { t: 'Overview & Live Sandbox', k: 'home overview textbook', u: '/en/' },
+        { t: 'AP, IB & GCSE Exam Quiz', k: 'exam quiz test practice', u: '/en/exam-practice.html' },
+        { t: 'SI Formula Calculators', k: 'calculator formula collision lens gas ph', u: '/en/calculators.html' },
+        { t: '3D Physics Lab · 46 Sims', k: 'physics mechanics optics carnot pendulum', u: 'https://physics.sheua.com/' },
+        { t: '3D Chemistry Lab · 40 Sims', k: 'chemistry orbitals vsepr titration buffer', u: 'https://physics.sheua.com/sim/chem_orbitals' },
+        { t: '3D Biology Lab · 20 Sims', k: 'biology cell dna pcr crispr neuron', u: 'https://physics.sheua.com/sim/bio_eukaryote' }
+      ] : [
+        { t: 'Тренажер НМТ · 15 завдань', k: 'нмт тест тренажер зно', u: '/nmt-trener.html' },
+        { t: 'Лабораторні роботи 7-11 клас', k: 'лабораторні 7 8 9 10 11 клас школа', u: '/laboratorni-7-11-klas.html' },
+        { t: 'Калькулятори формул СІ', k: 'калькулятор формули удар лінза газ маятник ph', u: '/kalkuliatory.html' },
+        { t: 'І. Механіка і закони збереження', k: 'механіка імпульс енергія обертання', u: '/mechanics-conservation.html' },
+        { t: 'ІІ. Гідродинаміка і термодинаміка', k: 'бернуллі архімед газ карно термодинаміка', u: '/thermodynamics-fluids.html' },
+        { t: 'ІІІ. Оптика, електродинаміка і кванти', k: 'оптика лінза інтерференція фарадей фотоефект', u: '/optics-electromagnetism.html' },
+        { t: 'IV. Квантова хімія і зв\'язок', k: 'хімія орбіталі гепво кристали', u: '/quantum-chemistry-bonding.html' },
+        { t: 'V. Кінетика, рівновага і pH', k: 'кінетика рівновага буфер електроліз нернст', u: '/chemical-kinetics-equilibrium.html' },
+        { t: 'VI. Клітина, ДНК, ПЛР і CRISPR', k: 'біологія клітина мітоз днк плр crispr', u: '/cell-molecular-biology.html' },
+        { t: 'VII. Біофізика мембран і судин', k: 'біофізика нейрон око судини гемодинаміка', u: '/biophysics-physiology.html' },
+        { t: 'VIII. Довідник сталих СІ', k: 'сталі константи сі похибки одиниці', u: '/si-constants-handbook.html' },
+        { t: '3D-лабораторія · 106 симуляцій', k: '3d лабораторія симуляції досліди', u: 'https://physics.sheua.com/uk/' }
+      ];
+      var inp = document.getElementById('q-404');
+      var box = document.getElementById('res-404');
+      if (isEn) {
         document.documentElement.lang = 'en';
         document.title = '404 · Page Not Found · SHEUA.COM';
         document.getElementById('skip-404').textContent = 'Skip to main content';
         document.getElementById('h1-404').textContent = 'Page not found';
-        document.getElementById('p-404').textContent = 'The requested page was not found. Use the links below to open the science textbook, exam practice quiz, SI calculators, or 3D virtual lab.';
+        document.getElementById('p-404').textContent = 'The requested address was not found. Search below or choose a section to continue.';
+        inp.placeholder = 'Search: calculator, quiz, physics, chemistry, DNA...';
+        inp.setAttribute('aria-label', 'Search portal sections');
       }
+      function draw(q) {
+        var term = (q || '').trim().toLowerCase();
+        var list = ITEMS.filter(function(it){
+          return !term || it.t.toLowerCase().indexOf(term) !== -1 || it.k.indexOf(term) !== -1;
+        });
+        if (!list.length) list = ITEMS.slice(0, 6);
+        box.innerHTML = list.slice(0, 6).map(function(it){
+          return '<a class="res-chip" href="' + it.u + '">' + it.t + ' →</a>';
+        }).join('');
+      }
+      var slugGuess = decodeURIComponent(location.pathname.split('/').pop() || '').replace(/\.html$/i, '').replace(/[-_]+/g, ' ').trim();
+      if (slugGuess && slugGuess !== '404') inp.value = slugGuess;
+      inp.addEventListener('input', function(){ draw(inp.value); });
+      draw(inp.value);
     })();
   </script>
 </body>

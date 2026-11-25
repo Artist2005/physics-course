@@ -721,6 +721,44 @@
       background: var(--ink-primary);
       color: #faf9f5;
     }
+    .quiz-q-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 14px;
+    }
+    .quiz-q-dot {
+      min-width: 30px;
+      height: 28px;
+      padding: 0 6px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .quiz-q-dot:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .quiz-q-dot.ok { background: #dcfce7; border-color: #166534; color: #14532d; }
+    .quiz-q-dot.bad { background: #fee2e2; border-color: #991b1b; color: #7f1d1d; }
+    .lab-done-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    .lab-done-btn:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .lab-done-btn.done { background: #dcfce7; border-color: #166534; color: #166534; }
 
     .sandbox-box {
       margin-top: 22px;
@@ -1145,6 +1183,7 @@
         <button type="button" class="hub-pill" data-en-subj="phys"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Physics · 5</span></button>
         <button type="button" class="hub-pill" data-en-subj="chem"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Chemistry · 5</span></button>
         <button type="button" class="hub-pill" data-en-subj="bio"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Biology · 5</span></button>
+        <button type="button" class="hub-pill" data-en-subj="mistakes"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Mistakes</span></button>
         <span id="en-score-badge" class="score-pill">0 / 15</span>
       </div>
 
@@ -1155,6 +1194,7 @@
         <button type="button" class="hub-pill" id="en-reset-btn" title="Reset answers" aria-label="Reset answers"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg><span>Reset</span></button>
       </div>
 
+      <div id="en-q-nav" class="quiz-q-nav" aria-label="Jump to question"></div>
       <div id="en-quiz-list" class="quiz-cards-stack"></div>
 
       <h2>Core curriculum 3D laboratory experiments by topic</h2>
@@ -1435,23 +1475,52 @@
     function render() {
       if (!listEl) return;
       listEl.innerHTML = '';
+      var navEl = document.getElementById('en-q-nav');
+      if (navEl) navEl.innerHTML = '';
+      var shownCount = 0;
       order.forEach(function(idx, visPos) {
         var item = QUESTIONS[idx];
-        if (activeSubj !== 'all' && item.subj !== activeSubj) return;
+        var isAnswered = (idx in chosen);
+        var isRight = isAnswered && (chosen[idx] === item.ans);
+        if (navEl) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'quiz-q-dot' + (isAnswered ? (isRight ? ' ok' : ' bad') : '');
+          dot.textContent = String(visPos + 1);
+          dot.title = 'Question ' + (visPos + 1);
+          dot.setAttribute('aria-label', 'Question ' + (visPos + 1));
+          dot.addEventListener('click', function() {
+            var targetCard = document.getElementById('en-card-' + idx);
+            if (!targetCard && activeSubj !== 'all') {
+              activeSubj = 'all';
+              Array.prototype.forEach.call(document.querySelectorAll('[data-en-subj]'), function(p){ p.classList.toggle('active', p.getAttribute('data-en-subj') === 'all'); });
+              render();
+              targetCard = document.getElementById('en-card-' + idx);
+            }
+            if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+          navEl.appendChild(dot);
+        }
+        if (activeSubj === 'mistakes') {
+          if (!isAnswered || isRight) return;
+        } else if (activeSubj !== 'all' && item.subj !== activeSubj) {
+          return;
+        }
+        shownCount++;
         var card = document.createElement('div');
         card.className = 'worked-problem';
+        card.id = 'en-card-' + idx;
         var h = '<div class="card-kicker">' + item.label + ' · Question ' + (visPos + 1) + '</div>';
         h += '<h3>' + item.q + '</h3><div class="nmt-opts-grid">';
         item.opts.forEach(function(opt, oi) {
           var cls = 'nmt-opt-btn';
-          if (idx in chosen) {
+          if (isAnswered) {
             if (oi === item.ans) cls += ' correct';
             else if (oi === chosen[idx]) cls += ' wrong';
           }
           h += '<button type="button" class="' + cls + '" data-qi="' + idx + '" data-oi="' + oi + '">' + opt + '</button>';
         });
-        var showFb = (idx in chosen);
-        var isRight = showFb && (chosen[idx] === item.ans);
+        var showFb = isAnswered;
         h += '</div><div id="en-fb-' + idx + '" style="display:' + (showFb ? 'block' : 'none') + ';margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-dark);font-size:14px;">';
         if (showFb) {
           h += '<strong>' + (isRight ? 'Correct.' : 'Review derivation.') + '</strong> ' + item.exp + ' <a href="' + item.url + '" style="font-weight:600;margin-left:6px;">' + item.linkText + ' →</a>';
@@ -1460,6 +1529,12 @@
         card.innerHTML = h;
         listEl.appendChild(card);
       });
+      if (!shownCount) {
+        var empty = document.createElement('div');
+        empty.className = 'worked-problem';
+        empty.textContent = 'No mistakes recorded yet in this selection.';
+        listEl.appendChild(empty);
+      }
 
       Array.prototype.forEach.call(listEl.querySelectorAll('.nmt-opt-btn'), function(btn) {
         btn.addEventListener('click', function() {

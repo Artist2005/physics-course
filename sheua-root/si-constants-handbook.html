@@ -717,6 +717,44 @@
       background: var(--ink-primary);
       color: #faf9f5;
     }
+    .quiz-q-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 14px;
+    }
+    .quiz-q-dot {
+      min-width: 30px;
+      height: 28px;
+      padding: 0 6px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .quiz-q-dot:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .quiz-q-dot.ok { background: #dcfce7; border-color: #166534; color: #14532d; }
+    .quiz-q-dot.bad { background: #fee2e2; border-color: #991b1b; color: #7f1d1d; }
+    .lab-done-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    .lab-done-btn:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .lab-done-btn.done { background: #dcfce7; border-color: #166534; color: #166534; }
 
     .sandbox-box {
       margin-top: 22px;
@@ -1670,7 +1708,7 @@
         }
       }
 
-      /* 3. WORKED PROBLEMS SELF-STUDY TOGGLE */
+      /* 3. WORKED PROBLEMS SELF-STUDY TOGGLE (GLOBAL + PER-PROBLEM PEEK) */
       var wpList = article ? article.querySelectorAll(':scope > .worked-problem') : [];
       if (wpList.length > 0) {
         var firstWp = wpList[0];
@@ -1683,14 +1721,38 @@
         toggleBtn.className = 'hub-pill';
         toggleBtn.innerHTML = ICO_EYE + '<span>Сховати розв\'язки</span>';
         var hiddenMode = false;
+        var peekBtns = [];
+
+        Array.prototype.forEach.call(wpList, function(wp) {
+          var peek = document.createElement('button');
+          peek.type = 'button';
+          peek.className = 'hub-pill';
+          peek.style.display = 'none';
+          peek.style.marginTop = '8px';
+          peek.innerHTML = ICO_EYE + '<span>Показати розв\'язок</span>';
+          peek.addEventListener('click', function() {
+            var ps = wp.querySelectorAll('p');
+            var currentlyHidden = ps.length > 1 && ps[1].classList.contains('sol-hidden');
+            for (var i = 1; i < ps.length; i++) {
+              ps[i].classList.toggle('sol-hidden', !currentlyHidden);
+            }
+            peek.innerHTML = ICO_EYE + '<span>' + (currentlyHidden ? 'Сховати розв\'язок' : 'Показати розв\'язок') + '</span>';
+          });
+          wp.appendChild(peek);
+          peekBtns.push(peek);
+        });
 
         toggleBtn.addEventListener('click', function() {
           hiddenMode = !hiddenMode;
-          toggleBtn.innerHTML = ICO_EYE + '<span>' + (hiddenMode ? 'Показати розв\'язки' : 'Сховати розв\'язки') + '</span>';
-          Array.prototype.forEach.call(wpList, function(wp) {
+          toggleBtn.innerHTML = ICO_EYE + '<span>' + (hiddenMode ? 'Показати всі' : 'Сховати розв\'язки') + '</span>';
+          Array.prototype.forEach.call(wpList, function(wp, idx) {
             var ps = wp.querySelectorAll('p');
             for (var i = 1; i < ps.length; i++) {
               ps[i].classList.toggle('sol-hidden', hiddenMode);
+            }
+            if (peekBtns[idx]) {
+              peekBtns[idx].style.display = hiddenMode ? 'inline-flex' : 'none';
+              peekBtns[idx].innerHTML = ICO_EYE + '<span>Показати розв\'язок</span>';
             }
           });
         });

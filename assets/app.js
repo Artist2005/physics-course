@@ -36106,7 +36106,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         searchPlaceholder: 'Search all 106 experiments (/)...',
         searchNoResults: 'No matching experiments found.',
         progressBadgeTip: 'Solved experiments in this discipline (click for next unsolved)',
-        kbdFooterHtml: '<span class="kbd-chip">Space</span> Run/Pause · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint · <span class="kbd-chip">F</span> Focus 3D · <span class="kbd-chip">/</span> Search',
+        kbdFooterHtml: '<span class="kbd-chip">Space</span> Run/Pause · <span class="kbd-chip">←/→</span> Chapter · <span class="kbd-chip">R</span> Reset · <span class="kbd-chip">T</span> Theory · <span class="kbd-chip">H</span> Hint · <span class="kbd-chip">F</span> Focus 3D · <span class="kbd-chip">/</span> Search',
         brandTitle: '3D Science Lab',
         brandSub: 'Interactive lab',
         discMenuHeader: 'Scientific discipline',
@@ -36262,7 +36262,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         searchPlaceholder: 'Пошук серед усіх 106 дослідів (/)...',
         searchNoResults: 'Дослідів за цим запитом не знайдено.',
         progressBadgeTip: 'Виконані досліди (натисніть, щоб перейти до наступного невиконаного)',
-        kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка · <span class="kbd-chip">F</span> Екран · <span class="kbd-chip">/</span> Пошук',
+        kbdFooterHtml: '<span class="kbd-chip">Space</span> Старт/Пауза · <span class="kbd-chip">←/→</span> Параграф · <span class="kbd-chip">R</span> Скинути · <span class="kbd-chip">T</span> Теорія · <span class="kbd-chip">H</span> Підказка · <span class="kbd-chip">F</span> Екран · <span class="kbd-chip">/</span> Пошук',
         brandTitle: '3D Лабораторія',
         brandSub: 'Природничий практикум',
         discMenuHeader: 'Наукова дисципліна',
@@ -36284,7 +36284,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         pinChartClear: 'Скинути еталон',
         pinChartTip: 'Зафіксувати поточну криву пунктиром для порівняння двох дослідів',
         camPresent: 'Екран',
-        camSnapshot: 'Фото PNG',
+        camSnapshot: 'PNG',
         camPinMobile: 'Закріпити 3D',
         camPinnedMobile: '3D закріплено',
         chemModalBadge: '3D хімічна лабораторія',
@@ -39445,13 +39445,18 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const chosenIdx = uiState.selectedOption !== null ? uiState.selectedOption : cfg.correctIndex;
       const chosenText = (cfg.options && cfg.options[chosenIdx]) ? formatTextbookProse(cfg.options[chosenIdx]) : '';
 
+      let savedStudentName = '';
+      try { savedStudentName = localStorage.getItem('sheua_student_name') || ''; } catch (e) {}
+      const escAttr = str => String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
       modal.innerHTML = `
         <div class="lab-report-sheet" role="dialog" aria-modal="true" aria-label="${isUk ? 'Лабораторний звіт' : 'Laboratory Report'}">
           <div class="lab-report-toolbar">
             <span class="lab-report-toolbar-left">${isUk ? 'Офіційний бланк лабораторної роботи · physics.sheua.com' : 'Official Laboratory Worksheet · physics.sheua.com'}</span>
             <div class="lab-report-toolbar-actions">
-              <button type="button" id="btn-report-print" class="btn-report-action primary">${isUk ? 'Друкувати / Зберегти PDF' : 'Print / Save PDF'}</button>
-              <button type="button" id="btn-report-copy" class="btn-report-action">${isUk ? 'Скопіювати текст' : 'Copy text'}</button>
+              <button type="button" id="btn-report-print" class="btn-report-action primary">${isUk ? 'Друкувати / PDF' : 'Print / PDF'}</button>
+              <button type="button" id="btn-report-csv" class="btn-report-action">${isUk ? 'Дані CSV' : 'Export CSV'}</button>
+              <button type="button" id="btn-report-copy" class="btn-report-action">${isUk ? 'Копіювати текст' : 'Copy text'}</button>
               <button type="button" id="btn-report-close" class="btn-report-action">${isUk ? 'Закрити ✕' : 'Close ✕'}</button>
             </div>
           </div>
@@ -39463,8 +39468,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               <div class="lab-report-meta">${cfg.subtitle || ''}</div>
             </div>
             <div class="lab-report-student-box">
-              <label for="lab-report-student-name">${isUk ? 'ПІБ учня / студента та клас (група):' : 'Student Name & Class / Group:'}</label>
-              <input type="text" id="lab-report-student-name" class="lab-report-student-input" placeholder="${isUk ? 'Введіть ім\'я та клас...' : 'Enter name and class...'}" />
+              <label for="lab-report-student-name">${isUk ? 'ПІБ учня / студента та клас чи група:' : 'Student Name & Class / Group:'}</label>
+              <input type="text" id="lab-report-student-name" class="lab-report-student-input" value="${escAttr(savedStudentName)}" placeholder="${isUk ? 'Введіть ім\'я та клас...' : 'Enter name and class...'}" />
             </div>
           </div>
 
@@ -39509,11 +39514,49 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       `;
 
       modal.classList.add('open');
+      const studentInp = modal.querySelector('#lab-report-student-name');
+      studentInp?.addEventListener('input', () => {
+        try { localStorage.setItem('sheua_student_name', studentInp.value); } catch (err) {}
+      });
       modal.querySelector('#btn-report-close')?.addEventListener('click', () => {
         modal.classList.remove('open');
       });
       modal.querySelector('#btn-report-print')?.addEventListener('click', () => {
         window.print();
+      });
+      modal.querySelector('#btn-report-csv')?.addEventListener('click', () => {
+        const csvEsc = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+        const lines = [
+          [csvEsc(isUk ? 'Категорія' : 'Category'), csvEsc(isUk ? 'Величина' : 'Quantity'), csvEsc(isUk ? 'Значення' : 'Value')].join(','),
+          [csvEsc('Meta'), csvEsc(isUk ? 'Дослід' : 'Experiment'), csvEsc(`${cfg.secSym || ''} ${cfg.title || ''}`.trim())].join(','),
+          [csvEsc('Meta'), csvEsc(isUk ? 'Учень / Студент' : 'Student'), csvEsc(studentInp ? studentInp.value : '')].join(',')
+        ];
+        (cfg.sliders || []).forEach(s => {
+          lines.push([csvEsc(isUk ? 'Параметр' : 'Parameter'), csvEsc(s.label), csvEsc(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`)].join(','));
+        });
+        lines.push([csvEsc(isUk ? 'Баланс' : 'Balance'), csvEsc(ekLbl), csvEsc(ekVal)].join(','));
+        lines.push([csvEsc(isUk ? 'Баланс' : 'Balance'), csvEsc(epLbl), csvEsc(epVal)].join(','));
+        lines.push([csvEsc(isUk ? 'Баланс' : 'Balance'), csvEsc(qLbl), csvEsc(qVal)].join(','));
+        telemetryCells.forEach(cell => {
+          const n = cell.querySelector('.meas-name')?.textContent || '';
+          const v = cell.querySelector('.meas-num')?.textContent || '';
+          lines.push([csvEsc(isUk ? 'Телеметрія' : 'Telemetry'), csvEsc(n), csvEsc(v)].join(','));
+        });
+        if (chartHistory.ek.length > 0) {
+          lines.push('');
+          lines.push([csvEsc('Step'), csvEsc(ekLbl), csvEsc(epLbl), csvEsc(qLbl)].join(','));
+          for (let i = 0; i < chartHistory.ek.length; i++) {
+            lines.push([i + 1, (chartHistory.ek[i] || 0).toFixed(4), (chartHistory.ep[i] || 0).toFixed(4), (chartHistory.q[i] || 0).toFixed(4)].join(','));
+          }
+        }
+        const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `lab-${key}-data.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(a.href), 2000);
       });
       modal.querySelector('#btn-report-copy')?.addEventListener('click', e => {
         const btn = e.currentTarget;
@@ -39523,7 +39566,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         btn.textContent = isUk ? '✓ Скопійовано' : '✓ Copied';
         setTimeout(() => {
-          btn.textContent = isUk ? 'Скопіювати текст' : 'Copy text';
+          btn.textContent = isUk ? 'Копіювати текст' : 'Copy text';
         }, 1800);
       });
       requestAnimationFrame(fitMathContainers);
@@ -39772,6 +39815,22 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               });
             }
           }
+        });
+      }
+      if (navGroup && !document.getElementById('btn-random-sim')) {
+        const rndBtn = document.createElement('button');
+        rndBtn.type = 'button';
+        rndBtn.id = 'btn-random-sim';
+        rndBtn.className = 'chapter-step-btn btn-quick-search';
+        rndBtn.title = uiState.lang === 'uk' ? 'Випадковий 3D-дослід' : 'Random 3D lab';
+        rndBtn.setAttribute('aria-label', uiState.lang === 'uk' ? 'Випадковий 3D-дослід' : 'Random 3D lab');
+        rndBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>`;
+        navGroup.appendChild(rndBtn);
+        rndBtn.addEventListener('click', () => {
+          const allCanonical = Object.keys(SCENE_CONFIGS).filter(k => k !== 'brewster' && k !== 'chem_arrhenius' && k !== uiState.activeScene);
+          if (!allCanonical.length) return;
+          const pick = allCanonical[Math.floor(Math.random() * allCanonical.length)];
+          loadScene(pick, true);
         });
       }
 
@@ -40077,8 +40136,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         repBtn.type = 'button';
         repBtn.id = 'btn-lab-report';
         repBtn.className = 'btn-paper-secondary';
-        repBtn.textContent = uiState.lang === 'uk' ? 'Лаб. звіт' : 'Lab report';
-        repBtn.title = uiState.lang === 'uk' ? 'Відкрити готовий бланк лабораторної роботи для друку або PDF' : 'Open printable laboratory report worksheet (PDF)';
+        repBtn.textContent = uiState.lang === 'uk' ? 'Звіт' : 'Report';
+        repBtn.title = uiState.lang === 'uk' ? 'Відкрити готовий бланк лабораторної роботи для друку, PDF або CSV' : 'Open printable laboratory report worksheet and CSV export';
         repBtn.addEventListener('click', openLabReportModal);
         resetBtnEl.parentElement.appendChild(repBtn);
       }
@@ -40097,17 +40156,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         copyBtn.type = 'button';
         copyBtn.id = 'btn-copy-calc';
         copyBtn.className = 'btn-copy-calc';
-        copyBtn.textContent = uiState.lang === 'uk' ? 'Скопіювати розв\'язок' : 'Copy solution';
+        copyBtn.textContent = uiState.lang === 'uk' ? 'Розв\'язок' : 'Solution';
         copyBtn.title = uiState.lang === 'uk' ? 'Скопіювати умову, формулу та підстановку чисел' : 'Copy given parameters, formula, and substituted solution';
         copyBtn.addEventListener('click', () => {
           const text = buildFormattedStepByStepSolution();
           const showDone = () => {
             copyBtn.classList.add('copied');
-            copyBtn.textContent = uiState.lang === 'uk' ? '✓ Скопійовано' : '✓ Copied';
+            copyBtn.textContent = uiState.lang === 'uk' ? 'Скопійовано' : 'Copied';
             clearTimeout(copyBtn._timer);
             copyBtn._timer = setTimeout(() => {
               copyBtn.classList.remove('copied');
-              copyBtn.textContent = uiState.lang === 'uk' ? 'Скопіювати розв\'язок' : 'Copy solution';
+              copyBtn.textContent = uiState.lang === 'uk' ? 'Розв\'язок' : 'Solution';
             }, 1800);
           };
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -40528,12 +40587,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTxt('ui-mobile-unsupported-sub', t.mobileUnsupportedSub);
 
       ensureTheoryBookUI();
-      setTxt('btn-lab-report', uiState.lang === 'uk' ? 'Лаб. звіт' : 'Lab report');
-      setTxt('btn-copy-calc', uiState.lang === 'uk' ? 'Скопіювати розв\'язок' : 'Copy solution');
+      setTxt('btn-lab-report', uiState.lang === 'uk' ? 'Звіт' : 'Report');
+      setTxt('btn-copy-calc', uiState.lang === 'uk' ? 'Розв\'язок' : 'Solution');
       setTxt('btn-verify-calc', uiState.lang === 'uk' ? 'Перевірити' : 'Check');
       const calcInp = document.getElementById('live-calc-user-input');
       if (calcInp) {
-        calcInp.placeholder = uiState.lang === 'uk' ? 'Перевір свій розрахунок (число)...' : 'Check your calculated value...';
+        calcInp.placeholder = uiState.lang === 'uk' ? 'Перевір свій розрахунок...' : 'Check your calculated value...';
+        calcInp.setAttribute('aria-label', uiState.lang === 'uk' ? 'Перевір свій розрахунок' : 'Check your calculated value');
       }
       syncPinChartBtnUI();
       setTxt('cam-present', t.camPresent);
@@ -40649,6 +40709,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       setTitle('#btn-close-ad-banner', isUk ? 'Сховати банер' : 'Hide banner');
       setTitle('#exp-dropdown-trigger', isUk ? 'Вибрати симуляцію' : 'Select physics experiment');
       setTitle('#btn-quick-search', isUk ? 'Пошук серед 106 дослідів (/)' : 'Search all 106 labs (/)');
+      setTitle('#btn-random-sim', isUk ? 'Випадковий 3D-дослід' : 'Random 3D lab');
+      setTitle('#btn-lab-report', isUk ? 'Відкрити готовий бланк лабораторної роботи для друку, PDF або CSV' : 'Open printable laboratory report worksheet and CSV export');
+      setTitle('#btn-copy-calc', isUk ? 'Скопіювати умову, формулу та підстановку чисел' : 'Copy given parameters, formula, and substituted solution');
       setTitle('#btn-jump-theory', isUk ? 'Перейти до конспекту теорії (клавіша T)' : 'Jump to theory notes (Key T)');
       const jumpTheoryEl = document.getElementById('btn-jump-theory');
       if (jumpTheoryEl) jumpTheoryEl.textContent = isUk ? 'Конспект ↓' : 'Notes ↓';
@@ -40664,6 +40727,7 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       };
       setAria('#exp-dropdown-menu', isUk ? 'Вибір симуляції' : 'Select simulation');
       setAria('#btn-quick-search', isUk ? 'Пошук серед 106 дослідів' : 'Search all 106 labs');
+      setAria('#btn-random-sim', isUk ? 'Випадковий 3D-дослід' : 'Random 3D lab');
       setAria('#theory-book-section', isUk ? 'Теоретичний конспект' : 'Theory notes');
       setAria('#header-legal-links', isUk ? 'Інформація про сайт' : 'Site information');
       setAria('.lang-switcher', isUk ? 'Вибір мови' : 'Language selector');
@@ -43561,9 +43625,16 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             });
           }
         }
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        document.getElementById('btn-prev-chapter')?.click();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        document.getElementById('btn-next-chapter')?.click();
       } else if (e.key === 'Escape') {
         closeDropdownMenu();
         closeDiscDropdownMenu();
+        document.getElementById('lab-report-modal')?.classList.remove('open');
       }
     });
 

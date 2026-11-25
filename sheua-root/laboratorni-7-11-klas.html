@@ -717,6 +717,44 @@
       background: var(--ink-primary);
       color: #faf9f5;
     }
+    .quiz-q-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 14px;
+    }
+    .quiz-q-dot {
+      min-width: 30px;
+      height: 28px;
+      padding: 0 6px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .quiz-q-dot:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .quiz-q-dot.ok { background: #dcfce7; border-color: #166534; color: #14532d; }
+    .quiz-q-dot.bad { background: #fee2e2; border-color: #991b1b; color: #7f1d1d; }
+    .lab-done-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    .lab-done-btn:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .lab-done-btn.done { background: #dcfce7; border-color: #166534; color: #166534; }
 
     .sandbox-box {
       margin-top: 22px;
@@ -1153,7 +1191,9 @@
         <button type="button" class="hub-pill" data-subj-lab="Фізика"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>Фізика</span></button>
         <button type="button" class="hub-pill" data-subj-lab="Хімія"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5.4L4.8 18.2A2 2 0 0 0 6.6 21h10.8a2 2 0 0 0 1.8-2.8L14 8.4V3"/><path d="M7.5 15h9"/></svg><span>Хімія</span></button>
         <button type="button" class="hub-pill" data-subj-lab="Біологія"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 6 12 6 12 12s-12 6-12 6"/><path d="M18 3c0 6-12 6-12 12s12 6 12 6"/><path d="M8.5 6.5h7"/><path d="M8.5 17.5h7"/></svg><span>Біологія</span></button>
-        <span id="grade-lab-count" class="score-pill">30</span>
+        <button type="button" class="hub-pill" id="classroom-launch-btn" aria-pressed="false" title="Відкривати всі 3D-роботи одразу в режимі класу для проєктора"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>Режим проєктора</span></button>
+        <span id="grade-lab-done-badge" class="mastery-pill">✓ 0 / 32</span>
+        <span id="grade-lab-count" class="score-pill">32</span>
       </div>
 
       <input type="search" id="grade-lab-search" class="filter-input" placeholder="Швидкий пошук теми: Архімед, маятник, лінза, титрування, мітоз, ДНК..." aria-label="Пошук лабораторної роботи" />
@@ -1415,23 +1455,72 @@
 
         var ICO_COPY2 = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>";
         var ICO_CHECK2 = "<svg class=\"svg-ico\" viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"20 6 9 17 4 12\"/></svg>";
-        Array.prototype.forEach.call(rows, function(tr) {
+        var doneMap = {};
+        try { doneMap = JSON.parse(localStorage.getItem('sheua_labs711_done') || '{}') || {}; } catch (e) {}
+        var doneBadge = document.getElementById('grade-lab-done-badge');
+        var classroomBtn = document.getElementById('classroom-launch-btn');
+        var classroomOn = false;
+
+        function syncDoneBadge() {
+          if (!doneBadge) return;
+          var doneCnt = Object.keys(doneMap).filter(function(k){ return doneMap[k]; }).length;
+          doneBadge.textContent = '✓ ' + doneCnt + ' / ' + rows.length;
+          doneBadge.classList.toggle('done', doneCnt > 0);
+        }
+
+        Array.prototype.forEach.call(rows, function(tr, rIdx) {
           var code = tr.cells[3] && tr.cells[3].querySelector('code');
-          if (!code) return;
-          var b = document.createElement('button');
-          b.type = 'button';
-          b.className = 'copy-formula-btn';
-          b.title = 'Скопіювати формулу';
-          b.setAttribute('aria-label', 'Скопіювати формулу');
-          b.innerHTML = ICO_COPY2;
-          b.addEventListener('click', function() {
-            try { navigator.clipboard.writeText(code.textContent.replace(/\s+/g, ' ').trim()); } catch (e) {}
-            b.classList.add('copied');
-            b.innerHTML = ICO_CHECK2;
-            setTimeout(function(){ b.classList.remove('copied'); b.innerHTML = ICO_COPY2; }, 1400);
-          });
-          tr.cells[3].appendChild(b);
+          if (code) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'copy-formula-btn';
+            b.title = 'Скопіювати формулу';
+            b.setAttribute('aria-label', 'Скопіювати формулу');
+            b.innerHTML = ICO_COPY2;
+            b.addEventListener('click', function() {
+              try { navigator.clipboard.writeText(code.textContent.replace(/\s+/g, ' ').trim()); } catch (e) {}
+              b.classList.add('copied');
+              b.innerHTML = ICO_CHECK2;
+              setTimeout(function(){ b.classList.remove('copied'); b.innerHTML = ICO_COPY2; }, 1400);
+            });
+            tr.cells[3].appendChild(b);
+          }
+
+          var launchCell = tr.cells[4];
+          var link = launchCell && launchCell.querySelector('a');
+          var rowKey = link ? link.getAttribute('href').split('/').pop() : ('row_' + rIdx);
+          if (launchCell) {
+            var chk = document.createElement('button');
+            chk.type = 'button';
+            chk.className = 'lab-done-btn' + (doneMap[rowKey] ? ' done' : '');
+            chk.title = 'Позначити роботу виконаною';
+            chk.setAttribute('aria-label', 'Позначити роботу виконаною');
+            chk.innerHTML = ICO_CHECK2;
+            chk.addEventListener('click', function() {
+              doneMap[rowKey] = !doneMap[rowKey];
+              chk.classList.toggle('done', Boolean(doneMap[rowKey]));
+              try { localStorage.setItem('sheua_labs711_done', JSON.stringify(doneMap)); } catch (e) {}
+              syncDoneBadge();
+            });
+            launchCell.appendChild(chk);
+          }
+          if (link) link.setAttribute('data-base-href', link.getAttribute('href'));
         });
+        syncDoneBadge();
+
+        if (classroomBtn) {
+          classroomBtn.addEventListener('click', function() {
+            classroomOn = !classroomOn;
+            classroomBtn.classList.toggle('active', classroomOn);
+            classroomBtn.setAttribute('aria-pressed', classroomOn ? 'true' : 'false');
+            Array.prototype.forEach.call(rows, function(tr) {
+              var a = tr.cells[4] && tr.cells[4].querySelector('a[data-base-href]');
+              if (!a) return;
+              var base = a.getAttribute('data-base-href');
+              a.setAttribute('href', classroomOn ? (base + '?mode=classroom') : base);
+            });
+          });
+        }
 
         function applyFilters() {
           var q = searchEl ? searchEl.value.trim().toLowerCase() : '';

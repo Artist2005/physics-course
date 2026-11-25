@@ -8,8 +8,10 @@ DOMAIN_FILE="${WEB_ROOT}/.domain"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=== [1/5] Отримання останніх змін із Git (гілка: ${BRANCH}) ==="
-if [ -d "${SRC_DIR}/.git" ]; then
-  sudo chown -R "$(id -u):$(id -g)" "${SRC_DIR}" || true
+REAL_UID="${SUDO_UID:-$(id -u)}"
+REAL_GID="${SUDO_GID:-$(id -g)}"
+if [ -d "${SRC_DIR}/.git" ] && [ "$(realpath "${SRC_DIR}")" != "$(realpath "${WEB_ROOT}")" ]; then
+  sudo chown -R "${REAL_UID}:${REAL_GID}" "${SRC_DIR}" || true
 fi
 git config --global --add safe.directory "${SRC_DIR}" || true
 sudo git config --system --add safe.directory "${SRC_DIR}" 2>/dev/null || true
@@ -17,6 +19,9 @@ sudo git config --system --add safe.directory "${SRC_DIR}" 2>/dev/null || true
 cd "${SRC_DIR}"
 git -c safe.directory="${SRC_DIR}" fetch origin "${BRANCH}"
 git -c safe.directory="${SRC_DIR}" reset --hard "origin/${BRANCH}"
+if [ -d "${SRC_DIR}/.git" ] && [ "$(realpath "${SRC_DIR}")" != "$(realpath "${WEB_ROOT}")" ]; then
+  sudo chown -R "${REAL_UID}:${REAL_GID}" "${SRC_DIR}" || true
+fi
 
 DOMAIN="physics.sheua.com"
 if [ -f "${DOMAIN_FILE}" ]; then

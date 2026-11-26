@@ -40754,6 +40754,748 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       }
     }
 
+    const LAB_TOOLS_I18N = {
+      uk: {
+        logTitle: 'Серія вимірів y(x)',
+        logRecord: '+ Вимір',
+        logAuto5: 'Серія ×5',
+        logClear: 'Очистити',
+        logEmpty: 'Змініть повзунок і натисніть "+ Вимір" або "Серія ×5" для побудови експериментального графіка y(x).',
+        logRepTitle: '6. Серія експериментальних вимірів та графік y(x)',
+        probTitle: 'Генератор розрахункових задач',
+        probNew: 'Нова задача',
+        probLoad3d: 'У 3D',
+        probFind: 'Знайти',
+        probAnsPh: 'Ваша відповідь (число)...',
+        probCheck: 'Перевірити',
+        probSol: 'Розв\'язок',
+        probHideSol: 'Сховати',
+        tchrBtn: 'Завдання',
+        tchrTip: 'Створити посилання із завданням для класу без реєстрації',
+        tchrHdr: 'ЗАВДАННЯ ВЧИТЕЛЯ',
+        tchrModalTitle: 'Конструктор завдання для учнів',
+        tchrGrpLbl: 'Клас або група (необов\'язково)',
+        tchrGrpPh: 'Наприклад: 10-А або Група 2',
+        tchrPromptLbl: 'Інструкція або умова завдання',
+        tchrPromptPh: 'Запишіть 5 вимірів для різних положень повзунка, проаналізуйте графік y(x) і збережіть звіт у PDF.',
+        tchrLockLbl: 'Передати поточні значення повзунків у посилання',
+        tchrCopyBtn: 'Копіювати посилання',
+        tchrCopied: 'Скопійовано',
+        tchrClose: 'Закрити',
+        tchrOpenRep: 'Звіт для здачі'
+      },
+      en: {
+        logTitle: 'Measurement series y(x)',
+        logRecord: '+ Record',
+        logAuto5: 'Sweep ×5',
+        logClear: 'Clear',
+        logEmpty: 'Adjust a slider and click "+ Record" or "Sweep ×5" to plot an experimental y(x) curve.',
+        logRepTitle: '6. Recorded Multi-Point Measurement Series & y(x) Plot',
+        probTitle: 'Numerical problem generator',
+        probNew: 'New problem',
+        probLoad3d: 'In 3D',
+        probFind: 'Find',
+        probAnsPh: 'Your numerical answer...',
+        probCheck: 'Check',
+        probSol: 'Solution',
+        probHideSol: 'Hide',
+        tchrBtn: 'Assign',
+        tchrTip: 'Build a zero-login assignment link for students',
+        tchrHdr: 'TEACHER ASSIGNMENT',
+        tchrModalTitle: 'Teacher assignment link builder',
+        tchrGrpLbl: 'Class or group code (optional)',
+        tchrGrpPh: 'e.g. Grade-10A or AP-Phys-2',
+        tchrPromptLbl: 'Assignment prompt for students',
+        tchrPromptPh: 'Record 5 data points across the slider range, inspect the y(x) curve, and export your PDF lab report.',
+        tchrLockLbl: 'Include current slider values in assignment link',
+        tchrCopyBtn: 'Copy link',
+        tchrCopied: 'Copied',
+        tchrClose: 'Close',
+        tchrOpenRep: 'Open report'
+      },
+      pl: {
+        logTitle: 'Seria pomiarów y(x)', logRecord: '+ Pomiar', logAuto5: 'Seria ×5', logClear: 'Wyczyść',
+        logEmpty: 'Zmień suwak i kliknij "+ Pomiar" lub "Seria ×5", aby wykreślić zależność y(x).',
+        logRepTitle: '6. Seria pomiarów i wykres y(x)',
+        probTitle: 'Generator zadań obliczeniowych', probNew: 'Nowe zadanie', probLoad3d: 'W 3D', probFind: 'Oblicz',
+        probAnsPh: 'Twoja odpowiedź...', probCheck: 'Sprawdź', probSol: 'Rozwiązanie', probHideSol: 'Ukryj',
+        tchrBtn: 'Zadanie', tchrTip: 'Utwórz link z zadaniem dla uczniów', tchrHdr: 'ZADANIE NAUCZYCIELA',
+        tchrModalTitle: 'Kreator zadania dla klasy', tchrGrpLbl: 'Klasa lub grupa', tchrGrpPh: 'np. 2A',
+        tchrPromptLbl: 'Treść polecenia dla ucznia', tchrPromptPh: 'Zapisz 5 punktów pomiarowych, przeanalizuj wykres y(x) i pobierz raport PDF.',
+        tchrLockLbl: 'Dołącz bieżące wartości suwaków', tchrCopyBtn: 'Kopiuj link', tchrCopied: 'Skopiowano', tchrClose: 'Zamknij', tchrOpenRep: 'Raport'
+      },
+      de: {
+        logTitle: 'Messreihe y(x)', logRecord: '+ Messwert', logAuto5: 'Serie ×5', logClear: 'Leeren',
+        logEmpty: 'Regler ändern und "+ Messwert" oder "Serie ×5" klicken, um y(x) zu plotten.',
+        logRepTitle: '6. Messreihe und y(x)-Diagramm',
+        probTitle: 'Rechenaufgaben-Generator', probNew: 'Neue Aufgabe', probLoad3d: 'In 3D', probFind: 'Gesucht',
+        probAnsPh: 'Deine Antwort...', probCheck: 'Prüfen', probSol: 'Lösung', probHideSol: 'Ausblenden',
+        tchrBtn: 'Aufgabe', tchrTip: 'Aufgabenlink für Schüler erstellen', tchrHdr: 'LEHRERAUFGABE',
+        tchrModalTitle: 'Aufgabenlink erstellen', tchrGrpLbl: 'Klasse oder Kurs', tchrGrpPh: 'z. B. 10b',
+        tchrPromptLbl: 'Arbeitsauftrag für Schüler', tchrPromptPh: 'Nimm 5 Messpunkte auf, analysiere die Kurve y(x) und speichere das PDF-Protokoll.',
+        tchrLockLbl: 'Aktuelle Reglerwerte übernehmen', tchrCopyBtn: 'Link kopieren', tchrCopied: 'Kopiert', tchrClose: 'Schließen', tchrOpenRep: 'Protokoll'
+      },
+      es: {
+        logTitle: 'Serie de medidas y(x)', logRecord: '+ Medir', logAuto5: 'Serie ×5', logClear: 'Limpiar',
+        logEmpty: 'Ajusta un control y pulsa "+ Medir" o "Serie ×5" para graficar la curva y(x).',
+        logRepTitle: '6. Serie experimental y gráfica y(x)',
+        probTitle: 'Generador de problemas', probNew: 'Nuevo', probLoad3d: 'En 3D', probFind: 'Hallar',
+        probAnsPh: 'Tu respuesta...', probCheck: 'Comprobar', probSol: 'Solución', probHideSol: 'Ocultar',
+        tchrBtn: 'Tarea', tchrTip: 'Crear enlace de tarea para estudiantes', tchrHdr: 'TAREA DEL PROFESOR',
+        tchrModalTitle: 'Creador de tarea para clase', tchrGrpLbl: 'Curso o grupo', tchrGrpPh: 'ej. 4B',
+        tchrPromptLbl: 'Instrucciones de la tarea', tchrPromptPh: 'Registra 5 medidas, analiza la gráfica y(x) y exporta el informe PDF.',
+        tchrLockLbl: 'Incluir valores actuales de los controles', tchrCopyBtn: 'Copiar enlace', tchrCopied: 'Copiado', tchrClose: 'Cerrar', tchrOpenRep: 'Informe'
+      },
+      fr: {
+        logTitle: 'Série de mesures y(x)', logRecord: '+ Mesure', logAuto5: 'Série ×5', logClear: 'Effacer',
+        logEmpty: 'Ajustez un curseur et cliquez sur "+ Mesure" ou "Série ×5" pour tracer y(x).',
+        logRepTitle: '6. Série de mesures et courbe y(x)',
+        probTitle: 'Générateur d\'exercices', probNew: 'Nouveau', probLoad3d: 'En 3D', probFind: 'Calculer',
+        probAnsPh: 'Votre réponse...', probCheck: 'Vérifier', probSol: 'Corrigé', probHideSol: 'Masquer',
+        tchrBtn: 'Devoir', tchrTip: 'Créer un lien de devoir sans inscription', tchrHdr: 'DEVOIR ENSEIGNANT',
+        tchrModalTitle: 'Créateur de devoir pour la classe', tchrGrpLbl: 'Classe ou groupe', tchrGrpPh: 'ex. Terminale-2',
+        tchrPromptLbl: 'Consigne pour les élèves', tchrPromptPh: 'Enregistrez 5 points de mesure, analysez y(x) et exportez le compte rendu PDF.',
+        tchrLockLbl: 'Inclure les paramètres actuels', tchrCopyBtn: 'Copier le lien', tchrCopied: 'Copié', tchrClose: 'Fermer', tchrOpenRep: 'Compte rendu'
+      },
+      pt: {
+        logTitle: 'Série de medidas y(x)', logRecord: '+ Medir', logAuto5: 'Série ×5', logClear: 'Limpar',
+        logEmpty: 'Ajuste um controlo e clique em "+ Medir" ou "Série ×5" para traçar y(x).',
+        logRepTitle: '6. Série experimental e gráfico y(x)',
+        probTitle: 'Gerador de problemas', probNew: 'Novo', probLoad3d: 'Em 3D', probFind: 'Calcular',
+        probAnsPh: 'Sua resposta...', probCheck: 'Verificar', probSol: 'Resolução', probHideSol: 'Ocultar',
+        tchrBtn: 'Tarefa', tchrTip: 'Criar link de tarefa para alunos', tchrHdr: 'TAREFA DO PROFESSOR',
+        tchrModalTitle: 'Criador de tarefa para a turma', tchrGrpLbl: 'Turma ou grupo', tchrGrpPh: 'ex. 11A',
+        tchrPromptLbl: 'Instruções da tarefa', tchrPromptPh: 'Registe 5 pontos experimentais, analise y(x) e exporte o relatório PDF.',
+        tchrLockLbl: 'Incluir valores atuais dos controlos', tchrCopyBtn: 'Copiar link', tchrCopied: 'Copiado', tchrClose: 'Fechar', tchrOpenRep: 'Relatório'
+      }
+    };
+
+    function tLabTools() {
+      return Object.assign({}, LAB_TOOLS_I18N.en, LAB_TOOLS_I18N[uiState.lang] || {});
+    }
+
+    const dataLogByScene = {};
+    let activeRandomProblem = null;
+    let activeTeacherAssignment = null;
+
+    function parseEquationOutputs(liveStr) {
+      const clean = String(liveStr || '').trim();
+      if (!clean) return [];
+      const clauses = clean.split(/(?:[,;]|⇒|→|\s+\|\s+)/);
+      const out = [];
+      for (const rawClause of clauses) {
+        const cl = rawClause.trim();
+        if (!cl) continue;
+        const eqIdx = Math.max(cl.lastIndexOf('='), cl.lastIndexOf('≈'));
+        if (eqIdx > 0) {
+          const firstEq = cl.search(/[=≈]/);
+          const lhs = cl.slice(0, firstEq > 0 ? firstEq : eqIdx).trim();
+          const rhs = cl.slice(eqIdx + 1).trim();
+          const m = rhs.match(/^(-?\d+(?:\.\d+)?)\s*([^\d\s,;()]+(?:\s*[·/]\s*[^\d\s,;()]+)?)?/);
+          if (m && lhs) {
+            const val = parseFloat(m[1]);
+            if (Number.isFinite(val)) {
+              const unit = (m[2] || '').trim();
+              out.push({ key: `eq:${lhs}`, label: unit ? `${lhs} (${unit})` : lhs, sym: lhs, val, unit });
+            }
+          }
+        }
+      }
+      return out;
+    }
+
+    function collectCurrentSceneMetrics(sceneKey, paramsObj) {
+      const cfg = SCENE_CONFIGS[sceneKey] || {};
+      const p = paramsObj || sceneParams[sceneKey] || {};
+      const metrics = [];
+      const seenKeys = new Set();
+      const addMetric = (key, label, val) => {
+        if (!Number.isFinite(val) || seenKeys.has(key)) return;
+        seenKeys.add(key);
+        metrics.push({ key, label: plainSubText(label), val });
+      };
+
+      if (cfg.liveLatexFn) {
+        const liveStr = stripHtmlAndMath(cfg.liveLatexFn(p));
+        parseEquationOutputs(liveStr).forEach(item => {
+          addMetric(item.key, item.label, item.val);
+        });
+      }
+
+      if (typeof document !== 'undefined') {
+        const cells = Array.from(document.querySelectorAll('#telemetry-grid .meas-cell'));
+        cells.forEach((cell, idx) => {
+          const nTxt = (cell.querySelector('.meas-name')?.textContent || '').trim();
+          const vTxt = (cell.querySelector('.meas-num')?.textContent || '').trim();
+          const m = vTxt.match(/-?\d+(?:\.\d+)?/);
+          if (nTxt && m) {
+            addMetric(`tel:${idx}:${nTxt}`, nTxt, parseFloat(m[0]));
+          }
+        });
+        ['ek', 'ep', 'q'].forEach(slot => {
+          const lTxt = (document.getElementById(`${slot}-label`)?.textContent || '').trim();
+          const vTxt = (document.getElementById(`${slot}-val`)?.textContent || '').trim();
+          const m = vTxt.match(/-?\d+(?:\.\d+)?/);
+          if (lTxt && m) {
+            addMetric(`bar:${slot}`, lTxt, parseFloat(m[0]));
+          }
+        });
+      }
+      return metrics;
+    }
+
+    function drawDataLoggerScatter(canvasEl, rows, xMeta, yKey, yLabel) {
+      if (!canvasEl || !canvasEl.getContext || rows.length < 2) return;
+      const dpr = (typeof window !== 'undefined' && window.devicePixelRatio) ? Math.min(2, window.devicePixelRatio) : 1;
+      const cssW = Math.max(240, canvasEl.clientWidth || 280);
+      const cssH = 124;
+      if (canvasEl.width !== Math.round(cssW * dpr) || canvasEl.height !== Math.round(cssH * dpr)) {
+        canvasEl.width = Math.round(cssW * dpr);
+        canvasEl.height = Math.round(cssH * dpr);
+      }
+      const ctx = canvasEl.getContext('2d');
+      ctx.save();
+      ctx.scale(dpr, dpr);
+      ctx.fillStyle = '#faf9f5';
+      ctx.fillRect(0, 0, cssW, cssH);
+
+      const pts = rows
+        .map(r => {
+          const x = Number(r.params[xMeta.key]);
+          const mObj = r.metrics.find(m => m.key === yKey) || r.metrics[0];
+          const y = mObj ? Number(mObj.val) : NaN;
+          return { x, y };
+        })
+        .filter(pt => Number.isFinite(pt.x) && Number.isFinite(pt.y))
+        .sort((a, b) => a.x - b.x);
+
+      if (pts.length < 2) {
+        ctx.restore();
+        return;
+      }
+
+      let minX = Math.min(...pts.map(p => p.x));
+      let maxX = Math.max(...pts.map(p => p.x));
+      let minY = Math.min(...pts.map(p => p.y));
+      let maxY = Math.max(...pts.map(p => p.y));
+      if (Math.abs(maxX - minX) < 1e-9) { minX -= 1; maxX += 1; }
+      if (Math.abs(maxY - minY) < 1e-9) { const pad = Math.max(0.5, Math.abs(maxY) * 0.1); minY -= pad; maxY += pad; }
+      else { const padY = (maxY - minY) * 0.12; minY -= padY; maxY += padY; }
+
+      const padL = 42, padR = 12, padT = 18, padB = 22;
+      const plotW = Math.max(40, cssW - padL - padR);
+      const plotH = Math.max(30, cssH - padT - padB);
+      const toPxX = x => padL + ((x - minX) / (maxX - minX)) * plotW;
+      const toPxY = y => padT + plotH - ((y - minY) / (maxY - minY)) * plotH;
+
+      ctx.strokeStyle = '#e6e3dd';
+      ctx.lineWidth = 1;
+      for (let g = 0; g <= 2; g++) {
+        const gy = padT + (g / 2) * plotH;
+        ctx.beginPath();
+        ctx.moveTo(padL, gy);
+        ctx.lineTo(padL + plotW, gy);
+        ctx.stroke();
+      }
+      ctx.strokeStyle = '#a1a1aa';
+      ctx.beginPath();
+      ctx.moveTo(padL, padT);
+      ctx.lineTo(padL, padT + plotH);
+      ctx.lineTo(padL + plotW, padT + plotH);
+      ctx.stroke();
+
+      // Least-squares linear trendline when X varies
+      const meanX = pts.reduce((s, p) => s + p.x, 0) / pts.length;
+      const meanY = pts.reduce((s, p) => s + p.y, 0) / pts.length;
+      let sxx = 0, sxy = 0, syy = 0;
+      pts.forEach(p => {
+        sxx += (p.x - meanX) * (p.x - meanX);
+        sxy += (p.x - meanX) * (p.y - meanY);
+        syy += (p.y - meanY) * (p.y - meanY);
+      });
+      let r2Text = '';
+      if (sxx > 1e-10) {
+        const slope = sxy / sxx;
+        const intercept = meanY - slope * meanX;
+        const r2 = syy > 1e-10 ? Math.max(0, Math.min(1, (sxy * sxy) / (sxx * syy))) : 1;
+        r2Text = `R² = ${r2.toFixed(2)}`;
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.strokeStyle = 'rgba(29, 78, 216, 0.55)';
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.moveTo(toPxX(minX), Math.max(padT, Math.min(padT + plotH, toPxY(slope * minX + intercept))));
+        ctx.lineTo(toPxX(maxX), Math.max(padT, Math.min(padT + plotH, toPxY(slope * maxX + intercept))));
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Measured curve + markers
+      ctx.strokeStyle = '#991b1b';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      pts.forEach((p, idx) => {
+        const px = toPxX(p.x);
+        const py = toPxY(p.y);
+        if (idx === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+
+      pts.forEach(p => {
+        const px = toPxX(p.x);
+        const py = toPxY(p.y);
+        ctx.fillStyle = '#991b1b';
+        ctx.beginPath();
+        ctx.arc(px, py, 3.4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#faf9f5';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      });
+
+      const fmtTick = n => Math.abs(n) >= 100 ? n.toFixed(0) : (Math.abs(n) >= 10 ? n.toFixed(1) : n.toFixed(2));
+      ctx.fillStyle = '#52525b';
+      ctx.textBaseline = 'middle';
+      drawCanvasSubText(ctx, fmtTick(maxY), padL - 4, padT + 4, '500', 9.5, '"Google Sans Mono", monospace', 'right');
+      drawCanvasSubText(ctx, fmtTick(minY), padL - 4, padT + plotH - 2, '500', 9.5, '"Google Sans Mono", monospace', 'right');
+      ctx.textBaseline = 'top';
+      drawCanvasSubText(ctx, fmtTick(minX), padL, padT + plotH + 4, '500', 9.5, '"Google Sans Mono", monospace', 'left');
+      drawCanvasSubText(ctx, fmtTick(maxX), padL + plotW, padT + plotH + 4, '500', 9.5, '"Google Sans Mono", monospace', 'right');
+
+      const xShort = plainSubText(`${xMeta.label.split(',')[0].trim()}${xMeta.unit ? ' (' + xMeta.unit + ')' : ''}`);
+      const yShort = plainSubText(String(yLabel || 'y').slice(0, 26));
+      ctx.fillStyle = '#18181b';
+      drawCanvasSubText(ctx, `${yShort} vs ${xShort}`, padL, 3, '600', 10, '"Google Sans", sans-serif', 'left');
+      if (r2Text) {
+        ctx.fillStyle = '#1d4ed8';
+        drawCanvasSubText(ctx, r2Text, padL + plotW, 3, '600', 9.5, '"Google Sans Mono", monospace', 'right');
+      }
+      ctx.restore();
+    }
+
+    function syncDataLoggerUI() {
+      if (typeof document === 'undefined') return;
+      const box = document.getElementById('data-logger-box');
+      if (!box) return;
+      const lt = tLabTools();
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      const sliders = cfg.sliders || [];
+      const rows = dataLogByScene[key] || [];
+
+      const titleSpan = document.getElementById('ui-logger-title');
+      const cntPill = document.getElementById('ui-logger-count');
+      const recBtn = document.getElementById('btn-log-point');
+      const autoBtn = document.getElementById('btn-log-auto5');
+      const clrBtn = document.getElementById('btn-log-clear');
+      const emptyEl = document.getElementById('data-logger-empty');
+      const xSel = document.getElementById('data-logger-x-select');
+      const ySel = document.getElementById('data-logger-y-select');
+      const canvasEl = document.getElementById('data-logger-canvas');
+      const tblWrap = document.getElementById('data-logger-table-wrap');
+      const tblEl = document.getElementById('data-logger-table');
+
+      if (titleSpan) titleSpan.textContent = lt.logTitle;
+      if (cntPill) cntPill.textContent = String(rows.length);
+      if (recBtn) recBtn.textContent = lt.logRecord;
+      if (autoBtn) autoBtn.textContent = lt.logAuto5;
+      if (clrBtn) clrBtn.textContent = lt.logClear;
+      if (emptyEl) {
+        emptyEl.textContent = lt.logEmpty;
+        emptyEl.style.display = rows.length === 0 ? 'block' : 'none';
+      }
+
+      if (xSel && sliders.length > 0) {
+        const prevX = xSel.value;
+        xSel.innerHTML = sliders.map(s => {
+          const lbl = plainSubText(`${s.label.split(',')[0].trim()}${s.unit ? ' (' + s.unit + ')' : ''}`);
+          return `<option value="${s.key}">${escapeHtmlBasic(lbl)}</option>`;
+        }).join('');
+        if (sliders.some(s => s.key === prevX)) {
+          xSel.value = prevX;
+        } else if (rows.length >= 2) {
+          const varied = sliders.find(s => rows.some(r => r.params[s.key] !== rows[0].params[s.key]));
+          xSel.value = varied ? varied.key : sliders[0].key;
+        }
+      }
+
+      const sampleMetrics = rows.length > 0 ? rows[rows.length - 1].metrics : collectCurrentSceneMetrics(key);
+      if (ySel) {
+        const prevY = ySel.value;
+        ySel.innerHTML = sampleMetrics.map(m => `<option value="${escapeHtmlBasic(m.key)}">${escapeHtmlBasic(m.label)}</option>`).join('');
+        if (sampleMetrics.some(m => m.key === prevY)) {
+          ySel.value = prevY;
+        } else if (sampleMetrics.length > 0) {
+          const nonInput = sampleMetrics.find(m => m.key.startsWith('eq:')) || sampleMetrics[0];
+          ySel.value = nonInput.key;
+        }
+      }
+
+      const activeXMeta = sliders.find(s => s.key === (xSel && xSel.value)) || sliders[0];
+      const activeYKey = (ySel && ySel.value) || (sampleMetrics[0] && sampleMetrics[0].key) || '';
+      const activeYObj = sampleMetrics.find(m => m.key === activeYKey) || sampleMetrics[0];
+
+      if (tblWrap && tblEl) {
+        if (rows.length > 0 && activeXMeta) {
+          tblWrap.classList.add('visible');
+          const xHdr = subifyPlainToHtml(`${activeXMeta.label.split(',')[0].trim()}${activeXMeta.unit ? ', ' + activeXMeta.unit : ''}`);
+          const yHdr = subifyPlainToHtml(activeYObj ? activeYObj.label : 'y');
+          const bodyHtml = rows.map((r, i) => {
+            const xVal = r.params[activeXMeta.key];
+            const mValObj = r.metrics.find(m => m.key === activeYKey) || r.metrics[0];
+            const yVal = mValObj ? mValObj.val : '';
+            return `<tr><td>${i + 1}</td><td>${xVal}</td><td>${yVal}</td></tr>`;
+          }).join('');
+          tblEl.innerHTML = `<thead><tr><th>#</th><th>${xHdr}</th><th>${yHdr}</th></tr></thead><tbody>${bodyHtml}</tbody>`;
+        } else {
+          tblWrap.classList.remove('visible');
+          tblEl.innerHTML = '';
+        }
+      }
+
+      if (canvasEl) {
+        if (rows.length >= 2 && activeXMeta) {
+          canvasEl.classList.add('visible');
+          drawDataLoggerScatter(canvasEl, rows, activeXMeta, activeYKey, activeYObj ? activeYObj.label : 'y');
+        } else {
+          canvasEl.classList.remove('visible');
+        }
+      }
+    }
+
+    function recordMeasurementPoint() {
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key];
+      if (!cfg) return;
+      if (!dataLogByScene[key]) dataLogByScene[key] = [];
+      const snapParams = { ...(sceneParams[key] || {}) };
+      const metrics = collectCurrentSceneMetrics(key, snapParams);
+      dataLogByScene[key].push({ params: snapParams, metrics });
+      if (dataLogByScene[key].length > 25) dataLogByScene[key].shift();
+      syncDataLoggerUI();
+    }
+
+    function sweepFiveMeasurementPoints() {
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key];
+      if (!cfg || !cfg.sliders || !cfg.sliders.length) return;
+      const xSel = typeof document !== 'undefined' ? document.getElementById('data-logger-x-select') : null;
+      const xMeta = cfg.sliders.find(s => s.key === (xSel && xSel.value)) || cfg.sliders[0];
+      dataLogByScene[key] = [];
+      const origVal = sceneParams[key][xMeta.key];
+      for (let i = 0; i < 5; i++) {
+        const raw = xMeta.min + ((xMeta.max - xMeta.min) * i) / 4;
+        setSimParamFrom3D(key, xMeta.key, raw);
+        const snapParams = { ...(sceneParams[key] || {}) };
+        const metrics = collectCurrentSceneMetrics(key, snapParams);
+        dataLogByScene[key].push({ params: snapParams, metrics });
+      }
+      setSimParamFrom3D(key, xMeta.key, origVal);
+      syncDataLoggerUI();
+    }
+
+    function exportDataLoggerCsv() {
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      const rows = dataLogByScene[key] || [];
+      if (!rows.length) {
+        recordMeasurementPoint();
+      }
+      const series = dataLogByScene[key] || [];
+      if (!series.length) return;
+      const csvEsc = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+      const sliders = cfg.sliders || [];
+      const metricDefs = series[0].metrics || [];
+      const header = [
+        '#',
+        ...sliders.map(s => plainSubText(`${s.label}${s.unit ? ' (' + s.unit + ')' : ''}`)),
+        ...metricDefs.map(m => plainSubText(m.label))
+      ].map(csvEsc).join(',');
+      const lines = [header];
+      series.forEach((r, idx) => {
+        const cols = [
+          idx + 1,
+          ...sliders.map(s => r.params[s.key]),
+          ...metricDefs.map(md => {
+            const found = r.metrics.find(x => x.key === md.key);
+            return found ? found.val : '';
+          })
+        ];
+        lines.push(cols.map(csvEsc).join(','));
+      });
+      const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `series-${key}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    }
+
+    function generateRandomProblemForScene(sceneKey, silentReset = false) {
+      const key = sceneKey || uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key];
+      if (!cfg || !cfg.sliders || !cfg.sliders.length) return;
+      const randP = {};
+      cfg.sliders.forEach(s => {
+        const step = s.step || 1;
+        const totalSteps = Math.max(1, Math.round((s.max - s.min) / step));
+        const minIdx = (s.min === 0 && totalSteps >= 3) ? 1 : 0;
+        const idx = minIdx + Math.floor(Math.random() * (totalSteps - minIdx + 1));
+        const decimals = (String(step).split('.')[1] || '').length;
+        const val = parseFloat((s.min + idx * step).toFixed(Math.max(decimals, 3)));
+        randP[s.key] = Math.max(s.min, Math.min(s.max, val));
+      });
+
+      const liveStr = cfg.liveLatexFn ? stripHtmlAndMath(cfg.liveLatexFn(randP)) : '';
+      const parsedPairs = parseEquationOutputs(liveStr);
+      const sliderVals = Object.values(randP).map(Number);
+      const nonEchoPairs = parsedPairs.filter(item => !sliderVals.some(sv => Math.abs(sv - item.val) < 1e-6));
+      const chosenPair = (nonEchoPairs.length ? nonEchoPairs[nonEchoPairs.length - 1] : parsedPairs[parsedPairs.length - 1]) || null;
+      const allNums = (liveStr.match(/-?\d+(?:\.\d+)?/g) || []).map(Number).filter(Number.isFinite);
+      const targetVal = chosenPair ? chosenPair.val : (allNums.length ? allNums[allNums.length - 1] : 0);
+      const targetSym = chosenPair ? chosenPair.sym : '';
+      const targetUnit = chosenPair ? chosenPair.unit : '';
+
+      activeRandomProblem = {
+        sceneKey: key,
+        params: randP,
+        targetSym,
+        targetVal,
+        targetUnit,
+        fullCalcStr: liveStr,
+        allNums,
+        solOpen: false
+      };
+      if (!silentReset || typeof document !== 'undefined') {
+        syncRandomProblemUI(true);
+      }
+    }
+
+    function syncRandomProblemUI(clearFeedback = false) {
+      if (typeof document === 'undefined') return;
+      const box = document.getElementById('random-problem-box');
+      if (!box) return;
+      const lt = tLabTools();
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      if (!activeRandomProblem || activeRandomProblem.sceneKey !== key) {
+        generateRandomProblemForScene(key, true);
+        return;
+      }
+
+      const titleEl = document.getElementById('ui-rand-prob-title');
+      const newBtn = document.getElementById('btn-gen-problem');
+      const loadBtn = document.getElementById('btn-load-rand-3d');
+      const givenEl = document.getElementById('rand-prob-given');
+      const findEl = document.getElementById('rand-prob-find');
+      const inpEl = document.getElementById('rand-prob-input');
+      const chkBtn = document.getElementById('btn-check-rand-prob');
+      const solBtn = document.getElementById('btn-show-rand-sol');
+      const solBox = document.getElementById('rand-prob-solution');
+      const msgEl = document.getElementById('rand-prob-msg');
+
+      if (titleEl) titleEl.textContent = lt.probTitle;
+      if (newBtn) newBtn.textContent = lt.probNew;
+      if (loadBtn) loadBtn.textContent = lt.probLoad3d;
+      if (chkBtn) chkBtn.textContent = lt.probCheck;
+      if (inpEl) {
+        inpEl.placeholder = lt.probAnsPh;
+        inpEl.setAttribute('aria-label', lt.probAnsPh);
+        if (clearFeedback) inpEl.value = '';
+      }
+      if (msgEl && clearFeedback) {
+        msgEl.className = 'live-calc-verify-msg';
+        msgEl.textContent = '';
+      }
+
+      // Refresh localized liveStr for activeRandomProblem.params
+      const curLiveStr = cfg.liveLatexFn ? stripHtmlAndMath(cfg.liveLatexFn(activeRandomProblem.params)) : activeRandomProblem.fullCalcStr;
+      activeRandomProblem.fullCalcStr = curLiveStr;
+      const reParsed = parseEquationOutputs(curLiveStr);
+      const sVals = Object.values(activeRandomProblem.params).map(Number);
+      const nonEcho = reParsed.filter(item => !sVals.some(sv => Math.abs(sv - item.val) < 1e-6));
+      const best = (nonEcho.length ? nonEcho[nonEcho.length - 1] : reParsed[reParsed.length - 1]) || null;
+      if (best) {
+        activeRandomProblem.targetSym = best.sym;
+        activeRandomProblem.targetVal = best.val;
+        activeRandomProblem.targetUnit = best.unit;
+      }
+
+      if (givenEl) {
+        givenEl.innerHTML = (cfg.sliders || []).map(s => {
+          const v = activeRandomProblem.params[s.key];
+          const shortLbl = s.label.split(',')[0].trim();
+          return `<span class="random-given-chip">${subifyPlainToHtml(`${shortLbl} = ${v}${s.unit ? ' ' + s.unit : ''}`)}</span>`;
+        }).join('');
+      }
+      if (findEl) {
+        const symPart = activeRandomProblem.targetSym || (uiState.lang === 'uk' ? 'результат формули' : 'formula result');
+        const unitPart = activeRandomProblem.targetUnit ? ` (${activeRandomProblem.targetUnit})` : '';
+        findEl.innerHTML = `${escapeHtmlBasic(lt.probFind)}: <strong>${subifyPlainToHtml(symPart + unitPart)}</strong>`;
+      }
+      if (solBox) {
+        solBox.innerHTML = subifyPlainToHtml(activeRandomProblem.fullCalcStr);
+        solBox.classList.toggle('open', Boolean(activeRandomProblem.solOpen));
+      }
+      if (solBtn) {
+        solBtn.textContent = activeRandomProblem.solOpen ? lt.probHideSol : lt.probSol;
+      }
+    }
+
+    function checkRandomProblemAnswer() {
+      const inpEl = document.getElementById('rand-prob-input');
+      const msgEl = document.getElementById('rand-prob-msg');
+      if (!inpEl || !msgEl || !activeRandomProblem) return;
+      const r = tRep();
+      const raw = String(inpEl.value || '').trim().replace(',', '.');
+      const userNum = parseFloat(raw);
+      if (!raw || Number.isNaN(userNum)) {
+        msgEl.className = 'live-calc-verify-msg visible warn';
+        msgEl.textContent = r.enterNum;
+        return;
+      }
+      const target = activeRandomProblem.targetVal;
+      const tol = Math.max(0.05, Math.abs(target) * 0.025);
+      const isOk = Math.abs(userNum - target) <= tol;
+      if (isOk) {
+        msgEl.className = 'live-calc-verify-msg visible ok';
+        msgEl.textContent = `${r.okPre} (${userNum}) ${r.okMid} ${activeRandomProblem.fullCalcStr}`;
+        markExperimentMastered(uiState.activeScene);
+      } else {
+        msgEl.className = 'live-calc-verify-msg visible warn';
+        msgEl.textContent = `${r.warnPre} ${activeRandomProblem.targetSym ? activeRandomProblem.targetSym + ' = ' : ''}${target}${activeRandomProblem.targetUnit ? ' ' + activeRandomProblem.targetUnit : ''}`;
+      }
+    }
+
+    function syncTeacherTaskBanner() {
+      if (typeof document === 'undefined') return;
+      const banner = document.getElementById('teacher-task-banner');
+      const btn = document.getElementById('btn-teacher-task');
+      const lt = tLabTools();
+      if (btn) {
+        btn.textContent = lt.tchrBtn;
+        btn.title = lt.tchrTip;
+      }
+      if (!banner) return;
+      if (activeTeacherAssignment && activeTeacherAssignment.task) {
+        banner.classList.add('visible');
+        const kickerEl = document.getElementById('ui-teacher-task-kicker');
+        const txtEl = document.getElementById('ui-teacher-task-text');
+        const repBtn = document.getElementById('btn-teacher-banner-report');
+        if (kickerEl) {
+          kickerEl.textContent = activeTeacherAssignment.grp
+            ? `${lt.tchrHdr} · ${activeTeacherAssignment.grp}`
+            : lt.tchrHdr;
+        }
+        if (txtEl) txtEl.textContent = activeTeacherAssignment.task;
+        if (repBtn) repBtn.textContent = lt.tchrOpenRep;
+      } else {
+        banner.classList.remove('visible');
+      }
+    }
+
+    function openTeacherTaskModal() {
+      if (typeof document === 'undefined') return;
+      const lt = tLabTools();
+      const key = uiState.activeScene;
+      const cfg = SCENE_CONFIGS[key] || {};
+      let modal = document.getElementById('teacher-task-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'teacher-task-modal';
+        modal.className = 'lab-report-modal-backdrop';
+        modal.addEventListener('click', e => {
+          if (e.target === modal) modal.classList.remove('open');
+        });
+        document.body.appendChild(modal);
+      }
+      const initGrp = (activeTeacherAssignment && activeTeacherAssignment.grp) || '';
+      const initTask = (activeTeacherAssignment && activeTeacherAssignment.task) || '';
+      const escAttr = str => String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+      modal.innerHTML = `
+        <div class="teacher-modal-sheet" role="dialog" aria-modal="true" aria-label="${escAttr(lt.tchrModalTitle)}">
+          <div class="teacher-modal-title">${escapeHtmlBasic(lt.tchrModalTitle)}</div>
+          <label class="teacher-modal-field" for="teacher-grp-input">
+            <span>${escapeHtmlBasic(lt.tchrGrpLbl)}</span>
+            <input type="text" id="teacher-grp-input" maxlength="40" value="${escAttr(initGrp)}" placeholder="${escAttr(lt.tchrGrpPh)}" />
+          </label>
+          <label class="teacher-modal-field" for="teacher-prompt-input">
+            <span>${escapeHtmlBasic(lt.tchrPromptLbl)}</span>
+            <textarea id="teacher-prompt-input" rows="3" maxlength="280" placeholder="${escAttr(lt.tchrPromptPh)}">${escapeHtmlBasic(initTask)}</textarea>
+          </label>
+          <label style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-secondary);cursor:pointer;">
+            <input type="checkbox" id="teacher-lock-params" checked />
+            <span>${escapeHtmlBasic(lt.tchrLockLbl)}</span>
+          </label>
+          <div id="teacher-url-preview" class="teacher-modal-url-preview"></div>
+          <div class="teacher-modal-footer">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <button type="button" id="btn-copy-teacher-url" class="btn-logger-action primary">${escapeHtmlBasic(lt.tchrCopyBtn)}</button>
+              <a id="btn-tg-teacher-url" class="btn-logger-action" href="#" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Telegram</a>
+              <a id="btn-vb-teacher-url" class="btn-logger-action" href="#" style="text-decoration:none;">Viber</a>
+            </div>
+            <button type="button" id="btn-close-teacher-modal" class="btn-logger-action">${escapeHtmlBasic(lt.tchrClose)}</button>
+          </div>
+        </div>
+      `;
+
+      const grpInp = modal.querySelector('#teacher-grp-input');
+      const promptInp = modal.querySelector('#teacher-prompt-input');
+      const lockChk = modal.querySelector('#teacher-lock-params');
+      const previewEl = modal.querySelector('#teacher-url-preview');
+      const tgLink = modal.querySelector('#btn-tg-teacher-url');
+      const vbLink = modal.querySelector('#btn-vb-teacher-url');
+      const copyBtn = modal.querySelector('#btn-copy-teacher-url');
+
+      const buildUrl = () => {
+        const sp = new URLSearchParams();
+        const p = sceneParams[key] || {};
+        if (lockChk && lockChk.checked) {
+          (cfg.sliders || []).forEach(s => {
+            if (p[s.key] !== undefined) sp.set(s.key, String(p[s.key]));
+          });
+        }
+        const gVal = (grpInp ? grpInp.value : '').trim();
+        const tVal = (promptInp ? promptInp.value : '').trim() || lt.tchrPromptPh;
+        if (gVal) sp.set('grp', gVal);
+        if (tVal) sp.set('task', tVal);
+        const baseHref = getExperimentHref(key, uiState.lang);
+        const qs = sp.toString();
+        const rel = qs ? `${baseHref}${baseHref.includes('?') ? '&' : '?'}${qs}` : baseHref;
+        const origin = window.location.protocol.startsWith('http') ? window.location.origin : 'https://physics.sheua.com';
+        const full = rel.startsWith('http') ? rel : `${origin}${rel.startsWith('/') ? '' : '/'}${rel}`;
+        if (previewEl) previewEl.textContent = full;
+        const msgTxt = `${cfg.title || key}${gVal ? ' [' + gVal + ']' : ''}: ${tVal}`;
+        if (tgLink) tgLink.href = `https://t.me/share/url?url=${encodeURIComponent(full)}&text=${encodeURIComponent(msgTxt)}`;
+        if (vbLink) vbLink.href = `viber://forward?text=${encodeURIComponent(msgTxt + ' ' + full)}`;
+        return { full, gVal, tVal };
+      };
+
+      [grpInp, promptInp, lockChk].forEach(el => el?.addEventListener('input', buildUrl));
+      lockChk?.addEventListener('change', buildUrl);
+      buildUrl();
+
+      copyBtn?.addEventListener('click', () => {
+        const { full, gVal, tVal } = buildUrl();
+        activeTeacherAssignment = { scene: key, grp: gVal, task: tVal };
+        syncTeacherTaskBanner();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(full).catch(() => {});
+        }
+        copyBtn.textContent = `✓ ${lt.tchrCopied}`;
+        setTimeout(() => { copyBtn.textContent = lt.tchrCopyBtn; }, 1600);
+      });
+      modal.querySelector('#btn-close-teacher-modal')?.addEventListener('click', () => {
+        modal.classList.remove('open');
+      });
+      modal.classList.add('open');
+      promptInp?.focus();
+    }
+
     function openLabReportModal() {
       const isUk = uiState.lang === 'uk';
       const r = tRep();
@@ -40822,6 +41564,42 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       let savedStudentName = '';
       try { savedStudentName = localStorage.getItem('sheua_student_name') || ''; } catch (e) {}
       const escAttr = str => String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+      const lt = tLabTools();
+
+      const teacherReportHtml = (activeTeacherAssignment && activeTeacherAssignment.task)
+        ? `<div class="lab-report-card" style="margin-bottom:14px;background:#fef3c7;border-color:#b45309;">
+             <div class="lab-report-card-title" style="color:#92400e;">${escapeHtmlBasic(lt.tchrHdr)}${activeTeacherAssignment.grp ? ' · ' + escapeHtmlBasic(activeTeacherAssignment.grp) : ''}</div>
+             <div style="font-size:13px;color:#18181b;line-height:1.5;">${escapeHtmlBasic(activeTeacherAssignment.task)}</div>
+           </div>`
+        : '';
+
+      const loggedSeries = dataLogByScene[key] || [];
+      const loggerCanvasEl = document.getElementById('data-logger-canvas');
+      const loggerPlotUrl = (loggedSeries.length >= 2 && loggerCanvasEl && loggerCanvasEl.toDataURL)
+        ? loggerCanvasEl.toDataURL('image/png')
+        : '';
+      let loggedSeriesReportHtml = '';
+      if (loggedSeries.length > 0 && cfg.sliders && cfg.sliders.length > 0) {
+        const xSelEl = document.getElementById('data-logger-x-select');
+        const ySelEl = document.getElementById('data-logger-y-select');
+        const xMetaRep = cfg.sliders.find(s => s.key === (xSelEl && xSelEl.value)) || cfg.sliders[0];
+        const yKeyRep = (ySelEl && ySelEl.value) || (loggedSeries[0].metrics[0] && loggedSeries[0].metrics[0].key) || '';
+        const yObjRep = (loggedSeries[0].metrics || []).find(m => m.key === yKeyRep) || loggedSeries[0].metrics[0];
+        const sRowsHtml = loggedSeries.map((row, idx) => {
+          const mFound = row.metrics.find(m => m.key === yKeyRep) || row.metrics[0];
+          return `<tr><td>${idx + 1}</td><td>${row.params[xMetaRep.key]}</td><td>${mFound ? mFound.val : ''}</td></tr>`;
+        }).join('');
+        loggedSeriesReportHtml = `
+          <div class="lab-report-card" style="margin-bottom:14px;">
+            <div class="lab-report-card-title">${escapeHtmlBasic(lt.logRepTitle)}</div>
+            ${loggerPlotUrl ? `<img class="lab-report-snap-img" src="${loggerPlotUrl}" alt="Experimental plot y(x)" style="max-height:140px;object-fit:contain;background:#faf9f5;margin-bottom:8px;" />` : ''}
+            <table class="lab-report-table">
+              <thead><tr><th>#</th><th>${subifyPlainToHtml(`${xMetaRep.label}${xMetaRep.unit ? ', ' + xMetaRep.unit : ''}`)}</th><th>${subifyPlainToHtml(yObjRep ? yObjRep.label : 'y')}</th></tr></thead>
+              <tbody>${sRowsHtml}</tbody>
+            </table>
+          </div>
+        `;
+      }
 
       modal.innerHTML = `
         <div class="lab-report-sheet" role="dialog" aria-modal="true" aria-label="${r.repAria}">
@@ -40846,6 +41624,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
               <input type="text" id="lab-report-student-name" class="lab-report-student-input" value="${escAttr(savedStudentName)}" placeholder="${r.studentPh}" />
             </div>
           </div>
+
+          ${teacherReportHtml}
 
           <div class="lab-report-two-col">
             <div class="lab-report-card">
@@ -40878,6 +41658,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             <div style="padding-top:6px;border-top:1px dashed #d6d3cd;">${cfg.liveLatexFn ? renderLiveMathChips(cfg.liveLatexFn(p)) : ''}</div>
           </div>
 
+          ${loggedSeriesReportHtml}
+
           <div class="lab-report-card">
             <div class="lab-report-card-title">${r.s5}</div>
             <p style="font-size:13px;font-weight:600;margin-bottom:6px;">${formatTextbookProse(cfg.question || '')}</p>
@@ -40905,6 +41687,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           [csvEsc('Meta'), csvEsc(r.csvExp), csvEsc(`${cfg.secSym || ''} ${cfg.title || ''}`.trim())].join(','),
           [csvEsc('Meta'), csvEsc(r.csvStud), csvEsc(studentInp ? studentInp.value : '')].join(',')
         ];
+        if (activeTeacherAssignment && activeTeacherAssignment.task) {
+          if (activeTeacherAssignment.grp) {
+            lines.push([csvEsc('Meta'), csvEsc('Group'), csvEsc(activeTeacherAssignment.grp)].join(','));
+          }
+          lines.push([csvEsc('Meta'), csvEsc('Assignment'), csvEsc(activeTeacherAssignment.task)].join(','));
+        }
         (cfg.sliders || []).forEach(s => {
           lines.push([csvEsc(r.csvParam), csvEsc(plainSubText(s.label)), csvEsc(plainSubText(`${p[s.key]}${s.unit ? ' ' + s.unit : ''}`))].join(','));
         });
@@ -40922,6 +41710,14 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           for (let i = 0; i < chartHistory.ek.length; i++) {
             lines.push([i + 1, (chartHistory.ek[i] || 0).toFixed(4), (chartHistory.ep[i] || 0).toFixed(4), (chartHistory.q[i] || 0).toFixed(4)].join(','));
           }
+        }
+        if (loggedSeries.length > 0) {
+          lines.push('');
+          const mDefs = loggedSeries[0].metrics || [];
+          lines.push(['Series #', ...(cfg.sliders || []).map(s => plainSubText(s.label)), ...mDefs.map(m => plainSubText(m.label))].map(csvEsc).join(','));
+          loggedSeries.forEach((row, idx) => {
+            lines.push([idx + 1, ...(cfg.sliders || []).map(s => row.params[s.key]), ...mDefs.map(md => (row.metrics.find(x => x.key === md.key) || {}).val ?? '')].map(csvEsc).join(','));
+          });
         }
         const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
         const a = document.createElement('a');
@@ -40996,6 +41792,63 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       // 1. Розгортний теоретичний конспект унизу робочої частини лівої панелі (відкритий за замовчуванням) + швидкий перехід зверху
       const leftPageEl = document.getElementById('left-sidebar');
       const chapterHeader = document.querySelector('.chapter-header');
+      if (leftPageEl && chapterHeader && !document.getElementById('teacher-task-banner')) {
+        const ltInit = tLabTools();
+        const tBanner = document.createElement('div');
+        tBanner.id = 'teacher-task-banner';
+        tBanner.className = 'teacher-task-banner';
+        tBanner.setAttribute('role', 'region');
+        tBanner.setAttribute('aria-label', ltInit.tchrHdr);
+        tBanner.innerHTML = `
+          <div class="teacher-task-kicker">
+            <span id="ui-teacher-task-kicker">${escapeHtmlBasic(ltInit.tchrHdr)}</span>
+            <button type="button" id="btn-teacher-banner-report" class="btn-logger-action">${escapeHtmlBasic(ltInit.tchrOpenRep)}</button>
+          </div>
+          <div id="ui-teacher-task-text" class="teacher-task-text"></div>
+        `;
+        leftPageEl.insertBefore(tBanner, chapterHeader);
+        tBanner.querySelector('#btn-teacher-banner-report')?.addEventListener('click', openLabReportModal);
+      }
+      const telGridEl = document.getElementById('telemetry-grid');
+      if (telGridEl && telGridEl.parentElement && !document.getElementById('data-logger-box')) {
+        const ltInit = tLabTools();
+        const logBox = document.createElement('div');
+        logBox.id = 'data-logger-box';
+        logBox.className = 'data-logger-box';
+        logBox.innerHTML = `
+          <div class="data-logger-header">
+            <span class="data-logger-title">
+              <span id="ui-logger-title">${escapeHtmlBasic(ltInit.logTitle)}</span>
+              <span id="ui-logger-count" class="data-logger-count-pill">0</span>
+            </span>
+            <div class="data-logger-actions">
+              <button type="button" id="btn-log-point" class="btn-logger-action primary">${escapeHtmlBasic(ltInit.logRecord)}</button>
+              <button type="button" id="btn-log-auto5" class="btn-logger-action">${escapeHtmlBasic(ltInit.logAuto5)}</button>
+              <button type="button" id="btn-log-csv" class="btn-logger-action">CSV</button>
+              <button type="button" id="btn-log-clear" class="btn-logger-action">${escapeHtmlBasic(ltInit.logClear)}</button>
+            </div>
+          </div>
+          <div class="data-logger-axes-row">
+            <label class="data-logger-axis-lbl" for="data-logger-x-select"><span>X:</span><select id="data-logger-x-select" aria-label="X axis parameter"></select></label>
+            <label class="data-logger-axis-lbl" for="data-logger-y-select"><span>Y:</span><select id="data-logger-y-select" aria-label="Y axis measurement"></select></label>
+          </div>
+          <div id="data-logger-empty" class="data-logger-empty">${escapeHtmlBasic(ltInit.logEmpty)}</div>
+          <canvas id="data-logger-canvas" class="data-logger-canvas" width="300" height="124" aria-label="Experimental scatter plot y(x)"></canvas>
+          <div id="data-logger-table-wrap" class="data-logger-table-wrap">
+            <table id="data-logger-table" class="data-logger-table"></table>
+          </div>
+        `;
+        telGridEl.insertAdjacentElement('afterend', logBox);
+        logBox.querySelector('#btn-log-point')?.addEventListener('click', recordMeasurementPoint);
+        logBox.querySelector('#btn-log-auto5')?.addEventListener('click', sweepFiveMeasurementPoints);
+        logBox.querySelector('#btn-log-csv')?.addEventListener('click', exportDataLoggerCsv);
+        logBox.querySelector('#btn-log-clear')?.addEventListener('click', () => {
+          dataLogByScene[uiState.activeScene] = [];
+          syncDataLoggerUI();
+        });
+        logBox.querySelector('#data-logger-x-select')?.addEventListener('change', syncDataLoggerUI);
+        logBox.querySelector('#data-logger-y-select')?.addEventListener('change', syncDataLoggerUI);
+      }
       if (leftPageEl) {
         let theorySec = document.getElementById('theory-book-section');
         if (!theorySec) {
@@ -41442,6 +42295,17 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           shareBtnEl.dataset.bound = '1';
           shareBtnEl.addEventListener('click', shareCurrentExperimentState);
         }
+        if (!document.getElementById('btn-teacher-task')) {
+          const ltInit = tLabTools();
+          const tchrBtn = document.createElement('button');
+          tchrBtn.type = 'button';
+          tchrBtn.id = 'btn-teacher-task';
+          tchrBtn.className = 'btn-teacher-task';
+          tchrBtn.textContent = ltInit.tchrBtn;
+          tchrBtn.title = ltInit.tchrTip;
+          tchrBtn.addEventListener('click', openTeacherTaskModal);
+          presetsBar.appendChild(tchrBtn);
+        }
       }
 
       // 8. Кнопка фіксації еталонної кривої на осцилограмі (#btn-pin-chart)
@@ -41590,6 +42454,56 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
             e.preventDefault();
             verifyStudentCalculationInput();
           }
+        });
+      }
+
+      if (liveCalcWrap && liveCalcWrap.parentElement && !document.getElementById('random-problem-box')) {
+        const ltInit = tLabTools();
+        const probBox = document.createElement('div');
+        probBox.id = 'random-problem-box';
+        probBox.className = 'random-problem-box';
+        probBox.innerHTML = `
+          <div class="random-problem-header">
+            <span id="ui-rand-prob-title" class="random-problem-title">${escapeHtmlBasic(ltInit.probTitle)}</span>
+            <div class="random-problem-actions-top">
+              <button type="button" id="btn-gen-problem" class="btn-logger-action">${escapeHtmlBasic(ltInit.probNew)}</button>
+              <button type="button" id="btn-load-rand-3d" class="btn-logger-action">${escapeHtmlBasic(ltInit.probLoad3d)}</button>
+            </div>
+          </div>
+          <div class="random-problem-body">
+            <div id="rand-prob-given" class="random-problem-given"></div>
+            <div id="rand-prob-find" class="random-problem-find"></div>
+            <div class="random-problem-controls">
+              <input type="text" inputmode="decimal" id="rand-prob-input" class="random-problem-input" placeholder="${escapeHtmlBasic(ltInit.probAnsPh)}" aria-label="${escapeHtmlBasic(ltInit.probAnsPh)}" autocomplete="off" />
+              <button type="button" id="btn-check-rand-prob" class="btn-verify-calc">${escapeHtmlBasic(ltInit.probCheck)}</button>
+              <button type="button" id="btn-show-rand-sol" class="btn-logger-action">${escapeHtmlBasic(ltInit.probSol)}</button>
+            </div>
+            <div id="rand-prob-msg" class="live-calc-verify-msg" aria-live="polite"></div>
+            <div id="rand-prob-solution" class="random-problem-solution"></div>
+          </div>
+        `;
+        liveCalcWrap.insertAdjacentElement('afterend', probBox);
+        probBox.querySelector('#btn-gen-problem')?.addEventListener('click', () => {
+          generateRandomProblemForScene(uiState.activeScene, false);
+        });
+        probBox.querySelector('#btn-load-rand-3d')?.addEventListener('click', () => {
+          if (!activeRandomProblem || activeRandomProblem.sceneKey !== uiState.activeScene) return;
+          Object.entries(activeRandomProblem.params).forEach(([k, v]) => {
+            setSimParamFrom3D(uiState.activeScene, k, v);
+          });
+        });
+        probBox.querySelector('#btn-check-rand-prob')?.addEventListener('click', checkRandomProblemAnswer);
+        probBox.querySelector('#rand-prob-input')?.addEventListener('keydown', e => {
+          e.stopPropagation();
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            checkRandomProblemAnswer();
+          }
+        });
+        probBox.querySelector('#btn-show-rand-sol')?.addEventListener('click', () => {
+          if (!activeRandomProblem) return;
+          activeRandomProblem.solOpen = !activeRandomProblem.solOpen;
+          syncRandomProblemUI(false);
         });
       }
 
@@ -42302,6 +43216,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (lastEnergyUIArgs) {
         updateEnergyUI(...lastEnergyUIArgs, true);
       }
+      syncTeacherTaskBanner();
+      syncDataLoggerUI();
+      syncRandomProblemUI(false);
       syncPageSeoAndUrl(Boolean(pushUrl));
     }
 
@@ -43954,7 +44871,8 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         if (!pushHistory && window.location.search) {
           const sp = new URLSearchParams(window.location.search);
           const hasSliderParam = (cfg.sliders || []).some(s => sp.has(s.key));
-          if (hasSliderParam) {
+          const hasTeacherParam = sp.has('task') || sp.has('grp');
+          if (hasSliderParam || hasTeacherParam) {
             sp.delete('sim');
             sp.delete('lang');
             const qs = sp.toString();
@@ -44021,6 +44939,13 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
           }
         });
         if (appliedCustom) activePresetMode = 'custom';
+        const rawTask = (sp.get('task') || '').trim().slice(0, 300);
+        const rawGrp = (sp.get('grp') || '').trim().slice(0, 50);
+        if (rawTask) {
+          activeTeacherAssignment = { scene: sceneKey, task: rawTask, grp: rawGrp };
+        }
+      } else if (pushHistory && activeTeacherAssignment && activeTeacherAssignment.scene !== sceneKey) {
+        activeTeacherAssignment = null;
       }
 
       document.querySelectorAll('#lab-presets-bar .preset-chip-btn').forEach(b => {
@@ -44181,6 +45106,9 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       enhanceApparatusScene(worldGroup, sceneKey);
       deoverlapVectorLabels();
       window.activeSim = activeSim;
+      syncTeacherTaskBanner();
+      syncDataLoggerUI();
+      generateRandomProblemForScene(sceneKey, false);
       syncPageSeoAndUrl(pushHistory);
     }
 
@@ -46362,5 +47290,11 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     requestAnimationFrame(animate);
     window.__PHYSICS_APP_READY__ = true;
     window.dispatchEvent(new CustomEvent('physics-app-ready'));
+
+    if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator && typeof window !== 'undefined' && window.location && window.location.protocol === 'https:') {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
+      }, { once: true });
+    }
   
 })();

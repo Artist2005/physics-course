@@ -31,7 +31,7 @@ fi
 echo "=== [2/5] Оновлення файлів 3D-лабораторії у ${WEB_ROOT} ==="
 sudo mkdir -p "${WEB_ROOT}"
 if [ "$(realpath "${SRC_DIR}")" != "$(realpath "${WEB_ROOT}")" ]; then
-  sudo cp -a "${SRC_DIR}/index.html" "${SRC_DIR}/404.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${SRC_DIR}/sheua-root" "${WEB_ROOT}/"
+  sudo cp -a "${SRC_DIR}/index.html" "${SRC_DIR}/404.html" "${SRC_DIR}/about.html" "${SRC_DIR}/privacy.html" "${SRC_DIR}/terms.html" "${SRC_DIR}/manifest.json" "${SRC_DIR}/sw.js" "${SRC_DIR}/favicon.svg" "${SRC_DIR}/sitemap.xml" "${SRC_DIR}/robots.txt" "${SRC_DIR}/ads.txt" "${SRC_DIR}/assets" "${SRC_DIR}/sim" "${SRC_DIR}/uk" "${SRC_DIR}/sheua-root" "${WEB_ROOT}/"
 
   sudo python3 - "${WEB_ROOT}" << 'PYMIN' || true
 import os, re, shutil, subprocess, sys
@@ -139,9 +139,12 @@ fi
 
 CACHE_VER="$(date +%s)"
 sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec sed -i -E "s#assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?#assets/\1?v=${CACHE_VER}#g" {} +
+if [ -f "${WEB_ROOT}/sw.js" ]; then
+  sudo sed -i -E "s#sheua-lab-v[0-9a-zA-Z._-]+#sheua-lab-v${CACHE_VER}#g; s#assets/(app\.js|styles\.css)(\?v=[0-9a-zA-Z._-]+)?#assets/\1?v=${CACHE_VER}#g" "${WEB_ROOT}/sw.js"
+fi
 
 if command -v gzip >/dev/null 2>&1; then
-  sudo gzip -9 -k -f "${WEB_ROOT}/assets/app.js" "${WEB_ROOT}/assets/styles.css" "${WEB_ROOT}/sitemap.xml" "${WEB_ROOT}/manifest.json" || true
+  sudo gzip -9 -k -f "${WEB_ROOT}/assets/app.js" "${WEB_ROOT}/assets/styles.css" "${WEB_ROOT}/sw.js" "${WEB_ROOT}/sitemap.xml" "${WEB_ROOT}/manifest.json" || true
   sudo find "${WEB_ROOT}" -maxdepth 3 -name "*.html" ! -path "${WEB_ROOT}/sheua-root/*" -exec gzip -9 -k -f {} + || true
 fi
 
@@ -254,6 +257,16 @@ ADS_BLOCK = """    location = /ads.txt {
 
 """
 
+SW_BLOCK = """    location = /sw.js {
+        default_type application/javascript;
+        add_header Cache-Control "no-cache, max-age=0" always;
+        add_header Service-Worker-Allowed "/" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        try_files /sw.js =404;
+    }
+
+"""
+
 confs = (
     glob.glob('/etc/nginx/sites-enabled/*')
     + glob.glob('/etc/nginx/sites-available/*')
@@ -314,6 +327,9 @@ for path in real_confs:
 
         if 'location = /ads.txt' not in block:
             block = insert_before_loc(block, ADS_BLOCK)
+
+        if is_lab and 'location = /sw.js' not in block:
+            block = insert_before_loc(block, SW_BLOCK)
 
         if is_hub:
             # Remove any duplicate standalone www redirect outside managed block
@@ -390,7 +406,12 @@ for CHECK_URL in \
   "https://sheua.com/nmt-trener.html" \
   "https://sheua.com/laboratorni-7-11-klas.html" \
   "https://sheua.com/kalkuliatory.html" \
+  "https://sheua.com/kartky-formul.html" \
+  "https://sheua.com/tablytsi-rozchynnosti-periodychna.html" \
   "https://sheua.com/en/calculators.html" \
+  "https://sheua.com/en/formula-flashcards.html" \
+  "https://sheua.com/en/si-constants.html" \
+  "https://sheua.com/en/periodic-solubility-tables.html" \
   "https://sheua.com/en/exam-practice.html" \
   "https://sheua.com/pl/" \
   "https://sheua.com/de/" \
@@ -399,6 +420,7 @@ for CHECK_URL in \
   "https://sheua.com/pt/" \
   "https://sheua.com/mechanics-conservation.html" \
   "https://physics.sheua.com/ads.txt" \
+  "https://physics.sheua.com/sw.js" \
   "https://physics.sheua.com/sim/collision"; do
   STATUS="$(curl -ksI --max-time 8 -o /dev/null -w '%{http_code}' "${CHECK_URL}" || echo 'ERR')"
   echo "  ${STATUS}  ${CHECK_URL}"

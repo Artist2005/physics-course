@@ -40244,6 +40244,25 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       if (!box.dataset.spaBound) {
         box.dataset.spaBound = '1';
         box.addEventListener('click', e => {
+          const tagBtn = e.target.closest('button[data-study-tier], button[data-study-cat]');
+          if (tagBtn) {
+            e.preventDefault();
+            const tier = tagBtn.getAttribute('data-study-tier');
+            const cat = tagBtn.getAttribute('data-study-cat');
+            const expWrap = document.getElementById('exp-dropdown-wrapper');
+            const expTrig = document.getElementById('exp-dropdown-trigger');
+            if (tier) {
+              document.getElementById(`tier-btn-${tier}`)?.click();
+            }
+            if (cat) {
+              document.getElementById(`filter-btn-${cat}`)?.click();
+            }
+            if (expWrap && expTrig) {
+              expWrap.classList.add('open');
+              expTrig.setAttribute('aria-expanded', 'true');
+            }
+            return;
+          }
           const link = e.target.closest('a[href]');
           if (!link) return;
           const href = link.getAttribute('href') || '';
@@ -40292,10 +40311,39 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
       const encUrl = encodeURIComponent(shareUrl);
       const encTxt = encodeURIComponent(shareText);
 
+      const studyWordsByLang = {
+        uk: { study: '#навчання', edu: '#освіта', elearn: '#самоосвіта', exam: '#підготовка-НМТ', core: '#школа-7-11', adv: '#університет', aria: 'Навчальні теги' },
+        en: { study: '#study', edu: '#education', elearn: '#e-learning', exam: '#exam-prep', core: '#high-school', adv: '#university', aria: 'Study tags' },
+        pl: { study: '#nauka', edu: '#edukacja', elearn: '#studia', exam: '#matura', core: '#szkoła', adv: '#uniwersytet', aria: 'Tagi edukacyjne' },
+        de: { study: '#lernen', edu: '#bildung', elearn: '#studium', exam: '#abitur', core: '#schule', adv: '#universität', aria: 'Lerntags' },
+        es: { study: '#estudio', edu: '#educación', elearn: '#aprendizaje', exam: '#exámenes', core: '#secundaria', adv: '#universidad', aria: 'Etiquetas de estudio' },
+        fr: { study: '#études', edu: '#éducation', elearn: '#apprentissage', exam: '#révision-bac', core: '#lycée', adv: '#université', aria: 'Tags éducatifs' },
+        pt: { study: '#estudo', edu: '#educação', elearn: '#ensino-online', exam: '#vestibular', core: '#ensino-médio', adv: '#universidade', aria: 'Tags de estudo' }
+      };
+      const sw = studyWordsByLang[uiState.lang] || studyWordsByLang.en;
+      const metaInfo = EDU_META[key] || {};
+      const tierVal = metaInfo.tier === 'advanced' ? 'advanced' : 'core';
+      const tierTagTxt = tierVal === 'advanced' ? sw.adv : sw.core;
+      const catSlug = (curCfg && curCfg.category) ? curCfg.category : 'all';
+      const rawBadgeTxt = stripHtmlAndMath((curCfg && curCfg.badge) || '').split(/[·,(]/)[0].trim().toLowerCase().replace(/\s+/g, '-');
+      const catBtnHtml = rawBadgeTxt
+        ? `<button type="button" class="study-tag-chip" data-study-cat="${catSlug}">#${rawBadgeTxt}</button>`
+        : '';
+      const examHref = isUk ? 'https://sheua.com/nmt-trener.html' : 'https://sheua.com/en/exam-practice.html';
+      const calcHref = isUk ? 'https://sheua.com/kalkuliatory.html' : 'https://sheua.com/en/calculators.html';
+      const studyTagsHtml =
+        `<a class="study-tag-chip" href="${portalBookHref}">${sw.study}</a>` +
+        `<a class="study-tag-chip" href="${portalBookHref}">${sw.edu}</a>` +
+        `<button type="button" class="study-tag-chip" data-study-tier="${tierVal}">${tierTagTxt}</button>` +
+        catBtnHtml +
+        `<a class="study-tag-chip" href="${examHref}">${sw.exam}</a>` +
+        `<a class="study-tag-chip" href="${calcHref}">${sw.elearn}</a>`;
+
       box.innerHTML =
         `<h2 class="related-cluster-title">${tRel.relatedTitle || (isUk ? 'Схожі 3D-досліди' : 'Related 3D labs')}</h2>` +
         `<ul class="related-sims-list">${relatedItemsHtml}</ul>` +
         `<div class="related-hubs-row">${hubsHtml}</div>` +
+        `<div class="study-tags-row" role="group" aria-label="${sw.aria}">${studyTagsHtml}</div>` +
         `<div class="messenger-share-row">` +
           `<span>${tRel.shareLabel || (isUk ? 'Поділитись' : 'Share')}</span>` +
           `<span class="messenger-share-btns">` +
@@ -43835,10 +43883,37 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
 
       document.title = pageTitle;
 
+      const ensureMetaTag = (attrName, attrVal, contentVal) => {
+        if (!contentVal) return;
+        let el = document.querySelector(`meta[${attrName}="${attrVal}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attrName, attrVal);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', contentVal);
+      };
       const setMetaContent = (selector, val) => {
         const el = document.querySelector(selector);
         if (el && val) el.setAttribute('content', val);
       };
+      const kwBaseByLang = {
+        uk: 'навчання, освіта, дистанційне навчання, онлайн уроки, підготовка до НМТ, віртуальна лабораторія, інтерактивний підручник, розв\'язання задач, формули СІ, самоосвіта',
+        en: 'study, education, online learning, e-learning, STEM study, virtual lab, interactive textbook, study guide, exam prep, AP IB GCSE science, homework help, SI calculator',
+        pl: 'nauka, edukacja, studia, e-learning, matura, wirtualne laboratorium 3D, podręcznik interaktywny, wzory SI, zadania',
+        de: 'Lernen, Bildung, Studium, E-Learning, Abitur, virtuelles 3D-Labor, interaktives Lehrbuch, MINT, SI-Rechner',
+        es: 'estudio, educación, aprendizaje en línea, laboratorio virtual 3D, libro interactivo, preparación de exámenes, calculadora SI',
+        fr: 'études, éducation, apprentissage en ligne, laboratoire virtuel 3D, manuel interactif, révision bac, calculateur SI',
+        pt: 'estudo, educação, ensino online, laboratório virtual 3D, livro interativo, preparação ENEM, calculadora SI'
+      };
+      const topicClean = stripHtmlAndMath(cfg.title || '');
+      const badgeClean = stripHtmlAndMath(cfg.badge || '');
+      const gradeMeta = EDU_META[uiState.activeScene] || {};
+      const gradeClean = isUk ? (gradeMeta.gradeUk || '') : (gradeMeta.gradeEn || '');
+      const kwString = [topicClean, badgeClean, gradeClean, kwBaseByLang[uiState.lang] || kwBaseByLang.en].filter(Boolean).join(', ');
+      ensureMetaTag('name', 'keywords', kwString);
+      ensureMetaTag('name', 'subject', isUk ? 'Освіта, навчання, фізика, хімія, біологія, STEM' : 'Education, Study, STEM, Physics, Chemistry, Biology');
+      ensureMetaTag('property', 'article:section', isUk ? 'Освіта та навчання' : 'Education & STEM Study');
       setMetaContent('meta[name="description"]', pageDesc);
       setMetaContent('meta[property="og:title"]', pageTitle);
       setMetaContent('meta[property="og:description"]', pageDesc);

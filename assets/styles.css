@@ -3685,6 +3685,38 @@
       color: var(--ink-primary);
     }
 
+    .study-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 0 0 8px;
+      padding-top: 7px;
+      border-top: 1px dashed var(--rule-light);
+    }
+
+    .study-tag-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease;
+    }
+
+    .study-tag-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+      background: var(--bg-inset);
+    }
+
     .messenger-share-row {
       display: flex;
       align-items: center;
@@ -4126,6 +4158,7 @@
       .btn-share-state,
       .messenger-share-link,
       .related-hub-pill,
+      .study-tag-chip,
       .edu-progress-pill,
       .btn-classroom-mode {
         min-height: 44px;

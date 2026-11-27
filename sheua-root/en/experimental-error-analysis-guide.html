@@ -1501,7 +1501,7 @@
 
     <article class="article-sheet">
       <h2>Direct measurements: combining instrumental and random uncertainties</h2>
-      <p>Every reading taken with a ruler, caliper, voltmeter, or stopwatch carries two distinct error components. Instrumental uncertainty <code>Δx<sub>inst</sub></code> reflects scale resolution: half the smallest graduation on an analog meter stick or dial, or the rated least-digit accuracy of a digital display.</p>
+      <p>Every reading taken with a ruler, caliper, voltmeter, or stopwatch carries two distinct error components. Instrumental uncertainty <code>Δx<sub>inst</sub></code> reflects scale resolution, equal to half the smallest graduation on an analog meter stick or dial, or the rated least-digit accuracy of a digital display.</p>
       <p>Random uncertainty arises from reaction-time jitter, air drafts, and slight release variations. To quantify it, repeat the measurement <code>n</code> times under identical conditions, typically five to ten trials. Compute the sample mean <code>x̄ = (∑ x<sub>i</sub>) / n</code> and Bessel's unbiased standard error of the mean <code>s<sub>x̄</sub> = √(∑(x<sub>i</sub> − x̄)² / [n(n − 1)])</code>. Multiply <code>s<sub>x̄</sub></code> by the two-sided Student factor <code>t<sub>P, n−1</sub></code> to obtain the random confidence half-width <code>Δx<sub>rand</sub></code>. Combine both independent sources in quadrature via <code>Δx = √(Δx<sub>rand</sub>² + Δx<sub>inst</sub>²)</code>, or compute them directly in our <a href="/en/si-constants.html">Bessel and Student-t calculator</a>.</p>
 
       <h2>Propagating uncertainty through indirect equations</h2>
@@ -1516,7 +1516,7 @@
       </div>
 
       <h2>Linearizing curves and interpreting R² in regression plots</h2>
-      <p>Nonlinear laws such as <code>T = 2π√(L/g)</code> become far easier to verify when plotted in linearized coordinates, here <code>T²</code> versus <code>L</code>. The slope of the fitted line equals <code>4π² / g</code>, and a nonzero vertical intercept immediately exposes a systematic zero-point offset in how string length was measured to the bob's center of mass. Inside the 3D lab measurement logger, recording five points across a slider plots the least-squares fit alongside the coefficient of determination <code>R²</code>, helping distinguish linear scaling from quadratic or exponential trends.</p>
+      <p>Nonlinear laws such as <code>T = 2π√(L/g)</code> become easier to verify in linearized coordinates, plotting <code>T²</code> against <code>L</code>. The fitted slope equals <code>4π² / g</code>, and a nonzero vertical intercept exposes a systematic zero-point offset in measuring string length to the bob's center of mass. Inside the 3D lab measurement logger, recording five slider points plots the least-squares fit and <code>R²</code>, separating linear scaling from quadratic or exponential trends.</p>
 
       <h2>Significant-figure rounding rules for laboratory reports</h2>
       <p>Round final absolute uncertainty <code>Δx</code> upward to one significant digit, keeping two significant digits only when the leading digit is 1 or 2. Then round the mean value <code>x̄</code> to the exact same decimal place. Reporting mismatched precision such as <code>9.8234 ± 0.1 m/s²</code> implies meaningless digits beyond the error bound; write <code>9.8 ± 0.1 m/s²</code> or <code>9.82 ± 0.10 m/s²</code> instead.</p>

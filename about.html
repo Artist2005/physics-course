@@ -298,6 +298,18 @@
     sup { top: -0.38em; }
       :where(a, button, summary, input):focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+  
+    /* baseline-ui typography, tabular numerals & safe-area polish */
+    h1, h2, h3 { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
+    code, table, td, th, .kpi-pill, .formula-block, .calc-val, .calc-result, .sandbox-readout, .quiz-score, .stat-num {
+      font-variant-numeric: tabular-nums;
+    }
+    body {
+      padding-left: max(16px, env(safe-area-inset-left, 0px));
+      padding-right: max(16px, env(safe-area-inset-right, 0px));
+      padding-bottom: max(56px, env(safe-area-inset-bottom, 0px));
+    }
   </style>
   <script>
     (function() {

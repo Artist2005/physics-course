@@ -1,10 +1,10 @@
 /* Service Worker for physics.sheua.com 3D Science Virtual Lab */
-const CACHE_NAME = 'sheua-lab-v20261127a';
+const CACHE_NAME = 'sheua-lab-v20261127b';
 const PRECACHE_URLS = [
   '/',
   '/uk/',
-  '/assets/styles.css?v=20261127a',
-  '/assets/app.js?v=20261127a',
+  '/assets/styles.css?v=20261127b',
+  '/assets/app.js?v=20261127b',
   '/favicon.svg',
   '/manifest.json',
   '/assets/icon-192.png',

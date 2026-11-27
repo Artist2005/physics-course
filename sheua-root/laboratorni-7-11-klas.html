@@ -1272,6 +1272,18 @@
       margin-bottom: 6px;
     }
 
+  
+    /* baseline-ui typography, tabular numerals & safe-area polish */
+    h1, h2, h3 { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
+    code, table, td, th, .kpi-pill, .formula-block, .calc-val, .calc-result, .sandbox-readout, .quiz-score, .stat-num {
+      font-variant-numeric: tabular-nums;
+    }
+    body {
+      padding-left: max(16px, env(safe-area-inset-left, 0px));
+      padding-right: max(16px, env(safe-area-inset-right, 0px));
+      padding-bottom: max(56px, env(safe-area-inset-bottom, 0px));
+    }
   </style>
   <script id="sheua-sub-helper">window.__subH=function(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\bS_N([12])\b/g,'S<sub>N</sub>$1').replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g,function(m,b,d){return /^(chem|bio|sim|sheua|http|https|data|aria)$/i.test(b)?m:(b+'<sub>'+d+'</sub>');});};</script>
 </head>

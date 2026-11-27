@@ -34,6 +34,14 @@
       --header-h: 46px;
       --left-page-w: clamp(344px, 25vw, 408px);
       --right-page-w: clamp(340px, 23vw, 372px);
+
+      --z-canvas: 1;
+      --z-panel: 30;
+      --z-dock: 35;
+      --z-header: 40;
+      --z-dropdown: 100;
+      --z-modal: 220;
+      --z-skip: 9999;
     }
 
     * {
@@ -47,6 +55,7 @@
     html, body {
       width: 100%;
       height: 100%;
+      height: 100dvh;
       overflow: hidden;
       background-color: var(--bg-paper);
       font-family: var(--font-sans);
@@ -59,7 +68,7 @@
     #canvas-container {
       position: fixed;
       inset: 0;
-      z-index: 1;
+      z-index: var(--z-canvas);
     }
 
     /* ==========================================================================
@@ -70,17 +79,17 @@
       top: 0;
       left: 0;
       right: 0;
-      height: var(--header-h);
-      z-index: 40;
+      height: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+      padding: env(safe-area-inset-top, 0px) max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+      z-index: var(--z-header);
       background: rgba(250, 249, 245, 0.96);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--rule-dark);
       box-shadow: 0 1px 4px rgba(24, 24, 27, 0.04);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
       gap: 12px;
     }
 
@@ -257,7 +266,7 @@
       font-size: 11px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
     }
 
     .filter-pill-btn:hover {
@@ -380,7 +389,7 @@
       border: none;
       background: transparent;
       cursor: pointer;
-      transition: all 0.14s ease;
+      transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out, transform 0.14s ease-out;
       user-select: none;
       font-family: var(--font-sans);
       font-size: 11px;
@@ -423,7 +432,7 @@
       padding: 3px 7px;
       border-radius: 1px;
       cursor: pointer;
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
       line-height: 1.1;
     }
 
@@ -450,8 +459,8 @@
       gap: 3px;
       padding: 4px 6px;
       background: rgba(250, 249, 245, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--rule-dark);
       border-radius: 6px;
       box-shadow: 0 4px 16px rgba(24, 24, 27, 0.08);
@@ -492,7 +501,7 @@
       font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
       white-space: nowrap;
     }
 
@@ -517,12 +526,10 @@
     .book-page-left,
     .book-page-right {
       position: fixed;
-      top: var(--header-h);
+      top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
       bottom: 0;
-      z-index: 30;
+      z-index: var(--z-panel);
       background-color: var(--bg-page);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
       overflow-y: auto;
       overflow-x: hidden;
       display: flex;
@@ -530,7 +537,7 @@
       gap: 0; /* Відступи індивідуальні для кожного смислового блока! */
       scrollbar-width: thin;
       scrollbar-color: rgba(15, 23, 42, 0.16) transparent;
-      transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+      transition: transform 0.18s ease-out, opacity 0.16s ease-out;
     }
 
     .book-page-left {
@@ -561,7 +568,7 @@
 
     .panel-collapse-btn {
       position: fixed;
-      top: calc(var(--header-h) + 14px);
+      top: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 14px);
       z-index: 36;
       width: 20px;
       height: 40px;
@@ -573,7 +580,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: left 0.26s cubic-bezier(0.22, 1, 0.36, 1), right 0.26s cubic-bezier(0.22, 1, 0.36, 1), color 0.12s ease;
+      transition: transform 0.18s ease-out, background-color 0.12s ease-out, color 0.12s ease-out;
     }
 
     .panel-collapse-btn:hover {
@@ -582,24 +589,26 @@
     }
 
     .panel-collapse-left {
-      left: var(--left-page-w);
+      left: 0;
+      transform: translateX(var(--left-page-w));
       border-left: none;
       border-radius: 0 3px 3px 0;
     }
 
     .panel-collapse-left.collapsed {
-      left: 0;
+      transform: translateX(0);
       border-left: 1px solid var(--rule-dark);
     }
 
     .panel-collapse-right {
-      right: var(--right-page-w);
+      right: 0;
+      transform: translateX(calc(-1 * var(--right-page-w)));
       border-right: none;
       border-radius: 3px 0 0 3px;
     }
 
     .panel-collapse-right.collapsed {
-      right: 0;
+      transform: translateX(0);
       border-right: 1px solid var(--rule-dark);
     }
 
@@ -934,7 +943,7 @@
       font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
     }
 
     .btn-paper-secondary:hover {
@@ -962,7 +971,7 @@
       font-size: 11px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
     }
 
     .speed-opt:hover {
@@ -2117,7 +2126,7 @@
       background: var(--bg-inset);
       text-decoration: none;
       color: var(--ink-secondary);
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
     }
 
     .pin-chart-btn:hover {
@@ -2254,7 +2263,7 @@
       font-weight: 500;
       font-variant-numeric: tabular-nums;
       cursor: pointer;
-      transition: all 0.14s ease;
+      transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out, transform 0.14s ease-out;
     }
 
     .edu-progress-pill:hover {
@@ -2844,7 +2853,7 @@
       font-size: 11px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.12s ease;
+      transition: background-color 0.12s ease-out, border-color 0.12s ease-out, color 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
     }
 
     .preset-chip-btn:hover {
@@ -2966,7 +2975,7 @@
       font-size: 10px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.14s ease;
+      transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out, transform 0.14s ease-out;
       white-space: nowrap;
     }
 
@@ -3485,7 +3494,7 @@
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.14s ease;
+      transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out, transform 0.14s ease-out;
     }
 
     .tier-pill-btn:hover {
@@ -3543,7 +3552,7 @@
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.14s ease;
+      transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out, transform 0.14s ease-out;
     }
 
     .btn-classroom-mode:hover {
@@ -3598,7 +3607,7 @@
       font-weight: 600;
       cursor: pointer;
       text-align: center;
-      transition: all 0.14s ease;
+      transition: background-color 0.14s ease-out, border-color 0.14s ease-out, color 0.14s ease-out, opacity 0.14s ease-out, transform 0.14s ease-out;
     }
 
     .btn-share-state:hover {
@@ -4098,7 +4107,7 @@
     .canvas-gesture-coach {
       position: fixed;
       left: 50%;
-      bottom: 54px;
+      bottom: calc(54px + env(safe-area-inset-bottom, 0px));
       transform: translateX(-50%);
       z-index: 33;
       padding: 5px 12px;
@@ -4113,7 +4122,7 @@
       white-space: nowrap;
       pointer-events: none;
       opacity: 1;
-      transition: opacity 0.28s ease, transform 0.28s ease;
+      transition: opacity 0.18s ease-out, transform 0.18s ease-out;
     }
 
     .canvas-gesture-coach.dismissed {

@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Криві титрування, pH буферів і вибір індикаторів · SHEUA.COM</title>
+  <meta name="description" content="Покроковий розбір кислотно-основного титрування, обчислення pH буферних розчинів за рівнянням Гендерсона-Гассельбальха, точки еквівалентності та 4 задачі з хімії." />
+  <meta name="keywords" content="навчання, крива титрування pH, буферні розчини задачі, рівняння Гендерсона Гассельбальха, вибір індикатора титрування, підготовка до НМТ хімія" />
+  <meta name="subject" content="Аналітична хімія кислотно-основних рівноваг, титрування та буферних систем" />
+  <meta property="article:section" content="Навчальні статті з хімії" />
+  <meta property="article:tag" content="Навчання" />
+  <meta property="article:tag" content="Титрування pH" />
+  <meta property="article:tag" content="Буферні розчини" />
+  <meta property="article:tag" content="Аналітична хімія" />
+  <meta property="article:tag" content="НМТ Хімія" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://sheua.com/ph-bufery-tytruvannia-zadachi.html" />
+  <link rel="alternate" hreflang="uk" href="https://sheua.com/ph-bufery-tytruvannia-zadachi.html" />
+  <link rel="alternate" hreflang="en" href="https://sheua.com/en/acid-base-titration-buffers-guide.html" />
+  <link rel="alternate" hreflang="x-default" href="https://sheua.com/ph-bufery-tytruvannia-zadachi.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Криві титрування, pH буферів і вибір індикаторів · SHEUA.COM" />
+  <meta property="og:description" content="Покроковий розбір кислотно-основного титрування, обчислення pH буферних розчинів за рівнянням Гендерсона-Гассельбальха, точки еквівалентності та 4 задачі з хімії." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:url" content="https://sheua.com/ph-bufery-tytruvannia-zadachi.html" />
+  <meta property="og:site_name" content="SHEUA.COM · Природничі науки" />
+  <meta property="og:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Криві титрування, pH буферів і вибір індикаторів · SHEUA.COM" />
+  <meta name="twitter:description" content="Покроковий розбір кислотно-основного титрування, обчислення pH буферних розчинів за рівнянням Гендерсона-Гассельбальха, точки еквівалентності та 4 задачі з хімії." />
+  <meta name="twitter:image" content="https://physics.sheua.com/assets/og-preview.png" />
+  <meta name="google-adsense-account" content="ca-pub-7543476344104123" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["Article","LearningResource"],"headline":"Криві титрування, pH буферів і вибір індикаторів · SHEUA.COM","name":"Криві титрування, pH буферів і вибір індикаторів · SHEUA.COM","description":"Покроковий розбір кислотно-основного титрування, обчислення pH буферних розчинів за рівнянням Гендерсона-Гассельбальха, точки еквівалентності та 4 задачі з хімії.","url":"https://sheua.com/ph-bufery-tytruvannia-zadachi.html","inLanguage":"uk","datePublished":"2026-11-27","dateModified":"2026-11-27","author":{"@type":"Person","name":"Роман Пінчук","url":"https://sheua.com/about.html"},"publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"},"isAccessibleForFree":true,"educationalLevel":"7-11 класи, підготовка до НМТ та бакалаврат університету","keywords":["навчання","крива титрування pH","буферні розчини задачі","рівняння Гендерсона Гассельбальха","вибір індикатора титрування","підготовка до НМТ хімія"]}</script>
+  <style>
+    :root {
+      --bg-paper: #f4f2ed;
+      --bg-card: #faf9f5;
+      --bg-inset: #efeae0;
+      --ink-primary: #18181b;
+      --ink-secondary: #3f3f46;
+      --ink-muted: #52525b;
+      --rule-dark: #d6d3cd;
+      --rule-light: #e6e3dd;
+      --accent-crimson: #991b1b;
+      --accent-blue: #1d4ed8;
+      --accent-green: #166534;
+      --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Google Sans Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      padding: 0 16px 56px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header.site-header {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    .nav-bar a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .nav-bar a:hover, .nav-bar a.active { color: var(--ink-primary); font-weight: 600; }
+    .lang-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none !important;
+      color: var(--ink-primary) !important;
+      background: var(--bg-card);
+    }
+    .lang-pill:hover {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+    }
+    .hero-sheet, .article-sheet {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      padding: 30px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a { color: var(--ink-secondary); }
+    h1 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 28px 0 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .article-sheet > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    h3 {
+      font-size: 16.5px;
+      margin: 14px 0 6px;
+      color: var(--ink-primary);
+    }
+    p, li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    a { color: var(--accent-crimson); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .formula-block {
+      background: var(--bg-inset);
+      border-left: 3px solid var(--ink-primary);
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      overflow-x: auto;
+    }
+    .formula-block code {
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+    }
+    .worked-problem {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .worked-problem h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .worked-problem p:last-child { margin-bottom: 0; }
+    .chapters-grid, .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .chapter-card, .cta-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: border-color 0.14s ease, transform 0.14s ease;
+    }
+    .chapter-card:hover, .cta-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .card-kicker {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-primary);
+    }
+    .card-desc {
+      font-size: 13.8px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-link-hint {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-crimson);
+    }
+    .lab-links-box {
+      margin-top: 24px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .lab-links-box h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      font-size: 18px;
+    }
+    .lab-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lab-link-chip {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .lab-link-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .chapter-pager {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 18px;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.8px;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule-dark);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--bg-inset);
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .filter-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-primary);
+      margin-bottom: 10px;
+    }
+    footer.site-footer {
+      max-width: 980px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-dark);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      z-index: 95;
+      width: min(440px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(24, 24, 27, 0.22);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .cookie-banner.hidden { display: none !important; }
+    .cookie-actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .btn-accept {
+      padding: 5px 12px;
+      border: 1px solid var(--ink-primary);
+      background: var(--ink-primary);
+      color: #faf9f5;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-essential {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .hub-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+    .hub-pill {
+      padding: 6px 12px;
+      border: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hub-pill:hover, .hub-pill.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .score-pill {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-inset);
+      color: var(--ink-primary);
+    }
+    .nmt-opts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .nmt-opt-btn {
+      text-align: left;
+      padding: 8px 12px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nmt-opt-btn:hover { border-color: var(--ink-primary); }
+    .nmt-opt-btn.correct {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+      font-weight: 600;
+    }
+    .nmt-opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #991b1b;
+      color: #7f1d1d;
+    }
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .calc-widget { margin: 0; }
+    .calc-inputs-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .calc-inputs-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+    }
+    .calc-inputs-row input {
+      padding: 6px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+    .share-strip {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .share-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .share-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .share-chip:hover {
+      border-color: var(--ink-primary);
+      color: var(--accent-crimson);
+    }
+    .skip-link {
+      position: fixed;
+      top: -60px;
+      left: 12px;
+      z-index: 9999;
+      padding: 10px 14px;
+      background: #18181b;
+      color: #faf9f5;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .skip-link:focus { top: 12px; }
+    :where(a, button, input, select, textarea, summary):focus-visible {
+      outline: 2px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-sheet, .article-sheet { padding: 20px 16px; }
+      .hub-pill, .share-chip, .nmt-opt-btn, .lang-pill, .search-nav-btn { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+    .calc-presets-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 8px;
+    }
+    .calc-preset-chip {
+      padding: 3px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .calc-preset-chip:hover, .calc-preset-chip.active {
+      background: var(--ink-primary);
+      color: #faf9f5;
+      border-color: var(--ink-primary);
+    }
+    .calc-3d-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 13.8px;
+    }
+    .search-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .search-nav-btn:hover {
+      border-color: var(--ink-primary);
+      background: var(--bg-inset);
+    }
+    .search-nav-btn kbd {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 0 4px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+    }
+    .site-search-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      background: rgba(24, 24, 27, 0.48);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 8vh 14px 20px;
+    }
+    .site-search-overlay[hidden] { display: none !important; }
+    .site-search-dialog {
+      width: min(620px, 100%);
+      max-height: 78vh;
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 16px 42px rgba(24, 24, 27, 0.28);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .site-search-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule-dark);
+      background: var(--bg-paper);
+    }
+    .site-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--ink-primary);
+    }
+    .site-search-close {
+      padding: 4px 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .site-search-results {
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .site-search-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 3px;
+      text-decoration: none;
+      color: var(--ink-primary);
+      border: 1px solid transparent;
+    }
+    .site-search-item:hover, .site-search-item.active {
+      background: var(--bg-inset);
+      border-color: var(--rule-dark);
+    }
+    .site-search-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .site-search-sub {
+      display: block;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .site-search-badge {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 2px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-secondary);
+    }
+    .back-to-top-btn {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 90;
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      border: 1px solid var(--ink-primary);
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      box-shadow: 0 4px 14px rgba(24, 24, 27, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease, transform 0.18s ease, background 0.14s ease;
+    }
+    .back-to-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .back-to-top-btn:hover {
+      background: var(--ink-primary);
+      color: #faf9f5;
+    }
+    .quiz-q-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 14px;
+    }
+    .quiz-q-dot {
+      min-width: 30px;
+      height: 28px;
+      padding: 0 6px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .quiz-q-dot:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .quiz-q-dot.ok { background: #dcfce7; border-color: #166534; color: #14532d; }
+    .quiz-q-dot.bad { background: #fee2e2; border-color: #991b1b; color: #7f1d1d; }
+    .lab-done-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-muted);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    .lab-done-btn:hover { border-color: var(--ink-primary); color: var(--ink-primary); }
+    .lab-done-btn.done { background: #dcfce7; border-color: #166534; color: #166534; }
+
+    .sandbox-box {
+      margin-top: 22px;
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+    .sandbox-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sandbox-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .sandbox-canvas-wrap {
+      position: relative;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .sandbox-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 880 / 260;
+    }
+    .sandbox-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .sandbox-slider-lbl {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 8px 10px;
+    }
+    .sandbox-slider-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .sandbox-slider-lbl input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-crimson);
+      cursor: pointer;
+    }
+    .sandbox-telemetry {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .telemetry-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12.8px;
+      color: var(--ink-primary);
+    }
+    .telemetry-metrics span {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 2px;
+      padding: 3px 8px;
+    }
+    .sandbox-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 3px;
+      border: 1px solid var(--ink-primary);
+    }
+    .btn-primary-link:hover {
+      background: var(--accent-crimson);
+      border-color: var(--accent-crimson);
+    }
+    .explorer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .explorer-search-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .explorer-search-row .filter-input {
+      margin-bottom: 0;
+      flex: 1 1 260px;
+    }
+    .sim-catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .sim-mini-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 11px 13px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: border-color 0.12s ease, transform 0.12s ease;
+    }
+    .sim-mini-card:hover {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+    .sim-mini-card.spotlight {
+      border: 2px solid var(--accent-crimson);
+      background: #fffbeb;
+    }
+    .sim-mini-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    .sim-mini-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+    .sim-mini-sub {
+      font-size: 12.6px;
+      color: var(--ink-secondary);
+      line-height: 1.42;
+    }
+    .catalog-footer-row {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .copy-formula-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-paper);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .copy-formula-btn:hover {
+      border-color: var(--ink-primary);
+      color: var(--ink-primary);
+    }
+    .copy-formula-btn.copied {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      background: #dcfce7;
+    }
+    .svg-ico {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      vertical-align: -2px;
+    }
+    .hub-pill, .btn-primary-link, .share-chip, .lab-link-chip, .nav-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+    .card-icon-badge svg { width: 17px; height: 17px; }
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .inquiry-stepper {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 16px 18px;
+      margin: 14px 0 18px;
+    }
+    .inquiry-panel {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .inquiry-panel.hidden { display: none; }
+    @media (max-width: 640px) {
+      .sandbox-box { padding: 14px 12px; }
+      .copy-formula-btn { width: 40px; height: 40px; }
+      .btn-primary-link { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent-crimson);
+      z-index: 120;
+      transition: width 0.08s linear;
+    }
+    .toc-box {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .toc-box-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc-links li { margin: 0; font-size: 13.5px; }
+    .toc-links a {
+      color: var(--ink-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .toc-links a:hover { color: var(--accent-crimson); }
+    .toc-links a.active {
+      color: var(--ink-primary);
+      font-weight: 700;
+      background: var(--bg-inset);
+      padding: 1px 6px;
+      border-radius: 2px;
+      text-decoration: none;
+    }
+    .mastery-pill {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      color: var(--ink-primary);
+    }
+    .mastery-pill.done {
+      background: #dcfce7;
+      border-color: #166534;
+      color: #14532d;
+    }
+    .self-study-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0 14px;
+      padding: 10px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-size: 13.5px;
+    }
+    .sol-hidden {
+      display: none !important;
+    }
+    .si-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0 22px;
+    }
+    .si-tool-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .si-tool-card h3 { margin-top: 0; }
+    .si-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+    }
+    .si-field input, .si-field select {
+      padding: 7px 9px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-primary);
+    }
+
+
+    /* BEGIN HUB LANG DD */
+    .hub-lang-dd {
+      position: relative;
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+    .hub-lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 30px;
+      padding: 0 9px;
+      border: 1px solid var(--ink-primary);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .hub-lang-btn:hover, .hub-lang-dd.open .hub-lang-btn {
+      background: var(--bg-inset);
+    }
+    .hub-lang-chev {
+      font-size: 10px;
+      transition: transform 0.15s ease;
+    }
+    .hub-lang-dd.open .hub-lang-chev {
+      transform: rotate(180deg);
+    }
+    .hub-lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      z-index: 160;
+      min-width: 176px;
+      padding: 5px;
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      box-shadow: 0 10px 28px rgba(24, 24, 27, 0.2);
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hub-lang-dd.open .hub-lang-menu {
+      display: flex;
+    }
+    .nav-bar a.hub-lang-opt, a.hub-lang-opt {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 6px 9px;
+      border-radius: 3px;
+      text-decoration: none !important;
+      color: var(--ink-secondary) !important;
+      font-family: var(--font-sans);
+      font-size: 12.8px;
+      font-weight: 500 !important;
+    }
+    .nav-bar a.hub-lang-opt:hover, a.hub-lang-opt:hover {
+      background: var(--bg-inset);
+      color: var(--ink-primary) !important;
+    }
+    .nav-bar a.hub-lang-opt.active, a.hub-lang-opt.active {
+      background: var(--ink-primary);
+      color: #faf9f5 !important;
+      font-weight: 600 !important;
+    }
+    .hub-lang-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      min-width: 30px;
+    }
+    .hub-lang-name { flex: 1; text-align: left; }
+    .hub-lang-chk { opacity: 0; font-size: 11px; }
+    a.hub-lang-opt.active .hub-lang-chk { opacity: 1; }
+    @media (max-width: 640px) {
+      .hub-lang-btn { min-height: 44px; padding: 0 10px; }
+      a.hub-lang-opt { min-height: 40px; }
+    }
+    /* END HUB LANG DD */
+    sub, sup { font-size: 0.75em; line-height: 0; position: relative; vertical-align: baseline; }
+    sub { bottom: -0.22em; }
+    sup { top: -0.38em; }
+  
+    .study-quick-tags, .study-topic-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0 14px; }
+    .study-chip-tag { display: inline-flex; align-items: center; padding: 3px 9px; border: 1px solid var(--rule-dark); border-radius: 3px; background: var(--bg-paper); color: var(--ink-secondary); font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; text-decoration: none; cursor: pointer; transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease; }
+    .study-chip-tag:hover { border-color: var(--ink-primary); color: var(--ink-primary); background: var(--bg-inset); }
+    @media (pointer: coarse), (max-width: 820px) { .study-chip-tag { min-height: 44px; padding: 0 11px; } }
+  
+
+    /* Flashcards, Periodic Table & Printable Cheat Sheet Styles */
+    .fc-progress-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      margin: 14px 0;
+    }
+    .fc-bar-track {
+      flex: 1 1 200px;
+      height: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule-dark);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .fc-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-green);
+      transition: width 0.2s ease;
+    }
+    .fc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .fc-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-radius: 4px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 215px;
+      transition: border-color 0.14s ease, background 0.14s ease;
+    }
+    .fc-card.known {
+      border-color: var(--accent-green);
+      background: #f0fdf4;
+    }
+    .fc-card.review {
+      border-color: var(--accent-crimson);
+      background: #fef2f2;
+    }
+    .fc-top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+    .fc-face-front, .fc-face-back {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .fc-card.flipped .fc-face-front { display: none; }
+    .fc-card:not(.flipped) .fc-face-back { display: none; }
+    .fc-law-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+    .fc-prompt {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      line-height: 1.48;
+      margin: 0;
+    }
+    .fc-eq-box {
+      padding: 10px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--ink-primary);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      overflow-x: auto;
+    }
+    .fc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding-top: 8px;
+      border-top: 1px solid var(--rule-light);
+    }
+    .fc-btn {
+      padding: 5px 10px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .fc-btn:hover { border-color: var(--ink-primary); background: var(--bg-inset); }
+    .fc-btn.know-btn.active { background: var(--accent-green); border-color: var(--accent-green); color: #ffffff; }
+    .fc-btn.rev-btn.active { background: var(--accent-crimson); border-color: var(--accent-crimson); color: #ffffff; }
+
+    /* Periodic Table 18-Column Grid */
+    .ptable-inspector {
+      padding: 14px 16px;
+      background: var(--bg-inset);
+      border: 1px solid var(--ink-primary);
+      border-radius: 4px;
+      margin: 12px 0 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .ptable-scroll {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+    .ptable-grid {
+      display: grid;
+      grid-template-columns: repeat(18, minmax(44px, 1fr));
+      gap: 3px;
+      min-width: 810px;
+    }
+    .pt-cell {
+      padding: 4px 3px;
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      font-family: var(--font-sans);
+      transition: transform 0.1s ease, border-color 0.12s ease;
+    }
+    .pt-cell:hover, .pt-cell.selected {
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(24,24,27,0.14);
+    }
+    .pt-cell.dimmed { opacity: 0.24; }
+    .pt-cell[data-blk="s"] { background: #fee2e2; }
+    .pt-cell[data-blk="p"] { background: #e0f2fe; }
+    .pt-cell[data-blk="d"] { background: #fef3c7; }
+    .pt-cell[data-blk="f"] { background: #dcfce7; }
+    .pt-z { font-family: var(--font-mono); font-size: 9.5px; color: var(--ink-secondary); line-height: 1; }
+    .pt-sym { font-size: 13px; font-weight: 700; line-height: 1.15; }
+    .pt-ar { font-family: var(--font-mono); font-size: 8.5px; color: var(--ink-muted); line-height: 1; }
+    .sol-s { background: #dcfce7; color: #14532d; font-weight: 700; text-align: center !important; }
+    .sol-m { background: #fef3c7; color: #92400e; font-weight: 700; text-align: center !important; }
+    .sol-n { background: #fee2e2; color: #7f1d1d; font-weight: 700; text-align: center !important; }
+    .sol-d { background: #f3f4f6; color: #52525b; font-weight: 600; text-align: center !important; }
+
+    @media (pointer: coarse), (max-width: 820px) {
+      .fc-btn, .pt-cell { min-height: 44px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fc-bar-fill, .pt-cell, .fc-card { transition: none !important; }
+    }
+    @media print {
+      header.site-header, footer.site-footer, .cookie-banner, .back-to-top-btn,
+      .site-search-overlay, .hub-filter-row, .fc-progress-wrap, .fc-grid,
+      .study-topic-tags, .share-strip, .filter-input { display: none !important; }
+      body { background: #ffffff; padding: 0; color: #000000; font-size: 11pt; }
+      .hero-sheet, .article-sheet { border: none; padding: 8px 0; margin: 0; background: #ffffff; }
+      .ref-table th, .ref-table td { padding: 4px 6px; font-size: 9.5pt; border-color: #666666; }
+    }
+
+
+    .eeat-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 16px;
+      margin: 12px 0 14px;
+      padding: 8px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+    }
+    .eeat-meta-bar a { color: var(--ink-primary); font-weight: 600; }
+    .eeat-sources-box {
+      margin-top: 26px;
+      padding: 16px 18px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-left: 3px solid var(--ink-primary);
+      border-radius: 3px;
+    }
+    .eeat-sources-box h2 {
+      margin: 0 0 8px !important;
+      padding: 0 !important;
+      border: none !important;
+      font-size: 16.5px !important;
+    }
+    .eeat-sources-box p, .eeat-sources-box li {
+      font-size: 13.5px;
+      margin-bottom: 6px;
+    }
+</style>
+  <script id="sheua-sub-helper">window.__subH=function(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\bS_N([12])\b/g,'S<sub>N</sub>$1').replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g,function(m,b,d){return /^(chem|bio|sim|sheua|http|https|data|aria)$/i.test(b)?m:(b+'<sub>'+d+'</sub>');});};</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти до основного змісту</a>
+  <header class="site-header">
+    <a class="brand" href="https://sheua.com/" style="display:inline-flex;align-items:center;gap:7px;"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(150 12 12)"/></svg><span>SHEUA.COM</span></a>
+    <nav class="nav-bar" aria-label="Головна навігація">
+      <a href="/">Підручник</a>
+      <a href="/nmt-trener.html">НМТ</a>
+      <a href="/kartky-formul.html">Картки формул</a>
+      <a href="/kalkuliatory.html">Калькулятори</a>
+      <a href="/tablytsi-rozchynnosti-periodychna.html">Таблиці</a>
+      <a href="/si-constants-handbook.html">Сталі СІ</a>
+      <a href="https://physics.sheua.com/uk/">3D-лаб · 106</a>
+      <button type="button" class="search-nav-btn" id="open-site-search" title="Швидкий пошук по сайту (/)" aria-label="Швидкий пошук по сайту"><span>Пошук</span><kbd>/</kbd></button>
+      <div class="hub-lang-dd" id="hub-lang-dd">
+        <button type="button" class="hub-lang-btn" id="hub-lang-trig" aria-haspopup="listbox" aria-expanded="false" aria-controls="hub-lang-menu" aria-label="Вибір мови"><span>УКР</span><span class="hub-lang-chev" aria-hidden="true">▾</span></button>
+        <div class="hub-lang-menu" id="hub-lang-menu" role="listbox" aria-label="Вибір мови">
+          <a class="hub-lang-opt active" role="option" aria-selected="true" data-lang="uk" href="/ph-bufery-tytruvannia-zadachi.html"><span class="hub-lang-code">УКР</span><span class="hub-lang-name">Українська</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+          <a class="hub-lang-opt" role="option" aria-selected="false" data-lang="en" href="/en/acid-base-titration-buffers-guide.html"><span class="hub-lang-code">EN</span><span class="hub-lang-name">English</span><span class="hub-lang-chk" aria-hidden="true">✓</span></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main-content" class="container">
+    
+    <section class="hero-sheet">
+      <div class="breadcrumb"><a href="/">SHEUA.COM</a> / <span>Навчальна стаття · Аналітична хімія</span></div>
+      <span class="badge">АНАЛІТИЧНА ХІМІЯ · РІВНОВАГИ У РОЗЧИНАХ · НМТ І УНІВЕРСИТЕТ</span>
+      <h1>Криві титрування, pH буферних розчинів і правильний вибір індикаторів</h1>
+      <div class="eeat-meta-bar">
+        <span>Автор: <a href="/about.html">Роман Пінчук</a></span>
+        <span>Опубліковано: 27.11.2026</span>
+        <span>Час читання: 7 хв</span>
+      </div>
+      <p class="lead">Обчислення водневого показника pH у чотирьох характерних точках кривої титрування дає повну картину кислотно-основної реакції. Розглядаємо різницю між титруванням сильної та слабкої кислоти, роботу буферної зони та вибір кислотно-основного індикатора без помилок.</p>
+    </section>
+
+    <article class="article-sheet">
+      <h2>Чотири ключові ділянки кривої титрування</h2>
+      <p>Крива титрування відображає залежність <code>pH</code> досліджуваного розчину від об'єму доданого титранту. Незалежно від конкретної пари реагентів, її форму визначають чотири опорні точки: початковий розчин до додавання титранту, буферна ділянка до точки еквівалентності, сама точка еквівалентності зі стрибком <code>pH</code> та область надлишку титранту після завершення нейтралізації.</p>
+      <p>При титруванні сильної кислоти <code>HCl</code> сильним лугом <code>NaOH</code> утворюється сіль, що не піддається гідролізу, тому точка еквівалентності лежить точно при <code>pH = 7.00</code> за температури 25 °C, а вертикальний стрибок охоплює широкий інтервал приблизно від <code>pH 4</code> до <code>pH 10</code>. Натомість при титруванні слабкої кислоти, як-от оцтової <code>CH₃COOH</code>, сильним лугом у точці еквівалентності утворюється розчин ацетату натрію, аніон якого гідролізує з утворенням іонів <code>OH⁻</code>. Через це точка еквівалентності зміщується у лужну область вище <code>pH 8.5</code>, а сам стрибок стає значно вужчим.</p>
+
+      <h2>Буферна зона та фізичний зміст точки напівеквівалентності</h2>
+      <p>Між початком титрування слабкої кислоти <code>HA</code> і точкою еквівалентності в колбі одночасно присутні непрореагована слабка кислота та її спряжена основа <code>A⁻</code>. Така суміш поводиться як буферний розчин, кислотність якого визначає рівняння Гендерсона-Гассельбальха: <code>pH = pK<sub>a</sub> + lg([A⁻] / [HA])</code>. Найвищу стійкість проти підкислення чи підлужування система виявляє в точці напівеквівалентності, коли відтитровано рівно половину кислоти і <code>[A⁻] = [HA]</code>. Логарифм одиниці дорівнює нулю, тому в цій точці <code>pH = pK<sub>a</sub></code>. Цю властивість використовують в експериментальній хімії для прямого вимірювання констант дисоціації слабких кислот. Порівняти стійкість буфера і чистої води можна у <a href="https://physics.sheua.com/uk/sim/chem_buffer">3D-лабораторії буферних розчинів</a>.</p>
+
+      <h2>Правило вибору кислотно-основного індикатора</h2>
+      <p>Візуальний індикатор являє собою слабку органічну кислоту <code>HInd</code>, чия молекулярна і йонна форми мають різне забарвлення. Перехід кольору відбувається в інтервалі приблизно <code>pK<sub>Ind</sub> ± 1</code>. Щоб індикатор спрацював точно в момент завершення реакції з мінімальною похибкою титрування, інтервал переходу його забарвлення має цілком лежати в межах вертикального стрибка кривої.</p>
+      <p>Для титрування слабкої кислоти сильним лугом точка еквівалентності лежить при <code>pH ≈ 8.7</code>, тому підходить фенолфталеїн із переходом <code>8.2-10.0</code>, а метиловий оранжевий із переходом <code>3.1-4.4</code> змінить колір набагато раніше і дасть грубу похибку. Навпаки, під час титрування слабкої основи на зразок амоніаку <code>NH₃</code> сильною кислотою точка еквівалентності зміщується у кислу область <code>pH ≈ 5.3</code>, де коректно працює метиловий червоний або метиловий оранжевий. Простежити зміну забарвлення на кривій титрування можна у <a href="https://physics.sheua.com/uk/sim/chem_titration">3D-досліді титрування</a>.</p>
+
+      <h2>Чотири типові розрахункові задачі</h2>
+
+      <div class="worked-problem">
+        <h3>Задача 1. Обчислення концентрації кислоти за об'ємом титранту</h3>
+        <p>На повну нейтралізацію <code>25.0 мл</code> розчину хлоридної кислоти витратили <code>20.0 мл</code> розчину <code>NaOH</code> із концентрацією <code>0.150 моль/л</code>. Знайдіть молярність кислоти.</p>
+        <p>Стехіометричне співвідношення реагентів <code>HCl + NaOH → NaCl + H₂O</code> становить <code>1 : 1</code>, тому <code>C<sub>a</sub>V<sub>a</sub> = C<sub>b</sub>V<sub>b</sub></code>. Звідси <code>C<sub>a</sub> = (0.150 · 20.0) / 25.0 = 0.120 моль/л</code>. Оскільки об'єми стоять у відношенні, обидва значення можна підставляти в мілілітрах без переведення в літри.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 2. Знаходження pH буфера після додавання сильної кислоти</h3>
+        <p>У літрі буферного розчину міститься <code>0.20 моль</code> оцтової кислоти <code>pK<sub>a</sub> = 4.76</code> та <code>0.20 моль</code> ацетату натрію. Яким стане <code>pH</code> після додавання <code>0.02 моль</code> твердої <code>HCl</code> без зміни об'єму?</p>
+        <p>Сильна кислота кількісно протонує ацетат-іони: кількість <code>CH₃COO⁻</code> зменшується до <code>0.20 − 0.02 = 0.18 моль</code>, а кількість <code>CH₃COOH</code> зростає до <code>0.20 + 0.02 = 0.22 моль</code>. За рівнянням Гендерсона-Гассельбальха <code>pH = 4.76 + lg(0.18 / 0.22) = 4.76 − 0.087 = 4.67</code>. Для порівняння: додавання тих самих <code>0.02 моль</code> кислоти в чисту воду знизило б <code>pH</code> із 7.00 аж до 1.70.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 3. pH у точці еквівалентності титрування слабкої кислоти</h3>
+        <p>Обчисліть <code>pH</code> розчину, утвореного змішуванням рівних об'ємів <code>0.20 моль/л</code> <code>CH₃COOH</code> і <code>0.20 моль/л</code> <code>NaOH</code> за 25 °C.</p>
+        <p>Після змішування об'єм подвоюється, тому концентрація утвореної солі <code>CH₃COONa</code> становить <code>C = 0.10 моль/л</code>. Константа гідролізу ацетат-іона дорівнює <code>K<sub>h</sub> = K<sub>w</sub> / K<sub>a</sub> = 10⁻¹⁴ / (1.74 × 10⁻⁵) = 5.75 × 10⁻¹⁰</code>. Концентрація гідроксид-іонів <code>[OH⁻] = √(K<sub>h</sub> · C) = √(5.75 × 10⁻¹¹) = 7.58 × 10⁻⁶ моль/л</code>, отже <code>pOH = 5.12</code>, а <code>pH = 14.00 − 5.12 = 8.88</code>. Дослідити гідроліз різних солей можна у <a href="https://physics.sheua.com/uk/sim/chem_hydrolysis">3D-досліді гідролізу солей</a>.</p>
+      </div>
+
+      <div class="worked-problem">
+        <h3>Задача 4. Стехіометричний розрахунок для двоосновної кислоти</h3>
+        <p>Який об'єм розчину <code>NaOH</code> концентрацією <code>0.25 моль/л</code> потрібен для повної нейтралізації <code>40.0 мл</code> розчину сульфатної кислоти <code>H₂SO₄</code> концентрацією <code>0.15 моль/л</code>?</p>
+        <p>З рівняння <code>H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O</code> видно, що на один моль кислоти витрачається два молі лугу: <code>ν(NaOH) = 2 · 0.15 · 0.040 = 0.012 моль</code>. Тоді необхідний об'єм титранту дорівнює <code>V = 0.012 / 0.25 = 0.048 л = 48.0 мл</code>.</p>
+      </div>
+
+      <div class="eeat-sources-box">
+        <h2>Джерела та довідкові таблиці</h2>
+        <p>Автор матеріалу: <a href="/about.html">Роман Пінчук</a>. Константи дисоціації та гідролізу звірено за IUPAC Gold Book, підручником OpenStax Chemistry 2e та <a href="/tablytsi-rozchynnosti-periodychna.html">таблицями розчинності й електрохімічних потенціалів SHEUA.COM</a>.</p>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div>© 2026 sheua.com &amp; physics.sheua.com · Авторський науково-освітній портал · <a href="mailto:contact@sheua.com">contact@sheua.com</a></div>
+    <div class="footer-links">
+      <a href="/">Підручник</a>
+      <a href="/nmt-trener.html">НМТ</a>
+      <a href="/kartky-formul.html">Картки формул</a>
+      <a href="/about.html">Про автора і редакцію</a>
+      <a href="/privacy.html">Конфіденційність</a>
+      <a href="/terms.html">Умови</a>
+    </div>
+  </footer>
+  <aside id="cookie-consent-banner" class="cookie-banner" role="region" aria-label="Повідомлення про файли cookie">
+    <div>Цей освітній сайт використовує файли cookie та <code>localStorage</code> для збереження навчальних налаштувань і показу оголошень Google AdSense відповідно до <a href="/privacy.html">Політики конфіденційності</a>.</div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-essential" onclick="try{localStorage.setItem('sheua_cookie_consent','essential');}catch(e){}window.adsbygoogle=window.adsbygoogle||[];window.adsbygoogle.requestNonPersonalizedAds=1;document.getElementById('cookie-consent-banner').classList.add('hidden');">Лише необхідні</button>
+      <button type="button" class="btn-accept" onclick="try{localStorage.setItem('sheua_cookie_consent','accepted');}catch(e){}document.getElementById('cookie-consent-banner').classList.add('hidden');">Прийняти</button>
+    </div>
+  </aside>
+  <script>
+    (function(){
+      try {
+        var c = localStorage.getItem('sheua_cookie_consent');
+        if (c === 'essential') {
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+        var b = document.getElementById('cookie-consent-banner');
+        if (c && b) b.classList.add('hidden');
+      } catch (e) {}
+    })();
+  </script>
+  
+  <button type="button" id="back-to-top-btn" class="back-to-top-btn" title="Догори" aria-label="Догори"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+  <div id="site-search-overlay" class="site-search-overlay" role="dialog" aria-modal="true" aria-label="Пошук по сайту" hidden>
+    <div class="site-search-dialog">
+      <div class="site-search-top">
+        <svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="site-search-input" class="site-search-input" placeholder="Пошук серед 106 3D-дослідів, розділів підручника та калькуляторів..." aria-label="Пошук серед 106 3D-дослідів, розділів підручника та калькуляторів..." autocomplete="off" />
+        <button type="button" id="site-search-close" class="site-search-close" aria-label="Закрити пошук">Esc</button>
+      </div>
+      <div id="site-search-results" class="site-search-results" role="listbox" aria-label="Результати пошуку"></div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var ITEMS = [{"t":"Як розв'язувати розрахункові задачі з фізики у системі СІ","s":"Алгоритм СІ, аналіз розмірностей, граничні перевірки та 4 розібрані задачі","c":"Стаття","u":"/yak-rozviazuvaty-zadachi-z-fizyky-si.html"},{"t":"Обробка похибок у лабораторних роботах з фізики","s":"Формула Бесселя, коефіцієнт Стьюдента, непрямі похибки та лінійна регресія","c":"Стаття","u":"/pohybky-vymiriuvan-laboratorni-roboty.html"},{"t":"Криві титрування, буферні розчини pH та вибір індикаторів","s":"Точка еквівалентності, рівняння Гендерсона-Гассельбальха та 4 задачі","c":"Стаття","u":"/ph-bufery-tytruvannia-zadachi.html"},{"t":"Інтерактивні картки формул та шпаргалка A4 для друку","s":"36 законів фізики, хімії та біології у СІ з інтервальним повторенням","c":"Тренажер","u":"/kartky-formul.html"},{"t":"Періодична система 118 елементів, таблиця розчинності й ряд напруг","s":"Інтерактивна таблиця Менделєєва, розчинність у воді та потенціали E°","c":"Довідник","u":"/tablytsi-rozchynnosti-periodychna.html"},{"t":"Тренажер НМТ з фізики, хімії та біології","s":"15 типових завдань із таймером і формулами СІ","c":"Інструмент","u":"/nmt-trener.html"},{"t":"Віртуальні лабораторні роботи 7-11 клас","s":"Покажчик робіт за класами, режим проєктора і друк звіту","c":"Інструмент","u":"/laboratorni-7-11-klas.html"},{"t":"Онлайн-калькулятори формул у СІ","s":"Удар куль, лінза, ідеальний газ, маятник, Кулон, Карно, pH, Фарадей","c":"Інструмент","u":"/kalkuliatory.html"},{"t":"Розділ I. Класична механіка","s":"Аналітичний виклад законів збереження імпульсу, механічної енергії та момент","c":"Підручник","u":"/mechanics-conservation.html"},{"t":"Розділ II. Механіка рідин і газів та молекулярна термодинаміка","s":"Гідростатика й гідродинаміка ідеальної та в'язкої рідини, рівняння Бернуллі,","c":"Підручник","u":"/thermodynamics-fluids.html"},{"t":"Розділ III. Хвильова оптика, електромагнетизм і квантова фізика","s":"Принцип Гюйгенса-Френеля, інтерференція Юнга, дифракція на щілині, закон Мал","c":"Підручник","u":"/optics-electromagnetism.html"},{"t":"Розділ IV. Квантова хімія та будова речовини","s":"Квантові числа та вузлові поверхні атомних s-, p-, d-орбіталей, періодичний ","c":"Підручник","u":"/quantum-chemistry-bonding.html"},{"t":"Розділ V. Фізична хімія, кінетика та електрохімія","s":"Хімічна термодинаміка та критерій самочинності Гіббса, рівняння Арреніуса й ","c":"Підручник","u":"/chemical-kinetics-equilibrium.html"},{"t":"Розділ VI. Молекулярна біологія клітини і генетика","s":"Геометричне обмеження площі до об'єму клітини, хеміосмотичне спряження Мітче","c":"Підручник","u":"/cell-molecular-biology.html"},{"t":"Розділ VII. Біофізика живих систем","s":"Рівняння Нернста та Гольдмана-Ходжкіна-Каца для мембранного потенціалу, поте","c":"Підручник","u":"/biophysics-physiology.html"},{"t":"Розділ VIII. Довідник фізичних сталих CODATA, одиниць системи СІ та похибок лабораторних вимірювань","s":"Точні значення фундаментальних фізико-хімічних констант у сучасній редакції ","c":"Підручник","u":"/si-constants-handbook.html"},{"t":"Закон збереження імпульсу","s":"Пружне та непружне зіткнення куль, обмін імпульсами","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/collision"},{"t":"Рух тіла по похилій площині","s":"Розклад сили тяжіння, реакція опори N та кут тертя","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/incline"},{"t":"Математичний та пружинний маятники","s":"Порівняння періодів T = 2π√(L/g) та T = 2π√(m/k)","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/pendulum"},{"t":"Рух тіла, кинутого під кутом до горизонту","s":"Парабола у вакуумі та балістична крива з опором повітря","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/projectile"},{"t":"Колиска Ньютона","s":"Передача імпульсу та енергії ланцюжком сталевих куль","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/cradle"},{"t":"Доцентрове прискорення та рух на повороті","s":"Доцентрове прискорення a = ω²R та умова зриву в занос","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/centripetal"},{"t":"Закон Архімеда та умови плавання тіл","s":"Виштовхувальна сила F_A = ρgV та умова плавання біля ватерлінії","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/archimedes"},{"t":"Ідеальний газ під поршнем (Рівняння Менделєєва-Клапейрона)","s":"Рівняння Менделєєва-Клапейрона PV = νRT та тепловий рух молекул","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/gas"},{"t":"Світловий фронт і принцип Гюйгенса-Френеля","s":"Вторинні сферичні хвилі Гюйгенса та заломлення плоского фронту світла","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/wavefront"},{"t":"Інтерференція світлових фронтів (Дослід Юнга)","s":"Накладання двох сферичних світлових фронтів, максимуми та мінімуми","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/interference"},{"t":"Дисперсія світла та утворення спектра у призмі","s":"Залежність показника заломлення n(λ) від довжини хвилі та розклад спектра","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/dispersion"},{"t":"Електромагнітна світлова хвиля (E, B та вектор Пойнтінга)","s":"Взаємно перпендикулярні поля E ⊥ B, фазовий фронт та поляризація світла","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/emwave"},{"t":"Рівняння Бернуллі та ефект Вентурі","s":"Зв'язок швидкості потоку рідини та статичного тиску у трубі змінного перер","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/bernoulli"},{"t":"Збиральна лінза та фокусування світлового фронту","s":"Перетворення плоского світлового фронту на сферичний збіжний фронт у лінзі","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/lens"},{"t":"Сила Лоренца та циклотронна спіраль у 3D","s":"Рух зарядженої частинки по гвинтовій лінії (спіралі) в однорідному полі B","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/lorentz"},{"t":"Закон Фарадея та правило Ленца у 3D","s":"Генерація індукційного струму в котушці під час руху магніту та правило Ле","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/faraday"},{"t":"Еліптична орбіта та ІІ закон Кеплера","s":"Рух планети по еліптичній орбіті, секторна швидкість та обмін енергій у гр","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/kepler"},{"t":"Момент інерції та енергія кочення","s":"Змагання суцільного циліндра та порожнистого обруча на похилій площині без","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/gyroscope"},{"t":"Стоячі хвилі та обертони струни у 3D","s":"Власні моди коливань закріпленої струни, вузли й пучності та залежність ча","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/standingwave"},{"t":"Ефект Доплера та деформація хвильового фронту","s":"Стиснення сферичних хвильових фронтів попереду рухомого джерела, зміщення ","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/doppler"},{"t":"Поляризація світлового фронту та закон Малюса","s":"Проходження лінійно поляризованого світлового фронту крізь поляризатор та ","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/malus"},{"t":"Дифракція світлового фронту на вузькій щілині","s":"Огинання світловим фронтом країв вузької щілини, зони Гюйгенса та централь","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/diffraction"},{"t":"Ідеальна теплова машина та цикл Карно у 3D","s":"Перетворення теплоти нагрівника Q₁ на механічну роботу поршня A та передач","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/carnot"},{"t":"Рух кулі у в'язкій рідині (Закон Стокса)","s":"Падіння кульки у в'язкому маслі, сила в'язкого тертя Стокса та встановленн","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/viscosity"},{"t":"Закон Кулона та 3D-поле електричного диполя","s":"Силові лінії напруженості E двох точкових зарядів, закон Кулона та рух про","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/coulomb"},{"t":"Електромагнітні коливання в контурі LC / RLC","s":"Вільні електромагнітні коливання між конденсатором C та котушкою індуктивн","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/rlccircuit"},{"t":"Машина Атвуда: прискорення та натяг нитки","s":"Рух зв'язаних тіл на невагомій нитці через масивний блок з моментом інерці","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/atwood"},{"t":"Сила Коріоліса та траєкторія на диску, що обертається","s":"Відхилення траєкторії тіла в системі відліку, що обертається з кутовою шви","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/coriolis"},{"t":"Механічна напруга та модуль Юнга при розтягу","s":"Механічна напруга σ, відносне видовження ε та модуль пружності Юнга E при ","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/hooke"},{"t":"Формула Торрічеллі: витікання рідини з резервуара","s":"Швидкість витікання ідеальної рідини з малого отвору під дією гідростатичн","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/torricelli"},{"t":"Розподіл Максвелла та характерні швидкості газу","s":"Статистичний закон розподілу молекул ідеального газу за модулями швидкосте","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/maxwell"},{"t":"Кільця Ньютона: інтерференція на повітряному прошарку","s":"Смуги рівної товщини в клиноподібному повітряному прошарку між плоско-опук","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/newtonrings"},{"t":"Зовнішній фотоефект та рівняння Ейнштейна","s":"Виривання фотоелектронів квантами світла hν, робота виходу A_вих, червона ","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/photoelectric"},{"t":"Дослід Резерфорда: розсіяння α-частинок ядром","s":"Гіперболічні траєкторії α-частинок у кулонівському полі важкого атомного я","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/rutherford"},{"t":"Взаємодія паралельних струмів та сила Ампера","s":"Магнітна взаємодія двох паралельних провідників зі струмами I₁ та I₂ та ет","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/ampere"},{"t":"Ефект Холла та поперечна ЕРС у магнітному полі","s":"Виникнення поперечної різниці потенціалів U_H у пластинці зі струмом, вміщ","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/hall"},{"t":"Зв'язані маятники: нормальні моди та явище биття","s":"Періодичне перетікання механічної енергії між двома маятниками, з'єднаними","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/coupled"},{"t":"Гіроскопічна прецесія важкої симетричної дзиґи","s":"Прецесія вектора власного моменту імпульсу L навколо вертикалі під дією мо","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/precession"},{"t":"Ефект Магнуса та підіймальна сила обертового циліндра","s":"Виникнення поперечної підіймальної сили F_M при обтіканні обертового цилін","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/magnus"},{"t":"Поверхневий натяг, меніск та капілярні явища","s":"Додатковий лапласівський тиск ΔP = 2σ cos θ / r під увігнутим або опуклим ","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/capillary"},{"t":"Броунівський рух та дифузія Ейнштейна-Смолуховського","s":"Хаотична траєкторія завислої мікрочастинки під ударами молекул рідини та л","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/brownian"},{"t":"Інтерферометр Майкельсона та фазовий зсув променів","s":"Поділ когерентного лазерного пучка напівпрозорим дзеркалом на два ортогона","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/michelson"},{"t":"Ефект Комптона та релятивістський імпульс фотона","s":"Пружне зіткнення рентгенівського фотона з вільним електроном, збільшення д","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/compton"},{"t":"Модель атома Бора, хвилі де Бройля та спектральні серії","s":"Квантування моменту імпульсу L_n = nℏ, стоячі хвилі де Бройля 2πr_n = nλ_д","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/bohr"},{"t":"Закон Біо-Савара-Лапласа та котушки Гельмгольца","s":"Розрахунок магнітної індукції B(x) на осі колових витків зі струмом та ств","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/biot"},{"t":"Трансформатор змінного струму та взаємна індукція","s":"Взаємна електромагнітна індукція через спільний змінний магнітний потік Φ(","c":"3D Фізика","u":"https://physics.sheua.com/uk/sim/transformer"},{"t":"Будова електронних оболонок атома та 3D-орбіталі (s, p, d)","s":"Хвильова функція Шредінгера |ψ|², квантові числа n, l та вузлові поверхні","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_orbitals"},{"t":"Гібридизація орбіталей і просторова геометрія молекул (ГЕПВО)","s":"Лінійна sp (180°), тригональна sp² (120°), тетраедрична sp³ (109.5°) і неп","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_vsepr"},{"t":"Йонна кристалічна ґратка та енергія зв'язку кристала (NaCl)","s":"Елементарна комірка кам'яної солі, стала Маделунга, енергія ґратки та тепл","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_lattice"},{"t":"Закон Авогадро, молярний об'єм газу та рівняння Менделєєва-Клапейрона","s":"Молярний об'єм газу V_m = 22.4 л/моль (н.у.), кількість речовини ν та рівн","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_gaslaws"},{"t":"Швидкість хімічної реакції, енергія активації та каталіз","s":"Теорія активних зіткнень, рівняння Арреніуса k = A·exp(−E_a/RT) та дія кат","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_kinetics"},{"t":"Хімічна рівновага та принцип Ле Шательє (система N₂O₄ ⇄ 2NO₂)","s":"Динамічна рівновага димеризації, константа K_p та зміщення під дією T і P","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_equilibrium"},{"t":"Кислотно-основне титрування, водневий показник pH та індикатори","s":"Крива нейтралізації HCl + NaOH → NaCl + H₂O, точка еквівалентності та стри","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_titration"},{"t":"Гальванічний елемент Даніеля-Якобі та електродні потенціали","s":"Анодне окиснення Zn⁰ → Zn²⁺ + 2e⁻, катодне відновлення Cu²⁺ + 2e⁻ → Cu⁰ і ","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_galvanic"},{"t":"Електроліз водного розчину електроліту та закони Фарадея","s":"Катодне осадження міді, анодне виділення кисню O₂↑ та маса m = (M·I·t)/(z·","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_electrolysis"},{"t":"Будова молекули бензену C₆H₆, ароматичність та делокалізація π-зв'язку","s":"Правильний плоский шестикутник Кекуле, sp²-каркас (120°) і єдина 6π-електр","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_organic"},{"t":"Періодична система Д. І. Менделєєва (118 елементів): радіус r_ат, енергія йонізації I₁ та χ","s":"Повна 3D-таблиця всіх 118 хімічних елементів (періоди 1-7, групи 1-18, s-,","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_periodic"},{"t":"Водневий зв'язок, гексагональна ґратка льоду Iₕ та аномалія густини води","s":"Тетраедрична сітка водневих зв'язків O-H···O у кристалі гексагонального ль","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_hbond"},{"t":"Термохімія, закон Гесса та калориметричне визначення ентальпії реакції ΔH","s":"Вимірювання теплового ефекту екзо- та ендотермічних реакцій у калориметрі ","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_calorimetry"},{"t":"Осмотичний тиск розчину (закон Вант-Гоффа Π = iCRT) та напівпроникна мембрана","s":"Однобічна дифузія води крізь напівпроникну мембрану в U-подібному осмометр","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_osmosis"},{"t":"Буферні розчини, рівняння Гендерсона-Гассельбаха та буферна ємність","s":"Порівняння стабільності pH ацетатного буфера (CH₃COOH + CH₃COONa) та чисто","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_buffer"},{"t":"Добуток розчинності K_sp, реакція \"Золотий дощ\" (PbI₂↓) та ефект спільного йона","s":"Кристалізація золотистих гексагональних лусочок плюмбум(ІІ) йодиду PbI₂↓ з","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_ksp"},{"t":"Оптична спектрофотометрія та закон Бугера-Ламберта-Бера (A = ε·l·C)","s":"Поглинання монохроматичного променя забарвленим розчином у кварцовій кювет","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_beer"},{"t":"Воднево-кисневий паливний елемент з протонно-обмінною мембраною (PEMFC)","s":"Пряме електрохімічне перетворення енергії реакції 2H₂ + O₂ → 2H₂O в електр","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_fuelcell"},{"t":"Стереохімія: геометрична (цис-транс, Z/E) та оптична хіральна ізомерія (R/S)","s":"Порівняння дипольної полярності геометричних цис/транс-ізомерів алкенів і ","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_isomerism"},{"t":"Радикальна полімеризація етилену та ріст макромолекулярного ланцюга поліетилену","s":"Ланцюгова полімеризація n CH₂=CH₂ → (-CH₂-CH₂-)_n, перехід гібридизації sp","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_polymer"},{"t":"Метод молекулярних орбіталей (МО ЛКАО) та парамагнетизм кисню","s":"Зв'язувальні σ, π та розпушувальні σ*, π* орбіталі, порядок зв'язку і пара","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_mo"},{"t":"Алотропні модифікації та наноструктури Карбону: Графен, Нанотрубка і Фулерен C₆₀","s":"Фулерен C₆₀, вуглецева нанотрубка та графеновий лист: sp²-делокалізація і ","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_allotropes"},{"t":"Координаційні сполуки Вернера та теорія кристалічного поля (розщеплення d-орбіталей)","s":"Октаедричний комплекс [ML₆]ⁿ⁺, розщеплення t₂g / e_g (Δ_o), спектрохімічни","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_complex"},{"t":"Круговий термодинамічний цикл Борна-Габера для йонних кристалів","s":"Термодинамічний баланс сублімації, дисоціації, йонізації, спорідненості до","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_bornhaber"},{"t":"Полярність хімічного зв'язку, електричний дипольний момент та орієнтаційна поляризація","s":"Часткові заряди δ⁺/δ⁻, векторна сума диполів зв'язків і орієнтація молекул","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_dipole"},{"t":"Фазові діаграми речовини (P-T), потрійна точка та надкритичний стан (H₂O і CO₂)","s":"Рівняння Клапейрона-Клаузіуса, сублімація CO₂ (\"сухий лід\") і надкритичний","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_phase"},{"t":"Кінетичні рівняння нульового, першого та другого порядків і період напівперетворення t₁/₂","s":"Інтегральні кінетичні рівняння нульового, першого та другого порядків і пе","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_orders"},{"t":"Ферментативний каталіз: рівняння Міхаеліса-Ментен та конкурентне інгібування","s":"Комплекс фермент-субстрат ES, модель \"ключ-замок\", V_max, K_M та конкурент","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_enzyme"},{"t":"Вільна енергія Гіббса (ΔG = ΔH − TΔS), ентропія та термодинамічний критерій напрямку реакції","s":"Конкуренція ентальпійного ΔH і ентропійного TΔS факторів, температура інве","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_gibbs"},{"t":"Синтез аміаку Габера-Боша та гетерогенний каталіз на поверхні заліза","s":"Компроміс між кінетикою та рівновагою: високий тиск P, оптимальна температ","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_haber"},{"t":"Колігативні властивості розчинів: Закон Рауля, ебуліоскопія (ΔT_кип) та кріоскопія (ΔT_зам)","s":"Зниження тиску насиченої пари ΔP = x₂P₀, підвищення T_кип і зниження T_зам","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_raoult"},{"t":"Хроматографічний аналіз: колонкова та тонкошарова хроматографія (ТШХ) і фактор утримування R_f","s":"Розподіл між нерухомою (сорбент SiO₂) і рухомою (елюент) фазами та розділе","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_chromatography"},{"t":"Поверхнева адсорбція на активованому вугіллі та ізотерма моношару Ленгмюра","s":"Мономолекулярний шар на активних центрах, ступінь заповнення θ = KP/(1 + K","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_adsorption"},{"t":"Колоїдні розчини (золі): будова міцели, оптичний конус Тіндаля та електролітна коагуляція","s":"Будова міцели золю, подвійний електричний шар (ζ-потенціал), ефект Тіндаля","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_colloids"},{"t":"Гідроліз солей: обмінна взаємодія іонів солі з водою, константа K_г та pH середовища","s":"Константа K_г = K_w / K_a, ступінь гідролізу h = √(K_г/C) та реакція серед","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_hydrolysis"},{"t":"Електрохімічна корозія заліза з кисневою деполяризацією та катодний протекторний захист","s":"Мікрогальванічні пари Fe-Cu (руйнування заліза) та Fe-Zn / Fe-Mg (жертовни","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_corrosion"},{"t":"Літій-іонний акумулятор (LiCoO₂ || C₆): оборотна інтеркаляція іонів Li⁺ (Нобелівська премія, 2019)","s":"Шаруватий катод LiCoO₂ та графітовий анод LiC₆: цикл \"гойдалки\" розряджанн","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_liion"},{"t":"Бімолекулярне нуклеофільне заміщення (S_N2): перехідний стан та інверсія конфігурації Вальдена","s":"Тилова атака нуклеофіла OH⁻ під кутом 180°, тригонально-біпірамідальний пе","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_sn2"},{"t":"Реакція естерифікації Фішера та доведення її механізму методом мічених атомів (¹⁸O)","s":"Синтез етилетаноату CH₃COOH + C₂H₅¹⁸OH ⇄ CH₃CO¹⁸OC₂H₅ + H₂O, константа рів","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_ester"},{"t":"Структура біополімерів: плоский пептидний зв'язок, α-спіраль білка та подвійна спіраль ДНК","s":"Пептидна група -CO-NH-, водневі зв'язки в α-спіралі Полінга і комплементар","c":"3D Хімія","u":"https://physics.sheua.com/uk/sim/chem_biopol"},{"t":"Еукаріотична клітина: компартменталізація органел і геометрична межа S/V","s":"Ядро, мітохондрії, ЕПС, апарат Гольджі, лізосоми та відношення площі до об","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_eukaryote"},{"t":"Хеміосмотична теорія Мітчелла: протонна рушійна сила Δp і синтез АТФ","s":"Дихальний ланцюг (комплекси I-IV), протонний градієнт Δp і роторний мотор ","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_mitochondria"},{"t":"Мітотичний поділ клітини: динаміка мікротрубочок веретена та збереження плоїдності","s":"Профаза, метафазна пластинка, анафазне розходження сестринських хроматид і","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_mitosis"},{"t":"Напівконсервативна реплікація ДНК: реплікативна вилка Мезельсона-Сталя","s":"Геліказа, ДНК-полімераза III, синтез 5′→3′, ведучий ланцюг і фрагменти Ока","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_replication"},{"t":"Експресія генів і трансляція: декодування мРНК рибосомою та синтез поліпептиду","s":"Центральна догма ДНК → мРНК → Білок, триплетний генетичний код, сайти A-P-","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_ribosome"},{"t":"Генетика Менделя та закон Гарді-Вайнберга: динаміка частот генотипів у популяції","s":"Решітка Пеннета, розщеплення 3:1 і 9:3:3:1 та популяційна рівновага частот","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_mendel"},{"t":"Біофізика плазматичної мембрани: електрогенний Na⁺/K⁺-насос і потенціал спокою","s":"Рідинно-мозаїчна модель Сінгера-Ніколсона, активний транспорт 3Na⁺/2K⁺ і р","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_membrane"},{"t":"Потенціал дії нейрона: поширення нервового імпульсу та сальтаторне проведення","s":"Модель Ходжкіна-Хакслі, деполяризація Na⁺, реполяризація K⁺, мієлінова обо","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_neuron"},{"t":"Біофізика м'язового скорочення: модель ковзних ниток саркомера та рівняння Гілла","s":"Ковзання ниток актину й міозину (Гакслі), роль Ca²⁺ і тропоміозину та гіпе","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_sarcomere"},{"t":"Фотосинтез у хлоропласті: Z-схема електронного транспорту та фіксація CO₂ у циклі Кальвіна","s":"Світлова фаза на мембрані тилакоїда (ФС ІІ, фотоліз води, ФС І) та цикл Ка","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_photosynthesis"},{"t":"Транспорт кисню гемоглобіном: алостерична кооперативність (T ↔ R) і ефект Бора","s":"Тетрамер α₂β₂ з 4 гемами Fe²⁺, кооперативна сигмоїда Гілла (n ≈ 2.8), міог","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_hemo"},{"t":"Динаміка екосистем: автоколивання \"хижак-жертва\" Лотки-Вольтерри та трофічні рівні","s":"Диференціальні рівняння \"хижак-жертва\", фазовий портрет, хвилі популяцій і","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_lotka"},{"t":"Мейотичний поділ клітини: синапсис бівалентів, кросинговер і комбінативна мінливість","s":"Кон'югація гомологів у профазі І, хіазми, обмін ділянками хроматид і гапло","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_meiosis"},{"t":"Біофізика зору: оптична сила ока, акомодація кришталика та корекція аметропій лінзами","s":"Заломлення світла в рогівці й кришталику, рефлекс акомодації, короткозоріс","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_eye"},{"t":"Хімічний синапс: кальцій-залежний екзоцитоз медіатора та постсинаптичні рецептори","s":"Вхід йонів Ca²⁺, SNARE-екзоцитоз синаптичних везикул, дифузія крізь щілину","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_synapse"},{"t":"Полімеразна ланцюгова реакція (ПЛР): температурні цикли та експоненційна ампліфікація ДНК","s":"Термоциклер: денатурація (95 °C), відпал праймерів (58 °C), синтез Taq-пол","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_pcr"},{"t":"Система CRISPR-Cas9: програмоване розпізнавання мішені ДНК та високоточне редагування генів","s":"Розпізнавання мотиву PAM (5′-NGG-3′), R-петля гідової sgRNA, нуклеазні дом","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_crispr"},{"t":"Будова і цикл бактеріофага Т4: біомеханічний шприц та ін'єкція вірусної ДНК у бактерію","s":"Ікосаедричний капсид, рецепторні хвостові нитки, скорочення чохла та впорс","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_phage"},{"t":"Біофізика кровообігу: ламінарний потік еритроцитів і закон Гагена-Пуазейля для судин (Q ∝ R⁴)","s":"Параболічний профіль швидкості еритроцитів, залежність кровотоку Q ∝ R⁴, в","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_hemodynamics"},{"t":"Гель-електрофорез ДНК: розділення рестрикційних фрагментів у полімерній сітці за молекулярною масою","s":"Міграція поліаніонів ДНК до анода (+), молекулярне сито агарозного гелю та","c":"3D Біологія","u":"https://physics.sheua.com/uk/sim/bio_electrophoresis"}];
+    var overlay = document.getElementById('site-search-overlay');
+    var input = document.getElementById('site-search-input');
+    var resBox = document.getElementById('site-search-results');
+    var openBtn = document.getElementById('open-site-search');
+    var closeBtn = document.getElementById('site-search-close');
+    var topBtn = document.getElementById('back-to-top-btn');
+    var activeIdx = 0;
+    var currentLinks = [];
+
+    function renderList(q) {
+      if (!resBox) return;
+      var term = (q || '').trim().toLowerCase();
+      var matches = [];
+      for (var i = 0; i < ITEMS.length; i++) {
+        var it = ITEMS[i];
+        if (!term || it.t.toLowerCase().indexOf(term) !== -1 || it.s.toLowerCase().indexOf(term) !== -1 || it.c.toLowerCase().indexOf(term) !== -1) {
+          matches.push(it);
+          if (matches.length >= 18) break;
+        }
+      }
+      resBox.innerHTML = '';
+      currentLinks = [];
+      activeIdx = 0;
+      if (!matches.length) {
+        var emp = document.createElement('div');
+        emp.style.padding = '12px 10px';
+        emp.style.fontSize = '13.5px';
+        emp.style.color = 'var(--ink-muted)';
+        emp.textContent = "Нічого не знайдено за цим запитом.";
+        resBox.appendChild(emp);
+        return;
+      }
+      matches.forEach(function(m, idx) {
+        var a = document.createElement('a');
+        a.className = 'site-search-item' + (idx === 0 ? ' active' : '');
+        a.href = m.u;
+        a.setAttribute('role', 'option');
+        var left = document.createElement('div');
+        var tSpan = document.createElement('span');
+        tSpan.className = 'site-search-title';
+        tSpan.innerHTML = window.__subH(m.t);
+        var sSpan = document.createElement('span');
+        sSpan.className = 'site-search-sub';
+        sSpan.innerHTML = window.__subH(m.s);
+        left.appendChild(tSpan);
+        left.appendChild(sSpan);
+        var bSpan = document.createElement('span');
+        bSpan.className = 'site-search-badge';
+        bSpan.textContent = m.c;
+        a.appendChild(left);
+        a.appendChild(bSpan);
+        resBox.appendChild(a);
+        currentLinks.push(a);
+      });
+    }
+
+    function openSearch() {
+      if (!overlay || !input) return;
+      overlay.hidden = false;
+      renderList(input.value);
+      requestAnimationFrame(function(){ input.focus(); input.select(); });
+    }
+    function closeSearch() {
+      if (!overlay) return;
+      overlay.hidden = true;
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openSearch);
+    if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSearch();
+      });
+    }
+    if (input) {
+      input.addEventListener('input', function(){ renderList(input.value); });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' && currentLinks.length) {
+          e.preventDefault();
+          currentLinks[activeIdx].classList.remove('active');
+          activeIdx = (activeIdx + 1) % currentLinks.length;
+          currentLinks[activeIdx].classList.add('active');
+          currentLinks[activeIdx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'ArrowUp' && currentLinks.length) {
+          e.preventDefault();
+          currentLinks[activeIdx].classList.remove('active');
+          activeIdx = (activeIdx - 1 + currentLinks.length) % currentLinks.length;
+          currentLinks[activeIdx].classList.add('active');
+          currentLinks[activeIdx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter' && currentLinks[activeIdx]) {
+          e.preventDefault();
+          window.location.href = currentLinks[activeIdx].href;
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeSearch();
+        }
+      });
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openSearch();
+        return;
+      }
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      var tag = (e.target && e.target.tagName) ? e.target.tagName.toUpperCase() : '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target && e.target.isContentEditable)) return;
+      if (e.key === '/') {
+        e.preventDefault();
+        openSearch();
+      } else if (e.key === 'Escape' && overlay && !overlay.hidden) {
+        closeSearch();
+      }
+    });
+
+    if (topBtn) {
+      window.addEventListener('scroll', function() {
+        topBtn.classList.toggle('visible', window.scrollY > 420);
+      }, { passive: true });
+      topBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  })();
+  </script>
+  <script id="hub-lang-dd-script">
+  (function(){
+    var wrap = document.getElementById('hub-lang-dd');
+    var trig = document.getElementById('hub-lang-trig');
+    if (!wrap || !trig) return;
+    function closeMenu(focusTrig) {
+      wrap.classList.remove('open');
+      trig.setAttribute('aria-expanded', 'false');
+      if (focusTrig) trig.focus();
+    }
+    trig.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = wrap.classList.toggle('open');
+      trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    trig.addEventListener('keydown', function(e) {
+      var opts = wrap.querySelectorAll('.hub-lang-opt');
+      if (e.key === 'ArrowDown' && opts.length) {
+        e.preventDefault();
+        wrap.classList.add('open');
+        trig.setAttribute('aria-expanded', 'true');
+        opts[0].focus();
+      } else if (e.key === 'Escape') {
+        closeMenu(true);
+      }
+    });
+    var opts = Array.prototype.slice.call(wrap.querySelectorAll('.hub-lang-opt'));
+    opts.forEach(function(opt, idx) {
+      opt.addEventListener('click', function() {
+        var lg = opt.getAttribute('data-lang');
+        try { if (lg) localStorage.setItem('sheua_lab_lang', lg); } catch (err) {}
+      });
+      opt.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          opts[(idx + 1) % opts.length].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          opts[(idx - 1 + opts.length) % opts.length].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          opts[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          opts[opts.length - 1].focus();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeMenu(true);
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!wrap.contains(e.target)) closeMenu(false);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && wrap.classList.contains('open')) closeMenu(false);
+    });
+  })();
+  </script>
+</body>
+</html>

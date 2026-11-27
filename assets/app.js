@@ -40141,6 +40141,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
     function syncCurriculumCatalogUI() {
       const seoNav = document.getElementById('seo-experiment-links');
       if (!seoNav) return;
+      const catDetails = document.getElementById('curriculum-catalog-details');
+      const isCompact = seoNav.dataset.compact === '1' || /(?:^|\/)(?:uk\/)?sim\//i.test(window.location.pathname || '');
+      if (isCompact && (!catDetails || !catDetails.open)) {
+        syncRelatedClusterUI();
+        return;
+      }
       const isUk = uiState.lang === 'uk';
       const curLang = uiState.lang || 'en';
       const activeKey = uiState.activeScene;
@@ -42203,6 +42209,12 @@ updateEnergyUI(phBuf, phWater, beta, 20, [
         }
         if (seoNav.parentElement !== catDetails) {
           catDetails.appendChild(seoNav);
+        }
+        if (!catDetails.dataset.lazyBound) {
+          catDetails.dataset.lazyBound = '1';
+          catDetails.addEventListener('toggle', () => {
+            if (catDetails.open) syncCurriculumCatalogUI();
+          });
         }
         if (!seoNav.dataset.spaBound) {
           seoNav.dataset.spaBound = '1';

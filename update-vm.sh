@@ -408,10 +408,16 @@ for CHECK_URL in \
   "https://sheua.com/kalkuliatory.html" \
   "https://sheua.com/kartky-formul.html" \
   "https://sheua.com/tablytsi-rozchynnosti-periodychna.html" \
+  "https://sheua.com/yak-rozviazuvaty-zadachi-z-fizyky-si.html" \
+  "https://sheua.com/pohybky-vymiriuvan-laboratorni-roboty.html" \
+  "https://sheua.com/ph-bufery-tytruvannia-zadachi.html" \
   "https://sheua.com/en/calculators.html" \
   "https://sheua.com/en/formula-flashcards.html" \
   "https://sheua.com/en/si-constants.html" \
   "https://sheua.com/en/periodic-solubility-tables.html" \
+  "https://sheua.com/en/how-to-solve-physics-problems-si.html" \
+  "https://sheua.com/en/experimental-error-analysis-guide.html" \
+  "https://sheua.com/en/acid-base-titration-buffers-guide.html" \
   "https://sheua.com/en/exam-practice.html" \
   "https://sheua.com/pl/" \
   "https://sheua.com/de/" \

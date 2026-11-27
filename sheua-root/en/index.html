@@ -17,11 +17,6 @@
   <link rel="canonical" href="https://sheua.com/en/" />
   <link rel="alternate" hreflang="en" href="https://sheua.com/en/" />
   <link rel="alternate" hreflang="uk" href="https://sheua.com/" />
-  <link rel="alternate" hreflang="pl" href="https://sheua.com/pl/" />
-  <link rel="alternate" hreflang="de" href="https://sheua.com/de/" />
-  <link rel="alternate" hreflang="es" href="https://sheua.com/es/" />
-  <link rel="alternate" hreflang="fr" href="https://sheua.com/fr/" />
-  <link rel="alternate" hreflang="pt" href="https://sheua.com/pt/" />
   <link rel="alternate" hreflang="x-default" href="https://sheua.com/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://physics.sheua.com/assets/apple-touch-icon.png" />
@@ -42,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7543476344104123" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SHEUA.COM · Open-Access 3D Science Textbook & Virtual Laboratory","url":"https://sheua.com/en/","inLanguage":"en","publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"},"keywords":["study","education","online learning","e-learning","STEM study","physics textbook","chemistry study guide","biology virtual lab","AP IB GCSE exam prep","homework help","SI formula calculators","self study"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SHEUA.COM · Open-Access 3D Science Textbook & Virtual Laboratory","url":"https://sheua.com/en/","inLanguage":"en","author":{"@type":"Person","name":"Roman Pinchuk","url":"https://sheua.com/about.html?lang=en"},"datePublished":"2026-08-07","dateModified":"2026-11-27","publisher":{"@type":"EducationalOrganization","name":"SHEUA 3D Science Lab","url":"https://sheua.com/","email":"contact@sheua.com"},"keywords":["study","education","online learning","e-learning","STEM study","physics textbook","chemistry study guide","biology virtual lab","AP IB GCSE exam prep","homework help","SI formula calculators","self study"]}</script>
   <style>
     :root {
       --bg-paper: #f4f2ed;
@@ -1259,6 +1254,41 @@
     .study-chip-tag { display: inline-flex; align-items: center; padding: 3px 9px; border: 1px solid var(--rule-dark); border-radius: 3px; background: var(--bg-paper); color: var(--ink-secondary); font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; text-decoration: none; cursor: pointer; transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease; }
     .study-chip-tag:hover { border-color: var(--ink-primary); color: var(--ink-primary); background: var(--bg-inset); }
     @media (pointer: coarse), (max-width: 820px) { .study-chip-tag { min-height: 44px; padding: 0 11px; } }
+  
+    .eeat-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 16px;
+      margin: 12px 0 14px;
+      padding: 8px 12px;
+      background: var(--bg-inset);
+      border: 1px solid var(--rule-dark);
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+    }
+    .eeat-meta-bar a { color: var(--ink-primary); font-weight: 600; }
+    .eeat-sources-box {
+      margin-top: 26px;
+      padding: 16px 18px;
+      background: var(--bg-paper);
+      border: 1px solid var(--rule-dark);
+      border-left: 3px solid var(--ink-primary);
+      border-radius: 3px;
+    }
+    .eeat-sources-box h2 {
+      margin: 0 0 8px !important;
+      padding: 0 !important;
+      border: none !important;
+      font-size: 16.5px !important;
+    }
+    .eeat-sources-box p, .eeat-sources-box li {
+      font-size: 13.5px;
+      margin-bottom: 6px;
+    }
+
   </style>
   <script id="sheua-sub-helper">window.__subH=function(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\bS_N([12])\b/g,'S<sub>N</sub>$1').replace(/([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9ΔΩα-ωΑ-Ω⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻)\]′⟨⟩]+)_([A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-′⟨⟩⊕]+(?:[,-][A-Za-zА-ЯІЇЄҐа-яіїєґ0-9α-ωΑ-Ω+\-]+)*)/g,function(m,b,d){return /^(chem|bio|sim|sheua|http|https|data|aria)$/i.test(b)?m:(b+'<sub>'+d+'</sub>');});};</script>
 </head>
@@ -1300,6 +1330,7 @@
     <section class="hero-sheet">
       <span class="badge">SHEUA.COM · OPEN 3D SCIENCE PLATFORM</span>
       <h1>3D Physics, Chemistry &amp; Biology Virtual Lab and Textbook</h1>
+      <div class="eeat-meta-bar"><span>Author: <a href="/about.html?lang=en">Roman Pinchuk</a></span><span>Updated: 2026-11-27</span><span>Reviewed against BIPM SI &amp; IUPAC standards</span></div>
       <p class="lead">Analytical derivations, SI calculators, and 106 real-time WebGL experiments at <strong>physics.sheua.com</strong> for schools and universities.</p>
 
       <div class="kpi-strip">
@@ -1492,6 +1523,30 @@
         </a>
       </div>
 
+      
+      <h2>In-depth study articles and worked problem guides</h2>
+      <p>Alongside our interactive tools and 3D WebGL experiments, we publish original long-form guides covering quantitative problem setup, laboratory error analysis, and aqueous chemical equilibria. Every article provides full SI derivations, worked calculations, and primary textbook references.</p>
+      <div class="cta-grid">
+        <a class="cta-card" href="/en/how-to-solve-physics-problems-si.html">
+          <div class="card-icon-row"><span class="card-kicker">Article · Physics</span></div>
+          <div class="card-title">How to solve physics problems in SI units</div>
+          <p class="card-desc">Five-step symbolic workflow, dimensional checks, limiting-case tests, and 4 complete worked calculations.</p>
+          <span class="card-link-hint">Read article →</span>
+        </a>
+        <a class="cta-card" href="/en/experimental-error-analysis-guide.html">
+          <div class="card-icon-row"><span class="card-kicker">Article · Lab Metrology</span></div>
+          <div class="card-title">Experimental error analysis and regression</div>
+          <p class="card-desc">Bessel standard error, Student-t intervals, uncertainty propagation, and a worked pendulum laboratory dataset.</p>
+          <span class="card-link-hint">Read article →</span>
+        </a>
+        <a class="cta-card" href="/en/acid-base-titration-buffers-guide.html">
+          <div class="card-icon-row"><span class="card-kicker">Article · Chemistry</span></div>
+          <div class="card-title">Acid-base titration curves and buffer pH</div>
+          <p class="card-desc">Equivalence-point hydrolysis, Henderson-Hasselbalch buffer calculations, indicator rules, and 4 worked problems.</p>
+          <span class="card-link-hint">Read article →</span>
+        </a>
+      </div>
+    
       <h2>Core governing equations in SI units</h2>
       <div class="hub-filter-row">
         <button type="button" class="hub-pill active" data-law-disc="all" aria-pressed="true"><svg class="svg-ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>All · 10</span></button>
